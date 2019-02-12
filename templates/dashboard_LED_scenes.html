@@ -1,0 +1,181 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  LED Szene 1
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ colorpicker.loader() }}
+  {{ colorpicker.picker(ids=[".scene_1", ".scene_2", ".scene_3", ".scene_4", ".scene_5", ".scene_6", ".scene_7", ".scene_8", ".scene_9" ]) }}
+{% endblock scripts %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RASPI</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_sensors') }}"><span class="glyphicon glyphicon-scale"></span> Sensoren</a></li>
+        <li><a href="{{ url_for('dashboard_user') }}"><span class="glyphicon glyphicon-user"></span> Benutzer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+
+<!-- LED error massages -->
+
+    {% if led_update == False %}
+    <div class="alert alert-danger" role="alert">
+      Keine Verbindung zur Bridge
+    </div>      
+    {% endif %}     
+
+    {% if error_massage != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_massage }}
+      </div>      
+    {% endif %}
+
+<!-- scene navs -->
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li class={{active01}}><a href="{{ url_for('dashboard_LED_scene_01') }}">Szene 1</a></li>
+          <li class={{active02}}><a href="{{ url_for('dashboard_LED_scene_02') }}">Szene 2</a></li>
+          <li class={{active03}}><a href="{{ url_for('dashboard_LED_scene_03') }}">Szene 3</a></li>
+          <li class={{active04}}><a href="{{ url_for('dashboard_LED_scene_04') }}">Szene 4</a></li>
+          <li class={{active05}}><a href="{{ url_for('dashboard_LED_scene_05') }}">Szene 5</a></li>          
+          <li class={{active06}}><a href="{{ url_for('dashboard_LED_scene_06') }}">Szene 6</a></li>
+          <li class={{active07}}><a href="{{ url_for('dashboard_LED_scene_07') }}">Szene 7</a></li>
+          <li class={{active08}}><a href="{{ url_for('dashboard_LED_scene_08') }}">Szene 8</a></li>
+          <li class={{active09}}><a href="{{ url_for('dashboard_LED_scene_09') }}">Szene 9</a></li>        
+        </ul>
+      </div>
+    </nav>
+
+<!-- scene name -->
+
+    {% if entries_scene != None %}
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <form method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" value="{% if scene_name != None %}{{ scene_name }}{% endif %}" />
+            </div>
+              <input type="submit" class="btn btn-secondary" value="Name ändern" />
+              <br>
+          </form>              
+        </div>
+      </div> 
+      
+  <!-- scene table -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>                       
+                <th scope="col">LED</th>                        
+                <th scope="col" colspan="4">RGB</th> 
+                <th scope="col" colspan="2">Helligkeit</th> 
+              <tr>
+            </thead>
+            <tbody>             
+
+            {% for entry in entries_scene %}         
+            <tr>
+              <td>{{ entry.LED_name.name }}</td> 
+              <td>{{ entry.color_red }}</td>
+              <td>{{ entry.color_green }}</td>
+              <td>{{ entry.color_blue }}</td>   
+              <td>
+                <form method="GET" class="verticalform">
+                  <input type="text" name="{{ entry.scene_id }} {{ entry.LED_id }}" class="form-control scene_{{ entry.LED_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
+                  <input type="submit" class="btn btn-secondary" value="Farbe ändern" />  
+                </form>
+              </td>
+              <td>{{ entry.brightness }}</td>
+              <td>
+                <form method="GET" class="slidecontainer"> 
+                  <div class="col-md-10 text-center"> 
+                    <input type="range" class="slider" name="{{ entry.LED_id }}" min="0" max="254" value="{{ entry.brightness }}" />
+                    <br>
+                    <input type="submit" class="btn btn-secondary" value="Helligkeit ändern"/>
+                  </div> 
+                </form>
+              </td>
+              <td><a href="/dashboard/LED/scene/delete/{{number}}/{{ entry.LED_id }}"><font color="red"><b>löschen</b></font></a>
+            </tr>
+            {% endfor %}
+            
+          </tbody>
+        </table>     
+      </div>
+    </div> 
+
+<!-- option buttons --> 
+
+    <form action="" method="post"> 
+      <input type="submit" class="btn pull-right btn-danger" name="delete" value="alle Einträge löschen"/>
+    </form>
+    <br>  
+    <br>
+    <br>
+    {% endif %}
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="dropdown">
+          <form method="GET" enctype="multipart/form-data">
+            <select class="btn btn-secondary dropdown-toggle" name="LED_scene">
+              {% for each in dropdown_list %}
+              {% if each != None %}
+              <option value="{{each}}">{{each}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+            <input type="submit" class="btn btn-secondary" value="LED hinzufügen">
+          </form>
+        </div> 
+      </div>
+    </div> 
+  </div>
+</div>    
+
+{% endblock %}

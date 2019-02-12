@@ -1,0 +1,203 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  LED Programme
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ colorpicker.loader() }}
+  {{ colorpicker.picker(ids=[ ".rgb" ]) }}
+{% endblock scripts %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RASPI</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_sensors') }}"><span class="glyphicon glyphicon-scale"></span> Sensoren</a></li>
+        <li><a href="{{ url_for('dashboard_user') }}"><span class="glyphicon glyphicon-user"></span> Benutzer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+
+<!-- error massages -->
+
+    {% if led_update == False %}
+    <div class="alert alert-danger" role="alert">
+      Keine Verbindung zur Bridge
+    </div>      
+    {% endif %}   
+
+    {% if error_massage != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_massage }}
+      </div>      
+    {% endif %}
+
+<!-- create new programs -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Programme</b></font></div>
+        <div class="panel-body">
+          <form method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control" name="new_program" value="" />
+            </div>
+              <input type="submit" class="btn btn-secondary" value="neues Programm" />
+          </form>              
+        </div>
+      </div>
+      
+<!-- select a program -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="dropdown">
+            <form method="GET" enctype="multipart/form-data">
+              <select class="btn btn-secondary dropdown-toggle" name="get_program">
+                {% for each in dropdown_list %}
+                {% if each != None %}
+                <option value="{{each}}">{{each}}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+              <input type="submit" class="btn btn-secondary" value="Programm anzeigen">
+            </form>
+          </div> 
+          <br>
+          <br>          
+
+<!-- instructions -->
+
+          {% if program != "" %}  
+
+          <table class="table">
+            <thead>
+              <tr></tr>
+              <tr>
+                <th>Eingabe</th>
+                <th>Erklärung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1:rgb(255, 0, 0)</td>
+                <td>LED Nummer 1, Farbe ändern auf rot</td>
+              </tr>
+              <tr>
+                <td>2:bri(254)</td>
+                <td>LED Nummer 2, maximale Helligkeit</td>
+              </tr>
+              <tr>
+                <td>pause:30</td>
+                <td>Pause für 30 Sekunden</td>
+              </tr>
+              <tr><td></td><td></td></tr>
+            </tbody>
+          </table>
+
+<!-- get rgb values -->
+<!-- GET include get_rgb, update, start -->
+       
+        <form method="GET" class="verticalform">
+          <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
+          <input type="submit" class="btn btn-secondary" value="RGB-Werte ermitteln" />  
+          <br>
+          <br>
+          <div class="form-group">
+            <textarea class="form-control rounded-0" rows="1">{{ rgb }}</textarea>
+          </div>
+
+<!-- update a program -->
+
+          <div class="form-group">
+            <br> 
+            <div class="text-center">         
+              <h4><b>{{ program.name }}</b></h4>
+            </div>
+            <br>          
+            <textarea class="form-control" name="update_{{ program.id }}" rows="20">{{ program.content }}</textarea>
+          </div> 
+            <input type="submit" class="btn btn-secondary" value="Programm speichern" />
+            <br>
+        </div>
+      </div> 
+
+<!-- start a program -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <input type="submit" class="btn btn-secondary" name="start_{{ program.id }}" value="Programm starten" />
+        </form>  
+        {% endif %}        
+        </div>
+      </div> 
+
+<!-- rename a program -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          {% if program != "" %}  
+          <form method="GET">
+            <div class="form-group">
+              <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
+            </div>
+              <input type="submit" class="btn btn-secondary" value="Name ändern" />
+              <br>
+          </form>   
+          {% endif %} 
+
+<!-- delete a program -->
+
+          <div class="dropdown text-right">
+            <form method="GET" enctype="multipart/form-data">
+              <select class="btn btn-secondary dropdown-toggle" name="delete_program">
+                {% for each in dropdown_list %}
+                {% if each != None %}
+                <option value="{{each}}">{{each}}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+              <input type="submit" class="btn btn-danger text-right" value="Programm löschen">
+            </form>
+          </div> 
+        </div>
+      </div> 
+
+{% endblock %}

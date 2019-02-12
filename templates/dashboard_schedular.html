@@ -1,0 +1,199 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  LED Einstellungen
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RASPI</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_sensors') }}"><span class="glyphicon glyphicon-scale"></span> Sensoren</a></li>
+        <li><a href="{{ url_for('dashboard_user') }}"><span class="glyphicon glyphicon-user"></span> Benutzer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+
+<!-- error message -->
+
+      {% if error_massage != "" %}
+        <div class="alert alert-danger" role="alert">
+          {{ error_massage }}
+        </div>      
+      {% endif %}
+
+<!-- instructions -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Aufgabenplanung</b></font></div>
+          <div class="panel-body">      
+          <table class="table">
+            <thead>
+              <tr><td></td><td></td></tr>
+              <tr>
+                <th>Eingabe</th>
+                <th>Erklärung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>start_scene:1</td>
+                <td>starte Szene Nummer "1"</td>
+              </tr>
+              <tr>
+                <td>start_program:2</td>
+                <td>starte Programm Nummer "2"</td>
+              </tr>
+              <tr>
+                <td>led_off:3</td>
+                <td>LEDs nacheinander ausschalten, alle "3" Sekunden Halbierung der Helligkeit einer LED</td>
+              </tr>
+              <tr>
+                <td>read_sensor:GPIO_A03</td>
+                <td>aktuellen Wert von Sensor "GPIO_A03" abfragen und speichern</td>
+              </tr> 
+              <tr>
+                <td>watering_plants</td>
+                <td>alle Pflanzen gießen, Einstellungen unter Bewässung</td>
+              </tr>
+              <tr>
+                <td>start_smartphone:1</td>
+                <td>wenn das Smartphone im WLAN eingeloggt und es dunkel ist, starte Szene "1"</td>
+              </tr>
+              <tr>
+                <td> * </td>
+                <td>keine Einschränkungen (z.B. an jedem Tag)</td>
+              </tr>
+              <tr><td></td><td></td></tr>
+            </tbody>
+          </table>
+
+<!-- new task -->
+ 
+          <div class="text-center">         
+            <h4><b>Neue Aufgabe erstellen</b></h4>
+          </div>
+          <br>   
+          Zeitpunkt (Tag / Stunde / Minute) 
+          <br>  
+          <br>           
+          <form method="GET">
+            <select class="btn btn-secondary dropdown-toggle" name="set_day">
+              {% for each in dropdown_list_days %}
+              {% if each != None %}
+              <option value="{{each}}">{{each}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+            <select class="btn btn-secondary dropdown-toggle" name="set_hour">
+              {% for each in dropdown_list_hours %}
+              {% if each != None %}
+              <option value="{{each}}">{{each}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>  
+            <select class="btn btn-secondary dropdown-toggle" name="set_minute">
+              {% for each in dropdown_list_minutes %}
+              {% if each != None %}
+              <option value="{{each}}">{{each}}</option>
+              {% endif %}
+              {% endfor %}
+            </select>  
+            <br>
+            <br>
+            Name
+            <br>  
+            <br>             
+            <div class="form-group">
+              <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+            </div>              
+            Aufgabe
+            <br>
+            <br>              
+            <div class="form-group">
+              <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+            </div>                         
+            Wiederholen
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="checkbox">
+            </div>
+            <br>            
+            <input type="submit" class="btn btn-secondary" value="Aufgabe anlegen" />
+          </form>   
+        </div>
+      </div>
+
+<!-- schedular table -->
+        
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Aufgaben</b></font></div>
+        <div class="panel-body">      
+
+          <table class="table">
+            <thead>                       
+              <th scope="col">Name</th> 
+              <th scope="col">Tag</th> 
+              <th scope="col">Stunde</th> 
+              <th scope="col">Minute</th> 
+              <th scope="col">Aufgabe</th> 
+              <th scope="col">Wiederholen</th> 
+            </thead>
+            <tbody> 
+
+              {% for entry in schedular_list %}
+              <tr>
+                <td>{{ entry.name }}</td> 
+                <td>{{ entry.day }}</td> 
+                <td>{{ entry.hour }}</td> 
+                <td>{{ entry.minute }}</td> 
+                <td>{{ entry.task }}</td> 
+                <td>{{ entry.repeat }}</td> 
+                <td><a href="/dashboard/schedular/delete/{{ entry.id }}"><font color="red"><b>löschen</b></font></a></td>  
+              </tr>
+              {% endfor %}
+
+            </tbody>
+          </table>  
+        </div>  
+      </div>  
+    </div>
+  </div>    
+</div>
+
+{% endblock %}
