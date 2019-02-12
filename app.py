@@ -16,8 +16,7 @@ import os
 """ IMPORTANT """
 """ ######### """
 
-""" For each new device connected to the hue bridge press the bridge round button first !!! """
-
+""" for each new device connected to the hue bridge press the bridge round button first !!! """
 
 """ ################# """
 """ genernal settings """
