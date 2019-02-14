@@ -140,7 +140,44 @@ def GET_SENSOR_VALUES(id):
         return sensor_values
 
 
-def READ_SENSOR(sensor_name):
+def READ_SENSOR_GPIO(sensor_name):
+
+    try:
+
+        import gpiozero
+
+        if sensor_name == "GPIO_A00":
+            adc = gpiozero.MCP3008(channel = 0)
+            voltage = adc.voltage
+        if sensor_name == "GPIO_A01":
+            adc = gpiozero.MCP3008(channel = 1)
+            voltage = adc.voltage
+        if sensor_name == "GPIO_A02":
+            adc = gpiozero.MCP3008(channel = 2)
+            voltage = adc.voltage  
+        if sensor_name == "GPIO_A03":
+            adc = gpiozero.MCP3008(channel = 3)
+            voltage = adc.voltage
+        if sensor_name == "GPIO_A04":
+            adc = gpiozero.MCP3008(channel = 4)
+            voltage = adc.voltage 
+        if sensor_name == "GPIO_A05":
+            adc = gpiozero.MCP3008(channel = 5)
+            voltage = adc.voltage 
+        if sensor_name == "GPIO_A06":
+            adc = gpiozero.MCP3008(channel = 6)
+            voltage = adc.voltage
+        if sensor_name == "GPIO_A07":
+            adc = gpiozero.MCP3008(channel = 7)
+            voltage = adc.voltage
+
+        return voltage
+
+    except:
+        pass
+
+
+def SAVE_SENSOR_GPIO(sensor_name):
 
     try:
 
@@ -216,9 +253,9 @@ def READ_SENSOR(sensor_name):
 
     except:
         pass
-    
 
-def WRITE_MQTT_DATA(mqtt, result):
+
+def SAVE_SENSOR_MQTT(mqtt, result):
     
     if mqtt == 0:
         entry = Sensor_MQTT_00(

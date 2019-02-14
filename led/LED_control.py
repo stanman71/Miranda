@@ -203,5 +203,10 @@ def LED_OFF(break_value):
                     else:
                         light.brightness = brightness
                         time.sleep(break_value)               
+    
+        # backup to deactivate all led 
+        for light in lights:
+            light.on = False
+
     except:
         pass

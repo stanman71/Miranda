@@ -143,7 +143,7 @@ if Sensor.query.filter_by().first() is None:
 """ ######### """
 
 from flask_apscheduler import APScheduler
-from sensors_control import READ_SENSOR, WATERING_PLANTS
+from sensors_control import SAVE_SENSOR_GPIO, WATERING_PLANTS
 
 scheduler = APScheduler()
 
@@ -1225,9 +1225,9 @@ def dashboard_sensors():
 @app.route('/mqtt/<int:id>/sensor/<string:value>', methods=['GET'])
 def mqtt_sensor(id, value):
     
-    from sensors_control import WRITE_MQTT_DATA  
+    from sensors_control import SAVE_SENSOR_MQTT
     
-    WRITE_MQTT(id, value)
+    SAVE_SENSOR_MQTT(id, value)
     
     return ("Daten empfangen")
 
