@@ -1,12 +1,8 @@
 from flask import Flask, render_template, redirect, url_for, request, send_from_directory
+from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
-from flask_wtf import FlaskForm 
-from wtforms import StringField, PasswordField, BooleanField
-from wtforms.validators import InputRequired, Email, Length
-from flask_sqlalchemy  import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from functools import wraps
+
 import sys
 import datetime
 import os
@@ -18,72 +14,38 @@ import os
 
 sys.path.insert(0, "./app/led")
 sys.path.insert(0, "./app/components")
+sys.path.insert(0, "./app/database")
+sys.path.insert(0, "./app/sites")
 
 # Windows Home
 #PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 
 # Windows Work
-PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
+#PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 
 # RasPi:
-#PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
+PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
+
+from app import app
 
 from LED_database import *
 from LED_control import *
 from sensors_database import *
 from sensors_control import *
 from watering_plants import *
+from database_control import *
 
 
-""" ######## """
-""" database """
-""" ######## """
-
-# connect to database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///smarthome.sqlite3'
-db = SQLAlchemy(app)
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
-# define table structure
-class User(UserMixin, db.Model):
-    __tablename__ = 'user'
-    id       = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    username = db.Column(db.String(50), unique=True)
-    email    = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(100))
-    role     = db.Column(db.String(20), server_default=("user"))
-
-class Schedular(db.Model):
-    __tablename__ = 'schedular'
-    id     = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name   = db.Column(db.String(50), unique=True)
-    day    = db.Column(db.String(50))
-    hour   = db.Column(db.String(50))
-    minute = db.Column(db.String(50))
-    task   = db.Column(db.String(100))
-    repeat = db.Column(db.String(50))
-
-
-""" ############################## """
-""" database create default values """
-""" ############################## """
-
-# create all database tables
-db.create_all()
-
-# create default user
-if User.query.filter_by(username='default').first() is None:
-    user = User(
-        username='default',
-        email='member@example.com',
-        password=generate_password_hash('qwer1234', method='sha256'),
-        role='superuser'
-    )
-    db.session.add(user)
-    db.session.commit()
+# create role "superuser"
+def superuser_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if current_user.role == "superuser":
+            return f(*args, **kwargs)
+        else:
+            form = LoginForm()
+            return render_template('login.html', form=form, role_check=False)
+    return wrap
 
 
 """ ######### """
@@ -100,9 +62,7 @@ def scheduler_job():
     hour   = now.strftime('%H')
     minute = now.strftime('%M')
 
-    #reload database
-    db.session.expire_all()
-    entries = Schedular.query.all()
+    entries = GET_ALL_TASKS()
 
     for entry in entries:
         if entry.day == day or entry.day == "*":
@@ -138,141 +98,7 @@ def scheduler_job():
                             #    LED_SET_SCENE(int(task[1]))                                                                                                                        
                     # remove task without repeat
                     if entry.repeat == "":
-                        Schedular.query.filter_by(id=entry.id).delete()
-                        db.session.commit()
-
-
-""" ############### """
-""" role management """
-""" ############### """
-
-# create role "superuser"
-def superuser_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
-            return f(*args, **kwargs)
-        else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
-    return wrap
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
-
-""" ##### """
-""" logIn """
-""" ##### """
-
-class LoginForm(FlaskForm):
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-    remember = BooleanField('remember me')
-
-class RegisterForm(FlaskForm):
-    email    = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
-    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
-
-
-""" ############ """
-""" landing page """
-""" ############ """
-
-# landing page
-@app.route('/', methods=['GET', 'POST'])
-def index():
-
-    connect_bridge  = False
-    program_massage = False
-    scene = 0
-    brightness_global = 100
-
-    value_list = ["", "", "", "", "", "", "", "", ""]
-
-    # connect to the bridge and an update
-    led_update = ""
-    led_update = UPDATE_LED()
-
-    if request.method == "GET":     
-        # change scene   
-        try:     
-            scene = int(request.args.get("radio_scene"))
-            brightness_global = request.args.get("brightness_global")
-            LED_SET_SCENE(scene,brightness_global)
-            # add radio check
-            for i in range (1,10):
-                if scene == i:
-                    value_list[i-1] = "checked = 'on'"
-        except:
-            pass
-
-        # select a program   
-        try:     
-            program = int(request.args.get("radio_program"))
-            program_massage = START_PROGRAM(program)            
-        except:
-            pass
-
-    scene_list   = GET_ALL_SCENES()
-    program_list = GET_ALL_PROGRAMS()
-
-    return render_template('index.html', 
-                            led_update=led_update,
-                            scene_list=scene_list,
-                            value_list=value_list,                         
-                            brightness_global=brightness_global,
-                            program_list=program_list,
-                            program_massage=program_massage
-                            )
-
-
-""" ########## """
-""" sites user """
-""" ########## """
-
-# login
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user:
-            if check_password_hash(user.password, form.password.data):
-                login_user(user, remember=form.remember.data)
-                return redirect(url_for('dashboard'))
-
-        return render_template('login.html', form=form, login_check=False)
-
-    return render_template('login.html', form=form)
-
-
-# signup
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    error_massage = ""
-
-    form = RegisterForm()
-
-    if form.validate_on_submit():
-        check_entry = User.query.filter_by(username=form.username.data).first()
-        if check_entry is None:           
-            hashed_password = generate_password_hash(form.password.data, method='sha256')
-            new_user = User(username=form.username.data, email=form.email.data, password=hashed_password, role="user")
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('index'))
-        else:
-            error_massage = "Name schon vergeben"
-        
-    return render_template('signup.html', 
-                            form=form,
-                            error_massage=error_massage
-                            )
-
+                        DELETE_TASK(entry.id)
 
 # Dashboard
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -280,14 +106,6 @@ def signup():
 @superuser_required
 def dashboard():
     return render_template('dashboard.html', name=current_user.username)
-
-
-# Logout
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
 
 
 """ ######### """
@@ -939,31 +757,9 @@ def dashboard_schedular():
                 else:
                     repeat = ""
 
-                # name exist ?
-                check_entry = Schedular.query.filter_by(name=name).first()
-                if check_entry is None:
-                    # find a unused id
-                    for i in range(1,25):
-                        if Schedular.query.filter_by(id=i).first():
-                            pass
-                        else:
-                            # add the new task
-                            task = Schedular(
-                                    id     = i,
-                                    name   = name,
-                                    day    = day,
-                                    hour   = hour,
-                                    minute = minute,
-                                    task   = task,
-                                    repeat = repeat,
-                                )
-                            db.session.add(task)
-                            db.session.commit()
-                            break
-                else:
-                    error_massage = "Name schon vergeben"
+                error_massage = ADD_TASK(name, day, hour, minute, task, repeat)
  
-    schedular_list = Schedular.query.all()
+    schedular_list = GET_ALL_TASKS()
 
     # dropdown values
     dropdown_list_days    = ["*", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -991,48 +787,8 @@ def dashboard_schedular():
 @login_required
 @superuser_required
 def delete_schedular(id):
-    Schedular.query.filter_by(id=id).delete()
-    db.session.commit()
+    DELETE_TASK(id)
     return redirect(url_for('dashboard_schedular'))
-
-
-""" ##################### """
-""" sites user management """
-""" ##################### """
-
-# Dashboard user
-@app.route('/dashboard/user/', methods=['GET', 'POST'])
-@login_required
-@superuser_required
-def dashboard_user():
-    user_list = User.query.all()
-    return render_template('dashboard_user.html',
-                            name=current_user.username,
-                            user_list=user_list,
-                            )
-
-
-# Change user role
-@app.route('/dashboard/user/role/<int:id>')
-@login_required
-@superuser_required
-def promote_user(id):
-    entry = User.query.get(id)
-    entry.role = "superuser"
-    db.session.commit()
-    user_list = User.query.all()
-    return redirect(url_for('dashboard_user'))
-
-
-# Delete user
-@app.route('/dashboard/user/delete/<int:id>')
-@login_required
-@superuser_required
-def delete_user(id):
-    User.query.filter_by(id=id).delete()
-    db.session.commit()
-    user_list = User.query.all()
-    return redirect(url_for('dashboard_user'))
 
 
 """ ############ """
@@ -1158,5 +914,4 @@ def mqtt_button(id, button_id, value):
 @app.route('/get_media/<path:filename>', methods=['GET'])
 def get_media(filename):
     return send_from_directory(PATH_CSS, filename)
-
 

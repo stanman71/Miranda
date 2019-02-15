@@ -22,7 +22,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 Bootstrap(app)
 colorpicker(app)
 
-from app import routes
+from app.sites import index, user, scenes
 
 #app.run(host="0.0.0.0")
 app.run(debug=True)
