@@ -1,3 +1,18 @@
+"""
+
+Flask-Colorpicker
+-------------
+A Flask extension to add Spectrum javascript color picker into the template,
+it makes adding and configuring multiple color pickers at a time much easier
+and less time consuming
+
+author = Mohamed Feddad
+
+https://github.com/mrf345/flask_colorpicker/ 
+
+"""
+
+
 from flask import Markup
 
 class colorpicker(object):
