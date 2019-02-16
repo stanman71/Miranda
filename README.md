@@ -1,6 +1,6 @@
 ##  SmartHome
 
-This project creates a smart home environment
+This project creates a smart home environment.
 
 !!! WORK IN PROGRESS !!!
 
