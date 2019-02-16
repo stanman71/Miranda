@@ -9,7 +9,7 @@ sys.path.insert(0, "./app/database")
 
 from app import app
 
-from database_control import *
+from database_operations import *
 
 
 """ ####### """

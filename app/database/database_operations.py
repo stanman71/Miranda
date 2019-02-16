@@ -15,6 +15,7 @@ from database_tables import *
 """ task management """
 """ ############### """
 
+
 def GET_ALL_TASKS():
     return Schedular.query.all()
 
@@ -52,6 +53,7 @@ def DELETE_TASK(task_id):
 """ user management """
 """ ############### """
 
+
 def GET_USER_BY_ID(user_id):
     return User.query.get(int(user_id))
 
@@ -79,9 +81,10 @@ def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
 
-""" ################ """
-""" bridge functions """
-""" ################ """
+""" ###### """
+""" bridge """
+""" ###### """
+
 
 def GET_BRIDGE_IP():
     entry = Bridge.query.filter_by().first()
@@ -94,9 +97,10 @@ def SET_BRIDGE_IP(IP):
     db.session.commit() 
 
 
-""" ############# """
-""" LED functions """
-""" ############# """
+""" ### """
+""" LED """
+""" ### """
+
 
 def GET_DROPDOWN_LIST_LED():
     entry_list = []
@@ -135,7 +139,7 @@ def UPDATE_LED(led_list):
 
 
 def ADD_LED(Scene, Name):
-    # get the selected LED database 
+    # search for the selected LED entry 
     entry = LED.query.filter_by(name=Name).first() 
 
     if Scene == 1:
@@ -204,7 +208,6 @@ def ADD_LED(Scene, Name):
 
 def DEL_LED(Scene, ID):
     if Scene == 1:
-        # delete LED entry
         Scene_01.query.filter_by(LED_id=ID).delete()
     if Scene == 2:
         Scene_02.query.filter_by(LED_id=ID).delete()
@@ -226,9 +229,10 @@ def DEL_LED(Scene, ID):
     db.session.commit()
 
 
-""" ############### """
-""" scene functions """
-""" ############### """
+""" ###### """
+""" scenes """
+""" ###### """
+
 
 def GET_SCENE(Scene):
     entries = None
@@ -456,6 +460,7 @@ def DEL_SCENE(Scene):
 """ programs """
 """ ######## """
 
+
 def NEW_PROGRAM(name):
     # name exist ?
     check_entry = Programs.query.filter_by(name=name).first()
@@ -490,18 +495,15 @@ def GET_DROPDOWN_LIST_PROGRAMS():
 
 
 def GET_ALL_PROGRAMS():
-    entries = Programs.query.all()
-    return (entries)    
+    return Programs.query.all()   
 
 
 def GET_PROGRAM_NAME(name):
-    entry = Programs.query.filter_by(name=name).first()
-    return (entry)
+    return Programs.query.filter_by(name=name).first()
 
 
 def GET_PROGRAM_ID(id):
-    entry = Programs.query.filter_by(id=id).first()
-    return (entry)
+    return Programs.query.filter_by(id=id).first()
 
 
 def SET_PROGRAM_NAME(id, name):
@@ -522,9 +524,10 @@ def DELETE_PROGRAM(name):
     db.session.commit()
 
 
-""" ############### """
-""" plants database """
-""" ############### """
+""" ####### """
+""" plants  """
+""" ####### """
+
 
 def GET_ALL_PLANTS():
     return Plants.query.all()
@@ -573,10 +576,10 @@ def DELETE_PLANT(plant_id):
     db.session.commit()
 
 
+""" ###### """
+""" sensor """
+""" ###### """
 
-""" ################ """
-""" sensor functions """
-""" ################ """
 
 def GET_ALL_SENSORS():
     return Sensor.query.all()

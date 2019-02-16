@@ -1,12 +1,14 @@
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_wtf import FlaskForm 
 from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from functools import wraps
-
 import sys
+
+from app import app
+
 
 """ ############## """
 """ module imports """
@@ -14,8 +16,7 @@ import sys
 
 sys.path.insert(0, "./app/database")
 
-from database_control import *
-from app import app
+from database_operations import *
 
 
 """ ############ """
@@ -100,7 +101,7 @@ def signup():
                             )
 
 
-# Logout
+# logout
 @app.route('/logout')
 @login_required
 def logout():
@@ -113,7 +114,7 @@ def logout():
 """ user management sites """
 """ ##################### """
 
-# Dashboard user
+# dashboard user management
 @app.route('/dashboard/user/', methods=['GET', 'POST'])
 @login_required
 @superuser_required
@@ -134,7 +135,7 @@ def activate_user(id):
     return redirect(url_for('dashboard_user'))
 
 
-# Delete user
+# delete user
 @app.route('/dashboard/user/delete/<int:id>')
 @login_required
 @superuser_required

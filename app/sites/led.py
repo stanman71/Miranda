@@ -1,11 +1,11 @@
 from flask import Flask, render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
 from functools import wraps
-
 import sys
 import os
 
 from app import app
+
 
 """ ############## """
 """ module imports """
@@ -24,8 +24,7 @@ sys.path.insert(0, "./app/database")
 PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
 from LED_control import *
-from database_control import *
-
+from database_operations import *
 
 # create role "superuser"
 def superuser_required(f):

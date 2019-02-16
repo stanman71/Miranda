@@ -3,6 +3,8 @@ import sys
 import re
 import time
 
+from app import app
+
 
 """ ############## """
 """ module imports """
@@ -10,9 +12,7 @@ import time
 
 sys.path.insert(0, "./app/database")
 
-from app import app
-
-from database_control import *
+from database_operations import *
 from phue import Bridge
 
 

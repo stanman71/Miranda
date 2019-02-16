@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 """ define table structure """
 """ ###################### """
 
+
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id       = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -242,13 +243,12 @@ class Sensor_MQTT_02(db.Model):
     date      = db.Column(db.String(50))  
 
 
-""" ############################## """
-""" database create default values """
-""" ############################## """
+""" ################################ """
+""" create tables and default values """
+""" ################################ """
 
 # create all database tables
 db.create_all()
-
 
 # create default user
 if User.query.filter_by(username='default').first() is None:

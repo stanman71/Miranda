@@ -1,11 +1,11 @@
-from flask import Flask, render_template, redirect, url_for, request, send_from_directory
+from flask import Flask, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps
-
 import sys
 import datetime
-import os
+
+from app import app
 
 
 """ ############## """
@@ -16,13 +16,10 @@ sys.path.insert(0, "./app/components")
 sys.path.insert(0, "./app/database")
 sys.path.insert(0, "./app/sites")
 
-from app import app
-
 from LED_control import *
 from sensors_control import *
 from plants_control import *
-from database_control import *
-
+from database_operations import *
 
 # create role "superuser"
 def superuser_required(f):

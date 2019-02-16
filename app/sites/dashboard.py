@@ -1,7 +1,6 @@
-from flask import Flask, render_template, redirect, url_for, request, send_from_directory
+from flask import Flask, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from functools import wraps
-
 import sys
 
 from app import app
