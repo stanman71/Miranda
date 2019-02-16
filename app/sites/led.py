@@ -1,21 +1,18 @@
 from flask import Flask, render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
-from flask_apscheduler import APScheduler
 from functools import wraps
 
 import sys
-import datetime
 import os
 
+from app import app
 
 """ ############## """
 """ module imports """
 """ ############## """
 
-sys.path.insert(0, "./app/led")
 sys.path.insert(0, "./app/components")
 sys.path.insert(0, "./app/database")
-sys.path.insert(0, "./app/sites")
 
 # Windows Home
 #PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
@@ -26,13 +23,7 @@ sys.path.insert(0, "./app/sites")
 # RasPi:
 PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
-from app import app
-
-from LED_database import *
 from LED_control import *
-from sensors_database import *
-from sensors_control import *
-from watering_plants import *
 from database_control import *
 
 
@@ -46,66 +37,6 @@ def superuser_required(f):
             form = LoginForm()
             return render_template('login.html', form=form, role_check=False)
     return wrap
-
-
-""" ######### """
-""" schedular """
-""" ######### """
-
-scheduler = APScheduler()
-scheduler.start()   
-
-@scheduler.task('cron', id='scheduler_job', minute='*')
-def scheduler_job():
-    now    = datetime.datetime.now()
-    day    = now.strftime('%a')
-    hour   = now.strftime('%H')
-    minute = now.strftime('%M')
-
-    entries = GET_ALL_TASKS()
-
-    for entry in entries:
-        if entry.day == day or entry.day == "*":
-            if entry.hour == hour or entry.hour == "*":
-                if entry.minute == minute or entry.minute == "*":
-                    print(entry.name)
-                    # start scene
-                    if "start_scene" in entry.task:
-                        task = entry.task.split(":")
-                        LED_SET_SCENE(int(task[1]))
-                    # start program
-                    if "start_program" in entry.task:
-                        task = entry.task.split(":")
-                        START_PROGRAM(int(task[1]))
-                    # turn off LEDs
-                    if "led_off" in entry.task:
-                        task = entry.task.split(":")
-                        LED_OFF(int(task[1])) 
-                    # read sensor
-                    if "read_sensor" in entry.task:
-                        task = entry.task.split(":")
-                        READ_SENSOR(task[1])  
-                    # watering plants
-                    if "watering_plants" in entry.task:
-                        WATERING_PLANTS()
-                    # start LED automatically
-                    if "start_smartphone" in entry.task:
-                        task = entry.task.split(":")
-                        hostname = "google.com"
-                        if os.system("ping -n 1 " + hostname) == 0:
-                            print("ok")
-                            #if READ_SENSOR("GPIO_A07") < 600:
-                            #    LED_SET_SCENE(int(task[1]))                                                                                                                        
-                    # remove task without repeat
-                    if entry.repeat == "":
-                        DELETE_TASK(entry.id)
-
-# Dashboard
-@app.route('/dashboard', methods=['GET', 'POST'])
-@login_required
-@superuser_required
-def dashboard():
-    return render_template('dashboard.html', name=current_user.username)
 
 
 """ ######### """
@@ -720,190 +651,6 @@ def dashboard_LED_settings():
                             ip=ip,
                             LED_list=LED_list
                             )
-
-
-""" ############## """
-""" site schedular """
-""" ############## """
-
-# Dashboard tasks
-@app.route('/dashboard/schedular/', methods=['GET'])
-@login_required
-@superuser_required
-def dashboard_schedular():
-    error_massage = ""
-    set_name = ""
-    set_task = ""
-
-    if request.method == "GET": 
-        # add new task
-        if request.args.get("set_name") is not None:
-            # controll name and task input
-            if request.args.get("set_name") == "":
-                error_massage = "Kein Name angegeben"
-                set_task = request.args.get("set_task")
-            elif request.args.get("set_task") == "":
-                error_massage = "Keine Aufgabe angegeben"  
-                set_name = request.args.get("set_name")             
-            else:         
-                # get database informations
-                name   = request.args.get("set_name")
-                day    = request.args.get("set_day") 
-                hour   = request.args.get("set_hour") 
-                minute = request.args.get("set_minute")
-                task   = request.args.get("set_task")
-                if request.args.get("checkbox"):
-                    repeat = "*"
-                else:
-                    repeat = ""
-
-                error_massage = ADD_TASK(name, day, hour, minute, task, repeat)
- 
-    schedular_list = GET_ALL_TASKS()
-
-    # dropdown values
-    dropdown_list_days    = ["*", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    dropdown_list_hours   = ["*", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
-                             "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
-    dropdown_list_minutes = ["*", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
-                             "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", 
-                             "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36","37",
-                             "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","49", "50",
-                             "51", "52", "53", "54", "55", "56", "57", "58", "59"]
-
-    return render_template('dashboard_schedular.html',
-                            dropdown_list_days=dropdown_list_days,
-                            dropdown_list_hours=dropdown_list_hours,
-                            dropdown_list_minutes=dropdown_list_minutes,
-                            schedular_list=schedular_list,
-                            error_massage=error_massage,
-                            set_name=set_name,
-                            set_task=set_task
-                            )
-
-
-# Delete tasks
-@app.route('/dashboard/schedular/delete/<int:id>')
-@login_required
-@superuser_required
-def delete_schedular(id):
-    DELETE_TASK(id)
-    return redirect(url_for('dashboard_schedular'))
-
-
-""" ############ """
-""" sites plants """
-""" ############ """
-
-@app.route('/dashboard/plants', methods=['GET', 'POST'])
-@login_required
-def dashboard_plants():
-    error_massage = ""
-    water_volume = ""
-    moisture = ""
-
-    if request.method == "GET": 
-        if request.args.get("name") is not None:
-            # controll name 
-            if request.args.get("name") == "":
-                error_massage = "Kein Name angegeben"     
-            else:         
-                # get informations
-                name      = request.args.get("name")
-                sensor_id = request.args.get("set_sensor")
-                pump_id   = request.args.get("set_pump")
-                error_massage = ADD_PLANT(name, sensor_id, pump_id)
-
-        for i in range (1,25):
-            # change moisture
-            if request.args.get("moisture_" + str(i)):
-                moisture = request.args.get("moisture_" + str(i))    
-                CHANGE_MOISTURE(i, moisture)
-
-            # change water_volume
-            if request.args.get("water_" + str(i)):
-                water_volume = request.args.get("water_" + str(i))           
-                CHANGE_WATER_VOLUME(i, water_volume)
-
-    dropdown_list_sensor = GET_ALL_SENSORS()
-    dropdown_list_pump = [0, 1, 2, 3]
-    plants_list = GET_ALL_PLANTS()
-
-    return render_template('dashboard_plants.html',
-                            dropdown_list_sensor=dropdown_list_sensor,
-                            dropdown_list_pump=dropdown_list_pump,
-                            plants_list=plants_list,
-                            moisture=moisture,
-                            water_volume=water_volume,
-                            error_massage=error_massage)
-
-
-# Delete plant
-@app.route('/dashboard/plants/delete/<int:id>')
-@login_required
-@superuser_required
-def delete_plant(id):
-    DELETE_PLANT(id)
-    return redirect(url_for('dashboard_plants'))
-
-
-""" ############# """
-""" sites sensors """
-""" ############# """
-
-@app.route('/dashboard/sensors', methods=['GET', 'POST'])
-@login_required
-def dashboard_sensors():
-    sensor_values = None
-    sensor_name = ""
-    sensor_id = ""
-    error_massage = ""
-
-    if request.method == "GET": 
-
-        # get sensor values
-        if request.args.get("get_sensor") is not None:               
-            sensor_id = request.args.get("get_sensor")
-            sensor_values = GET_SENSOR_VALUES(sensor_id)
-            sensor_name = GET_SENSOR_NAME(sensor_id)
-
-            if sensor_values == None:
-                error_massage = "Keine Daten vorhanden"    
-
-        # delete the values of a selected sensor
-        if request.args.get("delete_values") is not None:
-            delete_values = request.args.get("delete_values") 
-            error_massage = DELETE_SENSOR_VALUES(delete_values)
-
-    dropdown_list_sensor = GET_ALL_SENSORS()
-
-    return render_template('dashboard_sensors.html',
-                            dropdown_list_sensor=dropdown_list_sensor,
-                            sensor_values=sensor_values,
-                            sensor_name=sensor_name,
-                            sensor_id=sensor_id,
-                            error_massage=error_massage)
-
-
-""" ########### """
-""" sites MQTT """
-""" ########### """
-
-# URL for MQTT sensor values
-@app.route('/mqtt/<int:id>/sensor/<string:value>', methods=['GET'])
-def mqtt_sensor(id, value):
-    
-    from sensors_database import SAVE_SENSOR_MQTT
-    
-    SAVE_SENSOR_MQTT(id, value)
-    
-    return ("Daten empfangen")
-
-
-# URL for MQTT control
-@app.route('/mqtt/<int:id>/button/<int:button_id>/<int:value>', methods=['GET'])
-def mqtt_button(id, button_id, value):
-    pass
 
 
 """ ############### """

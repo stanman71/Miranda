@@ -1,27 +1,21 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 import sys
 
-""" ############## """
-""" module imports """
-""" ############## """
+""" ############# """
+""" module import """
+""" ############# """
 
-sys.path.insert(0, "./app/led")
 sys.path.insert(0, "./app/components")
-sys.path.insert(0, "./app/database")
 
-
-from LED_database import *
 from LED_control import *
 from sensors_control import *
-from database_control import *
 
 
-""" ############ """
-""" landing page """
-""" ############ """
+""" ##### """
+""" index """
+""" ##### """
 
-# landing page
 @app.route('/', methods=['GET', 'POST'])
 def index():
 
@@ -34,7 +28,7 @@ def index():
 
     # connect to the bridge and an update
     led_update = ""
-    led_update = UPDATE_LED()
+    led_update = UPDATE_LED(GET_LED_NAMES())
 
     if request.method == "GET":     
         # change scene   
@@ -67,3 +61,4 @@ def index():
                             program_list=program_list,
                             program_massage=program_massage
                             )
+

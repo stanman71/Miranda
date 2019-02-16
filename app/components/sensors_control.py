@@ -1,4 +1,16 @@
-from sensors_database import *
+import sys
+
+
+""" ############## """
+""" module imports """
+""" ############## """
+
+sys.path.insert(0, "./app/database")
+
+from app import app
+
+from database_control import *
+
 
 """ ####### """
 """ sensors """

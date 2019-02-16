@@ -3,6 +3,16 @@ import sys
 import re
 import time
 
+
+""" ############## """
+""" module imports """
+""" ############## """
+
+sys.path.insert(0, "./app/database")
+
+from app import app
+
+from database_control import *
 from phue import Bridge
 
 
@@ -42,7 +52,6 @@ def RGBtoXY(r, g, b):
 
 def CONNECT_BRIDGE():
     try:
-        from LED_database import GET_BRIDGE_IP
         b = Bridge(GET_BRIDGE_IP())
         b.connect() 
         return b       
@@ -50,7 +59,7 @@ def CONNECT_BRIDGE():
         return False
 
 
-def GET_LED_NAME():
+def GET_LED_NAMES():
     b = CONNECT_BRIDGE()
     try:
         lights = b.get_light_objects('list')
@@ -76,8 +85,6 @@ def LED_SET_SCENE(scene, brightness_global = 100):
         # deactivate all LED
         for light in lights:
             light.on = False
-
-        from LED_database import GET_SCENE
 
         # get scene settings
         entries = GET_SCENE(scene)
@@ -152,7 +159,6 @@ def START_PROGRAM(id):
         for light in lights:
             light.on = False
 
-        from LED_database import GET_PROGRAM_ID
         content = GET_PROGRAM_ID(id).content
 
         try:   

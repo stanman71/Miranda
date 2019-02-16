@@ -7,9 +7,9 @@ import sys
 """ module imports """
 """ ############## """
 
-sys.path.insert(0, "./app/led/")
+sys.path.insert(0, "./app/")
 
-from colorpicker_local import colorpicker
+from components.colorpicker_local import colorpicker
 
 
 """ ###### """
@@ -22,7 +22,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user, scenes
+from app.sites import index, dashboard, user, led, schedular, plants, sensors
 
 #app.run(host="0.0.0.0")
 app.run(debug=True)
