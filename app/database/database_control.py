@@ -41,7 +41,7 @@ def ADD_TASK(name, day, hour, minute, task, repeat):
                 db.session.commit()
                 return ""
     else:
-        return "Name schon vergeben"
+        return "Name bereits vergeben"
 
 def DELETE_TASK(task_id):
     Schedular.query.filter_by(id=task_id).delete()
@@ -289,7 +289,7 @@ def SET_SCENE_NAME(Scene, name):
         db.session.commit()
         return ("")
     else:
-        return ("Name schon vergeben")
+        return ("Name bereits vergeben")
 
 
 def SET_SCENE_COLOR(Scene, rgb_scene):
@@ -475,7 +475,7 @@ def NEW_PROGRAM(name):
                 db.session.commit()
                 return ("")
     else:
-        return ("Name schon vergeben")
+        return ("Name bereits vergeben")
 
 
 def GET_DROPDOWN_LIST_PROGRAMS():
@@ -547,13 +547,13 @@ def ADD_PLANT(name, sensor_id, pump_id):
                         sensor_id    = sensor_id,
                         pump_id      = pump_id,
                         moisture     = 0,
-                        water_volume = 0,
+                        water_volume = 50,
                     )
                 db.session.add(plant)
                 db.session.commit()
                 return ""
     else:
-        return "Name schon vergeben"
+        return "Name bereits vergeben"
 
 
 def CHANGE_MOISTURE(plant_id, moisture):    

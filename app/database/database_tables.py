@@ -36,11 +36,6 @@ class Bridge(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     ip = db.Column(db.String(50), unique = True)
 
-class Scenes(db.Model):
-    __tablename__ = 'scenes'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name = db.Column(db.String(50))
-
 class LED(db.Model):
     __tablename__ = 'LED'
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -51,6 +46,11 @@ class Programs(db.Model):
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name    = db.Column(db.String(50), unique = True)
     content = db.Column(db.Text)
+
+class Scenes(db.Model):
+    __tablename__ = 'scenes'
+    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name = db.Column(db.String(50))
 
 class Scene_01(db.Model):
     __tablename__ = 'scene_01'
