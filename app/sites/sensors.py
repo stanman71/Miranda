@@ -19,12 +19,13 @@ def superuser_required(f):
     return wrap
 
 
-""" ############# """
-""" sites sensors """
-""" ############# """
+""" ############ """
+""" site sensors """
+""" ############ """
 
 @app.route('/dashboard/sensors', methods=['GET', 'POST'])
 @login_required
+@superuser_required
 def dashboard_sensors():
     sensor_values = None
     sensor_name = ""
@@ -58,9 +59,9 @@ def dashboard_sensors():
                             error_massage=error_massage)
 
 
-""" ########### """
-""" sites MQTT """
-""" ########### """
+""" #### """
+""" MQTT """
+""" #### """
 
 # URL for MQTT sensor values
 @app.route('/mqtt/<int:id>/sensor/<string:value>', methods=['GET'])

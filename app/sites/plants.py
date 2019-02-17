@@ -26,6 +26,7 @@ def superuser_required(f):
 
 @app.route('/dashboard/plants', methods=['GET', 'POST'])
 @login_required
+@superuser_required
 def dashboard_plants():
     error_massage = ""
     water_volume = ""
