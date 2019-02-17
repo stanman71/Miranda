@@ -1,14 +1,12 @@
 from flask_sqlalchemy  import SQLAlchemy
 import re
-import sys
 import time
 
 from app import app
+from app.database.database_tables import *
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/smarthome.sqlite3'
 db = SQLAlchemy(app)
-
-from database_tables import *
 
 
 """ ############### """

@@ -1,30 +1,21 @@
 from flask import Flask, render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
 from functools import wraps
-import sys
 import os
 
 from app import app
+from app.components.led_control import *
+from app.database.database_operations import *
 
 
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/components")
-sys.path.insert(0, "./app/database")
-
+''' CSS PATH '''
 # Windows Home
 #PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
-
 # Windows Work
 #PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
-
 # RasPi:
 PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
-from led_control import *
-from database_operations import *
 
 # create role "superuser"
 def superuser_required(f):

@@ -1,15 +1,7 @@
 from flask import Flask, render_template, url_for, request
-import sys
 
-
-""" ############# """
-""" module import """
-""" ############# """
-
-sys.path.insert(0, "./app/components")
-
-from led_control import *
-from sensors_control import *
+from app.components.led_control import *
+from app.components.sensors_control import *
 
 
 """ ##### """

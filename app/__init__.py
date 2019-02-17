@@ -1,16 +1,7 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-import sys
 
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/")
-
-from components.colorpicker_local import colorpicker
-
+from app.components.colorpicker_local import colorpicker
 
 """ ###### """
 """ flasks """

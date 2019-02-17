@@ -2,24 +2,14 @@ from flask import Flask, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps
-import sys
 import datetime
 
 from app import app
+from app.components.led_control import *
+from app.components.sensors_control import *
+from app.components.plants_control import *
+from app.database.database_operations import *
 
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/components")
-sys.path.insert(0, "./app/database")
-sys.path.insert(0, "./app/sites")
-
-from led_control import *
-from sensors_control import *
-from plants_control import *
-from database_operations import *
 
 # create role "superuser"
 def superuser_required(f):
@@ -66,10 +56,6 @@ def scheduler_job():
                     if "led_off" in entry.task:
                         task = entry.task.split(":")
                         LED_OFF(int(task[1])) 
-                    # read sensor
-                    if "read_sensor" in entry.task:
-                        task = entry.task.split(":")
-                        READ_SENSOR_GPIO(task[1])  
                     # save sensor
                     if "save_sensor" in entry.task:
                         task = entry.task.split(":")

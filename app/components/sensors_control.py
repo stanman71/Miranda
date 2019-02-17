@@ -1,15 +1,5 @@
-import sys
-
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/database")
-
 from app import app
-
-from database_operations import *
+from app.database.database_operations import *
 
 
 """ ####### """

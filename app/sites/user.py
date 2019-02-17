@@ -5,18 +5,9 @@ from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from functools import wraps
-import sys
 
 from app import app
-
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/database")
-
-from database_operations import *
+from app.database.database_operations import *
 
 
 """ ############ """

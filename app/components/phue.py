@@ -15,7 +15,6 @@ https://github.com/studioimaginaire/phue
 
 """
 
-
 import json
 import logging
 import os

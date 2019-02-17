@@ -1,23 +1,15 @@
 import time
-import sys
 
 from app import app
-
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/database")
-
-from database_operations import *
+from app.database.database_operations import *
+from app.components.sensors_control import *
 
 
 """ ################ """
 """ watering control """
 """ ################ """
 
-def START_PUMP(pump, seconds):
+def START_PUMP(pump_id, seconds):
 
     try:
 
@@ -36,6 +28,7 @@ def START_PUMP(pump, seconds):
 
         GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
 
+        # 40 ml / minute
         # start
         GPIO.output(RELAIS_GPIO, GPIO.LOW) 
 
@@ -54,14 +47,14 @@ def WATERING_PLANTS():
 
     # watering plants
     for plant in plants_list:
-        START_PUMP(plant.pump, plant.water_volume)
+        START_PUMP(plant.pump_id, plant.water_volume)
     
     # wait 5 minutes  
     time.sleep(300) 
 
     # check moisture
     for plant in plants_list:
-        target_moisture  = plant.moisture
+        target_moisture  = plant.moisture_voltage
         current_moisture = READ_SENSOR_GPIO(plant.sensor_name)
 
         # dry = 2.84V

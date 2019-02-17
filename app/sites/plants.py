@@ -1,21 +1,12 @@
 from flask import Flask, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from functools import wraps
-import sys
 
 from app import app
+from app.components.sensors_control import *
+from app.components.plants_control import *
+from app.database.database_operations import *
 
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/components")
-sys.path.insert(0, "./app/database")
-
-from sensors_control import *
-from plants_control import *
-from database_operations import *
 
 # create role "superuser"
 def superuser_required(f):
@@ -63,7 +54,7 @@ def dashboard_plants():
             if request.args.get("water_" + str(i)):
                 water_volume = request.args.get("water_" + str(i))           
                 CHANGE_WATER_VOLUME(i, water_volume)
-
+                
     dropdown_list_sensor       = GET_ALL_SENSORS()
     dropdown_list_pump         = [0, 1, 2, 3]
     dropdown_list_water_volume = [200, 150, 100, 50]

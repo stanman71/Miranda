@@ -1,19 +1,10 @@
 import math
-import sys
 import re
 import time
 
 from app import app
-
-
-""" ############## """
-""" module imports """
-""" ############## """
-
-sys.path.insert(0, "./app/database")
-
-from database_operations import *
-from phue import Bridge
+from app.database.database_operations import *
+from app.components.phue import Bridge
 
 
 """ ################# """

@@ -12,7 +12,6 @@ https://github.com/mrf345/flask_colorpicker/
 
 """
 
-
 from flask import Markup
 
 class colorpicker(object):
