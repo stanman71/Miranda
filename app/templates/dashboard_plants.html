@@ -31,9 +31,9 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
-            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
-            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_led_settings') }}">Einstellungen</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
@@ -65,9 +65,15 @@
           <div class="panel-body">      
           <form method="GET">   
             <div class="form-group">
+              <div class="text-center">         
+                <h4><b>Neue Pflanze hinzufügen</b></h4>
+              </div>
+              <br>
               <input type="text" class="form-control" name=name value="" />
               </div>
-              Sensor / Pumpe  
+              Sensor / Pumpe / Wassermenge 
+                <br>
+                <br>
                 <select class="btn btn-secondary dropdown-toggle" name="set_sensor">
                   {% for each in dropdown_list_sensor %}
                   <option value="{{each.id}}"> {{ each.name }} </option>
@@ -77,9 +83,15 @@
                   {% for each in dropdown_list_pump %}
                   <option value="{{each}}"> {{ each }} </option>
                   {% endfor %}
-                </select>   
+                </select> 
+                <select class="btn btn-secondary dropdown-toggle" name="set_water_volume">
+                  {% for each in dropdown_list_water_volume %}
+                  <option value="{{each}}"> {{ each }} </option>
+                  {% endfor %}
+                </select> 
                 <br> 
-                <br>                 
+                <br>   
+                <br>              
               <input type="submit" class="btn btn-secondary" value="Pflanze hinzufügen" />
               <br>
             </form>   
@@ -96,7 +108,7 @@
               <th scope="col">Sensor</th>
               <th scope="col">Pumpe</th>
               <th scope="col">Wassermenge (ml)</th> 
-              <th scope="col" colspan="2">min. Feuchtigkeit</th>  
+              <th scope="col" colspan="2">Feuchtigkeit (%)</th>  
             </thead>
             <tbody> 
               {% for entry in plants_list %}
@@ -109,7 +121,7 @@
                 <td>
                   <form method="GET" class="slidecontainer"> 
                     <div class="col-md-10 text-center"> 
-                      <input type="range" class="slider" name="moisture_{{ entry.id }}" min="0" max="250" value="{{ entry.moisture }}" />
+                      <input type="range" class="slider" name="moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture }}" />
                       <br>
                       <input type="submit" class="btn btn-secondary" value="Feuchtigkeit ändern"/>
                     </div> 

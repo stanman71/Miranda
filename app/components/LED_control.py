@@ -75,14 +75,14 @@ def GET_LED_NAMES():
 
 
 """ ############# """
-""" LED functions """
+""" led functions """
 """ ############# """
 
 def LED_SET_SCENE(scene, brightness_global = 100):
     b = CONNECT_BRIDGE()
     try:
         lights = b.get_light_objects('list')
-        # deactivate all LED
+        # deactivate all led
         for light in lights:
             light.on = False
 
@@ -95,16 +95,16 @@ def LED_SET_SCENE(scene, brightness_global = 100):
                     brightness = entry.brightness
                     brightness = int((brightness * (int(brightness_global)) / 100))
                     if brightness > 10:
-                        # turn LED on
-                        lights[entry.LED_id - 1].on = True
+                        # turn led on
+                        lights[entry.led_id - 1].on = True
                         # set brightness
-                        lights[entry.LED_id - 1].brightness = brightness
+                        lights[entry.led_id - 1].brightness = brightness
                         # set rgb 
                         xy = RGBtoXY(entry.color_red, entry.color_green, entry.color_blue)
-                        lights[entry.LED_id - 1].xy = xy
+                        lights[entry.led_id - 1].xy = xy
                     else:
-                        # turn LED off if brightness < 10
-                        lights[entry.LED_id - 1].on = False     
+                        # turn led off if brightness < 10
+                        lights[entry.led_id - 1].on = False     
                   
     except:
         return False          
@@ -125,11 +125,11 @@ def PROGRAM_SET_BRIGHTNESS(brightness_settings):
         # transform list element to int   
         brightness = int(brightness[0])
         if brightness > 10:
-                # list element start at 0 for LED ID 1
+                # list element start at 0 for led ID 1
                 lights[int(brightness_settings[0]) - 1].on = True
                 lights[int(brightness_settings[0]) - 1].brightness = brightness
         else:
-                # turn LED off if brightness < 10
+                # turn led off if brightness < 10
                 lights[int(brightness_settings[0]) - 1].on = False               
     except:
         return False    
@@ -155,7 +155,7 @@ def START_PROGRAM(id):
     b = CONNECT_BRIDGE()
     try:
         lights = b.get_light_objects('list')
-        # deactivate all LED
+        # deactivate all led
         for light in lights:
             light.on = False
 
@@ -181,7 +181,7 @@ def START_PROGRAM(id):
 
 
 """ ############# """
-""" LED turn off  """
+""" led turn off  """
 """ ############# """
 
 def LED_OFF(break_value):
@@ -190,7 +190,7 @@ def LED_OFF(break_value):
         lights = b.get_light_objects('list')
 
         for light in lights:
-            # LED on ?
+            # led on ?
             if light.on == True: 
                 # turn off the light
                 while light.brightness > 30:

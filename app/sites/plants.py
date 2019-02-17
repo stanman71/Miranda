@@ -47,10 +47,11 @@ def dashboard_plants():
                 error_massage = "Kein Name angegeben"     
             else:         
                 # get informations
-                name      = request.args.get("name")
-                sensor_id = request.args.get("set_sensor")
-                pump_id   = request.args.get("set_pump")
-                error_massage = ADD_PLANT(name, sensor_id, pump_id)
+                name         = request.args.get("name")
+                sensor_id    = request.args.get("set_sensor")
+                pump_id      = request.args.get("set_pump")
+                water_volume = request.args.get("set_water_volume")
+                error_massage = ADD_PLANT(name, sensor_id, pump_id, water_volume)
 
         for i in range (1,25):
             # change moisture
@@ -63,13 +64,15 @@ def dashboard_plants():
                 water_volume = request.args.get("water_" + str(i))           
                 CHANGE_WATER_VOLUME(i, water_volume)
 
-    dropdown_list_sensor = GET_ALL_SENSORS()
-    dropdown_list_pump = [0, 1, 2, 3]
+    dropdown_list_sensor       = GET_ALL_SENSORS()
+    dropdown_list_pump         = [0, 1, 2, 3]
+    dropdown_list_water_volume = [200, 150, 100, 50]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
                             dropdown_list_sensor=dropdown_list_sensor,
                             dropdown_list_pump=dropdown_list_pump,
+                            dropdown_list_water_volume=dropdown_list_water_volume,
                             plants_list=plants_list,
                             moisture=moisture,
                             water_volume=water_volume,

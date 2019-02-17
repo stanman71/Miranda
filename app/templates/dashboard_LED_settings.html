@@ -31,9 +31,9 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
-            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
-            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_led_settings') }}">Einstellungen</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
@@ -88,7 +88,7 @@
               <th scope="col">Name</th> 
             </thead>
             <tbody> 
-              {% for entry in LED_list %}
+              {% for entry in led_list %}
               <tr>
                 <td>{{ entry.id }}</td> 
                 <td>{{ entry.name }}</td> 

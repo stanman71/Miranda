@@ -23,7 +23,7 @@ sys.path.insert(0, "./app/database")
 # RasPi:
 PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
-from LED_control import *
+from led_control import *
 from database_operations import *
 
 # create role "superuser"
@@ -39,43 +39,43 @@ def superuser_required(f):
 
 
 """ ######### """
-""" sites LED """
+""" sites led """
 """ ######### """
 
-# LED scene 01
-@app.route('/dashboard/LED/scene_01', methods=['GET', 'POST'])
+# led scene 01
+@app.route('/dashboard/led/scene_01', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_01():
+def dashboard_led_scene_01():
     scene = 1
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene  = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -86,7 +86,7 @@ def dashboard_LED_scene_01():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html', 
+    return render_template('dashboard_led_scenes.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -97,40 +97,40 @@ def dashboard_LED_scene_01():
                             )
 
 
-# LED scene 02
-@app.route('/dashboard/LED/scene_02', methods=['GET', 'POST'])
+# led scene 02
+@app.route('/dashboard/led/scene_02', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_02():
+def dashboard_led_scene_02():
     scene = 2
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -141,7 +141,7 @@ def dashboard_LED_scene_02():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html',
+    return render_template('dashboard_led_scenes.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -152,40 +152,40 @@ def dashboard_LED_scene_02():
                             )
 
 
-# LED scene 03
-@app.route('/dashboard/LED/scene_03', methods=['GET', 'POST'])
+# led scene 03
+@app.route('/dashboard/led/scene_03', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_03():
+def dashboard_led_scene_03():
     scene = 3
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i))) 
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -196,7 +196,7 @@ def dashboard_LED_scene_03():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html', 
+    return render_template('dashboard_led_scenes.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -207,40 +207,40 @@ def dashboard_LED_scene_03():
                             )
 
 
-# LED scene 04
-@app.route('/dashboard/LED/scene_04', methods=['GET', 'POST'])
+# led scene 04
+@app.route('/dashboard/led/scene_04', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_04():
+def dashboard_led_scene_04():
     scene = 4
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))      
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -251,7 +251,7 @@ def dashboard_LED_scene_04():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html', 
+    return render_template('dashboard_led_scenes.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -262,41 +262,41 @@ def dashboard_LED_scene_04():
                             )
 
 
-# LED scene 05
-@app.route('/dashboard/LED/scene_05', methods=['GET', 'POST'])
+# led scene 05
+@app.route('/dashboard/led/scene_05', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_05():
+def dashboard_led_scene_05():
     scene = 5
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
 
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -318,40 +318,40 @@ def dashboard_LED_scene_05():
                             )
 
 
-# LED scene 06
-@app.route('/dashboard/LED/scene_06', methods=['GET', 'POST'])
+# led scene 06
+@app.route('/dashboard/led/scene_06', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_06():
+def dashboard_led_scene_06():
     scene = 6
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -362,7 +362,7 @@ def dashboard_LED_scene_06():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html',
+    return render_template('dashboard_led_scenes.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -373,40 +373,40 @@ def dashboard_LED_scene_06():
                             )
 
 
-# LED scene 07
-@app.route('/dashboard/LED/scene_07', methods=['GET', 'POST'])
+# led scene 07
+@app.route('/dashboard/led/scene_07', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_07():
+def dashboard_led_scene_07():
     scene = 7
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i))) 
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -417,7 +417,7 @@ def dashboard_LED_scene_07():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html', 
+    return render_template('dashboard_led_scenes.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -428,40 +428,40 @@ def dashboard_LED_scene_07():
                             )
 
 
-# LED scene 08
-@app.route('/dashboard/LED/scene_08', methods=['GET', 'POST'])
+# led scene 08
+@app.route('/dashboard/led/scene_08', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_08():
+def dashboard_led_scene_08():
     scene = 8
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))      
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -472,7 +472,7 @@ def dashboard_LED_scene_08():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html', 
+    return render_template('dashboard_led_scenes.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -483,41 +483,41 @@ def dashboard_LED_scene_08():
                             )
 
 
-# LED scene 09
-@app.route('/dashboard/LED/scene_09', methods=['GET', 'POST'])
+# led scene 09
+@app.route('/dashboard/led/scene_09', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_scene_09():
+def dashboard_led_scene_09():
     scene = 9
     error_massage = ""
 
     if request.method == "GET":  
             
-        # Change scene name
+        # change scene name
         name = request.args.get("name") 
         if name is not None:
             error_massage = SET_SCENE_NAME(scene, name)
     
-        # Set RGB color
+        # set RGB color
         rgb_scene = []
         for i in range(1,10):
             rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
         SET_SCENE_COLOR(scene, rgb_scene)
 
-        # Set brightness
+        # set brightness
         brightness = []
         for i in range(1,10):
             brightness.append(request.args.get(str(i)))
         SET_SCENE_BRIGHTNESS(scene, brightness)  
 
-        # Add LED
-        add_LED = request.args.get("LED_scene") 
-        if add_LED is not None:
-            ADD_LED(scene, add_LED)
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
  
 
     if request.method == "POST": 
-        # Delete scene
+        # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
@@ -528,7 +528,7 @@ def dashboard_LED_scene_09():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html',
+    return render_template('dashboard_led_scenes.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -539,37 +539,37 @@ def dashboard_LED_scene_09():
                             )
 
 
-# Delete LED 
-@app.route('/dashboard/LED/scene/delete/<int:scene>/<int:id>')
+# delete led 
+@app.route('/dashboard/led/scene/delete/<int:scene>/<int:id>')
 @login_required
 @superuser_required
-def delete_LED(scene, id): 
+def delete_led(scene, id): 
     DEL_LED(scene, id)
     if scene == 1:
-        return redirect(url_for('dashboard_LED_scene_01'))
+        return redirect(url_for('dashboard_led_scene_01'))
     if scene == 2:
-        return redirect(url_for('dashboard_LED_scene_02'))
+        return redirect(url_for('dashboard_led_scene_02'))
     if scene == 3:
-        return redirect(url_for('dashboard_LED_scene_03'))
+        return redirect(url_for('dashboard_led_scene_03'))
     if scene == 4:
-        return redirect(url_for('dashboard_LED_scene_04'))
+        return redirect(url_for('dashboard_led_scene_04'))
     if scene == 5:
-        return redirect(url_for('dashboard_LED_scene_05'))
+        return redirect(url_for('dashboard_led_scene_05'))
     if scene == 6:
-        return redirect(url_for('dashboard_LED_scene_06'))
+        return redirect(url_for('dashboard_led_scene_06'))
     if scene == 7:
-        return redirect(url_for('dashboard_LED_scene_07'))
+        return redirect(url_for('dashboard_led_scene_07'))
     if scene == 8:
-        return redirect(url_for('dashboard_LED_scene_08'))
+        return redirect(url_for('dashboard_led_scene_08'))
     if scene == 9:
-        return redirect(url_for('dashboard_LED_scene_09'))
+        return redirect(url_for('dashboard_led_scene_09'))
 
 
-# LED programs
-@app.route('/dashboard/LED/programs', methods=['GET', 'POST'])
+# led programs
+@app.route('/dashboard/led/programs', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_LED_programs():
+def dashboard_led_programs():
     program = ""
     rgb = "rgb(0, 0, 0)"
     led_update = ""
@@ -619,7 +619,7 @@ def dashboard_LED_programs():
 
     dropdown_list = GET_DROPDOWN_LIST_PROGRAMS()
 
-    return render_template('dashboard_LED_programs.html',
+    return render_template('dashboard_led_programs.html',
                             led_update=led_update,
                             dropdown_list=dropdown_list,
                             program=program,
@@ -628,11 +628,11 @@ def dashboard_LED_programs():
                             )
 
 
-# LED settings
-@app.route('/dashboard/LED/settings')
+# led settings
+@app.route('/dashboard/led/settings')
 @login_required
 @superuser_required
-def dashboard_LED_settings():
+def dashboard_led_settings():
     led_update = "" 
 
     if request.method == "GET": 
@@ -640,17 +640,17 @@ def dashboard_LED_settings():
         bridge_ip = request.args.get("bridge_ip") 
         if bridge_ip is not None:
             SET_BRIDGE_IP(bridge_ip)
-            led_update = UPDATE_LED()
+            led_update = UPDATE_LED(GET_LED_NAMES())    
 
-    ip = GET_BRIDGE_IP()            
-    LED_list = GET_ALL_LEDS()
+    led_list = GET_ALL_LEDS()
+    ip = GET_BRIDGE_IP()  
 
-    return render_template('dashboard_LED_settings.html',
+    return render_template('dashboard_led_settings.html',
                             led_update=led_update,
                             ip=ip,
-                            LED_list=LED_list
+                            led_list=led_list
                             )
-
+    
 
 """ ############### """
 """ sites file host """

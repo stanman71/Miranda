@@ -98,16 +98,16 @@ def SET_BRIDGE_IP(IP):
 
 
 """ ### """
-""" LED """
+""" led """
 """ ### """
 
 
 def GET_DROPDOWN_LIST_LED():
     entry_list = []
-    # get all LED entries
+    # get all led entries
     entries = LED.query.all()
     for entry in entries:
-        # select the LED names only
+        # select the led names only
         entry_list.append(entry.name)
 
     return entry_list
@@ -144,59 +144,59 @@ def ADD_LED(Scene, Name):
 
     if Scene == 1:
         # LED already exist ?
-        check_entry = Scene_01.query.filter_by(LED_id=entry.id).first()
-        # add new LED
+        check_entry = Scene_01.query.filter_by(led_id=entry.id).first()
+        # add new led
         if check_entry is None:
             scene = Scene_01(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 2:
-        check_entry = Scene_02.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_02.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_02(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 3:
-        check_entry = Scene_03.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_03.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_03(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 4:
-        check_entry = Scene_04.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_04.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_04(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 5:
-        check_entry = Scene_05.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_05.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_05(
-                LED_id = entry.id,
+                led_id = entry.id,
             )      
     if Scene == 6:
-        check_entry = Scene_06.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_06.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_06(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 7:
-        check_entry = Scene_07.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_07.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_07(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 8:
-        check_entry = Scene_08.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_08.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_08(
-                LED_id = entry.id,
+                led_id = entry.id,
             )
     if Scene == 9:
-        check_entry = Scene_09.query.filter_by(LED_id=entry.id).first()
+        check_entry = Scene_09.query.filter_by(led_id=entry.id).first()
         if check_entry is None:
             scene = Scene_09(
-                LED_id = entry.id,
+                led_id = entry.id,
             )      
 
     try:        
@@ -208,23 +208,23 @@ def ADD_LED(Scene, Name):
 
 def DEL_LED(Scene, ID):
     if Scene == 1:
-        Scene_01.query.filter_by(LED_id=ID).delete()
+        Scene_01.query.filter_by(led_id=ID).delete()
     if Scene == 2:
-        Scene_02.query.filter_by(LED_id=ID).delete()
+        Scene_02.query.filter_by(led_id=ID).delete()
     if Scene == 3:
-        Scene_03.query.filter_by(LED_id=ID).delete()
+        Scene_03.query.filter_by(led_id=ID).delete()
     if Scene == 4:
-        Scene_04.query.filter_by(LED_id=ID).delete()
+        Scene_04.query.filter_by(led_id=ID).delete()
     if Scene == 5:
-        Scene_05.query.filter_by(LED_id=ID).delete()
+        Scene_05.query.filter_by(led_id=ID).delete()
     if Scene == 6:
-        Scene_06.query.filter_by(LED_id=ID).delete()
+        Scene_06.query.filter_by(led_id=ID).delete()
     if Scene == 7:
-        Scene_07.query.filter_by(LED_id=ID).delete()
+        Scene_07.query.filter_by(led_id=ID).delete()
     if Scene == 8:
-        Scene_08.query.filter_by(LED_id=ID).delete()
+        Scene_08.query.filter_by(led_id=ID).delete()
     if Scene == 9:
-        Scene_09.query.filter_by(LED_id=ID).delete()
+        Scene_09.query.filter_by(led_id=ID).delete()
 
     db.session.commit()
 
@@ -302,56 +302,56 @@ def SET_SCENE_COLOR(Scene, rgb_scene):
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
                 # get scene settings
-                entry = Scene_01.query.filter_by(LED_id=i+1).first()
+                entry = Scene_01.query.filter_by(led_id=i+1).first()
                 # get the rgb values only (source: rgb(xxx, xxx, xxx))
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 2:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_02.query.filter_by(LED_id=i+1).first()
+                entry = Scene_02.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 3:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_03.query.filter_by(LED_id=i+1).first()
+                entry = Scene_03.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 4:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_04.query.filter_by(LED_id=i+1).first()
+                entry = Scene_04.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 5:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_05.query.filter_by(LED_id=i+1).first()
+                entry = Scene_05.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break 
     if Scene == 6:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_06.query.filter_by(LED_id=i+1).first()
+                entry = Scene_06.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 7:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_07.query.filter_by(LED_id=i+1).first()
+                entry = Scene_07.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 8:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_08.query.filter_by(LED_id=i+1).first()
+                entry = Scene_08.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break
     if Scene == 9:
         for i in range(len(rgb_scene)):
             if rgb_scene[i] is not None:
-                entry = Scene_09.query.filter_by(LED_id=i+1).first()
+                entry = Scene_09.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break 
 
@@ -370,55 +370,55 @@ def SET_SCENE_BRIGHTNESS(Scene, brightness):
         for i in range(len(brightness)):
             if brightness[i] is not None:
                 # get scene settings
-                entry = Scene_01.query.filter_by(LED_id=i+1).first()
+                entry = Scene_01.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 2:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_02.query.filter_by(LED_id=i+1).first()
+                entry = Scene_02.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 3:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_03.query.filter_by(LED_id=i+1).first()
+                entry = Scene_03.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break            
     if Scene == 4:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_04.query.filter_by(LED_id=i+1).first()
+                entry = Scene_04.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 5:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_05.query.filter_by(LED_id=i+1).first()
+                entry = Scene_05.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 6:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_06.query.filter_by(LED_id=i+1).first()
+                entry = Scene_06.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 7:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_07.query.filter_by(LED_id=i+1).first()
+                entry = Scene_07.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break            
     if Scene == 8:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_08.query.filter_by(LED_id=i+1).first()
+                entry = Scene_08.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
     if Scene == 9:
         for i in range(len(brightness)):
             if brightness[i] is not None:
-                entry = Scene_09.query.filter_by(LED_id=i+1).first()
+                entry = Scene_09.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
 
@@ -533,7 +533,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, sensor_id, pump_id):
+def ADD_PLANT(name, sensor_id, pump_id, water_volume):
 
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
@@ -550,7 +550,7 @@ def ADD_PLANT(name, sensor_id, pump_id):
                         sensor_id    = sensor_id,
                         pump_id      = pump_id,
                         moisture     = 0,
-                        water_volume = 50,
+                        water_volume = water_volume,
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -562,6 +562,10 @@ def ADD_PLANT(name, sensor_id, pump_id):
 def CHANGE_MOISTURE(plant_id, moisture):    
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.moisture = moisture
+    # calculate voltage value
+    voltage_value = round((float(moisture) * 1.6) / 100, 2) 
+    moisture_voltage = round(2.84 - voltage_value, 2)   
+    entry.moisture_voltage = moisture_voltage
     db.session.commit()  
 
 

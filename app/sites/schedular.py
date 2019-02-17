@@ -16,7 +16,7 @@ sys.path.insert(0, "./app/components")
 sys.path.insert(0, "./app/database")
 sys.path.insert(0, "./app/sites")
 
-from LED_control import *
+from led_control import *
 from sensors_control import *
 from plants_control import *
 from database_operations import *
@@ -62,7 +62,7 @@ def scheduler_job():
                     if "start_program" in entry.task:
                         task = entry.task.split(":")
                         START_PROGRAM(int(task[1]))
-                    # turn off LEDs
+                    # turn off leds
                     if "led_off" in entry.task:
                         task = entry.task.split(":")
                         LED_OFF(int(task[1])) 
@@ -70,10 +70,14 @@ def scheduler_job():
                     if "read_sensor" in entry.task:
                         task = entry.task.split(":")
                         READ_SENSOR_GPIO(task[1])  
+                    # save sensor
+                    if "save_sensor" in entry.task:
+                        task = entry.task.split(":")
+                        SAVE_SENSOR_GPIO(task[1])                          
                     # watering plants
                     if "watering_plants" in entry.task:
                         WATERING_PLANTS()
-                    # start LED automatically
+                    # start led automatically
                     if "start_smartphone" in entry.task:
                         task = entry.task.split(":")
                         hostname = "google.com"

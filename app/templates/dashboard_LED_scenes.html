@@ -37,9 +37,9 @@
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_LED_scene_01') }}">Szenen</a></li>
-            <li><a href="{{ url_for('dashboard_LED_programs') }}">Programme</a></li>
-            <li><a href="{{ url_for('dashboard_LED_settings') }}">Einstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
+            <li><a href="{{ url_for('dashboard_led_settings') }}">Einstellungen</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col">
 
-<!-- LED error massages -->
+<!-- led error massages -->
 
     {% if led_update == False %}
     <div class="alert alert-danger" role="alert">
@@ -75,15 +75,15 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <ul class="nav navbar-nav">
-          <li class={{active01}}><a href="{{ url_for('dashboard_LED_scene_01') }}">Szene 1</a></li>
-          <li class={{active02}}><a href="{{ url_for('dashboard_LED_scene_02') }}">Szene 2</a></li>
-          <li class={{active03}}><a href="{{ url_for('dashboard_LED_scene_03') }}">Szene 3</a></li>
-          <li class={{active04}}><a href="{{ url_for('dashboard_LED_scene_04') }}">Szene 4</a></li>
-          <li class={{active05}}><a href="{{ url_for('dashboard_LED_scene_05') }}">Szene 5</a></li>          
-          <li class={{active06}}><a href="{{ url_for('dashboard_LED_scene_06') }}">Szene 6</a></li>
-          <li class={{active07}}><a href="{{ url_for('dashboard_LED_scene_07') }}">Szene 7</a></li>
-          <li class={{active08}}><a href="{{ url_for('dashboard_LED_scene_08') }}">Szene 8</a></li>
-          <li class={{active09}}><a href="{{ url_for('dashboard_LED_scene_09') }}">Szene 9</a></li>        
+          <li class={{active01}}><a href="{{ url_for('dashboard_led_scene_01') }}">Szene 1</a></li>
+          <li class={{active02}}><a href="{{ url_for('dashboard_led_scene_02') }}">Szene 2</a></li>
+          <li class={{active03}}><a href="{{ url_for('dashboard_led_scene_03') }}">Szene 3</a></li>
+          <li class={{active04}}><a href="{{ url_for('dashboard_led_scene_04') }}">Szene 4</a></li>
+          <li class={{active05}}><a href="{{ url_for('dashboard_led_scene_05') }}">Szene 5</a></li>          
+          <li class={{active06}}><a href="{{ url_for('dashboard_led_scene_06') }}">Szene 6</a></li>
+          <li class={{active07}}><a href="{{ url_for('dashboard_led_scene_07') }}">Szene 7</a></li>
+          <li class={{active08}}><a href="{{ url_for('dashboard_led_scene_08') }}">Szene 8</a></li>
+          <li class={{active09}}><a href="{{ url_for('dashboard_led_scene_09') }}">Szene 9</a></li>        
         </ul>
       </div>
     </nav>
@@ -120,13 +120,13 @@
 
             {% for entry in entries_scene %}         
             <tr>
-              <td>{{ entry.LED_name.name }}</td> 
+              <td>{{ entry.led_name.name }}</td> 
               <td>{{ entry.color_red }}</td>
               <td>{{ entry.color_green }}</td>
               <td>{{ entry.color_blue }}</td>   
               <td>
                 <form method="GET" class="verticalform">
-                  <input type="text" name="{{ entry.scene_id }} {{ entry.LED_id }}" class="form-control scene_{{ entry.LED_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
+                  <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control scene_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
                   <input type="submit" class="btn btn-secondary" value="Farbe ändern" />  
                 </form>
               </td>
@@ -134,13 +134,13 @@
               <td>
                 <form method="GET" class="slidecontainer"> 
                   <div class="col-md-10 text-center"> 
-                    <input type="range" class="slider" name="{{ entry.LED_id }}" min="0" max="254" value="{{ entry.brightness }}" />
+                    <input type="range" class="slider" name="{{ entry.led_id }}" min="0" max="254" value="{{ entry.brightness }}" />
                     <br>
                     <input type="submit" class="btn btn-secondary" value="Helligkeit ändern"/>
                   </div> 
                 </form>
               </td>
-              <td><a href="/dashboard/LED/scene/delete/{{number}}/{{ entry.LED_id }}"><font color="red"><b>löschen</b></font></a>
+              <td><a href="/dashboard/led/scene/delete/{{number}}/{{ entry.led_id }}"><font color="red"><b>löschen</b></font></a>
             </tr>
             {% endfor %}
             
@@ -163,14 +163,14 @@
       <div class="panel-body">
         <div class="dropdown">
           <form method="GET" enctype="multipart/form-data">
-            <select class="btn btn-secondary dropdown-toggle" name="LED_scene">
+            <select class="btn btn-secondary dropdown-toggle" name="led_scene">
               {% for each in dropdown_list %}
               {% if each != None %}
               <option value="{{each}}">{{each}}</option>
               {% endif %}
               {% endfor %}
             </select>
-            <input type="submit" class="btn btn-secondary" value="LED hinzufügen">
+            <input type="submit" class="btn btn-secondary" value="led hinzufügen">
           </form>
         </div> 
       </div>

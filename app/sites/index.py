@@ -8,7 +8,7 @@ import sys
 
 sys.path.insert(0, "./app/components")
 
-from LED_control import *
+from led_control import *
 from sensors_control import *
 
 
