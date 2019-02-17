@@ -1,6 +1,8 @@
 ##  SmartHome
 
-This project creates a smart home environment
+This project creates a smart home environment.
+
+!!! WORK IN PROGRESS !!!
 
 
 ### Features
@@ -20,7 +22,7 @@ This project creates a smart home environment
 
 ### First Step: Start the flask server
 
-- Start: ```app.py``` (Default IP: 127.0.0.1:5000)
+- Start: ```run.py``` (Default IP: 127.0.0.1:5000)
 
 ------------
 
