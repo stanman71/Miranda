@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, send_from_directory
+from flask import render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
 from functools import wraps
 import os
