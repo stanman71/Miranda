@@ -18,6 +18,7 @@ def START_PUMP(pump_id):
     try:
         import RPi.GPIO as GPIO
         GPIO.setmode(GPIO.BCM) # GPIO numbers
+        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
 
         if pump_id == 0:
            RELAIS_GPIO = 20 #Pin 38
@@ -28,7 +29,6 @@ def START_PUMP(pump_id):
         if pump_id == 3:
            RELAIS_GPIO = 19 #Pin 35
 
-        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
         GPIO.output(RELAIS_GPIO, GPIO.HIGH) 
 
     except:
@@ -42,6 +42,7 @@ def STOP_PUMP(pump_id):
     try:
         import RPi.GPIO as GPIO
         GPIO.setmode(GPIO.BCM)
+        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
 
         if pump_id == 0:
            RELAIS_GPIO = 20 #Pin 38
@@ -52,7 +53,6 @@ def STOP_PUMP(pump_id):
         if pump_id == 3:
            RELAIS_GPIO = 19 #Pin 35
 
-        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
         GPIO.output(RELAIS_GPIO, GPIO.LOW) 
         
     except:
