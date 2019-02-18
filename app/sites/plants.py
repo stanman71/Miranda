@@ -58,7 +58,7 @@ def dashboard_plants():
                 
     dropdown_list_sensor       = GET_ALL_SENSORS()
     dropdown_list_pump         = [0, 1, 2, 3]
-    dropdown_list_water_volume = [200, 150, 100, 50]
+    dropdown_list_water_volume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
