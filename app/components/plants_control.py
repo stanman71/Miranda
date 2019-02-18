@@ -30,6 +30,7 @@ def START_PUMP(pump_id):
 
         GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
         GPIO.output(RELAIS_GPIO, GPIO.HIGH) 
+
     except:
         pass
 
@@ -101,9 +102,6 @@ def CHECK_MOISTURE():
 
 
 def START_WATERING_THREAD():
-
-    import threading
-    import time
 
     class watering_Thread(threading.Thread):
         def __init__(self, ID = 1, name = "watering_Thread"):
