@@ -5,7 +5,7 @@ import os
 
 from app import app
 from app.components.led_control import *
-from app.database.database_operations import *
+from app.database.database import *
 
 
 ''' CSS PATH '''

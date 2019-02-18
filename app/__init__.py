@@ -3,6 +3,7 @@ from flask_bootstrap import Bootstrap
 
 from app.components.colorpicker_local import colorpicker
 
+
 """ ###### """
 """ flasks """
 """ ###### """
@@ -17,3 +18,4 @@ from app.sites import index, user, dashboard, led, schedular, plants, sensors
 
 #app.run(host="0.0.0.0")
 app.run(debug=True)
+#app.run()

@@ -3,7 +3,7 @@ import re
 import time
 
 from app import app
-from app.database.database_operations import *
+from app.database.database import *
 from app.components.phue import Bridge
 
 

@@ -8,7 +8,7 @@ from app import app
 from app.components.led_control import *
 from app.components.sensors_control import *
 from app.components.plants_control import *
-from app.database.database_operations import *
+from app.database.database import *
 
 
 # create role "superuser"
@@ -44,25 +44,31 @@ def scheduler_job():
             if entry.hour == hour or entry.hour == "*":
                 if entry.minute == minute or entry.minute == "*":
                     print(entry.name)
+
                     # start scene
                     if "start_scene" in entry.task:
                         task = entry.task.split(":")
                         LED_SET_SCENE(int(task[1]))
+
                     # start program
                     if "start_program" in entry.task:
                         task = entry.task.split(":")
                         START_PROGRAM(int(task[1]))
+
                     # turn off leds
                     if "led_off" in entry.task:
                         task = entry.task.split(":")
                         LED_OFF(int(task[1])) 
+
                     # save sensor
                     if "save_sensor" in entry.task:
                         task = entry.task.split(":")
-                        SAVE_SENSOR_GPIO(task[1])                          
+                        SAVE_SENSOR_GPIO(task[1])   
+
                     # watering plants
                     if "watering_plants" in entry.task:
-                        WATERING_PLANTS()
+                        START_WATERING_THREAD()
+
                     # start led automatically
                     if "start_smartphone" in entry.task:
                         task = entry.task.split(":")
@@ -70,7 +76,8 @@ def scheduler_job():
                         if os.system("ping -n 1 " + hostname) == 0:
                             print("ok")
                             #if READ_SENSOR("GPIO_A07") < 600:
-                            #    LED_SET_SCENE(int(task[1]))                                                                                                                        
+                            #    LED_SET_SCENE(int(task[1]))  
+                                                                                                                                               
                     # remove task without repeat
                     if entry.repeat == "":
                         DELETE_TASK(entry.id)
@@ -92,13 +99,16 @@ def dashboard_schedular():
     if request.method == "GET": 
         # add new task
         if request.args.get("set_name") is not None:
+
             # controll name and task input
             if request.args.get("set_name") == "":
                 error_massage = "Kein Name angegeben"
                 set_task = request.args.get("set_task")
+
             elif request.args.get("set_task") == "":
                 error_massage = "Keine Aufgabe angegeben"  
-                set_name = request.args.get("set_name")             
+                set_name = request.args.get("set_name")  
+                          
             else:         
                 # get database informations
                 name   = request.args.get("set_name")

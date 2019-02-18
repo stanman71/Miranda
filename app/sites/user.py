@@ -7,7 +7,7 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from functools import wraps
 
 from app import app
-from app.database.database_operations import *
+from app.database.database import *
 
 
 """ ############ """

@@ -5,7 +5,7 @@ from functools import wraps
 from app import app
 from app.components.sensors_control import *
 from app.components.plants_control import *
-from app.database.database_operations import *
+from app.database.database import *
 
 
 # create role "superuser"
