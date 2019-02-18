@@ -85,6 +85,8 @@ def CHECK_MOISTURE():
         elif moisture < -0.2:
             if int(plant.water_volume) > 20 or int(plant.water_volume) == 20:
                 new_water_volume = int(plant.water_volume) - 20
+            elif int(plant.water_volume) == 10:
+                new_water_volume = 0
         elif moisture < -0.1:
             if int(plant.water_volume) > 10 or int(plant.water_volume) == 10:
                 new_water_volume = int(plant.water_volume) - 10
