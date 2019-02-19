@@ -1,19 +1,7 @@
 from flask import render_template, url_for, request
 
 from app.components.led_control import *
-from app.components.sensors_control import *
-from app.components.plants_control import *
 from app.database.database import *
-
-
-""" ############## """
-""" initialisation """
-""" ############## """
-
-@app.before_first_request
-def initialisation():
-    for plant in GET_ALL_PLANTS():
-        STOP_PUMP(plant.pump_id) 
 
 
 """ ##### """
