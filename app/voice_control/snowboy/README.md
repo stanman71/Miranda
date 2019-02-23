@@ -1,5 +1,4 @@
 ## snowboy setup on raspberry pi 
-</br>
 https://github.com/Kitt-AI/snowboy
 </br>
 https://github.com/wanleg/snowboyPi 
