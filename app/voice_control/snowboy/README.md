@@ -2,6 +2,7 @@
 snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 -------------------------------------------------------------------
 
+
 1. Installation:
 
 - Start with a fresh install of Raspbian (Lite or Regular, this guide assumes Lite)
@@ -81,4 +82,4 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 
 - start the snowboy.service to make sure everything is working:
 
->> sudo systemctl start snowboy.service
+       >> sudo systemctl start snowboy.service
