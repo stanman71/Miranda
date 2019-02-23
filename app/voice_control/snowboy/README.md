@@ -1,4 +1,6 @@
-## snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
+## snowboy setup on raspberry pi 
+https://github.com/wanleg/snowboyPi 
+https://github.com/Kitt-AI/snowboy
 
 </br>
 
@@ -27,7 +29,8 @@
 ### 2. Sound settings:
 
 - create .asoundrc in your home folder with correct hw settings (see example file)
-- "aplay -l" & "arecord -l" to find out hw cards > "card 0, device 0" is "hw:0,0" 
+- "aplay -l" & "arecord -l" to find out hw cards 
+   >>> e.g "card 0, device 0" is "hw:0,0" 
 - "speaker-test -c 2" to test audio out
 - "arecord -d 3 test.wav" to record a 3 second test clip 
 - "aplay test.wav" to verify
