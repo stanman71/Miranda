@@ -1,9 +1,8 @@
--------------------------------------------------------------------
-snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
--------------------------------------------------------------------
+## snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 
+</br>
 
-1. Installation:
+### 1. Installation:
 
 - Start with a fresh install of Raspbian (Lite or Regular, this guide assumes Lite)
 
@@ -18,8 +17,14 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
        >> sudo pip3 install pyaudio
        >> sudo apt-get install portaudio19-dev (if an error occurs)
 
+</br>
 
-2. Sound settings:
+--------------
+--------------
+
+</br>
+
+### 2. Sound settings:
 
 - create .asoundrc in your home folder with correct hw settings (see example file)
 - "aplay -l" & "arecord -l" to find out hw cards > "card 0, device 0" is "hw:0,0" 
@@ -27,8 +32,14 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 - "arecord -d 3 test.wav" to record a 3 second test clip 
 - "aplay test.wav" to verify
 
+</br>
 
-3. Snowboy:
+--------------
+--------------
+
+</br>
+
+### 3. Snowboy:
 
 - extract the pre-packaged Snowboy binaries to Pi & rename directory to "snowboy"
 - go into /home/pi/Python/SmartHome/snowboy
@@ -36,8 +47,14 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 "
 - default test hotword is snowboy
 
+</br>
 
-3a. Create snowboydetect (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
+--------------
+--------------
+
+</br>
+
+#### 3a. Create snowboydetect (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
 
 - OPTIONAL: ImportError: libpython3.4m.so.1.0: cannot open shared object file
 - install swig
@@ -53,8 +70,14 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 - start "make" in console 
 - replace the old files in the parent dictionary
 
+</br>
 
-4. Create Snowboy hotwords
+--------------
+--------------
+
+</br>
+
+### 4. Create Snowboy hotwords
 
 - log into https://snowboy.kitt.ai, click on “Profile settings”, and copy your API token
 - change the appropriate fields (token, hotword, etc.) in training_service.py
@@ -72,8 +95,14 @@ snowboy setup on raspberry pi (https://github.com/wanleg/snowboyPi)
 
        >> python3 demo.py ~/snowboy/resources/saved_model.pmdl
 
+</br>
 
-5. Autostart Snowboy:
+--------------
+--------------
+
+</br>
+
+### 5. Autostart Snowboy:
 
 - copy snowboy.service to /lib/systemd/system/
 - you may need to run this:
