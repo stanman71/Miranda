@@ -13,11 +13,7 @@ https://github.com/Kitt-AI/snowboy
 - Install dependencies:
 
        >> sudo apt -y install python-pyaudio python3-pyaudio sox python3-pip python-pip libatlas-base-dev
-
-- Install PortAudio’s Python bindings:
-
-       >> sudo pip3 install pyaudio
-       >> sudo apt-get install portaudio19-dev (if an error occurs)
+       >> sudo apt-get install portaudio19-dev (if an error occurs during the installation of pyaudio)
 
 </br>
 
@@ -44,15 +40,9 @@ https://github.com/Kitt-AI/snowboy
 ### 3. Snowboy:
 
 - extract the pre-packaged Snowboy binaries to Pi & rename directory to "snowboy"
-- go into /home/pi/Python/SmartHome/snowboy
-- start "python3 snowboy.py
-"
-- default test hotword is snowboy
-
-</br>
-
---------------
---------------
+- go into "home/pi/Python/SmartHome/snowboy"
+- start "python3 snowboy.py"
+- default test hotword is >> snowboy <<
 
 </br>
 
@@ -68,9 +58,9 @@ https://github.com/Kitt-AI/snowboy
        >> make
        >> sudo make install
 
-- copy the python3 swig files from snowboy/support/swig to snowboy/swig into snowboy/swig
+- copy the python3 swig files from "snowboy/support/swig" into "snowboy/swig"
 - start "make" in console 
-- replace the old files in the parent dictionary
+- replace the old files of the parent dictionary
 
 </br>
 
@@ -81,8 +71,9 @@ https://github.com/Kitt-AI/snowboy
 
 ### 4. Create Snowboy hotwords
 
-- log into https://snowboy.kitt.ai, click on “Profile settings”, and copy your API token
-- change the appropriate fields (token, hotword, etc.) in training_service.py
+- log into https://snowboy.kitt.ai
+- click on “Profile settings”, and copy your API token
+- change the appropriate fields (token, hotword, etc.) in "training_service.py"
 - use the following to record 3 wav files of your hotword to the same directory:
 
        >> rec -r 16000 -c 1 -b 16 -e signed-integer FILENAME.wav
@@ -106,11 +97,11 @@ https://github.com/Kitt-AI/snowboy
 
 ### 5. Autostart Snowboy:
 
-- copy snowboy.service to /lib/systemd/system/
+- copy "snowboy.service" to "/lib/systemd/system/"
 - you may need to run this:
 
        >> sudo systemctl daemon-reload 
 
-- start the snowboy.service to make sure everything is working:
+- start the "snowboy.service" to make sure everything is working:
 
        >> sudo systemctl start snowboy.service
