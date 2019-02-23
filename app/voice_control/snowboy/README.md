@@ -3,7 +3,6 @@ https://github.com/wanleg/snowboyPi
 </br>
 https://github.com/Kitt-AI/snowboy
 
-</br>
 
 ### 1. Installation:
 
