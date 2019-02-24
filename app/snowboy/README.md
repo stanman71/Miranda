@@ -41,7 +41,8 @@ https://snowboy.kitt.ai
 
 ### 3. Snowboy:
 
-- extract the pre-packaged Snowboy binaries to Pi & rename directory to "snowboy"
+- extract the pre-packaged Snowboy binaries (https://github.com/Kitt-AI/snowboy) and rename directory to "snowboy"
+- copy the files of the raspi-version (https://github.com/wanleg/snowboyPi) in the same folder
 - go into the "snowboy" folder
 - start "python3 snowboy.py"
 - default hotword is >> snowboy <<
