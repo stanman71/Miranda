@@ -18,7 +18,7 @@ https://snowboy.kitt.ai
 
 </br>
 
-####ERROR: Command 'arm-linux-gnueabihf-gcc' failed with exit status 1
+#### ERROR: Command 'arm-linux-gnueabihf-gcc' failed with exit status 1
 
 - install portaudio first (https://github.com/jgarff/rpi_ws281x/issues/294)
 
@@ -75,7 +75,7 @@ https://snowboy.kitt.ai
 
 </br>
 
-#### Error: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
+#### ERROR: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
 
 - if you got many ALBA errors reinstall raspian
 
