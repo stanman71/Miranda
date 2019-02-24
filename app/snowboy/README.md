@@ -92,7 +92,7 @@ http://docs.kitt.ai/snowboy/
 ### 4. Create Snowboy hotwords
 
 - log into https://snowboy.kitt.ai
-- create a new hotword 
+- create a new hotword (try to find hotwords as different as possible)
 - copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in "snowboy.py"
 - run  "snowboy.py" and test the new hotword
