@@ -1,9 +1,12 @@
-## snowboy setup on raspberry pi 
+## Snowboy setup on Raspberry Pi 3
+
 https://github.com/Kitt-AI/snowboy
 </br>
 https://github.com/wanleg/snowboyPi 
 </br>
 https://snowboy.kitt.ai
+</br>
+http://docs.kitt.ai/snowboy/
 </br>
 
 ### 1. Installation:
