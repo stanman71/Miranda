@@ -62,7 +62,7 @@ https://snowboy.kitt.ai
        >> make
        >> sudo make install
 
-- copy the python3 swig files from "snowboy/support/swig" into "snowboy/swig"
+- copy the python3 swig files into "snowboy/swig"
 - start "make" in console 
 - replace the old files of the parent dictionary
 
