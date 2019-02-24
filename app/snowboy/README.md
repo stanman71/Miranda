@@ -72,6 +72,8 @@ https://snowboy.kitt.ai
 
 - if you got many ALBA errors reinstall raspian
 
+</br>
+
 --------------
 --------------
 
