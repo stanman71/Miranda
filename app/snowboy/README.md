@@ -92,18 +92,8 @@ http://docs.kitt.ai/snowboy/
 ### 4. Create Snowboy hotwords
 
 - log into https://snowboy.kitt.ai
-- click on “Profile settings”, and copy your API token
-- change the appropriate fields (token, hotword, etc.) in "training_service.py"
-- use the following to record 3 wav files of your hotword to the same directory:
-
-       >> rec -r 16000 -c 1 -b 16 -e signed-integer FILENAME.wav
-          (aboard recording manually)
-
-- go to the SnowBoy dictionary and run the following to generate a pmdl:
-
-       >> python3 training_service.py 1.wav 2.wav 3.wav saved_model.pmdl
-
-- move "saved_model.pmdl" to ~/resources/ (rename for easier recall later)
+- create a new hotword 
+- copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in "snowboy.py"
 - run  "snowboy.py" and test the new hotword
 
