@@ -51,8 +51,8 @@ https://snowboy.kitt.ai
 
 #### ERROR: ImportError: dynamic module does not define module export function (PyInit__snowboydetect)
 
-- create snowboydetect again (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
-- install swig
+- create snowboydetect again (https://github.com/Kitt-AI/snowboy)
+- install swig (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
 
        >> wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
        >> tar xzf swig-3.0.12.tar.gz
