@@ -49,9 +49,9 @@ https://snowboy.kitt.ai
 
 </br>
 
-#### 3a. Create snowboydetect (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
+#### ERROR: ImportError: dynamic module does not define module export function (PyInit__snowboydetect)
 
-- OPTIONAL: ImportError: libpython3.4m.so.1.0: cannot open shared object file
+- create snowboydetect again (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
 - install swig
 
        >> wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
@@ -67,7 +67,7 @@ https://snowboy.kitt.ai
 
 </br>
 
-#### 3b. Error ALBA
+#### Error: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
 
 - if you got many ALBA errors reinstall raspian
 
