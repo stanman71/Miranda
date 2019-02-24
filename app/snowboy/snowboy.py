@@ -26,12 +26,12 @@ signal.signal(signal.SIGINT, signal_handler)
 #original line from kitt.ai/snowboy:
 #model = sys.argv[1]
 #Add custom voice models here:
-models = ['/home/pi/snowboy/resources/saved_model.pmdl']
+models = ['/home/pi/Python/SmartHome/snowboy/resources/snowboy.umdl']
 
 #original line from kitt.ai/snowboy:
 #detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 #use this so you don't need to specify voice model when calling this script
-detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5)
+detector = snowboydecoder.HotwordDetector(models, sensitivity=0.75)
 
 #put what should happen when snowboy detects hotword here:
 callbacks = [lambda: os.system("/home/pi/thingeriocurl.sh")]
