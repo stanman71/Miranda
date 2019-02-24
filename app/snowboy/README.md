@@ -26,7 +26,7 @@ https://snowboy.kitt.ai
 
 ### 2. Sound settings:
 
-- create ".asoundrc" in your home folder with correct hw settings (see example file in the folder support)
+- create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi)
 - "aplay -l" & "arecord -l" to find out hw cards (e.g "card 0, device 0" is "hw:0,0")
 - "speaker-test -c 2" to test audio out
 - "arecord -d 3 test.wav" to record a 3 second test clip 
@@ -44,6 +44,7 @@ https://snowboy.kitt.ai
 - extract the pre-packaged Snowboy binaries (https://github.com/Kitt-AI/snowboy) and rename directory to "snowboy"
 - copy the files of the raspi-version (https://github.com/wanleg/snowboyPi) in the same folder
 - go into the "snowboy" folder
+- change the path settings of the resources folder in "snowboy.py"
 - start "python3 snowboy.py"
 - default hotword is >> snowboy <<
 
