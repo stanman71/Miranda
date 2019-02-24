@@ -1,8 +1,7 @@
 import snowboydecoder
 import sys
 import signal
-#import this to call bash commands within python:
-import os
+
 
 interrupted = False
 
@@ -26,7 +25,8 @@ signal.signal(signal.SIGINT, signal_handler)
 #original line from kitt.ai/snowboy:
 #model = sys.argv[1]
 #Add custom voice models here:
-models = ['/home/pi/Python/SmartHome/snowboy/resources/snowboy.umdl']
+models = ['/home/pi/Python/SmartHome/snowboy/resources/snowboy.umdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/smart_mirror.umdl']
 
 #original line from kitt.ai/snowboy:
 #detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
@@ -34,7 +34,7 @@ models = ['/home/pi/Python/SmartHome/snowboy/resources/snowboy.umdl']
 detector = snowboydecoder.HotwordDetector(models, sensitivity=0.75)
 
 #put what should happen when snowboy detects hotword here:
-callbacks = [lambda: os.system("/home/pi/thingeriocurl.sh")]
+callbacks = [lambda: print("HOTWORD_1"), lambda: print("HOTWORD_2")]
 #without "lambda", callback will run immediately on startup, 
 #and then after each hotword detection:
 #callbacks = [os.system("/home/pi/test.sh")]

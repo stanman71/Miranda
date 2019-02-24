@@ -53,7 +53,7 @@ https://snowboy.kitt.ai
 - go into the "snowboy" folder
 - change the path settings of the resources folder in "snowboy.py"
 - start "python3 snowboy.py"
-- default hotword is >> snowboy <<
+- default hotwords are >> snowboy << and >> smart mirror << 
 
 </br>
 
@@ -101,7 +101,7 @@ https://snowboy.kitt.ai
        >> python3 training_service.py 1.wav 2.wav 3.wav saved_model.pmdl
 
 - move "saved_model.pmdl" to ~/resources/ (rename for easier recall later)
-- add the new hotword in "snowboy.py"
+- add the new hotword and action in "snowboy.py"
 - run  "snowboy.py" and test the new hotword
 
 </br>
