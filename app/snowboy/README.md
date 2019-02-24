@@ -101,9 +101,8 @@ https://snowboy.kitt.ai
        >> python3 training_service.py 1.wav 2.wav 3.wav saved_model.pmdl
 
 - move "saved_model.pmdl" to ~/resources/ (rename for easier recall later)
-- run the demo to make sure everything is working:
-
-       >> python3 demo.py ~/snowboy/resources/saved_model.pmdl
+- add the new hotword in "snowboy.py"
+- run  "snowboy.py" and test the new hotword
 
 </br>
 
