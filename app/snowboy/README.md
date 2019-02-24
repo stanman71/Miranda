@@ -42,9 +42,9 @@ https://snowboy.kitt.ai
 ### 3. Snowboy:
 
 - extract the pre-packaged Snowboy binaries to Pi & rename directory to "snowboy"
-- go into "home/pi/Python/SmartHome/snowboy"
+- go into the "snowboy" folder
 - start "python3 snowboy.py"
-- default test hotword is >> snowboy <<
+- default hotword is >> snowboy <<
 
 </br>
 
