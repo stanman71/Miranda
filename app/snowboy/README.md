@@ -15,7 +15,14 @@ https://snowboy.kitt.ai
 - Install dependencies:
 
        >> sudo apt -y install python-pyaudio python3-pyaudio sox python3-pip python-pip libatlas-base-dev
-       >> sudo apt-get install portaudio19-dev (if an error occurs during the installation of pyaudio)
+
+</br>
+
+####ERROR: Command 'arm-linux-gnueabihf-gcc' failed with exit status 1
+
+- install portaudio first (https://github.com/jgarff/rpi_ws281x/issues/294)
+
+       >>  sudo apt-get install portaudio19-dev
 
 </br>
 
