@@ -26,15 +26,25 @@ signal.signal(signal.SIGINT, signal_handler)
 #model = sys.argv[1]
 #Add custom voice models here:
 models = ['/home/pi/Python/SmartHome/snowboy/resources/snowboy.umdl',
-          '/home/pi/Python/SmartHome/snowboy/resources/smart_mirror.umdl']
+          '/home/pi/Python/SmartHome/snowboy/resources/smart_mirror.umdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/nordlichter.pmdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/mediterran.pmdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/hexenwerk.pmdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/entertainment.pmdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/relax.pmdl',
+          '/home/pi/Python/SmartHome/snowboy/resources/default.pmdl']
 
 #original line from kitt.ai/snowboy:
 #detector = snowboydecoder.HotwordDetector(model, sensitivity=0.5)
 #use this so you don't need to specify voice model when calling this script
-detector = snowboydecoder.HotwordDetector(models, sensitivity=0.75)
+detector = snowboydecoder.HotwordDetector(models, sensitivity=0.7)
 
 #put what should happen when snowboy detects hotword here:
-callbacks = [lambda: print("HOTWORD_1"), lambda: print("HOTWORD_2")]
+callbacks = [lambda: print("HOTWORD_1"), lambda: print("HOTWORD_2"),
+             lambda: print("HOTWORD_3"), lambda: print("HOTWORD_4"),
+             lambda: print("HOTWORD_5"), lambda: print("HOTWORD_6"),
+             lambda: print("HOTWORD_7"), lambda: print("HOTWORD_8")]
+             
 #without "lambda", callback will run immediately on startup, 
 #and then after each hotword detection:
 #callbacks = [os.system("/home/pi/test.sh")]

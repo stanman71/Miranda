@@ -10,11 +10,11 @@ from app.database.database import *
 
 ''' CSS PATH '''
 # Windows Home
-PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
+#PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 # Windows Work
 #PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 # RasPi:
-#PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
+PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
 
 # create role "superuser"
@@ -298,7 +298,7 @@ def dashboard_led_scene_05():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes_custom.html',
+    return render_template('dashboard_led_scenes_custom.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
