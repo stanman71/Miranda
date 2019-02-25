@@ -92,9 +92,9 @@
             <form method="GET" enctype="multipart/form-data">
               <select class="btn btn-secondary dropdown-toggle" name="get_program">
                 {% for each in dropdown_list %}
-                {% if each != None %}
-                <option value="{{each}}">{{each}}</option>
-                {% endif %}
+                  {% if each != None %}
+                   <option value="{{each}}">{{each}}</option>
+                  {% endif %}
                 {% endfor %}
               </select>
               <input type="submit" class="btn btn-secondary" value="Programm anzeigen">
@@ -171,33 +171,29 @@
 
 <!-- rename a program -->
 
+      {% if program_delete != "" %}  
+
       <div class="panel panel-default">
-        <div class="panel-body">
-          {% if program != "" %}  
+        <div class="panel-body">                     
           <form method="GET">
             <div class="form-group">
               <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
             </div>
               <input type="submit" class="btn btn-secondary" value="Name ändern" />
               <br>
-          </form>   
-          {% endif %} 
+          </form>  
 
 <!-- delete a program -->
 
           <div class="dropdown text-right">
             <form method="GET" enctype="multipart/form-data">
-              <select class="btn btn-secondary dropdown-toggle" name="delete_program">
-                {% for each in dropdown_list %}
-                {% if each != None %}
-                <option value="{{each}}">{{each}}</option>
-                {% endif %}
-                {% endfor %}
-              </select>
-              <input type="submit" class="btn btn-danger text-right" value="Programm löschen">
+              <input type="submit" class="btn btn-danger text-right" name="delete_program" value="{{ program.name }} löschen">
             </form>
           </div> 
         </div>
-      </div> 
+
+      {% endif %}
+      
+    </div> 
 
 {% endblock %}

@@ -12,9 +12,9 @@ from app.database.database import *
 # Windows Home
 #PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 # Windows Work
-#PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
+PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 # RasPi:
-PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
+#PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
 
 
 # create role "superuser"
@@ -29,9 +29,9 @@ def superuser_required(f):
     return wrap
 
 
-""" ######### """
-""" sites led """
-""" ######### """
+""" ################ """
+""" sites led custom """
+""" ################ """
 
 # led scene 01
 @app.route('/dashboard/led/scene_01', methods=['GET', 'POST'])
@@ -77,7 +77,7 @@ def dashboard_led_scene_01():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('dashboard_led_scenes_custom.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -132,7 +132,7 @@ def dashboard_led_scene_02():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html',
+    return render_template('dashboard_led_scenes_custom.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -187,7 +187,7 @@ def dashboard_led_scene_03():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('dashboard_led_scenes_custom.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -242,7 +242,7 @@ def dashboard_led_scene_04():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('dashboard_led_scenes_custom.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -298,7 +298,7 @@ def dashboard_led_scene_05():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_LED_scenes.html',
+    return render_template('dashboard_LED_scenes_custom.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -309,7 +309,11 @@ def dashboard_led_scene_05():
                             )
 
 
-# led scene 06
+""" ############# """
+""" sites led fix """
+""" ############# """
+
+# led scene 06 (north lights)
 @app.route('/dashboard/led/scene_06', methods=['GET', 'POST'])
 @login_required
 @superuser_required
@@ -353,7 +357,7 @@ def dashboard_led_scene_06():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html',
+    return render_template('dashboard_led_scenes_fix.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -364,7 +368,7 @@ def dashboard_led_scene_06():
                             )
 
 
-# led scene 07
+# led scene 07 (sunshine)
 @app.route('/dashboard/led/scene_07', methods=['GET', 'POST'])
 @login_required
 @superuser_required
@@ -408,7 +412,7 @@ def dashboard_led_scene_07():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('dashboard_led_scenes_fix.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -463,7 +467,7 @@ def dashboard_led_scene_08():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('dashboard_led_scenes_fix.html', 
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
@@ -519,13 +523,125 @@ def dashboard_led_scene_09():
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
 
-    return render_template('dashboard_led_scenes.html',
+    return render_template('dashboard_led_scenes_fix.html',
                             led_update=led_update,
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
                             number=scene,
                             active09="active",
+                            error_massage=error_massage
+                            )
+
+
+# led scene 10
+@app.route('/dashboard/led/scene_10', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_led_scene_10():
+    scene = 10
+    error_massage = ""
+
+    if request.method == "GET":  
+            
+        # change scene name
+        name = request.args.get("name") 
+        if name is not None:
+            error_massage = SET_SCENE_NAME(scene, name)
+    
+        # set RGB color
+        rgb_scene = []
+        for i in range(1,10):
+            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
+        SET_SCENE_COLOR(scene, rgb_scene)
+
+        # set brightness
+        brightness = []
+        for i in range(1,10):
+            brightness.append(request.args.get(str(i)))
+        SET_SCENE_BRIGHTNESS(scene, brightness)  
+
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
+ 
+
+    if request.method == "POST": 
+        # delete scene
+        if 'delete' in request.form:
+            DEL_SCENE(scene)
+
+    led_update = ""
+    led_update = LED_SET_SCENE(scene)
+
+    entries_scene = GET_SCENE(scene)[0]
+    scene_name    = GET_SCENE(scene)[1]
+    dropdown_list = GET_DROPDOWN_LIST_LED()
+
+    return render_template('dashboard_led_scenes_fix.html',
+                            led_update=led_update,
+                            entries_scene=entries_scene,
+                            scene_name=scene_name,
+                            dropdown_list=dropdown_list,
+                            number=scene,
+                            active10="active",
+                            error_massage=error_massage
+                            )
+
+
+# led scene 99
+@app.route('/dashboard/led/scene_99', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_led_scene_99():
+    scene = 99
+    error_massage = ""
+
+    if request.method == "GET":  
+            
+        # change scene name
+        name = request.args.get("name") 
+        if name is not None:
+            error_massage = SET_SCENE_NAME(scene, name)
+    
+        # set RGB color
+        rgb_scene = []
+        for i in range(1,10):
+            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
+        SET_SCENE_COLOR(scene, rgb_scene)
+
+        # set brightness
+        brightness = []
+        for i in range(1,10):
+            brightness.append(request.args.get(str(i)))
+        SET_SCENE_BRIGHTNESS(scene, brightness)  
+
+        # add led
+        add_led = request.args.get("led_scene") 
+        if add_led is not None:
+            ADD_LED(scene, add_led)
+ 
+
+    if request.method == "POST": 
+        # delete scene
+        if 'delete' in request.form:
+            DEL_SCENE(scene)
+
+    led_update = ""
+    led_update = LED_SET_SCENE(scene)
+
+    entries_scene = GET_SCENE(scene)[0]
+    scene_name    = GET_SCENE(scene)[1]
+    dropdown_list = GET_DROPDOWN_LIST_LED()
+
+    return render_template('dashboard_led_scenes_fix.html',
+                            led_update=led_update,
+                            entries_scene=entries_scene,
+                            scene_name=scene_name,
+                            dropdown_list=dropdown_list,
+                            number=scene,
+                            active99="active",
                             error_massage=error_massage
                             )
 
@@ -554,7 +670,10 @@ def delete_led(scene, id):
         return redirect(url_for('dashboard_led_scene_08'))
     if scene == 9:
         return redirect(url_for('dashboard_led_scene_09'))
-
+    if scene == 10:
+        return redirect(url_for('dashboard_led_scene_10'))
+    if scene == 99:
+        return redirect(url_for('dashboard_led_scene_99'))
 
 # led programs
 @app.route('/dashboard/led/programs', methods=['GET', 'POST'])
@@ -565,6 +684,7 @@ def dashboard_led_programs():
     rgb = "rgb(0, 0, 0)"
     led_update = ""
     error_massage = ""
+    program_delete = ""
 
     if request.method == "GET": 
         # create a new program
@@ -576,6 +696,10 @@ def dashboard_led_programs():
         get_Program = request.args.get("get_program") 
         if get_Program is not None:
             program = GET_PROGRAM_NAME(get_Program)
+            if "SUNRISE" in program.name:
+                program_delete = ""
+            else:
+                program_delete = program
 
         # update programs, i = program ID
         for i in range(1,25):
@@ -606,14 +730,22 @@ def dashboard_led_programs():
         # delete the selected program
         delete_Program = request.args.get("delete_program") 
         if delete_Program is not None:
+            delete_Program = delete_Program.split(" ")[0]
+            print(delete_Program)
             DELETE_PROGRAM(delete_Program)              
 
-    dropdown_list = GET_DROPDOWN_LIST_PROGRAMS()
+    dropdown_list        = GET_DROPDOWN_LIST_PROGRAMS()
+    dropdown_list_delete = GET_DROPDOWN_LIST_PROGRAMS()
+
+    if "SUNRISE" in dropdown_list_delete:
+        dropdown_list_delete.remove("SUNRISE")
 
     return render_template('dashboard_led_programs.html',
                             led_update=led_update,
                             dropdown_list=dropdown_list,
+                            dropdown_list_delete=dropdown_list_delete,
                             program=program,
+                            program_delete=program_delete,
                             rgb=rgb,
                             error_massage=error_massage
                             )

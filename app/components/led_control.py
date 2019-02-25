@@ -70,12 +70,10 @@ def GET_LED_NAMES():
 """ ############# """
 
 def LED_SET_SCENE(scene, brightness_global = 100):
+
     b = CONNECT_BRIDGE()
     try:
         lights = b.get_light_objects('list')
-        # deactivate all led
-        for light in lights:
-            light.on = False
 
         # get scene settings
         entries = GET_SCENE(scene)
@@ -99,6 +97,42 @@ def LED_SET_SCENE(scene, brightness_global = 100):
                   
     except:
         return False          
+
+
+    """
+    b = CONNECT_BRIDGE()
+    try:
+        lights = b.get_light_objects('list') # get all leds
+        light_settings = GET_SCENE(scene)    # get all settings from database
+
+        for light in lights:
+            for setting in light_settings:
+
+                # led is necessary
+                if light.name == setting.led_name:
+
+                    final_xy   = RGBtoXY(setting.color_red, setting.color_green, setting.color_blue)
+                    current_xy = light.xy
+
+                    difference_x = final_xy[0] - current_xy[0]
+                    difference_y = final_xy[1] - current_xy[1]
+
+                    # change color to the new values
+                    for in range (0,11):
+                        light.xy = ( (current_xy[0] + (difference_x / 10)), (current_xy[1] + (difference_y / 10)) )
+                        time.sleep(1)
+
+                # led is not necessary
+                else:
+                    # turn of the led
+                    current_xy = light.xy
+                    for in range (0,11):
+                        light.xy = ( (current_xy[0] - (current_xy[0] / 10)), (current_xy[1] + (current_xy[1] / 10)) )
+                        time.sleep(1)                        
+    except:
+        return False 
+
+    """
 
 
 """ ################# """

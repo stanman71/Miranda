@@ -29,7 +29,7 @@ def index():
             brightness_global = request.args.get("brightness_global")
             LED_SET_SCENE(scene,brightness_global)
             # add radio check
-            for i in range (1,10):
+            for i in range (1,12):
                 if scene == i:
                     value_list[i-1] = "checked = 'on'"
         except:

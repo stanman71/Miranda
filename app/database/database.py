@@ -164,6 +164,30 @@ class Scene_09(db.Model):
     color_blue  = db.Column(db.Integer, server_default=("0"))
     brightness  = db.Column(db.Integer, server_default=("254"))
 
+class Scene_10(db.Model):
+    __tablename__ = 'scene_10'
+    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("10"))
+    scene_name  = db.relationship('Scenes')
+    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
+    led_name    = db.relationship('LED') 
+    color_red   = db.Column(db.Integer, server_default=("0"))
+    color_green = db.Column(db.Integer, server_default=("0"))
+    color_blue  = db.Column(db.Integer, server_default=("0"))
+    brightness  = db.Column(db.Integer, server_default=("254"))
+
+class Scene_99(db.Model):
+    __tablename__ = 'scene_99'
+    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("99"))
+    scene_name  = db.relationship('Scenes')
+    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
+    led_name    = db.relationship('LED') 
+    color_red   = db.Column(db.Integer, server_default=("0"))
+    color_green = db.Column(db.Integer, server_default=("0"))
+    color_blue  = db.Column(db.Integer, server_default=("0"))
+    brightness  = db.Column(db.Integer, server_default=("254"))
+
 class Plants(db.Model):
     __tablename__ = 'plants'
     id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
@@ -279,11 +303,16 @@ if Bridge.query.filter_by().first() is None:
 
 # Create default scenes
 if Scenes.query.filter_by().first() is None:   
-    for i in range(1,10):
+    for i in range(1,11):
         scene = Scenes(
             id   = i,
             name = "",
-        )
+        )        
+        db.session.add(scene)
+        scene = Scenes(
+            id   = 99,
+            name = "",
+        )        
         db.session.add(scene)
         db.session.commit()
 
@@ -498,7 +527,18 @@ def ADD_LED(Scene, Name):
             scene = Scene_09(
                 led_id = entry.id,
             )      
-
+    if Scene == 10:
+        check_entry = Scene_10.query.filter_by(led_id=entry.id).first()
+        if check_entry is None:
+            scene = Scene_10(
+                led_id = entry.id,
+            )  
+    if Scene == 99:
+        check_entry = Scene_99.query.filter_by(led_id=entry.id).first()
+        if check_entry is None:
+            scene = Scene_99(
+                led_id = entry.id,
+            )  
     try:        
         db.session.add(scene)
         db.session.commit()        
@@ -524,6 +564,10 @@ def DEL_LED(Scene, ID):
         Scene_08.query.filter_by(led_id=ID).delete()
     if Scene == 9:
         Scene_09.query.filter_by(led_id=ID).delete()
+    if Scene == 10:
+        Scene_10.query.filter_by(led_id=ID).delete()
+    if Scene == 99:
+        Scene_99.query.filter_by(led_id=ID).delete()
 
     db.session.commit()
 
@@ -574,6 +618,14 @@ def GET_SCENE(Scene):
     if Scene == 9:
         if Scene_09.query.all():
             entries = Scene_09.query.all()
+            name = entries[0].scene_name.name
+    if Scene == 10:
+        if Scene_10.query.all():
+            entries = Scene_10.query.all()
+            name = entries[0].scene_name.name
+    if Scene == 99:
+        if Scene_99.query.all():
+            entries = Scene_99.query.all()
             name = entries[0].scene_name.name
 
     return (entries, name)
@@ -650,6 +702,18 @@ def SET_SCENE_COLOR(Scene, rgb_scene):
                 entry = Scene_09.query.filter_by(led_id=i+1).first()
                 rgb_color = re.findall(r'\d+', rgb_scene[i])
                 break 
+    if Scene == 10:
+        for i in range(len(rgb_scene)):
+            if rgb_scene[i] is not None:
+                entry = Scene_10.query.filter_by(led_id=i+1).first()
+                rgb_color = re.findall(r'\d+', rgb_scene[i])
+                break 
+    if Scene == 99:
+        for i in range(len(rgb_scene)):
+            if rgb_scene[i] is not None:
+                entry = Scene_99.query.filter_by(led_id=i+1).first()
+                rgb_color = re.findall(r'\d+', rgb_scene[i])
+                break 
 
     try:
         entry.color_red   = rgb_color[0]
@@ -716,6 +780,18 @@ def SET_SCENE_BRIGHTNESS(Scene, brightness):
                 entry = Scene_09.query.filter_by(led_id=i+1).first()
                 brightness = brightness[i]
                 break
+    if Scene == 10:
+        for i in range(len(brightness)):
+            if brightness[i] is not None:
+                entry = Scene_10.query.filter_by(led_id=i+1).first()
+                brightness = brightness[i]
+                break
+    if Scene == 99:
+        for i in range(len(brightness)):
+            if brightness[i] is not None:
+                entry = Scene_99.query.filter_by(led_id=i+1).first()
+                brightness = brightness[i]
+                break
 
     try:
         entry.brightness = brightness
@@ -735,14 +811,6 @@ def DEL_SCENE(Scene):
         Scene_04.query.delete()
     if Scene == 5:
         Scene_05.query.delete()
-    if Scene == 6:
-        Scene_06.query.delete()
-    if Scene == 7:
-        Scene_07.query.delete()
-    if Scene == 8:
-        Scene_08.query.delete()
-    if Scene == 9:
-        Scene_09.query.delete()
 
     # delete scene name
     entry = Scenes.query.get(Scene)
