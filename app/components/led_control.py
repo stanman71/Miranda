@@ -159,7 +159,6 @@ def PROGRAM_SET_BRIGHTNESS(brightness_settings):
     except:
         return False    
 
-
 def PROGRAM_SET_COLOR(rgb_settings):
     b = CONNECT_BRIDGE()
     try:
@@ -174,7 +173,6 @@ def PROGRAM_SET_COLOR(rgb_settings):
         lights[int(rgb_settings[0]) - 1].xy = xy  
     except:
         return False    
-
 
 def START_PROGRAM(id):  
     b = CONNECT_BRIDGE()

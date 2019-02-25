@@ -139,6 +139,8 @@
         </div>
       </div> 
 
+      {% endif %}  
+
 <!-- scene name -->
 
       <div class="panel panel-default">
@@ -165,13 +167,15 @@
       </div>
     </div> 
 
-<!-- option buttons --> 
+<!-- delete button --> 
+
+    {% if entries_scene != None %}
 
     <form action="" method="post"> 
       <input type="submit" class="btn pull-right btn-danger" name="delete" value="Szene löschen"/>
     </form>
 
-    {% endif %}  
+    {% endif %} 
 
   </div>
 </div>    
