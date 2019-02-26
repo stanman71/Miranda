@@ -28,7 +28,7 @@ def superuser_required(f):
 @login_required
 @superuser_required
 def dashboard_plants():
-    error_massage = ""
+    error_message = ""
     water_volume = ""
     moisture = ""
 
@@ -36,14 +36,14 @@ def dashboard_plants():
         if request.args.get("name") is not None:
             # controll name 
             if request.args.get("name") == "":
-                error_massage = "Kein Name angegeben"     
+                error_message = "Kein Name angegeben"     
             else:         
                 # get informations
                 name         = request.args.get("name")
                 sensor_id    = request.args.get("set_sensor")
                 pump_id      = request.args.get("set_pump")
                 water_volume = request.args.get("set_water_volume")
-                error_massage = ADD_PLANT(name, sensor_id, pump_id, water_volume)
+                error_message = ADD_PLANT(name, sensor_id, pump_id, water_volume)
 
         for i in range (1,25):
             # change moisture
@@ -68,7 +68,7 @@ def dashboard_plants():
                             plants_list=plants_list,
                             moisture=moisture,
                             water_volume=water_volume,
-                            error_massage=error_massage)
+                            error_message=error_message)
 
 
 # Delete plant

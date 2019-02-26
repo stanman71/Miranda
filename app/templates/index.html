@@ -41,13 +41,19 @@
     <div class="row">
       <div class="col">  
 
-<!-- LED error massage -->
+<!-- LED error message -->
 
-      {% if led_update == False %}
+      {% if error_message != "" %}
+        <div class="alert alert-danger" role="alert">
+          {{ error_message }}
+        </div>      
+      {% endif %}     
+      
+      {% if program_message != "" %}
         <div class="alert alert-danger" role="alert">
           Keine Verbindung zur Bridge
         </div>      
-      {% endif %}      
+      {% endif %}  
 
 <!-- scene selection -->
     
@@ -91,7 +97,7 @@
 
 <!-- program message -->
 
-        {% if program_massage == True %}
+        {% if program_message == True %}
           <div class="alert alert-success text-center" role="alert">
             Programm abgeschlossen
           </div>      

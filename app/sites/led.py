@@ -39,14 +39,14 @@ def superuser_required(f):
 @superuser_required
 def dashboard_led_scene_01():
     scene = 1
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene  = []
@@ -84,7 +84,7 @@ def dashboard_led_scene_01():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active01="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -94,14 +94,14 @@ def dashboard_led_scene_01():
 @superuser_required
 def dashboard_led_scene_02():
     scene = 2
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -139,7 +139,7 @@ def dashboard_led_scene_02():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active02="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -149,14 +149,14 @@ def dashboard_led_scene_02():
 @superuser_required
 def dashboard_led_scene_03():
     scene = 3
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -194,7 +194,7 @@ def dashboard_led_scene_03():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active03="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -204,14 +204,14 @@ def dashboard_led_scene_03():
 @superuser_required
 def dashboard_led_scene_04():
     scene = 4
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -249,7 +249,7 @@ def dashboard_led_scene_04():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active04="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -259,14 +259,14 @@ def dashboard_led_scene_04():
 @superuser_required
 def dashboard_led_scene_05():
     scene = 5
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -305,7 +305,7 @@ def dashboard_led_scene_05():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active05="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -319,14 +319,14 @@ def dashboard_led_scene_05():
 @superuser_required
 def dashboard_led_scene_06():
     scene = 6
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -364,7 +364,7 @@ def dashboard_led_scene_06():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active06="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -374,14 +374,14 @@ def dashboard_led_scene_06():
 @superuser_required
 def dashboard_led_scene_07():
     scene = 7
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -419,7 +419,7 @@ def dashboard_led_scene_07():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active07="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -429,14 +429,14 @@ def dashboard_led_scene_07():
 @superuser_required
 def dashboard_led_scene_08():
     scene = 8
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -474,7 +474,7 @@ def dashboard_led_scene_08():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active08="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -484,14 +484,14 @@ def dashboard_led_scene_08():
 @superuser_required
 def dashboard_led_scene_09():
     scene = 9
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -530,7 +530,7 @@ def dashboard_led_scene_09():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active09="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -540,14 +540,14 @@ def dashboard_led_scene_09():
 @superuser_required
 def dashboard_led_scene_10():
     scene = 10
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -586,7 +586,7 @@ def dashboard_led_scene_10():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active10="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -596,14 +596,14 @@ def dashboard_led_scene_10():
 @superuser_required
 def dashboard_led_scene_99():
     scene = 99
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET":  
             
         # change scene name
         name = request.args.get("name") 
         if name is not None:
-            error_massage = SET_SCENE_NAME(scene, name)
+            error_message = SET_SCENE_NAME(scene, name)
     
         # set RGB color
         rgb_scene = []
@@ -642,7 +642,7 @@ def dashboard_led_scene_99():
                             dropdown_list=dropdown_list,
                             number=scene,
                             active99="active",
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -683,14 +683,14 @@ def dashboard_led_programs():
     program = ""
     rgb = "rgb(0, 0, 0)"
     led_update = ""
-    error_massage = ""
+    error_message = ""
     program_delete = ""
-
+    
     if request.method == "GET": 
         # create a new program
         new_program = request.args.get("new_program") 
         if new_program is not None and new_program is not "":
-            error_massage = NEW_PROGRAM(new_program)
+            error_message = NEW_PROGRAM(new_program)
 
         # get the selected program
         get_Program = request.args.get("get_program") 
@@ -747,7 +747,7 @@ def dashboard_led_programs():
                             program=program,
                             program_delete=program_delete,
                             rgb=rgb,
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 
@@ -757,7 +757,8 @@ def dashboard_led_programs():
 @superuser_required
 def dashboard_led_settings():
     led_update = "" 
-
+    error_message = ""
+    
     if request.method == "GET": 
         # change bridge ip
         bridge_ip = request.args.get("bridge_ip") 
@@ -767,11 +768,13 @@ def dashboard_led_settings():
 
     led_list = GET_ALL_LEDS()
     ip = GET_BRIDGE_IP()  
+    error_message = TEST_BRIDGE()
 
     return render_template('dashboard_led_settings.html',
                             led_update=led_update,
                             ip=ip,
-                            led_list=led_list
+                            led_list=led_list,
+                            error_message=error_message
                             )
     
 

@@ -3,6 +3,4 @@ flask_bootstrap
 flask_sqlalchemy 
 flask_wtf 
 flask_login 
-flask_apscheduler
 wtforms 
-pyaudio

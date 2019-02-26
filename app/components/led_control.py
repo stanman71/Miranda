@@ -41,11 +41,20 @@ def RGBtoXY(r, g, b):
     return (xFinal, yFinal)
 
 
+def TEST_BRIDGE():
+    try:
+        b = Bridge(GET_BRIDGE_IP())
+        b.connect()     
+    except Exception as e:
+        return str(e)
+
+
 def CONNECT_BRIDGE():
     try:
         b = Bridge(GET_BRIDGE_IP())
         b.connect() 
-        return b       
+        return b  
+             
     except:
         return False
 

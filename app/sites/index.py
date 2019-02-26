@@ -12,9 +12,10 @@ from app.database.database import *
 def index():
 
     connect_bridge  = False
-    program_massage = False
+    program_message = False
     scene = 0
     brightness_global = 100
+    error_message = ""
 
     value_list = ["", "", "", "", "", "", "", "", ""]
 
@@ -38,12 +39,13 @@ def index():
         # select a program   
         try:     
             program = int(request.args.get("radio_program"))
-            program_massage = START_PROGRAM(program)            
+            program_message = START_PROGRAM(program)            
         except:
             pass
 
     scene_list   = GET_ALL_SCENES()
     program_list = GET_ALL_PROGRAMS()
+    error_message = TEST_BRIDGE()
 
     return render_template('index.html', 
                             led_update=led_update,
@@ -51,6 +53,7 @@ def index():
                             value_list=value_list,                         
                             brightness_global=brightness_global,
                             program_list=program_list,
-                            program_massage=program_massage
+                            program_message=program_message,
+                            error_message=error_message
                             )
 

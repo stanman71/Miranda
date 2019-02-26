@@ -92,7 +92,7 @@ def scheduler_job():
 @login_required
 @superuser_required
 def dashboard_schedular():
-    error_massage = ""
+    error_message = ""
     set_name = ""
     set_task = ""
 
@@ -102,11 +102,11 @@ def dashboard_schedular():
 
             # controll name and task input
             if request.args.get("set_name") == "":
-                error_massage = "Kein Name angegeben"
+                error_message = "Kein Name angegeben"
                 set_task = request.args.get("set_task")
 
             elif request.args.get("set_task") == "":
-                error_massage = "Keine Aufgabe angegeben"  
+                error_message = "Keine Aufgabe angegeben"  
                 set_name = request.args.get("set_name")  
                           
             else:         
@@ -121,7 +121,7 @@ def dashboard_schedular():
                 else:
                     repeat = ""
 
-                error_massage = ADD_TASK(name, day, hour, minute, task, repeat)
+                error_message = ADD_TASK(name, day, hour, minute, task, repeat)
  
     schedular_list = GET_ALL_TASKS()
 
@@ -140,7 +140,7 @@ def dashboard_schedular():
                             dropdown_list_hours=dropdown_list_hours,
                             dropdown_list_minutes=dropdown_list_minutes,
                             schedular_list=schedular_list,
-                            error_massage=error_massage,
+                            error_message=error_message,
                             set_name=set_name,
                             set_task=set_task
                             )

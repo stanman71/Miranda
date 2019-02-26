@@ -70,7 +70,7 @@ def login():
 # signup
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    error_massage = ""
+    error_message = ""
 
     form = RegisterForm()
 
@@ -78,9 +78,9 @@ def signup():
         check_name  = GET_USER_BY_NAME(form.username.data)
         check_email = GET_EMAIL(form.email.data)
         if check_name is not None:     
-            error_massage = "Name schon vergeben"
+            error_message = "Name schon vergeben"
         elif check_email is not None:     
-            error_massage = "eMail schon vergeben"
+            error_message = "eMail schon vergeben"
         else:
             hashed_password = generate_password_hash(form.password.data, method='sha256')
             ADD_USER(form.username.data, form.email.data, hashed_password)
@@ -88,7 +88,7 @@ def signup():
       
     return render_template('signup.html', 
                             form=form,
-                            error_massage=error_massage
+                            error_message=error_message
                             )
 
 

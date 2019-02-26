@@ -30,7 +30,7 @@ def dashboard_sensors():
     sensor_values = None
     sensor_name = ""
     sensor_id = ""
-    error_massage = ""
+    error_message = ""
 
     if request.method == "GET": 
 
@@ -41,12 +41,12 @@ def dashboard_sensors():
             sensor_name = GET_SENSOR_NAME(sensor_id)
 
             if sensor_values == None:
-                error_massage = "Keine Daten vorhanden"    
+                error_message = "Keine Daten vorhanden"    
 
         # delete the values of a selected sensor
         if request.args.get("delete_values") is not None:
             delete_values = request.args.get("delete_values") 
-            error_massage = DELETE_SENSOR_VALUES(delete_values)
+            error_message = DELETE_SENSOR_VALUES(delete_values)
             sensor_name = GET_SENSOR_NAME(delete_values)
 
     dropdown_list_sensor = GET_ALL_SENSORS()
@@ -56,7 +56,7 @@ def dashboard_sensors():
                             sensor_values=sensor_values,
                             sensor_name=sensor_name,
                             sensor_id=sensor_id,
-                            error_massage=error_massage)
+                            error_message=error_message)
 
 
 """ #### """

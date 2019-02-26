@@ -12,7 +12,7 @@
 {% block scripts %}
   {{ super() }}
   {{ colorpicker.loader() }}
-  {{ colorpicker.picker(ids=[".scene_1", ".scene_2", ".scene_3", ".scene_4", ".scene_5" ]) }}
+  {{ colorpicker.picker(ids=[".led_1", ".led_2", ".led_3", ".led_4", ".led_5", ".led_6", ".led_7", ".led_8", ".led_9", ".led_10"]) }}
 {% endblock scripts %}
 
 {% block content %}
@@ -56,7 +56,7 @@
   <div class="row">
     <div class="col">
 
-<!-- led error massages -->
+<!-- led error messages -->
 
     {% if led_update == False %}
     <div class="alert alert-danger" role="alert">
@@ -64,9 +64,9 @@
     </div>      
     {% endif %}     
 
-    {% if error_massage != "" %}
+    {% if error_message != "" %}
       <div class="alert alert-danger" role="alert">
-        {{ error_massage }}
+        {{ error_message }}
       </div>      
     {% endif %}
 
@@ -115,7 +115,7 @@
                 <td>{{ entry.color_blue }}</td>   
                 <td>
                   <form method="GET" class="verticalform">
-                    <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control scene_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
+                    <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control led_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
                     <input type="submit" class="btn btn-secondary" value="Farbe ändern" />  
                   </form>
                 </td>
