@@ -92,7 +92,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### ERROR: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
 
-- if you got many ALBA errors and snowboy doesn't work reinstall raspian
+- if you got many ALBA errors like above and snowboy doesn't work reinstall raspian
 
 </br>
 
