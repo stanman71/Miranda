@@ -33,7 +33,7 @@ def SNOWBOY_START():
                '/home/pi/Python/SmartHome/app/snowboy/resources/default.pmdl']
 
      # modify sensitivity for better detection / accuracy
-     detector = snowboydecoder.HotwordDetector(models, sensitivity=0.55)
+     detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5)
 
      # put what should happen when snowboy detects hotword here:
      callbacks = [lambda: print("HOTWORD_1"), 

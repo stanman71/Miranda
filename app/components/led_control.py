@@ -19,6 +19,7 @@ def EnhanceColor(normalized):
     else:
         return normalized / 12.92
 
+
 def RGBtoXY(r, g, b):
     rNorm = r / 255.0
     gNorm = g / 255.0
@@ -109,42 +110,6 @@ def LED_SET_SCENE(scene, brightness_global = 100):
         return False          
 
 
-    """
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list') # get all leds
-        light_settings = GET_SCENE(scene)    # get all settings from database
-
-        for light in lights:
-            for setting in light_settings:
-
-                # led is necessary
-                if light.name == setting.led_name:
-
-                    final_xy   = RGBtoXY(setting.color_red, setting.color_green, setting.color_blue)
-                    current_xy = light.xy
-
-                    difference_x = final_xy[0] - current_xy[0]
-                    difference_y = final_xy[1] - current_xy[1]
-
-                    # change color to the new values
-                    for in range (0,11):
-                        light.xy = ( (current_xy[0] + (difference_x / 10)), (current_xy[1] + (difference_y / 10)) )
-                        time.sleep(1)
-
-                # led is not necessary
-                else:
-                    # turn of the led
-                    current_xy = light.xy
-                    for in range (0,11):
-                        light.xy = ( (current_xy[0] - (current_xy[0] / 10)), (current_xy[1] + (current_xy[1] / 10)) )
-                        time.sleep(1)                        
-    except:
-        return False 
-
-    """
-
-
 """ ################# """
 """ program functions """
 """ ################# """
@@ -169,6 +134,7 @@ def PROGRAM_SET_BRIGHTNESS(brightness_settings):
     except:
         return False    
 
+
 def PROGRAM_SET_COLOR(rgb_settings):
     b = CONNECT_BRIDGE()
     try:
@@ -183,6 +149,7 @@ def PROGRAM_SET_COLOR(rgb_settings):
         lights[int(rgb_settings[0]) - 1].xy = xy  
     except:
         return False    
+
 
 def START_PROGRAM(id):  
     b = CONNECT_BRIDGE()
