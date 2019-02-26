@@ -10,8 +10,9 @@ http://docs.kitt.ai/snowboy/
 </br>
 https://pimylifeup.com/raspberry-pi-snowboy/
 </br>
+</br>
 
-### 1. Installation:
+### 1. Installation
 
 - Start with a fresh install of Raspbian (Lite or Regular, this guide assumes Lite)
 
@@ -36,7 +37,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 </br>
 
-### 2. Sound settings:
+### 2. Sound settings
 
 - create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi)
 - "aplay -l" & "arecord -l" to find out hw cards (e.g "card 0, device 0" is "hw:0,0")
@@ -51,7 +52,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 </br>
 
-### 3. Snowboy:
+### 3. Snowboy
 
 - extract the pre-packaged Snowboy binaries (https://github.com/Kitt-AI/snowboy) and rename directory to "snowboy"
 - copy the files of the raspi-version (https://github.com/wanleg/snowboyPi) in the same folder
@@ -115,7 +116,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 </br>
 
-### 5. Autostart Snowboy:
+### 5. Autostart Snowboy
 
 - copy "snowboy.service" to "/lib/systemd/system/"
 - you may need to run this:
