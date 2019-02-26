@@ -20,15 +20,18 @@ from app.components.plants_control import *
 from app.database.database import *
 
 
+# stop all pumps
+for plant in GET_ALL_PLANTS():
+    STOP_PUMP(plant.pump_id) 
+
+
 """ ############## """
 """ initialisation """
 """ ############## """
 
 @app.before_first_request
 def initialisation():
-    for plant in GET_ALL_PLANTS():
-        STOP_PUMP(plant.pump_id) 
-
+    pass
 
 
 #app.run(host="0.0.0.0")
