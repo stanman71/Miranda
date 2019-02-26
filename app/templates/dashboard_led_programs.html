@@ -39,7 +39,7 @@
           <ul class="dropdown-menu">
             <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
             <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
-            <li><a href="{{ url_for('dashboard_led_settings') }}">Einstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_led_settings') }}">HUE Einstellungen</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
@@ -60,7 +60,7 @@
 
     {% if led_update == False %}
     <div class="alert alert-danger" role="alert">
-      Keine Verbindung zur Bridge
+      Keine Verbindung zur HUE Bridge
     </div>      
     {% endif %}   
 
@@ -73,7 +73,7 @@
 <!-- create new programs -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Programme</b></font></div>
+        <div class="panel-heading"><font color="black"><b>LED Programme</b></font></div>
         <div class="panel-body">
           <form method="GET">
             <div class="form-group">

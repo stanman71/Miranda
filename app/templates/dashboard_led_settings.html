@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  LED Einstellungen
+  HUE Einstellungen
 {% endblock %}
 
 {% block styles %}
@@ -33,7 +33,7 @@
           <ul class="dropdown-menu">
             <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
             <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
-            <li><a href="{{ url_for('dashboard_led_settings') }}">Einstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_led_settings') }}">HUE Einstellungen</a></li>
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_schedular') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
@@ -60,14 +60,14 @@
 
     {% if led_update == False %}
     <div class="alert alert-danger" role="alert">
-      Keine Verbindung zur Bridge
+      Keine Verbindung zur HUE Bridge
     </div>      
     {% endif %}     
 
 <!-- HUE settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Einstellungen</b></font></div>
+        <div class="panel-heading"><font color="black"><b>HUE Einstellungen</b></font></div>
           <div class="panel-body">      
           <form method="GET">
             <b>HUE Bridge IP:</b>
@@ -76,7 +76,7 @@
             <div class="form-group">
               <input type="text" class="form-control" name="bridge_ip" value="{% if ip != None %}{{ ip }}{% endif %}" />
             </div>
-              <input type="submit" class="btn btn-secondary" value="IP ändern" />
+              <input type="submit" class="btn btn-secondary" value="Einträge aktuallisieren" />
               <br>
           </form>   
           <br>
@@ -85,7 +85,7 @@
 <!-- LED settings -->
         
 
-          <b>LEDs:</b>
+          <b>eingetragende LED:</b>
           <br>
           <br>  
           <table class="table">
