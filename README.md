@@ -7,14 +7,15 @@ This project creates a smart home environment.
 
 ### Features
 
-- Flask server 
-- Control Philips Hue LEDs
-- Provide a simple script system to create light shows
-- Read sensors
-- Share data with ESP8266 moduls
-- Taskmanagement to automate processes
-- Watering plants
-- SQL-Lite database 
+- flask server 
+- control Philips Hue LEDs
+- voice control 
+- provide a simple script system to create light shows
+- read sensors
+- share data with ESP8266 moduls by using MQTT
+- taskmanagement to automate processes
+- watering plants
+- SQL-lite database 
 - user management und user right system
 - smartphone view
 
