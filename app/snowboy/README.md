@@ -57,7 +57,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - extract the pre-packaged Snowboy binaries (https://github.com/Kitt-AI/snowboy) and rename directory to "snowboy"
 - copy the files of the raspi-version (https://github.com/wanleg/snowboyPi) in the same folder
 - go into the "snowboy" folder
-- change the path settings of the resources folder in "snowboy.py"
+- change in "snowboy.py" the path settings of the resources folder 
 - start "python3 snowboy.py"
 - default hotwords are >> snowboy << and >> smart mirror << 
 
