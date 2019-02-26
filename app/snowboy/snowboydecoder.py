@@ -1,8 +1,7 @@
-#!/usr/bin/env python
+from app.snowboy import snowboydetect
 
 import collections
 import pyaudio
-import snowboydetect
 import time
 import wave
 import os

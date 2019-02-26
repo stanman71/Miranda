@@ -8,6 +8,8 @@ https://snowboy.kitt.ai
 </br>
 http://docs.kitt.ai/snowboy/
 </br>
+https://pimylifeup.com/raspberry-pi-snowboy/
+</br>
 
 ### 1. Installation:
 
@@ -78,9 +80,18 @@ http://docs.kitt.ai/snowboy/
 
 </br>
 
+#### ERROR: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.<blah blah>
+
+- "sudo nano /usr/share/alsa/alsa.conf" (https://www.raspberrypi.org/forums/viewtopic.php?t=136974)
+       
+       >> replace "pcm.front cards.pcm.front" with "pcm.front cards.pcm.default" (app. 15 times)
+       >> fixed "alsa.conf" file in folder support
+       
+</br>
+
 #### ERROR: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
 
-- if you got many ALBA errors reinstall raspian
+- if you got many ALBA errors and snowboy doesn't work reinstall raspian
 
 </br>
 
