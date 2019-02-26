@@ -82,7 +82,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### ERROR: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.<blah blah>
 
-- "sudo nano /usr/share/alsa/alsa.conf" (https://www.raspberrypi.org/forums/viewtopic.php?t=136974)
+- edit alsa.conf: "sudo nano /usr/share/alsa/alsa.conf" (https://www.raspberrypi.org/forums/viewtopic.php?t=136974)
        
        >> replace "pcm.front cards.pcm.front" with "pcm.front cards.pcm.default" (app. 15 times)
        >> fixed "alsa.conf" file in folder support
