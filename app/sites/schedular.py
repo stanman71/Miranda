@@ -88,10 +88,10 @@ def scheduler_job():
 """ ########## """
 
 # Dashboard tasks
-@app.route('/dashboard/schedular/', methods=['GET'])
+@app.route('/dashboard/settings/schedular/', methods=['GET'])
 @login_required
 @superuser_required
-def dashboard_schedular():
+def dashboard_settings_schedular():
     error_message = ""
     set_name = ""
     set_task = ""
@@ -135,7 +135,7 @@ def dashboard_schedular():
                              "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","49", "50",
                              "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
-    return render_template('dashboard_schedular.html',
+    return render_template('dashboard_settings_schedular.html',
                             dropdown_list_days=dropdown_list_days,
                             dropdown_list_hours=dropdown_list_hours,
                             dropdown_list_minutes=dropdown_list_minutes,
@@ -147,9 +147,9 @@ def dashboard_schedular():
 
 
 # Delete tasks
-@app.route('/dashboard/schedular/delete/<int:id>')
+@app.route('/dashboard/settings/schedular/delete/<int:id>')
 @login_required
 @superuser_required
-def delete_schedular(id):
+def delete_schedular_task(id):
     DELETE_TASK(id)
-    return redirect(url_for('dashboard_schedular'))
+    return redirect(url_for('dashboard_settings_schedular'))

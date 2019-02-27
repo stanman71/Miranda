@@ -99,37 +99,3 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
-
-
-""" ##################### """
-""" user management sites """
-""" ##################### """
-
-# dashboard user management
-@app.route('/dashboard/user/', methods=['GET', 'POST'])
-@login_required
-@superuser_required
-def dashboard_user():
-    user_list = GET_ALL_USERS()
-    return render_template('dashboard_user.html',
-                            name=current_user.username,
-                            user_list=user_list,
-                            )
-
-
-# activate user
-@app.route('/dashboard/user/role/<int:id>')
-@login_required
-@superuser_required
-def activate_user(id):
-    ACTIVATE_USER(id)
-    return redirect(url_for('dashboard_user'))
-
-
-# delete user
-@app.route('/dashboard/user/delete/<int:id>')
-@login_required
-@superuser_required
-def delete_user(id):
-    DELETE_USER(id)
-    return redirect(url_for('dashboard_user'))

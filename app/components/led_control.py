@@ -42,18 +42,18 @@ def RGBtoXY(r, g, b):
     return (xFinal, yFinal)
 
 
-def TEST_BRIDGE():
+def TEST_HUE_BRIDGE():
     try:
-        b = Bridge(GET_BRIDGE_IP())
+        b = Bridge(GET_HUE_BRIDGE_IP())
         b.connect()    
         return "" 
     except Exception as e:
-        return str(e)
+        return ("Keine Verbindung zur HUE Bridge " + str(e))
 
 
-def CONNECT_BRIDGE():
+def CONNECT_HUE_BRIDGE():
     try:
-        b = Bridge(GET_BRIDGE_IP())
+        b = Bridge(GET_HUE_BRIDGE_IP())
         b.connect() 
         return b  
              
@@ -61,9 +61,11 @@ def CONNECT_BRIDGE():
         return False
 
 
-def GET_LED_NAMES():
-    b = CONNECT_BRIDGE()
+def GET_LED_NAMES_HUE():
+
     try:
+        b = CONNECT_HUE_BRIDGE()
+
         lights = b.get_light_objects('list')
 
         light_list = []
@@ -71,10 +73,10 @@ def GET_LED_NAMES():
             light_list.append(light.name)
         
         return light_list
-
+    
     except:
-        return False  
-
+        return False
+    
 
 """ ############# """
 """ led functions """
@@ -82,32 +84,38 @@ def GET_LED_NAMES():
 
 def LED_SET_SCENE(scene, brightness_global = 100):
 
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list')
+    if GET_SETTING_VALUE("hue") == "True":
 
-        # get scene settings
-        entries = GET_SCENE(scene)
-        if entries[0] is not None:
-            entries = entries[0]
-            for entry in entries:
-                    # add global brightness setting                
-                    brightness = entry.brightness
-                    brightness = int((brightness * (int(brightness_global)) / 100))
-                    if brightness > 10:
-                        # turn led on
-                        lights[entry.led_id - 1].on = True
-                        # set brightness
-                        lights[entry.led_id - 1].brightness = brightness
-                        # set rgb 
-                        xy = RGBtoXY(entry.color_red, entry.color_green, entry.color_blue)
-                        lights[entry.led_id - 1].xy = xy
-                    else:
-                        # turn led off if brightness < 10
-                        lights[entry.led_id - 1].on = False     
+        try:
+            b = CONNECT_HUE_BRIDGE()
+            lights = b.get_light_objects('list')
+
+            # get scene settings
+            entries = GET_SCENE(scene)
+            if entries[0] is not None:
+                entries = entries[0]
+                for entry in entries:
+                        # add global brightness setting                
+                        brightness = entry.brightness
+                        brightness = int((brightness * (int(brightness_global)) / 100))
+                        if brightness > 10:
+                            # turn led on
+                            lights[entry.led_id - 1].on = True
+                            # set brightness
+                            lights[entry.led_id - 1].brightness = brightness
+                            # set rgb 
+                            xy = RGBtoXY(entry.color_red, entry.color_green, entry.color_blue)
+                            lights[entry.led_id - 1].xy = xy
+                        else:
+                            # turn led off if brightness < 10
+                            lights[entry.led_id - 1].on = False  
+            return ""
+        
+        except:
+            return TEST_HUE_BRIDGE()
                   
-    except:
-        return False          
+    else:
+        return ("Keine LED-Steuerung")       
 
 
 """ ################# """
@@ -115,69 +123,86 @@ def LED_SET_SCENE(scene, brightness_global = 100):
 """ ################# """
 
 def PROGRAM_SET_BRIGHTNESS(brightness_settings):
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list')
-    
-        brightness_settings = brightness_settings.split(":")
-        # get the brightness value only (source: bri(xxx))
-        brightness = re.findall(r'\d+', brightness_settings[1]) 
-        # transform list element to int   
-        brightness = int(brightness[0])
-        if brightness > 10:
-                # list element start at 0 for led ID 1
-                lights[int(brightness_settings[0]) - 1].on = True
-                lights[int(brightness_settings[0]) - 1].brightness = brightness
-        else:
-                # turn led off if brightness < 10
-                lights[int(brightness_settings[0]) - 1].on = False               
-    except:
-        return False    
+
+    if GET_SETTING_VALUE("hue") == "True":
+
+        try:
+            b = CONNECT_HUE_BRIDGE()
+            lights = b.get_light_objects('list')
+        
+            brightness_settings = brightness_settings.split(":")
+            # get the brightness value only (source: bri(xxx))
+            brightness = re.findall(r'\d+', brightness_settings[1]) 
+            # transform list element to int   
+            brightness = int(brightness[0])
+            if brightness > 10:
+                    # list element start at 0 for led ID 1
+                    lights[int(brightness_settings[0]) - 1].on = True
+                    lights[int(brightness_settings[0]) - 1].brightness = brightness
+            else:
+                    # turn led off if brightness < 10
+                    lights[int(brightness_settings[0]) - 1].on = False               
+        except:
+            return TEST_BRIDGE()
+            
+    else:
+        return ("Keine LED-Steuerung")     
 
 
 def PROGRAM_SET_COLOR(rgb_settings):
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list')
 
-        rgb_settings = rgb_settings.split(":")
-        # get the rgb values only (source: rgb(xxx, xxx, xxx))
-        rgb_color = re.findall(r'\d+', rgb_settings[1])     
-        # convert rgb to xy    
-        xy = RGBtoXY(int(rgb_color[0]), int(rgb_color[1]), int(rgb_color[2]))
-        lights[int(rgb_settings[0]) - 1].on = True
-        lights[int(rgb_settings[0]) - 1].xy = xy  
-    except:
-        return False    
+    if GET_SETTING_VALUE("hue") == "True":
+
+        try:
+            b = CONNECT_BRIDGE()
+            lights = b.get_light_objects('list')
+
+            rgb_settings = rgb_settings.split(":")
+            # get the rgb values only (source: rgb(xxx, xxx, xxx))
+            rgb_color = re.findall(r'\d+', rgb_settings[1])     
+            # convert rgb to xy    
+            xy = RGBtoXY(int(rgb_color[0]), int(rgb_color[1]), int(rgb_color[2]))
+            lights[int(rgb_settings[0]) - 1].on = True
+            lights[int(rgb_settings[0]) - 1].xy = xy  
+         
+        except:
+            return ("Keine Verbindung zur HUE Bridge: " + TEST_BRIDGE())
+                  
+    else:
+        return ("Keine LED-Steuerung")   
 
 
 def START_PROGRAM(id):  
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list')
-        # deactivate all led
-        for light in lights:
-            light.on = False
 
-        content = GET_PROGRAM_ID(id).content
+    if GET_SETTING_VALUE("hue") == "True":
 
-        try:   
-            # select each command line
-            for line in content.splitlines():
-                if "rgb" in line: 
-                    PROGRAM_SET_COLOR(line)
-                if "bri" in line: 
-                    PROGRAM_SET_BRIGHTNESS(line)
-                if "pause" in line: 
-                    break_value = line.split(":")
-                    break_value = int(break_value[1])
-                    time.sleep(break_value)
+        try:
+            b = CONNECT_BRIDGE()
+            lights = b.get_light_objects('list')
+            # deactivate all led
+            for light in lights:
+                light.on = False
+
+            content = GET_PROGRAM_ID(id).content
+
+            try:   
+                # select each command line
+                for line in content.splitlines():
+                    if "rgb" in line: 
+                        PROGRAM_SET_COLOR(line)
+                    if "bri" in line: 
+                        PROGRAM_SET_BRIGHTNESS(line)
+                    if "pause" in line: 
+                        break_value = line.split(":")
+                        break_value = int(break_value[1])
+                        time.sleep(break_value)
+            except:
+                pass
         except:
-            pass
-    except:
-        return False
-
-    return True
+            return TEST_BRIDGE()
+              
+    else:
+        return "Keine LED-Steuerung" 
 
 
 """ ############# """
@@ -185,26 +210,32 @@ def START_PROGRAM(id):
 """ ############# """
 
 def LED_OFF(break_value):
-    b = CONNECT_BRIDGE()
-    try:
-        lights = b.get_light_objects('list')
 
-        for light in lights:
-            # led on ?
-            if light.on == True: 
-                # turn off the light
-                while light.brightness > 30:
-                    brightness = int(light.brightness-20)
-                    if brightness < 30:
-                        light.on = False
-                        break 
-                    else:
-                        light.brightness = brightness
-                        time.sleep(break_value)               
-    
-        # backup to deactivate all led 
-        for light in lights:
-            light.on = False
+    if GET_SETTING_VALUE("hue") == "True":
 
-    except:
-        pass
+        try:
+            b = CONNECT_BRIDGE()
+            lights = b.get_light_objects('list')
+
+            for light in lights:
+                # led on ?
+                if light.on == True: 
+                    # turn off the light
+                    while light.brightness > 30:
+                        brightness = int(light.brightness-20)
+                        if brightness < 30:
+                            light.on = False
+                            break 
+                        else:
+                            light.brightness = brightness
+                            time.sleep(break_value)               
+        
+            # backup to deactivate all led 
+            for light in lights:
+                light.on = False
+
+        except:
+            return TEST_BRIDGE()
+                  
+    else:
+        return ("Keine LED-Steuerung")   

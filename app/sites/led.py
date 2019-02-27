@@ -30,7 +30,7 @@ def superuser_required(f):
 
 
 """ ################ """
-""" sites led custom """
+""" sites led scenes """
 """ ################ """
 
 # led scene 01
@@ -70,18 +70,19 @@ def dashboard_led_scene_01():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_custom.html', 
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html', 
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active01="active",
                             error_message=error_message
@@ -125,18 +126,19 @@ def dashboard_led_scene_02():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_custom.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,                            
                             number=scene,
                             active02="active",
                             error_message=error_message
@@ -161,7 +163,7 @@ def dashboard_led_scene_03():
         # set RGB color
         rgb_scene = []
         for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i))) 
+            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
         SET_SCENE_COLOR(scene, rgb_scene)
 
         # set brightness
@@ -180,18 +182,19 @@ def dashboard_led_scene_03():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_custom.html', 
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,                            
                             number=scene,
                             active03="active",
                             error_message=error_message
@@ -216,7 +219,7 @@ def dashboard_led_scene_04():
         # set RGB color
         rgb_scene = []
         for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))      
+            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
         SET_SCENE_COLOR(scene, rgb_scene)
 
         # set brightness
@@ -235,22 +238,23 @@ def dashboard_led_scene_04():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_custom.html', 
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,                            
                             number=scene,
                             active04="active",
                             error_message=error_message
-                            )
+                            )                            
 
 
 # led scene 05
@@ -291,27 +295,24 @@ def dashboard_led_scene_05():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_custom.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active05="active",
                             error_message=error_message
                             )
 
-
-""" ############# """
-""" sites led fix """
-""" ############# """
 
 # led scene 06 (north lights)
 @app.route('/dashboard/led/scene_06', methods=['GET', 'POST'])
@@ -350,18 +351,19 @@ def dashboard_led_scene_06():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active06="active",
                             error_message=error_message
@@ -405,18 +407,19 @@ def dashboard_led_scene_07():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html', 
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html', 
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active07="active",
                             error_message=error_message
@@ -460,18 +463,19 @@ def dashboard_led_scene_08():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
-    entries_scene = GET_SCENE(scene)[0]
-    scene_name    = GET_SCENE(scene)[1]
-    dropdown_list = GET_DROPDOWN_LIST_LED()
+    entries_scene    = GET_SCENE(scene)[0]
+    scene_name       = GET_SCENE(scene)[1]
+    dropdown_list    = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html', 
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html', 
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active08="active",
                             error_message=error_message
@@ -516,18 +520,19 @@ def dashboard_led_scene_09():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active09="active",
                             error_message=error_message
@@ -572,18 +577,19 @@ def dashboard_led_scene_10():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,                            
                             number=scene,
                             active10="active",
                             error_message=error_message
@@ -628,18 +634,19 @@ def dashboard_led_scene_99():
         if 'delete' in request.form:
             DEL_SCENE(scene)
 
-    led_update = ""
-    led_update = LED_SET_SCENE(scene)
+    # start scene
+    error_message = LED_SET_SCENE(scene)
 
     entries_scene = GET_SCENE(scene)[0]
     scene_name    = GET_SCENE(scene)[1]
     dropdown_list = GET_DROPDOWN_LIST_LED()
+    scene_names_list = GET_ALL_SCENES()
 
-    return render_template('dashboard_led_scenes_fix.html',
-                            led_update=led_update,
+    return render_template('dashboard_led_scenes.html',
                             entries_scene=entries_scene,
                             scene_name=scene_name,
                             dropdown_list=dropdown_list,
+                            scene_names_list=scene_names_list,
                             number=scene,
                             active99="active",
                             error_message=error_message
@@ -750,33 +757,6 @@ def dashboard_led_programs():
                             error_message=error_message
                             )
 
-
-# led settings
-@app.route('/dashboard/led/settings')
-@login_required
-@superuser_required
-def dashboard_led_settings():
-    led_update = "" 
-    error_message = ""
-    
-    if request.method == "GET": 
-        # change bridge ip
-        bridge_ip = request.args.get("bridge_ip") 
-        if bridge_ip is not None:
-            SET_BRIDGE_IP(bridge_ip)
-            led_update = UPDATE_LED(GET_LED_NAMES())    
-
-    led_list = GET_ALL_LEDS()
-    ip = GET_BRIDGE_IP()  
-    error_message = TEST_BRIDGE()
-
-    return render_template('dashboard_led_settings.html',
-                            led_update=led_update,
-                            ip=ip,
-                            led_list=led_list,
-                            error_message=error_message
-                            )
-    
 
 """ ############### """
 """ sites file host """

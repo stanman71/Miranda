@@ -7,14 +7,16 @@ from app.components.colorpicker_local import colorpicker
 """ flasks """
 """ ###### """
 
+UPLOAD_FOLDER = '/home/pi/Python/SmartHome/app/snowboy/resources'
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 Bootstrap(app)
 colorpicker(app)
 
-from app.snowboy.snowboy import SNOWBOY_START
-from app.sites import index, user, dashboard, led, schedular, plants, sensors
+from app.sites import index, user, dashboard, led, schedular, plants, sensors, settings
 from app.components.plants_control import *
 from app.database.database import *
 
@@ -47,7 +49,6 @@ def START_FLASK_THREAD():
 
 
             app.run(host="0.0.0.0")
-            #app.run(debug=True)
             #app.run()
 
        
@@ -55,12 +56,20 @@ def START_FLASK_THREAD():
     t1 = flask_Thread()
     t1.start()
 
-
 START_FLASK_THREAD()
 
-# start snowboy
-print("###### Start SNOWBOY ######")
-SNOWBOY_START()
+
+def START_SNOWBOY():
+    from app.snowboy.snowboy import SNOWBOY_START
+
+    print("###### Start SNOWBOY ######")
+    SNOWBOY_START()
+
+if GET_SETTING_VALUE("snowboy") == "True":
+    try:
+        START_SNOWBOY()
+    except Exception as e:
+        print("Fehler in SnowBoy: " + str(e))
 
 
 

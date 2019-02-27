@@ -23,10 +23,10 @@ def superuser_required(f):
 """ site sensors """
 """ ############ """
 
-@app.route('/dashboard/sensors', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/sensors', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_sensors():
+def dashboard_settings_sensors():
     sensor_values = None
     sensor_name = ""
     sensor_id = ""
@@ -51,7 +51,7 @@ def dashboard_sensors():
 
     dropdown_list_sensor = GET_ALL_SENSORS()
 
-    return render_template('dashboard_sensors.html',
+    return render_template('dashboard_settings_sensors.html',
                             dropdown_list_sensor=dropdown_list_sensor,
                             sensor_values=sensor_values,
                             sensor_name=sensor_name,

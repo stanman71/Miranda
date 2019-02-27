@@ -19,16 +19,13 @@ def index():
 
     value_list = ["", "", "", "", "", "", "", "", ""]
 
-    # connect to the bridge and an update
-    led_update = ""
-    led_update = UPDATE_LED(GET_LED_NAMES())
 
     if request.method == "GET":     
         # change scene   
         try:     
             scene = int(request.args.get("radio_scene"))
             brightness_global = request.args.get("brightness_global")
-            LED_SET_SCENE(scene,brightness_global)
+            error_message = LED_SET_SCENE(scene,brightness_global)
             # add radio check
             for i in range (1,12):
                 if scene == i:
@@ -39,21 +36,18 @@ def index():
         # select a program   
         try:     
             program = int(request.args.get("radio_program"))
-            program_message = START_PROGRAM(program)            
+            error_message = START_PROGRAM(program)            
         except:
             pass
 
     scene_list   = GET_ALL_SCENES()
     program_list = GET_ALL_PROGRAMS()
-    error_message = TEST_BRIDGE()
 
-    return render_template('index.html', 
-                            led_update=led_update,
+    return render_template('index.html',
                             scene_list=scene_list,
                             value_list=value_list,                         
                             brightness_global=brightness_global,
                             program_list=program_list,
-                            program_message=program_message,
                             error_message=error_message
                             )
 

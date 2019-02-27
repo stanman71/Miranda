@@ -1,0 +1,243 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  HUE Einstellungen
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RASPI</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Einstellungen
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_settings_global') }}">Systemeinstellungen</a></li>
+            <li><a href="{{ url_for('dashboard_settings_schedular') }}">Aufgabenplanung</a></li>
+            <li><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>
+            <li><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+
+<!-- Global Settings -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Einstellungen</b></font></div>
+          <div class="panel-body">   
+            <form method="get">  
+              <h5><b>HUE</b></h5>
+              <div class="radio">
+                <label><input {{check_value_hue[0]}} type="radio" value="True" name="radio_hue">Hue aktivieren</label>
+                <br>
+                <label><input {{check_value_hue[1]}} type="radio" value="False" name="radio_hue">Hue deaktivieren</label>
+              </div>
+              <br>
+              <h5><b>SNOWBOY</b></h5>
+              <div class="radio">
+                <label><input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">SnowBoy aktivieren</label>
+                <br>
+                <label><input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">SnowBoy deaktivieren</label>
+              </div>
+              <font color="red"><b>Flask neustarten, wenn SnowBoy Einstellungen geändert werden</b></font>
+              <br>             
+              <br>
+              <h5><b>MQTT</b></h5>
+              <div class="radio">
+                <label><input {{check_value_mqtt[0]}} type="radio" value="True" name="radio_mqtt">MQTT aktivieren</label>
+                <br>
+                <label><input {{check_value_mqtt[1]}} type="radio" value="False" name="radio_mqtt">MQTT deaktivieren</label>
+              </div>
+              <br>
+
+              <input type="submit" class="btn btn-secondary" value="Auswählen"/>
+            </form>  
+          </div>  
+        </div>           
+
+
+<!-- HUE -->
+
+{% if hue_setting != "False" %}
+
+    <!-- HUE error message -->
+
+    {% if error_message_hue != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_message_hue }}
+      </div>      
+    {% endif %}   
+
+    <!-- HUE settings -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>HUE Einstellungen</b></font></div>
+          <div class="panel-body">      
+          <form method="GET">
+            <b>HUE Bridge IP:</b>
+            <br>
+            <br>            
+            <div class="form-group">
+              <input type="text" class="form-control" name="hue_bridge_ip" value="{% if hue_bridge_ip != None %}{{ hue_bridge_ip }}{% endif %}" />
+            </div>
+              <input type="submit" class="btn btn-secondary" value="IP Adresse ändern" />
+              <br>
+          </form>   
+          <br>
+          <br> 
+
+    <!-- HUE led table -->
+
+          <b>eingetragende LED:</b>
+          <br>
+          <br>  
+          <table class="table">
+            <thead>
+              <th scope="col">ID</th>                        
+              <th scope="col">Name</th> 
+            </thead>
+            <tbody> 
+              {% for entry in led_list %}
+              <tr>
+                <td>{{ entry.id }}</td> 
+                <td>{{ entry.name }}</td> 
+                <td><a href="/dashboard/settings/led/delete/{{ entry.id }}"><font color="red"><b>löschen</b></font></a></td>                 
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>  
+
+          <font color="red"><b>LED kann nur gelöscht werden, wenn sie in keiner Szene verwendet wird !!!</b></font>
+
+          <br>
+          <br>
+          <form method="GET">
+            <input type="submit" class="btn btn-secondary" name="update_led_entries" value="Einträge aktuallisieren" />
+          </form>
+        </div>  
+      </div>  
+
+{% endif %}
+
+
+<!-- SNOWBOY -->
+
+{% if snowboy_setting != "False" %}
+
+    <!-- snowboy error message -->
+
+    {% if error_message_snowboy != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_message_snowboy }}
+      </div>      
+    {% endif %}   
+
+    {% if error_message_fileupload == False %}
+      <div class="alert alert-danger" role="alert">
+        Keine Datei angegeben
+      </div>      
+    {% endif %}  
+
+    {% if error_message_fileupload == True %}
+      <div class="alert alert-success" role="alert">
+        Datei erfolgreich hochgeladen
+      </div>      
+    {% endif %}  
+
+    <!-- snowboy settings -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>SnowBoy Einstellungen</b></font></div>
+          <div class="panel-body">  
+          <form method="GET">
+            <b>Empfindlichkeit:</b>
+            <br>
+            <br>
+            <div class="slidecontainer">                        
+              <input type="range" class="slider" name="sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+            </div>
+            <br>
+            <input type="submit" class="btn btn-secondary" value="Empfindlichkeit ändern" />
+            <br>        
+          </form>   
+
+          <br>
+          <b>HOTWORD-FILE hochladen:</b>
+          <br>      
+          <br>             
+          <form method=post enctype=multipart/form-data>
+            <input type=file name=file>
+            <br>
+            <input type=submit class="btn btn-secondary" value=Upload>
+          </form>        
+
+        </div>  
+      </div>  
+
+{% endif %}
+
+
+
+<!-- MQTT -->
+
+{% if mqtt_setting != "False" %}
+
+    <!-- mqtt error message -->
+
+    {% if error_message_mqtt != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_message_mqtt }}
+      </div>      
+    {% endif %}   
+
+    <!-- mqtt settings -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>MQTT Einstellungen</b></font></div>
+          <div class="panel-body">      
+        </div>  
+      </div>  
+
+{% endif %}
+
+    </div>
+  </div>    
+</div>
+
+{% endblock %}

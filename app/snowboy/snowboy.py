@@ -3,6 +3,7 @@ from app import app
 from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
 from app.components import led_control
+from app.database.database import GET_SENSITIVITY
 
 import sys
 import signal
@@ -32,8 +33,11 @@ def SNOWBOY_START():
                '/home/pi/Python/SmartHome/app/snowboy/resources/relax.pmdl',
                '/home/pi/Python/SmartHome/app/snowboy/resources/default.pmdl']
 
+     sensitivity_value = int(GET_SENSITIVITY()) / 100
+     print(sensitivity_value)
+
      # modify sensitivity for better detection / accuracy
-     detector = snowboydecoder.HotwordDetector(models, sensitivity=0.5)
+     detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)
 
      # put what should happen when snowboy detects hotword here:
      callbacks = [lambda: print("HOTWORD_1"), 

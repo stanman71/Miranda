@@ -16,6 +16,11 @@ db = SQLAlchemy(app)
 """ ###################### """
 """ ###################### """
 
+class Settings(db.Model):
+    __tablename__ = 'settings'
+    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    setting_name  = db.Column(db.String(50), unique=True)
+    setting_value = db.Column(db.String(50))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -35,10 +40,19 @@ class Schedular(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
-class Bridge(db.Model):
-    __tablename__ = 'bridge'
+class HUE(db.Model):
+    __tablename__ = 'hue_bridge'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     ip = db.Column(db.String(50), unique = True)
+
+class Snowboy(db.Model):
+    __tablename__ = 'snowboy'
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    sensitivity = db.Column(db.Integer)
+
+class MQTT(db.Model):
+    __tablename__ = 'mqtt'
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -53,8 +67,9 @@ class Programs(db.Model):
 
 class Scenes(db.Model):
     __tablename__ = 'scenes'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name = db.Column(db.String(50))
+    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name          = db.Column(db.String(50), unique = True)
+    voice_control = db.Column(db.String(50), unique = True)
 
 class Scene_01(db.Model):
     __tablename__ = 'scene_01'
@@ -281,6 +296,38 @@ class Sensor_MQTT_02(db.Model):
 # create all database tables
 db.create_all()
 
+
+# create default settings
+if Settings.query.filter_by().first() is None:
+    setting = Settings(
+        setting_name  = "hue",
+        setting_value = "False",
+    )
+    db.session.add(setting)
+    db.session.commit()
+
+    setting = Settings(
+        setting_name  = "snowboy",
+        setting_value = "False",
+    )
+    db.session.add(setting)    
+    db.session.commit()
+
+    setting = Settings(
+        setting_name  = "mqtt",
+        setting_value = "False",
+    )
+    db.session.add(setting)    
+    db.session.commit()
+
+# create default snowboy
+if Snowboy.query.filter_by().first() is None:
+    snowboy = Snowboy(
+        sensitivity  = "50",
+    )
+    db.session.add(snowboy)
+    db.session.commit()
+
 # create default user
 if User.query.filter_by(username='default').first() is None:
     user = User(
@@ -292,14 +339,16 @@ if User.query.filter_by(username='default').first() is None:
     db.session.add(user)
     db.session.commit()
 
-# Create default bridge settings
-if Bridge.query.filter_by().first() is None:
-    bridge = Bridge(
+
+# Create default hue settings
+if HUE.query.filter_by().first() is None:
+    hue = HUE(
         id = '1',
         ip = 'default',
     )
-    db.session.add(bridge)
+    db.session.add(hue)
     db.session.commit()
+
 
 # Create default scenes
 if Scenes.query.filter_by().first() is None:   
@@ -309,12 +358,15 @@ if Scenes.query.filter_by().first() is None:
             name = "",
         )        
         db.session.add(scene)
-        scene = Scenes(
-            id   = 99,
-            name = "",
-        )        
-        db.session.add(scene)
         db.session.commit()
+
+    scene = Scenes(
+        id   = 99,
+        name = "",
+    )        
+    db.session.add(scene)
+    db.session.commit()
+
 
 # create sensors
 if Sensor.query.filter_by().first() is None:   
@@ -341,16 +393,84 @@ if Sensor.query.filter_by().first() is None:
 """ ################### """
 
 
+""" ######## """
+""" settings """
+""" ######## """
+
+def GET_SETTING_VALUE(name):
+    entry = Settings.query.filter_by(setting_name=name).first()
+    return entry.setting_value
+
+
+def SET_SETTING_VALUE(name, value):
+    entry = Settings.query.filter_by(setting_name=name).first()
+    entry.setting_value = value
+    db.session.commit()    
+
+
+def GET_HUE_BRIDGE_IP():
+    entry = HUE.query.filter_by().first()
+    return (entry.ip)  
+
+
+def SET_HUE_BRIDGE_IP(IP):
+    entry = HUE.query.filter_by().first()
+    entry.ip = IP
+    db.session.commit() 
+
+
+def REMOVE_LED(id):
+    if Scene_01.query.filter_by(led_id=id).first():
+        return "LED in Szene 1 verwendet"
+    if Scene_02.query.filter_by(led_id=id).first():
+        return "LED in Szene 2 verwendet"
+    if Scene_03.query.filter_by(led_id=id).first():
+        return "LED in Szene 3 verwendet"
+    if Scene_04.query.filter_by(led_id=id).first():
+        return "LED in Szene 4 verwendet" 
+    if Scene_05.query.filter_by(led_id=id).first():
+        return "LED in Szene 5 verwendet"
+    if Scene_06.query.filter_by(led_id=id).first():
+        return "LED in Szene 6 verwendet"
+    if Scene_07.query.filter_by(led_id=id).first():
+        return "LED in Szene 7 verwendet"
+    if Scene_08.query.filter_by(led_id=id).first():
+        return "LED in Szene 8 verwendet"
+    if Scene_09.query.filter_by(led_id=id).first():
+        return "LED in Szene 9 verwendet"
+    if Scene_10.query.filter_by(led_id=id).first():
+        return "LED in Szene 10 verwendet"
+    if Scene_99.query.filter_by(led_id=id).first():
+        return "LED in Szene 99 verwendet"
+
+    LED.query.filter_by(id=id).delete()
+    db.session.commit()    
+
+    return "LED erfolgreich gelöscht"
+
+
+def GET_SENSITIVITY():
+    entry = Snowboy.query.filter_by().first()
+    return (entry.sensitivity)  
+
+
+def SET_SENSITIVITY(value):
+    entry = Snowboy.query.filter_by().first()
+    entry.sensitivity = value
+    db.session.commit() 
+
+
 """ ############### """
 """ task management """
 """ ############### """
 
-
 def GET_TASK(name):
     return Schedular.query.filter_by(name=name).first()
 
+
 def GET_ALL_TASKS():
     return Schedular.query.all()
+
 
 def ADD_TASK(name, day, hour, minute, task, repeat):
     # name exist ?
@@ -377,6 +497,7 @@ def ADD_TASK(name, day, hour, minute, task, repeat):
     else:
         return "Name bereits vergeben"
 
+
 def DELETE_TASK(task_id):
     Schedular.query.filter_by(id=task_id).delete()
     db.session.commit()
@@ -386,53 +507,42 @@ def DELETE_TASK(task_id):
 """ user management """
 """ ############### """
 
-
 def GET_USER_BY_ID(user_id):
     return User.query.get(int(user_id))
+
 
 def GET_USER_BY_NAME(user_name):
     return User.query.filter_by(username=user_name).first()
 
+
 def GET_ALL_USERS():
     return User.query.all()
+
 
 def ADD_USER(user_name, email, password):
     new_user = User(username=user_name, email=email, password=password, role="user")
     db.session.add(new_user)
     db.session.commit()
 
+
 def ACTIVATE_USER(user_id):
     entry = User.query.get(user_id)
     entry.role = "superuser"
     db.session.commit()
 
+
 def DELETE_USER(user_id):
     User.query.filter_by(id=user_id).delete()
     db.session.commit()
+
 
 def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
 
-""" ###### """
-""" bridge """
-""" ###### """
-
-
-def GET_BRIDGE_IP():
-    entry = Bridge.query.filter_by().first()
-    return (entry.ip)  
-
-def SET_BRIDGE_IP(IP):
-    entry = Bridge.query.filter_by().first()
-    entry.ip = IP
-    db.session.commit() 
-
-
 """ ### """
 """ led """
 """ ### """
-
 
 def GET_DROPDOWN_LIST_LED():
     entry_list = []
@@ -444,8 +554,10 @@ def GET_DROPDOWN_LIST_LED():
 
     return entry_list
 
+
 def GET_ALL_LEDS():
     return LED.query.all()
+
 
 def UPDATE_LED(led_list):
     try:
@@ -466,6 +578,7 @@ def UPDATE_LED(led_list):
             db.session.commit()  
     except:
         return False    
+
 
 def ADD_LED(Scene, Name):
     # search for the selected LED entry 
@@ -545,29 +658,63 @@ def ADD_LED(Scene, Name):
     except:
         pass    
 
-def DEL_LED(Scene, ID):
+
+def DEL_LED(Scene, ID): 
     if Scene == 1:
         Scene_01.query.filter_by(led_id=ID).delete()
+        if Scene_01.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 2:
         Scene_02.query.filter_by(led_id=ID).delete()
+        if Scene_02.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 3:
         Scene_03.query.filter_by(led_id=ID).delete()
+        if Scene_03.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 4:
         Scene_04.query.filter_by(led_id=ID).delete()
+        if Scene_04.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 5:
         Scene_05.query.filter_by(led_id=ID).delete()
+        if Scene_05.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 6:
         Scene_06.query.filter_by(led_id=ID).delete()
+        if Scene_06.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 7:
         Scene_07.query.filter_by(led_id=ID).delete()
+        if Scene_07.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 8:
         Scene_08.query.filter_by(led_id=ID).delete()
+        if Scene_08.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 9:
         Scene_09.query.filter_by(led_id=ID).delete()
+        if Scene_09.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 10:
         Scene_10.query.filter_by(led_id=ID).delete()
+        if Scene_10.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
     if Scene == 99:
         Scene_99.query.filter_by(led_id=ID).delete()
+        if Scene_99.query.filter_by().first() is None:
+            entry = Scenes.query.get(Scene)
+            entry.name = ""
 
     db.session.commit()
 
@@ -575,7 +722,6 @@ def DEL_LED(Scene, ID):
 """ ###### """
 """ scenes """
 """ ###### """
-
 
 def GET_SCENE(Scene):
     entries = None
@@ -630,9 +776,10 @@ def GET_SCENE(Scene):
 
     return (entries, name)
 
+
 def GET_ALL_SCENES():
-    entries = Scenes.query.all()
-    return (entries)    
+    return Scenes.query.all()   
+
 
 def SET_SCENE_NAME(Scene, name):
     check_entry = Scenes.query.filter_by(name=name).first()
@@ -643,6 +790,7 @@ def SET_SCENE_NAME(Scene, name):
         return ("")
     else:
         return ("Name bereits vergeben")
+
 
 def SET_SCENE_COLOR(Scene, rgb_scene):
     if Scene == 1:
@@ -722,7 +870,8 @@ def SET_SCENE_COLOR(Scene, rgb_scene):
         db.session.commit()
     except:
         pass
-    
+
+
 def SET_SCENE_BRIGHTNESS(Scene, brightness):
     if Scene == 1:
         # check all array entries
@@ -799,9 +948,9 @@ def SET_SCENE_BRIGHTNESS(Scene, brightness):
     except:
         pass
 
+
 def DEL_SCENE(Scene):
     if Scene == 1:
-        # delete scene settings
         Scene_01.query.delete()
     if Scene == 2:
         Scene_02.query.delete()
@@ -811,6 +960,18 @@ def DEL_SCENE(Scene):
         Scene_04.query.delete()
     if Scene == 5:
         Scene_05.query.delete()
+    if Scene == 6:
+        Scene_06.query.delete()
+    if Scene == 7:
+        Scene_07.query.delete()
+    if Scene == 8:
+        Scene_08.query.delete()
+    if Scene == 9:
+        Scene_09.query.delete()
+    if Scene == 10:
+        Scene_10.query.delete()
+    if Scene == 99:
+        Scene_99.query.delete()
 
     # delete scene name
     entry = Scenes.query.get(Scene)
@@ -821,7 +982,6 @@ def DEL_SCENE(Scene):
 """ ######## """
 """ programs """
 """ ######## """
-
 
 def NEW_PROGRAM(name):
     # name exist ?
@@ -844,6 +1004,7 @@ def NEW_PROGRAM(name):
     else:
         return ("Name bereits vergeben")
 
+
 def GET_DROPDOWN_LIST_PROGRAMS():
     entry_list = []
     # get all Programs
@@ -854,14 +1015,18 @@ def GET_DROPDOWN_LIST_PROGRAMS():
 
     return entry_list
 
+
 def GET_ALL_PROGRAMS():
     return Programs.query.all()   
+
 
 def GET_PROGRAM_NAME(name):
     return Programs.query.filter_by(name=name).first()
 
+
 def GET_PROGRAM_ID(id):
     return Programs.query.filter_by(id=id).first()
+
 
 def SET_PROGRAM_NAME(id, name):
     check_entry = Programs.query.filter_by(name=name).first()
@@ -870,9 +1035,11 @@ def SET_PROGRAM_NAME(id, name):
         entry.name = name
         db.session.commit()    
 
+
 def UPDATE_PROGRAM(id, content):
     entry = Programs.query.filter_by(id=id).update(dict(content=content))
     db.session.commit()
+
 
 def DELETE_PROGRAM(name):
     Programs.query.filter_by(name=name).delete()
@@ -883,12 +1050,13 @@ def DELETE_PROGRAM(name):
 """ plants  """
 """ ####### """
 
-
 def GET_PLANT(plant_id):
     return Plants.query.filter_by(id=plant_id).first()
 
+
 def GET_ALL_PLANTS():
     return Plants.query.all()
+
 
 def ADD_PLANT(name, sensor_id, pump_id, water_volume):
     # name exist ?
@@ -914,6 +1082,7 @@ def ADD_PLANT(name, sensor_id, pump_id, water_volume):
     else:
         return "Name bereits vergeben"
 
+
 def CHANGE_MOISTURE(plant_id, moisture):    
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.moisture = moisture
@@ -923,10 +1092,12 @@ def CHANGE_MOISTURE(plant_id, moisture):
     entry.moisture_voltage = moisture_voltage
     db.session.commit()  
 
+
 def CHANGE_WATER_VOLUME(plant_id, water_volume):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.water_volume = water_volume
     db.session.commit()    
+
 
 def DELETE_PLANT(plant_id):
     Plants.query.filter_by(id=plant_id).delete()
@@ -937,13 +1108,14 @@ def DELETE_PLANT(plant_id):
 """ sensor """
 """ ###### """
 
-
 def GET_ALL_SENSORS():
     return Sensor.query.all()
+
 
 def GET_SENSOR_NAME(sensor_id):
     sensor_name = Sensor.query.filter_by(id=sensor_id).first()
     return sensor_name.name  
+
 
 def GET_SENSOR_VALUES(id):
     sensor_name = Sensor.query.filter_by(id=id).first()
@@ -976,6 +1148,7 @@ def GET_SENSOR_VALUES(id):
         return None
     else:
         return sensor_values
+
 
 def SAVE_SENSOR_GPIO(sensor_name):
     try:
@@ -1052,6 +1225,7 @@ def SAVE_SENSOR_GPIO(sensor_name):
     except:
         pass
 
+
 def SAVE_SENSOR_MQTT(mqtt, result):
     if mqtt == 0:
         entry = Sensor_MQTT_00(
@@ -1071,6 +1245,7 @@ def SAVE_SENSOR_MQTT(mqtt, result):
 
     db.session.add(entry)
     db.session.commit()   
+
 
 def DELETE_SENSOR_VALUES(id):
     sensor_name = Sensor.query.filter_by(id=id).first()
