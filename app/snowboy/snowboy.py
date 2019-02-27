@@ -34,7 +34,6 @@ def SNOWBOY_START():
                '/home/pi/Python/SmartHome/app/snowboy/resources/default.pmdl']
 
      sensitivity_value = int(GET_SENSITIVITY()) / 100
-     print(sensitivity_value)
 
      # modify sensitivity for better detection / accuracy
      detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)

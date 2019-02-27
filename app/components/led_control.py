@@ -143,7 +143,7 @@ def PROGRAM_SET_BRIGHTNESS(brightness_settings):
                     # turn led off if brightness < 10
                     lights[int(brightness_settings[0]) - 1].on = False               
         except:
-            return TEST_BRIDGE()
+            return TEST_HUE_BRIDGE()
             
     else:
         return ("Keine LED-Steuerung")     
@@ -154,7 +154,7 @@ def PROGRAM_SET_COLOR(rgb_settings):
     if GET_SETTING_VALUE("hue") == "True":
 
         try:
-            b = CONNECT_BRIDGE()
+            b = CONNECT_HUE_BRIDGE()
             lights = b.get_light_objects('list')
 
             rgb_settings = rgb_settings.split(":")
@@ -166,7 +166,7 @@ def PROGRAM_SET_COLOR(rgb_settings):
             lights[int(rgb_settings[0]) - 1].xy = xy  
          
         except:
-            return ("Keine Verbindung zur HUE Bridge: " + TEST_BRIDGE())
+            return ("Keine Verbindung zur HUE Bridge: " + TEST_HUE_BRIDGE())
                   
     else:
         return ("Keine LED-Steuerung")   
@@ -177,7 +177,7 @@ def START_PROGRAM(id):
     if GET_SETTING_VALUE("hue") == "True":
 
         try:
-            b = CONNECT_BRIDGE()
+            b = CONNECT_HUE_BRIDGE()
             lights = b.get_light_objects('list')
             # deactivate all led
             for light in lights:
@@ -199,7 +199,7 @@ def START_PROGRAM(id):
             except:
                 pass
         except:
-            return TEST_BRIDGE()
+            return TEST_HUE_BRIDGE()
               
     else:
         return "Keine LED-Steuerung" 
@@ -214,7 +214,7 @@ def LED_OFF(break_value):
     if GET_SETTING_VALUE("hue") == "True":
 
         try:
-            b = CONNECT_BRIDGE()
+            b = CONNECT_HUE_BRIDGE()
             lights = b.get_light_objects('list')
 
             for light in lights:
@@ -235,7 +235,7 @@ def LED_OFF(break_value):
                 light.on = False
 
         except:
-            return TEST_BRIDGE()
+            return TEST_HUE_BRIDGE()
                   
     else:
         return ("Keine LED-Steuerung")   
