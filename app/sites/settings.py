@@ -33,22 +33,22 @@ def allowed_file(filename):
 def dashboard_settings_global():
       
     led_update = "" 
-    error_message_hue = ""
+    error_message_hue_bridge = ""
     error_message_snowboy = ""
     error_message_mqtt = ""
     error_message_fileupload = ""
     hue_bridge_ip = ""
     led_list = ""
     sensitivity = ""
-    check_value_hue     = ["", ""]
-    check_value_snowboy = ["", ""]
-    check_value_mqtt    = ["", ""]
+    check_value_hue_bridge = ["", ""]
+    check_value_snowboy    = ["", ""]
+    check_value_mqtt       = ["", ""]
 
     if request.method == "GET":     
         # change hue settings   
-        if request.args.get("radio_hue") is not None:
-            setting_hue_bridge = str(request.args.get("radio_hue"))
-            SET_SETTING_VALUE("hue", setting_hue_bridge)
+        if request.args.get("radio_hue_bridge") is not None:
+            setting_hue_bridge = str(request.args.get("radio_hue_bridge"))
+            SET_SETTING_VALUE("hue_bridge", setting_hue_bridge)
         # change snowboy settings   
         if request.args.get("radio_snowboy") is not None:
             setting_snowboy = str(request.args.get("radio_snowboy"))
@@ -59,13 +59,13 @@ def dashboard_settings_global():
             SET_SETTING_VALUE("mqtt", setting_mqtt)
 
     # change radio check  
-    hue_setting = GET_SETTING_VALUE("hue")     
-    if hue_setting == "True":
-        check_value_hue[0] = "checked = 'on'"
-        check_value_hue[1] = ""
+    hue_bridge_setting = GET_SETTING_VALUE("hue_bridge")     
+    if hue_bridge_setting == "True":
+        check_value_hue_bridge[0] = "checked = 'on'"
+        check_value_hue_bridge[1] = ""
     else:
-        check_value_hue[0] = ""
-        check_value_hue[1] = "checked = 'on'"
+        check_value_hue_bridge[0] = ""
+        check_value_hue_bridge[1] = "checked = 'on'"
 
     snowboy_setting = GET_SETTING_VALUE("snowboy")   
     if snowboy_setting == "True":
@@ -84,7 +84,7 @@ def dashboard_settings_global():
         check_value_mqtt[1] = "checked = 'on'"
 
 
-    if hue_setting == "True":
+    if hue_bridge_setting == "True":
         if request.method == "GET": 
             # change HUE ip
             hue_bridge_ip = request.args.get("hue_bridge_ip") 
@@ -128,20 +128,20 @@ def dashboard_settings_global():
     led_list = GET_ALL_LEDS()
     hue_bridge_ip = GET_HUE_BRIDGE_IP()  
     sensitivity = GET_SENSITIVITY()
-    error_message_hue = TEST_HUE_BRIDGE()
+    error_message_hue_bridge = TEST_HUE_BRIDGE()
 
     return render_template('dashboard_settings_global.html',
                             hue_bridge_ip=hue_bridge_ip,
                             led_list=led_list,
                             sensitivity=sensitivity,
-                            error_message_hue=error_message_hue,
+                            error_message_hue_bridge=error_message_hue_bridge,
                             error_message_snowboy=error_message_snowboy,
                             error_message_mqtt=error_message_mqtt,
                             error_message_fileupload=error_message_fileupload,
-                            hue_setting=hue_setting,
+                            hue_bridge_setting=hue_bridge_setting,
                             snowboy_setting=snowboy_setting,
                             mqtt_setting=mqtt_setting,
-                            check_value_hue=check_value_hue,
+                            check_value_hue_bridge=check_value_hue_bridge,
                             check_value_snowboy=check_value_snowboy,
                             check_value_mqtt=check_value_mqtt
                             )

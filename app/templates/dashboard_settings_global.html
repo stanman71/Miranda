@@ -62,11 +62,11 @@
         <div class="panel-heading"><font color="black"><b>Einstellungen</b></font></div>
           <div class="panel-body">   
             <form method="get">  
-              <h5><b>HUE</b></h5>
+              <h5><b>HUE Bridge</b></h5>
               <div class="radio">
-                <label><input {{check_value_hue[0]}} type="radio" value="True" name="radio_hue">Hue aktivieren</label>
+                <label><input {{check_value_hue_bridge[0]}} type="radio" value="True" name="radio_hue_bridge">Hue Bridge aktivieren</label>
                 <br>
-                <label><input {{check_value_hue[1]}} type="radio" value="False" name="radio_hue">Hue deaktivieren</label>
+                <label><input {{check_value_hue_bridge[1]}} type="radio" value="False" name="radio_hue_bridge">Hue Bridge deaktivieren</label>
               </div>
               <br>
               <h5><b>SNOWBOY</b></h5>
@@ -94,13 +94,13 @@
 
 <!-- HUE -->
 
-{% if hue_setting != "False" %}
+{% if hue_bridge_setting != "False" %}
 
     <!-- HUE error message -->
 
-    {% if error_message_hue != "" %}
+    {% if error_message_hue_bridge != "" %}
       <div class="alert alert-danger" role="alert">
-        {{ error_message_hue }}
+        {{ error_message_hue_bridge }}
       </div>      
     {% endif %}   
 

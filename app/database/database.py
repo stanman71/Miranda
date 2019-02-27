@@ -40,7 +40,7 @@ class Schedular(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
-class HUE(db.Model):
+class HUE_Bridge(db.Model):
     __tablename__ = 'hue_bridge'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     ip = db.Column(db.String(50), unique = True)
@@ -300,7 +300,7 @@ db.create_all()
 # create default settings
 if Settings.query.filter_by().first() is None:
     setting = Settings(
-        setting_name  = "hue",
+        setting_name  = "hue_bridge",
         setting_value = "False",
     )
     db.session.add(setting)
@@ -341,8 +341,8 @@ if User.query.filter_by(username='default').first() is None:
 
 
 # Create default hue settings
-if HUE.query.filter_by().first() is None:
-    hue = HUE(
+if HUE_Bridge.query.filter_by().first() is None:
+    hue = HUE_Bridge(
         id = '1',
         ip = 'default',
     )
@@ -409,12 +409,12 @@ def SET_SETTING_VALUE(name, value):
 
 
 def GET_HUE_BRIDGE_IP():
-    entry = HUE.query.filter_by().first()
+    entry = HUE_Bridge.query.filter_by().first()
     return (entry.ip)  
 
 
 def SET_HUE_BRIDGE_IP(IP):
-    entry = HUE.query.filter_by().first()
+    entry = HUE_Bridge.query.filter_by().first()
     entry.ip = IP
     db.session.commit() 
 

@@ -84,7 +84,7 @@ def GET_LED_NAMES_HUE():
 
 def LED_SET_SCENE(scene, brightness_global = 100):
 
-    if GET_SETTING_VALUE("hue") == "True":
+    if GET_SETTING_VALUE("hue_bridge") == "True":
 
         try:
             b = CONNECT_HUE_BRIDGE()
