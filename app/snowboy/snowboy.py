@@ -8,8 +8,12 @@ from app.database.database import GET_SENSITIVITY, GET_ALL_SNOWBOY_TASKS
 import sys
 import signal
 import os
+import time
+
+from threading import Thread
 
 interrupted = False
+detect = False
 
 def signal_handler(signal, frame):
    global interrupted
@@ -19,25 +23,43 @@ def interrupt_callback():
    global interrupted
    return interrupted
 
-
 def SNOWBOY_TASKS(entry):
+   
+   global detect
+   
+   # activate command mode
+   if "snowboy_active" in entry.task:
+      detect = True
+
+      # set detect to False after 5 seconds
+      class waiter(Thread):
+         def run(self):
+            global detect
+            time.sleep(5)
+            detect = False
+      waiter().start()
+  
    # start scene
-   if "start_scene" in entry.task:
+   if "start_scene" in entry.task and detect == True:
       task = entry.task.split(":")
       try:
             LED_SET_SCENE(int(task[1]), int(task[2]))
+            detect = False
       except:
             LED_SET_SCENE(int(task[1]))
+            detect = False
 
    # start program
-   if "start_program" in entry.task:
+   if "start_program" in entry.task and detect == True:
       task = entry.task.split(":")
       START_PROGRAM(int(task[1]))
+      detect = False
 
    # turn off leds
-   if "led_off" in entry.task:
+   if "led_off" in entry.task and detect == True:
       task = entry.task.split(":")
-      LED_OFF(int(task[1]))    
+      LED_OFF(int(task[1]))   
+      detect = False 
 
 
 def SNOWBOY_START():
