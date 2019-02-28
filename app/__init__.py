@@ -48,8 +48,8 @@ def START_FLASK_THREAD():
                 pass
 
 
-            app.run(host="0.0.0.0")
-            #app.run()
+            #app.run(host="0.0.0.0")
+            app.run()
 
        
     # start thread

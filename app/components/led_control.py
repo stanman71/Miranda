@@ -124,7 +124,7 @@ def LED_SET_SCENE(scene, brightness_global = 100):
 
 def PROGRAM_SET_BRIGHTNESS(brightness_settings):
 
-    if GET_SETTING_VALUE("hue") == "True":
+    if GET_SETTING_VALUE("hue_bridge") == "True":
 
         try:
             b = CONNECT_HUE_BRIDGE()
@@ -151,7 +151,7 @@ def PROGRAM_SET_BRIGHTNESS(brightness_settings):
 
 def PROGRAM_SET_COLOR(rgb_settings):
 
-    if GET_SETTING_VALUE("hue") == "True":
+    if GET_SETTING_VALUE("hue_bridge") == "True":
 
         try:
             b = CONNECT_HUE_BRIDGE()
@@ -174,7 +174,7 @@ def PROGRAM_SET_COLOR(rgb_settings):
 
 def START_PROGRAM(id):  
 
-    if GET_SETTING_VALUE("hue") == "True":
+    if GET_SETTING_VALUE("hue_bridge") == "True":
 
         try:
             b = CONNECT_HUE_BRIDGE()
@@ -211,7 +211,7 @@ def START_PROGRAM(id):
 
 def LED_OFF(break_value):
 
-    if GET_SETTING_VALUE("hue") == "True":
+    if GET_SETTING_VALUE("hue_bridge") == "True":
 
         try:
             b = CONNECT_HUE_BRIDGE()
