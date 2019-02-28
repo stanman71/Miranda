@@ -64,7 +64,7 @@ def dashboard_settings_sensors():
 """ #### """
 
 # URL for MQTT sensor values
-@app.route('/mqtt/<int:id>/sensor/<string:value>', methods=['GET'])
+@app.route('/mqtt/<int:id>/settings/sensor/<string:value>', methods=['GET'])
 def mqtt_sensor(id, value):   
     SAVE_SENSOR_MQTT(id, value)   
     return ("Daten empfangen")

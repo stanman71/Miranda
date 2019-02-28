@@ -7,7 +7,7 @@ from app.components.colorpicker_local import colorpicker
 """ flasks """
 """ ###### """
 
-UPLOAD_FOLDER = '/home/pi/Python/SmartHome/app/snowboy/resources'
+UPLOAD_FOLDER = "./app/snowboy/resources/"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user, dashboard, led, schedular, plants, sensors, settings
+from app.sites import index, user_login, dashboard, led, schedular, plants, mqtt, settings
 from app.components.plants_control import *
 from app.database.database import *
 
@@ -48,8 +48,8 @@ def START_FLASK_THREAD():
                 pass
 
 
-            #app.run(host="0.0.0.0")
-            app.run()
+            app.run(host="0.0.0.0")
+            #app.run()
 
        
     # start thread
@@ -70,24 +70,3 @@ if GET_SETTING_VALUE("snowboy") == "True":
         START_SNOWBOY()
     except Exception as e:
         print("Fehler in SnowBoy: " + str(e))
-
-
-
-""" 
-
-# start flask without threading
-
-@app.before_first_request
-def initialisation():
-    pass
-
-
-app.run(host="0.0.0.0")
-#app.run(debug=True)
-#app.run()
-
-"""
-
-
-
-

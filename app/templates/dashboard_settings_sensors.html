@@ -36,16 +36,8 @@
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Einstellungen
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_settings_global') }}">Systemeinstellungen</a></li>
-            <li><a href="{{ url_for('dashboard_settings_schedular') }}">Aufgabenplanung</a></li>
-            <li><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>
-            <li><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>     
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
       </ul>
     </div>
   </div>
@@ -56,6 +48,20 @@
     <div class="row">
       <div class="col">
   
+<!-- settings navs -->
+
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
+              <li class={{active02}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+              <li class={{active03}}><a href="{{ url_for('dashboard_settings_hue_bridge') }}">Hue Bridge</a></li>
+              <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li> 
+              <li class={{active03}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>            
+            </ul>
+          </div>
+        </nav>    
+
 <!-- error message -->
 
         {% if error_message != "" %}
@@ -68,7 +74,7 @@
   
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b>Sensorwerte</b></font></div>
-            <div class="panel-body">      
+            <div class="panel-body">  
             <form method="GET">             
               <select class="btn btn-secondary dropdown-toggle" name="get_sensor">
                 {% for each in dropdown_list_sensor %}

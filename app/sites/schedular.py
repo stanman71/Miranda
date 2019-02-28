@@ -37,7 +37,7 @@ def scheduler_job():
     hour   = now.strftime('%H')
     minute = now.strftime('%M')
 
-    entries = GET_ALL_TASKS()
+    entries = GET_ALL_SCHEDULAR_TASKS()
 
     for entry in entries:
         if entry.day == day or entry.day == "*":
@@ -48,7 +48,10 @@ def scheduler_job():
                     # start scene
                     if "start_scene" in entry.task:
                         task = entry.task.split(":")
-                        LED_SET_SCENE(int(task[1]))
+                        try:
+                            LED_SET_SCENE(int(task[1]), int(task[2]))
+                        except:
+                            LED_SET_SCENE(int(task[1]))
 
                     # start program
                     if "start_program" in entry.task:
@@ -78,20 +81,20 @@ def scheduler_job():
                             #if READ_SENSOR("GPIO_A07") < 600:
                             #    LED_SET_SCENE(int(task[1]))  
                                                                                                                                                
-                    # remove task without repeat
+                    # remove schedular task without repeat
                     if entry.repeat == "":
-                        DELETE_TASK(entry.id)
+                        DELETE_SCHEDULAR_TASK(entry.id)
 
 
-""" ########## """
-""" tasks site """
-""" ########## """
+""" ############## """
+""" schedular site """
+""" ############## """
 
-# Dashboard tasks
-@app.route('/dashboard/settings/schedular/', methods=['GET'])
+# dashboard schedular tasks
+@app.route('/dashboard/schedular/', methods=['GET'])
 @login_required
 @superuser_required
-def dashboard_settings_schedular():
+def dashboard_schedular():
     error_message = ""
     set_name = ""
     set_task = ""
@@ -121,9 +124,9 @@ def dashboard_settings_schedular():
                 else:
                     repeat = ""
 
-                error_message = ADD_TASK(name, day, hour, minute, task, repeat)
+                error_message = ADD_SCHEDULAR_TASK(name, day, hour, minute, task, repeat)
  
-    schedular_list = GET_ALL_TASKS()
+    schedular_list = GET_ALL_SCHEDULAR_TASKS()
 
     # dropdown values
     dropdown_list_days    = ["*", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -135,7 +138,7 @@ def dashboard_settings_schedular():
                              "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","49", "50",
                              "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
-    return render_template('dashboard_settings_schedular.html',
+    return render_template('dashboard_schedular.html',
                             dropdown_list_days=dropdown_list_days,
                             dropdown_list_hours=dropdown_list_hours,
                             dropdown_list_minutes=dropdown_list_minutes,
@@ -146,10 +149,10 @@ def dashboard_settings_schedular():
                             )
 
 
-# Delete tasks
-@app.route('/dashboard/settings/schedular/delete/<int:id>')
+# delete schedular tasks
+@app.route('/dashboard/schedular/delete/<int:id>')
 @login_required
 @superuser_required
 def delete_schedular_task(id):
-    DELETE_TASK(id)
-    return redirect(url_for('dashboard_settings_schedular'))
+    DELETE_SCHEDULAR_TASK(id)
+    return redirect(url_for('dashboard_schedular'))

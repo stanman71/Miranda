@@ -42,16 +42,8 @@
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Einstellungen
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_settings_global') }}">Systemeinstellungen</a></li>
-            <li><a href="{{ url_for('dashboard_settings_schedular') }}">Aufgabenplanung</a></li>
-            <li><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>
-            <li><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>      
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
       </ul>
     </div>
   </div>
@@ -140,7 +132,7 @@
 
 <!-- get rgb values -->
 <!-- GET include get_rgb, update, start -->
-       
+ 
         <form method="GET" class="verticalform">
           <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
           <input type="submit" class="btn btn-secondary" value="RGB-Werte ermitteln" />  
@@ -151,6 +143,8 @@
           </div>
 
 <!-- update a program -->
+
+          <section id="update_program"></section> 
 
           <div class="form-group">
             <br> 
@@ -169,7 +163,7 @@
 
       <div class="panel panel-default">
         <div class="panel-body">
-          <input type="submit" class="btn btn-secondary" name="start_{{ program.id }}" value="Programm starten" />
+          <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" name="start_{{ program.id }}" value="Programm starten" />
         </form>  
         {% endif %}        
         </div>
@@ -185,7 +179,7 @@
             <div class="form-group">
               <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
             </div>
-              <input type="submit" class="btn btn-secondary" value="Name ändern" />
+              <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" value="Name ändern" />
               <br>
           </form>  
 

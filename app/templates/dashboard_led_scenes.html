@@ -42,16 +42,8 @@
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Einstellungen
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_settings_global') }}">Systemeinstellungen</a></li>
-            <li><a href="{{ url_for('dashboard_settings_schedular') }}">Aufgabenplanung</a></li>
-            <li><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>
-            <li><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>      
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
       </ul>
     </div>
   </div>

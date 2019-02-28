@@ -36,16 +36,8 @@
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Einstellungen
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="{{ url_for('dashboard_settings_global') }}">Systemeinstellungen</a></li>
-            <li><a href="{{ url_for('dashboard_settings_schedular') }}">Aufgabenplanung</a></li>
-            <li><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>
-            <li><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>
-          </ul>
-        </li>
+        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>     
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
       </ul>
     </div>
   </div>
@@ -69,7 +61,10 @@
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgabenplanung</b></font></div>
           <div class="panel-body">      
-          <table class="table">
+            <div class="text-center">         
+              <h5><b>Neue Aufgabe erstellen</b></h5>
+            </div>
+            <table class="table">
             <thead>
               <tr><td></td><td></td></tr>
               <tr>
@@ -79,8 +74,8 @@
             </thead>
             <tbody>
               <tr>
-                <td>start_scene:1</td>
-                <td>starte Szene Nummer "1"</td>
+                <td>start_scene:1:100</td>
+                <td>starte Szene Nummer "1", globale Helligkeit 100 %</td>
               </tr>
               <tr>
                 <td>start_program:2</td>
@@ -112,10 +107,6 @@
 
 <!-- new task -->
  
-          <div class="text-center">         
-            <h5><b>Neue Aufgabe erstellen</b></h5>
-          </div>
-          <br>   
           Zeitpunkt (Tag / Stunde / Minute) 
           <br>  
           <br>           
@@ -166,7 +157,9 @@
       </div>
 
 <!-- schedular table -->
-        
+
+      <section id="table_tasks"></section>     
+
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgaben</b></font></div>
         <div class="panel-body">      
@@ -190,7 +183,7 @@
                 <td>{{ entry.minute }}</td> 
                 <td>{{ entry.task }}</td> 
                 <td>{{ entry.repeat }}</td> 
-                <td><a href="/dashboard/settings/schedular/delete/{{ entry.id }}"><font color="red"><b>löschen</b></font></a></td>  
+                <td><a href="/dashboard/schedular/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
               </tr>
               {% endfor %}
 

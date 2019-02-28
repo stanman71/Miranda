@@ -30,8 +30,8 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     role     = db.Column(db.String(20), server_default=("user"))
 
-class Schedular(db.Model):
-    __tablename__ = 'schedular'
+class Schedular_Tasks(db.Model):
+    __tablename__ = 'schedular_tasks'
     id     = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name   = db.Column(db.String(50), unique=True)
     day    = db.Column(db.String(50))
@@ -40,19 +40,36 @@ class Schedular(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
+class MQTT(db.Model):
+    __tablename__ = 'mqtt'
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+
+class Snowboy(db.Model):
+    __tablename__ = 'snowboy'
+    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    sensitivity = db.Column(db.Integer)
+
+class Snowboy_Tasks(db.Model):
+    __tablename__ = 'snowboy_tasks'
+    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name = db.Column(db.String(50), unique = True)
+    task = db.Column(db.String(100))
+
 class HUE_Bridge(db.Model):
     __tablename__ = 'hue_bridge'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     ip = db.Column(db.String(50), unique = True)
 
-class Snowboy(db.Model):
-    __tablename__ = 'snowboy'
-    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    sensitivity = db.Column(db.Integer)
-
-class MQTT(db.Model):
-    __tablename__ = 'mqtt'
-    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+class Plants(db.Model):
+    __tablename__ = 'plants'
+    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name             = db.Column(db.String(50), unique=True)
+    sensor_id        = db.Column(db.Integer, db.ForeignKey('sensor.id'))
+    sensor_name      = db.relationship('Sensor')
+    moisture         = db.Column(db.Integer) 
+    moisture_voltage = db.Column(db.Integer)    
+    water_volume     = db.Column(db.Integer)
+    pump_id          = db.Column(db.Integer)
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -203,17 +220,6 @@ class Scene_99(db.Model):
     color_blue  = db.Column(db.Integer, server_default=("0"))
     brightness  = db.Column(db.Integer, server_default=("254"))
 
-class Plants(db.Model):
-    __tablename__ = 'plants'
-    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name             = db.Column(db.String(50), unique=True)
-    sensor_id        = db.Column(db.Integer, db.ForeignKey('sensor.id'))
-    sensor_name      = db.relationship('Sensor')
-    moisture         = db.Column(db.Integer) 
-    moisture_voltage = db.Column(db.Integer)    
-    water_volume     = db.Column(db.Integer)
-    pump_id          = db.Column(db.Integer)
-
 class Sensor(db.Model):
     __tablename__ = 'sensor'
     id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -340,7 +346,7 @@ if User.query.filter_by(username='default').first() is None:
     db.session.commit()
 
 
-# Create default hue settings
+# Create default hue bridge settings
 if HUE_Bridge.query.filter_by().first() is None:
     hue = HUE_Bridge(
         id = '1',
@@ -460,29 +466,31 @@ def SET_SENSITIVITY(value):
     db.session.commit() 
 
 
+
+
 """ ############### """
 """ task management """
 """ ############### """
 
-def GET_TASK(name):
-    return Schedular.query.filter_by(name=name).first()
+def GET_SCHEDULAR_TASK(name):
+    return Schedular_Tasks.query.filter_by(name=name).first()
 
 
-def GET_ALL_TASKS():
-    return Schedular.query.all()
+def GET_ALL_SCHEDULAR_TASKS():
+    return Schedular_Tasks.query.all()
 
 
-def ADD_TASK(name, day, hour, minute, task, repeat):
+def ADD_SCHEDULAR_TASK(name, day, hour, minute, task, repeat):
     # name exist ?
-    check_entry = Schedular.query.filter_by(name=name).first()
+    check_entry = Schedular_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Schedular.query.filter_by(id=i).first():
+            if Schedular_Tasks.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                task = Schedular(
+                task = Schedular_Tasks(
                         id     = i,
                         name   = name,
                         day    = day,
@@ -498,8 +506,43 @@ def ADD_TASK(name, day, hour, minute, task, repeat):
         return "Name bereits vergeben"
 
 
-def DELETE_TASK(task_id):
-    Schedular.query.filter_by(id=task_id).delete()
+def DELETE_SCHEDULAR_TASK(task_id):
+    Schedular_Tasks.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
+def GET_SNOWBOY_TASK(name):
+    return Snowboy_Tasks.query.filter_by(name=name).first()
+
+
+def GET_ALL_SNOWBOY_TASKS():
+    return Snowboy_Tasks.query.all()
+
+
+def ADD_SNOWBOY_TASK(name, task):
+    # name exist ?
+    check_entry = Snowboy_Tasks.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Snowboy_Tasks.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                task = Snowboy_Tasks(
+                        id     = i,
+                        name   = name,
+                        task   = task,
+                    )
+                db.session.add(task)
+                db.session.commit()
+                return ""
+    else:
+        return "Name bereits vergeben"
+
+
+def DELETE_SNOWBOY_TASK(task_id):
+    Snowboy_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
@@ -979,9 +1022,9 @@ def DEL_SCENE(Scene):
     db.session.commit()
 
 
-""" ######## """
-""" programs """
-""" ######## """
+""" ############ """
+""" led programs """
+""" ############ """
 
 def NEW_PROGRAM(name):
     # name exist ?
@@ -1104,9 +1147,9 @@ def DELETE_PLANT(plant_id):
     db.session.commit()
 
 
-""" ###### """
-""" sensor """
-""" ###### """
+""" ####### """
+""" sensors """
+""" ####### """
 
 def GET_ALL_SENSORS():
     return Sensor.query.all()
