@@ -22,7 +22,8 @@ def superuser_required(f):
             return render_template('login.html', form=form, role_check=False)
     return wrap
 
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# file upload settings
+ALLOWED_EXTENSIONS = set(['pmdl'])
 
 def allowed_file(filename):
     return '.' in filename and \
