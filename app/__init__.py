@@ -16,7 +16,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user_login, dashboard, led, schedular, plants, mqtt, settings
+from app.sites import index, user_login, dashboard, led, schedular, plants, settings
 from app.components.plants_control import *
 from app.database.database import *
 
@@ -48,8 +48,8 @@ def START_FLASK_THREAD():
                 pass
 
 
-            app.run(host="0.0.0.0")
-            #app.run()
+            #app.run(host="0.0.0.0")
+            app.run()
 
        
     # start thread

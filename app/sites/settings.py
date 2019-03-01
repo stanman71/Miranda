@@ -3,10 +3,13 @@ from flask_login import login_required, current_user
 from functools import wraps
 from werkzeug.utils import secure_filename
 import os
+import shutil
+import datetime
 
 from app import app
 from app.components.led_control import *
 from app.database.database import *
+from app.components.tasks import SAVE_DATABASE, GET_BACKUP_FILES
 
 # create role "superuser"
 def superuser_required(f):
@@ -57,7 +60,8 @@ def dashboard_settings_mqtt():
     return render_template('dashboard_settings_mqtt.html',
                             error_message_mqtt=error_message_mqtt,
                             mqtt_setting=mqtt_setting,
-                            check_value_mqtt=check_value_mqtt
+                            check_value_mqtt=check_value_mqtt,
+                            active01="active",
                             )
      
 
@@ -170,7 +174,8 @@ def dashboard_settings_snowboy():
                             snowboy_list=snowboy_list,
                             file_list=file_list,
                             set_name=set_name,
-                            set_task=set_task         
+                            set_task=set_task,
+                            active02="active",
                             )
 
 
@@ -244,6 +249,7 @@ def dashboard_settings_hue_bridge():
                             error_message_hue_bridge=error_message_hue_bridge,
                             hue_bridge_setting=hue_bridge_setting,
                             check_value_hue_bridge=check_value_hue_bridge,
+                            active03="active",
                             )
     
 
@@ -255,6 +261,61 @@ def remove_hue_bridge_led(id):
     remove_message_led = REMOVE_LED(id)
     return redirect(url_for('dashboard_settings_hue_bridge'))
     
+
+""" ############### """
+""" sensor settings """
+""" ############### """
+
+@app.route('/dashboard/settings/sensors', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_settings_sensors():
+    sensor_values = None
+    sensor_name = ""
+    sensor_id = ""
+    error_message = ""
+
+    if request.method == "GET": 
+
+        # get sensor values
+        if request.args.get("get_sensor") is not None:               
+            sensor_id = request.args.get("get_sensor")
+            sensor_values = GET_SENSOR_VALUES(sensor_id)
+            sensor_name = GET_SENSOR_NAME(sensor_id)
+
+            if sensor_values == None:
+                error_message = "Keine Daten vorhanden"    
+
+        # delete the values of a selected sensor
+        if request.args.get("delete_values") is not None:
+            delete_values = request.args.get("delete_values") 
+            error_message = DELETE_SENSOR_VALUES(delete_values)
+            sensor_name = GET_SENSOR_NAME(delete_values)
+
+    dropdown_list_sensor = GET_ALL_SENSORS()
+
+    return render_template('dashboard_settings_sensors.html',
+                            dropdown_list_sensor=dropdown_list_sensor,
+                            sensor_values=sensor_values,
+                            sensor_name=sensor_name,
+                            sensor_id=sensor_id,
+                            error_message=error_message,
+                            active04="active",
+                            )
+
+
+# URL for MQTT sensor values
+@app.route('/mqtt/<int:id>/settings/sensor/<string:value>', methods=['GET'])
+def mqtt_sensor(id, value):   
+    SAVE_SENSOR_MQTT(id, value)   
+    return ("Daten empfangen")
+
+
+# URL for MQTT control
+@app.route('/mqtt/<int:id>/button/<int:button_id>/<int:value>', methods=['GET'])
+def mqtt_button(id, button_id, value):
+    pass
+
 
 """ ############# """
 """ user settings """
@@ -269,6 +330,7 @@ def dashboard_settings_user():
     return render_template('dashboard_settings_user.html',
                             name=current_user.username,
                             user_list=user_list,
+                            active05="active",
                             )
 
 
@@ -288,3 +350,64 @@ def activate_user(id):
 def delete_user(id):
     DELETE_USER(id)
     return redirect(url_for('dashboard_settings_user'))
+
+
+""" ############### """
+""" system settings """
+""" ############### """
+
+# dashboard system settings
+@app.route('/dashboard/settings/system/', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_settings_system():
+
+    error_message_system = ""
+
+    if request.method == "GET":     
+
+        # change restart raspi 
+        if request.args.get("restart") is not None:
+            os.system("sudo shutdown -r now")
+            sys.exit()
+
+        # change restart raspi 
+        if request.args.get("shutdown") is not None:
+            os.system("sudo shutdown -h now")
+            sys.exit()
+
+        # change snowboy settings   
+        if request.args.get("database_save") is not None:
+            SAVE_DATABASE() 
+ 
+    file_list = GET_BACKUP_FILES()
+
+    return render_template('dashboard_settings_system.html',
+                            error_message_system=error_message_system,
+                            file_list=file_list,
+                            active06="active",
+                            )
+
+
+# restore database backup
+@app.route('/dashboard/settings/system/restore/backup_database/<string:filename>')
+@login_required
+@superuser_required
+def restore_database_backup(filename):
+    # check file
+    try:
+        if filename.split("_")[1] == "smarthome.sqlite3":
+            shutil.copyfile('./backup/' + filename, './app/database/smarthome.sqlite3')
+    except:
+        pass 
+    
+    return redirect(url_for('dashboard_settings_system'))
+
+
+# delete database backup
+@app.route('/dashboard/settings/system/delete/backup_database/<string:filename>')
+@login_required
+@superuser_required
+def delete_database_backup(filename):
+    os.remove ('./backup/' + filename)
+    return redirect(url_for('dashboard_settings_system'))
