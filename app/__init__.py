@@ -7,7 +7,9 @@ from app.components.colorpicker_local import colorpicker
 """ flasks """
 """ ###### """
 
-UPLOAD_FOLDER = "./app/snowboy/resources/"
+PATH = "/home/pi/Python/SmartHome"
+
+UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

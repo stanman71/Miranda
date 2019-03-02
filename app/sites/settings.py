@@ -11,6 +11,8 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.tasks import SAVE_DATABASE, GET_BACKUP_FILES
 
+PATH = "/home/pi/Python/SmartHome"
+
 # create role "superuser"
 def superuser_required(f):
     @wraps(f)
@@ -157,7 +159,7 @@ def dashboard_settings_snowboy():
     file_list_temp = []
     file_list = []
 
-    for files in os.walk("./app/snowboy/resources/"):  
+    for files in os.walk(PATH + "/app/snowboy/resources/"):  
         file_list_temp.append(files)
             
     file_list_temp = file_list_temp[0][2]
@@ -194,7 +196,7 @@ def delete_snowboy_task(id):
 @login_required
 @superuser_required
 def delete_snowboy_hotword(filename):
-    os.remove ('./app/snowboy/resources/' + filename)
+    os.remove (PATH + '/app/snowboy/resources/' + filename)
     return redirect(url_for('dashboard_settings_snowboy'))
 
 
@@ -398,7 +400,7 @@ def restore_database_backup(filename):
     # check file
     try:
         if filename.split("_")[1] == "smarthome.sqlite3":
-            shutil.copyfile('./backup/' + filename, './app/database/smarthome.sqlite3')
+            shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
     except:
         pass 
     
@@ -410,5 +412,5 @@ def restore_database_backup(filename):
 @login_required
 @superuser_required
 def delete_database_backup(filename):
-    os.remove ('./backup/' + filename)
+    os.remove (PATH + '/backup/' + filename)
     return redirect(url_for('dashboard_settings_system'))

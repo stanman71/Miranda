@@ -9,6 +9,8 @@ import os
 
 from threading import Thread
 
+PATH = "/home/pi/Python/SmartHome"
+
 snowboy_detect_on = False
 
 def SNOWBOY_TASKS(entry):
@@ -93,16 +95,7 @@ def SCHEDULAR_TASKS(entries):
                # watering plants
                if "save_database" in entry.task:
                   SAVE_DATABASE()
-
-               # start led automatically
-               if "start_smartphone" in entry.task:
-                  task = entry.task.split(":")
-                  hostname = "google.com"
-                  if os.system("ping -n 1 " + hostname) == 0:
-                        print("ok")
-                        #if READ_SENSOR("GPIO_A07") < 600:
-                        #    LED_SET_SCENE(int(task[1]))  
-                                                                                                                                                        
+                                                                                                                                                       
                # remove schedular task without repeat
                if entry.repeat == "":
                   DELETE_SCHEDULAR_TASK(entry.id)
@@ -110,7 +103,7 @@ def SCHEDULAR_TASKS(entries):
 
 def GET_BACKUP_FILES():
    file_list = []
-   for files in os.walk("./backup/"):  
+   for files in os.walk(PATH + "/backup/"):  
       file_list.append(files)         
    return file_list[0][2]
 
@@ -118,6 +111,14 @@ def GET_BACKUP_FILES():
 def SAVE_DATABASE():  
       # delete old backup files
       if len(GET_BACKUP_FILES()) == 10:
-            os.remove ('./backup/' + file_list[0])
+            os.remove (PATH + '/backup/' + file_list[0])
 
-      shutil.copyfile('./app/database/smarthome.sqlite3', './backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+      shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+
+
+def DETECT_SMARTPHONE():
+   hostname = "google.com"
+   if os.system("ping -n 1 " + hostname) == 0:
+         print("ok")
+         #if READ_SENSOR("GPIO_A07") < 600:
+         #    LED_SET_SCENE(int(task[1]))  
