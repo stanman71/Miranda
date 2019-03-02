@@ -16,7 +16,7 @@ This project creates a smart home environment.
 - taskmanagement to automate processes
 - watering plants
 - SQL-lite database 
-- user management und user right system
+- user management and user rights
 - smartphone view
 
 ------------
