@@ -151,7 +151,7 @@
               <tr>
                 <td>snowboy_active</td>
                 <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
-                    LEDs vom Snowboy leuchten in diesem Modus</td>
+                    blaue LEDs vom Snowboy leuchten in diesem Modus</td>
               </tr> 
               <tr>
                 <td>start_scene:1:50</td>
@@ -206,15 +206,13 @@
           <div class="panel-heading">Aufgaben</div>        
           <div class="panel-body">  
             <table class="table">
-              <thead>    
-                <th scope="col">ID</th>                   
+              <thead>                      
                 <th scope="col">Name</th> 
                 <th scope="col">Aufgabe</th> 
               </thead>
               <tbody> 
                 {% for entry in snowboy_list %}
                 <tr>
-                  <td>{{ entry.id }}</td>
                   <td>{{ entry.name }}</td> 
                   <td>{{ entry.task }}</td> 
                   <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  

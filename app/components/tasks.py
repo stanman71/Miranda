@@ -14,6 +14,7 @@ PATH = "/home/pi/Python/SmartHome"
 
 snowboy_detect_on = False
 
+
 def SNOWBOY_TASKS(entry):
    
    global snowboy_detect_on
