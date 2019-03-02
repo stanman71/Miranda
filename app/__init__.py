@@ -21,11 +21,16 @@ colorpicker(app)
 from app.sites import index, user_login, dashboard, led, schedular, plants, settings
 from app.components.plants_control import *
 from app.database.database import *
+from app.components.pixel_ring import PIXEL_RING_CONTROL
 
 
 # stop all pumps
 for plant in GET_ALL_PLANTS():
     STOP_PUMP(plant.pump_id) 
+    
+    
+# deactivate pixel_ring
+PIXEL_RING_CONTROL("off")
 
 
 # start flask

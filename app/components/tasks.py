@@ -1,6 +1,7 @@
 from app import app
 from app.components.led_control import *
 from app.database.database import *
+from app.components.pixel_ring import PIXEL_RING_CONTROL
 
 import time
 import datetime
@@ -20,6 +21,7 @@ def SNOWBOY_TASKS(entry):
    # activate command mode
    if "snowboy_active" in entry.task:
       snowboy_detect_on = True
+      PIXEL_RING_CONTROL("on")
 
       # set snowboy_detect_on to False after 5 seconds
       class waiter(Thread):
@@ -27,6 +29,7 @@ def SNOWBOY_TASKS(entry):
             global detect
             time.sleep(5)
             snowboy_detect_on = False
+            PIXEL_RING_CONTROL("off")
       waiter().start()
   
    # start scene
@@ -35,21 +38,25 @@ def SNOWBOY_TASKS(entry):
       try:
             LED_SET_SCENE(int(task[1]), int(task[2]))
             snowboy_detect_on = False
+            PIXEL_RING_CONTROL("off")
       except:
             LED_SET_SCENE(int(task[1]))
             snowboy_detect_on = False
+            PIXEL_RING_CONTROL("off")
 
    # start program
    if "start_program" in entry.task and snowboy_detect_on == True:
       task = entry.task.split(":")
       START_PROGRAM(int(task[1]))
       snowboy_detect_on = False
+      PIXEL_RING_CONTROL("off")
 
    # turn off leds
    if "led_off" in entry.task and snowboy_detect_on == True:
       task = entry.task.split(":")
       LED_OFF(int(task[1]))   
       snowboy_detect_on = False 
+      PIXEL_RING_CONTROL("off")
 
 
 def SCHEDULAR_TASKS(entries):

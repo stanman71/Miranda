@@ -23,6 +23,7 @@ def interrupt_callback():
 
 
 def SNOWBOY_START():
+
    signal.signal(signal.SIGINT, signal_handler)
 
    # get hotword files
@@ -33,8 +34,9 @@ def SNOWBOY_START():
    # voice models here:
    models = file_list
 
-   # modify sensitivity for better detection / accuracy
    sensitivity_value = int(GET_SENSITIVITY()) / 100
+
+   # modify sensitivity for better detection / accuracy
    detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)
    
    # put what should happen when snowboy detects hotword here:
@@ -59,7 +61,6 @@ def SNOWBOY_START():
                     lambda: SNOWBOY_TASKS(GET_ALL_SNOWBOY_TASKS()[18]),  
                     lambda: SNOWBOY_TASKS(GET_ALL_SNOWBOY_TASKS()[19])]
 
-   # cut callback_list as needed
    callbacks = callback_list[:len(GET_ALL_SNOWBOY_TASKS())]
          
    print('Listening...')
