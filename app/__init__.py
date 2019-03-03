@@ -27,52 +27,39 @@ from app.components.pixel_ring import PIXEL_RING_CONTROL
 # stop all pumps
 for plant in GET_ALL_PLANTS():
     STOP_PUMP(plant.pump_id) 
-    
-    
+     
 # deactivate pixel_ring
 PIXEL_RING_CONTROL("off")
 
 
 # start flask
-def START_FLASK_THREAD():
+class flask_Thread(threading.Thread):
+    def __init__(self, ID = 1, name = "flask_Thread"):
+        threading.Thread.__init__(self)
+        self.ID = ID
+        self.name = name
 
-    class flask_Thread(threading.Thread):
-        def __init__(self, ID = 1, name = "flask_Thread"):
-            threading.Thread.__init__(self)
-            self.ID = ID
-            self.name = name
+    def run(self):
+        print("###### Start FLASK ######")
 
-        def run(self):
-            print("###### Start FLASK ######")
+        @app.before_first_request
+        def initialisation():
+            pass
 
-
-            """ ############## """
-            """ initialisation """
-            """ ############## """
-
-            @app.before_first_request
-            def initialisation():
-                pass
-
-
-            #app.run(host="0.0.0.0")
-            app.run()
-       
-    # start thread
-    t1 = flask_Thread()
-    t1.start()
-
-START_FLASK_THREAD()
+        app.run(host="0.0.0.0")
+        #app.run()
+    
+t1 = flask_Thread()
+t1.start()
 
 
-def START_SNOWBOY():
-    from app.snowboy.snowboy import SNOWBOY_START
-
-    print("###### Start SNOWBOY ######")
-    SNOWBOY_START()
-
+# start snowboy
 if GET_SETTING_VALUE("snowboy") == "True":
     try:
-        START_SNOWBOY()
+        from app.snowboy.snowboy import SNOWBOY_START
+
+        print("###### Start SNOWBOY ######")
+        SNOWBOY_START()
+
     except Exception as e:
         print("Fehler in SnowBoy: " + str(e))

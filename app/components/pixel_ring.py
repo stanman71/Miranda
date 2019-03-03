@@ -1,20 +1,19 @@
 """
+
+-------------------------------------
+ReSpeaker Mic Array v2.0 - Pixel Ring
+-------------------------------------
+
+https://github.com/respeaker
+https://github.com/respeaker/pixel_ring/blob/master/pixel_ring/usb_pixel_ring_v2.py
+
 ----------
 IMPORTANT:
 ----------
 
-INSTALL: "sudo apt install python3-usb"
+INSTALL: "sudo apt install python3-usb" 
 
 (https://forum.micropython.org/viewtopic.php?t=4849)
-
-
-RIGHTS: make all USB devices readable and writable by all users 
-
-- add a new file "sudo nano /etc/udev/rules.d/usb.rules"
-- write inside: SUBSYSTEM=="usb", MODE="0666"
-- restart the raspberry pi
-
-(https://stackoverflow.com/questions/40597515/libusb-calls-without-sudo-using-udev-rules)
 
 """
 
