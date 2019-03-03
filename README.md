@@ -21,9 +21,27 @@ This project creates a smart home environment.
 
 ------------
 
+### Install the program on Raspberry Pi and setup autostart
+
+- copy all SmartHome files into the folder "/home/pi/Python/SmartHome"
+- install the required modules by using sudo rights
+- open the autostart-file: "sudo nano /etc/rc.local"
+- insert "sudo python3 /home/pi/Python/SmartHome/run.py &" before "exit 0"
+- save the file
+
+- stop the program manually: 
+
+  >>> sudo killall python3
+
+- restart the program manually:
+
+  >>> sudo python3 /home/pi/Python/SmartHome/run.py
+
+-----------
+
 ### First Step: Start the flask server
 
-- Start: ```run.py``` (Default IP: 127.0.0.1:5000)
+- Default IP: 127.0.0.1:5000
 
 ------------
 

@@ -57,7 +57,6 @@ def START_FLASK_THREAD():
 
             #app.run(host="0.0.0.0")
             app.run()
-
        
     # start thread
     t1 = flask_Thread()
