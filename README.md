@@ -29,6 +29,18 @@ This project creates a smart home environment.
 - insert "sudo python3 /home/pi/Python/SmartHome/run.py &" before "exit 0"
 - save the file
 
+------------
+
+### Optional: Install snowboy
+
+- 
+
+
+
+------------
+ 
+### Flask server control
+
 - stop the program manually: 
 
   >>> sudo killall python3
@@ -36,16 +48,4 @@ This project creates a smart home environment.
 - restart the program manually:
 
   >>> sudo python3 /home/pi/Python/SmartHome/run.py
-
------------
-
-### First Step: Start the flask server
-
-- Default IP: 127.0.0.1:5000
-
-------------
-
-### Smartphone view
-
-
 
