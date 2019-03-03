@@ -368,18 +368,15 @@ def dashboard_settings_system():
     error_message_system = ""
 
     if request.method == "GET":     
-
-        # change restart raspi 
+        # restart raspi 
         if request.args.get("restart") is not None:
             os.system("sudo shutdown -r now")
             sys.exit()
-
-        # change restart raspi 
+        # shutdown raspi 
         if request.args.get("shutdown") is not None:
             os.system("sudo shutdown -h now")
             sys.exit()
-
-        # change snowboy settings   
+        # save database   
         if request.args.get("database_save") is not None:
             SAVE_DATABASE() 
  
