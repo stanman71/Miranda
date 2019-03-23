@@ -57,6 +57,8 @@ https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
 https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 </br>
 
+- install mosquitto
+
 >>> sudo apt-get update
 >>> sudo apt-get upgrade -y
 >>> sudo apt-get install mosquitto mosquitto-clients -y
@@ -73,16 +75,16 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 - insert and save:
 
-[Unit]</br>
-Description=MQTT Broker</br>
-After=network.target</br>
+       [Unit]</br>
+       Description=MQTT Broker</br>
+       After=network.target</br>
 
-[Service]</br>
-ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
-Restart=always</br>
+       [Service]</br>
+       ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
+       Restart=always</br>
 
-[Install]</br>
-WantedBy=multi-user.target</br>
+       [Install]</br>
+       WantedBy=multi-user.target</br>
 
 - activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
 
