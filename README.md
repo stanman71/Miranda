@@ -78,16 +78,16 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 - insert and save:
 
-       [Unit]</br>
-       Description=MQTT Broker</br>
-       After=network.target</br>
+       [Unit]
+       Description=MQTT Broker
+       After=network.target
 
-       [Service]</br>
-       ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
-       Restart=always</br>
+       [Service]
+       ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+       Restart=always
 
-       [Install]</br>
-       WantedBy=multi-user.target</br>
+       [Install]
+       WantedBy=multi-user.target
 
 - activate the new autostart-file
 
