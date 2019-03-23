@@ -14,7 +14,6 @@ UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 Bootstrap(app)
 colorpicker(app)
@@ -31,7 +30,6 @@ for plant in GET_ALL_PLANTS():
      
 # deactivate pixel_ring
 PIXEL_RING_CONTROL("off")
-
 
 
 # start flask
@@ -56,7 +54,6 @@ t1 = flask_Thread()
 t1.start()
 
 
-
 # start MQTT
 if GET_SETTING_VALUE("mqtt") == "True":
     class mqtt_Thread(threading.Thread):
@@ -66,10 +63,7 @@ if GET_SETTING_VALUE("mqtt") == "True":
             self.name = name
 
         def run(self):
-            print("###### Start MQTT ######")
-
             try:
-
                 from app.components.mqtt import MQTT_START
 
                 print("###### Start MQTT ######")
@@ -80,7 +74,6 @@ if GET_SETTING_VALUE("mqtt") == "True":
     
     t2 = mqtt_Thread()
     t2.start()
-
 
 
 # start snowboy
