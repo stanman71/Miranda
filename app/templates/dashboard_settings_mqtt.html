@@ -96,7 +96,51 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">MQTT Einstellungen</div>
-          <div class="panel-body">      
+          <div class="panel-body"> 
+            <form method="GET">
+            <div class="text-center">         
+              <h5><b>MQTT-Device hinzufügen</b></h5>
+            </div>       
+            <br>          
+            MQTT-Device Name     
+            <div class="form-group">
+              <input type="text" class="form-control" name="mqtt_device_name" value="{% if mqtt_device_name != None %}{{ mqtt_device_name }}{% endif %}" />
+            </div>
+            MQTT-Device Kanal      
+            <div class="form-group">
+              <input type="text" class="form-control" name="mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
+            </div>
+              <br>
+              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" value="MQTT-Device hinzufügen" />
+            </form>   
+          </div>  
+        </div>  
+
+    <!-- mqtt device table -->
+
+      <section id="mqtt_device_table"></section>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">MQTT-Devices</div>
+          <div class="panel-body">       
+          <table class="table">
+            <thead>
+              <th scope="col">Name</th>                        
+              <th scope="col">Kanalpfad</th> 
+            </thead>
+            <tbody> 
+              {% for entry in mqtt_device_list %}
+              <tr>
+                <td>{{ entry.name }}</td> 
+                <td>{{ entry.channel_path }}</td> 
+                <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#mqtt_device_table"><font color="red"><b>löschen</b></font></a></td>                 
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>  
+
+          <font color="red"><b>MQTT-Device kann nur gelöscht werden, wenn es nicht verwendet wird !!!</b></font>
+
         </div>  
       </div>  
 

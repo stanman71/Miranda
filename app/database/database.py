@@ -40,9 +40,17 @@ class Schedular_Tasks(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
-class MQTT(db.Model):
-    __tablename__ = 'mqtt'
-    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+class MQTT_Devices(db.Model):
+    __tablename__ = 'mqtt_devices'
+    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name         = db.Column(db.String(50), unique=True)
+    channel_path = db.Column(db.String(50))
+
+class MQTT_Devices_Values(db.Model):
+    __tablename__ = 'mqtt_devices_values'
+    id    = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    value = db.Column(db.String(50))    
+    date  = db.Column(db.String(50))  
 
 class Snowboy(db.Model):
     __tablename__ = 'snowboy'
@@ -64,8 +72,9 @@ class Plants(db.Model):
     __tablename__ = 'plants'
     id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
     name             = db.Column(db.String(50), unique=True)
-    sensor_id        = db.Column(db.Integer, db.ForeignKey('sensor.id'))
-    sensor_name      = db.relationship('Sensor')
+    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device_name = db.relationship('MQTT_Devices')    
+    sensor_id        = db.Column(db.Integer)
     moisture         = db.Column(db.Integer) 
     moisture_voltage = db.Column(db.Integer)    
     water_volume     = db.Column(db.Integer)
@@ -220,77 +229,6 @@ class Scene_99(db.Model):
     color_blue  = db.Column(db.Integer, server_default=("0"))
     brightness  = db.Column(db.Integer, server_default=("254"))
 
-class Sensor(db.Model):
-    __tablename__ = 'sensor'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name = db.Column(db.String(50), unique=True)
-
-class Sensor_GPIO_A00(db.Model):
-    __tablename__ = 'sensor_gpio_a00'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A01(db.Model):
-    __tablename__ = 'sensor_gpio_a01'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A02(db.Model):
-    __tablename__ = 'sensor_gpio_a02'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A03(db.Model):
-    __tablename__ = 'sensor_gpio_a03'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A04(db.Model):
-    __tablename__ = 'sensor_gpio_a04'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A05(db.Model):
-    __tablename__ = 'sensor_gpio_a05'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_GPIO_A06(db.Model):
-    __tablename__ = 'sensor_gpio_a06'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))  
-
-class Sensor_GPIO_A07(db.Model):
-    __tablename__ = 'sensor_gpio_a07'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_MQTT_00(db.Model):
-    __tablename__ = 'sensor_mqtt_00'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_MQTT_01(db.Model):
-    __tablename__ = 'sensor_mqtt_01'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))
-
-class Sensor_MQTT_02(db.Model):
-    __tablename__ = 'sensor_mqtt_02'
-    id        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value     = db.Column(db.String(50))    
-    date      = db.Column(db.String(50))  
-
 
 """ ################################ """
 """ ################################ """
@@ -326,6 +264,7 @@ if Settings.query.filter_by().first() is None:
     db.session.add(setting)    
     db.session.commit()
 
+
 # create default snowboy
 if Snowboy.query.filter_by().first() is None:
     snowboy = Snowboy(
@@ -333,6 +272,7 @@ if Snowboy.query.filter_by().first() is None:
     )
     db.session.add(snowboy)
     db.session.commit()
+
 
 # create default user
 if User.query.filter_by(username='default').first() is None:
@@ -343,16 +283,6 @@ if User.query.filter_by(username='default').first() is None:
         role='superuser'
     )
     db.session.add(user)
-    db.session.commit()
-
-
-# Create default hue bridge settings
-if HUE_Bridge.query.filter_by().first() is None:
-    hue = HUE_Bridge(
-        id = '1',
-        ip = 'default',
-    )
-    db.session.add(hue)
     db.session.commit()
 
 
@@ -372,24 +302,6 @@ if Scenes.query.filter_by().first() is None:
     )        
     db.session.add(scene)
     db.session.commit()
-
-
-# create sensors
-if Sensor.query.filter_by().first() is None:   
-    for i in range(0,8):
-        sensor = Sensor(
-            id   = i,
-            name = "GPIO_A0" + str(i),
-        )
-        db.session.add(sensor)
-     
-    for i in range(9,12):
-        sensor = Sensor(
-            id   = i,
-            name = "MQTT_0" + str(i - 9),
-        )
-        db.session.add(sensor)
-        db.session.commit()
 
 
 """ ################### """
@@ -464,8 +376,6 @@ def SET_SENSITIVITY(value):
     entry = Snowboy.query.filter_by().first()
     entry.sensitivity = value
     db.session.commit() 
-
-
 
 
 """ ############### """
@@ -1089,9 +999,9 @@ def DELETE_PROGRAM(name):
     db.session.commit()
 
 
-""" ####### """
-""" plants  """
-""" ####### """
+""" ###### """
+""" plants """
+""" ###### """
 
 def GET_PLANT(plant_id):
     return Plants.query.filter_by(id=plant_id).first()
@@ -1101,7 +1011,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, sensor_id, pump_id, water_volume):
+def ADD_PLANT(name, mqtt_device_id, sensor_id, pump_id, water_volume):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1112,16 +1022,18 @@ def ADD_PLANT(name, sensor_id, pump_id, water_volume):
             else:
                 # add the new plant
                 plant = Plants(
-                        id           = i,
-                        name         = name,
-                        sensor_id    = sensor_id,
-                        pump_id      = pump_id,
-                        moisture     = 0,
-                        water_volume = water_volume,
+                        id             = i,
+                        name           = name,
+                        mqtt_device_id = mqtt_device_id,
+                        sensor_id      = sensor_id,
+                        pump_id        = pump_id,
+                        moisture       = 0,
+                        water_volume   = water_volume,
                     )
                 db.session.add(plant)
                 db.session.commit()
                 return ""
+
     else:
         return "Name bereits vergeben"
 
@@ -1147,175 +1059,63 @@ def DELETE_PLANT(plant_id):
     db.session.commit()
 
 
-""" ####### """
-""" sensors """
-""" ####### """
+""" #### """
+""" mqtt """
+""" #### """
 
-def GET_ALL_SENSORS():
-    return Sensor.query.all()
-
-
-def GET_SENSOR_NAME(sensor_id):
-    sensor_name = Sensor.query.filter_by(id=sensor_id).first()
-    return sensor_name.name  
+def GET_ALL_MQTT_DEVICES():
+    return MQTT_Devices.query.all()
 
 
-def GET_SENSOR_VALUES(id):
-    sensor_name = Sensor.query.filter_by(id=id).first()
-    sensor_name = sensor_name.name
+def GET_MQTT_DEVICE_NAME(mqtt_id):
+    device_name = MQTT_Devices.query.filter_by(id=mqtt_id).first()
+    return device_name.name  
 
-    if sensor_name == "GPIO_A00":
-        sensor_values = Sensor_GPIO_A00.query.all()
-    if sensor_name == "GPIO_A01":
-        sensor_values = Sensor_GPIO_A01.query.all()
-    if sensor_name == "GPIO_A02":
-        sensor_values = Sensor_GPIO_A02.query.all()
-    if sensor_name == "GPIO_A03":
-        sensor_values = Sensor_GPIO_A03.query.all()
-    if sensor_name == "GPIO_A04":
-        sensor_values = Sensor_GPIO_A04.query.all()
-    if sensor_name == "GPIO_A05":
-        sensor_values = Sensor_GPIO_A05.query.all()
-    if sensor_name == "GPIO_A06":
-        sensor_values = Sensor_GPIO_A06.query.all()
-    if sensor_name == "GPIO_A07":
-        sensor_values = Sensor_GPIO_A07.query.all()        
-    if sensor_name == "MQTT_00":
-        sensor_values = Sensor_MQTT_00.query.all()
-    if sensor_name == "MQTT_01":
-        sensor_values = Sensor_MQTT_01.query.all()
-    if sensor_name == "MQTT_02":
-        sensor_values = Sensor_MQTT_02.query.all()
-    
+
+def GET_MQTT_DEVICE_VALUES(mqtt_id):
+
+
+    return MQTT_Devices_Values.query.filter_by(id=mqtt_id).first()
+   
+    """
     if sensor_values == []:
         return None
     else:
         return sensor_values
+    """
+
+def ADD_MQTT_DEVICE(name, channel_path):
+    # name exist ?
+    check_entry = MQTT_Devices.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,50):
+            if MQTT_Devices.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new plant
+                device = MQTT_Devices(
+                        id           = i,
+                        name         = name,
+                        channel_path = channel_path,
+                        )
+                db.session.add(device)
+                db.session.commit()
+                return ""
+    else:
+        return "Name bereits vergeben"
 
 
-def SAVE_SENSOR_GPIO(sensor_name):
-    try:
-        import gpiozero
-
-        if sensor_name == "GPIO_A00":
-            adc = gpiozero.MCP3008(channel = 0)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A00(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A01":
-            adc = gpiozero.MCP3008(channel = 1)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A01(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A02":
-            adc = gpiozero.MCP3008(channel = 2)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A02(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A03":
-            adc = gpiozero.MCP3008(channel = 3)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A03(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A04":
-            adc = gpiozero.MCP3008(channel = 4)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A04(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A05":
-            adc = gpiozero.MCP3008(channel = 5)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A05(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A06":
-            adc = gpiozero.MCP3008(channel = 6)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A06(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-        if sensor_name == "GPIO_A07":
-            adc = gpiozero.MCP3008(channel = 7)
-            voltage = adc.voltage
-            result = "%.2f V" % voltage
-            entry = Sensor_GPIO_A07(
-                value = result,
-                date  = time.strftime("%Y-%m-%d %H:%M"),
-            )   
-
-        db.session.add(entry)
-        db.session.commit()   
-
-    except:
-        pass
-
-
-def SAVE_SENSOR_MQTT(mqtt, result):
-    if mqtt == 0:
-        entry = Sensor_MQTT_00(
-            value = result,
-            date  = time.strftime("%Y-%m-%d %H:%M"),
-        ) 
-    if mqtt == 1:
-        entry = Sensor_MQTT_01(
-            value = result,
-            date  = time.strftime("%Y-%m-%d %H:%M"),
-        ) 
-    if mqtt == 2:
-        entry = Sensor_MQTT_02(
-            value = result,
-            date  = time.strftime("%Y-%m-%d %H:%M"),
-        ) 
-
-    db.session.add(entry)
-    db.session.commit()   
-
-
-def DELETE_SENSOR_VALUES(id):
-    sensor_name = Sensor.query.filter_by(id=id).first()
-    sensor_name = sensor_name.name
-
-    if sensor_name == "GPIO_A00":
-        Sensor_GPIO_A00.query.delete()
-    if sensor_name == "GPIO_A01":
-        Sensor_GPIO_A01.query.delete()
-    if sensor_name == "GPIO_A02":
-        Sensor_GPIO_A02.query.delete()
-    if sensor_name == "GPIO_A03":
-        Sensor_GPIO_A03.query.delete()
-    if sensor_name == "GPIO_A04":
-        Sensor_GPIO_A04.query.delete()
-    if sensor_name == "GPIO_A05":
-        Sensor_GPIO_A05.query.delete()
-    if sensor_name == "GPIO_A06":
-        Sensor_GPIO_A06.query.delete()
-    if sensor_name == "GPIO_A07":
-        Sensor_GPIO_A07.query.delete()
-    if sensor_name == "MQTT_00":
-        Sensor_MQTT_00.query.delete()
-    if sensor_name == "MQTT_01":
-        Sensor_MQTT_01.query.delete()
-    if sensor_name == "MQTT_02":
-        Sensor_MQTT_02.query.delete()
-
+def DELETE_MQTT_DEVICE(id):
+    MQTT_Devices_Values.query.filter_by(id=id).delete()
+    MQTT_Devices.query.filter_by(id=id).delete()
     db.session.commit() 
+
+    return "Device gelöscht"
+
+
+def DELETE_MQTT_DEVICE_VALUES(id):
+    MQTT_Devices_Values.query.filter_by(id=id).delete()
+    db.session.commit() 
+
     return "Werte gelöscht"

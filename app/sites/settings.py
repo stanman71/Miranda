@@ -11,7 +11,7 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.tasks import SAVE_DATABASE, GET_BACKUP_FILES
 
-PATH = "/home/pi/Python/SmartHome"
+PATH = "/home/pi/SmartHome"
 
 # create role "superuser"
 def superuser_required(f):
@@ -42,7 +42,9 @@ def allowed_file(filename):
 def dashboard_settings_mqtt():
       
     error_message_mqtt = ""
-    check_value_mqtt       = ["", ""]
+    mqtt_device_channel_path = ""
+    mqtt_device_name = ""   
+    check_value_mqtt   = ["", ""]
 
     if request.method == "GET":     
         # change mqtt settings   
@@ -60,12 +62,43 @@ def dashboard_settings_mqtt():
         check_value_mqtt[1] = "checked = 'on'"
 
 
-    return render_template('dashboard_settings_mqtt.html',
+    if mqtt_setting == "True":
+        if request.method == "GET": 
+            # add mqtt device
+            if request.args.get("mqtt_device_name") is "":
+                error_message_mqtt = "Kein Name angegeben"   
+                mqtt_device_channel_path = request.args.get("mqtt_device_channel_path")    
+            elif request.args.get("mqtt_device_channel_path") is "":
+                error_message_mqtt = "Kein Kanal angegeben"    
+                mqtt_device_name = request.args.get("mqtt_device_name") 
+            else:
+                mqtt_device_name = request.args.get("mqtt_device_name") 
+                mqtt_device_channel_path = request.args.get("mqtt_device_channel_path") 
+                
+                if mqtt_device_name is not None or mqtt_device_channel_path is not None:
+                    error_message_mqtt = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
+                    mqtt_device_channel_path = ""
+                    mqtt_device_name = ""                       
+
+        mqtt_device_list = GET_ALL_MQTT_DEVICES()
+
+    return render_template('dashboard_settings_mqtt.html',                    
                             error_message_mqtt=error_message_mqtt,
+                            mqtt_device_channel_path=mqtt_device_channel_path,
+                            mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
                             check_value_mqtt=check_value_mqtt,
+                            mqtt_device_list=mqtt_device_list,
                             active01="active",
                             )
+     
+# remove mqtt device
+@app.route('/dashboard/settings/mqtt/delete/<int:id>')
+@login_required
+@superuser_required
+def remove_mqtt_device(id):
+    DELETE_MQTT_DEVICE(id)
+    return redirect(url_for('dashboard_settings_mqtt'))
      
 
 """ ################ """

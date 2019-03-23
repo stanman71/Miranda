@@ -1,5 +1,8 @@
 import paho.mqtt.client as mqtt
 
+from app import app
+from app.database.database import GET_ALL_MQTT_DEVICES
+
 BROKER_ADDRESS = "localhost"
 
 def MQTT_START():
@@ -10,7 +13,7 @@ def MQTT_START():
 		print("message topic: ", message.topic)
 	 
 	def on_connect(client, userdata, flags, rc):
-		client.subscribe('/SmartHome/data')
+		client.subscribe("/SmartHome/#")
 
 	client = mqtt.Client()
 	client.on_connect = on_connect

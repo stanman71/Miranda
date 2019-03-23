@@ -69,12 +69,17 @@
               <br>
               <input type="text" class="form-control" name=name value="" />
               </div>
-              Sensor / Pumpe / Wassermenge 
+              MQTT_Device / Sensor / Pumpe / Wassermenge 
                 <br>
                 <br>
+                <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device">
+                  {% for each in dropdown_list_mqtt_devices %}
+                  <option value="{{each.id}}"> {{ each.name }} </option>
+                  {% endfor %}
+                </select>                  
                 <select class="btn btn-secondary dropdown-toggle" name="set_sensor">
                   {% for each in dropdown_list_sensor %}
-                  <option value="{{each.id}}"> {{ each.name }} </option>
+                  <option value="{{each}}"> {{ each }} </option>
                   {% endfor %}
                 </select>   
                 <select class="btn btn-secondary dropdown-toggle" name="set_pump">
@@ -102,7 +107,8 @@
           <div class="panel-body">     
           <table class="table">
             <thead>
-              <th scope="col">Name</th>                        
+              <th scope="col">Name</th>   
+              <th scope="col">MQTT-Device</th>                 
               <th scope="col">Sensor</th>
               <th scope="col">Pumpe</th>
               <th scope="col">Wassermenge (ml)</th> 
@@ -112,7 +118,8 @@
               {% for entry in plants_list %}
               <tr>
                 <td>{{ entry.name }}</td> 
-                <td>{{ entry.sensor_name.name }}</td> 
+                <td>{{ entry.mqtt_device_name.name }}</td> 
+                <td>{{ entry.sensor_id }}</td> 
                 <td>{{ entry.pump_id }}</td>
                 <td>{{ entry.water_volume }}</td>
                 <td>{{ entry.moisture }}</td> 

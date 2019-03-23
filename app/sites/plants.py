@@ -36,14 +36,17 @@ def dashboard_plants():
         if request.args.get("name") is not None:
             # controll name 
             if request.args.get("name") == "":
-                error_message = "Kein Name angegeben"     
+                error_message = "Kein Name angegeben"    
+            elif request.args.get("set_mqtt_device") == None:
+                error_message = "Kein MQTT Device vorhanden"                     
             else:         
                 # get informations
                 name         = request.args.get("name")
+                mqtt_device  = request.args.get("set_mqtt_device")                
                 sensor_id    = request.args.get("set_sensor")
                 pump_id      = request.args.get("set_pump")
                 water_volume = request.args.get("set_water_volume")
-                error_message = ADD_PLANT(name, sensor_id, pump_id, water_volume)
+                error_message = ADD_PLANT(name, mqtt_device, sensor_id, pump_id, water_volume)
 
         for i in range (1,25):
             # change moisture
@@ -56,12 +59,14 @@ def dashboard_plants():
                 water_volume = request.args.get("water_" + str(i))           
                 CHANGE_WATER_VOLUME(i, water_volume)
                 
-    dropdown_list_sensor       = GET_ALL_SENSORS()
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
+    dropdown_list_sensor       = [0, 1, 2, 3]    
     dropdown_list_pump         = [0, 1, 2, 3]
     dropdown_list_water_volume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
+                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_sensor=dropdown_list_sensor,
                             dropdown_list_pump=dropdown_list_pump,
                             dropdown_list_water_volume=dropdown_list_water_volume,
