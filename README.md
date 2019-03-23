@@ -147,17 +147,22 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 ### Optional: Install MQTT - Mosquitto 
 
+https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
+</br>
+https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
+</br>
+
 >>> sudo apt-get update
 >>> sudo apt-get upgrade -y
 >>> sudo apt-get install mosquitto mosquitto-clients -y
 
 - subscribe a channel
 
->>> mosquitto_sub -d -t /SmartHome/data
+>>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
 
 - test the channel
 
->>> mosquitto_pub -d -t /SmartHome/data -m "Hello World"
+>>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
 
 - create an autostart-file: "sudo nano /etc/systemd/system/Mosquitto.service"
 

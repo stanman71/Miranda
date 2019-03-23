@@ -5,3 +5,4 @@ flask_wtf
 flask_login 
 wtforms 
 pyusb
+paho-mqtt
