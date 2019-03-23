@@ -97,7 +97,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - go into the "snowboy" folder
 - start "python3 snowboy.py"
-- hotword can be configured in the system settings
+- hotwords can be configured in the system settings
 
 </br>
 
@@ -145,7 +145,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 ------------
 </br>
 
-### Install MQTT - Mosquitto 
+### Optional: Install MQTT - Mosquitto 
 
 >>> sudo apt-get update
 >>> sudo apt-get upgrade -y
@@ -158,3 +158,20 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - test the channel
 
 >>> mosquitto_pub -d -t /SmartHome/data -m "Hello World"
+
+- create an autostart-file: "sudo nano /etc/systemd/system/Mosquitto.service"
+
+- insert and save:
+
+>>> [Unit]
+>>> Description=MQTT Broker
+>>> After=network.target
+
+>>> [Service]
+>>> ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+>>> Restart=always
+
+>>> [Install]
+>>> WantedBy=multi-user.target
+
+- activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
