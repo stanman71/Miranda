@@ -37,11 +37,11 @@ This project creates a smart home environment.
 
 ### Flask server control
 
-- stop the program manually: 
+- stop the program manually
 
        >>> sudo killall python3
 
-- restart the program manually:
+- restart the program manually
 
        >>> sudo python3 /home/pi/SmartHome/run.py
 
@@ -88,7 +88,9 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
        [Install]</br>
        WantedBy=multi-user.target</br>
 
-- activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
+- activate the new autostart-file
+
+       >>> sudo systemctl enable Mosquitto.service
 
 </br>
 ------------
@@ -111,11 +113,11 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 1. Installation
 
-- Start with a fresh install of Raspbian (Lite or Regular, this guide assumes Lite)
+- update raspbian 
 
        >>> sudo apt update && sudo apt -y upgrade && sudo apt-get -y auto-remove && sudo reboot
 
-- Install dependencies:
+- install dependencies
 
        >>> sudo apt -y install python-pyaudio python3-pyaudio sox python3-pip python-pip libatlas-base-dev
 
