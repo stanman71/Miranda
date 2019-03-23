@@ -163,15 +163,15 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - insert and save:
 
-[Unit]
-Description=MQTT Broker
-After=network.target
+[Unit]</br>
+Description=MQTT Broker</br>
+After=network.target</br>
 
-[Service]
-ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
-Restart=always
+[Service]</br>
+ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
+Restart=always</br>
 
-[Install]
-WantedBy=multi-user.target
+[Install]</br>
+WantedBy=multi-user.target</br>
 
 - activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
