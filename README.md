@@ -45,9 +45,51 @@ This project creates a smart home environment.
 
   >>> sudo python3 /home/pi/SmartHome/run.py
 
+
 </br>
 ------------
 </br>
+
+### Optional: Install MQTT - Mosquitto 
+
+https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
+</br>
+https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
+</br>
+
+>>> sudo apt-get update
+>>> sudo apt-get upgrade -y
+>>> sudo apt-get install mosquitto mosquitto-clients -y
+
+- subscribe a channel
+
+>>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
+
+- test the channel
+
+>>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
+
+- create an autostart-file: "sudo nano /etc/systemd/system/Mosquitto.service"
+
+- insert and save:
+
+[Unit]</br>
+Description=MQTT Broker</br>
+After=network.target</br>
+
+[Service]</br>
+ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
+Restart=always</br>
+
+[Install]</br>
+WantedBy=multi-user.target</br>
+
+- activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
+
+</br>
+------------
+</br>
+
 
 ### Optional: Install snowboy
 
@@ -85,7 +127,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 2. Sound settings
 
-- create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi)
+- create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi or /snowboy/support)
 - "aplay -l" & "arecord -l" to find out hw cards (e.g "card 0, device 0" is "hw:0,0")
 - "speaker-test -c 2" to test audio out
 - "arecord -d 3 test.wav" to record a 3 second test clip 
@@ -95,9 +137,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 3. Snowboy
 
-- go into the "snowboy" folder
-- start "python3 snowboy.py"
-- hotwords can be configured in the system settings
+- activate snowboy in the system settings
 
 </br>
 
@@ -140,43 +180,3 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - create a new hotword (try to find hotwords as different as possible)
 - copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in your system settings
-
-</br>
-------------
-</br>
-
-### Optional: Install MQTT - Mosquitto 
-
-https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
-</br>
-https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
-</br>
-
->>> sudo apt-get update
->>> sudo apt-get upgrade -y
->>> sudo apt-get install mosquitto mosquitto-clients -y
-
-- subscribe a channel
-
->>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
-
-- test the channel
-
->>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
-
-- create an autostart-file: "sudo nano /etc/systemd/system/Mosquitto.service"
-
-- insert and save:
-
-[Unit]</br>
-Description=MQTT Broker</br>
-After=network.target</br>
-
-[Service]</br>
-ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf</br>
-Restart=always</br>
-
-[Install]</br>
-WantedBy=multi-user.target</br>
-
-- activate the new autostart-file: "sudo systemctl enable Mosquitto.service"
