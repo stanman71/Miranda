@@ -59,19 +59,21 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 - install mosquitto
 
->>> sudo apt-get update
->>> sudo apt-get upgrade -y
->>> sudo apt-get install mosquitto mosquitto-clients -y
+       >>> sudo apt-get update
+       >>> sudo apt-get upgrade -y
+       >>> sudo apt-get install mosquitto mosquitto-clients -y
 
 - subscribe a channel
 
->>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
+       >>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
 
 - test the channel
 
->>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
+       >>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
 
-- create an autostart-file: "sudo nano /etc/systemd/system/Mosquitto.service"
+- create an autostart-file
+
+       >>> sudo nano /etc/systemd/system/Mosquitto.service
 
 - insert and save:
 
@@ -111,11 +113,11 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - Start with a fresh install of Raspbian (Lite or Regular, this guide assumes Lite)
 
-       >> sudo apt update && sudo apt -y upgrade && sudo apt-get -y auto-remove && sudo reboot
+       >>> sudo apt update && sudo apt -y upgrade && sudo apt-get -y auto-remove && sudo reboot
 
 - Install dependencies:
 
-       >> sudo apt -y install python-pyaudio python3-pyaudio sox python3-pip python-pip libatlas-base-dev
+       >>> sudo apt -y install python-pyaudio python3-pyaudio sox python3-pip python-pip libatlas-base-dev
 
 </br>
 
@@ -123,7 +125,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - install portaudio first (https://github.com/jgarff/rpi_ws281x/issues/294)
 
-       >>  sudo apt-get install portaudio19-dev
+       >>> sudo apt-get install portaudio19-dev
 
 </br>
 
@@ -148,12 +150,12 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - create snowboydetect again (https://github.com/Kitt-AI/snowboy)
 - install swig (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
 
-       >> wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
-       >> tar xzf swig-3.0.12.tar.gz
-       >> cd swig-3.0.12
-       >> ./configure
-       >> make
-       >> sudo make install
+       >>> wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
+       >>> tar xzf swig-3.0.12.tar.gz
+       >>> cd swig-3.0.12
+       >>> ./configure
+       >>> make
+       >>> sudo make install
 
 - copy the python3 swig files into "snowboy/swig"
 - go into the "swig" folder and start "make" in console 
@@ -165,8 +167,8 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - edit alsa.conf: "sudo nano /usr/share/alsa/alsa.conf" (https://www.raspberrypi.org/forums/viewtopic.php?t=136974)
        
-       >> replace "pcm.front cards.pcm.front" with "pcm.front cards.pcm.default" (app. 15 times)
-       >> fixed "alsa.conf" file in folder support
+       >>> replace "pcm.front cards.pcm.front" with "pcm.front cards.pcm.default" (app. 15 times)
+       >>> fixed "alsa.conf" file in folder support
        
 </br>
 
