@@ -7,7 +7,7 @@ from app.components.colorpicker_local import colorpicker
 """ flasks """
 """ ###### """
 
-PATH = "/home/pi/Python/SmartHome"
+PATH = "/home/pi/SmartHome"
 
 UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 
@@ -46,8 +46,8 @@ class flask_Thread(threading.Thread):
         def initialisation():
             pass
 
-        app.run(host="0.0.0.0")
-        #app.run()
+        #app.run(host="0.0.0.0")
+        app.run()
     
 t1 = flask_Thread()
 t1.start()

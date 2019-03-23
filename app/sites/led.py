@@ -14,7 +14,7 @@ from app.database.database import *
 # Windows Work
 #PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
 # RasPi:
-PATH_CSS = '/home/pi/Python/SmartHome/app/static/CDNJS/'
+PATH_CSS = '/home/pi/SmartHome/app/static/CDNJS/'
 
 
 # create role "superuser"

@@ -23,10 +23,10 @@ This project creates a smart home environment.
 
 ### Install the program on Raspberry Pi and setup autostart
 
-- copy all SmartHome files into the folder "/home/pi/Python/SmartHome"
+- copy all SmartHome files into the folder "/home/pi/SmartHome"
 - install the required modules by using sudo rights
 - open the autostart-file: "sudo nano /etc/rc.local"
-- insert "sudo python3 /home/pi/Python/SmartHome/run.py &" before line "exit 0"
+- insert "sudo python3 /home/pi/SmartHome/run.py &" before line "exit 0"
 - save the file
 
 ------------
@@ -47,5 +47,5 @@ This project creates a smart home environment.
 
 - restart the program manually:
 
-  >>> sudo python3 /home/pi/Python/SmartHome/run.py
+  >>> sudo python3 /home/pi/SmartHome/run.py
 

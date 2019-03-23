@@ -9,7 +9,7 @@ import sys
 import signal
 import os
 
-PATH = "/home/pi/Python/SmartHome"
+PATH = "/home/pi/SmartHome"
 
 interrupted = False
 

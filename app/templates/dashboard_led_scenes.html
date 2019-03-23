@@ -86,7 +86,7 @@
           <li class={{active09}}><a href="{{ url_for('dashboard_led_scene_09') }}">
             {% if scene_names_list[8].name != "" %}{{ scene_names_list[8].name }}{% else %}{{ 9 }}{% endif %}</a></li>  
           <li class={{active10}}><a href="{{ url_for('dashboard_led_scene_10') }}">
-            {% if scene_names_list[9].name != "" %}{{ scene_names_list[9].name }}{% else %}{{ 0 }}{% endif %}</a></li> 
+            {% if scene_names_list[9].name != "" %}{{ scene_names_list[9].name }}{% else %}{{ 10 }}{% endif %}</a></li> 
           <li class={{active99}}><a href="{{ url_for('dashboard_led_scene_99') }}">
             {% if scene_names_list[10].name != "" %}{{ scene_names_list[10].name }}{% else %}{{ 99 }}{% endif %}</a></li>   
         </ul>
@@ -98,7 +98,7 @@
       {% if entries_scene != None %}
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>{{ scene_name }}</b></font></div>
+        <div class="panel-heading"><font color="black"><b> {{ scene_name }} ( {{ number }} ) </b></font></div>
           <div class="panel-body">
             <table class="table">
               <thead>

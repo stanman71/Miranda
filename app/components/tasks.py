@@ -10,7 +10,7 @@ import os
 
 from threading import Thread
 
-PATH = "/home/pi/Python/SmartHome"
+PATH = "/home/pi/SmartHome"
 
 snowboy_detect_on = False
 
@@ -28,7 +28,7 @@ def SNOWBOY_TASKS(entry):
       class waiter(Thread):
          def run(self):
             global detect
-            time.sleep(5)
+            time.sleep(1)
             snowboy_detect_on = False
             PIXEL_RING_CONTROL("off")
       waiter().start()
@@ -122,11 +122,3 @@ def SAVE_DATABASE():
             os.remove (PATH + '/backup/' + file_list[0])
 
       shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
-
-
-def DETECT_SMARTPHONE():
-   hostname = "google.com"
-   if os.system("ping -n 1 " + hostname) == 0:
-         print("ok")
-         #if READ_SENSOR("GPIO_A07") < 600:
-         #    LED_SET_SCENE(int(task[1]))  

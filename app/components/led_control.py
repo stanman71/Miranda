@@ -92,6 +92,7 @@ def LED_SET_SCENE(scene, brightness_global = 100):
 
             # get scene settings
             entries = GET_SCENE(scene)
+            
             if entries[0] is not None:
                 entries = entries[0]
                 for entry in entries:
