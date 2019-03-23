@@ -27,9 +27,10 @@ This project creates a smart home environment.
 
 - copy all SmartHome files into the folder "/home/pi/SmartHome"
 - install the required modules by using sudo rights
-- open the autostart-file: "sudo nano /etc/rc.local"
-- insert "sudo python3 /home/pi/SmartHome/run.py &" before line "exit 0"
-- save the file
+- open the autostart-file: 
+
+       >>> sudo nano /etc/rc.local
+       >>> insert "sudo python3 /home/pi/SmartHome/run.py &" before line "exit 0"
 
 </br>
 ------------
