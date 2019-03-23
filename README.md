@@ -146,6 +146,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 #### 3. Snowboy
 
 - activate snowboy in the system settings
+- restart the raspberry pi
 
 </br>
 
