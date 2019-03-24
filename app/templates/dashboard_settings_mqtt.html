@@ -54,11 +54,11 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_hue_bridge') }}">Hue Bridge</a></li>
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li> 
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li>
+        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>
+        <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>            
+        <li class={{active04}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+        <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
+        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
       </ul>
     </div>
   </nav>
@@ -127,12 +127,20 @@
             <thead>
               <th scope="col">Name</th>                        
               <th scope="col">Kanalpfad</th> 
+              <th scope="col">Modell</th>                        
+              <th scope="col">Inputs</th> 
+              <th scope="col">Outputs</th> 
+              <th scope="col">Letzter Kontakt</th>                                                             
             </thead>
             <tbody> 
               {% for entry in mqtt_device_list %}
               <tr>
                 <td>{{ entry.name }}</td> 
                 <td>{{ entry.channel_path }}</td> 
+                <td>{{ entry.modell }}</td> 
+                <td>{{ entry.inputs }}</td> 
+                <td>{{ entry.outputs }}</td> 
+                <td>{{ entry.last_contact }}</td>                                 
                 <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#mqtt_device_table"><font color="red"><b>löschen</b></font></a></td>                 
               </tr>
               {% endfor %}
@@ -141,8 +149,14 @@
 
           <font color="red"><b>MQTT-Device nur löschen, wenn es nicht verwendet wird !!!</b></font>
 
+          <br>
+          <br>
+          <form method="GET">
+            <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#mqtt_device_table'" class="btn btn-secondary" name="update_mqtt_devices" value="Einträge aktuallisieren" />
+          </form>
         </div>  
       </div>  
+
 
 {% endif %}
 

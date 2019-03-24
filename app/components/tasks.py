@@ -12,8 +12,20 @@ from threading import Thread
 
 PATH = "/home/pi/SmartHome"
 
-snowboy_detect_on = False
 
+""" #### """
+""" mqtt """
+""" #### """
+
+def UPDATE_MQTT_DEVICES(devices):
+   pass
+
+
+""" ####### """
+""" snowboy """
+""" ####### """
+
+snowboy_detect_on = False
 
 def SNOWBOY_TASKS(entry):
    
@@ -59,6 +71,10 @@ def SNOWBOY_TASKS(entry):
       snowboy_detect_on = False 
       PIXEL_RING_CONTROL("off")
 
+
+""" ######### """
+""" schedular """
+""" ######### """
 
 def SCHEDULAR_TASKS(entries):
 
@@ -108,6 +124,10 @@ def SCHEDULAR_TASKS(entries):
                if entry.repeat == "":
                   DELETE_SCHEDULAR_TASK(entry.id)
 
+
+""" ######## """
+""" database """
+""" ######## """
 
 def GET_BACKUP_FILES():
    file_list = []

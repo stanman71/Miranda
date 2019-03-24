@@ -34,7 +34,7 @@ def SNOWBOY_START():
    # voice models here:
    models = file_list
 
-   sensitivity_value = int(GET_SENSITIVITY()) / 100
+   sensitivity_value = int(GET_SNOWBOY_SENSITIVITY()) / 100
 
    # modify sensitivity for better detection / accuracy
    detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)

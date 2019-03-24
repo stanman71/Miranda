@@ -45,12 +45,10 @@ class MQTT_Devices(db.Model):
     id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name         = db.Column(db.String(50), unique=True)
     channel_path = db.Column(db.String(50))
-
-class MQTT_Devices_Values(db.Model):
-    __tablename__ = 'mqtt_devices_values'
-    id    = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    value = db.Column(db.String(50))    
-    date  = db.Column(db.String(50))  
+    modell       = db.Column(db.String(50))
+    inputs       = db.Column(db.Integer)
+    outputs      = db.Column(db.Integer)
+    last_contact = db.Column(db.String(50))
 
 class Snowboy(db.Model):
     __tablename__ = 'snowboy'
@@ -367,15 +365,74 @@ def REMOVE_LED(id):
     return "LED erfolgreich gelöscht"
 
 
-def GET_SENSITIVITY():
+""" ####### """
+""" snowboy """
+""" ####### """
+
+def GET_SNOWBOY_SENSITIVITY():
     entry = Snowboy.query.filter_by().first()
     return (entry.sensitivity)  
 
 
-def SET_SENSITIVITY(value):
+def SET_SNOWBOY_SENSITIVITY(value):
     entry = Snowboy.query.filter_by().first()
     entry.sensitivity = value
     db.session.commit() 
+
+
+""" #### """
+""" mqtt """
+""" #### """
+
+def GET_MQTT_DEVICE(id):
+    return MQTT_Devices.query.filter_by(id=id).first()
+
+
+def GET_ALL_MQTT_DEVICES():
+    return MQTT_Devices.query.all()
+
+
+def GET_MQTT_DEVICE_NAME(id):
+    device_name = MQTT_Devices.query.filter_by(id=id).first()
+    return device_name.name  
+
+
+def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
+    # name exist ?
+    check_entry = MQTT_Devices.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,50):
+            if MQTT_Devices.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new device
+                device = MQTT_Devices(
+                        id           = i,
+                        name         = name,
+                        channel_path = channel_path,
+                        modell       = modell,
+                        inputs       = inputs,
+                        outputs      = outputs,
+                        last_contact = last_contact,
+                        )
+                db.session.add(device)
+                db.session.commit()
+                return ""
+    else:
+        return "Name bereits vergeben"
+
+
+def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.last_contact = last_contact
+    db.session.commit()        
+
+
+def DELETE_MQTT_DEVICE(id):
+    MQTT_Devices.query.filter_by(id=id).delete()
+    db.session.commit() 
+    return "MQTT-Device gelöscht"
 
 
 """ ############### """
@@ -1057,65 +1114,3 @@ def CHANGE_WATER_VOLUME(plant_id, water_volume):
 def DELETE_PLANT(plant_id):
     Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
-
-
-""" #### """
-""" mqtt """
-""" #### """
-
-def GET_ALL_MQTT_DEVICES():
-    return MQTT_Devices.query.all()
-
-
-def GET_MQTT_DEVICE_NAME(mqtt_id):
-    device_name = MQTT_Devices.query.filter_by(id=mqtt_id).first()
-    return device_name.name  
-
-
-def GET_MQTT_DEVICE_VALUES(mqtt_id):
-
-
-    return MQTT_Devices_Values.query.filter_by(id=mqtt_id).first()
-   
-    """
-    if sensor_values == []:
-        return None
-    else:
-        return sensor_values
-    """
-
-def ADD_MQTT_DEVICE(name, channel_path):
-    # name exist ?
-    check_entry = MQTT_Devices.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,50):
-            if MQTT_Devices.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new plant
-                device = MQTT_Devices(
-                        id           = i,
-                        name         = name,
-                        channel_path = channel_path,
-                        )
-                db.session.add(device)
-                db.session.commit()
-                return ""
-    else:
-        return "Name bereits vergeben"
-
-
-def DELETE_MQTT_DEVICE(id):
-    MQTT_Devices_Values.query.filter_by(id=id).delete()
-    MQTT_Devices.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-    return "Device gelöscht"
-
-
-def DELETE_MQTT_DEVICE_VALUES(id):
-    MQTT_Devices_Values.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-    return "Werte gelöscht"

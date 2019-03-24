@@ -54,11 +54,11 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_hue_bridge') }}">Hue Bridge</a></li>
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li> 
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>     
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li>                          
+        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>
+        <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>            
+        <li class={{active04}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+        <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
+        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li>                      
       </ul>
     </div>
   </nav>
@@ -77,9 +77,13 @@
 <!-- system settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>System</b></font></div>
+        <div class="panel-heading"><font color="black"><b>Systemstatus</b></font></div>
           <div class="panel-body">   
 
+          CPU Temperatur = {{ cpu_temperature }}
+          <br>
+          <br>
+          
           <form method="GET">                     
             <input type="submit" class="btn btn-secondary" name="restart" value="RASPI neustarten" />
           </form>   
