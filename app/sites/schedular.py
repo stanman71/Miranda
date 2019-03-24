@@ -6,7 +6,6 @@ import datetime
 
 from app import app
 from app.components.led_control import *
-from app.components.sensors_control import *
 from app.components.plants_control import *
 from app.database.database import *
 from app.components.tasks import SCHEDULAR_TASKS

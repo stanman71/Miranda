@@ -110,11 +110,6 @@ def SCHEDULAR_TASKS(entries):
                   task = entry.task.split(":")
                   LED_OFF(int(task[1])) 
 
-               # save sensor
-               if "save_sensor" in entry.task:
-                  task = entry.task.split(":")
-                  SAVE_SENSOR_GPIO(task[1])   
-
                # watering plants
                if "watering_plants" in entry.task:
                   START_WATERING_THREAD()
@@ -122,7 +117,11 @@ def SCHEDULAR_TASKS(entries):
                # watering plants
                if "save_database" in entry.task:
                   SAVE_DATABASE()
-                                                                                                                                                       
+
+               # update mqtt devices
+               if "update_mqtt_devices" in entry.task:
+                  UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+
                # remove schedular task without repeat
                if entry.repeat == "":
                   DELETE_SCHEDULAR_TASK(entry.id)

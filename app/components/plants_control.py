@@ -3,7 +3,6 @@ import time
 
 from app import app
 from app.database.database import *
-from app.components.sensors_control import *
 
 
 """ ################ """
@@ -15,48 +14,14 @@ def START_PUMP(pump_id):
 
     print("Start: " + str(pump_id))
 
-    try:
-        import RPi.GPIO as GPIO
-        GPIO.setmode(GPIO.BCM) # GPIO numbers, not Pin numbers
-
-        if pump_id == 0:
-           RELAIS_GPIO = 20 #Pin 38
-        if pump_id == 1:
-           RELAIS_GPIO = 26 #Pin 36
-        if pump_id == 2:
-           RELAIS_GPIO = 16 #Pin 37
-        if pump_id == 3:
-           RELAIS_GPIO = 19 #Pin 35
-
-        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
-        GPIO.output(RELAIS_GPIO, GPIO.HIGH) 
-
-    except:
-        pass
+  
 
 
 def STOP_PUMP(pump_id):
 
     print("Stop: " + str(pump_id))
  
-    try:
-        import RPi.GPIO as GPIO
-        GPIO.setmode(GPIO.BCM)
-
-        if pump_id == 0:
-           RELAIS_GPIO = 20 #Pin 38
-        if pump_id == 1:
-           RELAIS_GPIO = 26 #Pin 36
-        if pump_id == 2:
-           RELAIS_GPIO = 16 #Pin 37
-        if pump_id == 3:
-           RELAIS_GPIO = 19 #Pin 35
-
-        GPIO.setup(RELAIS_GPIO, GPIO.OUT) 
-        GPIO.output(RELAIS_GPIO, GPIO.LOW) 
-        
-    except:
-        pass
+ 
 
 
 """ ############## """
@@ -69,7 +34,8 @@ def CHECK_MOISTURE():
 
     for plant in GET_ALL_PLANTS():
         target_moisture  = plant.moisture_voltage
-        current_moisture = READ_SENSOR_GPIO(plant.sensor_id)
+        
+        current_moisture = ""
 
         # dry = 2.84V
         # water = 1.24V

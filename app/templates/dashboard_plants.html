@@ -64,34 +64,24 @@
           <form method="GET">   
             <div class="form-group">
               <div class="text-center">         
-                <h5><b>Neue Pflanze hinzufügen</b></h5>
+                <h5><b>Pflanze hinzufügen</b></h5>
               </div>
               <br>
               <input type="text" class="form-control" name=name value="" />
               </div>
-              MQTT_Device / Sensor / Pumpe / Wassermenge 
+              MQTT_Device / Wassermenge Start 
                 <br>
                 <br>
                 <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device">
                   {% for each in dropdown_list_mqtt_devices %}
                   <option value="{{each.id}}"> {{ each.name }} </option>
                   {% endfor %}
-                </select>                  
-                <select class="btn btn-secondary dropdown-toggle" name="set_sensor">
-                  {% for each in dropdown_list_sensor %}
-                  <option value="{{each}}"> {{ each }} </option>
-                  {% endfor %}
-                </select>   
-                <select class="btn btn-secondary dropdown-toggle" name="set_pump">
-                  {% for each in dropdown_list_pump %}
-                  <option value="{{each}}"> {{ each }} </option>
-                  {% endfor %}
-                </select> 
+                </select>    
                 <select class="btn btn-secondary dropdown-toggle" name="set_water_volume">
                   {% for each in dropdown_list_water_volume %}
                   <option value="{{each}}"> {{ each }} </option>
                   {% endfor %}
-                </select> 
+                </select>         
                 <br> 
                 <br>   
                 <br>              
@@ -112,25 +102,41 @@
               <th scope="col">MQTT-Device</th>                 
               <th scope="col">Sensor</th>
               <th scope="col">Pumpe</th>
-              <th scope="col">Wassermenge (ml)</th> 
-              <th scope="col" colspan="2">Feuchtigkeit (%)</th>  
+              <th scope="col">Wasser (ml)</th> 
+              <th scope="col">Feuchtigkeit (%)</th>  
+              <th scope="col" colspan="3">Einstellungen ändern: Sensor / Pumpe / Feuchtigkeit</th>
             </thead>
             <tbody> 
               {% for entry in plants_list %}
               <tr>
                 <td>{{ entry.name }}</td> 
                 <td>{{ entry.mqtt_device_name.name }}</td> 
-                <td>{{ entry.sensor_id }}</td> 
+                <td>{{ entry.sensor_id }}</td>
                 <td>{{ entry.pump_id }}</td>
-                <td>{{ entry.water_volume }}</td>
+                <td>{{ entry.water_volume }}</td> 
                 <td>{{ entry.moisture }}</td> 
-                <td>
-                  <form method="GET" class="slidecontainer"> 
-                    <div class="col-md-10 text-center"> 
-                      <input type="range" class="slider" name="moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture }}" />
-                      <br>
-                      <input type="submit" class="btn btn-secondary" value="Feuchtigkeit ändern"/>
-                    </div> 
+                <td> 
+                  <form method="GET" class="verticalform">      
+                    <select class="btn btn-secondary dropdown-toggle" name="sensor_{{ entry.id }}">
+                      {% for i in range(entry.mqtt_device_inputs.inputs) %}
+                      <option value= "{{ i }}" > {{ i }} </option>
+                      {% endfor %}
+                    </select>   
+                    </td>
+                    <td>                
+                    <select class="btn btn-secondary dropdown-toggle" name="pump_{{ entry.id }}">
+                      {% for i in range(entry.mqtt_device_outputs.outputs) %}
+                      <option value= "{{ i }}" > {{ i }} </option>
+                      {% endfor %}
+                    </select> 
+                    </td>
+                    <td>
+                      <class="slidecontainer"> 
+                        <div class="col-md-10 text-center"> 
+                          <input type="range" class="slider" name="moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture }}" />
+                          <br>
+                          <input type="submit" class="btn btn-secondary" value="Werte aktuallisieren"/>
+                        </div> 
                   </form>
                 </td>
                 <td><a href="/dashboard/plants/delete/{{ entry.id }}"><font color="red"><b>löschen</b></font></a></td>   

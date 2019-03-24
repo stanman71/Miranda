@@ -68,15 +68,17 @@ class HUE_Bridge(db.Model):
 
 class Plants(db.Model):
     __tablename__ = 'plants'
-    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name             = db.Column(db.String(50), unique=True)
-    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device_name = db.relationship('MQTT_Devices')    
-    sensor_id        = db.Column(db.Integer)
-    moisture         = db.Column(db.Integer) 
-    moisture_voltage = db.Column(db.Integer)    
-    water_volume     = db.Column(db.Integer)
-    pump_id          = db.Column(db.Integer)
+    id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name                = db.Column(db.String(50), unique=True)
+    mqtt_device_id      = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device_name    = db.relationship('MQTT_Devices')  
+    mqtt_device_inputs  = db.relationship('MQTT_Devices')  
+    mqtt_device_outputs = db.relationship('MQTT_Devices')  
+    sensor_id           = db.Column(db.Integer)
+    moisture            = db.Column(db.Integer) 
+    moisture_voltage    = db.Column(db.Integer)    
+    water_volume        = db.Column(db.Integer)
+    pump_id             = db.Column(db.Integer)
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -439,9 +441,12 @@ def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
 
 
 def DELETE_MQTT_DEVICE(id):
-    MQTT_Devices.query.filter_by(id=id).delete()
-    db.session.commit() 
-    return "MQTT-Device gelöscht"
+    if Plants.query.filter_by(mqtt_device_id=id).first():
+        return "MQTT-Device wird in Bewässerung verwendet"
+    else:
+        MQTT_Devices.query.filter_by(id=id).delete()
+        db.session.commit() 
+        return "MQTT-Device gelöscht"
 
 
 """ ############### """
@@ -1112,6 +1117,18 @@ def CHANGE_MOISTURE(plant_id, moisture):
     moisture_voltage = round(2.84 - voltage_value, 2)   
     entry.moisture_voltage = moisture_voltage
     db.session.commit()  
+
+
+def CHANGE_SENSOR(plant_id, sensor_id):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.sensor_id = sensor_id
+    db.session.commit()    
+
+
+def CHANGE_PUMP(plant_id, pump_id):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.pump_id = pump_id
+    db.session.commit()    
 
 
 def CHANGE_WATER_VOLUME(plant_id, water_volume):        

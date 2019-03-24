@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from functools import wraps
 
 from app import app
-from app.components.sensors_control import *
 from app.components.plants_control import *
 from app.database.database import *
 
@@ -43,32 +42,34 @@ def dashboard_plants():
                 # get informations
                 name         = request.args.get("name")
                 mqtt_device  = request.args.get("set_mqtt_device")                
-                sensor_id    = request.args.get("set_sensor")
-                pump_id      = request.args.get("set_pump")
+                sensor_id    = ""
+                pump_id      = ""
                 water_volume = request.args.get("set_water_volume")
                 error_message = ADD_PLANT(name, mqtt_device, sensor_id, pump_id, water_volume)
 
         for i in range (1,25):
+            # change sensor
+            if request.args.get("sensor_" + str(i)):
+                sensor_id = request.args.get("sensor_" + str(i))    
+                CHANGE_SENSOR(i, sensor_id)
+            # change pump
+            if request.args.get("pump_" + str(i)):
+                pump_id = request.args.get("pump_" + str(i))    
+                CHANGE_PUMP(i, pump_id)                
             # change moisture
             if request.args.get("moisture_" + str(i)):
                 moisture = request.args.get("moisture_" + str(i))    
                 CHANGE_MOISTURE(i, moisture)
 
-            # change water_volume
-            if request.args.get("water_" + str(i)):
-                water_volume = request.args.get("water_" + str(i))           
-                CHANGE_WATER_VOLUME(i, water_volume)
                 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
-    dropdown_list_sensor       = [0, 1, 2, 3]    
-    dropdown_list_pump         = [0, 1, 2, 3]
+    dropdown_list_values       = [0, 1, 2, 3, 4, 5, 6, 7]    
     dropdown_list_water_volume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
-                            dropdown_list_sensor=dropdown_list_sensor,
-                            dropdown_list_pump=dropdown_list_pump,
+                            dropdown_list_values=dropdown_list_values,
                             dropdown_list_water_volume=dropdown_list_water_volume,
                             plants_list=plants_list,
                             moisture=moisture,
