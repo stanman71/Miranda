@@ -423,6 +423,15 @@ def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, la
         return "Name bereits vergeben"
 
 
+def UPDATE_MQTT_DEVICE_INFORMATIONS(id, modell, inputs, outputs, last_contact):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.modell = modell
+    entry.inputs = inputs
+    entry.outputs = outputs
+    entry.last_contact = last_contact
+    db.session.commit()     
+
+
 def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     entry.last_contact = last_contact

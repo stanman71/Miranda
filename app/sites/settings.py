@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import os
 import shutil
 import datetime
+import time
 
 from app import app
 from app.components.led_control import *
@@ -36,7 +37,7 @@ def allowed_file(filename):
 """ mqtt settings """
 """ ############# """
 
-@app.route('/dashboard/settings/mqtt', methods=['GET'])
+@app.route('/dashboard/settings/mqtt', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_mqtt():
@@ -80,12 +81,12 @@ def dashboard_settings_mqtt():
                     mqtt_device_channel_path = ""
                     mqtt_device_name = ""                       
 
-            update_mqtt_devices = request.args.get("update_mqtt_devices") 
-            if update_mqtt_devices is not None:           
-                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())   
+        if request.method == 'POST':
+            if request.form.get("update_mqtt_devices") is not None:         
+                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())  
+                time.sleep(2)
 
-
-        mqtt_device_list = GET_ALL_MQTT_DEVICES()
+    mqtt_device_list = GET_ALL_MQTT_DEVICES()
 
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message_mqtt=error_message_mqtt,

@@ -2,6 +2,7 @@ from app import app
 from app.components.led_control import *
 from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
+from app.components.mqtt import MQTT_PUBLISH
 
 import time
 import datetime
@@ -18,7 +19,9 @@ PATH = "/home/pi/SmartHome"
 """ #### """
 
 def UPDATE_MQTT_DEVICES(devices):
-   pass
+   for device in devices:
+      channel = "/SmartHome/" + device.channel_path
+      MQTT_PUBLISH(channel, "get_deviceinformtions")
 
 
 """ ####### """

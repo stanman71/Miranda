@@ -1,7 +1,8 @@
 import paho.mqtt.client as mqtt
+import datetime
 
 from app import app
-from app.database.database import GET_ALL_MQTT_DEVICES
+from app.database.database import GET_ALL_MQTT_DEVICES, UPDATE_MQTT_DEVICE_INFORMATIONS
 
 BROKER_ADDRESS = "localhost"
 
@@ -11,6 +12,21 @@ def MQTT_START():
 		msg = str(message.payload.decode("utf-8"))
 		print("message received: ", msg)
 		print("message topic: ", message.topic)
+		
+		channel         = message.topic 
+		channel_id      = channel.split("/")[2]	
+		channel_content = channel.split("/")[3]	
+		
+		time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+		# update device informations	
+		for device in GET_ALL_MQTT_DEVICES():
+			if channel_id == device.channel_path and channel_content == "device":
+				msg = msg.split("/")
+				UPDATE_MQTT_DEVICE_INFORMATIONS(device.id, msg[0], msg[1], msg[2], time)
+			
+	
+		
 	 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("/SmartHome/#")
