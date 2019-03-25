@@ -50,6 +50,15 @@ class MQTT_Devices(db.Model):
     outputs      = db.Column(db.Integer)
     last_contact = db.Column(db.String(50))
 
+class Sensor_Data(db.Model):
+    __tablename__ = 'sensordata'
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name           = db.Column(db.String(50), unique=True)
+    filename       = db.Column(db.String(50), unique=True)
+    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device    = db.relationship('MQTT_Devices')  
+    sensor_id      = db.Column(db.Integer)    
+
 class Snowboy(db.Model):
     __tablename__ = 'snowboy'
     id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -305,14 +314,9 @@ if Scenes.query.filter_by().first() is None:
 
 """ ################### """
 """ ################### """
-""" database operations """
+"""      settings       """
 """ ################### """
 """ ################### """
-
-
-""" ######## """
-""" settings """
-""" ######## """
 
 def GET_SETTING_VALUE(name):
     entry = Settings.query.filter_by(setting_name=name).first()
@@ -366,19 +370,56 @@ def REMOVE_LED(id):
     return "LED erfolgreich gelöscht"
 
 
-""" ####### """
-""" snowboy """
-""" ####### """
+""" ########## """
+""" sensordata """
+""" ########## """
 
-def GET_SNOWBOY_SENSITIVITY():
-    entry = Snowboy.query.filter_by().first()
-    return (entry.sensitivity)  
+def GET_SENSORDATA(id):
+    return Sensor_Data.query.filter_by(id=id).first()
 
 
-def SET_SNOWBOY_SENSITIVITY(value):
-    entry = Snowboy.query.filter_by().first()
-    entry.sensitivity = value
-    db.session.commit() 
+def GET_ALL_SENSORDATA():
+    return Sensor_Data.query.all()
+
+
+def ADD_SENSORDATA(name, filename, mqtt_device_id):
+    # name exist ?
+    check_entry = Sensor_Data.query.filter_by(name=name).first()
+    if check_entry is None:
+        check_entry = Sensor_Data.query.filter_by(filename=filename).first()
+        if check_entry is None:
+            # find a unused id
+            for i in range(1,25):
+                if Sensor_Data.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new plant
+                    sensordata = Sensor_Data(
+                            id             = i,
+                            name           = name,
+                            filename       = filename,
+                            mqtt_device_id = mqtt_device_id,                 
+                        )
+                    db.session.add(sensordata)
+                    db.session.commit()
+                    return ""
+
+        else:
+            return "Dateiname bereits vergeben"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_SENSORDATA_SENSOR(id, sensor_id):        
+    entry = Sensor_Data.query.filter_by(id=id).first()
+    entry.sensor_id = sensor_id
+    db.session.commit()    
+
+
+def DELETE_SENSORDATA(id):
+    Sensor_Data.query.filter_by(id=id).delete()
+    db.session.commit()
 
 
 """ #### """
@@ -448,9 +489,63 @@ def DELETE_MQTT_DEVICE(id):
         return "MQTT-Device gelöscht"
 
 
+""" ####### """
+""" snowboy """
+""" ####### """
+
+def GET_SNOWBOY_SENSITIVITY():
+    entry = Snowboy.query.filter_by().first()
+    return (entry.sensitivity)  
+
+
+def SET_SNOWBOY_SENSITIVITY(value):
+    entry = Snowboy.query.filter_by().first()
+    entry.sensitivity = value
+    db.session.commit() 
+
+
 """ ############### """
-""" task management """
+""" user management """
 """ ############### """
+
+def GET_USER_BY_ID(user_id):
+    return User.query.get(int(user_id))
+
+
+def GET_USER_BY_NAME(user_name):
+    return User.query.filter_by(username=user_name).first()
+
+
+def GET_ALL_USERS():
+    return User.query.all()
+
+
+def ADD_USER(user_name, email, password):
+    new_user = User(username=user_name, email=email, password=password, role="user")
+    db.session.add(new_user)
+    db.session.commit()
+
+
+def ACTIVATE_USER(user_id):
+    entry = User.query.get(user_id)
+    entry.role = "superuser"
+    db.session.commit()
+
+
+def DELETE_USER(user_id):
+    User.query.filter_by(id=user_id).delete()
+    db.session.commit()
+
+
+def GET_EMAIL(email):
+    return User.query.filter_by(email=email).first()
+
+
+""" ################### """
+""" ################### """
+"""   task management   """
+""" ################### """
+""" ################### """
 
 def GET_SCHEDULAR_TASK(name):
     return Schedular_Tasks.query.filter_by(name=name).first()
@@ -526,46 +621,88 @@ def DELETE_SNOWBOY_TASK(task_id):
     db.session.commit()
 
 
-""" ############### """
-""" user management """
-""" ############### """
+""" ################### """
+""" ################### """
+"""       plants        """
+""" ################### """
+""" ################### """
 
-def GET_USER_BY_ID(user_id):
-    return User.query.get(int(user_id))
-
-
-def GET_USER_BY_NAME(user_name):
-    return User.query.filter_by(username=user_name).first()
+def GET_PLANT(plant_id):
+    return Plants.query.filter_by(id=plant_id).first()
 
 
-def GET_ALL_USERS():
-    return User.query.all()
+def GET_ALL_PLANTS():
+    return Plants.query.all()
 
 
-def ADD_USER(user_name, email, password):
-    new_user = User(username=user_name, email=email, password=password, role="user")
-    db.session.add(new_user)
+def ADD_PLANT(name, mqtt_device_id, watervolume):
+    # name exist ?
+    check_entry = Plants.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Plants.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new plant
+                plant = Plants(
+                        id             = i,
+                        name           = name,
+                        mqtt_device_id = mqtt_device_id,
+                        watervolume    = watervolume,                     
+                    )
+                db.session.add(plant)
+                db.session.commit()
+                return ""
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_voltage):
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.moisture_voltage_current = moisture_voltage
+    db.session.commit()      
+
+
+def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.moisture_percent = moisture_percent
+    # calculate voltage value target
+    voltage_value_temp = round((float(moisture_percent) * 1.6) / 100, 2) 
+    moisture_voltage_target = round(2.84 - voltage_value_temp, 2)   
+    entry.moisture_voltage_target = moisture_voltage_target
+    db.session.commit()  
+
+
+def SET_PLANT_SENSOR(plant_id, sensor_id):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.sensor_id = sensor_id
+    db.session.commit()    
+
+
+def SET_PLANT_PUMP(plant_id, pump_id):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.pump_id = pump_id
+    db.session.commit()    
+
+
+def SET_PLANT_WATERVOLUME(plant_id, watervolume):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.watervolume = watervolume
+    db.session.commit()    
+
+
+def DELETE_PLANT(plant_id):
+    Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
 
 
-def ACTIVATE_USER(user_id):
-    entry = User.query.get(user_id)
-    entry.role = "superuser"
-    db.session.commit()
-
-
-def DELETE_USER(user_id):
-    User.query.filter_by(id=user_id).delete()
-    db.session.commit()
-
-
-def GET_EMAIL(email):
-    return User.query.filter_by(email=email).first()
-
-
-""" ### """
-""" led """
-""" ### """
+""" ################### """
+""" ################### """
+"""         led         """
+""" ################### """
+""" ################### """
 
 def GET_DROPDOWN_LIST_LED():
     entry_list = []
@@ -1066,79 +1203,4 @@ def UPDATE_PROGRAM(id, content):
 
 def DELETE_PROGRAM(name):
     Programs.query.filter_by(name=name).delete()
-    db.session.commit()
-
-
-""" ###### """
-""" plants """
-""" ###### """
-
-def GET_PLANT(plant_id):
-    return Plants.query.filter_by(id=plant_id).first()
-
-
-def GET_ALL_PLANTS():
-    return Plants.query.all()
-
-
-def ADD_PLANT(name, mqtt_device_id, watervolume):
-    # name exist ?
-    check_entry = Plants.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,25):
-            if Plants.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new plant
-                plant = Plants(
-                        id             = i,
-                        name           = name,
-                        mqtt_device_id = mqtt_device_id,
-                        watervolume    = watervolume,                     
-                    )
-                db.session.add(plant)
-                db.session.commit()
-                return ""
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_voltage):
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_voltage_current = moisture_voltage
-    db.session.commit()      
-
-
-def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_percent = moisture_percent
-    # calculate voltage value target
-    voltage_value_temp = round((float(moisture_percent) * 1.6) / 100, 2) 
-    moisture_voltage_target = round(2.84 - voltage_value_temp, 2)   
-    entry.moisture_voltage_target = moisture_voltage_target
-    db.session.commit()  
-
-
-def SET_PLANT_SENSOR(plant_id, sensor_id):        
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.sensor_id = sensor_id
-    db.session.commit()    
-
-
-def SET_PLANT_PUMP(plant_id, pump_id):        
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.pump_id = pump_id
-    db.session.commit()    
-
-
-def SET_PLANT_WATERVOLUME(plant_id, watervolume):        
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.watervolume = watervolume
-    db.session.commit()    
-
-
-def DELETE_PLANT(plant_id):
-    Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()

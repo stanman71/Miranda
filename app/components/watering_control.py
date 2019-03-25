@@ -19,7 +19,6 @@ def START_PUMP(mqtt_device_channel, pump_id):
     time.sleep(1)
   
 
-
 def STOP_PUMP(mqtt_device_channel, pump_id):
 
     print("Stop: " + str(pump_id))
@@ -76,11 +75,9 @@ def CHECK_MOISTURE():
             SET_PLANT_WATERVOLUME(plant.id, str(new_watervolume)) 
 
   
-
 """ ######### """
 """ threading """
 """ ######### """
-
 
 def START_WATERING_THREAD():
 

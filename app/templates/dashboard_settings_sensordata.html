@@ -1,0 +1,195 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Sensoren
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">RASPI</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ url_for('dashboard_led_scene_01') }}">Szenen</a></li>
+            <li><a href="{{ url_for('dashboard_led_programs') }}">Programme</a></li>
+          </ul>
+        </li>
+        <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>     
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+    <div class="row">
+      <div class="col">
+  
+<!-- settings navs -->
+
+      <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
+              <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>
+              <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensordata') }}">Sensordaten</a></li>          
+              <li class={{active04}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+              <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
+              <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
+            </ul>
+          </div>
+        </nav>    
+
+<!-- error message -->
+
+        {% if error_message != "" %}
+          <div class="alert alert-danger" role="alert">
+            {{ error_message }}
+          </div>      
+        {% endif %}
+
+<!-- sensor values -->
+  
+        <div class="panel panel-default">
+          <div class="panel-heading"><font color="black"><b>Sensorwerte</b></font></div>
+            <div class="panel-body">  
+            <form method="GET">   
+                <div class="form-group">
+                  <div class="text-center">         
+                    <h5><b>Sensordatei anlegen</b></h5>
+                  </div>
+                  <br>       
+                  Name     
+                  <br>
+                  <br>
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
+                  </div>
+                  Dateiname   
+                  <br>
+                  <br>   
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
+                  </div>
+                  MQTT_Device 
+                  <br>
+                  <br>
+                  <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_name">
+                    {% for each in dropdown_list_mqtt_devices %}
+                    <option value="{{each.id}}"> {{ each.name }} </option>
+                    {% endfor %}
+                  </select>    
+                  <br> 
+                  <br>   
+                  <br>              
+                  <input type="submit" class="btn btn-secondary" value="Sensordatei anlegen" />
+                  <br>
+                </form>   
+              </div>  
+            </div>      
+          </div>
+
+<!-- sensordata table -->
+
+<section id="table_jobs"></section>   
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><font color="black">Übersicht Sensorwerte</font></div>        
+          <div class="panel-body">     
+          <table class="table">
+            <thead>
+              <th scope="col">Name</th>  
+              <th scope="col">Dateiname</th>   
+              <th scope="col">MQTT-Device</th>    
+              <th scope="col">Sensor</th>
+              <th scope="col" colspan="2">Einstellungen ändern: Sensor</th>
+            </thead>
+            <tbody> 
+              {% for entry in sensordata_list %}
+              <tr>
+                <td>{{ entry.name }}</td> 
+                <td>{{ entry.filename }}</td>
+                <td>{{ entry.mqtt_device.name }}</td> 
+                <td>{{ entry.sensor_id }}</td>
+                <td> 
+                  <form method="GET" class="verticalform">      
+                    <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                      {% for i in range(entry.mqtt_device.inputs) %}
+                      <option value= "{{ i }}" > {{ i }} </option>
+                      {% endfor %}
+                    </select>   
+                    </td>
+                    <td>
+                    <input type="submit" onclick="window.location.href='/dashboard/settings/sensordata#table_jobs'" class="btn btn-secondary" value="Wert aktuallisieren"/>             
+                  </form>
+                </td>
+                <td><a href="/dashboard/settings/sensordata/delete/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>  
+        </div>  
+      </div>  
+
+<!-- sensorfile table -->
+
+<section id="table_files"></section>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Datein</div>
+          <div class="panel-body">   
+          <table class="table">
+              <thead>
+                <th scope="col">Sensordaten-Datein</th>
+              </thead>
+            <tbody> 
+              {% for entry in file_list %}
+              <tr>
+                <td>{{ entry }}</td> 
+                <td><a href="/dashboard/settings/sensordata/delete/{{ entry }}#table_files"><font color="red"><b>löschen</b></font></a></td>  
+              </tr>
+              {% endfor %} 
+              <tr><td></td><td></td><td></td></tr>
+            </tbody>
+          </table>  
+        </div>
+      </div>  
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>       
+  </div>
+
+{% endblock %}

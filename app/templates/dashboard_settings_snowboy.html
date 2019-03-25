@@ -55,7 +55,7 @@
           <ul class="nav navbar-nav">
             <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
             <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>
-            <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensors') }}">Sensoren</a></li>            
+            <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensordata') }}">Sensordaten</a></li>          
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
             <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
             <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li>         
@@ -86,9 +86,9 @@
 
 <!-- snowboy error message -->
 
-    {% if error_message_snowboy != "" %}
+    {% if error_message != "" %}
       <div class="alert alert-danger" role="alert">
-        {{ error_message_snowboy }}
+        {{ error_message }}
       </div>      
     {% endif %}   
 
@@ -97,18 +97,6 @@
         {{ error_message_table }}
       </div>      
     {% endif %}    
-
-    {% if error_message_fileupload == False %}
-      <div class="alert alert-danger" role="alert">
-        Keine Datei angegeben
-      </div>      
-    {% endif %}  
-
-    {% if error_message_fileupload == True %}
-      <div class="alert alert-success" role="alert">
-        Datei erfolgreich hochgeladen
-      </div>      
-    {% endif %}  
 
 <!-- snowboy settings -->
 
@@ -120,7 +108,7 @@
             <br>
             <br>
             <div class="slidecontainer">                        
-              <input type="range" class="slider" name="sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+              <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
             </div>
             <br>
             <input type="submit" class="btn btn-secondary" value="Empfindlichkeit ändern" />       
@@ -130,7 +118,7 @@
 
 <!-- snowboy taskmanagement -->      
 
-      <section id="task_management"></section>      
+<section id="task_management"></section>      
   
       <div class="panel panel-default">
         <div class="panel-heading">Aufgabenmanagement</div>
@@ -168,6 +156,9 @@
               <tr><td></td><td></td></tr>
             </tbody>
           </table>   
+   
+<section id="fileupload"></section>
+   
           <form method="GET">
             Name
             <br>             
@@ -195,14 +186,22 @@
           <form method=post enctype=multipart/form-data>
             <input type=file name=file>
             <br>
-              <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#task_management'" class="btn btn-secondary" value="Datei hochladen">
+              <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#fileupload'" class="btn btn-secondary" value="Datei hochladen">
           </form>   
         </div>                    
       </div>  
 
+<!-- error message fileupload --> 
+
+    {% if error_message_fileupload != "" %}
+      <div class="alert alert-danger" role="alert">
+        {{ error_message_fileupload }}
+      </div>      
+    {% endif %}  
+
 <!-- snowboy table tasks --> 
 
-      <section id="table_tasks"></section>
+<section id="table_tasks"></section>
 
       <div class="panel panel-default">
           <div class="panel-heading">Aufgaben</div>        
@@ -227,7 +226,7 @@
 
 <!-- snowboy table hotwords --> 
 
-        <section id="table_hotwords"></section>
+<section id="table_hotwords"></section>
 
         <div class="panel panel-default">
           <div class="panel-heading">Hotwords</div>

@@ -45,8 +45,7 @@ class flask_Thread(threading.Thread):
          
         app.run(host='0.0.0.0', port=5000)
         #app.run()
-    
-    
+     
 t1 = flask_Thread()
 t1.start()
 

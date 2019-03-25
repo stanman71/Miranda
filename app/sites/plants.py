@@ -33,29 +33,29 @@ def dashboard_plants():
     if request.method == "GET": 
         if request.args.get("name") is not None:
             # controll name 
-            if request.args.get("name") == "":
+            if request.args.get("set_name") == "":
                 error_message = "Kein Name angegeben"    
             elif request.args.get("set_mqtt_device") == None:
                 error_message = "Kein MQTT Device vorhanden"                     
             else:         
                 # get informations
-                name          = request.args.get("name")
+                name          = request.args.get("set_name")
                 mqtt_device   = request.args.get("set_mqtt_device")    
                 watervolume   = request.args.get("set_water_volume") 
                 error_message = ADD_PLANT(name, mqtt_device, watervolume)
 
         for i in range (1,25):
             # change sensor
-            if request.args.get("sensor_" + str(i)):
-                sensor_id = request.args.get("sensor_" + str(i))    
+            if request.args.get("set_sensor_" + str(i)):
+                sensor_id = request.args.get("set_sensor_" + str(i))    
                 SET_PLANT_SENSOR(i, sensor_id)
             # change pump
-            if request.args.get("pump_" + str(i)):
-                pump_id = request.args.get("pump_" + str(i))    
+            if request.args.get("set_pump_" + str(i)):
+                pump_id = request.args.get("set_pump_" + str(i))    
                 SET_PLANT_PUMP(i, pump_id)                
             # change moisture target
-            if request.args.get("moisture_" + str(i)):
-                moisture_percent = request.args.get("moisture_" + str(i))    
+            if request.args.get("set_moisture_" + str(i)):
+                moisture_percent = request.args.get("set_moisture_" + str(i))    
                 SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
 
                 

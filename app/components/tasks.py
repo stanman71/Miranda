@@ -4,15 +4,12 @@ from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.watering_control import START_WATERING_THREAD
+from app.components.file_management import SAVE_DATABASE
 
 import time
 import datetime
-import shutil
-import os
 
 from threading import Thread
-
-PATH = "/home/pi/SmartHome"
 
 
 """ #### """
@@ -126,22 +123,3 @@ def SCHEDULAR_TASKS(entries):
                # remove schedular task without repeat
                if entry.repeat == "":
                   DELETE_SCHEDULAR_TASK(entry.id)
-
-
-""" ######## """
-""" database """
-""" ######## """
-
-def GET_BACKUP_FILES():
-   file_list = []
-   for files in os.walk(PATH + "/backup/"):  
-      file_list.append(files)         
-   return file_list[0][2]
-
-
-def SAVE_DATABASE():  
-      # delete old backup files
-      if len(GET_BACKUP_FILES()) == 10:
-            os.remove (PATH + '/backup/' + file_list[0])
-
-      shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')

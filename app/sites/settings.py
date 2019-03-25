@@ -1,7 +1,6 @@
 from flask import render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
 from functools import wraps
-from werkzeug.utils import secure_filename
 import os
 import shutil
 import datetime
@@ -10,9 +9,8 @@ import time
 from app import app
 from app.components.led_control import *
 from app.database.database import *
-from app.components.tasks import SAVE_DATABASE, GET_BACKUP_FILES, UPDATE_MQTT_DEVICES
-
-PATH = "/home/pi/SmartHome"
+from app.components.tasks import UPDATE_MQTT_DEVICES
+from app.components.file_management import *
 
 # create role "superuser"
 def superuser_required(f):
@@ -25,13 +23,6 @@ def superuser_required(f):
             return render_template('login.html', form=form, role_check=False)
     return wrap
 
-# file upload settings
-ALLOWED_EXTENSIONS = set(['pmdl'])
-
-def allowed_file(filename):
-    return '.' in filename and \
-            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
 
 """ ############# """
 """ mqtt settings """
@@ -42,7 +33,7 @@ def allowed_file(filename):
 @superuser_required
 def dashboard_settings_mqtt():
       
-    error_message_mqtt = ""
+    error_message = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
@@ -66,18 +57,18 @@ def dashboard_settings_mqtt():
     if mqtt_setting == "True":
         if request.method == "GET": 
             # add mqtt device
-            if request.args.get("mqtt_device_name") is "":
-                error_message_mqtt = "Kein Name angegeben"   
-                mqtt_device_channel_path = request.args.get("mqtt_device_channel_path")    
-            elif request.args.get("mqtt_device_channel_path") is "":
-                error_message_mqtt = "Kein Kanal angegeben"    
-                mqtt_device_name = request.args.get("mqtt_device_name") 
+            if request.args.get("set_mqtt_device_name") is "":
+                error_message = "Kein Name angegeben"   
+                mqtt_device_channel_path = request.args.get("set_mqtt_device_channel_path")    
+            elif request.args.get("set_mqtt_device_channel_path") is "":
+                error_message = "Kein Kanal angegeben"    
+                mqtt_device_name = request.args.get("set_mqtt_device_name") 
             else:
-                mqtt_device_name = request.args.get("mqtt_device_name") 
-                mqtt_device_channel_path = request.args.get("mqtt_device_channel_path") 
+                mqtt_device_name = request.args.get("set_mqtt_device_name") 
+                mqtt_device_channel_path = request.args.get("set_mqtt_device_channel_path") 
                 
                 if mqtt_device_name is not None or mqtt_device_channel_path is not None:
-                    error_message_mqtt = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
+                    error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
                     mqtt_device_channel_path = ""
                     mqtt_device_name = ""                       
 
@@ -89,7 +80,7 @@ def dashboard_settings_mqtt():
     mqtt_device_list = GET_ALL_MQTT_DEVICES()
 
     return render_template('dashboard_settings_mqtt.html',                    
-                            error_message_mqtt=error_message_mqtt,
+                            error_message=error_message,
                             mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
@@ -123,59 +114,76 @@ def dashboard_settings_zigbee():
                             )
 
 
-""" ############### """
-""" sensor settings """
-""" ############### """
+""" ########## """
+""" sensordata """
+""" ########## """
 
-@app.route('/dashboard/settings/sensors', methods=['GET'])
+@app.route('/dashboard/settings/sensordata', methods=['GET'])
 @login_required
 @superuser_required
-def dashboard_settings_sensors():
-    sensor_values = None
-    sensor_name = ""
-    sensor_id = ""
+def dashboard_settings_sensordata():
     error_message = ""
+    error_message_file = ""
+    name = ""
+    filename = ""
 
     if request.method == "GET": 
+        # add sensordata job
+        if request.args.get("set_name") is "":
+            error_message = "Kein Name angegeben"   
+            filename = request.args.get("set_filename")    
+        elif request.args.get("set_filename") is "":
+            error_message = "Kein Deteiname angegeben"    
+            name = request.args.get("set_name") 
+        else:
+            name = request.args.get("set_name") 
+            filename = request.args.get("set_filename") 
+            mqtt_device_name = request.args.get("set_mqtt_device_name") 
 
-        # get sensor values
-        if request.args.get("get_sensor") is not None:               
-            sensor_id = request.args.get("get_sensor")
-            sensor_values = GET_SENSOR_VALUES(sensor_id)
-            sensor_name = GET_SENSOR_NAME(sensor_id)
+            if mqtt_device_name is not None:
+                error_message = ADD_SENSORDATA(name, filename, mqtt_device_name)
+                error_message_file = CREATE_SENSORDATA_FILE(filename)
+                name = ""
+                filename = ""   
 
-            if sensor_values == None:
-                error_message = "Keine Daten vorhanden"    
+        for i in range (1,25):
+            # change sensor
+            if request.args.get("set_sensor_" + str(i)):
+                sensor_id = request.args.get("set_sensor_" + str(i))    
+                SET_SENSORDATA_SENSOR(i, sensor_id) 
 
-        # delete the values of a selected sensor
-        if request.args.get("delete_values") is not None:
-            delete_values = request.args.get("delete_values") 
-            error_message = DELETE_SENSOR_VALUES(delete_values)
-            sensor_name = GET_SENSOR_NAME(delete_values)
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
+    sensordata_list = GET_ALL_SENSORDATA()
+    file_list = GET_SENSORDATA_FILES()
 
-    dropdown_list_sensor = GET_ALL_SENSORS()
-
-    return render_template('dashboard_settings_sensors.html',
-                            dropdown_list_sensor=dropdown_list_sensor,
-                            sensor_values=sensor_values,
-                            sensor_name=sensor_name,
-                            sensor_id=sensor_id,
+    return render_template('dashboard_settings_sensordata.html',
+                            name=name,
+                            filename=filename,
+                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             error_message=error_message,
+                            error_message_file=error_message_file,
+                            sensordata_list=sensordata_list,
+                            file_list=file_list,
                             active03="active",
                             )
 
 
-# URL for MQTT sensor values
-@app.route('/mqtt/<int:id>/settings/sensor/<string:value>', methods=['GET'])
-def mqtt_sensor(id, value):   
-    SAVE_SENSOR_MQTT(id, value)   
-    return ("Daten empfangen")
+# remove sensordata
+@app.route('/dashboard/settings/sensordata/delete/<int:id>')
+@login_required
+@superuser_required
+def remove_sensordata(id):
+    DELETE_SENSORDATA(id)
+    return redirect(url_for('dashboard_settings_sensordata'))
 
 
-# URL for MQTT control
-@app.route('/mqtt/<int:id>/button/<int:button_id>/<int:value>', methods=['GET'])
-def mqtt_button(id, button_id, value):
-    pass
+# delete sensordata file
+@app.route('/dashboard/settings/sensordata/delete/<string:filename>')
+@login_required
+@superuser_required
+def delete_sensordata_file(filename):
+    DELETE_SENSORDATA_FILE(filename)
+    return redirect(url_for('dashboard_settings_sensordata'))
 
 
 """ ################ """
@@ -187,7 +195,7 @@ def mqtt_button(id, button_id, value):
 @superuser_required
 def dashboard_settings_snowboy():
       
-    error_message_snowboy = ""
+    error_message = ""
     error_message_fileupload = ""
     error_message_table = ""
     sensitivity = ""
@@ -212,11 +220,11 @@ def dashboard_settings_snowboy():
             START_SNOWBOY()
         except Exception as e:
             if "signal only works in main thread" not in str(e):
-                error_message_snowboy = "Fehler in SnowBoy: " + str(e)
+                error_message = "Fehler in SnowBoy: " + str(e)
 
         # change sensitivity
         if request.method == "GET":
-            sensitivity = request.args.get("sensitivity") 
+            sensitivity = request.args.get("set_sensitivity") 
             if sensitivity is not None:
                 SET_SNOWBOY_SENSITIVITY(sensitivity)    
 
@@ -236,22 +244,15 @@ def dashboard_settings_snowboy():
                 # get database informations
                 name   = request.args.get("set_name")
                 task   = request.args.get("set_task")
-
                 error_message_table = ADD_SNOWBOY_TASK(name, task)
 
         # file upload
         if request.method == 'POST':
             if 'file' not in request.files:
-                error_message_fileupload = False
+                error_message_fileupload = "Keine Datei angegeben"
             else:
                 file = request.files['file']
-                if file.filename == '':
-                    error_message_fileupload = False
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-                    error_message_fileupload = True
-
+                error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
     # change radio check    
     if GET_SETTING_VALUE("snowboy") == "True":
@@ -264,22 +265,11 @@ def dashboard_settings_snowboy():
     snowboy_setting = GET_SETTING_VALUE("snowboy")
     sensitivity = GET_SNOWBOY_SENSITIVITY()
     snowboy_list = GET_ALL_SNOWBOY_TASKS()
+    file_list = GET_HOTWORD_FILES()
 
-    # get hotword files
-    file_list_temp = []
-    file_list = []
-
-    for files in os.walk(PATH + "/app/snowboy/resources/"):  
-        file_list_temp.append(files)
-            
-    file_list_temp = file_list_temp[0][2]
-    for file in file_list_temp:        
-        if file != "common.res":
-            file_list.append(file)
-         
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
-                            error_message_snowboy=error_message_snowboy,  
+                            error_message=error_message,  
                             error_message_table=error_message_table,                  
                             error_message_fileupload=error_message_fileupload,
                             snowboy_setting=snowboy_setting,
@@ -306,7 +296,7 @@ def delete_snowboy_task(id):
 @login_required
 @superuser_required
 def delete_snowboy_hotword(filename):
-    os.remove (PATH + '/app/snowboy/resources/' + filename)
+    DELETE_HOTWORD_FILE(filename)
     return redirect(url_for('dashboard_settings_snowboy'))
 
 
@@ -419,7 +409,7 @@ def delete_user(id):
 @superuser_required
 def dashboard_settings_system():
 
-    error_message_system = ""
+    error_message = ""
                               
     def GET_CPU_TEMPERATURE():
         res = os.popen('vcgencmd measure_temp').readline()
@@ -442,7 +432,7 @@ def dashboard_settings_system():
     cpu_temperature = GET_CPU_TEMPERATURE()
 
     return render_template('dashboard_settings_system.html',
-                            error_message_system=error_message_system,
+                            error_message=error_message,
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,
                             active06="active",
@@ -454,13 +444,7 @@ def dashboard_settings_system():
 @login_required
 @superuser_required
 def restore_database_backup(filename):
-    # check file
-    try:
-        if filename.split("_")[1] == "smarthome.sqlite3":
-            shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
-    except:
-        pass 
-    
+    RESTORE_DATABASE(filename)
     return redirect(url_for('dashboard_settings_system'))
 
 
@@ -469,5 +453,5 @@ def restore_database_backup(filename):
 @login_required
 @superuser_required
 def delete_database_backup(filename):
-    os.remove (PATH + '/backup/' + filename)
+    DELETE_DATABASE_BACKUP(filename)
     return redirect(url_for('dashboard_settings_system'))
