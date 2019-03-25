@@ -74,12 +74,12 @@
 <!-- sensor values -->
   
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>Sensorwerte</b></font></div>
+          <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>
             <div class="panel-body">  
             <form method="GET">   
                 <div class="form-group">
                   <div class="text-center">         
-                    <h5><b>Sensordatei anlegen</b></h5>
+                    <h5><b>Sensor anlegen</b></h5>
                   </div>
                   <br>       
                   Name     
@@ -97,7 +97,7 @@
                   MQTT_Device 
                   <br>
                   <br>
-                  <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_name">
+                  <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
                     {% for each in dropdown_list_mqtt_devices %}
                     <option value="{{each.id}}"> {{ each.name }} </option>
                     {% endfor %}
@@ -117,7 +117,7 @@
 <section id="table_jobs"></section>   
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black">Übersicht Sensorwerte</font></div>        
+          <div class="panel-heading"><font color="black">Sensordaten-Jobs</font></div>        
           <div class="panel-body">     
           <table class="table">
             <thead>
@@ -163,7 +163,7 @@
           <div class="panel-body">   
           <table class="table">
               <thead>
-                <th scope="col">Sensordaten-Datein</th>
+                <th scope="col">Datein</th>
               </thead>
             <tbody> 
               {% for entry in file_list %}
@@ -178,18 +178,8 @@
         </div>
       </div>  
 
-
-
-
-
-
-
-
-
-
-
-      </div>
-    </div>       
-  </div>
+    </div>
+  </div>       
+</div>
 
 {% endblock %}

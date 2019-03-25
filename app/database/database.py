@@ -50,7 +50,7 @@ class MQTT_Devices(db.Model):
     outputs      = db.Column(db.Integer)
     last_contact = db.Column(db.String(50))
 
-class Sensor_Data(db.Model):
+class Sensordata(db.Model):
     __tablename__ = 'sensordata'
     id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name           = db.Column(db.String(50), unique=True)
@@ -109,9 +109,9 @@ class Scene_01(db.Model):
     __tablename__ = 'scene_01'
     id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
     scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("1"))
-    scene_name  = db.relationship('Scenes') # connection to an other table (Scenes)
+    scene_name  = db.relationship('Scenes') 
     led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')    # connection to an other table (led)
+    led_name    = db.relationship('LED')    
     color_red   = db.Column(db.Integer, server_default=("0"))
     color_green = db.Column(db.Integer, server_default=("0"))
     color_blue  = db.Column(db.Integer, server_default=("0"))
@@ -259,19 +259,25 @@ if Settings.query.filter_by().first() is None:
     db.session.commit()
 
     setting = Settings(
-        setting_name  = "snowboy",
+        setting_name  = "mqtt",
+        setting_value = "False",
+    )
+    db.session.add(setting)    
+    db.session.commit()
+    
+    setting = Settings(
+        setting_name  = "zigbee",
         setting_value = "False",
     )
     db.session.add(setting)    
     db.session.commit()
 
     setting = Settings(
-        setting_name  = "mqtt",
+        setting_name  = "snowboy",
         setting_value = "False",
     )
     db.session.add(setting)    
     db.session.commit()
-
 
 # create default snowboy
 if Snowboy.query.filter_by().first() is None:
@@ -375,26 +381,26 @@ def REMOVE_LED(id):
 """ ########## """
 
 def GET_SENSORDATA(id):
-    return Sensor_Data.query.filter_by(id=id).first()
+    return Sensordata.query.filter_by(id=id).first()
 
 
 def GET_ALL_SENSORDATA():
-    return Sensor_Data.query.all()
+    return Sensordata.query.all()
 
 
 def ADD_SENSORDATA(name, filename, mqtt_device_id):
     # name exist ?
-    check_entry = Sensor_Data.query.filter_by(name=name).first()
+    check_entry = Sensordata.query.filter_by(name=name).first()
     if check_entry is None:
-        check_entry = Sensor_Data.query.filter_by(filename=filename).first()
-        if check_entry is None:
+        check_entry = Sensordata.query.filter_by(filename=filename).first()
+        if check_entry is None:            
             # find a unused id
             for i in range(1,25):
-                if Sensor_Data.query.filter_by(id=i).first():
+                if Sensordata.query.filter_by(id=i).first():
                     pass
                 else:
                     # add the new plant
-                    sensordata = Sensor_Data(
+                    sensordata = Sensordata(
                             id             = i,
                             name           = name,
                             filename       = filename,
@@ -412,13 +418,13 @@ def ADD_SENSORDATA(name, filename, mqtt_device_id):
 
 
 def SET_SENSORDATA_SENSOR(id, sensor_id):        
-    entry = Sensor_Data.query.filter_by(id=id).first()
+    entry = Sensordata.query.filter_by(id=id).first()
     entry.sensor_id = sensor_id
     db.session.commit()    
 
 
 def DELETE_SENSORDATA(id):
-    Sensor_Data.query.filter_by(id=id).delete()
+    Sensordata.query.filter_by(id=id).delete()
     db.session.commit()
 
 
@@ -435,9 +441,9 @@ def GET_ALL_MQTT_DEVICES():
 
 
 def GET_MQTT_DEVICE_NAME(id):
-    device_name = MQTT_Devices.query.filter_by(id=id).first()
-    return device_name.name  
-
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    return entry.name  
+    
 
 def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
     # name exist ?

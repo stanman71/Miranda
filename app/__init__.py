@@ -9,14 +9,9 @@ from app.components.colorpicker_local import colorpicker
 """ flasks """
 """ ###### """
 
-PATH = "/home/pi/SmartHome"
-
-UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 Bootstrap(app)
 colorpicker(app)
 

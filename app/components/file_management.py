@@ -6,8 +6,12 @@ import csv
 from werkzeug.utils import secure_filename
 
 from app import app
+from app.database.database import *
 
 PATH = "/home/pi/SmartHome"
+
+UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 """ ############### """
@@ -67,12 +71,11 @@ def DELETE_SENSORDATA_FILE(filename):
     os.remove (PATH + '/csv/' + filename)
 
 
-""" ################ """
-""" snowboy hotwords """
-""" ################ """
+""" ####### """
+""" snowboy """
+""" ####### """
 
-def GET_HOTWORD_FILES():
-    # get hotword files
+def GET_ALL_HOTWORD_FILES():
     file_list_temp = []
     file_list = []
 
@@ -87,9 +90,15 @@ def GET_HOTWORD_FILES():
     return file_list
 
 
+def GET_USED_HOTWORD_FILES():
+    file_list = []
+    for element in GET_ALL_SNOWBOY_TASKS():
+        file_list.append(PATH + "/app/snowboy/resources/" + element.name + ".pmdl")
+        
+    return file_list
+
+
 def UPLOAD_HOTWORD_FILE(file):
-    
-    # file upload settings
     ALLOWED_EXTENSIONS = set(['pmdl'])
 
     def allowed_file(filename):

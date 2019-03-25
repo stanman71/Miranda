@@ -31,8 +31,6 @@ def MQTT_START():
 			SET_PLANT_MOISTURE_CURRENT(msg[0], msg[1])
 
 	
-		
-	 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("/SmartHome/#")
 

@@ -2,9 +2,7 @@ from flask import render_template, redirect, url_for, request, send_from_directo
 from flask_login import login_required, current_user
 from functools import wraps
 import os
-import shutil
 import datetime
-import time
 
 from app import app
 from app.components.led_control import *
@@ -31,8 +29,7 @@ def superuser_required(f):
 @app.route('/dashboard/settings/mqtt', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_settings_mqtt():
-      
+def dashboard_settings_mqtt():   
     error_message = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
@@ -52,7 +49,6 @@ def dashboard_settings_mqtt():
     else:
         check_value_mqtt[0] = ""
         check_value_mqtt[1] = "checked = 'on'"
-
 
     if mqtt_setting == "True":
         if request.method == "GET": 
@@ -107,9 +103,26 @@ def remove_mqtt_device(id):
 @superuser_required
 def dashboard_settings_zigbee():
     error_message = ""
+    check_value_zigbee = ["", ""]
+
+    if request.method == "GET":     
+        # change mqtt settings   
+        if request.args.get("radio_zigbee") is not None:
+            setting_zigbee = str(request.args.get("radio_zigbee"))
+            SET_SETTING_VALUE("zigbee", setting_zigbee)
+
+    # change radio check  
+    zigbee_setting = GET_SETTING_VALUE("zigbee")    
+    if zigbee_setting == "True":
+        check_value_zigbee[0] = "checked = 'on'"
+        check_value_zigbee[1] = ""
+    else:
+        check_value_zigbee[0] = ""
+        check_value_zigbee[1] = "checked = 'on'"
 
     return render_template('dashboard_settings_zigbee.html',
                             error_message=error_message,
+                            check_value_zigbee=check_value_zigbee,                            
                             active02="active",
                             )
 
@@ -138,10 +151,10 @@ def dashboard_settings_sensordata():
         else:
             name = request.args.get("set_name") 
             filename = request.args.get("set_filename") 
-            mqtt_device_name = request.args.get("set_mqtt_device_name") 
+            mqtt_device_id = request.args.get("set_mqtt_device_id") 
 
-            if mqtt_device_name is not None:
-                error_message = ADD_SENSORDATA(name, filename, mqtt_device_name)
+            if mqtt_device_id is not None:
+                error_message = ADD_SENSORDATA(name, filename, mqtt_device_id)
                 error_message_file = CREATE_SENSORDATA_FILE(filename)
                 name = ""
                 filename = ""   
@@ -194,12 +207,10 @@ def delete_sensordata_file(filename):
 @login_required
 @superuser_required
 def dashboard_settings_snowboy():
-      
     error_message = ""
     error_message_fileupload = ""
-    error_message_table = ""
     sensitivity = ""
-    check_value_snowboy    = ["", ""]
+    check_value_snowboy = ["", ""]
     set_name = ""
     set_task = ""
 
@@ -209,6 +220,13 @@ def dashboard_settings_snowboy():
             setting_snowboy = str(request.args.get("radio_snowboy"))
             SET_SETTING_VALUE("snowboy", setting_snowboy) 
 
+    # change radio check    
+    if GET_SETTING_VALUE("snowboy") == "True":
+        check_value_snowboy[0] = "checked = 'on'"
+        check_value_snowboy[1] = ""
+    else:
+        check_value_snowboy[0] = ""
+        check_value_snowboy[1] = "checked = 'on'"
 
     if GET_SETTING_VALUE("snowboy") == "True":
 
@@ -244,7 +262,7 @@ def dashboard_settings_snowboy():
                 # get database informations
                 name   = request.args.get("set_name")
                 task   = request.args.get("set_task")
-                error_message_table = ADD_SNOWBOY_TASK(name, task)
+                error_message = ADD_SNOWBOY_TASK(name, task)
 
         # file upload
         if request.method == 'POST':
@@ -254,23 +272,14 @@ def dashboard_settings_snowboy():
                 file = request.files['file']
                 error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
-    # change radio check    
-    if GET_SETTING_VALUE("snowboy") == "True":
-        check_value_snowboy[0] = "checked = 'on'"
-        check_value_snowboy[1] = ""
-    else:
-        check_value_snowboy[0] = ""
-        check_value_snowboy[1] = "checked = 'on'"
-
     snowboy_setting = GET_SETTING_VALUE("snowboy")
     sensitivity = GET_SNOWBOY_SENSITIVITY()
     snowboy_list = GET_ALL_SNOWBOY_TASKS()
-    file_list = GET_HOTWORD_FILES()
+    file_list = GET_ALL_HOTWORD_FILES()
 
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
-                            error_message=error_message,  
-                            error_message_table=error_message_table,                  
+                            error_message=error_message,                  
                             error_message_fileupload=error_message_fileupload,
                             snowboy_setting=snowboy_setting,
                             check_value_snowboy=check_value_snowboy,
@@ -308,7 +317,6 @@ def delete_snowboy_hotword(filename):
 @login_required
 @superuser_required
 def dashboard_settings_hue_bridge():
-      
     led_update = "" 
     error_message_hue_bridge = ""
     hue_bridge_ip = ""
@@ -329,7 +337,6 @@ def dashboard_settings_hue_bridge():
     else:
         check_value_hue_bridge[0] = ""
         check_value_hue_bridge[1] = "checked = 'on'"
-
 
     if hue_bridge_setting == "True":
         if request.method == "GET": 
@@ -408,7 +415,6 @@ def delete_user(id):
 @login_required
 @superuser_required
 def dashboard_settings_system():
-
     error_message = ""
                               
     def GET_CPU_TEMPERATURE():

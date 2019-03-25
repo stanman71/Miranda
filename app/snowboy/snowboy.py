@@ -4,12 +4,10 @@ from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
 from app.database.database import *
 from app.components.tasks import SNOWBOY_TASKS
+from app.components.file_management import GET_USED_HOTWORD_FILES
 
 import sys
 import signal
-import os
-
-PATH = "/home/pi/SmartHome"
 
 interrupted = False
 
@@ -26,13 +24,8 @@ def SNOWBOY_START():
 
    signal.signal(signal.SIGINT, signal_handler)
 
-   # get hotword files
-   file_list = []
-   for element in GET_ALL_SNOWBOY_TASKS():
-      file_list.append(PATH + "/app/snowboy/resources/" + element.name + ".pmdl")
-
    # voice models here:
-   models = file_list
+   models = GET_USED_HOTWORD_FILES()
 
    sensitivity_value = int(GET_SNOWBOY_SENSITIVITY()) / 100
 

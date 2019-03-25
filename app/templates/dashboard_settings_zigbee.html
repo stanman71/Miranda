@@ -73,13 +73,23 @@
 
 <!-- zigbee settings -->
   
-        <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>ZigBee Einstellungen</b></font></div>
-            <div class="panel-body">  
-   
-          </div>
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>ZigBee</b></font></div>
+          <div class="panel-body">   
+            <form method="get">  
+              <div class="radio">
+                <label><input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee">ZigBee aktivieren</label>
+                <br>
+                <label><input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">ZigBee deaktivieren</label>
+              </div>
+              <br>
+              <input type="submit" class="btn btn-secondary" value="Auswählen"/>
+            </form>  
+          </div>  
         </div>    
- 
+
+
+
       </div>
     </div>       
   </div>

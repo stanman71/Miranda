@@ -6,7 +6,6 @@ from app.components.mqtt import MQTT_PUBLISH
 from app.components.watering_control import START_WATERING_THREAD
 from app.components.file_management import SAVE_DATABASE
 
-import time
 import datetime
 
 from threading import Thread
