@@ -3,7 +3,6 @@ from flask_login import login_required, current_user
 from functools import wraps
 
 from app import app
-from app.components.plants_control import *
 from app.database.database import *
 
 
@@ -28,7 +27,7 @@ def superuser_required(f):
 @superuser_required
 def dashboard_plants():
     error_message = ""
-    water_volume = ""
+    watervolume = ""
     moisture = ""
 
     if request.method == "GET": 
@@ -40,40 +39,38 @@ def dashboard_plants():
                 error_message = "Kein MQTT Device vorhanden"                     
             else:         
                 # get informations
-                name         = request.args.get("name")
-                mqtt_device  = request.args.get("set_mqtt_device")                
-                sensor_id    = ""
-                pump_id      = ""
-                water_volume = request.args.get("set_water_volume")
-                error_message = ADD_PLANT(name, mqtt_device, sensor_id, pump_id, water_volume)
+                name          = request.args.get("name")
+                mqtt_device   = request.args.get("set_mqtt_device")    
+                watervolume   = request.args.get("set_water_volume") 
+                error_message = ADD_PLANT(name, mqtt_device, watervolume)
 
         for i in range (1,25):
             # change sensor
             if request.args.get("sensor_" + str(i)):
                 sensor_id = request.args.get("sensor_" + str(i))    
-                CHANGE_SENSOR(i, sensor_id)
+                SET_PLANT_SENSOR(i, sensor_id)
             # change pump
             if request.args.get("pump_" + str(i)):
                 pump_id = request.args.get("pump_" + str(i))    
-                CHANGE_PUMP(i, pump_id)                
-            # change moisture
+                SET_PLANT_PUMP(i, pump_id)                
+            # change moisture target
             if request.args.get("moisture_" + str(i)):
-                moisture = request.args.get("moisture_" + str(i))    
-                CHANGE_MOISTURE(i, moisture)
+                moisture_percent = request.args.get("moisture_" + str(i))    
+                SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
 
                 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
     dropdown_list_values       = [0, 1, 2, 3, 4, 5, 6, 7]    
-    dropdown_list_water_volume = [50, 100, 150, 200, 250]
+    dropdown_list_watervolume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_values=dropdown_list_values,
-                            dropdown_list_water_volume=dropdown_list_water_volume,
+                            dropdown_list_watervolume=dropdown_list_watervolume,
                             plants_list=plants_list,
                             moisture=moisture,
-                            water_volume=water_volume,
+                            watervolume=watervolume,
                             error_message=error_message)
 
 

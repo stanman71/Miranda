@@ -3,6 +3,7 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 from app.components.mqtt import MQTT_PUBLISH
+from app.components.watering_control import START_WATERING_THREAD
 
 import time
 import datetime
@@ -20,8 +21,8 @@ PATH = "/home/pi/SmartHome"
 
 def UPDATE_MQTT_DEVICES(devices):
    for device in devices:
-      channel = "/SmartHome/" + device.channel_path
-      MQTT_PUBLISH(channel, "get_deviceinformtions")
+      channel = "/SmartHome/" + device.channel_path + "/device"
+      MQTT_PUBLISH(channel, "")
 
 
 """ ####### """
@@ -114,7 +115,7 @@ def SCHEDULAR_TASKS(entries):
                if "watering_plants" in entry.task:
                   START_WATERING_THREAD()
 
-               # watering plants
+               # save database
                if "save_database" in entry.task:
                   SAVE_DATABASE()
 

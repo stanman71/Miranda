@@ -78,7 +78,7 @@
                   {% endfor %}
                 </select>    
                 <select class="btn btn-secondary dropdown-toggle" name="set_water_volume">
-                  {% for each in dropdown_list_water_volume %}
+                  {% for each in dropdown_list_watervolume %}
                   <option value="{{each}}"> {{ each }} </option>
                   {% endfor %}
                 </select>         
@@ -99,10 +99,10 @@
           <table class="table">
             <thead>
               <th scope="col">Name</th>   
-              <th scope="col">MQTT-Device</th>                 
+              <th scope="col">MQTT-Device</th>    
+              <th scope="col">Wasser (ml)</th>
               <th scope="col">Sensor</th>
-              <th scope="col">Pumpe</th>
-              <th scope="col">Wasser (ml)</th> 
+              <th scope="col">Pumpe</th> 
               <th scope="col">Feuchtigkeit (%)</th>  
               <th scope="col" colspan="3">Einstellungen ändern: Sensor / Pumpe / Feuchtigkeit</th>
             </thead>
@@ -110,22 +110,22 @@
               {% for entry in plants_list %}
               <tr>
                 <td>{{ entry.name }}</td> 
-                <td>{{ entry.mqtt_device_name.name }}</td> 
+                <td>{{ entry.mqtt_device.name }}</td> 
+                <td>{{ entry.watervolume }}</td> 
                 <td>{{ entry.sensor_id }}</td>
                 <td>{{ entry.pump_id }}</td>
-                <td>{{ entry.water_volume }}</td> 
-                <td>{{ entry.moisture }}</td> 
+                <td>{{ entry.moisture_percent }}</td> 
                 <td> 
                   <form method="GET" class="verticalform">      
                     <select class="btn btn-secondary dropdown-toggle" name="sensor_{{ entry.id }}">
-                      {% for i in range(entry.mqtt_device_inputs.inputs) %}
+                      {% for i in range(entry.mqtt_device.inputs) %}
                       <option value= "{{ i }}" > {{ i }} </option>
                       {% endfor %}
                     </select>   
                     </td>
                     <td>                
                     <select class="btn btn-secondary dropdown-toggle" name="pump_{{ entry.id }}">
-                      {% for i in range(entry.mqtt_device_outputs.outputs) %}
+                      {% for i in range(entry.mqtt_device.outputs) %}
                       <option value= "{{ i }}" > {{ i }} </option>
                       {% endfor %}
                     </select> 

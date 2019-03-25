@@ -68,17 +68,16 @@ class HUE_Bridge(db.Model):
 
 class Plants(db.Model):
     __tablename__ = 'plants'
-    id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name                = db.Column(db.String(50), unique=True)
-    mqtt_device_id      = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device_name    = db.relationship('MQTT_Devices')  
-    mqtt_device_inputs  = db.relationship('MQTT_Devices')  
-    mqtt_device_outputs = db.relationship('MQTT_Devices')  
-    sensor_id           = db.Column(db.Integer)
-    moisture            = db.Column(db.Integer) 
-    moisture_voltage    = db.Column(db.Integer)    
-    water_volume        = db.Column(db.Integer)
-    pump_id             = db.Column(db.Integer)
+    id                       = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name                     = db.Column(db.String(50), unique=True)
+    mqtt_device_id           = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    watervolume              = db.Column(db.Integer)
+    mqtt_device              = db.relationship('MQTT_Devices')  
+    pump_id                  = db.Column(db.Integer)
+    sensor_id                = db.Column(db.Integer)
+    moisture_percent         = db.Column(db.Integer) 
+    moisture_voltage_target  = db.Column(db.Integer) 
+    moisture_voltage_current = db.Column(db.Integer)     
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -1082,7 +1081,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, mqtt_device_id, sensor_id, pump_id, water_volume):
+def ADD_PLANT(name, mqtt_device_id, watervolume):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1096,10 +1095,7 @@ def ADD_PLANT(name, mqtt_device_id, sensor_id, pump_id, water_volume):
                         id             = i,
                         name           = name,
                         mqtt_device_id = mqtt_device_id,
-                        sensor_id      = sensor_id,
-                        pump_id        = pump_id,
-                        moisture       = 0,
-                        water_volume   = water_volume,
+                        watervolume    = watervolume,                     
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1109,31 +1105,37 @@ def ADD_PLANT(name, mqtt_device_id, sensor_id, pump_id, water_volume):
         return "Name bereits vergeben"
 
 
-def CHANGE_MOISTURE(plant_id, moisture):    
+def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_voltage):
     entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture = moisture
-    # calculate voltage value
-    voltage_value = round((float(moisture) * 1.6) / 100, 2) 
-    moisture_voltage = round(2.84 - voltage_value, 2)   
-    entry.moisture_voltage = moisture_voltage
+    entry.moisture_voltage_current = moisture_voltage
+    db.session.commit()      
+
+
+def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.moisture_percent = moisture_percent
+    # calculate voltage value target
+    voltage_value_temp = round((float(moisture_percent) * 1.6) / 100, 2) 
+    moisture_voltage_target = round(2.84 - voltage_value_temp, 2)   
+    entry.moisture_voltage_target = moisture_voltage_target
     db.session.commit()  
 
 
-def CHANGE_SENSOR(plant_id, sensor_id):        
+def SET_PLANT_SENSOR(plant_id, sensor_id):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.sensor_id = sensor_id
     db.session.commit()    
 
 
-def CHANGE_PUMP(plant_id, pump_id):        
+def SET_PLANT_PUMP(plant_id, pump_id):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.pump_id = pump_id
     db.session.commit()    
 
 
-def CHANGE_WATER_VOLUME(plant_id, water_volume):        
+def SET_PLANT_WATERVOLUME(plant_id, watervolume):        
     entry = Plants.query.filter_by(id=plant_id).first()
-    entry.water_volume = water_volume
+    entry.watervolume = watervolume
     db.session.commit()    
 
 

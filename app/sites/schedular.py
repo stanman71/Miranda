@@ -5,11 +5,8 @@ from functools import wraps
 import datetime
 
 from app import app
-from app.components.led_control import *
-from app.components.plants_control import *
 from app.database.database import *
 from app.components.tasks import SCHEDULAR_TASKS
-from app.components.mqtt import MQTT_PUBLISH
 
 
 # create role "superuser"
