@@ -108,8 +108,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
         // get sensor_value
         int sensorValue = adc.readADC(sensor_id); 
-        float voltage= sensorValue * (3.3 / 1023.0);    
-        String STR_value = String(voltage);
+        String STR_value = String(sensorValue);
 
         // create msg   
         String payload = STR_plant_id + "/" + STR_value;      

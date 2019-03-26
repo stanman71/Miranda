@@ -32,35 +32,35 @@ def STOP_PUMP(mqtt_device_channel, pump_id):
 def CHECK_MOISTURE():
 
     for plant in GET_ALL_PLANTS():   
-
-        time.sleep(5)     
         # send request message
         channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
         MQTT_PUBLISH(channel, str(plant.sensor_id))
 
-        target_moisture  = plant.moisture_voltage_target 
-        current_moisture = plant.moisture_voltage_current
+        time.sleep(5)
+
+        target_moisture  = plant.moisture_value_target 
+        current_moisture = plant.moisture_value_current
       
-        # dry   = 2.80V
-        # water = 1.20V  
+        # dry   = 870
+        # water = 370
    
-        if current_moisture < 1.2:
+        if current_moisture < 350:
             print("sensor_error")
             
         else:
-            moisture = float(current_moisture) - float(target_moisture)
+            moisture = int(current_moisture) - int(target_moisture)
 
             # not enough water
-            if moisture > 0.2:
+            if moisture > 50:
+                new_watervolume = int(plant.watervolume) + 40
+            elif moisture > 25:
                 new_watervolume = int(plant.watervolume) + 20
-            elif moisture > 0.1:
-                new_watervolume = int(plant.watervolume) + 10
 
             # too much water
-            elif moisture < -0.2:
+            elif moisture < -50:
+                new_watervolume = int(plant.watervolume) - 40
+            elif moisture < -25:
                 new_watervolume = int(plant.watervolume) - 20
-            elif moisture < -0.1:
-                new_watervolume = int(plant.watervolume) - 10
             else:
                 pass
 

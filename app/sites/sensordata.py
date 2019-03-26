@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, send_file
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps
@@ -73,17 +73,31 @@ def dashboard_sensordata():
                             )
 
 
-# remove sensordata
-@app.route('/dashboard/sensordata/delete/<int:id>')
+# remove sensordata job
+@app.route('/dashboard/sensordata/delete/job/<int:id>')
 @login_required
 @superuser_required
-def remove_sensordata(id):
+def remove_sensordata_job(id):
     DELETE_SENSORDATA_JOB(id)
     return redirect(url_for('dashboard_sensordata'))
 
 
+# download sensordata file
+@app.route("/dashboard/sensordata/download/file/<path>")
+def download_sensordata_file (path = None):
+    if path is None:
+        self.Error(400)
+    try:
+        filepath = GET_PATH() + "/csv/" + path
+        print(filepath)
+        return send_file(filepath, as_attachment=True)
+    except Exception as e:
+        self.log.exception(e)
+        self.Error(400)
+
+
 # delete sensordata file
-@app.route('/dashboard/sensordata/delete/<string:filename>')
+@app.route('/dashboard/sensordata/delete/file/<string:filename>')
 @login_required
 @superuser_required
 def delete_sensordata_file(filename):

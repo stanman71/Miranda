@@ -85,7 +85,7 @@ def SNOWBOY_TASKS(entry):
 """ schedular """
 """ ######### """
 
-def SCHEDULAR_TASKS(entries):
+def TASKMANAGEMENT_TIME_TASKS(entries):
 
    now    = datetime.datetime.now()
    day    = now.strftime('%a')
@@ -135,4 +135,4 @@ def SCHEDULAR_TASKS(entries):
 
                # remove schedular task without repeat
                if entry.repeat == "":
-                  DELETE_SCHEDULAR_TASK(entry.id)
+                  DELETE_TASKMANAGEMENT_TIME_TASK(entry.id)

@@ -38,8 +38,8 @@ class flask_Thread(threading.Thread):
         def initialisation():
             pass
          
-        #app.run(host='0.0.0.0', port=5000)
-        app.run()
+        app.run(host='0.0.0.0', port=5000)
+        #app.run()
      
 t1 = flask_Thread()
 t1.start()

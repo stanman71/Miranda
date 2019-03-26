@@ -14,6 +14,10 @@ UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
+def GET_PATH():
+    return (PATH)
+
+
 """ ############### """
 """ backup database """
 """ ############### """

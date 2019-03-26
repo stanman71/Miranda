@@ -6,15 +6,11 @@ import os
 from app import app
 from app.components.led_control import *
 from app.database.database import *
+from app.components.file_management import GET_PATH
 
 
 ''' CSS PATH '''
-# Windows Home
-#PATH_CSS = 'C:/Users/stanman/Desktop/Unterlagen/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
-# Windows Work
-#PATH_CSS = 'C:/Users/mstan/GIT/Python_Projects/SmartHome/app/static/CDNJS/'
-# RasPi:
-PATH_CSS = '/home/pi/SmartHome/app/static/CDNJS/'
+PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
 
 
 # create role "superuser"

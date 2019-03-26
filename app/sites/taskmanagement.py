@@ -6,7 +6,7 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.tasks import SCHEDULAR_TASKS
+from app.components.tasks import *
 
 
 # create role "superuser"
@@ -30,8 +30,8 @@ scheduler.start()
 
 @scheduler.task('cron', id='scheduler_job', minute='*')
 def scheduler_job():
-    entries = GET_ALL_SCHEDULAR_TASKS()
-    SCHEDULAR_TASKS(entries)
+    entries = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
+    TASKMANAGEMENT_TIME_TASKS(entries)
 
 
 @app.route('/dashboard/taskmanagement/time', methods=['GET'])
@@ -67,9 +67,9 @@ def dashboard_taskmanagement_time():
                 else:
                     repeat = ""
 
-                error_message = ADD_SCHEDULAR_TASK(name, day, hour, minute, task, repeat)
+                error_message = ADD_TASKMANAGEMENT_TIME_TASK(name, day, hour, minute, task, repeat)
  
-    schedular_list = GET_ALL_SCHEDULAR_TASKS()
+    schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
 
     # dropdown values
     dropdown_list_days    = ["*", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
@@ -94,12 +94,12 @@ def dashboard_taskmanagement_time():
                             )
 
 
-# delete schedular tasks
+# delete taskmanagement time tasks
 @app.route('/dashboard/taskmanagement/time/delete/<int:id>')
 @login_required
 @superuser_required
 def delete_schedular_task(id):
-    DELETE_SCHEDULAR_TASK(id)
+    DELETE_TASKMANAGEMENT_TIME_TASK(id)
     return redirect(url_for('dashboard_taskmanagement_time'))
 
 

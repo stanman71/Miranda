@@ -30,8 +30,8 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
     role     = db.Column(db.String(20), server_default=("user"))
 
-class Schedular_Tasks(db.Model):
-    __tablename__ = 'schedular_tasks'
+class Taskmanagement_Time(db.Model):
+    __tablename__ = 'taskmanagement_time'
     id     = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name   = db.Column(db.String(50), unique=True)
     day    = db.Column(db.String(50))
@@ -39,6 +39,16 @@ class Schedular_Tasks(db.Model):
     minute = db.Column(db.String(50))
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
+
+class Taskmanagement_Sensor(db.Model):
+    __tablename__ = 'taskmanagement_senor'
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name           = db.Column(db.String(50), unique=True)
+    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device    = db.relationship('MQTT_Devices')  
+    sensor_id      = db.Column(db.Integer)    
+    task           = db.Column(db.String(100))
+    repeat         = db.Column(db.String(50))
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
@@ -77,16 +87,16 @@ class HUE_Bridge(db.Model):
 
 class Plants(db.Model):
     __tablename__ = 'plants'
-    id                       = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name                     = db.Column(db.String(50), unique=True)
-    mqtt_device_id           = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    watervolume              = db.Column(db.Integer)
-    mqtt_device              = db.relationship('MQTT_Devices')  
-    pump_id                  = db.Column(db.Integer)
-    sensor_id                = db.Column(db.Integer)
-    moisture_percent         = db.Column(db.Integer) 
-    moisture_voltage_target  = db.Column(db.Integer) 
-    moisture_voltage_current = db.Column(db.Integer)     
+    id                     = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name                   = db.Column(db.String(50), unique=True)
+    mqtt_device_id         = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    watervolume            = db.Column(db.Integer)
+    mqtt_device            = db.relationship('MQTT_Devices')  
+    pump_id                = db.Column(db.Integer)
+    sensor_id              = db.Column(db.Integer)
+    moisture_percent       = db.Column(db.Integer) 
+    moisture_value_target  = db.Column(db.Integer) 
+    moisture_value_current = db.Column(db.Integer)     
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -512,6 +522,41 @@ def SET_SNOWBOY_SENSITIVITY(value):
     db.session.commit() 
 
 
+def GET_SNOWBOY_TASK(name):
+    return Snowboy_Tasks.query.filter_by(name=name).first()
+
+
+def GET_ALL_SNOWBOY_TASKS():
+    return Snowboy_Tasks.query.all()
+
+
+def ADD_SNOWBOY_TASK(name, task):
+    # name exist ?
+    check_entry = Snowboy_Tasks.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Snowboy_Tasks.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                task = Snowboy_Tasks(
+                        id     = i,
+                        name   = name,
+                        task   = task,
+                    )
+                db.session.add(task)
+                db.session.commit()
+                return ""
+    else:
+        return "Name bereits vergeben"
+
+
+def DELETE_SNOWBOY_TASK(task_id):
+    Snowboy_Tasks.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
 """ ############### """
 """ user management """
 """ ############### """
@@ -549,31 +594,31 @@ def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
 
-""" ################### """
-""" ################### """
-"""   task management   """
-""" ################### """
-""" ################### """
+""" ################## """
+""" ################## """
+"""   taskmanagement   """
+""" ################## """
+""" ################## """
 
-def GET_SCHEDULAR_TASK(name):
-    return Schedular_Tasks.query.filter_by(name=name).first()
-
-
-def GET_ALL_SCHEDULAR_TASKS():
-    return Schedular_Tasks.query.all()
+def GET_TASKMANAGEMENT_TIME_TASK(name):
+    return Taskmanagement_Time.query.filter_by(name=name).first()
 
 
-def ADD_SCHEDULAR_TASK(name, day, hour, minute, task, repeat):
+def GET_ALL_TASKMANAGEMENT_TIME_TASKS():
+    return Taskmanagement_Time.query.all()
+
+
+def ADD_TASKMANAGEMENT_TIME_TASK(name, day, hour, minute, task, repeat):
     # name exist ?
-    check_entry = Schedular_Tasks.query.filter_by(name=name).first()
+    check_entry = Taskmanagement_Time.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Schedular_Tasks.query.filter_by(id=i).first():
+            if Taskmanagement_Time.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                task = Schedular_Tasks(
+                task = Taskmanagement_Time(
                         id     = i,
                         name   = name,
                         day    = day,
@@ -589,33 +634,35 @@ def ADD_SCHEDULAR_TASK(name, day, hour, minute, task, repeat):
         return "Name bereits vergeben"
 
 
-def DELETE_SCHEDULAR_TASK(task_id):
-    Schedular_Tasks.query.filter_by(id=task_id).delete()
+def DELETE_TASKMANAGEMENT_TIME_TASK(task_id):
+    Taskmanagement_Time.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
-def GET_SNOWBOY_TASK(name):
-    return Snowboy_Tasks.query.filter_by(name=name).first()
+def GET_TASKMANAGEMENT_SENSOR_TASK(name):
+    return Taskmanagement_Sensor.query.filter_by(name=name).first()
 
 
-def GET_ALL_SNOWBOY_TASKS():
-    return Snowboy_Tasks.query.all()
+def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
+    return Taskmanagement_Sensor.query.all()
 
 
-def ADD_SNOWBOY_TASK(name, task):
+def ADD_TASKMANAGEMENT_SENSOR_TASK(name, mqtt_device_id, task, repeat):
     # name exist ?
-    check_entry = Snowboy_Tasks.query.filter_by(name=name).first()
+    check_entry = Taskmanagement_Sensor.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Snowboy_Tasks.query.filter_by(id=i).first():
+            if Taskmanagement_Sensor.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                task = Snowboy_Tasks(
-                        id     = i,
-                        name   = name,
-                        task   = task,
+                task = Taskmanagement_Sensor(
+                        id             = i,
+                        name           = name,
+                        mqtt_device_id = mqtt_device_id,
+                        task           = task,
+                        repeat         = repeat,
                     )
                 db.session.add(task)
                 db.session.commit()
@@ -624,8 +671,14 @@ def ADD_SNOWBOY_TASK(name, task):
         return "Name bereits vergeben"
 
 
-def DELETE_SNOWBOY_TASK(task_id):
-    Snowboy_Tasks.query.filter_by(id=task_id).delete()
+def SET_TASKMANAGEMENT_SENSOR_SENSOR(id, sensor_id):        
+    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
+    entry.sensor_id = sensor_id
+    db.session.commit()    
+
+
+def DELETE_TASKMANAGEMENT_SENSOR_TASK(task_id):
+    Taskmanagement_Sensor.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
@@ -676,10 +729,11 @@ def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_voltage):
 def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.moisture_percent = moisture_percent
-    # calculate voltage value target
-    voltage_value_temp = round((float(moisture_percent) * 1.6) / 100, 2) 
-    moisture_voltage_target = round(2.84 - voltage_value_temp, 2)   
-    entry.moisture_voltage_target = moisture_voltage_target
+    
+    # calculate value target
+    value_temp = round((float(moisture_percent) * 500) / 100, 2) 
+    moisture_value_target = round(870 - value_temp, 2)   
+    entry.moisture_value_target = moisture_value_target
     db.session.commit()  
 
 
