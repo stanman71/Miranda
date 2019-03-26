@@ -741,6 +741,7 @@ def dashboard_led_programs():
             DELETE_PROGRAM(delete_Program)              
 
     dropdown_list = GET_ALL_PROGRAMS()
+    scene_names_list = GET_ALL_SCENES()
 
     return render_template('dashboard_led_programs.html',
                             led_update=led_update,
@@ -748,6 +749,8 @@ def dashboard_led_programs():
                             program=program,
                             program_delete=program_delete,
                             rgb=rgb,
+                            scene_names_list=scene_names_list,
+                            programs="active",
                             error_message=error_message
                             )
 
