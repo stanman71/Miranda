@@ -731,8 +731,8 @@ def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):
     entry.moisture_percent = moisture_percent
     
     # calculate value target
-    value_temp = round((float(moisture_percent) * 500) / 100, 2) 
-    moisture_value_target = round(870 - value_temp, 2)   
+    value_temp = int(moisture_percent) * 5
+    moisture_value_target = 870 - value_temp
     entry.moisture_value_target = moisture_value_target
     db.session.commit()  
 

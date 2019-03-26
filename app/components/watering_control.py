@@ -36,7 +36,7 @@ def CHECK_MOISTURE():
         channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
         MQTT_PUBLISH(channel, str(plant.sensor_id))
 
-        time.sleep(5)
+        time.sleep(10)
 
         target_moisture  = plant.moisture_value_target 
         current_moisture = plant.moisture_value_current
