@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  ZigBee
+  Aufgabenplanung (Sensor)
 {% endblock %}
 
 {% block styles %}
@@ -46,53 +46,38 @@
 <br>
 
 <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
-    <div class="row">
-      <div class="col">
-  
-<!-- settings navs -->
+  <div class="row">
+    <div class="col">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_logs') }}">System Logs</a></li> 
-      </ul>
-    </div>
-  </nav> 
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class={{active01}}><a href="{{ url_for('dashboard_taskmanagement_time') }}">Zeit</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_taskmanagement_sensor') }}">Sensor</a></li>          
+          </ul>
+        </div>
+      </nav>
 
 <!-- error message -->
 
-  {% if error_message != "" %}
-    <div class="alert alert-danger" role="alert">
-      {{ error_message }}
-    </div>      
-  {% endif %}
+      {% if error_message != "" %}
+        <div class="alert alert-danger" role="alert">
+          {{ error_message }}
+        </div>      
+      {% endif %}
 
-<!-- zigbee settings -->
-  
-    <div class="panel panel-default">
-      <div class="panel-heading"><font color="black"><b>ZigBee</b></font></div>
-        <div class="panel-body">   
-          <form method="get">  
-            <div class="radio">
-              <label><input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee">ZigBee aktivieren</label>
-              <br>
-              <label><input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">ZigBee deaktivieren</label>
-            </div>
-            <br>
-            <input type="submit" class="btn btn-secondary" value="Auswählen"/>
-          </form>  
-        </div>  
-      </div>    
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Sensor)</b></font></div>
+          <div class="panel-body">      
 
+
+        
+        </div>
+      </div>   
 
 
     </div>
-  </div>       
+  </div>    
 </div>
 
 {% endblock %}

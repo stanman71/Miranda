@@ -15,7 +15,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user_login, dashboard, led, schedular, plants, settings
+from app.sites import index, user_login, dashboard, led, taskmanagement, plants, sensordata, settings
 from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 

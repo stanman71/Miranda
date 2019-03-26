@@ -133,78 +133,6 @@ def dashboard_settings_zigbee():
                             )
 
 
-""" ########## """
-""" sensordata """
-""" ########## """
-
-@app.route('/dashboard/settings/sensordata', methods=['GET'])
-@login_required
-@superuser_required
-def dashboard_settings_sensordata():
-    error_message = ""
-    error_message_file = ""
-    name = ""
-    filename = ""
-
-    if request.method == "GET": 
-        # add sensordata job
-        if request.args.get("set_name") is "":
-            error_message = "Kein Name angegeben"   
-            filename = request.args.get("set_filename")    
-        elif request.args.get("set_filename") is "":
-            error_message = "Kein Deteiname angegeben"    
-            name = request.args.get("set_name") 
-        else:
-            name = request.args.get("set_name") 
-            filename = request.args.get("set_filename") 
-            mqtt_device_id = request.args.get("set_mqtt_device_id") 
-
-            if mqtt_device_id is not None:
-                error_message = ADD_SENSORDATA_JOB(name, filename, mqtt_device_id)
-                error_message_file = CREATE_SENSORDATA_FILE(filename)
-                name = ""
-                filename = ""   
-
-        for i in range (1,25):
-            # change sensor
-            if request.args.get("set_sensor_" + str(i)):
-                sensor_id = request.args.get("set_sensor_" + str(i))    
-                SET_SENSORDATA_JOB_SENSOR(i, sensor_id) 
-
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
-    sensordata_list = GET_ALL_SENSORDATA_JOBS()
-    file_list = GET_SENSORDATA_FILES()
-
-    return render_template('dashboard_settings_sensordata.html',
-                            name=name,
-                            filename=filename,
-                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
-                            error_message=error_message,
-                            error_message_file=error_message_file,
-                            sensordata_list=sensordata_list,
-                            file_list=file_list,
-                            active03="active",
-                            )
-
-
-# remove sensordata
-@app.route('/dashboard/settings/sensordata/delete/<int:id>')
-@login_required
-@superuser_required
-def remove_sensordata(id):
-    DELETE_SENSORDATA_JOB(id)
-    return redirect(url_for('dashboard_settings_sensordata'))
-
-
-# delete sensordata file
-@app.route('/dashboard/settings/sensordata/delete/<string:filename>')
-@login_required
-@superuser_required
-def delete_sensordata_file(filename):
-    DELETE_SENSORDATA_FILE(filename)
-    return redirect(url_for('dashboard_settings_sensordata'))
-
-
 """ ################ """
 """ snowboy settings """
 """ ################ """
@@ -294,7 +222,7 @@ def dashboard_settings_snowboy():
                             file_list=file_list,
                             set_name=set_name,
                             set_task=set_task,
-                            active04="active",
+                            active03="active",
                             )
 
 
@@ -391,7 +319,7 @@ def dashboard_settings_user():
     return render_template('dashboard_settings_user.html',
                             name=current_user.username,
                             user_list=user_list,
-                            active05="active",
+                            active04="active",
                             )
 
 
@@ -448,7 +376,7 @@ def dashboard_settings_system():
                             error_message=error_message,
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,
-                            active06="active",
+                            active05="active",
                             )
 
 
@@ -468,3 +396,20 @@ def restore_database_backup(filename):
 def delete_database_backup(filename):
     DELETE_DATABASE_BACKUP(filename)
     return redirect(url_for('dashboard_settings_system'))
+
+
+""" ########### """
+""" system logs """
+""" ########### """
+
+# dashboard system settings
+@app.route('/dashboard/settings/system_logs/', methods=['GET'])
+@login_required
+@superuser_required
+def dashboard_settings_system_logs():
+    error_message = ""
+                              
+    return render_template('dashboard_settings_system_logs.html',
+                            error_message=error_message,
+                            active06="active",
+                            )

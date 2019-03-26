@@ -26,7 +26,6 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">LED
           <span class="caret"></span></a>
@@ -36,8 +35,10 @@
           </ul>
         </li>
         <li><a href="{{ url_for('dashboard_plants') }}">Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_schedular') }}">Aufgabenplanung</a></li>    
+        <li><a href="{{ url_for('dashboard_taskmanagement_time') }}">Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_sensordata') }}">Sensordaten</a></li>               
         <li><a href="{{ url_for('dashboard_settings_mqtt') }}">Systemeinstellungen</a></li>
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -54,15 +55,14 @@
     <div class="container-fluid">
       <ul class="nav navbar-nav">
         <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_sensordata') }}">Sensordaten</a></li>            
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li>                      
+        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+        <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+        <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
+        <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
+        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_logs') }}">System Logs</a></li> 
       </ul>
     </div>
   </nav>
-
 
 <!-- System -->
 
@@ -77,13 +77,11 @@
 <!-- system settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Systemstatus</b></font></div>
+        <div class="panel-heading"><font color="black"><b>System</b></font></div>
           <div class="panel-body">   
-
           CPU Temperatur = {{ cpu_temperature }}
           <br>
           <br>
-          
           <form method="GET">                     
             <input type="submit" class="btn btn-secondary" name="restart" value="RASPI neustarten" />
           </form>   

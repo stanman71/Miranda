@@ -21,9 +21,9 @@ def superuser_required(f):
     return wrap
 
 
-""" ######### """
-""" schedular """
-""" ######### """
+""" ################### """
+""" taskmanagement time """
+""" ################### """
 
 scheduler = APScheduler()
 scheduler.start()   
@@ -34,15 +34,10 @@ def scheduler_job():
     SCHEDULAR_TASKS(entries)
 
 
-""" ############## """
-""" schedular site """
-""" ############## """
-
-# dashboard schedular tasks
-@app.route('/dashboard/schedular/', methods=['GET'])
+@app.route('/dashboard/taskmanagement/time', methods=['GET'])
 @login_required
 @superuser_required
-def dashboard_schedular():
+def dashboard_taskmanagement_time():
     error_message = ""
     set_name = ""
     set_task = ""
@@ -87,21 +82,38 @@ def dashboard_schedular():
                              "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
 
-    return render_template('dashboard_schedular.html',
+    return render_template('dashboard_taskmanagement_time.html',
                             dropdown_list_days=dropdown_list_days,
                             dropdown_list_hours=dropdown_list_hours,
                             dropdown_list_minutes=dropdown_list_minutes,
                             schedular_list=schedular_list,
                             error_message=error_message,
                             set_name=set_name,
-                            set_task=set_task
+                            set_task=set_task,
+                            active01="active",
                             )
 
 
 # delete schedular tasks
-@app.route('/dashboard/schedular/delete/<int:id>')
+@app.route('/dashboard/taskmanagement/time/delete/<int:id>')
 @login_required
 @superuser_required
 def delete_schedular_task(id):
     DELETE_SCHEDULAR_TASK(id)
-    return redirect(url_for('dashboard_schedular'))
+    return redirect(url_for('dashboard_taskmanagement_time'))
+
+
+""" ##################### """
+""" taskmanagement sensor """
+""" ##################### """
+
+@app.route('/dashboard/taskmanagement/sensor', methods=['GET'])
+@login_required
+@superuser_required
+def dashboard_taskmanagement_sensor():
+    error_message = ""
+
+    return render_template('dashboard_taskmanagement_sensor.html',
+                            error_message=error_message,
+                            active02="active",
+                            )
