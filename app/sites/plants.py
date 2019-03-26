@@ -31,7 +31,7 @@ def dashboard_plants():
     moisture = ""
 
     if request.method == "GET": 
-        if request.args.get("name") is not None:
+        if request.args.get("set_name") is not None:
             # controll name 
             if request.args.get("set_name") == "":
                 error_message = "Kein Name angegeben"    
@@ -59,14 +59,12 @@ def dashboard_plants():
                 SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
 
                 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
-    dropdown_list_values       = [0, 1, 2, 3, 4, 5, 6, 7]    
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()  
     dropdown_list_watervolume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
-                            dropdown_list_values=dropdown_list_values,
                             dropdown_list_watervolume=dropdown_list_watervolume,
                             plants_list=plants_list,
                             moisture=moisture,

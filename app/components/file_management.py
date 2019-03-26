@@ -21,8 +21,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def GET_BACKUP_FILES():
     file_list = []
     for files in os.walk(PATH + "/backup/"):  
-        file_list.append(files)         
-    return file_list[0][2]
+        file_list.append(files)
+
+    if file_list == []:
+        return ""
+    else:
+        return file_list[0][2]    
 
 
 def SAVE_DATABASE():  
@@ -30,7 +34,8 @@ def SAVE_DATABASE():
     if len(GET_BACKUP_FILES()) == 10:
         os.remove (PATH + '/backup/' + file_list[0])
 
-    shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+    shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
+                    PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
 
 
 def RESTORE_DATABASE(filename):
@@ -53,18 +58,41 @@ def DELETE_DATABASE_BACKUP(filename):
 def GET_SENSORDATA_FILES():
     file_list = []
     for files in os.walk(PATH + "/csv/"):  
-        file_list.append(files)         
-    return file_list[0][2]    
+        file_list.append(files)   
+
+    if file_list == []:
+        return ""
+    else:
+        return file_list[0][2]    
 
 
 def CREATE_SENSORDATA_FILE(filename):
-    # create csv file
-    file = PATH + "/csv/" + filename + ".csv"
-    with open(file, 'a') as csvfile:
-        filewriter = csv.writer(csvfile, delimiter=',',
-                                quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-        filewriter.writerow(['Sensorwert', 'Datum'])
-        csvfile.close()
+    try:
+        # create csv file
+        file = PATH + "/csv/" + filename + ".csv"
+        with open(file, 'w') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
+            filewriter.writerow(['Sensorwert', 'Datum'])
+            csvfile.close()
+        return ""
+            
+    except:
+        return "Datei konnte nicht angelegt werden"
+
+
+def WRITE_SENSORDATA_FILE(filename, data):
+    try:
+        # open csv file
+        file = PATH + "/csv/" + filename + ".csv"
+        with open(file, 'a', newline='') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow([str(data), str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+            csvfile.close()
+        return ""          
+    except:
+        return "Auf die Datei konnte nicht zugegriffen werden"
 
 
 def DELETE_SENSORDATA_FILE(filename):
@@ -81,13 +109,16 @@ def GET_ALL_HOTWORD_FILES():
 
     for files in os.walk(PATH + "/app/snowboy/resources/"):  
         file_list_temp.append(files)
-            
-    file_list_temp = file_list_temp[0][2]
-    for file in file_list_temp:        
-        if file != "common.res":
-            file_list.append(file)
 
-    return file_list
+    if file_list_temp == []:
+        return ""  
+    else:
+        file_list_temp = file_list_temp[0][2]
+        for file in file_list_temp:        
+            if file != "common.res":
+                file_list.append(file)
+                
+        return file_list
 
 
 def GET_USED_HOTWORD_FILES():

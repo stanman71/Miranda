@@ -3,8 +3,8 @@
 #include <PubSubClient.h>
  
 const char* SSID = "";
-const char* PSK  = "";
-const char* MQTT_BROKER = "IP address";
+const char* PSK = "";
+const char* MQTT_BROKER = "192.168.1.40";
 
 // mqtt connection
 WiFiClient espClient;
@@ -121,6 +121,28 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.print(msg);
         Serial.println();
         client.publish("/SmartHome/data/plant", msg);         
+        }    
+
+    if(check_target == "sensor"){
+        // get file
+        String STR_file = getValue(topic,'/',4);
+        // get sensor_id
+        int sensor_id = atoi(msg);
+
+        // get sensor_value
+        int sensorValue = adc.readADC(sensor_id);   
+        String STR_value = String(sensorValue);
+
+        // create msg   
+        String payload = STR_file + "/" + STR_value;      
+        char attributes[100];
+        payload.toCharArray( msg, 100 );
+
+        Serial.print("Publish message: ");
+        Serial.print("[/SmartHome/sensor/sensor] ");
+        Serial.print(msg);
+        Serial.println();
+        client.publish("/SmartHome/data/sensor", msg);         
         }    
 
      if(check_target == "pump"){

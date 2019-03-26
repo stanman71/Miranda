@@ -68,27 +68,27 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class={{active01}}><a href="{{ url_for('dashboard_led_scene_01') }}">
-            {% if scene_names_list[0].name != "" %}{{ scene_names_list[0].name }}{% else %}{{ 1 }}{% endif %}</a></li>
+            {% if scene_names_list[0].name != "" %}{{ scene_names_list[0].name }} ({{1}}){% else %}{{ 1 }}{% endif %}</a></li>
           <li class={{active02}}><a href="{{ url_for('dashboard_led_scene_02') }}">
-            {% if scene_names_list[1].name != "" %}{{ scene_names_list[1].name }}{% else %}{{ 2 }}{% endif %}</a></li>
+            {% if scene_names_list[1].name != "" %}{{ scene_names_list[1].name }} ({{2}}){% else %}{{ 2 }}{% endif %}</a></li>
           <li class={{active03}}><a href="{{ url_for('dashboard_led_scene_03') }}">
-            {% if scene_names_list[2].name != "" %}{{ scene_names_list[2].name }}{% else %}{{ 3 }}{% endif %}</a></li>
+            {% if scene_names_list[2].name != "" %}{{ scene_names_list[2].name }} ({{3}}){% else %}{{ 3 }}{% endif %}</a></li>
           <li class={{active04}}><a href="{{ url_for('dashboard_led_scene_04') }}">
-            {% if scene_names_list[3].name != "" %}{{ scene_names_list[3].name }}{% else %}{{ 4 }}{% endif %}</a></li>
+            {% if scene_names_list[3].name != "" %}{{ scene_names_list[3].name }} ({{4}}){% else %}{{ 4 }}{% endif %}</a></li>
           <li class={{active05}}><a href="{{ url_for('dashboard_led_scene_05') }}">
-            {% if scene_names_list[4].name != "" %}{{ scene_names_list[4].name }}{% else %}{{ 5 }}{% endif %}</a></li>          
+            {% if scene_names_list[4].name != "" %}{{ scene_names_list[4].name }} ({{5}}){% else %}{{ 5 }}{% endif %}</a></li>          
           <li class={{active06}}><a href="{{ url_for('dashboard_led_scene_06') }}">
-            {% if scene_names_list[5].name != "" %}{{ scene_names_list[5].name }}{% else %}{{ 6 }}{% endif %}</a></li>
+            {% if scene_names_list[5].name != "" %}{{ scene_names_list[5].name }} ({{6}}){% else %}{{ 6 }}{% endif %}</a></li>
           <li class={{active07}}><a href="{{ url_for('dashboard_led_scene_07') }}">
-            {% if scene_names_list[6].name != "" %}{{ scene_names_list[6].name }}{% else %}{{ 7 }}{% endif %}</a></li>
+            {% if scene_names_list[6].name != "" %}{{ scene_names_list[6].name }} ({{7}}){% else %}{{ 7 }}{% endif %}</a></li>
           <li class={{active08}}><a href="{{ url_for('dashboard_led_scene_08') }}">
-            {% if scene_names_list[7].name != "" %}{{ scene_names_list[7].name }}{% else %}{{ 8 }}{% endif %}</a></li>
+            {% if scene_names_list[7].name != "" %}{{ scene_names_list[7].name }} ({{8}}){% else %}{{ 8 }}{% endif %}</a></li>
           <li class={{active09}}><a href="{{ url_for('dashboard_led_scene_09') }}">
-            {% if scene_names_list[8].name != "" %}{{ scene_names_list[8].name }}{% else %}{{ 9 }}{% endif %}</a></li>  
+            {% if scene_names_list[8].name != "" %}{{ scene_names_list[8].name }} ({{9}}){% else %}{{ 9 }}{% endif %}</a></li>  
           <li class={{active10}}><a href="{{ url_for('dashboard_led_scene_10') }}">
-            {% if scene_names_list[9].name != "" %}{{ scene_names_list[9].name }}{% else %}{{ 10 }}{% endif %}</a></li> 
+            {% if scene_names_list[9].name != "" %}{{ scene_names_list[9].name }} ({{10}}){% else %}{{ 10 }}{% endif %}</a></li> 
           <li class={{active99}}><a href="{{ url_for('dashboard_led_scene_99') }}">
-            {% if scene_names_list[10].name != "" %}{{ scene_names_list[10].name }}{% else %}{{ 99 }}{% endif %}</a></li>   
+            {% if scene_names_list[10].name != "" %}{{ scene_names_list[10].name }} ({{99}}){% else %}{{ 99 }}{% endif %}</a></li>   
         </ul>
       </div>
     </nav>
@@ -98,7 +98,7 @@
       {% if entries_scene != None %}
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b> {{ scene_name }} ( {{ number }} ) </b></font></div>
+        <div class="panel-heading"><font color="black"><b> {{ scene_name }} ({{number}}) </b></font></div>
           <div class="panel-body">
             <table class="table">
               <thead>

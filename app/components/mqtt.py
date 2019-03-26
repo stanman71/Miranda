@@ -3,6 +3,8 @@ import datetime
 
 from app import app
 from app.database.database import *
+from app.components.file_management import WRITE_SENSORDATA_FILE
+
 
 BROKER_ADDRESS = "localhost"
 
@@ -29,6 +31,11 @@ def MQTT_START():
 		if channel_path == "data" and channel_content == "plant":
 			msg = msg.split("/")
 			SET_PLANT_MOISTURE_CURRENT(msg[0], msg[1])
+			
+		# write sensor data	
+		if channel_path == "data" and channel_content == "sensor":
+			msg = msg.split("/")
+			WRITE_SENSORDATA_FILE(msg[0], msg[1])			
 
 	
 	def on_connect(client, userdata, flags, rc):

@@ -10,9 +10,8 @@ from app.components.mqtt import MQTT_PUBLISH
 """ watering control """
 """ ################ """
 
+# 40 ml / minute
 def START_PUMP(mqtt_device_channel, pump_id):
-    # 40 ml / minute
-
     print("Start: " + str(pump_id))
     channel = "/SmartHome/" + mqtt_device_channel + "/pump/" + str(pump_id)
     MQTT_PUBLISH(channel, "on")
@@ -20,7 +19,6 @@ def START_PUMP(mqtt_device_channel, pump_id):
   
 
 def STOP_PUMP(mqtt_device_channel, pump_id):
-
     print("Stop: " + str(pump_id))
     channel = "/SmartHome/" + mqtt_device_channel + "/pump/" + str(pump_id)
     MQTT_PUBLISH(channel, "off")
@@ -32,13 +30,11 @@ def STOP_PUMP(mqtt_device_channel, pump_id):
 """ ############## """
 
 def CHECK_MOISTURE():
- 
-    print("Check moisture")
 
-    for plant in GET_ALL_PLANTS():
-        
-        time.sleep(5)
-        
+    for plant in GET_ALL_PLANTS():   
+
+        time.sleep(5)     
+        # send request message
         channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
         MQTT_PUBLISH(channel, str(plant.sensor_id))
 
@@ -111,9 +107,7 @@ def START_WATERING_THREAD():
 
             print("alle Pumpen ausgeschaltet")
 
-            #check moisture     
-            #time.sleep(600)
-            
+            time.sleep(600)          
             CHECK_MOISTURE()     
             print("Sensoren überprüft")
 

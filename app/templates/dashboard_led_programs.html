@@ -88,10 +88,10 @@
         <div class="panel-body">
           <div class="dropdown">
             <form method="GET" enctype="multipart/form-data">
-              <select class="btn btn-secondary dropdown-toggle" name="get_program">
+              <select class="btn btn-secondary dropdown-toggle" name="get_program_name">
                 {% for each in dropdown_list %}
                   {% if each != None %}
-                   <option value="{{each}}">{{each}}</option>
+                   <option value="{{each.name}}">{{each.name}} ({{each.id}})</option>
                   {% endif %}
                 {% endfor %}
               </select>
@@ -149,7 +149,7 @@
           <div class="form-group">
             <br> 
             <div class="text-center">         
-              <h4><b>{{ program.name }}</b></h4>
+              <h4><b>{{ program.name }} ({{program.id}})</b></h4>
             </div>
             <br>          
             <textarea class="form-control" name="update_{{ program.id }}" rows="20">{{ program.content }}</textarea>

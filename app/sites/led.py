@@ -699,8 +699,8 @@ def dashboard_led_programs():
         if new_program is not None and new_program is not "":
             error_message = NEW_PROGRAM(new_program)
 
-        # get the selected program
-        get_Program = request.args.get("get_program") 
+        # get the selected program, remove SUNRISE delete option
+        get_Program = request.args.get("get_program_name") 
         if get_Program is not None:
             program = GET_PROGRAM_NAME(get_Program)
             if "SUNRISE" in program.name:
@@ -733,24 +733,18 @@ def dashboard_led_programs():
             if program_name is not None:
                 SET_PROGRAM_NAME(i, program_name)              
                 program = GET_PROGRAM_ID(i)  
-            
+
         # delete the selected program
         delete_Program = request.args.get("delete_program") 
         if delete_Program is not None:
             delete_Program = delete_Program.split(" ")[0]
-            print(delete_Program)
             DELETE_PROGRAM(delete_Program)              
 
-    dropdown_list        = GET_DROPDOWN_LIST_PROGRAMS()
-    dropdown_list_delete = GET_DROPDOWN_LIST_PROGRAMS()
-
-    if "SUNRISE" in dropdown_list_delete:
-        dropdown_list_delete.remove("SUNRISE")
+    dropdown_list = GET_ALL_PROGRAMS()
 
     return render_template('dashboard_led_programs.html',
                             led_update=led_update,
                             dropdown_list=dropdown_list,
-                            dropdown_list_delete=dropdown_list_delete,
                             program=program,
                             program_delete=program_delete,
                             rgb=rgb,
@@ -766,4 +760,3 @@ def dashboard_led_programs():
 @app.route('/get_media/<path:filename>', methods=['GET'])
 def get_media(filename):
     return send_from_directory(PATH_CSS, filename)
-

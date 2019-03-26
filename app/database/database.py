@@ -50,14 +50,14 @@ class MQTT_Devices(db.Model):
     outputs      = db.Column(db.Integer)
     last_contact = db.Column(db.String(50))
 
-class Sensordata(db.Model):
-    __tablename__ = 'sensordata'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name           = db.Column(db.String(50), unique=True)
-    filename       = db.Column(db.String(50), unique=True)
-    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device    = db.relationship('MQTT_Devices')  
-    sensor_id      = db.Column(db.Integer)    
+class Sensordata_Jobs(db.Model):
+    __tablename__   = 'sensordata_jobs'
+    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name             = db.Column(db.String(50), unique=True)
+    filename         = db.Column(db.String(50), unique=True)
+    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device      = db.relationship('MQTT_Devices')  
+    sensor_id        = db.Column(db.Integer)    
 
 class Snowboy(db.Model):
     __tablename__ = 'snowboy'
@@ -380,33 +380,33 @@ def REMOVE_LED(id):
 """ sensordata """
 """ ########## """
 
-def GET_SENSORDATA(id):
-    return Sensordata.query.filter_by(id=id).first()
+def GET_SENSORDATA_JOB(id):
+    return Sensordata_Jobs.query.filter_by(id=id).first()
 
 
-def GET_ALL_SENSORDATA():
-    return Sensordata.query.all()
+def GET_ALL_SENSORDATA_JOBS():
+    return Sensordata_Jobs.query.all()
 
 
-def ADD_SENSORDATA(name, filename, mqtt_device_id):
+def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
     # name exist ?
-    check_entry = Sensordata.query.filter_by(name=name).first()
+    check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
     if check_entry is None:
-        check_entry = Sensordata.query.filter_by(filename=filename).first()
+        check_entry = Sensordata_Jobs.query.filter_by(filename=filename).first()
         if check_entry is None:            
             # find a unused id
             for i in range(1,25):
-                if Sensordata.query.filter_by(id=i).first():
+                if Sensordata_Jobs.query.filter_by(id=i).first():
                     pass
                 else:
-                    # add the new plant
-                    sensordata = Sensordata(
+                    # add the new job
+                    sensordata_job = Sensordata_Jobs(
                             id             = i,
                             name           = name,
                             filename       = filename,
                             mqtt_device_id = mqtt_device_id,                 
                         )
-                    db.session.add(sensordata)
+                    db.session.add(sensordata_job)
                     db.session.commit()
                     return ""
 
@@ -417,14 +417,14 @@ def ADD_SENSORDATA(name, filename, mqtt_device_id):
         return "Name bereits vergeben"
 
 
-def SET_SENSORDATA_SENSOR(id, sensor_id):        
-    entry = Sensordata.query.filter_by(id=id).first()
+def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):        
+    entry = Sensordata_Jobs.query.filter_by(id=id).first()
     entry.sensor_id = sensor_id
     db.session.commit()    
 
 
-def DELETE_SENSORDATA(id):
-    Sensordata.query.filter_by(id=id).delete()
+def DELETE_SENSORDATA_JOB(id):
+    Sensordata_Jobs.query.filter_by(id=id).delete()
     db.session.commit()
 
 
@@ -489,6 +489,8 @@ def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
 def DELETE_MQTT_DEVICE(id):
     if Plants.query.filter_by(mqtt_device_id=id).first():
         return "MQTT-Device wird in Bewässerung verwendet"
+    elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
+        return "MQTT-Device wird in Sensordaten_Jobs verwendet"       
     else:
         MQTT_Devices.query.filter_by(id=id).delete()
         db.session.commit() 
@@ -1149,6 +1151,18 @@ def DEL_SCENE(Scene):
 """ led programs """
 """ ############ """
 
+def GET_ALL_PROGRAMS():
+    return Programs.query.all()   
+
+
+def GET_PROGRAM_NAME(name):
+    return Programs.query.filter_by(name=name).first()
+
+
+def GET_PROGRAM_ID(id):
+    return Programs.query.filter_by(id=id).first()
+
+
 def NEW_PROGRAM(name):
     # name exist ?
     check_entry = Programs.query.filter_by(name=name).first()
@@ -1169,29 +1183,6 @@ def NEW_PROGRAM(name):
                 return ("")
     else:
         return ("Name bereits vergeben")
-
-
-def GET_DROPDOWN_LIST_PROGRAMS():
-    entry_list = []
-    # get all Programs
-    entries = Programs.query.all()
-    for entry in entries:
-        # select the Programs names only
-        entry_list.append(entry.name)
-
-    return entry_list
-
-
-def GET_ALL_PROGRAMS():
-    return Programs.query.all()   
-
-
-def GET_PROGRAM_NAME(name):
-    return Programs.query.filter_by(name=name).first()
-
-
-def GET_PROGRAM_ID(id):
-    return Programs.query.filter_by(id=id).first()
 
 
 def SET_PROGRAM_NAME(id, name):

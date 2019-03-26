@@ -51,6 +51,12 @@ def dashboard_settings_mqtt():
         check_value_mqtt[1] = "checked = 'on'"
 
     if mqtt_setting == "True":
+
+        try:
+            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+        except Exception as e:
+            error_message = "Fehler in MQTT: " + str(e)
+
         if request.method == "GET": 
             # add mqtt device
             if request.args.get("set_mqtt_device_name") is "":
@@ -154,7 +160,7 @@ def dashboard_settings_sensordata():
             mqtt_device_id = request.args.get("set_mqtt_device_id") 
 
             if mqtt_device_id is not None:
-                error_message = ADD_SENSORDATA(name, filename, mqtt_device_id)
+                error_message = ADD_SENSORDATA_JOB(name, filename, mqtt_device_id)
                 error_message_file = CREATE_SENSORDATA_FILE(filename)
                 name = ""
                 filename = ""   
@@ -163,10 +169,10 @@ def dashboard_settings_sensordata():
             # change sensor
             if request.args.get("set_sensor_" + str(i)):
                 sensor_id = request.args.get("set_sensor_" + str(i))    
-                SET_SENSORDATA_SENSOR(i, sensor_id) 
+                SET_SENSORDATA_JOB_SENSOR(i, sensor_id) 
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
-    sensordata_list = GET_ALL_SENSORDATA()
+    sensordata_list = GET_ALL_SENSORDATA_JOBS()
     file_list = GET_SENSORDATA_FILES()
 
     return render_template('dashboard_settings_sensordata.html',
@@ -186,7 +192,7 @@ def dashboard_settings_sensordata():
 @login_required
 @superuser_required
 def remove_sensordata(id):
-    DELETE_SENSORDATA(id)
+    DELETE_SENSORDATA_JOB(id)
     return redirect(url_for('dashboard_settings_sensordata'))
 
 
@@ -230,10 +236,11 @@ def dashboard_settings_snowboy():
 
     if GET_SETTING_VALUE("snowboy") == "True":
 
+        # check snowboy
         def START_SNOWBOY():
             from app.snowboy.snowboy import SNOWBOY_START
             SNOWBOY_START()
-            
+          
         try:
             START_SNOWBOY()
         except Exception as e:

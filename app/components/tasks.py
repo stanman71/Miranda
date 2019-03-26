@@ -21,6 +21,15 @@ def UPDATE_MQTT_DEVICES(devices):
       MQTT_PUBLISH(channel, "")
 
 
+def GET_MQTT_SENSORDATA(job_id):
+   sensordata_job = GET_SENSORDATA_JOB(job_id)
+   device_channel_path = sensordata_job.mqtt_device.channel_path
+   sensor_id = sensordata_job.sensor_id
+
+   channel = "/SmartHome/" + device_channel_path + "/sensor/" + sensordata_job.filename
+   MQTT_PUBLISH(channel, sensor_id)
+
+
 """ ####### """
 """ snowboy """
 """ ####### """
@@ -118,6 +127,11 @@ def SCHEDULAR_TASKS(entries):
                # update mqtt devices
                if "update_mqtt_devices" in entry.task:
                   UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+
+               # get mqtt sensor data
+               if "get_mqtt_sensordata" in entry.task:
+                  task = entry.task.split(":")
+                  GET_MQTT_SENSORDATA(int(task[1])) 
 
                # remove schedular task without repeat
                if entry.repeat == "":
