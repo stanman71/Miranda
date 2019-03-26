@@ -87,16 +87,16 @@ class HUE_Bridge(db.Model):
 
 class Plants(db.Model):
     __tablename__ = 'plants'
-    id                     = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name                   = db.Column(db.String(50), unique=True)
-    mqtt_device_id         = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    watervolume            = db.Column(db.Integer)
-    mqtt_device            = db.relationship('MQTT_Devices')  
-    pump_id                = db.Column(db.Integer)
-    sensor_id              = db.Column(db.Integer)
-    moisture_percent       = db.Column(db.Integer) 
-    moisture_value_target  = db.Column(db.Integer) 
-    moisture_value_current = db.Column(db.Integer)     
+    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name             = db.Column(db.String(50), unique=True)
+    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    watervolume      = db.Column(db.Integer)
+    mqtt_device      = db.relationship('MQTT_Devices')  
+    pump_id          = db.Column(db.Integer)
+    sensor_id        = db.Column(db.Integer)
+    moisture_percent = db.Column(db.Integer) 
+    moisture_target  = db.Column(db.Integer) 
+    moisture_current = db.Column(db.Integer)     
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -720,9 +720,9 @@ def ADD_PLANT(name, mqtt_device_id, watervolume):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_voltage):
+def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_value):
     entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_voltage_current = moisture_voltage
+    entry.moisture_current = moisture_value
     db.session.commit()      
 
 
@@ -732,8 +732,8 @@ def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):
     
     # calculate value target
     value_temp = int(moisture_percent) * 5
-    moisture_value_target = 870 - value_temp
-    entry.moisture_value_target = moisture_value_target
+    moisture_target = 870 - value_temp
+    entry.moisture_target = moisture_target
     db.session.commit()  
 
 
@@ -753,6 +753,12 @@ def SET_PLANT_WATERVOLUME(plant_id, watervolume):
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.watervolume = watervolume
     db.session.commit()    
+
+
+def RESET_PLANT_MOISTURE_CURRENT(plant_id):
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.moisture_current = 0
+    db.session.commit()  
 
 
 def DELETE_PLANT(plant_id):

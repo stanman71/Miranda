@@ -25,10 +25,6 @@ def STOP_PUMP(mqtt_device_channel, pump_id):
     time.sleep(1)
 
 
-""" ############## """
-""" sensor control """
-""" ############## """
-
 def CHECK_MOISTURE():
 
     for plant in GET_ALL_PLANTS():   
@@ -38,37 +34,48 @@ def CHECK_MOISTURE():
 
         time.sleep(10)
 
-        target_moisture  = plant.moisture_value_target 
-        current_moisture = plant.moisture_value_current
-      
+        moisture_target  = plant.moisture_target 
+        moisture_current = plant.moisture_current
+
+        # check current moisture inside value range
         # dry   = 870
-        # water = 370
-   
-        if current_moisture < 350:
-            print("sensor_error")
+        # water = 370       
+        if moisture_current < 350 or moisture_current > 900:
+            # repeat request message
+            channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
+            MQTT_PUBLISH(channel, str(plant.sensor_id))
+
+            time.sleep(10)    
+
+            moisture_current = plant.moisture_current
+
+            # abort process, error message
+            if moisture_current < 350 or moisture_current > 900:
+                return "sensor_error"         
             
         else:
-            moisture = int(current_moisture) - int(target_moisture)
+            moisture = moisture_current - moisture_target
 
             # not enough water
             if moisture > 50:
-                new_watervolume = int(plant.watervolume) + 40
+                new_watervolume = plant.watervolume + 40
             elif moisture > 25:
-                new_watervolume = int(plant.watervolume) + 20
+                new_watervolume = plant.watervolume + 20
 
             # too much water
             elif moisture < -50:
-                new_watervolume = int(plant.watervolume) - 40
+                new_watervolume = plant.watervolume - 40
             elif moisture < -25:
-                new_watervolume = int(plant.watervolume) - 20
+                new_watervolume = plant.watervolume - 20
             else:
-                pass
+                return "sensor_error" 
 
             if new_watervolume < 0:
                 new_watervolume = 0
 
             # update database
-            SET_PLANT_WATERVOLUME(plant.id, str(new_watervolume)) 
+            SET_PLANT_WATERVOLUME(plant.id, new_watervolume) 
+            RESET_PLANT_MOISTURE_CURRENT(plant.id)
 
   
 """ ######### """
