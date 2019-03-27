@@ -26,7 +26,6 @@ def STOP_PUMP(mqtt_device_channel, pump_id):
 
 
 def CHECK_MOISTURE():
-
     for plant in GET_ALL_PLANTS():   
         # send request message
         channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
@@ -59,14 +58,23 @@ def CHECK_MOISTURE():
             # not enough water
             if moisture > 50:
                 new_watervolume = plant.watervolume + 40
+                
+                if moisture > 100:
+                    print ("Fehler")
+                
             elif moisture > 25:
                 new_watervolume = plant.watervolume + 20
 
             # too much water
             elif moisture < -50:
                 new_watervolume = plant.watervolume - 40
+                
+                if moisture < -100:
+                    print ("Fehler")
+                
             elif moisture < -25:
                 new_watervolume = plant.watervolume - 20
+                
             else:
                 return "sensor_error" 
 
@@ -83,7 +91,6 @@ def CHECK_MOISTURE():
 """ ######### """
 
 def START_WATERING_THREAD():
-
     class watering_Thread(threading.Thread):
         def __init__(self, ID = 1, name = "watering_Thread"):
             threading.Thread.__init__(self)

@@ -30,7 +30,7 @@ def MQTT_START():
 		# get current moisture value	
 		if channel_path == "data" and channel_content == "plant":
 			msg = msg.split("/")
-			SET_PLANT_MOISTURE_CURRENT(msg[0], msg[1])
+			SET_PLANT_MOISTURE_CURRENT(int(msg[0]), int(msg[1]))
 			
 		# write sensor data	
 		if channel_path == "data" and channel_content == "sensor":

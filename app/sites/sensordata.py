@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for, request, send_file
+from flask import render_template, redirect, url_for, request, send_from_directory
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps
@@ -62,6 +62,8 @@ def dashboard_sensordata():
     sensordata_list = GET_ALL_SENSORDATA_JOBS()
     file_list = GET_SENSORDATA_FILES()
 
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
+
     return render_template('dashboard_sensordata.html',
                             name=name,
                             filename=filename,
@@ -69,7 +71,8 @@ def dashboard_sensordata():
                             error_message=error_message,
                             error_message_file=error_message_file,
                             sensordata_list=sensordata_list,
-                            file_list=file_list,
+                            file_list=file_list,     
+                            timestamp=timestamp,                       
                             )
 
 
@@ -83,17 +86,15 @@ def remove_sensordata_job(id):
 
 
 # download sensordata file
-@app.route("/dashboard/sensordata/download/file/<path>")
-def download_sensordata_file (path = None):
-    if path is None:
-        self.Error(400)
+@app.route('/dashboard/sensordata/download/file/<path:filepath>')
+def download_sensordata_file(filepath):
+    if filepath is None:
+        print(Error(400))     
     try:
-        filepath = GET_PATH() + "/csv/" + path
-        print(filepath)
-        return send_file(filepath, as_attachment=True)
+        path = GET_PATH() + "/csv/"     
+        return send_from_directory(path, filepath)
     except Exception as e:
-        self.log.exception(e)
-        self.Error(400)
+        print(e)
 
 
 # delete sensordata file

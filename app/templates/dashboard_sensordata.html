@@ -156,7 +156,7 @@
               {% for entry in file_list %}
               <tr>
                 <td>{{ entry }}</td> 
-                <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}"><b>herunterladen</b></font></a></td>  
+                <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
                 <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red"><b>löschen</b></font></a></td>  
               </tr>
               {% endfor %} 

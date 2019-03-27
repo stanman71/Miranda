@@ -9,10 +9,6 @@ from app.database.database import *
 from app.components.file_management import GET_PATH
 
 
-''' CSS PATH '''
-PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
-
-
 # create role "superuser"
 def superuser_required(f):
     @wraps(f)
@@ -758,4 +754,10 @@ def dashboard_led_programs():
 # Host files for colorpicker_local
 @app.route('/get_media/<path:filename>', methods=['GET'])
 def get_media(filename):
-    return send_from_directory(PATH_CSS, filename)
+    if filename is None:
+        print(Error(400))
+    try:
+        PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
+        return send_from_directory(PATH_CSS, filename)
+    except Exception as e:
+        print(e)
