@@ -38,8 +38,9 @@ def CHECK_MOISTURE():
 
         # check current moisture inside value range
         # dry   = 870
-        # water = 370       
-        if moisture_current < 350 or moisture_current > 900:
+        # water = 370  
+             
+        if not 350 < moisture_current < 900:
             # repeat request message
             channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
             MQTT_PUBLISH(channel, str(plant.sensor_id))
@@ -49,7 +50,8 @@ def CHECK_MOISTURE():
             moisture_current = plant.moisture_current
 
             # abort process, error message
-            if moisture_current < 350 or moisture_current > 900:
+            if not 350 < moisture_current < 900:
+                RESET_PLANT_MOISTURE_CURRENT(plant.id)
                 return "sensor_error"         
             
         else:

@@ -52,11 +52,6 @@ def dashboard_settings_mqtt():
 
     if mqtt_setting == "True":
 
-        try:
-            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
-        except Exception as e:
-            error_message = "Fehler in MQTT: " + str(e)
-
         if request.method == "GET": 
             # add mqtt device
             if request.args.get("set_mqtt_device_name") is "":
@@ -76,10 +71,15 @@ def dashboard_settings_mqtt():
 
         if request.method == 'POST':
             if request.form.get("update_mqtt_devices") is not None:         
-                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())  
+                try:
+                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                except Exception as e:
+                    error_message = "Fehler in MQTT: " + str(e)
                 time.sleep(2)
 
     mqtt_device_list = GET_ALL_MQTT_DEVICES()
+    
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
@@ -89,6 +89,7 @@ def dashboard_settings_mqtt():
                             check_value_mqtt=check_value_mqtt,
                             mqtt_device_list=mqtt_device_list,
                             active01="active",
+                            timestamp=timestamp,
                             )
      
 # remove mqtt device
@@ -99,6 +100,18 @@ def remove_mqtt_device(id):
     DELETE_MQTT_DEVICE(id)
     return redirect(url_for('dashboard_settings_mqtt'))
      
+     
+# download mqtt logfile
+@app.route('/dashboard/settings/mqtt/download/<path:filepath>')
+@login_required
+@superuser_required
+def download_mqtt_logfile(filepath): 
+    try:
+        path = GET_PATH() + "/logs/"     
+        return send_from_directory(path, filepath)
+    except Exception as e:
+        print(e)
+             
 
 """ ############### """
 """ zigbee settings """

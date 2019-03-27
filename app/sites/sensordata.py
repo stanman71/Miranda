@@ -87,6 +87,8 @@ def remove_sensordata_job(id):
 
 # download sensordata file
 @app.route('/dashboard/sensordata/download/file/<path:filepath>')
+@login_required
+@superuser_required
 def download_sensordata_file(filepath):
     if filepath is None:
         print(Error(400))     

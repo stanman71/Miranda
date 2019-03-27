@@ -1,3 +1,5 @@
+String device_name = "watering_array_v4";
+
 #include <MCP3008.h>
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
@@ -11,6 +13,8 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
 char msg[50];
+char channelpath[50];
+char channel_subscribe[50];
 int value = 0;
 
 // define pins mcp3008
@@ -97,7 +101,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     if(check_target == "device"){
         Serial.print("Publish message: ");
-        client.publish("/SmartHome/watering_array_v4/deviceinformation", "watering_array_v4/8/4");        
+
+        String payload = "/SmartHome/" + device_name + "/deviceinformation";      
+        char attributes[100];
+        payload.toCharArray( channelpath, 100 );
+        
+        client.publish(channelpath, "watering_array_v4/8/4");        
         }
 
     if(check_target == "plant"){
@@ -129,7 +138,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         int sensor_id = atoi(msg);
 
         // get sensor_value
-        int sensorValue = adc.readADC(sensor_id);   
+        int sensorValue = adc.readADC(sensor_id); 
         String STR_value = String(sensorValue);
 
         // create msg   
@@ -149,43 +158,55 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String STR_pump_id = getValue(topic,'/',4); 
         String STR_msg = msg;  
 
+        String payload = "/SmartHome/" + device_name + "/pump";      
+        char attributes[100];
+        payload.toCharArray( channelpath, 100 );   
+
         if (STR_pump_id == "0") {
             if (STR_msg == "on") {
                 digitalWrite(Pin_D0, HIGH);
+                client.publish(channelpath, "0_on");
                 Serial.println("Start_Pump_0");
             }
             else {
                 digitalWrite(Pin_D0, LOW); 
+                client.publish(channelpath, "0_off");
                 Serial.println("Stop_Pump_0");
             }
         }
         if (STR_pump_id == "1") {
             if (STR_msg == "on") {
                 digitalWrite(Pin_D3, HIGH);
+                client.publish(channelpath, "1_on");
                 Serial.println("Start_Pump_1");
             }
             else {
                 digitalWrite(Pin_D3, LOW); 
+                client.publish(channelpath, "1_off");                
                 Serial.println("Stop_Pump_1");
             }
         }     
         if (STR_pump_id == "2") {
             if (STR_msg == "on") {
                 digitalWrite(Pin_D2, HIGH);
+                client.publish(channelpath, "2_on");
                 Serial.println("Start_Pump_2");
             }
             else {
                 digitalWrite(Pin_D2, LOW); 
+                client.publish(channelpath, "2_off");
                 Serial.println("Stop_Pump_2");
             }
         }
         if (STR_pump_id == "3") {
             if (STR_msg == "on") {
                 digitalWrite(Pin_D1, HIGH);
+                client.publish(channelpath, "3_on");
                 Serial.println("Start_Pump_3");
             }
             else {
                 digitalWrite(Pin_D1, LOW); 
+                client.publish(channelpath, "3_off");
                 Serial.println("Stop_Pump_3");
             }
         }
@@ -202,7 +223,12 @@ void reconnect() {
             delay(5000);
         }
     }
-    client.subscribe("/SmartHome/watering_array_v4/#");
+
+    String payload = "/SmartHome/" + device_name + "/#";      
+    char attributes[100];
+    payload.toCharArray( channel_subscribe, 100 );   
+    
+    client.subscribe(channel_subscribe);
     Serial.println("MQTT Connected...");
 }
 

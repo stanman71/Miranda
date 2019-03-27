@@ -77,7 +77,7 @@ def CREATE_SENSORDATA_FILE(filename):
         with open(file, 'w') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-            filewriter.writerow(['Sensorwert', 'Datum'])
+            filewriter.writerow(['Datum', 'Sensorwert'])
             csvfile.close()
         return ""
             
@@ -85,14 +85,17 @@ def CREATE_SENSORDATA_FILE(filename):
         return "Datei konnte nicht angelegt werden"
 
 
-def WRITE_SENSORDATA_FILE(filename, data):
+def WRITE_SENSORDATA_FILE(filename, value):
+    if os.path.isfile(PATH + "/csv/" + filename + ".csv") is False:
+        CREATE_SENSORDATA_FILE(filename)
+
     try:
         # open csv file
         file = PATH + "/csv/" + filename + ".csv"
         with open(file, 'a', newline='') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow([str(data), str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))])
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(value) ])
             csvfile.close()
         return ""          
     except:
@@ -154,3 +157,41 @@ def UPLOAD_HOTWORD_FILE(file):
 
 def DELETE_HOTWORD_FILE(filename):
     os.remove (PATH + '/app/snowboy/resources/' + filename)
+
+
+""" #### """
+""" logs """
+""" #### """
+
+def CREATE_LOG_FILE(filename):
+    try:
+        # create csv file
+        file = PATH + "/logs/" + filename + ".csv"
+        with open(file, 'w') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)    
+
+            if filename == "log_mqtt":                   
+                filewriter.writerow(['Datum', 'Kanal', 'Nachricht'])
+            csvfile.close()
+        return ""
+        
+    except:
+        return "Datei konnte nicht angelegt werden"
+
+
+def WRITE_LOG_FILE_MQTT(channel, msg):
+    if os.path.isfile(PATH + "/logs/log_mqtt.csv") is False:
+        CREATE_LOG_FILE("log_mqtt")
+
+    try:
+        # open csv file
+        file = PATH + "/logs/log_mqtt.csv"
+        with open(file, 'a', newline='') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
+            csvfile.close()
+        return ""          
+    except:
+        return "Auf die Datei konnte nicht zugegriffen werden"
