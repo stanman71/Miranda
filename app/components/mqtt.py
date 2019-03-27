@@ -3,7 +3,7 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOG_FILE_MQTT
+from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOGFILE_MQTT
 
 
 BROKER_ADDRESS = "localhost"
@@ -15,7 +15,7 @@ def MQTT_START():
 		print("message topic: ", message.topic)		
 		print("message received: ", msg)
 
-		WRITE_LOG_FILE_MQTT(message.topic, msg)
+		WRITE_LOGFILE_MQTT(message.topic, msg)
 		
 		channel         = message.topic 
 		channel_path    = channel.split("/")[2]	

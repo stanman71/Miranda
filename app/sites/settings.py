@@ -69,6 +69,11 @@ def dashboard_settings_mqtt():
                     mqtt_device_channel_path = ""
                     mqtt_device_name = ""                       
 
+        # reset logfile
+        reset_logfile = request.args.get("reset_logfile") 
+        if reset_logfile is not None:
+            RESET_LOGFILE("log_mqtt")   
+
         if request.method == 'POST':
             if request.form.get("update_mqtt_devices") is not None:         
                 try:

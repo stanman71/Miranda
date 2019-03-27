@@ -163,7 +163,7 @@ def DELETE_HOTWORD_FILE(filename):
 """ logs """
 """ #### """
 
-def CREATE_LOG_FILE(filename):
+def CREATE_LOGFILE(filename):
     try:
         # create csv file
         file = PATH + "/logs/" + filename + ".csv"
@@ -179,10 +179,20 @@ def CREATE_LOG_FILE(filename):
     except:
         return "Datei konnte nicht angelegt werden"
 
+        
+def RESET_LOGFILE(filename):
+    try:
+        os.remove (PATH + "/logs/" + filename + ".csv")
+        CREATE_LOGFILE(filename)
+        return ""
+        
+    except:
+        return "Datei konnte nicht gefunden werden"
+        
 
-def WRITE_LOG_FILE_MQTT(channel, msg):
+def WRITE_LOGFILE_MQTT(channel, msg):
     if os.path.isfile(PATH + "/logs/log_mqtt.csv") is False:
-        CREATE_LOG_FILE("log_mqtt")
+        CREATE_LOGFILE("log_mqtt")
 
     try:
         # open csv file
