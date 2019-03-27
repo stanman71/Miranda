@@ -6,7 +6,7 @@ String device_name = "watering_array_v4";
  
 const char* SSID = "";
 const char* PSK = "";
-const char* MQTT_BROKER = "192.168.1.40";
+const char* MQTT_BROKER = "";
 
 // mqtt connection
 WiFiClient espClient;
@@ -31,37 +31,21 @@ int Pin_D1 = 5;
 int Pin_D2 = 4;
 int Pin_D3 = 0;
 
+
 // split string
-String getValue(String data, char separator, int index)
-    {
-      int found = 0;
-      int strIndex[] = {0, -1};
-      int maxIndex = data.length()-1;
-    
-      for(int i=0; i<=maxIndex && found<=index; i++){
+String getValue(String data, char separator, int index) {
+    int found = 0;
+    int strIndex[] = {0, -1};
+    int maxIndex = data.length()-1;
+  
+    for(int i=0; i<=maxIndex && found<=index; i++){
         if(data.charAt(i)==separator || i==maxIndex){
             found++;
             strIndex[0] = strIndex[1]+1;
             strIndex[1] = (i == maxIndex) ? i+1 : i;
         }
-      }
-    
-      return found>index ? data.substring(strIndex[0], strIndex[1]) : "";
-    }
-
-void setup() {
-    pinMode(CS_PIN, OUTPUT);  
-    pinMode(Pin_D0,OUTPUT);
-    pinMode(Pin_D1,OUTPUT);
-    pinMode(Pin_D2,OUTPUT);
-    pinMode(Pin_D3,OUTPUT);
-    
-    Serial.begin(115200);
-    setup_wifi();
-    client.setServer(MQTT_BROKER, 1883);
-    client.setCallback(callback);
-
-    digitalWrite(Pin_D3, HIGH);
+    } 
+    return found>index ? data.substring(strIndex[0], strIndex[1]) : "";
 }
 
 void setup_wifi() {
@@ -92,7 +76,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     for (int i = 0; i < length; i++) {
         Serial.print((char)payload[i]);
         msg[i] = (char)payload[i];
-        }
+    }
    
     Serial.println();
     msg[length] = '\0';
@@ -102,12 +86,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if(check_target == "device"){
         Serial.print("Publish message: ");
 
+        // create channelpath  
         String payload = "/SmartHome/" + device_name + "/deviceinformation";      
         char attributes[100];
         payload.toCharArray( channelpath, 100 );
         
         client.publish(channelpath, "watering_array_v4/8/4");        
-        }
+    }
 
     if(check_target == "plant"){
         // get plant_id
@@ -129,7 +114,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.print(msg);
         Serial.println();
         client.publish("/SmartHome/data/plant", msg);         
-        }    
+    }    
 
     if(check_target == "sensor"){
         // get file
@@ -151,13 +136,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.print(msg);
         Serial.println();
         client.publish("/SmartHome/data/sensor", msg);         
-        }    
+    }    
 
-     if(check_target == "pump"){
+    if(check_target == "pump"){
         // get pump_id
         String STR_pump_id = getValue(topic,'/',4); 
         String STR_msg = msg;  
 
+        // create channelpath  
         String payload = "/SmartHome/" + device_name + "/pump";      
         char attributes[100];
         payload.toCharArray( channelpath, 100 );   
@@ -210,7 +196,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("Stop_Pump_3");
             }
         }
-     }
+    }
 }
 
 void reconnect() {
@@ -223,7 +209,8 @@ void reconnect() {
             delay(5000);
         }
     }
-
+    
+    // create channelpath  
     String payload = "/SmartHome/" + device_name + "/#";      
     char attributes[100];
     payload.toCharArray( channel_subscribe, 100 );   
@@ -232,8 +219,21 @@ void reconnect() {
     Serial.println("MQTT Connected...");
 }
 
-void loop() {
+void setup() {
+    pinMode(CS_PIN, OUTPUT);  
+    pinMode(Pin_D0,OUTPUT);
+    pinMode(Pin_D1,OUTPUT);
+    pinMode(Pin_D2,OUTPUT);
+    pinMode(Pin_D3,OUTPUT);
+    
+    Serial.begin(115200);
+    setup_wifi();
+    client.setServer(MQTT_BROKER, 1883);
+    client.setCallback(callback);
+    reconnect();
+}
 
+void loop() {
     if (!client.connected()) {
         reconnect();
     }
