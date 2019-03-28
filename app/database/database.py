@@ -459,24 +459,31 @@ def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, la
     # name exist ?
     check_entry = MQTT_Devices.query.filter_by(name=name).first()
     if check_entry is None:
-        # find a unused id
-        for i in range(1,50):
-            if MQTT_Devices.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new device
-                device = MQTT_Devices(
-                        id           = i,
-                        name         = name,
-                        channel_path = channel_path,
-                        modell       = modell,
-                        inputs       = inputs,
-                        outputs      = outputs,
-                        last_contact = last_contact,
-                        )
-                db.session.add(device)
-                db.session.commit()
-                return ""
+        # path exist ?
+        check_entry = MQTT_Devices.query.filter_by(channel_path=channel_path).first()
+        if check_entry is None:       
+            # find a unused id
+            for i in range(1,50):
+                if MQTT_Devices.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new device
+                    device = MQTT_Devices(
+                            id           = i,
+                            name         = name,
+                            channel_path = channel_path,
+                            modell       = modell,
+                            inputs       = inputs,
+                            outputs      = outputs,
+                            last_contact = last_contact,
+                            )
+                    db.session.add(device)
+                    db.session.commit()
+                    return ""
+                    
+        else:
+            return "Kanal bereits vergeben"     
+                 
     else:
         return "Name bereits vergeben"
 
