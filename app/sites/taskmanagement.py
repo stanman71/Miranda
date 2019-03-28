@@ -69,6 +69,13 @@ def dashboard_taskmanagement_time():
 
                 error_message = ADD_TASKMANAGEMENT_TIME_TASK(name, day, hour, minute, task, repeat)
  
+                name   = ""
+                day    = ""
+                hour   = ""
+                minute = ""
+                task   = ""
+                repeat = ""      
+
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
 
     # dropdown values
