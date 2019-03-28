@@ -58,9 +58,7 @@ def dashboard_sensordata():
             for i in range (1,25):
                 if request.form.get("set_sensor_" + str(i)):
                     sensor_id = request.form.get("set_sensor_" + str(i))    
-                    SET_SENSORDATA_JOB_SENSOR(i, sensor_id) 
-
-                    sensordata_job = GET_SENSORDATA_JOB(id)
+                    SET_SENSORDATA_JOB_SENSOR(i, int(sensor_id))
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
     sensordata_list = GET_ALL_SENSORDATA_JOBS()

@@ -86,7 +86,7 @@ def CREATE_SENSORDATA_FILE(filename):
         with open(file, 'w') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-            filewriter.writerow(['Datum', 'Sensorwert'])
+            filewriter.writerow(['Timestamp', 'Sensor_Value'])
             csvfile.close()
 
         WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " created") 
