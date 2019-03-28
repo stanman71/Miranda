@@ -57,6 +57,8 @@
     </div>
   </nav>
 
+<section id="mqtt_devices"></section>
+
   <div class="panel panel-default">
     <div class="panel-heading"><font color="black"><b>MQTT</b></font></div>
       <div class="panel-body">   
@@ -110,7 +112,7 @@
               <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
             </div>
               <br>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" value="MQTT Device hinzufügen" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#mqtt_devices'" class="btn btn-secondary" value="MQTT Device hinzufügen" />
             </form>   
           </div>  
         </div>  

@@ -167,6 +167,7 @@ def dashboard_settings_zigbee():
 @superuser_required
 def dashboard_settings_snowboy():
     error_message = ""
+    error_message_table = ""
     error_message_fileupload = ""
     sensitivity = ""
     check_value_snowboy = ["", ""]
@@ -239,7 +240,8 @@ def dashboard_settings_snowboy():
 
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
-                            error_message=error_message,                  
+                            error_message=error_message,    
+                            error_message_table=error_message_table,             
                             error_message_fileupload=error_message_fileupload,
                             snowboy_setting=snowboy_setting,
                             check_value_snowboy=check_value_snowboy,
