@@ -52,7 +52,7 @@
         <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
         <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
         <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_logs') }}">System Logs</a></li> 
+        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
       </ul>
     </div>
   </nav>
@@ -75,11 +75,11 @@
           CPU Temperatur = {{ cpu_temperature }}
           <br>
           <br>
-          <form method="GET">                     
+          <form method="POST">                     
             <input type="submit" class="btn btn-secondary" name="restart" value="RASPI neustarten" />
           </form>   
           <br>       
-          <form method="GET">                     
+          <form method="POST">                     
             <input type="submit" class="btn btn-secondary" name="shutdown" value="RASPI herunterfahren" />
           </form>   
           
@@ -106,7 +106,7 @@
               <tr><td></td><td></td><td></td></tr>
             </tbody>
           </table>  
-          <form method="GET">                     
+          <form method="POST">                     
             <input type="submit" onclick="window.location.href='/dashboard/settings/system#database_backup'" class="btn btn-secondary" name="database_save" value="Datenbank sichern" />
           </form>
         </div>

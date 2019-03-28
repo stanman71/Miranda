@@ -34,7 +34,7 @@ def scheduler_job():
     TASKMANAGEMENT_TIME_TASKS(entries)
 
 
-@app.route('/dashboard/taskmanagement/time', methods=['GET'])
+@app.route('/dashboard/taskmanagement/time', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_taskmanagement_time():
@@ -42,27 +42,27 @@ def dashboard_taskmanagement_time():
     set_name = ""
     set_task = ""
 
-    if request.method == "GET": 
+    if request.method == "POST": 
         # add new task
-        if request.args.get("set_name") is not None:
+        if request.form.get("add_task") is not None:
 
             # controll name and task input
-            if request.args.get("set_name") == "":
+            if request.form.get("set_name") == "":
                 error_message = "Kein Name angegeben"
-                set_task = request.args.get("set_task")
+                set_task = request.form.get("set_task")
 
-            elif request.args.get("set_task") == "":
+            elif request.form.get("set_task") == "":
                 error_message = "Keine Aufgabe angegeben"  
-                set_name = request.args.get("set_name")  
+                set_name = request.form.get("set_name")  
                           
             else:         
                 # get database informations
-                name   = request.args.get("set_name")
-                day    = request.args.get("set_day") 
-                hour   = request.args.get("set_hour") 
-                minute = request.args.get("set_minute")
-                task   = request.args.get("set_task")
-                if request.args.get("checkbox"):
+                name   = request.form.get("set_name")
+                day    = request.form.get("set_day") 
+                hour   = request.form.get("set_hour") 
+                minute = request.form.get("set_minute")
+                task   = request.form.get("set_task")
+                if request.form.get("checkbox"):
                     repeat = "*"
                 else:
                     repeat = ""

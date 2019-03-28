@@ -55,7 +55,7 @@
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>
           <div class="panel-body">      
-          <form method="GET">   
+          <form method="POST">   
             <div class="form-group">
               <div class="text-center">         
                 <h5><b>Pflanze hinzufügen</b></h5>
@@ -82,7 +82,7 @@
                 <br> 
                 <br>      
                 <br>         
-              <input type="submit" class="btn btn-secondary" value="Pflanze hinzufügen" />
+              <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-secondary" name="add_plant" value="Pflanze hinzufügen" />
               <br>
             </form>   
           </div>  
@@ -115,7 +115,7 @@
                 <td>{{ entry.pump_id }}</td>
                 <td>{{ entry.moisture_percent }}</td> 
                 <td> 
-                  <form method="GET" class="verticalform">      
+                  <form method="POST" class="verticalform">      
                     <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
                       {% for i in range(entry.mqtt_device.inputs) %}
                       <option value= "{{ i }}" > {{ i }} </option>
@@ -134,7 +134,7 @@
                         <div class="col-md-10 text-center"> 
                           <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
                           <br>
-                          <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-secondary" value="aktuallisieren"/>
+                          <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-secondary" name="change_settings" value="aktuallisieren"/>
                         </div> 
                   </form>
                 </td>

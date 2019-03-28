@@ -101,11 +101,11 @@
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>LED Programme</b></font></div>
         <div class="panel-body">
-          <form method="GET">
+          <form method="POST">
             <div class="form-group">
               <input type="text" class="form-control" name="new_program" value="" />
             </div>
-              <input type="submit" class="btn btn-secondary" value="Programm erstellen" />
+              <input type="submit" class="btn btn-secondary" name="add_program" value="Programm erstellen" />
           </form>              
         </div>
       </div>
@@ -115,7 +115,7 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="dropdown">
-            <form method="GET" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
               <select class="btn btn-secondary dropdown-toggle" name="get_program_name">
                 {% for each in dropdown_list %}
                   {% if each != None %}
@@ -123,7 +123,7 @@
                   {% endif %}
                 {% endfor %}
               </select>
-              <input type="submit" class="btn btn-secondary" value="Programm anzeigen">
+              <input type="submit" class="btn btn-secondary" name="get_program_name" value="Programm anzeigen">
             </form>
           </div> 
           <br>
@@ -159,7 +159,7 @@
           </table>
 
 <!-- get rgb values -->
-<!-- GET include get_rgb, update, start -->
+<!-- GET area includes get_rgb, update, start -->
  
         <form method="GET" class="verticalform">
           <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
@@ -203,18 +203,18 @@
 
       <div class="panel panel-default">
         <div class="panel-body">                     
-          <form method="GET">
+          <form method="POST">
             <div class="form-group">
               <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" value="Name ändern" />
+              <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" name="change_settings_name" value="Name ändern" />
               <br>
           </form>  
 
 <!-- delete a program -->
 
           <div class="dropdown text-right">
-            <form method="GET" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
               <input type="submit" class="btn btn-danger text-right" name="delete_program" value="{{ program.name }} löschen">
             </form>
           </div> 

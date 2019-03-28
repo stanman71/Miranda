@@ -114,18 +114,18 @@
                 <td>{{ entry.color_green }}</td>
                 <td>{{ entry.color_blue }}</td>   
                 <td>
-                  <form method="GET" class="verticalform">
+                  <form method="POST" class="verticalform">
                     <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control led_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
-                    <input type="submit" class="btn btn-secondary" value="Farbe ändern" />  
+                    <input type="submit" class="btn btn-secondary" name="change_settings_color" value="Farbe ändern" />  
                   </form>
                 </td>
                 <td>{{ entry.brightness }}</td>
                 <td>
-                  <form method="GET" class="slidecontainer"> 
+                  <form method="POST" class="slidecontainer"> 
                     <div class="col-md-10 text-center"> 
                       <input type="range" class="slider" name="{{ entry.led_id }}" min="0" max="254" value="{{ entry.brightness }}" />
                       <br>
-                      <input type="submit" class="btn btn-secondary" value="Helligkeit ändern"/>
+                      <input type="submit" class="btn btn-secondary" name="change_settings_brightness" value="Helligkeit ändern"/>
                     </div> 
                   </form>
                 </td>
@@ -149,26 +149,26 @@
 
           {% if entries_scene != None %}  
 
-          <form method="GET">
+          <form method="POST">
             <div class="form-group">
-              <input type="text" class="form-control" name="name" value="{% if scene_name != None %}{{ scene_name }}{% endif %}" />
+              <input type="text" class="form-control" name="set_name" value="{% if scene_name != None %}{{ scene_name }}{% endif %}" />
             </div>
-              <input type="submit" class="btn btn-secondary" value="Name ändern" />
+              <input type="submit" class="btn btn-secondary" name="change_settings_name" value="Name ändern" />
           </form>  
           <br>
   
           {% endif %} 
 
           <div class="dropdown">
-          <form method="GET" enctype="multipart/form-data">
-            <select class="btn btn-secondary dropdown-toggle" name="led_scene">
+          <form method="POST" enctype="multipart/form-data">
+            <select class="btn btn-secondary dropdown-toggle" name="add_led">
               {% for each in dropdown_list %}
               {% if each != None %}
               <option value="{{each}}">{{each}}</option>
               {% endif %}
               {% endfor %}
             </select>
-            <input type="submit" class="btn btn-secondary" value="LED hinzufügen">
+            <input type="submit" class="btn btn-secondary" name="change_settings_led" value="LED hinzufügen">
           </form>
         </div> 
       </div>
@@ -179,7 +179,7 @@
 
     {% if entries_scene != None %}
 
-    <form action="" method="post"> 
+    <form action="" method="POST"> 
       <input type="submit" class="btn pull-right btn-danger" name="delete" value="Szene löschen"/>
     </form>
 

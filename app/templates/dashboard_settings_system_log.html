@@ -52,7 +52,7 @@
         <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
         <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
         <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_logs') }}">System Logs</a></li> 
+        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
       </ul>
     </div>
   </nav> 
@@ -66,8 +66,48 @@
   {% endif %}
 
 
+<!-- system logs -->
+
+<section id="logfile"></section>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">System Log-Datei</div>
+          <div class="panel-body">       
+            <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
+            <div class="dropdown text-right">
+            <form method="POST" enctype="multipart/form-data">
+              <input type="submit" onclick="window.location.href='/dashboard/settings/system_log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
+            </form>
+          </div>        
+        </div>  
+      </div>  
 
 
+<!-- table  --> 
+
+<section id="table_tasks"></section>
+
+      <div class="panel panel-default">
+          <div class="panel-heading">Aktuelle Ereignisse</div>        
+          <div class="panel-body">  
+            <table class="table">
+              <thead>                      
+                <th scope="col">Zeitpunkt</th> 
+                <th scope="col">Typ</th> 
+                <th scope="col">Beschreibung</th> 
+              </thead>
+              <tbody> 
+                {% for entry in log_list %}
+                <tr>
+                  <td>{{ entry.time }}</td> 
+                  <td>{{ entry.type }}</td>                   
+                  <td>{{ entry.description }}</td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+          </div>  
+        </div> 
 
     </div>
   </div>       

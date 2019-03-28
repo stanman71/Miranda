@@ -173,21 +173,23 @@ def CREATE_LOGFILE(filename):
 
             if filename == "log_mqtt":                   
                 filewriter.writerow(['Datum', 'Kanal', 'Nachricht'])
+            if filename == "log_system":                   
+                filewriter.writerow(['Datum', 'Typ', 'Beschreibung'])                
             csvfile.close()
-        return ""
-        
+        return ""      
+
     except:
         return "Datei konnte nicht angelegt werden"
 
         
 def RESET_LOGFILE(filename):
-    try:
+    if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
         os.remove (PATH + "/logs/" + filename + ".csv")
-        CREATE_LOGFILE(filename)
-        return ""
         
+    try:
+        CREATE_LOGFILE(filename)
     except:
-        return "Datei konnte nicht gefunden werden"
+        return "Datei konnte nicht erstellt werden"        
         
 
 def WRITE_LOGFILE_MQTT(channel, msg):
@@ -201,6 +203,23 @@ def WRITE_LOGFILE_MQTT(channel, msg):
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
+            csvfile.close()
+        return ""          
+    except:
+        return "Auf die Datei konnte nicht zugegriffen werden"
+
+
+def WRITE_LOGFILE_SYSTEM(log_type, description):
+    if os.path.isfile(PATH + "/logs/log_system.csv") is False:
+        CREATE_LOGFILE("log_system")
+
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
+        with open(file, 'a', newline='') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
             csvfile.close()
         return ""          
     except:

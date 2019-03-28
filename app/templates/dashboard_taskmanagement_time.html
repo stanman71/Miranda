@@ -113,7 +113,7 @@
           Tag / Stunde / Minute (Option " * ": keine Einschränkungen, z.B. an jedem Tag)
           <br>  
           <br>           
-          <form method="GET">
+          <form method="POST">
             <select class="btn btn-secondary dropdown-toggle" name="set_day">
               {% for each in dropdown_list_days %}
               {% if each != None %}
@@ -154,7 +154,7 @@
               <input type="checkbox" class="form-check-input" name="checkbox">
             </div>
             <br>            
-            <input type="submit" class="btn btn-secondary" value="Aufgabe anlegen" />
+            <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#'" class="btn btn-secondary" name="add_task" value="Aufgabe anlegen" />
           </form>   
         </div>
       </div>

@@ -61,7 +61,7 @@
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>
             <div class="panel-body">  
-            <form method="GET">   
+            <form method="POST">   
                 <div class="form-group">
                   <div class="text-center">         
                     <h5><b>Job anlegen</b></h5>
@@ -90,7 +90,7 @@
                   <div class="text-center">                             
                   </div>                  
                   <br>          
-                  <input type="submit" class="btn btn-secondary" value="Job anlegen" />
+                  <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-secondary" name="add_job" value="Job anlegen" />
                   <br>
                 </form>   
               </div>  
@@ -122,7 +122,7 @@
                 <td>{{ entry.mqtt_device.name }}</td> 
                 <td>{{ entry.sensor_id }}</td>
                 <td> 
-                  <form method="GET" class="verticalform">      
+                  <form method="POST" class="verticalform">      
                     <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
                       {% for i in range(entry.mqtt_device.inputs) %}
                       <option value= "{{ i }}" > {{ i }} </option>
@@ -130,7 +130,7 @@
                     </select>   
                     </td>
                     <td>
-                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" value="aktuallisieren"/>             
+                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" name="change_settings" value="aktuallisieren"/>             
                   </form>
                 </td>               
                 <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   

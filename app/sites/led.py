@@ -33,31 +33,28 @@ def dashboard_led_scene_01():
     scene = 1
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene  = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -89,31 +86,28 @@ def dashboard_led_scene_02():
     scene = 2
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -145,31 +139,28 @@ def dashboard_led_scene_03():
     scene = 3
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -201,31 +192,28 @@ def dashboard_led_scene_04():
     scene = 4
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -257,36 +245,32 @@ def dashboard_led_scene_05():
     scene = 5
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
-
+ 
     # start scene
     error_message = LED_SET_SCENE(scene)
 
@@ -306,7 +290,7 @@ def dashboard_led_scene_05():
                             )
 
 
-# led scene 06 (north lights)
+# led scene 06 
 @app.route('/dashboard/led/scene_06', methods=['GET', 'POST'])
 @login_required
 @superuser_required
@@ -314,31 +298,28 @@ def dashboard_led_scene_06():
     scene = 6
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))  
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -362,7 +343,7 @@ def dashboard_led_scene_06():
                             )
 
 
-# led scene 07 (sunshine)
+# led scene 07 
 @app.route('/dashboard/led/scene_07', methods=['GET', 'POST'])
 @login_required
 @superuser_required
@@ -370,31 +351,28 @@ def dashboard_led_scene_07():
     scene = 7
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i))) 
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -426,31 +404,28 @@ def dashboard_led_scene_08():
     scene = 8
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))      
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -482,32 +457,28 @@ def dashboard_led_scene_09():
     scene = 9
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -539,32 +510,28 @@ def dashboard_led_scene_10():
     scene = 10
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -596,32 +563,28 @@ def dashboard_led_scene_99():
     scene = 99
     error_message = ""
 
-    if request.method == "GET":  
-            
+    if request.method == "POST":  
         # change scene name
-        name = request.args.get("name") 
-        if name is not None:
-            error_message = SET_SCENE_NAME(scene, name)
-    
+        if request.form.get("change_settings_name") is not None: 
+            name = request.form.get("set_name") 
+            if name is not None:
+                error_message = SET_SCENE_NAME(scene, name)
         # set RGB color
-        rgb_scene = []
-        for i in range(1,10):
-            rgb_scene.append(request.args.get(str(scene) + " " + str(i)))     
-        SET_SCENE_COLOR(scene, rgb_scene)
-
+        if request.form.get("change_settings_color") is not None: 
+            rgb_scene  = []
+            for i in range(1,10):
+                rgb_scene.append(request.form.get(str(scene) + " " + str(i)))
+            SET_SCENE_COLOR(scene, rgb_scene)
         # set brightness
-        brightness = []
-        for i in range(1,10):
-            brightness.append(request.args.get(str(i)))
-        SET_SCENE_BRIGHTNESS(scene, brightness)  
-
+        if request.form.get("change_settings_brightness") is not None: 
+            brightness = []
+            for i in range(1,10):
+                brightness.append(request.form.get(str(i)))
+            SET_SCENE_BRIGHTNESS(scene, brightness)  
         # add led
-        add_led = request.args.get("led_scene") 
-        if add_led is not None:
-            ADD_LED(scene, add_led)
- 
-
-    if request.method == "POST": 
+        if request.form.get("change_settings_led") is not None: 
+            new_led = request.form.get("add_led") 
+            ADD_LED(scene, new_led)     
         # delete scene
         if 'delete' in request.form:
             DEL_SCENE(scene)
@@ -686,51 +649,56 @@ def dashboard_led_programs():
     program_delete = ""
     
     if request.method == "GET": 
-        # create a new program
-        new_program = request.args.get("new_program") 
-        if new_program is not None and new_program is not "":
-            error_message = NEW_PROGRAM(new_program)
-
-        # get the selected program, remove SUNRISE delete option
-        get_Program = request.args.get("get_program_name") 
-        if get_Program is not None:
-            program = GET_PROGRAM_NAME(get_Program)
-            if "SUNRISE" in program.name:
-                program_delete = ""
-            else:
-                program_delete = program
-
         # update programs, i = program ID
         for i in range(1,25):
             update_Program = request.args.get("update_" + str(i))
             if update_Program is not None:
                 UPDATE_PROGRAM(i, update_Program)
-
         # start program
         for i in range(1,25):
             start_Program = request.args.get("start_" + str(i))
             if start_Program is not None:
                 led_update = START_PROGRAM(i)
-
         # get rgb values
         for i in range(1,25):
             get_rgb = request.args.get("get_rgb_" + str(i)) 
             if get_rgb is not None:
                 rgb = get_rgb               
-                program = GET_PROGRAM_ID(i)  
-
-        # rename program
-        for i in range(1,25):
-            program_name = request.args.get("program_name_" + str(i)) 
-            if program_name is not None:
-                SET_PROGRAM_NAME(i, program_name)              
-                program = GET_PROGRAM_ID(i)  
-
-        # delete the selected program
-        delete_Program = request.args.get("delete_program") 
-        if delete_Program is not None:
+                program = GET_PROGRAM_ID(i)        
+    
+    
+    if request.method == 'POST':
+        if request.form.get("add_program") is not None:    
+            # create a new program
+            new_program = request.form.get("new_program") 
+            if new_program is not None and new_program is not "":
+                error_message = NEW_PROGRAM(new_program) 
+            else:
+                error_message = "Kein Name angegeben" 
+    
+        if request.form.get("get_program_name") is not None: 
+            # get the selected program, remove SUNRISE delete option
+            get_Program = request.form.get("get_program_name") 
+            if get_Program is not None:
+                program = GET_PROGRAM_NAME(get_Program)
+                if "SUNRISE" in program.name:
+                    program_delete = ""
+                else:
+                    program_delete = program
+    
+        if request.form.get("change_settings_name") is not None: 
+            # rename program
+            for i in range(1,25):
+                program_name = request.form.get("program_name_" + str(i)) 
+                if program_name is not None:
+                    SET_PROGRAM_NAME(i, program_name)              
+                    program = GET_PROGRAM_ID(i)  
+                    
+        if request.form.get("delete_program") is not None:     
+            # delete the selected program
+            delete_Program = request.form.get("delete_program") 
             delete_Program = delete_Program.split(" ")[0]
-            DELETE_PROGRAM(delete_Program)              
+            DELETE_PROGRAM(delete_Program)     
 
     dropdown_list = GET_ALL_PROGRAMS()
     scene_names_list = GET_ALL_SCENES()

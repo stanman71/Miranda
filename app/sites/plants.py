@@ -30,33 +30,37 @@ def dashboard_plants():
     watervolume = ""
     moisture = ""
 
-    if request.method == "GET": 
-        if request.args.get("set_name") is not None:
-            # controll name 
-            if request.args.get("set_name") == "":
-                error_message = "Kein Name angegeben"    
-            elif request.args.get("set_mqtt_device") == None:
-                error_message = "Kein MQTT Device vorhanden"                     
-            else:         
-                # get informations
-                name          = request.args.get("set_name")
-                mqtt_device   = request.args.get("set_mqtt_device")    
-                watervolume   = request.args.get("set_water_volume") 
-                error_message = ADD_PLANT(name, mqtt_device, watervolume)
-
-        for i in range (1,25):
-            # change sensor
-            if request.args.get("set_sensor_" + str(i)):
-                sensor_id = request.args.get("set_sensor_" + str(i))    
-                SET_PLANT_SENSOR(i, sensor_id)
-            # change pump
-            if request.args.get("set_pump_" + str(i)):
-                pump_id = request.args.get("set_pump_" + str(i))    
-                SET_PLANT_PUMP(i, pump_id)                
-            # change moisture target
-            if request.args.get("set_moisture_" + str(i)):
-                moisture_percent = request.args.get("set_moisture_" + str(i))    
-                SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
+    if request.method == "POST": 
+        # add plant
+        if request.form.get("add_plant") is not None: 
+            if request.form.get("set_name") is not None:
+                # controll name 
+                if request.form.get("set_name") == "":
+                    error_message = "Kein Name angegeben"    
+                elif request.form.get("set_mqtt_device") == None:
+                    error_message = "Kein MQTT Device vorhanden"                     
+                else:         
+                    # get informations
+                    name          = request.form.get("set_name")
+                    mqtt_device   = request.form.get("set_mqtt_device")    
+                    watervolume   = request.form.get("set_water_volume") 
+                    error_message = ADD_PLANT(name, mqtt_device, watervolume)
+        
+        # change settings
+        if request.form.get("change_settings") is not None: 
+            for i in range (1,25):
+                # change sensor
+                if request.form.get("set_sensor_" + str(i)):
+                    sensor_id = request.form.get("set_sensor_" + str(i))    
+                    SET_PLANT_SENSOR(i, sensor_id)
+                # change pump
+                if request.form.get("set_pump_" + str(i)):
+                    pump_id = request.form.get("set_pump_" + str(i))    
+                    SET_PLANT_PUMP(i, pump_id)                
+                # change moisture target
+                if request.form.get("set_moisture_" + str(i)):
+                    moisture_percent = request.form.get("set_moisture_" + str(i))    
+                    SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
 
                 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()  

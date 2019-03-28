@@ -52,36 +52,36 @@ def dashboard_settings_mqtt():
 
     if mqtt_setting == "True":
 
-        if request.method == "GET": 
-            # add mqtt device
-            if request.args.get("set_mqtt_device_name") is "":
-                error_message = "Kein Name angegeben"   
-                mqtt_device_channel_path = request.args.get("set_mqtt_device_channel_path")    
-            elif request.args.get("set_mqtt_device_channel_path") is "":
-                error_message = "Kein Kanal angegeben"    
-                mqtt_device_name = request.args.get("set_mqtt_device_name") 
-            else:
-                mqtt_device_name = request.args.get("set_mqtt_device_name") 
-                mqtt_device_channel_path = request.args.get("set_mqtt_device_channel_path") 
-                
-                if mqtt_device_name is not None or mqtt_device_channel_path is not None:
-                    error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
-                    if error_message == "":
-                        time.sleep(1)
-                        try:
-                            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
-                        except Exception as e:
-                            error_message = "Fehler in MQTT: " + str(e)
-                        time.sleep(2)
-                        mqtt_device_channel_path = ""
-                        mqtt_device_name = ""                       
-
-        # reset logfile
-        reset_logfile = request.args.get("reset_logfile") 
-        if reset_logfile is not None:
-            RESET_LOGFILE("log_mqtt")   
+        if request.method == 'POST':
+            if request.form.get("add_mqtt_device") is not None: 
+                # add mqtt device
+                if request.form.get("set_mqtt_device_name") is "":
+                    error_message = "Kein Name angegeben"   
+                    mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path")    
+                elif request.form.get("set_mqtt_device_channel_path") is "":
+                    error_message = "Kein Kanal angegeben"    
+                    mqtt_device_name = request.form.get("set_mqtt_device_name") 
+                else:
+                    mqtt_device_name = request.form.get("set_mqtt_device_name") 
+                    mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path") 
+                    
+                    if mqtt_device_name is not None or mqtt_device_channel_path is not None:
+                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
+                        if error_message == "":
+                            time.sleep(1)
+                            try:
+                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                            except Exception as e:
+                                error_message = "Fehler in MQTT: " + str(e)
+                            time.sleep(2)
+                            mqtt_device_channel_path = ""
+                            mqtt_device_name = ""                       
 
         if request.method == 'POST':
+            # reset logfile
+            if request.form.get("reset_logfile") is not None: 
+                RESET_LOGFILE("log_mqtt")   
+            # update mqtt devices
             if request.form.get("update_mqtt_devices") is not None:         
                 try:
                     UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
@@ -201,37 +201,33 @@ def dashboard_settings_snowboy():
             if "signal only works in main thread" not in str(e):
                 error_message = "Fehler in SnowBoy: " + str(e)
 
-        # change sensitivity
-        if request.method == "GET":
-            sensitivity = request.args.get("set_sensitivity") 
-            if sensitivity is not None:
-                SET_SNOWBOY_SENSITIVITY(sensitivity)    
-
-        # add new task
-        if request.args.get("set_name") is not None:
-
-            # controll name and task input
-            if request.args.get("set_name") == "":
-                error_message_table = "Kein Name angegeben"
-                set_task = request.args.get("set_task")
-
-            elif request.args.get("set_task") == "":
-                error_message_table = "Keine Aufgabe angegeben"  
-                set_name = request.args.get("set_name")  
-                          
-            else:         
-                # get database informations
-                name   = request.args.get("set_name")
-                task   = request.args.get("set_task")
-                error_message = ADD_SNOWBOY_TASK(name, task)
-
-        # file upload
         if request.method == 'POST':
-            if 'file' not in request.files:
-                error_message_fileupload = "Keine Datei angegeben"
-            else:
-                file = request.files['file']
-                error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
+            if request.form.get("change_settings") is not None: 
+                # change sensitivity
+                sensitivity = request.form.get("set_sensitivity") 
+                if sensitivity is not None:
+                    SET_SNOWBOY_SENSITIVITY(sensitivity)    
+
+            if request.form.get("add_task") is not None:
+                # add new task
+                if request.form.get("set_name") == "":
+                    error_message_table = "Kein Name angegeben"
+                    set_task = request.form.get("set_task")
+                elif request.form.get("set_task") == "":
+                    error_message_table = "Keine Aufgabe angegeben"  
+                    set_name = request.form.get("set_name")  
+                else:         
+                    name   = request.form.get("set_name")
+                    task   = request.form.get("set_task")
+                    error_message = ADD_SNOWBOY_TASK(name, task)
+                    
+            if request.form.get("file_upload") is not None:
+                # file upload
+                if 'file' not in request.files:
+                    error_message_fileupload = "Keine Datei angegeben"
+                else:
+                    file = request.files['file']
+                    error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
     snowboy_setting = GET_SETTING_VALUE("snowboy")
     sensitivity = GET_SNOWBOY_SENSITIVITY()
@@ -373,7 +369,7 @@ def delete_user(id):
 """ ############### """
 
 # dashboard system settings
-@app.route('/dashboard/settings/system/', methods=['GET'])
+@app.route('/dashboard/settings/system/', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_system():
@@ -383,17 +379,17 @@ def dashboard_settings_system():
         res = os.popen('vcgencmd measure_temp').readline()
         return(res.replace("temp=","").replace("'C\n"," C"))
 
-    if request.method == "GET":     
+    if request.method == "POST":     
         # restart raspi 
-        if request.args.get("restart") is not None:
+        if request.form.get("restart") is not None:
             os.system("sudo shutdown -r now")
             sys.exit()
         # shutdown raspi 
-        if request.args.get("shutdown") is not None:
+        if request.form.get("shutdown") is not None:
             os.system("sudo shutdown -h now")
             sys.exit()
         # save database   
-        if request.args.get("database_save") is not None:
+        if request.form.get("database_save") is not None:
             SAVE_DATABASE() 
  
     file_list = GET_BACKUP_FILES()
@@ -430,13 +426,34 @@ def delete_database_backup(filename):
 """ ########### """
 
 # dashboard system settings
-@app.route('/dashboard/settings/system_logs/', methods=['GET'])
+@app.route('/dashboard/settings/system_log/', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_settings_system_logs():
+def dashboard_settings_system_log():
     error_message = ""
-                              
-    return render_template('dashboard_settings_system_logs.html',
+    log_list = ""
+
+    if request.method == 'POST':
+        if request.form.get("reset_logfile") is not None: 
+            RESET_LOGFILE("log_system")   
+
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
+
+    return render_template('dashboard_settings_system_log.html',
                             error_message=error_message,
+                            timestamp=timestamp,
+                            log_list=log_list,
                             active06="active",
                             )
+
+
+# download system logfile
+@app.route('/dashboard/settings/system_log/download/<path:filepath>')
+@login_required
+@superuser_required
+def download_system_logfile(filepath): 
+    try:
+        path = GET_PATH() + "/logs/"     
+        return send_from_directory(path, filepath)
+    except Exception as e:
+        print(e)
