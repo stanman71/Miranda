@@ -252,12 +252,9 @@ def GET_LOGFILE_SYSTEM():
         file = PATH + "/logs/log_system.csv"
         with open(file, 'r', newline='') as csvfile:
             rowReader = csv.reader(csvfile, delimiter=',')
-
             data = [row for row in rowReader] # get data
             headers = data.pop(0)             # get headers and remove from data
-            data_reversed = data[::-1]        # reverse the data
-
-            return data_reversed[0:30]
+            return data[-30:]
      
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File: log_system  >>> " + str(e))          
