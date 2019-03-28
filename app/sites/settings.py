@@ -66,6 +66,12 @@ def dashboard_settings_mqtt():
                 
                 if mqtt_device_name is not None or mqtt_device_channel_path is not None:
                     error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
+                    time.sleep(1)
+                    try:
+                        UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                    except Exception as e:
+                        error_message = "Fehler in MQTT: " + str(e)
+                    time.sleep(2)
                     mqtt_device_channel_path = ""
                     mqtt_device_name = ""                       
 
