@@ -66,13 +66,14 @@ def dashboard_settings_mqtt():
                     mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path") 
                     
                     if mqtt_device_name is not None or mqtt_device_channel_path is not None:
-                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)
+                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)                         
                         if error_message == "":
                             time.sleep(1)
                             try:
                                 UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
                             except Exception as e:
                                 error_message = "Fehler in MQTT: " + str(e)
+                                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))                                 
                             time.sleep(2)
                             mqtt_device_channel_path = ""
                             mqtt_device_name = ""                       
@@ -87,6 +88,7 @@ def dashboard_settings_mqtt():
                     UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
                 except Exception as e:
                     error_message = "Fehler in MQTT: " + str(e)
+                    WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
                 time.sleep(2)
 
     mqtt_device_list = GET_ALL_MQTT_DEVICES()
@@ -122,7 +124,7 @@ def download_mqtt_logfile(filepath):
         path = GET_PATH() + "/logs/"     
         return send_from_directory(path, filepath)
     except Exception as e:
-        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))
              
 
 """ ############### """
@@ -200,6 +202,7 @@ def dashboard_settings_snowboy():
         except Exception as e:
             if "signal only works in main thread" not in str(e):
                 error_message = "Fehler in SnowBoy: " + str(e)
+                WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy: " + str(e)) 
 
         if request.method == 'POST':
             if request.form.get("change_settings") is not None: 
@@ -431,18 +434,19 @@ def delete_database_backup(filename):
 @superuser_required
 def dashboard_settings_system_log():
     error_message = ""
-    log_list = ""
 
     if request.method == 'POST':
         if request.form.get("reset_logfile") is not None: 
             RESET_LOGFILE("log_system")   
+            
+    data_log_system = GET_LOGFILE_SYSTEM()
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('dashboard_settings_system_log.html',
                             error_message=error_message,
                             timestamp=timestamp,
-                            log_list=log_list,
+                            data_log_system=data_log_system,
                             active06="active",
                             )
 
@@ -456,4 +460,4 @@ def download_system_logfile(filepath):
         path = GET_PATH() + "/logs/"     
         return send_from_directory(path, filepath)
     except Exception as e:
-        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "System Log: " + str(e))

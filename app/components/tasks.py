@@ -4,7 +4,7 @@ from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.watering_control import START_WATERING_THREAD
-from app.components.file_management import SAVE_DATABASE
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM
 
 import datetime
 
@@ -97,6 +97,8 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
          if entry.hour == hour or entry.hour == "*":
             if entry.minute == minute or entry.minute == "*":
                print(entry.name)
+
+               WRITE_LOGFILE_SYSTEM("EVENT", "Task: '" + entry.name + "' started") 
 
                # start scene
                if "start_scene" in entry.task:

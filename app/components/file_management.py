@@ -38,8 +38,12 @@ def SAVE_DATABASE():
     if len(GET_BACKUP_FILES()) == 10:
         os.remove (PATH + '/backup/' + file_list[0])
 
-    shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
-                    PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+    try:
+        shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
+                        PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup saved")
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup, " + str(e)) 
 
 
 def RESTORE_DATABASE(filename):
@@ -47,12 +51,17 @@ def RESTORE_DATABASE(filename):
     try:
         if filename.split("_")[1] == "smarthome.sqlite3":
             shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
-    except:
-        pass 
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup: " + filename + " restored")
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup, " + str(e))  
         
         
 def DELETE_DATABASE_BACKUP(filename):
-    os.remove (PATH + '/backup/' + filename)
+    try:
+        os.remove (PATH + '/backup/' + filename)
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))  
 
 
 """ ########## """
@@ -79,10 +88,12 @@ def CREATE_SENSORDATA_FILE(filename):
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
             filewriter.writerow(['Datum', 'Sensorwert'])
             csvfile.close()
-        return ""
+
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " created") 
+        return "" 
             
-    except:
-        return "Datei konnte nicht angelegt werden"
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))
 
 
 def WRITE_SENSORDATA_FILE(filename, value):
@@ -97,13 +108,17 @@ def WRITE_SENSORDATA_FILE(filename, value):
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(value) ])
             csvfile.close()
-        return ""          
-    except:
-        return "Auf die Datei konnte nicht zugegriffen werden"
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))
 
 
 def DELETE_SENSORDATA_FILE(filename):
-    os.remove (PATH + '/csv/' + filename)
+    try:
+        os.remove (PATH + '/csv/' + filename)
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))  
 
 
 """ ####### """
@@ -156,7 +171,11 @@ def UPLOAD_HOTWORD_FILE(file):
     
 
 def DELETE_HOTWORD_FILE(filename):
-    os.remove (PATH + '/app/snowboy/resources/' + filename)
+    try:
+        os.remove (PATH + '/app/snowboy/resources/' + filename)
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))  
 
 
 """ #### """
@@ -172,24 +191,25 @@ def CREATE_LOGFILE(filename):
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
             if filename == "log_mqtt":                   
-                filewriter.writerow(['Datum', 'Kanal', 'Nachricht'])
+                filewriter.writerow(['Timestamp', 'Channel', 'Message'])
             if filename == "log_system":                   
-                filewriter.writerow(['Datum', 'Typ', 'Beschreibung'])                
+                filewriter.writerow(['Timestamp', 'Type', 'Description'])                
+            
             csvfile.close()
-        return ""      
 
-    except:
-        return "Datei konnte nicht angelegt werden"
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " created")      
+
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: " + filename + " >>> " + str(e))  
 
         
 def RESET_LOGFILE(filename):
     if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
         os.remove (PATH + "/logs/" + filename + ".csv")
+
+        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
         
-    try:
-        CREATE_LOGFILE(filename)
-    except:
-        return "Datei konnte nicht erstellt werden"        
+    CREATE_LOGFILE(filename)
         
 
 def WRITE_LOGFILE_MQTT(channel, msg):
@@ -204,9 +224,9 @@ def WRITE_LOGFILE_MQTT(channel, msg):
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
             csvfile.close()
-        return ""          
-    except:
-        return "Auf die Datei konnte nicht zugegriffen werden"
+      
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: log_mqtt  >>> " + str(e))
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
@@ -221,6 +241,23 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
             csvfile.close()
-        return ""          
-    except:
-        return "Auf die Datei konnte nicht zugegriffen werden"
+       
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: log_system  >>> " + str(e))
+        
+    
+def GET_LOGFILE_SYSTEM():   
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
+        with open(file, 'r', newline='') as csvfile:
+            rowReader = csv.reader(csvfile, delimiter=',')
+
+            data = [row for row in rowReader] # get data
+            headers = data.pop(0)             # get headers and remove from data
+            data_reversed = data[::-1]        # reverse the data
+
+            return data_reversed[0:30]
+     
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File: log_system  >>> " + str(e))          

@@ -648,25 +648,6 @@ def dashboard_led_programs():
     error_message = ""
     program_delete = ""
     
-    if request.method == "GET": 
-        # update programs, i = program ID
-        for i in range(1,25):
-            update_Program = request.args.get("update_" + str(i))
-            if update_Program is not None:
-                UPDATE_PROGRAM(i, update_Program)
-        # start program
-        for i in range(1,25):
-            start_Program = request.args.get("start_" + str(i))
-            if start_Program is not None:
-                led_update = START_PROGRAM(i)
-        # get rgb values
-        for i in range(1,25):
-            get_rgb = request.args.get("get_rgb_" + str(i)) 
-            if get_rgb is not None:
-                rgb = get_rgb               
-                program = GET_PROGRAM_ID(i)        
-    
-    
     if request.method == 'POST':
         if request.form.get("add_program") is not None:    
             # create a new program
@@ -685,15 +666,41 @@ def dashboard_led_programs():
                     program_delete = ""
                 else:
                     program_delete = program
-    
-        if request.form.get("change_settings_name") is not None: 
-            # rename program
-            for i in range(1,25):
+                    
+        # i = program ID
+        for i in range(1,25):  
+            
+            if (request.form.get("color_" + str(i)) is not None or
+                request.form.get("update_" + str(i)) is not None or
+                request.form.get("start_" + str(i)) is not None or
+                request.form.get("change_name_" + str(i)) is not None):
+                    
+                # update programs
+                update_Program = request.form.get("update_" + str(i))
+                if update_Program is not None:
+                    UPDATE_PROGRAM(i, update_Program)
+                # start program
+                start_Program = request.form.get("start_" + str(i))
+                if start_Program is not None:
+                    led_update = START_PROGRAM(i)
+                # get rgb values
+                get_rgb = request.form.get("get_rgb_" + str(i)) 
+                if get_rgb is not None:
+                    rgb = get_rgb               
+                    program = GET_PROGRAM_ID(i)   
+                # change program name                    
                 program_name = request.form.get("program_name_" + str(i)) 
                 if program_name is not None:
                     SET_PROGRAM_NAME(i, program_name)              
                     program = GET_PROGRAM_ID(i)  
-                    
+                
+                program = GET_PROGRAM_ID(i)
+                if "SUNRISE" in program.name:
+                    program_delete = ""
+                else:
+                    program_delete = program
+                
+                
         if request.form.get("delete_program") is not None:     
             # delete the selected program
             delete_Program = request.form.get("delete_program") 
@@ -728,4 +735,4 @@ def get_media(filename):
         PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
         return send_from_directory(PATH_CSS, filename)
     except Exception as e:
-        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED: " + str(e))

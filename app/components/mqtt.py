@@ -3,7 +3,7 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOGFILE_MQTT
+from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOGFILE_MQTT, WRITE_LOGFILE_SYSTEM
 
 
 BROKER_ADDRESS = "localhost"
@@ -50,6 +50,7 @@ def MQTT_START():
 	client.connect(BROKER_ADDRESS)
 	 
 	print("Connected to MQTT Broker: " + BROKER_ADDRESS)
+	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT: " + BROKER_ADDRESS + " connected") 
 	 
 	client.loop_forever()
 

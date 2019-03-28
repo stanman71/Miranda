@@ -97,11 +97,15 @@
                 <th scope="col">Beschreibung</th> 
               </thead>
               <tbody> 
-                {% for entry in log_list %}
+                {% for entry in data_log_system %}
                 <tr>
-                  <td>{{ entry.time }}</td> 
-                  <td>{{ entry.type }}</td>                   
-                  <td>{{ entry.description }}</td>  
+                  <td>{{ entry[0] }}</td> 
+                  <td>
+                    {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
+                    {% if entry[1] == "WARNING" %} <font color="yellow">{{ entry[1] }} </font> {% endif %}
+                    {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
+                  </td>                   
+                  <td>{{ entry[2] }}</td>  
                 </tr>
                 {% endfor %} 
               </tbody>

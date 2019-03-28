@@ -60,6 +60,8 @@ def dashboard_sensordata():
                     sensor_id = request.form.get("set_sensor_" + str(i))    
                     SET_SENSORDATA_JOB_SENSOR(i, sensor_id) 
 
+                    sensordata_job = GET_SENSORDATA_JOB(id)
+
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
     sensordata_list = GET_ALL_SENSORDATA_JOBS()
     file_list = GET_SENSORDATA_FILES()
@@ -83,7 +85,7 @@ def dashboard_sensordata():
 @login_required
 @superuser_required
 def remove_sensordata_job(id):
-    DELETE_SENSORDATA_JOB(id)
+    DELETE_SENSORDATA_JOB(id)  
     return redirect(url_for('dashboard_sensordata'))
 
 
@@ -98,7 +100,7 @@ def download_sensordata_file(filepath):
         path = GET_PATH() + "/csv/"     
         return send_from_directory(path, filepath)
     except Exception as e:
-        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "Sensordata_File: " + filepath + ", " + e) 
 
 
 # delete sensordata file

@@ -131,6 +131,8 @@
 
 <!-- instructions -->
 
+<section id="rgb_color"></section>  
+
           {% if program != "" %}  
 
           <table class="table">
@@ -158,12 +160,11 @@
             </tbody>
           </table>
 
-<!-- get rgb values -->
-<!-- GET area includes get_rgb, update, start -->
+<!-- get rgb value -->
  
-        <form method="GET" class="verticalform">
+        <form method="POST" class="verticalform">
           <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
-          <input type="submit" class="btn btn-secondary" value="RGB-Werte ermitteln" />  
+          <input type="submit" onclick="window.location.href='/dashboard/led/programs#rgb_color'"class="btn btn-secondary" name="color_{{ program.id }}" value="RGB-Werte ermitteln" />  
           <br>
           <br>
           <div class="form-group">
@@ -172,7 +173,7 @@
 
 <!-- update a program -->
 
-          <section id="update_program"></section> 
+<section id="update_program"></section> 
 
           <div class="form-group">
             <br> 
@@ -182,7 +183,7 @@
             <br>          
             <textarea class="form-control" name="update_{{ program.id }}" rows="20">{{ program.content }}</textarea>
           </div> 
-            <input type="submit" class="btn btn-secondary" value="Programm speichern" />
+            <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" name="update_{{ program.id }}" value="Programm speichern" />
             <br>
         </div>
       </div> 
@@ -199,6 +200,8 @@
 
 <!-- rename a program -->
 
+<section id="rename_program"></section> 
+
       {% if program_delete != "" %}  
 
       <div class="panel panel-default">
@@ -207,7 +210,7 @@
             <div class="form-group">
               <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-secondary" name="change_settings_name" value="Name ändern" />
+              <input type="submit" onclick="window.location.href='/dashboard/led/programs#rename_program'" class="btn btn-secondary" name="change_name_{{ program.id }}" value="Name ändern" />
               <br>
           </form>  
 
@@ -215,7 +218,7 @@
 
           <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
-              <input type="submit" class="btn btn-danger text-right" name="delete_program" value="{{ program.name }} löschen">
+              <input type="submit" onclick="window.location.href='/dashboard/led/programs#'" class="btn btn-danger text-right" name="delete_program" value="{{ program.name }} löschen">
             </form>
           </div> 
         </div>

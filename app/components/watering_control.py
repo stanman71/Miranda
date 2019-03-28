@@ -4,6 +4,7 @@ import time
 from app import app
 from app.database.database import *
 from app.components.mqtt import MQTT_PUBLISH
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
 
 """ ################ """
@@ -52,7 +53,7 @@ def CHECK_MOISTURE():
             # abort process, error message
             if not 350 < moisture_current < 900:
                 RESET_PLANT_MOISTURE_CURRENT(plant.id)
-                return "sensor_error"         
+                WRITE_LOGFILE_SYSTEM("ERROR", "Sensor: " + plant.mqtt_device + ", Sensor " + str(plant.sensor_id))     
             
         else:
             moisture = moisture_current - moisture_target
@@ -62,7 +63,7 @@ def CHECK_MOISTURE():
                 new_watervolume = plant.watervolume + 40
                 
                 if moisture > 100:
-                    print ("Fehler")
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Plant: " + plant.name + " has not enough water") 
                 
             elif moisture > 25:
                 new_watervolume = plant.watervolume + 20
@@ -72,13 +73,13 @@ def CHECK_MOISTURE():
                 new_watervolume = plant.watervolume - 40
                 
                 if moisture < -100:
-                    print ("Fehler")
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Plant: " + plant.name + " has too much water") 
                 
             elif moisture < -25:
                 new_watervolume = plant.watervolume - 20
                 
             else:
-                return "sensor_error" 
+                WRITE_LOGFILE_SYSTEM("ERROR", "Sensor: " + plant.mqtt_device + ", Sensor " + str(plant.sensor_id))  
 
             if new_watervolume < 0:
                 new_watervolume = 0
@@ -124,8 +125,9 @@ def START_WATERING_THREAD():
             print("alle Pumpen ausgeschaltet")
 
             time.sleep(600)          
-            CHECK_MOISTURE()     
-            print("Sensoren überprüft")
+            CHECK_MOISTURE()    
+             
+            WRITE_LOGFILE_SYSTEM("EVENT", "Watering finished") 
 
     # start thread
     t1 = watering_Thread()

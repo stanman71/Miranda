@@ -1,16 +1,5 @@
-Datum,Kanal,Nachricht
-2019-03-28 11:32:03,/SmartHome/watering_array_v4/device,
-2019-03-28 11:32:03,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
-2019-03-28 11:42:59,/SmartHome/watering_array_v4/device,
-2019-03-28 11:42:59,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
-2019-03-28 12:00:00,/SmartHome/watering_array_v4/device,
-2019-03-28 12:00:00,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
-2019-03-28 12:00:00,/SmartHome/watering_array_v4/sensor/testfile,7
-2019-03-28 12:00:00,/SmartHome/data/sensor,testfile/631
-2019-03-28 12:48:33,/SmartHome/watering_array_v4/device,
-2019-03-28 12:48:33,/SmartHome/44/device,
-2019-03-28 12:48:33,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
-2019-03-28 13:00:00,/SmartHome/watering_array_v4/device,
-2019-03-28 13:00:00,/SmartHome/watering_array_v4/sensor/testfile,7
-2019-03-28 13:00:00,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
-2019-03-28 13:00:00,/SmartHome/data/sensor,testfile/632
+Timestamp,Channel,Message
+2019-03-28 18:00:00,/SmartHome/watering_array_v4/device,
+2019-03-28 18:00:00,/SmartHome/watering_array_v4/deviceinformation,watering_array_v4/8/4
+2019-03-28 18:00:00,/SmartHome/watering_array_v4/sensor/testfile,7
+2019-03-28 18:00:00,/SmartHome/data/sensor,testfile/625

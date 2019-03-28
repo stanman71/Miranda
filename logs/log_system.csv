@@ -1,1 +1,27 @@
-Datum,Typ,Beschreibung
+Timestamp,Type,Description
+2019-03-28 17:33:02,WARNING,File: log_system created
+2019-03-28 17:33:02,EVENT,MQTT: localhost connected
+2019-03-28 17:33:49,EVENT,MQTT: localhost connected
+2019-03-28 17:33:51,ERROR,|File: log_system >>> I/O operation on closed file.|
+2019-03-28 17:38:00,ERROR,|File: log_system >>> I/O operation on closed file.|
+2019-03-28 17:40:07,EVENT,MQTT: localhost connected
+2019-03-28 17:40:53,EVENT,MQTT: localhost connected
+2019-03-28 17:44:36,EVENT,MQTT: localhost connected
+2019-03-28 17:44:39,ERROR,|File: log_system  >>>  'list' object has no attribute 'strip'|
+2019-03-28 17:44:43,ERROR,|File: log_system  >>>  'list' object has no attribute 'strip'|
+2019-03-28 17:47:12,EVENT,MQTT: localhost connected
+2019-03-28 17:47:19,ERROR,|File: log_system  >>>  name 'reversed_blocks' is not defined|
+2019-03-28 17:50:17,EVENT,MQTT: localhost connected
+2019-03-28 17:50:53,EVENT,MQTT: localhost connected
+2019-03-28 17:55:38,EVENT,MQTT: localhost connected
+2019-03-28 17:57:41,EVENT,MQTT: localhost connected
+2019-03-28 18:00:00,EVENT,Task: MQTT-Devices aktuallisieren started
+2019-03-28 18:00:00,EVENT,Task: test started
+2019-03-28 18:00:00,EVENT,File: log_mqtt created
+2019-03-28 18:03:59,EVENT,Database_Backup saved
+2019-03-28 18:04:02,EVENT,File: 2019-03-28_smarthome.sqlite3 deleted
+2019-03-28 18:04:03,EVENT,Database_Backup saved
+2019-03-28 18:04:05,EVENT,File: 2019-03-25_smarthome.sqlite3 deleted
+2019-03-28 18:04:06,EVENT,File: 2019-03-26_smarthome.sqlite3 deleted
+2019-03-28 18:09:08,EVENT,MQTT: localhost connected
+2019-03-28 18:12:58,EVENT,MQTT: localhost connected

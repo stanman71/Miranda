@@ -61,7 +61,6 @@ def dashboard_plants():
                 if request.form.get("set_moisture_" + str(i)):
                     moisture_percent = request.form.get("set_moisture_" + str(i))    
                     SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
-
                 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()  
     dropdown_list_watervolume = [50, 100, 150, 200, 250]
