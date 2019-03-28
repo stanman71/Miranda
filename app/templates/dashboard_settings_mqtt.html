@@ -94,23 +94,23 @@
           <div class="panel-body"> 
             <form method="GET">
             <div class="text-center">         
-              <h5><b>MQTT-Device hinzufügen</b></h5>
+              <h5><b>MQTT Device hinzufügen</b></h5>
             </div>       
             <br>          
-            MQTT-Device Name     
+            MQTT Device Name     
             <br>
             <br>
             <div class="form-group">
               <input type="text" class="form-control" name="set_mqtt_device_name" value="{% if mqtt_device_name != None %}{{ mqtt_device_name }}{% endif %}" />
             </div>
-            MQTT-Device Kanal   
+            Kanal   
             <br>
             <br>   
             <div class="form-group">
               <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
             </div>
               <br>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" value="MQTT-Device hinzufügen" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" value="MQTT Device hinzufügen" />
             </form>   
           </div>  
         </div>  
@@ -120,12 +120,12 @@
 <section id="table"></section>
       
       <div class="panel panel-default">
-        <div class="panel-heading">MQTT Tabelle</div>
+        <div class="panel-heading">Übersicht</div>
           <div class="panel-body">       
           <table class="table">
             <thead>
-              <th scope="col">Name</th>                        
-              <th scope="col">Kanalpfad</th> 
+              <th scope="col">MQTT Device Name</th>                        
+              <th scope="col">Kanal</th> 
               <th scope="col">Modell</th>                        
               <th scope="col">Inputs</th> 
               <th scope="col">Outputs</th> 
@@ -145,11 +145,11 @@
               {% endfor %}
             </tbody>
           </table>  
-          <font color="red"><b>MQTT-Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
+          <font color="red"><b>MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
           <br>
           <br>
           <form method="POST">
-            <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-secondary" name="update_mqtt_devices" value="Einträge aktuallisieren" />
+            <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-secondary" name="update_mqtt_devices" value="Übersicht aktuallisieren" />
           </form>
         </div>  
       </div>  
@@ -159,12 +159,12 @@
 <section id="logfile"></section>
 
       <div class="panel panel-default">
-        <div class="panel-heading">MQTT Logdatei</div>
+        <div class="panel-heading">MQTT Log-Datei</div>
           <div class="panel-body">       
-            <a href="/dashboard/settings/mqtt/download/log_mqtt.csv?time={{ timestamp }}"><b>Log-Datei herunterladen</b></font></a>
+            <a href="/dashboard/settings/mqtt/download/log_mqtt.csv?time={{ timestamp }}"><b>MQTT Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
             <form method="GET" enctype="multipart/form-data">
-              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="Log-Datei zurücksetzen">
+              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="MQTT Log-Datei zurücksetzen">
             </form>
           </div>        
         </div>  

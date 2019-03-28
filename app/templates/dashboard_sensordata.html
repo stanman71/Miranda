@@ -79,7 +79,7 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
                   </div>
-                  MQTT_Device 
+                  MQTT Device 
                   <br>
                   <br>
                   <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
@@ -102,14 +102,14 @@
 <section id="table_jobs"></section>   
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black">Jobs Tabelle</font></div>        
+          <div class="panel-heading"><font color="black">Jobs</font></div>        
           <div class="panel-body">     
           <table class="table">
             <thead>
               <th scope="col">Job-ID</th>  
               <th scope="col">Name</th>  
               <th scope="col">Dateiname</th>   
-              <th scope="col">MQTT-Device</th>
+              <th scope="col">MQTT Device</th>
               <th scope="col">Sensor</th>
               <th scope="col" colspan="2">Einstellungen: Sensor</th>
             </thead>
@@ -130,7 +130,7 @@
                     </select>   
                     </td>
                     <td>
-                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" value="Wert aktuallisieren"/>             
+                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" value="aktuallisieren"/>             
                   </form>
                 </td>               
                 <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
@@ -149,9 +149,6 @@
         <div class="panel-heading">Datein</div>
           <div class="panel-body">   
           <table class="table">
-              <thead>
-                <th scope="col">Datein</th>
-              </thead>
             <tbody> 
               {% for entry in file_list %}
               <tr>

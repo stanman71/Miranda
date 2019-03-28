@@ -66,7 +66,7 @@
                 <br>
                 <input type="text" class="form-control" name="set_name" value="" />
                 </div>
-                MQTT_Device / Wassermenge  
+                MQTT Device / Wassermenge  
                 <br>
                 <br>
                 <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device">
@@ -93,12 +93,12 @@
 <section id="table"></section>   
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black">Pflanzen</font></div>        
+          <div class="panel-heading">Pflanzen</div>        
           <div class="panel-body">     
           <table class="table">
             <thead>
               <th scope="col">Name</th>   
-              <th scope="col">MQTT-Device</th>    
+              <th scope="col">MQTT Device</th>    
               <th scope="col">Wasser (ml)</th>
               <th scope="col">Sensor</th>
               <th scope="col">Pumpe</th> 
@@ -132,9 +132,9 @@
                     <td>
                       <class="slidecontainer"> 
                         <div class="col-md-10 text-center"> 
-                          <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture }}" />
+                          <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
                           <br>
-                          <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-secondary" value="Werte aktuallisieren"/>
+                          <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-secondary" value="aktuallisieren"/>
                         </div> 
                   </form>
                 </td>

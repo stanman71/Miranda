@@ -85,7 +85,7 @@
             {% if scene_names_list[10].name != "" %}{{ scene_names_list[10].name }} ({{99}}){% else %}{{ 99 }}{% endif %}</a></li>   
         </ul>   
         <ul class="nav navbar-nav navbar-right">
-          <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Prgramme</a></li>   
+          <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Programme</a></li>   
         </ul>
       </div>
     </nav>
@@ -144,6 +144,7 @@
 <!-- scene settings -->
 
       <div class="panel panel-default">
+        <div class="panel-heading">Einstellungen</div>
         <div class="panel-body">
 
           {% if entries_scene != None %}  
