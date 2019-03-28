@@ -71,7 +71,7 @@
 <section id="logfile"></section>
 
       <div class="panel panel-default">
-        <div class="panel-heading">System Log-Datei</div>
+        <div class="panel-heading"><font color="black"><b>System Log</b></font></div>
           <div class="panel-body">       
             <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
@@ -102,7 +102,7 @@
                   <td>{{ entry[0] }}</td> 
                   <td>
                     {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
-                    {% if entry[1] == "WARNING" %} <font color="yellow">{{ entry[1] }} </font> {% endif %}
+                    {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                     {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
                   </td>                   
                   <td>{{ entry[2] }}</td>  
