@@ -59,9 +59,9 @@ def RESTORE_DATABASE(filename):
 def DELETE_DATABASE_BACKUP(filename):
     try:
         os.remove (PATH + '/backup/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filename + " >>> deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /backup/" + filename + " >>> deleted")
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /backup/" + filename + " >>> " + str(e))  
 
 
 """ ########## """
@@ -89,11 +89,11 @@ def CREATE_SENSORDATA_FILE(filename):
             filewriter.writerow(['Timestamp', 'Sensor_Value'])
             csvfile.close()
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filename + " >>> created") 
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + ".csv >>> created") 
         return "" 
             
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
 
 
 def WRITE_SENSORDATA_FILE(filename, value):
@@ -110,15 +110,15 @@ def WRITE_SENSORDATA_FILE(filename, value):
             csvfile.close()
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
 
 
 def DELETE_SENSORDATA_FILE(filename):
     try:
         os.remove (PATH + '/csv/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filename + " >>> deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + " >>> deleted")
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + " >>> " + str(e))  
 
 
 """ ####### """
@@ -143,10 +143,13 @@ def GET_ALL_HOTWORD_FILES():
         return file_list
 
 
-def GET_USED_HOTWORD_FILES():
+def GET_USED_HOTWORD_FILES(snowboy_tasks):
     file_list = []
-    for element in GET_ALL_SNOWBOY_TASKS():
-        file_list.append(PATH + "/app/snowboy/resources/" + element.name + ".pmdl")
+    exist_file_list = GET_ALL_HOTWORD_FILES()
+    
+    for element in snowboy_tasks:
+        if (element.name + ".pmdl") in exist_file_list:
+            file_list.append(PATH + "/app/snowboy/resources/" + element.name + ".pmdl")
         
     return file_list
 
@@ -164,7 +167,7 @@ def UPLOAD_HOTWORD_FILE(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error_message_fileupload = ""
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + file + " >>> uploaded")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/>>> " + file + ".pmdl >>> uploaded")  
     else:
         error_message_fileupload = "Ungültige Dateiendung"
 
@@ -175,8 +178,9 @@ def DELETE_HOTWORD_FILE(filename):
     try:
         os.remove (PATH + '/app/snowboy/resources/' + filename)
         WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/>>> " + filename + ".pmdl >>> deleted") 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/>>> " + filename + ".pmdl >>> " + str(e))  
 
 
 """ #### """
@@ -198,17 +202,17 @@ def CREATE_LOGFILE(filename):
             
             csvfile.close()
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filename + " >>> created")      
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /logs/" + filename + ".csv >>> created")      
 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filename + " >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/" + filename + ".csv >>> " + str(e))  
 
         
 def RESET_LOGFILE(filename):
     if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
         os.remove (PATH + "/logs/" + filename + ".csv")
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filename + " >>> deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /logs/" + filename + ".csv >>> deleted")
         
     CREATE_LOGFILE(filename)
         
@@ -227,7 +231,7 @@ def WRITE_LOGFILE_MQTT(channel, msg):
             csvfile.close()
       
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> log_mqtt >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_mqtt.csv >>> " + str(e))
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
@@ -244,7 +248,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
             csvfile.close()
        
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> log_system >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))
         
     
 def GET_LOGFILE_SYSTEM():   
@@ -260,4 +264,4 @@ def GET_LOGFILE_SYSTEM():
             return data_reversed[0:30]
      
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> log_system >>> " + str(e))          
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))          

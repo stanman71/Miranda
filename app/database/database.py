@@ -5,6 +5,7 @@ import re
 import time
 
 from app import app
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/smarthome.sqlite3'
 db = SQLAlchemy(app)
@@ -417,6 +418,9 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
                         )
                     db.session.add(sensordata_job)
                     db.session.commit()
+                    
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Ssensordata Job >>> " + name + " >>> added")                    
+                    
                     return ""
 
         else:
@@ -433,6 +437,9 @@ def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):
 
 
 def DELETE_SENSORDATA_JOB(id):
+    entry = GET_SENSORDATA_JOB(id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Ssensordata Job >>> " + entry.name + " >>> deleted")
+ 
     Sensordata_Jobs.query.filter_by(id=id).delete()
     db.session.commit()
 
@@ -478,6 +485,9 @@ def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, la
                             )
                     db.session.add(device)
                     db.session.commit()
+                    
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added")                   
+                    
                     return ""
                     
         else:
@@ -508,6 +518,9 @@ def DELETE_MQTT_DEVICE(id):
     elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
         return "MQTT-Device wird in Sensordaten_Jobs verwendet"       
     else:
+        entry = GET_MQTT_DEVICE(id)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
+ 
         MQTT_Devices.query.filter_by(id=id).delete()
         db.session.commit() 
         return "MQTT-Device gelöscht"
@@ -532,6 +545,10 @@ def GET_SNOWBOY_TASK(name):
     return Snowboy_Tasks.query.filter_by(name=name).first()
 
 
+def GET_SNOWBOY_TASK_ID(id):
+    return Snowboy_Tasks.query.filter_by(id=id).first()
+
+
 def GET_ALL_SNOWBOY_TASKS():
     return Snowboy_Tasks.query.all()
 
@@ -553,12 +570,19 @@ def ADD_SNOWBOY_TASK(name, task):
                     )
                 db.session.add(task)
                 db.session.commit()
+  
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + name + " >>> added") 
+  
                 return ""
     else:
         return "Name bereits vergeben"
 
 
 def DELETE_SNOWBOY_TASK(task_id):
+    entry = GET_SNOWBOY_TASK_ID(task_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + entry.name + " >>> deleted")    
+    
+    
     Snowboy_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
@@ -584,14 +608,21 @@ def ADD_USER(user_name, email, password):
     db.session.add(new_user)
     db.session.commit()
 
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + user_name + " >>> added") 
+
 
 def ACTIVATE_USER(user_id):
     entry = User.query.get(user_id)
     entry.role = "superuser"
     db.session.commit()
 
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> activated") 
+
 
 def DELETE_USER(user_id):
+    entry = GET_USER_BY_ID(user_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
+    
     User.query.filter_by(id=user_id).delete()
     db.session.commit()
 
@@ -608,6 +639,10 @@ def GET_EMAIL(email):
 
 def GET_TASKMANAGEMENT_TIME_TASK(name):
     return Taskmanagement_Time.query.filter_by(name=name).first()
+
+
+def GET_TASKMANAGEMENT_TIME_TASK_ID(id):
+    return Taskmanagement_Time.query.filter_by(id=id).first()
 
 
 def GET_ALL_TASKMANAGEMENT_TIME_TASKS():
@@ -635,12 +670,18 @@ def ADD_TASKMANAGEMENT_TIME_TASK(name, day, hour, minute, task, repeat):
                     )
                 db.session.add(task)
                 db.session.commit()
+                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Time) >>> " + name + " >>> added")                
+                
                 return ""
     else:
         return "Name bereits vergeben"
 
 
 def DELETE_TASKMANAGEMENT_TIME_TASK(task_id):
+    entry = GET_TASKMANAGEMENT_TIME_TASK_ID(task_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Time) >>> " + entry.name + " >>> deleted")    
+    
     Taskmanagement_Time.query.filter_by(id=task_id).delete()
     db.session.commit()
 
@@ -648,6 +689,10 @@ def DELETE_TASKMANAGEMENT_TIME_TASK(task_id):
 def GET_TASKMANAGEMENT_SENSOR_TASK(name):
     return Taskmanagement_Sensor.query.filter_by(name=name).first()
 
+
+def GET_TASKMANAGEMENT_SENSOR_TASK_ID(id):
+    return Taskmanagement_Sensor.query.filter_by(id=id).first()
+    
 
 def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
     return Taskmanagement_Sensor.query.all()
@@ -672,6 +717,9 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, mqtt_device_id, task, repeat):
                     )
                 db.session.add(task)
                 db.session.commit()
+                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + name + " >>> added")               
+                
                 return ""
     else:
         return "Name bereits vergeben"
@@ -684,6 +732,9 @@ def SET_TASKMANAGEMENT_SENSOR_SENSOR(id, sensor_id):
 
 
 def DELETE_TASKMANAGEMENT_SENSOR_TASK(task_id):
+    entry = GET_TASKMANAGEMENT_SENSOR_TASK_ID(task_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + entry.name + " >>> deleted")    
+    
     Taskmanagement_Sensor.query.filter_by(id=task_id).delete()
     db.session.commit()
 
@@ -720,6 +771,9 @@ def ADD_PLANT(name, mqtt_device_id, watervolume):
                     )
                 db.session.add(plant)
                 db.session.commit()
+                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + name + " >>> added")               
+                
                 return ""
 
     else:
@@ -762,6 +816,9 @@ def RESET_PLANT_MOISTURE_CURRENT(plant_id):
 
 
 def DELETE_PLANT(plant_id):
+    entry = GET_PLANT(plant_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + entry.name + " >>> deleted")   
+    
     Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
 
@@ -1260,4 +1317,4 @@ def UPDATE_PROGRAM(id, content):
 
 def DELETE_PROGRAM(name):
     Programs.query.filter_by(name=name).delete()
-    db.session.commit()
+    db.session.commit() 

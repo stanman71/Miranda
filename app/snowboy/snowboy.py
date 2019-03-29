@@ -2,7 +2,7 @@ from app import app
 
 from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
-from app.database.database import *
+from app.database.database import GET_SNOWBOY_SENSITIVITY, GET_ALL_SNOWBOY_TASKS
 from app.components.tasks import SNOWBOY_TASKS
 from app.components.file_management import GET_USED_HOTWORD_FILES, WRITE_LOGFILE_SYSTEM
 
@@ -25,7 +25,7 @@ def SNOWBOY_START():
    signal.signal(signal.SIGINT, signal_handler)
 
    # voice models here:
-   models = GET_USED_HOTWORD_FILES()
+   models = GET_USED_HOTWORD_FILES(GET_ALL_SNOWBOY_TASKS())
 
    sensitivity_value = int(GET_SNOWBOY_SENSITIVITY()) / 100
 
@@ -55,7 +55,7 @@ def SNOWBOY_START():
                     lambda: SNOWBOY_TASKS(GET_ALL_SNOWBOY_TASKS()[19])]
 
    callbacks = callback_list[:len(GET_ALL_SNOWBOY_TASKS())]
-         
+
    print('Listening...')
    WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy >>> started") 
         

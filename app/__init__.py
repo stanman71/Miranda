@@ -71,6 +71,7 @@ if GET_SETTING_VALUE("mqtt") == "True":
 
 # start snowboy
 if GET_SETTING_VALUE("snowboy") == "True":
+    
     try:
         from app.snowboy.snowboy import SNOWBOY_START
 
