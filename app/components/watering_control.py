@@ -116,8 +116,6 @@ def START_WATERING_THREAD():
             i = 0
             pump_running = 0
 
-            """
-
             for plant in GET_ALL_PLANTS():
                 START_PUMP(plant.mqtt_device.channel_path, plant.pump_id)
                 WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Start Pump " + str(plant.pump_id))            
@@ -139,8 +137,6 @@ def START_WATERING_THREAD():
             WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Stopped all Pumps") 
 
             time.sleep(600) 
-
-            """
 
             for plant in GET_ALL_PLANTS():          
                 CHECK_MOISTURE(plant)    
