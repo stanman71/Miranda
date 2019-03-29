@@ -167,7 +167,7 @@ def UPLOAD_HOTWORD_FILE(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error_message_fileupload = ""
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/>>> " + file + ".pmdl >>> uploaded")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/>>> " + str(file) + ".pmdl >>> uploaded")  
     else:
         error_message_fileupload = "Ungültige Dateiendung"
 

@@ -34,3 +34,174 @@ Timestamp,Type,Description
 2019-03-29 15:52:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-03-29 15:52:39,EVENT,Snowboy >>> started
 2019-03-29 15:52:45,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 15:54:43,EVENT,MQTT >>> started
+2019-03-29 15:54:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 15:54:44,EVENT,Snowboy >>> started
+2019-03-29 15:56:01,EVENT,File >>> Sensordata >>> testfile.csv >>> downloaded
+2019-03-29 16:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-03-29 16:00:00,EVENT,Task >>> test >>> started
+2019-03-29 16:00:46,EVENT,MQTT >>> started
+2019-03-29 16:00:46,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 16:00:46,EVENT,Snowboy >>> started
+2019-03-29 16:01:06,EVENT,File >>> /logs/log_system.csv >>> downloaded
+2019-03-29 16:01:15,EVENT,File >>> /csv/testfile.csv >>> downloaded
+2019-03-29 16:03:32,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:12:40,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 16:19:19,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 16:19:46,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:27:05,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:28:12,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:28:58,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 16:29:35,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:43:32,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 16:44:00,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 16:44:21,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 16:44:23,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:45:33,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 16:51:10,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-03-29 17:00:00,EVENT,Task >>> test >>> started
+2019-03-29 17:03:47,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:09:09,EVENT,MQTT >>> started
+2019-03-29 17:09:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:09:09,EVENT,Snowboy >>> started
+2019-03-29 17:20:07,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:20:18,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:20:28,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:20:30,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:20:40,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:20:42,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:20:49,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:20:58,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:24:53,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:24:59,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:25:04,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:25:35,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:25:44,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:26:18,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:26:22,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:26:25,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:26:33,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:27:05,EVENT,File: relax.pmdl deleted
+2019-03-29 17:27:05,ERROR,File >>> /app/snowboy/resources/>>> relax.pmdl.pmdl >>> deleted
+2019-03-29 17:27:06,EVENT,File: warmweiss.pmdl deleted
+2019-03-29 17:27:06,ERROR,File >>> /app/snowboy/resources/>>> warmweiss.pmdl.pmdl >>> deleted
+2019-03-29 17:27:08,EVENT,File: ausschalten.pmdl deleted
+2019-03-29 17:27:08,ERROR,File >>> /app/snowboy/resources/>>> ausschalten.pmdl.pmdl >>> deleted
+2019-03-29 17:27:09,EVENT,File: mediterran.pmdl deleted
+2019-03-29 17:27:09,ERROR,File >>> /app/snowboy/resources/>>> mediterran.pmdl.pmdl >>> deleted
+2019-03-29 17:27:16,EVENT,Database >>> Snowboy Task >>> warmweiss >>> deleted
+2019-03-29 17:27:17,EVENT,Database >>> Snowboy Task >>> mediterran >>> deleted
+2019-03-29 17:27:18,EVENT,Database >>> Snowboy Task >>> ausschalten >>> deleted
+2019-03-29 17:27:19,EVENT,Database >>> Snowboy Task >>> relax >>> deleted
+2019-03-29 17:28:27,EVENT,MQTT >>> started
+2019-03-29 17:28:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:28:28,EVENT,Snowboy >>> started
+2019-03-29 17:29:37,EVENT,MQTT >>> started
+2019-03-29 17:29:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:29:37,EVENT,Snowboy >>> started
+2019-03-29 17:29:47,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'starte_mediteran.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:29:55,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'starte_relax.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:30:02,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'starte_warmweiß.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:30:06,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'starte_warmweiß.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:30:13,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'good_night.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:30:53,EVENT,Database >>> Snowboy Task >>> starte_relax >>> added
+2019-03-29 17:31:12,EVENT,Database >>> Snowboy Task >>> good_night >>> added
+2019-03-29 17:31:22,EVENT,File: starte_warmwei.pmdl deleted
+2019-03-29 17:31:22,ERROR,File >>> /app/snowboy/resources/>>> starte_warmwei.pmdl.pmdl >>> deleted
+2019-03-29 17:31:36,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'starte_warmweiss.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:32:23,EVENT,Database >>> Snowboy Task >>> starte_warmweiss >>> added
+2019-03-29 17:32:42,EVENT,Database >>> Snowboy Task >>> starte_mediteran >>> added
+2019-03-29 17:34:25,EVENT,MQTT >>> started
+2019-03-29 17:34:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:34:25,EVENT,Snowboy >>> started
+2019-03-29 17:34:59,EVENT,MQTT >>> started
+2019-03-29 17:34:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:34:59,EVENT,Snowboy >>> started
+2019-03-29 17:35:53,EVENT,MQTT >>> started
+2019-03-29 17:35:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:35:53,EVENT,Snowboy >>> started
+2019-03-29 17:36:25,EVENT,MQTT >>> started
+2019-03-29 17:36:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:36:26,EVENT,Snowboy >>> started
+2019-03-29 17:36:53,EVENT,MQTT >>> started
+2019-03-29 17:36:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:36:53,EVENT,Snowboy >>> started
+2019-03-29 17:37:06,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:37:10,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:37:16,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:37:50,EVENT,MQTT >>> started
+2019-03-29 17:37:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:37:50,EVENT,Snowboy >>> started
+2019-03-29 17:37:52,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:38:16,EVENT,MQTT >>> started
+2019-03-29 17:38:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:38:16,EVENT,Snowboy >>> started
+2019-03-29 17:38:18,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:38:26,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:38:28,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:38:32,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:38:34,EVENT,Snowboy >>> Detection >>> start_scene:7:75
+2019-03-29 17:38:36,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:38:38,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 17:38:57,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:39:00,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:39:08,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:39:13,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:39:15,EVENT,Snowboy >>> Detection >>> start_scene:7:75
+2019-03-29 17:39:24,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:39:26,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:39:47,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:39:53,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:40:00,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:41:25,EVENT,MQTT >>> started
+2019-03-29 17:41:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:41:26,EVENT,Snowboy >>> started
+2019-03-29 17:41:28,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:41:30,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:41:39,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:41:43,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:41:45,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:41:53,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:41:55,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-03-29 17:46:42,EVENT,File: ausschalten.pmdl deleted
+2019-03-29 17:46:42,ERROR,File >>> /app/snowboy/resources/>>> ausschalten.pmdl.pmdl >>> deleted
+2019-03-29 17:46:51,EVENT,MQTT >>> started
+2019-03-29 17:46:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:46:51,EVENT,Snowboy >>> started
+2019-03-29 17:46:51,ERROR,Snowboy >>> Error: hotwords in your models (4) do not match the number of callbacks (5)
+2019-03-29 17:47:56,EVENT,Database >>> Snowboy Task >>> ausschalten >>> deleted
+2019-03-29 17:48:05,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'zapfenstreich.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:48:15,EVENT,Database >>> Snowboy Task >>> zapfenstreich >>> added
+2019-03-29 17:48:21,EVENT,Database >>> Snowboy Task >>> warmweiss >>> deleted
+2019-03-29 17:48:23,EVENT,File: warmweiss.pmdl deleted
+2019-03-29 17:48:23,ERROR,File >>> /app/snowboy/resources/>>> warmweiss.pmdl.pmdl >>> deleted
+2019-03-29 17:48:30,EVENT,File >>> /app/snowboy/resources/>>> <FileStorage: 'standart.pmdl' ('application/octet-stream')>.pmdl >>> uploaded
+2019-03-29 17:48:41,EVENT,Database >>> Snowboy Task >>> standart >>> added
+2019-03-29 17:48:56,EVENT,MQTT >>> started
+2019-03-29 17:48:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:48:56,EVENT,Snowboy >>> started
+2019-03-29 17:48:58,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:49:03,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:49:05,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 17:49:37,EVENT,MQTT >>> started
+2019-03-29 17:49:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:49:37,EVENT,Snowboy >>> started
+2019-03-29 17:49:44,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:49:49,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:49:55,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:50:01,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:50:03,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:50:06,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:50:12,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:50:17,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:51:52,EVENT,MQTT >>> started
+2019-03-29 17:51:52,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 17:51:52,EVENT,Snowboy >>> started
+2019-03-29 17:51:55,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:51:56,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-03-29 17:52:00,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:52:05,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:52:07,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-03-29 17:52:10,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 17:52:12,EVENT,Snowboy >>> Detection >>> led_off:1
