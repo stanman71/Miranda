@@ -105,7 +105,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String STR_value = String(sensorValue);
 
         // create msg   
-        String payload = STR_plant_id + "/" + STR_value;      
+        String payload = STR_value;      
         char attributes[100];
         payload.toCharArray( msg, 100 );
 

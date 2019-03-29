@@ -40,12 +40,14 @@ def SNOWBOY_TASKS(entry):
    
    global snowboy_detect_on
    
+   WRITE_LOGFILE_SYSTEM("EVENT", 'Snowboy >>> Detection >>> ' + str(entry.task))
+   
    # activate command mode
    if "snowboy_active" in entry.task:
       snowboy_detect_on = True
       PIXEL_RING_CONTROL("on")
 
-      # set snowboy_detect_on to False after 5 seconds
+      # set snowboy_detect_on to False after 1 second
       class waiter(Thread):
          def run(self):
             global detect
@@ -98,7 +100,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             if entry.minute == minute or entry.minute == "*":
                print(entry.name)
 
-               WRITE_LOGFILE_SYSTEM("EVENT", "Task: '" + entry.name + "' started") 
+               WRITE_LOGFILE_SYSTEM("EVENT", 'Task >>> ' + entry.name + ' >>> started') 
 
                # start scene
                if "start_scene" in entry.task:

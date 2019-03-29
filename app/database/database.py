@@ -95,8 +95,7 @@ class Plants(db.Model):
     pump_id          = db.Column(db.Integer)
     sensor_id        = db.Column(db.Integer)
     moisture_percent = db.Column(db.Integer) 
-    moisture_target  = db.Column(db.Integer) 
-    moisture_current = db.Column(db.Integer)     
+    moisture_target  = db.Column(db.Integer)     
 
 class LED(db.Model):
     __tablename__ = 'led'
@@ -725,12 +724,6 @@ def ADD_PLANT(name, mqtt_device_id, watervolume):
 
     else:
         return "Name bereits vergeben"
-
-
-def SET_PLANT_MOISTURE_CURRENT(plant_id, moisture_value):
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_current = moisture_value
-    db.session.commit()      
 
 
 def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    

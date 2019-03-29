@@ -8,6 +8,17 @@ from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOGFILE_
 
 BROKER_ADDRESS = "localhost"
 
+moisture_current = 0
+
+def SET_MOISTURE_CURRENT(value):
+	global moisture_current
+	moisture_current = value
+
+def GET_MOISTURE_CURRENT():
+	global moisture_current
+	return moisture_current
+	
+
 def MQTT_START():
  
 	def on_message(client, userdata, message):
@@ -31,9 +42,8 @@ def MQTT_START():
 
 		# get current moisture value	
 		if channel_path == "data" and channel_content == "plant":
-			msg = msg.split("/")
-			SET_PLANT_MOISTURE_CURRENT(int(msg[0]), int(msg[1]))
-			
+			SET_MOISTURE_CURRENT(int(msg))
+					
 		# write sensor data	
 		if channel_path == "data" and channel_content == "sensor":
 			msg = msg.split("/")
@@ -50,7 +60,8 @@ def MQTT_START():
 	client.connect(BROKER_ADDRESS)
 	 
 	print("Connected to MQTT Broker: " + BROKER_ADDRESS)
-	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT: " + BROKER_ADDRESS + " connected") 
+	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT >>> started") 
+	WRITE_LOGFILE_SYSTEM("EVENT", 'MQTT >>> Broker ' + BROKER_ADDRESS + ' >>> connected') 
 	 
 	client.loop_forever()
 

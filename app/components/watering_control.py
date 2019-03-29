@@ -5,6 +5,7 @@ from app import app
 from app.database.database import *
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.mqtt import SET_MOISTURE_CURRENT, GET_MOISTURE_CURRENT
 
 
 """ ################ """
@@ -22,73 +23,82 @@ def START_PUMP(mqtt_device_channel, pump_id):
 def STOP_PUMP(mqtt_device_channel, pump_id):
     print("Stop: " + str(pump_id))
     channel = "/SmartHome/" + mqtt_device_channel + "/pump/" + str(pump_id)
-    MQTT_PUBLISH(channel, "off")
+    MQTT_PUBLISH(channel, "off") 
     time.sleep(1)
 
 
-def CHECK_MOISTURE():
-    for plant in GET_ALL_PLANTS():   
-        # send request message
-        channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
-        MQTT_PUBLISH(channel, str(plant.sensor_id))
+def UPDATE_CURRENT_MOISTURE(plant):
+    # send request message
+    channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
+    MQTT_PUBLISH(channel, str(plant.sensor_id))
+    time.sleep(3) 
 
-        time.sleep(10)
 
-        moisture_target  = plant.moisture_target 
-        moisture_current = plant.moisture_current
+def CHECK_MOISTURE(plant):
+    UPDATE_CURRENT_MOISTURE(plant)
+    
+    moisture_target  = plant.moisture_target
+    moisture_current = GET_MOISTURE_CURRENT()
+        
+    # check current moisture inside value range
+    # dry   = 870
+    # water = 370  
+ 
+    print("moisture_current: " + str(moisture_current))
+       
+    # repeat request message   
+    if not 350 < moisture_current < 900:
+        UPDATE_CURRENT_MOISTURE(plant)   
+        moisture_current = GET_MOISTURE_CURRENT()
+        
+        print("moisture_current: " + str(moisture_current))   
 
-        # check current moisture inside value range
-        # dry   = 870
-        # water = 370  
-             
-        if not 350 < moisture_current < 900:
-            # repeat request message
-            channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
-            MQTT_PUBLISH(channel, str(plant.sensor_id))
+    # abort process
+    if not 350 < moisture_current < 900:
+        SET_MOISTURE_CURRENT(0)
+        WRITE_LOGFILE_SYSTEM("ERROR", "Watering >>> Plant >>> " + plant.name + " >>> Sensor " + str(plant.sensor_id))     
+        
+    # update watervolume
+    if 350 < moisture_current < 900:
+        
+        moisture = moisture_current - moisture_target
+        
+        print(moisture)
+    
+        # not enough water
+        if moisture > 30:
+            new_watervolume = plant.watervolume + 40
+            
+            if moisture > 100:
+                WRITE_LOGFILE_SYSTEM("WARNING", "Watering >>> Plant >>> " + plant.name + " >>> has not enough water") 
+            
+        elif moisture > 0:
+            new_watervolume = plant.watervolume + 20
 
-            time.sleep(10)    
-
-            moisture_current = plant.moisture_current
-
-            # abort process, error message
-            if not 350 < moisture_current < 900:
-                RESET_PLANT_MOISTURE_CURRENT(plant.id)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Sensor: " + plant.mqtt_device + ", Sensor " + str(plant.sensor_id))     
+        # too much water
+        elif moisture < -30:
+            new_watervolume = plant.watervolume - 40
+            if new_watervolume < 0:
+                new_watervolume = 0              
+           
+            if moisture < -100:
+                WRITE_LOGFILE_SYSTEM("WARNING", "Watering >>> Plant >>> " + plant.name + " >>> has too much water") 
+            
+        elif moisture < 0:
+            new_watervolume = plant.watervolume - 20
+            if new_watervolume < 0:
+                new_watervolume = 0     
             
         else:
-            moisture = moisture_current - moisture_target
+            WRITE_LOGFILE_SYSTEM("ERROR", "Watering >>> Plant >>> " + plant.name + " >>> Sensor " + str(plant.sensor_id))  
 
-            # not enough water
-            if moisture > 50:
-                new_watervolume = plant.watervolume + 40
-                
-                if moisture > 100:
-                    WRITE_LOGFILE_SYSTEM("WARNING", "Plant: " + plant.name + " has not enough water") 
-                
-            elif moisture > 25:
-                new_watervolume = plant.watervolume + 20
+        # update database
+        SET_PLANT_WATERVOLUME(plant.id, new_watervolume) 
+    
+        SET_MOISTURE_CURRENT(0)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Plant >>> " + plant.name + " >>> new Watervolume " + str(new_watervolume))
 
-            # too much water
-            elif moisture < -50:
-                new_watervolume = plant.watervolume - 40
-                
-                if moisture < -100:
-                    WRITE_LOGFILE_SYSTEM("WARNING", "Plant: " + plant.name + " has too much water") 
-                
-            elif moisture < -25:
-                new_watervolume = plant.watervolume - 20
-                
-            else:
-                WRITE_LOGFILE_SYSTEM("ERROR", "Sensor: " + plant.mqtt_device + ", Sensor " + str(plant.sensor_id))  
 
-            if new_watervolume < 0:
-                new_watervolume = 0
-
-            # update database
-            SET_PLANT_WATERVOLUME(plant.id, new_watervolume) 
-            RESET_PLANT_MOISTURE_CURRENT(plant.id)
-
-  
 """ ######### """
 """ threading """
 """ ######### """
@@ -101,13 +111,16 @@ def START_WATERING_THREAD():
             self.name = name
 
         def run(self):
-            print("Start Pumpen")
+            WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Start Pumps") 
        
             i = 0
             pump_running = 0
 
+            """
+
             for plant in GET_ALL_PLANTS():
                 START_PUMP(plant.mqtt_device.channel_path, plant.pump_id)
+                WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Start Pump " + str(plant.pump_id))            
                 pump_running = pump_running + 1
 
             while pump_running != 0:
@@ -115,6 +128,7 @@ def START_WATERING_THREAD():
                 for plant in GET_ALL_PLANTS():
                     if i == plant.watervolume:
                         STOP_PUMP(plant.mqtt_device.channel_path, plant.pump_id) 
+                        WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Stop Pump " + str(plant.pump_id))                      
                         pump_running = pump_running - 1 
                 
                 # 10 ml / 15 sec
@@ -122,12 +136,16 @@ def START_WATERING_THREAD():
                 time.sleep(15)
                 print(i) 
 
-            print("alle Pumpen ausgeschaltet")
+            WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Stopped all Pumps") 
 
-            time.sleep(600)          
-            CHECK_MOISTURE()    
+            time.sleep(600) 
+
+            """
+
+            for plant in GET_ALL_PLANTS():          
+                CHECK_MOISTURE(plant)    
              
-            WRITE_LOGFILE_SYSTEM("EVENT", "Watering finished") 
+            WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> finished") 
 
     # start thread
     t1 = watering_Thread()

@@ -40,3 +40,467 @@ Timestamp,Type,Description
 2019-03-28 18:55:06,EVENT,MQTT: localhost connected
 2019-03-28 18:55:10,EVENT,File: watering_array_v4.csv deleted
 2019-03-28 18:55:18,EVENT,File: testfile created
+2019-03-28 18:57:15,EVENT,MQTT: localhost connected
+2019-03-28 19:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-28 19:00:00,EVENT,Task: 'test' started
+2019-03-28 19:04:42,EVENT,MQTT: localhost connected
+2019-03-28 19:05:14,EVENT,MQTT: localhost connected
+2019-03-28 19:05:38,EVENT,MQTT: localhost connected
+2019-03-28 19:07:40,EVENT,MQTT: localhost connected
+2019-03-28 19:10:38,EVENT,MQTT: localhost connected
+2019-03-28 20:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-28 20:00:00,EVENT,Task: 'test' started
+2019-03-28 20:24:53,EVENT,MQTT: localhost connected
+2019-03-28 20:26:04,EVENT,MQTT: localhost connected
+2019-03-28 20:32:55,EVENT,MQTT: localhost connected
+2019-03-28 21:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-28 21:00:00,EVENT,Task: 'test' started
+2019-03-28 22:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-28 22:00:00,EVENT,Task: 'test' started
+2019-03-28 23:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-28 23:00:00,EVENT,Task: 'test' started
+2019-03-29 00:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 00:00:00,EVENT,Task: 'test' started
+2019-03-29 00:00:00,EVENT,Task: 'Datenbank sichern' started
+2019-03-29 00:00:00,EVENT,Database_Backup saved
+2019-03-29 00:30:00,EVENT,Task: 'schlafen' started
+2019-03-29 01:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 01:00:00,EVENT,Task: 'test' started
+2019-03-29 02:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 02:00:00,EVENT,Task: 'test' started
+2019-03-29 03:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 03:00:00,EVENT,Task: 'test' started
+2019-03-29 04:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 04:00:00,EVENT,Task: 'test' started
+2019-03-29 05:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 05:00:00,EVENT,Task: 'test' started
+2019-03-29 06:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 06:00:00,EVENT,Task: 'test' started
+2019-03-29 07:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 07:00:00,EVENT,Task: 'test' started
+2019-03-29 07:50:00,EVENT,Task: 'zur Arbeit' started
+2019-03-29 08:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 08:00:00,EVENT,Task: 'test' started
+2019-03-29 08:44:01,EVENT,MQTT: started
+2019-03-29 08:44:01,EVENT,MQTT: localhost connected
+2019-03-29 08:44:01,EVENT,Snowboy: started
+2019-03-29 08:46:11,EVENT,MQTT: started
+2019-03-29 08:46:11,EVENT,MQTT: localhost connected
+2019-03-29 08:46:11,EVENT,Snowboy: started
+2019-03-29 08:58:22,EVENT,MQTT >>> started
+2019-03-29 08:58:22,EVENT,MQTT >>> localhost >>> connected
+2019-03-29 08:58:23,ERROR,Snowboy: [Errno -9996] Invalid input device (no default output device)
+2019-03-29 09:00:00,EVENT,Task: 'MQTT-Devices aktuallisieren' started
+2019-03-29 09:00:00,EVENT,Task: 'test' started
+2019-03-29 09:02:29,EVENT,MQTT >>> started
+2019-03-29 09:02:29,EVENT,MQTT >>> localhost >>> connected
+2019-03-29 09:02:29,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-03-29 09:03:12,EVENT,MQTT >>> started
+2019-03-29 09:03:12,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:03:12,EVENT,Snowboy >>> started
+2019-03-29 09:12:36,ERROR,|Snowboy >>> invalid syntax (snowboy.py, line 66)|
+2019-03-29 09:12:36,EVENT,MQTT >>> started
+2019-03-29 09:12:36,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:13:00,EVENT,MQTT >>> started
+2019-03-29 09:13:00,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:13:00,ERROR,|Snowboy >>> positional argument follows keyword argument (snowboy.py, line 66)|
+2019-03-29 09:14:37,EVENT,MQTT >>> started
+2019-03-29 09:14:37,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:14:38,EVENT,Snowboy >>> started
+2019-03-29 09:14:43,ERROR,Snowboy >>> Can't convert 'Snowboy_Tasks' object to str implicitly
+2019-03-29 09:15:45,EVENT,MQTT >>> started
+2019-03-29 09:15:45,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:15:45,EVENT,Snowboy >>> started
+2019-03-29 09:15:48,EVENT,Snowboy >>> Detected <Snowboy_Tasks 5>
+2019-03-29 09:16:01,EVENT,Snowboy >>> Detected <Snowboy_Tasks 5>
+2019-03-29 09:16:03,EVENT,Snowboy >>> Detected <Snowboy_Tasks 2>
+2019-03-29 09:16:15,EVENT,Snowboy >>> Detected <Snowboy_Tasks 5>
+2019-03-29 09:16:21,EVENT,Snowboy >>> Detected <Snowboy_Tasks 5>
+2019-03-29 09:16:23,EVENT,Snowboy >>> Detected <Snowboy_Tasks 3>
+2019-03-29 09:17:16,EVENT,MQTT >>> started
+2019-03-29 09:17:16,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:17:16,EVENT,Snowboy >>> started
+2019-03-29 09:17:22,EVENT,Snowboy >>> Detected "snowboy_active"
+2019-03-29 09:23:39,EVENT,MQTT >>> started
+2019-03-29 09:23:39,EVENT,MQTT Broker >>> localhost >>> connected
+2019-03-29 09:23:40,EVENT,Snowboy >>> started
+2019-03-29 09:25:09,EVENT,MQTT >>> started
+2019-03-29 09:25:09,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-03-29 09:25:09,EVENT,Snowboy >>> started
+2019-03-29 09:25:34,EVENT,Sensordata_File >>> testfile.csv >>> downloaded
+2019-03-29 09:26:49,EVENT,MQTT >>> started
+2019-03-29 09:26:49,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-03-29 09:26:50,EVENT,Snowboy >>> started
+2019-03-29 09:28:20,EVENT,MQTT >>> started
+2019-03-29 09:28:20,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-03-29 09:28:21,EVENT,Snowboy >>> started
+2019-03-29 09:29:00,EVENT,Task >>> "444" >>> started
+2019-03-29 09:29:00,EVENT,Watering >>> Start Pumps
+2019-03-29 09:31:17,EVENT,MQTT >>> started
+2019-03-29 09:31:17,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-03-29 09:31:17,EVENT,Snowboy >>> started
+2019-03-29 09:32:00,EVENT,Task >>> 444 >>> started
+2019-03-29 09:32:00,EVENT,Watering >>> Start Pumps
+2019-03-29 09:32:55,EVENT,MQTT >>> started
+2019-03-29 09:32:55,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-03-29 09:32:55,EVENT,Snowboy >>> started
+2019-03-29 09:33:18,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-03-29 09:33:20,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 09:33:49,EVENT,Log File >>> log_system.csv >>> downloaded
+2019-03-29 09:34:00,EVENT,Task >>> 444 >>> started
+2019-03-29 09:34:00,EVENT,Watering >>> Start Pumps
+2019-03-29 09:35:26,EVENT,MQTT >>> started
+2019-03-29 09:35:26,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 09:35:26,EVENT,Snowboy >>> started
+2019-03-29 09:36:00,EVENT,Task >>> 444 >>> started
+2019-03-29 09:36:00,EVENT,Watering >>> Start Pumps
+2019-03-29 09:36:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 09:36:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 09:39:18,EVENT,Watering >>> Stop Pump 3
+2019-03-29 09:39:49,EVENT,Watering >>> Stop Pump 1
+2019-03-29 09:40:04,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 09:55:50,EVENT,MQTT >>> started
+2019-03-29 09:55:50,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 09:55:51,EVENT,Snowboy >>> started
+2019-03-29 09:56:41,EVENT,MQTT >>> started
+2019-03-29 09:56:41,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 09:56:41,EVENT,Snowboy >>> started
+2019-03-29 09:57:00,EVENT,Task >>> 444 >>> started
+2019-03-29 09:57:00,EVENT,Watering >>> Start Pumps
+2019-03-29 09:57:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 09:57:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 10:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-03-29 10:00:00,EVENT,Task >>> test >>> started
+2019-03-29 10:00:18,EVENT,Watering >>> Stop Pump 3
+2019-03-29 10:00:49,EVENT,Watering >>> Stop Pump 1
+2019-03-29 10:01:04,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 10:05:48,EVENT,MQTT >>> started
+2019-03-29 10:05:48,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:05:48,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-03-29 10:05:57,EVENT,MQTT >>> started
+2019-03-29 10:05:57,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:05:58,EVENT,Snowboy >>> started
+2019-03-29 10:07:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:07:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:07:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 10:07:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 10:10:18,EVENT,Watering >>> Stop Pump 3
+2019-03-29 10:10:49,EVENT,Watering >>> Stop Pump 1
+2019-03-29 10:11:04,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 10:13:16,EVENT,MQTT >>> started
+2019-03-29 10:13:16,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:13:16,EVENT,Snowboy >>> started
+2019-03-29 10:14:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:14:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:14:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 10:14:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 10:17:18,EVENT,Watering >>> Stop Pump 3
+2019-03-29 10:17:49,EVENT,Watering >>> Stop Pump 1
+2019-03-29 10:18:04,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 10:18:14,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:24:16,EVENT,MQTT >>> started
+2019-03-29 10:24:16,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:24:17,EVENT,Snowboy >>> started
+2019-03-29 10:25:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:25:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:25:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 10:25:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 10:28:18,EVENT,Watering >>> Stop Pump 3
+2019-03-29 10:28:49,EVENT,Watering >>> Stop Pump 1
+2019-03-29 10:29:04,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 10:29:14,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:29:14,EVENT,Watering >>> Plant test >>> New Watervolume 0
+2019-03-29 10:32:06,EVENT,MQTT >>> started
+2019-03-29 10:32:06,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:32:06,EVENT,Snowboy >>> started
+2019-03-29 10:33:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:33:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:33:20,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:33:40,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:33:40,EVENT,Watering >>> finished
+2019-03-29 10:34:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:34:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:34:10,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:34:10,EVENT,Watering >>> Plant test >>> New Watervolume 0
+2019-03-29 10:34:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:34:30,EVENT,Watering >>> finished
+2019-03-29 10:35:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:35:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:35:20,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:35:37,EVENT,MQTT >>> started
+2019-03-29 10:35:37,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:35:37,EVENT,Snowboy >>> started
+2019-03-29 10:36:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:36:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:36:10,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:36:10,EVENT,Watering >>> Plant test >>> New Watervolume 0
+2019-03-29 10:36:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:36:30,EVENT,Watering >>> finished
+2019-03-29 10:39:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:39:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:43:03,EVENT,MQTT >>> started
+2019-03-29 10:43:03,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:43:03,EVENT,Snowboy >>> started
+2019-03-29 10:44:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:44:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:44:10,EVENT,Watering >>> Plant test >>> New Watervolume 30
+2019-03-29 10:44:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:44:30,EVENT,Watering >>> finished
+2019-03-29 10:47:34,EVENT,MQTT >>> started
+2019-03-29 10:47:34,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:47:34,EVENT,Snowboy >>> started
+2019-03-29 10:48:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:48:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:48:20,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:48:40,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:48:40,EVENT,Watering >>> finished
+2019-03-29 10:50:59,EVENT,MQTT >>> started
+2019-03-29 10:50:59,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:50:59,EVENT,Snowboy >>> started
+2019-03-29 10:52:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:52:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:52:10,EVENT,Watering >>> Plant test >>> New Watervolume 10
+2019-03-29 10:52:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:52:30,EVENT,Watering >>> finished
+2019-03-29 10:56:05,EVENT,MQTT >>> started
+2019-03-29 10:56:05,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 10:56:06,EVENT,Snowboy >>> started
+2019-03-29 10:57:00,EVENT,Task >>> 444 >>> started
+2019-03-29 10:57:00,EVENT,Watering >>> Start Pumps
+2019-03-29 10:57:20,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 10:57:40,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 10:57:40,EVENT,Watering >>> finished
+2019-03-29 11:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-03-29 11:00:00,EVENT,Task >>> test >>> started
+2019-03-29 11:00:44,EVENT,MQTT >>> started
+2019-03-29 11:00:44,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:00:44,EVENT,Snowboy >>> started
+2019-03-29 11:01:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:01:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:01:10,EVENT,Watering >>> Plant test >>> New Watervolume 50
+2019-03-29 11:01:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:01:30,EVENT,Watering >>> finished
+2019-03-29 11:03:23,EVENT,MQTT >>> started
+2019-03-29 11:03:23,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:03:23,EVENT,Snowboy >>> started
+2019-03-29 11:04:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:04:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:04:20,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 11:04:40,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:04:40,EVENT,Watering >>> finished
+2019-03-29 11:07:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:07:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:07:10,EVENT,Watering >>> Plant test >>> New Watervolume 70
+2019-03-29 11:07:30,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:07:30,EVENT,Watering >>> finished
+2019-03-29 11:12:03,EVENT,MQTT >>> started
+2019-03-29 11:12:03,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:12:03,EVENT,Snowboy >>> started
+2019-03-29 11:13:28,EVENT,MQTT >>> started
+2019-03-29 11:13:28,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:13:29,EVENT,Snowboy >>> started
+2019-03-29 11:14:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:14:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:14:04,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 11:14:08,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:14:08,EVENT,Watering >>> finished
+2019-03-29 11:14:35,EVENT,MQTT >>> started
+2019-03-29 11:14:35,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:14:36,EVENT,Snowboy >>> started
+2019-03-29 11:15:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:15:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:15:03,EVENT,Watering >>> Plant test >>> New Watervolume 90
+2019-03-29 11:15:09,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:15:09,EVENT,Watering >>> finished
+2019-03-29 11:16:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:16:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:16:06,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 11:16:12,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:16:12,EVENT,Watering >>> finished
+2019-03-29 11:17:32,EVENT,MQTT >>> started
+2019-03-29 11:17:32,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:17:32,EVENT,Snowboy >>> started
+2019-03-29 11:18:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:18:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:18:03,EVENT,Watering >>> Plant test >>> New Watervolume 110
+2019-03-29 11:18:09,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:18:09,EVENT,Watering >>> finished
+2019-03-29 11:19:32,EVENT,MQTT >>> started
+2019-03-29 11:19:32,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:19:33,EVENT,Snowboy >>> started
+2019-03-29 11:20:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:20:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:20:08,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 11:20:16,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:20:16,EVENT,Watering >>> finished
+2019-03-29 11:28:18,EVENT,MQTT >>> started
+2019-03-29 11:28:18,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:28:18,EVENT,Snowboy >>> started
+2019-03-29 11:29:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:29:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:31:24,EVENT,MQTT >>> started
+2019-03-29 11:31:24,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:31:24,EVENT,Snowboy >>> started
+2019-03-29 11:32:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:32:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:32:06,ERROR,Plant >>> test >>> Sensor 7
+2019-03-29 11:32:12,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:32:12,EVENT,Watering >>> finished
+2019-03-29 11:33:44,EVENT,MQTT >>> started
+2019-03-29 11:33:44,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:33:44,EVENT,Snowboy >>> started
+2019-03-29 11:34:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:34:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:34:03,EVENT,Watering >>> Plant test >>> New Watervolume 130
+2019-03-29 11:34:09,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:34:09,EVENT,Watering >>> finished
+2019-03-29 11:38:51,EVENT,MQTT >>> started
+2019-03-29 11:38:51,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:38:51,EVENT,Snowboy >>> started
+2019-03-29 11:39:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:39:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:39:03,EVENT,Watering >>> Plant test >>> New Watervolume 150
+2019-03-29 11:39:09,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:39:09,EVENT,Watering >>> finished
+2019-03-29 11:40:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:40:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:40:03,EVENT,Watering >>> Plant test >>> New Watervolume 170
+2019-03-29 11:40:09,ERROR,Plant >>> 444 >>> Sensor 3
+2019-03-29 11:40:09,EVENT,Watering >>> finished
+2019-03-29 11:45:06,EVENT,MQTT >>> started
+2019-03-29 11:45:06,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 11:45:06,EVENT,Snowboy >>> started
+2019-03-29 11:46:00,EVENT,Task >>> 444 >>> started
+2019-03-29 11:46:00,EVENT,Watering >>> Start Pumps
+2019-03-29 11:46:01,EVENT,Watering >>> Start Pump 3
+2019-03-29 11:46:02,EVENT,Watering >>> Start Pump 1
+2019-03-29 11:49:48,EVENT,Watering >>> Stop Pump 1
+2019-03-29 11:50:19,EVENT,Watering >>> Stop Pump 3
+2019-03-29 11:50:34,EVENT,Watering >>> Stopped all Pumps
+2019-03-29 12:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-03-29 12:00:00,EVENT,Task >>> test >>> started
+2019-03-29 12:02:49,EVENT,MQTT >>> started
+2019-03-29 12:02:49,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:02:50,EVENT,Snowboy >>> started
+2019-03-29 12:04:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:04:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:04:06,ERROR,Watering >>> Plant >>> test >>> Sensor 0
+2019-03-29 12:04:12,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:04:12,EVENT,Watering >>> finished
+2019-03-29 12:05:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:05:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:05:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:07:00,EVENT,MQTT >>> started
+2019-03-29 12:07:00,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:07:00,EVENT,Snowboy >>> started
+2019-03-29 12:08:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:08:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:08:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:09:10,EVENT,MQTT >>> started
+2019-03-29 12:09:10,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:09:10,EVENT,Snowboy >>> started
+2019-03-29 12:10:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:10:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:10:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:10:03,EVENT,Watering >>> Plant test >>> New Watervolume 0
+2019-03-29 12:10:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:10:09,EVENT,Watering >>> finished
+2019-03-29 12:11:29,EVENT,MQTT >>> started
+2019-03-29 12:11:29,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:11:29,EVENT,Snowboy >>> started
+2019-03-29 12:12:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:12:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:12:06,ERROR,Watering >>> Plant >>> test >>> Sensor 0
+2019-03-29 12:12:12,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:12:12,EVENT,Watering >>> finished
+2019-03-29 12:13:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:13:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:13:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:13:03,EVENT,Watering >>> Plant >>> test >>> New Watervolume 0
+2019-03-29 12:13:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:13:09,EVENT,Watering >>> finished
+2019-03-29 12:14:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:14:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:14:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:14:03,EVENT,Watering >>> Plant >>> test >>> New Watervolume 0
+2019-03-29 12:14:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:14:09,EVENT,Watering >>> finished
+2019-03-29 12:15:04,EVENT,MQTT >>> started
+2019-03-29 12:15:04,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:15:05,EVENT,Snowboy >>> started
+2019-03-29 12:16:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:16:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:16:03,EVENT,Watering >>> Plant >>> test >>> New Watervolume 40
+2019-03-29 12:16:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:16:09,EVENT,Watering >>> finished
+2019-03-29 12:17:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:17:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:17:03,WARNING,Watering >>> Plant >>> test >>> has not enough water
+2019-03-29 12:17:03,EVENT,Watering >>> Plant >>> test >>> New Watervolume 80
+2019-03-29 12:17:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:17:09,EVENT,Watering >>> finished
+2019-03-29 12:18:14,EVENT,MQTT >>> started
+2019-03-29 12:18:14,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:18:15,EVENT,Snowboy >>> started
+2019-03-29 12:19:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:19:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:19:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:19:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 0
+2019-03-29 12:19:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:19:09,EVENT,Watering >>> finished
+2019-03-29 12:20:44,EVENT,MQTT >>> started
+2019-03-29 12:20:44,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:20:45,EVENT,Snowboy >>> started
+2019-03-29 12:22:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:22:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:22:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:22:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 0
+2019-03-29 12:22:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:22:09,EVENT,Watering >>> finished
+2019-03-29 12:23:56,EVENT,MQTT >>> started
+2019-03-29 12:23:56,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:23:56,EVENT,Snowboy >>> started
+2019-03-29 12:25:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:25:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:25:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:25:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 0
+2019-03-29 12:25:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:25:09,EVENT,Watering >>> finished
+2019-03-29 12:30:09,EVENT,MQTT >>> started
+2019-03-29 12:30:09,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:30:09,EVENT,Snowboy >>> started
+2019-03-29 12:31:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:31:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:31:03,ERROR,Watering >>> Plant >>> test >>> Sensor 7
+2019-03-29 12:33:03,EVENT,MQTT >>> started
+2019-03-29 12:33:03,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:33:03,EVENT,Snowboy >>> started
+2019-03-29 12:34:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:34:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:34:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 0
+2019-03-29 12:34:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:34:09,EVENT,Watering >>> finished
+2019-03-29 12:34:37,EVENT,MQTT >>> started
+2019-03-29 12:34:37,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:34:37,EVENT,Snowboy >>> started
+2019-03-29 12:35:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:35:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:35:03,WARNING,Watering >>> Plant >>> test >>> has too much water
+2019-03-29 12:35:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 0
+2019-03-29 12:35:03,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-03-29 12:35:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:35:09,EVENT,Watering >>> finished
+2019-03-29 12:36:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:36:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:36:03,WARNING,Watering >>> Plant >>> test >>> has not enough water
+2019-03-29 12:36:03,EVENT,Watering >>> Plant >>> test >>> new watervolume 40
+2019-03-29 12:36:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:36:09,EVENT,Watering >>> finished
+2019-03-29 12:36:53,EVENT,MQTT >>> started
+2019-03-29 12:36:53,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:36:53,EVENT,Snowboy >>> started
+2019-03-29 12:38:00,EVENT,Task >>> 444 >>> started
+2019-03-29 12:38:00,EVENT,Watering >>> Start Pumps
+2019-03-29 12:38:03,EVENT,Watering >>> Plant >>> test >>> new Watervolume 20
+2019-03-29 12:38:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
+2019-03-29 12:38:09,EVENT,Watering >>> finished

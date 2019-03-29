@@ -60,11 +60,10 @@ if GET_SETTING_VALUE("mqtt") == "True":
 
                 print("###### Start MQTT ######")
                 MQTT_START()
-                WRITE_LOGFILE_SYSTEM("EVENT", "MQTT: started") 
 
             except Exception as e:
                 print("Fehler in MQTT: " + str(e))
-                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
+                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
     
     t2 = mqtt_Thread()
     t2.start()
@@ -77,8 +76,7 @@ if GET_SETTING_VALUE("snowboy") == "True":
 
         print("###### Start SNOWBOY ######")
         SNOWBOY_START()
-        WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy: started") 
 
     except Exception as e:
         print("Fehler in SnowBoy: " + str(e))
-        WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy: " + str(e)) 
+        WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 

@@ -4,7 +4,7 @@ from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
 from app.database.database import *
 from app.components.tasks import SNOWBOY_TASKS
-from app.components.file_management import GET_USED_HOTWORD_FILES
+from app.components.file_management import GET_USED_HOTWORD_FILES, WRITE_LOGFILE_SYSTEM
 
 import sys
 import signal
@@ -57,7 +57,8 @@ def SNOWBOY_START():
    callbacks = callback_list[:len(GET_ALL_SNOWBOY_TASKS())]
          
    print('Listening...')
-
+   WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy >>> started") 
+        
    # main loop
    detector.start(detected_callback=callbacks,
                   interrupt_check=interrupt_callback,
