@@ -504,3 +504,26 @@ Timestamp,Type,Description
 2019-03-29 12:38:03,EVENT,Watering >>> Plant >>> test >>> new Watervolume 20
 2019-03-29 12:38:09,ERROR,Watering >>> Plant >>> 444 >>> Sensor 3
 2019-03-29 12:38:09,EVENT,Watering >>> finished
+2019-03-29 12:39:42,EVENT,MQTT >>> started
+2019-03-29 12:39:42,EVENT,MQTT >>> Broker localhost >>> connected
+2019-03-29 12:39:42,EVENT,Snowboy >>> started
+2019-03-29 12:41:32,EVENT,Log File >>> log_system.csv >>> downloaded
+2019-03-29 12:42:26,EVENT,MQTT >>> started
+2019-03-29 12:42:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 12:42:26,EVENT,Snowboy >>> started
+2019-03-29 12:43:22,EVENT,Sensordata File >>> testfile.csv >>> downloaded
+2019-03-29 12:47:02,EVENT,MQTT >>> started
+2019-03-29 12:47:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 12:47:02,EVENT,Snowboy >>> started
+2019-03-29 12:47:07,EVENT,File >>> log_system.csv >>> downloaded
+2019-03-29 12:47:25,EVENT,Sensordata File >>> testfile.csv >>> downloaded
+2019-03-29 12:47:59,EVENT,MQTT >>> started
+2019-03-29 12:47:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 12:47:59,EVENT,Snowboy >>> started
+2019-03-29 12:48:03,EVENT,File >>> testfile.csv >>> downloaded
+2019-03-29 12:48:11,EVENT,File >>> log_system.csv >>> downloaded
+2019-03-29 12:49:13,EVENT,MQTT >>> started
+2019-03-29 12:49:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-03-29 12:49:13,EVENT,Snowboy >>> started
+2019-03-29 12:49:29,EVENT,File >>> Sensordata >>> testfile.csv >>> downloaded
+2019-03-29 12:49:39,EVENT,File >>> log_system.csv >>> downloaded

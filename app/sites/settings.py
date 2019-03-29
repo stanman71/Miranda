@@ -122,10 +122,10 @@ def remove_mqtt_device(id):
 def download_mqtt_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "Log File >>> " + filepath + " >>> downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filepath + " >>> downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT Log Download >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filepath + " >>> " + str(e))
              
 
 """ ############### """
@@ -459,7 +459,7 @@ def dashboard_settings_system_log():
 def download_system_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"    
-        WRITE_LOGFILE_SYSTEM("EVENT", "Log File >>> " + filepath + " >>> downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> " + filepath + " >>> downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "System Log Download >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> " + filepath + " >>> " + str(e))

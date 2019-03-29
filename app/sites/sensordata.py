@@ -96,11 +96,11 @@ def download_sensordata_file(filepath):
         print(Error(400))     
     try:
         path = GET_PATH() + "/csv/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "Sensordata File >>> " + filepath + " >>> downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> Sensordata >>> " + filepath + " >>> downloaded")
         return send_from_directory(path, filepath)
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "Sensordata File >>> " + filepath + " >>> " + str(e)) 
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> Sensordata >>> " + filepath + " >>> " + str(e)) 
 
 
 # delete sensordata file
