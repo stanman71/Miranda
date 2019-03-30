@@ -154,6 +154,16 @@ def GET_USED_HOTWORD_FILES(snowboy_tasks):
     return file_list
 
 
+def CHECK_HOTWORD_FILE_EXIST(snowboy_tasks):
+    exist_file_list = GET_ALL_HOTWORD_FILES()
+    
+    for element in snowboy_tasks:
+        if (element.name + ".pmdl") not in exist_file_list:
+            return element.name
+            
+    return ""
+
+
 def UPLOAD_HOTWORD_FILE(file):
     ALLOWED_EXTENSIONS = set(['pmdl'])
 

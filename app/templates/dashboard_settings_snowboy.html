@@ -113,6 +113,14 @@
         {{ error_message_table }}
       </div>      
     {% endif %}   
+    
+<!-- error message hotword --> 
+
+    {% if error_message_hotword != "" %}
+      <div class="alert alert-danger" role="alert">
+        Hotword-Datei fehlt: {{ error_message_hotword }}.pmdl
+      </div>      
+    {% endif %}  
 
 <!-- snowboy taskmanagement -->    
   
@@ -226,12 +234,9 @@
 <section id="table_hotwords"></section>
 
         <div class="panel panel-default">
-          <div class="panel-heading">Hotwords</div>
+          <div class="panel-heading">Hotword-Datein</div>
           <div class="panel-body">                               
             <table class="table">
-                <thead>                       
-                  <th scope="col">Dateiname</th> 
-                </thead>
                 <tbody> 
                   {% for entry in file_list %}
                   <tr>

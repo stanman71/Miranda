@@ -172,6 +172,7 @@ def dashboard_settings_snowboy():
     error_message = ""
     error_message_table = ""
     error_message_fileupload = ""
+    error_message_hotword = ""
     sensitivity = ""
     check_value_snowboy = ["", ""]
     set_name = ""
@@ -237,12 +238,15 @@ def dashboard_settings_snowboy():
     sensitivity = GET_SNOWBOY_SENSITIVITY()
     snowboy_list = GET_ALL_SNOWBOY_TASKS()
     file_list = GET_ALL_HOTWORD_FILES()
+    
+    error_message_hotword = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
                             error_message=error_message,    
                             error_message_table=error_message_table,             
                             error_message_fileupload=error_message_fileupload,
+                            error_message_hotword=error_message_hotword,
                             snowboy_setting=snowboy_setting,
                             check_value_snowboy=check_value_snowboy,
                             snowboy_list=snowboy_list,
