@@ -177,7 +177,7 @@ def UPLOAD_HOTWORD_FILE(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error_message_fileupload = ""
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/>>> " + str(file) + ".pmdl >>> uploaded")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + str(file.name) + ".pmdl >>> uploaded")  
     else:
         error_message_fileupload = "Ungültige Dateiendung"
 
@@ -187,10 +187,9 @@ def UPLOAD_HOTWORD_FILE(file):
 def DELETE_HOTWORD_FILE(filename):
     try:
         os.remove (PATH + '/app/snowboy/resources/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File: " + filename + " deleted")
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/>>> " + filename + ".pmdl >>> deleted") 
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + filename + " >>> deleted") 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/>>> " + filename + ".pmdl >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/" + filename + " >>> " + str(e))  
 
 
 """ #### """
