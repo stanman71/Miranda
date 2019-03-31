@@ -224,6 +224,7 @@
                   <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
                 </tr>
                 {% endfor %} 
+                <tr><td></td><td></td><td></td></tr>
               </tbody>
             </table>  
           </div>  
@@ -241,9 +242,11 @@
                   {% for entry in file_list %}
                   <tr>
                     <td>{{ entry }}</td> 
-                    <td><a href="/dashboard/settings/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red"><b>löschen</b></font></a></td>  
+                    <td class="text-right"><a href="/dashboard/settings/snowboy/download/hotword/{{ entry }}#table_hotwords"><b>herunterladen</b></font></a></td>
+                    <td class="text-right"><a href="/dashboard/settings/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red"><b>löschen</b></font></a></td>  
                   </tr>
                   {% endfor %} 
+                  <tr><td></td><td></td><td></td></tr>
                 </tbody>
               </table>  
             </div>  

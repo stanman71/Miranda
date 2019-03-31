@@ -266,6 +266,22 @@ def delete_snowboy_task(id):
     return redirect(url_for('dashboard_settings_snowboy'))
 
 
+# download hotword file
+@app.route('/dashboard/settings/snowboy/download/hotword/<path:filepath>')
+@login_required
+@superuser_required
+def download_hotword_file(filepath):
+    if filepath is None:
+        print(Error(400))     
+    try:
+        path = GET_PATH() + "/app/snowboy/resources/"     
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + filepath + " >>> downloaded")
+        return send_from_directory(path, filepath)
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/" + filepath + " >>> " + str(e)) 
+
+
 # delete snowboy hotwords
 @app.route('/dashboard/settings/snowboy/delete/hotword/<string:filename>')
 @login_required
