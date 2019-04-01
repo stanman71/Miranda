@@ -460,7 +460,10 @@ def dashboard_settings_system_log():
         if request.form.get("reset_logfile") is not None: 
             RESET_LOGFILE("log_system")   
             
-    data_log_system = GET_LOGFILE_SYSTEM()
+    if GET_LOGFILE_SYSTEM() is not None:
+        data_log_system = GET_LOGFILE_SYSTEM()
+    else:
+        data_log_system = ""
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 

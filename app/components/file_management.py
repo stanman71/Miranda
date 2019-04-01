@@ -9,7 +9,7 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.database.database import *
 
-PATH = os.path.abspath("")
+PATH = os.path.abspath("") + "/SmartHome"
 
 # file management
 UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
@@ -285,4 +285,5 @@ def GET_LOGFILE_SYSTEM():
             return data_reversed[0:30]
      
     except Exception as e:
+        print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))          
