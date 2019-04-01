@@ -342,3 +342,58 @@ Timestamp,Type,Description
 2019-03-31 11:57:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-03-31 11:57:14,EVENT,Snowboy >>> started
 2019-03-31 11:57:18,EVENT,File >>> /app/snowboy/resources/warmweiss.pmdl >>> downloaded
+2019-04-01 09:53:40,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 09:53:42,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-04-01 10:05:01,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:05:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:11:50,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:11:52,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:28:49,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:28:51,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:29:43,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:29:45,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:29:58,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:30:04,EVENT,File >>> /app/snowboy/resources/ausschalten.pmdl >>> downloaded
+2019-04-01 10:30:43,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:30:43,EVENT,File >>> /app/snowboy/resources/file.pmdl >>> uploaded
+2019-04-01 10:30:46,EVENT,File >>> /app/snowboy/resources/ausscuzthalten.pmdl >>> deleted
+2019-04-01 10:30:46,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:32:30,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:32:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 10:35:22,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:32,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:39,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:41,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:49,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:51,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:35:52,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:37:25,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:40:00,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:40:03,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:40:16,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:40:39,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:42:01,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:42:54,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-01 10:42:56,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:43:00,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:43:16,ERROR,Snowboy: No module named '_snowboydetect'
+2019-04-01 10:46:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 11:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-04-01 11:40:25,EVENT,Database >>> Taskmanagement (Sensor) >>> test >>> added
+2019-04-01 11:54:13,EVENT,Database >>> Taskmanagement (Sensor) >>> test >>> deleted
+2019-04-01 11:54:39,EVENT,Database >>> Taskmanagement (Sensor) >>> trs >>> added
+2019-04-01 11:55:48,EVENT,Database >>> Taskmanagement (Sensor) >>> test_02 >>> added
+2019-04-01 12:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-04-01 12:02:16,EVENT,Database >>> Ssensordata Job >>> wrew >>> added
+2019-04-01 12:02:16,EVENT,File >>> /csv/rewrew.csv >>> created
+2019-04-01 12:02:21,EVENT,Database >>> Ssensordata Job >>> wrew >>> deleted
+2019-04-01 12:02:24,EVENT,File >>> /csv/rewrew.csv >>> deleted
+2019-04-01 12:46:47,EVENT,Database >>> Taskmanagement (Sensor) >>> test_02 >>> deleted
+2019-04-01 12:46:52,EVENT,Database >>> Taskmanagement (Sensor) >>> 564564 >>> added
+2019-04-01 12:47:15,EVENT,Database >>> Taskmanagement (Sensor) >>> 564564 >>> deleted
+2019-04-01 13:00:00,EVENT,Task >>> MQTT-Devices aktuallisieren >>> started
+2019-04-01 13:24:43,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 13:25:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-01 14:00:00,EVENT,Task >>> MQTT Geräte aktuallisieren >>> started
+2019-04-01 21:12:08,EVENT,Database_Backup >>> saved

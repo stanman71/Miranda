@@ -6,3 +6,4 @@ flask_login
 wtforms 
 pyusb
 paho-mqtt
+pyyaml

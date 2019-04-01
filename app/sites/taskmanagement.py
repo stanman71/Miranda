@@ -107,13 +107,74 @@ def delete_schedular_task(id):
 """ taskmanagement sensor """
 """ ##################### """
 
-@app.route('/dashboard/taskmanagement/sensor', methods=['GET'])
+@app.route('/dashboard/taskmanagement/sensor', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_taskmanagement_sensor():
     error_message = ""
+    set_name = ""
+    set_task = ""
+    set_value = ""
+
+    if request.method == "POST": 
+        # add new task
+        if request.form.get("add_task") is not None:
+
+            # controll name and task input
+            if request.form.get("set_name") == "":
+                error_message = "Kein Name angegeben"
+                set_task  = request.form.get("set_task")
+                set_value = request.form.get("set_value")
+
+            elif request.form.get("set_task") == "":
+                error_message = "Keine Aufgabe angegeben"  
+                set_name = request.form.get("set_name") 
+                set_value = request.form.get("set_value")
+
+            elif request.form.get("set_value") == "":
+                error_message = "Keine Wert angegeben"  
+                set_name = request.form.get("set_name") 
+                set_task = request.form.get("set_task")
+
+            else:         
+                # get database informations
+                name           = request.form.get("set_name")
+                task           = request.form.get("set_task")
+                mqtt_device_id = request.form.get("set_mqtt_device_id")
+                operator       = request.form.get("set_operator")
+                value          = request.form.get("set_value")
+
+                error_message = ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value)             
+ 
+        # change settings
+        if request.form.get("change_settings") is not None: 
+            for i in range (1,25):
+                # change sensor
+                if request.form.get("set_sensor_" + str(i)):
+                    sensor_id = request.form.get("set_sensor_" + str(i))    
+                    SET_TASKMANAGEMENT_SENSOR_SENSOR(i, sensor_id)
+
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
+    dropdown_list_operators    = ["==", ">", "<"]
+
+    schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()
 
     return render_template('dashboard_taskmanagement_sensor.html',
                             error_message=error_message,
+                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
+                            dropdown_list_operators=dropdown_list_operators,
+                            schedular_list=schedular_list,
+                            set_name=set_name,
+                            set_task=set_task,
+                            set_value=set_value,
                             active02="active",
                             )
+
+
+# delete taskmanagement time tasks
+@app.route('/dashboard/taskmanagement/sensor/delete/<int:id>')
+@login_required
+@superuser_required
+def delete_schedular_sensor(id):
+    DELETE_TASKMANAGEMENT_SENSOR_TASK(id)
+    return redirect(url_for('dashboard_taskmanagement_sensor'))

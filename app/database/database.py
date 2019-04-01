@@ -42,14 +42,15 @@ class Taskmanagement_Time(db.Model):
     repeat = db.Column(db.String(50))
 
 class Taskmanagement_Sensor(db.Model):
-    __tablename__ = 'taskmanagement_senor'
+    __tablename__ = 'taskmanagement_sensor'
     id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name           = db.Column(db.String(50), unique=True)
+    task           = db.Column(db.String(100))
     mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
     mqtt_device    = db.relationship('MQTT_Devices')  
     sensor_id      = db.Column(db.Integer)    
-    task           = db.Column(db.String(100))
-    repeat         = db.Column(db.String(50))
+    value          = db.Column(db.String(100))
+    operator       = db.Column(db.String(50))
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
@@ -419,7 +420,7 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
                     db.session.add(sensordata_job)
                     db.session.commit()
                     
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Ssensordata Job >>> " + name + " >>> added")                    
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
                     
                     return ""
 
@@ -698,7 +699,7 @@ def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
     return Taskmanagement_Sensor.query.all()
 
 
-def ADD_TASKMANAGEMENT_SENSOR_TASK(name, mqtt_device_id, task, repeat):
+def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value):
     # name exist ?
     check_entry = Taskmanagement_Sensor.query.filter_by(name=name).first()
     if check_entry is None:
@@ -711,9 +712,10 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, mqtt_device_id, task, repeat):
                 task = Taskmanagement_Sensor(
                         id             = i,
                         name           = name,
+                        task           = task,                        
                         mqtt_device_id = mqtt_device_id,
-                        task           = task,
-                        repeat         = repeat,
+                        operator       = operator,
+                        value          = value,
                     )
                 db.session.add(task)
                 db.session.commit()

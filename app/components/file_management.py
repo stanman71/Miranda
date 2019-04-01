@@ -2,20 +2,32 @@ import datetime
 import os
 import shutil
 import csv
+import yaml
 
 from werkzeug.utils import secure_filename
 
 from app import app
 from app.database.database import *
 
-PATH = "/home/pi/SmartHome"
+PATH = os.path.abspath("")
 
+# file management
 UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-
 def GET_PATH():
     return (PATH)
+
+
+""" ########### """
+""" config file """
+""" ########### """
+
+# config file
+with open(PATH + "/app/config.yaml", 'r') as cfg:
+    yamlcfg=yaml.load(cfg)
+
+print("Version: " + str((yamlcfg['config']['version'])))
 
 
 """ ############### """

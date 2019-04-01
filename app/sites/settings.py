@@ -35,10 +35,10 @@ def dashboard_settings_mqtt():
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
 
-    if request.method == "GET":     
+    if request.method == "POST":     
         # change mqtt settings   
-        if request.args.get("radio_mqtt") is not None:
-            setting_mqtt = str(request.args.get("radio_mqtt"))
+        if request.form.get("radio_mqtt") is not None:
+            setting_mqtt = str(request.form.get("radio_mqtt"))
             SET_SETTING_VALUE("mqtt", setting_mqtt)
 
     # change radio check  
@@ -139,10 +139,10 @@ def dashboard_settings_zigbee():
     error_message = ""
     check_value_zigbee = ["", ""]
 
-    if request.method == "GET":     
+    if request.method == "POST":     
         # change mqtt settings   
-        if request.args.get("radio_zigbee") is not None:
-            setting_zigbee = str(request.args.get("radio_zigbee"))
+        if request.form.get("radio_zigbee") is not None:
+            setting_zigbee = str(request.form.get("radio_zigbee"))
             SET_SETTING_VALUE("zigbee", setting_zigbee)
 
     # change radio check  
@@ -178,10 +178,10 @@ def dashboard_settings_snowboy():
     set_name = ""
     set_task = ""
 
-    if request.method == "GET":     
+    if request.method == "POST":     
         # change snowboy settings   
-        if request.args.get("radio_snowboy") is not None:
-            setting_snowboy = str(request.args.get("radio_snowboy"))
+        if request.form.get("radio_snowboy") is not None:
+            setting_snowboy = str(request.form.get("radio_snowboy"))
             SET_SETTING_VALUE("snowboy", setting_snowboy) 
 
     # change radio check    

@@ -62,7 +62,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><font color="black"><b>MQTT</b></font></div>
       <div class="panel-body">   
-        <form method="get">  
+        <form method="POST">  
           <div class="radio">
             <label><input {{check_value_mqtt[0]}} type="radio" value="True" name="radio_mqtt">MQTT aktivieren</label>
             <br>
@@ -92,14 +92,14 @@
     <!-- mqtt settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading">MQTT Devices</div>
+        <div class="panel-heading">MQTT Geräte</div>
           <div class="panel-body"> 
             <form method="POST">
             <div class="text-center">         
-              <h5><b>MQTT Device hinzufügen</b></h5>
+              <h5><b>MQTT Gerät hinzufügen</b></h5>
             </div>       
             <br>          
-            MQTT Device Name     
+            MQTT Gerätename     
             <br>
             <br>
             <div class="form-group">
@@ -112,7 +112,7 @@
               <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
             </div>
               <br>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#mqtt_devices'" class="btn btn-secondary" name="add_mqtt_device" value="MQTT Device hinzufügen" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#mqtt_devices'" class="btn btn-secondary" name="add_mqtt_device" value="MQTT Gerät hinzufügen" />
             </form>   
           </div>  
         </div>  
@@ -126,7 +126,7 @@
           <div class="panel-body">       
           <table class="table">
             <thead>
-              <th scope="col">MQTT Device Name</th>                        
+              <th scope="col">MQTT Gerätename</th>                        
               <th scope="col">Kanal</th> 
               <th scope="col">Modell</th>                        
               <th scope="col">Inputs</th> 

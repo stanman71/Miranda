@@ -79,7 +79,7 @@
                   <div class="form-group">
                     <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
                   </div>
-                  MQTT Device 
+                  Gerät 
                   <br>
                   <br>
                   <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
@@ -109,7 +109,7 @@
               <th scope="col">Job-ID</th>  
               <th scope="col">Name</th>  
               <th scope="col">Dateiname</th>   
-              <th scope="col">MQTT Device</th>
+              <th scope="col">Gerät</th>
               <th scope="col">Sensor</th>
               <th scope="col" colspan="2">Einstellungen: Sensor</th>
             </thead>
@@ -135,8 +135,8 @@
                 </td>               
                 <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
               </tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
               {% endfor %}
+              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             </tbody>
           </table>  
         </div>  
