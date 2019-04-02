@@ -72,8 +72,10 @@
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>System Log</b></font></div>
-          <div class="panel-body">       
-            <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
+          <div class="panel-body">  
+            <div class="well well-sm">   
+              <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
+            </div>
             <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
               <input type="submit" onclick="window.location.href='/dashboard/settings/system_log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
@@ -90,27 +92,28 @@
       <div class="panel panel-default">
           <div class="panel-heading">Letzte Ereignisse</div>        
           <div class="panel-body">  
-            <table class="table">
-              <thead>                      
-                <th scope="col">Zeitpunkt</th> 
-                <th scope="col">Typ</th> 
-                <th scope="col">Beschreibung</th> 
-              </thead>
-              <tbody> 
-                {% for entry in data_log_system %}
-                <tr>
-                  <td>{{ entry[0] }}</td> 
-                  <td>
-                    {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
-                    {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
-                    {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
-                  </td>                   
-                  <td>{{ entry[2] }}</td>  
-                </tr>
-                {% endfor %} 
-                <tr><td></td><td></td><td></td></tr>
-              </tbody>
-            </table>  
+            <div class="well well-sm">
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Zeitpunkt</th> 
+                  <th scope="col">Typ</th> 
+                  <th scope="col">Beschreibung</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in data_log_system %}
+                  <tr>
+                    <td>{{ entry[0] }}</td> 
+                    <td>
+                      {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
+                    </td>                   
+                    <td>{{ entry[2] }}</td>  
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table>  
+            </div>
           </div>  
         </div> 
     </div>

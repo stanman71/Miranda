@@ -72,19 +72,18 @@
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>System</b></font></div>
           <div class="panel-body">   
-          CPU Temperatur = {{ cpu_temperature }}
-          <br>
-          <br>
-          <form method="POST">                     
-            <input type="submit" class="btn btn-secondary" name="restart" value="RASPI neustarten" />
-          </form>   
-          <br>       
-          <form method="POST">                     
-            <input type="submit" class="btn btn-secondary" name="shutdown" value="RASPI herunterfahren" />
-          </form>   
-          
+          <div class="well well-sm">CPU Temperatur = {{ cpu_temperature }}</div>
+          <div class="well well-sm">
+            <form method="POST">                     
+              <input type="submit" class="btn btn-secondary" name="restart" value="RASPI neustarten" />
+            </form>   
+            <br>       
+            <form method="POST">                     
+              <input type="submit" class="btn btn-secondary" name="shutdown" value="RASPI herunterfahren" />
+            </form>   
           </div>
-        </div>  
+        </div>
+      </div>  
 
 <!-- database backup -->
 
@@ -93,19 +92,19 @@
       <div class="panel panel-default">
         <div class="panel-heading">Datenbank Backups</div>
           <div class="panel-body">   
-
-          <table class="table">
-            <tbody> 
-              {% for entry in file_list %}
-              <tr>
-                <td>{{ entry }}</td> 
-                <td><a href="/dashboard/settings/system/restore/backup_database/{{ entry }}#database_backup"><font color="green"><b>wiederherstellen</b></font></a></td>  
-                <td><a href="/dashboard/settings/system/delete/backup_database/{{ entry }}#database_backup"><font color="red"><b>löschen</b></font></a></td>  
-              </tr>
-              {% endfor %} 
-              <tr><td></td><td></td><td></td></tr>
-            </tbody>
-          </table>  
+            <div class="well well-sm">
+              <table class="table">
+                <tbody> 
+                  {% for entry in file_list %}
+                  <tr>
+                    <td>{{ entry }}</td> 
+                    <td><a href="/dashboard/settings/system/restore/backup_database/{{ entry }}#database_backup"><font color="green"><b>wiederherstellen</b></font></a></td>  
+                    <td><a href="/dashboard/settings/system/delete/backup_database/{{ entry }}#database_backup"><font color="red"><b>löschen</b></font></a></td>  
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table>  
+            </div>
           <form method="POST">                     
             <input type="submit" onclick="window.location.href='/dashboard/settings/system#database_backup'" class="btn btn-secondary" name="database_save" value="Datenbank sichern" />
           </form>

@@ -9,9 +9,18 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.database.database import *
 
-PATH = os.path.abspath("") + "/SmartHome"
 
-# file management
+""" ########### """
+""" global path """
+""" ########### """
+
+# windows
+if os.name == "nt":                 
+    PATH = os.path.abspath("") 
+# linux
+else:                               
+    PATH = os.path.abspath("") + "/SmartHome"
+
 UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -23,11 +32,15 @@ def GET_PATH():
 """ config file """
 """ ########### """
 
-# config file
 with open(PATH + "/app/config.yaml", 'r') as cfg:
     yamlcfg=yaml.load(cfg)
 
+# print check
 print("Version: " + str((yamlcfg['config']['version'])))
+
+
+def GET_CONFIG_MQTT_BROKER():
+    return str((yamlcfg['config']['mqtt_broker']))
 
 
 """ ############### """
@@ -95,10 +108,10 @@ def CREATE_SENSORDATA_FILE(filename):
     try:
         # create csv file
         file = PATH + "/csv/" + filename + ".csv"
-        with open(file, 'w') as csvfile:
+        with open(file, 'w', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-            filewriter.writerow(['Timestamp', 'Sensor_Value'])
+            filewriter.writerow(['Timestamp', 'Device', 'Sensor', 'Sensor_Value'])
             csvfile.close()
 
         WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + ".csv >>> created") 
@@ -108,17 +121,17 @@ def CREATE_SENSORDATA_FILE(filename):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
 
 
-def WRITE_SENSORDATA_FILE(filename, value):
+def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
     if os.path.isfile(PATH + "/csv/" + filename + ".csv") is False:
         CREATE_SENSORDATA_FILE(filename)
 
     try:
         # open csv file
         file = PATH + "/csv/" + filename + ".csv"
-        with open(file, 'a', newline='') as csvfile:
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(value) ])
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(device), str(sensor), str(value) ])
             csvfile.close()
         
     except Exception as e:
@@ -212,7 +225,7 @@ def CREATE_LOGFILE(filename):
     try:
         # create csv file
         file = PATH + "/logs/" + filename + ".csv"
-        with open(file, 'w') as csvfile:
+        with open(file, 'w', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
@@ -245,7 +258,7 @@ def WRITE_LOGFILE_MQTT(channel, msg):
     try:
         # open csv file
         file = PATH + "/logs/log_mqtt.csv"
-        with open(file, 'a', newline='') as csvfile:
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
@@ -262,13 +275,15 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
     try:
         # open csv file
         file = PATH + "/logs/log_system.csv"
-        with open(file, 'a', newline='') as csvfile:
+
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',',
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
             csvfile.close()
        
     except Exception as e:
+        print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))
         
     
@@ -276,7 +291,8 @@ def GET_LOGFILE_SYSTEM():
     try:
         # open csv file
         file = PATH + "/logs/log_system.csv"
-        with open(file, 'r', newline='') as csvfile:
+        
+        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
             rowReader = csv.reader(csvfile, delimiter=',')
             data = [row for row in rowReader] # get data
             headers = data.pop(0)             # get headers and remove from data

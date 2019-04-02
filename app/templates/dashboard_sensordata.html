@@ -63,35 +63,34 @@
             <div class="panel-body">  
             <form method="POST">   
                 <div class="form-group">
-                  <div class="text-center">         
-                    <h5><b>Job anlegen</b></h5>
+                  <div class="text-center">   
+                    <h3><span class="label label-default">Job anlegen</span></h3> 
+                  </div>     
+                  <br>
+                  <div class="well well-sm">Name     
+                    <br>
+                    <br>
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
+                    </div>
                   </div>
-                  <br>       
-                  Name     
-                  <br>
-                  <br>
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
+                  <div class="well well-sm">Dateiname   
+                    <br>
+                    <br>   
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
+                    </div>
                   </div>
-                  Dateiname   
-                  <br>
-                  <br>   
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
-                  </div>
-                  Gerät 
-                  <br>
-                  <br>
-                  <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
-                    {% for each in dropdown_list_mqtt_devices %}
-                    <option value="{{each.id}}"> {{ each.name }} </option>
-                    {% endfor %}
-                  </select>   
-                  <div class="text-center">                             
-                  </div>                  
-                  <br>          
+                  <div class="well well-sm">Gerät 
+                    <br>
+                    <br>
+                    <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
+                      {% for each in dropdown_list_mqtt_devices %}
+                      <option value="{{each.id}}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </div>                            
                   <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-secondary" name="add_job" value="Job anlegen" />
-                  <br>
                 </form>   
               </div>  
             </div>      
@@ -103,42 +102,45 @@
 
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black">Jobs</font></div>        
-          <div class="panel-body">     
-          <table class="table">
-            <thead>
-              <th scope="col">Job-ID</th>  
-              <th scope="col">Name</th>  
-              <th scope="col">Dateiname</th>   
-              <th scope="col">Gerät</th>
-              <th scope="col">Sensor</th>
-              <th scope="col" colspan="2">Einstellungen: Sensor</th>
-            </thead>
-            <tbody> 
-              {% for entry in sensordata_list %}
-              <tr>
-                <td>{{ entry.id }}</td> 
-                <td>{{ entry.name }}</td> 
-                <td>{{ entry.filename }}</td>
-                <td>{{ entry.mqtt_device.name }}</td> 
-                <td>{{ entry.sensor_id }}</td>
-                <td> 
-                  <form method="POST" class="verticalform">      
-                    <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                      {% for i in range(entry.mqtt_device.inputs) %}
-                      <option value= "{{ i }}" > {{ i }} </option>
-                      {% endfor %}
-                    </select>   
-                    </td>
-                    <td>
-                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" name="change_settings" value="aktuallisieren"/>             
-                  </form>
-                </td>               
-                <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
-              </tr>
-              {% endfor %}
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-          </table>  
+          <div class="panel-body">   
+          <div class="well well-sm">
+            <table class="table">
+              <thead>
+                <th scope="col">Job-ID</th>  
+                <th scope="col">Name</th>  
+                <th scope="col">Dateiname</th>   
+                <th scope="col">Gerät</th>
+                <th scope="col">Sensor</th>
+                <th scope="col" colspan="2"><em>/// Einstellung: Sensor ///</em></th>
+              </thead>
+              <tbody> 
+                {% for entry in sensordata_list %}
+                <tr>
+                  <td>{{ entry.id }}</td> 
+                  <td>{{ entry.name }}</td> 
+                  <td>{{ entry.filename }}</td>
+                  <td>{{ entry.mqtt_device.name }}</td> 
+                  <td>{{ entry.sensor_id }}</td>
+                  <td> 
+                    <form method="POST" class="verticalform">      
+                      <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                        <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                        <option value= "{{ entry.sensor_id }}" > ----- </option>
+                        {% for i in range(entry.mqtt_device.inputs) %}
+                        <option value= "{{ i }}" > {{ i }} </option>
+                        {% endfor %}
+                      </select>   
+                      </td>
+                      <td>
+                      <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-secondary" name="change_settings" value="aktuallisieren"/>             
+                    </form>
+                  </td>               
+                  <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>  
+          </div>
         </div>  
       </div>  
 
@@ -148,19 +150,20 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">Datein</div>
-          <div class="panel-body">   
-          <table class="table">
-            <tbody> 
-              {% for entry in file_list %}
-              <tr>
-                <td>{{ entry }}</td> 
-                <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
-                <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red"><b>löschen</b></font></a></td>  
-              </tr>
-              {% endfor %} 
-              <tr><td></td><td></td><td></td></tr>
-            </tbody>
-          </table>  
+        <div class="panel-body">  
+          <div class="well well-sm">
+            <table class="table">
+              <tbody> 
+                {% for entry in file_list %}
+                <tr>
+                  <td>{{ entry }}</td> 
+                  <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red"><b>löschen</b></font></a></td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+          </div>
         </div>
       </div>  
 

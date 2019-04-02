@@ -62,6 +62,11 @@ class MQTT_Devices(db.Model):
     outputs      = db.Column(db.Integer)
     last_contact = db.Column(db.String(50))
 
+class Error_List(db.Model):
+    __tablename__ = 'error_list'
+    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    content      = db.Column(db.String(100))
+
 class Sensordata_Jobs(db.Model):
     __tablename__   = 'sensordata_jobs'
     id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -311,7 +316,7 @@ if User.query.filter_by(username='default').first() is None:
     db.session.commit()
 
 
-# Create default scenes
+# create default scenes
 if Scenes.query.filter_by().first() is None:   
     for i in range(1,11):
         scene = Scenes(
@@ -326,6 +331,16 @@ if Scenes.query.filter_by().first() is None:
         name = "",
     )        
     db.session.add(scene)
+    db.session.commit()
+
+
+# create error list
+if Error_List.query.filter_by().first() is None:      
+    error = Error_List(
+        id = 1,
+        content = "",
+    )        
+    db.session.add(error)
     db.session.commit()
 
 
@@ -515,9 +530,11 @@ def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
 
 def DELETE_MQTT_DEVICE(id):
     if Plants.query.filter_by(mqtt_device_id=id).first():
-        return "MQTT-Device wird in Bewässerung verwendet"
+        entry = GET_MQTT_DEVICE(id)
+        SET_ERROR_LIST(entry.name + " wird in Bewässerung verwendet")
     elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
-        return "MQTT-Device wird in Sensordaten_Jobs verwendet"       
+        entry = GET_MQTT_DEVICE(id)
+        SET_ERROR_LIST(entry.name + " wird in Sensordaten_Jobs verwendet")      
     else:
         entry = GET_MQTT_DEVICE(id)
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
@@ -631,6 +648,23 @@ def DELETE_USER(user_id):
 def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
+
+""" ################## """
+""" ################## """
+"""     error list     """
+""" ################## """
+""" ################## """
+
+def SET_ERROR_LIST(content):
+    entry = Error_List.query.filter_by(id=1).first()
+    entry.content = content
+    db.session.commit()  
+
+
+def GET_ERROR_LIST():
+    entry = Error_List.query.filter_by(id=1).first()
+    return entry.content
+ 
 
 """ ################## """
 """ ################## """

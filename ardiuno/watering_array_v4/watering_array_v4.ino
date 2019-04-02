@@ -121,13 +121,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String STR_file = getValue(topic,'/',4);
         // get sensor_id
         int sensor_id = atoi(msg);
-
+        String STR_sensor_id = String(sensor_id);
         // get sensor_value
         int sensorValue = adc.readADC(sensor_id); 
         String STR_value = String(sensorValue);
 
         // create msg   
-        String payload = STR_file + "/" + STR_value;      
+        String payload = STR_file + "/" + device_name + "/" + STR_sensor_id + "/" + STR_value;      
         char attributes[100];
         payload.toCharArray( msg, 100 );
 

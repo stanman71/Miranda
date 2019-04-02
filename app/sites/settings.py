@@ -10,6 +10,7 @@ from app.database.database import *
 from app.components.tasks import UPDATE_MQTT_DEVICES
 from app.components.file_management import *
 
+
 # create role "superuser"
 def superuser_required(f):
     @wraps(f)
@@ -31,9 +32,14 @@ def superuser_required(f):
 @superuser_required
 def dashboard_settings_mqtt():   
     error_message = ""
+    error_message_table = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
+
+    if GET_ERROR_LIST() is not "":
+        error_message_table = GET_ERROR_LIST()
+        SET_ERROR_LIST("")
 
     if request.method == "POST":     
         # change mqtt settings   
@@ -86,10 +92,10 @@ def dashboard_settings_mqtt():
             if request.form.get("update_mqtt_devices") is not None:         
                 try:
                     UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                    time.sleep(2)
                 except Exception as e:
                     error_message = "Fehler in MQTT: " + str(e)
                     WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
-                time.sleep(2)
 
     mqtt_device_list = GET_ALL_MQTT_DEVICES()
     
@@ -97,6 +103,7 @@ def dashboard_settings_mqtt():
 
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
+                            error_message_table=error_message_table,
                             mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,

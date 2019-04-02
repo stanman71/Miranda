@@ -60,11 +60,13 @@
   <div class="panel panel-default">
     <div class="panel-heading"><font color="black"><b>SnowBoy</b></font></div>
       <div class="panel-body">   
-        <form method="POST">  
-          <div class="radio">
-            <label><input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">SnowBoy aktivieren</label>
-            <br>
-            <label><input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">SnowBoy deaktivieren</label>
+        <form method="POST">
+          <div class="well well-sm">  
+            <div class="radio">
+              <label><input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">SnowBoy aktivieren</label>
+              <br>
+              <label><input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">SnowBoy deaktivieren</label>
+            </div>
           </div>
           <font color="red"><b>Flask neustarten, wenn SnowBoy Einstellungen geändert werden</b></font>
           <br>     
@@ -94,13 +96,13 @@
         <div class="panel-heading">Empfindlichkeit</div>
           <div class="panel-body">  
           <form method="POST">
-            Empfindlichkeit: {{ sensitivity }}
+            <div class="well well-sm">Empfindlichkeit: {{ sensitivity }}
             <br>
             <br>
-            <div class="slidecontainer">                        
-              <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+              <div class="slidecontainer">                        
+                <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+              </div>
             </div>
-            <br>
             <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#'" class="btn btn-secondary" name="change_settings" value="Empfindlichkeit ändern" />       
           </form>  
         </div>                    
@@ -127,72 +129,78 @@
       <div class="panel panel-default">
         <div class="panel-heading">Aufgabenmanagement</div>
         <div class="panel-body">  
-          <div class="text-center">         
-            <h5><b>Neue Aufgabe erstellen</b></h5>
+          <div class="text-center">   
+            <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
           </div>          
           <br>
-          <table class="table">
-            <thead>
-              <tr><td></td><td></td></tr>
-              <tr>
-                <th>Eingabe</th>
-                <th>Erklärung</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>snowboy_active</td>
-                <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
-                    blaue LEDs vom Snowboy leuchten in diesem Modus</td>
-              </tr> 
-              <tr>
-                <td>start_scene:1:50</td>
-                <td>starte Szene Nummer "1", globale Helligkeit 50%</td>
-              </tr>
-              <tr>
-                <td>start_program:2</td>
-                <td>starte Programm Nummer "2"</td>
-              </tr>
-              <tr>
-                <td>led_off:3</td>
-                <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
-              </tr>
-              <tr><td></td><td></td></tr>
-            </tbody>
-          </table>  
+          <div class="well well-sm">Anweisungen
+            <table class="table">
+              <thead>
+                <tr><td></td><td></td></tr>
+                <tr>
+                  <th>Eingabe</th>
+                  <th>Erklärung</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>snowboy_active</td>
+                  <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
+                      blaue LEDs vom Snowboy leuchten in diesem Modus</td>
+                </tr> 
+                <tr>
+                  <td>start_scene:1:50</td>
+                  <td>starte Szene Nummer "1", globale Helligkeit 50%</td>
+                </tr>
+                <tr>
+                  <td>start_program:2</td>
+                  <td>starte Programm Nummer "2"</td>
+                </tr>
+                <tr>
+                  <td>led_off:3</td>
+                  <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
+                </tr>
+              </tbody>
+            </table>  
+          </div>
    
 <section id="fileupload"></section>
             
-          <b>HINWEIS:</b> Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
+          <b>HINWEIS:</b> Hotword-Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
           <br>
           <br>
           <form method="POST">
-            Name
-            <br>             
-            <div class="form-group">
-              <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
-            </div>                          
-            Aufgabe
-            <br>            
-            <div class="form-group">
-              <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
-            </div>               
+            <div class="well well-sm">Aufgabenname
+              <br>
+              <br>             
+              <div class="form-group">
+                <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+              </div>    
+            </div>                      
+            <div class="well well-sm">Aufgabe
+              <br>
+              <br>            
+              <div class="form-group">
+                <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+              </div>    
+            </div>           
             <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#task_management'" class="btn btn-secondary" name="add_task" value="Aufgabe anlegen" />
           </form>  
-
           <br>
-          <div class="text-center">         
-            <h5><b>Hotword hochladen</b></h5>  
+          <br>
+          <div class="text-center">     
+            <h3><span class="label label-default">Hotword hochladen</span></h3>    
           </div>
           <br>
-          <a href="https://snowboy.kitt.ai">Hotword erstellen</a>
-          <br>
-          <br>
-          <form method=post enctype=multipart/form-data>
-            <input type=file name=file>
+          <div class="well well-sm">
+            <a href="https://snowboy.kitt.ai">Hotword erstellen</a>
             <br>
+            <br>
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=file>
+          </div>
               <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#fileupload'" class="btn btn-secondary" name="file_upload" value="Datei hochladen">
-          </form>   
+            </form>   
         </div>                    
       </div>  
 
@@ -210,23 +218,24 @@
 
       <div class="panel panel-default">
           <div class="panel-heading">Aufgaben</div>        
-          <div class="panel-body">  
-            <table class="table">
-              <thead>                      
-                <th scope="col">Name</th> 
-                <th scope="col">Aufgabe</th> 
-              </thead>
-              <tbody> 
-                {% for entry in snowboy_list %}
-                <tr>
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.task }}</td> 
-                  <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
-                </tr>
-                {% endfor %} 
-                <tr><td></td><td></td><td></td></tr>
-              </tbody>
-            </table>  
+          <div class="panel-body">
+            <div class="well well-sm">
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Name</th> 
+                  <th scope="col">Aufgabe</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in snowboy_list %}
+                  <tr>
+                    <td>{{ entry.name }}</td> 
+                    <td>{{ entry.task }}</td> 
+                    <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table>  
+            </div>
           </div>  
         </div>  
 
@@ -236,19 +245,20 @@
 
         <div class="panel panel-default">
           <div class="panel-heading">Hotword-Datein</div>
-          <div class="panel-body">                               
-            <table class="table">
-                <tbody> 
-                  {% for entry in file_list %}
-                  <tr>
-                    <td>{{ entry }}</td> 
-                    <td class="text-right"><a href="/dashboard/settings/snowboy/download/hotword/{{ entry }}#table_hotwords"><b>herunterladen</b></font></a></td>
-                    <td class="text-right"><a href="/dashboard/settings/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red"><b>löschen</b></font></a></td>  
-                  </tr>
-                  {% endfor %} 
-                  <tr><td></td><td></td><td></td></tr>
-                </tbody>
-              </table>  
+          <div class="panel-body"> 
+            <div class="well well-sm">                     
+              <table class="table">
+                  <tbody> 
+                    {% for entry in file_list %}
+                    <tr>
+                      <td>{{ entry }}</td> 
+                      <td class="text-right"><a href="/dashboard/settings/snowboy/download/hotword/{{ entry }}#table_hotwords"><b>herunterladen</b></font></a></td>
+                      <td class="text-right"><a href="/dashboard/settings/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red"><b>löschen</b></font></a></td>  
+                    </tr>
+                    {% endfor %} 
+                  </tbody>
+                </table>  
+              </div>
             </div>  
           </div>               
 

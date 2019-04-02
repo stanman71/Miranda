@@ -97,44 +97,44 @@
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b> {{ scene_name }} ({{number}}) </b></font></div>
           <div class="panel-body">
-            <table class="table">
-              <thead>
-                <tr>                       
-                  <th scope="col">LED</th>                        
-                  <th scope="col" colspan="4">RGB</th> 
-                  <th scope="col" colspan="2">Helligkeit</th> 
+            <div class="well well-sm">
+              <table class="table">
+                <thead>
+                  <tr>                       
+                    <th scope="col">LED</th>                        
+                    <th scope="col" colspan="4">RGB</th> 
+                    <th scope="col" colspan="2">Helligkeit</th> 
+                  <tr>
+                </thead>
+                <tbody>             
+                {% for entry in entries_scene %}         
                 <tr>
-              </thead>
-              <tbody>             
-
-              {% for entry in entries_scene %}         
-              <tr>
-                <td>{{ entry.led_name.name }}</td> 
-                <td>{{ entry.color_red }}</td>
-                <td>{{ entry.color_green }}</td>
-                <td>{{ entry.color_blue }}</td>   
-                <td>
-                  <form method="POST" class="verticalform">
-                    <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control led_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
-                    <input type="submit" class="btn btn-secondary" name="change_settings_color" value="Farbe ändern" />  
-                  </form>
-                </td>
-                <td>{{ entry.brightness }}</td>
-                <td>
-                  <form method="POST" class="slidecontainer"> 
-                    <div class="col-md-10 text-center"> 
-                      <input type="range" class="slider" name="{{ entry.led_id }}" min="0" max="254" value="{{ entry.brightness }}" />
-                      <br>
-                      <input type="submit" class="btn btn-secondary" name="change_settings_brightness" value="Helligkeit ändern"/>
-                    </div> 
-                  </form>
-                </td>
-                <td><a href="/dashboard/led/scene/delete/{{number}}/{{ entry.led_id }}"><font color="red"><b>löschen</b></font></a>
-              </tr>
-              {% endfor %}
-              <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-            </tbody>
-          </table>     
+                  <td>{{ entry.led_name.name }}</td> 
+                  <td>{{ entry.color_red }}</td>
+                  <td>{{ entry.color_green }}</td>
+                  <td>{{ entry.color_blue }}</td>   
+                  <td>
+                    <form method="POST" class="verticalform">
+                      <input type="text" name="{{ entry.scene_id }} {{ entry.led_id }}" class="form-control led_{{ entry.led_id }}" value="rgb({{ entry.color_red }}, {{ entry.color_green }}, {{ entry.color_blue }}) "/>
+                      <input type="submit" class="btn btn-secondary" name="change_settings_color" value="Farbe ändern" />  
+                    </form>
+                  </td>
+                  <td>{{ entry.brightness }}</td>
+                  <td>
+                    <form method="POST" class="slidecontainer"> 
+                      <div class="col-md-10 text-center"> 
+                        <input type="range" class="slider" name="{{ entry.led_id }}" min="0" max="254" value="{{ entry.brightness }}" />
+                        <br>
+                        <input type="submit" class="btn btn-secondary" name="change_settings_brightness" value="Helligkeit ändern"/>
+                      </div> 
+                    </form>
+                  </td>
+                  <td><a href="/dashboard/led/scene/delete/{{number}}/{{ entry.led_id }}"><font color="red"><b>löschen</b></font></a>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>     
         </div>
       </div> 
 
@@ -149,8 +149,12 @@
           {% if entries_scene != None %}  
 
           <form method="POST">
-            <div class="form-group">
-              <input type="text" class="form-control" name="set_name" value="{% if scene_name != None %}{{ scene_name }}{% endif %}" />
+            <div class="well well-sm">
+              <div class="form-group">Name
+                <br>
+                <br>
+                <input type="text" class="form-control" name="set_name" value="{% if scene_name != None %}{{ scene_name }}{% endif %}" />
+              </div>
             </div>
               <input type="submit" class="btn btn-secondary" name="change_settings_name" value="Name ändern" />
           </form>  
@@ -160,13 +164,17 @@
 
           <div class="dropdown">
           <form method="POST" enctype="multipart/form-data">
-            <select class="btn btn-secondary dropdown-toggle" name="add_led">
-              {% for each in dropdown_list %}
-              {% if each != None %}
-              <option value="{{each}}">{{each}}</option>
-              {% endif %}
-              {% endfor %}
-            </select>
+            <div class="well well-sm">LED
+              <br>
+              <br>
+              <select class="btn btn-secondary dropdown-toggle" name="add_led">
+                {% for each in dropdown_list %}
+                {% if each != None %}
+                <option value="{{each}}">{{each}}</option>
+                {% endif %}
+                {% endfor %}
+              </select>
+            </div>
             <input type="submit" class="btn btn-secondary" name="change_settings_led" value="LED hinzufügen">
           </form>
         </div> 

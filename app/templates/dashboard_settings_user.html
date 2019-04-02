@@ -46,43 +46,44 @@
 
 <!-- settings navs -->
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
-      </ul>
-    </div>
-  </nav>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+            <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
+            <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
+            <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
+            <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
+          </ul>
+        </div>
+      </nav>
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Benutzer</b></font></div>
         <div class="panel-body">
-        <table class="table">
-          <thead>
-            <tr>
-            <th scope="col">Benutzername</th>
-            <th scope="col">eMail</th>
-            <th scope="col">Rolle</th>
-            <tr>
-          </thead>
-          <tbody>
-            {% for user in user_list %}
-            <tr>
-              <td>{{ user.username }}</td>
-              <td>{{ user.email }}</td>  
-              <td>{{ user.role }}</td> 
-              <td><a href="/dashboard/settings/user/role/{{ user.id }}"><font color="black"><b>aktivieren</b></font></a></td>  
-              <td><a href="/dashboard/settings/user/delete/{{ user.id }}"><font color="red"><b>löschen</b></font></a></td>   
-            </tr>
-            {% endfor %}
-            <tr><td></td><td></td><td></td><td></td><td></td></tr>
-          </tbody>
-        </table>
+          <div class="well well-sm">
+            <table class="table">
+              <thead>
+                <tr>
+                <th scope="col">Benutzername</th>
+                <th scope="col">eMail</th>
+                <th scope="col">Rolle</th>
+                <tr>
+              </thead>
+              <tbody>
+                {% for user in user_list %}
+                <tr>
+                  <td>{{ user.username }}</td>
+                  <td>{{ user.email }}</td>  
+                  <td>{{ user.role }}</td> 
+                  <td><a href="/dashboard/settings/user/role/{{ user.id }}"><font color="black"><b>aktivieren</b></font></a></td>  
+                  <td><a href="/dashboard/settings/user/delete/{{ user.id }}"><font color="red"><b>löschen</b></font></a></td>   
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>  
       </div>    
     </div>

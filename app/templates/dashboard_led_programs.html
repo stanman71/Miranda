@@ -135,41 +135,49 @@
 
           {% if program != "" %}  
 
-          <table class="table">
-            <thead>
-              <tr></tr>
-              <tr>
-                <th>Eingabe</th>
-                <th>Erklärung</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1:rgb(255, 0, 0)</td>
-                <td>LED Nummer 1, Farbe ändern auf rot</td>
-              </tr>
-              <tr>
-                <td>2:bri(254)</td>
-                <td>LED Nummer 2, maximale Helligkeit</td>
-              </tr>
-              <tr>
-                <td>pause:30</td>
-                <td>Pause für 30 Sekunden</td>
-              </tr>
-              <tr><td></td><td></td></tr>
-            </tbody>
-          </table>
+          <div class="well well-sm">Anweisungen
+            <br>
+            <br>
+            <table class="table">
+              <thead>
+                <tr></tr>
+                <tr>
+                  <th>Eingabe</th>
+                  <th>Erklärung</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1:rgb(255, 0, 0)</td>
+                  <td>LED Nummer 1, Farbe ändern auf rot</td>
+                </tr>
+                <tr>
+                  <td>2:bri(254)</td>
+                  <td>LED Nummer 2, maximale Helligkeit</td>
+                </tr>
+                <tr>
+                  <td>pause:30</td>
+                  <td>Pause für 30 Sekunden</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
 <!-- get rgb value -->
  
         <form method="POST" class="verticalform">
-          <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
+          <div class="well well-sm">RGB-Werte
+            <br>
+            <br>
+            <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
+          </div>
           <input type="submit" onclick="window.location.href='/dashboard/led/programs#rgb_color'"class="btn btn-secondary" name="color_{{ program.id }}" value="RGB-Werte ermitteln" />  
           <br>
           <br>
           <div class="form-group">
             <textarea class="form-control rounded-0" rows="1">{{ rgb }}</textarea>
           </div>
+          
 
 <!-- update a program -->
 

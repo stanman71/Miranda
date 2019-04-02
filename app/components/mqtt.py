@@ -3,10 +3,10 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.file_management import WRITE_SENSORDATA_FILE, WRITE_LOGFILE_MQTT, WRITE_LOGFILE_SYSTEM
+from app.components.file_management import *
 
+BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
-BROKER_ADDRESS = "localhost"
 
 moisture_current = 0
 
@@ -47,7 +47,8 @@ def MQTT_START():
 		# write sensor data	
 		if channel_path == "data" and channel_content == "sensor":
 			msg = msg.split("/")
-			WRITE_SENSORDATA_FILE(msg[0], msg[1])			
+			# filename / device / sensor / value
+			WRITE_SENSORDATA_FILE(msg[0], msg[1], msg[2], msg[3])			
 
 	
 	def on_connect(client, userdata, flags, rc):
@@ -67,12 +68,15 @@ def MQTT_START():
 
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
+	try:
+		def on_publish(client, userdata, mid):
+			print ("Message Published...")
 
-	def on_publish(client, userdata, mid):
-		print ("Message Published...")
+		client = mqtt.Client()
+		client.on_publish = on_publish
+		client.connect(BROKER_ADDRESS) 
+		client.publish(MQTT_TOPIC,MQTT_MSG)
+		client.disconnect()
 
-	client = mqtt.Client()
-	client.on_publish = on_publish
-	client.connect(BROKER_ADDRESS) 
-	client.publish(MQTT_TOPIC,MQTT_MSG)
-	client.disconnect()
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
