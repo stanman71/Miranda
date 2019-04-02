@@ -12,7 +12,7 @@ const char* MQTT_BROKER = "";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
-char msg[50];
+char msg[100];
 char channelpath[50];
 char channel_subscribe[50];
 int value = 0;
@@ -91,7 +91,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         char attributes[100];
         payload.toCharArray( channelpath, 100 );
         
-        client.publish(channelpath, "watering_array_v4/8/4");        
+        client.publish(channelpath, "{\"devicetype\":\"watering_array_v4\",\"inputs\":8,\"outputs\":4}");        
     }
 
     if(check_target == "plant"){

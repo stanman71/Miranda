@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import datetime
+import json
 
 from app import app
 from app.database.database import *
@@ -37,8 +38,8 @@ def MQTT_START():
 		# update device informations	
 		for device in GET_ALL_MQTT_DEVICES():
 			if channel_path == device.channel_path and channel_content == "deviceinformation":
-				msg = msg.split("/")
-				UPDATE_MQTT_DEVICE_INFORMATIONS(device.id, msg[0], msg[1], msg[2], time)
+				data = json.loads(msg)
+				UPDATE_MQTT_DEVICE_INFORMATIONS(device.id, data["devicetype"], data["inputs"], data["outputs"], time)
 
 		# get current moisture value	
 		if channel_path == "data" and channel_content == "plant":
