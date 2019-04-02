@@ -454,7 +454,7 @@ def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):
 
 def DELETE_SENSORDATA_JOB(id):
     entry = GET_SENSORDATA_JOB(id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Ssensordata Job >>> " + entry.name + " >>> deleted")
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
  
     Sensordata_Jobs.query.filter_by(id=id).delete()
     db.session.commit()
