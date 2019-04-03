@@ -51,98 +51,108 @@
         </div>
       </nav>
 
-<!-- error message -->
-
-      {% if error_message != "" %}
-        <div class="alert alert-danger" role="alert">
-          {{ error_message }}
-        </div>      
-      {% endif %}
-
-  
  <!-- instructions -->
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Sensor)</b></font></div>
-          <div class="panel-body">      
-            <div class="text-center">         
-              <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3> 
+          <div class="panel-body">   
+            <div class="well well-sm">
+              <div class="text-center">         
+                <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3> 
+              </div>
+              <br>
+              <div class="well well-sm">Anweisungen
+                <table class="table">
+                <thead>
+                  <tr><td></td><td></td></tr>
+                  <tr>
+                    <th>Eingabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>start_scene:1:100</td>
+                    <td>starte Szene Nummer "1", globale Helligkeit 100 %</td>
+                  </tr>
+                  <tr>
+                    <td>start_program:2</td>
+                    <td>starte Programm Nummer "2"</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:3</td>
+                    <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
+                  </tr>
+                  <tr>
+                    <td>get_mqtt_sensordata:1</td>
+                    <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
+                  </tr>               
+                </tbody>
+              </table>
             </div>
-            <br>
-            <div class="well well-sm">Anweisungen
-              <table class="table">
-              <thead>
-                <tr><td></td><td></td></tr>
-                <tr>
-                  <th>Eingabe</th>
-                  <th>Erklärung</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>start_scene:1:100</td>
-                  <td>starte Szene Nummer "1", globale Helligkeit 100 %</td>
-                </tr>
-                <tr>
-                  <td>start_program:2</td>
-                  <td>starte Programm Nummer "2"</td>
-                </tr>
-                <tr>
-                  <td>led_off:3</td>
-                  <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
-                </tr>
-                <tr>
-                  <td>get_mqtt_sensordata:1</td>
-                  <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
-                </tr>               
-              </tbody>
-            </table>
-          </div>
 
-      <!-- new task -->
-        
-          <form method="POST">
-            <div class="well well-sm">Name 
-              <br>
-              <br>          
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
-              </div>         
-            </div>     
-            <div class="well well-sm">Aufgabe   
-              <br>
-              <br>                  
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
-              </div>  
-            </div>
-            <div class="well well-sm">Gerät
-              <br>
-              <br>
-              <select class="btn btn-secondary dropdown-toggle" name="set_mqtt_device_id">
-                {% for each in dropdown_list_mqtt_devices %}
-                <option value="{{each.id}}"> {{ each.name }} </option>
-                {% endfor %}
-              </select>   
-            </div>          
-            <div class="well well-sm">Operator / Wert   
-              <br>
-              <br>    
-              <select class="btn btn-secondary dropdown-toggle" name="set_operator">
-                {% for each in dropdown_list_operators %}
-                <option value="{{each}}"> {{ each }} </option>
-                {% endfor %}
-              </select> 
-              <br>
-              <br>
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_value" value="{% if set_value != None %}{{ set_value }}{% endif %}" />
-              </div>  
-            </div>           
-            <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#'" class="btn btn-secondary" name="add_task" value="Aufgabe anlegen" />
-          </form>   
+<!-- new task -->
+
+            <form method="POST">
+              <div class="well well-sm">Name:         
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+                </div>         
+              </div>     
+              <div class="well well-sm">Aufgabe:                   
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+                </div>  
+              </div>
+
+<section id="add_task"></section>  
+
+              <div class="well well-sm">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-1">
+                    Gerät:
+                  </div>
+                  <div class="col-sm-1">     
+                    <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
+                      {% for each in dropdown_list_mqtt_devices %}
+                      <option value="{{each.id}}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select>   
+                  </div>
+                </div>                
+              </div>          
+              <div class="well well-sm">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-1">
+                    Operator:
+                  </div>
+                  <div class="col-sm-1">                              
+                    <select class="btn btn-default dropdown-toggle" name="set_operator">
+                      {% for each in dropdown_list_operators %}
+                      <option value="{{each}}"> {{ each }} </option>
+                      {% endfor %}
+                    </select> 
+                  </div>
+                </div>     
+                <br>           
+                Wert: 
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_value" value="{% if set_value != None %}{{ set_value }}{% endif %}" />
+                </div>  
+              </div>           
+              <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+            </form>   
+          </div>
         </div>
       </div>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %}
 
 <!-- schedular table -->
 
@@ -160,7 +170,7 @@
                 <th scope="col">Sensor</th> 
                 <th scope="col">Operator</th>
                 <th scope="col">Wert</th>  
-                <th scope="col" colspan="2"><em>/// Einstellung: Sensor ///</em></th>
+                <th scope="col" colspan="2"><em>/// Einstellung: Sensor / Wert ///</em></th>
               </thead>
               <tbody> 
                 {% for entry in schedular_list %}
@@ -173,7 +183,7 @@
                   <td>{{ entry.value }}</td> 
                   <td> 
                     <form method="POST" class="verticalform">      
-                      <select class="btn btn-secondary dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                      <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                         <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
                         <option value= "{{ entry.sensor_id }}" > ----- </option>
                         {% for i in range(entry.mqtt_device.inputs) %}
@@ -182,9 +192,12 @@
                       </select>  
                     </td> 
                     <td>      
-                        <div class="col-md-10 text-center"> 
-                          <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table_tasks'" class="btn btn-secondary" name="change_settings" value="aktuallisieren"/>
-                        </div> 
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" />
+                      </div>  
+                      <div class="col-md-10 text-center"> 
+                        <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table_tasks'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
+                      </div> 
                     </form>
                   </td> 
                   <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  

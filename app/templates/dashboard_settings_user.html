@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block styles %}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -68,6 +68,7 @@
                 <tr>
                 <th scope="col">Benutzername</th>
                 <th scope="col">eMail</th>
+                <th scope="col">eMail Benachrichtigung</th>
                 <th scope="col">Rolle</th>
                 <tr>
               </thead>
@@ -76,6 +77,28 @@
                 <tr>
                   <td>{{ user.username }}</td>
                   <td>{{ user.email }}</td>  
+                  <td>
+                  <form method="POST">
+                    <div class="form-check">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-4">                       
+                          Fehler:
+                        </div>
+                        <div class="col-sm-1">                  
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error">
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-4">                       
+                          Kamera:
+                        </div>
+                        <div class="col-sm-1">                  
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_cam }} name="checkbox_cam">
+                        </div>
+                      </div>     
+                    <input type="submit" onclick="window.location.href='/dashboard/settings/user#'" class="btn btn-default" name="change_user_settings_{{ user.id }}" value="aktuallisieren" />
+                  </form> 
+                  </td>
                   <td>{{ user.role }}</td> 
                   <td><a href="/dashboard/settings/user/role/{{ user.id }}"><font color="black"><b>aktivieren</b></font></a></td>  
                   <td><a href="/dashboard/settings/user/delete/{{ user.id }}"><font color="red"><b>löschen</b></font></a></td>   
@@ -86,6 +109,66 @@
           </div>
         </div>  
       </div>    
+
+<!-- error message --> 
+
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %}
+
+<!-- eMail settings -->
+
+<section id="add_email"></section>   
+
+      <div class="panel panel-default">
+        <div class="panel-heading">eMail Einstellungen</div>
+        <div class="panel-body">
+          <div class="well well-sm">
+            <form method="POST">
+              <div class="well well-sm">eMail Server Adresse:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mail_server_address" value="{% if email_setting.mail_server_address != None %}{{ email_setting.mail_server_address }}{% endif %}" />
+                </div>    
+              </div>                      
+              <div class="well well-sm">eMail Server Port:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mail_server_port" value="{% if email_setting.mail_server_port != None %}{{ email_setting.mail_server_port }}{% endif %}" />
+                </div>    
+              </div>           
+              <div class="well well-sm">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-2">
+                    Verschlüsselung:
+                  </div>
+                  <div class="col-sm-1">   
+                    <select class="btn btn-default dropdown-toggle" name="set_mail_encoding">
+                      {% for each in mail_encoding_list %}
+                      <option value="{{ each }}"> {{ each }} </option>
+                      {% endfor %}
+                    </select> 
+                  </div>
+                </div> 
+              </div>                        
+              <div class="well well-sm">Benutzername:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mail_username" value="{% if email_setting.mail_username != None %}{{ email_setting.mail_username }}{% endif %}" />
+                </div>    
+              </div>                      
+              <div class="well well-sm">Passwort:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mail_password" value="{% if email_setting.mail_password != None %}{{ email_setting.mail_password }}{% endif %}" />
+                </div>    
+              </div>           
+              <input type="submit" onclick="window.location.href='/dashboard/settings/user#add_email'" class="btn btn-default" name="change_email_settings" value="eMail Einstellungen ändern" />
+            </form>               
+          </div>
+          <form method="POST">
+            <input type="submit" onclick="window.location.href='/dashboard/settings/user#add_email'" class="btn btn-default" name="test_email_settings" value="eMail Einstellungen testen" />
+          </form> 
+        </div>
+      </div>   
     </div>
   </div>    
 </div>

@@ -71,7 +71,7 @@
           <font color="red"><b>Flask neustarten, wenn SnowBoy Einstellungen geändert werden</b></font>
           <br>     
           <br>        
-          <input type="submit" class="btn btn-secondary" value="Auswählen"/>
+          <input type="submit" class="btn btn-default" value="Auswählen"/>
         </form>  
       </div>  
     </div>           
@@ -82,9 +82,9 @@
 
 <!-- snowboy error message -->
 
-    {% if error_message != "" %}
+    {% if error_message_snowboy != "" %}
       <div class="alert alert-danger" role="alert">
-        {{ error_message }}
+        {{ error_message_snowboy }}
       </div>      
     {% endif %}   
 
@@ -103,105 +103,101 @@
                 <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
               </div>
             </div>
-            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#'" class="btn btn-secondary" name="change_settings" value="Empfindlichkeit ändern" />       
+            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#'" class="btn btn-default" name="change_settings" value="Empfindlichkeit ändern" />       
           </form>  
         </div>                    
       </div>     
 
-<!-- snowboy error message -->
+<!-- snowboy error messages -->
 
-    {% if error_message_table != "" %}
-      <div class="alert alert-danger" role="alert">
-        {{ error_message_table }}
-      </div>      
-    {% endif %}   
-    
-<!-- error message hotword --> 
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %} 
 
-    {% if error_message_hotword != "" %}
-      <div class="alert alert-danger" role="alert">
-        Hotword-Datei fehlt: {{ error_message_hotword }}.pmdl
-      </div>      
-    {% endif %}  
+{% if error_message_hotword != "" %}
+  <div class="alert alert-danger" role="alert">
+    Hotword-Datei fehlt: {{ error_message_hotword }}.pmdl
+  </div>      
+{% endif %}  
 
 <!-- snowboy taskmanagement -->    
   
       <div class="panel panel-default">
         <div class="panel-heading">Aufgabenmanagement</div>
         <div class="panel-body">  
-          <div class="text-center">   
-            <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
-          </div>          
-          <br>
-          <div class="well well-sm">Anweisungen
-            <table class="table">
-              <thead>
-                <tr><td></td><td></td></tr>
-                <tr>
-                  <th>Eingabe</th>
-                  <th>Erklärung</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>snowboy_active</td>
-                  <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
-                      blaue LEDs vom Snowboy leuchten in diesem Modus</td>
-                </tr> 
-                <tr>
-                  <td>start_scene:1:50</td>
-                  <td>starte Szene Nummer "1", globale Helligkeit 50%</td>
-                </tr>
-                <tr>
-                  <td>start_program:2</td>
-                  <td>starte Programm Nummer "2"</td>
-                </tr>
-                <tr>
-                  <td>led_off:3</td>
-                  <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
-                </tr>
-              </tbody>
-            </table>  
-          </div>
-   
-<section id="fileupload"></section>
-            
-          <b>HINWEIS:</b> Hotword-Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
-          <br>
-          <br>
-          <form method="POST">
-            <div class="well well-sm">Aufgabenname
-              <br>
-              <br>             
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
-              </div>    
-            </div>                      
-            <div class="well well-sm">Aufgabe
-              <br>
-              <br>            
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
-              </div>    
-            </div>           
-            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#task_management'" class="btn btn-secondary" name="add_task" value="Aufgabe anlegen" />
-          </form>  
-          <br>
-          <br>
-          <div class="text-center">     
-            <h3><span class="label label-default">Hotword hochladen</span></h3>    
-          </div>
-          <br>
           <div class="well well-sm">
-            <a href="https://snowboy.kitt.ai">Hotword erstellen</a>
+            <div class="text-center">   
+              <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
+            </div>          
+            <br>
+            <div class="well well-sm">Anweisungen
+              <table class="table">
+                <thead>
+                  <tr><td></td><td></td></tr>
+                  <tr>
+                    <th>Eingabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>snowboy_active</td>
+                    <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
+                        blaue LEDs vom Snowboy leuchten in diesem Modus</td>
+                  </tr> 
+                  <tr>
+                    <td>start_scene:1:50</td>
+                    <td>starte Szene Nummer "1", globale Helligkeit 50%</td>
+                  </tr>
+                  <tr>
+                    <td>start_program:2</td>
+                    <td>starte Programm Nummer "2"</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:3</td>
+                    <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
+                  </tr>
+                </tbody>
+              </table>  
+            </div>            
+            <b>HINWEIS:</b> Hotword-Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
             <br>
             <br>
-            <form method=post enctype=multipart/form-data>
-              <input type=file name=file>
-          </div>
-              <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#fileupload'" class="btn btn-secondary" name="file_upload" value="Datei hochladen">
-            </form>   
-        </div>                    
+            <form method="POST">
+              <div class="well well-sm">Name:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+                </div>    
+              </div>                      
+              <div class="well well-sm">Aufgabe:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+                </div>    
+              </div>           
+              <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#task_management'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+            </form>
+          </div>  
+ 
+<section id="fileupload"></section>          
+ 
+          <div class="well well-sm">
+            <div class="text-center">     
+              <h3><span class="label label-default">Hotword hochladen</span></h3>    
+            </div>
+            <br>
+            <div class="well well-sm">
+              <a href="https://snowboy.kitt.ai">Hotword erstellen</a>
+              <br>
+              <br>
+              <form method=post enctype=multipart/form-data>
+                <input type=file name=file>
+            </div>
+                <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#fileupload'" class="btn btn-default" name="file_upload" value="Datei hochladen">
+              </form>   
+          </div> 
+        </div>                   
       </div>  
 
 <!-- error message fileupload --> 

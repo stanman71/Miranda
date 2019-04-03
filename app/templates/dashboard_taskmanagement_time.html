@@ -51,116 +51,143 @@
         </div>
       </nav>
 
-<!-- error message -->
-
-      {% if error_message != "" %}
-        <div class="alert alert-danger" role="alert">
-          {{ error_message }}
-        </div>      
-      {% endif %}
-
 <!-- instructions -->
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Zeit)</b></font></div>
-          <div class="panel-body">      
-            <div class="text-center"> 
-              <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>         
+          <div class="panel-body">   
+            <div class="well well-sm">
+              <div class="text-center"> 
+                <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>         
+              </div>
+              <br>
+              <div class="well well-sm">Anweisungen
+                <table class="table">
+                <thead>
+                  <tr><td></td><td></td></tr>
+                  <tr>
+                    <th>Eingabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>start_scene:1:100</td>
+                    <td>starte Szene Nummer "1", globale Helligkeit 100 %</td>
+                  </tr>
+                  <tr>
+                    <td>start_program:2</td>
+                    <td>starte Programm Nummer "2"</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:3</td>
+                    <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
+                  </tr>
+                  <tr>
+                    <td>watering_plants</td>
+                    <td>alle Pflanzen gießen, Einstellungen unter Bewässung</td>
+                  </tr>
+                  <tr>
+                    <td>save_database</td>
+                    <td>Datenbank sichern (Ordner: "./SmartHome/backup" / max. 10 Speicherstände)</td>
+                  </tr>              
+                  <tr>
+                    <td>update_mqtt_devices</td>
+                    <td>MQTT Geräte aktuallisieren</td>
+                  </tr> 
+                  <tr>
+                    <td>get_mqtt_sensordata:1</td>
+                    <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
+                  </tr>               
+                </tbody>
+              </table>
             </div>
-            <br>
-            <div class="well well-sm">Anweisungen
-              <table class="table">
-              <thead>
-                <tr><td></td><td></td></tr>
-                <tr>
-                  <th>Eingabe</th>
-                  <th>Erklärung</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>start_scene:1:100</td>
-                  <td>starte Szene Nummer "1", globale Helligkeit 100 %</td>
-                </tr>
-                <tr>
-                  <td>start_program:2</td>
-                  <td>starte Programm Nummer "2"</td>
-                </tr>
-                <tr>
-                  <td>led_off:3</td>
-                  <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
-                </tr>
-                <tr>
-                  <td>watering_plants</td>
-                  <td>alle Pflanzen gießen, Einstellungen unter Bewässung</td>
-                </tr>
-                <tr>
-                  <td>save_database</td>
-                  <td>Datenbank sichern (Ordner: "./SmartHome/backup" / max. 10 Speicherstände)</td>
-                </tr>              
-                <tr>
-                  <td>update_mqtt_devices</td>
-                  <td>MQTT Geräte aktuallisieren</td>
-                </tr> 
-                <tr>
-                  <td>get_mqtt_sensordata:1</td>
-                  <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
-                </tr>               
-              </tbody>
-            </table>
-          </div>
 
 <!-- new task -->
- 
-          <div class="well well-sm">Tag / Stunde / Minute (Option " * ": keine Einschränkungen, z.B. an jedem Tag)          
-            <br>
-            <br>
-            <form method="POST">
-              <select class="btn btn-secondary dropdown-toggle" name="set_day">
-                {% for each in dropdown_list_days %}
-                {% if each != None %}
-                <option value="{{each}}">{{each}}</option>
-                {% endif %}
-                {% endfor %}
-              </select>
-              <select class="btn btn-secondary dropdown-toggle" name="set_hour">
-                {% for each in dropdown_list_hours %}
-                {% if each != None %}
-                <option value="{{each}}">{{each}}</option>
-                {% endif %}
-                {% endfor %}
-              </select>  
-              <select class="btn btn-secondary dropdown-toggle" name="set_minute">
-                {% for each in dropdown_list_minutes %}
-                {% if each != None %}
-                <option value="{{each}}">{{each}}</option>
-                {% endif %}
-                {% endfor %}
-              </select>  
-            </div>
-            <div class="well well-sm">Name  
-              <br>      
-              <br> 
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
-              </div>     
-            </div>         
-            <div class="well well-sm">Aufgabe 
-              <br> 
-              <br>           
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
-              </div>      
-            </div>                   
-            <div class="well well-sm">Wiederholen
-              <div class="form-check">
-                <input type="checkbox" class="form-check-input" name="checkbox">
-              </div>
-            </div>           
-            <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#'" class="btn btn-secondary" name="add_task" value="Aufgabe anlegen" />
-          </form>   
+
+            <form method="POST"> 
+              <div class="well well-sm">Name:  
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+                </div>     
+              </div>         
+              <div class="well well-sm">Aufgabe:          
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+                </div>      
+              </div>    
+
+<section id="add_task"></section>            
+
+              <div class="well well-sm">Zeitpunkt:  
+                <br>
+                <br>         
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-1">
+                    Tag
+                  </div>
+                  <div class="col-sm-1">                    
+                    <select class="btn btn-default dropdown-toggle" name="set_day">
+                      <option value="*">immer (*)</option>
+                      {% for each in dropdown_list_days %}
+                      {% if each != None %}
+                      <option value="{{each}}">{{each}}</option>
+                      {% endif %}
+                      {% endfor %}              
+                    </select>
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-1">              
+                    Stunde
+                  </div>
+                  <div class="col-sm-1">    
+                    <select class="btn btn-default dropdown-toggle" name="set_hour">
+                      <option value="*">immer (*)</option>
+                      {% for each in dropdown_list_hours %}
+                      {% if each != None %}
+                      <option value="{{each}}">{{each}}</option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>  
+                  </div>
+                </div>
+                <br>
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-1">                       
+                    Minute
+                  </div>
+                  <div class="col-sm-1"> 
+                    <select class="btn btn-default dropdown-toggle" name="set_minute">
+                      <option value="*">immer (*)</option>
+                      {% for each in dropdown_list_minutes %}
+                      {% if each != None %}
+                      <option value="{{each}}">{{each}}</option>
+                      {% endif %}
+                      {% endfor %}
+                    </select>  
+                  </div>
+                </div> 
+              </div>                                
+              <div class="well well-sm">Wiederholen:
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" name="checkbox">
+                </div>
+              </div>           
+              <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+            </form> 
+          </div>  
         </div>
       </div>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %}
 
 <!-- schedular table -->
 
@@ -173,20 +200,20 @@
             <table class="table">
               <thead>                       
                 <th scope="col">Name</th> 
+                <th scope="col">Aufgabe</th>                 
                 <th scope="col">Tag</th> 
                 <th scope="col">Stunde</th> 
                 <th scope="col">Minute</th> 
-                <th scope="col">Aufgabe</th> 
                 <th scope="col">Wiederholen</th> 
               </thead>
               <tbody> 
                 {% for entry in schedular_list %}
                 <tr>
                   <td>{{ entry.name }}</td> 
+                  <td>{{ entry.task }}</td>                   
                   <td>{{ entry.day }}</td> 
                   <td>{{ entry.hour }}</td> 
                   <td>{{ entry.minute }}</td> 
-                  <td>{{ entry.task }}</td> 
                   <td>{{ entry.repeat }}</td> 
                   <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
                 </tr>

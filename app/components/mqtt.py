@@ -69,15 +69,11 @@ def MQTT_START():
 
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
-	try:
-		def on_publish(client, userdata, mid):
-			print ("Message Published...")
+	def on_publish(client, userdata, mid):
+		print ("Message Published...")
 
-		client = mqtt.Client()
-		client.on_publish = on_publish
-		client.connect(BROKER_ADDRESS) 
-		client.publish(MQTT_TOPIC,MQTT_MSG)
-		client.disconnect()
-
-	except Exception as e:
-		WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
+	client = mqtt.Client()
+	client.on_publish = on_publish
+	client.connect(BROKER_ADDRESS) 
+	client.publish(MQTT_TOPIC,MQTT_MSG)
+	client.disconnect()

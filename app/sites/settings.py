@@ -9,6 +9,7 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.tasks import UPDATE_MQTT_DEVICES
 from app.components.file_management import *
+from app.components.email import SEND_EMAIL
 
 
 # create role "superuser"
@@ -33,6 +34,7 @@ def superuser_required(f):
 def dashboard_settings_mqtt():   
     error_message = ""
     error_message_table = ""
+    error_message_mqtt = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
@@ -58,6 +60,13 @@ def dashboard_settings_mqtt():
 
     if mqtt_setting == "True":
 
+        # check mqtt
+        try:
+            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+        except Exception as e:
+            error_message_mqtt = "Fehler in MQTT: " + str(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
+
         if request.method == 'POST':
             if request.form.get("add_mqtt_device") is not None: 
                 # add mqtt device
@@ -78,7 +87,7 @@ def dashboard_settings_mqtt():
                             try:
                                 UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
                             except Exception as e:
-                                error_message = "Fehler in MQTT: " + str(e)
+                                error_message_mqtt = "Fehler in MQTT: " + str(e)
                                 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))                                 
                             time.sleep(2)
                             mqtt_device_channel_path = ""
@@ -89,12 +98,12 @@ def dashboard_settings_mqtt():
             if request.form.get("reset_logfile") is not None: 
                 RESET_LOGFILE("log_mqtt")   
             # update mqtt devices
-            if request.form.get("update_mqtt_devices") is not None:         
+            if request.form.get("update_mqtt_devices") is not None:    
                 try:
                     UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
                     time.sleep(2)
                 except Exception as e:
-                    error_message = "Fehler in MQTT: " + str(e)
+                    error_message_mqtt = "Fehler in MQTT: " + str(e)
                     WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
     mqtt_device_list = GET_ALL_MQTT_DEVICES()
@@ -104,6 +113,7 @@ def dashboard_settings_mqtt():
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
                             error_message_table=error_message_table,
+                            error_message_mqtt=error_message_mqtt,
                             mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
@@ -177,7 +187,7 @@ def dashboard_settings_zigbee():
 @superuser_required
 def dashboard_settings_snowboy():
     error_message = ""
-    error_message_table = ""
+    error_message_snowboy = ""
     error_message_fileupload = ""
     error_message_hotword = ""
     sensitivity = ""
@@ -208,10 +218,10 @@ def dashboard_settings_snowboy():
           
         try:
             START_SNOWBOY()
-        except Exception as e:
-            if "signal only works in main thread" not in str(e):
-                error_message = "Fehler in SnowBoy: " + str(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy: " + str(e)) 
+        except Exception as e:  
+            if not "signal only works in main thread":         
+                error_message_snowboy = "Fehler in SnowBoy: " + str(e)
+                WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
 
         if request.method == 'POST':
             if request.form.get("change_settings") is not None: 
@@ -223,10 +233,10 @@ def dashboard_settings_snowboy():
             if request.form.get("add_task") is not None:
                 # add new task
                 if request.form.get("set_name") == "":
-                    error_message_table = "Kein Name angegeben"
+                    error_message = "Kein Name angegeben"
                     set_task = request.form.get("set_task")
                 elif request.form.get("set_task") == "":
-                    error_message_table = "Keine Aufgabe angegeben"  
+                    error_message = "Keine Aufgabe angegeben"  
                     set_name = request.form.get("set_name")  
                 else:         
                     name   = request.form.get("set_name")
@@ -251,7 +261,7 @@ def dashboard_settings_snowboy():
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
                             error_message=error_message,    
-                            error_message_table=error_message_table,             
+                            error_message_snowboy=error_message_snowboy,             
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
                             snowboy_setting=snowboy_setting,
@@ -365,14 +375,65 @@ def remove_hue_bridge_led(id):
 """ ############# """
 
 # dashboard user management
-@app.route('/dashboard/settings/user/', methods=['GET'])
+@app.route('/dashboard/settings/user/', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_user():
+    error_message = ""
+                 
+    if request.method == 'POST':
+
+        # change email notification
+        for i in range (1,25): 
+            if request.form.get("change_user_settings_" + str(i)) is not None:
+                if request.form.get("checkbox_error"):
+                    email_notification_error = "checked"
+                else:
+                    email_notification_error = ""
+                if request.form.get("checkbox_cam"):
+                    email_notification_cam = "checked"
+                else:
+                    email_notification_cam = ""
+
+                SET_EMAIL_NOTIFICATION(i, email_notification_error, email_notification_cam)
+    
+        # update email settings
+        if request.form.get("change_email_settings") is not None:
+            if request.form.get("set_mail_server_address") == "":
+                error_message = "Kein eMail Server Adresse angegeben"
+            elif request.form.get("set_mail_server_port") == "":
+                error_message = "Kein eMail Server Port angegeben"
+            elif request.form.get("set_mail_username") == "":
+                error_message = "Keinen Benutzernamen angegeben" 
+            elif request.form.get("set_mail_password") == "":
+                error_message = "Kein Passwort angegeben"                      
+            else:         
+                set_mail_server_address = request.form.get("set_mail_server_address")
+                set_mail_server_port    = request.form.get("set_mail_server_port")
+                set_mail_encoding       = request.form.get("set_mail_encoding")
+                set_mail_username       = request.form.get("set_mail_username")               
+                set_mail_password       = request.form.get("set_mail_password")
+
+                error_message = UPDATE_EMAIL_SETTINGS(set_mail_server_address, 
+                                                        set_mail_server_port, 
+                                                        set_mail_encoding, 
+                                                        set_mail_username, 
+                                                        set_mail_password)
+
+        # test email settings
+        if request.form.get("test_email_settings") is not None:
+            error_message = SEND_EMAIL("stanlay@gmx.net")
+
     user_list = GET_ALL_USERS()
+    email_setting = GET_EMAIL_SETTINGS()[0]
+    mail_encoding_list = ["TLS", "SSH", "NONE"]
+
     return render_template('dashboard_settings_user.html',
                             name=current_user.username,
                             user_list=user_list,
+                            error_message=error_message,
+                            mail_encoding_list=mail_encoding_list,
+                            email_setting=email_setting,
                             active04="active",
                             )
 

@@ -73,7 +73,7 @@
           <font color="red"><b>Flask neustarten, wenn MQTT Einstellungen geändert werden</b></font>
           <br>     
           <br>    
-          <input type="submit" class="btn btn-secondary" value="Auswählen"/>
+          <input type="submit" class="btn btn-default" value="Auswählen"/>
         </form>  
       </div>  
     </div>           
@@ -85,45 +85,52 @@
 
 <!-- mqtt error message -->
 
-{% if error_message != "" %}
+{% if error_message_mqtt != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message }}
+    {{ error_message_mqtt }}
   </div>      
-{% endif %}   
+{% endif %} 
 
 <!-- mqtt settings -->
 
       <div class="panel panel-default">
         <div class="panel-heading">MQTT Geräte</div>
           <div class="panel-body"> 
-            <form method="POST">
-            <div class="text-center">     
-              <h3><span class="label label-default">MQTT Gerät hinzufügen</span></h3> 
-            </div>       
-            <br>     
-            <div class="well well-sm">MQTT Gerätename 
-              <br>
-              <br>
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_mqtt_device_name" value="{% if mqtt_device_name != None %}{{ mqtt_device_name }}{% endif %}" />
+            <div class="well well-sm">
+              <form method="POST">
+              <div class="text-center">     
+                <h3><span class="label label-default">MQTT Gerät hinzufügen</span></h3> 
+              </div>       
+              <br>     
+
+<section id="add_device"></section>
+
+              <div class="well well-sm">MQTT Gerätename: 
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mqtt_device_name" value="{% if mqtt_device_name != None %}{{ mqtt_device_name }}{% endif %}" />
+                </div>
+              </div> 
+              <div class="well well-sm"> Kanal:    
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
+                </div>            
               </div>
-            </div> 
-            <div class="well well-sm"> Kanal  
-              <br>
-              <br>   
-              <div class="form-group">
-                <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
-              </div>            
-            </div>
 
 <section id="table"></section>  
 
-              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#mqtt_devices'" class="btn btn-secondary" name="add_mqtt_device" value="MQTT Gerät hinzufügen" />
-            </form>   
-          </div>  
+                <input type="submit" onclick="window.location.href='/dashboard/settings/user#add_device'" class="btn btn-default" name="add_mqtt_device" value="MQTT Gerät hinzufügen" />
+              </form>   
+            </div>  
+          </div>
         </div>  
 
-<!-- mqtt device error message -->
+<!-- mqtt error messages -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %} 
 
 {% if error_message_table != "" %}
   <div class="alert alert-danger" role="alert">
@@ -165,7 +172,7 @@
           <br>
           <br>
           <form method="POST">
-            <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-secondary" name="update_mqtt_devices" value="Übersicht aktuallisieren" />
+            <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="update_mqtt_devices" value="Übersicht aktuallisieren" />
           </form>
         </div>  
       </div>  

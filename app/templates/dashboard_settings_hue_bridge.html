@@ -73,7 +73,7 @@
                 <label><input {{check_value_hue_bridge[1]}} type="radio" value="False" name="radio_hue_bridge">Hue Bridge deaktivieren</label>
               </div>
               <br>
-              <input type="submit" class="btn btn-secondary" value="Auswählen"/>
+              <input type="submit" class="btn btn-default" value="Auswählen"/>
             </form>  
           </div>  
         </div>           
@@ -105,7 +105,7 @@
             <div class="form-group">
               <input type="text" class="form-control" name="hue_bridge_ip" value="{% if hue_bridge_ip != None %}{{ hue_bridge_ip }}{% endif %}" />
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" value="IP Adresse ändern" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-default" value="IP Adresse ändern" />
               <br>
           </form>   
           <br>
@@ -137,7 +137,7 @@
           <br>
           <br>
           <form method="GET">
-            <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-secondary" name="update_led_entries" value="Einträge aktuallisieren" />
+            <input type="submit" onclick="window.location.href='/dashboard/settings/hue_bridge#hue_bridge_settings'" class="btn btn-default" name="update_led_entries" value="Einträge aktuallisieren" />
           </form>
         </div>  
       </div>  

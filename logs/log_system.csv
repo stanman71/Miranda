@@ -575,3 +575,78 @@ Timestamp,Type,Description
 2019-04-02 22:29:06,EVENT,MQTT >>> started
 2019-04-02 22:29:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-04-02 22:29:07,EVENT,Snowboy >>> started
+2019-04-02 22:31:20,EVENT,MQTT >>> started
+2019-04-02 22:31:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-02 22:31:20,EVENT,Snowboy >>> started
+2019-04-02 22:35:38,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-02 22:35:39,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-04-02 22:35:42,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-02 22:35:43,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-02 23:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-02 23:00:00,EVENT,Task >>> test >>> started
+2019-04-03 00:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 00:00:00,EVENT,Task >>> test >>> started
+2019-04-03 00:00:00,EVENT,Task >>> Datenbank sichern >>> started
+2019-04-03 00:00:00,EVENT,Database_Backup >>> saved
+2019-04-03 00:11:20,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-03 00:30:30,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 00:49:59,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 01:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 01:00:00,EVENT,Task >>> test >>> started
+2019-04-03 02:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 02:00:00,EVENT,Task >>> test >>> started
+2019-04-03 03:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 03:00:00,EVENT,Task >>> test >>> started
+2019-04-03 04:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 04:00:00,EVENT,Task >>> test >>> started
+2019-04-03 05:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 05:00:00,EVENT,Task >>> test >>> started
+2019-04-03 06:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 06:00:00,EVENT,Task >>> test >>> started
+2019-04-03 07:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 07:00:00,EVENT,Task >>> test >>> started
+2019-04-03 07:10:20,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-03 07:10:21,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 07:12:01,EVENT,File >>> /csv/testfile.csv >>> downloaded
+2019-04-03 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-03 08:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 08:00:00,EVENT,Task >>> test >>> started
+2019-04-03 09:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 09:00:00,EVENT,Task >>> test >>> started
+2019-04-03 10:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 10:00:00,EVENT,Task >>> test >>> started
+2019-04-03 11:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 11:00:00,EVENT,Task >>> test >>> started
+2019-04-03 12:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 12:00:00,EVENT,Task >>> test >>> started
+2019-04-03 13:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 13:00:00,EVENT,Task >>> test >>> started
+2019-04-03 14:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 14:00:00,EVENT,Task >>> test >>> started
+2019-04-03 15:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 15:00:00,EVENT,Task >>> test >>> started
+2019-04-03 16:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 16:00:00,EVENT,Task >>> test >>> started
+2019-04-03 17:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 17:00:00,EVENT,Task >>> test >>> started
+2019-04-03 18:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 18:00:00,EVENT,Task >>> test >>> started
+2019-04-03 18:19:14,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-03 18:19:16,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 18:24:41,EVENT,Snowboy >>> started
+2019-04-03 18:24:43,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-03 18:25:35,EVENT,Snowboy >>> started
+2019-04-03 18:25:56,EVENT,Database >>> eMail settings changed
+2019-04-03 18:26:03,EVENT,Database >>> eMail settings changed
+2019-04-03 18:26:22,ERROR,Snowboy >>> signal only works in main thread
+2019-04-03 18:28:52,EVENT,Snowboy >>> started
+2019-04-03 18:30:36,EVENT,Database >>> eMail settings changed
+2019-04-03 18:34:26,EVENT,MQTT >>> started
+2019-04-03 18:34:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-03 18:34:26,EVENT,Snowboy >>> started
+2019-04-03 18:37:09,EVENT,MQTT >>> started
+2019-04-03 18:37:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-03 18:37:09,EVENT,Snowboy >>> started
+2019-04-03 18:39:26,EVENT,Database >>> eMail settings changed
+2019-04-03 18:39:37,ERROR,|eMail >>> (534, b'5.7.9 Please log in with your web browser and then try again. Learn more at\n5.7.9  https://support.google.com/mail/?p=WebLoginRequired n11sm26892816wrt.63 - gsmtp')|

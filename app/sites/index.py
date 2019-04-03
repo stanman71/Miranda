@@ -2,6 +2,7 @@ from flask import render_template, url_for, request
 
 from app.components.led_control import *
 from app.database.database import *
+from app.components.file_management import GET_CONFIG_VERSION
 
 
 """ ##### """
@@ -42,12 +43,14 @@ def index():
 
     scene_list   = GET_ALL_SCENES()
     program_list = GET_ALL_PROGRAMS()
+    version      = GET_CONFIG_VERSION()
 
     return render_template('index.html',
                             scene_list=scene_list,
                             value_list=value_list,                         
                             brightness_global=brightness_global,
                             program_list=program_list,
-                            error_message=error_message
+                            error_message=error_message,
+                            version=version,
                             )
 

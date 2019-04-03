@@ -38,6 +38,8 @@ with open(PATH + "/app/config.yaml", 'r') as cfg:
 # print check
 print("Version: " + str((yamlcfg['config']['version'])))
 
+def GET_CONFIG_VERSION():
+    return (str((yamlcfg['config']['version'])))
 
 def GET_CONFIG_MQTT_BROKER():
     return str((yamlcfg['config']['mqtt_broker']))

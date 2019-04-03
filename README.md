@@ -51,7 +51,7 @@ This project creates a smart home environment.
 ------------
 </br>
 
-### Optional: Install MQTT - Mosquitto 
+### Optional: Install Mosquitto (MQTT)
 
 https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
 </br>
@@ -76,8 +76,6 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
        >>> sudo nano /etc/systemd/system/Mosquitto.service
 
-- insert and save:
-
        [Unit]
        Description=MQTT Broker
        After=network.target
@@ -89,9 +87,122 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
        [Install]
        WantedBy=multi-user.target
 
-- activate the new autostart-file
+- enable autostart
 
        >>> sudo systemctl enable Mosquitto.service
+
+</br>
+------------
+</br>
+
+
+### Optional: ZigBee2MQTT
+
+https://gadget-freakz.com/diy-zigbee-gateway/
+</br>
+</br>
+
+#### 1. Installation
+
+- install Node.js
+
+       >>> sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+       >>> sudo apt-get install -y nodejs git make g++ gcc
+
+- verify that the correct nodejs and npm (automatically installed with nodejs)
+
+       >>> node --version  # Should output v8.X.X (at time of writing v8.12.0)
+       >>> npm  --version  # Should output > 6.X.X (at time of writing 6.4.1)
+
+- clone zigbee2mqtt repository
+
+       >>> sudo git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
+       >>> sudo chown -R pi:pi /opt/zigbee2mqtt
+
+- install zigbee2mqtt 
+
+       >>> cd /opt/zigbee2mqtt
+       >>> npm install
+
+</br>
+
+#### 2. Configuration
+
+- edit configuration.yaml
+
+       >>> nano /opt/zigbee2mqtt/data/configuration.yaml
+
+       # MQTT settings
+       mqtt:
+       # MQTT base topic for zigbee2mqtt MQTT messages
+       base_topic: /SmartHome/zigbee2mqtt
+       # MQTT server URL
+       server: 'mqtt://localhost'
+       # MQTT server authentication, uncomment if required:
+       # user: my_user
+       # password: my_password
+
+</br>
+
+#### 3. Bridge Software
+
+- you can only start the application, if zigbee2mqtt does't run in background already
+- start command
+
+       >>> cd /opt/zigbee2mqtt
+       >>> npm start
+
+- stop command
+
+       >>> sudo systemctl stop zigbee2mqtt
+
+- view the log of zigbee2mqtt
+
+       >>> sudo journalctl -u zigbee2mqtt.service -f
+
+- backup configuration
+
+       >>> cp -R data data-backup
+
+</br>
+
+#### 4. Autostart
+
+- run zigbee2mqtt as daemon in the background automaticly when booting
+
+       >>> sudo nano /etc/systemd/system/zigbee2mqtt.service
+
+       [Unit]
+       Description=zigbee2mqtt
+       After=network.target
+
+       [Service]
+       ExecStart=/usr/bin/npm start
+       WorkingDirectory=/opt/zigbee2mqtt
+       StandardOutput=inherit
+       StandardError=inherit
+       Restart=always
+       User=pi
+
+       [Install]
+       WantedBy=multi-user.target
+
+- enable autostart
+
+       >>> sudo systemctl enable zigbee2mqtt.service
+
+- start zigbee2mqtt
+
+       >>> sudo systemctl start zigbee2mqtt
+
+- show status
+
+       >>> systemctl status zigbee2mqtt.service
+
+- stopping zigbee2mqtt
+
+       >>> sudo systemctl stop zigbee2mqtt
+
 
 </br>
 ------------

@@ -72,10 +72,10 @@ def dashboard_taskmanagement_time():
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
 
     # dropdown values
-    dropdown_list_days    = ["*", "Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
-    dropdown_list_hours   = ["*", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
+    dropdown_list_days    = ["Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    dropdown_list_hours   = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
                              "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
-    dropdown_list_minutes = ["*", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
+    dropdown_list_minutes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
                              "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", 
                              "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36","37",
                              "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","49", "50",
@@ -153,6 +153,10 @@ def dashboard_taskmanagement_sensor():
                 if request.form.get("set_sensor_" + str(i)):
                     sensor_id = request.form.get("set_sensor_" + str(i))    
                     SET_TASKMANAGEMENT_SENSOR_SENSOR(i, sensor_id)
+                # change value
+                if request.form.get("set_value_" + str(i)):
+                    value = request.form.get("set_value_" + str(i))    
+                    SET_TASKMANAGEMENT_SENSOR_VALUE(i, value)                    
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
     dropdown_list_operators    = ["==", ">", "<"]
