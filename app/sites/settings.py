@@ -386,6 +386,10 @@ def dashboard_settings_user():
         # change email notification
         for i in range (1,25): 
             if request.form.get("change_user_settings_" + str(i)) is not None:
+                if request.form.get("checkbox_info"):
+                    email_notification_info = "checked"
+                else:
+                    email_notification_info = ""
                 if request.form.get("checkbox_error"):
                     email_notification_error = "checked"
                 else:
@@ -395,7 +399,7 @@ def dashboard_settings_user():
                 else:
                     email_notification_cam = ""
 
-                SET_EMAIL_NOTIFICATION(i, email_notification_error, email_notification_cam)
+                SET_EMAIL_NOTIFICATION(i, email_notification_info, email_notification_error, email_notification_cam)
     
         # update email settings
         if request.form.get("change_email_settings") is not None:

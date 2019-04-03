@@ -68,7 +68,7 @@
                 <tr>
                 <th scope="col">Benutzername</th>
                 <th scope="col">eMail</th>
-                <th scope="col">eMail Benachrichtigung</th>
+                <th scope="col" colspan="2">eMail Benachrichtigung</th>
                 <th scope="col">Rolle</th>
                 <tr>
               </thead>
@@ -81,21 +81,31 @@
                   <form method="POST">
                     <div class="form-check">
                       <div class="row justify-content-md-center">
-                        <div class="col-sm-4">                       
-                          Fehler:
+                        <div class="col-sm-7">                       
+                          Information
+                        </div>
+                        <div class="col-sm-1">                  
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info">
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-7">                       
+                          Fehler
                         </div>
                         <div class="col-sm-1">                  
                           <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error">
                         </div>
-                      </div>
+                      </div>     
                       <div class="row justify-content-md-center">
-                        <div class="col-sm-4">                       
-                          Kamera:
+                        <div class="col-sm-7">                       
+                          Kamera
                         </div>
                         <div class="col-sm-1">                  
                           <input type="checkbox" class="form-check-input" {{ user.email_notification_cam }} name="checkbox_cam">
                         </div>
-                      </div>     
+                      </div>                          
+                  </td> 
+                  <td>
                     <input type="submit" onclick="window.location.href='/dashboard/settings/user#'" class="btn btn-default" name="change_user_settings_{{ user.id }}" value="aktuallisieren" />
                   </form> 
                   </td>

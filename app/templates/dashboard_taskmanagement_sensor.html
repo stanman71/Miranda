@@ -169,7 +169,9 @@
                 <th scope="col">Gerät</th>
                 <th scope="col">Sensor</th> 
                 <th scope="col">Operator</th>
-                <th scope="col">Wert</th>  
+                <th scope="col">Wert</th> 
+                <th scope="col"></th> 
+                <th scope="col"></th> 
                 <th scope="col" colspan="2"><em>/// Einstellung: Sensor / Wert ///</em></th>
               </thead>
               <tbody> 
@@ -181,6 +183,8 @@
                   <td>{{ entry.sensor_id }}</td> 
                   <td>{{ entry.operator }}</td>                
                   <td>{{ entry.value }}</td> 
+                  <td></td> 
+                  <td></td>
                   <td> 
                     <form method="POST" class="verticalform">      
                       <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
@@ -191,15 +195,20 @@
                         {% endfor %}
                       </select>  
                     </td> 
-                    <td>      
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" />
-                      </div>  
-                      <div class="col-md-10 text-center"> 
+                    <td>          
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-6">                       
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" /> 
+                          </div>
+                        </div>
+                      <div class="col-sm-4"> 
                         <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table_tasks'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
-                      </div> 
+                      </div>
                     </form>
                   </td> 
+                  <td></td>
+                  <td></td>
                   <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
                 </tr>
                 {% endfor %}

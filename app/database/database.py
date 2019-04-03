@@ -261,6 +261,7 @@ class User(UserMixin, db.Model):
     email                    = db.Column(db.String(50), unique=True)
     password                 = db.Column(db.String(100))
     role                     = db.Column(db.String(20), server_default=("user")) 
+    email_notification_info  = db.Column(db.String(20), server_default=(""))
     email_notification_error = db.Column(db.String(20), server_default=(""))
     email_notification_cam   = db.Column(db.String(20), server_default=(""))
 
@@ -1287,11 +1288,18 @@ def ACTIVATE_USER(user_id):
     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> activated") 
 
 
-def SET_EMAIL_NOTIFICATION(id, email_notification_error, email_notification_cam):
+def SET_EMAIL_NOTIFICATION(id, email_notification_info, email_notification_error, email_notification_cam):
     entry = User.query.filter_by(id=id).first()
+    entry.email_notification_info  = email_notification_info
     entry.email_notification_error = email_notification_error
-    entry.email_notification_cam = email_notification_cam
+    entry.email_notification_cam   = email_notification_cam
     db.session.commit()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username 
+                         + " >>> eMail Notification changed >>> Info: " 
+                         + email_notification_info  + " /// Error: " 
+                         + email_notification_error + " /// Camera: " 
+                         + email_notification_cam)
 
 
 def DELETE_USER(user_id):
