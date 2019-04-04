@@ -56,7 +56,7 @@ def SEND_EMAIL(recipients, subject, body):
 
             mail.send(msg)
 
-        return ""   
+        return "success"   
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "eMail >>> " + str(e))  
