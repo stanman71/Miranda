@@ -42,59 +42,120 @@
     <div class="row">
       <div class="col">
 
+<!-- sensordata table -->
+
+<section id="table_jobs"></section>   
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>    
+            <div class="panel-body">   
+            <div class="well well-sm">
+              <table class="table">
+                <thead>
+                  <th scope="col">Job-ID</th>  
+                  <th scope="col">Name</th>  
+                  <th scope="col">Dateiname</th>   
+                  <th scope="col">Gerät</th>
+                  <th scope="col">Sensor</th>
+                  <th></th>
+                  <th></th>
+                  <th scope="col"><em>/// Einstellung: Sensor ///</em></th>
+                </thead>
+                <tbody> 
+                  {% for entry in sensordata_list %}
+                  <tr>
+                    <td>{{ entry.id }}</td> 
+                    <td>{{ entry.name }}</td> 
+                    <td>{{ entry.filename }}</td>
+                    <td>{{ entry.mqtt_device.name }}</td> 
+                    <td>{{ entry.sensor_id }}</td>
+                    <td></td> 
+                    <td></td> 
+                    <td> 
+                      <form method="POST" class="verticalform">  
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-4">                       
+                            <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                              <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                              <option value= "{{ entry.sensor_id }}" > ----- </option>
+                              {% for i in range(entry.mqtt_device.inputs) %}
+                              <option value= "{{ i }}" > {{ i }} </option>
+                              {% endfor %}
+                            </select>  
+                          </div>
+                          <div class="col-sm-4"> 
+                            <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>             
+                          </div>
+                        </div>  
+                      </form>
+                    </td>   
+                    <td></td>  
+                    <td></td>           
+                    <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
+          </div>  
+        </div>  
+
 <!-- sensor values -->
   
-        <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>
-            <div class="panel-body">  
-              <div class="well well-sm">
-                <form method="POST">   
-                  <div class="form-group">
-                    <div class="text-center">   
-                      <h3><span class="label label-default">Job anlegen</span></h3> 
-                    </div>     
-                    <br>
-                    <div class="well well-sm">Name:     
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
-                      </div>
-                    </div>
-
 <section id="add_job"></section>  
 
-                    <div class="well well-sm">Dateiname:   
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
-                      </div>
-                    </div>
-                    <div class="well well-sm">
-                      <div class="row justify-content-md-center">
-                        <div class="col-sm-1">
-                          Gerät:
-                        </div>
-                        <div class="col-sm-1">   
-                          <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
-                            {% for each in dropdown_list_mqtt_devices %}
-                            <option value="{{each.id}}"> {{ each.name }} </option>
-                            {% endfor %}
-                          </select> 
-                        </div>
-                      </div> 
-                    </div>                            
-                    <input type="submit" onclick="window.location.href='/dashboard/sensordata#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
-                  </form>   
-                </div>  
-              </div>
-            </div>      
-          </div>
+        <div class="panel panel-default">          
+          <div class="panel-body">  
+            <div class="well well-sm">
+              <form method="POST">   
+                <div class="form-group">
+                  <div class="text-center">   
+                    <h3><span class="label label-default">Job anlegen</span></h3> 
+                  </div>     
+                  <br>
 
-<!-- error messages -->
+<!-- error message -->
 
 {% if error_message != "" %}
 <div class="alert alert-danger" role="alert">
   {{ error_message }}
 </div>      
-{% endif %}
+{% endif %}                  
+
+                  <div class="well well-sm">Name:     
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
+                    </div>
+                  </div>
+                  <div class="well well-sm">Dateiname:   
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
+                    </div>
+                  </div>
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-1">
+                        Gerät:
+                      </div>
+                      <div class="col-sm-1">                                 
+                        <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
+                          {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{each.id}}"> {{ each.name }} </option>
+                          {% endfor %}
+                        </select> 
+                      </div>
+                    </div> 
+                  </div>                            
+                  <input type="submit" onclick="window.location.href='/dashboard/sensordata#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
+                </form> 
+              </div>  
+            </div>
+          </div>      
+        </div>
+
+<section id="table_files"></section> 
+
+<!-- error message file -->
 
 {% if error_message_file != "" %}
 <div class="alert alert-danger" role="alert">
@@ -102,73 +163,15 @@
 </div>      
 {% endif %}
 
-<!-- sensordata table -->
-
-<section id="table_jobs"></section>   
-
-        <div class="panel panel-default">
-          <div class="panel-heading"><font color="black">Jobs</font></div>        
-          <div class="panel-body">   
-          <div class="well well-sm">
-            <table class="table">
-              <thead>
-                <th scope="col">Job-ID</th>  
-                <th scope="col">Name</th>  
-                <th scope="col">Dateiname</th>   
-                <th scope="col">Gerät</th>
-                <th scope="col">Sensor</th>
-                <th></th>
-                <th></th>
-                <th scope="col"><em>/// Einstellung: Sensor ///</em></th>
-              </thead>
-              <tbody> 
-                {% for entry in sensordata_list %}
-                <tr>
-                  <td>{{ entry.id }}</td> 
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.filename }}</td>
-                  <td>{{ entry.mqtt_device.name }}</td> 
-                  <td>{{ entry.sensor_id }}</td>
-                  <td></td> 
-                  <td></td> 
-                  <td> 
-                    <form method="POST" class="verticalform">  
-                      <div class="row justify-content-md-center">
-                        <div class="col-sm-4">                       
-                          <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                            <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                            <option value= "{{ entry.sensor_id }}" > ----- </option>
-                            {% for i in range(entry.mqtt_device.inputs) %}
-                            <option value= "{{ i }}" > {{ i }} </option>
-                            {% endfor %}
-                          </select>  
-                        </div>
-                        <div class="col-sm-4"> 
-                          <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>             
-                        </div>
-                      </div>  
-                    </form>
-                  </td>   
-                  <td></td>  
-                  <td></td>           
-                  <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>  
-          </div>
-        </div>  
-      </div>  
-
 <!-- sensorfile table -->
 
-<section id="table_files"></section>
-
       <div class="panel panel-default">
-        <div class="panel-heading">Datein</div>
         <div class="panel-body">  
           <div class="well well-sm">
             <table class="table">
+              <thead>                      
+                <th scope="col">Datein</th> 
+              </thead>              
               <tbody> 
                 {% for entry in file_list %}
                 <tr>
@@ -182,7 +185,6 @@
           </div>
         </div>
       </div>  
-
     </div>
   </div>       
 </div>

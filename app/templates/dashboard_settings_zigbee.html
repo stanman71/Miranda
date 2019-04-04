@@ -44,18 +44,19 @@
   
 <!-- settings navs -->
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-        <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
-        <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>
-        <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>   
-        <li class={{active05}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-        <li class={{active06}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
-      </ul>
-    </div>
-  </nav> 
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+            <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>       
+            <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
+            <li class={{active05}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
+            <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
+            <li class={{active07}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
+          </ul>
+        </div>
+      </nav>
 
 <!-- error message -->
 
@@ -78,13 +79,10 @@
                 <label><input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">ZigBee deaktivieren</label>
               </div>
             </div>
-            <input type="submit" class="btn btn-default" value="Auswählen"/>
+            <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#'" class="btn btn-default" value="Auswählen"/>
           </form>  
         </div>  
       </div>    
-
-
-
     </div>
   </div>       
 </div>

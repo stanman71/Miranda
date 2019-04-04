@@ -256,14 +256,14 @@ class Taskmanagement_Sensor(db.Model):
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
-    id                       = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    username                 = db.Column(db.String(50), unique=True)
-    email                    = db.Column(db.String(50), unique=True)
-    password                 = db.Column(db.String(100))
-    role                     = db.Column(db.String(20), server_default=("user")) 
-    email_notification_info  = db.Column(db.String(20), server_default=(""))
-    email_notification_error = db.Column(db.String(20), server_default=(""))
-    email_notification_cam   = db.Column(db.String(20), server_default=(""))
+    id                        = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    username                  = db.Column(db.String(50), unique=True)
+    email                     = db.Column(db.String(50), unique=True)
+    password                  = db.Column(db.String(100))
+    role                      = db.Column(db.String(20), server_default=("user")) 
+    email_notification_info   = db.Column(db.String(20), server_default=(""))
+    email_notification_error  = db.Column(db.String(20), server_default=(""))
+    email_notification_camera = db.Column(db.String(20), server_default=(""))
 
 """ ################################ """
 """ ################################ """
@@ -372,8 +372,39 @@ if User.query.filter_by(username='default').first() is None:
 """ ################## """
 
 
-def GET_EMAIL_SETTINGS():   
+def GET_EMAIL_CONFIG():   
     return eMail.query.all()
+
+
+def GET_EMAIL_ADDRESS(address_type): 
+    if address_type == "test":
+        mail_list = []
+        mail_list.append(eMail.query.filter_by().first().mail_username)
+        return mail_list
+
+    if address_type == "info":
+        mail_list = []
+        users = User.query.all()
+        for user in users:
+            if user.email_notification_info == "checked":
+                mail_list.append(user.email)
+        return mail_list
+
+    if address_type == "error":
+        mail_list = []
+        users = User.query.all()
+        for user in users:
+            if user.email_notification_error == "checked":
+                mail_list.append(user.email)
+        return mail_list
+
+    if address_type == "camera":
+        mail_list = []
+        users = User.query.all()
+        for user in users:
+            if user.email_notification_camera == "checked":
+                mail_list.append(user.email)
+        return mail_list
 
 
 def UPDATE_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mail_username, mail_password): 
@@ -385,7 +416,7 @@ def UPDATE_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, 
     email.mail_password       = mail_password
     db.session.commit()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> eMail settings changed")
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> eMail Server Settings >>> changed")
     return ""
 
 
@@ -589,9 +620,71 @@ def DEL_LED(Scene, ID):
     db.session.commit()
 
 
-""" ###### """
-""" scenes """
-""" ###### """
+""" ################### """
+""" ################### """
+"""    led programs     """
+""" ################### """
+""" ################### """
+
+
+def GET_ALL_PROGRAMS():
+    return Programs.query.all()   
+
+
+def GET_PROGRAM_NAME(name):
+    return Programs.query.filter_by(name=name).first()
+
+
+def GET_PROGRAM_ID(id):
+    return Programs.query.filter_by(id=id).first()
+
+
+def NEW_PROGRAM(name):
+    # name exist ?
+    check_entry = Programs.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Programs.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new program
+                program = Programs(
+                        id = i,
+                        name = name,
+                        content = "",
+                    )
+                db.session.add(program)
+                db.session.commit()
+                return ("")
+    else:
+        return ("Name bereits vergeben")
+
+
+def SET_PROGRAM_NAME(id, name):
+    check_entry = Programs.query.filter_by(name=name).first()
+    if check_entry is None:
+        entry = Programs.query.filter_by(id=id).first()
+        entry.name = name
+        db.session.commit()    
+
+
+def UPDATE_PROGRAM(id, content):
+    entry = Programs.query.filter_by(id=id).update(dict(content=content))
+    db.session.commit()
+
+
+def DELETE_PROGRAM(name):
+    Programs.query.filter_by(name=name).delete()
+    db.session.commit() 
+
+
+""" ################### """
+""" ################### """
+"""    led scenes     """
+""" ################### """
+""" ################### """
+
 
 def GET_SCENE(Scene):
     entries = None
@@ -849,60 +942,91 @@ def DEL_SCENE(Scene):
     db.session.commit()
 
 
-""" ############ """
-""" led programs """
-""" ############ """
-
-def GET_ALL_PROGRAMS():
-    return Programs.query.all()   
-
-
-def GET_PROGRAM_NAME(name):
-    return Programs.query.filter_by(name=name).first()
+""" ################### """
+""" ################### """
+"""        mqtt         """
+""" ################### """
+""" ################### """
 
 
-def GET_PROGRAM_ID(id):
-    return Programs.query.filter_by(id=id).first()
+def GET_MQTT_DEVICE(id):
+    return MQTT_Devices.query.filter_by(id=id).first()
 
 
-def NEW_PROGRAM(name):
+def GET_ALL_MQTT_DEVICES():
+    return MQTT_Devices.query.all()
+
+
+def GET_MQTT_DEVICE_NAME(id):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    return entry.name  
+    
+
+def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
     # name exist ?
-    check_entry = Programs.query.filter_by(name=name).first()
+    check_entry = MQTT_Devices.query.filter_by(name=name).first()
     if check_entry is None:
-        # find a unused id
-        for i in range(1,25):
-            if Programs.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new program
-                program = Programs(
-                        id = i,
-                        name = name,
-                        content = "",
-                    )
-                db.session.add(program)
-                db.session.commit()
-                return ("")
+        # path exist ?
+        check_entry = MQTT_Devices.query.filter_by(channel_path=channel_path).first()
+        if check_entry is None:       
+            # find a unused id
+            for i in range(1,50):
+                if MQTT_Devices.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new device
+                    device = MQTT_Devices(
+                            id           = i,
+                            name         = name,
+                            channel_path = channel_path,
+                            modell       = modell,
+                            inputs       = inputs,
+                            outputs      = outputs,
+                            last_contact = last_contact,
+                            )
+                    db.session.add(device)
+                    db.session.commit()
+                    
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added")                   
+                    
+                    return ""
+                    
+        else:
+            return "Kanal bereits vergeben"     
+                 
     else:
-        return ("Name bereits vergeben")
+        return "Name bereits vergeben"
 
 
-def SET_PROGRAM_NAME(id, name):
-    check_entry = Programs.query.filter_by(name=name).first()
-    if check_entry is None:
-        entry = Programs.query.filter_by(id=id).first()
-        entry.name = name
-        db.session.commit()    
+def UPDATE_MQTT_DEVICE_INFORMATIONS(id, modell, inputs, outputs, last_contact):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.modell = modell
+    entry.inputs = inputs
+    entry.outputs = outputs
+    entry.last_contact = last_contact
+    db.session.commit()     
 
 
-def UPDATE_PROGRAM(id, content):
-    entry = Programs.query.filter_by(id=id).update(dict(content=content))
-    db.session.commit()
+def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.last_contact = last_contact
+    db.session.commit()        
 
 
-def DELETE_PROGRAM(name):
-    Programs.query.filter_by(name=name).delete()
-    db.session.commit() 
+def DELETE_MQTT_DEVICE(id):
+    if Plants.query.filter_by(mqtt_device_id=id).first():
+        entry = GET_MQTT_DEVICE(id)
+        SET_ERROR_LIST(entry.name + " wird in Bewässerung verwendet")
+    elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
+        entry = GET_MQTT_DEVICE(id)
+        SET_ERROR_LIST(entry.name + " wird in Sensordaten_Jobs verwendet")      
+    else:
+        entry = GET_MQTT_DEVICE(id)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
+ 
+        MQTT_Devices.query.filter_by(id=id).delete()
+        db.session.commit() 
+        return "MQTT-Device gelöscht"
 
 
 """ ################### """
@@ -992,6 +1116,67 @@ def DELETE_PLANT(plant_id):
 
 """ ################### """
 """ ################### """
+"""     sensordata      """
+""" ################### """
+""" ################### """
+
+
+def GET_SENSORDATA_JOB(id):
+    return Sensordata_Jobs.query.filter_by(id=id).first()
+
+
+def GET_ALL_SENSORDATA_JOBS():
+    return Sensordata_Jobs.query.all()
+
+
+def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
+    # name exist ?
+    check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
+    if check_entry is None:
+        check_entry = Sensordata_Jobs.query.filter_by(filename=filename).first()
+        if check_entry is None:            
+            # find a unused id
+            for i in range(1,25):
+                if Sensordata_Jobs.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new job
+                    sensordata_job = Sensordata_Jobs(
+                            id             = i,
+                            name           = name,
+                            filename       = filename,
+                            mqtt_device_id = mqtt_device_id,                 
+                        )
+                    db.session.add(sensordata_job)
+                    db.session.commit()
+                    
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
+                    
+                    return ""
+
+        else:
+            return "Dateiname bereits vergeben"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):        
+    entry = Sensordata_Jobs.query.filter_by(id=id).first()
+    entry.sensor_id = sensor_id
+    db.session.commit()    
+
+
+def DELETE_SENSORDATA_JOB(id):
+    entry = GET_SENSORDATA_JOB(id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
+ 
+    Sensordata_Jobs.query.filter_by(id=id).delete()
+    db.session.commit()
+
+
+""" ################### """
+""" ################### """
 """      settings       """
 """ ################### """
 """ ################### """
@@ -1049,151 +1234,12 @@ def REMOVE_LED(id):
     return "LED erfolgreich gelöscht"
 
 
-""" ########## """
-""" sensordata """
-""" ########## """
+""" ################### """
+""" ################### """
+"""      snowboy        """
+""" ################### """
+""" ################### """
 
-def GET_SENSORDATA_JOB(id):
-    return Sensordata_Jobs.query.filter_by(id=id).first()
-
-
-def GET_ALL_SENSORDATA_JOBS():
-    return Sensordata_Jobs.query.all()
-
-
-def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
-    # name exist ?
-    check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
-    if check_entry is None:
-        check_entry = Sensordata_Jobs.query.filter_by(filename=filename).first()
-        if check_entry is None:            
-            # find a unused id
-            for i in range(1,25):
-                if Sensordata_Jobs.query.filter_by(id=i).first():
-                    pass
-                else:
-                    # add the new job
-                    sensordata_job = Sensordata_Jobs(
-                            id             = i,
-                            name           = name,
-                            filename       = filename,
-                            mqtt_device_id = mqtt_device_id,                 
-                        )
-                    db.session.add(sensordata_job)
-                    db.session.commit()
-                    
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
-                    
-                    return ""
-
-        else:
-            return "Dateiname bereits vergeben"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):        
-    entry = Sensordata_Jobs.query.filter_by(id=id).first()
-    entry.sensor_id = sensor_id
-    db.session.commit()    
-
-
-def DELETE_SENSORDATA_JOB(id):
-    entry = GET_SENSORDATA_JOB(id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
- 
-    Sensordata_Jobs.query.filter_by(id=id).delete()
-    db.session.commit()
-
-
-""" #### """
-""" mqtt """
-""" #### """
-
-def GET_MQTT_DEVICE(id):
-    return MQTT_Devices.query.filter_by(id=id).first()
-
-
-def GET_ALL_MQTT_DEVICES():
-    return MQTT_Devices.query.all()
-
-
-def GET_MQTT_DEVICE_NAME(id):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    return entry.name  
-    
-
-def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
-    # name exist ?
-    check_entry = MQTT_Devices.query.filter_by(name=name).first()
-    if check_entry is None:
-        # path exist ?
-        check_entry = MQTT_Devices.query.filter_by(channel_path=channel_path).first()
-        if check_entry is None:       
-            # find a unused id
-            for i in range(1,50):
-                if MQTT_Devices.query.filter_by(id=i).first():
-                    pass
-                else:
-                    # add the new device
-                    device = MQTT_Devices(
-                            id           = i,
-                            name         = name,
-                            channel_path = channel_path,
-                            modell       = modell,
-                            inputs       = inputs,
-                            outputs      = outputs,
-                            last_contact = last_contact,
-                            )
-                    db.session.add(device)
-                    db.session.commit()
-                    
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added")                   
-                    
-                    return ""
-                    
-        else:
-            return "Kanal bereits vergeben"     
-                 
-    else:
-        return "Name bereits vergeben"
-
-
-def UPDATE_MQTT_DEVICE_INFORMATIONS(id, modell, inputs, outputs, last_contact):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    entry.modell = modell
-    entry.inputs = inputs
-    entry.outputs = outputs
-    entry.last_contact = last_contact
-    db.session.commit()     
-
-
-def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    entry.last_contact = last_contact
-    db.session.commit()        
-
-
-def DELETE_MQTT_DEVICE(id):
-    if Plants.query.filter_by(mqtt_device_id=id).first():
-        entry = GET_MQTT_DEVICE(id)
-        SET_ERROR_LIST(entry.name + " wird in Bewässerung verwendet")
-    elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
-        entry = GET_MQTT_DEVICE(id)
-        SET_ERROR_LIST(entry.name + " wird in Sensordaten_Jobs verwendet")      
-    else:
-        entry = GET_MQTT_DEVICE(id)
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
- 
-        MQTT_Devices.query.filter_by(id=id).delete()
-        db.session.commit() 
-        return "MQTT-Device gelöscht"
-
-
-""" ####### """
-""" snowboy """
-""" ####### """
 
 def GET_SNOWBOY_SENSITIVITY():
     entry = Snowboy.query.filter_by().first()
@@ -1251,64 +1297,6 @@ def DELETE_SNOWBOY_TASK(task_id):
     Snowboy_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
-
-""" ############### """
-""" user management """
-""" ############### """
-
-def GET_USER_BY_ID(user_id):
-    return User.query.get(int(user_id))
-
-
-def GET_USER_BY_NAME(user_name):
-    return User.query.filter_by(username=user_name).first()
-
-
-def GET_EMAIL(email):
-    return User.query.filter_by(email=email).first()
-
-
-def GET_ALL_USERS():
-    return User.query.all()
-
-
-def ADD_USER(user_name, email, password):
-    new_user = User(username=user_name, email=email, password=password, role="user")
-    db.session.add(new_user)
-    db.session.commit()
-
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + user_name + " >>> added") 
-
-
-def ACTIVATE_USER(user_id):
-    entry = User.query.get(user_id)
-    entry.role = "superuser"
-    db.session.commit()
-
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> activated") 
-
-
-def SET_EMAIL_NOTIFICATION(id, email_notification_info, email_notification_error, email_notification_cam):
-    entry = User.query.filter_by(id=id).first()
-    entry.email_notification_info  = email_notification_info
-    entry.email_notification_error = email_notification_error
-    entry.email_notification_cam   = email_notification_cam
-    db.session.commit()
-    
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username 
-                         + " >>> eMail Notification changed >>> Info: " 
-                         + email_notification_info  + " /// Error: " 
-                         + email_notification_error + " /// Camera: " 
-                         + email_notification_cam)
-
-
-def DELETE_USER(user_id):
-    entry = GET_USER_BY_ID(user_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
-    
-    User.query.filter_by(id=user_id).delete()
-    db.session.commit()
- 
 
 """ ################## """
 """ ################## """
@@ -1423,4 +1411,65 @@ def DELETE_TASKMANAGEMENT_SENSOR_TASK(task_id):
     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + entry.name + " >>> deleted")    
     
     Taskmanagement_Sensor.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
+""" ################### """
+""" ################### """
+"""   user management   """
+""" ################### """
+""" ################### """
+
+
+def GET_USER_BY_ID(user_id):
+    return User.query.get(int(user_id))
+
+
+def GET_USER_BY_NAME(user_name):
+    return User.query.filter_by(username=user_name).first()
+
+
+def GET_EMAIL(email):
+    return User.query.filter_by(email=email).first()
+
+
+def GET_ALL_USERS():
+    return User.query.all()
+
+
+def ADD_USER(user_name, email, password):
+    new_user = User(username=user_name, email=email, password=password, role="user")
+    db.session.add(new_user)
+    db.session.commit()
+
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + user_name + " >>> added") 
+
+
+def ACTIVATE_USER(user_id):
+    entry = User.query.get(user_id)
+    entry.role = "superuser"
+    db.session.commit()
+
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> activated") 
+
+
+def SET_EMAIL_NOTIFICATION(id, email_notification_info, email_notification_error, email_notification_camera):
+    entry = User.query.filter_by(id=id).first()
+    entry.email_notification_info   = email_notification_info
+    entry.email_notification_error  = email_notification_error
+    entry.email_notification_camera = email_notification_camera
+    db.session.commit()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username 
+                         + " >>> eMail Notification >>> Info: " 
+                         + email_notification_info  + " /// Error: " 
+                         + email_notification_error + " /// Camera: " 
+                         + email_notification_camera)
+
+
+def DELETE_USER(user_id):
+    entry = GET_USER_BY_ID(user_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
+    
+    User.query.filter_by(id=user_id).delete()
     db.session.commit()

@@ -766,3 +766,80 @@ Timestamp,Type,Description
 2019-04-03 21:11:41,EVENT,Snowboy >>> started
 2019-04-03 21:11:47,EVENT,Database >>> User >>> default >>> eMail Notification changed >>> Info: checked /// Error: checked /// Camera: 
 2019-04-03 21:13:15,EVENT,Database >>> User >>> martin >>> eMail Notification changed >>> Info:  /// Error: checked /// Camera: 
+2019-04-03 21:16:00,EVENT,MQTT >>> started
+2019-04-03 21:16:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-03 21:16:00,EVENT,Snowboy >>> started
+2019-04-03 21:16:02,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-03 21:16:16,EVENT,Database >>> User >>> martin >>> eMail Notification changed >>> Info: checked /// Error: checked /// Camera: checked
+2019-04-03 21:17:22,EVENT,File >>> /csv/testfile.csv >>> downloaded
+2019-04-03 21:29:46,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 21:29:49,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 21:48:40,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-03 22:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 22:00:00,EVENT,Task >>> test >>> started
+2019-04-03 23:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-03 23:00:00,EVENT,Task >>> test >>> started
+2019-04-04 00:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 00:00:00,EVENT,Task >>> test >>> started
+2019-04-04 00:00:00,EVENT,Task >>> Datenbank sichern >>> started
+2019-04-04 00:00:00,EVENT,Database_Backup >>> saved
+2019-04-04 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-04 00:36:15,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-04-04 00:37:25,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-04 01:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 01:00:00,EVENT,Task >>> test >>> started
+2019-04-04 02:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 02:00:00,EVENT,Task >>> test >>> started
+2019-04-04 03:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 03:00:00,EVENT,Task >>> test >>> started
+2019-04-04 04:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 04:00:00,EVENT,Task >>> test >>> started
+2019-04-04 05:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 05:00:00,EVENT,Task >>> test >>> started
+2019-04-04 06:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 06:00:00,EVENT,Task >>> test >>> started
+2019-04-04 07:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 07:00:00,EVENT,Task >>> test >>> started
+2019-04-04 07:07:32,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-04 07:07:34,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-04 07:09:13,EVENT,File >>> /csv/testfile.csv >>> downloaded
+2019-04-04 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-04 08:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 08:00:00,EVENT,Task >>> test >>> started
+2019-04-04 09:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 09:00:00,EVENT,Task >>> test >>> started
+2019-04-04 10:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 10:00:00,EVENT,Task >>> test >>> started
+2019-04-04 11:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 11:00:00,EVENT,Task >>> test >>> started
+2019-04-04 12:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 12:00:00,EVENT,Task >>> test >>> started
+2019-04-04 13:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 13:00:00,EVENT,Task >>> test >>> started
+2019-04-04 14:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 14:00:00,EVENT,Task >>> test >>> started
+2019-04-04 15:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 15:00:00,EVENT,Task >>> test >>> started
+2019-04-04 16:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 16:00:00,EVENT,Task >>> test >>> started
+2019-04-04 17:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-04 17:00:00,EVENT,Task >>> test >>> started
+2019-04-04 17:28:29,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-04 17:28:34,EVENT,Database_Backup >>> saved
+2019-04-04 17:29:10,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-04 17:29:21,EVENT,MQTT >>> started
+2019-04-04 17:29:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-04 17:29:22,EVENT,Snowboy >>> started
+2019-04-04 17:29:26,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-04 17:29:42,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-04-04 17:31:15,EVENT,MQTT >>> started
+2019-04-04 17:31:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-04 17:31:15,EVENT,Snowboy >>> started
+2019-04-04 17:38:46,EVENT,MQTT >>> started
+2019-04-04 17:38:46,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-04 17:38:46,EVENT,Snowboy >>> started
+2019-04-04 17:38:50,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-04-04 17:38:55,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-04-04 17:39:11,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-04 17:39:59,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-04 17:39:59,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured

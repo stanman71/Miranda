@@ -4,29 +4,58 @@ import os
 from app import app
 from app.database.database import *
 
-def SEND_EMAIL(recipients):
+def SEND_EMAIL(recipients, subject, body):
 
-    mail_settings = GET_EMAIL_SETTINGS()[0]
+    def GET_MAIL_SETTINGS():     
+        mail_config = GET_EMAIL_CONFIG()[0]
+        if mail_config.mail_encoding == "SSL":
+            mail_settings = {
+                "MAIL_SERVER"  : mail_config.mail_server_address,
+                "MAIL_PORT"    : mail_config.mail_server_port,  
+                "MAIL_USE_TLS" : False,
+                "MAIL_USE_SSL" : True,
+                "MAIL_USERNAME": mail_config.mail_username,
+                "MAIL_PASSWORD": mail_config.mail_password,
+            }
 
-    mail_settings = {
-        "MAIL_SERVER": mail_settings.mail_server_address,
-        "MAIL_PORT": mail_settings.mail_server_port,  
-        "MAIL_USE_TLS": False,
-        "MAIL_USE_SSL": True,
-        "MAIL_USERNAME": mail_settings.mail_username,
-        "MAIL_PASSWORD": mail_settings.mail_password,
-    }
+        else:
+            mail_settings = {
+                "MAIL_SERVER"  : mail_config.mail_server_address,
+                "MAIL_PORT"    : mail_config.mail_server_port,  
+                "MAIL_USE_TLS" : True,
+                "MAIL_USE_SSL" : False,
+                "MAIL_USERNAME": mail_config.mail_username,
+                "MAIL_PASSWORD": mail_config.mail_password,
+            }  
 
-    app.config.update(mail_settings)
+        return mail_settings 
+
+    app.config.update(GET_MAIL_SETTINGS())
     mail = Mail(app)
 
     try:
         with app.app_context():
-                msg = Message(subject="Hello",
-                            sender=app.config.get("MAIL_USERNAME"),
-                            recipients=[recipients], 
-                            body="This is a test email I sent with Gmail and Python!")
-                mail.send(msg)
+            msg = Message(subject    = subject,
+                          sender     = app.config.get("MAIL_USERNAME"),
+                          recipients = recipients,
+                          body       = body)
+            
+            # attachment
+
+            """
+            # pictures
+            with app.open_resource("/home/pi/SmartHome/app/static/images/background.jpg") as fp:
+                msg.attach("background.jpg","image/jpg", fp.read())
+            with app.open_resource("/home/pi/SmartHome/app/static/images/background-panal.jpg") as fp:
+                msg.attach("background-panal.jpg","image/jpg", fp.read())   
+              
+            # text
+            with app.open_resource("C:/Users/mstan/Downloads/uzt.txt") as fp:
+                msg.attach("uzt.txt","text/plain", fp.read())   
+            """
+
+            mail.send(msg)
+
         return ""   
         
     except Exception as e:

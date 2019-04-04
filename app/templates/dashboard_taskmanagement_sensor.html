@@ -51,14 +51,77 @@
         </div>
       </nav>
 
- <!-- instructions -->
+<!-- schedular table -->
+
+<section id="table_tasks"></section>     
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Sensor)</b></font></div>
+          <div class="panel-body">      
+            <div class="well well-sm">
+              <table class="table">
+                <thead>                       
+                  <th scope="col">Name</th> 
+                  <th scope="col">Aufgabe</th> 
+                  <th scope="col">Gerät</th>
+                  <th scope="col">Sensor</th> 
+                  <th scope="col">Operator</th>
+                  <th scope="col">Wert</th> 
+                  <th scope="col"></th> 
+                  <th scope="col"></th> 
+                  <th scope="col" colspan="2"><em>/// Einstellung: Sensor / Wert ///</em></th>
+                </thead>
+                <tbody> 
+                  {% for entry in schedular_list %}
+                  <tr>
+                    <td>{{ entry.name }}</td> 
+                    <td>{{ entry.task }}</td> 
+                    <td>{{ entry.mqtt_device.name }}</td> 
+                    <td>{{ entry.sensor_id }}</td> 
+                    <td>{{ entry.operator }}</td>                
+                    <td>{{ entry.value }}</td> 
+                    <td></td> 
+                    <td></td>
+                    <td> 
+                      <form method="POST" class="verticalform">      
+                        <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                          <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                          <option value= "{{ entry.sensor_id }}" > ----- </option>
+                          {% for i in range(entry.mqtt_device.inputs) %}
+                          <option value= "{{ i }}" > {{ i }} </option>
+                          {% endfor %}
+                        </select>  
+                      </td> 
+                      <td>          
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-6">                       
+                            <div class="form-group">
+                              <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" /> 
+                            </div>
+                          </div>
+                        <div class="col-sm-4"> 
+                          <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table_tasks'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
+                        </div>
+                      </form>
+                    </td> 
+                    <td></td>
+                    <td></td>
+                    <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
+          </div>  
+        </div>  
+
+ <!-- instructions -->
+
+        <div class="panel panel-default">
           <div class="panel-body">   
             <div class="well well-sm">
               <div class="text-center">         
-                <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3> 
+                <h3><span class="label label-default">Aufgabe erstellen</span></h3> 
               </div>
               <br>
               <div class="well well-sm">Anweisungen
@@ -82,14 +145,27 @@
                   <tr>
                     <td>led_off:3</td>
                     <td>LEDs nacheinander ausschalten, alle "3" Sekunden Reduzierung der Helligkeit einer LED um 10%</td>
-                  </tr>
+                  </tr>     
                   <tr>
-                    <td>get_mqtt_sensordata:1</td>
+                    <td>get_mqtt_sensordata:1</td>                 
                     <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
                   </tr>               
                 </tbody>
               </table>
+
+<section id="add_task"></section>     
+
             </div>
+            <br>
+            <br>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %}
 
 <!-- new task -->
 
@@ -104,9 +180,6 @@
                   <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
                 </div>  
               </div>
-
-<section id="add_task"></section>  
-
               <div class="well well-sm">
                 <div class="row justify-content-md-center">
                   <div class="col-sm-1">
@@ -145,78 +218,6 @@
           </div>
         </div>
       </div>
-
-<!-- error message -->
-
-{% if error_message != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message }}
-</div>      
-{% endif %}
-
-<!-- schedular table -->
-
-<section id="table_tasks"></section>     
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Aufgaben</div>
-        <div class="panel-body">      
-          <div class="well well-sm">
-            <table class="table">
-              <thead>                       
-                <th scope="col">Name</th> 
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Gerät</th>
-                <th scope="col">Sensor</th> 
-                <th scope="col">Operator</th>
-                <th scope="col">Wert</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th> 
-                <th scope="col" colspan="2"><em>/// Einstellung: Sensor / Wert ///</em></th>
-              </thead>
-              <tbody> 
-                {% for entry in schedular_list %}
-                <tr>
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.task }}</td> 
-                  <td>{{ entry.mqtt_device.name }}</td> 
-                  <td>{{ entry.sensor_id }}</td> 
-                  <td>{{ entry.operator }}</td>                
-                  <td>{{ entry.value }}</td> 
-                  <td></td> 
-                  <td></td>
-                  <td> 
-                    <form method="POST" class="verticalform">      
-                      <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                        <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                        <option value= "{{ entry.sensor_id }}" > ----- </option>
-                        {% for i in range(entry.mqtt_device.inputs) %}
-                        <option value= "{{ i }}" > {{ i }} </option>
-                        {% endfor %}
-                      </select>  
-                    </td> 
-                    <td>          
-                      <div class="row justify-content-md-center">
-                        <div class="col-sm-6">                       
-                          <div class="form-group">
-                            <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" /> 
-                          </div>
-                        </div>
-                      <div class="col-sm-4"> 
-                        <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table_tasks'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
-                      </div>
-                    </form>
-                  </td> 
-                  <td></td>
-                  <td></td>
-                  <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>  
-          </div>
-        </div>  
-      </div>  
     </div>
   </div>    
 </div>    

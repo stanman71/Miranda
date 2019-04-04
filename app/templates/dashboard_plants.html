@@ -42,58 +42,83 @@
   <div class="row">
     <div class="col">
 
-<!-- add new plant -->
+<!-- plants table -->
+
+<section id="table"></section>   
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>
+        <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>      
           <div class="panel-body"> 
-            <div class="well well-sm">     
-              <form method="POST">   
-                <div class="form-group">
-                  <div class="text-center">  
-                    <h3><span class="label label-default">Pflanze hinzufügen</span></h3>
-                  </div>
-                  <br>
-                  <div class="well well-sm">Name:
-                    <input type="text" class="form-control" name="set_name" value="" />
-                  </div>
-
-<section id="add_plant"></section> 
-
-                <div class="well well-sm">
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-2">
-                      Gerät:
-                    </div>
-                    <div class="col-sm-1">   
-                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device">
-                        {% for each in dropdown_list_mqtt_devices %}
-                        <option value="{{each.id}}"> {{ each.name }} </option>
-                        {% endfor %}
-                      </select>    
-                    </div>
-                  </div>                     
-                </div>
-                <div class="well well-sm">
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-2">
-                      Wassermenge:
-                    </div>
-                    <div class="col-sm-1">                
-                      <select class="btn btn-default dropdown-toggle" name="set_water_volume">
-                        {% for each in dropdown_list_watervolume %}
-                        <option value="{{each}}"> {{ each }} </option>
-                        {% endfor %}
-                      </select>    
-                    </div>
-                  </div>                    
-                </div>        
-              <input type="submit" onclick="window.location.href='/dashboard/plants#add_plant'" class="btn btn-default" name="add_plant" value="Pflanze hinzufügen" />
-            </form>   
+            <div class="well well-sm">  
+              <table class="table">
+                <thead>
+                  <th scope="col">Name</th>   
+                  <th scope="col">Gerät</th>   
+                  <th scope="col">Sensor</th>
+                  <th scope="col">Pumpe</th>               
+                  <th scope="col">Wasser (ml)</th>
+                  <th scope="col">Feuchtigkeit (%)</th>  
+                  <th scope="col" colspan="3"><em>/// Einstellung: Sensor / Pumpe / Feuchtigkeit ///</em></th>
+                </thead>
+                <tbody> 
+                  {% for entry in plants_list %}
+                  <tr>
+                    <td>{{ entry.name }}</td> 
+                    <td>{{ entry.mqtt_device.name }}</td>                  
+                    <td>{{ entry.sensor_id }}</td>
+                    <td>{{ entry.pump_id }}</td>                
+                    <td>{{ entry.watervolume }}</td>
+                    <td>{{ entry.moisture_percent }}</td> 
+                    <td> 
+                      <form method="POST" class="verticalform">      
+                        <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                          <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                          <option value= "{{ entry.sensor_id }}" > ----- </option>
+                          {% for i in range(entry.mqtt_device.inputs) %}
+                          <option value= "{{ i }}" > {{ i }} </option>
+                          {% endfor %}
+                        </select>   
+                        </td>                     
+                        <td>                
+                        <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
+                          <option value= "{{ entry.pump_id }}" > {{ entry.pump_id }} </option>
+                          <option value= "{{ entry.pump_id }}" > ----- </option> 
+                          {% for i in range(entry.mqtt_device.outputs) %}
+                          <option value= "{{ i }}" > {{ i }} </option>
+                          {% endfor %}
+                        </select> 
+                        </td>                        
+                        <td>
+                          <class="slidecontainer"> 
+                            <div class="col-md-10 text-center"> 
+                              <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
+                              <br>
+                              <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
+                            </div> 
+                      </form>
+                    </td>
+                    <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
           </div>  
-        </div>
-      </div>
-    </div>
+        </div>  
+
+<!-- add new plant -->
+
+<section id="add_plant"></section>
+
+          <div class="panel panel-default">
+            <div class="panel-body"> 
+              <div class="well well-sm">     
+                <form method="POST">   
+                  <div class="form-group">
+                    <div class="text-center">  
+                      <h3><span class="label label-default">Pflanze hinzufügen</span></h3>
+                    </div>
+                    <br>
 
 <!-- error message -->
 
@@ -101,71 +126,45 @@
 <div class="alert alert-danger" role="alert">
   {{ error_message }}
 </div>      
-{% endif %}
+{% endif %}                    
 
-<!-- plants table -->
-
-<section id="table"></section>   
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Pflanzen</div>        
-        <div class="panel-body"> 
-          <div class="well well-sm">  
-            <table class="table">
-              <thead>
-                <th scope="col">Name</th>   
-                <th scope="col">Gerät</th>   
-                <th scope="col">Sensor</th>
-                <th scope="col">Pumpe</th>               
-                <th scope="col">Wasser (ml)</th>
-                <th scope="col">Feuchtigkeit (%)</th>  
-                <th scope="col" colspan="3"><em>/// Einstellung: Sensor / Pumpe / Feuchtigkeit ///</em></th>
-              </thead>
-              <tbody> 
-                {% for entry in plants_list %}
-                <tr>
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.mqtt_device.name }}</td>                  
-                  <td>{{ entry.sensor_id }}</td>
-                  <td>{{ entry.pump_id }}</td>                
-                  <td>{{ entry.watervolume }}</td>
-                  <td>{{ entry.moisture_percent }}</td> 
-                  <td> 
-                    <form method="POST" class="verticalform">      
-                      <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                        <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                        <option value= "{{ entry.sensor_id }}" > ----- </option>
-                        {% for i in range(entry.mqtt_device.inputs) %}
-                        <option value= "{{ i }}" > {{ i }} </option>
-                        {% endfor %}
-                      </select>   
-                      </td>
-                      <td>                
-                      <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
-                        <option value= "{{ entry.pump_id }}" > {{ entry.pump_id }} </option>
-                        <option value= "{{ entry.pump_id }}" > ----- </option> 
-                        {% for i in range(entry.mqtt_device.outputs) %}
-                        <option value= "{{ i }}" > {{ i }} </option>
-                        {% endfor %}
-                      </select> 
-                      </td>
-                      <td>
-                        <class="slidecontainer"> 
-                          <div class="col-md-10 text-center"> 
-                            <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
-                            <br>
-                            <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
-                          </div> 
-                    </form>
-                  </td>
-                  <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>  
+                    <div class="well well-sm">Name:
+                      <input type="text" class="form-control" name="set_name" value="" />
+                    </div>
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-2">
+                        Gerät:
+                      </div>
+                      <div class="col-sm-1">   
+                        <select class="btn btn-default dropdown-toggle" name="set_mqtt_device">
+                          {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{each.id}}"> {{ each.name }} </option>
+                          {% endfor %}
+                        </select>    
+                      </div>
+                    </div>                     
+                  </div>
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-2">
+                        Wassermenge:
+                      </div>
+                      <div class="col-sm-1">                
+                        <select class="btn btn-default dropdown-toggle" name="set_water_volume">
+                          {% for each in dropdown_list_watervolume %}
+                          <option value="{{each}}"> {{ each }} </option>
+                          {% endfor %}
+                        </select>    
+                      </div>
+                    </div>                    
+                  </div>        
+                <input type="submit" onclick="window.location.href='/dashboard/plants#add_plant'" class="btn btn-default" name="add_plant" value="Pflanze hinzufügen" />
+              </form>   
+            </div>  
           </div>
-        </div>  
-      </div>  
+        </div>
+      </div>
     </div>
   </div>    
 </div>

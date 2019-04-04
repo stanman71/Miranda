@@ -51,14 +51,49 @@
         </div>
       </nav>
 
-<!-- instructions -->
+<!-- schedular table -->
+
+<section id="table_tasks"></section>     
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Zeit)</b></font></div>
+          <div class="panel-body">      
+            <div class="well well-sm">
+              <table class="table">
+                <thead>                       
+                  <th scope="col">Name</th> 
+                  <th scope="col">Aufgabe</th>                 
+                  <th scope="col">Tag</th> 
+                  <th scope="col">Stunde</th> 
+                  <th scope="col">Minute</th> 
+                  <th scope="col">Wiederholen</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in schedular_list %}
+                  <tr>
+                    <td>{{ entry.name }}</td> 
+                    <td>{{ entry.task }}</td>                   
+                    <td>{{ entry.day }}</td> 
+                    <td>{{ entry.hour }}</td> 
+                    <td>{{ entry.minute }}</td> 
+                    <td>{{ entry.repeat }}</td> 
+                    <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
+          </div>  
+        </div>  
+
+
+<!-- instructions -->
+
+        <div class="panel panel-default">         
           <div class="panel-body">   
             <div class="well well-sm">
               <div class="text-center"> 
-                <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>         
+                <h3><span class="label label-default">Aufgabe erstellen</span></h3>         
               </div>
               <br>
               <div class="well well-sm">Anweisungen
@@ -100,8 +135,21 @@
                     <td>MQTT Sensordaten abrufen, die Zahl bezieht sich auf die Job-ID</td>
                   </tr>               
                 </tbody>
-              </table>
+              </table>     
+              
+<section id="add_task"></section>              
+
             </div>
+            <br>
+            <br>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+<div class="alert alert-danger" role="alert">
+  {{ error_message }}
+</div>      
+{% endif %}
 
 <!-- new task -->
 
@@ -115,10 +163,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
                 </div>      
-              </div>    
-
-<section id="add_task"></section>            
-
+              </div>              
               <div class="well well-sm">Zeitpunkt:  
                 <br>
                 <br>         
@@ -180,49 +225,6 @@
           </div>  
         </div>
       </div>
-
-<!-- error message -->
-
-{% if error_message != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message }}
-</div>      
-{% endif %}
-
-<!-- schedular table -->
-
-<section id="table_tasks"></section>     
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Aufgaben</div>
-        <div class="panel-body">      
-          <div class="well well-sm">
-            <table class="table">
-              <thead>                       
-                <th scope="col">Name</th> 
-                <th scope="col">Aufgabe</th>                 
-                <th scope="col">Tag</th> 
-                <th scope="col">Stunde</th> 
-                <th scope="col">Minute</th> 
-                <th scope="col">Wiederholen</th> 
-              </thead>
-              <tbody> 
-                {% for entry in schedular_list %}
-                <tr>
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.task }}</td>                   
-                  <td>{{ entry.day }}</td> 
-                  <td>{{ entry.hour }}</td> 
-                  <td>{{ entry.minute }}</td> 
-                  <td>{{ entry.repeat }}</td> 
-                  <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>  
-          </div>
-        </div>  
-      </div>  
     </div>
   </div>    
 </div>

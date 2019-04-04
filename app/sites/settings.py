@@ -33,7 +33,6 @@ def superuser_required(f):
 @superuser_required
 def dashboard_settings_mqtt():   
     error_message = ""
-    error_message_table = ""
     error_message_mqtt = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
@@ -112,7 +111,6 @@ def dashboard_settings_mqtt():
 
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
-                            error_message_table=error_message_table,
                             error_message_mqtt=error_message_mqtt,
                             mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
@@ -219,7 +217,7 @@ def dashboard_settings_snowboy():
         try:
             START_SNOWBOY()
         except Exception as e:  
-            if not "signal only works in main thread":         
+            if "signal only works in main thread" not in str(e):      
                 error_message_snowboy = "Fehler in SnowBoy: " + str(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
 
@@ -375,14 +373,13 @@ def remove_hue_bridge_led(id):
 """ ############# """
 
 # dashboard user management
-@app.route('/dashboard/settings/user/', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/user', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_user():
     error_message = ""
-                 
-    if request.method == 'POST':
 
+    if request.method == "POST":     
         # change email notification
         for i in range (1,25): 
             if request.form.get("change_user_settings_" + str(i)) is not None:
@@ -394,50 +391,18 @@ def dashboard_settings_user():
                     email_notification_error = "checked"
                 else:
                     email_notification_error = ""
-                if request.form.get("checkbox_cam"):
-                    email_notification_cam = "checked"
+                if request.form.get("checkbox_camera"):
+                    email_notification_camera = "checked"
                 else:
-                    email_notification_cam = ""
+                    email_notification_camera = ""
 
-                SET_EMAIL_NOTIFICATION(i, email_notification_info, email_notification_error, email_notification_cam)
+                SET_EMAIL_NOTIFICATION(i, email_notification_info, email_notification_error, email_notification_camera)
     
-        # update email settings
-        if request.form.get("change_email_settings") is not None:
-            if request.form.get("set_mail_server_address") == "":
-                error_message = "Kein eMail Server Adresse angegeben"
-            elif request.form.get("set_mail_server_port") == "":
-                error_message = "Kein eMail Server Port angegeben"
-            elif request.form.get("set_mail_username") == "":
-                error_message = "Keinen Benutzernamen angegeben" 
-            elif request.form.get("set_mail_password") == "":
-                error_message = "Kein Passwort angegeben"                      
-            else:         
-                set_mail_server_address = request.form.get("set_mail_server_address")
-                set_mail_server_port    = request.form.get("set_mail_server_port")
-                set_mail_encoding       = request.form.get("set_mail_encoding")
-                set_mail_username       = request.form.get("set_mail_username")               
-                set_mail_password       = request.form.get("set_mail_password")
-
-                error_message = UPDATE_EMAIL_SETTINGS(set_mail_server_address, 
-                                                        set_mail_server_port, 
-                                                        set_mail_encoding, 
-                                                        set_mail_username, 
-                                                        set_mail_password)
-
-        # test email settings
-        if request.form.get("test_email_settings") is not None:
-            error_message = SEND_EMAIL("stanlay@gmx.net")
-
     user_list = GET_ALL_USERS()
-    email_setting = GET_EMAIL_SETTINGS()[0]
-    mail_encoding_list = ["TLS", "SSH", "NONE"]
 
     return render_template('dashboard_settings_user.html',
-                            name=current_user.username,
-                            user_list=user_list,
                             error_message=error_message,
-                            mail_encoding_list=mail_encoding_list,
-                            email_setting=email_setting,
+                            user_list=user_list,                           
                             active04="active",
                             )
 
@@ -460,17 +425,63 @@ def delete_user(id):
     return redirect(url_for('dashboard_settings_user'))
 
 
+""" ############# """
+""" email settings """
+""" ############# """
+
+# dashboard email settings
+@app.route('/dashboard/settings/email', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_settings_email():
+    error_message = ""
+    error_message_test = ""
+    message_test = ""
+
+    if request.method == "POST":     
+        # update email settings
+        if request.form.get("change_email_settings") is not None:      
+            set_mail_server_address = request.form.get("set_mail_server_address")
+            set_mail_server_port    = request.form.get("set_mail_server_port")
+            set_mail_encoding       = request.form.get("set_mail_encoding")
+            set_mail_username       = request.form.get("set_mail_username")               
+            set_mail_password       = request.form.get("set_mail_password")
+
+            error_message = UPDATE_EMAIL_SETTINGS(set_mail_server_address, 
+                                                    set_mail_server_port, 
+                                                    set_mail_encoding, 
+                                                    set_mail_username, 
+                                                    set_mail_password)
+
+        # test email settings
+        if request.form.get("test_email_config") is not None:
+            error_message_test = SEND_EMAIL(GET_EMAIL_ADDRESS("test"), "TEST", "TEST")
+
+    email_config = GET_EMAIL_CONFIG()[0]
+    mail_encoding_list = ["TLS", "SSL"]
+    
+    # eMail-Muster
+    # SEND_EMAIL(GET_EMAIL_ADDRESS("info"), "TEST", "Das ist eine eMail mit Anhang")
+
+    return render_template('dashboard_settings_email.html',
+                            error_message=error_message,
+                            error_message_test=error_message_test,
+                            email_config=email_config,
+                            mail_encoding_list=mail_encoding_list,                          
+                            active05="active",
+                            )
+
+
 """ ############### """
 """ system settings """
 """ ############### """
 
-# dashboard system settings
-@app.route('/dashboard/settings/system/', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/system', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_system():
     error_message = ""
-                              
+
     def GET_CPU_TEMPERATURE():
         res = os.popen('vcgencmd measure_temp').readline()
         return(res.replace("temp=","").replace("'C\n"," C"))
@@ -494,8 +505,8 @@ def dashboard_settings_system():
     return render_template('dashboard_settings_system.html',
                             error_message=error_message,
                             file_list=file_list,
-                            cpu_temperature=cpu_temperature,
-                            active05="active",
+                            cpu_temperature=cpu_temperature,                                                     
+                            active06="active",
                             )
 
 
@@ -521,8 +532,7 @@ def delete_database_backup(filename):
 """ system logs """
 """ ########### """
 
-# dashboard system settings
-@app.route('/dashboard/settings/system_log/', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/system_log', methods=['GET', 'POST'])
 @login_required
 @superuser_required
 def dashboard_settings_system_log():
@@ -542,8 +552,8 @@ def dashboard_settings_system_log():
     return render_template('dashboard_settings_system_log.html',
                             error_message=error_message,
                             timestamp=timestamp,
-                            data_log_system=data_log_system,
-                            active06="active",
+                            data_log_system=data_log_system,                                                       
+                            active07="active",
                             )
 
 

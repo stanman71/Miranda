@@ -79,6 +79,6 @@ if GET_SETTING_VALUE("snowboy") == "True":
         SNOWBOY_START()
 
     except Exception as e:
-        if not "signal only works in main thread": 
+        if "signal only works in main thread" not in str(e): 
             print("Fehler in SnowBoy: " + str(e))
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
