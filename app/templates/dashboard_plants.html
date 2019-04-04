@@ -56,8 +56,8 @@
                   <th scope="col">Gerät</th>   
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>               
-                  <th scope="col">Wasser (ml)</th>
-                  <th scope="col">Feuchtigkeit (%)</th>  
+                  <th scope="col">Wasser</th>
+                  <th scope="col">Feuchtigkeit</th>  
                   <th scope="col" colspan="3"><em>/// Einstellung: Sensor / Pumpe / Feuchtigkeit ///</em></th>
                 </thead>
                 <tbody> 
@@ -67,8 +67,8 @@
                     <td>{{ entry.mqtt_device.name }}</td>                  
                     <td>{{ entry.sensor_id }}</td>
                     <td>{{ entry.pump_id }}</td>                
-                    <td>{{ entry.watervolume }}</td>
-                    <td>{{ entry.moisture_percent }}</td> 
+                    <td>{{ entry.watervolume }} ml</td>
+                    <td>{{ entry.moisture_percent }} %</td> 
                     <td> 
                       <form method="POST" class="verticalform">      
                         <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
