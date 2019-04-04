@@ -129,7 +129,7 @@
     
 <!-- messages test -->            
 
-{% if error_message_test != "" %}
+{% if error_message_test != "" and error_message_test != "success" %}
   <div class="alert alert-danger" role="alert">
     {{ error_message_test }}
   </div>      
