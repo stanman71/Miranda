@@ -34,6 +34,7 @@ def superuser_required(f):
 def dashboard_settings_mqtt():   
     error_message = ""
     error_message_mqtt = ""
+    error_message_table = ""
     mqtt_device_channel_path = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
@@ -44,7 +45,7 @@ def dashboard_settings_mqtt():
 
     if request.method == "POST":     
         # change mqtt settings   
-        if request.form.get("radio_mqtt") is not None:
+        if request.form.get("set_setting_mqtt") is not None:
             setting_mqtt = str(request.form.get("radio_mqtt"))
             SET_SETTING_VALUE("mqtt", setting_mqtt)
 
@@ -61,7 +62,7 @@ def dashboard_settings_mqtt():
 
         # check mqtt
         try:
-            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
@@ -80,11 +81,12 @@ def dashboard_settings_mqtt():
                     mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path") 
                     
                     if mqtt_device_name is not None or mqtt_device_channel_path is not None:
-                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, mqtt_device_channel_path)                         
+                        gateway = "mqtt"
+                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, gateway, mqtt_device_channel_path)                         
                         if error_message == "":
                             time.sleep(1)
                             try:
-                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
                             except Exception as e:
                                 error_message_mqtt = "Fehler in MQTT: " + str(e)
                                 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))                                 
@@ -99,19 +101,20 @@ def dashboard_settings_mqtt():
             # update mqtt devices
             if request.form.get("update_mqtt_devices") is not None:    
                 try:
-                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
                     time.sleep(2)
                 except Exception as e:
                     error_message_mqtt = "Fehler in MQTT: " + str(e)
                     WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
-    mqtt_device_list = GET_ALL_MQTT_DEVICES()
+    mqtt_device_list = GET_ALL_MQTT_DEVICES("mqtt")
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
                             error_message_mqtt=error_message_mqtt,
+                            error_message_table=error_message_table,
                             mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
@@ -152,11 +155,18 @@ def download_mqtt_logfile(filepath):
 @superuser_required
 def dashboard_settings_zigbee():
     error_message = ""
+    error_message_zigbee = ""
+    error_message_table = ""
     check_value_zigbee = ["", ""]
+    check_value_pairing = ["", ""]
+
+    if GET_ERROR_LIST() is not "":
+        error_message_table = GET_ERROR_LIST()
+        SET_ERROR_LIST("")
 
     if request.method == "POST":     
         # change mqtt settings   
-        if request.form.get("radio_zigbee") is not None:
+        if request.form.get("set_setting_zigbee") is not None:
             setting_zigbee = str(request.form.get("radio_zigbee"))
             SET_SETTING_VALUE("zigbee", setting_zigbee)
 
@@ -169,11 +179,80 @@ def dashboard_settings_zigbee():
         check_value_zigbee[0] = ""
         check_value_zigbee[1] = "checked = 'on'"
 
+
+    if zigbee_setting == "True":
+
+        if request.method == 'POST':
+
+            # change settings
+            if request.form.get("change_settings") is not None: 
+                for i in range (1,25):
+                    if request.form.get("set_name_" + str(i)):
+                        name = request.form.get("set_name_" + str(i))    
+                        UPDATE_MQTT_DEVICE_NAME(i, name)
+                    if request.form.get("set_inputs_" + str(i)):
+                        inputs = request.form.get("set_inputs_" + str(i))    
+                        UPDATE_MQTT_DEVICE_INPUTS(i, int(inputs))
+
+
+            # change pairing setting
+            if request.form.get("set_pairing") is not None: 
+                setting_pairing = str(request.form.get("radio_pairing"))
+                SET_ZIGBEE_PAIRING(setting_pairing)
+
+            # reset logfile
+            if request.form.get("reset_logfile") is not None: 
+                RESET_LOGFILE("log_zigbee")
+
+
+
+
+    # change radio check  
+    pairing_setting = GET_ZIGBEE_PAIRING()    
+    if pairing_setting == "True":
+        check_value_pairing[0] = "checked = 'on'"
+        check_value_pairing[1] = ""
+    else:
+        check_value_pairing[0] = ""
+        check_value_pairing[1] = "checked = 'on'"
+
+    zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
+
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
     return render_template('dashboard_settings_zigbee.html',
                             error_message=error_message,
-                            check_value_zigbee=check_value_zigbee,                            
+                            error_message_zigbee=error_message_zigbee,
+                            error_message_table=error_message_table,
+                            check_value_zigbee=check_value_zigbee,  
+                            check_value_pairing=check_value_pairing,
+                            zigbee_device_list=zigbee_device_list, 
+                            zigbee_setting=zigbee_setting,                  
                             active02="active",
+                            timestamp=timestamp,
                             )
+
+
+# remove zigbee device
+@app.route('/dashboard/settings/zigbee/delete/<int:id>')
+@login_required
+@superuser_required
+def remove_zigbee_device(id):
+    DELETE_MQTT_DEVICE(id)
+    return redirect(url_for('dashboard_settings_zigbee'))
+
+
+# download zigbee logfile
+@app.route('/dashboard/settings/zigbee/download/<path:filepath>')
+@login_required
+@superuser_required
+def download_zigbee_logfile(filepath): 
+    try:
+        path = GET_PATH() + "/logs/"     
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /logs/" + filepath + " >>> downloaded")
+        return send_from_directory(path, filepath)
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/" + filepath + " >>> " + str(e))             
 
 
 """ ################ """
@@ -397,23 +476,20 @@ def dashboard_settings_user():
                     email_notification_camera = ""
 
                 SET_EMAIL_NOTIFICATION(i, email_notification_info, email_notification_error, email_notification_camera)
-    
+
+                # change user role
+                role = request.form.get("set_role")
+                CHANGE_USER_ROLE(i, role)
+
     user_list = GET_ALL_USERS()
+    dropdown_list_roles = ["guest", "user", "superuser"]
 
     return render_template('dashboard_settings_user.html',
                             error_message=error_message,
-                            user_list=user_list,                           
+                            user_list=user_list,  
+                            dropdown_list_roles=dropdown_list_roles,             
                             active04="active",
                             )
-
-
-# activate user
-@app.route('/dashboard/settings/user/role/<int:id>')
-@login_required
-@superuser_required
-def activate_user(id):
-    ACTIVATE_USER(id)
-    return redirect(url_for('dashboard_settings_user'))
 
 
 # delete user

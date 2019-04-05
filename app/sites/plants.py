@@ -6,11 +6,11 @@ from app import app
 from app.database.database import *
 
 
-# create role "superuser"
-def superuser_required(f):
+# access rights
+def user_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
+        if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
             form = LoginForm()
@@ -24,7 +24,7 @@ def superuser_required(f):
 
 @app.route('/dashboard/plants', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_plants():
     error_message = ""
     watervolume = ""
@@ -62,7 +62,7 @@ def dashboard_plants():
                     moisture_percent = request.form.get("set_moisture_" + str(i))    
                     SET_PLANT_MOISTURE_TARGET(i, moisture_percent)
                 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()  
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_SENSOR()  
     dropdown_list_watervolume = [50, 100, 150, 200, 250]
     plants_list = GET_ALL_PLANTS()
 
@@ -72,13 +72,15 @@ def dashboard_plants():
                             plants_list=plants_list,
                             moisture=moisture,
                             watervolume=watervolume,
-                            error_message=error_message)
+                            error_message=error_message,
+                            role=current_user.role,
+                            )
 
 
 # Delete plant
 @app.route('/dashboard/plants/delete/<int:id>')
 @login_required
-@superuser_required
+@user_required
 def delete_plant(id):
     DELETE_PLANT(id)
     return redirect(url_for('dashboard_plants'))

@@ -8,12 +8,11 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.file_management import GET_PATH
 
-
-# create role "superuser"
-def superuser_required(f):
+# access rights
+def user_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
+        if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
             form = LoginForm()
@@ -28,7 +27,7 @@ def superuser_required(f):
 # led scene 01
 @app.route('/dashboard/led/scene_01', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_01():
     scene = 1
     error_message = ""
@@ -74,14 +73,15 @@ def dashboard_led_scene_01():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active01="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 02
 @app.route('/dashboard/led/scene_02', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_02():
     scene = 2
     error_message = ""
@@ -127,14 +127,15 @@ def dashboard_led_scene_02():
                             scene_names_list=scene_names_list,                            
                             number=scene,
                             active02="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 03
 @app.route('/dashboard/led/scene_03', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_03():
     scene = 3
     error_message = ""
@@ -180,14 +181,15 @@ def dashboard_led_scene_03():
                             scene_names_list=scene_names_list,                            
                             number=scene,
                             active03="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 04
 @app.route('/dashboard/led/scene_04', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_04():
     scene = 4
     error_message = ""
@@ -233,14 +235,15 @@ def dashboard_led_scene_04():
                             scene_names_list=scene_names_list,                            
                             number=scene,
                             active04="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )                            
 
 
 # led scene 05
 @app.route('/dashboard/led/scene_05', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_05():
     scene = 5
     error_message = ""
@@ -286,14 +289,15 @@ def dashboard_led_scene_05():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active05="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 06 
 @app.route('/dashboard/led/scene_06', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_06():
     scene = 6
     error_message = ""
@@ -339,14 +343,15 @@ def dashboard_led_scene_06():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active06="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 07 
 @app.route('/dashboard/led/scene_07', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_07():
     scene = 7
     error_message = ""
@@ -392,14 +397,15 @@ def dashboard_led_scene_07():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active07="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 08
 @app.route('/dashboard/led/scene_08', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_08():
     scene = 8
     error_message = ""
@@ -445,14 +451,15 @@ def dashboard_led_scene_08():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active08="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 09
 @app.route('/dashboard/led/scene_09', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_09():
     scene = 9
     error_message = ""
@@ -498,14 +505,15 @@ def dashboard_led_scene_09():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active09="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 10
 @app.route('/dashboard/led/scene_10', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_10():
     scene = 10
     error_message = ""
@@ -551,14 +559,15 @@ def dashboard_led_scene_10():
                             scene_names_list=scene_names_list,                            
                             number=scene,
                             active10="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # led scene 99
 @app.route('/dashboard/led/scene_99', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_scene_99():
     scene = 99
     error_message = ""
@@ -604,14 +613,15 @@ def dashboard_led_scene_99():
                             scene_names_list=scene_names_list,
                             number=scene,
                             active99="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 
 # delete led 
 @app.route('/dashboard/led/scene/delete/<int:scene>/<int:id>')
 @login_required
-@superuser_required
+@user_required
 def delete_led(scene, id): 
     DEL_LED(scene, id)
     if scene == 1:
@@ -640,7 +650,7 @@ def delete_led(scene, id):
 # led programs
 @app.route('/dashboard/led/programs', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_led_programs():
     program = ""
     rgb = "rgb(0, 0, 0)"
@@ -718,7 +728,8 @@ def dashboard_led_programs():
                             rgb=rgb,
                             scene_names_list=scene_names_list,
                             programs="active",
-                            error_message=error_message
+                            error_message=error_message,
+                            role=current_user.role,
                             )
 
 

@@ -4,7 +4,6 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from functools import wraps
 
 from app import app
 from app.database.database import *
@@ -18,17 +17,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-
-# create role "superuser"
-def superuser_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
-            return f(*args, **kwargs)
-        else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
-    return wrap
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -94,8 +82,6 @@ def signup():
 
 # logout
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
-

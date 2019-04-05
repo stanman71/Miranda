@@ -8,11 +8,11 @@ from app import app
 from app.database.database import *
 from app.components.file_management import *
 
-# create role "superuser"
-def superuser_required(f):
+# access rights
+def user_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
+        if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
             form = LoginForm()
@@ -26,7 +26,7 @@ def superuser_required(f):
 
 @app.route('/dashboard/sensordata', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_sensordata():
     error_message = ""
     error_message_file = ""
@@ -60,7 +60,7 @@ def dashboard_sensordata():
                     sensor_id = request.form.get("set_sensor_" + str(i))    
                     SET_SENSORDATA_JOB_SENSOR(i, int(sensor_id))
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_SENSOR()
     sensordata_list = GET_ALL_SENSORDATA_JOBS()
     file_list = GET_SENSORDATA_FILES()
 
@@ -74,14 +74,15 @@ def dashboard_sensordata():
                             error_message_file=error_message_file,
                             sensordata_list=sensordata_list,
                             file_list=file_list,     
-                            timestamp=timestamp,                       
+                            timestamp=timestamp, 
+                            role=current_user.role,                      
                             )
 
 
 # remove sensordata job
 @app.route('/dashboard/sensordata/delete/job/<int:id>')
 @login_required
-@superuser_required
+@user_required
 def remove_sensordata_job(id):
     DELETE_SENSORDATA_JOB(id)  
     return redirect(url_for('dashboard_sensordata'))
@@ -90,7 +91,7 @@ def remove_sensordata_job(id):
 # download sensordata file
 @app.route('/dashboard/sensordata/download/file/<path:filepath>')
 @login_required
-@superuser_required
+@user_required
 def download_sensordata_file(filepath):
     if filepath is None:
         print(Error(400))     
@@ -106,7 +107,7 @@ def download_sensordata_file(filepath):
 # delete sensordata file
 @app.route('/dashboard/sensordata/delete/file/<string:filename>')
 @login_required
-@superuser_required
+@user_required
 def delete_sensordata_file(filename):
     DELETE_SENSORDATA_FILE(filename)
     return redirect(url_for('dashboard_sensordata'))

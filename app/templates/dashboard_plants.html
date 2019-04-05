@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RASPI</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -30,7 +30,9 @@
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
-        <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% if role == "superuser" %}
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% endif %}    
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
       </ul>
     </div>
@@ -44,8 +46,6 @@
 
 <!-- plants table -->
 
-<section id="table"></section>   
-
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>      
           <div class="panel-body"> 
@@ -53,22 +53,18 @@
               <table class="table">
                 <thead>
                   <th scope="col">Name</th>   
-                  <th scope="col">Gerät</th>   
+                  <th scope="col">Gerät</th>  
+                  <th scope="col">Wasser</th>                   
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>               
-                  <th scope="col">Wasser</th>
                   <th scope="col">Feuchtigkeit</th>  
-                  <th scope="col" colspan="3"><em>/// Einstellung: Sensor / Pumpe / Feuchtigkeit ///</em></th>
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
                   <tr>
                     <td>{{ entry.name }}</td> 
-                    <td>{{ entry.mqtt_device.name }}</td>                  
-                    <td>{{ entry.sensor_id }}</td>
-                    <td>{{ entry.pump_id }}</td>                
-                    <td>{{ entry.watervolume }} ml</td>
-                    <td>{{ entry.moisture_percent }} %</td> 
+                    <td>{{ entry.mqtt_device.name }}</td>   
+                    <td>{{ entry.watervolume }} ml</td>                                   
                     <td> 
                       <form method="POST" class="verticalform">      
                         <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
@@ -78,8 +74,8 @@
                           <option value= "{{ i }}" > {{ i }} </option>
                           {% endfor %}
                         </select>   
-                        </td>                     
-                        <td>                
+                    </td>                     
+                    <td>                
                         <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
                           <option value= "{{ entry.pump_id }}" > {{ entry.pump_id }} </option>
                           <option value= "{{ entry.pump_id }}" > ----- </option> 
@@ -87,14 +83,15 @@
                           <option value= "{{ i }}" > {{ i }} </option>
                           {% endfor %}
                         </select> 
-                        </td>                        
-                        <td>
-                          <class="slidecontainer"> 
-                            <div class="col-md-10 text-center"> 
-                              <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
-                              <br>
-                              <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
-                            </div> 
+                    </td>                        
+                    <td>
+                        {{ entry.moisture_percent }} %
+                        <class="slidecontainer"> 
+                          <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
+                        </class>
+                    </td>                        
+                    <td>
+                        <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>
                       </form>
                     </td>
                     <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>   

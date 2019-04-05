@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RASPI</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -155,20 +155,20 @@
               <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
             </div>          
             <br>
-            <div class="well well-sm">Anweisungen
+            <div class="well well-sm">
               <table class="table">
                 <thead>
                   <tr><td></td><td></td></tr>
                   <tr>
-                    <th>Eingabe</th>
+                    <th>Aufgabe</th>
                     <th>Erklärung</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>snowboy_active</td>
-                    <td>SnowBoy für weitere Befehle aktivieren, wird nach 5 Sekunden oder einem empfangenden Befehl automatisch wieder zurückgesetzt <br>
-                        blaue LEDs vom Snowboy leuchten in diesem Modus</td>
+                    <td>SnowBoy für weitere Befehle aktivieren, wird nach 1 Sekunde oder einem empfangenden Befehl wieder zurückgesetzt <br>
+                        >>> Blaue LEDs vom Snowboy leuchten im aktiven Modus (bei Verwendung des ReSpeaker MicArrays)</td>
                   </tr> 
                   <tr>
                     <td>start_scene:1:50</td>

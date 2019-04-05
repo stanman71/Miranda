@@ -12,21 +12,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
     remember = BooleanField('remember me')
 
-# create role "superuser"
-def superuser_required(f):
-    @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
-            return f(*args, **kwargs)
-        else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
-    return wrap
-
 
 # Dashboard
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
-@superuser_required
 def dashboard():
-    return render_template('dashboard.html', name=current_user.username)
+   
+    return render_template('dashboard.html', 
+                            role=current_user.role)

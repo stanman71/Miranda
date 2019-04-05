@@ -28,7 +28,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RASPI</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -36,7 +36,9 @@
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
-        <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% if role == "superuser" %}
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% endif %}            
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
       </ul>
     </div>
@@ -140,8 +142,7 @@
               <h3><span class="label label-default">{{ program.name }} ({{program.id}}) bearbeiten</span></h3> 
             </div>
             <br>
-            <div class="well well-sm">Anweisungen
-              <br>
+            <div class="well well-sm">
               <br>
               <table class="table">
                 <thead>

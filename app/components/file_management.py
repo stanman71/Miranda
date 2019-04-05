@@ -233,6 +233,8 @@ def CREATE_LOGFILE(filename):
 
             if filename == "log_mqtt":                   
                 filewriter.writerow(['Timestamp', 'Channel', 'Message'])
+            if filename == "log_zigbee":                   
+                filewriter.writerow(['Timestamp', 'Channel', 'Message'])                
             if filename == "log_system":                   
                 filewriter.writerow(['Timestamp', 'Type', 'Description'])                
             
@@ -268,6 +270,23 @@ def WRITE_LOGFILE_MQTT(channel, msg):
       
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_mqtt.csv >>> " + str(e))
+
+
+def WRITE_LOGFILE_ZIGBEE(channel, msg):
+    if os.path.isfile(PATH + "/logs/log_zigbee.csv") is False:
+        CREATE_LOGFILE("log_zigbee")
+
+    try:
+        # open csv file
+        file = PATH + "/logs/log_zigbee.csv"
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',',
+                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
+            csvfile.close()
+      
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_zigbee.csv >>> " + str(e))
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):

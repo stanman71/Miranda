@@ -45,7 +45,8 @@ class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
     id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name         = db.Column(db.String(50), unique=True)
-    channel_path = db.Column(db.String(50))
+    gateway      = db.Column(db.String(50))
+    channel_path = db.Column(db.String(50))    
     modell       = db.Column(db.String(50))
     inputs       = db.Column(db.Integer)
     outputs      = db.Column(db.Integer)
@@ -260,10 +261,15 @@ class User(UserMixin, db.Model):
     username                  = db.Column(db.String(50), unique=True)
     email                     = db.Column(db.String(50), unique=True)
     password                  = db.Column(db.String(100))
-    role                      = db.Column(db.String(20), server_default=("user")) 
+    role                      = db.Column(db.String(20), server_default=("guest")) 
     email_notification_info   = db.Column(db.String(20), server_default=(""))
     email_notification_error  = db.Column(db.String(20), server_default=(""))
     email_notification_camera = db.Column(db.String(20), server_default=(""))
+
+class ZigBee(db.Model):
+    __tablename__ = 'zigbee'
+    id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    pairing = db.Column(db.String(50), unique=True)
 
 """ ################################ """
 """ ################################ """
@@ -347,7 +353,7 @@ if Settings.query.filter_by().first() is None:
 # create default snowboy
 if Snowboy.query.filter_by().first() is None:
     snowboy = Snowboy(
-        sensitivity  = "50",
+        sensitivity  = "45",
     )
     db.session.add(snowboy)
     db.session.commit()
@@ -362,6 +368,15 @@ if User.query.filter_by(username='default').first() is None:
         role='superuser'
     )
     db.session.add(user)
+    db.session.commit()
+
+
+# create default zigbee
+if ZigBee.query.filter_by().first() is None:
+    zigbee = ZigBee(
+        pairing = "False",
+    )
+    db.session.add(zigbee)
     db.session.commit()
 
 
@@ -953,7 +968,19 @@ def GET_MQTT_DEVICE(id):
     return MQTT_Devices.query.filter_by(id=id).first()
 
 
-def GET_ALL_MQTT_DEVICES():
+def GET_ALL_MQTT_DEVICES(gateway):
+    if gateway is not "":
+        device_list = []
+        devices = MQTT_Devices.query.all()
+        for device in devices:
+            if device.gateway == gateway:
+                device_list.append(device)
+        return device_list
+    else:
+        return MQTT_Devices.query.all()
+
+
+def GET_ALL_MQTT_DEVICES_SENSOR():
     return MQTT_Devices.query.all()
 
 
@@ -962,7 +989,7 @@ def GET_MQTT_DEVICE_NAME(id):
     return entry.name  
     
 
-def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
+def ADD_MQTT_DEVICE(name, gateway, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
     # name exist ?
     check_entry = MQTT_Devices.query.filter_by(name=name).first()
     if check_entry is None:
@@ -978,6 +1005,7 @@ def ADD_MQTT_DEVICE(name, channel_path, modell = "", inputs = 0, outputs = 0, la
                     device = MQTT_Devices(
                             id           = i,
                             name         = name,
+                            gateway      = gateway,
                             channel_path = channel_path,
                             modell       = modell,
                             inputs       = inputs,
@@ -1007,6 +1035,18 @@ def UPDATE_MQTT_DEVICE_INFORMATIONS(id, modell, inputs, outputs, last_contact):
     db.session.commit()     
 
 
+def UPDATE_MQTT_DEVICE_NAME(id, name):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.name = name
+    db.session.commit()    
+
+
+def UPDATE_MQTT_DEVICE_INPUTS(id, inputs):
+    entry = MQTT_Devices.query.filter_by(id=id).first()
+    entry.inputs = inputs
+    db.session.commit()    
+
+
 def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     entry.last_contact = last_contact
@@ -1019,7 +1059,7 @@ def DELETE_MQTT_DEVICE(id):
         SET_ERROR_LIST(entry.name + " wird in Bewässerung verwendet")
     elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
         entry = GET_MQTT_DEVICE(id)
-        SET_ERROR_LIST(entry.name + " wird in Sensordaten_Jobs verwendet")      
+        SET_ERROR_LIST(entry.name + " wird in Sensordaten verwendet")      
     else:
         entry = GET_MQTT_DEVICE(id)
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
@@ -1400,6 +1440,12 @@ def SET_TASKMANAGEMENT_SENSOR_SENSOR(id, sensor_id):
     db.session.commit()    
 
 
+def SET_TASKMANAGEMENT_SENSOR_OPERATOR(id, operator):        
+    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
+    entry.operator = operator
+    db.session.commit()  
+
+
 def SET_TASKMANAGEMENT_SENSOR_VALUE(id, value):        
     entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
     entry.value = value
@@ -1438,19 +1484,19 @@ def GET_ALL_USERS():
 
 
 def ADD_USER(user_name, email, password):
-    new_user = User(username=user_name, email=email, password=password, role="user")
+    new_user = User(username=user_name, email=email, password=password)
     db.session.add(new_user)
     db.session.commit()
 
     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + user_name + " >>> added") 
 
 
-def ACTIVATE_USER(user_id):
+def CHANGE_USER_ROLE(user_id, role):
     entry = User.query.get(user_id)
-    entry.role = "superuser"
+    entry.role = role
     db.session.commit()
 
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> activated") 
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> Role: " + role) 
 
 
 def SET_EMAIL_NOTIFICATION(id, email_notification_info, email_notification_error, email_notification_camera):
@@ -1472,4 +1518,19 @@ def DELETE_USER(user_id):
     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
     
     User.query.filter_by(id=user_id).delete()
+    db.session.commit()
+
+""" ################### """
+""" ################### """
+"""        zigbee       """
+""" ################### """
+""" ################### """
+
+def GET_ZIGBEE_PAIRING():
+    return ZigBee.query.filter_by().first().pairing
+
+
+def SET_ZIGBEE_PAIRING(setting):
+    entry = ZigBee.query.filter_by().first()
+    entry.pairing = setting
     db.session.commit()

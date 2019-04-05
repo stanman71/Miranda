@@ -9,11 +9,11 @@ from app.database.database import *
 from app.components.tasks import *
 
 
-# create role "superuser"
-def superuser_required(f):
+# access rights
+def user_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "superuser":
+        if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
             form = LoginForm()
@@ -36,7 +36,7 @@ def scheduler_job():
 
 @app.route('/dashboard/taskmanagement/time', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_taskmanagement_time():
     error_message = ""
     set_name = ""
@@ -91,13 +91,14 @@ def dashboard_taskmanagement_time():
                             set_name=set_name,
                             set_task=set_task,
                             active01="active",
+                            role=current_user.role,
                             )
 
 
 # delete taskmanagement time tasks
 @app.route('/dashboard/taskmanagement/time/delete/<int:id>')
 @login_required
-@superuser_required
+@user_required
 def delete_schedular_task(id):
     DELETE_TASKMANAGEMENT_TIME_TASK(id)
     return redirect(url_for('dashboard_taskmanagement_time'))
@@ -109,7 +110,7 @@ def delete_schedular_task(id):
 
 @app.route('/dashboard/taskmanagement/sensor', methods=['GET', 'POST'])
 @login_required
-@superuser_required
+@user_required
 def dashboard_taskmanagement_sensor():
     error_message = ""
     set_name = ""
@@ -153,12 +154,16 @@ def dashboard_taskmanagement_sensor():
                 if request.form.get("set_sensor_" + str(i)):
                     sensor_id = request.form.get("set_sensor_" + str(i))    
                     SET_TASKMANAGEMENT_SENSOR_SENSOR(i, sensor_id)
+                # change operator
+                if request.form.get("set_operator_" + str(i)):
+                    operator_id = request.form.get("set_operator_" + str(i))    
+                    SET_TASKMANAGEMENT_SENSOR_OPERATOR(i, operator_id)                    
                 # change value
                 if request.form.get("set_value_" + str(i)):
                     value = request.form.get("set_value_" + str(i))    
                     SET_TASKMANAGEMENT_SENSOR_VALUE(i, value)                    
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES()
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_SENSOR()
     dropdown_list_operators    = ["==", ">", "<"]
 
     schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()
@@ -172,13 +177,14 @@ def dashboard_taskmanagement_sensor():
                             set_task=set_task,
                             set_value=set_value,
                             active02="active",
+                            role=current_user.role,
                             )
 
 
 # delete taskmanagement time tasks
 @app.route('/dashboard/taskmanagement/sensor/delete/<int:id>')
 @login_required
-@superuser_required
+@user_required
 def delete_schedular_sensor(id):
     DELETE_TASKMANAGEMENT_SENSOR_TASK(id)
     return redirect(url_for('dashboard_taskmanagement_sensor'))

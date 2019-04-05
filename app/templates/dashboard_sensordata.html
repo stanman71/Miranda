@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RASPI</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -30,7 +30,9 @@
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
-        <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% if role == "superuser" %}
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% endif %}    
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
       </ul>
     </div>
@@ -44,8 +46,6 @@
 
 <!-- sensordata table -->
 
-<section id="table_jobs"></section>   
-
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>    
             <div class="panel-body">   
@@ -56,10 +56,7 @@
                   <th scope="col">Name</th>  
                   <th scope="col">Dateiname</th>   
                   <th scope="col">Gerät</th>
-                  <th scope="col">Sensor</th>
-                  <th></th>
-                  <th></th>
-                  <th scope="col"><em>/// Einstellung: Sensor ///</em></th>
+                  <th scope="col">Sensor</em></th>
                 </thead>
                 <tbody> 
                   {% for entry in sensordata_list %}
@@ -68,9 +65,6 @@
                     <td>{{ entry.name }}</td> 
                     <td>{{ entry.filename }}</td>
                     <td>{{ entry.mqtt_device.name }}</td> 
-                    <td>{{ entry.sensor_id }}</td>
-                    <td></td> 
-                    <td></td> 
                     <td> 
                       <form method="POST" class="verticalform">  
                         <div class="row justify-content-md-center">
@@ -84,7 +78,7 @@
                             </select>  
                           </div>
                           <div class="col-sm-4"> 
-                            <input type="submit" onclick="window.location.href='/dashboard/sensordata#table_jobs'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>             
+                            <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-default" name="change_settings" value="aktuallisieren"/>             
                           </div>
                         </div>  
                       </form>

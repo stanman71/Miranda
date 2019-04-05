@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">RASPI</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -103,10 +103,8 @@
 <section id="logfile"></section>
 
         <div class="panel panel-default">
-          <div class="panel-body">  
-            <div class="well well-sm">   
-              <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
-            </div>
+          <div class="panel-body">    
+            <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
               <input type="submit" onclick="window.location.href='/dashboard/settings/system_log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
