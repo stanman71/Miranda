@@ -104,7 +104,7 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 ------------
 </br>
 
-### Optional: ZigBee2MQTT
+### Optional: Install ZigBee2MQTT
 
 https://gadget-freakz.com/diy-zigbee-gateway/
 </br>
@@ -155,7 +155,7 @@ https://www.zigbee2mqtt.io/
 
 #### 3. Bridge Software
 
-- you can only start the application, if zigbee2mqtt does't run in background already
+- you can only start the application, if the zigbee2mqtt service does't run in background
 - start command
 
        >>> cd /opt/zigbee2mqtt
@@ -217,7 +217,7 @@ https://www.zigbee2mqtt.io/
 ------------
 </br>
 
-### Optional: Install snowboy
+### Optional: Install Snowboy
 
 https://github.com/Kitt-AI/snowboy
 </br>
