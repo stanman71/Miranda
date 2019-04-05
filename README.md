@@ -58,19 +58,27 @@ https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
 https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 </br>
 
-- install mosquitto
+#### 1. Installation
 
        >>> sudo apt-get update
        >>> sudo apt-get upgrade -y
        >>> sudo apt-get install mosquitto mosquitto-clients -y
 
+</br>
+
+#### 2. Test
+
 - subscribe a channel
 
        >>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
 
-- test the channel
+- send a message
 
        >>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
+
+</br>
+
+#### 3. Autostart
 
 - create an autostart-file
 
@@ -91,15 +99,16 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
        >>> sudo systemctl enable Mosquitto.service
 
+
 </br>
 ------------
 </br>
-
 
 ### Optional: ZigBee2MQTT
 
 https://gadget-freakz.com/diy-zigbee-gateway/
 </br>
+https://www.zigbee2mqtt.io/
 </br>
 
 #### 1. Installation
@@ -207,7 +216,6 @@ https://gadget-freakz.com/diy-zigbee-gateway/
 </br>
 ------------
 </br>
-
 
 ### Optional: Install snowboy
 
