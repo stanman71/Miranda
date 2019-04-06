@@ -111,8 +111,7 @@ def CREATE_SENSORDATA_FILE(filename):
         # create csv file
         file = PATH + "/csv/" + filename + ".csv"
         with open(file, 'w', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
             filewriter.writerow(['Timestamp', 'Device', 'Sensor', 'Sensor_Value'])
             csvfile.close()
 
@@ -131,8 +130,7 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
         # open csv file
         file = PATH + "/csv/" + filename + ".csv"
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(device), str(sensor), str(value) ])
             csvfile.close()
         
@@ -228,8 +226,7 @@ def CREATE_LOGFILE(filename):
         # create csv file
         file = PATH + "/logs/" + filename + ".csv"
         with open(file, 'w', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)    
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
             if filename == "log_mqtt":                   
                 filewriter.writerow(['Timestamp', 'Channel', 'Message'])
@@ -255,38 +252,67 @@ def RESET_LOGFILE(filename):
     CREATE_LOGFILE(filename)
         
 
-def WRITE_LOGFILE_MQTT(channel, msg):
-    if os.path.isfile(PATH + "/logs/log_mqtt.csv") is False:
-        CREATE_LOGFILE("log_mqtt")
+def WRITE_LOGFILE_MQTT(gateway, channel, msg):
+    if os.path.isfile(PATH + "/logs/log_" + gateway + ".csv") is False:
+        CREATE_LOGFILE("log_" + gateway)
 
     try:
         # open csv file
-        file = PATH + "/logs/log_mqtt.csv"
+        file = PATH + "/logs/log_" + gateway + ".csv"
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), msg ])
             csvfile.close()
       
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_mqtt.csv >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_" + gateway + ".csv >>> " + str(e))
 
 
-def WRITE_LOGFILE_ZIGBEE(channel, msg):
-    if os.path.isfile(PATH + "/logs/log_zigbee.csv") is False:
-        CREATE_LOGFILE("log_zigbee")
-
+def READ_LOGFILE_MQTT(gateway, channel):   
+    
     try:
         # open csv file
-        file = PATH + "/logs/log_zigbee.csv"
-        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), str(msg) ])
-            csvfile.close()
-      
+        file = PATH + "/logs/log_" + gateway + ".csv"
+        
+        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
+            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            
+            # reverse messages
+            data = [row for row in rowReader] 
+            headers = data.pop(0)             
+            data_reversed = data[::-1]        
+
+            # get time value 5 seconds ago
+            date_check = datetime.datetime.now() - datetime.timedelta(seconds=5)
+            date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
+            
+            # get all elements of the last 5 seconds
+            list_current_entries = []
+            for element in data_reversed:
+                
+                try:
+                    date_entry   = datetime.datetime.strptime(element[0],"%Y-%m-%d %H:%M:%S")   
+                    date_control = datetime.datetime.strptime(date_check, "%Y-%m-%d %H:%M:%S")
+                    if date_entry > date_control:
+                        list_current_entries.append(element)
+                except:
+                    pass
+                    
+            if list_current_entries != []:
+                # get the searched message
+                for element in list_current_entries:
+                    if element[1] == channel:
+                        return element[2:]
+                        
+                    return "Message nicht gefunden" 
+            
+            else:
+                return "Keine Verbindung zu ZigBee2MQTT"
+                    
+     
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_zigbee.csv >>> " + str(e))
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_" + gateway + ".csv >>> " + str(e))         
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
@@ -298,8 +324,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
         file = PATH + "/logs/log_system.csv"
 
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',',
-                                    quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
             csvfile.close()
        
@@ -314,13 +339,13 @@ def GET_LOGFILE_SYSTEM():
         file = PATH + "/logs/log_system.csv"
         
         with open(file, 'r', newline='', encoding='utf-8') as csvfile:
-            rowReader = csv.reader(csvfile, delimiter=',')
+            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
             data = [row for row in rowReader] # get data
             headers = data.pop(0)             # get headers and remove from data
             data_reversed = data[::-1]        # reverse the data
 
             return data_reversed[0:30]
-     
+            
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))          

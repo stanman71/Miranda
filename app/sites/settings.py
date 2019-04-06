@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from functools import wraps
 import os
 import datetime
+import json
 
 from app import app
 from app.components.led_control import *
@@ -10,6 +11,7 @@ from app.database.database import *
 from app.components.tasks import UPDATE_MQTT_DEVICES
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
+from app.components.mqtt import MQTT_PUBLISH
 
 
 # create role "superuser"
@@ -86,7 +88,7 @@ def dashboard_settings_mqtt():
                         if error_message == "":
                             time.sleep(1)
                             try:
-                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
+                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
                             except Exception as e:
                                 error_message_mqtt = "Fehler in MQTT: " + str(e)
                                 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))                                 
@@ -101,13 +103,13 @@ def dashboard_settings_mqtt():
             # update mqtt devices
             if request.form.get("update_mqtt_devices") is not None:    
                 try:
-                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
+                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
                     time.sleep(2)
                 except Exception as e:
                     error_message_mqtt = "Fehler in MQTT: " + str(e)
                     WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
-    mqtt_device_list = GET_ALL_MQTT_DEVICES("mqtt")
+    mqtt_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("mqtt")
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
@@ -181,20 +183,44 @@ def dashboard_settings_zigbee():
 
 
     if zigbee_setting == "True":
-
+        
+        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")
+        
         if request.method == 'POST':
 
             # change settings
-            if request.form.get("change_settings") is not None: 
-                for i in range (1,25):
-                    if request.form.get("set_name_" + str(i)):
-                        name = request.form.get("set_name_" + str(i))    
-                        UPDATE_MQTT_DEVICE_NAME(i, name)
-                    if request.form.get("set_inputs_" + str(i)):
-                        inputs = request.form.get("set_inputs_" + str(i))    
+            for i in range (1,25):
+                if request.form.get("change_settings_" + str(i)) is not None: 
+                    # rename devices
+                    if request.form.get("set_name"):
+                        new_name = request.form.get("set_name") 
+                        old_name = GET_MQTT_DEVICE_NAME(i)
+                        UPDATE_MQTT_DEVICE_NAME(i, new_name)
+                        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
+                                     '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
+                    # change inputs                 
+                    if request.form.get("set_inputs"):
+                        inputs = request.form.get("set_inputs")    
                         UPDATE_MQTT_DEVICE_INPUTS(i, int(inputs))
+                        
+            # update device list
+            if request.form.get("update_zigbee_devices") is not None:
+                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
+                time.sleep(2)
+                 
+                message = str(READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log"))
+                message = message.replace("'","")
+                data = json.loads(message)
+                
+                if (data[0]['type']) == "devices":
+                    for device in (data[0]['message']):
+                        name           = device['friendly_name']
+                        device_address = device['ieeeAddr']
+                        gateway        = "zigbee"
+                        model          = device['model']
+                        ADD_MQTT_DEVICE(name, device_address, gateway, model)
 
-
+                
             # change pairing setting
             if request.form.get("set_pairing") is not None: 
                 setting_pairing = str(request.form.get("radio_pairing"))
@@ -205,18 +231,23 @@ def dashboard_settings_zigbee():
                 RESET_LOGFILE("log_zigbee")
 
 
-
-
-    # change radio check  
+    # set pairing setting  
     pairing_setting = GET_ZIGBEE_PAIRING()    
     if pairing_setting == "True":
         check_value_pairing[0] = "checked = 'on'"
-        check_value_pairing[1] = ""
+        check_value_pairing[1] = ""        
+        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")  
     else:
         check_value_pairing[0] = ""
-        check_value_pairing[1] = "checked = 'on'"
+        check_value_pairing[1] = "checked = 'on'"        
+        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
 
-    zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
+
+    if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
+        error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> Keine Verbindung")
+
+    zigbee_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("zigbee")
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -238,6 +269,7 @@ def dashboard_settings_zigbee():
 @login_required
 @superuser_required
 def remove_zigbee_device(id):
+    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_NAME(id)) 
     DELETE_MQTT_DEVICE(id)
     return redirect(url_for('dashboard_settings_zigbee'))
 

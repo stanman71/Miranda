@@ -43,14 +43,14 @@ class LED(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name         = db.Column(db.String(50), unique=True)
-    gateway      = db.Column(db.String(50))
-    channel_path = db.Column(db.String(50))    
-    modell       = db.Column(db.String(50))
-    inputs       = db.Column(db.Integer)
-    outputs      = db.Column(db.Integer)
-    last_contact = db.Column(db.String(50))
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name           = db.Column(db.String(50), unique=True)
+    device_address = db.Column(db.String(50))
+    gateway        = db.Column(db.String(50))   
+    model          = db.Column(db.String(50))
+    inputs         = db.Column(db.Integer)
+    outputs        = db.Column(db.Integer)
+    last_contact   = db.Column(db.String(50))
 
 class Plants(db.Model):
     __tablename__ = 'plants'
@@ -269,7 +269,8 @@ class User(UserMixin, db.Model):
 class ZigBee(db.Model):
     __tablename__ = 'zigbee'
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    pairing = db.Column(db.String(50), unique=True)
+    pairing = db.Column(db.String(50))
+
 
 """ ################################ """
 """ ################################ """
@@ -968,33 +969,33 @@ def GET_MQTT_DEVICE(id):
     return MQTT_Devices.query.filter_by(id=id).first()
 
 
-def GET_ALL_MQTT_DEVICES(gateway):
-    if gateway is not "":
-        device_list = []
-        devices = MQTT_Devices.query.all()
-        for device in devices:
-            if device.gateway == gateway:
-                device_list.append(device)
-        return device_list
-    else:
-        return MQTT_Devices.query.all()
+def GET_ALL_MQTT_DEVICES():
+    return MQTT_Devices.query.all()
+    
+
+def GET_ALL_MQTT_DEVICES_GATEWAY(gateway):
+    device_list = []
+    devices = MQTT_Devices.query.all()
+    for device in devices:
+        if device.gateway == gateway:
+            device_list.append(device)
+    return device_list
 
 
-def GET_ALL_MQTT_DEVICES_SENSOR():
+def GET_ALL_MQTT_DEVICES_MODEL():
     return MQTT_Devices.query.all()
 
 
 def GET_MQTT_DEVICE_NAME(id):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    return entry.name  
+    return MQTT_Devices.query.filter_by(id=id).first().name
     
 
-def ADD_MQTT_DEVICE(name, gateway, channel_path, modell = "", inputs = 0, outputs = 0, last_contact = ""):
+def ADD_MQTT_DEVICE(name, device_address, gateway, model = "", inputs = 0, outputs = 0, last_contact = ""):
     # name exist ?
     check_entry = MQTT_Devices.query.filter_by(name=name).first()
     if check_entry is None:
         # path exist ?
-        check_entry = MQTT_Devices.query.filter_by(channel_path=channel_path).first()
+        check_entry = MQTT_Devices.query.filter_by(device_address=device_address).first()
         if check_entry is None:       
             # find a unused id
             for i in range(1,50):
@@ -1003,14 +1004,14 @@ def ADD_MQTT_DEVICE(name, gateway, channel_path, modell = "", inputs = 0, output
                 else:
                     # add the new device
                     device = MQTT_Devices(
-                            id           = i,
-                            name         = name,
-                            gateway      = gateway,
-                            channel_path = channel_path,
-                            modell       = modell,
-                            inputs       = inputs,
-                            outputs      = outputs,
-                            last_contact = last_contact,
+                            id             = i,
+                            name           = name,
+                            device_address = device_address,
+                            gateway        = gateway,
+                            model          = model,
+                            inputs         = inputs,
+                            outputs        = outputs,
+                            last_contact   = last_contact,
                             )
                     db.session.add(device)
                     db.session.commit()
@@ -1020,7 +1021,7 @@ def ADD_MQTT_DEVICE(name, gateway, channel_path, modell = "", inputs = 0, output
                     return ""
                     
         else:
-            return "Kanal bereits vergeben"     
+            return "Adresse bereits vergeben"     
                  
     else:
         return "Name bereits vergeben"
@@ -1526,6 +1527,7 @@ def DELETE_USER(user_id):
 """ ################### """
 """ ################### """
 
+    
 def GET_ZIGBEE_PAIRING():
     return ZigBee.query.filter_by().first().pairing
 

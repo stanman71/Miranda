@@ -18,7 +18,8 @@ colorpicker(app)
 from app.sites import index, user_login, dashboard, led, taskmanagement, plants, sensordata, settings
 from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
-from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
+from app.components.mqtt import MQTT_PUBLISH
 
 
 # deactivate pixel_ring
@@ -67,6 +68,25 @@ if GET_SETTING_VALUE("mqtt") == "True":
     
     t2 = mqtt_Thread()
     t2.start()
+    
+ 
+# start zigbee    
+if GET_SETTING_VALUE("zigbee") == "True":
+    
+    time.sleep(3)
+    
+    if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> Keine Verbindung") 
+    
+    # set pairing setting  
+    pairing_setting = GET_ZIGBEE_PAIRING()    
+    if pairing_setting == "True":
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "false")   
+    else:
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "true")
+        
 
 
 # start snowboy

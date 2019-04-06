@@ -163,7 +163,7 @@ def dashboard_taskmanagement_sensor():
                     value = request.form.get("set_value_" + str(i))    
                     SET_TASKMANAGEMENT_SENSOR_VALUE(i, value)                    
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_SENSOR()
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_MODEL()
     dropdown_list_operators    = ["==", ">", "<"]
 
     schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()

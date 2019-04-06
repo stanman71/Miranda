@@ -130,7 +130,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
 
                # update mqtt devices
                if "update_mqtt_devices" in entry.task:
-                  UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES())
+                  UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
 
                # get mqtt sensor data
                if "get_mqtt_sensordata" in entry.task:
