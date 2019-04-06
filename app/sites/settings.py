@@ -37,7 +37,6 @@ def dashboard_settings_mqtt():
     error_message = ""
     error_message_mqtt = ""
     error_message_table = ""
-    mqtt_device_channel_path = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
 
@@ -64,39 +63,63 @@ def dashboard_settings_mqtt():
 
         # check mqtt
         try:
-            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
+            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
 
-        if request.method == 'POST':
-            if request.form.get("add_mqtt_device") is not None: 
-                # add mqtt device
-                if request.form.get("set_mqtt_device_name") is "":
-                    error_message = "Kein Name angegeben"   
-                    mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path")    
-                elif request.form.get("set_mqtt_device_channel_path") is "":
-                    error_message = "Kein Kanal angegeben"    
-                    mqtt_device_name = request.form.get("set_mqtt_device_name") 
-                else:
-                    mqtt_device_name = request.form.get("set_mqtt_device_name") 
-                    mqtt_device_channel_path = request.form.get("set_mqtt_device_channel_path") 
-                    
-                    if mqtt_device_name is not None or mqtt_device_channel_path is not None:
-                        gateway = "mqtt"
-                        error_message = ADD_MQTT_DEVICE(mqtt_device_name, gateway, mqtt_device_channel_path)                         
-                        if error_message == "":
-                            time.sleep(1)
-                            try:
-                                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
-                            except Exception as e:
-                                error_message_mqtt = "Fehler in MQTT: " + str(e)
-                                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e))                                 
-                            time.sleep(2)
-                            mqtt_device_channel_path = ""
-                            mqtt_device_name = ""                       
+        # change settings
+        for i in range (1,25):
+            if request.form.get("change_settings_" + str(i)) is not None: 
+                # rename devices
+                if request.form.get("set_name"):
+                    new_name = request.form.get("set_name") 
+                    UPDATE_MQTT_DEVICE_NAME(i, new_name)
+ 
+        # update device list
+        if request.form.get("update_mqtt_devices") is not None:
+            MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
+            time.sleep(2)
+             
+            try:
+                messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
+                
+                if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
+                    for message in messages:
+                        message = str(message[2])
+                        
+                        data = json.loads(message)
+                        
+                        name     = data['ieeeAddr']
+                        ieeeAddr = data['ieeeAddr']
+                        gateway  = "mqtt"
+                        model    = data['model']
+                        inputs   = data['input']
+                        outputs  = data['output']
+                         
+                        ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model, inputs, outputs)    
+            except:
+                pass
+                
+            
+ 
+            """
+            MQTT_PUBLISH("SmartHome/mqtt/9999/get", "")  
+            
+            time.sleep(2)
+            
+            input_messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/9999")
+            
+            print(input_messages)
+            
+            for input_message in input_messages:
+                input_message = str(input_message[2])
+                
+                data = json.loads(input_message)
+                print(data["inputs"][0])
+            """
 
-        if request.method == 'POST':
+
             # reset logfile
             if request.form.get("reset_logfile") is not None: 
                 RESET_LOGFILE("log_mqtt")   
@@ -109,6 +132,7 @@ def dashboard_settings_mqtt():
                     error_message_mqtt = "Fehler in MQTT: " + str(e)
                     WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
+
     mqtt_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("mqtt")
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
@@ -117,7 +141,6 @@ def dashboard_settings_mqtt():
                             error_message=error_message,
                             error_message_mqtt=error_message_mqtt,
                             error_message_table=error_message_table,
-                            mqtt_device_channel_path=mqtt_device_channel_path,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
                             check_value_mqtt=check_value_mqtt,
@@ -207,18 +230,26 @@ def dashboard_settings_zigbee():
             if request.form.get("update_zigbee_devices") is not None:
                 MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
                 time.sleep(2)
-                 
-                message = str(READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log"))
-                message = message.replace("'","")
-                data = json.loads(message)
                 
-                if (data[0]['type']) == "devices":
-                    for device in (data[0]['message']):
-                        name           = device['friendly_name']
-                        device_address = device['ieeeAddr']
-                        gateway        = "zigbee"
-                        model          = device['model']
-                        ADD_MQTT_DEVICE(name, device_address, gateway, model)
+                try:
+                    messages = READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log")
+                    
+                    if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
+                        for message in messages:
+                            message = str(message[2])
+                            message = message.replace("'","")
+
+                            data = json.loads(message)
+                            
+                            if (data['type']) == "devices":
+                                for device in (data['message']):
+                                    name     = device['friendly_name']
+                                    ieeeAddr = device['ieeeAddr']
+                                    gateway  = "zigbee"
+                                    model    = device['model']
+                                    ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model)
+                except:
+                    pass
 
                 
             # change pairing setting

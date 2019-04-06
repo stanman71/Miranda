@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash
 import re
 import time
+import datetime
 
 from app import app
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
@@ -43,14 +44,14 @@ class LED(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name           = db.Column(db.String(50), unique=True)
-    device_address = db.Column(db.String(50))
-    gateway        = db.Column(db.String(50))   
-    model          = db.Column(db.String(50))
-    inputs         = db.Column(db.Integer)
-    outputs        = db.Column(db.Integer)
-    last_contact   = db.Column(db.String(50))
+    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name         = db.Column(db.String(50), unique=True)
+    ieeeAddr     = db.Column(db.String(50))
+    gateway      = db.Column(db.String(50))   
+    model        = db.Column(db.String(50))
+    inputs       = db.Column(db.Integer)
+    outputs      = db.Column(db.Integer)
+    last_contact = db.Column(db.String(50))
 
 class Plants(db.Model):
     __tablename__ = 'plants'
@@ -990,50 +991,43 @@ def GET_MQTT_DEVICE_NAME(id):
     return MQTT_Devices.query.filter_by(id=id).first().name
     
 
-def ADD_MQTT_DEVICE(name, device_address, gateway, model = "", inputs = 0, outputs = 0, last_contact = ""):
-    # name exist ?
-    check_entry = MQTT_Devices.query.filter_by(name=name).first()
-    if check_entry is None:
-        # path exist ?
-        check_entry = MQTT_Devices.query.filter_by(device_address=device_address).first()
-        if check_entry is None:       
-            # find a unused id
-            for i in range(1,50):
-                if MQTT_Devices.query.filter_by(id=i).first():
-                    pass
-                else:
-                    # add the new device
-                    device = MQTT_Devices(
-                            id             = i,
-                            name           = name,
-                            device_address = device_address,
-                            gateway        = gateway,
-                            model          = model,
-                            inputs         = inputs,
-                            outputs        = outputs,
-                            last_contact   = last_contact,
-                            )
-                    db.session.add(device)
-                    db.session.commit()
-                    
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added")                   
-                    
-                    return ""
-                    
-        else:
-            return "Adresse bereits vergeben"     
-                 
+def ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model = "", inputs = 0, outputs = 0, last_contact = ""):
+    # path exist ?
+    check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    if check_entry is None:       
+        # find a unused id
+        for i in range(1,50):
+            if MQTT_Devices.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new device            
+                device = MQTT_Devices(
+                        id           = i,
+                        name         = name,
+                        ieeeAddr     = ieeeAddr,
+                        gateway      = gateway,
+                        model        = model,
+                        inputs       = inputs,
+                        outputs      = outputs,
+                        last_contact = last_contact,
+                        )
+                db.session.add(device)
+                db.session.commit()
+                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added") 
+                UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)                                  
+                return ""
+                
     else:
-        return "Name bereits vergeben"
+        UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
+        return "Adresse bereits vergeben"     
 
 
-def UPDATE_MQTT_DEVICE_INFORMATIONS(id, modell, inputs, outputs, last_contact):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    entry.modell = modell
-    entry.inputs = inputs
-    entry.outputs = outputs
-    entry.last_contact = last_contact
-    db.session.commit()     
+def UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    entry.last_contact = timestamp
+    db.session.commit()       
 
 
 def UPDATE_MQTT_DEVICE_NAME(id, name):
@@ -1046,12 +1040,6 @@ def UPDATE_MQTT_DEVICE_INPUTS(id, inputs):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     entry.inputs = inputs
     db.session.commit()    
-
-
-def UPDATE_MQTT_DEVICE_LAST_CONTACT(id, last_contact):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
-    entry.last_contact = last_contact
-    db.session.commit()        
 
 
 def DELETE_MQTT_DEVICE(id):

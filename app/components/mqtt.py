@@ -9,17 +9,6 @@ from app.components.file_management import *
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 
-moisture_current = 0
-
-def SET_MOISTURE_CURRENT(value):
-	global moisture_current
-	moisture_current = value
-
-def GET_MOISTURE_CURRENT():
-	global moisture_current
-	return moisture_current
-	
-
 def MQTT_START():
  
 	def on_message(client, userdata, message):
@@ -27,7 +16,7 @@ def MQTT_START():
 		print("message topic: ", message.topic)		
 		print("message received: ", msg)
 		
-		if "mqtt" not in message.topic:
+		if "zigbee" not in message.topic:
 			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
 		else:
 			WRITE_LOGFILE_MQTT("zigbee", message.topic, msg)

@@ -16,9 +16,7 @@ from threading import Thread
 """ #### """
 
 def UPDATE_MQTT_DEVICES(devices):
-   for device in devices:
-      channel = "/SmartHome/" + device.channel_path + "/device"
-      MQTT_PUBLISH(channel, "")
+   MQTT_PUBLISH("/SmartHome/mqtt/devices", "")
 
 
 def GET_MQTT_SENSORDATA(job_id):

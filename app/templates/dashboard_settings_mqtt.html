@@ -73,9 +73,6 @@
                   <label><input {{check_value_mqtt[1]}} type="radio" value="False" name="radio_mqtt">MQTT deaktivieren</label>
                 </div>
               </div>
-
-<section id="table"></section>              
-
               <font color="red"><b>Flask neustarten, wenn MQTT Einstellungen geändert werden</b></font>
               <br>     
               <br>    
@@ -83,6 +80,8 @@
             </form>  
           </div>  
         </div>           
+
+<section id="table"></section>
 
 <!-- MQTT -->
 
@@ -94,7 +93,7 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_mqtt }}
   </div>      
-{% endif %}   
+{% endif %}  
 
 {% if error_message_table != "" %}
   <div class="alert alert-danger" role="alert">
@@ -104,36 +103,47 @@
 
 <!-- mqtt device table -->
   
-        <div class="panel panel-default">
+<div class="panel panel-default">
           <div class="panel-body">  
             <div class="well well-sm">   
               <table class="table">
                 <thead>
-                  <th scope="col">MQTT Gerätename</th>                        
-                  <th scope="col">Kanal</th> 
+                  <th scope="col">Name</th>                        
+                  <th scope="col">Adresse</th> 
                   <th scope="col">Modell</th>                        
                   <th scope="col">Inputs</th> 
                   <th scope="col">Outputs</th> 
-                  <th scope="col">Letzter Kontakt</th>                                                             
+                  <th scope="col">Letzter Kontakt</th>    
+                  <th scope="col"></th>                                               
                 </thead>
                 <tbody> 
                   {% for entry in mqtt_device_list %}
                   <tr>
-                    <td>{{ entry.name }}</td> 
-                    <td>{{ entry.channel_path }}</td> 
-                    <td>{{ entry.modell }}</td> 
+                    <td>                     
+                      <form method="POST" class="verticalform">  
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                                                     
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="set_name" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td>{{ entry.ieeeAddr }}</td>
+                    <td>{{ entry.model }}</td> 
                     <td>{{ entry.inputs }}</td> 
                     <td>{{ entry.outputs }}</td> 
-                    <td>{{ entry.last_contact }}</td>                                 
-                    <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                 
+                    <td>{{ entry.last_contact }}</td> 
+                    <td>                
+                        <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
+                      </form>
+                    </td>                     
+                    <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-
-<section id="add_device"></section>
-
             <font color="red"><b>MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
             <br>
             <br>
@@ -143,40 +153,6 @@
           </div>  
         </div>  
 
-<!-- mqtt settings -->
-
-          <div class="panel panel-default">
-            <div class="panel-body"> 
-              <div class="well well-sm">
-                <form method="POST">
-                <div class="text-center">     
-                  <h3><span class="label label-default">MQTT Gerät hinzufügen</span></h3> 
-                </div>       
-                <br>     
-
-<!-- mqtt error message -->
-
-{% if error_message != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message }}
-  </div>      
-{% endif %} 
-
-                <div class="well well-sm">MQTT Gerätename: 
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mqtt_device_name" value="{% if mqtt_device_name != None %}{{ mqtt_device_name }}{% endif %}" />
-                  </div>
-                </div> 
-                <div class="well well-sm"> Kanal:    
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mqtt_device_channel_path" value="{% if mqtt_device_channel_path != None %}{{ mqtt_device_channel_path }}{% endif %}" />
-                  </div>            
-                </div>
-                <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#add_device'" class="btn btn-default" name="add_mqtt_device" value="MQTT Gerät hinzufügen" />
-              </form>   
-            </div>  
-          </div>
-        </div>  
 
 <!-- mqtt logs -->
 

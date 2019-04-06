@@ -1,4 +1,4 @@
-String device_name = "watering_array_v4";
+String ieeeAddr = "0x99999";
 
 #include <MCP3008.h>
 #include <ESP8266WiFi.h>
@@ -68,88 +68,96 @@ void setup_wifi() {
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
-    Serial.print("[");    
-    Serial.print(topic);
-    Serial.print("] ");
-    char msg[length+1];
-  
-    for (int i = 0; i < length; i++) {
-        Serial.print((char)payload[i]);
-        msg[i] = (char)payload[i];
-    }
-   
-    Serial.println();
-    msg[length] = '\0';
 
-    String check_target = getValue(topic,'/',3);
+    Serial.println("######################");
+    Serial.print("Channel: ");
+    Serial.println(topic);
+    Serial.println("######################");
 
-    if(check_target == "device"){
-        Serial.print("Publish message: ");
+    String check_ieeeAddr = getValue(topic,'/',2);
+    String check_command  = getValue(topic,'/',3);
 
-        // create channelpath  
-        String payload = "/SmartHome/" + device_name + "/deviceinformation";      
-        char attributes[100];
-        payload.toCharArray( channelpath, 100 );
+    if(check_ieeeAddr == "devices"){
+
+        // create msg  
+        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\",\"model\":\"watering_array_v4\",\"input\":8,\"output\":4}";      
+        char attributes[50];
+        payload.toCharArray( msg, 100 );
         
-        client.publish(channelpath, "{\"devicetype\":\"watering_array_v4\",\"inputs\":8,\"outputs\":4}");        
+        Serial.print("Publish message: ");
+        Serial.println(msg);
+        Serial.print("Channel: ");
+        Serial.println("SmartHome/mqtt/log");
+        Serial.println();        
+        client.publish("SmartHome/mqtt/log", msg);        
     }
 
-    if(check_target == "plant"){
-        // get plant_id
-        String STR_plant_id = getValue(topic,'/',4);
-        // get sensor_id
-        int sensor_id = atoi(msg);
-
-        // get sensor_value
-        int sensorValue = adc.readADC(sensor_id); 
-        String STR_value = String(sensorValue);
+    if(check_ieeeAddr == ieeeAddr and check_command == "get"){
+      
+        int sensor_0 = adc.readADC(0); 
+        String STR_sensor_0 = String(sensor_0);
+        int sensor_1 = adc.readADC(1); 
+        String STR_sensor_1 = String(sensor_1);
+        int sensor_2 = adc.readADC(2); 
+        String STR_sensor_2 = String(sensor_2);  
+        int sensor_3 = adc.readADC(3); 
+        String STR_sensor_3 = String(sensor_3);
+        int sensor_4 = adc.readADC(4); 
+        String STR_sensor_4 = String(sensor_4);
+        int sensor_5 = adc.readADC(5); 
+        String STR_sensor_5 = String(sensor_5);
+        int sensor_6 = adc.readADC(6); 
+        String STR_sensor_6 = String(sensor_6);
+        int sensor_7 = adc.readADC(7); 
+        String STR_sensor_7 = String(sensor_7);
 
         // create msg   
-        String payload = STR_value;      
+        String payload = "{\"type\":\"inputs\",\"inputs\":[" +
+                           STR_sensor_0 + "," + STR_sensor_1 + "," + 
+                           STR_sensor_2 + "," + STR_sensor_3 + "," + 
+                           STR_sensor_4 + "," + STR_sensor_5 + "," + 
+                           STR_sensor_6 + "," + STR_sensor_7 + "]}";
+
         char attributes[100];
         payload.toCharArray( msg, 100 );
 
-        Serial.print("Publish message: ");
-        Serial.print("[/SmartHome/sensor/plant] ");
-        Serial.print(msg);
-        Serial.println();
-        client.publish("/SmartHome/data/plant", msg);         
-    }    
-
-    if(check_target == "sensor"){
-        // get file
-        String STR_file = getValue(topic,'/',4);
-        // get sensor_id
-        int sensor_id = atoi(msg);
-        String STR_sensor_id = String(sensor_id);
-        // get sensor_value
-        int sensorValue = adc.readADC(sensor_id); 
-        String STR_value = String(sensorValue);
-
-        // create msg   
-        String payload = STR_file + "/" + device_name + "/" + STR_sensor_id + "/" + STR_value;      
-        char attributes[100];
-        payload.toCharArray( msg, 100 );
+        // create channelpath   
+        String payload_channelpath = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_channelpath[100];
+        payload_channelpath.toCharArray( channelpath, 100 );        
 
         Serial.print("Publish message: ");
-        Serial.print("[/SmartHome/sensor/sensor] ");
-        Serial.print(msg);
+        Serial.println(msg);
+        Serial.print("Channel: ");
+        Serial.println("SmartHome/mqtt/" + ieeeAddr);
         Serial.println();
-        client.publish("/SmartHome/data/sensor", msg);         
+        client.publish(channelpath, msg);         
     }    
 
-    if(check_target == "pump"){
-        // get pump_id
-        String STR_pump_id = getValue(topic,'/',4); 
-        String STR_msg = msg;  
+    if(check_ieeeAddr == ieeeAddr and check_command == "set"){
 
-        // create channelpath  
-        String payload = "/SmartHome/" + device_name + "/pump";      
-        char attributes[100];
-        payload.toCharArray( channelpath, 100 );   
+        char msg[length+1];
+  
+        for (int i = 0; i < length; i++) {
+            msg[i] = (char)payload[i];
+        }
+        msg[length] = '\0';
+        
+        Serial.print("msg: ");
+        Serial.println(msg);
 
-        if (STR_pump_id == "0") {
-            if (STR_msg == "on") {
+        // create channelpath   
+        String payload_channelpath = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_channelpath[100];
+        payload_channelpath.toCharArray( channelpath, 100 );          
+
+        // get command
+        String data_temp     = getValue(msg,':',1);      
+        String output_number = getValue(data_temp,'=',0);
+        String output_state  = getValue(data_temp,'=',1);
+        
+        if (output_number == "0") {
+            if (output_state == "on") {
                 digitalWrite(Pin_D0, HIGH);
                 client.publish(channelpath, "0_on");
                 Serial.println("Start_Pump_0");
@@ -160,8 +168,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("Stop_Pump_0");
             }
         }
-        if (STR_pump_id == "1") {
-            if (STR_msg == "on") {
+        if (output_number == "1") {
+            if (output_state == "on") {
                 digitalWrite(Pin_D3, HIGH);
                 client.publish(channelpath, "1_on");
                 Serial.println("Start_Pump_1");
@@ -172,8 +180,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("Stop_Pump_1");
             }
         }     
-        if (STR_pump_id == "2") {
-            if (STR_msg == "on") {
+        if (output_number == "2") {
+            if (output_state == "on") {
                 digitalWrite(Pin_D2, HIGH);
                 client.publish(channelpath, "2_on");
                 Serial.println("Start_Pump_2");
@@ -184,8 +192,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("Stop_Pump_2");
             }
         }
-        if (STR_pump_id == "3") {
-            if (STR_msg == "on") {
+        if (output_number == "3") {
+            if (output_state == "on") {
                 digitalWrite(Pin_D1, HIGH);
                 client.publish(channelpath, "3_on");
                 Serial.println("Start_Pump_3");
@@ -195,8 +203,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 client.publish(channelpath, "3_off");
                 Serial.println("Stop_Pump_3");
             }
-        }
-    }
+        }       
+    }     
 }
 
 void reconnect() {
@@ -211,7 +219,7 @@ void reconnect() {
     }
     
     // create channelpath  
-    String payload = "/SmartHome/" + device_name + "/#";      
+    String payload = "SmartHome/mqtt/#";      
     char attributes[100];
     payload.toCharArray( channel_subscribe, 100 );   
     
@@ -230,7 +238,8 @@ void setup() {
     setup_wifi();
     client.setServer(MQTT_BROKER, 1883);
     client.setCallback(callback);
-    reconnect();
+
+    reconnect();    
 }
 
 void loop() {

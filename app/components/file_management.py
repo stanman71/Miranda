@@ -112,7 +112,7 @@ def CREATE_SENSORDATA_FILE(filename):
         file = PATH + "/csv/" + filename + ".csv"
         with open(file, 'w', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-            filewriter.writerow(['Timestamp', 'Device', 'Sensor', 'Sensor_Value'])
+            filewriter.writerow(['Timestamp','Device','Sensor','Sensor_Value'])
             csvfile.close()
 
         WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + ".csv >>> created") 
@@ -229,11 +229,11 @@ def CREATE_LOGFILE(filename):
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
             if filename == "log_mqtt":                   
-                filewriter.writerow(['Timestamp', 'Channel', 'Message'])
+                filewriter.writerow(['Timestamp','Channel','Message'])
             if filename == "log_zigbee":                   
-                filewriter.writerow(['Timestamp', 'Channel', 'Message'])                
+                filewriter.writerow(['Timestamp','Channel','Message'])                
             if filename == "log_system":                   
-                filewriter.writerow(['Timestamp', 'Type', 'Description'])                
+                filewriter.writerow(['Timestamp','Type','Description'])                
             
             csvfile.close()
 
@@ -287,28 +287,33 @@ def READ_LOGFILE_MQTT(gateway, channel):
             date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
             
             # get all elements of the last 5 seconds
-            list_current_entries = []
+            list_temp = []
+            list_result = []
             for element in data_reversed:
                 
                 try:
                     date_entry   = datetime.datetime.strptime(element[0],"%Y-%m-%d %H:%M:%S")   
                     date_control = datetime.datetime.strptime(date_check, "%Y-%m-%d %H:%M:%S")
                     if date_entry > date_control:
-                        list_current_entries.append(element)
+                        list_temp.append(element)
                 except:
                     pass
                     
-            if list_current_entries != []:
-                # get the searched message
-                for element in list_current_entries:
-                    if element[1] == channel:
-                        return element[2:]
-                        
-                    return "Message nicht gefunden" 
-            
-            else:
-                return "Keine Verbindung zu ZigBee2MQTT"
                     
+                if list_temp == []:
+                    return "Keine Verbindung zu ZigBee2MQTT"                    
+                    
+                else:
+                    # get the searched message
+                    
+                    for element in list_temp:
+                        if element[1] == channel:
+                            list_result.append(element)
+                        
+                    if list_result != []:
+                        return list_result
+                    if list_result == []:
+                        return "Message nicht gefunden" 
      
     except Exception as e:
         print(e)

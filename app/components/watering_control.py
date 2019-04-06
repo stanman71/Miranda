@@ -5,7 +5,6 @@ from app import app
 from app.database.database import *
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.mqtt import SET_MOISTURE_CURRENT, GET_MOISTURE_CURRENT
 
 
 """ ################ """
@@ -32,6 +31,8 @@ def UPDATE_CURRENT_MOISTURE(plant):
     channel = "/SmartHome/" + plant.mqtt_device.channel_path + "/plant/" + str(plant.id)
     MQTT_PUBLISH(channel, str(plant.sensor_id))
     time.sleep(3) 
+
+"""
 
 
 def CHECK_MOISTURE(plant):
@@ -97,6 +98,7 @@ def CHECK_MOISTURE(plant):
     
         SET_MOISTURE_CURRENT(0)
         WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Plant >>> " + plant.name + " >>> new Watervolume " + str(new_watervolume))
+"""
 
 
 """ ######### """
