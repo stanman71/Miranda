@@ -1,36 +1,36 @@
 String ieeeAddr = "0x99999";
 
-#include <MCP3008.h>
+const char* ssid        = ""; 
+const char* password    = ""; 
+const char* mqtt_server = "";
+
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
- 
-const char* SSID = "";
-const char* PSK = "";
-const char* MQTT_BROKER = "";
+#include <MCP3008.h>
 
 // mqtt connection
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
-char msg[100];
-char channelpath[50];
-char channel_subscribe[50];
+char msg[200];
+char path[50];
 int value = 0;
 
-// define pins mcp3008
+// MCP3008
 #define CS_PIN 15
 #define CLOCK_PIN 14
 #define MOSI_PIN 13
 #define MISO_PIN 12
+MCP3008 adc(CLOCK_PIN, MOSI_PIN, MISO_PIN, CS_PIN); 
 
-MCP3008 adc(CLOCK_PIN, MOSI_PIN, MISO_PIN, CS_PIN);
-
-// define pins transitor
+// OUTPUT 
 int Pin_D0 = 16;
 int Pin_D1 = 5;
 int Pin_D2 = 4;
 int Pin_D3 = 0;
 
+// Light Sensor
+#define LIGHTPIN A0  
 
 // split string
 String getValue(String data, char separator, int index) {
@@ -52,15 +52,17 @@ void setup_wifi() {
     delay(10);
     Serial.println();
     Serial.print("Connecting to ");
-    Serial.println(SSID);
- 
-    WiFi.begin(SSID, PSK);
- 
+    Serial.println(ssid);
+  
+    WiFi.begin(ssid, password);
+  
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
         Serial.print(".");
-    }
- 
+      }
+  
+    randomSeed(micros());
+  
     Serial.println("");
     Serial.println("WiFi connected");
     Serial.println("IP address: ");
@@ -112,26 +114,29 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String STR_sensor_7 = String(sensor_7);
 
         // create msg   
-        String payload = "{\"type\":\"inputs\",\"inputs\":[" +
-                           STR_sensor_0 + "," + STR_sensor_1 + "," + 
-                           STR_sensor_2 + "," + STR_sensor_3 + "," + 
-                           STR_sensor_4 + "," + STR_sensor_5 + "," + 
-                           STR_sensor_6 + "," + STR_sensor_7 + "]}";
+        String payload_msg = "{\"type\":\"inputs\",\"inputs\":[\"sensor_0\":\"" +
+                             STR_sensor_0 + "\",\"sensor_1\":\"" + 
+                             STR_sensor_1 + "\",\"sensor_2\":\"" + 
+                             STR_sensor_2 + "\",\"sensor_3\":\"" + 
+                             STR_sensor_3 + "\",\"sensor_4\":\"" +                              
+                             STR_sensor_4 + "\",\"sensor_5\":\"" + 
+                             STR_sensor_5 + "\",\"sensor_6\":\"" + 
+                             STR_sensor_6 + "\",\"sensor_7\":\"" +    
+                             STR_sensor_7 + "\"]}";
+        char attributes_msg[100];
+        payload_msg.toCharArray(  msg, 200 );
 
-        char attributes[100];
-        payload.toCharArray( msg, 100 );
-
-        // create channelpath   
-        String payload_channelpath = "SmartHome/mqtt/" + ieeeAddr;
-        char attributes_channelpath[100];
-        payload_channelpath.toCharArray( channelpath, 100 );        
+        // create path   
+        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );        
 
         Serial.print("Publish message: ");
         Serial.println(msg);
         Serial.print("Channel: ");
         Serial.println("SmartHome/mqtt/" + ieeeAddr);
         Serial.println();
-        client.publish(channelpath, msg);         
+        client.publish(path, msg);         
     }    
 
     if(check_ieeeAddr == ieeeAddr and check_command == "set"){
@@ -146,10 +151,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.print("msg: ");
         Serial.println(msg);
 
-        // create channelpath   
-        String payload_channelpath = "SmartHome/mqtt/" + ieeeAddr;
-        char attributes_channelpath[100];
-        payload_channelpath.toCharArray( channelpath, 100 );          
+        // create path   
+        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );          
 
         // get command
         String data_temp     = getValue(msg,':',1);      
@@ -159,48 +164,48 @@ void callback(char* topic, byte* payload, unsigned int length) {
         if (output_number == "0") {
             if (output_state == "on") {
                 digitalWrite(Pin_D0, HIGH);
-                client.publish(channelpath, "0_on");
+                client.publish(path, "0_on");
                 Serial.println("Start_Pump_0");
             }
             else {
                 digitalWrite(Pin_D0, LOW); 
-                client.publish(channelpath, "0_off");
+                client.publish(path, "0_off");
                 Serial.println("Stop_Pump_0");
             }
         }
         if (output_number == "1") {
             if (output_state == "on") {
                 digitalWrite(Pin_D3, HIGH);
-                client.publish(channelpath, "1_on");
+                client.publish(path, "1_on");
                 Serial.println("Start_Pump_1");
             }
             else {
                 digitalWrite(Pin_D3, LOW); 
-                client.publish(channelpath, "1_off");                
+                client.publish(path, "1_off");                
                 Serial.println("Stop_Pump_1");
             }
         }     
         if (output_number == "2") {
             if (output_state == "on") {
                 digitalWrite(Pin_D2, HIGH);
-                client.publish(channelpath, "2_on");
+                client.publish(path, "2_on");
                 Serial.println("Start_Pump_2");
             }
             else {
                 digitalWrite(Pin_D2, LOW); 
-                client.publish(channelpath, "2_off");
+                client.publish(path, "2_off");
                 Serial.println("Stop_Pump_2");
             }
         }
         if (output_number == "3") {
             if (output_state == "on") {
                 digitalWrite(Pin_D1, HIGH);
-                client.publish(channelpath, "3_on");
+                client.publish(path, "3_on");
                 Serial.println("Start_Pump_3");
             }
             else {
                 digitalWrite(Pin_D1, LOW); 
-                client.publish(channelpath, "3_off");
+                client.publish(path, "3_off");
                 Serial.println("Stop_Pump_3");
             }
         }       
@@ -209,42 +214,54 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
 void reconnect() {
     while (!client.connected()) {
-        Serial.print("Reconnecting...");
-        if (!client.connect("ESP8266Client")) {
+        Serial.print("Attempting MQTT connection...");
+        String clientId = "ESP8266Client-";
+        clientId += String(random(0xffff), HEX);
+
+        digitalWrite(BUILTIN_LED, HIGH);
+        
+        if (client.connect(clientId.c_str())) {     
+            // create channel  
+            String payload_path = "SmartHome/mqtt/" + ieeeAddr;      
+            char attributes[100];
+            payload_path.toCharArray( path, 100 );    
+                 
+            client.publish(path, "connected");
+            client.subscribe("SmartHome/mqtt/#");
+            Serial.println("MQTT Connected...");
+
+            digitalWrite(BUILTIN_LED, LOW); 
+          
+        } else {        
             Serial.print("failed, rc=");
             Serial.print(client.state());
-            Serial.println(" retrying in 5 seconds");
+            Serial.println(" try again in 5 seconds");
             delay(5000);
         }
     }
-    
-    // create channelpath  
-    String payload = "SmartHome/mqtt/#";      
-    char attributes[100];
-    payload.toCharArray( channel_subscribe, 100 );   
-    
-    client.subscribe(channel_subscribe);
-    Serial.println("MQTT Connected...");
 }
 
 void setup() {
+  
+    Serial.begin(115200);
+    setup_wifi();
+    client.setServer(mqtt_server, 1883);
+    client.setCallback(callback);
+
     pinMode(CS_PIN, OUTPUT);  
     pinMode(Pin_D0,OUTPUT);
     pinMode(Pin_D1,OUTPUT);
     pinMode(Pin_D2,OUTPUT);
     pinMode(Pin_D3,OUTPUT);
+    pinMode(BUILTIN_LED, OUTPUT); 
     
-    Serial.begin(115200);
-    setup_wifi();
-    client.setServer(MQTT_BROKER, 1883);
-    client.setCallback(callback);
-
-    reconnect();    
 }
 
 void loop() {
+
     if (!client.connected()) {
         reconnect();
     }
+    
     client.loop();
 }

@@ -1831,3 +1831,74 @@ Timestamp,Type,Description
 2019-04-06 20:59:04,EVENT,Database >>> MQTT Device >>> 9999 >>> deleted
 2019-04-06 21:00:00,EVENT,Task >>> test_02 >>> started
 2019-04-06 21:00:32,ERROR,ZigBee2MQTT >>> Keine Verbindung
+2019-04-06 21:06:32,EVENT,MQTT >>> started
+2019-04-06 21:06:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-06 21:06:35,EVENT,Snowboy >>> started
+2019-04-06 21:06:37,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-06 21:26:50,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-06 21:38:04,EVENT,Database >>> MQTT Device >>> 0x99999 >>> deleted
+2019-04-06 21:38:08,EVENT,Database >>> MQTT Device >>> 0x99999 >>> added
+2019-04-06 21:39:00,EVENT,Database >>> Sensordata Job >>> test >>> added
+2019-04-06 21:39:00,EVENT,File >>> /csv/testfile.csv >>> created
+2019-04-06 21:39:08,EVENT,Database >>> Sensordata Job >>> test >>> deleted
+2019-04-06 21:45:52,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 21:46:57,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 22:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-06 22:00:49,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 22:01:47,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 22:03:40,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-06 22:08:31,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 22:10:43,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 22:18:17,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-06 22:26:21,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-06 22:26:23,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-06 23:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-06 23:36:34,EVENT,Database >>> MQTT Device >>> 0x8888 >>> added
+2019-04-07 00:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-07 00:35:46,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 01:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 01:08:34,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-07 02:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 03:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 04:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 05:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 06:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 07:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-07 08:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 09:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 10:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 10:28:10,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-07 10:53:13,EVENT,MQTT >>> started
+2019-04-07 10:53:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 10:53:16,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-04-07 10:54:34,EVENT,MQTT >>> started
+2019-04-07 10:54:34,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 10:54:37,EVENT,Snowboy >>> started
+2019-04-07 10:55:18,EVENT,MQTT >>> started
+2019-04-07 10:55:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 10:55:21,EVENT,Snowboy >>> started
+2019-04-07 10:56:22,EVENT,MQTT >>> started
+2019-04-07 10:56:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 10:56:26,EVENT,Snowboy >>> started
+2019-04-07 10:57:19,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-07 10:57:27,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-07 10:59:09,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-07 10:59:49,EVENT,MQTT >>> started
+2019-04-07 10:59:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 10:59:53,EVENT,Snowboy >>> started
+2019-04-07 11:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 11:01:12,EVENT,MQTT >>> started
+2019-04-07 11:01:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 11:01:15,EVENT,Snowboy >>> started
+2019-04-07 11:01:17,EVENT,File >>> /logs/log_mqtt.csv >>> deleted
+2019-04-07 11:01:17,EVENT,File >>> /logs/log_mqtt.csv >>> created
+2019-04-07 11:01:19,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-07 11:03:35,EVENT,MQTT >>> started
+2019-04-07 11:03:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 11:03:38,EVENT,Snowboy >>> started
+2019-04-07 12:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 12:09:17,EVENT,Database >>> MQTT Device >>> 0x88888 >>> added
+2019-04-07 12:09:24,EVENT,Database >>> MQTT Device >>> 0x8888 >>> deleted
+2019-04-07 13:00:00,EVENT,Task >>> test_02 >>> started

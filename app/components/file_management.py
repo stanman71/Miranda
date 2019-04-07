@@ -289,6 +289,7 @@ def READ_LOGFILE_MQTT(gateway, channel):
             # get all elements of the last 5 seconds
             list_temp = []
             list_result = []
+        
             for element in data_reversed:
                 
                 try:
@@ -299,21 +300,20 @@ def READ_LOGFILE_MQTT(gateway, channel):
                 except:
                     pass
                     
+            if list_temp == []:
+                return "Keine Verbindung zu ZigBee2MQTT"                    
+                
+            else:
+                # get the searched message
+                
+                for element in list_temp:
+                    if element[1] == channel:
+                        list_result.append(element)
                     
-                if list_temp == []:
-                    return "Keine Verbindung zu ZigBee2MQTT"                    
-                    
-                else:
-                    # get the searched message
-                    
-                    for element in list_temp:
-                        if element[1] == channel:
-                            list_result.append(element)
-                        
-                    if list_result != []:
-                        return list_result
-                    if list_result == []:
-                        return "Message nicht gefunden" 
+                if list_result != []:
+                    return list_result
+                if list_result == []:
+                    return "Message nicht gefunden" 
      
     except Exception as e:
         print(e)

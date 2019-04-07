@@ -86,6 +86,7 @@ def dashboard_settings_mqtt():
                 
                 if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
                     for message in messages:
+                        
                         message = str(message[2])
                         
                         data = json.loads(message)
@@ -120,17 +121,19 @@ def dashboard_settings_mqtt():
             """
 
 
-            # reset logfile
-            if request.form.get("reset_logfile") is not None: 
-                RESET_LOGFILE("log_mqtt")   
-            # update mqtt devices
-            if request.form.get("update_mqtt_devices") is not None:    
-                try:
-                    UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
-                    time.sleep(2)
-                except Exception as e:
-                    error_message_mqtt = "Fehler in MQTT: " + str(e)
-                    WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
+        # reset logfile
+        if request.form.get("reset_logfile") is not None: 
+            print("OK")
+            RESET_LOGFILE("log_mqtt")   
+            
+        # update mqtt devices
+        if request.form.get("update_mqtt_devices") is not None:    
+            try:
+                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
+                time.sleep(2)
+            except Exception as e:
+                error_message_mqtt = "Fehler in MQTT: " + str(e)
+                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
 
     mqtt_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("mqtt")
