@@ -8,7 +8,7 @@ import json
 from app import app
 from app.components.led_control import *
 from app.database.database import *
-from app.components.tasks import UPDATE_MQTT_DEVICES
+from app.components.tasks import UPDATE_MQTT_DEVICES, CHECK_MQTT
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import MQTT_PUBLISH
@@ -63,7 +63,7 @@ def dashboard_settings_mqtt():
 
         # check mqtt
         try:
-            UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
+            CHECK_MQTT()
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
@@ -74,69 +74,19 @@ def dashboard_settings_mqtt():
                 # rename devices
                 if request.form.get("set_name"):
                     new_name = request.form.get("set_name") 
-                    UPDATE_MQTT_DEVICE_NAME(i, new_name)
+                    SET_MQTT_DEVICE_NAME(i, new_name)
  
         # update device list
         if request.form.get("update_mqtt_devices") is not None:
-            MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
-            time.sleep(2)
-             
-            try:
-                messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
-                
-                if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
-                    for message in messages:
-                        
-                        message = str(message[2])
-                        
-                        data = json.loads(message)
-                        
-                        name     = data['ieeeAddr']
-                        ieeeAddr = data['ieeeAddr']
-                        gateway  = "mqtt"
-                        model    = data['model']
-                        inputs   = data['input']
-                        outputs  = data['output']
-                         
-                        ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model, inputs, outputs)    
-            except:
-                pass
-                
+            UPDATE_MQTT_DEVICES()
             
- 
-            """
-            MQTT_PUBLISH("SmartHome/mqtt/9999/get", "")  
-            
-            time.sleep(2)
-            
-            input_messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/9999")
-            
-            print(input_messages)
-            
-            for input_message in input_messages:
-                input_message = str(input_message[2])
-                
-                data = json.loads(input_message)
-                print(data["inputs"][0])
-            """
-
-
         # reset logfile
         if request.form.get("reset_logfile") is not None: 
             print("OK")
             RESET_LOGFILE("log_mqtt")   
             
-        # update mqtt devices
-        if request.form.get("update_mqtt_devices") is not None:    
-            try:
-                UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES_GATEWAY("mqtt"))
-                time.sleep(2)
-            except Exception as e:
-                error_message_mqtt = "Fehler in MQTT: " + str(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT: " + str(e)) 
 
-
-    mqtt_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("mqtt")
+    mqtt_device_list = GET_ALL_MQTT_DEVICES("mqtt")
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
@@ -221,13 +171,13 @@ def dashboard_settings_zigbee():
                     if request.form.get("set_name"):
                         new_name = request.form.get("set_name") 
                         old_name = GET_MQTT_DEVICE_NAME(i)
-                        UPDATE_MQTT_DEVICE_NAME(i, new_name)
+                        SET_MQTT_DEVICE_NAME(i, new_name)
                         MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
                                      '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
                     # change inputs                 
                     if request.form.get("set_inputs"):
                         inputs = request.form.get("set_inputs")    
-                        UPDATE_MQTT_DEVICE_INPUTS(i, int(inputs))
+                        SET_MQTT_DEVICE_INPUTS(i, int(inputs))
                         
             # update device list
             if request.form.get("update_zigbee_devices") is not None:
@@ -281,7 +231,7 @@ def dashboard_settings_zigbee():
         error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> Keine Verbindung")
 
-    zigbee_device_list = GET_ALL_MQTT_DEVICES_GATEWAY("zigbee")
+    zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
@@ -589,7 +539,7 @@ def dashboard_settings_email():
             set_mail_username       = request.form.get("set_mail_username")               
             set_mail_password       = request.form.get("set_mail_password")
 
-            error_message = UPDATE_EMAIL_SETTINGS(set_mail_server_address, 
+            error_message = SET_EMAIL_SETTINGS(set_mail_server_address, 
                                                     set_mail_server_port, 
                                                     set_mail_encoding, 
                                                     set_mail_username, 

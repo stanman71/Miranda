@@ -173,6 +173,10 @@
                   </div>
                   <div class="col-sm-1">                    
                     <select class="btn btn-default dropdown-toggle" name="set_day">
+                      {% if set_day != "" %}
+                        <option value= "{{ set_day }}" > {{ set_day }} </option>
+                        <option value= "{{ set_day }}" > ----- </option>     
+                      {% endif %}                       
                       <option value="*">immer (*)</option>
                       {% for each in dropdown_list_days %}
                       {% if each != None %}
@@ -189,6 +193,10 @@
                   </div>
                   <div class="col-sm-1">    
                     <select class="btn btn-default dropdown-toggle" name="set_hour">
+                      {% if set_hour != "" %}
+                        <option value= "{{ set_hour }}" > {{ set_hour }} </option>
+                        <option value= "{{ set_hour }}" > ----- </option>  
+                      {% endif %}      
                       <option value="*">immer (*)</option>
                       {% for each in dropdown_list_hours %}
                       {% if each != None %}
@@ -205,6 +213,10 @@
                   </div>
                   <div class="col-sm-1"> 
                     <select class="btn btn-default dropdown-toggle" name="set_minute">
+                      {% if set_minute != "" %}
+                        <option value= "{{ set_minute }}" > {{ set_minute }} </option>
+                        <option value= "{{ set_minute }}" > ----- </option>       
+                      {% endif %} 
                       <option value="*">immer (*)</option>
                       {% for each in dropdown_list_minutes %}
                       {% if each != None %}
@@ -215,11 +227,14 @@
                   </div>
                 </div> 
               </div>                                
-              <div class="well well-sm">Wiederholen:
-                <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="checkbox">
-                </div>
-              </div>           
+              <div class="well well-sm">
+                <div class="checkbox">
+                  <label>Wiederholen
+                   <input type="checkbox" {{ set_checkbox }} name="checkbox" >
+                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                  </label> 
+                </div> 
+              </div>             
               <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
             </form> 
           </div>  

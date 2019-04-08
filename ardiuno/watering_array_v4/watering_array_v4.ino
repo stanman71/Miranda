@@ -96,33 +96,32 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
       
-        int sensor_0 = adc.readADC(0); 
+        int sensor_0 = adc.readADC(0) - 1; 
         String STR_sensor_0 = String(sensor_0);
-        int sensor_1 = adc.readADC(1); 
+        int sensor_1 = adc.readADC(1) - 1; 
         String STR_sensor_1 = String(sensor_1);
-        int sensor_2 = adc.readADC(2); 
+        int sensor_2 = adc.readADC(2) - 1; 
         String STR_sensor_2 = String(sensor_2);  
-        int sensor_3 = adc.readADC(3); 
+        int sensor_3 = adc.readADC(3) - 1; 
         String STR_sensor_3 = String(sensor_3);
-        int sensor_4 = adc.readADC(4); 
+        int sensor_4 = adc.readADC(4) - 1; 
         String STR_sensor_4 = String(sensor_4);
-        int sensor_5 = adc.readADC(5); 
+        int sensor_5 = adc.readADC(5) - 1; 
         String STR_sensor_5 = String(sensor_5);
-        int sensor_6 = adc.readADC(6); 
+        int sensor_6 = adc.readADC(6) - 1; 
         String STR_sensor_6 = String(sensor_6);
-        int sensor_7 = adc.readADC(7); 
+        int sensor_7 = adc.readADC(7) - 1; 
         String STR_sensor_7 = String(sensor_7);
 
         // create msg   
-        String payload_msg = "{\"type\":\"inputs\",\"inputs\":[\"sensor_0\":\"" +
-                             STR_sensor_0 + "\",\"sensor_1\":\"" + 
-                             STR_sensor_1 + "\",\"sensor_2\":\"" + 
-                             STR_sensor_2 + "\",\"sensor_3\":\"" + 
-                             STR_sensor_3 + "\",\"sensor_4\":\"" +                              
-                             STR_sensor_4 + "\",\"sensor_5\":\"" + 
-                             STR_sensor_5 + "\",\"sensor_6\":\"" + 
-                             STR_sensor_6 + "\",\"sensor_7\":\"" +    
-                             STR_sensor_7 + "\"]}";
+        String payload_msg = "{\"sensor_0\":" + STR_sensor_0 + 
+                             ",\"sensor_1\":" + STR_sensor_1 + 
+                             ",\"sensor_2\":" + STR_sensor_2 +
+                             ",\"sensor_3\":" + STR_sensor_3 +
+                             ",\"sensor_4\":" + STR_sensor_4 +
+                             ",\"sensor_5\":" + STR_sensor_5 +
+                             ",\"sensor_6\":" + STR_sensor_6 +
+                             ",\"sensor_7\":" + STR_sensor_7 + "}";
         char attributes_msg[100];
         payload_msg.toCharArray(  msg, 200 );
 

@@ -96,9 +96,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String STR_light = String(light);  
 
         // create msg   
-        String payload_msg = "{\"type\":\"inputs\",\"inputs\":[\"temperature\":\"" +
-                           STR_temperature + "\",\"humidity\":\"" + STR_humidity + 
-                           "\",\"light\":\"" + STR_light + "\"]}";
+        String payload_msg = "{\"temperature\":" + STR_temperature +        
+                             ",\"humidity\":" + STR_humidity + 
+                             ",\"light\":" + STR_light + "}";
 
         char attributes_msg[100];
         payload_msg.toCharArray( msg, 100 );

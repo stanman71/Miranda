@@ -4,9 +4,10 @@ from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.watering_control import START_WATERING_THREAD
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
 
 import datetime
+import json
 
 from threading import Thread
 
@@ -15,17 +16,58 @@ from threading import Thread
 """ mqtt """
 """ #### """
 
-def UPDATE_MQTT_DEVICES(devices):
-   MQTT_PUBLISH("/SmartHome/mqtt/devices", "")
+
+def CHECK_MQTT():
+   MQTT_PUBLISH("SmartHome/mqtt/devices", "") 
+
+
+def UPDATE_MQTT_DEVICES():
+   MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
+   time.sleep(2)
+
+   try:
+      messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
+
+      if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu MQTT":
+         for message in messages:
+
+            message = str(message[2])
+
+            data = json.loads(message)
+
+            name     = data['ieeeAddr']
+            ieeeAddr = data['ieeeAddr']
+            gateway  = "mqtt"
+            model    = data['model']
+            inputs   = data['input']
+            outputs  = data['output']
+
+            ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model, inputs, outputs)    
+   except:
+      pass
 
 
 def GET_MQTT_SENSORDATA(job_id):
-   sensordata_job = GET_SENSORDATA_JOB(job_id)
-   device_channel_path = sensordata_job.mqtt_device.channel_path
+   sensordata_job  = GET_SENSORDATA_JOB(job_id)
+   device_gateway  = sensordata_job.mqtt_device.gateway
+   device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
    sensor_id = sensordata_job.sensor_id
+ 
+   channel = "SmartHome/" + device_gateway + "/" + device_ieeeAddr + "/get"
+   MQTT_PUBLISH(channel, "")  
 
-   channel = "/SmartHome/" + device_channel_path + "/sensor/" + sensordata_job.filename
-   MQTT_PUBLISH(channel, sensor_id)
+   time.sleep(2)
+
+   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr)
+
+   for input_message in input_messages:
+      input_message = str(input_message[2])
+      
+      print(input_message)
+      
+      #data = json.loads(input_message)
+      #print(data["inputs"][0])
+
 
 
 """ ####### """
@@ -128,7 +170,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
 
                # update mqtt devices
                if "update_mqtt_devices" in entry.task:
-                  UPDATE_MQTT_DEVICES(GET_ALL_MQTT_DEVICES("mqtt"))
+                  UPDATE_MQTT_DEVICES()
 
                # get mqtt sensor data
                if "get_mqtt_sensordata" in entry.task:

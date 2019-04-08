@@ -46,8 +46,8 @@ class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
     id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name         = db.Column(db.String(50), unique=True)
-    ieeeAddr     = db.Column(db.String(50))
-    gateway      = db.Column(db.String(50))   
+    gateway      = db.Column(db.String(50)) 
+    ieeeAddr     = db.Column(db.String(50))  
     model        = db.Column(db.String(50))
     inputs       = db.Column(db.Integer)
     outputs      = db.Column(db.Integer)
@@ -62,7 +62,7 @@ class Plants(db.Model):
     mqtt_device      = db.relationship('MQTT_Devices')  
     pump_id          = db.Column(db.Integer)
     sensor_id        = db.Column(db.Integer)
-    moisture_percent = db.Column(db.Integer) 
+    moisture_percent = db.Column(db.Integer, server_default=("50")) 
     moisture_target  = db.Column(db.Integer)     
 
 class Programs(db.Model):
@@ -210,13 +210,14 @@ class Scene_99(db.Model):
     brightness  = db.Column(db.Integer, server_default=("254"))
 
 class Sensordata_Jobs(db.Model):
-    __tablename__   = 'sensordata_jobs'
+    __tablename__  = 'sensordata_jobs'
     id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name             = db.Column(db.String(50), unique=True)
     filename         = db.Column(db.String(50), unique=True)
     mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
     mqtt_device      = db.relationship('MQTT_Devices')  
     sensor_id        = db.Column(db.Integer) 
+    always_active    = db.Column(db.String(50))
 
 class Settings(db.Model):
     __tablename__ = 'settings'
@@ -424,7 +425,7 @@ def GET_EMAIL_ADDRESS(address_type):
         return mail_list
 
 
-def UPDATE_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mail_username, mail_password): 
+def SET_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mail_username, mail_password): 
     email = eMail.query.filter_by().first()
     email.mail_server_address = mail_server_address
     email.mail_server_port    = mail_server_port
@@ -970,22 +971,22 @@ def GET_MQTT_DEVICE(id):
     return MQTT_Devices.query.filter_by(id=id).first()
 
 
-def GET_ALL_MQTT_DEVICES():
-    return MQTT_Devices.query.all()
-    
-
-def GET_ALL_MQTT_DEVICES_GATEWAY(gateway):
+def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
     devices = MQTT_Devices.query.all()
-    for device in devices:
-        if device.gateway == gateway:
-            device_list.append(device)
+    
+    if selector == "mqtt" or selector == "zigbee":
+        for device in devices:
+            if device.gateway == selector:
+                device_list.append(device)
+                
+    if selector == "sensor":
+        for device in devices:
+            if device.inputs > 0:
+                device_list.append(device)  
+                
     return device_list
-
-
-def GET_ALL_MQTT_DEVICES_MODEL():
-    return MQTT_Devices.query.all()
-
+        
 
 def GET_MQTT_DEVICE_NAME(id):
     return MQTT_Devices.query.filter_by(id=id).first().name
@@ -1015,28 +1016,28 @@ def ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model = "", inputs = 0, outputs = 0
                 db.session.commit()
                 
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added") 
-                UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)                                  
+                SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)                                  
                 return ""
                 
     else:
-        UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
+        SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
         return "Adresse bereits vergeben"     
 
 
-def UPDATE_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
+def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     entry.last_contact = timestamp
     db.session.commit()       
 
 
-def UPDATE_MQTT_DEVICE_NAME(id, name):
+def SET_MQTT_DEVICE_NAME(id, name):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     entry.name = name
     db.session.commit()    
 
 
-def UPDATE_MQTT_DEVICE_INPUTS(id, inputs):
+def SET_MQTT_DEVICE_INPUTS(id, inputs):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     entry.inputs = inputs
     db.session.commit()    
@@ -1100,39 +1101,60 @@ def ADD_PLANT(name, mqtt_device_id, watervolume):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_MOISTURE_TARGET(plant_id, moisture_percent):    
+def SET_MOISTURE_TARGET(plant_id, moisture_percent):
     entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_percent = moisture_percent
     
-    # calculate value target
+    # calculate moisture target
     value_temp = int(moisture_percent) * 5
     moisture_target = 870 - value_temp
     entry.moisture_target = moisture_target
+    db.session.commit()     
+
+
+def SET_PLANT_SETTINGS(plant_id, sensor_id, pump_id, watervolume, moisture_percent):        
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.sensor_id = sensor_id
+    entry.pump_id = pump_id
+    entry.watervolume = watervolume
+    entry.moisture_percent = moisture_percent
+    
+    SET_MOISTURE_TARGET(plant_id, moisture_percent)
     db.session.commit()  
 
 
-def SET_PLANT_SENSOR(plant_id, sensor_id):        
+def SET_PLANT_SETTINGS_WITHOUT_PUMP(plant_id, sensor_id, watervolume, moisture_percent):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.sensor_id = sensor_id
-    db.session.commit()    
+    entry.watervolume = watervolume
+    entry.moisture_percent = moisture_percent
+    
+    SET_MOISTURE_TARGET(plant_id, moisture_percent)
+    db.session.commit()  
 
 
-def SET_PLANT_PUMP(plant_id, pump_id):        
+def SET_PLANT_SETTINGS_WITHOUT_SENSOR(plant_id, pump_id, watervolume, moisture_percent):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.pump_id = pump_id
-    db.session.commit()    
+    entry.watervolume = watervolume
+    entry.moisture_percent = moisture_percent
+    
+    SET_MOISTURE_TARGET(plant_id, moisture_percent)
+    db.session.commit()  
+
+
+def SET_PLANT_SETTINGS_WITHOUT_SENSOR_PUMP(plant_id, watervolume, moisture_percent):
+    entry = Plants.query.filter_by(id=plant_id).first()
+    entry.watervolume = watervolume
+    entry.moisture_percent = moisture_percent
+    
+    SET_MOISTURE_TARGET(plant_id, moisture_percent)
+    db.session.commit()        
 
 
 def SET_PLANT_WATERVOLUME(plant_id, watervolume):        
     entry = Plants.query.filter_by(id=plant_id).first()
     entry.watervolume = watervolume
     db.session.commit()    
-
-
-def RESET_PLANT_MOISTURE_CURRENT(plant_id):
-    entry = Plants.query.filter_by(id=plant_id).first()
-    entry.moisture_current = 0
-    db.session.commit()  
 
 
 def DELETE_PLANT(plant_id):
@@ -1158,7 +1180,7 @@ def GET_ALL_SENSORDATA_JOBS():
     return Sensordata_Jobs.query.all()
 
 
-def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
+def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active):
     # name exist ?
     check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1174,7 +1196,8 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
                             id             = i,
                             name           = name,
                             filename       = filename,
-                            mqtt_device_id = mqtt_device_id,                 
+                            mqtt_device_id = mqtt_device_id, 
+                            always_active  = always_active,                
                         )
                     db.session.add(sensordata_job)
                     db.session.commit()
@@ -1190,10 +1213,17 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id):
         return "Name bereits vergeben"
 
 
-def SET_SENSORDATA_JOB_SENSOR(id, sensor_id):        
+def SET_SENSORDATA_JOB(id, sensor_id, always_active):        
     entry = Sensordata_Jobs.query.filter_by(id=id).first()
     entry.sensor_id = sensor_id
+    entry.always_active = always_active
     db.session.commit()    
+
+
+def SET_SENSORDATA_JOB_WITHOUT_SENSOR(id, always_active):        
+    entry = Sensordata_Jobs.query.filter_by(id=id).first()
+    entry.always_active = always_active
+    db.session.commit()   
 
 
 def DELETE_SENSORDATA_JOB(id):
@@ -1423,20 +1453,17 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value):
         return "Name bereits vergeben"
 
 
-def SET_TASKMANAGEMENT_SENSOR_SENSOR(id, sensor_id):        
+def SET_TASKMANAGEMENT_SENSOR(id, sensor_id, operator, value):        
     entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
     entry.sensor_id = sensor_id
+    entry.operator = operator
+    entry.value = value
     db.session.commit()    
 
 
-def SET_TASKMANAGEMENT_SENSOR_OPERATOR(id, operator):        
+def SET_TASKMANAGEMENT_SENSOR_WITHOUT_SENSOR(i, operator, value):
     entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
     entry.operator = operator
-    db.session.commit()  
-
-
-def SET_TASKMANAGEMENT_SENSOR_VALUE(id, value):        
-    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
     entry.value = value
     db.session.commit()  
 

@@ -41,27 +41,51 @@ def dashboard_taskmanagement_time():
     error_message = ""
     set_name = ""
     set_task = ""
+    set_day = ""
+    set_hour = ""
+    set_minute = ""
+    set_checkbox = ""
 
     if request.method == "POST": 
-        # add new task
+        
         if request.form.get("add_task") is not None:
 
-            # controll name and task input
             if request.form.get("set_name") == "":
-                error_message = "Kein Name angegeben"
-                set_task = request.form.get("set_task")
+                # missing name
+                set_task   = request.form.get("set_task")
+                set_day    = request.form.get("set_day") 
+                set_hour   = request.form.get("set_hour") 
+                set_minute = request.form.get("set_minute")
+  
+                if request.form.get("checkbox"):
+                    set_checkbox = "checked"
+                else:
+                    set_checkbox = ""
+                
+                error_message = "Keinen Namen angegeben"
 
             elif request.form.get("set_task") == "":
-                error_message = "Keine Aufgabe angegeben"  
+                # missing task
                 set_name = request.form.get("set_name")  
+                set_day    = request.form.get("set_day") 
+                set_hour   = request.form.get("set_hour") 
+                set_minute = request.form.get("set_minute")  
+   
+                if request.form.get("checkbox"):
+                    set_checkbox = "checked"
+                else:
+                    set_checkbox = ""  
+                             
+                error_message = "Keine Aufgabe angegeben"               
                           
             else:         
-                # get database informations
+                # add new task
                 name   = request.form.get("set_name")
                 day    = request.form.get("set_day") 
                 hour   = request.form.get("set_hour") 
                 minute = request.form.get("set_minute")
                 task   = request.form.get("set_task")
+                
                 if request.form.get("checkbox"):
                     repeat = "*"
                 else:
@@ -90,6 +114,10 @@ def dashboard_taskmanagement_time():
                             error_message=error_message,
                             set_name=set_name,
                             set_task=set_task,
+                            set_day=set_day,
+                            set_hour=set_hour,
+                            set_minute=set_minute,
+                            set_checkbox=set_checkbox,
                             active01="active",
                             role=current_user.role,
                             )
@@ -113,32 +141,47 @@ def delete_schedular_task(id):
 @user_required
 def dashboard_taskmanagement_sensor():
     error_message = ""
+    error_message_table = ""
     set_name = ""
     set_task = ""
     set_value = ""
+    set_mqtt_device_id = ""
+    set_mqtt_device_name = ""
+    set_operator = ""
+    
 
     if request.method == "POST": 
-        # add new task
         if request.form.get("add_task") is not None:
 
-            # controll name and task input
             if request.form.get("set_name") == "":
-                error_message = "Kein Name angegeben"
-                set_task  = request.form.get("set_task")
-                set_value = request.form.get("set_value")
+                # missing name 
+                set_task           = request.form.get("set_task")
+                set_value          = request.form.get("set_value")
+                set_mqtt_device_id = request.form.get("set_mqtt_device_id")
+                set_operator       = request.form.get("set_operator")
+                
+                error_message = "Keinen Namen angegeben"
 
             elif request.form.get("set_task") == "":
-                error_message = "Keine Aufgabe angegeben"  
-                set_name = request.form.get("set_name") 
-                set_value = request.form.get("set_value")
+                # missing task
+                set_name           = request.form.get("set_name") 
+                set_value          = request.form.get("set_value")
+                set_mqtt_device_id = request.form.get("set_mqtt_device_id")
+                set_operator       = request.form.get("set_operator")
+                
+                error_message = "Keine Aufgabe angegeben" 
 
             elif request.form.get("set_value") == "":
-                error_message = "Keine Wert angegeben"  
-                set_name = request.form.get("set_name") 
-                set_task = request.form.get("set_task")
+                # missing value
+                set_name           = request.form.get("set_name") 
+                set_task           = request.form.get("set_task")
+                set_mqtt_device_id = request.form.get("set_mqtt_device_id")
+                set_operator       = request.form.get("set_operator")
+                
+                error_message = "Keine Vergleichswert angegeben"  
 
             else:         
-                # get database informations
+                # add new task
                 name           = request.form.get("set_name")
                 task           = request.form.get("set_task")
                 mqtt_device_id = request.form.get("set_mqtt_device_id")
@@ -148,34 +191,57 @@ def dashboard_taskmanagement_sensor():
                 error_message = ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value)             
  
         # change settings
-        if request.form.get("change_settings") is not None: 
-            for i in range (1,25):
-                # change sensor
-                if request.form.get("set_sensor_" + str(i)):
-                    sensor_id = request.form.get("set_sensor_" + str(i))    
-                    SET_TASKMANAGEMENT_SENSOR_SENSOR(i, sensor_id)
-                # change operator
-                if request.form.get("set_operator_" + str(i)):
-                    operator_id = request.form.get("set_operator_" + str(i))    
-                    SET_TASKMANAGEMENT_SENSOR_OPERATOR(i, operator_id)                    
-                # change value
-                if request.form.get("set_value_" + str(i)):
-                    value = request.form.get("set_value_" + str(i))    
-                    SET_TASKMANAGEMENT_SENSOR_VALUE(i, value)                    
+        for i in range (1,25):
+            if request.form.get("change_settings_" + str(i)) != None: 
+                
+                if request.form.get("set_sensor") != "None" and request.form.get("set_value") != "":
+                    # set sensor + operator + value
+                    sensor_id = request.form.get("set_sensor")   
+                    operator = request.form.get("set_operator")   
+                    value = request.form.get("set_value") 
+                    SET_TASKMANAGEMENT_SENSOR(i, sensor_id, operator, value)                        
+                        
+                elif request.form.get("set_sensor") != "None" and request.form.get("set_value") == "":
+                    # set sensor + operator
+                    sensor_id = request.form.get("set_sensor")   
+                    operator = request.form.get("set_operator")   
+                    value = ""
+                    SET_TASKMANAGEMENT_SENSOR(i, sensor_id, operator, value)
+                    
+                    error_message_table = "Keinen Vergleichswert angegeben"                 
+   
+                elif request.form.get("set_sensor") == "None" and request.form.get("set_value") != "":
+                    # set operator + value
+                    operator = request.form.get("set_operator")  
+                    value = request.form.get("set_value") 
+                    SET_TASKMANAGEMENT_SENSOR_WITHOUT_SENSOR(i, operator, value)  
+                    
+                    error_message_table = "Keinen Sensor angegeben"
+                
+                else:
+                    error_message_table = "Keinen Sensor und keinen Vergleichswert angegeben"                                            
+                    
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES_MODEL()
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators    = ["==", ">", "<"]
 
     schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()
+    
+    if set_mqtt_device_id != "":
+        set_mqtt_device_name = GET_MQTT_DEVICE_NAME(int(set_mqtt_device_id))
 
     return render_template('dashboard_taskmanagement_sensor.html',
                             error_message=error_message,
+                            error_message_table=error_message_table,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             schedular_list=schedular_list,
                             set_name=set_name,
                             set_task=set_task,
                             set_value=set_value,
+                            set_mqtt_device_id=set_mqtt_device_id,
+                            set_mqtt_device_name=set_mqtt_device_name,
+                            set_operator=set_operator,
                             active02="active",
                             role=current_user.role,
                             )

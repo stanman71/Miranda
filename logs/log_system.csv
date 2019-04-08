@@ -1902,3 +1902,553 @@ Timestamp,Type,Description
 2019-04-07 12:09:17,EVENT,Database >>> MQTT Device >>> 0x88888 >>> added
 2019-04-07 12:09:24,EVENT,Database >>> MQTT Device >>> 0x8888 >>> deleted
 2019-04-07 13:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 14:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 14:03:25,EVENT,MQTT >>> started
+2019-04-07 14:03:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 14:03:29,EVENT,Snowboy >>> started
+2019-04-07 14:04:52,EVENT,MQTT >>> started
+2019-04-07 14:04:52,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-07 14:04:56,EVENT,Snowboy >>> started
+2019-04-07 14:08:43,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-07 14:13:27,EVENT,Database >>> MQTT Device >>> 0x88888 >>> deleted
+2019-04-07 14:13:31,EVENT,Database >>> MQTT Device >>> 0x88888 >>> added
+2019-04-07 14:14:25,EVENT,Database >>> MQTT Device >>> 0x88888 >>> deleted
+2019-04-07 14:14:47,EVENT,Database >>> MQTT Device >>> 0x88888 >>> added
+2019-04-07 14:15:37,EVENT,Database >>> MQTT Device >>> Test >>> deleted
+2019-04-07 14:15:41,EVENT,Database >>> MQTT Device >>> 0x88888 >>> added
+2019-04-07 14:17:24,EVENT,Snowboy >>> Detection >>> start_scene:7:50
+2019-04-07 14:19:57,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 14:19:58,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 15:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 15:19:47,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 15:30:06,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 15:30:19,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 15:50:21,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 15:50:52,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 16:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 16:46:54,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-04-07 17:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 18:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 19:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 20:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 20:32:18,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-07 20:32:19,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 21:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 22:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 22:03:55,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-07 22:35:46,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-04-07 22:36:06,EVENT,Database_Backup >>> saved
+2019-04-07 22:36:10,EVENT,File >>> /backup/2019-04-03_smarthome.sqlite3 >>> deleted
+2019-04-07 22:36:12,EVENT,File >>> /backup/2019-04-04_smarthome.sqlite3 >>> deleted
+2019-04-07 22:38:21,EVENT,Database >>> Plant >>> test >>> added
+2019-04-07 22:38:49,EVENT,Database >>> Plant >>> test >>> deleted
+2019-04-07 23:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-07 23:01:29,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-08 00:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-08 00:37:19,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-08 01:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 02:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 03:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 04:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 05:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 06:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 07:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 07:10:05,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-08 07:10:06,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-08 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-08 08:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 09:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 09:34:31,EVENT,MQTT >>> started
+2019-04-08 09:34:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:34:35,EVENT,Snowboy >>> started
+2019-04-08 09:34:44,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:35:56,EVENT,MQTT >>> started
+2019-04-08 09:35:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:35:59,EVENT,Snowboy >>> started
+2019-04-08 09:36:06,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:36:26,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:38:47,EVENT,MQTT >>> started
+2019-04-08 09:38:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:38:50,EVENT,Snowboy >>> started
+2019-04-08 09:38:54,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:39:53,EVENT,MQTT >>> started
+2019-04-08 09:39:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:39:57,EVENT,Snowboy >>> started
+2019-04-08 09:40:11,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:40:15,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:40:27,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:43:31,EVENT,MQTT >>> started
+2019-04-08 09:43:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:43:35,EVENT,Snowboy >>> started
+2019-04-08 09:43:37,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:43:40,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:44:20,EVENT,MQTT >>> started
+2019-04-08 09:44:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:44:23,EVENT,Snowboy >>> started
+2019-04-08 09:44:24,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:45:44,EVENT,MQTT >>> started
+2019-04-08 09:45:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:45:47,EVENT,Snowboy >>> started
+2019-04-08 09:45:49,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:45:52,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:47:38,EVENT,MQTT >>> started
+2019-04-08 09:47:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:47:41,EVENT,Snowboy >>> started
+2019-04-08 09:47:42,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:47:45,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:48:18,EVENT,MQTT >>> started
+2019-04-08 09:48:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:48:21,EVENT,Snowboy >>> started
+2019-04-08 09:48:23,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:48:26,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:49:19,EVENT,MQTT >>> started
+2019-04-08 09:49:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:49:23,EVENT,Snowboy >>> started
+2019-04-08 09:49:24,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:49:26,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:50:03,EVENT,MQTT >>> started
+2019-04-08 09:50:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:50:06,EVENT,Snowboy >>> started
+2019-04-08 09:50:09,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:50:16,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:51:26,EVENT,MQTT >>> started
+2019-04-08 09:51:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:51:30,EVENT,Snowboy >>> started
+2019-04-08 09:51:34,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:51:36,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:56:17,EVENT,MQTT >>> started
+2019-04-08 09:56:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:56:21,EVENT,Snowboy >>> started
+2019-04-08 09:56:26,ERROR,MQTT >>> UPDATE_MQTT_DEVICES() takes 0 positional arguments but 1 was given
+2019-04-08 09:56:58,EVENT,MQTT >>> started
+2019-04-08 09:56:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:57:01,EVENT,Snowboy >>> started
+2019-04-08 09:58:22,EVENT,MQTT >>> started
+2019-04-08 09:58:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:58:25,EVENT,Snowboy >>> started
+2019-04-08 09:58:27,ERROR,MQTT >>> name 'CHECK_MQTT' is not defined
+2019-04-08 09:58:48,EVENT,MQTT >>> started
+2019-04-08 09:58:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:58:52,EVENT,Snowboy >>> started
+2019-04-08 09:58:54,ERROR,MQTT >>> name 'CHECK_MQTT' is not defined
+2019-04-08 09:59:16,EVENT,MQTT >>> started
+2019-04-08 09:59:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:59:19,EVENT,Snowboy >>> started
+2019-04-08 09:59:20,ERROR,MQTT >>> name 'CHECK_MQTT' is not defined
+2019-04-08 09:59:23,ERROR,MQTT >>> name 'CHECK_MQTT' is not defined
+2019-04-08 09:59:54,EVENT,MQTT >>> started
+2019-04-08 09:59:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 09:59:57,EVENT,Snowboy >>> started
+2019-04-08 10:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 10:00:26,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> added
+2019-04-08 10:01:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:01:02,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> deleted
+2019-04-08 10:03:42,EVENT,Database >>> Sensordata Job >>> 444 >>> added
+2019-04-08 10:03:42,EVENT,File >>> /csv/444.csv >>> created
+2019-04-08 10:09:38,EVENT,MQTT >>> started
+2019-04-08 10:09:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:09:41,EVENT,Snowboy >>> started
+2019-04-08 10:09:54,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> added
+2019-04-08 10:10:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:10:02,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> deleted
+2019-04-08 10:10:45,EVENT,MQTT >>> started
+2019-04-08 10:10:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:10:48,EVENT,Snowboy >>> started
+2019-04-08 10:10:51,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> added
+2019-04-08 10:11:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:11:54,EVENT,MQTT >>> started
+2019-04-08 10:11:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:11:57,EVENT,Snowboy >>> started
+2019-04-08 10:12:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:13:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:14:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:14:15,EVENT,MQTT >>> started
+2019-04-08 10:14:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:14:18,EVENT,Snowboy >>> started
+2019-04-08 10:15:00,EVENT,Task >>> 444 >>> started
+2019-04-08 10:15:02,EVENT,Database >>> Taskmanagement (Time) >>> 444 >>> deleted
+2019-04-08 10:33:49,EVENT,MQTT >>> started
+2019-04-08 10:33:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:33:52,EVENT,Snowboy >>> started
+2019-04-08 10:35:53,EVENT,MQTT >>> started
+2019-04-08 10:35:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:35:57,EVENT,Snowboy >>> started
+2019-04-08 10:39:30,EVENT,MQTT >>> started
+2019-04-08 10:39:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:39:33,EVENT,Snowboy >>> started
+2019-04-08 10:40:21,EVENT,MQTT >>> started
+2019-04-08 10:40:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:40:25,EVENT,Snowboy >>> started
+2019-04-08 10:43:08,EVENT,MQTT >>> started
+2019-04-08 10:43:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:43:12,EVENT,Snowboy >>> started
+2019-04-08 10:43:24,EVENT,MQTT >>> started
+2019-04-08 10:43:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:43:28,EVENT,Snowboy >>> started
+2019-04-08 10:46:44,EVENT,MQTT >>> started
+2019-04-08 10:46:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:46:47,EVENT,Snowboy >>> started
+2019-04-08 10:47:08,EVENT,Database >>> Sensordata Job >>> tre >>> added
+2019-04-08 10:47:08,EVENT,File >>> /csv/testfilztzut.csv >>> created
+2019-04-08 10:48:07,EVENT,MQTT >>> started
+2019-04-08 10:48:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:48:10,EVENT,Snowboy >>> started
+2019-04-08 10:49:39,EVENT,MQTT >>> started
+2019-04-08 10:49:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:49:43,EVENT,Snowboy >>> started
+2019-04-08 10:50:22,EVENT,MQTT >>> started
+2019-04-08 10:50:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:50:25,EVENT,Snowboy >>> started
+2019-04-08 10:51:22,EVENT,MQTT >>> started
+2019-04-08 10:51:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:51:26,EVENT,Snowboy >>> started
+2019-04-08 10:51:59,EVENT,MQTT >>> started
+2019-04-08 10:51:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:52:03,EVENT,Snowboy >>> started
+2019-04-08 10:53:39,EVENT,MQTT >>> started
+2019-04-08 10:53:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 10:53:42,EVENT,Snowboy >>> started
+2019-04-08 10:53:55,EVENT,Database >>> Sensordata Job >>> tre >>> deleted
+2019-04-08 10:54:01,EVENT,Database >>> Sensordata Job >>> tzr >>> added
+2019-04-08 10:54:01,EVENT,File >>> /csv/ztr.csv >>> created
+2019-04-08 10:54:26,EVENT,Database >>> Plant >>> 786 >>> added
+2019-04-08 11:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 11:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-08 11:00:04,EVENT,Task >>> test >>> started
+2019-04-08 11:05:08,EVENT,MQTT >>> started
+2019-04-08 11:05:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:05:11,EVENT,Snowboy >>> started
+2019-04-08 11:05:37,EVENT,Database >>> Plant >>> uzt >>> added
+2019-04-08 11:06:23,EVENT,MQTT >>> started
+2019-04-08 11:06:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:06:27,EVENT,Snowboy >>> started
+2019-04-08 11:14:24,EVENT,MQTT >>> started
+2019-04-08 11:14:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:14:27,EVENT,Snowboy >>> started
+2019-04-08 11:16:57,EVENT,MQTT >>> started
+2019-04-08 11:16:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:17:00,EVENT,Snowboy >>> started
+2019-04-08 11:19:33,EVENT,MQTT >>> started
+2019-04-08 11:19:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:19:36,EVENT,Snowboy >>> started
+2019-04-08 11:19:46,EVENT,Database >>> Plant >>> uizu >>> added
+2019-04-08 11:26:14,EVENT,MQTT >>> started
+2019-04-08 11:26:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:26:17,EVENT,Snowboy >>> started
+2019-04-08 11:27:08,EVENT,MQTT >>> started
+2019-04-08 11:27:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:27:12,EVENT,Snowboy >>> started
+2019-04-08 11:27:29,EVENT,Database >>> Plant >>> 444 >>> added
+2019-04-08 11:27:35,EVENT,Database >>> Plant >>> 444 >>> deleted
+2019-04-08 11:27:40,EVENT,Database >>> Plant >>> test >>> added
+2019-04-08 11:28:09,EVENT,Database >>> Plant >>> test_02 >>> added
+2019-04-08 11:32:06,EVENT,MQTT >>> started
+2019-04-08 11:32:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:32:09,EVENT,Snowboy >>> started
+2019-04-08 11:32:10,EVENT,Database >>> Plant >>> test_02 >>> deleted
+2019-04-08 11:32:12,EVENT,Database >>> Plant >>> test >>> deleted
+2019-04-08 11:32:13,EVENT,Database >>> Plant >>> uizu >>> deleted
+2019-04-08 11:32:17,EVENT,Database >>> Plant >>> ztr >>> added
+2019-04-08 11:33:14,EVENT,MQTT >>> started
+2019-04-08 11:33:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:33:17,EVENT,Snowboy >>> started
+2019-04-08 11:34:09,EVENT,Database >>> Plant >>> test >>> added
+2019-04-08 11:34:20,EVENT,Database >>> Plant >>> test >>> deleted
+2019-04-08 11:34:29,EVENT,Database >>> Plant >>> ztr >>> deleted
+2019-04-08 11:39:08,EVENT,MQTT >>> started
+2019-04-08 11:39:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 11:39:11,EVENT,Snowboy >>> started
+2019-04-08 11:39:20,EVENT,Database >>> Plant >>> test >>> added
+2019-04-08 11:39:51,EVENT,Database >>> Taskmanagement (Sensor) >>> test >>> added
+2019-04-08 12:02:08,EVENT,MQTT >>> started
+2019-04-08 12:02:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:02:11,EVENT,Snowboy >>> started
+2019-04-08 12:04:27,EVENT,MQTT >>> started
+2019-04-08 12:04:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:04:30,EVENT,Snowboy >>> started
+2019-04-08 12:04:48,EVENT,Database >>> Taskmanagement (Sensor) >>> test >>> deleted
+2019-04-08 12:04:57,EVENT,Database >>> Taskmanagement (Sensor) >>> ztrz >>> added
+2019-04-08 12:05:06,EVENT,Database >>> Taskmanagement (Sensor) >>> ztrz >>> deleted
+2019-04-08 12:05:17,EVENT,Database >>> Taskmanagement (Sensor) >>> uztzut >>> added
+2019-04-08 12:05:47,EVENT,Database >>> Taskmanagement (Sensor) >>> tzr >>> added
+2019-04-08 12:06:43,EVENT,MQTT >>> started
+2019-04-08 12:06:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:06:47,EVENT,Snowboy >>> started
+2019-04-08 12:07:30,EVENT,MQTT >>> started
+2019-04-08 12:07:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:07:33,EVENT,Snowboy >>> started
+2019-04-08 12:12:39,EVENT,MQTT >>> started
+2019-04-08 12:12:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:12:42,EVENT,Snowboy >>> started
+2019-04-08 12:13:44,EVENT,MQTT >>> started
+2019-04-08 12:13:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:13:47,EVENT,Snowboy >>> started
+2019-04-08 12:14:53,EVENT,MQTT >>> started
+2019-04-08 12:14:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:14:57,EVENT,Snowboy >>> started
+2019-04-08 12:18:51,EVENT,MQTT >>> started
+2019-04-08 12:18:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:18:54,EVENT,Snowboy >>> started
+2019-04-08 12:19:20,EVENT,MQTT >>> started
+2019-04-08 12:19:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:19:24,EVENT,Snowboy >>> started
+2019-04-08 12:20:11,EVENT,Database >>> Taskmanagement (Sensor) >>> tzr >>> deleted
+2019-04-08 12:20:16,EVENT,Database >>> Taskmanagement (Sensor) >>> tre >>> added
+2019-04-08 12:22:09,EVENT,MQTT >>> started
+2019-04-08 12:22:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:22:13,EVENT,Snowboy >>> started
+2019-04-08 12:22:59,EVENT,MQTT >>> started
+2019-04-08 12:22:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:23:03,EVENT,Snowboy >>> started
+2019-04-08 12:24:14,EVENT,MQTT >>> started
+2019-04-08 12:24:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:24:18,EVENT,Snowboy >>> started
+2019-04-08 12:26:25,EVENT,MQTT >>> started
+2019-04-08 12:26:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:26:28,EVENT,Snowboy >>> started
+2019-04-08 12:27:50,EVENT,MQTT >>> started
+2019-04-08 12:27:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:27:53,EVENT,Snowboy >>> started
+2019-04-08 12:30:23,EVENT,MQTT >>> started
+2019-04-08 12:30:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:30:27,EVENT,Snowboy >>> started
+2019-04-08 12:31:49,EVENT,MQTT >>> started
+2019-04-08 12:31:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:31:53,EVENT,Snowboy >>> started
+2019-04-08 12:32:13,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztgf >>> added
+2019-04-08 12:32:48,EVENT,MQTT >>> started
+2019-04-08 12:32:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:32:52,EVENT,Snowboy >>> started
+2019-04-08 12:40:29,EVENT,MQTT >>> started
+2019-04-08 12:40:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:40:32,EVENT,Snowboy >>> started
+2019-04-08 12:40:45,EVENT,Database >>> Plant >>> ztr >>> added
+2019-04-08 12:40:53,EVENT,Database >>> Plant >>> test >>> deleted
+2019-04-08 12:40:55,EVENT,Database >>> Plant >>> ztr >>> deleted
+2019-04-08 12:40:59,EVENT,Database >>> Plant >>> test >>> added
+2019-04-08 12:41:11,EVENT,Database >>> Plant >>> test >>> deleted
+2019-04-08 12:41:15,EVENT,Database >>> Plant >>> gfd >>> added
+2019-04-08 12:41:27,EVENT,Database >>> Plant >>> gfd >>> deleted
+2019-04-08 12:47:07,EVENT,MQTT >>> started
+2019-04-08 12:47:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:47:10,EVENT,Snowboy >>> started
+2019-04-08 12:47:21,EVENT,Database >>> Sensordata Job >>> gfd >>> added
+2019-04-08 12:47:21,EVENT,File >>> /csv/gd.csv >>> created
+2019-04-08 12:49:41,EVENT,MQTT >>> started
+2019-04-08 12:49:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:49:44,EVENT,Snowboy >>> started
+2019-04-08 12:51:51,EVENT,MQTT >>> started
+2019-04-08 12:51:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:51:55,EVENT,Snowboy >>> started
+2019-04-08 12:52:47,EVENT,MQTT >>> started
+2019-04-08 12:52:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:52:51,EVENT,Snowboy >>> started
+2019-04-08 12:55:03,EVENT,MQTT >>> started
+2019-04-08 12:55:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:55:07,EVENT,Snowboy >>> started
+2019-04-08 12:56:49,EVENT,MQTT >>> started
+2019-04-08 12:56:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:56:52,EVENT,Snowboy >>> started
+2019-04-08 12:57:27,EVENT,MQTT >>> started
+2019-04-08 12:57:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:57:30,EVENT,Snowboy >>> started
+2019-04-08 12:58:45,EVENT,MQTT >>> started
+2019-04-08 12:58:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 12:58:49,EVENT,Snowboy >>> started
+2019-04-08 13:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 13:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-08 13:00:04,EVENT,Task >>> test >>> started
+2019-04-08 13:01:03,EVENT,MQTT >>> started
+2019-04-08 13:01:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:01:07,EVENT,Snowboy >>> started
+2019-04-08 13:02:39,EVENT,MQTT >>> started
+2019-04-08 13:02:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:02:42,EVENT,Snowboy >>> started
+2019-04-08 13:04:20,EVENT,MQTT >>> started
+2019-04-08 13:04:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:04:24,EVENT,Snowboy >>> started
+2019-04-08 13:04:56,EVENT,MQTT >>> started
+2019-04-08 13:04:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:04:59,EVENT,Snowboy >>> started
+2019-04-08 13:05:44,EVENT,MQTT >>> started
+2019-04-08 13:05:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:05:47,EVENT,Snowboy >>> started
+2019-04-08 13:09:48,EVENT,MQTT >>> started
+2019-04-08 13:09:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:09:51,EVENT,Snowboy >>> started
+2019-04-08 13:12:15,EVENT,MQTT >>> started
+2019-04-08 13:12:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:12:18,EVENT,Snowboy >>> started
+2019-04-08 13:13:13,EVENT,MQTT >>> started
+2019-04-08 13:13:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:13:16,EVENT,Snowboy >>> started
+2019-04-08 13:13:49,EVENT,MQTT >>> started
+2019-04-08 13:13:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:13:53,EVENT,Snowboy >>> started
+2019-04-08 13:17:37,EVENT,MQTT >>> started
+2019-04-08 13:17:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:17:41,EVENT,Snowboy >>> started
+2019-04-08 13:18:44,EVENT,MQTT >>> started
+2019-04-08 13:18:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:18:47,EVENT,Snowboy >>> started
+2019-04-08 13:20:28,EVENT,MQTT >>> started
+2019-04-08 13:20:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:20:31,EVENT,Snowboy >>> started
+2019-04-08 13:21:04,EVENT,MQTT >>> started
+2019-04-08 13:21:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:21:08,EVENT,Snowboy >>> started
+2019-04-08 13:21:51,EVENT,MQTT >>> started
+2019-04-08 13:21:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:21:55,EVENT,Snowboy >>> started
+2019-04-08 13:23:36,EVENT,MQTT >>> started
+2019-04-08 13:23:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:23:39,EVENT,Snowboy >>> started
+2019-04-08 13:26:45,EVENT,MQTT >>> started
+2019-04-08 13:26:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:26:48,EVENT,Snowboy >>> started
+2019-04-08 13:27:43,EVENT,MQTT >>> started
+2019-04-08 13:27:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:27:46,EVENT,Snowboy >>> started
+2019-04-08 13:28:49,EVENT,MQTT >>> started
+2019-04-08 13:28:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:28:53,EVENT,Snowboy >>> started
+2019-04-08 13:48:21,EVENT,MQTT >>> started
+2019-04-08 13:48:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:48:25,EVENT,Snowboy >>> started
+2019-04-08 13:52:44,EVENT,MQTT >>> started
+2019-04-08 13:52:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:52:47,EVENT,Snowboy >>> started
+2019-04-08 13:53:27,EVENT,MQTT >>> started
+2019-04-08 13:53:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:53:31,EVENT,Snowboy >>> started
+2019-04-08 13:56:34,EVENT,MQTT >>> started
+2019-04-08 13:56:34,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:56:37,EVENT,Snowboy >>> started
+2019-04-08 13:59:37,EVENT,MQTT >>> started
+2019-04-08 13:59:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 13:59:40,EVENT,Snowboy >>> started
+2019-04-08 14:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 14:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-08 14:00:04,EVENT,Task >>> test >>> started
+2019-04-08 14:00:53,EVENT,MQTT >>> started
+2019-04-08 14:00:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:00:57,EVENT,Snowboy >>> started
+2019-04-08 14:03:37,EVENT,MQTT >>> started
+2019-04-08 14:03:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:03:40,EVENT,Snowboy >>> started
+2019-04-08 14:04:17,EVENT,MQTT >>> started
+2019-04-08 14:04:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:04:21,EVENT,Snowboy >>> started
+2019-04-08 14:05:25,EVENT,MQTT >>> started
+2019-04-08 14:05:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:05:29,EVENT,Snowboy >>> started
+2019-04-08 14:08:08,EVENT,MQTT >>> started
+2019-04-08 14:08:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:08:12,EVENT,Snowboy >>> started
+2019-04-08 14:10:55,EVENT,MQTT >>> started
+2019-04-08 14:10:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:10:59,EVENT,Snowboy >>> started
+2019-04-08 14:11:49,EVENT,MQTT >>> started
+2019-04-08 14:11:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:11:53,EVENT,Snowboy >>> started
+2019-04-08 14:14:14,EVENT,MQTT >>> started
+2019-04-08 14:14:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:14:18,EVENT,Snowboy >>> started
+2019-04-08 14:15:19,EVENT,MQTT >>> started
+2019-04-08 14:15:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:15:23,EVENT,Snowboy >>> started
+2019-04-08 14:15:47,EVENT,MQTT >>> started
+2019-04-08 14:15:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:15:51,EVENT,Snowboy >>> started
+2019-04-08 14:16:46,EVENT,MQTT >>> started
+2019-04-08 14:16:46,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:16:50,EVENT,Snowboy >>> started
+2019-04-08 14:18:10,EVENT,MQTT >>> started
+2019-04-08 14:18:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:18:14,EVENT,Snowboy >>> started
+2019-04-08 14:19:25,EVENT,MQTT >>> started
+2019-04-08 14:19:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:19:29,EVENT,Snowboy >>> started
+2019-04-08 14:20:08,EVENT,MQTT >>> started
+2019-04-08 14:20:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:20:12,EVENT,Snowboy >>> started
+2019-04-08 14:21:03,EVENT,MQTT >>> started
+2019-04-08 14:21:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:21:07,EVENT,Snowboy >>> started
+2019-04-08 14:21:50,EVENT,MQTT >>> started
+2019-04-08 14:21:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:21:54,EVENT,Snowboy >>> started
+2019-04-08 14:23:59,EVENT,MQTT >>> started
+2019-04-08 14:23:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:24:03,EVENT,Snowboy >>> started
+2019-04-08 14:24:51,EVENT,MQTT >>> started
+2019-04-08 14:24:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:24:54,EVENT,Snowboy >>> started
+2019-04-08 14:26:03,EVENT,MQTT >>> started
+2019-04-08 14:26:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:26:07,EVENT,Snowboy >>> started
+2019-04-08 14:27:26,EVENT,MQTT >>> started
+2019-04-08 14:27:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:27:29,EVENT,Snowboy >>> started
+2019-04-08 14:28:14,EVENT,MQTT >>> started
+2019-04-08 14:28:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:28:17,EVENT,Snowboy >>> started
+2019-04-08 14:29:35,EVENT,MQTT >>> started
+2019-04-08 14:29:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:29:39,EVENT,Snowboy >>> started
+2019-04-08 14:34:48,EVENT,MQTT >>> started
+2019-04-08 14:34:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:34:52,EVENT,Snowboy >>> started
+2019-04-08 14:35:25,EVENT,MQTT >>> started
+2019-04-08 14:35:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:35:28,EVENT,Snowboy >>> started
+2019-04-08 14:36:23,EVENT,MQTT >>> started
+2019-04-08 14:36:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:36:27,EVENT,Snowboy >>> started
+2019-04-08 14:37:43,EVENT,MQTT >>> started
+2019-04-08 14:37:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:37:47,EVENT,Snowboy >>> started
+2019-04-08 14:37:58,EVENT,Database >>> Sensordata Job >>> kjl >>> added
+2019-04-08 14:37:58,EVENT,File >>> /csv/jh.csv >>> created
+2019-04-08 14:38:32,EVENT,MQTT >>> started
+2019-04-08 14:38:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:38:35,EVENT,Snowboy >>> started
+2019-04-08 14:38:38,EVENT,File >>> /csv/jh.csv >>> created
+2019-04-08 14:51:26,EVENT,MQTT >>> started
+2019-04-08 14:51:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:51:30,EVENT,Snowboy >>> started
+2019-04-08 14:53:49,EVENT,MQTT >>> started
+2019-04-08 14:53:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:53:53,EVENT,Snowboy >>> started
+2019-04-08 14:57:57,EVENT,MQTT >>> started
+2019-04-08 14:57:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 14:58:01,EVENT,Snowboy >>> started
+2019-04-08 14:58:46,EVENT,Database >>> Plant >>> zut >>> added
+2019-04-08 15:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-08 15:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-08 15:00:04,EVENT,Task >>> test >>> started
+2019-04-08 15:09:21,EVENT,MQTT >>> started
+2019-04-08 15:09:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:09:25,EVENT,Snowboy >>> started
+2019-04-08 15:10:44,EVENT,MQTT >>> started
+2019-04-08 15:10:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:10:47,EVENT,Snowboy >>> started
+2019-04-08 15:11:54,EVENT,MQTT >>> started
+2019-04-08 15:11:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:11:57,EVENT,Snowboy >>> started
+2019-04-08 15:12:36,EVENT,MQTT >>> started
+2019-04-08 15:12:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:12:39,EVENT,Snowboy >>> started
+2019-04-08 15:24:09,EVENT,MQTT >>> started
+2019-04-08 15:24:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:24:13,EVENT,Snowboy >>> started
+2019-04-08 15:25:11,EVENT,MQTT >>> started
+2019-04-08 15:25:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:25:15,EVENT,Snowboy >>> started
+2019-04-08 15:26:24,EVENT,MQTT >>> started
+2019-04-08 15:26:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:26:27,EVENT,Snowboy >>> started
+2019-04-08 15:30:27,EVENT,MQTT >>> started
+2019-04-08 15:30:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-08 15:30:31,EVENT,Snowboy >>> started

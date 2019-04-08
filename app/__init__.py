@@ -5,9 +5,11 @@ from flask_bootstrap import Bootstrap
 
 from app.components.colorpicker_local import colorpicker
 
+
 """ ###### """
 """ flasks """
 """ ###### """
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -47,6 +49,11 @@ t1 = flask_Thread()
 t1.start()
 
 
+""" ###### """
+"""  mqtt  """
+""" ###### """
+
+
 # start MQTT
 if GET_SETTING_VALUE("mqtt") == "True":
     class mqtt_Thread(threading.Thread):
@@ -69,6 +76,11 @@ if GET_SETTING_VALUE("mqtt") == "True":
     t2 = mqtt_Thread()
     t2.start()
     
+    
+""" ###### """
+""" zigbee """
+""" ###### """
+ 
  
 # start zigbee    
 if GET_SETTING_VALUE("zigbee") == "True":
@@ -86,7 +98,19 @@ if GET_SETTING_VALUE("zigbee") == "True":
     else:
         channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
         MQTT_PUBLISH(channel, "true")
-        
+
+# disable pairing
+if GET_SETTING_VALUE("zigbee") != "True":
+    try:
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "true") 
+    except:
+        pass
+
+
+""" ####### """
+""" snowboy """
+""" ####### """
 
 
 # start snowboy

@@ -110,7 +110,7 @@
                   <th scope="col">Name</th>                        
                   <th scope="col">Adresse</th> 
                   <th scope="col">Modell</th>                        
-                  <th scope="col" colspan="2">Inputs</th> 
+                  <th scope="col">Inputs</th> 
                   <th scope="col">Letzter Kontakt</th>                                                 
                 </thead>
                 <tbody> 
@@ -136,12 +136,13 @@
                           </div> 
                         </div>
                       </div>
-                    </td>                     
+                    </td>   
+                    <td>{{ entry.last_contact }}</td>  
+                    <td></td>                  
                     <td>                
                         <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
                       </form>
-                    </td>    
-                    <td>{{ entry.last_contact }}</td>     
+                    </td>      
                     <td></td>                    
                     <td><a href="/dashboard/settings/zigbee/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
