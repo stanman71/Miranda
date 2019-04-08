@@ -11,7 +11,7 @@ from app.database.database import *
 from app.components.tasks import UPDATE_MQTT_DEVICES, CHECK_MQTT
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
-from app.components.mqtt import MQTT_PUBLISH
+from app.components.mqtt import *
 
 
 # create role "superuser"

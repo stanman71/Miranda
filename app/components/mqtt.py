@@ -48,3 +48,53 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 	client.publish(MQTT_TOPIC,MQTT_MSG)
 	client.disconnect()
 	
+	
+	
+def CHECK_MQTT():
+   MQTT_PUBLISH("SmartHome/mqtt/devices", "") 
+
+
+def UPDATE_MQTT_DEVICES():
+   MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
+   time.sleep(2)
+
+   try:
+      messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
+
+      if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu MQTT":
+         for message in messages:
+
+            message = str(message[2])
+
+            data = json.loads(message)
+
+            name     = data['ieeeAddr']
+            ieeeAddr = data['ieeeAddr']
+            gateway  = "mqtt"
+            model    = data['model']
+            inputs   = data['input']
+            outputs  = data['output']
+
+            ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model, inputs, outputs)    
+   except:
+      pass
+
+
+def GET_MQTT_SENSORDATA(job_id):
+   sensordata_job  = GET_SENSORDATA_JOB(job_id)
+   device_gateway  = sensordata_job.mqtt_device.gateway
+   device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
+   sensor_id = sensordata_job.sensor_id
+ 
+   channel = "SmartHome/" + device_gateway + "/" + device_ieeeAddr + "/get"
+   MQTT_PUBLISH(channel, "")  
+
+   time.sleep(2)
+
+   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr)
+
+   for input_message in input_messages:
+      input_message = str(input_message[2])
+      
+      data = json.loads(input_message)
+      
