@@ -78,7 +78,7 @@ def dashboard_settings_mqtt():
  
         # update device list
         if request.form.get("update_mqtt_devices") != None:
-            UPDATE_MQTT_DEVICES()
+            UPDATE_MQTT_DEVICES("mqtt")
             
         # reset logfile
         if request.form.get("reset_logfile") != None: 
@@ -160,7 +160,7 @@ def dashboard_settings_zigbee():
 
     if zigbee_setting == "True":
         
-        error_message_zigbee = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")
+        error_message_zigbee = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
         
         if request.method == 'POST':
 
@@ -185,28 +185,7 @@ def dashboard_settings_zigbee():
 
             # update device list
             if request.form.get("update_zigbee_devices") is not None:
-                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
-                time.sleep(2)
-                
-                try:
-                    messages = READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log")
-                    
-                    if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
-                        for message in messages:
-                            message = str(message[2])
-                            message = message.replace("'","")
-
-                            data = json.loads(message)
-                            
-                            if (data['type']) == "devices":
-                                for device in (data['message']):
-                                    name     = device['friendly_name']
-                                    ieeeAddr = device['ieeeAddr']
-                                    gateway  = "zigbee"
-                                    model    = device['model']
-                                    ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model)
-                except:
-                    pass
+                UPDATE_MQTT_DEVICES("zigbee")
 
                 
             # change pairing setting

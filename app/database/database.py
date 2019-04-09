@@ -49,7 +49,7 @@ class MQTT_Devices(db.Model):
     gateway      = db.Column(db.String(50)) 
     ieeeAddr     = db.Column(db.String(50))  
     model        = db.Column(db.String(50))
-    inputs       = db.Column(db.Integer)
+    inputs       = db.Column(db.String(200))
     outputs      = db.Column(db.Integer)
     last_contact = db.Column(db.String(50))
 
@@ -982,7 +982,7 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
-            if device.inputs > 0:
+            if device.inputs :
                 device_list.append(device)  
                 
     return device_list
@@ -992,7 +992,7 @@ def GET_MQTT_DEVICE_NAME(id):
     return MQTT_Devices.query.filter_by(id=id).first().name
     
 
-def ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model = "", inputs = 0, outputs = 0, last_contact = ""):
+def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 0, last_contact = ""):
     # path exist ?
     check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     if check_entry is None:       
@@ -1005,8 +1005,8 @@ def ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model = "", inputs = 0, outputs = 0
                 device = MQTT_Devices(
                         id           = i,
                         name         = name,
+                        gateway      = gateway,                       
                         ieeeAddr     = ieeeAddr,
-                        gateway      = gateway,
                         model        = model,
                         inputs       = inputs,
                         outputs      = outputs,

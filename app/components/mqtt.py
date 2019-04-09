@@ -1,5 +1,6 @@
 import paho.mqtt.client as mqtt
 import datetime
+import time
 import json
 
 from app import app
@@ -56,33 +57,75 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 	
 	
 def CHECK_MQTT():
-   MQTT_PUBLISH("SmartHome/mqtt/devices", "") 
+   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
 
 
-def UPDATE_MQTT_DEVICES():
-   MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
-   time.sleep(2)
+def UPDATE_MQTT_DEVICES(gateway):
+   
+   if gateway == "mqtt":
+      
+      MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
+      time.sleep(2)
 
-   try:
-      messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
+      try:
+         messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log")
 
-      if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu MQTT":
-         for message in messages:
+         if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu MQTT":
 
-            message = str(message[2])
+            for message in messages:
+               
+               message = str(message[2])
 
-            data = json.loads(message)
+               data = json.loads(message)
+               
+               inputs_temp = str(data['input'])
+               inputs_temp = inputs_temp[1:]
+               inputs_temp = inputs_temp[:-1]
 
-            name     = data['ieeeAddr']
-            ieeeAddr = data['ieeeAddr']
-            gateway  = "mqtt"
-            model    = data['model']
-            inputs   = data['input']
-            outputs  = data['output']
+               name     = data['ieeeAddr']
+               gateway  = "mqtt"
+               ieeeAddr = data['ieeeAddr']
+               model    = data['model']
+               inputs   = inputs_temp
+               outputs  = data['output']
 
-            ADD_MQTT_DEVICE(name, ieeeAddr, gateway, model, inputs, outputs)    
-   except:
-      pass
+               ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, inputs, outputs)  
+
+      except:
+	      pass
+
+   if gateway == "zigbee":
+
+      MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
+      time.sleep(2)
+       
+      try:
+         messages = READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log")
+         
+         if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
+            for message in messages:
+                  message = str(message[2])
+                  message = message.replace("'","")
+
+                  data = json.loads(message)
+                  
+                  if (data['type']) == "devices":
+                     for device in (data['message']):
+			
+
+                        print(device)
+			
+                        name     = device['friendly_name']
+                        gateway  = "zigbee"                        
+                        ieeeAddr = device['ieeeAddr']
+                        model    = device['model']
+
+                        ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model)
+
+                        time.sleep(1)
+      
+      except:
+	      pass	      
 
 
 def GET_MQTT_SENSORDATA(job_id):
