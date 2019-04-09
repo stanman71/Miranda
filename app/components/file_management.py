@@ -107,19 +107,24 @@ def GET_SENSORDATA_FILES():
 
 
 def CREATE_SENSORDATA_FILE(filename):
-    try:
-        # create csv file
-        file = PATH + "/csv/" + filename + ".csv"
-        with open(file, 'w', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
-            filewriter.writerow(['Timestamp','Device','Sensor','Sensor_Value'])
-            csvfile.close()
+    if os.path.isfile(PATH + "/csv/" + filename + ".csv") is False:
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + ".csv >>> created") 
-        return "" 
-            
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
+        try:
+            # create csv file
+            file = PATH + "/csv/" + filename + ".csv"
+            with open(file, 'w', encoding='utf-8') as csvfile:
+                filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                       
+                filewriter.writerow(['Timestamp','Device','Sensor','Sensor_Value'])
+                csvfile.close()
+
+            WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filename + ".csv >>> created") 
+            return "" 
+                
+        except Exception as e:
+            WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
+
+    else:
+        return ""
 
 
 def WRITE_SENSORDATA_FILE(filename, device, sensor, value):

@@ -37,7 +37,6 @@ def dashboard_sensordata():
     set_mqtt_device_name = ""
     set_checkbox = ""
 
-    
     if request.method == 'POST':
         if request.form.get("add_job") is not None: 
 
@@ -82,30 +81,44 @@ def dashboard_sensordata():
 
 
         # change settings
-        for i in range (1,25):
-            if request.form.get("change_settings_" + str(i)) != None: 
-                if request.form.get("set_sensor") != "None":
-                    # set sensor_id + always_active
-                    sensor_id = request.form.get("set_sensor")
-                    
-                    if request.form.get("checkbox_table"):
-                        always_active = "checked"
-                    else:
-                        always_active = ""                       
-                    
-                    SET_SENSORDATA_JOB(i, int(sensor_id), always_active)
-                    
-                else:
-                    # set sensor_id
-                    if request.form.get("checkbox_table"):
-                        always_active = "checked"
-                    else:
-                        always_active = ""                       
-                    
-                    SET_SENSORDATA_JOB_WITHOUT_SENSOR(i, always_active)                   
-                    
-                    error_message_table = "Keinen Sensor angegeben"
+        if request.form.get("change_settings") != None: 
+            for i in range (1,25):
 
+                if request.form.get("set_sensor_" + str(i)) != None:  
+
+                    # set sensor_id + mqtt_device_id + always_active
+                    if request.form.get("set_sensor_" + str(i)) != "None":
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i)) 
+
+                        if request.form.get("checkbox_table_" + str(i)):
+                            always_active = "checked"
+                        else:
+                            always_active = ""  
+
+                        if int(mqtt_device_id) == GET_SENSORDATA_JOB(i).mqtt_device_id:
+                            sensor_id = request.form.get("set_sensor_" + str(i))
+                            SET_SENSORDATA_JOB(i, int(sensor_id), int(mqtt_device_id), always_active)
+
+                        else:
+                            # reset sensor_id if device changes
+                            name = GET_SENSORDATA_JOB(i).name
+                            filename = GET_SENSORDATA_JOB(i).filename
+                            DELETE_SENSORDATA_JOB(i, "No_Log")
+                            ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active, "Log_Change")
+
+
+                    # set mqtt_device_id + always_active    
+                    else:
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i)) 
+
+                        if request.form.get("checkbox_table_" + str(i)):
+                            always_active = "checked"
+                        else:
+                            always_active = ""                       
+                        
+                        SET_SENSORDATA_JOB_WITHOUT_SENSOR(i, int(mqtt_device_id), always_active)                   
+                        
+    error_message_table = CHECK_SENSORDATA_JOBS()
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     sensordata_list = GET_ALL_SENSORDATA_JOBS()

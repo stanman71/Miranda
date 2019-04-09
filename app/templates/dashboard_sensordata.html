@@ -41,6 +41,8 @@
 </nav>
 <br>
 
+<section id="table"></section>  
+
 <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
     <div class="row">
       <div class="col">
@@ -63,8 +65,8 @@
               <table class="table">
                 <thead>
                   <th scope="col">Job-ID</th>  
-                  <th scope="col">Name</th>  
-                  <th scope="col">Dateiname</th>   
+                  <th scope="col">Job-Name</th>  
+                  <th scope="col">Datei-Name</th>   
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th>
                   <th scope="col">Daten immer speichern</th>
@@ -75,43 +77,47 @@
                     <td>{{ entry.id }}</td> 
                     <td>{{ entry.name }}</td> 
                     <td>{{ entry.filename }}</td>
-                    <td>{{ entry.mqtt_device.name }}</td> 
-                    <td> 
-                      <form method="POST" class="verticalform">  
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-4">                       
-                            <select class="btn btn-default dropdown-toggle" name="set_sensor">
-                              <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                              <option value= "{{ entry.sensor_id }}" > ----- </option>
-                              {% for i in range(entry.mqtt_device.inputs) %}
-                              <option value= "{{ i }}" > {{ i }} </option>
-                              {% endfor %}
-                            </select>  
-                          </div>
+                    <td>
+                      <form method="POST" class="verticalform">
+                        <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                          <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
+                          <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
+                          {% for each in dropdown_list_mqtt_devices %}
+                            <option value="{{ each.id }}"> {{ each.name }} </option>
+                          {% endfor %}
+                        </select> 
+                    </td>
+                    <td>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-4">                       
+                          <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                            <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                            <option value= "{{ entry.sensor_id }}" > ----- </option>
+                            {% for i in range(entry.mqtt_device.inputs) %}
+                            <option value= "{{ i }}" > {{ i }} </option>
+                            {% endfor %}
+                          </select>  
                         </div>
+                      </div>
                     </td> 
                     <td>
                       <div class="row justify-content-md-center">
                         <div class="checkbox">
                           <label>
-                           <input type="checkbox" {{ entry.always_active }} name="checkbox_table" >
+                           <input type="checkbox" {{ entry.always_active }} name="checkbox_table_{{ entry.id }}" >
                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
                           </label>
                         </div>  
                        </div>          
-                    </td>     
-                    <td></td>         
-                    <td>
-                        <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>             
-                      </form>
-                    </td>   
-                    <td></td>            
+                    </td>                
                     <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
+              <input type="submit" onclick="window.location.href='/dashboard/sensordata#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+            </form> 
           </div>  
         </div>  
 
@@ -137,12 +143,12 @@
 </div>      
 {% endif %}                  
 
-                  <div class="well well-sm">Name:     
+                  <div class="well well-sm">Job-Name:     
                     <div class="form-group">
                       <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
                     </div>
                   </div>
-                  <div class="well well-sm">Dateiname:   
+                  <div class="well well-sm">Datei-Name:   
                     <div class="form-group">
                       <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
                     </div>
@@ -159,7 +165,7 @@
                             <option value= "{{ set_mqtt_device_id }}" > ----- </option>                     
                           {% endif %}                         
                           {% for each in dropdown_list_mqtt_devices %}
-                          <option value="{{each.id}}"> {{ each.name }} </option>
+                          <option value="{{ each.id }}"> {{ each.name }} </option>
                           {% endfor %}
                         </select> 
                       </div>

@@ -44,6 +44,8 @@
   <div class="row">
     <div class="col">
 
+<section id="table"></section> 
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
@@ -70,7 +72,7 @@
               
               <table class="table">
                 <thead>                       
-                  <th scope="col">Name</th> 
+                  <th scope="col">Aufgaben-Name</th> 
                   <th scope="col">Aufgabe</th> 
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th> 
@@ -81,11 +83,28 @@
                   {% for entry in schedular_list %}
                   <tr>
                     <td>{{ entry.name }}</td> 
-                    <td>{{ entry.task }}</td> 
-                    <td>{{ entry.mqtt_device.name }}</td> 
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-10">    
+                          <form method="POST" class="verticalform">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />
+                          </div>   
+                        </div> 
+                      </div>
+                    </td>
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                        <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
+                        <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
+                        {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{ each.id }}"> {{ each.name }} </option>
+                        {% endfor %}
+                      </select> 
+                    </td> 
                     <td> 
                       <form method="POST" class="verticalform">      
-                        <select class="btn btn-default dropdown-toggle" name="set_sensor">
+                        <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                           <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
                           <option value= "{{ entry.sensor_id }}" > ----- </option>
                           {% for i in range(entry.mqtt_device.inputs) %}
@@ -94,7 +113,7 @@
                         </select>  
                       </td> 
                       <td>
-                        <select class="btn btn-default dropdown-toggle" name="set_operator">
+                        <select class="btn btn-default dropdown-toggle" name="set_operator_{{ entry.id }}">
                           <option value= "{{ entry.operator }}" > {{ entry.operator }} </option>
                           <option value= "{{ entry.operator }}" > ----- </option>
                           {% for each in dropdown_list_operators %}
@@ -104,24 +123,23 @@
                       </td>
                       <td>          
                         <div class="row justify-content-md-center">
-                          <div class="col-sm-6">                       
+                          <div class="col-sm-10">                       
                             <div class="form-group">
-                              <input type="text" class="form-control" name="set_value" value="{% if entry.value != None %}{{ entry.value }}{% endif %}" /> 
+                              <input type="text" class="form-control" name="set_value_{{ entry.id }}" value="{{ entry.value }}" /> 
                             </div>
                           </div>
-                        <div class="col-sm-4"> 
-                          <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
                         </div>
-                      </form>
-                    </td> 
-                    <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#"><font color="red"><b>löschen</b></font></a></td>  
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>  
-            </div>
+                      </td> 
+                      <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>  
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>  
+              </div>
+                <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              </form>
+            </div>  
           </div>  
-        </div>  
 
  <!-- instructions -->
 
@@ -178,7 +196,7 @@
 <!-- new task -->
 
             <form method="POST">
-              <div class="well well-sm">Name:         
+              <div class="well well-sm">Aufgaben-Name:         
                 <div class="form-group">
                   <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
                 </div>         

@@ -61,7 +61,7 @@
  
               <table class="table">
                 <thead>
-                  <th scope="col">Name</th>   
+                  <th scope="col">Pflanzen-Name</th>   
                   <th scope="col">Gerät</th>  
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>    
@@ -72,19 +72,27 @@
                   {% for entry in plants_list %}
                   <tr>
                     <td>{{ entry.name }}</td> 
-                    <td>{{ entry.mqtt_device.name }}</td>                                     
-                    <td> 
-                      <form method="POST" class="verticalform">      
-                        <select class="btn btn-default dropdown-toggle" name="set_sensor">
-                          <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                          <option value= "{{ entry.sensor_id }}" > ----- </option>
-                          {% for i in range(entry.mqtt_device.inputs) %}
-                          <option value= "{{ i }}" > {{ i }} </option>
-                          {% endfor %}
-                        </select>   
+                    <td>
+                      <form method="POST" class="verticalform">
+                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                        <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
+                        <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
+                        {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{ each.id }}"> {{ each.name }} </option>
+                        {% endfor %}
+                      </select> 
+                    </td>                                     
+                    <td>     
+                      <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                        <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
+                        <option value= "{{ entry.sensor_id }}" > ----- </option>
+                        {% for i in range(entry.mqtt_device.inputs) %}
+                        <option value= "{{ i }}" > {{ i }} </option>
+                        {% endfor %}
+                      </select>   
                     </td>                     
                     <td>                
-                        <select class="btn btn-default dropdown-toggle" name="set_pump">
+                        <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
                           <option value= "{{ entry.pump_id }}" > {{ entry.pump_id }} </option>
                           <option value= "{{ entry.pump_id }}" > ----- </option> 
                           {% for i in range(entry.mqtt_device.outputs) %}
@@ -93,7 +101,7 @@
                         </select> 
                     </td> 
                     <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_watervolume">
+                      <select class="btn btn-default dropdown-toggle" name="set_watervolume_{{ entry.id }}">
                         <option value= "{{ entry.watervolume }}" > {{ entry.watervolume }} </option>
                         <option value= "{{ entry.watervolume }}" > ----- </option>
                         {% for each in dropdown_list_watervolume %}
@@ -104,19 +112,19 @@
                     <td>
                         {{ entry.moisture_percent }} %
                         <class="slidecontainer"> 
-                          <input type="range" class="slider" name="set_moisture" min="0" max="100" value="{{ entry.moisture_percent }}" />
+                          <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
                         </class>
-                    </td>                        
-                    <td>
-                        <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
-                      </form>
-                    </td>
+                    </td>  
+                    <td></td>  
+                    <td></td>                     
                     <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
+              <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+            </form>  
           </div>  
         </div>  
 
@@ -142,7 +150,7 @@
 </div>      
 {% endif %}                    
 
-                    <div class="well well-sm">Name:
+                    <div class="well well-sm">Pflanzen-Name:
                       <input type="text" class="form-control" name="set_name" value="" />
                     </div>
                   <div class="well well-sm">

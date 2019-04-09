@@ -122,20 +122,14 @@
                     <td>                     
                       <form method="POST" class="verticalform">                                                     
                       <div class="form-group">
-                        <input type="text" class="form-control" name="set_name" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
+                        <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                       </div>
                     </td>
                     <td>{{ entry.ieeeAddr }}</td>
                     <td>{{ entry.model }}</td> 
                     <td>{{ entry.inputs }}</td> 
                     <td>{{ entry.outputs }}</td> 
-                    <td>{{ entry.last_contact }}</td> 
-                    <td></td>
-                    <td>                
-                        <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
-                      </form>
-                    </td>  
-                    <td></td>                   
+                    <td>{{ entry.last_contact }}</td>                   
                     <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
@@ -145,9 +139,17 @@
             <font color="red"><b>MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
             <br>
             <br>
-            <form method="POST">
-              <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="update_mqtt_devices" value="Übersicht aktuallisieren" />
-            </form>
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">      
+                <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              </form> 
+              </div>
+              <div class="col-sm-2"> 
+                <form method="POST">
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="update_mqtt_devices" value="Verbindungen aktuallisieren" />
+                </form>
+              </div>
+            </div>
           </div>  
         </div>  
 

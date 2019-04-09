@@ -44,6 +44,8 @@
   <div class="row">
     <div class="col">
 
+<section id="table"></section> 
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
@@ -61,7 +63,7 @@
             <div class="well well-sm">
               <table class="table">
                 <thead>                       
-                  <th scope="col">Name</th> 
+                  <th scope="col">Aufgaben-Name</th> 
                   <th scope="col">Aufgabe</th>                 
                   <th scope="col">Tag</th> 
                   <th scope="col">Stunde</th> 
@@ -72,17 +74,70 @@
                   {% for entry in schedular_list %}
                   <tr>
                     <td>{{ entry.name }}</td> 
-                    <td>{{ entry.task }}</td>                   
-                    <td>{{ entry.day }}</td> 
-                    <td>{{ entry.hour }}</td> 
-                    <td>{{ entry.minute }}</td> 
-                    <td>{{ entry.repeat }}</td> 
-                    <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#"><font color="red"><b>löschen</b></font></a></td>  
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-10">    
+                          <form method="POST" class="verticalform">
+                          <div class="form-group">
+                            <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />
+                          </div>   
+                        </div> 
+                      </div>
+                    </td>
+                    <td>                   
+                      <select class="btn btn-default dropdown-toggle" name="set_day_{{ entry.id }}">
+                        <option value= "{{ entry.day }}" > {{ entry.day }} </option>
+                        <option value= "{{ entry.day }}" > ----- </option>                          
+                        <option value="*">*</option>
+                        {% for each in dropdown_list_days %}
+                        {% if each != None %}
+                        <option value="{{ each }}">{{ each }}</option>
+                        {% endif %}
+                        {% endfor %}              
+                      </select>
+                    </td> 
+                    <td>                  
+                      <select class="btn btn-default dropdown-toggle" name="set_hour_{{ entry.id }}">
+                        <option value= "{{ entry.hour }}" > {{ entry.hour }} </option>
+                        <option value= "{{ entry.hour }}" > ----- </option>                          
+                        <option value="*">*</option>
+                        {% for each in dropdown_list_hours %}
+                        {% if each != None %}
+                        <option value="{{ each }}">{{ each }}</option>
+                        {% endif %}
+                        {% endfor %}              
+                      </select>      
+                    </td>
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_minute_{{ entry.id }}">
+                        <option value= "{{ entry.minute }}" > {{ entry.minute }} </option>
+                        <option value= "{{ entry.minute }}" > ----- </option>                          
+                        <option value="*">*</option>
+                        {% for each in dropdown_list_minutes %}
+                        {% if each != None %}
+                        <option value="{{ each }}">{{ each }}</option>
+                        {% endif %}
+                        {% endfor %}              
+                      </select> 
+                    </td>                         
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" {{ entry.repeat }} name="checkbox_table_{{ entry.id }}" >
+                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                          </label>
+                        </div>  
+                      </div>          
+                    </td>
+                    <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>  
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
+              <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+            </form> 
           </div>  
         </div>  
 
@@ -154,7 +209,7 @@
 <!-- new task -->
 
             <form method="POST"> 
-              <div class="well well-sm">Name:  
+              <div class="well well-sm">Aufgaben-Name:  
                 <div class="form-group">
                   <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
                 </div>     
@@ -177,10 +232,10 @@
                         <option value= "{{ set_day }}" > {{ set_day }} </option>
                         <option value= "{{ set_day }}" > ----- </option>     
                       {% endif %}                       
-                      <option value="*">immer (*)</option>
+                      <option value="*">*</option>
                       {% for each in dropdown_list_days %}
                       {% if each != None %}
-                      <option value="{{each}}">{{each}}</option>
+                      <option value="{{ each }}">{{ each }}</option>
                       {% endif %}
                       {% endfor %}              
                     </select>
@@ -197,10 +252,10 @@
                         <option value= "{{ set_hour }}" > {{ set_hour }} </option>
                         <option value= "{{ set_hour }}" > ----- </option>  
                       {% endif %}      
-                      <option value="*">immer (*)</option>
+                      <option value="*">*</option>
                       {% for each in dropdown_list_hours %}
                       {% if each != None %}
-                      <option value="{{each}}">{{each}}</option>
+                      <option value="{{ each }}">{{ each }}</option>
                       {% endif %}
                       {% endfor %}
                     </select>  
@@ -217,10 +272,10 @@
                         <option value= "{{ set_minute }}" > {{ set_minute }} </option>
                         <option value= "{{ set_minute }}" > ----- </option>       
                       {% endif %} 
-                      <option value="*">immer (*)</option>
+                      <option value="*">*</option>
                       {% for each in dropdown_list_minutes %}
                       {% if each != None %}
-                      <option value="{{each}}">{{each}}</option>
+                      <option value="{{ each }}">{{ each }}</option>
                       {% endif %}
                       {% endfor %}
                     </select>  

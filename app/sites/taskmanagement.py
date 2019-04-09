@@ -47,7 +47,8 @@ def dashboard_taskmanagement_time():
     set_checkbox = ""
 
     if request.method == "POST": 
-        
+
+        # add task
         if request.form.get("add_task") is not None:
 
             if request.form.get("set_name") == "":
@@ -81,22 +82,59 @@ def dashboard_taskmanagement_time():
             else:         
                 # add new task
                 name   = request.form.get("set_name")
+                task   = request.form.get("set_task")
                 day    = request.form.get("set_day") 
                 hour   = request.form.get("set_hour") 
                 minute = request.form.get("set_minute")
-                task   = request.form.get("set_task")
                 
                 if request.form.get("checkbox"):
-                    repeat = "*"
+                    repeat = "checked"
                 else:
                     repeat = ""
 
-                error_message = ADD_TASKMANAGEMENT_TIME_TASK(name, day, hour, minute, task, repeat)             
+                error_message = ADD_TASKMANAGEMENT_TIME_TASK(name, task, day, hour, minute, repeat)             
  
+
+        # change settings
+        if request.form.get("change_settings") != None: 
+            for i in range (1,25):
+
+                if request.form.get("set_task_" + str(i)) != None:
+
+                    # set task + day + hour + minute
+                    if request.form.get("set_task_" + str(i)) != "":
+
+                        task   = request.form.get("set_task_" + str(i))
+                        day    = request.form.get("set_day_" + str(i))
+                        hour   = request.form.get("set_hour_" + str(i))
+                        minute = request.form.get("set_minute_" + str(i))
+
+                        if request.form.get("checkbox_table_" + str(i)):
+                            repeat = "checked"
+                        else:
+                            repeat = ""  
+
+                        SET_TASKMANAGEMENT_TIME_TASK(i, task, day, hour, minute, repeat)
+
+                    # day + hour + minute
+                    else:
+
+                        day    = request.form.get("set_day_" + str(i))
+                        hour   = request.form.get("set_hour_" + str(i))
+                        minute = request.form.get("set_minute_" + str(i))
+
+                        if request.form.get("checkbox_table_" + str(i)):
+                            repeat = "checked"
+                        else:
+                            repeat = ""  
+
+                        SET_TASKMANAGEMENT_TIME_TASK_WITHOUT_TASK(i, day, hour, minute, repeat)
+
+
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
 
     # dropdown values
-    dropdown_list_days    = ["Mon", "Thu", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    dropdown_list_days    = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
     dropdown_list_hours   = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
                              "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
     dropdown_list_minutes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
@@ -151,7 +189,7 @@ def dashboard_taskmanagement_sensor():
     
 
     if request.method == "POST": 
-        if request.form.get("add_task") is not None:
+        if request.form.get("add_task") != None:
 
             if request.form.get("set_name") == "":
                 # missing name 
@@ -191,36 +229,84 @@ def dashboard_taskmanagement_sensor():
                 error_message = ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value)             
  
         # change settings
-        for i in range (1,25):
-            if request.form.get("change_settings_" + str(i)) != None: 
-                
-                if request.form.get("set_sensor") != "None" and request.form.get("set_value") != "":
-                    # set sensor + operator + value
-                    sensor_id = request.form.get("set_sensor")   
-                    operator = request.form.get("set_operator")   
-                    value = request.form.get("set_value") 
-                    SET_TASKMANAGEMENT_SENSOR(i, sensor_id, operator, value)                        
-                        
-                elif request.form.get("set_sensor") != "None" and request.form.get("set_value") == "":
-                    # set sensor + operator
-                    sensor_id = request.form.get("set_sensor")   
-                    operator = request.form.get("set_operator")   
-                    value = ""
-                    SET_TASKMANAGEMENT_SENSOR(i, sensor_id, operator, value)
-                    
-                    error_message_table = "Keinen Vergleichswert angegeben"                 
-   
-                elif request.form.get("set_sensor") == "None" and request.form.get("set_value") != "":
-                    # set operator + value
-                    operator = request.form.get("set_operator")  
-                    value = request.form.get("set_value") 
-                    SET_TASKMANAGEMENT_SENSOR_WITHOUT_SENSOR(i, operator, value)  
-                    
-                    error_message_table = "Keinen Sensor angegeben"
-                
-                else:
-                    error_message_table = "Keinen Sensor und keinen Vergleichswert angegeben"                                            
-                    
+        if request.form.get("change_settings") != None:
+            for i in range (1,25): 
+
+                if request.form.get("set_task_" + str(i)) != None:
+
+                    # set task + mqtt_device_id + operator + sensor_id + value
+                    if request.form.get("set_task_" + str(i)) != "" and request.form.get("set_value_" + str(i)) != "":
+
+                        task   = request.form.get("set_task_" + str(i))
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
+                        operator = request.form.get("set_operator_" + str(i))   
+                        value = request.form.get("set_value_" + str(i)) 
+                      
+                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
+                            sensor_id = request.form.get("set_sensor_" + str(i))
+                            SET_TASKMANAGEMENT_SENSOR_TASK(i, task, mqtt_device_id, sensor_id, operator, value)
+
+                        else:
+                            # reset sensor_id if device changes
+                            name = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
+                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
+                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
+
+                    # set mqtt_device_id + operator + sensor_id + value
+                    if request.form.get("set_task_" + str(i)) == "" and request.form.get("set_value_" + str(i)) != "":
+
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
+                        operator = request.form.get("set_operator_" + str(i))   
+                        value = request.form.get("set_value_" + str(i))
+
+                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
+                            sensor_id = request.form.get("set_sensor_" + str(i))
+                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_TASK(i, mqtt_device_id, sensor_id, operator, value)
+
+                        else:
+                            # reset sensor_id if device changes
+                            name = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
+                            task = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).task
+                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
+                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
+
+                    # set task + mqtt_device_id + operator + sensor_id
+                    if request.form.get("set_task_" + str(i)) != "" and request.form.get("set_value_" + str(i)) == "":
+
+                        task   = request.form.get("set_task_" + str(i))
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
+                        operator = request.form.get("set_operator_" + str(i))   
+                      
+                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
+                            sensor_id = request.form.get("set_sensor_" + str(i))
+                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_VALUE(i, task, mqtt_device_id, sensor_id, operator)
+
+                        else:
+                            # reset sensor_id if device changes
+                            name  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
+                            value = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).value
+                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
+                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
+                                  
+                    # set mqtt_device_id + operator + sensor_id
+                    if request.form.get("set_task_" + str(i)) == "" and request.form.get("set_value_" + str(i)) == "":
+
+                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
+                        operator = request.form.get("set_operator_" + str(i))   
+
+                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
+                            sensor_id = request.form.get("set_sensor_" + str(i))
+                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_TASK_AND_VALUE(i, mqtt_device_id, sensor_id, operator)
+
+                        else:
+                            # reset sensor_id if device changes
+                            name  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
+                            task  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).task
+                            value = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).value
+                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
+                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
+
+    error_message_table = CHECK_TASKMANAGEMENT_SENSOR_TASKS()
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators    = ["==", ">", "<"]

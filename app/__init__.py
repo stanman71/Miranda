@@ -88,7 +88,7 @@ if GET_SETTING_VALUE("zigbee") == "True":
     time.sleep(3)
     
     if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
-        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> Keine Verbindung") 
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection") 
     
     # set pairing setting  
     pairing_setting = GET_ZIGBEE_PAIRING()    

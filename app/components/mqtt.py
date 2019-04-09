@@ -39,15 +39,20 @@ def MQTT_START():
 
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
-	def on_publish(client, userdata, mid):
-		print ("Message Published...")
 
-	client = mqtt.Client()
-	client.on_publish = on_publish
-	client.connect(BROKER_ADDRESS) 
-	client.publish(MQTT_TOPIC,MQTT_MSG)
-	client.disconnect()
-	
+   try:
+      def on_publish(client, userdata, mid):
+         print ("Message Published...")
+               
+      client = mqtt.Client()
+      client.on_publish = on_publish
+      client.connect(BROKER_ADDRESS) 
+      client.publish(MQTT_TOPIC,MQTT_MSG)
+      client.disconnect()
+      return ""
+
+   except:
+      return "Keine Verbindung zu ZigBee2MQTT"
 	
 	
 def CHECK_MQTT():

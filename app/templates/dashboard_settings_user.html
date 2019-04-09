@@ -77,26 +77,35 @@
             <table class="table">
               <thead>
                 <tr>
-                <th scope="col">Benutzername</th>
+                <th scope="col">Benutzer-Name</th>
                 <th scope="col">eMail</th>
+                <th scope="col">Rolle</th>                
                 <th scope="col">eMail Benachrichtigung</th>
-                <th scope="col">Rolle</th>
                 <tr>
               </thead>
               <tbody>
                 {% for user in user_list %}
                 <tr>
                   <td>{{ user.username }}</td>
-                  <td>{{ user.email }}</td>  
+                  <td>{{ user.email }}</td> 
                   <td>
-                  <form method="POST">
+                    <form method="POST">
+                    <select class="btn btn-default dropdown-toggle" name="set_role_{{ user.id }}">
+                      <option value= "{{ user.role }}" > {{ user.role }} </option>
+                      <option value= "{{ user.role }}" > ----- </option>                      
+                      {% for each in dropdown_list_roles %}
+                      <option value="{{each}}"> {{ each }} </option>
+                      {% endfor %}
+                    </select>
+                  </td>                    
+                  <td>
                     <div class="form-check">
                       <div class="row justify-content-md-center">
                         <div class="col-sm-7">                       
                           Information
                         </div>
                         <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info">
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info_{{ user.id }}">
                         </div>
                       </div>
                       <div class="row justify-content-md-center">
@@ -104,7 +113,7 @@
                           Fehler
                         </div>
                         <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error">
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error_{{ user.id }}">
                         </div>
                       </div>     
                       <div class="row justify-content-md-center">
@@ -112,29 +121,18 @@
                           Kamera
                         </div>
                         <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera">
+                          <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera_{{ user.id }}">
                         </div>
                       </div>                          
-                  </td> 
-                  <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_role">
-                      <option value= "{{ user.role }}" > {{ user.role }} </option>
-                      <option value= "{{ user.role }}" > ----- </option>                      
-                      {% for each in dropdown_list_roles %}
-                      <option value="{{each}}"> {{ each }} </option>
-                      {% endfor %}
-                    </select>
                   </td>    
-                  <td>
-                    <input type="submit" onclick="window.location.href='/dashboard/settings/user#table'" class="btn btn-default" name="change_user_settings_{{ user.id }}" value="aktuallisieren" />
-                  </form> 
-                  </td> 
                   <td><a href="/dashboard/settings/user/delete/{{ user.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
                 </tr>
                 {% endfor %}
               </tbody>
             </table>
           </div>
+            <input type="submit" onclick="window.location.href='/dashboard/settings/user#table'" class="btn btn-default" name="change_user_settings" value="Änderungen speichern" />
+          </form> 
         </div>  
       </div>        
     </div>

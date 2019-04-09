@@ -69,19 +69,19 @@ def dashboard_settings_mqtt():
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
 
         # change settings
-        for i in range (1,25):
-            if request.form.get("change_settings_" + str(i)) is not None: 
-                # rename devices
-                if request.form.get("set_name"):
-                    new_name = request.form.get("set_name") 
-                    SET_MQTT_DEVICE_NAME(i, new_name)
+        if request.form.get("change_settings") != None:    
+            for i in range (1,25):
+                if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
+                    # rename devices
+                    new_name = request.form.get("set_name_" + str(i)) 
+                    SET_MQTT_DEVICE_MQTT(i, new_name)
  
         # update device list
-        if request.form.get("update_mqtt_devices") is not None:
+        if request.form.get("update_mqtt_devices") != None:
             UPDATE_MQTT_DEVICES()
             
         # reset logfile
-        if request.form.get("reset_logfile") is not None: 
+        if request.form.get("reset_logfile") != None: 
             print("OK")
             RESET_LOGFILE("log_mqtt")   
             
@@ -160,25 +160,29 @@ def dashboard_settings_zigbee():
 
     if zigbee_setting == "True":
         
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")
+        error_message_zigbee = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")
         
         if request.method == 'POST':
 
             # change settings
-            for i in range (1,25):
-                if request.form.get("change_settings_" + str(i)) is not None: 
-                    # rename devices
-                    if request.form.get("set_name"):
-                        new_name = request.form.get("set_name") 
-                        old_name = GET_MQTT_DEVICE_NAME(i)
-                        SET_MQTT_DEVICE_NAME(i, new_name)
-                        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
-                                     '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
-                    # change inputs                 
-                    if request.form.get("set_inputs"):
-                        inputs = request.form.get("set_inputs")    
-                        SET_MQTT_DEVICE_INPUTS(i, int(inputs))
+            if request.form.get("change_settings") != None:
+                for i in range (1,25):
+                    # set name + inputs
+                    if (request.form.get("set_name_" + str(i)) != "" and
+                        request.form.get("set_inputs_" + str(i)) != "" and
+                        request.form.get("set_name_" + str(i)) != None):
+                            
+                        new_name = request.form.get("set_name_" + str(i))
+                        old_name = GET_MQTT_DEVICE_NAME(i) 
                         
+                        if new_name != old_name:
+                            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
+                                         '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
+
+                        inputs = request.form.get("set_inputs_" + str(i))         
+                        SET_MQTT_DEVICE_ZigBee(i, new_name, int(inputs))
+                   
+
             # update device list
             if request.form.get("update_zigbee_devices") is not None:
                 MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
@@ -229,7 +233,7 @@ def dashboard_settings_zigbee():
 
     if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
         error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
-        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> Keine Verbindung")
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection")
 
     zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
 
@@ -475,27 +479,31 @@ def dashboard_settings_user():
     error_message = ""
 
     if request.method == "POST":     
-        # change email notification
-        for i in range (1,25): 
-            if request.form.get("change_user_settings_" + str(i)) is not None:
-                if request.form.get("checkbox_info"):
-                    email_notification_info = "checked"
-                else:
-                    email_notification_info = ""
-                if request.form.get("checkbox_error"):
-                    email_notification_error = "checked"
-                else:
-                    email_notification_error = ""
-                if request.form.get("checkbox_camera"):
-                    email_notification_camera = "checked"
-                else:
-                    email_notification_camera = ""
+        # change user settings
+        if request.form.get("change_user_settings") != None:
+            for i in range (1,25): 
+                
+                if request.form.get("set_role_" + str(i)) != None:
 
-                SET_EMAIL_NOTIFICATION(i, email_notification_info, email_notification_error, email_notification_camera)
+                    # change user role
+                    role = request.form.get("set_role_" + str(i))
 
-                # change user role
-                role = request.form.get("set_role")
-                CHANGE_USER_ROLE(i, role)
+                    # change email notification
+                    if request.form.get("checkbox_info_" + str(i)):
+                        email_notification_info = "checked"
+                    else:
+                        email_notification_info = ""
+                    if request.form.get("checkbox_error_" + str(i)):
+                        email_notification_error = "checked"
+                    else:
+                        email_notification_error = ""
+                    if request.form.get("checkbox_camera_" + str(i)):
+                        email_notification_camera = "checked"
+                    else:
+                        email_notification_camera = ""
+           
+                    SET_USER_SETTINGS(i, role, email_notification_info, email_notification_error, email_notification_camera)
+
 
     user_list = GET_ALL_USERS()
     dropdown_list_roles = ["guest", "user", "superuser"]

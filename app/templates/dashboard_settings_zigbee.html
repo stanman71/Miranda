@@ -121,7 +121,7 @@
                       <div class="row justify-content-md-center">
                         <div class="col-sm-12">                                                     
                           <div class="form-group">
-                            <input type="text" class="form-control" name="set_name" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
+                            <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                           </div>
                         </div>
                       </div>
@@ -132,18 +132,12 @@
                       <div class="row justify-content-md-center">
                         <div class="col-sm-10">                          
                           <div class="form-group">
-                            <input type="text" class="form-control" name="set_inputs" value="{% if entry.inputs != None %}{{ entry.inputs }}{% endif %}" /> 
+                            <input type="text" class="form-control" name="set_inputs_{{ entry.id }}" value="{% if entry.inputs != None %}{{ entry.inputs }}{% endif %}" /> 
                           </div> 
                         </div>
                       </div>
                     </td>   
-                    <td>{{ entry.last_contact }}</td>  
-                    <td></td>                  
-                    <td>                
-                        <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings_{{ entry.id }}" value="aktuallisieren"/>
-                      </form>
-                    </td>      
-                    <td></td>                    
+                    <td>{{ entry.last_contact }}</td>                      
                     <td><a href="/dashboard/settings/zigbee/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
@@ -153,9 +147,17 @@
             <font color="red"><b>ZigBee Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
             <br>
             <br>
-            <form method="POST">
-              <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="update_zigbee_devices" value="Übersicht aktuallisieren" />
-            </form>
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">                
+                <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              </form>
+              </div>
+              <div class="col-sm-2"> 
+                <form method="POST">
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="update_zigbee_devices" value="Verbindungen aktuallisieren" />
+                </form>
+              </div>
+            </div>
           </div>  
         </div>  
 
