@@ -128,10 +128,11 @@ def UPDATE_MQTT_DEVICES(gateway):
 
 
 def GET_MQTT_SENSORDATA(job_id):
-   sensordata_job  = GET_SENSORDATA_JOB(job_id)
+   sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
    device_gateway  = sensordata_job.mqtt_device.gateway
    device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
-   sensor_id = sensordata_job.sensor_id
+   sensor_key = sensordata_job.sensor_key
+   sensor_key = sensor_key.replace(" ", "")
  
    channel = "SmartHome/" + device_gateway + "/" + device_ieeeAddr + "/get"
    MQTT_PUBLISH(channel, "")  
@@ -144,4 +145,6 @@ def GET_MQTT_SENSORDATA(job_id):
       input_message = str(input_message[2])
       
       data = json.loads(input_message)
+
+      print(data[sensor_key])
       

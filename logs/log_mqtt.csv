@@ -1239,3 +1239,20 @@ mosquitto_pub -d -h localhost -p 1883 -t SmartHome/mqtt/0x99999/set -m output:1=
 2019-04-10 15:58:46,SmartHome/mqtt/test,
 2019-04-10 15:59:07,SmartHome/mqtt/test,
 2019-04-10 15:59:50,SmartHome/mqtt/test,
+2019-04-10 16:06:33,SmartHome/mqtt/test,
+2019-04-10 16:06:46,SmartHome/mqtt/test,
+2019-04-10 16:06:49,SmartHome/mqtt/test,
+2019-04-10 16:06:49,SmartHome/mqtt/devices,
+2019-04-10 16:06:50,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","input": ["temperature", "humidity", "light"],"output":0}|
+2019-04-10 16:06:50,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4", "input": ["sensor_0",                           "sensor_1", "sensor_2", "sensor_3", "sensor_4", "sensor_5", "sensor_6", "sensor_7"],"output":4}|
+2019-04-10 16:07:01,SmartHome/mqtt/test,
+2019-04-10 16:17:00,SmartHome/mqtt/0x99999/get,
+2019-04-10 16:17:00,SmartHome/mqtt/0x99999,|{"sensor_0":0,"sensor_1":664,"sensor_2":0,"sensor_3":0,"sensor_4":0,"sensor_5":0,"sensor_6":436,"sensor_7":416}|
+2019-04-10 16:18:00,SmartHome/mqtt/0x99999/get,
+2019-04-10 16:18:00,SmartHome/mqtt/0x99999,|{"sensor_0":0,"sensor_1":663,"sensor_2":0,"sensor_3":0,"sensor_4":0,"sensor_5":0,"sensor_6":436,"sensor_7":415}|
+2019-04-10 16:19:00,SmartHome/mqtt/0x99999/get,
+2019-04-10 16:19:00,SmartHome/mqtt/0x99999,|{"sensor_0":0,"sensor_1":664,"sensor_2":0,"sensor_3":0,"sensor_4":0,"sensor_5":0,"sensor_6":432,"sensor_7":412}|
+2019-04-10 16:20:00,SmartHome/mqtt/0x99999/get,
+2019-04-10 16:20:00,SmartHome/mqtt/0x99999,|{"sensor_0":0,"sensor_1":663,"sensor_2":0,"sensor_3":0,"sensor_4":0,"sensor_5":0,"sensor_6":432,"sensor_7":413}|
+2019-04-10 16:21:00,SmartHome/mqtt/0x88888/get,
+2019-04-10 16:21:00,SmartHome/mqtt/0x88888,|{"temperature":24.00,"humidity":35.00,"light":368}|
