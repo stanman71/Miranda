@@ -81,6 +81,8 @@ def UPDATE_MQTT_DEVICES(gateway):
                inputs_temp = str(data['input'])
                inputs_temp = inputs_temp[1:]
                inputs_temp = inputs_temp[:-1]
+               inputs_temp = inputs_temp.replace("'", "")
+               inputs_temp = inputs_temp.replace('"', "")	       	       
 
                name     = data['ieeeAddr']
                gateway  = "mqtt"
@@ -94,38 +96,35 @@ def UPDATE_MQTT_DEVICES(gateway):
       except:
 	      pass
 
+
    if gateway == "zigbee":
 
       MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
-      time.sleep(2)
        
-      try:
-         messages = READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log")
-         
-         if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
-            for message in messages:
-                  message = str(message[2])
-                  message = message.replace("'","")
+      for i in range (0,5):
 
-                  data = json.loads(message)
+         try:
+            messages = READ_LOGFILE_MQTT("zigbee", "SmartHome/zigbee2mqtt/bridge/log")
+            
+            if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
+               for message in messages:
+                     message = str(message[2])
+                     message = message.replace("'","")
+
+                     data = json.loads(message)
                   
-                  if (data['type']) == "devices":
-                     for device in (data['message']):
-			
+                     if (data['type']) == "devices":
+                        for device in (data['message']):
 
-                        print(device)
-			
-                        name     = device['friendly_name']
-                        gateway  = "zigbee"                        
-                        ieeeAddr = device['ieeeAddr']
-                        model    = device['model']
+                           name     = device['friendly_name']
+                           gateway  = "zigbee"                        
+                           ieeeAddr = device['ieeeAddr']
+                           model    = device['model']
 
-                        ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model)
-
-                        time.sleep(1)
-      
-      except:
-	      pass	      
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model)
+         
+         except:
+            pass	       
 
 
 def GET_MQTT_SENSORDATA(job_id):

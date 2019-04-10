@@ -74,13 +74,18 @@
           <div class="well well-sm">    
             <div class="well well-sm">CPU Temperatur = {{ cpu_temperature }}</div>
             <div class="well well-sm">
-              <form method="POST">                     
-                <input type="submit" class="btn btn-default" name="restart" value="RASPI neustarten" />
-              </form>   
-              <br>       
-              <form method="POST">                     
-                <input type="submit" class="btn btn-default" name="shutdown" value="RASPI herunterfahren" />
-              </form>   
+              <div class="row justify-content-md-center">
+                <div class="col-sm-2">              
+                  <form method="POST">                     
+                    <input type="submit" class="btn btn-default" name="restart" value="RASPI neustarten" />
+                  </form>   
+                </div>  
+                <div class="col-sm-2">         
+                  <form method="POST">                     
+                    <input type="submit" class="btn btn-default" name="shutdown" value="RASPI herunterfahren" />
+                  </form>  
+                </div>
+              </div>
             </div>
           </div>
         </div>

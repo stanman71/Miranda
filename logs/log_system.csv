@@ -2786,3 +2786,545 @@ Timestamp,Type,Description
 2019-04-10 00:24:28,EVENT,MQTT >>> started
 2019-04-10 00:24:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-04-10 00:24:32,EVENT,Snowboy >>> started
+2019-04-10 00:27:57,EVENT,MQTT >>> started
+2019-04-10 00:27:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 00:28:00,EVENT,Snowboy >>> started
+2019-04-10 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-10 01:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 02:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 03:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 04:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 05:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 06:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 07:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-10 08:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 09:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 09:00:58,EVENT,MQTT >>> started
+2019-04-10 09:00:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:01:02,EVENT,Snowboy >>> started
+2019-04-10 09:02:58,EVENT,MQTT >>> started
+2019-04-10 09:02:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:03:02,EVENT,Snowboy >>> started
+2019-04-10 09:04:13,EVENT,MQTT >>> started
+2019-04-10 09:04:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:04:17,EVENT,Snowboy >>> started
+2019-04-10 09:06:40,EVENT,MQTT >>> started
+2019-04-10 09:06:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:06:43,EVENT,Snowboy >>> started
+2019-04-10 09:07:36,EVENT,MQTT >>> started
+2019-04-10 09:07:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:07:40,EVENT,Snowboy >>> started
+2019-04-10 09:09:15,EVENT,MQTT >>> started
+2019-04-10 09:09:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:09:19,EVENT,Snowboy >>> started
+2019-04-10 09:12:10,EVENT,MQTT >>> started
+2019-04-10 09:12:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:12:14,EVENT,Snowboy >>> started
+2019-04-10 09:17:33,EVENT,MQTT >>> started
+2019-04-10 09:17:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:17:37,EVENT,Snowboy >>> started
+2019-04-10 09:20:55,EVENT,MQTT >>> started
+2019-04-10 09:20:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:20:59,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-04-10 09:21:58,EVENT,MQTT >>> started
+2019-04-10 09:21:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:22:02,EVENT,Snowboy >>> started
+2019-04-10 09:26:40,EVENT,MQTT >>> started
+2019-04-10 09:26:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:26:44,EVENT,Snowboy >>> started
+2019-04-10 09:29:51,EVENT,MQTT >>> started
+2019-04-10 09:29:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:29:55,EVENT,Snowboy >>> started
+2019-04-10 09:32:05,EVENT,MQTT >>> started
+2019-04-10 09:32:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:32:09,EVENT,Snowboy >>> started
+2019-04-10 09:33:42,EVENT,MQTT >>> started
+2019-04-10 09:33:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:33:46,EVENT,Snowboy >>> started
+2019-04-10 09:35:20,EVENT,MQTT >>> started
+2019-04-10 09:35:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:35:24,EVENT,Snowboy >>> started
+2019-04-10 09:47:20,EVENT,MQTT >>> started
+2019-04-10 09:47:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:47:24,EVENT,Snowboy >>> started
+2019-04-10 09:49:18,EVENT,MQTT >>> started
+2019-04-10 09:49:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:49:22,EVENT,Snowboy >>> started
+2019-04-10 09:50:03,EVENT,MQTT >>> started
+2019-04-10 09:50:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:50:07,EVENT,Snowboy >>> started
+2019-04-10 09:51:45,EVENT,MQTT >>> started
+2019-04-10 09:51:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:51:49,EVENT,Snowboy >>> started
+2019-04-10 09:58:13,EVENT,MQTT >>> started
+2019-04-10 09:58:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:58:17,EVENT,Snowboy >>> started
+2019-04-10 09:59:10,EVENT,MQTT >>> started
+2019-04-10 09:59:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 09:59:13,EVENT,Snowboy >>> started
+2019-04-10 10:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 10:01:36,EVENT,MQTT >>> started
+2019-04-10 10:01:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:01:40,EVENT,Snowboy >>> started
+2019-04-10 10:02:31,EVENT,MQTT >>> started
+2019-04-10 10:02:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:02:35,EVENT,Snowboy >>> started
+2019-04-10 10:04:08,EVENT,MQTT >>> started
+2019-04-10 10:04:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:04:12,EVENT,Snowboy >>> started
+2019-04-10 10:05:40,EVENT,MQTT >>> started
+2019-04-10 10:05:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:05:44,EVENT,Snowboy >>> started
+2019-04-10 10:06:58,EVENT,MQTT >>> started
+2019-04-10 10:06:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:07:01,EVENT,Snowboy >>> started
+2019-04-10 10:07:54,EVENT,MQTT >>> started
+2019-04-10 10:07:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:07:58,EVENT,Snowboy >>> started
+2019-04-10 10:09:05,EVENT,MQTT >>> started
+2019-04-10 10:09:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:09:09,EVENT,Snowboy >>> started
+2019-04-10 10:10:20,EVENT,MQTT >>> started
+2019-04-10 10:10:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:10:24,EVENT,Snowboy >>> started
+2019-04-10 10:13:54,EVENT,MQTT >>> started
+2019-04-10 10:13:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:13:57,EVENT,Snowboy >>> started
+2019-04-10 10:15:12,EVENT,MQTT >>> started
+2019-04-10 10:15:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:15:16,EVENT,Snowboy >>> started
+2019-04-10 10:18:25,EVENT,MQTT >>> started
+2019-04-10 10:18:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:18:29,EVENT,Snowboy >>> started
+2019-04-10 10:21:28,EVENT,MQTT >>> started
+2019-04-10 10:21:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:21:32,EVENT,Snowboy >>> started
+2019-04-10 10:22:43,EVENT,MQTT >>> started
+2019-04-10 10:22:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:22:47,EVENT,Snowboy >>> started
+2019-04-10 10:27:41,EVENT,MQTT >>> started
+2019-04-10 10:27:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:27:44,EVENT,Snowboy >>> started
+2019-04-10 10:29:20,EVENT,MQTT >>> started
+2019-04-10 10:29:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:29:24,EVENT,Snowboy >>> started
+2019-04-10 10:31:56,EVENT,MQTT >>> started
+2019-04-10 10:31:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:32:00,EVENT,Snowboy >>> started
+2019-04-10 10:34:56,EVENT,MQTT >>> started
+2019-04-10 10:34:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:35:00,EVENT,Snowboy >>> started
+2019-04-10 10:35:10,EVENT,Database >>> MQTT Device >>> 0x88888 >>> deleted
+2019-04-10 10:35:18,EVENT,Database >>> MQTT Device >>> 0x99999 >>> deleted
+2019-04-10 10:37:02,EVENT,MQTT >>> started
+2019-04-10 10:37:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:37:06,EVENT,Snowboy >>> started
+2019-04-10 10:38:38,EVENT,MQTT >>> started
+2019-04-10 10:38:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:38:42,EVENT,Snowboy >>> started
+2019-04-10 10:39:27,EVENT,MQTT >>> started
+2019-04-10 10:39:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:39:31,EVENT,Snowboy >>> started
+2019-04-10 10:41:55,EVENT,MQTT >>> started
+2019-04-10 10:41:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:41:58,EVENT,Snowboy >>> started
+2019-04-10 10:43:06,EVENT,MQTT >>> started
+2019-04-10 10:43:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:43:09,EVENT,Snowboy >>> started
+2019-04-10 10:43:48,EVENT,MQTT >>> started
+2019-04-10 10:43:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:43:52,EVENT,Snowboy >>> started
+2019-04-10 10:44:56,EVENT,MQTT >>> started
+2019-04-10 10:44:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:45:00,EVENT,Snowboy >>> started
+2019-04-10 10:46:59,EVENT,MQTT >>> started
+2019-04-10 10:46:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:47:03,EVENT,Snowboy >>> started
+2019-04-10 10:47:33,EVENT,MQTT >>> started
+2019-04-10 10:47:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:47:37,EVENT,Snowboy >>> started
+2019-04-10 10:49:35,EVENT,MQTT >>> started
+2019-04-10 10:49:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:49:39,EVENT,Snowboy >>> started
+2019-04-10 10:50:15,EVENT,MQTT >>> started
+2019-04-10 10:50:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:50:19,EVENT,Snowboy >>> started
+2019-04-10 10:51:17,EVENT,MQTT >>> started
+2019-04-10 10:51:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:51:21,EVENT,Snowboy >>> started
+2019-04-10 10:52:12,EVENT,MQTT >>> started
+2019-04-10 10:52:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:52:16,EVENT,Snowboy >>> started
+2019-04-10 10:52:47,EVENT,MQTT >>> started
+2019-04-10 10:52:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:52:51,EVENT,Snowboy >>> started
+2019-04-10 10:53:19,EVENT,MQTT >>> started
+2019-04-10 10:53:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 10:53:23,EVENT,Snowboy >>> started
+2019-04-10 10:53:46,EVENT,Database >>> MQTT Device >>> 0x99999 >>> deleted
+2019-04-10 11:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 11:08:06,EVENT,MQTT >>> started
+2019-04-10 11:08:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:08:10,EVENT,Snowboy >>> started
+2019-04-10 11:08:18,EVENT,Database >>> Sensordata Job >>> hgf >>> added
+2019-04-10 11:08:18,EVENT,File >>> /csv/hgf.csv >>> created
+2019-04-10 11:12:08,EVENT,MQTT >>> started
+2019-04-10 11:12:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:12:12,EVENT,Snowboy >>> started
+2019-04-10 11:14:55,EVENT,MQTT >>> started
+2019-04-10 11:14:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:14:59,EVENT,Snowboy >>> started
+2019-04-10 11:15:02,EVENT,Database >>> MQTT Device >>> 0x88888 >>> deleted
+2019-04-10 11:16:37,EVENT,MQTT >>> started
+2019-04-10 11:16:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:16:41,EVENT,Snowboy >>> started
+2019-04-10 11:18:55,EVENT,MQTT >>> started
+2019-04-10 11:18:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:18:59,EVENT,Snowboy >>> started
+2019-04-10 11:22:23,EVENT,MQTT >>> started
+2019-04-10 11:22:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:22:27,EVENT,Snowboy >>> started
+2019-04-10 11:23:42,EVENT,MQTT >>> started
+2019-04-10 11:23:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:23:46,EVENT,Snowboy >>> started
+2019-04-10 11:23:54,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_4 /// Always_Active: 
+2019-04-10 11:23:59,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: 
+2019-04-10 11:24:10,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-10 11:24:51,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_4 /// Always_Active: 
+2019-04-10 11:25:01,EVENT,Database >>> Sensordata Job >>> ziu >>> added
+2019-04-10 11:25:01,EVENT,File >>> /csv/zuiz.csv >>> created
+2019-04-10 11:25:04,EVENT,Database >>> Sensordata Job >>> ziu >>> changed >>> Filename: zuiz /// MQTT-Device: 0x88888 /// Sensor:  humidity /// Always_Active: 
+2019-04-10 11:25:46,EVENT,Database >>> Sensordata Job >>> ziu >>> changed >>> Filename: zuiz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-10 11:25:51,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Always_Active: checked
+2019-04-10 11:25:54,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Filename: hgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 11:25:54,EVENT,Database >>> Sensordata Job >>> ziu >>> changed >>> Filename: zuiz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: checked
+2019-04-10 11:28:50,EVENT,Database >>> Sensordata Job >>> iuz >>> added
+2019-04-10 11:28:50,EVENT,File >>> /csv/uiz.csv >>> created
+2019-04-10 11:28:56,EVENT,Database >>> Sensordata Job >>> hf >>> added
+2019-04-10 11:28:56,EVENT,File >>> /csv/hgfhgf.csv >>> created
+2019-04-10 11:30:40,EVENT,Database >>> Sensordata Job >>> iuz >>> changed >>> Filename: uiz /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: 
+2019-04-10 11:30:40,EVENT,Database >>> Sensordata Job >>> hf >>> changed >>> Filename: hgfhgf /// MQTT-Device: 0x88888 /// Sensor:  light /// Always_Active: 
+2019-04-10 11:41:35,EVENT,MQTT >>> started
+2019-04-10 11:41:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:41:39,EVENT,Snowboy >>> started
+2019-04-10 11:41:42,EVENT,|Database >>> MQTT Device >>> 0x00178801040c9476 >>> changed >>> Name: 0x00178801040c9476 /// Gateway: zigbee /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: test, test|
+2019-04-10 11:43:49,EVENT,MQTT >>> started
+2019-04-10 11:43:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 11:43:53,EVENT,Snowboy >>> started
+2019-04-10 11:43:56,EVENT,Database >>> MQTT Device >>> 0x00178801040c9476 >>> changed >>> Name: 0x00178801040c9476 /// Gateway: zigbee /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-10 12:00:00,EVENT,Task >>> test_02 >>> started
+2019-04-10 12:04:05,EVENT,MQTT >>> started
+2019-04-10 12:04:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:04:09,EVENT,Snowboy >>> started
+2019-04-10 12:04:19,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdg >>> added
+2019-04-10 12:05:44,EVENT,MQTT >>> started
+2019-04-10 12:05:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:05:48,EVENT,Snowboy >>> started
+2019-04-10 12:05:55,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdg >>> changed >>> Task: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Operator: == /// Value: gfd
+2019-04-10 12:06:00,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> added
+2019-04-10 12:06:07,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor:  humidity /// Operator: == /// Value: hgf
+2019-04-10 12:06:13,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Task: hgfhgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: hgf
+2019-04-10 12:06:19,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: hgf
+2019-04-10 12:10:02,EVENT,MQTT >>> started
+2019-04-10 12:10:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:10:06,EVENT,Snowboy >>> started
+2019-04-10 12:10:14,EVENT,Database >>> Plant >>> hgfghf >>> added
+2019-04-10 12:13:41,EVENT,MQTT >>> started
+2019-04-10 12:13:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:13:45,EVENT,Snowboy >>> started
+2019-04-10 12:13:57,EVENT,Database >>> Sensordata Job >>> ziu >>> deleted
+2019-04-10 12:14:01,EVENT,Database >>> MQTT Device >>> 0x88888 >>> deleted
+2019-04-10 12:14:16,EVENT,Database >>> Plant >>> hgfghf >>> changed >>> MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:14:26,EVENT,Database >>> Plant >>> hgfghf >>> changed >>> MQTT-Device: 0x88888 /// Sensor:  humidity /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:14:43,EVENT,Database >>> Plant >>> zt >>> added
+2019-04-10 12:14:48,EVENT,Database >>> Plant >>> zt >>> changed >>> MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:14:53,EVENT,Database >>> Plant >>> hgfghf >>> changed >>> MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:14:53,EVENT,Database >>> Plant >>> zt >>> changed >>> MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:15:03,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> added
+2019-04-10 12:15:21,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Task: ztr /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Operator: == /// Value: ztr
+2019-04-10 12:15:28,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Task: ztr /// MQTT-Device: 0x88888 /// Sensor:  light /// Operator: == /// Value: ztr
+2019-04-10 12:15:50,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Task: ztr /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: ztr
+2019-04-10 12:16:00,EVENT,Database >>> Sensordata Job >>> hf >>> changed >>> Filename: hgfhgf /// MQTT-Device: 0x99999 /// Sensor: sensor_0 /// Always_Active: 
+2019-04-10 12:29:33,EVENT,MQTT >>> started
+2019-04-10 12:29:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:29:37,EVENT,Snowboy >>> started
+2019-04-10 12:31:29,EVENT,MQTT >>> started
+2019-04-10 12:31:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:31:33,EVENT,Snowboy >>> started
+2019-04-10 12:32:20,EVENT,Database >>> Plant >>> uztuzt >>> changed >>> Name: iuzuiz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:23,EVENT,Database >>> Plant >>> iuzuiz >>> changed >>> Name: iuzuiziuziuz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:26,EVENT,Database >>> Plant >>> zt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:28,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uztuztuzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:31,EVENT,Database >>> Plant >>> iuzuiziuziuz >>> changed >>> Name: iuzu /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:36,EVENT,Database >>> Plant >>> uztuztuzt >>> changed >>> Name: uztuz /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:32:43,EVENT,Database >>> Plant >>> uztuz >>> changed >>> Name: uztuzzutu /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:33:23,EVENT,Database >>> Plant >>> iuzu >>> changed >>> Name: iuzujgjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:33:55,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 12:34:01,EVENT,Database >>> Plant >>> iuzujgjhg >>> changed >>> Name: iuzujgjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 19
+2019-04-10 12:34:01,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 84
+2019-04-10 12:38:36,EVENT,MQTT >>> started
+2019-04-10 12:38:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:38:40,EVENT,Snowboy >>> started
+2019-04-10 12:48:16,EVENT,MQTT >>> started
+2019-04-10 12:48:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:48:20,EVENT,Snowboy >>> started
+2019-04-10 12:48:32,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> changed >>> Name: test_02ztr /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 12:48:41,EVENT,Database >>> Taskmanagement (Time) >>> test_02ztr >>> changed >>> Name: test_ /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 12:48:41,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: Tu /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 12:48:41,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:1 /// Day: * /// Hour: 00 /// Minute: 03 /// Repeat: checked
+2019-04-10 12:48:41,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: 
+2019-04-10 12:48:49,EVENT,Database >>> Taskmanagement (Time) >>> test_ >>> changed >>> Name: test_uzt /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 12:48:53,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:1 /// Day: Tu /// Hour: * /// Minute: 00 /// Repeat: 
+2019-04-10 12:49:11,EVENT,Database >>> Taskmanagement (Time) >>> test_uzt >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 12:50:51,EVENT,MQTT >>> started
+2019-04-10 12:50:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:50:55,EVENT,Snowboy >>> started
+2019-04-10 12:51:00,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdg >>> changed >>> Name: gfdgjhgjhg /// Task: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Operator: == /// Value: gfd
+2019-04-10 12:51:02,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdgjhgjhg >>> changed >>> Name: gfdgjhgjhg /// Task: gfdjhg /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Operator: == /// Value: gfd
+2019-04-10 12:51:16,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdgjhgjhg >>> changed >>> Name: gfdgjhgjhg /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: gfd
+2019-04-10 12:51:20,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Name: hgfh /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: > /// Value: hgf
+2019-04-10 12:51:20,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Name: ztr /// Task: ztr /// MQTT-Device: 0x88888 /// Sensor:  light /// Operator: == /// Value: ztr
+2019-04-10 12:51:27,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Name: hgfhhgfgh /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: > /// Value: hgf
+2019-04-10 12:51:33,EVENT,Database >>> Taskmanagement (Sensor) >>> gfdgjhgjhg >>> changed >>> Name: gfd /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: gfd
+2019-04-10 12:51:33,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfhhgfgh >>> changed >>> Name: hgf /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: > /// Value: hgf
+2019-04-10 12:51:34,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Name: ztr /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor:  light /// Operator: == /// Value: ztr
+2019-04-10 12:55:32,EVENT,MQTT >>> started
+2019-04-10 12:55:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:55:36,EVENT,Snowboy >>> started
+2019-04-10 12:58:29,EVENT,MQTT >>> started
+2019-04-10 12:58:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 12:58:33,EVENT,Snowboy >>> started
+2019-04-10 13:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-10 13:01:32,EVENT,MQTT >>> started
+2019-04-10 13:01:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:01:36,EVENT,Snowboy >>> started
+2019-04-10 13:01:45,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: uizuiz /// Task: led_off:1 /// Day: * /// Hour: 00 /// Minute: 03 /// Repeat: checked
+2019-04-10 13:03:03,EVENT,MQTT >>> started
+2019-04-10 13:03:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:03:07,EVENT,Snowboy >>> started
+2019-04-10 13:04:38,EVENT,MQTT >>> started
+2019-04-10 13:04:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:04:42,EVENT,Snowboy >>> started
+2019-04-10 13:13:47,EVENT,MQTT >>> started
+2019-04-10 13:13:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:13:51,EVENT,Snowboy >>> started
+2019-04-10 13:14:18,EVENT,MQTT >>> started
+2019-04-10 13:14:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:14:22,EVENT,Snowboy >>> started
+2019-04-10 13:15:20,EVENT,MQTT >>> started
+2019-04-10 13:15:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:15:24,EVENT,Snowboy >>> started
+2019-04-10 13:16:51,EVENT,MQTT >>> started
+2019-04-10 13:16:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:16:55,EVENT,Snowboy >>> started
+2019-04-10 13:18:08,EVENT,MQTT >>> started
+2019-04-10 13:18:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:18:12,EVENT,Snowboy >>> started
+2019-04-10 13:18:43,EVENT,MQTT >>> started
+2019-04-10 13:18:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:18:47,EVENT,Snowboy >>> started
+2019-04-10 13:18:57,EVENT,Database >>> Taskmanagement (Sensor) >>> gfd >>> changed >>> Name: uztuzt /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: gfd
+2019-04-10 13:18:57,EVENT,Database >>> Taskmanagement (Sensor) >>> hgf >>> changed >>> Name: hgf /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: > /// Value: hgf
+2019-04-10 13:18:57,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Name: ztr /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: ztr
+2019-04-10 13:21:17,EVENT,MQTT >>> started
+2019-04-10 13:21:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:21:21,EVENT,Snowboy >>> started
+2019-04-10 13:21:27,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuzt >>> changed >>> Name: uztuzt /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: gfdjhg
+2019-04-10 13:21:27,EVENT,Database >>> Taskmanagement (Sensor) >>> hgf >>> changed >>> Name: hgf /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: > /// Value: hgfhgf
+2019-04-10 13:21:27,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Name: ztr /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: ztriuzuiz
+2019-04-10 13:21:30,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuzt >>> changed >>> Name: uztuztiuzuiz /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: gfdjhg
+2019-04-10 13:22:09,EVENT,Database >>> Taskmanagement (Sensor) >>> hgf >>> changed >>> Name: hgfhgfhgf /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: > /// Value: hgfhgf
+2019-04-10 13:22:14,EVENT,Database >>> Taskmanagement (Sensor) >>> ztr >>> changed >>> Name: zzzz /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor: None /// Operator: == /// Value: ztriuzuiz
+2019-04-10 13:22:19,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: gfdjhg
+2019-04-10 13:22:19,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfhgfhgf >>> changed >>> Name: hgfhgfhgf /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor:  humidity /// Operator: > /// Value: hgfhgf
+2019-04-10 13:22:19,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: ztriuzuiz
+2019-04-10 13:23:41,EVENT,MQTT >>> started
+2019-04-10 13:23:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:23:45,EVENT,Snowboy >>> started
+2019-04-10 13:23:48,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: gfdjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: 
+2019-04-10 13:23:58,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: 
+2019-04-10 13:24:05,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: hgfhgf
+2019-04-10 13:24:45,EVENT,MQTT >>> started
+2019-04-10 13:24:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:24:49,EVENT,Snowboy >>> started
+2019-04-10 13:24:53,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: uzt
+2019-04-10 13:28:40,EVENT,MQTT >>> started
+2019-04-10 13:28:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:28:44,EVENT,Snowboy >>> started
+2019-04-10 13:28:49,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01uzt /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 13:29:04,EVENT,Database >>> Taskmanagement (Time) >>> uizuiz >>> changed >>> Name: uizuiz /// Task: led_off:1 /// Day: We /// Hour: 00 /// Minute: 03 /// Repeat: checked
+2019-04-10 13:29:04,EVENT,Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: Tu /// Hour: 07 /// Minute: 50 /// Repeat: checked
+2019-04-10 13:29:12,EVENT,Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: * /// Hour: 11 /// Minute: 50 /// Repeat: checked
+2019-04-10 13:33:53,EVENT,MQTT >>> started
+2019-04-10 13:33:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:33:57,EVENT,Snowboy >>> started
+2019-04-10 13:35:18,EVENT,Database >>> Taskmanagement (Time) >>> test_01uzt >>> changed >>> Name: test_01uztzuz /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 13:37:32,EVENT,MQTT >>> started
+2019-04-10 13:37:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:37:36,EVENT,Snowboy >>> started
+2019-04-10 13:40:37,EVENT,MQTT >>> started
+2019-04-10 13:40:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:40:41,EVENT,Snowboy >>> started
+2019-04-10 13:43:18,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 13:43:34,EVENT,Database >>> Taskmanagement (Time) >>> uizuiz >>> changed >>> Name: uizuiz /// Task: led_off:1 /// Day: We /// Hour: 22 /// Minute: 03 /// Repeat: checked
+2019-04-10 13:43:46,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgf /// MQTT-Device: 0x99999 /// Sensor: None /// Operator: == /// Value: uzt
+2019-04-10 13:43:49,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgfzutzut /// MQTT-Device: 0x99999 /// Sensor: None /// Operator: == /// Value: uzt
+2019-04-10 13:43:52,EVENT,Database >>> Taskmanagement (Sensor) >>> uztuztiuzuiz >>> changed >>> Name: uztuztiuzuiz /// Task: hgfhgfzutzut /// MQTT-Device: 0x99999 /// Sensor: sensor_0 /// Operator: == /// Value: uzt
+2019-04-10 13:47:20,EVENT,MQTT >>> started
+2019-04-10 13:47:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:47:24,EVENT,Snowboy >>> started
+2019-04-10 13:47:30,EVENT,Database >>> Plant >>> iuz >>> changed >>> Name: iuz /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: 4 /// Watervolume: 200 /// Moisture: 50
+2019-04-10 13:47:33,EVENT,Database >>> Plant >>> iuz >>> changed >>> Name: iuz /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 200 /// Moisture: 50
+2019-04-10 13:47:41,EVENT,Database >>> Plant >>> iuz >>> changed >>> Name: iuz /// MQTT-Device: 0x88888 /// Sensor: None /// Pump: None /// Watervolume: 150 /// Moisture: 50
+2019-04-10 13:47:46,EVENT,Database >>> Plant >>> iuz >>> changed >>> Name: iuz /// MQTT-Device: 0x88888 /// Sensor: None /// Pump: 0 /// Watervolume: 150 /// Moisture: 50
+2019-04-10 13:47:50,EVENT,Database >>> Plant >>> iuz >>> changed >>> Name: iuzhgf /// MQTT-Device: 0x88888 /// Sensor: None /// Pump: 0 /// Watervolume: 150 /// Moisture: 50
+2019-04-10 13:47:53,EVENT,Database >>> Plant >>> iuzhgf >>> changed >>> Name: iuzhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 150 /// Moisture: 50
+2019-04-10 13:47:59,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: None /// Watervolume: 50 /// Moisture: 50
+2019-04-10 13:48:06,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 50 /// Moisture: 50
+2019-04-10 13:48:17,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 150 /// Moisture: 76
+2019-04-10 13:48:19,EVENT,Database >>> Plant >>> iuzhgf >>> changed >>> Name: iuzhgf /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 150 /// Moisture: 11
+2019-04-10 13:49:39,EVENT,MQTT >>> started
+2019-04-10 13:49:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 13:49:43,EVENT,Snowboy >>> started
+2019-04-10 13:49:49,EVENT,Database >>> Plant >>> uztzu >>> added
+2019-04-10 13:49:52,EVENT,Database >>> Plant >>> uztzu >>> changed >>> Name: uztzuuzt /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: 50
+2019-04-10 13:50:04,EVENT,Database >>> Plant >>> uztzuuzt >>> changed >>> Name: uztzuuzt /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 100 /// Moisture: 2
+2019-04-10 13:50:10,EVENT,Database >>> Plant >>> uztzuuzt >>> changed >>> Name: uztzuuzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Pump: 4 /// Watervolume: 100 /// Moisture: 2
+2019-04-10 13:50:27,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 150 /// Moisture: 76
+2019-04-10 13:50:27,EVENT,Database >>> Plant >>> uztzuuzt >>> changed >>> Name: uztzuuzt /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 100 /// Moisture: 50
+2019-04-10 13:50:41,EVENT,Database >>> Taskmanagement (Time) >>> test_01uztzuz >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 13:50:51,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: ztriuzuiz /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: ztriuzuiz
+2019-04-10 14:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-10 14:05:07,EVENT,MQTT >>> started
+2019-04-10 14:05:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:05:11,EVENT,Snowboy >>> started
+2019-04-10 14:05:18,EVENT,Database >>> Plant >>> ztrtzr >>> added
+2019-04-10 14:05:24,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 150 /// Moisture: 80
+2019-04-10 14:05:27,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: 4 /// Watervolume: 150 /// Moisture: 80
+2019-04-10 14:05:30,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Pump: 4 /// Watervolume: 150 /// Moisture: 80
+2019-04-10 14:06:16,EVENT,MQTT >>> started
+2019-04-10 14:06:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:06:20,EVENT,Snowboy >>> started
+2019-04-10 14:06:29,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x88888 /// Sensor: None /// Pump: None /// Watervolume: 150 /// Moisture: 50
+2019-04-10 14:06:38,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: None /// Watervolume: 150 /// Moisture: 50
+2019-04-10 14:06:43,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x88888 /// Sensor: temperature /// Pump: 0 /// Watervolume: 150 /// Moisture: 50
+2019-04-10 14:07:46,EVENT,MQTT >>> started
+2019-04-10 14:07:46,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:07:50,EVENT,Snowboy >>> started
+2019-04-10 14:08:56,EVENT,MQTT >>> started
+2019-04-10 14:08:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:09:00,EVENT,Snowboy >>> started
+2019-04-10 14:09:03,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Name: hgf /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:09:03,EVENT,Database >>> Sensordata Job >>> iuz >>> changed >>> Name: iuz /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: 
+2019-04-10 14:09:03,EVENT,Database >>> Sensordata Job >>> hf >>> changed >>> Name: hf /// Filename:  /// MQTT-Device: 0x99999 /// Sensor: sensor_0 /// Always_Active: 
+2019-04-10 14:09:07,EVENT,Database >>> Sensordata Job >>>  >>> changed >>> Name:  /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:09:20,EVENT,Database >>> Sensordata Job >>> hgf >>> changed >>> Name: hgf /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:10:11,EVENT,MQTT >>> started
+2019-04-10 14:10:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:10:15,EVENT,Snowboy >>> started
+2019-04-10 14:11:36,EVENT,Database >>> Sensordata Job >>> hf >>> deleted
+2019-04-10 14:11:37,EVENT,Database >>> Sensordata Job >>> iuz >>> deleted
+2019-04-10 14:11:40,EVENT,Database >>> Sensordata Job >>> uztzut >>> changed >>> Name: uztzut /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:11:45,EVENT,Database >>> Sensordata Job >>>  >>> changed >>> Name:  /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:12:42,EVENT,MQTT >>> started
+2019-04-10 14:12:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:12:46,EVENT,Snowboy >>> started
+2019-04-10 14:12:55,EVENT,Database >>> Sensordata Job >>> hgfhgf >>> changed >>> Name: hgfhgf /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:13:02,EVENT,Database >>> Sensordata Job >>> fgd >>> changed >>> Name: fgd /// Filename:  /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:13:59,EVENT,MQTT >>> started
+2019-04-10 14:13:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:14:03,EVENT,Snowboy >>> started
+2019-04-10 14:14:07,EVENT,Database >>> Sensordata Job >>> fgd >>> changed >>> Name: fgd /// Filename: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:14:10,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:14:11,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: checked
+2019-04-10 14:14:15,EVENT,File >>> /csv/gfdfds.csv >>> created
+2019-04-10 14:14:21,EVENT,Database >>> Sensordata Job >>> jhgj >>> added
+2019-04-10 14:14:21,EVENT,File >>> /csv/jhg.csv >>> created
+2019-04-10 14:14:25,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: jhg /// MQTT-Device: 0x99999 /// Sensor: None /// Always_Active: 
+2019-04-10 14:14:28,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: jhgjhgjhg /// MQTT-Device: 0x99999 /// Sensor: None /// Always_Active: 
+2019-04-10 14:14:31,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: jhgjhgjhg /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Always_Active: 
+2019-04-10 14:14:38,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: jhgjhgjhg /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-10 14:14:45,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-10 14:18:34,EVENT,MQTT >>> started
+2019-04-10 14:18:34,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 14:18:38,EVENT,Snowboy >>> started
+2019-04-10 14:18:48,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: Tu /// Hour: 00 /// Minute: 00 /// Repeat: checked
+2019-04-10 14:18:48,EVENT,Database >>> Taskmanagement (Time) >>> uizuiz >>> changed >>> Name: uizuiz /// Task: led_off:1 /// Day: Mo /// Hour: 22 /// Minute: 03 /// Repeat: checked
+2019-04-10 14:19:11,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: ztriuzuiz /// MQTT-Device: 0x88888 /// Sensor: temperature /// Operator: == /// Value: ztriuzuiz
+2019-04-10 14:20:34,EVENT,Database_Backup >>> saved
+2019-04-10 15:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-10 15:19:28,EVENT,MQTT >>> started
+2019-04-10 15:19:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:19:32,EVENT,Snowboy >>> started
+2019-04-10 15:20:31,EVENT,MQTT >>> started
+2019-04-10 15:20:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:20:35,EVENT,Snowboy >>> started
+2019-04-10 15:21:57,EVENT,MQTT >>> started
+2019-04-10 15:21:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:22:01,EVENT,Snowboy >>> started
+2019-04-10 15:22:15,EVENT,Database >>> Snowboy Task >>> warmweiss >>> changed >>> Name: warmweisskjh /// Task: start_scene:99
+2019-04-10 15:22:22,EVENT,Database >>> Snowboy Task >>> warmweisskjh >>> changed >>> Name: warmweiss /// Task: start_scene:99
+2019-04-10 15:22:30,EVENT,Database >>> Snowboy Task >>> warmweiss >>> changed >>> Name: warmweiss /// Task: start_scene:
+2019-04-10 15:22:33,EVENT,Database >>> Snowboy Task >>> warmweiss >>> changed >>> Name: warmweiss /// Task: start_scene:99
+2019-04-10 15:23:19,EVENT,MQTT >>> started
+2019-04-10 15:23:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:23:23,EVENT,Snowboy >>> started
+2019-04-10 15:23:39,EVENT,Database >>> Snowboy Task >>> smarthome >>> changed >>> Name: smarthome /// Task: snowboy_activej
+2019-04-10 15:23:41,EVENT,Database >>> Snowboy Task >>> smarthome >>> changed >>> Name: smarthome /// Task: snowboy_active
+2019-04-10 15:23:50,EVENT,Database >>> Snowboy Task >>> relax >>> changed >>> Name: rela /// Task: start_scene:9:50
+2019-04-10 15:23:54,EVENT,Database >>> Snowboy Task >>> rela >>> changed >>> Name: relax /// Task: start_scene:9:50
+2019-04-10 15:23:58,EVENT,Database >>> Snowboy Task >>> ausschalten >>> changed >>> Name: ausschalte /// Task: led_off:1
+2019-04-10 15:23:58,EVENT,Database >>> Snowboy Task >>> relax >>> changed >>> Name: rela /// Task: start_scene:9:50
+2019-04-10 15:24:04,EVENT,Database >>> Snowboy Task >>> ausschalte >>> changed >>> Name: ausschalten /// Task: led_off:1
+2019-04-10 15:24:04,EVENT,Database >>> Snowboy Task >>> rela >>> changed >>> Name: relax /// Task: start_scene:9:50
+2019-04-10 15:26:49,EVENT,MQTT >>> started
+2019-04-10 15:26:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:26:53,EVENT,Snowboy >>> started
+2019-04-10 15:27:01,EVENT,Database >>> Snowboy Task >>> ausschalten >>> changed >>> Name: ausschalte /// Task: led_off:1
+2019-04-10 15:27:01,EVENT,Database >>> Snowboy Task >>> relax >>> changed >>> Name: rela /// Task: start_scene:9:50
+2019-04-10 15:27:51,EVENT,MQTT >>> started
+2019-04-10 15:27:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:27:55,EVENT,Snowboy >>> started
+2019-04-10 15:27:55,ERROR,Snowboy >>> Error: hotwords in your models (3) do not match the number of callbacks (5)
+2019-04-10 15:28:53,EVENT,MQTT >>> started
+2019-04-10 15:28:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:28:57,EVENT,Snowboy >>> started
+2019-04-10 15:28:57,ERROR,Snowboy >>> Error: hotwords in your models (3) do not match the number of callbacks (5)
+2019-04-10 15:29:34,EVENT,MQTT >>> started
+2019-04-10 15:29:34,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:29:38,EVENT,Snowboy >>> started
+2019-04-10 15:29:38,ERROR,Snowboy >>> Error: hotwords in your models (3) do not match the number of callbacks (5)
+2019-04-10 15:29:44,EVENT,Database >>> Snowboy Task >>> rela >>> changed >>> Name: relax /// Task: start_scene:9:50
+2019-04-10 15:29:48,EVENT,Database >>> Snowboy Task >>> ausschalte >>> changed >>> Name: ausschalten /// Task: led_off:1
+2019-04-10 15:30:01,EVENT,Database >>> Snowboy Task >>> smarthome >>> changed >>> Name: smarthom /// Task: snowboy_active
+2019-04-10 15:30:08,EVENT,Database >>> Snowboy Task >>> smarthom >>> changed >>> Name: smarthome /// Task: snowboy_active
+2019-04-10 15:43:13,EVENT,MQTT >>> started
+2019-04-10 15:43:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:43:17,EVENT,Snowboy >>> started
+2019-04-10 15:44:36,EVENT,MQTT >>> started
+2019-04-10 15:44:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:44:40,EVENT,Snowboy >>> started
+2019-04-10 15:46:11,EVENT,MQTT >>> started
+2019-04-10 15:46:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:46:15,EVENT,Snowboy >>> started
+2019-04-10 15:46:29,EVENT,Database >>> User >>> default >>> changed >>> Username: defaultkjh /// eMail: member@example.com /// Role: superuser /// eMail-Info: checked /// eMail-Error: checked /// eMail-Camera: checked
+2019-04-10 15:56:01,EVENT,MQTT >>> started
+2019-04-10 15:56:01,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-10 15:56:05,EVENT,Snowboy >>> started
+2019-04-10 15:56:38,EVENT,Database >>> User >>> martin >>> added
+2019-04-10 15:57:12,EVENT,Database >>> User >>> martin >>> deleted
+2019-04-10 15:57:26,EVENT,Database >>> User >>> martin >>> added
+2019-04-10 15:57:54,EVENT,Database >>> User >>> martin >>> changed >>> Username: martin /// eMail: stanlay@gmx.ne /// Role: guest /// eMail-Info:  /// eMail-Error:  /// eMail-Camera: 
+2019-04-10 15:57:56,EVENT,Database >>> User >>> martin >>> changed >>> Username: martin /// eMail: stanlay@gmx.net /// Role: guest /// eMail-Info:  /// eMail-Error:  /// eMail-Camera: 
+2019-04-10 15:58:03,EVENT,Database >>> User >>> martin >>> changed >>> Username: martin /// eMail: stanlay@gmx.net /// Role: superuser /// eMail-Info: checked /// eMail-Error: checked /// eMail-Camera: checked
+2019-04-10 15:59:02,EVENT,Database >>> User >>> test >>> added
+2019-04-10 16:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-10 16:00:02,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: 
+2019-04-10 16:00:06,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: checked
+2019-04-10 16:00:17,EVENT,Database >>> Taskmanagement (Time) >>> uizuiz >>> changed >>> Name: schlafen /// Task: led_off:1 /// Day: Mo /// Hour: 22 /// Minute: 03 /// Repeat: checked
+2019-04-10 16:00:30,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:1 /// Day: * /// Hour: 00 /// Minute: 30 /// Repeat: checked
+2019-04-10 16:00:30,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:1 /// Day: Tu /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-10 16:00:40,EVENT,Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: * /// Hour: 07 /// Minute: 50 /// Repeat: checked
+2019-04-10 16:00:56,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 150 /// Moisture: 50
+2019-04-10 16:01:01,EVENT,Database >>> Plant >>> ztrtzr >>> changed >>> Name: ztrtzr /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: 4 /// Watervolume: 150 /// Moisture: 50

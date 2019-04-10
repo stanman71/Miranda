@@ -118,7 +118,7 @@
 
 {% if error_message_hotword != "" %}
   <div class="alert alert-danger" role="alert">
-    Hotword-Datei fehlt: {{ error_message_hotword }}.pmdl
+    Hotword-Datein fehlen: {{ error_message_hotword }}
   </div>      
 {% endif %} 
 
@@ -127,6 +127,15 @@
       <div class="panel panel-default">     
         <div class="panel-body">
           <div class="well well-sm">
+            
+<!-- error message form -->
+
+{% if error_message_form != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_form }}
+  </div>      
+{% endif %}               
+            
             <table class="table">
               <thead>                      
                 <th scope="col">Name</th> 
@@ -135,14 +144,23 @@
               <tbody> 
                 {% for entry in snowboy_list %}
                 <tr>
-                  <td>{{ entry.name }}</td> 
-                  <td>{{ entry.task }}</td> 
+                  <td>
+                  <form method="POST" class="verticalform">
+                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />                    
+                  </td> 
+                  <td></td>
+                  <td></td>
                   <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red"><b>löschen</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
           </div>
+          <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#table_tasks'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+          </form> 
         </div>  
       </div>  
 

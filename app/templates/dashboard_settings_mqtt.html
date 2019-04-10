@@ -127,9 +127,13 @@
                     </td>
                     <td>{{ entry.ieeeAddr }}</td>
                     <td>{{ entry.model }}</td> 
-                    <td>{{ entry.inputs }}</td> 
-                    <td>{{ entry.outputs }}</td> 
-                    <td>{{ entry.last_contact }}</td>                   
+                    <td>
+                      {{ entry.inputs }}
+                    </td> 
+                    <td>{{ entry.outputs }}</td>  
+                    <td>{{ entry.last_contact }}</td>    
+                    <td></td>        
+                    <td></td>        
                     <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
                   {% endfor %}

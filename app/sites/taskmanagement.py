@@ -39,6 +39,7 @@ def scheduler_job():
 @user_required
 def dashboard_taskmanagement_time():
     error_message = ""
+    error_message_form = "" 
     set_name = ""
     set_task = ""
     set_day = ""
@@ -101,34 +102,36 @@ def dashboard_taskmanagement_time():
 
                 if request.form.get("set_task_" + str(i)) != None:
 
-                    # set task + day + hour + minute
-                    if request.form.get("set_task_" + str(i)) != "":
-
-                        task   = request.form.get("set_task_" + str(i))
-                        day    = request.form.get("set_day_" + str(i))
-                        hour   = request.form.get("set_hour_" + str(i))
-                        minute = request.form.get("set_minute_" + str(i))
-
-                        if request.form.get("checkbox_table_" + str(i)):
-                            repeat = "checked"
-                        else:
-                            repeat = ""  
-
-                        SET_TASKMANAGEMENT_TIME_TASK(i, task, day, hour, minute, repeat)
-
-                    # day + hour + minute
+                    # check name
+                    if (request.form.get("set_name_" + str(i)) != "" and 
+                        GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                        name = request.form.get("set_name_" + str(i))  
+                        
+                    elif request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name:
+                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                    
                     else:
+                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben" 
+                        
+                    # check task
+                    if request.form.get("set_task_" + str(i)) != "":
+                        task = request.form.get("set_task_" + str(i))
+                    else:
+                        task = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).task
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                        
+                        
+                    day    = request.form.get("set_day_" + str(i))
+                    hour   = request.form.get("set_hour_" + str(i))
+                    minute = request.form.get("set_minute_" + str(i))
 
-                        day    = request.form.get("set_day_" + str(i))
-                        hour   = request.form.get("set_hour_" + str(i))
-                        minute = request.form.get("set_minute_" + str(i))
+                    if request.form.get("checkbox_table_" + str(i)):
+                        repeat = "checked"
+                    else:
+                        repeat = ""  
 
-                        if request.form.get("checkbox_table_" + str(i)):
-                            repeat = "checked"
-                        else:
-                            repeat = ""  
-
-                        SET_TASKMANAGEMENT_TIME_TASK_WITHOUT_TASK(i, day, hour, minute, repeat)
+                    SET_TASKMANAGEMENT_TIME_TASK(i, name, task, day, hour, minute, repeat)
 
 
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
@@ -150,6 +153,7 @@ def dashboard_taskmanagement_time():
                             dropdown_list_minutes=dropdown_list_minutes,
                             schedular_list=schedular_list,
                             error_message=error_message,
+                            error_message_form=error_message_form,
                             set_name=set_name,
                             set_task=set_task,
                             set_day=set_day,
@@ -180,6 +184,7 @@ def delete_schedular_task(id):
 def dashboard_taskmanagement_sensor():
     error_message = ""
     error_message_table = ""
+    error_message_form = ""
     set_name = ""
     set_task = ""
     set_value = ""
@@ -231,81 +236,49 @@ def dashboard_taskmanagement_sensor():
         # change settings
         if request.form.get("change_settings") != None:
             for i in range (1,25): 
+                
+                if request.form.get("set_name_" + str(i)) != None:
+                    
+                    # check name
+                    if (request.form.get("set_name_" + str(i)) != "" and 
+                        GET_TASKMANAGEMENT_SENSOR_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                        name = request.form.get("set_name_" + str(i)) 
+                        
+                    elif request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name:
+                        name = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name                        
+                        
+                    else:
+                        name = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name 
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben" 
+                        
+                    # check task
+                    if request.form.get("set_task_" + str(i)) != "":
+                        task = request.form.get("set_task_" + str(i))
+                    else:
+                        task = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).task 
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                        
 
-                if request.form.get("set_task_" + str(i)) != None:
-
-                    # set task + mqtt_device_id + operator + sensor_id + value
-                    if request.form.get("set_task_" + str(i)) != "" and request.form.get("set_value_" + str(i)) != "":
-
-                        task   = request.form.get("set_task_" + str(i))
-                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
-                        operator = request.form.get("set_operator_" + str(i))   
-                        value = request.form.get("set_value_" + str(i)) 
-                      
-                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
-                            sensor_id = request.form.get("set_sensor_" + str(i))
-                            SET_TASKMANAGEMENT_SENSOR_TASK(i, task, mqtt_device_id, sensor_id, operator, value)
-
-                        else:
-                            # reset sensor_id if device changes
-                            name = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
-                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
-                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
-
-                    # set mqtt_device_id + operator + sensor_id + value
-                    if request.form.get("set_task_" + str(i)) == "" and request.form.get("set_value_" + str(i)) != "":
-
-                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
-                        operator = request.form.get("set_operator_" + str(i))   
+                    # check value
+                    if request.form.get("set_value_" + str(i)) != "":
                         value = request.form.get("set_value_" + str(i))
+                    else:
+                        value = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).value
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                         
+                              
+                              
+                    mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
+                    operator = request.form.get("set_operator_" + str(i))   
+                  
+                    if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id:
+                        sensor_key = request.form.get("set_sensor_" + str(i))
+                        SET_TASKMANAGEMENT_SENSOR_TASK(i, name, task, mqtt_device_id, sensor_key, operator, value)
 
-                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
-                            sensor_id = request.form.get("set_sensor_" + str(i))
-                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_TASK(i, mqtt_device_id, sensor_id, operator, value)
+                    else:
+                        # reset sensor_key if device changes
+                        DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
+                        ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
 
-                        else:
-                            # reset sensor_id if device changes
-                            name = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
-                            task = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).task
-                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
-                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
-
-                    # set task + mqtt_device_id + operator + sensor_id
-                    if request.form.get("set_task_" + str(i)) != "" and request.form.get("set_value_" + str(i)) == "":
-
-                        task   = request.form.get("set_task_" + str(i))
-                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
-                        operator = request.form.get("set_operator_" + str(i))   
-                      
-                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
-                            sensor_id = request.form.get("set_sensor_" + str(i))
-                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_VALUE(i, task, mqtt_device_id, sensor_id, operator)
-
-                        else:
-                            # reset sensor_id if device changes
-                            name  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
-                            value = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).value
-                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
-                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
-                                  
-                    # set mqtt_device_id + operator + sensor_id
-                    if request.form.get("set_task_" + str(i)) == "" and request.form.get("set_value_" + str(i)) == "":
-
-                        mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
-                        operator = request.form.get("set_operator_" + str(i))   
-
-                        if int(mqtt_device_id) == GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).mqtt_device_id:
-                            sensor_id = request.form.get("set_sensor_" + str(i))
-                            SET_TASKMANAGEMENT_SENSOR_TASK_WITHOUT_TASK_AND_VALUE(i, mqtt_device_id, sensor_id, operator)
-
-                        else:
-                            # reset sensor_id if device changes
-                            name  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).name
-                            task  = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).task
-                            value = GET_TASKMANAGEMENT_SENSOR_TASK_ID(i).value
-                            DELETE_TASKMANAGEMENT_SENSOR_TASK(i, "No_Log")
-                            ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, "No_Log")  
-
+        
     error_message_table = CHECK_TASKMANAGEMENT_SENSOR_TASKS()
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
@@ -319,6 +292,7 @@ def dashboard_taskmanagement_sensor():
     return render_template('dashboard_taskmanagement_sensor.html',
                             error_message=error_message,
                             error_message_table=error_message_table,
+                            error_message_form=error_message_form,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             schedular_list=schedular_list,

@@ -59,6 +59,14 @@
   </div>      
 {% endif %}   
  
+<!-- error message form -->
+
+{% if error_message_form != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_form }}
+  </div>      
+{% endif %} 
+ 
               <table class="table">
                 <thead>
                   <th scope="col">Pflanzen-Name</th>   
@@ -71,9 +79,11 @@
                 <tbody> 
                   {% for entry in plants_list %}
                   <tr>
-                    <td>{{ entry.name }}</td> 
                     <td>
                       <form method="POST" class="verticalform">
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                    </td> 
+                    <td>
                       <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
                         <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
@@ -84,21 +94,21 @@
                     </td>                                     
                     <td>     
                       <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                        <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                        <option value= "{{ entry.sensor_id }}" > ----- </option>
-                        {% for i in range(entry.mqtt_device.inputs) %}
-                        <option value= "{{ i }}" > {{ i }} </option>
+                        <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
+                        <option value= "{{ entry.sensor_key }}" > ----- </option>
+                        {% for each in entry.mqtt_device.inputs.split(',') %}
+                          <option value= "{{ each }}" > {{ each }} </option>
                         {% endfor %}
-                      </select>   
+                      </select>    
                     </td>                     
                     <td>                
-                        <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
-                          <option value= "{{ entry.pump_id }}" > {{ entry.pump_id }} </option>
-                          <option value= "{{ entry.pump_id }}" > ----- </option> 
-                          {% for i in range(entry.mqtt_device.outputs) %}
-                          <option value= "{{ i }}" > {{ i }} </option>
-                          {% endfor %}
-                        </select> 
+                      <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
+                        <option value= "{{ entry.pump_key }}" > {{ entry.pump_key }} </option>
+                        <option value= "{{ entry.pump_key }}" > ----- </option>
+                        {% for each in entry.mqtt_device.outputs.split(',') %}
+                          <option value= "{{ each }}" > {{ each }} </option>
+                        {% endfor %}
+                      </select>  
                     </td> 
                     <td>
                       <select class="btn btn-default dropdown-toggle" name="set_watervolume_{{ entry.id }}">
@@ -148,7 +158,7 @@
 <div class="alert alert-danger" role="alert">
   {{ error_message }}
 </div>      
-{% endif %}                    
+{% endif %}        
 
                     <div class="well well-sm">Pflanzen-Name:
                       <input type="text" class="form-control" name="set_name" value="" />

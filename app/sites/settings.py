@@ -169,7 +169,6 @@ def dashboard_settings_zigbee():
                 for i in range (1,25):
                     # set name + inputs
                     if (request.form.get("set_name_" + str(i)) != "" and
-                        request.form.get("set_inputs_" + str(i)) != "" and
                         request.form.get("set_name_" + str(i)) != None):
                             
                         new_name = request.form.get("set_name_" + str(i))
@@ -180,7 +179,7 @@ def dashboard_settings_zigbee():
                                          '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
 
                         inputs = request.form.get("set_inputs_" + str(i))         
-                        SET_MQTT_DEVICE_ZigBee(i, new_name, int(inputs))
+                        SET_MQTT_DEVICE_ZigBee(i, new_name, inputs)
                    
 
             # update device list
@@ -264,6 +263,7 @@ def download_zigbee_logfile(filepath):
 def dashboard_settings_snowboy():
     error_message = ""
     error_message_snowboy = ""
+    error_message_form = ""
     error_message_fileupload = ""
     error_message_hotword = ""
     sensitivity = ""
@@ -298,16 +298,18 @@ def dashboard_settings_snowboy():
             if "signal only works in main thread" not in str(e):      
                 error_message_snowboy = "Fehler in SnowBoy: " + str(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
-
+                
         if request.method == 'POST':
+            # change sensitivity
             if request.form.get("change_settings") is not None: 
-                # change sensitivity
+
                 sensitivity = request.form.get("set_sensitivity") 
                 if sensitivity is not None:
                     SET_SNOWBOY_SENSITIVITY(sensitivity)    
 
+            # add new task
             if request.form.get("add_task") is not None:
-                # add new task
+
                 if request.form.get("set_name") == "":
                     error_message = "Kein Name angegeben"
                     set_task = request.form.get("set_task")
@@ -318,6 +320,37 @@ def dashboard_settings_snowboy():
                     name   = request.form.get("set_name")
                     task   = request.form.get("set_task")
                     error_message = ADD_SNOWBOY_TASK(name, task)
+                    
+
+            # change settings
+            if request.form.get("change_settings") != None: 
+                for i in range (1,25):
+
+                    if request.form.get("set_name_" + str(i)) != None:  
+                        
+                        # check name
+                        if (request.form.get("set_name_" + str(i)) != "" and 
+                            GET_SNOWBOY_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                            name = request.form.get("set_name_" + str(i)) 
+                            
+                        elif request.form.get("set_name_" + str(i)) == GET_SNOWBOY_TASK_BY_ID(i).name:
+                            name = GET_SNOWBOY_TASK_BY_ID(i).name                        
+                            
+                        else:
+                            name = GET_SNOWBOY_TASK_BY_ID(i).name 
+                            error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                        
+                        # check task
+                        if request.form.get("set_task_" + str(i)) != "":
+                            task = request.form.get("set_task_" + str(i)) 
+                        
+                        else:
+                            task = GET_SNOWBOY_TASK_BY_ID(i).task 
+                            error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                                            
+            
+                        SET_SNOWBOY_TASK(i, name, task)
+                    
                     
             if request.form.get("file_upload") is not None:
                 # file upload
@@ -337,7 +370,8 @@ def dashboard_settings_snowboy():
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
                             error_message=error_message,    
-                            error_message_snowboy=error_message_snowboy,             
+                            error_message_snowboy=error_message_snowboy,   
+                            error_message_form=error_message_form,          
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
                             snowboy_setting=snowboy_setting,
@@ -456,13 +490,38 @@ def remove_hue_bridge_led(id):
 @superuser_required
 def dashboard_settings_user():
     error_message = ""
+    error_message_form = ""
 
     if request.method == "POST":     
         # change user settings
         if request.form.get("change_user_settings") != None:
             for i in range (1,25): 
                 
-                if request.form.get("set_role_" + str(i)) != None:
+                if request.form.get("set_username_" + str(i)) != None:
+
+                    # check name
+                    if (request.form.get("set_username_" + str(i)) != "" and 
+                        GET_USER_BY_NAME(request.form.get("set_username_" + str(i))) == None):
+                        username = request.form.get("set_username_" + str(i)) 
+                        
+                    elif request.form.get("set_username_" + str(i)) == GET_USER_BY_ID(i).username:
+                        username = GET_USER_BY_ID(i).username                        
+                        
+                    else:
+                        username = GET_USER_BY_ID(i).username 
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                    
+                    # check email
+                    if (request.form.get("set_email_" + str(i)) != "" and 
+                        GET_EMAIL(request.form.get("set_email_" + str(i))) == None):
+                        email = request.form.get("set_email_" + str(i)) 
+                    
+                    elif request.form.get("set_email_" + str(i)) == GET_USER_BY_ID(i).email:
+                        email = GET_USER_BY_ID(i).email                        
+                    
+                    else:
+                        email = GET_USER_BY_ID(i).email 
+                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
 
                     # change user role
                     role = request.form.get("set_role_" + str(i))
@@ -481,7 +540,7 @@ def dashboard_settings_user():
                     else:
                         email_notification_camera = ""
            
-                    SET_USER_SETTINGS(i, role, email_notification_info, email_notification_error, email_notification_camera)
+                    SET_USER_SETTINGS(i, username, email, role, email_notification_info, email_notification_error, email_notification_camera)
 
 
     user_list = GET_ALL_USERS()
@@ -489,6 +548,7 @@ def dashboard_settings_user():
 
     return render_template('dashboard_settings_user.html',
                             error_message=error_message,
+                            error_message_form=error_message_form,
                             user_list=user_list,  
                             dropdown_list_roles=dropdown_list_roles,             
                             active04="active",

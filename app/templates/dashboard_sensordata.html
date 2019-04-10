@@ -60,7 +60,15 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_table }}
   </div>      
-{% endif %}                 
+{% endif %}   
+
+<!-- error message form -->
+
+{% if error_message_form != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_form }}
+  </div>      
+{% endif %}               
               
               <table class="table">
                 <thead>
@@ -75,26 +83,30 @@
                   {% for entry in sensordata_list %}
                   <tr>
                     <td>{{ entry.id }}</td> 
-                    <td>{{ entry.name }}</td> 
-                    <td>{{ entry.filename }}</td>
                     <td>
-                      <form method="POST" class="verticalform">
-                        <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
-                          <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
-                          <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
-                          {% for each in dropdown_list_mqtt_devices %}
-                            <option value="{{ each.id }}"> {{ each.name }} </option>
-                          {% endfor %}
-                        </select> 
+                    <form method="POST" class="verticalform">
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                    </td> 
+                    <td>
+                      <input type="text" class="form-control" name="set_filename_{{ entry.id }}" value="{{ entry.filename }}" />                    
+                    </td> 
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                        <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
+                        <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
+                        {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{ each.id }}"> {{ each.name }} </option>
+                        {% endfor %}
+                      </select> 
                     </td>
                     <td>                     
                       <div class="row justify-content-md-center">
                         <div class="col-sm-4">                       
                           <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                            <option value= "{{ entry.sensor_id }}" > {{ entry.sensor_id }} </option>
-                            <option value= "{{ entry.sensor_id }}" > ----- </option>
-                            {% for i in range(entry.mqtt_device.inputs) %}
-                            <option value= "{{ i }}" > {{ i }} </option>
+                            <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
+                            <option value= "{{ entry.sensor_key }}" > ----- </option>
+                            {% for each in entry.mqtt_device.inputs.split(',') %}
+                              <option value= "{{ each }}" > {{ each }} </option>
                             {% endfor %}
                           </select>  
                         </div>

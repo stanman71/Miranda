@@ -62,11 +62,11 @@
 
 <!-- error message -->
 
-  {% if error_message != "" %}
-    <div class="alert alert-danger" role="alert">
-      {{ error_message }}
-    </div>      
-  {% endif %}  
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}  
 
 <!-- settings user -->
 
@@ -74,6 +74,15 @@
         <div class="panel-heading"><font color="black"><b>Benutzer</b></font></div>
         <div class="panel-body">
           <div class="well well-sm">
+            
+<!-- error message form -->
+
+{% if error_message_form != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_form }}
+  </div>      
+{% endif %}               
+            
             <table class="table">
               <thead>
                 <tr>
@@ -86,10 +95,14 @@
               <tbody>
                 {% for user in user_list %}
                 <tr>
-                  <td>{{ user.username }}</td>
-                  <td>{{ user.email }}</td> 
                   <td>
-                    <form method="POST">
+                  <form method="POST" class="verticalform">
+                    <input type="text" class="form-control" name="set_username_{{ user.id }}" value="{{ user.username }}" />                    
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_email_{{ user.id }}" value="{{ user.email }}" />                    
+                  </td> 
+                  <td>
                     <select class="btn btn-default dropdown-toggle" name="set_role_{{ user.id }}">
                       <option value= "{{ user.role }}" > {{ user.role }} </option>
                       <option value= "{{ user.role }}" > ----- </option>                      
@@ -124,13 +137,13 @@
                           <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera_{{ user.id }}">
                         </div>
                       </div>                          
-                  </td>    
-                  <td><a href="/dashboard/settings/user/delete/{{ user.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
+                    </td>    
+                    <td><a href="/dashboard/settings/user/delete/{{ user.id }}#table"><font color="red"><b>löschen</b></font></a></td>   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
             <input type="submit" onclick="window.location.href='/dashboard/settings/user#table'" class="btn btn-default" name="change_user_settings" value="Änderungen speichern" />
           </form> 
         </div>  
