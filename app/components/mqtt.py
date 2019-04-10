@@ -78,18 +78,24 @@ def UPDATE_MQTT_DEVICES(gateway):
 
                data = json.loads(message)
                
-               inputs_temp = str(data['input'])
+               inputs_temp = str(data['inputs'])
                inputs_temp = inputs_temp[1:]
                inputs_temp = inputs_temp[:-1]
                inputs_temp = inputs_temp.replace("'", "")
-               inputs_temp = inputs_temp.replace('"', "")	       	       
+               inputs_temp = inputs_temp.replace('"', "")
+
+               outputs_temp = str(data['outputs'])
+               outputs_temp = outputs_temp[1:]
+               outputs_temp = outputs_temp[:-1]
+               outputs_temp = outputs_temp.replace("'", "")
+               outputs_temp = outputs_temp.replace('"', "")  
 
                name     = data['ieeeAddr']
                gateway  = "mqtt"
                ieeeAddr = data['ieeeAddr']
                model    = data['model']
                inputs   = inputs_temp
-               outputs  = data['output']
+               outputs  = outputs_temp
 
                ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, inputs, outputs)  
 

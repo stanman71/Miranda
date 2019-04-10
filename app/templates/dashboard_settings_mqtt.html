@@ -108,13 +108,12 @@
             <div class="well well-sm">   
               <table class="table">
                 <thead>
-                  <th scope="col">Name</th>                        
-                  <th scope="col">Adresse</th> 
-                  <th scope="col">Modell</th>                        
+                  <th scope="col" colspan="2">Name</th>                        
+                  <th scope="col" colspan="2">Adresse</th> 
+                  <th scope="col" colspan="2">Modell</th>                        
                   <th scope="col">Inputs</th> 
                   <th scope="col">Outputs</th> 
-                  <th scope="col">Letzter Kontakt</th>    
-                  <th scope="col"></th>                                               
+                  <th scope="col">Kontakt</th>                                                 
                 </thead>
                 <tbody> 
                   {% for entry in mqtt_device_list %}
@@ -125,15 +124,17 @@
                         <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                       </div>
                     </td>
+                    <td></td>        
                     <td>{{ entry.ieeeAddr }}</td>
+                    <td></td>         
                     <td>{{ entry.model }}</td> 
+                    <td></td>        
                     <td>
                       {{ entry.inputs }}
                     </td> 
                     <td>{{ entry.outputs }}</td>  
                     <td>{{ entry.last_contact }}</td>    
-                    <td></td>        
-                    <td></td>        
+                    <td></td>              
                     <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
                   </tr>
                   {% endfor %}

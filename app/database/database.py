@@ -982,8 +982,13 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
-            if device.inputs :
+            if device.inputs:
                 device_list.append(device)  
+                
+    if selector == "watering":
+        for device in devices:
+            if device.inputs and device.outputs:
+                device_list.append(device)                  
                 
     return device_list
         

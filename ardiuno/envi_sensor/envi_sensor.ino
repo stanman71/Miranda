@@ -74,9 +74,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if(check_ieeeAddr == "devices"){
 
         // create msg  
-        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\",\"model\":\"envi_sensor\",\"input\":3,\"output\":0}";      
-        char attributes[50];
-        payload.toCharArray( msg, 100 );
+        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\",\"model\":\"envi_sensor\"," +
+                         "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
+        char attributes[200];
+        payload.toCharArray( msg, 200 );
         
         Serial.print("Publish message: ");
         Serial.println(msg);

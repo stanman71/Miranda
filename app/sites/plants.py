@@ -103,7 +103,7 @@ def dashboard_plants():
     if set_mqtt_device_id != "":
         set_mqtt_device_name = GET_MQTT_DEVICE_NAME(int(set_mqtt_device_id))   
      
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")  
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering")  
     dropdown_list_watervolume = [50, 100, 150, 200, 250, 300]
     plants_list = GET_ALL_PLANTS()
 
