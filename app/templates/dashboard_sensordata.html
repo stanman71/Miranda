@@ -7,7 +7,8 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
-  <link rel="stylesheet" href="{{url_for('.static', filename='CDNJS/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -113,15 +114,15 @@
                       </div>
                     </td> 
                     <td>
-                      <div class="row justify-content-md-center">
-                        <div class="checkbox">
-                          <label>
-                           <input type="checkbox" {{ entry.always_active }} name="checkbox_table_{{ entry.id }}" >
-                           <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                          </label>
-                        </div>  
-                       </div>          
-                    </td>                
+                      <font size="+2">
+                        <div class="pretty p-default p-curve p-fill p-bigger">
+                            <input type="checkbox" {{ entry.always_active }} name="checkbox_table_{{ entry.id }}" >
+                          <div class="state">
+                            <label></label>
+                          </div>
+                        </div>
+                      </font>
+                    </td>           
                     <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
                   </tr>
                   {% endfor %}
@@ -184,13 +185,13 @@
                     </div> 
                   </div>  
                   <div class="well well-sm">
-                    <div class="checkbox">
-                      <label>Daten immer speichern
-                       <input type="checkbox" {{ set_checkbox }} name="checkbox" >
-                       <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                      </label> 
-                    </div> 
-                  </div>                             
+                      <div class="pretty p-default p-curve p-fill p-bigger">
+                          <input type="checkbox" {{ set_checkbox }} name="checkbox">
+                        <div class="state">
+                          <label>Daten immer speichern</label>
+                        </div>
+                      </div> 
+                    </div>                            
                   <input type="submit" onclick="window.location.href='/dashboard/sensordata#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
                 </form> 
               </div>  

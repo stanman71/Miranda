@@ -12,6 +12,7 @@ from app.components.tasks import UPDATE_MQTT_DEVICES, CHECK_MQTT
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
+from app.components.tasks import CHECK_TASKS
 
 
 # create role "superuser"
@@ -138,10 +139,6 @@ def dashboard_settings_zigbee():
     check_value_zigbee = ["", ""]
     check_value_pairing = ["", ""]
 
-    if GET_ERROR_LIST() is not "":
-        error_message_table = GET_ERROR_LIST()
-        SET_ERROR_LIST("")
-
     if request.method == "POST":     
         # change mqtt settings   
         if request.form.get("set_setting_zigbee") is not None:
@@ -159,6 +156,10 @@ def dashboard_settings_zigbee():
 
 
     if zigbee_setting == "True":
+
+        if GET_ERROR_LIST() is not "":
+            error_message_table = GET_ERROR_LIST()
+            SET_ERROR_LIST("")
         
         error_message_zigbee = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
         
@@ -195,23 +196,21 @@ def dashboard_settings_zigbee():
             # reset logfile
             if request.form.get("reset_logfile") is not None: 
                 RESET_LOGFILE("log_zigbee")
+     
+        # set pairing checkbox  
+        pairing_setting = GET_ZIGBEE_PAIRING()    
+        if pairing_setting == "True":
+            check_value_pairing[0] = "checked = 'on'"
+            check_value_pairing[1] = ""        
+            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")  
+        else:
+            check_value_pairing[0] = ""
+            check_value_pairing[1] = "checked = 'on'"        
+            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
 
-
-    # set pairing setting  
-    pairing_setting = GET_ZIGBEE_PAIRING()    
-    if pairing_setting == "True":
-        check_value_pairing[0] = "checked = 'on'"
-        check_value_pairing[1] = ""        
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")  
-    else:
-        check_value_pairing[0] = ""
-        check_value_pairing[1] = "checked = 'on'"        
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
-
-
-    if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
-        error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
-        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection")
+        if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
+            error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
+            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection")
 
     zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
 
@@ -264,6 +263,7 @@ def dashboard_settings_snowboy():
     error_message = ""
     error_message_snowboy = ""
     error_message_form = ""
+    error_message_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
     sensitivity = ""
@@ -365,13 +365,15 @@ def dashboard_settings_snowboy():
     snowboy_list = GET_ALL_SNOWBOY_TASKS()
     file_list = GET_ALL_HOTWORD_FILES()
     
+    error_message_tasks   = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
     error_message_hotword = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
                             error_message=error_message,    
                             error_message_snowboy=error_message_snowboy,   
-                            error_message_form=error_message_form,          
+                            error_message_form=error_message_form,  
+                            error_message_tasks=error_message_tasks,        
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
                             snowboy_setting=snowboy_setting,

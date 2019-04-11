@@ -7,6 +7,8 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -70,6 +72,16 @@
   </div>      
 {% endif %}               
               
+<!-- error message tasks -->
+
+{% if error_message_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}  
+
               <table class="table">          
                 <thead>                       
                   <th scope="col">Aufgaben-Name</th> 
@@ -126,14 +138,14 @@
                       </select> 
                     </td>                         
                     <td>
-                      <div class="row justify-content-md-center">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" {{ entry.repeat }} name="checkbox_table_{{ entry.id }}" >
-                            <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                          </label>
-                        </div>  
-                      </div>          
+                      <font size="+2">
+                        <div class="pretty p-default p-curve p-fill p-bigger">
+                          <input type="checkbox" {{ entry.repeat }} name="checkbox_table_{{ entry.id }}" >
+                          <div class="state">
+                            <label></label>
+                          </div>
+                        </div>
+                      </font>
                     </td>
                     <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>  
                   </tr>
@@ -288,11 +300,11 @@
                 </div> 
               </div>                                
               <div class="well well-sm">
-                <div class="checkbox">
-                  <label>Wiederholen
-                   <input type="checkbox" {{ set_checkbox }} name="checkbox" >
-                   <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
-                  </label> 
+                <div class="pretty p-default p-curve p-fill p-bigger">
+                    <input type="checkbox" {{ set_checkbox }} name="checkbox">
+                  <div class="state">
+                    <label>Wiederholen</label>
+                  </div>
                 </div> 
               </div>             
               <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />

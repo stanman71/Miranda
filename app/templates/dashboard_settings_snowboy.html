@@ -7,6 +7,8 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -68,12 +70,20 @@
  
 <section id="sensitivity"></section> 
  
-            <div class="radio">
-              <label><input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">SnowBoy aktivieren</label>
+              <div class="pretty p-default p-round">
+                <input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">
+                <div class="state">
+                  <label>SnowBoy aktivieren</label>
+                </div>
+              </div>
               <br>
-              <label><input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">SnowBoy deaktivieren</label>
+              <div class="pretty p-default p-round">
+                <input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">
+                <div class="state">
+                  <label>SnowBoy deaktivieren</label>
+                </div>
+              </div>
             </div>
-          </div>
           <font color="red"><b>Flask neustarten, wenn SnowBoy Einstellungen geändert werden</b></font>
           <br>     
           <br>        
@@ -134,7 +144,17 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_form }}
   </div>      
-{% endif %}               
+{% endif %}     
+
+<!-- error message tasks -->
+
+{% if error_message_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
             
             <table class="table">
               <thead>                      

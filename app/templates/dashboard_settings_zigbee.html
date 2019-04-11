@@ -7,6 +7,8 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -65,10 +67,18 @@
         <div class="panel-body">   
           <form method="POST">  
             <div class="well well-sm">
-              <div class="radio">
-                <label><input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee">ZigBee aktivieren</label>
+              <div class="pretty p-default p-round">
+                  <input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee">
+                  <div class="state">
+                    <label>ZigBee aktivieren</label>
+                  </div>
+                </div>
                 <br>
-                <label><input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">ZigBee deaktivieren</label>
+                <div class="pretty p-default p-round">
+                  <input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">
+                <div class="state">
+                  <label>ZigBee deaktivieren</label>
+                </div>
               </div>
             </div>
 
@@ -148,11 +158,11 @@
             <br>
             <br>
             <div class="row justify-content-md-center">
-              <div class="col-sm-2">                
+              <div class="col-sm-3">                
                 <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
               </form>
               </div>
-              <div class="col-sm-2"> 
+              <div class="col-sm-3"> 
                 <form method="POST">
                   <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="update_zigbee_devices" value="Verbindungen aktuallisieren" />
                 </form>
@@ -169,10 +179,18 @@
           <div class="panel-body">   
             <form method="POST">  
               <div class="well well-sm">
-                <div class="radio">
-                  <label><input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">Pairing aktivieren</label>
-                  <br>
-                  <label><input {{check_value_pairing[1]}} type="radio" value="False" name="radio_pairing">Pairing deaktivieren</label>
+                <div class="pretty p-default p-round">
+                    <input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">
+                  <div class="state">
+                    <label>Pairing aktivieren</label>
+                  </div>
+                </div>
+                <br>
+                <div class="pretty p-default p-round">
+                    <input {{check_value_pairing[1]}} type="radio" value="False" name="radio_pairing">
+                  <div class="state">
+                    <label>Pairing deaktivieren</label>
+                  </div>
                 </div>
               </div>
               <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#pairing'" name="set_pairing" class="btn btn-default" value="Auswählen"/>

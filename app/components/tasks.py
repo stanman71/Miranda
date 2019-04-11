@@ -11,6 +11,90 @@ import datetime
 
 from threading import Thread
 
+""" ########## """
+""" check task """
+""" ########## """
+
+def CHECK_TASKS(tasks, task_type):
+   list_errors = []
+
+   for element in tasks:
+      task = element.task
+      name = element.name
+
+      # check snowboy_active
+      if task == "snowboy_active" and task_type == "snowboy":
+         continue
+
+      # check start_scene
+      if "start_scene" in task:
+         try:
+            task = task.split(":")
+            continue
+
+         except:
+            list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe")
+            continue
+
+      # check start_program
+      if "start_program" in task:
+         try:
+            task = task.split(":") 
+            if GET_PROGRAM_BY_ID(int(task[1])):
+               continue
+            else:
+               list_errors.append("Aufgabe: " + name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
+               continue
+         except:
+            list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe")
+            continue
+
+      # check led_off
+      if "led_off" in task:
+         try:
+            task = task.split(":")
+            if task[1].isdigit():
+               continue
+            else:
+               list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe")
+               continue
+         except:
+            list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe")
+            continue
+
+      # check watering_plants
+      if task == "watering_plants" and task_type == "timer":
+         continue
+
+      # check save_database         
+      if task == "save_database" and task_type == "timer":
+         continue
+
+      # check update_mqtt_devices
+      if task == "update_mqtt_devices" and task_type == "timer":
+         continue
+
+      # check get_mqtt_sensordata
+      if "get_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
+         try:
+            task = task.split(":")
+            if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
+               continue
+            else:
+               list_errors.append("Aufgabe: " + name + " >>> Job-ID " + task[1] + " nicht vorhanden")
+               continue 
+         except:
+            list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe")
+            continue 
+
+      # nothing found
+      list_errors.append("Aufgabe: " + name + " >>> Ungültige Eingabe") 
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
+
 
 """ ####### """
 """ snowboy """
@@ -112,7 +196,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
 
                # update mqtt devices
                if "update_mqtt_devices" in entry.task:
-                  UPDATE_MQTT_DEVICES()
+                  UPDATE_MQTT_DEVICES("mqtt")
 
                # get mqtt sensor data
                if "get_mqtt_sensordata" in entry.task:

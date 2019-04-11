@@ -21,8 +21,9 @@ def MQTT_START():
 			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
 		else:
 			WRITE_LOGFILE_MQTT("zigbee", message.topic, msg)
-		
-	
+
+
+
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")
 
@@ -152,5 +153,6 @@ def GET_MQTT_SENSORDATA(job_id):
       
       data = json.loads(input_message)
 
-      print(data[sensor_key])
-      
+   filename = sensordata_job.filename
+
+   WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])

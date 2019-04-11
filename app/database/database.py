@@ -649,11 +649,11 @@ def GET_ALL_PROGRAMS():
     return Programs.query.all()   
 
 
-def GET_PROGRAM_NAME(name):
+def GET_PROGRAM_BY_NAME(name):
     return Programs.query.filter_by(name=name).first()
 
 
-def GET_PROGRAM_ID(id):
+def GET_PROGRAM_BY_ID(id):
     return Programs.query.filter_by(id=id).first()
 
 

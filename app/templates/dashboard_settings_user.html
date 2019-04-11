@@ -7,6 +7,8 @@
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -117,24 +119,45 @@
                         <div class="col-sm-7">                       
                           Information
                         </div>
-                        <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info_{{ user.id }}">
+                        <div class="col-sm-1">    
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info_{{ user.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>              
                         </div>
                       </div>
                       <div class="row justify-content-md-center">
                         <div class="col-sm-7">                       
                           Fehler
                         </div>
-                        <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error_{{ user.id }}">
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error_{{ user.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                                            
                         </div>
                       </div>     
                       <div class="row justify-content-md-center">
                         <div class="col-sm-7">                       
                           Kamera
                         </div>
-                        <div class="col-sm-1">                  
-                          <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera_{{ user.id }}">
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera_{{ user.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                 
                         </div>
                       </div>                          
                     </td>    

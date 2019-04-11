@@ -40,6 +40,7 @@ def scheduler_job():
 def dashboard_taskmanagement_time():
     error_message = ""
     error_message_form = "" 
+    error_message_tasks = ""
     set_name = ""
     set_task = ""
     set_day = ""
@@ -133,6 +134,7 @@ def dashboard_taskmanagement_time():
 
                     SET_TASKMANAGEMENT_TIME_TASK(i, name, task, day, hour, minute, repeat)
 
+    error_message_tasks = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_TIME_TASKS(), "timer")
 
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
 
@@ -154,6 +156,7 @@ def dashboard_taskmanagement_time():
                             schedular_list=schedular_list,
                             error_message=error_message,
                             error_message_form=error_message_form,
+                            error_message_tasks=error_message_tasks,
                             set_name=set_name,
                             set_task=set_task,
                             set_day=set_day,
@@ -185,6 +188,7 @@ def dashboard_taskmanagement_sensor():
     error_message = ""
     error_message_table = ""
     error_message_form = ""
+    error_message_tasks = ""
     set_name = ""
     set_task = ""
     set_value = ""
@@ -280,6 +284,7 @@ def dashboard_taskmanagement_sensor():
 
         
     error_message_table = CHECK_TASKMANAGEMENT_SENSOR_TASKS()
+    error_message_tasks = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators    = ["==", ">", "<"]
@@ -293,6 +298,7 @@ def dashboard_taskmanagement_sensor():
                             error_message=error_message,
                             error_message_table=error_message_table,
                             error_message_form=error_message_form,
+                            error_message_tasks=error_message_tasks,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             schedular_list=schedular_list,

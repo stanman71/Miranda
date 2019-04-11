@@ -671,7 +671,7 @@ def dashboard_led_programs():
             # get the selected program, remove SUNRISE delete option
             get_Program = request.form.get("get_program_name") 
             if get_Program is not None:
-                program = GET_PROGRAM_NAME(get_Program)
+                program = GET_PROGRAM_BY_NAME(get_Program)
                 if "SUNRISE" in program.name:
                     program_delete = ""
                 else:
@@ -697,14 +697,14 @@ def dashboard_led_programs():
                 get_rgb = request.form.get("get_rgb_" + str(i)) 
                 if get_rgb is not None:
                     rgb = get_rgb               
-                    program = GET_PROGRAM_ID(i)   
+                    program = GET_PROGRAM_BY_ID(i)   
                 # change program name                    
                 program_name = request.form.get("program_name_" + str(i)) 
                 if program_name is not None:
                     SET_PROGRAM_NAME(i, program_name)              
-                    program = GET_PROGRAM_ID(i)  
+                    program = GET_PROGRAM_BY_ID(i)  
                 
-                program = GET_PROGRAM_ID(i)
+                program = GET_PROGRAM_BY_ID(i)
                 if "SUNRISE" in program.name:
                     program_delete = ""
                 else:
