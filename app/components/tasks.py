@@ -219,28 +219,30 @@ def CHECK_TASKS(tasks, task_type):
 
       # check start_program
       if "start_program" in task:
-         try:
+         if ":" in task:
             task = task.split(":") 
-            if GET_PROGRAM_BY_ID(int(task[1])):
-               continue
-            else:
+            try:
+               if GET_PROGRAM_BY_ID(int(task[1])):
+                  continue
+            except:
                list_errors.append(name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
                continue
-         except:
-            list_errors.append(name + " >>> Ungültige Aufgabe")
+         else:
+            list_errors.append(name + " >>> Ungültige Formatierung")
             continue
 
       # check led_off
       if "led_off" in task:
-         try:
+         if ":" in task:
             task = task.split(":")
             if task[1].isdigit():
                continue
             else:
-               list_errors.append(name + " >>> Ungültige Aufgabe")
+               list_errors.append(name + " >>> Ungültiger Verzögerungswert")
                continue
-         except:
-            list_errors.append(name + " >>> Ungültige Aufgabe")
+         else:
+            print("OK")
+            list_errors.append(name + " >>> Ungültige Formatierung")
             continue
 
       # check watering_plants
@@ -257,15 +259,16 @@ def CHECK_TASKS(tasks, task_type):
 
       # check get_mqtt_sensordata
       if "get_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
-         try:
+         if ":" in task:
             task = task.split(":")
-            if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
-               continue
-            else:
+            try:
+               if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
+                  continue
+            except:
                list_errors.append(name + " >>> Job-ID " + task[1] + " nicht vorhanden")
                continue 
-         except:
-            list_errors.append(name + " >>> Ungültige Aufgabe")
+         else:
+            list_errors.append(name + " >>> Ungültige Formatierung")
             continue 
 
       # nothing found
