@@ -101,32 +101,52 @@ def dashboard_taskmanagement_time():
         if request.form.get("change_settings") != None: 
             for i in range (1,25):
 
-                if request.form.get("set_task_" + str(i)) != None:
+                if request.form.get("set_name_" + str(i)) != None:
 
-                    # check name
-                    if (request.form.get("set_name_" + str(i)) != "" and 
+                    # ########
+                    # set name
+                    # ########
+
+                    ### own name    
+                    if request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name:
+                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                    ### set new name
+                    elif (request.form.get("set_name_" + str(i)) != "" and 
                         GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
                         name = request.form.get("set_name_" + str(i))  
-                        
-                    elif request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name:
+                    ### name used
+                    elif GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))):
                         name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
-                    
+                        error_message_form = name + " >>> Name schon vergeben"
+                    ### name field empty
                     else:
                         name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
-                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben" 
-                        
-                    # check task
+                              
+                    ### set task
                     if request.form.get("set_task_" + str(i)) != "":
                         task = request.form.get("set_task_" + str(i))
                     else:
                         task = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).task
-                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
-                        
-                        
-                    day    = request.form.get("set_day_" + str(i))
-                    hour   = request.form.get("set_hour_" + str(i))
-                    minute = request.form.get("set_minute_" + str(i))
 
+                    ### set day
+                    if request.form.get("set_day_" + str(i)) != "":
+                        day = request.form.get("set_day_" + str(i))
+                    else:
+                        day = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).day
+
+                    ### set hour
+                    if request.form.get("set_hour_" + str(i)) != "":
+                        hour = request.form.get("set_hour_" + str(i))
+                    else:
+                        hour = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).hour
+
+                    ### set minute
+                    if request.form.get("set_minute_" + str(i)) != "":
+                        minute = request.form.get("set_minute_" + str(i))
+                    else:
+                        minute = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).minute                                                                                      
+                        
+                    ### set checkbox
                     if request.form.get("checkbox_table_" + str(i)):
                         repeat = "checked"
                     else:
@@ -134,29 +154,26 @@ def dashboard_taskmanagement_time():
 
                     SET_TASKMANAGEMENT_TIME_TASK(i, name, task, day, hour, minute, repeat)
 
+
+    list_errors_settings = CHECK_ALL_TIMER_SETTINGS(GET_ALL_TASKMANAGEMENT_TIME_TASKS())
+
+    if list_errors_settings == []:
+        error_message_settings = ""
+    else:
+        error_message_settings = list_errors_settings
+
+
     error_message_tasks = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_TIME_TASKS(), "timer")
-
+    
     schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
-
-    # dropdown values
-    dropdown_list_days    = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]
-    dropdown_list_hours   = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
-                             "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"]
-    dropdown_list_minutes = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", 
-                             "12","13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", 
-                             "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36","37",
-                             "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48","49", "50",
-                             "51", "52", "53", "54", "55", "56", "57", "58", "59"]
 
 
     return render_template('dashboard_taskmanagement_time.html',
-                            dropdown_list_days=dropdown_list_days,
-                            dropdown_list_hours=dropdown_list_hours,
-                            dropdown_list_minutes=dropdown_list_minutes,
                             schedular_list=schedular_list,
                             error_message=error_message,
                             error_message_form=error_message_form,
                             error_message_tasks=error_message_tasks,
+                            error_message_settings=error_message_settings,
                             set_name=set_name,
                             set_task=set_task,
                             set_day=set_day,
@@ -239,6 +256,11 @@ def dashboard_taskmanagement_sensor():
  
         # change settings
         if request.form.get("change_settings") != None:
+
+            print(request.form.get("set_settings_1_1"))
+            print(request.form.get("set_settings_1_2"))
+            print(request.form.get("set_settings_2_1"))
+
             for i in range (1,25): 
                 
                 if request.form.get("set_name_" + str(i)) != None:
@@ -287,6 +309,7 @@ def dashboard_taskmanagement_sensor():
     error_message_tasks = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
+
     dropdown_list_operators    = ["==", ">", "<"]
 
     schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()

@@ -113,7 +113,7 @@
 
 <!-- mqtt device table -->
   
-<div class="panel panel-default">
+        <div class="panel panel-default">
           <div class="panel-body">  
             <div class="well well-sm">   
               <table class="table">
@@ -145,7 +145,7 @@
                     <td>{{ entry.outputs }}</td>  
                     <td>{{ entry.last_contact }}</td>    
                     <td></td>              
-                    <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>                                   
+                    <td><a href="/dashboard/settings/mqtt/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>

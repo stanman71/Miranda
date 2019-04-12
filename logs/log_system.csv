@@ -4559,3 +4559,203 @@ Timestamp,Type,Description
 2019-04-11 19:06:48,EVENT,Snowboy >>> started
 2019-04-11 19:08:27,EVENT,Database >>> Snowboy Task >>> smarthome >>> changed >>> Name: smarthome /// Task: watering_plants
 2019-04-11 19:08:36,EVENT,Database >>> Snowboy Task >>> smarthome >>> changed >>> Name: smarthome /// Task: snowboy_active
+2019-04-11 19:33:28,EVENT,MQTT >>> started
+2019-04-11 19:33:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 19:33:32,EVENT,Snowboy >>> started
+2019-04-11 19:34:42,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 19:36:43,EVENT,Snowboy >>> Detection >>> start_scene:9:50
+2019-04-11 19:37:23,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_0 /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:37:38,EVENT,Database >>> Taskmanagement (Time) >>> test_0 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:37:45,EVENT,Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off: /// Day: * /// Hour: 07 /// Minute: 50 /// Repeat: checked
+2019-04-11 19:37:50,EVENT,Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: * /// Hour: 07 /// Minute: 50 /// Repeat: checked
+2019-04-11 19:37:58,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:6 /// Day: Tu /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:38:06,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:2 /// Day: Tu /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:38:10,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_device /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:38:14,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 19:38:26,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-11 19:38:32,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: save_database /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: ztriuzuiz
+2019-04-11 19:38:42,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: ztriuzuiz /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: ztriuzuiz
+2019-04-11 19:38:53,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: start_program:2 /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: ztriuzuiz
+2019-04-11 19:38:59,EVENT,Database >>> Taskmanagement (Sensor) >>> zzzz >>> changed >>> Name: zzzz /// Task: start_program:1 /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Operator: == /// Value: ztriuzuiz
+2019-04-11 19:39:16,EVENT,Database >>> Plant >>> iu >>> changed >>> Name: iu /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: 23
+2019-04-11 19:39:45,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: checked
+2019-04-11 19:40:09,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-11 19:41:59,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-04-11 19:42:18,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-11 19:42:27,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-11 19:42:29,ERROR,|eMail >>> (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials z84sm6365270wmg.24 - gsmtp')|
+2019-04-11 19:42:49,EVENT,Database >>> eMail Server Settings >>> changed
+2019-04-11 19:44:16,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 19:44:17,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-11 20:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-11 20:03:59,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata: /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 20:04:03,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:3 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 20:04:08,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 20:14:09,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:14:53,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:16:31,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-11 20:19:29,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:25:14,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-11 20:25:15,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:33:48,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 20:35:23,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 21:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-11 21:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-11 21:04:01,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-11 21:04:47,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: get_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 00 /// Repeat: checked
+2019-04-11 21:09:13,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 21:12:28,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-11 22:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-11 22:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-11 22:00:04,EVENT,Task >>> test >>> started
+2019-04-11 22:03:05,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-11 22:39:49,EVENT,MQTT >>> started
+2019-04-11 22:39:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 22:39:53,EVENT,Snowboy >>> started
+2019-04-11 22:40:56,EVENT,MQTT >>> started
+2019-04-11 22:40:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 22:41:00,EVENT,Snowboy >>> started
+2019-04-11 22:44:12,EVENT,MQTT >>> started
+2019-04-11 22:44:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 22:44:16,EVENT,Snowboy >>> started
+2019-04-11 22:47:42,EVENT,MQTT >>> started
+2019-04-11 22:47:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 22:47:46,EVENT,Snowboy >>> started
+2019-04-11 22:49:04,EVENT,MQTT >>> started
+2019-04-11 22:49:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-11 22:49:08,EVENT,Snowboy >>> started
+2019-04-11 23:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-11 23:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-11 23:00:05,EVENT,Task >>> test >>> started
+2019-04-11 23:56:02,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-12 00:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 00:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 00:00:04,EVENT,Task >>> test >>> started
+2019-04-12 00:00:07,EVENT,Task >>> Datenbank sichern >>> started
+2019-04-12 00:00:07,EVENT,Database_Backup >>> saved
+2019-04-12 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-12 01:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 01:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 01:00:05,EVENT,Task >>> test >>> started
+2019-04-12 02:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 02:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 02:00:04,EVENT,Task >>> test >>> started
+2019-04-12 03:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 03:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 03:00:04,EVENT,Task >>> test >>> started
+2019-04-12 04:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 04:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 04:00:04,EVENT,Task >>> test >>> started
+2019-04-12 05:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 05:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 05:00:05,EVENT,Task >>> test >>> started
+2019-04-12 06:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 06:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 06:00:05,EVENT,Task >>> test >>> started
+2019-04-12 07:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 07:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 07:00:05,EVENT,Task >>> test >>> started
+2019-04-12 07:50:00,EVENT,Task >>> zur Arbeit >>> started
+2019-04-12 08:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 08:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 08:00:05,EVENT,Task >>> test >>> started
+2019-04-12 09:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 09:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 09:00:05,EVENT,Task >>> test >>> started
+2019-04-12 10:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 10:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 10:00:05,EVENT,Task >>> test >>> started
+2019-04-12 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 11:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 11:00:05,EVENT,Task >>> test >>> started
+2019-04-12 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 12:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 12:00:05,EVENT,Task >>> test >>> started
+2019-04-12 13:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 13:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 13:00:05,EVENT,Task >>> test >>> started
+2019-04-12 14:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 14:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 14:00:05,EVENT,Task >>> test >>> started
+2019-04-12 15:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 15:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 15:00:05,EVENT,Task >>> test >>> started
+2019-04-12 16:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 16:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 16:00:05,EVENT,Task >>> test >>> started
+2019-04-12 17:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 17:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 17:00:05,EVENT,Task >>> test >>> started
+2019-04-12 18:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-12 18:00:05,EVENT,Task >>> test >>> started
+2019-04-12 18:12:43,EVENT,MQTT >>> started
+2019-04-12 18:12:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:12:47,EVENT,Snowboy >>> started
+2019-04-12 18:13:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:13:01,EVENT,Database >>> Taskmanagement (Time) >>> jhgjh >>> added >>> Task: jhg /// Day:  /// Hour:  /// Minute:  /// Repeat: checked
+2019-04-12 18:13:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:13:24,EVENT,Database >>> Taskmanagement (Time) >>> jhgjh >>> changed >>> Name: jhgjh /// Task: jhg /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-12 18:14:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:14:02,EVENT,Task >>> jhgjh >>> started
+2019-04-12 18:14:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:15:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:15:02,EVENT,Task >>> jhgjh >>> started
+2019-04-12 18:15:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:15:42,EVENT,Database >>> Taskmanagement (Time) >>> jhgjh >>> changed >>> Name: jhgjh /// Task: led_off:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-12 18:15:44,EVENT,Database >>> Taskmanagement (Time) >>> jhgjh >>> deleted
+2019-04-12 18:16:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:16:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:17:04,EVENT,MQTT >>> started
+2019-04-12 18:17:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:17:08,EVENT,Snowboy >>> started
+2019-04-12 18:18:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:18:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:18:21,EVENT,MQTT >>> started
+2019-04-12 18:18:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:18:25,EVENT,Snowboy >>> started
+2019-04-12 18:19:05,EVENT,MQTT >>> started
+2019-04-12 18:19:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:19:09,EVENT,Snowboy >>> started
+2019-04-12 18:19:50,EVENT,MQTT >>> started
+2019-04-12 18:19:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:19:54,EVENT,Snowboy >>> started
+2019-04-12 18:20:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:20:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:21:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:21:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:21:25,EVENT,MQTT >>> started
+2019-04-12 18:21:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:21:29,EVENT,Snowboy >>> started
+2019-04-12 18:22:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:22:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:23:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:23:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:24:00,EVENT,MQTT >>> started
+2019-04-12 18:24:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:24:04,EVENT,Snowboy >>> started
+2019-04-12 18:25:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:25:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:26:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:26:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:26:31,EVENT,MQTT >>> started
+2019-04-12 18:26:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:26:35,EVENT,Snowboy >>> started
+2019-04-12 18:27:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:27:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:27:42,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off: /// Day: Mo,Tu /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-12 18:27:48,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: Mo,Tu /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-12 18:28:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:28:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:29:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:29:02,EVENT,Task >>> schlafen >>> started
+2019-04-12 18:30:01,EVENT,MQTT >>> started
+2019-04-12 18:30:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-12 18:30:06,EVENT,Snowboy >>> started
+2019-04-12 18:30:12,EVENT,|Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_device /// Day: Fr /// Hour: 10,11,12 /// Minute: 13,15,20,58 /// Repeat: checked|
+2019-04-12 18:30:17,EVENT,|Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: Fr /// Hour: 10,11,12 /// Minute: 13,15,20,58 /// Repeat: checked|
+2019-04-12 18:30:20,EVENT,|Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: Froiu /// Hour: 10,11,12 /// Minute: 13,15,20,58 /// Repeat: checked|
+2019-04-12 18:30:26,EVENT,|Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: Fr /// Hour: 10,11,12 /// Minute: 13,15,20,58 /// Repeat: checked|
+2019-04-12 18:31:00,EVENT,Task >>> test_01 >>> started
+2019-04-12 18:31:02,EVENT,Task >>> schlafen >>> started

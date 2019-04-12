@@ -123,7 +123,7 @@
                         </div>
                       </font>
                     </td>           
-                    <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red"><b>löschen</b></font></a></td>   
+                    <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -223,7 +223,7 @@
                 <tr>
                   <td>{{ entry }}</td> 
                   <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
-                  <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red"><b>löschen</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>

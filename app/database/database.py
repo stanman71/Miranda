@@ -256,6 +256,7 @@ class Taskmanagement_Sensor(db.Model):
     sensor_key     = db.Column(db.String(50))    
     value          = db.Column(db.String(100))
     operator       = db.Column(db.String(50))
+    settings       = db.Column(db.String(200))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'

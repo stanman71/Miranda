@@ -141,9 +141,78 @@
                       </td> 
                       <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table"><font color="red"><b>löschen</b></font></a></td>  
                     </tr>
-                    {% endfor %}
                   </tbody>
                 </table>  
+
+                
+
+
+                {% for list_rows in entry.settings.split('/') %}{{loop.index}} 
+                  {% set index_1 = loop.index %}
+
+                    <table class="table">
+                      <tbody> 
+
+                          {% for setting in list_rows.split(',') %}{{loop.index}} 
+                            {% set index_2 = loop.index %}
+                    
+                          
+                        <tr>
+
+
+
+                            {% for device in dropdown_list_mqtt_devices %}
+                              {% for sensor in device.inputs.split(',') %}                
+                                  {{ setting }}
+                                  {{ sensor }}
+                              {% endfor %}  
+                            {% endfor %}  
+
+
+                          <select class="btn btn-default dropdown-toggle" name="set_settings_{{index_1}}_{{index_2}}">
+                            <option value= "{{ setting }}" > {{ setting }} </option>
+                            <option value= "{{ setting }}" > ----- </option>
+
+                            {% if setting in dropdown_list_operators %}
+                              {% for operator in dropdown_list_operators %}
+                              <option value="{{ operator }}"> {{ operator }} </option>
+                              {% endfor %}
+                            {% endif %}
+
+                            {% for device in dropdown_list_mqtt_devices %}
+                              {% if setting == device.name %}
+                                {% for device in dropdown_list_mqtt_devices %}
+                                <option value="{{ device.id }}"> {{ device.name }} </option>
+                                {% endfor %}
+                              {% endif %}     
+                            {% endfor %}
+
+
+                            {% for device in dropdown_list_mqtt_devices %}
+                              {% for sensor in device.inputs.split(',') %}                     
+                                {% if setting == sensor %}
+                                  <option value= "{{ sensor }}" > {{ sensor }} </option> 
+                                {% endif %}
+                              {% endfor %}  
+                            {% endfor %}      
+                            
+
+                            
+                          </select>      
+                                
+                        
+                        </tr>
+  
+
+
+                          {% endfor %}
+
+                        </tbody>
+                      </table>     
+
+                  {% endfor %}       
+
+                {% endfor %}
               </div>
                 <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/sensor#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
               </form>
