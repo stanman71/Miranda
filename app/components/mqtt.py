@@ -100,8 +100,9 @@ def UPDATE_MQTT_DEVICES(gateway):
 
                ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, inputs, outputs)  
 
-      except:
-	      pass
+      except Exception as e:
+         print(e)
+         WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e))    
 
 
    if gateway == "zigbee":
@@ -130,8 +131,9 @@ def UPDATE_MQTT_DEVICES(gateway):
 
                            ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model)
          
-         except:
-            pass	       
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee >>> " + str(e))            
 
 
 def GET_MQTT_SENSORDATA(job_id):

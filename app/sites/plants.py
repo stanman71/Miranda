@@ -51,7 +51,8 @@ def dashboard_plants():
                     name           = request.form.get("set_name")
                     mqtt_device_id = request.form.get("set_mqtt_device_id")    
                     watervolume    = request.form.get("set_watervolume") 
-                    error_message  = ADD_PLANT(name, mqtt_device_id, watervolume)
+                    moisture       = request.form.get("set_radio_moisture")
+                    error_message  = ADD_PLANT(name, mqtt_device_id, watervolume, moisture)
         
         
         # change settings
@@ -82,9 +83,9 @@ def dashboard_plants():
                         sensor_key = request.form.get("set_sensor_" + str(i))            
                         pump_key = request.form.get("set_pump_" + str(i))    
                         watervolume = request.form.get("set_watervolume_" + str(i))
-                        moisture_percent = request.form.get("set_moisture_" + str(i))
+                        moisture = request.form.get("radio_moisture_" + str(i))
                             
-                        SET_PLANT_SETTINGS(i, name, sensor_key, pump_key, watervolume, moisture_percent)                       
+                        SET_PLANT_SETTINGS(i, name, sensor_key, pump_key, watervolume, moisture)                       
                         
                     else:                        
                         # reset sensor_key and pump_key if device changes
@@ -95,7 +96,6 @@ def dashboard_plants():
 
                         plant_id = GET_PLANT_BY_NAME(name).id
                         SET_MOISTURE_TARGET(plant_id, moisture_percent)
-
 
                    
     error_message_table = CHECK_PLANTS()

@@ -4832,3 +4832,241 @@ Timestamp,Type,Description
 2019-04-12 18:58:29,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_of /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
 2019-04-12 18:58:34,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off: /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
 2019-04-12 18:58:38,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:1 /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-13 10:21:36,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:21:37,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:21:39,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:22:13,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: + /// Repeat: checked
+2019-04-13 10:22:13,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: + /// Repeat: checked
+2019-04-13 10:22:19,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: get_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-13 10:22:19,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-13 10:23:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:23:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:23:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:24:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:24:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:24:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:25:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:25:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:25:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:25:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:25:33,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:25:35,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:26:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:26:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:26:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:26:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:29:47,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:29:48,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:29:50,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:30:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:30:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:30:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:30:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:31:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:31:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:31:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:31:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:31:30,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor:  light /// Always_Active: checked
+2019-04-13 10:31:34,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: checked
+2019-04-13 10:32:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:32:10,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:32:12,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:32:14,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:32:54,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:32:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:32:57,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:33:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:33:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:33:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:33:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:33:22,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:33:23,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:33:25,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:34:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:34:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:34:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:34:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:34:36,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:34:37,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:34:39,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:35:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:35:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:35:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:35:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:35:26,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:35:29,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:36:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:36:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:36:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:53:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:53:33,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:53:35,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:53:38,EVENT,Database >>> Plant >>> jhgjg >>> added
+2019-04-13 10:53:45,EVENT,Database >>> Plant >>> jhgjg >>> changed >>> Name: jhgjg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: normal
+2019-04-13 10:53:49,EVENT,Database >>> Plant >>> jhgjg >>> changed >>> Name: jhgjg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: high
+2019-04-13 10:54:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:54:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:54:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:54:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:54:36,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:54:37,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:54:40,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:54:43,EVENT,Database >>> Plant >>> jhgjg >>> changed >>> Name: jhgjg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: low
+2019-04-13 10:54:47,EVENT,Database >>> Plant >>> jhgjg >>> changed >>> Name: jhgjg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: normal
+2019-04-13 10:55:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:55:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:55:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:55:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:56:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:56:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:56:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:56:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:57:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:57:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:57:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:57:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:58:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:58:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:58:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:58:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:58:53,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 10:58:54,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 10:58:56,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 10:59:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 10:59:00,EVENT,Database >>> Plant >>> jhgj >>> added
+2019-04-13 10:59:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 10:59:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 10:59:08,ERROR,MQTT >>> string index out of range
+2019-04-13 10:59:09,EVENT,Database >>> Plant >>> jhgj >>> changed >>> Name: jhgj /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_1 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 10:59:18,EVENT,Database >>> Plant >>> jhgjg >>> changed >>> Name: jhgjg /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:00:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:00:08,EVENT,Task >>> test >>> started
+2019-04-13 11:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-13 11:00:44,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:00:45,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:00:48,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:01:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:01:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:01:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:01:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:01:19,EVENT,Database >>> Plant >>> jhgjg >>> deleted
+2019-04-13 11:01:22,EVENT,Database >>> Plant >>> hgfhgf >>> added
+2019-04-13 11:01:26,EVENT,Database >>> Plant >>> hgfhgf >>> changed >>> Name: hgfhgf /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:02:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:02:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:02:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:02:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:03:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:03:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:03:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:03:26,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:03:27,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:03:29,EVENT,Database >>> Plant >>> uzt >>> added
+2019-04-13 11:03:29,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:03:33,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:03:36,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:03:39,EVENT,Database >>> Plant >>> jhg >>> added
+2019-04-13 11:04:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:04:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:04:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:04:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:04:26,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:04:26,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:04:29,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:04:29,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:04:33,EVENT,Database >>> Plant >>> uzt >>> changed >>> Name: uzt /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:04:33,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:05:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:05:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:05:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:05:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:06:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:06:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:06:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:06:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:07:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:07:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:07:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:07:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:08:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:08:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:08:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:08:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:09:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:09:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:09:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:09:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:10:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:10:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:10:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:10:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:11:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:11:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:11:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:11:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:12:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:12:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:12:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:12:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:12:40,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:12:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:12:43,EVENT,Database >>> Plant >>> hgf >>> added
+2019-04-13 11:12:43,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:13:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:13:05,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:13:06,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:13:08,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:14:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:14:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:14:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:14:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:15:05,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:15:06,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:15:08,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:15:30,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:15:31,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:15:33,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:15:34,EVENT,Database >>> Plant >>> gfdgfd >>> added
+2019-04-13 11:16:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:16:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:16:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:16:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:16:55,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:16:56,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:16:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:17:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:17:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:17:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:17:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:18:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:18:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:18:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:18:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:19:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:19:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:19:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:19:10,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:19:11,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:19:13,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:19:37,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-13 11:19:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-13 11:19:40,EVENT,Database >>> Plant >>> jhg >>> added
+2019-04-13 11:19:41,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-13 11:19:46,EVENT,Database >>> Plant >>> ölkölk >>> added
+2019-04-13 11:19:50,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:19:50,EVENT,Database >>> Plant >>> ölkölk >>> changed >>> Name: ölkölk /// MQTT-Device: 0x99999 /// Sensor: None /// Pump: None /// Watervolume: 50 /// Moisture: low
+2019-04-13 11:19:54,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: high
+2019-04-13 11:19:56,EVENT,Database >>> Plant >>> ölkölk >>> changed >>> Name: ölkölk /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: low
+2019-04-13 11:19:58,EVENT,Database >>> Plant >>> ölkölk >>> changed >>> Name: ölkölk /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: normal
+2019-04-13 11:20:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:20:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:20:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:20:08,ERROR,MQTT >>> string index out of range
+2019-04-13 11:20:12,EVENT,Database >>> Plant >>> jhg >>> changed >>> Name: jhg /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_2 /// Watervolume: 50 /// Moisture: low
+2019-04-13 11:21:00,EVENT,Task >>> test_01 >>> started
+2019-04-13 11:21:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-13 11:21:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-13 11:21:08,ERROR,MQTT >>> string index out of range

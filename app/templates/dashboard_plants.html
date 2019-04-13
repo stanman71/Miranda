@@ -8,6 +8,7 @@
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -75,7 +76,7 @@
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>    
                   <th scope="col">Wassermenge</th>            
-                  <th scope="col">Feuchtigkeit</th>  
+                  <th scope="col">Erdfeuchtigkeit</th>  
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
@@ -87,7 +88,7 @@
                     <td>
                       <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
-                        <option value= "{{ entry.mqtt_device_id }}" > ----- </option>                                           
+                        <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>                                           
                         {% for each in dropdown_list_mqtt_devices %}
                           <option value="{{ each.id }}"> {{ each.name }} </option>
                         {% endfor %}
@@ -96,7 +97,7 @@
                     <td>     
                       <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                         <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
-                        <option value= "{{ entry.sensor_key }}" > ----- </option>
+                        <option value= "{{ entry.sensor_key }}" > -------------------- </option>
                         {% for each in entry.mqtt_device.inputs.split(',') %}
                           <option value= "{{ each }}" > {{ each }} </option>
                         {% endfor %}
@@ -105,7 +106,7 @@
                     <td>                
                       <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
                         <option value= "{{ entry.pump_key }}" > {{ entry.pump_key }} </option>
-                        <option value= "{{ entry.pump_key }}" > ----- </option>
+                        <option value= "{{ entry.pump_key }}" > -------------------- </option>
                         {% for each in entry.mqtt_device.outputs.split(',') %}
                           <option value= "{{ each }}" > {{ each }} </option>
                         {% endfor %}
@@ -114,20 +115,33 @@
                     <td>
                       <select class="btn btn-default dropdown-toggle" name="set_watervolume_{{ entry.id }}">
                         <option value= "{{ entry.watervolume }}" > {{ entry.watervolume }} </option>
-                        <option value= "{{ entry.watervolume }}" > ----- </option>
+                        <option value= "{{ entry.watervolume }}" > ---------- </option>
                         {% for each in dropdown_list_watervolume %}
                           <option value="{{each}}"> {{ each }} </option>
                         {% endfor %}
                       </select>  
                     </td>                    
                     <td>
-                        {{ entry.moisture_percent }} %
-                        <class="slidecontainer"> 
-                          <input type="range" class="slider" name="set_moisture_{{ entry.id }}" min="0" max="100" value="{{ entry.moisture_percent }}" />
-                        </class>
+                      <div class="pretty p-default p-round">
+                        <input {% if entry.moisture == "high" %}checked = 'on'{% endif %} type="radio" value="high" name="radio_moisture_{{ entry.id }}">
+                        <div class="state">
+                          <label>hoch</label>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="pretty p-default p-round">
+                          <input {% if entry.moisture == "normal" %}checked = 'on'{% endif %} type="radio" value="normal" name="radio_moisture_{{ entry.id }}">
+                        <div class="state">
+                          <label>normal</label>
+                        </div>
+                      </div>
+                      <div class="pretty p-default p-round">
+                          <input {% if entry.moisture == "low" %}checked = 'on'{% endif %} type="radio" value="low" name="radio_moisture_{{ entry.id }}">
+                        <div class="state">
+                          <label>gering</label>
+                        </div>
+                      </div>   
                     </td>  
-                    <td></td>  
-                    <td></td>                     
                     <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
@@ -173,7 +187,7 @@
                         <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
                           {% if set_mqtt_device_id != "" %}
                             <option value= "{{ set_mqtt_device_id }}" > {{ set_mqtt_device_name }} </option>
-                            <option value= "{{ set_mqtt_device_id }}" > ----- </option>                     
+                            <option value= "{{ set_mqtt_device_id }}" > -------------------- </option>                     
                           {% endif %}   
                           {% for each in dropdown_list_mqtt_devices %}
                           <option value="{{each.id}}"> {{ each.name }} </option>
@@ -191,15 +205,43 @@
                         <select class="btn btn-default dropdown-toggle" name="set_watervolume">
                           {% if set_watervolume != "" %}
                             <option value= "{{ set_watervolume }}" > {{ set_watervolume }} </option>
-                            <option value= "{{ set_watervolume }}" > ----- </option>                     
+                            <option value= "{{ set_watervolume }}" > ---------- </option>                     
                           {% endif %}   
                           {% for each in dropdown_list_watervolume %}
                           <option value="{{each}}"> {{ each }} </option>
                           {% endfor %}
                         </select>    
                       </div>
-                    </div>                    
-                  </div>        
+                    </div>  
+                  </div> 
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-2">
+                        Feuchtigkeit:
+                      </div>
+                      <div class="col-sm-1">                             
+                      <div class="pretty p-default p-round">
+                        <input type="radio" value="high" name="set_radio_moisture">
+                        <div class="state">
+                          <label>hoch</label>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="pretty p-default p-round">
+                          <input type="radio" value="normal" name="set_radio_moisture">
+                        <div class="state">
+                          <label>normal</label>
+                        </div>
+                      </div>
+                      <div class="pretty p-default p-round">
+                          <input type="radio" value="low" name="set_radio_moisture">
+                        <div class="state">
+                          <label>gering</label>
+                        </div>
+                      </div>   
+                    </div> 
+                  </div>      
+                </div>   
                 <input type="submit" onclick="window.location.href='/dashboard/plants#add_plant'" class="btn btn-default" name="add_plant" value="Pflanze hinzufügen" />
               </form>   
             </div>  

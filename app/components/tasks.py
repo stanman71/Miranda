@@ -71,11 +71,12 @@ def SNOWBOY_TASKS(entry):
 
 def TASKMANAGEMENT_TIME_TASKS(entries):
 
-   now    = datetime.datetime.now()
+   now = datetime.datetime.now()
    current_day    = now.strftime('%a')
    current_hour   = now.strftime('%H')
    current_minute = now.strftime('%M')
 
+   # format data
    if current_day == "Mon":
       current_day = "Mo"
    if current_day == "Tue":
@@ -89,7 +90,13 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
    if current_day == "Sat":
       current_day = "Sa"
    if current_day == "Sun":
-      current_day = "Su"                                 
+      current_day = "Su"    
+
+   if current_hour[0] == "0":
+      current_hour = current_hour[1:]   
+
+   if current_minute[0] == "0":
+      current_minute = current_minute[1:]                        
 
    passing = False
 
@@ -148,7 +155,6 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
          WRITE_LOGFILE_SYSTEM("EVENT", 'Task >>> ' + entry.name + ' >>> started') 
 
          try:
-
             # start scene
             if "start_scene" in entry.task:
                task = entry.task.split(":")
@@ -156,40 +162,65 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
                      LED_SET_SCENE(int(task[1]), int(task[2]))
                except:
                      LED_SET_SCENE(int(task[1]))
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # start program
             if "start_program" in entry.task:
                task = entry.task.split(":")
                START_PROGRAM(int(task[1]))
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # turn off leds
             if "led_off" in entry.task:
                task = entry.task.split(":")
                LED_OFF(int(task[1])) 
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # watering plants
             if "watering_plants" in entry.task:
                START_WATERING_THREAD()
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # save database
             if "save_database" in entry.task:
                SAVE_DATABASE()
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # update mqtt devices
             if "update_mqtt_devices" in entry.task:
                UPDATE_MQTT_DEVICES("mqtt")
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
+         try:
             # get mqtt sensor data
             if "get_mqtt_sensordata" in entry.task:
                task = entry.task.split(":")
                GET_MQTT_SENSORDATA(int(task[1])) 
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
-            # remove schedular task without repeat
-            if entry.repeat == "":
-               DELETE_TASKMANAGEMENT_TIME_TASK(entry.id)
 
-         except:
-            pass
+         # remove schedular task without repeat
+         if entry.repeat == "":
+            DELETE_TASKMANAGEMENT_TIME_TASK(entry.id)
 
 
 """ ############### """

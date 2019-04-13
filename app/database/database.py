@@ -54,16 +54,15 @@ class MQTT_Devices(db.Model):
     last_contact = db.Column(db.String(50))
 
 class Plants(db.Model):
-    __tablename__ = 'plants'
-    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name             = db.Column(db.String(50), unique=True)
-    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    watervolume      = db.Column(db.Integer)
-    mqtt_device      = db.relationship('MQTT_Devices')  
-    pump_key         = db.Column(db.String(50))
-    sensor_key       = db.Column(db.String(50))
-    moisture_percent = db.Column(db.Integer, server_default=("50")) 
-    moisture_target  = db.Column(db.Integer)     
+    __tablename__  = 'plants'
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name           = db.Column(db.String(50), unique=True)
+    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    watervolume    = db.Column(db.Integer)
+    mqtt_device    = db.relationship('MQTT_Devices')  
+    pump_key       = db.Column(db.String(50))
+    sensor_key     = db.Column(db.String(50))
+    moisture       = db.Column(db.String(50), server_default=("normal"))     
 
 class Programs(db.Model):
     __tablename__ = 'programs'
@@ -1113,7 +1112,8 @@ def CHECK_PLANTS():
     entries = Plants.query.all()
     for entry in entries:
         if ((entry.sensor_key == "None" or entry.sensor_key == None) or
-            (entry.pump_key == "None" or entry.pump_key == None)):
+            (entry.pump_key == "None" or entry.pump_key == None) or
+            (entry.moisture == "None" or entry.moisture == None)):
             
             string_errors = string_errors + str(entry.name) + " "
      
@@ -1123,7 +1123,7 @@ def CHECK_PLANTS():
         return ""
 
 
-def ADD_PLANT(name, mqtt_device_id, watervolume, log = ""):
+def ADD_PLANT(name, mqtt_device_id, watervolume, moisture, log = ""):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1137,7 +1137,8 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, log = ""):
                         id             = i,
                         name           = name,
                         mqtt_device_id = mqtt_device_id,
-                        watervolume    = watervolume,                     
+                        watervolume    = watervolume, 
+                        moisture       = moisture,                    
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1151,37 +1152,26 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, log = ""):
         return "Name bereits vergeben"
 
 
-def SET_MOISTURE_TARGET(plant_id, moisture_percent):
-    entry = Plants.query.filter_by(id=plant_id).first()
-    
-    # calculate moisture target
-    value_temp = int(moisture_percent) * 5
-    moisture_target = 870 - value_temp
-    entry.moisture_target = moisture_target
-    db.session.commit()     
-
-
-def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, moisture_percent):        
+def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, moisture):        
     entry = Plants.query.filter_by(id=plant_id).first()
     old_name = entry.name
 
     # values changed ?
     if (entry.name != name or entry.sensor_key != sensor_key or entry.pump_key != pump_key or 
-        entry.watervolume != int(watervolume) or entry.moisture_percent != int(moisture_percent)):
+        entry.watervolume != int(watervolume) or entry.moisture != moisture):
 
         entry.name = name
         entry.sensor_key = sensor_key
         entry.pump_key = pump_key
         entry.watervolume = watervolume
-        entry.moisture_percent = moisture_percent
+        entry.moisture = moisture
         
-        SET_MOISTURE_TARGET(plant_id, moisture_percent)
         db.session.commit()  
 
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
                              " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
                              " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Moisture: " +
-                             str(entry.moisture_percent))                
+                             entry.moisture)                
 
 
 def DELETE_PLANT(plant_id, log = ""):
