@@ -75,7 +75,8 @@
                   <th scope="col">Gerät</th>  
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>    
-                  <th scope="col">Wassermenge</th>            
+                  <th scope="col">Wassermenge</th> 
+                  <th></th>           
                   <th scope="col">Erdfeuchtigkeit</th>  
                 </thead>
                 <tbody> 
@@ -120,7 +121,8 @@
                           <option value="{{each}}"> {{ each }} </option>
                         {% endfor %}
                       </select>  
-                    </td>                    
+                    </td>  
+                    <td></td>                  
                     <td>
                       <div class="pretty p-default p-round">
                         <input {% if entry.moisture == "high" %}checked = 'on'{% endif %} type="radio" value="high" name="radio_moisture_{{ entry.id }}">
@@ -142,6 +144,7 @@
                         </div>
                       </div>   
                     </td>  
+                    <td></td>               
                     <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
