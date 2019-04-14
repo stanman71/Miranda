@@ -62,7 +62,7 @@ class Plants(db.Model):
     mqtt_device    = db.relationship('MQTT_Devices')  
     pump_key       = db.Column(db.String(50))
     sensor_key     = db.Column(db.String(50))
-    moisture       = db.Column(db.String(50), server_default=("normal"))     
+    control_sensor = db.Column(db.String(50))     
 
 class Programs(db.Model):
     __tablename__ = 'programs'
@@ -1112,8 +1112,7 @@ def CHECK_PLANTS():
     entries = Plants.query.all()
     for entry in entries:
         if ((entry.sensor_key == "None" or entry.sensor_key == None) or
-            (entry.pump_key == "None" or entry.pump_key == None) or
-            (entry.moisture == "None" or entry.moisture == None)):
+            (entry.pump_key == "None" or entry.pump_key == None)):
             
             string_errors = string_errors + str(entry.name) + " "
      
@@ -1123,7 +1122,7 @@ def CHECK_PLANTS():
         return ""
 
 
-def ADD_PLANT(name, mqtt_device_id, watervolume, moisture, log = ""):
+def ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, log = ""):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1138,7 +1137,7 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, moisture, log = ""):
                         name           = name,
                         mqtt_device_id = mqtt_device_id,
                         watervolume    = watervolume, 
-                        moisture       = moisture,                    
+                        control_sensor = control_sensor,                    
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1152,26 +1151,26 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, moisture, log = ""):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, moisture):        
+def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, control_sensor):        
     entry = Plants.query.filter_by(id=plant_id).first()
     old_name = entry.name
 
     # values changed ?
     if (entry.name != name or entry.sensor_key != sensor_key or entry.pump_key != pump_key or 
-        entry.watervolume != int(watervolume) or entry.moisture != moisture):
+        entry.watervolume != int(watervolume) or entry.control_sensor != control_sensor):
 
         entry.name = name
         entry.sensor_key = sensor_key
         entry.pump_key = pump_key
         entry.watervolume = watervolume
-        entry.moisture = moisture
+        entry.control_sensor = control_sensor
         
         db.session.commit()  
 
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
                              " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
-                             " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Moisture: " +
-                             entry.moisture)                
+                             " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " +
+                             entry.control_sensor)                
 
 
 def DELETE_PLANT(plant_id, log = ""):

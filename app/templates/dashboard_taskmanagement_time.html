@@ -194,9 +194,9 @@
               
 <section id="add_task"></section>              
 
-            </div>
-            <br>
-            <br>
+              </div>
+              <br>
+              <br>
 
 <!-- error message -->
 
@@ -208,64 +208,71 @@
 
 <!-- new task -->
 
-            <form method="POST"> 
-              <div class="well well-sm">Aufgaben-Name:  
-                <div class="form-group">
-                  <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
-                </div>     
-              </div>         
-              <div class="well well-sm">Aufgabe:          
-                <div class="form-group">
-                  <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
-                </div>      
-              </div>              
-              <div class="well well-sm">Zeitpunkt:  
-                <br>
-                <br>         
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-1">
-                    Tag
-                  </div>
-                  <div class="col-sm-2">                    
-                    <input type="text" class="form-control" name="set_day" value="{% if set_day != None %}{{ set_day }}{% endif %}" />   
-                  </div>
-                  <div class="col-sm-8">                    
-                    Optionen: Mo, Tu, We, Th, Fr, Sa, Su oder *
-                  </div>                  
-                </div>
-                <br>
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-1">              
-                    Stunde
-                  </div>
-                  <div class="col-sm-2">    
-                    <input type="text" class="form-control" name="set_hour" value="{% if set_hour != None %}{{ set_hour }}{% endif %}" /> 
-                  </div>
-                  <div class="col-sm-8">                    
-                    Optionen: 1 - 24 oder *
+              <form method="POST"> 
+                <div class="well well-sm">Aufgaben-Name:  
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
                   </div>     
-                </div>
-                <br>
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-1">              
-                    Stunde
+                </div>         
+                <div class="well well-sm">Aufgabe:          
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" />
+                  </div>      
+                </div>              
+                <div class="well well-sm">Zeitpunkt:  
+                  <br>
+                  <br>         
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                      Tag
+                    </div>
+                    <div class="col-sm-2">                    
+                      <input type="text" class="form-control" name="set_day" value="{% if set_day != None %}{{ set_day }}{% endif %}" />   
+                    </div>
+                    <div class="col-sm-8">                    
+                      Optionen: Mo, Tu, We, Th, Fr, Sa, Su oder *
+                    </div>                  
                   </div>
-                  <div class="col-sm-2">    
-                    <input type="text" class="form-control" name="set_minute" value="{% if set_minute != None %}{{ set_minute }}{% endif %}" />
-                  </div>  
-                  <div class="col-sm-8">                    
-                    Optionen: 1 - 60 oder *
-                  </div>     
-                </div>
-              </div>                                
-              <div class="well well-sm">
-                <div class="pretty p-default p-curve p-fill p-bigger">
-                    <input type="checkbox" {{ set_checkbox }} name="checkbox">
-                  <div class="state">
-                    <label>Wiederholen</label>
+                  <br>
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2">              
+                      Stunde
+                    </div>
+                    <div class="col-sm-2">    
+                      <input type="text" class="form-control" name="set_hour" value="{% if set_hour != None %}{{ set_hour }}{% endif %}" /> 
+                    </div>
+                    <div class="col-sm-8">                    
+                      Optionen: 1 - 24 oder *
+                    </div>     
                   </div>
-                </div> 
-              </div>             
+                  <br>
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2">              
+                      Minute
+                    </div>
+                    <div class="col-sm-2">    
+                      <input type="text" class="form-control" name="set_minute" value="{% if set_minute != None %}{{ set_minute }}{% endif %}" />
+                    </div>  
+                    <div class="col-sm-8">                    
+                      Optionen: 1 - 60 oder *
+                    </div>     
+                  </div>
+                </div>                                
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-2">
+                      Wiederholen
+                      </div>
+                    <div class="col-sm-1">   
+                    <div class="pretty p-default p-curve p-fill p-bigger">
+                        <input type="checkbox" {{ set_checkbox }} name="checkbox">
+                      <div class="state">
+                        <label></label>
+                      </div>
+                    </div> 
+                  </div> 
+                </div>  
+              </div>                     
               <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
             </form> 
           </div>  

@@ -75,9 +75,9 @@
                   <th scope="col">Gerät</th>  
                   <th scope="col">Sensor</th>
                   <th scope="col">Pumpe</th>    
-                  <th scope="col">Wassermenge</th> 
-                  <th></th>           
-                  <th scope="col">Erdfeuchtigkeit</th>  
+                  <th scope="col">Wassermenge</th>   
+                  <th></th>        
+                  <th scope="col">Wasserkontrolle</th>  
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
@@ -121,30 +121,20 @@
                           <option value="{{each}}"> {{ each }} </option>
                         {% endfor %}
                       </select>  
-                    </td>  
-                    <td></td>                  
+                    </td>   
+                    <td></td>              
                     <td>
-                      <div class="pretty p-default p-round">
-                        <input {% if entry.moisture == "high" %}checked = 'on'{% endif %} type="radio" value="high" name="radio_moisture_{{ entry.id }}">
-                        <div class="state">
-                          <label>hoch</label>
+                      <font size="+2">
+                        <div class="pretty p-default p-curve p-fill p-bigger">
+                            <input type="checkbox" {{ entry.control_sensor }} name="set_control_sensor_{{ entry.id }}" >
+                          <div class="state">
+                            <label></label>
+                          </div>
                         </div>
-                      </div>
-                      <br>
-                      <div class="pretty p-default p-round">
-                          <input {% if entry.moisture == "normal" %}checked = 'on'{% endif %} type="radio" value="normal" name="radio_moisture_{{ entry.id }}">
-                        <div class="state">
-                          <label>normal</label>
-                        </div>
-                      </div>
-                      <div class="pretty p-default p-round">
-                          <input {% if entry.moisture == "low" %}checked = 'on'{% endif %} type="radio" value="low" name="radio_moisture_{{ entry.id }}">
-                        <div class="state">
-                          <label>gering</label>
-                        </div>
-                      </div>   
+                      </font>
                     </td>  
-                    <td></td>               
+                    <td></td>    
+                    <td></td>           
                     <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
@@ -220,28 +210,15 @@
                   <div class="well well-sm">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-2">
-                        Feuchtigkeit:
+                        Wasserkontrolle:
                       </div>
                       <div class="col-sm-1">                             
-                      <div class="pretty p-default p-round">
-                        <input type="radio" value="high" name="set_radio_moisture">
+                      <div class="pretty p-default p-curve p-fill p-bigger">
+                          <input type="checkbox" {{ set_control_sensor }} name="set_control_sensor" >
                         <div class="state">
-                          <label>hoch</label>
+                          <label></label>
                         </div>
                       </div>
-                      <br>
-                      <div class="pretty p-default p-round">
-                          <input type="radio" value="normal" name="set_radio_moisture">
-                        <div class="state">
-                          <label>normal</label>
-                        </div>
-                      </div>
-                      <div class="pretty p-default p-round">
-                          <input type="radio" value="low" name="set_radio_moisture">
-                        <div class="state">
-                          <label>gering</label>
-                        </div>
-                      </div>   
                     </div> 
                   </div>      
                 </div>   

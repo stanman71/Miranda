@@ -34,6 +34,7 @@ def dashboard_plants():
     set_mqtt_device_id = ""
     set_mqtt_device_name = ""
     set_watervolume = ""
+    set_control_sensor = ""
 
     if request.method == "POST": 
         if request.form.get("add_plant") != None: 
@@ -42,7 +43,10 @@ def dashboard_plants():
                 # missing name
                 if request.form.get("set_name") == "":
                     set_mqtt_device_id = request.form.get("set_mqtt_device_id")    
-                    set_watervolume    = request.form.get("set_watervolume")                    
+                    set_watervolume    = request.form.get("set_watervolume")  
+
+                    if request.form.get("set_control_sensor"):
+                        set_control_sensor = "checked" 
                     
                     error_message = "Keinen Namen angegeben"  
                                         
@@ -51,8 +55,13 @@ def dashboard_plants():
                     name           = request.form.get("set_name")
                     mqtt_device_id = request.form.get("set_mqtt_device_id")    
                     watervolume    = request.form.get("set_watervolume") 
-                    moisture       = request.form.get("set_radio_moisture")
-                    error_message  = ADD_PLANT(name, mqtt_device_id, watervolume, moisture)
+
+                    if request.form.get("set_control_sensor"):
+                        control_sensor = "checked" 
+                    else:
+                        control_sensor = ""
+
+                    error_message  = ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor)
         
         
         # change settings
@@ -83,19 +92,21 @@ def dashboard_plants():
                         sensor_key = request.form.get("set_sensor_" + str(i))            
                         pump_key = request.form.get("set_pump_" + str(i))    
                         watervolume = request.form.get("set_watervolume_" + str(i))
-                        moisture = request.form.get("radio_moisture_" + str(i))
+
+                        if request.form.get("set_control_sensor_" + str(i)):
+                            control_sensor = "checked" 
+                        else:
+                            control_sensor = ""
                             
-                        SET_PLANT_SETTINGS(i, name, sensor_key, pump_key, watervolume, moisture)                       
+                        SET_PLANT_SETTINGS(i, name, sensor_key, pump_key, watervolume, control_sensor)                       
                         
                     else:                        
                         # reset sensor_key and pump_key if device changes
                         watervolume = GET_PLANT_BY_ID(i).watervolume
-                        moisture_percent = GET_PLANT_BY_ID(i).moisture_percent
-                        DELETE_PLANT(i, "No_Log")
-                        ADD_PLANT(name, mqtt_device_id, watervolume, "No_Log")
+                        control_sensor = GET_PLANT_BY_ID(i).control_sensor
 
-                        plant_id = GET_PLANT_BY_NAME(name).id
-                        SET_MOISTURE_TARGET(plant_id, moisture_percent)
+                        DELETE_PLANT(i, "No_Log")
+                        ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, "No_Log")
 
                    
     error_message_table = CHECK_PLANTS()
