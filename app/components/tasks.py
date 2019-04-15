@@ -255,6 +255,9 @@ def CHECK_TASKS(tasks, task_type):
             try:
                if GET_PROGRAM_BY_ID(int(task[1])):
                   continue
+               else:
+                  list_errors.append(name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
+                  continue
             except:
                list_errors.append(name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
                continue
@@ -365,4 +368,84 @@ def CHECK_ALL_TIMER_SETTINGS(timer_tasks):
                if task.minute != "*":
                   list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
 
-   return list_errors_settings
+   if list_errors_settings == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_errors_settings
+
+   return error_message_settings
+
+
+def CHECK_ALL_SENSOR_SETTINGS(sensor_tasks): 
+   list_errors_settings = []  
+
+   for task in sensor_tasks:
+
+      # check mqtt devices
+      if task.mqtt_device_id_1 == "None" or task.mqtt_device_id_1 == "" or task.mqtt_device_id_1 == None:
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
+
+      if task.mqtt_device_id_2 == "None" or task.mqtt_device_id_2 == "" or task.mqtt_device_id_2 == None:
+         if task.operator_main_1 != "not":
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
+
+      if task.mqtt_device_id_3 == "None" or task.mqtt_device_id_3 == "" or task.mqtt_device_id_3 == None:
+         if task.operator_main_1 != "not":
+            if task.operator_main_2 != "not":
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")             
+
+      # check sensors
+      if ((task.mqtt_device_id_1 != "None" or task.mqtt_device_id_1 != "") and 
+          (task.sensor_key_1 == "None" or task.sensor_key_1 == "")):
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
+         
+      if ((task.mqtt_device_id_2 != "None" or task.mqtt_device_id_2 != "") and 
+          (task.sensor_key_2 == "None" or task.sensor_key_2 == "" )):
+         if task.operator_main_1 != "not":
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 2")  
+
+      if ((task.mqtt_device_id_3 != "None" or task.mqtt_device_id_3 != "") and 
+          (task.sensor_key_3 == "None" or task.sensor_key_3 == "" )):
+         if task.operator_main_1 != "not":
+            if task.operator_main_2 != "not":
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 3")  
+
+      # check operators
+      if task.operator_1 == "None" or task.operator_1 == "" or task.operator_1 == None: 
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 1") 
+         
+      if task.operator_2 == "None" or task.operator_2 == "" or task.operator_2 == None: 
+         if task.operator_main_1 != "not":
+            if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 2")  
+
+      if task.operator_3 == "None" or task.operator_3 == "" or task.operator_3 == None: 
+         if task.operator_main_1 != "not":
+            if task.operator_main_2 != "not":
+               if task.operator_main_2 != "<" and task.operator_main_2 != ">" and task.operator_main_2 != "=":
+                  list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
+
+      # check values
+      if ((task.operator_1 == "<" or task.operator_1 == ">" or task.operator_1 == "=" or task.operator_1 == None) and 
+          (task.value_1 == "" or task.value_1 == "None" or task.value_1 == None)):
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")         
+
+      if ((task.operator_2 == "<" or task.operator_2 == ">" or task.operator_2 == "=" or task.operator_2 == None) and 
+          (task.value_2 == "" or task.value_2 == "None" or task.value_2 == None)):
+         if task.operator_main_1 != "not": 
+            if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2") 
+
+      if ((task.operator_3 == "<" or task.operator_3 == ">" or task.operator_3 == "=" or task.operator_3 == None) and 
+          (task.value_3 == "" or task.value_3 == "None" or task.value_3 == None)):
+         if task.operator_main_1 != "not":
+            if task.operator_main_2 != "not":
+               if task.operator_main_2 != "<" and task.operator_main_2 != ">" and task.operator_main_2 != "=":
+                  list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3") 
+
+   if list_errors_settings == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_errors_settings
+
+   return error_message_settings

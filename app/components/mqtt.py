@@ -101,8 +101,8 @@ def UPDATE_MQTT_DEVICES(gateway):
                ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, inputs, outputs)  
 
       except Exception as e:
-         print(e)
-         WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e))    
+         if str(e) == "string index out of range":
+            WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> No connection")    
 
 
    if gateway == "zigbee":

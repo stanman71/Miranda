@@ -247,15 +247,29 @@ class Taskmanagement_Time(db.Model):
 
 class Taskmanagement_Sensor(db.Model):
     __tablename__ = 'taskmanagement_sensor'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name           = db.Column(db.String(50), unique=True)
-    task           = db.Column(db.String(100))
-    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device    = db.relationship('MQTT_Devices')  
-    sensor_key     = db.Column(db.String(50))    
-    value          = db.Column(db.String(100))
-    operator       = db.Column(db.String(50))
-    settings       = db.Column(db.String(200))
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                 = db.Column(db.String(50), unique=True)
+    task                 = db.Column(db.String(100))          
+    mqtt_device_id_1     = db.Column(db.Integer)  
+    mqtt_device_name_1   = db.Column(db.String(50)) 
+    mqtt_device_inputs_1 = db.Column(db.String(100)) 
+    sensor_key_1         = db.Column(db.String(50))    
+    value_1              = db.Column(db.String(100))
+    operator_1           = db.Column(db.String(50))
+    operator_main_1      = db.Column(db.String(50))     
+    mqtt_device_id_2     = db.Column(db.Integer) 
+    mqtt_device_name_2   = db.Column(db.String(50))        
+    mqtt_device_inputs_2 = db.Column(db.String(100)) 
+    sensor_key_2         = db.Column(db.String(50))    
+    value_2              = db.Column(db.String(100))
+    operator_2           = db.Column(db.String(50))   
+    operator_main_2      = db.Column(db.String(50))     
+    mqtt_device_id_3     = db.Column(db.Integer) 
+    mqtt_device_name_3   = db.Column(db.String(50))        
+    mqtt_device_inputs_3 = db.Column(db.String(100)) 
+    sensor_key_3         = db.Column(db.String(50))    
+    value_3              = db.Column(db.String(100))
+    operator_3           = db.Column(db.String(50))   
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -995,7 +1009,11 @@ def GET_ALL_MQTT_DEVICES(selector):
 
 def GET_MQTT_DEVICE_NAME(id):
     return MQTT_Devices.query.filter_by(id=id).first().name
-    
+
+
+def GET_MQTT_DEVICE_INPUTS_BY_ID(id):
+    return MQTT_Devices.query.filter_by(id=id).first().inputs   
+
 
 def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = "", last_contact = ""):
     # path exist ?
@@ -1504,20 +1522,7 @@ def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
     return Taskmanagement_Sensor.query.all()
 
 
-def CHECK_TASKMANAGEMENT_SENSOR_TASKS():
-    string_errors = ""
-    entries = Taskmanagement_Sensor.query.all()
-    for entry in entries:
-        if entry.sensor_key == "None" or entry.sensor_key == None:
-            string_errors = string_errors + str(entry.name) + " "
-            
-    if string_errors != "":
-        return ("Einstellungen unvollständig ( Aufgabenname: " + string_errors + ")")
-    else:
-        return ""
-
-
-def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, log = ""):
+def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, log = ""):
     # name exist ?
     check_entry = Taskmanagement_Sensor.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1531,9 +1536,6 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, 
                         id             = i,
                         name           = name,
                         task           = task,                        
-                        mqtt_device_id = mqtt_device_id,
-                        operator       = operator,
-                        value          = value,
                     )
                 db.session.add(new_task)
                 db.session.commit()
@@ -1546,26 +1548,71 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, mqtt_device_id, operator, value, 
         return "Name bereits vergeben"
 
 
-def SET_TASKMANAGEMENT_SENSOR_TASK(id, name, task, mqtt_device_id, sensor_key, operator, value):
+def SET_TASKMANAGEMENT_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
+                                                   sensor_key_1, operator_1, value_1, operator_main_1,
+                                                   mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                                   sensor_key_2, operator_2, value_2, operator_main_2,
+                                                   mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                                   sensor_key_3, operator_3, value_3):        
+                                                                                        
     entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.task != task or str(entry.mqtt_device_id) != mqtt_device_id or
-        entry.sensor_key != sensor_key or entry.operator != operator or entry.value != value):
-            
+    if (entry.name != name or entry.task != task or str(entry.mqtt_device_id_1) != mqtt_device_id_1 or
+        entry.sensor_key_1 != sensor_key_1 or entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
+        str(entry.mqtt_device_id_2) != mqtt_device_id_2 or entry.sensor_key_2 != sensor_key_2 or 
+        entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
+        str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
+        entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2):
+
         entry.name = name        
         entry.task = task
-        entry.mqtt_device_id = mqtt_device_id
-        entry.sensor_key = sensor_key
-        entry.operator = operator
-        entry.value = value
+        entry.mqtt_device_id_1 = mqtt_device_id_1
+        entry.mqtt_device_name_1 = mqtt_device_name_1
+        entry.mqtt_device_inputs_1 = mqtt_device_inputs_1
+        entry.sensor_key_1 = sensor_key_1
+        entry.operator_1 = operator_1
+        entry.value_1 = value_1
+        entry.operator_main_1=operator_main_1
+        entry.mqtt_device_id_2 = mqtt_device_id_2
+        entry.mqtt_device_name_2 = mqtt_device_name_2
+        entry.mqtt_device_inputs_2 = mqtt_device_inputs_2
+        entry.sensor_key_2 = sensor_key_2
+        entry.operator_2 = operator_2
+        entry.value_2 = value_2        
+        entry.operator_main_2=operator_main_2
+        entry.mqtt_device_id_3 = mqtt_device_id_3
+        entry.mqtt_device_name_3 = mqtt_device_name_3
+        entry.mqtt_device_inputs_3 = mqtt_device_inputs_3
+        entry.sensor_key_3 = sensor_key_3
+        entry.operator_3 = operator_3
+        entry.value_3 = value_3               
         db.session.commit()    
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + " >>> changed >>> Name: " +
-                             entry.name + " /// Task: " + entry.task + " /// MQTT-Device: " + entry.mqtt_device.name + 
-                             " /// Sensor: " + entry.sensor_key + " /// Operator: " + entry.operator + " /// Value: " +  
-                             entry.value)
+        if operator_main_1 == "not":
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
+                                  " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                  " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                  " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1)) 
+                                 
+        if operator_main_2 == "not":
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
+                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
+                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
+                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2))
+                                   
+        else:
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
+                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
+                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
+                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2) +
+                                 " /// MQTT-Device_3: " + mqtt_device_name_3 + " /// Sensor_3: " + sensor_key_3 + 
+                                 " /// Operator_3: " + str(operator_3) + " /// Value_3: " +  str(value_3))
 
 
 def DELETE_TASKMANAGEMENT_SENSOR_TASK(task_id, log = ""):
