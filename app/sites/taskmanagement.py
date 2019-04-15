@@ -201,26 +201,6 @@ def dashboard_taskmanagement_sensor():
     error_message_tasks = ""
     set_name = ""
     set_task = ""
-    mqtt_device_id_1 = "None"
-    mqtt_device_name_1 = "None"
-    mqtt_device_inputs_1 = "None"
-    sensor_key_1 = "None"
-    operator_1 = "None"
-    value_1 = ""  
-    operator_main_1 = "None"  
-    mqtt_device_id_2 = "None"
-    mqtt_device_name_2 = "None"
-    mqtt_device_inputs_2 = "None"    
-    sensor_key_2 = "None"
-    operator_2 = "None"
-    value_2 = ""
-    operator_main_2 = "None"  
-    mqtt_device_id_3 = "None"
-    mqtt_device_name_3 = "None"
-    mqtt_device_inputs_3 = "None"    
-    sensor_key_3 = "None"
-    operator_3 = "None"
-    value_3 = ""
 
     if request.method == "POST": 
         if request.form.get("add_task") != None:
@@ -276,8 +256,8 @@ def dashboard_taskmanagement_sensor():
                         value_2 = ""
 
                     # check value 3
-                    if request.form.get("set_value_2_" + str(i)) != "":
-                        value_3 = request.form.get("set_value_2_" + str(i))                  
+                    if request.form.get("set_value_3_" + str(i)) != "":
+                        value_3 = request.form.get("set_value_3_" + str(i))                  
                     else:
                         value_3 = ""     
 
@@ -290,44 +270,61 @@ def dashboard_taskmanagement_sensor():
                     operator_main_1  = request.form.get("set_operator_main_1_" + str(i))
                     operator_main_2  = request.form.get("set_operator_main_2_" + str(i))
 
+                    if operator_1 == None:
+                        operator_1 = "None"
+                    if operator_2 == None:
+                        operator_2 = "None"    
+                    if operator_3 == None:
+                        operator_3 = "None"  
+                    if operator_main_1 == None:
+                        operator_main_1 = "None"
+                    if operator_main_2 == None:
+                        operator_main_2 = "None"                   
+
+                    # get mqtt device 1
                     try:
+                        mqtt_device_name_1   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_1))
+                        mqtt_device_inputs_1 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_1))
+
                         if int(mqtt_device_id_1) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_1:
                             sensor_key_1 = "None"
                         else:
                             sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
                     except:
-                        pass
-                    try:
-                        mqtt_device_name_1   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_1))
-                        mqtt_device_inputs_1 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_1))
-                    except:
-                        pass
+                        sensor_key_1 = "None"
+                        mqtt_device_id_1 = "None"
+                        mqtt_device_name_1 = "None"
+                        mqtt_device_inputs_1 = "None"
 
+                    # get mqtt device 2
                     try:
+                        mqtt_device_name_2   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_2))
+                        mqtt_device_inputs_2 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_2))
+
                         if int(mqtt_device_id_2) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_2:
                             sensor_key_2 = "None"
                         else:
                             sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
                     except:
                         sensor_key_2 = "None"
-                    try:
-                        mqtt_device_name_2   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_2))
-                        mqtt_device_inputs_2 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_2))
-                    except:
-                        pass  
+                        mqtt_device_id_2 = "None"
+                        mqtt_device_name_2 = "None"
+                        mqtt_device_inputs_2 = "None"    
 
+                    # get mqtt device 3 
                     try:
+                        mqtt_device_name_3   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_3))
+                        mqtt_device_inputs_3 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_3))
+
                         if int(mqtt_device_id_3) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_3:
                             sensor_key_3 = "None"
                         else:
                             sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
                     except:
                         sensor_key_3 = "None"
-                    try:
-                        mqtt_device_name_3   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_3))
-                        mqtt_device_inputs_3 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_3))
-                    except:
-                        pass      
+                        mqtt_device_id_3 = "None"
+                        mqtt_device_name_3 = "None"
+                        mqtt_device_inputs_3 = "None"    
 
                     SET_TASKMANAGEMENT_SENSOR_TASK(i, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                                                   sensor_key_1, operator_1, value_1, operator_main_1,
@@ -336,33 +333,13 @@ def dashboard_taskmanagement_sensor():
                                                                   mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                                                   sensor_key_3, operator_3, value_3)
 
-                    mqtt_device_id_1 = "None"
-                    mqtt_device_name_1 = "None"
-                    mqtt_device_inputs_1 = "None"
-                    sensor_key_1 = "None"
-                    operator_1 = "None"
-                    value_1 = ""  
-                    operator_main_1 = "None"  
-                    mqtt_device_id_2 = "None"
-                    mqtt_device_name_2 = "None"
-                    mqtt_device_inputs_2 = "None"    
-                    sensor_key_2 = "None"
-                    operator_2 = "None"
-                    value_2 = ""
-                    operator_main_2 = "None"  
-                    mqtt_device_id_3 = "None"
-                    mqtt_device_name_3 = "None"
-                    mqtt_device_inputs_3 = "None"    
-                    sensor_key_3 = "None"
-                    operator_3 = "None"
-                    value_3 = ""
 
     error_message_settings = CHECK_ALL_SENSOR_SETTINGS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS())
     error_message_tasks    = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators     = ["=", ">", "<", "not"]
-    dropdown_list_operator_main = ["and", "or", "=", ">", "<", "not"]
+    dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
     schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()
     
@@ -381,6 +358,24 @@ def dashboard_taskmanagement_sensor():
                             active02="active",
                             role=current_user.role,
                             )
+
+
+# add taskmanagement time task option
+@app.route('/dashboard/taskmanagement/sensor/option/add/<int:id>')
+@login_required
+@user_required
+def add_schedular_sensor(id):
+    ADD_TASKMANAGEMENT_SENSOR_TASK_OPTION(id)
+    return redirect(url_for('dashboard_taskmanagement_sensor'))
+
+
+# remove taskmanagement time task option
+@app.route('/dashboard/taskmanagement/sensor/option/remove/<int:id>')
+@login_required
+@user_required
+def remove_schedular_sensor(id):
+    REMOVE_TASKMANAGEMENT_SENSOR_TASK_OPTION(id)
+    return redirect(url_for('dashboard_taskmanagement_sensor'))
 
 
 # delete taskmanagement time tasks

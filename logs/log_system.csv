@@ -5705,3 +5705,251 @@ Timestamp,Type,Description
 2019-04-15 18:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
 2019-04-15 18:00:05,EVENT,Task >>> test >>> started
 2019-04-15 18:00:08,ERROR,Task >>> test >>> string index out of range
+2019-04-15 19:25:37,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:25:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:25:40,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:25:52,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> added
+2019-04-15 19:27:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:27:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:27:07,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:28:20,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:28:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:28:23,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:29:28,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:29:29,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:29:31,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:30:19,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:30:20,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:30:22,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:31:00,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:31:12,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:31:12,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:37:20,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:37:22,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:37:24,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:39:10,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:39:11,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:39:13,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:39:14,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:39:14,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:39:29,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:39:29,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:42:02,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:42:04,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:42:06,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:42:20,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:42:20,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:42:28,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:42:28,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:49:09,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:49:10,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:49:12,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:49:13,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:49:13,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:50:09,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:50:10,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:50:12,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:50:14,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:51:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:51:02,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:51:04,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:51:20,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:51:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:51:23,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:51:26,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:51:26,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:52:47,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:52:48,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:52:50,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:52:54,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:52:54,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:53:26,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:53:27,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:53:28,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:53:29,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:53:33,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:53:33,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:54:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:54:33,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:54:35,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:54:42,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:54:42,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:55:56,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:55:57,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:55:57,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:55:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:56:01,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:56:01,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:56:56,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 19:56:56,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:56:57,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 19:56:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 19:57:02,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:57:02,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 19:57:07,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None
+2019-04-15 19:57:10,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None
+2019-04-15 19:57:10,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-15 20:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-15 20:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-15 20:00:08,ERROR,MQTT >>> No connection
+2019-04-15 20:00:08,EVENT,Task >>> test >>> started
+2019-04-15 20:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-15 20:00:21,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:00:22,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:00:24,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:01:15,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:01:16,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:01:18,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:02:37,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:02:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:02:40,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:03:25,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:03:26,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:03:28,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:03:58,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:04:00,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:04:02,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:04:45,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:04:46,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:04:48,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:06:14,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:06:15,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:06:17,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:06:40,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:06:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:06:43,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:07:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:07:02,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:07:04,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:07:35,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:07:36,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:07:38,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:08:40,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:08:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:08:44,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:09:09,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:09:10,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:09:12,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:09:33,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:09:34,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:09:36,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:11:16,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:11:17,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:11:19,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:11:58,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:11:59,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:12:01,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:12:53,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:12:54,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:12:56,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:15:08,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:15:09,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:15:11,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:15:34,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:15:35,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:15:37,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:16:10,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:16:11,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:16:13,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:17:06,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:17:07,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:17:09,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:17:54,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:17:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:17:57,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:18:09,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:18:10,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:18:12,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:18:35,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:18:36,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:18:39,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:18:50,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:18:51,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:18:53,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:19:55,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:19:56,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:19:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:20:31,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:20:32,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:20:34,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:21:00,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:21:01,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:21:03,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:21:40,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: > /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:24:54,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:24:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:24:57,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:25:24,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:25:26,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:25:28,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:25:33,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:25:37,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: None /// Operator_1: = /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:25:39,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:25:43,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x88888 /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:26:50,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:26:51,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:26:53,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:29:40,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:29:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:29:43,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:29:49,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:29:57,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: None /// Value_2: None /// MQTT-Device_3: 0x88888 /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:29:59,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: None /// Value_2: None /// MQTT-Device_3: 0x88888 /// Sensor_3: temperature /// Operator_3: None /// Value_3: None
+2019-04-15 20:30:06,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: not /// Value_2: None /// MQTT-Device_3: 0x88888 /// Sensor_3: temperature /// Operator_3: not /// Value_3: None
+2019-04-15 20:33:36,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:33:37,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:33:39,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:33:43,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: not /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:33:47,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> added
+2019-04-15 20:34:56,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:34:57,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:34:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:35:05,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> changed >>> Name: hgfh /// Task: ghf /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: None /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:35:59,EVENT,Database >>> Taskmanagement (Sensor) >>> hgfh >>> deleted
+2019-04-15 20:36:00,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:36:01,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:36:02,EVENT,Database >>> Taskmanagement (Sensor) >>> gfd >>> added
+2019-04-15 20:36:03,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:36:46,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:36:47,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:36:49,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:36:49,EVENT,Database >>> Taskmanagement (Sensor) >>> gfd >>> deleted
+2019-04-15 20:36:53,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> added
+2019-04-15 20:38:40,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:38:42,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:38:44,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:39:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:39:04,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:39:07,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:41:26,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:41:27,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:41:29,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:42:19,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:42:20,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:42:22,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:43:19,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:43:20,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:43:22,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:43:38,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:38,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:41,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:46,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: 0x99999 /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:51,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:53,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: not /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:59,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:43:59,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: not /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:44:02,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: gfd /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:44:02,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: sa /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: not /// Value_2: None /// MQTT-Device_3: 0x99999 /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:44:37,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: led_off:3 /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:44:37,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: led_off:3 /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: not /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:45:15,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: led_off:3 /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:45:15,EVENT,Database >>> Taskmanagement (Sensor) >>> fds >>> changed >>> Name: fds /// Task: led_off:3 /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:45:17,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: led_off:3 /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_1 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: None /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None
+2019-04-15 20:46:38,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:46:40,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:46:42,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:47:04,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-15 20:47:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-15 20:47:07,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-15 20:47:23,EVENT,Database >>> Taskmanagement (Sensor) >>> fgd >>> changed >>> Name: fgd /// Task: led_off:3 /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_1 /// Operator_1: not /// Value_1: None /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2: fdg /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: None

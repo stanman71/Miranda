@@ -105,6 +105,7 @@
                 <thead>                       
                   <th scope="col">Aufgaben-Name</th> 
                   <th scope="col">Aufgabe</th> 
+                  <th></th>
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th> 
                   <th scope="col">Operator</th>
@@ -113,13 +114,29 @@
                 <tbody> 
                   {% for entry in schedular_list %}
                   <tr>
-                    <td style="width:15%">
+                    <td style="width:17%">
                       <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                     </td>  
-                    <td style="width:15%">
+                    <td style="width:17%">
                       <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />
                     </td>
+                    <td>
+                    <font size="+2">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-1">                       
+                          <a href="/dashboard/taskmanagement/sensor/option/add/{{ entry.id }}#table">
+                            <span class="glyphicon glyphicon-plus" style="color:grey"></span>
+                          </a>                  
+                        </div>
+                        <div class="col-sm-1">          
+                          <a href="/dashboard/taskmanagement/sensor/option/remove/{{ entry.id }}#table">
+                            <span class="glyphicon glyphicon-minus" style="color:grey"></span>
+                          </a>   
+                        </div>
+                      </div>
+                    </font>
+                    </td>        
 
 <!-- section 1 -->
 
@@ -149,140 +166,142 @@
                       <td>
                         <select class="btn btn-default dropdown-toggle" name="set_operator_1_{{ entry.id }}">
                           <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
-                          <option value= "{{ entry.operator_1 }}" > --------------- </option>
+                          <option value= "{{ entry.operator_1 }}" > ------- </option>
                           {% for each in dropdown_list_operators %}
                           <option value="{{each}}"> {{ each }} </option>
                           {% endfor %}
                         </select>  
                       </td>
                       {% if entry.operator_1 != "not" %}
-                      <td>          
+                      <td style="width:10%">          
                         <input type="text" class="form-control" name="set_value_1_{{ entry.id }}" value="{{ entry.value_1 }}" /> 
                       </td> 
                       {% else %}
                       <td></td>
                       {% endif %}
                       <td><a href="/dashboard/taskmanagement/sensor/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>  
-                    </tr>                   
+                    </tr>  
+
+<!-- section 2 -->
+
+                    {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None%}            
                     <tr>
+                    <td></td>
                     <td></td>
                     <td>
                       <select class="btn btn-default dropdown-toggle" name="set_operator_main_1_{{ entry.id }}">
                         <option value= "{{ entry.operator_main_1 }}" > {{ entry.operator_main_1 }} </option>
-                        <option value= "{{ entry.operator_main_1 }}" > -------------------- </option>
+                        <option value= "{{ entry.operator_main_1 }}" > ------- </option>
+                        {% for each in dropdown_list_operator_main %}
+                        <option value="{{each}}"> {{ each }} </option>
+                        {% endfor %}
+                      </select>                        
+                    </td>              
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_2_{{ entry.id }}">
+                          <option value= "{{ entry.mqtt_device_id_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
+                          <option value= "{{ entry.mqtt_device_id_2 }}" > -------------------- </option>                                        
+                        {% for each in dropdown_list_mqtt_devices %}
+                          <option value="{{ each.id }}"> {{ each.name }} </option>
+                        {% endfor %}
+                      </select> 
+                    </td> 
+                    <td>  
+                      <select class="btn btn-default dropdown-toggle" name="set_sensor_2_{{ entry.id }}">
+                        {% if entry.mqtt_device_id_2 != None %}  
+                          <option value= "{{ entry.sensor_key_2 }}" > {{ entry.sensor_key_2 }} </option>
+                          <option value= "{{ entry.sensor_key_2 }}" > -------------------- </option>
+                          {% for each in entry.mqtt_device_inputs_2.split(',') %}
+                            <option value= "{{ each }}" > {{ each }} </option>
+                          {% endfor %}
+                        {% else %}
+                        <option value= "" > None </option>
+                        <option value= "" > -------------------- </option>                            
+                        {% endif %}                            
+                      </select>  
+                    </td> 
+                    {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" %}
+                      <td>
+                        <select class="btn btn-default dropdown-toggle" name="set_operator_2_{{ entry.id }}">
+                          <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
+                          <option value= "{{ entry.operator_2 }}" > ------- </option>
+                          {% for each in dropdown_list_operators %}
+                          <option value="{{each}}"> {{ each }} </option>
+                          {% endfor %}
+                        </select>  
+                      </td>
+                      {% if entry.operator_2 != "not" %}
+                      <td style="width:10%">          
+                        <input type="text" class="form-control" name="set_value_2_{{ entry.id }}" value="{{ entry.value_2 }}" /> 
+                      </td> 
+                      {% else %}
+                      <td></td> 
+                      {% endif %}
+                      </tr> 
+                    {% endif %} 
+
+<!-- section 3 -->
+
+                    {% if entry.operator_main_2 != "None" and entry.operator_main_2 != None %}                    
+                    <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_operator_main_2_{{ entry.id }}">
+                        <option value= "{{ entry.operator_main_2 }}" > {{ entry.operator_main_2 }} </option>
+                        <option value= "{{ entry.operator_main_2 }}" > ------- </option>
                         {% for each in dropdown_list_operator_main %}
                         <option value="{{each}}"> {{ each }} </option>
                         {% endfor %}
                       </select>                        
                     </td>
-
-<!-- section 2 -->
-
-                    {% if entry.operator_main_1 != "not" %}
-                        <td>
-                          <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_2_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_id_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
-                              <option value= "{{ entry.mqtt_device_id_2 }}" > -------------------- </option>                                        
-                            {% for each in dropdown_list_mqtt_devices %}
-                              <option value="{{ each.id }}"> {{ each.name }} </option>
-                            {% endfor %}
-                          </select> 
-                        </td> 
-                        <td>  
-                          <select class="btn btn-default dropdown-toggle" name="set_sensor_2_{{ entry.id }}">
-                            {% if entry.mqtt_device_id_2 != None %}  
-                              <option value= "{{ entry.sensor_key_2 }}" > {{ entry.sensor_key_2 }} </option>
-                              <option value= "{{ entry.sensor_key_2 }}" > -------------------- </option>
-                              {% for each in entry.mqtt_device_inputs_2.split(',') %}
-                                <option value= "{{ each }}" > {{ each }} </option>
-                              {% endfor %}
-                            {% else %}
-                            <option value= "" > None </option>
-                            <option value= "" > -------------------- </option>                            
-                            {% endif %}                            
-                          </select>  
-                        </td> 
-                        {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" %}
                           <td>
-                            <select class="btn btn-default dropdown-toggle" name="set_operator_2_{{ entry.id }}">
-                              <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
-                              <option value= "{{ entry.operator_2 }}" > --------------- </option>
-                              {% for each in dropdown_list_operators %}
-                              <option value="{{each}}"> {{ each }} </option>
+                            <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_3_{{ entry.id }}">
+                                <option value= "{{ entry.mqtt_device_id_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
+                                <option value= "{{ entry.mqtt_device_id_3 }}" > -------------------- </option>                                        
+                              {% for each in dropdown_list_mqtt_devices %}
+                                <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}
-                            </select>  
-                          </td>
-                          {% if entry.operator_2 != "not" %}
-                          <td>          
-                            <input type="text" class="form-control" name="set_value_2_{{ entry.id }}" value="{{ entry.value_2 }}" /> 
+                            </select> 
                           </td> 
-                          {% else %}
-                          <td></td> 
-                          {% endif %}
-                          </tr> 
-                        {% endif %} 
-                          <tr>
-                          <td></td>
-                          <td>
-                            <select class="btn btn-default dropdown-toggle" name="set_operator_main_2_{{ entry.id }}">
-                              <option value= "{{ entry.operator_main_2 }}" > {{ entry.operator_main_2 }} </option>
-                              <option value= "{{ entry.operator_main_2 }}" > -------------------- </option>
-                              {% for each in dropdown_list_operator_main %}
-                              <option value="{{each}}"> {{ each }} </option>
-                              {% endfor %}
-                            </select>                        
-                          </td>
-
-<!-- section 3 -->
-
-                          {% if entry.operator_main_2 != "not" %}
+                          <td>  
+                            <select class="btn btn-default dropdown-toggle" name="set_sensor_3_{{ entry.id }}">
+                              {% if entry.mqtt_device_id_3 != None %}  
+                                <option value= "{{ entry.sensor_key_3 }}" > {{ entry.sensor_key_3 }} </option>
+                                <option value= "{{ entry.sensor_key_3 }}" > -------------------- </option>
+                                {% for each in entry.mqtt_device_inputs_3.split(',') %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}
+                              {% else %}
+                              <option value= "" > None </option>
+                              <option value= "" > -------------------- </option>                            
+                              {% endif %}                            
+                            </select>  
+                          </td> 
+                          {% if entry.operator_main_2 == "and" or entry.operator_main_2 == "or" %}
                               <td>
-                                <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_3_{{ entry.id }}">
-                                    <option value= "{{ entry.mqtt_device_id_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
-                                    <option value= "{{ entry.mqtt_device_id_3 }}" > -------------------- </option>                                        
-                                  {% for each in dropdown_list_mqtt_devices %}
-                                    <option value="{{ each.id }}"> {{ each.name }} </option>
+                                <select class="btn btn-default dropdown-toggle" name="set_operator_3_{{ entry.id }}">
+                                  <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
+                                  <option value= "{{ entry.operator_3 }}" > ------- </option>
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
                                   {% endfor %}
-                                </select> 
-                              </td> 
-                              <td>  
-                                <select class="btn btn-default dropdown-toggle" name="set_sensor_3_{{ entry.id }}">
-                                  {% if entry.mqtt_device_id_3 != None %}  
-                                    <option value= "{{ entry.sensor_key_3 }}" > {{ entry.sensor_key_3 }} </option>
-                                    <option value= "{{ entry.sensor_key_3 }}" > -------------------- </option>
-                                    {% for each in entry.mqtt_device_inputs_3.split(',') %}
-                                      <option value= "{{ each }}" > {{ each }} </option>
-                                    {% endfor %}
-                                  {% else %}
-                                  <option value= "" > None </option>
-                                  <option value= "" > -------------------- </option>                            
-                                  {% endif %}                            
                                 </select>  
+                              </td>
+                              {% if entry.operator_3 != "not" %}
+                              <td style="width:10%">         
+                                <input type="text" class="form-control" name="set_value_3_{{ entry.id }}" value="{{ entry.value_3 }}" /> 
                               </td> 
-                              {% if entry.operator_main_2 == "and" or entry.operator_main_2 == "or" %}
-                                  <td>
-                                    <select class="btn btn-default dropdown-toggle" name="set_operator_3_{{ entry.id }}">
-                                      <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
-                                      <option value= "{{ entry.operator_3 }}" > --------------- </option>
-                                      {% for each in dropdown_list_operators %}
-                                      <option value="{{each}}"> {{ each }} </option>
-                                      {% endfor %}
-                                    </select>  
-                                  </td>
-                                  {% if entry.operator_3 != "not" %}
-                                  <td>          
-                                    <input type="text" class="form-control" name="set_value_3_{{ entry.id }}" value="{{ entry.value_3 }}" /> 
-                                  </td> 
-                                  {% else %}
-                                  <td></td> 
-                                  {% endif %}
-                                </tr>   
-                                {% endif %}
+                              {% else %}
+                              <td></td> 
+                              {% endif %}
+                            </tr>   
                             {% endif %}
                         {% endif %}
-                    {% endfor %}
-                  </tbody>
-                </table>  
+                    {% endif %}
+                {% endfor %}
+                </tbody>
+              </table>  
 
 <!-- end table -->
 

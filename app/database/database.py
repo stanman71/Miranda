@@ -1523,7 +1523,6 @@ def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
 
 
 def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, log = ""):
-    # name exist ?
     check_entry = Taskmanagement_Sensor.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
@@ -1546,6 +1545,35 @@ def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, log = ""):
                 return ""
     else:
         return "Name bereits vergeben"
+
+
+def ADD_TASKMANAGEMENT_SENSOR_TASK_OPTION(id):
+    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
+    operator_main_1 = entry.operator_main_1 
+    operator_main_2 = entry.operator_main_2 
+
+    if operator_main_1 == "None" or operator_main_1 == None:
+        entry.operator_main_1 = "and"
+        entry.operator_main_2 = "None"
+
+    if operator_main_1 != "None" and operator_main_1 != None:
+        entry.operator_main_2 = "and"
+
+    db.session.commit()
+
+
+def REMOVE_TASKMANAGEMENT_SENSOR_TASK_OPTION(id):
+    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
+    operator_main_1 = entry.operator_main_1 
+    operator_main_2 = entry.operator_main_2 
+
+    if operator_main_2 != "None":
+        entry.operator_main_2 = "None"
+
+    if operator_main_2 == "None" or operator_main_2 == None:
+        entry.operator_main_1 = "None"
+
+    db.session.commit()
 
 
 def SET_TASKMANAGEMENT_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
