@@ -136,7 +136,7 @@ def UPDATE_MQTT_DEVICES(gateway):
             WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee >>> " + str(e))            
 
 
-def GET_MQTT_SENSORDATA(job_id):
+def SAVE_MQTT_SENSORDATA(job_id):
    sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
    device_gateway  = sensordata_job.mqtt_device.gateway
    device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  

@@ -17,7 +17,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user_login, dashboard, led, taskmanagement, plants, sensordata, settings
+from app.sites import index, user_login, dashboard, led_programs, led_scenes, taskmanagement, plants, sensordata, settings
 from app.database.database import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
@@ -42,8 +42,8 @@ class flask_Thread(threading.Thread):
         def initialisation():
             pass
          
-        #app.run(host='0.0.0.0', port=5000)
-        app.run()
+        app.run(host='0.0.0.0', port=5000)
+        #app.run()
      
 t1 = flask_Thread()
 t1.start()

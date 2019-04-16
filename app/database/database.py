@@ -32,15 +32,78 @@ class Error_List(db.Model):
     id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
     content      = db.Column(db.String(100))
 
-class HUE_Bridge(db.Model):
-    __tablename__ = 'hue_bridge'
-    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    ip = db.Column(db.String(50), unique = True)  
-
-class LED(db.Model):
-    __tablename__ = 'led'
+class LED_Programs(db.Model):
+    __tablename__ = 'led_programs'
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name    = db.Column(db.String(50), unique = True)
+    content = db.Column(db.Text)
+
+class LED_Scenes(db.Model):
+    __tablename__ = 'led_scenes'
+    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name          = db.Column(db.String(50), unique = True)
+    led_id_1      = db.Column(db.Integer)
+    led_name_1    = db.Column(db.String(50))
+    red_1         = db.Column(db.Integer, server_default=("0"))
+    green_1       = db.Column(db.Integer, server_default=("0"))
+    blue_1        = db.Column(db.Integer, server_default=("0"))
+    brightness_1  = db.Column(db.Integer, server_default=("254"))
+    active_led_2  = db.Column(db.String(50))
+    led_id_2      = db.Column(db.Integer)
+    led_name_2    = db.Column(db.String(50))
+    red_2         = db.Column(db.Integer, server_default=("0"))
+    green_2       = db.Column(db.Integer, server_default=("0"))
+    blue_2        = db.Column(db.Integer, server_default=("0"))
+    brightness_2  = db.Column(db.Integer, server_default=("254"))
+    active_led_3  = db.Column(db.String(50))
+    led_id_3      = db.Column(db.Integer)
+    led_name_3    = db.Column(db.String(50))
+    red_3         = db.Column(db.Integer, server_default=("0"))
+    green_3       = db.Column(db.Integer, server_default=("0"))
+    blue_3        = db.Column(db.Integer, server_default=("0"))
+    brightness_3  = db.Column(db.Integer, server_default=("254"))
+    active_led_4  = db.Column(db.String(50))
+    led_id_4      = db.Column(db.Integer)
+    led_name_4    = db.Column(db.String(50))
+    red_4         = db.Column(db.Integer, server_default=("0"))
+    green_4       = db.Column(db.Integer, server_default=("0"))
+    blue_4        = db.Column(db.Integer, server_default=("0"))
+    brightness_4  = db.Column(db.Integer, server_default=("254"))
+    active_led_5  = db.Column(db.String(50))
+    led_id_5      = db.Column(db.Integer)
+    led_name_5    = db.Column(db.String(50))
+    red_5         = db.Column(db.Integer, server_default=("0"))
+    green_5       = db.Column(db.Integer, server_default=("0"))
+    blue_5        = db.Column(db.Integer, server_default=("0"))
+    brightness_5  = db.Column(db.Integer, server_default=("254"))        
+    active_led_6  = db.Column(db.String(50))
+    led_id_6      = db.Column(db.Integer)
+    led_name_6    = db.Column(db.String(50))
+    red_6         = db.Column(db.Integer, server_default=("0"))
+    green_6       = db.Column(db.Integer, server_default=("0"))
+    blue_6        = db.Column(db.Integer, server_default=("0"))
+    brightness_6  = db.Column(db.Integer, server_default=("254"))
+    active_led_7  = db.Column(db.String(50))
+    led_id_7      = db.Column(db.Integer)
+    led_name_7    = db.Column(db.String(50))
+    red_7         = db.Column(db.Integer, server_default=("0"))
+    green_7       = db.Column(db.Integer, server_default=("0"))
+    blue_7        = db.Column(db.Integer, server_default=("0"))
+    brightness_7  = db.Column(db.Integer, server_default=("254"))
+    active_led_8  = db.Column(db.String(50))
+    led_id_8      = db.Column(db.Integer)
+    led_name_8    = db.Column(db.String(50))
+    red_8         = db.Column(db.Integer, server_default=("0"))
+    green_8       = db.Column(db.Integer, server_default=("0"))
+    blue_8        = db.Column(db.Integer, server_default=("0"))
+    brightness_8  = db.Column(db.Integer, server_default=("254"))
+    active_led_9  = db.Column(db.String(50))
+    led_id_9      = db.Column(db.Integer)
+    led_name_9    = db.Column(db.String(50))
+    red_9         = db.Column(db.Integer, server_default=("0"))
+    green_9       = db.Column(db.Integer, server_default=("0"))
+    blue_9        = db.Column(db.Integer, server_default=("0"))
+    brightness_9  = db.Column(db.Integer, server_default=("254"))   
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
@@ -63,150 +126,6 @@ class Plants(db.Model):
     pump_key       = db.Column(db.String(50))
     sensor_key     = db.Column(db.String(50))
     control_sensor = db.Column(db.String(50))     
-
-class Programs(db.Model):
-    __tablename__ = 'programs'
-    id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name    = db.Column(db.String(50), unique = True)
-    content = db.Column(db.Text)
-
-class Scenes(db.Model):
-    __tablename__ = 'scenes'
-    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name          = db.Column(db.String(50), unique = True)
-    voice_control = db.Column(db.String(50), unique = True)
-
-class Scene_01(db.Model):
-    __tablename__ = 'scene_01'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("1"))
-    scene_name  = db.relationship('Scenes') 
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')    
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_02(db.Model):
-    __tablename__ = 'scene_02'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("2"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')    
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_03(db.Model):
-    __tablename__ = 'scene_03'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("3"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_04(db.Model):
-    __tablename__ = 'scene_04'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("4"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_05(db.Model):
-    __tablename__ = 'scene_05'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("5"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED') 
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_06(db.Model):
-    __tablename__ = 'scene_06'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("6"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')    
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_07(db.Model):
-    __tablename__ = 'scene_07'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("7"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_08(db.Model):
-    __tablename__ = 'scene_08'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("8"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED')
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_09(db.Model):
-    __tablename__ = 'scene_09'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("9"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED') 
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_10(db.Model):
-    __tablename__ = 'scene_10'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("10"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED') 
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
-
-class Scene_99(db.Model):
-    __tablename__ = 'scene_99'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    scene_id    = db.Column(db.Integer, db.ForeignKey('scenes.id'), server_default=("99"))
-    scene_name  = db.relationship('Scenes')
-    led_id      = db.Column(db.Integer, db.ForeignKey('led.id'), unique = True)
-    led_name    = db.relationship('LED') 
-    color_red   = db.Column(db.Integer, server_default=("0"))
-    color_green = db.Column(db.Integer, server_default=("0"))
-    color_blue  = db.Column(db.Integer, server_default=("0"))
-    brightness  = db.Column(db.Integer, server_default=("254"))
 
 class Sensordata_Jobs(db.Model):
     __tablename__  = 'sensordata_jobs'
@@ -254,21 +173,21 @@ class Taskmanagement_Sensor(db.Model):
     mqtt_device_name_1   = db.Column(db.String(50)) 
     mqtt_device_inputs_1 = db.Column(db.String(100)) 
     sensor_key_1         = db.Column(db.String(50))    
-    value_1              = db.Column(db.String(100))
+    value_1              = db.Column(db.String(100), server_default=(""))
     operator_1           = db.Column(db.String(50))
     operator_main_1      = db.Column(db.String(50))     
     mqtt_device_id_2     = db.Column(db.Integer) 
     mqtt_device_name_2   = db.Column(db.String(50))        
     mqtt_device_inputs_2 = db.Column(db.String(100)) 
     sensor_key_2         = db.Column(db.String(50))    
-    value_2              = db.Column(db.String(100))
+    value_2              = db.Column(db.String(100), server_default=(""))
     operator_2           = db.Column(db.String(50))   
     operator_main_2      = db.Column(db.String(50))     
     mqtt_device_id_3     = db.Column(db.Integer) 
     mqtt_device_name_3   = db.Column(db.String(50))        
     mqtt_device_inputs_3 = db.Column(db.String(100)) 
     sensor_key_3         = db.Column(db.String(50))    
-    value_3              = db.Column(db.String(100))
+    value_3              = db.Column(db.String(100), server_default=(""))
     operator_3           = db.Column(db.String(50))   
 
 class User(UserMixin, db.Model):
@@ -318,33 +237,8 @@ if Error_List.query.filter_by().first() is None:
     db.session.commit()
 
 
-# create default scenes
-if Scenes.query.filter_by().first() is None:   
-    for i in range(1,11):
-        scene = Scenes(
-            id   = i,
-            name = "",
-        )        
-        db.session.add(scene)
-        db.session.commit()
-
-    scene = Scenes(
-        id   = 99,
-        name = "",
-    )        
-    db.session.add(scene)
-    db.session.commit()
-
-
 # create default settings
 if Settings.query.filter_by().first() is None:
-    setting = Settings(
-        setting_name  = "hue_bridge",
-        setting_value = "False",
-    )
-    db.session.add(setting)
-    db.session.commit()
-
     setting = Settings(
         setting_name  = "mqtt",
         setting_value = "False",
@@ -472,242 +366,66 @@ def GET_ERROR_LIST():
 
 """ ################### """
 """ ################### """
-"""         led         """
-""" ################### """
-""" ################### """
-
-
-def GET_DROPDOWN_LIST_LED():
-    entry_list = []
-    # get all led entries
-    entries = LED.query.all()
-    for entry in entries:
-        # select the led names only
-        entry_list.append(entry.name)
-
-    return entry_list
-
-
-def GET_ALL_LEDS():
-    return LED.query.all()
-
-
-def UPDATE_LED(led_list):
-    try:
-        for i in range (len(led_list)):
-            # check entries and replace them if nessessary
-            try:
-                check_entry = LED.query.filter_by(id=i+1).first()
-                if check_entry.name is not led_list[i]:
-                    check_entry.name = led_list[i]
-            # add new entires, if they not exist
-            except:
-                led = LED(
-                    id = i + 1,
-                    name = led_list[i],
-                )    
-                db.session.add(led)     
-
-            db.session.commit()  
-    except:
-        return False    
-
-
-def ADD_LED(Scene, Name):
-    # search for the selected LED entry 
-    entry = LED.query.filter_by(name=Name).first() 
-
-    if Scene == 1:
-        # LED already exist ?
-        check_entry = Scene_01.query.filter_by(led_id=entry.id).first()
-        # add new led
-        if check_entry is None:
-            scene = Scene_01(
-                led_id = entry.id,
-            )
-    if Scene == 2:
-        check_entry = Scene_02.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_02(
-                led_id = entry.id,
-            )
-    if Scene == 3:
-        check_entry = Scene_03.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_03(
-                led_id = entry.id,
-            )
-    if Scene == 4:
-        check_entry = Scene_04.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_04(
-                led_id = entry.id,
-            )
-    if Scene == 5:
-        check_entry = Scene_05.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_05(
-                led_id = entry.id,
-            )      
-    if Scene == 6:
-        check_entry = Scene_06.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_06(
-                led_id = entry.id,
-            )
-    if Scene == 7:
-        check_entry = Scene_07.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_07(
-                led_id = entry.id,
-            )
-    if Scene == 8:
-        check_entry = Scene_08.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_08(
-                led_id = entry.id,
-            )
-    if Scene == 9:
-        check_entry = Scene_09.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_09(
-                led_id = entry.id,
-            )      
-    if Scene == 10:
-        check_entry = Scene_10.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_10(
-                led_id = entry.id,
-            )  
-    if Scene == 99:
-        check_entry = Scene_99.query.filter_by(led_id=entry.id).first()
-        if check_entry is None:
-            scene = Scene_99(
-                led_id = entry.id,
-            )  
-    try:        
-        db.session.add(scene)
-        db.session.commit()        
-    except:
-        pass    
-
-
-def DEL_LED(Scene, ID): 
-    if Scene == 1:
-        Scene_01.query.filter_by(led_id=ID).delete()
-        if Scene_01.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 2:
-        Scene_02.query.filter_by(led_id=ID).delete()
-        if Scene_02.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 3:
-        Scene_03.query.filter_by(led_id=ID).delete()
-        if Scene_03.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 4:
-        Scene_04.query.filter_by(led_id=ID).delete()
-        if Scene_04.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 5:
-        Scene_05.query.filter_by(led_id=ID).delete()
-        if Scene_05.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 6:
-        Scene_06.query.filter_by(led_id=ID).delete()
-        if Scene_06.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 7:
-        Scene_07.query.filter_by(led_id=ID).delete()
-        if Scene_07.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 8:
-        Scene_08.query.filter_by(led_id=ID).delete()
-        if Scene_08.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 9:
-        Scene_09.query.filter_by(led_id=ID).delete()
-        if Scene_09.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 10:
-        Scene_10.query.filter_by(led_id=ID).delete()
-        if Scene_10.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-    if Scene == 99:
-        Scene_99.query.filter_by(led_id=ID).delete()
-        if Scene_99.query.filter_by().first() is None:
-            entry = Scenes.query.get(Scene)
-            entry.name = ""
-
-    db.session.commit()
-
-
-""" ################### """
-""" ################### """
 """    led programs     """
 """ ################### """
 """ ################### """
 
 
-def GET_ALL_PROGRAMS():
-    return Programs.query.all()   
+def GET_ALL_LED_PROGRAMS():
+    return LED_Programs.query.all()   
 
 
-def GET_PROGRAM_BY_NAME(name):
-    return Programs.query.filter_by(name=name).first()
+def GET_LED_PROGRAM_BY_NAME(name):
+    return LED_Programs.query.filter_by(name=name).first()
 
 
-def GET_PROGRAM_BY_ID(id):
-    return Programs.query.filter_by(id=id).first()
+def GET_LED_PROGRAM_BY_ID(id):
+    return LED_Programs.query.filter_by(id=id).first()
 
 
-def NEW_PROGRAM(name):
+def ADD_LED_PROGRAM(name):
     # name exist ?
-    check_entry = Programs.query.filter_by(name=name).first()
+    check_entry = LED_Programs.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Programs.query.filter_by(id=i).first():
+            if LED_Programs.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new program
-                program = Programs(
+                program = LED_Programs(
                         id = i,
                         name = name,
                         content = "",
                     )
                 db.session.add(program)
                 db.session.commit()
-                return ("")
+
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Program >>> " + name + " >>> added")  
+
+                return ""
     else:
-        return ("Name bereits vergeben")
+        return "Name bereits vergeben"
 
 
-def SET_PROGRAM_NAME(id, name):
-    check_entry = Programs.query.filter_by(name=name).first()
+def SET_LED_PROGRAM_NAME(id, name):
+    check_entry = LED_Programs.query.filter_by(name=name).first()
     if check_entry is None:
-        entry = Programs.query.filter_by(id=id).first()
+        entry = LED_Programs.query.filter_by(id=id).first()
         entry.name = name
         db.session.commit()    
 
 
-def UPDATE_PROGRAM(id, content):
-    entry = Programs.query.filter_by(id=id).update(dict(content=content))
+def UPDATE_LED_PROGRAM(id, content):
+    entry = LED_Programs.query.filter_by(id=id).update(dict(content=content))
     db.session.commit()
 
 
-def DELETE_PROGRAM(name):
-    Programs.query.filter_by(name=name).delete()
+def DELETE_LED_PROGRAM(name):
+    name = LED_Programs.query.filter_by(name=name).name
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Program >>> " + name + " >>> deleted")  
+
+    LED_Programs.query.filter_by(name=name).delete()
     db.session.commit() 
 
 
@@ -718,260 +436,188 @@ def DELETE_PROGRAM(name):
 """ ################### """
 
 
-def GET_SCENE(Scene):
-    entries = None
-    name    = None
-    if Scene == 1:
-        # scene exist ?
-        if Scene_01.query.all():
-            # get all settings
-            entries = Scene_01.query.all()
-            # get the scene name of an other table
-            name = entries[0].scene_name.name
-    if Scene == 2:
-        if Scene_02.query.all():
-            entries = Scene_02.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 3:
-        if Scene_03.query.all():
-            entries = Scene_03.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 4:
-        if Scene_04.query.all():
-            entries = Scene_04.query.all()  
-            name = entries[0].scene_name.name
-    if Scene == 5:
-        if Scene_05.query.all():
-            entries = Scene_05.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 6:
-        if Scene_06.query.all():
-            entries = Scene_06.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 7:
-        if Scene_07.query.all():
-            entries = Scene_07.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 8:
-        if Scene_08.query.all():
-            entries = Scene_08.query.all()  
-            name = entries[0].scene_name.name
-    if Scene == 9:
-        if Scene_09.query.all():
-            entries = Scene_09.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 10:
-        if Scene_10.query.all():
-            entries = Scene_10.query.all()
-            name = entries[0].scene_name.name
-    if Scene == 99:
-        if Scene_99.query.all():
-            entries = Scene_99.query.all()
-            name = entries[0].scene_name.name
-
-    return (entries, name)
+def GET_ALL_LED_SCENES():
+    return LED_Scenes.query.all()   
 
 
-def GET_ALL_SCENES():
-    return Scenes.query.all()   
+def GET_LED_SCENE_BY_ID(id):
+    return LED_Scenes.query.filter_by(id=id).first()
 
 
-def SET_SCENE_NAME(Scene, name):
-    check_entry = Scenes.query.filter_by(name=name).first()
+def GET_LED_SCENE_BY_NAME(name):
+    return LED_Scenes.query.filter_by(name=name).first()
+
+
+def ADD_LED_SCENE(name):
+    # name exist ?
+    check_entry = LED_Scenes.query.filter_by(name=name).first()
     if check_entry is None:
-        entry = Scenes.query.filter_by(id=Scene).first()
-        entry.name = name
-        db.session.commit()
-        return ("")
+        if name == "":
+            return "Kein Name angegeben"
+        else:
+            # find a unused id
+            for i in range(1,25):
+                if LED_Scenes.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new program
+                    scene = LED_Scenes(
+                            id = i,
+                            name = name,
+                        )
+                    db.session.add(scene)
+                    db.session.commit()
+
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Scene >>> " + name + " >>> added")  
+
+                    return ""
     else:
-        return ("Name bereits vergeben")
+        return "Name bereits vergeben"
 
 
-def SET_SCENE_COLOR(Scene, rgb_scene):
-    if Scene == 1:
-        # check all array entries
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                # get scene settings
-                entry = Scene_01.query.filter_by(led_id=i+1).first()
-                # get the rgb values only (source: rgb(xxx, xxx, xxx))
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 2:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_02.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 3:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_03.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 4:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_04.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 5:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_05.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break 
-    if Scene == 6:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_06.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 7:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_07.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 8:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_08.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break
-    if Scene == 9:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_09.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break 
-    if Scene == 10:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_10.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break 
-    if Scene == 99:
-        for i in range(len(rgb_scene)):
-            if rgb_scene[i] is not None:
-                entry = Scene_99.query.filter_by(led_id=i+1).first()
-                rgb_color = re.findall(r'\d+', rgb_scene[i])
-                break 
+def SET_LED_SCENE(id, name, led_id_1, led_name_1, red_1, green_1, blue_1, brightness_1,
+                            led_id_2, led_name_2, red_2, green_2, blue_2, brightness_2):
+
+    entry = LED_Scenes.query.filter_by(id=id).first()
+    entry.name  = name
+
+    entry.led_id_1 = led_id_1
+    entry.led_name_1 = led_name_1
+    entry.red_1 = red_1
+    entry.green_1 = green_1   
+    entry.blue_1 = blue_1
+    entry.brightness_1 = brightness_1
+    entry.led_id_2 = led_id_2
+    entry.led_name_2 = led_name_2
+    entry.red_2 = red_2
+    entry.green_2 = green_2   
+    entry.blue_2 = blue_2
+    entry.brightness_2 = brightness_2
+
+    db.session.commit()   
+
+
+def LED_SCENE_LED_EXIST(id):
+    led_list = []
+
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    led_list.append(entry.led_id_1)
+    led_list.append(entry.led_id_2)
+    led_list.append(entry.led_id_3)
+    led_list.append(entry.led_id_4)
+    led_list.append(entry.led_id_5)
+    led_list.append(entry.led_id_6)
+    led_list.append(entry.led_id_7)
+    led_list.append(entry.led_id_8)
+    led_list.append(entry.led_id_9)
+
+    return led_list
+
+
+def ADD_LED_SCENE_LED(id):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    if entry.active_led_2 != "on":
+        entry.active_led_2 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_3 != "on":
+        entry.active_led_3 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_4 != "on":
+        entry.active_led_4 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_5 != "on":
+        entry.active_led_5 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_6 != "on":
+        entry.active_led_6 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_7 != "on":
+        entry.active_led_7 = "on"
+        db.session.commit()
+        return
+
+    if entry.active_led_8 != "on":
+        entry.active_led_8 = "on"
+        db.session.commit()
+        return       
+
+    if entry.active_led_9 != "on":
+        entry.active_led_9 = "on"
+        db.session.commit()
+        return  
+
+
+def REMOVE_LED_SCENE_LED(id, led_id):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    if led_id == 2:
+        entry.active_led_2 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 3:
+        entry.active_led_3 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 4:
+        entry.active_led_4 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 5:
+        entry.active_led_5 = "None"
+        db.session.commit()
+        return            
+
+    if led_id == 6:
+        entry.active_led_6 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 7:
+        entry.active_led_7 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 7:
+        entry.active_led_7 = "None"
+        db.session.commit()
+        return
+
+    if led_id == 8:
+        entry.active_led_8 = "None"
+        db.session.commit()
+        return            
+
+    if led_id == 9:
+        entry.active_led_9 = "None"
+        db.session.commit()
+        return
+
+
+def DELETE_LED_SCENE(id):
 
     try:
-        entry.color_red   = rgb_color[0]
-        entry.color_green = rgb_color[1]           
-        entry.color_blue  = rgb_color[2]
-        db.session.commit()
+        name = GET_LED_SCENE_BY_ID(id).name
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Scene >>> " + name + " >>> deleted")   
     except:
         pass
-
-
-def SET_SCENE_BRIGHTNESS(Scene, brightness):
-    if Scene == 1:
-        # check all array entries
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                # get scene settings
-                entry = Scene_01.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 2:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_02.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 3:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_03.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break            
-    if Scene == 4:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_04.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 5:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_05.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 6:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_06.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 7:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_07.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break            
-    if Scene == 8:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_08.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 9:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_09.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 10:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_10.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-    if Scene == 99:
-        for i in range(len(brightness)):
-            if brightness[i] is not None:
-                entry = Scene_99.query.filter_by(led_id=i+1).first()
-                brightness = brightness[i]
-                break
-
-    try:
-        entry.brightness = brightness
-        db.session.commit()
-    except:
-        pass
-
-
-def DEL_SCENE(Scene):
-    if Scene == 1:
-        Scene_01.query.delete()
-    if Scene == 2:
-        Scene_02.query.delete()
-    if Scene == 3:
-        Scene_03.query.delete()
-    if Scene == 4:
-        Scene_04.query.delete()
-    if Scene == 5:
-        Scene_05.query.delete()
-    if Scene == 6:
-        Scene_06.query.delete()
-    if Scene == 7:
-        Scene_07.query.delete()
-    if Scene == 8:
-        Scene_08.query.delete()
-    if Scene == 9:
-        Scene_09.query.delete()
-    if Scene == 10:
-        Scene_10.query.delete()
-    if Scene == 99:
-        Scene_99.query.delete()
-
-    # delete scene name
-    entry = Scenes.query.get(Scene)
-    entry.name = ""
-    db.session.commit()
+    
+    LED_Scenes.query.filter_by(id=id).delete()
+    db.session.commit() 
 
 
 """ ################### """
@@ -1002,7 +648,12 @@ def GET_ALL_MQTT_DEVICES(selector):
     if selector == "watering":
         for device in devices:
             if device.inputs and device.outputs:
-                device_list.append(device)                  
+                device_list.append(device)    
+
+    if selector == "led":
+        for device in devices:
+            if device.model == "9290012573A":
+                device_list.append(device)                                 
                 
     return device_list
         

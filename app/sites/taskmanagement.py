@@ -243,30 +243,15 @@ def dashboard_taskmanagement_sensor():
                         task = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).task 
                         error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                        
 
-                    # check value 1
-                    if request.form.get("set_value_1_" + str(i)) != "":
-                        value_1 = request.form.get("set_value_1_" + str(i))
-                    else:
-                        value_1 = ""
-
-                    # check value 2
-                    if request.form.get("set_value_2_" + str(i)) != "":
-                        value_2 = request.form.get("set_value_2_" + str(i))
-                    else:
-                        value_2 = ""
-
-                    # check value 3
-                    if request.form.get("set_value_3_" + str(i)) != "":
-                        value_3 = request.form.get("set_value_3_" + str(i))                  
-                    else:
-                        value_3 = ""     
-
                     mqtt_device_id_1 = request.form.get("set_mqtt_device_id_1_" + str(i))
                     mqtt_device_id_2 = request.form.get("set_mqtt_device_id_2_" + str(i))
                     mqtt_device_id_3 = request.form.get("set_mqtt_device_id_3_" + str(i))                    
                     operator_1       = request.form.get("set_operator_1_" + str(i))
                     operator_2       = request.form.get("set_operator_2_" + str(i))
-                    operator_3       = request.form.get("set_operator_3_" + str(i))                    
+                    operator_3       = request.form.get("set_operator_3_" + str(i))     
+                    value_1          = request.form.get("set_value_1_" + str(i))
+                    value_2          = request.form.get("set_value_2_" + str(i))
+                    value_3          = request.form.get("set_value_3_" + str(i))                                    
                     operator_main_1  = request.form.get("set_operator_main_1_" + str(i))
                     operator_main_2  = request.form.get("set_operator_main_2_" + str(i))
 
@@ -276,10 +261,17 @@ def dashboard_taskmanagement_sensor():
                         operator_2 = "None"    
                     if operator_3 == None:
                         operator_3 = "None"  
+                    if value_1 == None or value_1 == "None":
+                        value_1 = ""
+                    if value_2 == None or value_2 == "None":
+                        value_2 = ""    
+                    if value_3 == None or value_3 == "None":
+                        value_3 = ""                          
                     if operator_main_1 == None:
                         operator_main_1 = "None"
                     if operator_main_2 == None:
                         operator_main_2 = "None"                   
+
 
                     # get mqtt device 1
                     try:

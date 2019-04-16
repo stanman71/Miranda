@@ -28,7 +28,7 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_led_scene_01') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
+        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
@@ -78,7 +78,7 @@
                   <th scope="col">Datei-Name</th>   
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th>
-                  <th scope="col">Daten immer speichern</th>
+                  <th scope="col">Sensor-Inputs speichern</th>
                 </thead>
                 <tbody> 
                   {% for entry in sensordata_list %}
@@ -134,7 +134,7 @@
           </div>  
         </div>  
 
-<!-- sensor values -->
+<!-- add job -->
   
 <section id="add_job"></section>  
 
@@ -188,7 +188,7 @@
                       <div class="pretty p-default p-curve p-fill p-bigger">
                           <input type="checkbox" {{ set_checkbox }} name="checkbox">
                         <div class="state">
-                          <label>Daten immer speichern</label>
+                          <label>Sensor-Inputs speichern</label>
                         </div>
                       </div> 
                     </div>                            

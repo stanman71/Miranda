@@ -420,68 +420,6 @@ def delete_snowboy_hotword(filename):
     return redirect(url_for('dashboard_settings_snowboy'))
 
 
-""" ################### """
-""" hue bridge settings """
-""" ################### """
-
-@app.route('/dashboard/settings/hue_bridge/', methods=['GET'])
-@login_required
-@superuser_required
-def dashboard_settings_hue_bridge():
-    led_update = "" 
-    error_message_hue_bridge = ""
-    hue_bridge_ip = ""
-    led_list = ""
-    check_value_hue_bridge = ["", ""]
-
-    if request.method == "GET":     
-        # change hue settings   
-        if request.args.get("radio_hue_bridge") is not None:
-            setting_hue_bridge = str(request.args.get("radio_hue_bridge"))
-            SET_SETTING_VALUE("hue_bridge", setting_hue_bridge)
-
-    # change radio check  
-    hue_bridge_setting = GET_SETTING_VALUE("hue_bridge")     
-    if hue_bridge_setting == "True":
-        check_value_hue_bridge[0] = "checked = 'on'"
-        check_value_hue_bridge[1] = ""
-    else:
-        check_value_hue_bridge[0] = ""
-        check_value_hue_bridge[1] = "checked = 'on'"
-
-    if hue_bridge_setting == "True":
-        if request.method == "GET": 
-            # change HUE ip
-            hue_bridge_ip = request.args.get("hue_bridge_ip") 
-            if hue_bridge_ip is not None:
-                SET_HUE_BRIDGE_IP(hue_bridge_ip)
-            # update_led_entries
-            update_led_entries = request.args.get("update_led_entries") 
-            if update_led_entries is not None:           
-                UPDATE_LED(GET_LED_NAMES_HUE())    
-
-        led_list = GET_ALL_LEDS()
-        hue_bridge_ip = GET_HUE_BRIDGE_IP()  
-        error_message_hue_bridge = TEST_HUE_BRIDGE()
-
-    return render_template('dashboard_settings_hue_bridge.html',
-                            hue_bridge_ip=hue_bridge_ip,
-                            led_list=led_list,
-                            error_message_hue_bridge=error_message_hue_bridge,
-                            hue_bridge_setting=hue_bridge_setting,
-                            check_value_hue_bridge=check_value_hue_bridge,
-                            )
-    
-
-# remove led
-@app.route('/dashboard/settings/hue_bridge/delete/<int:id>')
-@login_required
-@superuser_required
-def remove_hue_bridge_led(id):
-    remove_message_led = REMOVE_LED(id)
-    return redirect(url_for('dashboard_settings_hue_bridge'))
-    
-
 """ ############# """
 """ user settings """
 """ ############# """

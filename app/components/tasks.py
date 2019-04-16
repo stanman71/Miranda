@@ -209,10 +209,10 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
          try:
-            # get mqtt sensor data
-            if "get_mqtt_sensordata" in entry.task:
+            # save mqtt sensor data
+            if "save_mqtt_sensordata" in entry.task:
                task = entry.task.split(":")
-               GET_MQTT_SENSORDATA(int(task[1])) 
+               SAVE_MQTT_SENSORDATA(int(task[1])) 
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -291,8 +291,8 @@ def CHECK_TASKS(tasks, task_type):
       if task == "update_mqtt_devices" and task_type == "timer":
          continue
 
-      # check get_mqtt_sensordata
-      if "get_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
+      # check save_mqtt_sensordata
+      if "save_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
          if ":" in task:
             task = task.split(":")
             try:
@@ -426,17 +426,17 @@ def CHECK_ALL_SENSOR_SETTINGS(sensor_tasks):
                   list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
 
       # check values
-      if ((task.operator_1 == "<" or task.operator_1 == ">" or task.operator_1 == "=" or task.operator_1 == None) and 
+      if ((task.operator_1 == "<" or task.operator_1 == ">" or task.operator_1 == "=" or task.operator_1 == "None" or task.operator_1 == None) and 
           (task.value_1 == "" or task.value_1 == "None" or task.value_1 == None)):
          list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")         
 
-      if ((task.operator_2 == "<" or task.operator_2 == ">" or task.operator_2 == "=" or task.operator_2 == None) and 
+      if ((task.operator_2 == "<" or task.operator_2 == ">" or task.operator_2 == "=" or task.operator_1 == "None" or task.operator_2 == None) and 
           (task.value_2 == "" or task.value_2 == "None" or task.value_2 == None)):
          if task.operator_main_1 != "None" and task.operator_main_1 != None:
             if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
                list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2") 
 
-      if ((task.operator_3 == "<" or task.operator_3 == ">" or task.operator_3 == "=" or task.operator_3 == None) and 
+      if ((task.operator_3 == "<" or task.operator_3 == ">" or task.operator_3 == "=" or task.operator_1 == "None" or task.operator_3 == None) and 
           (task.value_3 == "" or task.value_3 == "None" or task.value_3 == None)):
          if task.operator_main_1 != "None" and task.operator_main_1 != None:
             if task.operator_main_2 != "None" and task.operator_main_2 != None:

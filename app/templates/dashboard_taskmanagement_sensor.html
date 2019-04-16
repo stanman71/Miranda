@@ -27,7 +27,7 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_led_scene_01') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
+        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
@@ -121,17 +121,17 @@
                     <td style="width:17%">
                       <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />
                     </td>
-                    <td>
+                    <td style="width:12%">
                     <font size="+2">
                       <div class="row justify-content-md-center">
                         <div class="col-sm-1">                       
                           <a href="/dashboard/taskmanagement/sensor/option/add/{{ entry.id }}#table">
-                            <span class="glyphicon glyphicon-plus" style="color:grey"></span>
+                            <span class="glyphicon glyphicon-plus" style="color:white"></span>
                           </a>                  
                         </div>
                         <div class="col-sm-1">          
                           <a href="/dashboard/taskmanagement/sensor/option/remove/{{ entry.id }}#table">
-                            <span class="glyphicon glyphicon-minus" style="color:grey"></span>
+                            <span class="glyphicon glyphicon-minus" style="color:white"></span>
                           </a>   
                         </div>
                       </div>

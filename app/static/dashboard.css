@@ -144,3 +144,7 @@ body {
   background: rgb(10, 15, 10); 
   cursor: pointer; 
 }
+
+.glyphicon{
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+}
