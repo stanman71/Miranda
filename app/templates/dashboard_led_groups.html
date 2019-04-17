@@ -1,0 +1,356 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  LED Szenen 
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
+        {% if role == "superuser" %}
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+
+<!-- led navs -->
+
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class={{scenes}}><a href="{{ url_for('dashboard_led_scenes') }}">LED Szenen</a></li> 
+              <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Programme</a></li>   
+              <li class={{groups}}><a href="{{ url_for('dashboard_led_groups') }}">LED Gruppen</a></li> 
+            </ul>
+          </div>
+        </nav>
+
+        {% for entry in list_groups %}
+
+<section id="group_table_{{ entry.id }}"></section>  
+
+        <div class="panel panel-default">
+          <div class="panel-heading"><font color="black"><b>{{ entry.name }} (ID: {{ entry.id }})</b></font></div>    
+            <div class="panel-body">   
+            <div class="well well-sm">       
+
+<!-- error message table -->
+
+{% if error_message_table != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_table }}
+  </div>      
+{% endif %}  
+
+<!-- start table -->
+
+            <table class="table">
+              <thead>                       
+                <th scope="col">Gruppe</th> 
+                <th></th>
+                <th></th>
+                <th scope="col">LED Nummer</th>
+                <th scope="col">LED</th>
+              </thead>
+              <tbody> 
+                <tr>
+                  <td style="width:20%">
+                    <form method="POST" class="verticalform">
+                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
+                  </td>  
+                  <th></th>
+                  <td style="width:10%">
+                  <font size="+2">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-1">                       
+                        <a href="/dashboard/led/groups/led/add/{{ entry.id }}#group_table_{{ entry.id }}">
+                          <span class="glyphicon glyphicon-plus" style="color:white"></span>
+                        </a>                  
+                      </div>
+                    </div>
+                  </font>
+                  </td>   
+
+<!-- section 1 -->
+
+                  <td>1</td>
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_1_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_1 }}" > {{ entry.led_name_1 }} </option>
+                        <option value= "{{ entry.led_id_1 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td>  
+
+<!-- section 2 -->
+
+{% if entry.active_led_2 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>2</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_2_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_2 }}" > {{ entry.led_name_2 }} </option>
+                        <option value= "{{ entry.led_id_2 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/2#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 3 -->
+
+{% if entry.active_led_3 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>3</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_3_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_3 }}" > {{ entry.led_name_3 }} </option>
+                        <option value= "{{ entry.led_id_3 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/3#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 4 -->
+
+{% if entry.active_led_4 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>4</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_4_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_4 }}" > {{ entry.led_name_4 }} </option>
+                        <option value= "{{ entry.led_id_4 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/4#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 5 -->
+
+{% if entry.active_led_5 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_5_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_5 }}" > {{ entry.led_name_5 }} </option>
+                        <option value= "{{ entry.led_id_5 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/5#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 6 -->
+
+{% if entry.active_led_6 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>6</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_6_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_6 }}" > {{ entry.led_name_6 }} </option>
+                        <option value= "{{ entry.led_id_6 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/6#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 7 -->
+
+{% if entry.active_led_7 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>7</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_7_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_7 }}" > {{ entry.led_name_7 }} </option>
+                        <option value= "{{ entry.led_id_7 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/7#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 8 -->
+
+{% if entry.active_led_8 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>8</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_8_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_8 }}" > {{ entry.led_name_8 }} </option>
+                        <option value= "{{ entry.led_id_8 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/8#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+<!-- section 9 -->
+
+{% if entry.active_led_9 == "on" %} 
+
+                </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>9</td>                  
+                  <td>
+                    <select class="btn btn-default dropdown-toggle" name="set_led_id_9_{{ entry.id }}">
+                        <option value= "{{ entry.led_id_9 }}" > {{ entry.led_name_9 }} </option>
+                        <option value= "{{ entry.led_id_9 }}" > ------------------------------- </option>                                        
+                      {% for each in dropdown_list_leds %}
+                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </select> 
+                  </td> 
+                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/9#group_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+
+{% endif %}
+
+
+                </tr>     
+              </tbody>
+            </table>  
+          </div> 
+
+<!-- end table -->
+
+            <input type="submit" onclick="window.location.href='/dashboard/led/groups#group_table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+          </form>
+        </div>  
+      </div>  
+      {% endfor %}
+
+<section id="add_group"></section>     
+
+<!-- new scene -->
+  
+        <div class="well well-sm">
+          <form method="POST">   
+            <div class="form-group">
+              <div class="text-center">   
+                <h3><span class="label label-default">Gruppe anlegen</span></h3> 
+              </div>     
+              <br>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}   
+
+              <div class="well well-sm">     
+                <div class="well well-sm">Gruppe:         
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_name" value="" />
+                  </div>  
+                </div>                 
+                <input type="submit" onclick="window.location.href='/dashboard/led/groups#add_group'" class="btn btn-default" name="add_group" value="Gruppe anlegen" />
+                </form>
+              </div>   
+            </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>    
+</div>    
+
+{% endblock %}

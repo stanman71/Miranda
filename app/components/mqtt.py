@@ -16,13 +16,24 @@ def MQTT_START():
 		msg = str(message.payload.decode("utf-8"))
 		print("message topic: ", message.topic)		
 		print("message received: ", msg)
-		
+
 		if "zigbee" not in message.topic:
 			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
 		else:
 			WRITE_LOGFILE_MQTT("zigbee", message.topic, msg)
+				
+		device = message.topic
+		device = device.split("/")
+		device = device[2]
 
+		if FIND_SENSORDATA_JOB_INPUT(device) != "":
+			job_id = FIND_SENSORDATA_JOB_INPUT(device)
+			SAVE_MQTT_SENSORDATA(job_id)   
 
+		if FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device) != "":
+			task_id = FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device)
+			print(task_id)
+			       
 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")

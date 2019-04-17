@@ -1,10 +1,12 @@
 import math
 import re
 import time
+import json
 
 from app import app
 from app.database.database import *
 from app.components.phue import Bridge
+from app.components.mqtt import MQTT_PUBLISH
 
 
 """ ################# """
@@ -42,165 +44,68 @@ def RGBtoXY(r, g, b):
     return (xFinal, yFinal)
 
 
-def TEST_HUE_BRIDGE():
-    try:
-        b = Bridge(GET_HUE_BRIDGE_IP())
-        b.connect()    
-        return "" 
-    except Exception as e:
-        return ("Keine Verbindung zur HUE Bridge " + str(e))
-
-
-def CONNECT_HUE_BRIDGE():
-    try:
-        b = Bridge(GET_HUE_BRIDGE_IP())
-        b.connect() 
-        return b  
-             
-    except:
-        return False
-
-
-def GET_LED_NAMES_HUE():
-
-    try:
-        b = CONNECT_HUE_BRIDGE()
-
-        lights = b.get_light_objects('list')
-
-        light_list = []
-        for light in lights:
-            light_list.append(light.name)
-        
-        return light_list
-    
-    except:
-        return False
-    
-
 """ ############# """
 """ led functions """
 """ ############# """
 
-def LED_SET_SCENE(scene, brightness_global = 100):
+def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
-    if GET_SETTING_VALUE("hue_bridge") == "True":
+    if GET_SETTING_VALUE("zigbee") == "True":
 
         try:
-            b = CONNECT_HUE_BRIDGE()
-            lights = b.get_light_objects('list')
+            group = GET_LED_GROUP_BY_ID(group_id)
+            scene = GET_LED_SCENE_BY_ID(scene_id)
 
-            # get scene settings
-            entries = GET_SCENE(scene)
+            # led 1
+            channel = "SmartHome/zigbee/" + group.led_name_1 + "/set"
+            msg =  {"state": "ON",
+                    "brightness": scene.brightness_1*(brightness_global/100),
+                    "color": {  
+                    "r": scene.red_1,
+                    "g": scene.green_1,
+                    "b": scene.blue_1}
+                    }
+
+            MQTT_PUBLISH(channel, msg) 
             
-            if entries[0] is not None:
-                entries = entries[0]
-                for entry in entries:
-                        # add global brightness setting                
-                        brightness = entry.brightness
-                        brightness = int((brightness * (int(brightness_global)) / 100))
-                        if brightness > 10:
-                            # turn led on
-                            lights[entry.led_id - 1].on = True
-                            # set brightness
-                            lights[entry.led_id - 1].brightness = brightness
-                            # set rgb 
-                            xy = RGBtoXY(entry.color_red, entry.color_green, entry.color_blue)
-                            lights[entry.led_id - 1].xy = xy
-                        else:
-                            # turn led off if brightness < 10
-                            lights[entry.led_id - 1].on = False  
-            return ""
-        
-        except:
-            return TEST_HUE_BRIDGE()
-                  
-    else:
-        return ("Keine LED-Steuerung")       
+            # led 2
+            if group.active_led_2 == "on" and scene.active_setting_2 == "on":
+                channel = "SmartHome/zigbee/" + group.led_name_2 + "/set"
+                msg =  {"state": "ON",
+                        "brightness": scene.brightness_2*(brightness_global/100),
+                        "color": {  
+                        "r": scene.red_2,
+                        "g": scene.green_2,
+                        "b": scene.blue_2}
+                        }
 
+                MQTT_PUBLISH(channel, msg) 
+
+        except:
+            pass
+                
 
 """ ################# """
 """ program functions """
 """ ################# """
 
-def PROGRAM_SET_BRIGHTNESS(brightness_settings):
+def START_PROGRAM(group_id, program_id):  
 
-    if GET_SETTING_VALUE("hue_bridge") == "True":
-
-        try:
-            b = CONNECT_HUE_BRIDGE()
-            lights = b.get_light_objects('list')
-        
-            brightness_settings = brightness_settings.split(":")
-            # get the brightness value only (source: bri(xxx))
-            brightness = re.findall(r'\d+', brightness_settings[1]) 
-            # transform list element to int   
-            brightness = int(brightness[0])
-            if brightness > 10:
-                    # list element start at 0 for led ID 1
-                    lights[int(brightness_settings[0]) - 1].on = True
-                    lights[int(brightness_settings[0]) - 1].brightness = brightness
-            else:
-                    # turn led off if brightness < 10
-                    lights[int(brightness_settings[0]) - 1].on = False               
-        except:
-            return TEST_HUE_BRIDGE()
-            
-    else:
-        return ("Keine LED-Steuerung")     
+    if GET_SETTING_VALUE("zigbee") == "True":
 
 
-def PROGRAM_SET_COLOR(rgb_settings):
+        content = GET_PROGRAM_ID(id).content
 
-    if GET_SETTING_VALUE("hue_bridge") == "True":
-
-        try:
-            b = CONNECT_HUE_BRIDGE()
-            lights = b.get_light_objects('list')
-
-            rgb_settings = rgb_settings.split(":")
-            # get the rgb values only (source: rgb(xxx, xxx, xxx))
-            rgb_color = re.findall(r'\d+', rgb_settings[1])     
-            # convert rgb to xy    
-            xy = RGBtoXY(int(rgb_color[0]), int(rgb_color[1]), int(rgb_color[2]))
-            lights[int(rgb_settings[0]) - 1].on = True
-            lights[int(rgb_settings[0]) - 1].xy = xy  
-         
-        except:
-            return ("Keine Verbindung zur HUE Bridge: " + TEST_HUE_BRIDGE())
-                  
-    else:
-        return ("Keine LED-Steuerung")   
-
-
-def START_PROGRAM(id):  
-
-    if GET_SETTING_VALUE("hue_bridge") == "True":
-
-        try:
-            b = CONNECT_HUE_BRIDGE()
-            lights = b.get_light_objects('list')
-            # deactivate all led
-            for light in lights:
-                light.on = False
-
-            content = GET_PROGRAM_ID(id).content
-
-            try:   
-                # select each command line
-                for line in content.splitlines():
-                    if "rgb" in line: 
-                        PROGRAM_SET_COLOR(line)
-                    if "bri" in line: 
-                        PROGRAM_SET_BRIGHTNESS(line)
-                    if "pause" in line: 
-                        break_value = line.split(":")
-                        break_value = int(break_value[1])
-                        time.sleep(break_value)
-            except:
-                pass
-        except:
-            return TEST_HUE_BRIDGE()
+        # select each command line
+        for line in content.splitlines():
+            if "rgb" in line: 
+                PROGRAM_SET_COLOR(line)
+            if "bri" in line: 
+                PROGRAM_SET_BRIGHTNESS(line)
+            if "pause" in line: 
+                break_value = line.split(":")
+                break_value = int(break_value[1])
+                time.sleep(break_value)
               
     else:
         return "Keine LED-Steuerung" 

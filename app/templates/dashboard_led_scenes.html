@@ -15,7 +15,30 @@
   {{ super() }}
   {{ colorpicker.loader() }}
   {{ colorpicker.picker(ids=[".led_1_1", ".led_2_1", ".led_3_1", ".led_4_1", ".led_5_1", ".led_6_1", ".led_7_1", ".led_8_1", ".led_9_1",
-                             ".led_1_2", ".led_2_2", ".led_3_2", ".led_4_2", ".led_5_2", ".led_6_2", ".led_7_2", ".led_8_2", ".led_9_2"]) }}
+                             ".led_1_2", ".led_2_2", ".led_3_2", ".led_4_2", ".led_5_2", ".led_6_2", ".led_7_2", ".led_8_2", ".led_9_2",
+                             ".led_1_3", ".led_2_3", ".led_3_3", ".led_4_3", ".led_5_3", ".led_6_3", ".led_7_3", ".led_8_3", ".led_9_3",
+                             ".led_1_4", ".led_2_4", ".led_3_4", ".led_4_4", ".led_5_4", ".led_6_4", ".led_7_4", ".led_8_4", ".led_9_4",
+                             ".led_1_5", ".led_2_5", ".led_3_5", ".led_4_5", ".led_5_5", ".led_6_5", ".led_7_5", ".led_8_5", ".led_9_5",
+                             ".led_1_6", ".led_2_6", ".led_3_6", ".led_4_6", ".led_5_6", ".led_6_6", ".led_7_6", ".led_8_6", ".led_9_6",
+                             ".led_1_7", ".led_2_7", ".led_3_7", ".led_4_7", ".led_5_7", ".led_6_7", ".led_7_7", ".led_8_7", ".led_9_7",
+                             ".led_1_8", ".led_2_8", ".led_3_8", ".led_4_8", ".led_5_8", ".led_6_8", ".led_7_8", ".led_8_8", ".led_9_8",
+                             ".led_1_9", ".led_2_9", ".led_3_9", ".led_4_9", ".led_5_9", ".led_6_9", ".led_7_9", ".led_8_9", ".led_9_9",
+                             ".led_1_10", ".led_2_10", ".led_3_10", ".led_4_10", ".led_5_10", ".led_6_10", ".led_7_10", ".led_8_10", ".led_9_10",
+                             ".led_1_11", ".led_2_11", ".led_3_11", ".led_4_11", ".led_5_11", ".led_6_11", ".led_7_11", ".led_8_11", ".led_9_11",
+                             ".led_1_12", ".led_2_12", ".led_3_12", ".led_4_12", ".led_5_12", ".led_6_12", ".led_7_12", ".led_8_12", ".led_9_12",
+                             ".led_1_13", ".led_2_13", ".led_3_13", ".led_4_13", ".led_5_13", ".led_6_13", ".led_7_13", ".led_8_13", ".led_9_13",
+                             ".led_1_14", ".led_2_14", ".led_3_14", ".led_4_14", ".led_5_14", ".led_6_14", ".led_7_14", ".led_8_14", ".led_9_14",
+                             ".led_1_15", ".led_2_15", ".led_3_15", ".led_4_15", ".led_5_15", ".led_6_15", ".led_7_15", ".led_8_15", ".led_9_15",
+                             ".led_1_16", ".led_2_16", ".led_3_16", ".led_4_16", ".led_5_16", ".led_6_16", ".led_7_16", ".led_8_16", ".led_9_16",
+                             ".led_1_17", ".led_2_17", ".led_3_17", ".led_4_17", ".led_5_17", ".led_6_17", ".led_7_17", ".led_8_17", ".led_9_17",
+                             ".led_1_18", ".led_2_18", ".led_3_18", ".led_4_18", ".led_5_18", ".led_6_18", ".led_7_18", ".led_8_18", ".led_9_18",
+                             ".led_1_19", ".led_2_19", ".led_3_19", ".led_4_19", ".led_5_19", ".led_6_19", ".led_7_19", ".led_8_19", ".led_9_19",
+                             ".led_1_20", ".led_2_20", ".led_3_20", ".led_4_20", ".led_5_20", ".led_6_20", ".led_7_20", ".led_8_20", ".led_9_20",
+                             ".led_1_21", ".led_2_21", ".led_3_21", ".led_4_21", ".led_5_21", ".led_6_21", ".led_7_21", ".led_8_21", ".led_9_21",
+                             ".led_1_22", ".led_2_22", ".led_3_22", ".led_4_22", ".led_5_22", ".led_6_22", ".led_7_22", ".led_8_22", ".led_9_22",
+                             ".led_1_23", ".led_2_23", ".led_3_23", ".led_4_23", ".led_5_23", ".led_6_23", ".led_7_23", ".led_8_23", ".led_9_23",
+                             ".led_1_24", ".led_2_24", ".led_3_24", ".led_4_24", ".led_5_24", ".led_6_24", ".led_7_24", ".led_8_24", ".led_9_24",
+                             ".led_1_25", ".led_2_25", ".led_3_25", ".led_4_25", ".led_5_25", ".led_6_25", ".led_7_25", ".led_8_25", ".led_9_25"]) }}
 {% endblock scripts %}
 
 {% block content %}
@@ -60,6 +83,7 @@
             <ul class="nav navbar-nav">
               <li class={{scenes}}><a href="{{ url_for('dashboard_led_scenes') }}">LED Szenen</a></li> 
               <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Programme</a></li>   
+              <li class={{groups}}><a href="{{ url_for('dashboard_led_groups') }}">LED Gruppen</a></li> 
             </ul>
           </div>
         </nav>
@@ -69,7 +93,7 @@
 <section id="scene_table_{{ entry.id }}"></section>  
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>Szene {{ entry.name }}</b></font></div>    
+          <div class="panel-heading"><font color="black"><b>{{ entry.name }} (ID: {{ entry.id }})</b></font></div>    
             <div class="panel-body">   
             <div class="well well-sm">       
 
@@ -85,23 +109,25 @@
 
             <table class="table">
               <thead>                       
-                <th scope="col">Name</th> 
+                <th scope="col">Szene</th> 
                 <th></th>
-                <th scope="col">Gerät</th>
+                <th></th>
+                <th scope="col">LED Nummer</th>
                 <th scope="col">RGB</th>
-                <th scope="col">Helligkeit</th>
+                <th scope="col" colspan="2">Helligkeit</th>
               </thead>
               <tbody> 
                 <tr>
-                  <td style="width:25%">
+                  <td style="width:20%">
                     <form method="POST" class="verticalform">
                     <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
-                  </td>  
+                  </td> 
+                  <td></td> 
                   <td style="width:10%">
                   <font size="+2">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-1">                       
-                        <a href="/dashboard/led/scenes/led/add/{{ entry.id }}#scene_table_{{ entry.id }}">
+                        <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#scene_table_{{ entry.id }}">
                           <span class="glyphicon glyphicon-plus" style="color:white"></span>
                         </a>                  
                       </div>
@@ -112,13 +138,7 @@
 <!-- section 1 -->
 
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_1_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_1 }}" > {{ entry.led_name_1 }} </option>
-                        <option value= "{{ entry.led_id_1 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    1
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_1_{{ entry.id }}" class="form-control led_1_{{ entry.id }}" value="rgb({{ entry.red_1 }}, {{ entry.green_1 }}, {{ entry.blue_1 }}) "/>
@@ -135,20 +155,15 @@
 
 <!-- section 2 -->
 
-{% if entry.active_led_2 == "on" %} 
+{% if entry.active_setting_2 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_2_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_2 }}" > {{ entry.led_name_2 }} </option>
-                        <option value= "{{ entry.led_id_2 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    2
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
@@ -161,29 +176,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/2#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 3 -->
 
-{% if entry.active_led_3 == "on" %} 
+{% if entry.active_setting_3 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_3_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_3 }}" > {{ entry.led_name_3 }} </option>
-                        <option value= "{{ entry.led_id_3 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    3
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_{{ led_id_3 }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
+                    <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_3_{{ entry.id }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
                   </td>
                   <td>{{ entry.brightness_3 }}</td>
                   <td>
@@ -193,29 +203,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/3#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 4 -->
 
-{% if entry.active_led_4 == "on" %} 
+{% if entry.active_setting_4 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_4_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_4 }}" > {{ entry.led_name_4 }} </option>
-                        <option value= "{{ entry.led_id_4 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    4
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_{{ led_id_4 }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
+                    <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_4_{{ entry.id }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
                   </td>
                   <td>{{ entry.brightness_4 }}</td>
                   <td>
@@ -225,29 +230,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/4#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 5 -->
 
-{% if entry.active_led_5 == "on" %} 
+{% if entry.active_setting_5 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_5_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_5 }}" > {{ entry.led_name_5 }} </option>
-                        <option value= "{{ entry.led_id_5 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    5
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_{{ led_id_5 }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
+                    <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_5_{{ entry.id }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
                   </td>
                   <td>{{ entry.brightness_5 }}</td>
                   <td>
@@ -257,29 +257,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/5#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 6 -->
 
-{% if entry.active_led_6 == "on" %} 
+{% if entry.active_setting_6 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_6_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_6 }}" > {{ entry.led_name_6 }} </option>
-                        <option value= "{{ entry.led_id_6 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    6
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_{{ led_id_6 }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
+                    <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_6_{{ entry.id }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
                   </td>
                   <td>{{ entry.brightness_6 }}</td>
                   <td>
@@ -289,29 +284,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/6#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 7 -->
 
-{% if entry.active_led_7 == "on" %} 
+{% if entry.active_setting_7 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_7_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_7 }}" > {{ entry.led_name_7 }} </option>
-                        <option value= "{{ entry.led_id_7 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    7
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_{{ led_id_7 }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
+                    <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_7_{{ entry.id }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
                   </td>
                   <td>{{ entry.brightness_7 }}</td>
                   <td>
@@ -321,29 +311,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/7#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 8 -->
 
-{% if entry.active_led_8 == "on" %} 
+{% if entry.active_setting_8 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_8_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_8 }}" > {{ entry.led_name_8 }} </option>
-                        <option value= "{{ entry.led_id_8 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    8
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_{{ led_id_8 }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
+                    <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_8_{{ entry.id }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
                   </td>
                   <td>{{ entry.brightness_8 }}</td>
                   <td>
@@ -353,29 +338,24 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/8#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 <!-- section 9 -->
 
-{% if entry.active_led_9 == "on" %} 
+{% if entry.active_setting_9 == "on" %} 
 
                 </tr>
                 <tr>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_9_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_9 }}" > {{ entry.led_name_9 }} </option>
-                        <option value= "{{ entry.led_id_9 }}" > ------------------------------- </option>                                        
-                      {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select> 
+                    9
                   </td> 
                   <td>
-                    <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_{{ led_id_9 }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
+                    <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_9_{{ entry.id }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
                   </td>
                   <td>{{ entry.brightness_9 }}</td>
                   <td>
@@ -385,7 +365,7 @@
                       </div> 
                     </div>
                   </td>
-                  <td><a href="/dashboard/led/scenes/led/remove/{{ entry.id }}/9#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -402,7 +382,16 @@
                 <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
             </div> 
             <div class="col-sm-3">
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="start_led_scene_{{ entry.id }}" value="Szene starten" />
+              <select class="btn btn-default dropdown-toggle" name="group_{{ entry.id }}">
+                  <option value= "" > Gruppe wählen: </option>
+                  <option value= "" > ------------------------------- </option>                                        
+                {% for each in dropdown_list_groups %}
+                  <option value="{{ each.id }}"> {{ each.name }} </option>
+                {% endfor %}
+              </select> 
+            </div> 
+            <div class="col-sm-3">              
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
             </div>   
           </div>
           </form>
@@ -431,7 +420,7 @@
 {% endif %}   
 
               <div class="well well-sm">     
-                <div class="well well-sm">Name:         
+                <div class="well well-sm">Szene:         
                   <div class="form-group">
                     <input type="text" class="form-control" name="set_name" value="" />
                   </div>  

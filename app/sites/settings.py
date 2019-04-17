@@ -621,8 +621,8 @@ def dashboard_settings_system_log():
         if request.form.get("reset_logfile") is not None: 
             RESET_LOGFILE("log_system")   
             
-    if GET_LOGFILE_SYSTEM() is not None:
-        data_log_system = GET_LOGFILE_SYSTEM()
+    if GET_LOGFILE_SYSTEM(30) is not None:
+        data_log_system = GET_LOGFILE_SYSTEM(30)
     else:
         data_log_system = ""
 

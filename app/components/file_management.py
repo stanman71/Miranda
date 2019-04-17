@@ -44,6 +44,9 @@ def GET_CONFIG_VERSION():
 def GET_CONFIG_MQTT_BROKER():
     return str((yamlcfg['config']['mqtt_broker']))
 
+def GET_CONFIG_DATABASE():
+    return str((yamlcfg['config']['database']))
+
 
 """ ############### """
 """ backup database """
@@ -347,7 +350,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))
         
     
-def GET_LOGFILE_SYSTEM():   
+def GET_LOGFILE_SYSTEM(rows):   
     try:
         # open csv file
         file = PATH + "/logs/log_system.csv"
@@ -358,7 +361,7 @@ def GET_LOGFILE_SYSTEM():
             headers = data.pop(0)             # get headers and remove from data
             data_reversed = data[::-1]        # reverse the data
 
-            return data_reversed[0:30]
+            return data_reversed[0:rows]
             
     except Exception as e:
         print(e)

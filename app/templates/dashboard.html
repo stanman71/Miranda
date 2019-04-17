@@ -43,4 +43,54 @@
 </nav>
 <br>
 
+<!-- table logs -->
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+  <div class="row">
+    <div class="col">
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Ereignisse</b></font></div>       
+          <div class="panel-body">  
+            <div class="well well-sm">
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}
+
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Zeitpunkt</th> 
+                  <th scope="col">Typ</th> 
+                  <th scope="col">Beschreibung</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in data_log_system %}
+                  <tr>
+                    <td>{{ entry[0] }}</td> 
+                    <td>
+                      {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
+                    </td>                   
+                    <td>{{ entry[2] }}</td>  
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table> 
+            </div>
+            
+<!-- program version -->
+
+            <div class="text-right">
+              Version {{ version }}
+            </div>    
+          </div>  
+        </div> 
+      </div>   
+    </div>  
+  </div> 
+</div>   
+
 {% endblock %}

@@ -73,12 +73,12 @@
               
               <table class="table">
                 <thead>
-                  <th scope="col">Job-ID</th>  
-                  <th scope="col">Job-Name</th>  
-                  <th scope="col">Datei-Name</th>   
+                  <th scope="col">ID</th>  
+                  <th scope="col">Job</th>  
+                  <th scope="col">Dateiname</th>   
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th>
-                  <th scope="col">Sensor-Inputs speichern</th>
+                  <th scope="col">Sensor-Inputs immer speichern</th>
                 </thead>
                 <tbody> 
                   {% for entry in sensordata_list %}
@@ -156,12 +156,12 @@
 </div>      
 {% endif %}                  
 
-                  <div class="well well-sm">Job-Name:     
+                  <div class="well well-sm">Job:     
                     <div class="form-group">
                       <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
                     </div>
                   </div>
-                  <div class="well well-sm">Datei-Name:   
+                  <div class="well well-sm">Dateiname:   
                     <div class="form-group">
                       <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
                     </div>
@@ -188,7 +188,7 @@
                       <div class="pretty p-default p-curve p-fill p-bigger">
                           <input type="checkbox" {{ set_checkbox }} name="checkbox">
                         <div class="state">
-                          <label>Sensor-Inputs speichern</label>
+                          <label>Sensor-Inputs immer speichern (z.B. bei Geräten die jede Stunde Daten automatisch zusenden)</label>
                         </div>
                       </div> 
                     </div>                            

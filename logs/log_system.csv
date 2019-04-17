@@ -6149,3 +6149,57 @@ Timestamp,Type,Description
 2019-04-16 18:23:09,EVENT,Database >>> LED Scene >>> ghf >>> added
 2019-04-16 18:23:16,EVENT,Database >>> LED Scene >>> ghf >>> deleted
 2019-04-16 18:28:24,EVENT,Database >>> LED Scene >>> jhgjh >>> added
+2019-04-17 09:48:42,EVENT,Database >>> LED Scene >>> ztrztr >>> added
+2019-04-17 10:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-17 10:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-17 10:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-17 10:00:08,ERROR,MQTT >>> No connection
+2019-04-17 10:00:08,EVENT,Task >>> test >>> started
+2019-04-17 10:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-17 10:03:14,EVENT,Database >>> LED Scene >>> ztrzt >>> added
+2019-04-17 10:06:20,EVENT,Database >>> LED Scene >>> ztrzt >>> deleted
+2019-04-17 10:06:22,EVENT,Database >>> LED Scene >>> tretre >>> added
+2019-04-17 10:06:29,EVENT,Database >>> LED Scene >>> jgjhg >>> added
+2019-04-17 10:50:24,EVENT,Database >>> LED Scene >>> hgf >>> added
+2019-04-17 10:56:07,EVENT,Database >>> LED Scene >>> ztrztr >>> added
+2019-04-17 10:57:39,EVENT,Database >>> LED Room >>> hfg >>> added
+2019-04-17 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-17 11:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-17 11:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-17 11:00:08,ERROR,MQTT >>> No connection
+2019-04-17 11:00:08,EVENT,Task >>> test >>> started
+2019-04-17 11:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-17 11:11:26,EVENT,Database >>> LED Room >>> fsdf >>> added
+2019-04-17 11:24:55,EVENT,Database >>> LED Scene >>> hgf >>> deleted
+2019-04-17 11:24:57,EVENT,Database >>> LED Scene >>> ztrztr >>> deleted
+2019-04-17 11:34:48,EVENT,Database >>> LED Room >>> hfgfds >>> deleted
+2019-04-17 11:47:15,EVENT,Database >>> LED Room >>> tre >>> added
+2019-04-17 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-17 12:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-17 12:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-17 12:00:08,ERROR,MQTT >>> No connection
+2019-04-17 12:00:08,EVENT,Task >>> test >>> started
+2019-04-17 12:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-17 12:01:10,EVENT,Database >>> LED Group >>> test >>> added
+2019-04-17 12:01:21,EVENT,Database >>> LED Group >>> kjh >>> added
+2019-04-17 12:04:39,ERROR,ZigBee2MQTT >>> No connection
+2019-04-17 12:04:48,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-17 12:14:27,EVENT,Database >>> LED Program >>> test >>> added
+2019-04-17 14:07:52,EVENT,Database >>> Sensordata Job >>> jhgj >>> changed >>> Name: jhgj /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-17 14:08:00,EVENT,Database >>> Sensordata Job >>> gfd >>> added
+2019-04-17 14:08:00,EVENT,File >>> /csv/gfd.csv >>> created
+2019-04-17 14:08:02,EVENT,Database >>> Sensordata Job >>> gfd >>> deleted
+2019-04-17 14:31:07,EVENT,Database >>> LED Scene >>> test >>> added
+2019-04-17 15:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-17 15:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-17 15:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-17 15:00:08,ERROR,MQTT >>> No connection
+2019-04-17 15:00:08,EVENT,Task >>> test >>> started
+2019-04-17 15:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-17 15:16:04,EVENT,Database >>> LED Scene >>> test >>> deleted
+2019-04-17 16:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-17 16:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-17 16:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-17 16:00:08,ERROR,MQTT >>> No connection
+2019-04-17 16:00:08,EVENT,Task >>> test >>> started
+2019-04-17 16:00:12,ERROR,Task >>> test >>> string index out of range

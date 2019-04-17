@@ -1,3 +1,4 @@
 config:
-    version: 0.6
+    version: 0.7
     mqtt_broker: localhost
+    database: sqlite:///database/smarthome.sqlite3

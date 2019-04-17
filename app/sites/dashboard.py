@@ -6,6 +6,7 @@ from wtforms.validators import InputRequired, Email, Length
 from functools import wraps
 
 from app import app
+from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 
 class LoginForm(FlaskForm):
     username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
@@ -17,6 +18,19 @@ class LoginForm(FlaskForm):
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-   
-    return render_template('dashboard.html', 
-                            role=current_user.role)
+    error_message = ""
+
+    if GET_LOGFILE_SYSTEM(10) is not None:
+        data_log_system = GET_LOGFILE_SYSTEM(10)
+    else:
+        data_log_system = ""
+        error_message = "Keine Einträge gefunden"
+
+    version = GET_CONFIG_VERSION()        
+
+    return render_template('dashboard.html',
+                            data_log_system=data_log_system, 
+                            version=version,   
+                            error_message=error_message,    
+                            role=current_user.role,
+                            )

@@ -57,57 +57,38 @@
       <div class="container-fluid">
         <ul class="nav navbar-nav">
           <li class={{scenes}}><a href="{{ url_for('dashboard_led_scenes') }}">LED Szenen</a></li> 
-          <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Programme</a></li>   
+          <li class={{programs}}><a href="{{ url_for('dashboard_led_programs') }}">LED Programme</a></li> 
+          <li class={{groups}}><a href="{{ url_for('dashboard_led_groups') }}">LED Gruppen</a></li>   
         </ul>
       </div>
     </nav>
 
-<!-- error messages -->
-
-    {% if led_update == False %}
-    <div class="alert alert-danger" role="alert">
-      Keine Verbindung zur HUE Bridge
-    </div>      
-    {% endif %}   
-
-    {% if error_message != "" %}
-      <div class="alert alert-danger" role="alert">
-        {{ error_message }}
-      </div>      
-    {% endif %}
-
-<!-- create new programs -->
+<!-- select a program --> 
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>LED Programme</b></font></div>
         <div class="panel-body">
-          <form method="POST">
-            <div class="well well-sm">
-              <div class="form-group">
-                <input type="text" class="form-control" name="new_program" value="" />
-              </div>
-                <input type="submit" class="btn btn-default" name="add_program" value="Programm erstellen" />
-            </div>
-          </form>              
-        </div>
-      </div>
-      
-<!-- select a program --> 
-
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="dropdown">
+          <div class="well well-sm">
             <form method="POST" enctype="multipart/form-data">
-              <select class="btn btn-default dropdown-toggle" name="get_program_name">
-                {% for each in dropdown_list %}
-                  {% if each != None %}
-                   <option value="{{each.name}}">{{each.name}} ({{each.id}})</option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-              <input type="submit" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
-            </form>
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <div class="dropdown">
+                  <select class="btn btn-default dropdown-toggle" name="get_program_name">
+                    {% for each in dropdown_list_programs %}
+                      {% if each != None %}
+                      <option value="{{each.name}}">{{each.name}} (ID: {{each.id}})</option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div> 
+              </div>  
+              <div class="col-sm-3"> 
+                <input type="submit" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
+              </div>  
+            </form> 
+            </div> 
           </div> 
+   
           <br>
           <br>          
 
@@ -117,7 +98,7 @@
 
           <div class="well well-sm">
             <div class="text-center">  
-              <h3><span class="label label-default">{{ program.name }} ({{program.id}}) bearbeiten</span></h3> 
+              <h3><span class="label label-default">{{ program.name }} (ID: {{program.id}}) bearbeiten</span></h3> 
             </div>
             <br>
             <div class="well well-sm">
@@ -155,7 +136,7 @@
               <textarea class="form-control" name="update_{{ program.id }}" rows="20">{{ program.content }}</textarea>
             </div> 
   
-            <section id="rgb_color"></section> 
+<section id="rgb_color"></section> 
             
               <input type="submit" onclick="window.location.href='/dashboard/led/programs#update_program'" class="btn btn-default" name="update_{{ program.id }}" value="Programm speichern" />
               <br>
@@ -172,12 +153,18 @@
               <h3><span class="label label-default">RGB</span></h3> 
             </div>
             <br>
+ 
+<section id="start_program"></section>  
+ 
             <form method="POST" class="verticalform">
               <div class="well well-sm">
                 <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
               </div>
               <input type="submit" onclick="window.location.href='/dashboard/led/programs#rgb_color'"class="btn btn-default" name="color_{{ program.id }}" value="Werte ermitteln" />  
               <br>
+ 
+<section id="rename_program"></section>               
+ 
               <br>
               <div class="form-group">
                 <textarea class="form-control rounded-0" rows="1">{{ rgb }}</textarea>
@@ -188,21 +175,30 @@
 
 <!-- start a program -->
 
-<section id="start_program"></section> 
-
       <div class="panel panel-default">
         <div class="panel-body">
           <div class="well well-sm">
-            <input type="submit" onclick="window.location.href='/dashboard/led/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
-          </form>         
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <select class="btn btn-default dropdown-toggle" name="get_group">
+                    <option value= "" > Gruppe wählen: </option>
+                    <option value= "" > ------------------------------- </option>                                        
+                  {% for each in dropdown_list_groups %}
+                    <option value="{{ each.id }}"> {{ each.name }} </option>
+                  {% endfor %}
+                </select> 
+              </div> 
+              <div class="col-sm-3">              
+                <input type="submit" onclick="window.location.href='/dashboard/led/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
+              </div>   
+            </div>      
+          </form>  
           {% endif %}   
           </div>     
         </div>
       </div> 
 
 <!-- rename a program -->
-
-<section id="rename_program"></section> 
 
       {% if program_delete != "" %}  
 
@@ -226,9 +222,42 @@
             </form>
           </div> 
         </div>
+      </div>
 
       {% endif %}
-      
-    </div> 
+
+<section id="add_program"></section>  
+
+<!-- create new programs -->     
+
+      <div class="well well-sm">
+        <div class="text-center">   
+          <h3><span class="label label-default">Programm erstellen</span></h3> 
+        </div>     
+        <br>
+
+<!-- error message -->    
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}
+
+      <div class="well well-sm">
+        <div class="well well-sm">Programm:
+          <form method="POST">
+            <div class="form-group">
+              <input type="text" class="form-control" name="new_program" value="" />
+            </div>
+          </div>
+            <input type="submit" onclick="window.location.href='/dashboard/led/programs#add_program'" class="btn btn-default" name="add_program" value="Programm erstellen" />
+          </div>
+        </form>  
+        </div>            
+      </div>
+    </div>  
+  </div>    
+</div> 
 
 {% endblock %}
