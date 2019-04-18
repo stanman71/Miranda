@@ -4,6 +4,8 @@ from flask_apscheduler import APScheduler
 from functools import wraps
 import datetime
 
+import pandas as pd
+
 from app import app
 from app.database.database import *
 from app.components.file_management import *
@@ -20,14 +22,14 @@ def user_required(f):
     return wrap
 
 
-""" ########## """
-""" sensordata """
-""" ########## """
+""" ############## """
+""" sensordata jobs"""
+""" ############## """
 
-@app.route('/dashboard/sensordata', methods=['GET', 'POST'])
+@app.route('/dashboard/sensordata/jobs', methods=['GET', 'POST'])
 @login_required
 @user_required
-def dashboard_sensordata():
+def dashboard_sensordata_jobs():
     error_message = ""
     error_message_table = ""
     error_message_form = ""
@@ -130,15 +132,15 @@ def dashboard_sensordata():
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     
-    sensordata_list = GET_ALL_SENSORDATA_JOBS()
-    file_list = GET_SENSORDATA_FILES()
+    list_sensordata = GET_ALL_SENSORDATA_JOBS()
+    list_files      = GET_SENSORDATA_FILES()
 
     if set_mqtt_device_id != "":
         set_mqtt_device_name = GET_MQTT_DEVICE_NAME(int(set_mqtt_device_id))
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
-    return render_template('dashboard_sensordata.html',
+    return render_template('dashboard_sensordata_jobs.html',
                             name=name,
                             filename=filename,
                             set_mqtt_device_id=set_mqtt_device_id,
@@ -149,24 +151,25 @@ def dashboard_sensordata():
                             error_message_table=error_message_table,
                             error_message_form=error_message_form,
                             error_message_file=error_message_file,
-                            sensordata_list=sensordata_list,
-                            file_list=file_list,     
+                            list_sensordata=list_sensordata,
+                            list_files=list_files,     
                             timestamp=timestamp, 
+                            jobs="active",
                             role=current_user.role,                      
                             )
 
 
 # remove sensordata job
-@app.route('/dashboard/sensordata/delete/job/<int:id>')
+@app.route('/dashboard/sensordata/jobs/delete/job/<int:id>')
 @login_required
 @user_required
 def remove_sensordata_job(id):
     DELETE_SENSORDATA_JOB(id)  
-    return redirect(url_for('dashboard_sensordata'))
+    return redirect(url_for('dashboard_sensordata_jobs'))
 
 
 # download sensordata file
-@app.route('/dashboard/sensordata/download/file/<path:filepath>')
+@app.route('/dashboard/sensordata/jobs/download/file/<path:filepath>')
 @login_required
 @user_required
 def download_sensordata_file(filepath):
@@ -182,9 +185,139 @@ def download_sensordata_file(filepath):
 
 
 # delete sensordata file
-@app.route('/dashboard/sensordata/delete/file/<string:filename>')
+@app.route('/dashboard/sensordata/jobs/delete/file/<string:filename>')
 @login_required
 @user_required
 def delete_sensordata_file(filename):
     DELETE_SENSORDATA_FILE(filename)
-    return redirect(url_for('dashboard_sensordata'))
+    return redirect(url_for('dashboard_sensordata_jobs'))
+
+
+""" ##################### """
+""" sensordata statistics """
+""" ##################### """
+
+@app.route('/dashboard/sensordata/statistics', methods=['GET', 'POST'])
+@login_required
+@user_required
+def dashboard_sensordata_statistics():
+    error_message = ""
+    devices = ""
+    sensors = ""
+    data_file_1 = ""
+    data_file_2 = ""
+    data_file_3 = ""
+
+    if request.method == 'POST':
+
+        # get data
+        if request.form.get("get_data") is not None: 
+            data_file_1 = request.form.get("get_file_1")
+            data_file_2 = request.form.get("get_file_2")
+            data_file_3 = request.form.get("get_file_3")
+
+            df_1 = READ_SENSORDATA_FILE(data_file_1)     
+
+            # merge data sources
+            if data_file_1 != data_file_2 and data_file_1 != data_file_3 and data_file_2 != data_file_3:
+
+                try:
+                    df_2 = READ_SENSORDATA_FILE(data_file_2)
+                    df_1 = pd.concat([df_1, df_2], ignore_index=True)
+                except:
+                    pass           
+                try:
+                    df_3 = READ_SENSORDATA_FILE(data_file_3)
+                    df_1 = pd.concat([df_1, df_3], ignore_index=True)
+                except:
+                    pass
+
+                df = df_1
+
+            else:
+                df = df_1
+                if data_file_2 == data_file_3 and data_file_2 != "":
+                    error_message = "Datei " + data_file_2 + " mehrmals ausgewählt"
+                if data_file_1 == data_file_2 or data_file_1 == data_file_3:
+                    error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"  
+
+            # format data
+            try:
+                devices = df.Device.unique().tolist()
+                devices = str(devices)
+                devices = devices[1:]
+                devices = devices[:-1]
+                devices = devices.replace("'", "") 
+                sensors = df.Sensor.unique().tolist()
+                sensors = str(sensors)                
+                sensors = sensors[1:]
+                sensors = sensors[:-1]
+                sensors = sensors.replace("'", "")
+            except:
+                error_message = "Datei konnte nicht geöffnet werden"
+
+
+        # create table
+        if request.form.get("create_table") is not None: 
+            data_file_1 = request.form.get("get_file_1")
+            data_file_2 = request.form.get("get_file_2")
+            data_file_3 = request.form.get("get_file_3")
+
+            df_1 = READ_SENSORDATA_FILE(data_file_1)     
+
+            # merge data sources
+            if data_file_1 != data_file_2 and data_file_1 != data_file_3 and data_file_2 != data_file_3:
+
+                try:
+                    df_2 = READ_SENSORDATA_FILE(data_file_2)
+                    df_1 = pd.concat([df_1, df_2], ignore_index=True)
+                except:
+                    pass           
+                try:
+                    df_3 = READ_SENSORDATA_FILE(data_file_3)
+                    df_1 = pd.concat([df_1, df_3], ignore_index=True)
+                except:
+                    pass
+
+                df = df_1
+
+            else:
+                df = df_1
+                if data_file_2 == data_file_3 and data_file_2 != "":
+                    error_message = "Datei " + data_file_2 + " mehrmals ausgewählt"
+                if data_file_1 == data_file_2 or data_file_1 == data_file_3:
+                    error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"                
+           
+            # create table           
+            try:
+                devices = request.form.get("set_devices")
+                sensors = request.form.get("set_sensors")  
+
+                selected_devices = devices.replace(" ", "")
+                selected_devices = selected_devices.split(",")
+                selected_sensors = sensors.replace(" ", "")
+                selected_sensors = selected_sensors.split(",")
+
+                df_devices = df.loc[df['Device'].isin(selected_devices)]
+                df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
+
+                print(df_devices)
+                print(df_sensors)
+
+            except:
+                error_message = "Datei konnte nicht verarbeitet werden"
+        
+
+    dropdown_list_files = GET_SENSORDATA_FILES()
+
+    return render_template('dashboard_sensordata_statistics.html', 
+                            error_message=error_message,
+                            dropdown_list_files=dropdown_list_files,
+                            devices=devices,
+                            sensors=sensors,
+                            data_file_1=data_file_1,
+                            data_file_2=data_file_2,
+                            data_file_3=data_file_3,
+                            statistics="active",
+                            role=current_user.role,                      
+                            )

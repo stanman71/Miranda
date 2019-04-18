@@ -31,7 +31,7 @@
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
         <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
-        <li><a href="{{ url_for('dashboard_sensordata') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
+        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         {% if role == "superuser" %}
           <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
         {% endif %}    
@@ -48,10 +48,21 @@
     <div class="row">
       <div class="col">
 
+<!-- sensordata navs -->
+
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <ul class="nav navbar-nav">
+              <li class={{jobs}}><a href="{{ url_for('dashboard_sensordata_jobs') }}">Sensordaten Jobs </a></li> 
+              <li class={{statistics}}><a href="{{ url_for('dashboard_sensordata_statistics') }}">Sensordaten Statistiken</a></li>   
+            </ul>
+          </div>
+        </nav>       
+
 <!-- sensordata table -->
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>Sensordaten</b></font></div>    
+          <div class="panel-heading"><font color="black"><b>Sensordaten Jobs</b></font></div>    
             <div class="panel-body">   
             <div class="well well-sm">
               
@@ -78,10 +89,10 @@
                   <th scope="col">Dateiname</th>   
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th>
-                  <th scope="col">Sensor-Inputs immer speichern</th>
+                  <th scope="col">Sensor-Inputs speichern</th>
                 </thead>
                 <tbody> 
-                  {% for entry in sensordata_list %}
+                  {% for entry in list_sensordata %}
                   <tr>
                     <td>{{ entry.id }}</td> 
                     <td>
@@ -123,13 +134,13 @@
                         </div>
                       </font>
                     </td>           
-                    <td><a href="/dashboard/sensordata/delete/job/{{ entry.id }}#table_jobs"><font color="red" size="5"><b>X</b></font></a></td>   
+                    <td><a href="/dashboard/sensordata/jobs/delete/job/{{ entry.id }}#table_jobs"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/sensordata#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+              <input type="submit" onclick="window.location.href='/dashboard/sensordata/jobs#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
             </form> 
           </div>  
         </div>  
@@ -151,9 +162,9 @@
 <!-- error message -->
 
 {% if error_message != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message }}
-</div>      
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
 {% endif %}                  
 
                   <div class="well well-sm">Job:     
@@ -188,11 +199,11 @@
                       <div class="pretty p-default p-curve p-fill p-bigger">
                           <input type="checkbox" {{ set_checkbox }} name="checkbox">
                         <div class="state">
-                          <label>Sensor-Inputs immer speichern (z.B. bei Geräten die jede Stunde Daten automatisch zusenden)</label>
+                          <label>Sensor-Inputs ohne Auftrag automatisch speichern (z.B. bei Geräten die jede Stunde Daten automatisch zusenden)</label>
                         </div>
                       </div> 
                     </div>                            
-                  <input type="submit" onclick="window.location.href='/dashboard/sensordata#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
+                  <input type="submit" onclick="window.location.href='/dashboard/sensordata/jobs#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
                 </form> 
               </div>  
             </div>
@@ -219,11 +230,11 @@
                 <th scope="col">Datein</th> 
               </thead>              
               <tbody> 
-                {% for entry in file_list %}
+                {% for entry in list_files %}
                 <tr>
                   <td>{{ entry }}</td> 
-                  <td class="text-right"><a href="/dashboard/sensordata/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
-                  <td class="text-right"><a href="/dashboard/sensordata/delete/file/{{ entry }}#table_files"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/sensordata/jobs/download/file/{{ entry }}?time={{ timestamp }}"><b>herunterladen</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/sensordata/jobs/delete/file/{{ entry }}#table_files"><font color="red" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>

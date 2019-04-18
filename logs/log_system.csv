@@ -6203,3 +6203,296 @@ Timestamp,Type,Description
 2019-04-17 16:00:08,ERROR,MQTT >>> No connection
 2019-04-17 16:00:08,EVENT,Task >>> test >>> started
 2019-04-17 16:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 10:42:17,EVENT,Database >>> Sensordata Job >>> jhgjhgf >>> changed >>> Name: jhgjhgf /// Filename: gfdfds /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-18 10:42:27,EVENT,Database >>> Sensordata Job >>> jhg >>> added
+2019-04-18 10:42:27,EVENT,File >>> /csv/jg.csv >>> created
+2019-04-18 10:42:29,EVENT,Database >>> Sensordata Job >>> jhg >>> deleted
+2019-04-18 10:42:32,EVENT,File >>> /csv/testfile_2.csv >>> downloaded
+2019-04-18 10:42:37,EVENT,File >>> /csv/jg.csv >>> deleted
+2019-04-18 10:42:38,EVENT,File >>> /csv/gfdfds.csv >>> deleted
+2019-04-18 10:42:39,EVENT,File >>> /csv/gfd.csv >>> deleted
+2019-04-18 10:57:56,ERROR,File >>> /csv/testfile.csv >>> [Errno 2] No such file or directory: 'C:\\Users\\mstan\\Desktop\\SmartHome-mastertestfile.csv'
+2019-04-18 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 11:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 11:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 11:00:08,ERROR,MQTT >>> No connection
+2019-04-18 11:00:08,EVENT,Task >>> test >>> started
+2019-04-18 11:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 11:16:17,ERROR,File >>> /csv/testfile.csv >>> File b'C:\\Users\\mstan\\Desktop\\SmartHome-master/csv/testfile.csv.csv' does not exist
+2019-04-18 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 12:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 12:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 12:00:08,ERROR,MQTT >>> No connection
+2019-04-18 12:00:08,EVENT,Task >>> test >>> started
+2019-04-18 12:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 13:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 13:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 13:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 13:00:08,ERROR,MQTT >>> No connection
+2019-04-18 13:00:08,EVENT,Task >>> test >>> started
+2019-04-18 13:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 13:36:32,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:01,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:22,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:22,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:24,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:24,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:25,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:38:25,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:52,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:52,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:56,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:56,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:57,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:57,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:39:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:40:00,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:40:00,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:40:04,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:40:06,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:41:48,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:41:51,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:41:51,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:41:57,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:42:03,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:42:04,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:44:42,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:45:58,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:46:56,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:47:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:48:03,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:48:36,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:48:39,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:49:46,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:50:08,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:50:11,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:50:14,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:50:18,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:50:26,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 13:51:15,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 14:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 14:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 14:00:08,ERROR,MQTT >>> No connection
+2019-04-18 14:00:08,EVENT,Task >>> test >>> started
+2019-04-18 14:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 14:01:27,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:03:12,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:26:41,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:26:52,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:26:55,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:27:05,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:27:07,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:27:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:27:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:29:48,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:29:49,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:29:53,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:29:58,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:30:02,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:30:03,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:30:06,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:31:11,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:31:13,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:31:14,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:31:17,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:31:32,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:32:23,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:32:32,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:32:35,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:32:46,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:32:48,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:33:02,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:33:05,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:33:17,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:33:18,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:33:26,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:34:12,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:34:13,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:40:16,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:40:17,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:40:21,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:43,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:50,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:51,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:54,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:57,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:42:59,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:43:01,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:43:04,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:43:06,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:45:30,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:45:44,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:45:45,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:56:43,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:56:44,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 14:59:49,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 15:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 15:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 15:00:08,ERROR,MQTT >>> No connection
+2019-04-18 15:00:08,EVENT,Task >>> test >>> started
+2019-04-18 15:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-18 15:01:19,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:01:19,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:12:01,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:12:02,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:12:17,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:12:19,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:13:30,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:13:32,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:13:37,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:34,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:35,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:37,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:38,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:44,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:16:52,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:06,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:09,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:18,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:33,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:36,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:38,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 15:17:42,ERROR,File >>> /csv/ >>> Initializing from file failed
+2019-04-18 20:21:12,ERROR,ZigBee2MQTT >>> No connection
+2019-04-18 20:21:37,EVENT,MQTT >>> started
+2019-04-18 20:21:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:21:41,EVENT,Snowboy >>> started
+2019-04-18 20:21:54,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-18 20:22:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:22:34,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: save_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-18 20:23:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:23:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:23:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:23:07,EVENT,File >>> /csv/gfdfds.csv >>> created
+2019-04-18 20:24:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:24:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:25:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:25:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:26:12,EVENT,MQTT >>> started
+2019-04-18 20:26:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:26:16,EVENT,Snowboy >>> started
+2019-04-18 20:27:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:27:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:27:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:28:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:28:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:28:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:28:49,EVENT,MQTT >>> started
+2019-04-18 20:28:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:28:53,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-04-18 20:29:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:30:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:30:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:30:06,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-18 20:30:53,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: save_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-18 20:31:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:31:14,EVENT,MQTT >>> started
+2019-04-18 20:31:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:31:19,ERROR,Snowboy >>> [Errno -9996] Invalid input device (no default output device)
+2019-04-18 20:32:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:33:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:33:47,EVENT,MQTT >>> started
+2019-04-18 20:33:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:33:51,EVENT,Snowboy >>> started
+2019-04-18 20:33:54,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: save_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-18 20:34:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:34:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:34:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:35:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:35:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:36:02,EVENT,MQTT >>> started
+2019-04-18 20:36:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:36:06,EVENT,Snowboy >>> started
+2019-04-18 20:37:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:37:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:37:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:38:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:38:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:39:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:39:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:39:41,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-18 20:40:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:40:03,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-18 20:40:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:45:20,EVENT,MQTT >>> started
+2019-04-18 20:45:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:45:25,EVENT,Snowboy >>> started
+2019-04-18 20:46:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:47:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:47:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:48:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:48:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:49:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:50:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:50:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:51:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:51:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:52:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:52:38,EVENT,File >>> /logs/log_mqtt.csv >>> downloaded
+2019-04-18 20:53:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:53:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:54:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:54:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:55:05,EVENT,MQTT >>> started
+2019-04-18 20:55:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:55:09,EVENT,Snowboy >>> started
+2019-04-18 20:56:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:57:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:57:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:57:54,EVENT,MQTT >>> started
+2019-04-18 20:57:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 20:57:58,EVENT,Snowboy >>> started
+2019-04-18 20:58:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:58:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 20:59:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 20:59:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:00:05,EVENT,Task >>> test >>> started
+2019-04-18 21:01:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:01:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:02:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:02:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:03:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:03:17,EVENT,MQTT >>> started
+2019-04-18 21:03:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 21:03:21,EVENT,Snowboy >>> started
+2019-04-18 21:03:47,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: request_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-18 21:03:47,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_mqtt_sensordata:2 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-18 21:04:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:04:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:05:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:05:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:06:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:06:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:06:41,EVENT,MQTT >>> started
+2019-04-18 21:06:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 21:06:45,EVENT,Snowboy >>> started
+2019-04-18 21:06:56,EVENT,Database >>> Sensordata Job >>> ok >>> added
+2019-04-18 21:06:56,EVENT,File >>> /csv/ok.csv >>> created
+2019-04-18 21:07:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:07:01,EVENT,Database >>> Sensordata Job >>> ok >>> changed >>> Name: ok /// Filename: ok /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: checked
+2019-04-18 21:07:08,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Always_Active: 
+2019-04-18 21:07:52,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 21:08:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:08:38,EVENT,MQTT >>> started
+2019-04-18 21:08:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 21:08:43,EVENT,Snowboy >>> started
+2019-04-18 21:09:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:09:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:09:11,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 21:09:25,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-18 21:10:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:10:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:10:10,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 21:10:18,EVENT,Database >>> Sensordata Job >>> ok >>> changed >>> Name: ok /// Filename: ok /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: 
+2019-04-18 21:11:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:11:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:11:11,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 21:11:20,EVENT,Database >>> Sensordata Job >>> ok >>> changed >>> Name: ok /// Filename: ok /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: checked
+2019-04-18 21:12:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:12:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:12:37,EVENT,File >>> /csv/ok.csv >>> downloaded

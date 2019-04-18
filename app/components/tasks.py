@@ -208,16 +208,11 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
-         try:
-            # save mqtt sensor data
-            if "save_mqtt_sensordata" in entry.task:
-               task = entry.task.split(":")
-               SAVE_MQTT_SENSORDATA(int(task[1])) 
-         except Exception as e:
-            print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
-
-
+         # request mqtt sensor data
+         if "request_mqtt_sensordata" in entry.task:
+            task = entry.task.split(":")
+            REQUEST_MQTT_SENSORDATA(int(task[1])) 
+   
          # remove schedular task without repeat
          if entry.repeat == "":
             DELETE_TASKMANAGEMENT_TIME_TASK(entry.id)
@@ -291,8 +286,8 @@ def CHECK_TASKS(tasks, task_type):
       if task == "update_mqtt_devices" and task_type == "timer":
          continue
 
-      # check save_mqtt_sensordata
-      if "save_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
+      # check request_mqtt_sensordata
+      if "request_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
          if ":" in task:
             task = task.split(":")
             try:

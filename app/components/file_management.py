@@ -4,6 +4,8 @@ import shutil
 import csv
 import yaml
 
+import pandas as pd
+
 from werkzeug.utils import secure_filename
 
 from app import app
@@ -144,6 +146,19 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + ".csv >>> " + str(e))
+
+
+def READ_SENSORDATA_FILE(filename):
+    try:
+        # open csv file with pandas
+        file = PATH + "/csv/" + filename
+        
+        df = pd.read_csv(file, sep=",", skiprows = 1, names=["Timestamp","Device","Sensor","Sensor_Value"])
+        return df
+
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filename + " >>> " + str(e))    
 
 
 def DELETE_SENSORDATA_FILE(filename):
