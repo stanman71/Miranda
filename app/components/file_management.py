@@ -328,7 +328,7 @@ def READ_LOGFILE_MQTT(gateway, channel):
                     pass
                     
             if list_temp == []:
-                return "Keine Verbindung zu ZigBee2MQTT"                    
+                return "Keine Verbindung zu MQTT"                    
                 
             else:
                 # get the searched message

@@ -164,14 +164,20 @@ def REQUEST_MQTT_SENSORDATA(job_id):
 
    input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr)
 
-   for input_message in input_messages:
-      input_message = str(input_message[2])
+   if input_messages != "Message nicht gefunden":
       
-      data = json.loads(input_message)
+      for input_message in input_messages:
+         input_message = str(input_message[2])
+         
+         data = json.loads(input_message)
 
-   filename = sensordata_job.filename
+      filename = sensordata_job.filename
 
-   WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
+      WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
+
+      return ""
+
+   return "Message nicht gefunden"
    
    
 def SAVE_MQTT_SENSORDATA(job_id):

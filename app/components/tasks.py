@@ -209,9 +209,17 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
          # request mqtt sensor data
-         if "request_mqtt_sensordata" in entry.task:
-            task = entry.task.split(":")
-            REQUEST_MQTT_SENSORDATA(int(task[1])) 
+         try:
+            if "request_mqtt_sensordata" in entry.task:
+               task = entry.task.split(":")
+               error_message = REQUEST_MQTT_SENSORDATA(int(task[1]))          
+            if error_message == "":
+               WRITE_LOGFILE_SYSTEM("EVENT", "Task >>> " + entry.name + " >>> successful")
+            else:
+               WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))              
    
          # remove schedular task without repeat
          if entry.repeat == "":
