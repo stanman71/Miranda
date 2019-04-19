@@ -181,7 +181,6 @@ https://www.zigbee2mqtt.io/
 
 </br>
 
-
 #### 5. Autostart
 
 - run zigbee2mqtt as daemon in the background automaticly when booting
