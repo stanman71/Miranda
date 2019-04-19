@@ -174,12 +174,10 @@ https://www.zigbee2mqtt.io/
 
 </br>
 
-#### 4. Bridge Software
+#### 4. Pairing
 
 - bridge software must be running to pairing new devices automatically
-- zigbee2mqtt setting
-
-     >>> "{permit_join: true}"
+- zigbee2mqtt setting: {permit_join: true}
 
 </br>
 
