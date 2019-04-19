@@ -12,7 +12,7 @@ from app.components.tasks import UPDATE_MQTT_DEVICES, CHECK_MQTT
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
-from app.components.tasks import CHECK_TASKS
+from app.components.checks import CHECK_TASKS
 
 
 # create role "superuser"

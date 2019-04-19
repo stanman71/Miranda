@@ -8,6 +8,7 @@ from app import app
 from app.components.led_control import *
 from app.database.database import *
 from app.components.file_management import GET_PATH
+from app.components.checks import CHECK_LED_GROUP_SETTINGS
 
 # access rights
 def user_required(f):
@@ -736,12 +737,15 @@ def dashboard_led_groups():
             name = request.form.get("set_name") 
             error_message = ADD_LED_GROUP(name)     
 
+    error_message_settings = CHECK_LED_GROUP_SETTINGS(GET_ALL_LED_GROUPS())
+
     dropdown_list_leds = GET_ALL_MQTT_DEVICES("led")
     list_groups = GET_ALL_LED_GROUPS()
 
     return render_template('dashboard_led_groups.html', 
                             error_message=error_message,
                             error_message_table=error_message_table,
+                            error_message_settings=error_message_settings,
                             list_groups=list_groups,
                             dropdown_list_leds=dropdown_list_leds,
                             groups="active",

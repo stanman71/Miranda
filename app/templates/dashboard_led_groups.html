@@ -58,6 +58,16 @@
           </div>
         </nav>
 
+<!-- error message settings -->
+
+{% if error_message_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_settings %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
         {% for entry in list_groups %}
 
 <section id="group_table_{{ entry.id }}"></section>  
