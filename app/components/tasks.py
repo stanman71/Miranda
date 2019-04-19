@@ -214,7 +214,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
                task = entry.task.split(":")
                error_message = REQUEST_MQTT_SENSORDATA(int(task[1]))          
                if error_message == "":
-                  WRITE_LOGFILE_SYSTEM("EVENT", "Task >>> " + entry.name + " >>> successful")
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Task >>> " + entry.name + " >>> successful")
                else:
                   WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
          except Exception as e:

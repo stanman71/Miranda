@@ -70,7 +70,8 @@
                   <tr>
                     <td>{{ entry[0] }}</td> 
                     <td>
-                      {% if entry[1] == "EVENT" %} <font color="green">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
                     </td>                   

@@ -143,7 +143,7 @@ def START_WATERING_THREAD():
             for plant in GET_ALL_PLANTS():          
                 CHECK_MOISTURE(plant)    
              
-            WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> finished") 
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering >>> finished") 
 
     # start thread
     t1 = watering_Thread()

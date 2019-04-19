@@ -88,6 +88,36 @@
           </div>
         </nav>
 
+<!-- turn off leds -->     
+
+      <div class="well well-sm">
+        <form method="POST">
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3">
+              <select class="btn btn-default dropdown-toggle" name="get_group">
+                  <option value= "" > Gruppe wählen: </option>
+                  <option value= "" > ------------------------------- </option>                                        
+                {% for each in dropdown_list_groups %}
+                  <option value="{{ each.id }}"> {{ each.name }} </option>
+                {% endfor %}
+              </select> 
+            </div> 
+            <div class="col-sm-3">
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="turn_off_group" value="Gruppe ausschalten" />
+            </div>   
+            <div class="col-sm-3">
+            </div>              
+            <div class="dropdown text-right">
+              <div class="col-sm-3">
+                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="turn_off_all" value="Alle LEDs ausschalten" />
+              </div>         
+            </div>  
+          </div               
+        </form>          
+      </div>
+
+<!-- start table -->
+
         {% for entry in scenes_list %}
 
 <section id="scene_table_{{ entry.id }}"></section>  
@@ -105,7 +135,6 @@
   </div>      
 {% endif %}  
 
-<!-- start table -->
 
             <table class="table">
               <thead>                       

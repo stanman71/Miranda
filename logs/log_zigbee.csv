@@ -4595,3 +4595,174 @@ Timestamp,Channel,Message
 2019-04-19 12:49:19,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":65,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
 2019-04-19 12:49:19,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":68,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
 2019-04-19 12:49:19,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":68,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:54:47,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-19 21:54:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":73,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:07,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":89.0,"color": { "r":39,"g":149,"b":67,"transition": 3}}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/0x00178801040c9476/set,|{"state": "ON", "brightness":130.0,"color": { "r":40,"g":181,"b":44,"transition": 3}}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:12,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.376,"y":0.412,"saturation":19.3,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":89.4},"color_temp":241,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":89.4},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":89.4},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":52,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":89.4},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:13,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:14,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:14,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":76,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:14,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:17,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:18,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":89.0,"color": { "r":39,"g":149,"b":67,"transition": 3}}|
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/0x00178801040c9476/set,|{"state": "ON", "brightness":130.0,"color": { "r":40,"g":181,"b":44,"transition": 3}}|
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:22,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:23,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:23,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:23,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":76,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:55:30,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":76,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:57:12,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-19 21:57:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-19 21:58:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-19 21:58:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-19 21:58:58,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":89.0,"color": { "r":39,"g":149,"b":67,"transition": 3}}|
+2019-04-19 21:58:58,SmartHome/zigbee2mqtt/0x00178801040c9476/set,|{"state": "ON", "brightness":130.0,"color": { "r":40,"g":181,"b":44,"transition": 3}}|
+2019-04-19 21:58:58,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":76,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:58:59,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:00,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:02,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":89.0,"color": { "r":39,"g":149,"b":67,"transition": 3}}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/0x00178801040c9476/set,|{"state": "ON", "brightness":130.0,"color": { "r":40,"g":181,"b":44,"transition": 3}}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":65,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:08,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:09,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:09,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:09,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:09,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:09,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:10,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:10,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:10,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 21:59:10,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:11,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-19 22:00:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:24,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":89.0,"color": { "r":39,"g":149,"b":67,"transition": 3}}|
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/0x00178801040c9476/set,|{"state": "ON", "brightness":130.0,"color": { "r":40,"g":181,"b":44,"transition": 3}}|
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:30,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:31,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:32,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:33,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:44,SmartHome/zigbee2mqtt/0x0017880104878b88/set,{"state": "OFF"}
+2019-04-19 22:00:44,SmartHome/zigbee2mqtt/0x00178801040c9476/set,{"state": "OFF"}
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/None/set,{"state": "OFF"}
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/bridge/log,|{"type":"entity_not_found","message":"None"}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":30,"transition": 3}}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON","color": { "r":255,"g":0,"b":0,"transition": 3}}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"OFF","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":78,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"OFF","brightness":130,"linkquality":81,"color":{"x":0.177,"y":0.695,"saturation":100,"hue":138.8},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: Unrecognized command","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Test"},"message":"{\"state\": \"ON\", \"brightness\":30,\"transition\": 3}}"}}|
+2019-04-19 22:00:45,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.184,"y":0.62,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":92.5,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:46,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":65,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:00:47,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":65,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:05,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON", "brightness":60,"transition": 3}}|
+2019-04-19 22:01:05,SmartHome/zigbee2mqtt/0x0017880104878b88/set,|{"state": "ON","color": { "r":255,"g":50,"b":30,"transition": 3}}|
+2019-04-19 22:01:05,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: Unrecognized command","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Test"},"message":"{\"state\": \"ON\", \"brightness\":60,\"transition\": 3}}"}}|
+2019-04-19 22:01:05,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":65,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:05,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":60,"state":"ON","color":{"x":0.691,"y":0.308,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":151.6},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":359.1},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":359.1},"color_temp":153,"color_mode":1}|
+2019-04-19 22:01:06,SmartHome/zigbee2mqtt/Test,|{"brightness":89,"linkquality":63,"state":"ON","color":{"x":0.687,"y":0.306,"saturation":100,"hue":359.1},"color_temp":153,"color_mode":1}|

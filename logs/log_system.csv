@@ -6968,3 +6968,72 @@ Timestamp,Type,Description
 2019-04-19 14:54:16,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
 2019-04-19 14:54:18,ERROR,ZigBee2MQTT >>> No connection
 2019-04-19 14:54:18,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 20:53:54,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 20:53:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 20:53:55,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 20:56:53,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 20:56:54,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 20:56:54,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 20:58:11,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 20:58:12,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 20:58:12,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 20:59:02,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 20:59:03,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 20:59:03,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 21:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-19 21:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 21:00:08,EVENT,Task >>> test >>> started
+2019-04-19 21:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-19 21:00:30,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:00:31,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:00:31,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:04:46,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:04:47,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:04:47,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:05:10,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:05:11,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:05:11,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:32:23,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:32:24,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:32:24,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:33:24,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:33:25,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:33:25,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:44:15,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:44:16,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:44:16,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:45:06,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:45:07,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:45:07,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:46:31,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:46:32,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:46:32,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:47:44,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:47:45,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:47:45,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:49:17,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:49:18,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:49:18,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:49:35,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:49:36,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:49:36,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:50:34,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:50:35,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:50:35,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:51:02,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-19 21:51:03,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 21:51:03,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-19 21:54:47,EVENT,MQTT >>> started
+2019-04-19 21:54:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 21:54:52,EVENT,Snowboy >>> started
+2019-04-19 21:57:12,EVENT,MQTT >>> started
+2019-04-19 21:57:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 21:57:16,EVENT,Snowboy >>> started
+2019-04-19 21:58:51,EVENT,MQTT >>> started
+2019-04-19 21:58:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 21:58:55,EVENT,Snowboy >>> started
+2019-04-19 22:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 22:00:11,EVENT,MQTT >>> started
+2019-04-19 22:00:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 22:00:15,EVENT,Snowboy >>> started

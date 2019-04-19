@@ -311,10 +311,21 @@ def dashboard_led_scenes():
                 if group != "":
                     LED_START_SCENE(int(group), i)            
 
+        # turn off group
+        if request.form.get("turn_off_group") != None:
+            if request.form.get("get_group") != "":
+                group = request.form.get("get_group") 
+                LED_TURN_OFF_GROUP(int(group))     
+
+        # turn off all led
+        if request.form.get("turn_off_all") != None:
+            LED_TURN_OFF_ALL()                   
+
         # add scene
         if request.form.get("add_led_scene") != None:
             name = request.form.get("set_name") 
             error_message = ADD_LED_SCENE(name)     
+
 
     scenes_list          = GET_ALL_LED_SCENES()
     dropdown_list_groups = GET_ALL_LED_GROUPS()
@@ -404,9 +415,10 @@ def dashboard_led_programs():
                     UPDATE_LED_PROGRAM(i, update_Program)
                 # start program
                 start_Program = request.form.get("start_" + str(i))
-                if start_Program is not None:      
-                    group = request.form.get("get_group")
-                    print("Starte: Scene " + str(i) + " mit Gruppe " + group)   
+                if start_Program is not None:   
+                    if request.form.get("get_group") != "":   
+                        group = request.form.get("get_group")
+                        START_LED_PROGRAM_THREAD(int(group), i)  
 
                 # get rgb values
                 get_rgb = request.form.get("get_rgb_" + str(i)) 
