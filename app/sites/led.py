@@ -307,7 +307,8 @@ def dashboard_led_scenes():
             # start scene
             if request.form.get("start_scene_" + str(i)) != None: 
                 group = request.form.get("group_" + str(i))
-                print("Starte: Scene " + str(i) + " mit Gruppe " + group)            
+                if group != "":
+                    LED_START_SCENE(int(group), i)            
 
         # add scene
         if request.form.get("add_led_scene") != None:

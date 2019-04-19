@@ -6496,3 +6496,461 @@ Timestamp,Type,Description
 2019-04-18 21:12:00,EVENT,Task >>> test_01 >>> started
 2019-04-18 21:12:02,EVENT,Task >>> MQTT aktuallisieren >>> started
 2019-04-18 21:12:37,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 21:28:17,EVENT,MQTT >>> started
+2019-04-18 21:28:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-18 21:28:21,EVENT,Snowboy >>> started
+2019-04-18 21:29:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:29:02,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:29:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:29:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:30:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:30:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:30:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:30:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:31:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:31:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:31:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:31:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:32:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:32:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:32:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:32:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:33:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:33:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:33:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:33:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:34:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:34:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:34:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:34:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:35:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:35:02,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:35:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:35:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:36:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:36:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:36:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:36:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:37:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:37:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:37:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:37:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:37:50,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-18 21:38:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:38:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:38:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:38:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:39:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:39:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:39:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:39:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:40:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:40:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:40:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:40:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:40:17,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-18 21:41:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:41:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:41:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:41:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:42:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:42:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:42:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:42:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:43:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:43:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:43:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:43:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:44:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:44:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:44:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:44:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:45:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:45:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:45:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:45:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:46:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:46:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:46:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:46:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:47:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:47:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:47:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:47:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:48:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:48:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:48:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:48:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:49:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:49:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:49:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:49:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:50:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:50:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:50:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:50:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:51:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:51:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:51:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:51:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:52:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:52:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:52:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:52:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:53:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:53:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:53:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:53:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:54:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:54:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:54:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:54:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:55:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:55:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:55:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:55:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:56:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:56:02,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:56:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:56:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:57:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:57:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:57:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:57:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:58:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:58:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:58:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:58:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 21:59:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 21:59:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 21:59:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 21:59:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 22:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 22:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 22:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 22:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 22:00:06,EVENT,Task >>> test >>> started
+2019-04-18 22:00:09,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-18 22:01:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 22:01:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 22:01:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 22:01:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 22:01:09,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-18 22:02:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 22:02:02,EVENT,Task >>> test_01 >>> successful
+2019-04-18 22:02:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 22:02:04,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: request_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-18 22:02:04,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-18 22:02:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 22:18:10,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-18 23:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-18 23:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-18 23:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-18 23:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-18 23:00:06,EVENT,Task >>> test >>> started
+2019-04-18 23:00:08,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 00:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 00:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 00:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 00:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 00:00:06,EVENT,Task >>> test >>> started
+2019-04-19 00:00:09,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 00:00:09,EVENT,Task >>> Datenbank sichern >>> started
+2019-04-19 00:00:09,EVENT,Database_Backup >>> saved
+2019-04-19 00:00:09,ERROR,Task >>> Datenbank sichern >>> Message nicht gefunden
+2019-04-19 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-19 00:30:00,ERROR,Task >>> schlafen >>> 'NoneType' object has no attribute 'setting_value'
+2019-04-19 00:30:00,ERROR,Task >>> schlafen >>> local variable 'error_message' referenced before assignment
+2019-04-19 01:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 01:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 01:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 01:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 01:00:06,EVENT,Task >>> test >>> started
+2019-04-19 01:00:09,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 02:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 02:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 02:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 02:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 02:00:06,EVENT,Task >>> test >>> started
+2019-04-19 02:00:09,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 03:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 03:00:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 03:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 03:00:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 03:00:05,EVENT,Task >>> test >>> started
+2019-04-19 03:00:08,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 04:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 04:00:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 04:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 04:00:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 04:00:05,EVENT,Task >>> test >>> started
+2019-04-19 04:00:08,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 05:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 05:00:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 05:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 05:00:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 05:00:05,EVENT,Task >>> test >>> started
+2019-04-19 05:00:08,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 06:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 06:00:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 06:00:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 06:00:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 06:00:06,EVENT,Task >>> test >>> started
+2019-04-19 06:00:08,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 07:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 07:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:00:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 07:00:06,EVENT,Task >>> test >>> started
+2019-04-19 07:00:09,ERROR,Task >>> test >>> Message nicht gefunden
+2019-04-19 07:36:30,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 07:36:38,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-19 07:44:37,EVENT,MQTT >>> started
+2019-04-19 07:44:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 07:44:41,EVENT,Snowboy >>> started
+2019-04-19 07:44:52,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: request_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-19 07:44:52,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-19 07:45:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:45:02,EVENT,Task >>> test_01 >>> succeful
+2019-04-19 07:45:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:45:05,EVENT,Task >>> MQTT aktuallisieren >>> succeful
+2019-04-19 07:45:30,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 07:45:47,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 07:46:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:46:02,EVENT,Task >>> test_01 >>> succeful
+2019-04-19 07:46:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:46:05,EVENT,Task >>> MQTT aktuallisieren >>> succeful
+2019-04-19 07:47:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:47:03,EVENT,Task >>> test_01 >>> succeful
+2019-04-19 07:47:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:47:06,EVENT,Task >>> MQTT aktuallisieren >>> succeful
+2019-04-19 07:47:59,EVENT,MQTT >>> started
+2019-04-19 07:47:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 07:48:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:48:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 07:48:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:48:04,EVENT,Snowboy >>> started
+2019-04-19 07:48:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 07:49:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:49:02,EVENT,Task >>> test_01 >>> successful
+2019-04-19 07:49:02,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:49:05,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 07:49:17,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 07:49:53,EVENT,Database >>> Sensordata Job >>> jhgjhgf >>> changed >>> Name: jhgjhgf /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_5 /// Always_Active: checked
+2019-04-19 07:50:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 07:50:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 07:50:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:50:05,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-19 07:50:06,EVENT,Task >>> MQTT aktuallisieren >>> successful
+2019-04-19 07:50:06,EVENT,Task >>> zur Arbeit >>> started
+2019-04-19 07:50:06,ERROR,Task >>> zur Arbeit >>> 'NoneType' object has no attribute 'setting_value'
+2019-04-19 07:50:06,EVENT,Task >>> zur Arbeit >>> successful
+2019-04-19 07:50:18,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 07:50:44,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: request_mqtt_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-19 07:51:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:51:03,ERROR,Task >>> MQTT aktuallisieren >>> local variable 'error_message' referenced before assignment
+2019-04-19 07:52:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:52:03,ERROR,Task >>> MQTT aktuallisieren >>> local variable 'error_message' referenced before assignment
+2019-04-19 07:52:29,EVENT,MQTT >>> started
+2019-04-19 07:52:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 07:52:33,EVENT,Snowboy >>> started
+2019-04-19 07:53:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:54:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:55:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:56:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:57:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:58:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 07:59:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 08:00:08,EVENT,MQTT >>> started
+2019-04-19 08:00:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:00:12,EVENT,Snowboy >>> started
+2019-04-19 08:01:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 08:01:12,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-19 08:01:27,EVENT,File >>> /backup/2019-04-07_smarthome.sqlite3 >>> deleted
+2019-04-19 08:01:29,EVENT,File >>> /backup/2019-04-10_smarthome.sqlite3 >>> deleted
+2019-04-19 08:01:36,EVENT,File >>> /logs/log_system.csv >>> downloaded
+2019-04-19 08:11:09,EVENT,Database >>> MQTT Device >>> 0x00178801043e07fb >>> deleted
+2019-04-19 08:11:50,EVENT,Database >>> Sensordata Job >>> sdsfdg >>> added
+2019-04-19 08:11:50,EVENT,File >>> /csv/sda.csv >>> created
+2019-04-19 08:11:53,EVENT,Database >>> Sensordata Job >>> sdsfdg >>> changed >>> Name: sdsfdg /// Filename: sda /// MQTT-Device: 0x88888 /// Sensor: temperature /// Always_Active: 
+2019-04-19 08:18:19,EVENT,MQTT >>> started
+2019-04-19 08:18:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:18:23,EVENT,Snowboy >>> started
+2019-04-19 08:19:21,EVENT,MQTT >>> started
+2019-04-19 08:19:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:19:26,EVENT,Snowboy >>> started
+2019-04-19 08:23:28,EVENT,MQTT >>> started
+2019-04-19 08:23:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:23:32,EVENT,Snowboy >>> started
+2019-04-19 08:27:02,EVENT,MQTT >>> started
+2019-04-19 08:27:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:27:06,EVENT,Snowboy >>> started
+2019-04-19 08:32:11,EVENT,MQTT >>> started
+2019-04-19 08:32:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:32:16,EVENT,Snowboy >>> started
+2019-04-19 08:40:21,EVENT,MQTT >>> started
+2019-04-19 08:40:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:40:25,EVENT,Snowboy >>> started
+2019-04-19 08:43:10,EVENT,MQTT >>> started
+2019-04-19 08:43:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:43:14,EVENT,Snowboy >>> started
+2019-04-19 08:45:20,EVENT,MQTT >>> started
+2019-04-19 08:45:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:45:24,EVENT,Snowboy >>> started
+2019-04-19 08:51:06,EVENT,MQTT >>> started
+2019-04-19 08:51:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:51:10,EVENT,Snowboy >>> started
+2019-04-19 08:53:34,EVENT,MQTT >>> started
+2019-04-19 08:53:34,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:53:38,EVENT,Snowboy >>> started
+2019-04-19 08:53:41,EVENT,Database >>> LED Group >>> ztrtz >>> added
+2019-04-19 08:55:26,EVENT,MQTT >>> started
+2019-04-19 08:55:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:55:30,EVENT,Snowboy >>> started
+2019-04-19 08:58:58,EVENT,MQTT >>> started
+2019-04-19 08:58:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 08:59:02,EVENT,Snowboy >>> started
+2019-04-19 09:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 09:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 09:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 09:00:06,EVENT,Task >>> test >>> started
+2019-04-19 09:00:10,EVENT,Task >>> test >>> successful
+2019-04-19 09:00:53,EVENT,MQTT >>> started
+2019-04-19 09:00:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 09:00:57,EVENT,Snowboy >>> started
+2019-04-19 09:02:30,EVENT,File >>> /csv/sda.csv >>> downloaded
+2019-04-19 09:02:35,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 09:02:41,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-19 10:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 10:00:04,EVENT,Task >>> test_01 >>> successful
+2019-04-19 10:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 10:00:07,EVENT,Task >>> test >>> started
+2019-04-19 10:00:10,EVENT,Task >>> test >>> successful
+2019-04-19 10:09:41,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-19 10:10:09,EVENT,File >>> /csv/gfdfds.csv >>> downloaded
+2019-04-19 10:25:28,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-19 10:32:51,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-19 10:33:41,EVENT,Database >>> LED Group >>> test >>> deleted
+2019-04-19 10:33:42,EVENT,Database >>> LED Group >>> kjh >>> deleted
+2019-04-19 10:33:51,EVENT,Database >>> MQTT Device >>> 0x00178801040c9476 >>> deleted
+2019-04-19 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 11:00:03,EVENT,Task >>> test_01 >>> successful
+2019-04-19 11:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 11:00:06,EVENT,Task >>> test >>> started
+2019-04-19 11:00:10,EVENT,Task >>> test >>> successful
+2019-04-19 11:08:13,EVENT,MQTT >>> started
+2019-04-19 11:08:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:08:17,EVENT,Snowboy >>> started
+2019-04-19 11:10:05,EVENT,Database >>> MQTT Device >>> 0x0017880104878b88 >>> added >>>  Gateway: zigbee /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs:  /// Outputs: 
+2019-04-19 11:10:05,ERROR,|ZigBee >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, '0x0017880104878b88', 'zigbee', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:06,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, '0x0017880104878b88', 'zigbee', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:07,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, '0x0017880104878b88', 'zigbee', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:07,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, '0x0017880104878b88', 'zigbee', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:37,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> added >>>  Gateway: zigbee /// ieeeAddr: 0x0017880104498d6b /// Model: 915005106701 /// Inputs:  /// Outputs: 
+2019-04-19 11:10:37,ERROR,|ZigBee >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:38,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:39,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:10:40,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:12:30,EVENT,Database >>> MQTT Device >>> 0x00178801040c9476 >>> added >>>  Gateway: zigbee /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs:  /// Outputs: 
+2019-04-19 11:12:30,ERROR,|ZigBee >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x00178801040c9476', 'zigbee', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:12:31,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x00178801040c9476', 'zigbee', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:12:32,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x00178801040c9476', 'zigbee', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:12:33,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x00178801040c9476', 'zigbee', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:15:09,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> deleted
+2019-04-19 11:27:44,EVENT,MQTT >>> started
+2019-04-19 11:27:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:27:48,EVENT,Snowboy >>> started
+2019-04-19 11:31:10,EVENT,MQTT >>> started
+2019-04-19 11:31:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:31:14,EVENT,Snowboy >>> started
+2019-04-19 11:40:37,EVENT,MQTT >>> started
+2019-04-19 11:40:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:40:41,EVENT,Snowboy >>> started
+2019-04-19 11:43:43,EVENT,MQTT >>> started
+2019-04-19 11:43:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:43:47,EVENT,Snowboy >>> started
+2019-04-19 11:49:25,EVENT,MQTT >>> started
+2019-04-19 11:49:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 11:49:29,EVENT,Snowboy >>> started
+2019-04-19 11:55:59,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> added >>>  Gateway: zigbee /// ieeeAddr: 0x0017880104498d6b /// Model: 915005106701 /// Inputs:  /// Outputs: 
+2019-04-19 11:55:59,ERROR,|ZigBee >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:00,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:01,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:02,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:17,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 11:56:27,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> deleted
+2019-04-19 11:56:35,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> added >>>  Gateway: zigbee /// ieeeAddr: 0x0017880104498d6b /// Model: 915005106701 /// Inputs:  /// Outputs: 
+2019-04-19 11:56:35,ERROR,|ZigBee >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:36,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:38,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:39,ERROR,|ZigBee >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (6, '0x0017880104498d6b', 'zigbee', '0x0017880104498d6b', '915005106701', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-19 11:56:48,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 11:57:08,EVENT,Database >>> MQTT Device >>> 0x0017880104498d6b >>> deleted
+2019-04-19 11:58:17,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 11:58:26,ERROR,ZigBee >>> string index out of range
+2019-04-19 11:58:28,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 11:58:39,ERROR,ZigBee2MQTT >>> No connection
+2019-04-19 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-19 12:00:04,EVENT,Task >>> test_01 >>> successful
+2019-04-19 12:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-19 12:00:07,EVENT,Task >>> test >>> started
+2019-04-19 12:00:11,EVENT,Task >>> test >>> successful
+2019-04-19 12:00:23,EVENT,MQTT >>> started
+2019-04-19 12:00:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:00:27,EVENT,Snowboy >>> started
+2019-04-19 12:01:12,EVENT,File >>> /logs/log_zigbee.csv >>> downloaded
+2019-04-19 12:02:08,EVENT,MQTT >>> started
+2019-04-19 12:02:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:02:13,EVENT,Snowboy >>> started
+2019-04-19 12:07:48,EVENT,MQTT >>> started
+2019-04-19 12:07:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:07:52,EVENT,Snowboy >>> started
+2019-04-19 12:09:21,EVENT,File >>> /logs/log_zigbee.csv >>> downloaded
+2019-04-19 12:10:41,EVENT,MQTT >>> started
+2019-04-19 12:10:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:10:46,EVENT,Snowboy >>> started
+2019-04-19 12:10:57,EVENT,File >>> /logs/log_zigbee.csv >>> downloaded
+2019-04-19 12:19:49,EVENT,MQTT >>> started
+2019-04-19 12:19:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:19:53,EVENT,Snowboy >>> started
+2019-04-19 12:20:13,EVENT,File >>> /logs/log_zigbee.csv >>> downloaded
+2019-04-19 12:22:28,EVENT,MQTT >>> started
+2019-04-19 12:22:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:22:32,EVENT,Snowboy >>> started
+2019-04-19 12:22:56,EVENT,MQTT >>> started
+2019-04-19 12:22:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:23:00,EVENT,Snowboy >>> started
+2019-04-19 12:26:04,EVENT,MQTT >>> started
+2019-04-19 12:26:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:26:08,EVENT,Snowboy >>> started
+2019-04-19 12:28:15,EVENT,MQTT >>> started
+2019-04-19 12:28:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:28:19,EVENT,Snowboy >>> started
+2019-04-19 12:31:14,EVENT,MQTT >>> started
+2019-04-19 12:31:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:31:19,EVENT,Snowboy >>> started
+2019-04-19 12:32:36,EVENT,MQTT >>> started
+2019-04-19 12:32:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:32:40,EVENT,Snowboy >>> started
+2019-04-19 12:36:09,EVENT,MQTT >>> started
+2019-04-19 12:36:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:36:13,EVENT,Snowboy >>> started
+2019-04-19 12:39:06,EVENT,MQTT >>> started
+2019-04-19 12:39:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:39:11,EVENT,Snowboy >>> started
+2019-04-19 12:41:07,EVENT,MQTT >>> started
+2019-04-19 12:41:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:41:11,EVENT,Snowboy >>> started
+2019-04-19 12:42:33,EVENT,MQTT >>> started
+2019-04-19 12:42:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:42:37,EVENT,Snowboy >>> started
+2019-04-19 12:43:23,EVENT,File >>> /logs/log_zigbee.csv >>> downloaded
+2019-04-19 12:44:22,EVENT,MQTT >>> started
+2019-04-19 12:44:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:44:27,EVENT,Snowboy >>> started
+2019-04-19 12:45:16,EVENT,MQTT >>> started
+2019-04-19 12:45:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:45:21,EVENT,Snowboy >>> started
+2019-04-19 12:49:07,EVENT,MQTT >>> started
+2019-04-19 12:49:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-19 12:49:11,EVENT,Snowboy >>> started

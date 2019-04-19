@@ -90,22 +90,27 @@ if GET_SETTING_VALUE("zigbee") == "True":
     if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection") 
     
+"""
+    
+    
     # set pairing setting  
     pairing_setting = GET_ZIGBEE_PAIRING()    
     if pairing_setting == "True":
         channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
-        MQTT_PUBLISH(channel, "false")   
+        MQTT_PUBLISH(channel, "true")   
     else:
         channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
-        MQTT_PUBLISH(channel, "true")
+        MQTT_PUBLISH(channel, "false")
 
 # disable pairing
 if GET_SETTING_VALUE("zigbee") != "True":
     try:
         channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
-        MQTT_PUBLISH(channel, "true") 
+        MQTT_PUBLISH(channel, "false") 
     except:
         pass
+
+"""
 
 
 """ ####### """

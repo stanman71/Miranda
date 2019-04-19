@@ -107,7 +107,9 @@
 
 {% if error_message_table != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_table }}
+    {% for entry in error_message_table.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %} 
 

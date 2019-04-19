@@ -1,47 +1,11 @@
 import math
 import re
 import time
-import json
 
 from app import app
 from app.database.database import *
 from app.components.phue import Bridge
 from app.components.mqtt import MQTT_PUBLISH
-
-
-""" ################# """
-""" support functions """
-""" ################# """
-
-# This is based on original code from http://stackoverflow.com/a/22649803
-
-def EnhanceColor(normalized):
-    if normalized > 0.04045:
-        return math.pow( (normalized + 0.055) / (1.0 + 0.055), 2.4)
-    else:
-        return normalized / 12.92
-
-
-def RGBtoXY(r, g, b):
-    rNorm = r / 255.0
-    gNorm = g / 255.0
-    bNorm = b / 255.0
-
-    rFinal = EnhanceColor(rNorm)
-    gFinal = EnhanceColor(gNorm)
-    bFinal = EnhanceColor(bNorm)
-    
-    X = rFinal * 0.649926 + gFinal * 0.103455 + bFinal * 0.197109
-    Y = rFinal * 0.234327 + gFinal * 0.743075 + bFinal * 0.022598
-    Z = rFinal * 0.000000 + gFinal * 0.053077 + bFinal * 1.035763
-
-    if X + Y + Z == 0:
-        return (0,0)
-    else:
-        xFinal = X / (X + Y + Z)
-        yFinal = Y / (X + Y + Z)
-    
-    return (xFinal, yFinal)
 
 
 """ ############# """
@@ -57,29 +21,76 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             scene = GET_LED_SCENE_BY_ID(scene_id)
 
             # led 1
-            channel = "SmartHome/zigbee/" + group.led_name_1 + "/set"
-            msg =  {"state": "ON",
-                    "brightness": scene.brightness_1*(brightness_global/100),
-                    "color": {  
-                    "r": scene.red_1,
-                    "g": scene.green_1,
-                    "b": scene.blue_1}
-                    }
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_1 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_1*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_1) + ',"g":' + str(scene.green_1) + ',"b":' + str(scene.blue_1) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
 
+            # led 2
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_2 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_2*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_2) + ',"g":' + str(scene.green_2) + ',"b":' + str(scene.blue_2) + 
+                    ',"transition": 3}}')
             MQTT_PUBLISH(channel, msg) 
             
-            # led 2
-            if group.active_led_2 == "on" and scene.active_setting_2 == "on":
-                channel = "SmartHome/zigbee/" + group.led_name_2 + "/set"
-                msg =  {"state": "ON",
-                        "brightness": scene.brightness_2*(brightness_global/100),
-                        "color": {  
-                        "r": scene.red_2,
-                        "g": scene.green_2,
-                        "b": scene.blue_2}
-                        }
+            # led 3
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_3 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_3*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_3) + ',"g":' + str(scene.green_3) + ',"b":' + str(scene.blue_3) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
+                        
+            # led 4
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_4 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_4*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_4) + ',"g":' + str(scene.green_4) + ',"b":' + str(scene.blue_4) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
 
-                MQTT_PUBLISH(channel, msg) 
+            # led 5
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_5 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_5*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_5) + ',"g":' + str(scene.green_5) + ',"b":' + str(scene.blue_5) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
+            
+            # led 6
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_6 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_6*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_6) + ',"g":' + str(scene.green_6) + ',"b":' + str(scene.blue_6) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
+            
+            # led 7
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_7 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_7*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_7) + ',"g":' + str(scene.green_7) + ',"b":' + str(scene.blue_7) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
+
+            # led 8
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_8 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_8*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_8) + ',"g":' + str(scene.green_8) + ',"b":' + str(scene.blue_8) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg) 
+            
+            # led 9
+            channel = "SmartHome/zigbee2mqtt/" + group.led_name_9 + "/set"
+            
+            msg =  ('{"state": "ON", "brightness":' + str(scene.brightness_9*(brightness_global/100)) +
+                    ',"color": { "r":' + str(scene.red_9) + ',"g":' + str(scene.green_9) + ',"b":' + str(scene.blue_9) + 
+                    ',"transition": 3}}')
+            MQTT_PUBLISH(channel, msg)            
 
         except:
             pass

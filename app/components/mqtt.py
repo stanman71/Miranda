@@ -28,13 +28,15 @@ def MQTT_START():
 		
 	   # input sensor data 
 		if FIND_SENSORDATA_JOB_INPUT(device) != "":
-			job_id = FIND_SENSORDATA_JOB_INPUT(device)
-			SAVE_MQTT_SENSORDATA(job_id)   
+			list_jobs = FIND_SENSORDATA_JOB_INPUT(device)
+			for job in list_jobs:
+			   SAVE_MQTT_SENSORDATA(job)   
 			
-			
+	   # sensor tasks	    
 		if FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device) != "":
-			task_id = FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device)
-			print(task_id)
+			list_tasks = FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device)
+			for task in tasks:
+			   print(task)
 			       
 
 	def on_connect(client, userdata, flags, rc):
@@ -58,7 +60,7 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
    try:
       def on_publish(client, userdata, mid):
          print ("Message Published...")
-               
+
       client = mqtt.Client()
       client.on_publish = on_publish
       client.connect(BROKER_ADDRESS) 

@@ -946,12 +946,56 @@ def SET_MQTT_DEVICE_ZigBee(id, name, inputs):
 
 
 def DELETE_MQTT_DEVICE(id):
-    if Plants.query.filter_by(mqtt_device_id=id).first():
-        entry = GET_MQTT_DEVICE(id)
-        SET_ERROR_LIST(entry.name + " wird in Bewässerung verwendet")
-    elif Sensordata_Jobs.query.filter_by(mqtt_device_id=id).first():
-        entry = GET_MQTT_DEVICE(id)
-        SET_ERROR_LIST(entry.name + " wird in Sensordaten verwendet")      
+    error_list = ""
+
+    # check plants
+    entries = GET_ALL_PLANTS()
+    for entry in entries:
+        if entry.mqtt_device_id == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze >>> " + entry.name     
+    
+    # check sensordata
+    entries = GET_ALL_SENSORDATA_JOBS()
+    for entry in entries:
+        if entry.mqtt_device_id == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job >>> " + entry.name  
+        
+    # check led groups
+    entries = GET_ALL_LED_GROUPS()
+    for entry in entries:
+        if entry.led_id_1 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+        if entry.led_id_2 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name     
+        if entry.led_id_3 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+        if entry.led_id_4 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+        if entry.led_id_5 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+        if entry.led_id_6 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name   
+        if entry.led_id_7 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+        if entry.led_id_8 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name          
+        if entry.led_id_9 == id:
+            device = GET_MQTT_DEVICE(id)
+            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name                       
+       
+    if error_list != "":
+        error_list = error_list[1:]
+        SET_ERROR_LIST(error_list)           
     else:
         entry = GET_MQTT_DEVICE(id)
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
@@ -1094,13 +1138,14 @@ def CHECK_SENSORDATA_JOBS():
 
 def FIND_SENSORDATA_JOB_INPUT(device):
     entries = Sensordata_Jobs.query.all()
+    
+    list_jobs = []
 
     for entry in entries:
         if entry.mqtt_device.name == device and entry.always_active == "checked":
-            return entry.id
+            list_jobs.append(entry.id)
 
-    else:
-        return ""
+    return list_jobs
 
 
 def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active, log = ""):
@@ -1353,15 +1398,17 @@ def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
 
 def FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device):
     entries = Taskmanagement_Sensor.query.all()
+    
+    list_tasks = []
 
     for entry in entries:
         if (entry.mqtt_device_name_1 == device or
             entry.mqtt_device_name_2 == device or
             entry.mqtt_device_name_3 == device):
-            return entry.id
+            
+            list_tasks.append(entry.id)
 
-    else:
-        return ""
+    return list_tasks
 
 
 def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, log = ""):

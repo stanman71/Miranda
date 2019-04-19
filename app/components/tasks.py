@@ -192,13 +192,13 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
-         try:
-            # save database
+         try:    
+            # save database               
             if "save_database" in entry.task:
-               SAVE_DATABASE()
+               SAVE_DATABASE()     
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))     
 
          try:
             # update mqtt devices
@@ -213,10 +213,10 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             if "request_mqtt_sensordata" in entry.task:
                task = entry.task.split(":")
                error_message = REQUEST_MQTT_SENSORDATA(int(task[1]))          
-            if error_message == "":
-               WRITE_LOGFILE_SYSTEM("EVENT", "Task >>> " + entry.name + " >>> successful")
-            else:
-               WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+               if error_message == "":
+                  WRITE_LOGFILE_SYSTEM("EVENT", "Task >>> " + entry.name + " >>> successful")
+               else:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))              

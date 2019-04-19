@@ -202,11 +202,11 @@ def dashboard_settings_zigbee():
         if pairing_setting == "True":
             check_value_pairing[0] = "checked = 'on'"
             check_value_pairing[1] = ""        
-            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")  
+            #MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")  
         else:
             check_value_pairing[0] = ""
             check_value_pairing[1] = "checked = 'on'"        
-            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
+            #MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
 
         if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
             error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 

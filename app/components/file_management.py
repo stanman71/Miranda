@@ -74,6 +74,7 @@ def SAVE_DATABASE():
         shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
                         PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
         WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup >>> saved")
+        
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup >>> " + str(e)) 
 

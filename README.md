@@ -155,7 +155,6 @@ https://www.zigbee2mqtt.io/
 
 #### 3. Bridge Software
 
-- you can only start the application, if the zigbee2mqtt service does't run in background
 - start command
 
        >>> cd /opt/zigbee2mqtt
@@ -175,7 +174,17 @@ https://www.zigbee2mqtt.io/
 
 </br>
 
-#### 4. Autostart
+#### 4. Bridge Software
+
+- bridge software must be running to pairing new devices automatically
+- zigbee2mqtt setting
+
+     >>> "{permit_join: true}"
+
+</br>
+
+
+#### 5. Autostart
 
 - run zigbee2mqtt as daemon in the background automaticly when booting
 
