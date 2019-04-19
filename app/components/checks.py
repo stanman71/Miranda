@@ -7,6 +7,35 @@ from app.components.mqtt import *
 """ check functions """
 """ ############### """
 
+
+def CHECK_PLANTS():
+    string_errors = ""
+    entries = Plants.query.all()
+    for entry in entries:
+        if ((entry.sensor_key == "None" or entry.sensor_key == None) or
+            (entry.pump_key == "None" or entry.pump_key == None)):
+            
+            string_errors = string_errors + str(entry.name) + " "
+     
+    if string_errors != "":
+        return ("Einstellungen unvollständig ( Pflanzen-Name: " + string_errors + ")")
+    else:
+        return ""
+
+
+def CHECK_SENSORDATA_JOBS():
+    string_errors = ""
+    entries = Sensordata_Jobs.query.all()
+    for entry in entries:
+        if entry.sensor_key == "None" or entry.sensor_key == None:
+            string_errors = string_errors + str(entry.id) + " "
+            
+    if string_errors != "":
+        return ("Einstellungen unvollständig ( Job-ID: " + string_errors + ")")
+    else:
+        return ""
+
+
 def CHECK_TASKS(tasks, task_type):
    list_errors = []
 

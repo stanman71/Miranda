@@ -1028,21 +1028,6 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def CHECK_PLANTS():
-    string_errors = ""
-    entries = Plants.query.all()
-    for entry in entries:
-        if ((entry.sensor_key == "None" or entry.sensor_key == None) or
-            (entry.pump_key == "None" or entry.pump_key == None)):
-            
-            string_errors = string_errors + str(entry.name) + " "
-     
-    if string_errors != "":
-        return ("Einstellungen unvollständig ( Pflanzen-Name: " + string_errors + ")")
-    else:
-        return ""
-
-
 def ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, log = ""):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
@@ -1121,20 +1106,7 @@ def GET_SENSORDATA_JOB_BY_NAME(name):
 
 def GET_ALL_SENSORDATA_JOBS():
     return Sensordata_Jobs.query.all()
-
-
-def CHECK_SENSORDATA_JOBS():
-    string_errors = ""
-    entries = Sensordata_Jobs.query.all()
-    for entry in entries:
-        if entry.sensor_key == "None" or entry.sensor_key == None:
-            string_errors = string_errors + str(entry.id) + " "
-            
-    if string_errors != "":
-        return ("Einstellungen unvollständig ( Job-ID: " + string_errors + ")")
-    else:
-        return ""
-
+    
 
 def FIND_SENSORDATA_JOB_INPUT(device):
     entries = Sensordata_Jobs.query.all()
