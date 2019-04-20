@@ -125,9 +125,9 @@ def download_mqtt_logfile(filepath):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/" + filepath + " >>> " + str(e))
              
 
-""" ############### """
-""" zigbee settings """
-""" ############### """
+""" #################### """
+""" zigbee2mqtt settings """
+""" #################### """
 
 @app.route('/dashboard/settings/zigbee2mqtt', methods=['GET', 'POST'])
 @login_required
@@ -136,23 +136,23 @@ def dashboard_settings_zigbee2mqtt():
     error_message = ""
     error_message_zigbee2mqtt = ""
     error_message_table = ""
-    check_value_zigbee = ["", ""]
+    check_value_zigbee2mqtt = ["", ""]
     check_value_pairing = ["", ""]
 
     if request.method == "POST":     
         # change mqtt settings   
         if request.form.get("set_setting_zigbee2mqtt") is not None:
-            setting_zigbee = str(request.form.get("radio_zigbee2mqtt"))
-            SET_GLOBAL_SETTING_VALUE("zigbee2mqtt", setting_zigbee)
+            setting_zigbee2mqtt = str(request.form.get("radio_zigbee2mqtt"))
+            SET_GLOBAL_SETTING_VALUE("zigbee2mqtt", setting_zigbee2mqtt)
 
     # change radio check  
     zigbee2mqtt_setting = GET_GLOBAL_SETTING_VALUE("zigbee2mqtt")    
     if zigbee2mqtt_setting == "True":
-        check_value_zigbee[0] = "checked = 'on'"
-        check_value_zigbee[1] = ""
+        check_value_zigbee2mqtt[0] = "checked = 'on'"
+        check_value_zigbee2mqtt[1] = ""
     else:
-        check_value_zigbee[0] = ""
-        check_value_zigbee[1] = "checked = 'on'"
+        check_value_zigbee2mqtt[0] = ""
+        check_value_zigbee2mqtt[1] = "checked = 'on'"
 
 
     if zigbee2mqtt_setting == "True":
@@ -208,8 +208,8 @@ def dashboard_settings_zigbee2mqtt():
             check_value_pairing[1] = "checked = 'on'"        
             MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
 
-        if READ_LOGFILE_MQTT("zigbee", "",5) != "Message nicht gefunden":
-            error_message_zigbee = READ_LOGFILE_MQTT("zigbee2mqtt", "",5) 
+        if READ_LOGFILE_MQTT("zigbee2mqtt", "",5) != "Message nicht gefunden":
+            error_message_zigbee2mqtt = READ_LOGFILE_MQTT("zigbee2mqtt", "",5) 
             WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection")
 
     zigbee2mqtt_device_list = GET_ALL_MQTT_DEVICES("zigbee2mqtt")
@@ -220,7 +220,7 @@ def dashboard_settings_zigbee2mqtt():
                             error_message=error_message,
                             error_message_zigbee2mqtt=error_message_zigbee2mqtt,
                             error_message_table=error_message_table,
-                            check_value_zigbee=check_value_zigbee,  
+                            check_value_zigbee2mqtt=check_value_zigbee2mqtt,  
                             check_value_pairing=check_value_pairing,
                             zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
                             zigbee2mqtt_setting=zigbee2mqtt_setting,                  

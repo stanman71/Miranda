@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  ZigBee
+  ZigBee2MQTT
 {% endblock %}
 
 {% block styles %}
@@ -68,14 +68,14 @@
           <form method="POST">  
             <div class="well well-sm">
               <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
+                  <input {{check_value_zigbee2mqtt[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
                   <div class="state">
                     <label>ZigBee2MQTT aktivieren</label>
                   </div>
                 </div>
                 <br>
                 <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
+                  <input {{check_value_zigbee2mqtt[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
                 <div class="state">
                   <label>ZigBee2MQTT deaktivieren</label>
                 </div>
@@ -87,7 +87,7 @@
             <font color="red"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
             <br>     
             <br>                
-            <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
+            <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee2mqtt#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
           </form>  
         </div>  
       </div>    
@@ -113,7 +113,7 @@
 {% endif %} 
 
 
-<!-- zigbee device table -->
+<!-- zigbee2mqtt device table -->
   
         <div class="panel panel-default">
           <div class="panel-body">  
@@ -174,7 +174,7 @@
           </div>  
         </div>  
 
-<!-- zigbee settings -->
+<!-- zigbee2mqtt settings -->
 
 <section id="pairing"></section>
 
@@ -202,7 +202,7 @@
         </div>   
 
 
-<!-- zigbee logs -->
+<!-- zigbee2mqtt logs -->
 
 <section id="logfile"></section>
 
