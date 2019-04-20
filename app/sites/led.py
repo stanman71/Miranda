@@ -418,7 +418,7 @@ def dashboard_led_programs():
                 if start_Program is not None:   
                     if request.form.get("get_group") != "":   
                         group = request.form.get("get_group")
-                        START_LED_PROGRAM_THREAD(int(group), i)  
+                        LED_START_PROGRAM_THREAD(int(group), i)  
 
                 # get rgb values
                 get_rgb = request.form.get("get_rgb_" + str(i)) 

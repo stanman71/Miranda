@@ -222,12 +222,56 @@ def LED_TURN_OFF_ALL():
             MQTT_PUBLISH(channel, msg)         
 
 
-
 """ ################# """
 """ program functions """
 """ ################# """
 
-def SET_LED_RGB(group_id, led_id, red, green, blue):
+def LED_START_PROGRAM_THREAD(group_id, program_id):
+
+    class led_program_Thread(threading.Thread):
+        def __init__(self, ID = 1, name = "led_program_Thread"):
+            threading.Thread.__init__(self)
+            self.ID = ID
+            self.name = name
+
+        def run(self):
+            if GET_SETTING_VALUE("zigbee") == "True":
+
+                LED_TURN_OFF_GROUP(group_id)
+
+                content = GET_LED_PROGRAM_BY_ID(program_id).content
+
+                # select each command line
+                for line in content.splitlines():
+
+                    if "rgb" in line: 
+                        led_id = line.split(":")[0]
+                        rgb    = re.findall(r'\d+', line.split(":")[1])
+                        red    = rgb[0]
+                        green  = rgb[1]           
+                        blue   = rgb[2]  
+                        LED_PROGRAM_SET_RGB(group_id, led_id, red, green, blue)
+                        
+                    if "bri" in line: 
+                        led_id = line.split(":")[0]
+                        brightness = re.findall(r'\d+', line.split(":")[1])
+                        brightness = brightness[0]
+                        LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness)
+
+                    if "pause" in line: 
+                        break_value = line.split(":")
+                        break_value = int(break_value[1])
+                        time.sleep(break_value)
+                    
+            else:
+                return "Keine LED-Steuerung"             
+            
+    # start thread
+    t1 = led_program_Thread()
+    t1.start()
+
+
+def LED_PROGRAM_SET_RGB(group_id, led_id, red, green, blue):
 
     group = GET_LED_GROUP_BY_ID(group_id)
 
@@ -295,8 +339,7 @@ def SET_LED_RGB(group_id, led_id, red, green, blue):
         MQTT_PUBLISH(channel, msg) 
 
 
-
-def SET_LED_BRIGHTNESS(group_id, led_id, brightness):
+def LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness):
 
     group = GET_LED_GROUP_BY_ID(group_id)
 
@@ -353,50 +396,3 @@ def SET_LED_BRIGHTNESS(group_id, led_id, brightness):
         channel = "SmartHome/zigbee2mqtt/" + group.led_name_9 + "/set"
         msg     = '{"state": "ON", "brightness":' + str(brightness) + ',"transition": 3}}'
         MQTT_PUBLISH(channel, msg) 
-
-
-def START_LED_PROGRAM_THREAD(group_id, program_id):
-
-    class led_program_Thread(threading.Thread):
-
-        def __init__(self, ID = 1, name = "led_program_Thread"):
-            threading.Thread.__init__(self)
-            self.ID = ID
-            self.name = name
-
-        def run(self):
-
-            if GET_SETTING_VALUE("zigbee") == "True":
-
-                LED_TURN_OFF_GROUP(group_id)
-
-                content = GET_LED_PROGRAM_BY_ID(program_id).content
-
-                # select each command line
-                for line in content.splitlines():
-
-                    if "rgb" in line: 
-                        led_id = line.split(":")[0]
-                        rgb    = re.findall(r'\d+', line.split(":")[1])
-                        red    = rgb[0]
-                        green  = rgb[1]           
-                        blue   = rgb[2]  
-                        SET_LED_RGB(group_id, led_id, red, green, blue)
-                        
-                    if "bri" in line: 
-                        led_id = line.split(":")[0]
-                        brightness = re.findall(r'\d+', line.split(":")[1])
-                        brightness = brightness[0]
-                        SET_LED_BRIGHTNESS(group_id, led_id, brightness)
-
-                    if "pause" in line: 
-                        break_value = line.split(":")
-                        break_value = int(break_value[1])
-                        time.sleep(break_value)
-                    
-            else:
-                return "Keine LED-Steuerung"             
-            
-    # start thread
-    t1 = led_program_Thread()
-    t1.start()

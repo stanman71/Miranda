@@ -7037,3 +7037,110 @@ Timestamp,Type,Description
 2019-04-19 22:00:11,EVENT,MQTT >>> started
 2019-04-19 22:00:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-04-19 22:00:15,EVENT,Snowboy >>> started
+2019-04-20 08:33:07,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:33:08,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:33:08,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:34:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:34:03,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:34:03,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:36:58,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:36:59,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:36:59,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:48:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:48:33,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:48:33,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:48:44,EVENT,Database >>> Taskmanagement (Time) >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:48:44,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:2 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:48:48,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:7 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:50:31,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:50:32,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:50:32,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:50:35,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:4 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:50:40,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:564 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:50:43,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:jhg /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:51:42,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:51:43,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:51:43,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:51:46,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:51:50,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:3 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:51:53,EVENT,Database >>> Taskmanagement (Time) >>> test >>> changed >>> Name: test /// Task: request_sensordata:2 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 08:51:58,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:all /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 08:52:04,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 08:55:41,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:55:42,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:55:42,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 08:59:30,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 08:59:32,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 08:59:32,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 09:00:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 09:00:04,EVENT,Task >>> test >>> started
+2019-04-20 09:02:17,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:02:18,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:02:18,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:08:18,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:08:19,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:08:19,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:08:29,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:al /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:09:36,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:all /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:09:42,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group:es /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:15:15,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:15:16,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:15:16,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:15:27,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:grop:es /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:15:34,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:es /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:15:43,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:15:50,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group:test /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:16:05,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax:100 /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:24:31,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:24:32,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:24:32,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:25:32,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:25:33,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:25:33,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:26:17,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:26:19,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:26:19,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:26:57,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:26:58,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:26:58,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:27:02,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax:106 /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:27:06,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax: /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:27:14,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:30:04,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:30:04,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:30:06,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:rela /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:11,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:13,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohzimmer:relax /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:20,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohzimmer:rela /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:31,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohzimmer:rela:50 /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:44,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: scene:wohnzimmer:relax:50 /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:30:52,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:grup:test /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:31:00,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group:test /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:33:43,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:33:44,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:33:44,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:33:46,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:grop:test /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:33:52,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:grop /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:34:59,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:35:00,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:35:00,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:35:11,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:35:25,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimmer:relax:50 /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:35:29,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimer:relax:50 /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:35:34,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimer:relax /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:35:43,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimmer:relax /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:35:49,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimmer:sunrise /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:35:56,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: program:wohnzimmer:SUNRISE /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:36:05,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:group:wohnzimmer /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:36:24,EVENT,Database >>> Taskmanagement (Time) >>> schlafen >>> changed >>> Name: schlafen /// Task: led_off:all /// Day: * /// Hour: 0 /// Minute: 30 /// Repeat: checked
+2019-04-20 09:36:24,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:all /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:36:24,EVENT,Database >>> Taskmanagement (Time) >>> Datenbank sichern >>> changed >>> Name: Datenbank sichern /// Task: save_database /// Day: * /// Hour: 0 /// Minute: 0 /// Repeat: checked
+2019-04-20 09:42:53,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-20 09:42:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 09:42:55,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-20 09:43:00,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: scene:wohnzimmer:relax /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:43:03,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: scene:wohnzimmer:relax: /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:43:07,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: scene:wohnzimmer:relax /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:43:16,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:all /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|

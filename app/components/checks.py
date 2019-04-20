@@ -48,28 +48,71 @@ def CHECK_TASKS(tasks, task_type):
          continue
 
       # check start_scene
-      if "start_scene" in task:
-         try:
-            task = task.split(":")
-            continue
+      if "scene" in task:
+         if ":" in task:
+            task = task.split(":") 
 
-         except:
-            list_errors.append(name + " >>> Ungültige Aufgabe")
+            # check group setting
+            try:
+               if GET_LED_GROUP_BY_NAME(task[1]):
+                  pass
+               else:
+                  list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
+            except:
+               list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
+
+            # check scene setting    
+            try:
+               if GET_LED_SCENE_BY_NAME(task[2]):
+                  pass
+               else:
+                  list_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
+            except:
+               list_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
+
+            # check global brightness    
+            try:
+               if task[3].isdigit():
+                  if 1 <= int(task[3]) <= 100:
+                     continue
+                  else:
+                     list_errors.append(name + " >>> ungültiger Wertebereich >>> Globale Helligkeit") 
+                     continue             
+               else:
+                  list_errors.append(name + " >>> ungültige Einstellung >>> Globale Helligkeit")
+                  continue 
+            except:
+               continue 
+
+         else:
+            list_errors.append(name + " >>> Ungültige Formatierung")
             continue
 
       # check start_program
-      if "start_program" in task:
+      if "program" in task:
          if ":" in task:
             task = task.split(":") 
+
+            # check group setting
             try:
-               if GET_PROGRAM_BY_ID(int(task[1])):
+               if GET_LED_GROUP_BY_NAME(task[1]):
+                  pass
+               else:
+                  list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
+            except:
+               list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
+
+            # check program setting    
+            try:
+               if GET_LED_PROGRAM_BY_NAME(task[2]):
                   continue
                else:
-                  list_errors.append(name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
+                  list_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
                   continue
             except:
-               list_errors.append(name + " >>> Programm Nummer " + task[1] + " nicht vorhanden")
-               continue
+               list_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
+               continue  
+
          else:
             list_errors.append(name + " >>> Ungültige Formatierung")
             continue
@@ -78,13 +121,30 @@ def CHECK_TASKS(tasks, task_type):
       if "led_off" in task:
          if ":" in task:
             task = task.split(":")
-            if task[1].isdigit():
-               continue
-            else:
-               list_errors.append(name + " >>> Ungültiger Verzögerungswert")
-               continue
+
+            # check group setting
+            if task[1] == "group":
+               try: 
+                  if GET_LED_GROUP_BY_NAME(task[2]):
+                     continue
+                  else:
+                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[2])
+                     continue
+               except:
+                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                  continue                  
+
+            # check turn off all leds
+            try:
+               if task[1] == "all": 
+                  continue
+            except:
+               pass
+            
+            list_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
+            continue     
+
          else:
-            print("OK")
             list_errors.append(name + " >>> Ungültige Formatierung")
             continue
 
@@ -100,16 +160,22 @@ def CHECK_TASKS(tasks, task_type):
       if task == "update_mqtt_devices" and task_type == "timer":
          continue
 
-      # check request_mqtt_sensordata
-      if "request_mqtt_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
+      # check request_sensordata
+      if "request_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
          if ":" in task:
             task = task.split(":")
-            try:
+
+            # check job-id setting
+            try:          
                if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
                   continue
+               else:
+                  list_errors.append(name + " >>> Job-ID nicht vorhanden >>> " + task[1])
+                  continue      
             except:
-               list_errors.append(name + " >>> Job-ID " + task[1] + " nicht vorhanden")
-               continue 
+               list_errors.append(name + " >>> fehlende Einstellung >>> Job-ID") 
+               continue      
+
          else:
             list_errors.append(name + " >>> Ungültige Formatierung")
             continue 

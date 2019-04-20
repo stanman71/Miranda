@@ -156,30 +156,41 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
 
          try:
             # start scene
-            if "start_scene" in entry.task:
-               task = entry.task.split(":")
+            if "scene" in entry.task:
                try:
-                     LED_SET_SCENE(int(task[1]), int(task[2]))
+                  task = entry.task.split(":")
+                  group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id
+                  LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))   
                except:
-                     LED_SET_SCENE(int(task[1]))
+                  task = entry.task.split(":")
+                  group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id
+                  LED_START_SCENE(int(group_id), int(scene_id))       
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
          try:
             # start program
-            if "start_program" in entry.task:
+            if "program" in entry.task:
                task = entry.task.split(":")
-               START_PROGRAM(int(task[1]))
+               group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+               program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
+               LED_START_PROGRAM_THREAD(int(group_id), int(program_id))   
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
          try:
-            # turn off leds
+            # led off
             if "led_off" in entry.task:
                task = entry.task.split(":")
-               LED_OFF(int(task[1])) 
+               if task[1] == "group":
+                  group_id = GET_LED_GROUP_BY_NAME(task[2]).id
+                  LED_TURN_OFF_GROUP(int(group_id))
+               if task[1] == "all":
+                  LED_TURN_OFF_ALL()    
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -208,9 +219,9 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
 
-         # request mqtt sensor data
+         # request sensordata
          try:
-            if "request_mqtt_sensordata" in entry.task:
+            if "request_sensordata" in entry.task:
                task = entry.task.split(":")
                error_message = REQUEST_MQTT_SENSORDATA(int(task[1]))          
                if error_message == "":
