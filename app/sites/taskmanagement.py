@@ -17,8 +17,7 @@ def user_required(f):
         if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
+            return redirect(url_for('login'))
     return wrap
 
 
@@ -276,7 +275,7 @@ def dashboard_taskmanagement_sensor():
 
                     # get mqtt device 1
                     try:
-                        mqtt_device_name_1   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_1))
+                        mqtt_device_name_1   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_1)).name
                         mqtt_device_inputs_1 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_1))
 
                         if int(mqtt_device_id_1) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_1:
@@ -291,7 +290,7 @@ def dashboard_taskmanagement_sensor():
 
                     # get mqtt device 2
                     try:
-                        mqtt_device_name_2   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_2))
+                        mqtt_device_name_2   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_2)).name
                         mqtt_device_inputs_2 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_2))
 
                         if int(mqtt_device_id_2) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_2:
@@ -306,7 +305,7 @@ def dashboard_taskmanagement_sensor():
 
                     # get mqtt device 3 
                     try:
-                        mqtt_device_name_3   = GET_MQTT_DEVICE_NAME(int(mqtt_device_id_3))
+                        mqtt_device_name_3   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_3)).name
                         mqtt_device_inputs_3 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_3))
 
                         if int(mqtt_device_id_3) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_3:

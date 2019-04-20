@@ -2,7 +2,7 @@ from app import app
 
 from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
-from app.database.database import GET_SNOWBOY_SENSITIVITY, GET_ALL_SNOWBOY_TASKS
+from app.database.database import GET_SNOWBOY_SETTINGS, GET_ALL_SNOWBOY_TASKS
 from app.components.tasks import SNOWBOY_TASKS
 from app.components.file_management import GET_USED_HOTWORD_FILES, WRITE_LOGFILE_SYSTEM
 
@@ -27,7 +27,7 @@ def SNOWBOY_START():
    # voice models here:
    models = GET_USED_HOTWORD_FILES(GET_ALL_SNOWBOY_TASKS())
 
-   sensitivity_value = int(GET_SNOWBOY_SENSITIVITY()) / 100
+   sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
 
    # modify sensitivity for better detection / accuracy
    detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)

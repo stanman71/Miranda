@@ -98,7 +98,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     }
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
-      
+
         int sensor_0 = adc.readADC(0) - 1; 
         String STR_sensor_0 = String(sensor_0);
         int sensor_1 = adc.readADC(1) - 1; 
@@ -159,56 +159,55 @@ void callback(char* topic, byte* payload, unsigned int length) {
         payload_path.toCharArray( path, 100 );          
 
         // get command
-        String data_temp     = getValue(msg,':',1);      
-        String output_number = getValue(data_temp,'=',0);
-        String output_state  = getValue(data_temp,'=',1);
+        String pump        = getValue(msg,':',0);      
+        String pump_state  = getValue(msg,':',1); 
         
-        if (output_number == "0") {
-            if (output_state == "on") {
+        if (pump == "pump_0") {
+            if (pump_state == "on") {
                 digitalWrite(Pin_D0, HIGH);
-                client.publish(path, "0_on");
-                Serial.println("Start_Pump_0");
+                client.publish(path, "pump_0:on");
+                Serial.println("pump_0:on");
             }
             else {
                 digitalWrite(Pin_D0, LOW); 
-                client.publish(path, "0_off");
-                Serial.println("Stop_Pump_0");
+                client.publish(path, "pump_0:off");
+                Serial.println("pump_0:off");
             }
         }
-        if (output_number == "1") {
-            if (output_state == "on") {
+        if (pump == "pump_1") {
+            if (pump_state == "on") {
                 digitalWrite(Pin_D3, HIGH);
-                client.publish(path, "1_on");
-                Serial.println("Start_Pump_1");
+                client.publish(path, "pump_1:on");
+                Serial.println("pump_1:on");
             }
             else {
                 digitalWrite(Pin_D3, LOW); 
-                client.publish(path, "1_off");                
-                Serial.println("Stop_Pump_1");
+                client.publish(path, "pump_1:off");                
+                Serial.println("pump_1:off");
             }
         }     
-        if (output_number == "2") {
-            if (output_state == "on") {
+        if (pump == "pump_2") {
+            if (pump_state == "on") {
                 digitalWrite(Pin_D2, HIGH);
-                client.publish(path, "2_on");
-                Serial.println("Start_Pump_2");
+                client.publish(path, "pump_2:on");
+                Serial.println("pump_2:on");
             }
             else {
                 digitalWrite(Pin_D2, LOW); 
-                client.publish(path, "2_off");
-                Serial.println("Stop_Pump_2");
+                client.publish(path, "pump_2:off");
+                Serial.println("pump_2:off");
             }
         }
-        if (output_number == "3") {
-            if (output_state == "on") {
+        if (pump == "pump_3") {
+            if (pump_state == "on") {
                 digitalWrite(Pin_D1, HIGH);
-                client.publish(path, "3_on");
-                Serial.println("Start_Pump_3");
+                client.publish(path, "pump_3:on");
+                Serial.println("pump_3:on");
             }
             else {
                 digitalWrite(Pin_D1, LOW); 
-                client.publish(path, "3_off");
-                Serial.println("Stop_Pump_3");
+                client.publish(path, "pump_3:off");
+                Serial.println("pump_3:off");
             }
         }       
     }     

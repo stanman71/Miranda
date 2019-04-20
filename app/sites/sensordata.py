@@ -18,8 +18,7 @@ def user_required(f):
         if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
+            return redirect(url_for('login'))
     return wrap
 
 
@@ -137,7 +136,7 @@ def dashboard_sensordata_jobs():
     list_files      = GET_SENSORDATA_FILES()
 
     if set_mqtt_device_id != "":
-        set_mqtt_device_name = GET_MQTT_DEVICE_NAME(int(set_mqtt_device_id))
+        set_mqtt_device_name = GET_MQTT_DEVICE_BY_ID(int(set_mqtt_device_id)).name
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
@@ -175,7 +174,7 @@ def remove_sensordata_job(id):
 @user_required
 def download_sensordata_file(filepath):
     if filepath is None:
-        print(Error(400))     
+        print("Ungültiger Pfad angegeben")     
     try:
         path = GET_PATH() + "/csv/"     
         WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filepath + " >>> downloaded")

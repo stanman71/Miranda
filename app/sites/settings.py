@@ -4,11 +4,12 @@ from functools import wraps
 import os
 import datetime
 import json
+import sys
 
 from app import app
 from app.components.led_control import *
 from app.database.database import *
-from app.components.tasks import UPDATE_MQTT_DEVICES, CHECK_MQTT
+from app.components.tasks import MQTT_UPDATE_DEVICES, MQTT_CHECK
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
@@ -22,8 +23,7 @@ def superuser_required(f):
         if current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
+            return redirect(url_for('login'))
     return wrap
 
 
@@ -49,10 +49,10 @@ def dashboard_settings_mqtt():
         # change mqtt settings   
         if request.form.get("set_setting_mqtt") is not None:
             setting_mqtt = str(request.form.get("radio_mqtt"))
-            SET_SETTING_VALUE("mqtt", setting_mqtt)
+            SET_GLOBAL_SETTING_VALUE("mqtt", setting_mqtt)
 
     # change radio check  
-    mqtt_setting = GET_SETTING_VALUE("mqtt")    
+    mqtt_setting = GET_GLOBAL_SETTING_VALUE("mqtt")    
     if mqtt_setting == "True":
         check_value_mqtt[0] = "checked = 'on'"
         check_value_mqtt[1] = ""
@@ -64,7 +64,7 @@ def dashboard_settings_mqtt():
 
         # check mqtt
         try:
-            CHECK_MQTT()
+            MQTT_CHECK()
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
@@ -75,11 +75,11 @@ def dashboard_settings_mqtt():
                 if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
                     # rename devices
                     new_name = request.form.get("set_name_" + str(i)) 
-                    SET_MQTT_DEVICE_MQTT(i, new_name)
+                    SET_MQTT_DEVICE_TYPE_MQTT(i, new_name)
  
         # update device list
-        if request.form.get("update_mqtt_devices") != None:
-            UPDATE_MQTT_DEVICES("mqtt")
+        if request.form.get("mqtt_update_devices") != None:
+            MQTT_UPDATE_DEVICES("mqtt")
             
         # reset logfile
         if request.form.get("reset_logfile") != None: 
@@ -129,25 +129,25 @@ def download_mqtt_logfile(filepath):
 """ zigbee settings """
 """ ############### """
 
-@app.route('/dashboard/settings/zigbee', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/zigbee2mqtt', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_settings_zigbee():
+def dashboard_settings_zigbee2mqtt():
     error_message = ""
-    error_message_zigbee = ""
+    error_message_zigbee2mqtt = ""
     error_message_table = ""
     check_value_zigbee = ["", ""]
     check_value_pairing = ["", ""]
 
     if request.method == "POST":     
         # change mqtt settings   
-        if request.form.get("set_setting_zigbee") is not None:
-            setting_zigbee = str(request.form.get("radio_zigbee"))
-            SET_SETTING_VALUE("zigbee", setting_zigbee)
+        if request.form.get("set_setting_zigbee2mqtt") is not None:
+            setting_zigbee = str(request.form.get("radio_zigbee2mqtt"))
+            SET_GLOBAL_SETTING_VALUE("zigbee2mqtt", setting_zigbee)
 
     # change radio check  
-    zigbee_setting = GET_SETTING_VALUE("zigbee")    
-    if zigbee_setting == "True":
+    zigbee2mqtt_setting = GET_GLOBAL_SETTING_VALUE("zigbee2mqtt")    
+    if zigbee2mqtt_setting == "True":
         check_value_zigbee[0] = "checked = 'on'"
         check_value_zigbee[1] = ""
     else:
@@ -155,13 +155,13 @@ def dashboard_settings_zigbee():
         check_value_zigbee[1] = "checked = 'on'"
 
 
-    if zigbee_setting == "True":
+    if zigbee2mqtt_setting == "True":
 
         if GET_ERROR_LIST() is not "":
             error_message_table = GET_ERROR_LIST()
             SET_ERROR_LIST("")
         
-        error_message_zigbee = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
+        error_message_zigbee2mqtt = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
         
         if request.method == 'POST':
 
@@ -173,77 +173,77 @@ def dashboard_settings_zigbee():
                         request.form.get("set_name_" + str(i)) != None):
                             
                         new_name = request.form.get("set_name_" + str(i))
-                        old_name = GET_MQTT_DEVICE_NAME(i) 
+                        old_name = GET_MQTT_DEVICE_BY_ID(i).name 
                         
                         if new_name != old_name:
                             MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
                                          '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
 
                         inputs = request.form.get("set_inputs_" + str(i))         
-                        SET_MQTT_DEVICE_ZigBee(i, new_name, inputs)
+                        SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(i, new_name, inputs)
                    
 
             # update device list
-            if request.form.get("update_zigbee_devices") is not None:
-                UPDATE_MQTT_DEVICES("zigbee")
+            if request.form.get("update_zigbee2mqtt_devices") is not None:
+                MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
                 
             # change pairing setting
             if request.form.get("set_pairing") is not None: 
                 setting_pairing = str(request.form.get("radio_pairing"))
-                SET_ZIGBEE_PAIRING(setting_pairing)
+                SET_ZIGBEE2MQTT_PAIRING(setting_pairing)
 
             # reset logfile
             if request.form.get("reset_logfile") is not None: 
-                RESET_LOGFILE("log_zigbee")
+                RESET_LOGFILE("log_zigbee2mqtt")
      
         # set pairing checkbox  
-        pairing_setting = GET_ZIGBEE_PAIRING()    
+        pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
         if pairing_setting == "True":
             check_value_pairing[0] = "checked = 'on'"
             check_value_pairing[1] = ""        
-            #MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")  
+            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")  
         else:
             check_value_pairing[0] = ""
             check_value_pairing[1] = "checked = 'on'"        
-            #MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
+            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
 
-        if READ_LOGFILE_MQTT("zigbee", "") != "Message nicht gefunden":
-            error_message_zigbee = READ_LOGFILE_MQTT("zigbee", "") 
+        if READ_LOGFILE_MQTT("zigbee", "",5) != "Message nicht gefunden":
+            error_message_zigbee = READ_LOGFILE_MQTT("zigbee2mqtt", "",5) 
             WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection")
 
-    zigbee_device_list = GET_ALL_MQTT_DEVICES("zigbee")
+    zigbee2mqtt_device_list = GET_ALL_MQTT_DEVICES("zigbee2mqtt")
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-    return render_template('dashboard_settings_zigbee.html',
+    return render_template('dashboard_settings_zigbee2mqtt.html',
                             error_message=error_message,
-                            error_message_zigbee=error_message_zigbee,
+                            error_message_zigbee2mqtt=error_message_zigbee2mqtt,
                             error_message_table=error_message_table,
                             check_value_zigbee=check_value_zigbee,  
                             check_value_pairing=check_value_pairing,
-                            zigbee_device_list=zigbee_device_list, 
-                            zigbee_setting=zigbee_setting,                  
+                            zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
+                            zigbee2mqtt_setting=zigbee2mqtt_setting,                  
                             active02="active",
                             timestamp=timestamp,
                             )
 
 
-# remove zigbee device
-@app.route('/dashboard/settings/zigbee/delete/<int:id>')
+# remove zigbee2mqtt device
+@app.route('/dashboard/settings/zigbee2mqtt/delete/<int:id>')
 @login_required
 @superuser_required
-def remove_zigbee_device(id):
-    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_NAME(id)) 
+def remove_zigbee2mqtt_device(id):
+    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_BY_ID(id)).name 
     DELETE_MQTT_DEVICE(id)
-    return redirect(url_for('dashboard_settings_zigbee'))
+    return redirect(url_for('dashboard_settings_zigbee2mqtt'))
 
 
-# download zigbee logfile
-@app.route('/dashboard/settings/zigbee/download/<path:filepath>')
+# download zigbee2mqtt logfile
+@app.route('/dashboard/settings/zigbee2mqtt/download/<path:filepath>')
 @login_required
 @superuser_required
-def download_zigbee_logfile(filepath): 
+def download_zigbee2mqtt_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"     
         WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /logs/" + filepath + " >>> downloaded")
@@ -267,25 +267,27 @@ def dashboard_settings_snowboy():
     error_message_fileupload = ""
     error_message_hotword = ""
     sensitivity = ""
+    delay = ""
     check_value_snowboy = ["", ""]
     set_name = ""
     set_task = ""
+    set_delay = ""
 
     if request.method == "POST":     
         # change snowboy settings   
         if request.form.get("radio_snowboy") is not None:
             setting_snowboy = str(request.form.get("radio_snowboy"))
-            SET_SETTING_VALUE("snowboy", setting_snowboy) 
+            SET_GLOBAL_SETTING_VALUE("snowboy", setting_snowboy) 
 
     # change radio check    
-    if GET_SETTING_VALUE("snowboy") == "True":
+    if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
         check_value_snowboy[0] = "checked = 'on'"
         check_value_snowboy[1] = ""
     else:
         check_value_snowboy[0] = ""
         check_value_snowboy[1] = "checked = 'on'"
 
-    if GET_SETTING_VALUE("snowboy") == "True":
+    if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
 
         # check snowboy
         def START_SNOWBOY():
@@ -300,13 +302,20 @@ def dashboard_settings_snowboy():
                 WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
                 
         if request.method == 'POST':
-            # change sensitivity
+            # change settings
             if request.form.get("change_settings") is not None: 
+                if sensitivity is not None:     
+                    sensitivity = request.form.get("set_sensitivity") 
+                else:
+                    sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
+                if delay is not None:
+                    delay = request.form.get("set_delay") 
+                else:
+                    delay = GET_SNOWBOY_SETTINGS().delay               
+             
+                SET_SNOWBOY_SETTINGS(sensitivity, delay)  
 
-                sensitivity = request.form.get("set_sensitivity") 
-                if sensitivity is not None:
-                    SET_SNOWBOY_SENSITIVITY(sensitivity)    
-
+                                       
             # add new task
             if request.form.get("add_task") is not None:
 
@@ -360,8 +369,9 @@ def dashboard_settings_snowboy():
                     file = request.files['file']
                     error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
-    snowboy_setting = GET_SETTING_VALUE("snowboy")
-    sensitivity = GET_SNOWBOY_SENSITIVITY()
+    snowboy_setting = GET_GLOBAL_SETTING_VALUE("snowboy")
+    sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
+    delay = GET_SNOWBOY_SETTINGS().delay
     snowboy_list = GET_ALL_SNOWBOY_TASKS()
     file_list = GET_ALL_HOTWORD_FILES()
     
@@ -370,6 +380,7 @@ def dashboard_settings_snowboy():
 
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
+                            delay=delay,
                             error_message=error_message,    
                             error_message_snowboy=error_message_snowboy,   
                             error_message_form=error_message_form,  
@@ -382,6 +393,7 @@ def dashboard_settings_snowboy():
                             file_list=file_list,
                             set_name=set_name,
                             set_task=set_task,
+                            set_delay=set_delay,
                             active03="active",
                             )
 
@@ -401,7 +413,7 @@ def delete_snowboy_task(id):
 @superuser_required
 def download_hotword_file(filepath):
     if filepath is None:
-        print(Error(400))     
+        print("Ungültiger Pfad angegeben")     
     try:
         path = GET_PATH() + "/app/snowboy/resources/"     
         WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + filepath + " >>> downloaded")

@@ -68,15 +68,18 @@ def GET_BACKUP_FILES():
 def SAVE_DATABASE():  
     # delete old backup files
     if len(GET_BACKUP_FILES()) == 10:
+        file_list = GET_BACKUP_FILES()
         os.remove (PATH + '/backup/' + file_list[0])
 
     try:
         shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
                         PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
         WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup >>> saved")
+        return ""
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup >>> " + str(e)) 
+        return str(e)
 
 
 def RESTORE_DATABASE(filename):
@@ -258,7 +261,7 @@ def CREATE_LOGFILE(filename):
 
             if filename == "log_mqtt":                   
                 filewriter.writerow(['Timestamp','Channel','Message'])
-            if filename == "log_zigbee":                   
+            if filename == "log_zigbee2mqtt":                   
                 filewriter.writerow(['Timestamp','Channel','Message'])                
             if filename == "log_system":                   
                 filewriter.writerow(['Timestamp','Type','Description'])                
@@ -296,7 +299,7 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_" + gateway + ".csv >>> " + str(e))
 
 
-def READ_LOGFILE_MQTT(gateway, channel):   
+def READ_LOGFILE_MQTT(gateway, channel, time):   
     
     try:
         # open csv file
@@ -310,11 +313,11 @@ def READ_LOGFILE_MQTT(gateway, channel):
             headers = data.pop(0)             
             data_reversed = data[::-1]        
 
-            # get time value 5 seconds ago
-            date_check = datetime.datetime.now() - datetime.timedelta(seconds=5)
+            # get time value of the time setting
+            date_check = datetime.datetime.now() - datetime.timedelta(seconds=time)
             date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
             
-            # get all elements of the last 5 seconds
+            # get all elements of the selected time
             list_temp = []
             list_result = []
         

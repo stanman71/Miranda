@@ -8,3 +8,8 @@ wtforms
 pyusb
 paho-mqtt
 pyyaml
+pandas
+scipy
+numpy 
+scikit-learn
+matplotlib

@@ -7144,3 +7144,793 @@ Timestamp,Type,Description
 2019-04-20 09:43:03,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: scene:wohnzimmer:relax: /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
 2019-04-20 09:43:07,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: scene:wohnzimmer:relax /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
 2019-04-20 09:43:16,EVENT,|Database >>> Taskmanagement (Time) >>> zur Arbeit >>> changed >>> Name: zur Arbeit /// Task: led_off:all /// Day: Mo,Tu,We,Th,Fr /// Hour: 7 /// Minute: 50 /// Repeat: checked|
+2019-04-20 09:54:36,EVENT,MQTT >>> started
+2019-04-20 09:54:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 09:54:40,EVENT,Snowboy >>> started
+2019-04-20 09:55:11,EVENT,Database >>> Taskmanagement (Time) >>> der >>> added >>> Task: der /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 09:55:29,EVENT,Database >>> Taskmanagement (Time) >>> der >>> changed >>> Name: der /// Task: scene:wohnzimmer:relax:100 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 09:56:00,EVENT,Task >>> der >>> started
+2019-04-20 09:56:21,EVENT,Database >>> Taskmanagement (Time) >>> der >>> changed >>> Name: der /// Task: program:wohnzimmer:SUNRISE /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 09:56:25,EVENT,Database >>> Taskmanagement (Time) >>> der >>> changed >>> Name: der /// Task: program:wohnzimmer:SUNRIS /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 09:56:34,EVENT,Database >>> Taskmanagement (Time) >>> der >>> changed >>> Name: der /// Task: program:wohnzimmer:SUNRISE /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 09:57:00,EVENT,Task >>> der >>> started
+2019-04-20 09:58:00,EVENT,Task >>> der >>> started
+2019-04-20 09:59:00,EVENT,Task >>> der >>> started
+2019-04-20 10:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 10:00:03,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 10:00:03,EVENT,Task >>> der >>> started
+2019-04-20 10:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 10:00:06,EVENT,Task >>> test >>> started
+2019-04-20 10:00:10,SUCCESS,Task >>> test >>> successful
+2019-04-20 10:00:40,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-20 10:01:00,EVENT,Task >>> der >>> started
+2019-04-20 10:01:58,EVENT,MQTT >>> started
+2019-04-20 10:01:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 10:02:00,EVENT,Task >>> der >>> started
+2019-04-20 10:02:02,EVENT,Snowboy >>> started
+2019-04-20 10:03:00,EVENT,Task >>> der >>> started
+2019-04-20 10:04:08,EVENT,MQTT >>> started
+2019-04-20 10:04:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 10:04:13,EVENT,Snowboy >>> started
+2019-04-20 10:05:00,EVENT,Task >>> der >>> started
+2019-04-20 10:06:00,EVENT,Task >>> der >>> started
+2019-04-20 10:06:29,EVENT,Database >>> Taskmanagement (Time) >>> der >>> changed >>> Name: der /// Task: led_off:all /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 10:07:00,EVENT,Task >>> der >>> started
+2019-04-20 10:08:00,EVENT,Task >>> der >>> started
+2019-04-20 10:09:00,EVENT,Task >>> der >>> started
+2019-04-20 10:09:10,EVENT,Database >>> Taskmanagement (Time) >>> der >>> deleted
+2019-04-20 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 11:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 11:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 11:00:07,EVENT,Task >>> test >>> started
+2019-04-20 11:00:12,SUCCESS,Task >>> test >>> successful
+2019-04-20 11:22:18,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-20 11:58:28,EVENT,Snowboy >>> Detection >>> start_scene:99
+2019-04-20 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 12:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 12:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 12:00:07,EVENT,Task >>> test >>> started
+2019-04-20 12:00:11,SUCCESS,Task >>> test >>> successful
+2019-04-20 12:10:43,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-20 12:17:00,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-20 12:18:03,EVENT,Snowboy >>> Detection >>> led_off:1
+2019-04-20 12:29:20,EVENT,MQTT >>> started
+2019-04-20 12:29:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:29:24,EVENT,Snowboy >>> started
+2019-04-20 12:30:47,EVENT,MQTT >>> started
+2019-04-20 12:30:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:30:52,EVENT,Snowboy >>> started
+2019-04-20 12:35:15,EVENT,MQTT >>> started
+2019-04-20 12:35:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:35:19,EVENT,Snowboy >>> started
+2019-04-20 12:35:56,EVENT,MQTT >>> started
+2019-04-20 12:35:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:36:00,EVENT,Snowboy >>> started
+2019-04-20 12:45:05,EVENT,MQTT >>> started
+2019-04-20 12:45:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:45:09,EVENT,Snowboy >>> started
+2019-04-20 12:46:13,EVENT,MQTT >>> started
+2019-04-20 12:46:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:46:17,EVENT,Snowboy >>> started
+2019-04-20 12:47:32,EVENT,MQTT >>> started
+2019-04-20 12:47:32,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:47:36,EVENT,Snowboy >>> started
+2019-04-20 12:50:10,EVENT,MQTT >>> started
+2019-04-20 12:50:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:50:15,EVENT,Snowboy >>> started
+2019-04-20 12:58:21,EVENT,MQTT >>> started
+2019-04-20 12:58:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 12:58:26,EVENT,Snowboy >>> started
+2019-04-20 13:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 13:00:03,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 13:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 13:00:06,EVENT,Task >>> test >>> started
+2019-04-20 13:00:10,SUCCESS,Task >>> test >>> successful
+2019-04-20 13:14:29,EVENT,MQTT >>> started
+2019-04-20 13:14:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:17:24,EVENT,MQTT >>> started
+2019-04-20 13:17:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:17:27,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee2mqtt.csv'
+2019-04-20 13:17:27,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:17:28,EVENT,Snowboy >>> started
+2019-04-20 13:17:30,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 13:18:18,EVENT,MQTT >>> started
+2019-04-20 13:18:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:18:21,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee2mqtt.csv'
+2019-04-20 13:18:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:18:21,EVENT,Snowboy >>> started
+2019-04-20 13:19:07,EVENT,MQTT >>> started
+2019-04-20 13:19:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:19:10,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee2mqtt.csv'
+2019-04-20 13:19:10,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:19:10,EVENT,Snowboy >>> started
+2019-04-20 13:21:12,EVENT,MQTT >>> started
+2019-04-20 13:21:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:21:15,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee2mqtt.csv'
+2019-04-20 13:21:15,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:21:15,EVENT,Snowboy >>> started
+2019-04-20 13:22:16,EVENT,MQTT >>> started
+2019-04-20 13:22:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:22:19,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee2mqtt.csv'
+2019-04-20 13:22:19,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:22:19,EVENT,Snowboy >>> started
+2019-04-20 13:22:30,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:22:30,ERROR,File >>> /logs/log_zigbee2mqtt.csv >>> 404: Not Found
+2019-04-20 13:24:10,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> created
+2019-04-20 13:24:13,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:24:24,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:26:38,EVENT,MQTT >>> started
+2019-04-20 13:26:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:26:41,EVENT,Snowboy >>> started
+2019-04-20 13:26:44,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:26:47,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:26:55,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:27:14,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:28:01,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:29:14,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:29:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:29:43,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:30:38,EVENT,MQTT >>> started
+2019-04-20 13:30:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:30:41,EVENT,Snowboy >>> started
+2019-04-20 13:30:43,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:30:48,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:30:52,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:31:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:32:21,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 13:33:29,EVENT,MQTT >>> started
+2019-04-20 13:33:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:33:33,EVENT,Snowboy >>> started
+2019-04-20 13:33:34,EVENT,Database >>> ZigBee2MQTT Device >>> 0x0017880104878b88 >>> changed >>> Name: Test /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-20 13:33:35,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:33:53,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:34:52,EVENT,MQTT >>> started
+2019-04-20 13:34:52,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:34:55,EVENT,Snowboy >>> started
+2019-04-20 13:34:57,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:35:01,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:35:30,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:40:40,EVENT,MQTT >>> started
+2019-04-20 13:40:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:40:43,EVENT,Snowboy >>> started
+2019-04-20 13:45:30,EVENT,MQTT >>> started
+2019-04-20 13:45:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:45:33,EVENT,Snowboy >>> started
+2019-04-20 13:45:43,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:47:58,EVENT,MQTT >>> started
+2019-04-20 13:47:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:47:59,EVENT,Snowboy >>> started
+2019-04-20 13:48:40,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:49:31,EVENT,MQTT >>> started
+2019-04-20 13:49:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:49:35,EVENT,Snowboy >>> started
+2019-04-20 13:52:26,EVENT,MQTT >>> started
+2019-04-20 13:52:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:52:30,EVENT,Snowboy >>> started
+2019-04-20 13:52:56,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 13:52:56,EVENT,Snowboy >>> started
+2019-04-20 13:53:24,EVENT,MQTT >>> started
+2019-04-20 13:53:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:53:27,EVENT,Snowboy >>> started
+2019-04-20 13:54:09,EVENT,MQTT >>> started
+2019-04-20 13:54:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:54:13,EVENT,Snowboy >>> started
+2019-04-20 13:55:37,EVENT,MQTT >>> started
+2019-04-20 13:55:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:55:40,EVENT,Snowboy >>> started
+2019-04-20 13:57:56,EVENT,MQTT >>> started
+2019-04-20 13:57:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:58:00,EVENT,Snowboy >>> started
+2019-04-20 13:59:48,EVENT,MQTT >>> started
+2019-04-20 13:59:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 13:59:51,EVENT,Snowboy >>> started
+2019-04-20 14:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 14:00:03,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 14:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 14:00:06,EVENT,Task >>> test >>> started
+2019-04-20 14:00:10,SUCCESS,Task >>> test >>> successful
+2019-04-20 14:00:18,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-20 14:01:01,EVENT,MQTT >>> started
+2019-04-20 14:01:01,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:01:04,EVENT,Snowboy >>> started
+2019-04-20 14:01:50,EVENT,MQTT >>> started
+2019-04-20 14:01:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:01:54,EVENT,Snowboy >>> started
+2019-04-20 14:09:35,EVENT,MQTT >>> started
+2019-04-20 14:09:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:09:38,EVENT,Snowboy >>> started
+2019-04-20 14:28:09,EVENT,MQTT >>> started
+2019-04-20 14:28:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:28:12,EVENT,Snowboy >>> started
+2019-04-20 14:34:36,EVENT,MQTT >>> started
+2019-04-20 14:34:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:34:40,EVENT,Snowboy >>> started
+2019-04-20 14:41:33,EVENT,MQTT >>> started
+2019-04-20 14:41:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:41:36,EVENT,Snowboy >>> started
+2019-04-20 14:42:51,EVENT,MQTT >>> started
+2019-04-20 14:42:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:42:54,EVENT,Snowboy >>> started
+2019-04-20 14:43:59,EVENT,MQTT >>> started
+2019-04-20 14:43:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:44:02,EVENT,Snowboy >>> started
+2019-04-20 14:45:00,EVENT,MQTT >>> started
+2019-04-20 14:45:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:45:04,EVENT,Snowboy >>> started
+2019-04-20 14:46:25,EVENT,MQTT >>> started
+2019-04-20 14:46:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:46:29,EVENT,Snowboy >>> started
+2019-04-20 14:48:06,EVENT,MQTT >>> started
+2019-04-20 14:48:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:48:09,EVENT,Snowboy >>> started
+2019-04-20 14:49:08,EVENT,MQTT >>> started
+2019-04-20 14:49:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:49:12,EVENT,Snowboy >>> started
+2019-04-20 14:51:15,EVENT,MQTT >>> started
+2019-04-20 14:51:15,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:51:18,EVENT,Snowboy >>> started
+2019-04-20 14:52:21,EVENT,MQTT >>> started
+2019-04-20 14:52:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:52:24,EVENT,Snowboy >>> started
+2019-04-20 14:53:28,EVENT,MQTT >>> started
+2019-04-20 14:53:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:53:31,EVENT,Snowboy >>> started
+2019-04-20 14:54:43,EVENT,MQTT >>> started
+2019-04-20 14:54:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 14:54:46,EVENT,Snowboy >>> started
+2019-04-20 15:01:54,EVENT,MQTT >>> started
+2019-04-20 15:01:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 15:01:58,EVENT,Snowboy >>> started
+2019-04-20 15:03:27,EVENT,MQTT >>> started
+2019-04-20 15:03:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 15:03:30,EVENT,Snowboy >>> started
+2019-04-20 15:05:19,EVENT,MQTT >>> started
+2019-04-20 15:05:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 15:05:22,EVENT,Snowboy >>> started
+2019-04-20 16:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 16:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 16:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 16:00:07,EVENT,Task >>> test >>> started
+2019-04-20 16:00:11,SUCCESS,Task >>> test >>> successful
+2019-04-20 16:32:44,EVENT,MQTT >>> started
+2019-04-20 16:32:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:32:47,EVENT,Snowboy >>> started
+2019-04-20 16:34:04,EVENT,MQTT >>> started
+2019-04-20 16:34:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:34:07,EVENT,Snowboy >>> started
+2019-04-20 16:37:12,EVENT,MQTT >>> started
+2019-04-20 16:37:12,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:37:15,EVENT,Snowboy >>> started
+2019-04-20 16:40:19,EVENT,MQTT >>> started
+2019-04-20 16:40:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:40:22,EVENT,Snowboy >>> started
+2019-04-20 16:42:44,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 16:42:50,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 16:43:08,EVENT,Database >>> ZigBee2MQTT Device >>> Test >>> changed >>> Name: 0x0017880104878b88 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-20 16:43:09,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 16:43:20,EVENT,Database >>> ZigBee2MQTT Device >>> 0x0017880104878b88 >>> changed >>> Name: Test /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-20 16:43:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 16:44:55,EVENT,MQTT >>> started
+2019-04-20 16:44:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:44:59,EVENT,Snowboy >>> started
+2019-04-20 16:45:36,EVENT,MQTT >>> started
+2019-04-20 16:45:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:45:39,EVENT,Snowboy >>> started
+2019-04-20 16:47:26,EVENT,MQTT >>> started
+2019-04-20 16:47:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:47:30,EVENT,Snowboy >>> started
+2019-04-20 16:53:26,EVENT,MQTT >>> started
+2019-04-20 16:53:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:53:30,EVENT,Snowboy >>> started
+2019-04-20 16:56:37,EVENT,MQTT >>> started
+2019-04-20 16:56:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:56:41,EVENT,Snowboy >>> started
+2019-04-20 16:58:40,EVENT,MQTT >>> started
+2019-04-20 16:58:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 16:58:43,EVENT,Snowboy >>> started
+2019-04-20 17:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 17:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 17:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:00:07,EVENT,Task >>> test >>> started
+2019-04-20 17:00:10,SUCCESS,Task >>> test >>> successful
+2019-04-20 17:01:18,EVENT,MQTT >>> started
+2019-04-20 17:01:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:01:21,EVENT,Snowboy >>> started
+2019-04-20 17:03:22,EVENT,MQTT >>> started
+2019-04-20 17:03:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:03:26,EVENT,Snowboy >>> started
+2019-04-20 17:05:00,EVENT,MQTT >>> started
+2019-04-20 17:05:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:05:04,EVENT,Snowboy >>> started
+2019-04-20 17:06:13,EVENT,MQTT >>> started
+2019-04-20 17:06:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:06:17,EVENT,Snowboy >>> started
+2019-04-20 17:06:19,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:07:16,EVENT,MQTT >>> started
+2019-04-20 17:07:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:07:16,EVENT,Snowboy >>> started
+2019-04-20 17:07:30,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:08:57,EVENT,MQTT >>> started
+2019-04-20 17:08:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:09:01,EVENT,Snowboy >>> started
+2019-04-20 17:09:28,EVENT,MQTT >>> started
+2019-04-20 17:09:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:09:32,EVENT,Snowboy >>> started
+2019-04-20 17:10:43,EVENT,MQTT >>> started
+2019-04-20 17:10:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:10:47,EVENT,Snowboy >>> started
+2019-04-20 17:12:09,EVENT,MQTT >>> started
+2019-04-20 17:12:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:12:13,EVENT,Snowboy >>> started
+2019-04-20 17:16:19,EVENT,MQTT >>> started
+2019-04-20 17:16:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:16:22,EVENT,Snowboy >>> started
+2019-04-20 17:16:35,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:16:56,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:18:51,EVENT,MQTT >>> started
+2019-04-20 17:18:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:18:55,EVENT,Snowboy >>> started
+2019-04-20 17:19:28,EVENT,MQTT >>> started
+2019-04-20 17:19:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:19:31,EVENT,Snowboy >>> started
+2019-04-20 17:22:05,EVENT,MQTT >>> started
+2019-04-20 17:22:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:22:09,EVENT,Snowboy >>> started
+2019-04-20 17:22:25,EVENT,MQTT >>> started
+2019-04-20 17:22:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:22:29,EVENT,Snowboy >>> started
+2019-04-20 17:23:22,EVENT,MQTT >>> started
+2019-04-20 17:23:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:23:25,EVENT,Snowboy >>> started
+2019-04-20 17:24:57,EVENT,MQTT >>> started
+2019-04-20 17:24:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:25:01,EVENT,Snowboy >>> started
+2019-04-20 17:25:23,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: scene:wohnzimmer:relax:100 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 17:26:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:26:02,ERROR,Task >>> MQTT aktuallisieren >>> Can't convert 'list' object to str implicitly
+2019-04-20 17:27:02,EVENT,MQTT >>> started
+2019-04-20 17:27:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:27:06,EVENT,Snowboy >>> started
+2019-04-20 17:28:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:28:01,ERROR,|Task >>> MQTT aktuallisieren >>> ['0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.']|
+2019-04-20 17:28:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:29:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:29:00,ERROR,Task >>> MQTT aktuallisieren >>> ['Keine LED-Steuerung aktiviert']
+2019-04-20 17:30:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:30:00,ERROR,Task >>> MQTT aktuallisieren >>> ['Keine LED-Steuerung aktiviert']
+2019-04-20 17:31:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:31:00,ERROR,Task >>> MQTT aktuallisieren >>> ['Keine LED-Steuerung aktiviert']
+2019-04-20 17:32:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:32:00,ERROR,Task >>> MQTT aktuallisieren >>> ['Keine LED-Steuerung aktiviert']
+2019-04-20 17:33:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:33:00,ERROR,Task >>> MQTT aktuallisieren >>> ['Keine LED-Steuerung aktiviert']
+2019-04-20 17:33:20,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:34:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:34:01,ERROR,|Task >>> MQTT aktuallisieren >>> ['0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.']|
+2019-04-20 17:35:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:35:01,ERROR,|Task >>> MQTT aktuallisieren >>> ['0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.']|
+2019-04-20 17:36:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:36:01,ERROR,|Task >>> MQTT aktuallisieren >>> ['0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.']|
+2019-04-20 17:36:56,EVENT,MQTT >>> started
+2019-04-20 17:36:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:36:59,EVENT,Snowboy >>> started
+2019-04-20 17:37:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:37:01,ERROR,|Task >>> MQTT aktuallisieren >>> '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-04-20 17:38:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:38:01,ERROR,|Task >>> MQTT aktuallisieren >>> '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-04-20 17:38:25,EVENT,MQTT >>> started
+2019-04-20 17:38:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 17:38:29,EVENT,Snowboy >>> started
+2019-04-20 17:38:57,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: led_off:all /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 17:39:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:39:01,ERROR,|Task >>> MQTT aktuallisieren >>> '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-04-20 17:40:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:41:00,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 17:41:36,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: update_mqtt_devices /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 17:42:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 17:42:47,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 18:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 18:00:03,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 18:00:03,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 18:00:06,EVENT,Task >>> test >>> started
+2019-04-20 18:00:11,SUCCESS,Task >>> test >>> successful
+2019-04-20 18:22:25,EVENT,MQTT >>> started
+2019-04-20 18:22:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:22:28,EVENT,Snowboy >>> started
+2019-04-20 18:22:58,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> added >>> Task: watering_plants /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 18:23:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:23:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:24:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:24:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:24:09,EVENT,MQTT >>> started
+2019-04-20 18:24:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:24:12,EVENT,Snowboy >>> started
+2019-04-20 18:25:00,EVENT,MQTT >>> started
+2019-04-20 18:25:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:25:03,EVENT,Snowboy >>> started
+2019-04-20 18:26:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:26:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:29:11,EVENT,MQTT >>> started
+2019-04-20 18:29:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:29:15,EVENT,Snowboy >>> started
+2019-04-20 18:30:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:30:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:31:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:31:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:32:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:32:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:33:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:33:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:34:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:34:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:35:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:35:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:36:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:36:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:36:47,EVENT,MQTT >>> started
+2019-04-20 18:36:47,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:36:51,EVENT,Snowboy >>> started
+2019-04-20 18:37:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:37:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:38:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:38:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:38:30,EVENT,MQTT >>> started
+2019-04-20 18:38:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:38:33,EVENT,Snowboy >>> started
+2019-04-20 18:39:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:39:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:39:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:39:49,EVENT,MQTT >>> started
+2019-04-20 18:39:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:39:53,EVENT,Snowboy >>> started
+2019-04-20 18:40:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:40:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:40:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:40:50,EVENT,MQTT >>> started
+2019-04-20 18:40:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:40:53,EVENT,Snowboy >>> started
+2019-04-20 18:41:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:41:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:41:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:42:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:42:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:42:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:43:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:43:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:43:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:43:58,EVENT,MQTT >>> started
+2019-04-20 18:43:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:44:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:44:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:44:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:44:02,EVENT,Snowboy >>> started
+2019-04-20 18:45:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:45:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:45:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:45:20,EVENT,MQTT >>> started
+2019-04-20 18:45:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:45:23,EVENT,Snowboy >>> started
+2019-04-20 18:46:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:46:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:46:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:47:00,EVENT,MQTT >>> started
+2019-04-20 18:47:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:47:04,EVENT,Snowboy >>> started
+2019-04-20 18:48:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:48:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:48:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:48:38,EVENT,MQTT >>> started
+2019-04-20 18:48:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:48:41,EVENT,Snowboy >>> started
+2019-04-20 18:49:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:49:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:49:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:49:44,EVENT,MQTT >>> started
+2019-04-20 18:49:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:49:48,EVENT,Snowboy >>> started
+2019-04-20 18:50:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:50:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:50:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:50:31,EVENT,MQTT >>> started
+2019-04-20 18:50:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:50:34,EVENT,Snowboy >>> started
+2019-04-20 18:51:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:51:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:51:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:52:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:52:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:52:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:52:58,EVENT,MQTT >>> started
+2019-04-20 18:52:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:53:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:53:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:53:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:53:02,EVENT,Snowboy >>> started
+2019-04-20 18:54:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 18:54:00,EVENT,Watering >>> Start Pumps
+2019-04-20 18:54:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 18:59:11,EVENT,MQTT >>> started
+2019-04-20 18:59:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 18:59:15,EVENT,Snowboy >>> started
+2019-04-20 19:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 19:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 19:00:04,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 19:00:04,EVENT,Watering >>> Start Pumps
+2019-04-20 19:00:05,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:00:10,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-20 19:00:10,EVENT,Task >>> test >>> started
+2019-04-20 19:00:14,SUCCESS,Task >>> test >>> successful
+2019-04-20 19:01:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:01:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:01:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:01:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:02:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:02:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:02:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:02:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:03:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:03:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:03:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:03:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:04:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:04:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:04:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:04:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:05:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:05:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:05:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:05:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:06:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:06:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:06:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:06:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:06:55,EVENT,MQTT >>> started
+2019-04-20 19:06:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:06:58,EVENT,Snowboy >>> started
+2019-04-20 19:07:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:07:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:07:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:07:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:08:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:08:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:08:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:08:05,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:08:22,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 19:08:23,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 19:08:38,SUCCESS,Watering >>> finished
+2019-04-20 19:09:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:09:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:09:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:09:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:09:22,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 19:09:23,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 19:09:38,SUCCESS,Watering >>> finished
+2019-04-20 19:09:53,EVENT,MQTT >>> started
+2019-04-20 19:09:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:09:57,EVENT,Snowboy >>> started
+2019-04-20 19:10:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:10:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:10:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:10:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:11:04,EVENT,MQTT >>> started
+2019-04-20 19:11:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:11:08,EVENT,Snowboy >>> started
+2019-04-20 19:12:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:12:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:12:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:12:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:13:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:13:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:13:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:13:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:13:21,EVENT,MQTT >>> started
+2019-04-20 19:13:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:13:24,EVENT,Snowboy >>> started
+2019-04-20 19:14:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:14:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:14:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:14:05,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:15:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:15:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:15:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:15:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:15:37,EVENT,MQTT >>> started
+2019-04-20 19:15:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:15:41,EVENT,Snowboy >>> started
+2019-04-20 19:16:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:16:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:16:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:16:29,EVENT,MQTT >>> started
+2019-04-20 19:16:29,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:16:33,EVENT,Snowboy >>> started
+2019-04-20 19:17:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:17:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:17:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:17:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:18:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:18:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:18:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:18:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:18:33,EVENT,MQTT >>> started
+2019-04-20 19:18:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:18:36,EVENT,Snowboy >>> started
+2019-04-20 19:19:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:19:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:19:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:19:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:19:44,EVENT,MQTT >>> started
+2019-04-20 19:19:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:19:47,EVENT,Snowboy >>> started
+2019-04-20 19:20:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:20:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:20:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:20:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:21:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:21:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:21:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:21:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:21:44,EVENT,MQTT >>> started
+2019-04-20 19:21:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:21:48,EVENT,Snowboy >>> started
+2019-04-20 19:22:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:22:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:22:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:22:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:22:48,EVENT,MQTT >>> started
+2019-04-20 19:22:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:22:52,EVENT,Snowboy >>> started
+2019-04-20 19:23:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:23:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:23:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:23:22,EVENT,MQTT >>> started
+2019-04-20 19:23:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:23:25,EVENT,Snowboy >>> started
+2019-04-20 19:24:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:24:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:24:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:24:06,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:24:34,EVENT,Database >>> Plant >>> gfdgfd >>> changed >>> Name: gfdgfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_3 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-20 19:24:40,EVENT,Database >>> Plant >>> sdsf >>> added
+2019-04-20 19:24:48,EVENT,Database >>> Plant >>> sdsf >>> changed >>> Name: sdsf /// MQTT-Device: 0x99999 /// Sensor:  sensor_5 /// Pump:  pump_3 /// Watervolume: 150 /// Control-Sensor: 
+2019-04-20 19:24:51,EVENT,Database >>> Plant >>> sdsf >>> changed >>> Name: sdsf /// MQTT-Device: 0x99999 /// Sensor:  sensor_5 /// Pump:  pump_3 /// Watervolume: 150 /// Control-Sensor: checked
+2019-04-20 19:25:04,EVENT,MQTT >>> started
+2019-04-20 19:25:04,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:25:08,EVENT,Snowboy >>> started
+2019-04-20 19:25:11,EVENT,Database >>> Plant >>> sdsf >>> changed >>> Name: sdsf /// MQTT-Device: 0x99999 /// Sensor:  sensor_5 /// Pump:  pump_1 /// Watervolume: 150 /// Control-Sensor: checked
+2019-04-20 19:26:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:26:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:26:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:26:06,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 19:26:10,EVENT,Watering >>> Start Pump  pump_1
+2019-04-20 19:27:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:27:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:27:01,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:27:06,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 19:27:11,EVENT,Watering >>> Start Pump  pump_1
+2019-04-20 19:27:27,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 19:27:28,EVENT,Watering >>> Stop Pump  pump_3
+2019-04-20 19:28:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:28:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:28:52,EVENT,MQTT >>> started
+2019-04-20 19:28:52,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 19:28:56,EVENT,Snowboy >>> started
+2019-04-20 19:29:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 19:29:00,EVENT,Watering >>> Start Pumps
+2019-04-20 19:29:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 19:29:05,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 19:29:10,EVENT,Watering >>> Start Pump  pump_1
+2019-04-20 20:18:51,EVENT,MQTT >>> started
+2019-04-20 20:18:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:18:55,EVENT,Snowboy >>> started
+2019-04-20 20:19:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:19:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:19:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:19:04,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 20:19:10,EVENT,Watering >>> Start Pump  pump_1
+2019-04-20 20:19:19,EVENT,Database >>> Taskmanagement (Time) >>> MQTT aktuallisieren >>> changed >>> Name: MQTT aktuallisieren /// Task: mqtt_update_devices /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 20:19:35,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 20:19:40,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 20:19:49,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-20 20:20:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:20:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:20:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:20:05,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 20:20:26,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 20:20:27,EVENT,Watering >>> Stop Pump  pump_3
+2019-04-20 20:20:31,EVENT,Database >>> User >>> test >>> changed >>> Username: test /// eMail: martin@gmx.de /// Role: user /// eMail-Info:  /// eMail-Error:  /// eMail-Camera: 
+2019-04-20 20:21:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:21:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:21:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:21:05,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 20:21:10,EVENT,Watering >>> Start Pump  pump_1
+2019-04-20 20:21:11,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> changed >>> Name: test_02 /// Task: watering_plants /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 20:22:26,EVENT,Watering >>> Stop Pump  pump_2
+2019-04-20 20:22:27,EVENT,Watering >>> Stop Pump  pump_3
+2019-04-20 20:22:59,EVENT,Watering >>> Stop Pump  pump_1
+2019-04-20 20:23:15,SUCCESS,Watering >>> finished
+2019-04-20 20:24:59,EVENT,Watering >>> Stop Pump  pump_1
+2019-04-20 20:25:15,SUCCESS,Watering >>> finished
+2019-04-20 20:31:58,EVENT,MQTT >>> started
+2019-04-20 20:31:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:32:01,EVENT,Snowboy >>> started
+2019-04-20 20:32:22,EVENT,MQTT >>> started
+2019-04-20 20:32:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:32:26,EVENT,Snowboy >>> started
+2019-04-20 20:34:59,EVENT,MQTT >>> started
+2019-04-20 20:34:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:35:03,EVENT,Snowboy >>> started
+2019-04-20 20:36:26,EVENT,MQTT >>> started
+2019-04-20 20:36:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:36:29,EVENT,Snowboy >>> started
+2019-04-20 20:39:35,EVENT,MQTT >>> started
+2019-04-20 20:39:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:39:38,EVENT,Snowboy >>> started
+2019-04-20 20:39:48,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> changed >>> Name: test_02 /// Task: watering_plants /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-20 20:40:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:40:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:40:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:40:05,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 20:40:24,EVENT,MQTT >>> started
+2019-04-20 20:40:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:40:28,EVENT,Snowboy >>> started
+2019-04-20 20:41:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:41:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:41:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:41:16,EVENT,MQTT >>> started
+2019-04-20 20:41:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:41:19,EVENT,Snowboy >>> started
+2019-04-20 20:42:00,EVENT,Task >>> test_02 >>> started
+2019-04-20 20:42:00,EVENT,Watering >>> Start Pumps
+2019-04-20 20:42:00,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 20:42:05,EVENT,Watering >>> Start Pump  pump_3
+2019-04-20 20:42:37,EVENT,MQTT >>> started
+2019-04-20 20:42:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:42:41,EVENT,Snowboy >>> started
+2019-04-20 20:42:46,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> changed >>> Name: test_02 /// Task: watering_plants /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-20 20:43:54,EVENT,Database >>> Snowboy Task >>> mediterran >>> changed >>> Name: mediterran /// Task: scene:wohnzimmer:relax:100
+2019-04-20 20:44:08,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:44:14,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:45:24,EVENT,MQTT >>> started
+2019-04-20 20:45:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:45:27,EVENT,Snowboy >>> started
+2019-04-20 20:45:30,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:46:58,EVENT,MQTT >>> started
+2019-04-20 20:46:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:47:01,EVENT,Snowboy >>> started
+2019-04-20 20:47:06,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:47:10,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:48:18,EVENT,MQTT >>> started
+2019-04-20 20:48:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:48:21,EVENT,Snowboy >>> started
+2019-04-20 20:48:24,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:48:28,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:48:36,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:48:38,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-20 20:49:16,EVENT,MQTT >>> started
+2019-04-20 20:49:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:49:20,EVENT,Snowboy >>> started
+2019-04-20 20:49:22,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 20:49:24,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-20 20:50:44,EVENT,MQTT >>> started
+2019-04-20 20:50:44,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 20:50:48,EVENT,Snowboy >>> started
+2019-04-20 21:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 21:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 21:00:04,EVENT,Task >>> test_02 >>> started
+2019-04-20 21:00:04,EVENT,Watering >>> Start Pumps
+2019-04-20 21:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 21:00:04,EVENT,Watering >>> Start Pump  pump_2
+2019-04-20 21:00:08,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-20 21:00:08,EVENT,Task >>> test >>> started
+2019-04-20 21:00:12,ERROR,Task >>> test >>> Expecting value: line 1 column 1 (char 0)
+2019-04-20 21:18:05,ERROR,File >>> /logs/log_zigbee.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee.csv'
+2019-04-20 21:18:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 21:18:58,EVENT,MQTT >>> started
+2019-04-20 21:18:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 21:20:25,EVENT,MQTT >>> started
+2019-04-20 21:20:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 21:20:28,EVENT,Snowboy >>> started
+2019-04-20 21:20:35,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 21:20:46,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 21:20:57,EVENT,Snowboy >>> Detection >>> snowboy_active

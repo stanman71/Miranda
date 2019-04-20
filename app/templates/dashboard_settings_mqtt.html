@@ -50,7 +50,7 @@
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li>          
             <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>       
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
             <li class={{active05}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
@@ -163,7 +163,7 @@
               </div>
               <div class="col-sm-3"> 
                 <form method="POST">
-                  <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="update_mqtt_devices" value="Verbindungen aktuallisieren" />
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/mqtt#table'" class="btn btn-default" name="mqtt_update_devices" value="Verbindungen aktuallisieren" />
                 </form>
               </div>
             </div>

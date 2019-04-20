@@ -50,7 +50,7 @@
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li>          
             <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>       
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
             <li class={{active05}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
@@ -63,44 +63,44 @@
 <!-- zigbee settings -->
   
     <div class="panel panel-default">
-      <div class="panel-heading"><font color="black"><b>ZigBee</b></font></div>
+      <div class="panel-heading"><font color="black"><b>ZigBee2MQTT</b></font></div>
         <div class="panel-body">   
           <form method="POST">  
             <div class="well well-sm">
               <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee">
+                  <input {{check_value_zigbee[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
                   <div class="state">
-                    <label>ZigBee aktivieren</label>
+                    <label>ZigBee2MQTT aktivieren</label>
                   </div>
                 </div>
                 <br>
                 <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee">
+                  <input {{check_value_zigbee[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
                 <div class="state">
-                  <label>ZigBee deaktivieren</label>
+                  <label>ZigBee2MQTT deaktivieren</label>
                 </div>
               </div>
             </div>
 
 <section id="table"></section>
 
-            <font color="red"><b>Um ZigBee nutzen zu können, muss MQTT aktiviert sein</b></font>       
+            <font color="red"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
             <br>     
             <br>                
-            <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#'" name="set_setting_zigbee" class="btn btn-default" value="Auswählen"/>
+            <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
           </form>  
         </div>  
       </div>    
 
-<!-- zigbee -->
+<!-- zigbee2mqtt -->
 
-{% if zigbee_setting != "False" %}
+{% if zigbee2mqtt_setting != "False" %}
 
-<!-- zigbee error messages -->
+<!-- zigbee2mqtt error messages -->
 
-{% if error_message_zigbee != "" %}
+{% if error_message_zigbee2mqtt != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_zigbee }}
+    {{ error_message_zigbee2mqtt }}
   </div>      
 {% endif %}   
 
@@ -127,7 +127,7 @@
                   <th scope="col">Letzter Kontakt</th>                                                 
                 </thead>
                 <tbody> 
-                  {% for entry in zigbee_device_list %}
+                  {% for entry in zigbee2mqtt_device_list %}
                   <tr>
                     <td>                     
                       <form method="POST" class="verticalform">  
@@ -151,23 +151,23 @@
                       </div>
                     </td>   
                     <td>{{ entry.last_contact }}</td>                      
-                    <td><a href="/dashboard/settings/zigbee/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
+                    <td><a href="/dashboard/settings/zigbee2mqtt/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-            <font color="red"><b>ZigBee Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
+            <font color="red"><b>ZigBee2MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
             <br>
             <br>
             <div class="row justify-content-md-center">
               <div class="col-sm-3">                
-                <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+                <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee2mqtt#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
               </form>
               </div>
               <div class="col-sm-3"> 
                 <form method="POST">
-                  <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#table'" class="btn btn-default" name="update_zigbee_devices" value="Verbindungen aktuallisieren" />
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee2mqtt#table'" class="btn btn-default" name="update_zigbee2mqtt_devices" value="Verbindungen aktuallisieren" />
                 </form>
               </div>
             </div>
@@ -196,7 +196,7 @@
                   </div>
                 </div>
               </div>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#pairing'" name="set_pairing" class="btn btn-default" value="Auswählen"/>
+              <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee2mqtt#pairing'" name="set_pairing" class="btn btn-default" value="Auswählen"/>
             </form>  
           </div>  
         </div>   
@@ -208,10 +208,10 @@
 
         <div class="panel panel-default">
           <div class="panel-body">  
-              <a href="/dashboard/settings/zigbee/download/log_zigbee.csv?time={{ timestamp }}"><b>ZigBee Log-Datei herunterladen</b></font></a>
+              <a href="/dashboard/settings/zigbee2mqtt/download/log_zigbee2mqtt.csv?time={{ timestamp }}"><b>ZigBee2MQTT Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
-              <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="ZigBee Log-Datei zurücksetzen">
+              <input type="submit" onclick="window.location.href='/dashboard/settings/zigbee2mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="ZigBee2MQTT Log-Datei zurücksetzen">
             </form>
           </div>        
         </div>  

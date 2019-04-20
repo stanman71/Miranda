@@ -87,6 +87,17 @@
             </ul>
           </div>
         </nav>
+        
+<!-- error message turn_off-->
+
+{% if error_message_turn_off != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_turn_off %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}
+   
 
 <!-- turn off leds -->     
 
@@ -125,7 +136,17 @@
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b>{{ entry.name }} (ID: {{ entry.id }})</b></font></div>    
             <div class="panel-body">   
-            <div class="well well-sm">       
+            <div class="well well-sm">     
+                
+<!-- error message -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}
 
 <!-- error message table -->
 

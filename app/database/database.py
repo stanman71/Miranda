@@ -150,16 +150,17 @@ class Sensordata_Jobs(db.Model):
     sensor_key       = db.Column(db.String(50)) 
     always_active    = db.Column(db.String(50))
 
-class Settings(db.Model):
-    __tablename__ = 'settings'
+class Global_Settings(db.Model):
+    __tablename__ = 'global_settings'
     id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
     setting_name  = db.Column(db.String(50), unique=True)
     setting_value = db.Column(db.String(50))   
 
-class Snowboy(db.Model):
-    __tablename__ = 'snowboy'
+class Snowboy_Settings(db.Model):
+    __tablename__ = 'snowboy_settings'
     id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
     sensitivity = db.Column(db.Integer)
+    delay       = db.Column(db.Integer)
 
 class Snowboy_Tasks(db.Model):
     __tablename__ = 'snowboy_tasks'
@@ -214,8 +215,8 @@ class User(UserMixin, db.Model):
     email_notification_error  = db.Column(db.String(20), server_default=(""))
     email_notification_camera = db.Column(db.String(20), server_default=(""))
 
-class ZigBee(db.Model):
-    __tablename__ = 'zigbee'
+class ZigBee2MQTT(db.Model):
+    __tablename__ = 'zigbee2mqtt'
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
     pairing = db.Column(db.String(50))
 
@@ -250,34 +251,35 @@ if Error_List.query.filter_by().first() is None:
     db.session.commit()
 
 
-# create default settings
-if Settings.query.filter_by().first() is None:
-    setting = Settings(
+# create default global settings
+if Global_Settings.query.filter_by().first() is None:
+    setting_mqtt = Global_Settings(
         setting_name  = "mqtt",
         setting_value = "False",
     )
-    db.session.add(setting)    
+    db.session.add(setting_mqtt)    
     db.session.commit()
     
-    setting = Settings(
-        setting_name  = "zigbee",
+    setting_zigbee2mqtt = Global_Settings(
+        setting_name  = "zigbee2mqtt",
         setting_value = "False",
     )
-    db.session.add(setting)    
+    db.session.add(setting_zigbee2mqtt)    
     db.session.commit()
 
-    setting = Settings(
+    setting_snowboy = Global_Settings(
         setting_name  = "snowboy",
         setting_value = "False",
     )
-    db.session.add(setting)    
+    db.session.add(setting_snowboy)    
     db.session.commit()
 
 
-# create default snowboy
-if Snowboy.query.filter_by().first() is None:
-    snowboy = Snowboy(
-        sensitivity  = "45",
+# create default snowboy settings
+if Snowboy_Settings.query.filter_by().first() is None:
+    snowboy = Snowboy_Settings(
+        sensitivity  = 45,
+        delay = 3,
     )
     db.session.add(snowboy)
     db.session.commit()
@@ -295,12 +297,12 @@ if User.query.filter_by(username='default').first() is None:
     db.session.commit()
 
 
-# create default zigbee
-if ZigBee.query.filter_by().first() is None:
-    zigbee = ZigBee(
+# create default zigbee2mqtt
+if ZigBee2MQTT.query.filter_by().first() is None:
+    zigbee2mqtt = ZigBee2MQTT(
         pairing = "False",
     )
-    db.session.add(zigbee)
+    db.session.add(zigbee2mqtt)
     db.session.commit()
 
 
@@ -383,6 +385,23 @@ def GET_ERROR_LIST():
     entry = Error_List.query.filter_by(id=1).first()
     return entry.content
 
+
+""" ################### """
+""" ################### """
+"""   global settings   """
+""" ################### """
+""" ################### """
+
+
+def GET_GLOBAL_SETTING_VALUE(name):
+    return Global_Settings.query.filter_by(setting_name=name).first().setting_value
+
+
+def SET_GLOBAL_SETTING_VALUE(name, value):
+    entry = Global_Settings.query.filter_by(setting_name=name).first()
+    entry.setting_value = value
+    db.session.commit()    
+    
 
 """ ################### """
 """ ################### """
@@ -835,15 +854,19 @@ def DELETE_LED_SCENE(id):
 """ ################### """
 
 
-def GET_MQTT_DEVICE(id):
+def GET_MQTT_DEVICE_BY_ID(id):
     return MQTT_Devices.query.filter_by(id=id).first()
+
+
+def GET_MQTT_DEVICE_BY_NAME(name):
+    return MQTT_Devices.query.filter_by(name=name).first()
 
 
 def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
     devices = MQTT_Devices.query.all()
     
-    if selector == "mqtt" or selector == "zigbee":
+    if selector == "mqtt" or selector == "zigbee2mqtt":
         for device in devices:
             if device.gateway == selector:
                 device_list.append(device)
@@ -865,10 +888,6 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     return device_list
         
-
-def GET_MQTT_DEVICE_NAME(id):
-    return MQTT_Devices.query.filter_by(id=id).first().name
-
 
 def GET_MQTT_DEVICE_INPUTS_BY_ID(id):
     return MQTT_Devices.query.filter_by(id=id).first().inputs   
@@ -914,7 +933,7 @@ def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     db.session.commit()       
 
 
-def SET_MQTT_DEVICE_MQTT(id, name):
+def SET_MQTT_DEVICE_TYPE_MQTT(id, name):
     entry = MQTT_Devices.query.filter_by(id=id).first()
 
     # values changed ?
@@ -929,7 +948,7 @@ def SET_MQTT_DEVICE_MQTT(id, name):
         db.session.commit()    
 
 
-def SET_MQTT_DEVICE_ZigBee(id, name, inputs):
+def SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(id, name, inputs):
     entry = MQTT_Devices.query.filter_by(id=id).first()
 
     # values changed ?
@@ -937,7 +956,7 @@ def SET_MQTT_DEVICE_ZigBee(id, name, inputs):
         
         entry.inputs = inputs
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> ZigBee2MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
                             name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
                             " /// Model: " + entry.model + " /// Inputs: " + inputs)
 
@@ -952,52 +971,52 @@ def DELETE_MQTT_DEVICE(id):
     entries = GET_ALL_PLANTS()
     for entry in entries:
         if entry.mqtt_device_id == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze >>> " + entry.name     
     
     # check sensordata
     entries = GET_ALL_SENSORDATA_JOBS()
     for entry in entries:
         if entry.mqtt_device_id == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job >>> " + entry.name  
         
     # check led groups
     entries = GET_ALL_LED_GROUPS()
     for entry in entries:
         if entry.led_id_1 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
         if entry.led_id_2 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name     
         if entry.led_id_3 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
         if entry.led_id_4 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
         if entry.led_id_5 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
         if entry.led_id_6 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name   
         if entry.led_id_7 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
         if entry.led_id_8 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name          
         if entry.led_id_9 == id:
-            device = GET_MQTT_DEVICE(id)
+            device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name                       
        
     if error_list != "":
         error_list = error_list[1:]
         SET_ERROR_LIST(error_list)           
     else:
-        entry = GET_MQTT_DEVICE(id)
+        entry = GET_MQTT_DEVICE_BY_ID(id)
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
  
         MQTT_Devices.query.filter_by(id=id).delete()
@@ -1182,37 +1201,19 @@ def DELETE_SENSORDATA_JOB(id, log = ""):
 
 """ ################### """
 """ ################### """
-"""      settings       """
-""" ################### """
-""" ################### """
-
-
-def GET_SETTING_VALUE(name):
-    entry = Settings.query.filter_by(setting_name=name).first()
-    return entry.setting_value
-
-
-def SET_SETTING_VALUE(name, value):
-    entry = Settings.query.filter_by(setting_name=name).first()
-    entry.setting_value = value
-    db.session.commit()    
-
-
-""" ################### """
-""" ################### """
 """      snowboy        """
 """ ################### """
 """ ################### """
 
 
-def GET_SNOWBOY_SENSITIVITY():
-    entry = Snowboy.query.filter_by().first()
-    return (entry.sensitivity)  
+def GET_SNOWBOY_SETTINGS():
+    return Snowboy_Settings.query.filter_by().first()
+    
 
-
-def SET_SNOWBOY_SENSITIVITY(value):
-    entry = Snowboy.query.filter_by().first()
-    entry.sensitivity = value
+def SET_SNOWBOY_SETTINGS(sensitivity, delay):
+    entry = Snowboy_Settings.query.filter_by().first()
+    entry.sensitivity = sensitivity
+    entry.delay = delay
     db.session.commit() 
 
 
@@ -1580,16 +1581,16 @@ def DELETE_USER(user_id):
 
 """ ################### """
 """ ################### """
-"""        zigbee       """
+"""     zigbee2mqtt     """
 """ ################### """
 """ ################### """
 
     
-def GET_ZIGBEE_PAIRING():
-    return ZigBee.query.filter_by().first().pairing
+def GET_ZIGBEE2MQTT_PAIRING():
+    return ZigBee2MQTT.query.filter_by().first().pairing
 
 
-def SET_ZIGBEE_PAIRING(setting):
-    entry = ZigBee.query.filter_by().first()
+def SET_ZIGBEE2MQTT_PAIRING(setting):
+    entry = ZigBee2MQTT.query.filter_by().first()
     entry.pairing = setting
     db.session.commit()

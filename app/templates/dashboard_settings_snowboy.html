@@ -50,7 +50,7 @@
         <div class="container-fluid">
           <ul class="nav navbar-nav">
             <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee') }}">ZigBee</a></li>          
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li>          
             <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>       
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
             <li class={{active05}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
@@ -68,7 +68,7 @@
           <form method="POST">
             <div class="well well-sm">  
  
-<section id="sensitivity"></section> 
+<section id="settings"></section> 
  
               <div class="pretty p-default p-round">
                 <input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">
@@ -104,7 +104,7 @@
       </div>      
     {% endif %}    
 
-<!-- snowboy sensitivity setting -->
+<!-- snowboy settings -->
 
       <div class="panel panel-default">
         <div class="panel-body">  
@@ -116,10 +116,20 @@
                 <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
               </div>
             </div>
+            <div class="well well-sm">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3">              
+                  Verzögerung (Sekunden):
+                </div>
+                <div class="col-sm-1">    
+                  <input type="text" class="form-control" name="set_delay" value="{% if delay != None %}{{ delay }}{% endif %}" /> 
+                </div>  
+              </div>
+            </div>
 
       <section id="table_tasks"></section> 
 
-            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#sensitivity'" class="btn btn-default" name="change_settings" value="Empfindlichkeit ändern" />       
+            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#settings'" class="btn btn-default" name="change_settings" value="Einstellungen ändern" />       
           </form>  
         </div>                    
       </div> 

@@ -2,10 +2,12 @@ import math
 import re
 import time
 import threading
+import json
 
 from app import app
 from app.database.database import *
 from app.components.mqtt import MQTT_PUBLISH
+from app.components.file_management import READ_LOGFILE_MQTT
 
 
 """ ############# """
@@ -14,7 +16,7 @@ from app.components.mqtt import MQTT_PUBLISH
 
 def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
-    if GET_SETTING_VALUE("zigbee") == "True":
+    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
         try:
             group = GET_LED_GROUP_BY_ID(group_id)
@@ -140,18 +142,24 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                     msg = '{"state": "OFF"}'
 
                 MQTT_PUBLISH(channel, msg) 
+                
+            time.sleep(1)
+                
+            return LED_CHECK_SETTING() 
 
-        except:
-            pass
+        except Exception as e:
+            return str(e)
+            
+    else:
+        return ["Keine LED-Steuerung aktiviert"]  
                 
 
 def LED_TURN_OFF_GROUP(group_id):
 
-    if GET_SETTING_VALUE("zigbee") == "True":
+    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
         try:
             group = GET_LED_GROUP_BY_ID(group_id)
-
 
             # led 1
             channel = "SmartHome/zigbee2mqtt/" + group.led_name_1 + "/set"
@@ -205,21 +213,40 @@ def LED_TURN_OFF_GROUP(group_id):
                 channel = "SmartHome/zigbee2mqtt/" + group.led_name_9 + "/set"
                 msg = '{"state": "OFF"}'
                 MQTT_PUBLISH(channel, msg) 
+            
+            time.sleep(1)
+            
+            return LED_CHECK_SETTING() 
 
-        except:
-            pass
+        except Exception as e:
+            return str(e)
+            
+    else:
+        return ["Keine LED-Steuerung aktiviert"]  
+        
 
 
 def LED_TURN_OFF_ALL():
     
-    if GET_SETTING_VALUE("zigbee") == "True":    
+    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":   
+        
+        try: 
+            leds = GET_ALL_MQTT_DEVICES("led")
 
-        leds = GET_ALL_MQTT_DEVICES("led")
+            for led in leds:
+                channel = "SmartHome/zigbee2mqtt/" + led.name + "/set"
+                msg = '{"state": "OFF"}'
+                MQTT_PUBLISH(channel, msg) 
+                
+            time.sleep(1)
+                
+            return LED_CHECK_SETTING() 
+            
+        except Exception as e:
+            return str(e)
 
-        for led in leds:
-            channel = "SmartHome/zigbee2mqtt/" + led.name + "/set"
-            msg = '{"state": "OFF"}'
-            MQTT_PUBLISH(channel, msg)         
+    else:
+        return ["Keine LED-Steuerung aktiviert"]  
 
 
 """ ################# """
@@ -235,36 +262,44 @@ def LED_START_PROGRAM_THREAD(group_id, program_id):
             self.name = name
 
         def run(self):
-            if GET_SETTING_VALUE("zigbee") == "True":
+            if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
+                
+                try:
+                    LED_TURN_OFF_GROUP(group_id)
 
-                LED_TURN_OFF_GROUP(group_id)
+                    content = GET_LED_PROGRAM_BY_ID(program_id).content
 
-                content = GET_LED_PROGRAM_BY_ID(program_id).content
+                    # select each command line
+                    for line in content.splitlines():
 
-                # select each command line
-                for line in content.splitlines():
+                        if "rgb" in line: 
+                            led_id = line.split(":")[0]
+                            rgb    = re.findall(r'\d+', line.split(":")[1])
+                            red    = rgb[0]
+                            green  = rgb[1]           
+                            blue   = rgb[2]  
+                            LED_PROGRAM_SET_RGB(group_id, led_id, red, green, blue)
+                            
+                        if "bri" in line: 
+                            led_id = line.split(":")[0]
+                            brightness = re.findall(r'\d+', line.split(":")[1])
+                            brightness = brightness[0]
+                            LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness)
 
-                    if "rgb" in line: 
-                        led_id = line.split(":")[0]
-                        rgb    = re.findall(r'\d+', line.split(":")[1])
-                        red    = rgb[0]
-                        green  = rgb[1]           
-                        blue   = rgb[2]  
-                        LED_PROGRAM_SET_RGB(group_id, led_id, red, green, blue)
-                        
-                    if "bri" in line: 
-                        led_id = line.split(":")[0]
-                        brightness = re.findall(r'\d+', line.split(":")[1])
-                        brightness = brightness[0]
-                        LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness)
-
-                    if "pause" in line: 
-                        break_value = line.split(":")
-                        break_value = int(break_value[1])
-                        time.sleep(break_value)
+                        if "pause" in line: 
+                            break_value = line.split(":")
+                            break_value = int(break_value[1])
+                            time.sleep(break_value)
+                            
+                    time.sleep(1)
                     
+                    return LED_CHECK_SETTING() 
+                    
+                except Exception as e:
+                    return str(e)
+                        
             else:
-                return "Keine LED-Steuerung"             
+                return ["Keine LED-Steuerung aktiviert"]           
             
     # start thread
     t1 = led_program_Thread()
@@ -396,3 +431,33 @@ def LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness):
         channel = "SmartHome/zigbee2mqtt/" + group.led_name_9 + "/set"
         msg     = '{"state": "ON", "brightness":' + str(brightness) + ',"transition": 3}}'
         MQTT_PUBLISH(channel, msg) 
+   
+        
+""" ################## """
+"""  check led setting """
+""" ################## """
+ 
+def LED_CHECK_SETTING():
+            
+    input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
+            
+    list_errors = []
+ 
+    if input_messages != "Message nicht gefunden":
+        for input_message in input_messages:
+            input_message = str(input_message[2])
+  
+            data = json.loads(input_message)
+            
+            if data["type"] == "zigbee_publish_error":
+                if (data["meta"]["entity"]["ID"]) not in list_errors:
+                    list_errors.append(data["meta"]["entity"]["ID"])
+                    list_errors.append(data["message"])
+                    
+    if list_errors != []:
+        return list_errors
+        
+    else:
+        return ""
+        
+        

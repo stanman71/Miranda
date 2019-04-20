@@ -33,6 +33,7 @@ def user_required(f):
 def dashboard_led_scenes():
     error_message = ""
     error_message_table = ""
+    error_message_turn_off = ""
 
     if request.method == "POST":
         for i in range (1,25):
@@ -309,17 +310,21 @@ def dashboard_led_scenes():
             if request.form.get("start_scene_" + str(i)) != None: 
                 group = request.form.get("group_" + str(i))
                 if group != "":
-                    LED_START_SCENE(int(group), i)            
+                    error_message = LED_START_SCENE(int(group), i)   
+                else:
+                    error_message = ["Keine Gruppe ausgewählt"]  
 
         # turn off group
         if request.form.get("turn_off_group") != None:
             if request.form.get("get_group") != "":
                 group = request.form.get("get_group") 
-                LED_TURN_OFF_GROUP(int(group))     
+                error_message_turn_off = LED_TURN_OFF_GROUP(int(group)) 
+            else:
+                error_message_turn_off = ["Keine Gruppe ausgewählt"]   
 
         # turn off all led
         if request.form.get("turn_off_all") != None:
-            LED_TURN_OFF_ALL()                   
+            error_message_turn_off = LED_TURN_OFF_ALL()                   
 
         # add scene
         if request.form.get("add_led_scene") != None:
@@ -334,6 +339,7 @@ def dashboard_led_scenes():
                             scenes_list=scenes_list,
                             error_message=error_message,
                             error_message_table=error_message_table,
+                            error_message_turn_off=error_message_turn_off,
                             dropdown_list_groups=dropdown_list_groups,
                             scenes="active",
                             role=current_user.role,

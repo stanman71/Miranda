@@ -156,8 +156,8 @@ def CHECK_TASKS(tasks, task_type):
       if task == "save_database" and task_type == "timer":
          continue
 
-      # check update_mqtt_devices
-      if task == "update_mqtt_devices" and task_type == "timer":
+      # check mqtt_update_devices
+      if task == "mqtt_update_devices" and task_type == "timer":
          continue
 
       # check request_sensordata

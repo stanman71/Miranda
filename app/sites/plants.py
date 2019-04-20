@@ -14,8 +14,7 @@ def user_required(f):
         if current_user.role == "user" or current_user.role == "superuser":
             return f(*args, **kwargs)
         else:
-            form = LoginForm()
-            return render_template('login.html', form=form, role_check=False)
+            return redirect(url_for('login'))
     return wrap
 
 
@@ -113,7 +112,7 @@ def dashboard_plants():
     error_message_table = CHECK_PLANTS()
 
     if set_mqtt_device_id != "":
-        set_mqtt_device_name = GET_MQTT_DEVICE_NAME(int(set_mqtt_device_id))   
+        set_mqtt_device_name = GET_MQTT_DEVICE_BY_ID(int(set_mqtt_device_id)).name  
      
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering")  
     dropdown_list_watervolume = [50, 100, 150, 200, 250, 300]

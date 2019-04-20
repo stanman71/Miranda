@@ -33,36 +33,75 @@ def SNOWBOY_TASKS(entry):
       class waiter(Thread):
          def run(self):
             global detect
-            time.sleep(1)
+            time.sleep(GET_SNOWBOY_SETTINGS().delay)
             snowboy_detect_on = False
             PIXEL_RING_CONTROL("off")
       waiter().start()
   
-   # start scene
-   if "start_scene" in entry.task and snowboy_detect_on == True:
-      task = entry.task.split(":")
+   
+   # start scene      
+   if "scene" in entry.task and snowboy_detect_on == True:
       try:
-            LED_SET_SCENE(int(task[1]), int(task[2]))
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")
+         task = entry.task.split(":")
+         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+         scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+         error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]
+            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy >>> Task >>> " + entry.name + " >>> " + error_message)     
+      
       except:
-            LED_SET_SCENE(int(task[1]))
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")
-
+         task = entry.task.split(":")
+         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+         scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
+         error_message = LED_START_SCENE(int(group_id), int(scene_id))   
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]                    
+            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy >>> Task >>> " + entry.name + " >>> " + error_message)
+      
+   
    # start program
-   if "start_program" in entry.task and snowboy_detect_on == True:
+   if "program" in entry.task and snowboy_detect_on == True:
       task = entry.task.split(":")
-      START_PROGRAM(int(task[1]))
-      snowboy_detect_on = False
-      PIXEL_RING_CONTROL("off")
+      group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+      program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
+      error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
+      
+      if error_message != "":
+         error_message = str(error_message)
+         error_message = error_message[1:]
+         error_message = error_message[:-1]                    
+         WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy >>> Task >>> " + entry.name + " >>> " + error_message)
 
-   # turn off leds
+         
+   # led off
    if "led_off" in entry.task and snowboy_detect_on == True:
       task = entry.task.split(":")
-      LED_OFF(int(task[1]))   
-      snowboy_detect_on = False 
-      PIXEL_RING_CONTROL("off")
+      if task[1] == "group":
+         group_id = GET_LED_GROUP_BY_NAME(task[2]).id
+         error_message = LED_TURN_OFF_GROUP(int(group_id))
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]                    
+            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy >>> Task >>> " + entry.name + " >>> " + error_message)   
+  
+
+      if task[1] == "all":
+         error_message = LED_TURN_OFF_ALL()   
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]                    
+            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy >>> Task >>> " + entry.name + " >>> " + error_message)
 
 
 """ ######### """
@@ -160,13 +199,27 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
                try:
                   task = entry.task.split(":")
                   group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id
-                  LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))   
+                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+                  error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
+                  
+                  if error_message != "":
+                     error_message = str(error_message)
+                     error_message = error_message[1:]
+                     error_message = error_message[:-1]
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+                   
                except:
                   task = entry.task.split(":")
                   group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id
-                  LED_START_SCENE(int(group_id), int(scene_id))       
+                  scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
+                  error_message = LED_START_SCENE(int(group_id), int(scene_id))   
+                  
+                  if error_message != "":
+                     error_message = str(error_message)
+                     error_message = error_message[1:]
+                     error_message = error_message[:-1]                    
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+                      
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -177,7 +230,14 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
                task = entry.task.split(":")
                group_id = GET_LED_GROUP_BY_NAME(task[1]).id
                program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
-               LED_START_PROGRAM_THREAD(int(group_id), int(program_id))   
+               error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
+               
+               if error_message != "":
+                  error_message = str(error_message)
+                  error_message = error_message[1:]
+                  error_message = error_message[:-1]                    
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+                
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -188,9 +248,23 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
                task = entry.task.split(":")
                if task[1] == "group":
                   group_id = GET_LED_GROUP_BY_NAME(task[2]).id
-                  LED_TURN_OFF_GROUP(int(group_id))
+                  error_message = LED_TURN_OFF_GROUP(int(group_id))
+                  
+                  if error_message != "":
+                     error_message = str(error_message)
+                     error_message = error_message[1:]
+                     error_message = error_message[:-1]                    
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)              
+                  
                if task[1] == "all":
-                  LED_TURN_OFF_ALL()    
+                  error_message = LED_TURN_OFF_ALL()   
+                  
+                  if error_message != "":
+                     error_message = str(error_message)
+                     error_message = error_message[1:]
+                     error_message = error_message[:-1]                    
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)
+                   
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -206,15 +280,23 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
          try:    
             # save database               
             if "save_database" in entry.task:
-               SAVE_DATABASE()     
+               error_message = SAVE_DATABASE()  
+               if error_message == "":
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Task >>> " + entry.name + " >>> successful")
+               else:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)                   
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))     
 
          try:
             # update mqtt devices
-            if "update_mqtt_devices" in entry.task:
-               UPDATE_MQTT_DEVICES("mqtt")
+            if "mqtt_update_devices" in entry.task:
+               error_message = MQTT_UPDATE_DEVICES("mqtt")
+               if error_message == "":
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Task >>> " + entry.name + " >>> successful")
+               else:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + error_message)              
          except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "Task >>> " + entry.name + " >>> " + str(e))      
@@ -223,7 +305,7 @@ def TASKMANAGEMENT_TIME_TASKS(entries):
          try:
             if "request_sensordata" in entry.task:
                task = entry.task.split(":")
-               error_message = REQUEST_MQTT_SENSORDATA(int(task[1]))          
+               error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
                if error_message == "":
                   WRITE_LOGFILE_SYSTEM("SUCCESS", "Task >>> " + entry.name + " >>> successful")
                else:
