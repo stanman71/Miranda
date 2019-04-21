@@ -146,8 +146,8 @@ class Plants(db.Model):
     sensor_key     = db.Column(db.String(50))
     control_sensor = db.Column(db.String(50))     
 
-class Scheduler_Time(db.Model):
-    __tablename__ = 'scheduler_time'
+class Scheduler_Time_Tasks(db.Model):
+    __tablename__ = 'scheduler_time_tasks'
     id     = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name   = db.Column(db.String(50), unique=True)
     day    = db.Column(db.String(50))
@@ -156,8 +156,8 @@ class Scheduler_Time(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
-class Scheduler_Sensor(db.Model):
-    __tablename__ = 'scheduler_sensor'
+class Scheduler_Sensor_Tasks(db.Model):
+    __tablename__ = 'scheduler_sensor_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name                 = db.Column(db.String(50), unique=True)
     task                 = db.Column(db.String(100))          
@@ -1129,28 +1129,28 @@ def DELETE_PLANT(plant_id, log = ""):
 
 
 def GET_SCHEDULER_TIME_TASK_BY_NAME(name):
-    return Scheduler_Time.query.filter_by(name=name).first()
+    return Scheduler_Time_Tasks.query.filter_by(name=name).first()
 
 
 def GET_SCHEDULER_TIME_TASK_BY_ID(id):
-    return Scheduler_Time.query.filter_by(id=id).first()
+    return Scheduler_Time_Tasks.query.filter_by(id=id).first()
 
 
 def GET_ALL_SCHEDULER_TIME_TASKS():
-    return Scheduler_Time.query.all()
+    return Scheduler_Time_Tasks.query.all()
 
 
 def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
     # name exist ?
-    check_entry = Scheduler_Time.query.filter_by(name=name).first()
+    check_entry = Scheduler_Time_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Scheduler_Time.query.filter_by(id=i).first():
+            if Scheduler_Time_Tasks.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                new_task = Scheduler_Time(
+                new_task = Scheduler_Time_Tasks(
                         id     = i,
                         name   = name,
                         task   = task,
@@ -1172,7 +1172,7 @@ def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
 
 
 def SET_SCHEDULER_TIME_TASK(id, name, task, day, hour, minute, repeat):       
-    entry = Scheduler_Time.query.filter_by(id=id).first()
+    entry = Scheduler_Time_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
@@ -1196,24 +1196,24 @@ def DELETE_SCHEDULER_TIME_TASK(task_id):
     entry = GET_SCHEDULER_TIME_TASK_BY_ID(task_id)
     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + entry.name + " >>> deleted")    
     
-    Scheduler_Time.query.filter_by(id=task_id).delete()
+    Scheduler_Time_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
 def GET_SCHEDULER_SENSOR_TASK_BY_NAME(name):
-    return Scheduler_Sensor.query.filter_by(name=name).first()
+    return Scheduler_Sensor_Tasks.query.filter_by(name=name).first()
 
 
 def GET_SCHEDULER_SENSOR_TASK_BY_ID(id):
-    return Scheduler_Sensor.query.filter_by(id=id).first()
+    return Scheduler_Sensor_Tasks.query.filter_by(id=id).first()
     
 
 def GET_ALL_SCHEDULER_SENSOR_TASKS():
-    return Scheduler_Sensor.query.all()
+    return Scheduler_Sensor_Tasks.query.all()
 
 
 def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
-    entries = Scheduler_Sensor.query.all()
+    entries = Scheduler_Sensor_Tasks.query.all()
     
     list_tasks = []
     
@@ -1286,15 +1286,15 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
 
 
 def ADD_SCHEDULER_SENSOR_TASK(name, task, log = ""):
-    check_entry = Scheduler_Sensor.query.filter_by(name=name).first()
+    check_entry = Scheduler_Sensor_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,25):
-            if Scheduler_Sensor.query.filter_by(id=i).first():
+            if Scheduler_Sensor_Tasks.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                new_task = Scheduler_Sensor(
+                new_task = Scheduler_Sensor_Tasks(
                         id             = i,
                         name           = name,
                         task           = task,                        
@@ -1311,7 +1311,7 @@ def ADD_SCHEDULER_SENSOR_TASK(name, task, log = ""):
 
 
 def ADD_SCHEDULER_SENSOR_TASK_OPTION(id):
-    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    entry = Scheduler_Sensor_Tasks.query.filter_by(id=id).first()
     operator_main_1 = entry.operator_main_1 
     operator_main_2 = entry.operator_main_2 
 
@@ -1326,7 +1326,7 @@ def ADD_SCHEDULER_SENSOR_TASK_OPTION(id):
 
 
 def REMOVE_SCHEDULER_SENSOR_TASK_OPTION(id):
-    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    entry = Scheduler_Sensor_Tasks.query.filter_by(id=id).first()
     operator_main_1 = entry.operator_main_1 
     operator_main_2 = entry.operator_main_2 
 
@@ -1346,7 +1346,7 @@ def SET_SCHEDULER_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name
                                                    mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                                    sensor_key_3, operator_3, value_3):        
                                                                                         
-    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    entry = Scheduler_Sensor_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
@@ -1412,7 +1412,7 @@ def DELETE_SCHEDULER_SENSOR_TASK(task_id, log = ""):
     if log == "":
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + entry.name + " >>> deleted")    
     
-    Scheduler_Sensor.query.filter_by(id=task_id).delete()
+    Scheduler_Sensor_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
