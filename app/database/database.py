@@ -860,6 +860,10 @@ def GET_MQTT_DEVICE_BY_ID(id):
 
 def GET_MQTT_DEVICE_BY_NAME(name):
     return MQTT_Devices.query.filter_by(name=name).first()
+    
+    
+def GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
+    return MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()   
 
 
 def GET_ALL_MQTT_DEVICES(selector):
@@ -933,11 +937,11 @@ def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     db.session.commit()       
 
 
-def SET_MQTT_DEVICE(device_type, id, name, inputs = 0):
+def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
 
     entry = MQTT_Devices.query.filter_by(id=id).first()
 
-    if device_type == "mqtt":
+    if gateway == "mqtt":
 
         # values changed ?
         if (entry.name != name):
@@ -951,7 +955,7 @@ def SET_MQTT_DEVICE(device_type, id, name, inputs = 0):
             db.session.commit()    
 
 
-    if device_type == "zigbee2mqtt":
+    if gateway == "zigbee2mqtt":
 
         # values changed ?
         if (entry.name != name or entry.inputs != inputs):
@@ -1215,57 +1219,66 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
     
     for entry in entries:
 
-        # check device 1
-        device_01 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_1)
+        try:
+            # check device 1
+            device_1 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_1)
+            
+            if (device_1.ieeeAddr == incoming_ieeeAddr or
+                device_1.ieeeAddr == incoming_ieeeAddr or
+                device_1.ieeeAddr == incoming_ieeeAddr):
+                
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id)
+                    
+            if (device_1.name == incoming_ieeeAddr or
+                device_1.name == incoming_ieeeAddr or
+                device_1.name == incoming_ieeeAddr):
+                
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id)        
+        except:
+            pass
+                
+        try:
+            # check device 2
+            device_2 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_2)
+            
+            if (device_2.ieeeAddr == incoming_ieeeAddr or
+                device_2.ieeeAddr == incoming_ieeeAddr or
+                device_2.ieeeAddr == incoming_ieeeAddr):
+                
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id)  
         
-        if (device_01.ieeeAddr == incoming_ieeeAddr or
-            device_01.ieeeAddr == incoming_ieeeAddr or
-            device_01.ieeeAddr == incoming_ieeeAddr):
-            
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id)
+            if (device_2.name == incoming_ieeeAddr or
+                device_2.name == incoming_ieeeAddr or
+                device_2.name == incoming_ieeeAddr):
                 
-        if (device_01.name == incoming_ieeeAddr or
-            device_01.name == incoming_ieeeAddr or
-            device_01.name == incoming_ieeeAddr):
-            
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id)               
-                
-        # check device 2
-        device_02 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_2)
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id)         
+        except:
+            pass
         
-        if (device_02.ieeeAddr == incoming_ieeeAddr or
-            device_02.ieeeAddr == incoming_ieeeAddr or
-            device_02.ieeeAddr == incoming_ieeeAddr):
+        try:
+            # check device 3
+            device_3 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_3)
             
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id)  
-    
-        if (device_02.name == incoming_ieeeAddr or
-            device_02.name == incoming_ieeeAddr or
-            device_02.name == incoming_ieeeAddr):
-            
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id)         
-    
-        # check device 3
-        device_03 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_3)
-        
-        if (device_03.ieeeAddr == incoming_ieeeAddr or
-            device_03.ieeeAddr == incoming_ieeeAddr or
-            device_03.ieeeAddr == incoming_ieeeAddr):
-            
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id) 
+            if (device_3.ieeeAddr == incoming_ieeeAddr or
+                device_3.ieeeAddr == incoming_ieeeAddr or
+                device_3.ieeeAddr == incoming_ieeeAddr):
                 
-        if (device_03.name == incoming_ieeeAddr or
-            device_03.name == incoming_ieeeAddr or
-            device_03.name == incoming_ieeeAddr):
-            
-            if entry.id not in list_tasks:
-                list_tasks.append(entry.id)  
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id) 
+                    
+            if (device_3.name == incoming_ieeeAddr or
+                device_3.name == incoming_ieeeAddr or
+                device_3.name == incoming_ieeeAddr):
                 
+                if entry.id not in list_tasks:
+                    list_tasks.append(entry.id)  
+        except:
+            pass
+            
     if list_tasks != []:
         return list_tasks
     else:

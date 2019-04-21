@@ -1,12 +1,11 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
-from flask_apscheduler import APScheduler
 from functools import wraps
 import datetime
 
 from app import app
 from app.database.database import *
-from app.components.tasks import *
+from app.components.scheduler_time import *
 from app.components.checks import *
 
 
@@ -24,15 +23,6 @@ def user_required(f):
 """ ############## """
 """ scheduler time """
 """ ############## """
-
-scheduler = APScheduler()
-scheduler.start()   
-
-@scheduler.task('cron', id='scheduler_job', minute='*')
-def scheduler_job():
-    entries = GET_ALL_SCHEDULER_TIME_TASKS()
-    SCHEDULER_TIME_TASKS(entries)
-
 
 @app.route('/dashboard/scheduler/time', methods=['GET', 'POST'])
 @login_required

@@ -9,7 +9,6 @@ import sys
 from app import app
 from app.components.led_control import *
 from app.database.database import *
-from app.components.tasks import MQTT_UPDATE_DEVICES
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
@@ -199,6 +198,7 @@ def dashboard_settings_zigbee2mqtt():
 
                                     else:
                                         error_message_table = "Name konnte in ZigBee2MQTT nicht verändert werden"
+                                        MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
                                 else:
                                     error_message_table = "Ohne eine Verbindung zu MQTT können die Namen der Geräte nicht verändert werden !"

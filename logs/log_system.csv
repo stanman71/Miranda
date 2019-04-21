@@ -8392,3 +8392,758 @@ Timestamp,Type,Description
 2019-04-21 14:52:26,EVENT,MQTT >>> started
 2019-04-21 14:52:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-04-21 14:52:30,EVENT,Snowboy >>> started
+2019-04-21 14:53:08,EVENT,MQTT >>> started
+2019-04-21 14:53:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:53:12,EVENT,Snowboy >>> started
+2019-04-21 14:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:55:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:56:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:57:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:58:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:59:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 15:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 15:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 15:00:11,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 15:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:01:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:02:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:03:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:04:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:05:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:06:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:07:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:07:17,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_0 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:07:26,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_0 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:08:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:09:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:10:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:11:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:12:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:13:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:14:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:15:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:16:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:25:53,EVENT,MQTT >>> started
+2019-04-21 15:25:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 15:25:57,EVENT,Snowboy >>> started
+2019-04-21 15:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:26:05,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:26:07,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:26:07,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:26:08,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:26:09,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_ /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:26:20,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_ >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:27:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:27:26,EVENT,MQTT >>> started
+2019-04-21 15:27:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 15:27:29,EVENT,Snowboy >>> started
+2019-04-21 15:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:28:01,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:28:03,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:28:05,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:28:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:28:07,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:28:08,ERROR,ZigBee2MQTT >>> string index out of range
+2019-04-21 15:28:10,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: gfdgfd
+2019-04-21 15:28:18,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:28:29,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_0 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:30:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:30:24,EVENT,MQTT >>> started
+2019-04-21 15:30:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 15:30:27,EVENT,Snowboy >>> started
+2019-04-21 15:30:38,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_0 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 15:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:31:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:32:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:33:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:34:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:36:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:38:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:39:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:40:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:41:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:43:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:44:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:45:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:46:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:47:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:48:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:49:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:50:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:51:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:52:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:53:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:55:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:56:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:57:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:58:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 15:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 15:59:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 16:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 16:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 16:00:11,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 16:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:01:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:02:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:03:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:04:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:05:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:06:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:07:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:08:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:09:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:10:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:11:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:12:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:13:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:14:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:15:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:16:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:17:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:18:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:19:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:20:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:21:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:22:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:23:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:24:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:25:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:26:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:27:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:28:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:30:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:31:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:32:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:33:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:34:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:36:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:38:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:39:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:40:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:41:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:43:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:44:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:45:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:46:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:47:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:48:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:49:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 16:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 16:50:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 17:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 17:29:02,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 17:29:03,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 17:29:04,ERROR,Scheduler >>> Time Task >>> test_01 >>> string index out of range
+2019-04-21 17:34:28,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 17:34:29,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 17:34:31,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 18:02:06,EVENT,MQTT >>> started
+2019-04-21 18:02:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:02:10,EVENT,Snowboy >>> started
+2019-04-21 18:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:03:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:04:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:05:17,EVENT,MQTT >>> started
+2019-04-21 18:05:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:05:21,EVENT,Snowboy >>> started
+2019-04-21 18:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:06:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:06:38,EVENT,MQTT >>> started
+2019-04-21 18:06:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:06:42,EVENT,Snowboy >>> started
+2019-04-21 18:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:07:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:08:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:08:38,EVENT,MQTT >>> started
+2019-04-21 18:08:38,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:08:42,EVENT,Snowboy >>> started
+2019-04-21 18:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:09:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:10:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:10:36,EVENT,MQTT >>> started
+2019-04-21 18:10:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:10:39,EVENT,Snowboy >>> started
+2019-04-21 18:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:11:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:18:26,EVENT,MQTT >>> started
+2019-04-21 18:18:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:18:29,EVENT,Snowboy >>> started
+2019-04-21 18:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:19:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:20:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:21:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:21:51,EVENT,MQTT >>> started
+2019-04-21 18:21:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:21:55,EVENT,Snowboy >>> started
+2019-04-21 18:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:22:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:23:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> string index out of range
+2019-04-21 18:23:03,EVENT,MQTT >>> started
+2019-04-21 18:23:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:23:07,EVENT,Snowboy >>> started
+2019-04-21 18:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:24:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:25:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:25:30,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 18:25:35,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 18:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:26:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:27:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:28:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:28:53,EVENT,MQTT >>> started
+2019-04-21 18:28:53,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:28:57,EVENT,Snowboy >>> started
+2019-04-21 18:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:30:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:30:30,EVENT,MQTT >>> started
+2019-04-21 18:30:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:30:33,EVENT,Snowboy >>> started
+2019-04-21 18:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:31:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:32:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:32:24,EVENT,MQTT >>> started
+2019-04-21 18:32:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:32:27,EVENT,Snowboy >>> started
+2019-04-21 18:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:33:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:34:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:36:02,EVENT,MQTT >>> started
+2019-04-21 18:36:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:36:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> string index out of range
+2019-04-21 18:36:06,EVENT,Snowboy >>> started
+2019-04-21 18:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:38:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:39:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:40:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:41:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:43:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:44:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:45:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:46:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:47:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:48:06,EVENT,MQTT >>> started
+2019-04-21 18:48:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:48:10,EVENT,Snowboy >>> started
+2019-04-21 18:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:49:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:50:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:51:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:52:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:53:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:54:55,EVENT,MQTT >>> started
+2019-04-21 18:54:55,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:54:59,EVENT,Snowboy >>> started
+2019-04-21 18:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:55:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:55:33,EVENT,MQTT >>> started
+2019-04-21 18:55:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:55:36,EVENT,Snowboy >>> started
+2019-04-21 18:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:56:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:57:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-21 18:57:13,EVENT,MQTT >>> started
+2019-04-21 18:57:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:57:17,EVENT,Snowboy >>> started
+2019-04-21 18:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:58:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 18:58:42,EVENT,MQTT >>> started
+2019-04-21 18:58:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 18:58:46,EVENT,Snowboy >>> started
+2019-04-21 18:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 18:59:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:00:57,EVENT,MQTT >>> started
+2019-04-21 19:00:57,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:01:02,EVENT,Snowboy >>> started
+2019-04-21 19:01:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:02:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:03:09,EVENT,MQTT >>> started
+2019-04-21 19:03:09,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:03:12,EVENT,Snowboy >>> started
+2019-04-21 19:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:04:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:05:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:05:41,EVENT,MQTT >>> started
+2019-04-21 19:05:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:05:45,EVENT,Snowboy >>> started
+2019-04-21 19:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:06:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:07:51,EVENT,MQTT >>> started
+2019-04-21 19:07:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:07:54,EVENT,Snowboy >>> started
+2019-04-21 19:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:08:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:09:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:10:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:10:49,EVENT,MQTT >>> started
+2019-04-21 19:10:49,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:10:52,EVENT,Snowboy >>> started
+2019-04-21 19:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:11:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:12:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:13:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:14:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:14:26,EVENT,MQTT >>> started
+2019-04-21 19:14:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:14:30,EVENT,Snowboy >>> started
+2019-04-21 19:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:15:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:16:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:16:58,EVENT,MQTT >>> started
+2019-04-21 19:16:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:17:04,EVENT,Snowboy >>> started
+2019-04-21 19:17:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:18:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:19:59,EVENT,MQTT >>> started
+2019-04-21 19:19:59,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:20:04,EVENT,Snowboy >>> started
+2019-04-21 19:20:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:21:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:22:11,EVENT,MQTT >>> started
+2019-04-21 19:22:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:22:15,EVENT,Snowboy >>> started
+2019-04-21 19:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:23:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:24:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:28:06,EVENT,MQTT >>> started
+2019-04-21 19:28:06,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:28:10,EVENT,Snowboy >>> started
+2019-04-21 19:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:30:11,EVENT,MQTT >>> started
+2019-04-21 19:30:11,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:30:15,EVENT,Snowboy >>> started
+2019-04-21 19:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:31:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:34:27,EVENT,MQTT >>> started
+2019-04-21 19:34:27,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:34:31,EVENT,Snowboy >>> started
+2019-04-21 19:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:36:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:36:37,EVENT,MQTT >>> started
+2019-04-21 19:36:37,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:36:40,EVENT,Snowboy >>> started
+2019-04-21 19:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:38:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:38:41,EVENT,MQTT >>> started
+2019-04-21 19:38:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:38:44,EVENT,Snowboy >>> started
+2019-04-21 19:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:39:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:40:13,EVENT,MQTT >>> started
+2019-04-21 19:40:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:40:16,EVENT,Snowboy >>> started
+2019-04-21 19:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:41:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:41:33,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 19:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:43:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:43:22,EVENT,MQTT >>> started
+2019-04-21 19:43:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:43:26,EVENT,Snowboy >>> started
+2019-04-21 19:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:44:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:45:16,EVENT,MQTT >>> started
+2019-04-21 19:45:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:45:20,EVENT,Snowboy >>> started
+2019-04-21 19:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:46:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:46:19,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 19:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:47:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:47:54,EVENT,MQTT >>> started
+2019-04-21 19:47:54,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:47:58,EVENT,Snowboy >>> started
+2019-04-21 19:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:48:17,EVENT,MQTT >>> started
+2019-04-21 19:48:17,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:48:20,EVENT,Snowboy >>> started
+2019-04-21 19:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:49:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:49:36,EVENT,MQTT >>> started
+2019-04-21 19:49:36,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:49:40,EVENT,Snowboy >>> started
+2019-04-21 19:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:50:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:50:12,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 19:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:51:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:52:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:52:21,EVENT,MQTT >>> started
+2019-04-21 19:52:21,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:52:25,EVENT,Snowboy >>> started
+2019-04-21 19:53:07,EVENT,MQTT >>> started
+2019-04-21 19:53:07,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:53:11,EVENT,Snowboy >>> started
+2019-04-21 19:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:54:24,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 19:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:55:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:55:39,EVENT,MQTT >>> started
+2019-04-21 19:55:39,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 19:55:43,EVENT,Snowboy >>> started
+2019-04-21 19:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:56:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:56:12,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 19:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:57:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:57:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 19:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:58:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:58:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 19:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 19:59:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 19:59:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 20:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 20:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 20:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 20:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:01:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:01:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:02:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:02:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:03:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:03:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:04:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:04:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:05:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:05:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:06:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:06:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:07:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:07:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:08:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:08:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:09:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:09:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:10:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:10:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:11:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:11:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:12:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:12:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:13:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:13:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:14:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:14:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:15:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:15:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:16:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:16:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:17:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:17:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:18:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:18:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:19:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:19:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:20:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:20:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:21:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:21:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:22:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:22:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:23:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:23:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:24:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:24:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:24:22,EVENT,MQTT >>> started
+2019-04-21 20:24:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 20:24:26,EVENT,Snowboy >>> started
+2019-04-21 20:24:30,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 20:24:37,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 20:24:39,EVENT,Snowboy >>> Detection Task >>> scene:wohnzimmer:relax:100
+2019-04-21 20:24:40,ERROR,|SnowBoy Task >>> mediterran >>> '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-04-21 20:24:51,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 20:24:56,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 20:24:58,EVENT,Snowboy >>> Detection Task >>> scene:wohnzimmer:relax:100
+2019-04-21 20:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:25:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:25:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:26:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:26:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:27:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:27:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:28:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:28:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:29:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:30:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:30:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:31:35,EVENT,MQTT >>> started
+2019-04-21 20:31:35,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 20:31:39,EVENT,Snowboy >>> started
+2019-04-21 20:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:32:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:32:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:33:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:33:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:34:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:34:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:35:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:36:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:36:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:37:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:38:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:38:06,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:39:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:39:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:40:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:40:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:41:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:41:06,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:42:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:43:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:43:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:44:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:44:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:45:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:45:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:46:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:46:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:47:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:47:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:48:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:48:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:49:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:49:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:50:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:50:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:51:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:51:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:52:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:52:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:53:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:53:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:54:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
