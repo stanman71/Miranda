@@ -22,22 +22,22 @@ def MQTT_START():
 		else:
 			WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
 				
-		device = message.topic
-		device = device.split("/")
-		device = device[2]
+		incoming_ieeeAddr = message.topic
+		incoming_ieeeAddr = incoming_ieeeAddr.split("/")
+		incoming_ieeeAddr = incoming_ieeeAddr[2]
 		
 	   # input sensor data 
-		if FIND_SENSORDATA_JOB_INPUT(device) != "":
-			list_jobs = FIND_SENSORDATA_JOB_INPUT(device)
+		if FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr) != "":
+			list_jobs = FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr)
 			for job in list_jobs:
 			   MQTT_SAVE_SENSORDATA(job)   
 			
-	   # sensor tasks	    
-		if FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device) != "":
-			tasks = FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device)
-			for task in tasks:
-			   print(task)
-			       
+	   # scheduler sensor 
+		if FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr) != "":
+			list_tasks = FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr)
+			print(list_tasks)
+			#SCHEDULER_SENSOR_TASK(list_tasks)
+
 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")
@@ -73,9 +73,9 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
       return "Keine Verbindung zu MQTT"
 	
 	
-def MQTT_CHECK():
-   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
-
+""" ################### """
+"""    update devices   """
+""" ################### """
 
 def MQTT_UPDATE_DEVICES(gateway):
    
@@ -157,6 +157,37 @@ def MQTT_UPDATE_DEVICES(gateway):
             WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> " + str(e))            
 
 
+""" ################### """
+"""    get sensordata   """
+""" ################### """
+
+def MQTT_GET_SENSORDATA(device_gateway, device_ieeeAddr, sensor_key):
+
+   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 5)
+
+   # message not found
+   if input_messages == "Message nicht gefunden":
+      channel = "SmartHome/" + device_gateway + "/" + device_ieeeAddr + "/get"
+      MQTT_PUBLISH(channel, "")    
+
+      time.sleep(1)
+
+      input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 5)    
+
+
+   if input_messages != "Message nicht gefunden":
+
+      for input_message in input_messages:
+         input_message = str(input_message[2])
+         
+         data = json.loads(input_message)
+         sensor_key = sensor_key.replace(" ", "")
+         return data[sensor_key]
+   
+   else:
+      return input_messages
+	  
+
 def MQTT_REQUEST_SENSORDATA(job_id):
    sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
    device_gateway  = sensordata_job.mqtt_device.gateway
@@ -206,6 +237,10 @@ def MQTT_SAVE_SENSORDATA(job_id):
    WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
    
    
+""" ################### """
+"""     stop outputs    """
+""" ################### """
+   
 def MQTT_STOP_ALL_OUTPUTS():
    devices = GET_ALL_MQTT_DEVICES("mqtt")
    
@@ -224,9 +259,3 @@ def MQTT_STOP_ALL_OUTPUTS():
             MQTT_PUBLISH(channel, msg)
             
             time.sleep(1)
-	    
-    
-	 
-      
-      
-      

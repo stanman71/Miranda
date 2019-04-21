@@ -82,15 +82,13 @@ def dashboard_plants():
                     else:
                         name = GET_PLANT_BY_ID(i).name 
                         error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                        
-                        
-                        
+                                              
                     mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))                           
-
 
                     if int(mqtt_device_id) == GET_PLANT_BY_ID(i).mqtt_device_id:
  
-                        sensor_key = request.form.get("set_sensor_" + str(i))            
-                        pump_key = request.form.get("set_pump_" + str(i))    
+                        sensor_key = request.form.get("set_sensor_" + str(i))         
+                        pump_key = request.form.get("set_pump_" + str(i))                          
                         watervolume = request.form.get("set_watervolume_" + str(i))
 
                         if request.form.get("set_control_sensor_" + str(i)):

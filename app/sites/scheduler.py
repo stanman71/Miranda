@@ -21,23 +21,23 @@ def user_required(f):
     return wrap
 
 
-""" ################### """
-""" taskmanagement time """
-""" ################### """
+""" ############## """
+""" scheduler time """
+""" ############## """
 
 scheduler = APScheduler()
 scheduler.start()   
 
 @scheduler.task('cron', id='scheduler_job', minute='*')
 def scheduler_job():
-    entries = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
-    TASKMANAGEMENT_TIME_TASKS(entries)
+    entries = GET_ALL_SCHEDULER_TIME_TASKS()
+    SCHEDULER_TIME_TASKS(entries)
 
 
-@app.route('/dashboard/taskmanagement/time', methods=['GET', 'POST'])
+@app.route('/dashboard/scheduler/time', methods=['GET', 'POST'])
 @login_required
 @user_required
-def dashboard_taskmanagement_time():
+def dashboard_scheduler_time():
     error_message = ""
     error_message_form = "" 
     error_message_tasks = ""
@@ -94,7 +94,7 @@ def dashboard_taskmanagement_time():
                 else:
                     repeat = ""
 
-                error_message = ADD_TASKMANAGEMENT_TIME_TASK(name, task, day, hour, minute, repeat)             
+                error_message = ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat)             
  
 
         # change settings
@@ -108,43 +108,43 @@ def dashboard_taskmanagement_time():
                     # ########
 
                     ### own name    
-                    if request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name:
-                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                    if request.form.get("set_name_" + str(i)) == GET_SCHEDULER_TIME_TASK_BY_ID(i).name:
+                        name = GET_SCHEDULER_TIME_TASK_BY_ID(i).name
                     ### set new name
                     elif (request.form.get("set_name_" + str(i)) != "" and 
-                        GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                        GET_SCHEDULER_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
                         name = request.form.get("set_name_" + str(i))  
                     ### name used
-                    elif GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))):
-                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                    elif GET_SCHEDULER_TIME_TASK_BY_NAME(request.form.get("set_name_" + str(i))):
+                        name = GET_SCHEDULER_TIME_TASK_BY_ID(i).name
                         error_message_form = name + " >>> Name schon vergeben"
                     ### name field empty
                     else:
-                        name = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).name
+                        name = GET_SCHEDULER_TIME_TASK_BY_ID(i).name
                               
                     ### set task
                     if request.form.get("set_task_" + str(i)) != "":
                         task = request.form.get("set_task_" + str(i))
                     else:
-                        task = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).task
+                        task = GET_SCHEDULER_TIME_TASK_BY_ID(i).task
 
                     ### set day
                     if request.form.get("set_day_" + str(i)) != "":
                         day = request.form.get("set_day_" + str(i))
                     else:
-                        day = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).day
+                        day = GET_SCHEDULER_TIME_TASK_BY_ID(i).day
 
                     ### set hour
                     if request.form.get("set_hour_" + str(i)) != "":
                         hour = request.form.get("set_hour_" + str(i))
                     else:
-                        hour = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).hour
+                        hour = GET_SCHEDULER_TIME_TASK_BY_ID(i).hour
 
                     ### set minute
                     if request.form.get("set_minute_" + str(i)) != "":
                         minute = request.form.get("set_minute_" + str(i))
                     else:
-                        minute = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(i).minute                                                                                      
+                        minute = GET_SCHEDULER_TIME_TASK_BY_ID(i).minute                                                                                      
                         
                     ### set checkbox
                     if request.form.get("checkbox_table_" + str(i)):
@@ -152,17 +152,17 @@ def dashboard_taskmanagement_time():
                     else:
                         repeat = ""  
 
-                    SET_TASKMANAGEMENT_TIME_TASK(i, name, task, day, hour, minute, repeat)
+                    SET_SCHEDULER_TIME_TASK(i, name, task, day, hour, minute, repeat)
 
 
-    error_message_settings = CHECK_ALL_TIMER_SETTINGS(GET_ALL_TASKMANAGEMENT_TIME_TASKS())
-    error_message_tasks    = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_TIME_TASKS(), "timer")
+    error_message_settings = CHECK_ALL_TIMER_SETTINGS(GET_ALL_SCHEDULER_TIME_TASKS())
+    error_message_tasks    = CHECK_TASKS(GET_ALL_SCHEDULER_TIME_TASKS(), "timer")
     
-    schedular_list = GET_ALL_TASKMANAGEMENT_TIME_TASKS()
+    scheduler_list = GET_ALL_SCHEDULER_TIME_TASKS()
 
 
-    return render_template('dashboard_taskmanagement_time.html',
-                            schedular_list=schedular_list,
+    return render_template('dashboard_scheduler_time.html',
+                            scheduler_list=scheduler_list,
                             error_message=error_message,
                             error_message_form=error_message_form,
                             error_message_tasks=error_message_tasks,
@@ -178,23 +178,23 @@ def dashboard_taskmanagement_time():
                             )
 
 
-# delete taskmanagement time tasks
-@app.route('/dashboard/taskmanagement/time/delete/<int:id>')
+# delete scheduler time tasks
+@app.route('/dashboard/scheduler/time/delete/<int:id>')
 @login_required
 @user_required
-def delete_schedular_task(id):
-    DELETE_TASKMANAGEMENT_TIME_TASK(id)
-    return redirect(url_for('dashboard_taskmanagement_time'))
+def delete_SCHEDULER_task(id):
+    DELETE_SCHEDULER_TIME_TASK(id)
+    return redirect(url_for('dashboard_scheduler_time'))
 
 
-""" ##################### """
-""" taskmanagement sensor """
-""" ##################### """
+""" ################ """
+""" scheduler sensor """
+""" ################ """
 
-@app.route('/dashboard/taskmanagement/sensor', methods=['GET', 'POST'])
+@app.route('/dashboard/scheduler/sensor', methods=['GET', 'POST'])
 @login_required
 @user_required
-def dashboard_taskmanagement_sensor():
+def dashboard_scheduler_sensor():
     error_message = ""
     error_message_table = ""
     error_message_form = ""
@@ -217,7 +217,7 @@ def dashboard_taskmanagement_sensor():
                 # add new task
                 name           = request.form.get("set_name")
                 task           = request.form.get("set_task")
-                error_message = ADD_TASKMANAGEMENT_SENSOR_TASK(name, task)             
+                error_message = ADD_SCHEDULER_SENSOR_TASK(name, task)             
  
         # change settings
         if request.form.get("change_settings") != None:
@@ -228,19 +228,19 @@ def dashboard_taskmanagement_sensor():
                     
                     # check name
                     if (request.form.get("set_name_" + str(i)) != "" and 
-                        GET_TASKMANAGEMENT_SENSOR_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                        GET_SCHEDULER_SENSOR_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
                         name = request.form.get("set_name_" + str(i))              
-                    elif request.form.get("set_name_" + str(i)) == GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name:
-                        name = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name                                               
+                    elif request.form.get("set_name_" + str(i)) == GET_SCHEDULER_SENSOR_TASK_BY_ID(i).name:
+                        name = GET_SCHEDULER_SENSOR_TASK_BY_ID(i).name                                               
                     else:
-                        name = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).name 
+                        name = GET_SCHEDULER_SENSOR_TASK_BY_ID(i).name 
                         error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben" 
                         
                     # check task
                     if request.form.get("set_task_" + str(i)) != "":
                         task = request.form.get("set_task_" + str(i))
                     else:
-                        task = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).task 
+                        task = GET_SCHEDULER_SENSOR_TASK_BY_ID(i).task 
                         error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                        
 
                     mqtt_device_id_1 = request.form.get("set_mqtt_device_id_1_" + str(i))
@@ -278,7 +278,7 @@ def dashboard_taskmanagement_sensor():
                         mqtt_device_name_1   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_1)).name
                         mqtt_device_inputs_1 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_1))
 
-                        if int(mqtt_device_id_1) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_1:
+                        if int(mqtt_device_id_1) != GET_SCHEDULER_SENSOR_TASK_BY_ID(i).mqtt_device_id_1:
                             sensor_key_1 = "None"
                         else:
                             sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
@@ -293,7 +293,7 @@ def dashboard_taskmanagement_sensor():
                         mqtt_device_name_2   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_2)).name
                         mqtt_device_inputs_2 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_2))
 
-                        if int(mqtt_device_id_2) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_2:
+                        if int(mqtt_device_id_2) != GET_SCHEDULER_SENSOR_TASK_BY_ID(i).mqtt_device_id_2:
                             sensor_key_2 = "None"
                         else:
                             sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
@@ -308,7 +308,7 @@ def dashboard_taskmanagement_sensor():
                         mqtt_device_name_3   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_3)).name
                         mqtt_device_inputs_3 = GET_MQTT_DEVICE_INPUTS_BY_ID(int(mqtt_device_id_3))
 
-                        if int(mqtt_device_id_3) != GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(i).mqtt_device_id_3:
+                        if int(mqtt_device_id_3) != GET_SCHEDULER_SENSOR_TASK_BY_ID(i).mqtt_device_id_3:
                             sensor_key_3 = "None"
                         else:
                             sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
@@ -318,7 +318,7 @@ def dashboard_taskmanagement_sensor():
                         mqtt_device_name_3 = "None"
                         mqtt_device_inputs_3 = "None"    
 
-                    SET_TASKMANAGEMENT_SENSOR_TASK(i, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
+                    SET_SCHEDULER_SENSOR_TASK(i, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                                                   sensor_key_1, operator_1, value_1, operator_main_1,
                                                                   mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                                                                   sensor_key_2, operator_2, value_2, operator_main_2,
@@ -326,16 +326,16 @@ def dashboard_taskmanagement_sensor():
                                                                   sensor_key_3, operator_3, value_3)
 
 
-    error_message_settings = CHECK_ALL_SENSOR_SETTINGS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS())
-    error_message_tasks    = CHECK_TASKS(GET_ALL_TASKMANAGEMENT_SENSOR_TASKS(), "sensor")
+    error_message_settings = CHECK_ALL_SENSOR_SETTINGS(GET_ALL_SCHEDULER_SENSOR_TASKS())
+    error_message_tasks    = CHECK_TASKS(GET_ALL_SCHEDULER_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators     = ["=", ">", "<", "not"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
-    schedular_list = GET_ALL_TASKMANAGEMENT_SENSOR_TASKS()
+    scheduler_list = GET_ALL_SCHEDULER_SENSOR_TASKS()
     
-    return render_template('dashboard_taskmanagement_sensor.html',
+    return render_template('dashboard_scheduler_sensor.html',
                             error_message=error_message,
                             error_message_table=error_message_table,
                             error_message_form=error_message_form,
@@ -344,7 +344,7 @@ def dashboard_taskmanagement_sensor():
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             dropdown_list_operator_main=dropdown_list_operator_main,
-                            schedular_list=schedular_list,
+                            scheduler_list=scheduler_list,
                             set_name=set_name,
                             set_task=set_task,
                             active02="active",
@@ -352,28 +352,28 @@ def dashboard_taskmanagement_sensor():
                             )
 
 
-# add taskmanagement time task option
-@app.route('/dashboard/taskmanagement/sensor/option/add/<int:id>')
+# add scheduler time task option
+@app.route('/dashboard/scheduler/sensor/option/add/<int:id>')
 @login_required
 @user_required
-def add_schedular_sensor(id):
-    ADD_TASKMANAGEMENT_SENSOR_TASK_OPTION(id)
-    return redirect(url_for('dashboard_taskmanagement_sensor'))
+def add_scheduler_sensor(id):
+    ADD_SCHEDULER_SENSOR_TASK_OPTION(id)
+    return redirect(url_for('dashboard_scheduler_sensor'))
 
 
-# remove taskmanagement time task option
-@app.route('/dashboard/taskmanagement/sensor/option/remove/<int:id>')
+# remove scheduler time task option
+@app.route('/dashboard/scheduler/sensor/option/remove/<int:id>')
 @login_required
 @user_required
-def remove_schedular_sensor(id):
-    REMOVE_TASKMANAGEMENT_SENSOR_TASK_OPTION(id)
-    return redirect(url_for('dashboard_taskmanagement_sensor'))
+def remove_scheduler_sensor(id):
+    REMOVE_SCHEDULER_SENSOR_TASK_OPTION(id)
+    return redirect(url_for('dashboard_scheduler_sensor'))
 
 
-# delete taskmanagement time tasks
-@app.route('/dashboard/taskmanagement/sensor/delete/<int:id>')
+# delete scheduler time tasks
+@app.route('/dashboard/scheduler/sensor/delete/<int:id>')
 @login_required
 @user_required
-def delete_schedular_sensor(id):
-    DELETE_TASKMANAGEMENT_SENSOR_TASK(id)
-    return redirect(url_for('dashboard_taskmanagement_sensor'))
+def delete_scheduler_sensor(id):
+    DELETE_SCHEDULER_SENSOR_TASK(id)
+    return redirect(url_for('dashboard_scheduler_sensor'))

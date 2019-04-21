@@ -8079,3 +8079,316 @@ Timestamp,Type,Description
 2019-04-21 03:45:14,EVENT,MQTT >>> started
 2019-04-21 03:45:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
 2019-04-21 03:45:18,EVENT,Snowboy >>> started
+2019-04-21 10:43:41,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:43:42,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:43:44,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:44:25,EVENT,|Database >>> MQTT Device >>> 0x88888 >>> changed >>> Name: 0x88800 /// Gateway: mqtt /// ieeeAddr: 0x88888 /// Model: envi_sensor /// Inputs: temperature, humidity, light /// Outputs: |
+2019-04-21 10:45:49,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:45:50,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:45:52,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:46:09,EVENT,|Database >>> MQTT Device >>> 0x88800 >>> changed >>> Name: 0x88888 /// Gateway: mqtt /// ieeeAddr: 0x88888 /// Model: envi_sensor /// Inputs: temperature, humidity, light /// Outputs: |
+2019-04-21 10:46:25,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:46:34,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:51:53,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:51:54,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:51:56,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:52:02,EVENT,|Database >>> MQTT Device >>> 0x88888 >>> changed >>> Name: 0x999990x99999 /// Gateway: mqtt /// ieeeAddr: 0x88888 /// Model: envi_sensor /// Inputs: temperature, humidity, light /// Outputs: |
+2019-04-21 10:52:23,EVENT,|Database >>> MQTT Device >>> 0x999990x99999 >>> changed >>> Name: 0x88888 /// Gateway: mqtt /// ieeeAddr: 0x88888 /// Model: envi_sensor /// Inputs: temperature, humidity, light /// Outputs: |
+2019-04-21 10:52:28,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:52:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:52:45,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_03 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 10:52:47,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:56:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:56:04,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:56:06,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:56:08,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:57:59,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:58:00,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:58:02,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:58:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:58:16,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:02,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 10:59:03,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:05,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 10:59:06,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:13,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 10:59:44,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 11:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-21 11:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-21 11:00:08,ERROR,Task >>> MQTT aktuallisieren >>> Keine Verbindung zu MQTT
+2019-04-21 11:00:08,EVENT,Task >>> test >>> started
+2019-04-21 11:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-21 11:04:52,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:04:53,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:04:55,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:05:01,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:05:05,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: ztr
+2019-04-21 11:05:07,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:05:13,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: rfsgfdgfd
+2019-04-21 11:05:15,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:05:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:06:33,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:06:34,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:06:36,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:06:38,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:06:43,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 11:06:43,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 11:06:45,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:06:51,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:07:00,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: fdsfds
+2019-04-21 11:07:02,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:07:19,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 11:07:21,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:08:18,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:08:19,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:08:21,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:12:28,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:12:32,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: gd
+2019-04-21 11:12:34,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:12:39,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 11:12:41,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:12:49,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:23:45,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:23:46,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:23:48,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:26:05,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:26:06,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:26:08,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:26:08,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:26:27,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:27:38,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:27:39,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:27:40,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:27:41,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:28:25,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:33:35,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:33:36,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:33:37,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:33:38,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:33:40,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:33:42,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:33:44,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:33:46,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:33:49,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:33:52,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:33:57,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:34:01,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:36:55,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 11:36:56,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 11:36:58,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:36:59,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:02,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:05,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:05,EVENT,Database >>> Plant >>> gfdgfd >>> changed >>> Name: gfdgfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_3 /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:06,EVENT,Database >>> Plant >>> gfdgfd >>> changed >>> Name: gfdgfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:10,EVENT,Database >>> Plant >>> gfdgfd >>> changed >>> Name: gfdgfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Pump:  pump_3 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:12,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:15,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:28,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:30,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:35,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-21 11:37:39,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-21 11:37:50,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 11:38:11,EVENT,Database >>> Taskmanagement (Sensor) >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: = /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 12:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 12:00:04,ERROR,Task >>> test_01 >>> string index out of range
+2019-04-21 12:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-21 12:00:08,ERROR,Task >>> MQTT aktuallisieren >>> Keine Verbindung zu MQTT
+2019-04-21 12:00:08,EVENT,Task >>> test >>> started
+2019-04-21 12:00:12,ERROR,Task >>> test >>> string index out of range
+2019-04-21 13:01:11,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:01:12,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:13:08,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:13:09,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:14:51,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:14:52,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:31:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:31:02,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:31:04,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:32:47,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: er /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:32:50,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: er /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:32:57,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: 45 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:33:00,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1: 45 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:33:12,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:33:15,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:33:18,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:35:03,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:35:04,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:35:06,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:35:11,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:35:13,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:35:15,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:43:46,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:43:47,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:43:49,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:43:50,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: < /// Value_1: 45 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:43:54,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 45 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:43:57,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: hgf /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:43:59,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:44:03,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:04,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:45:05,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:45:05,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: hgf /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:07,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:45:10,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: hgf /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:14,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gd /// MQTT-Device_1: 0x88888 /// Sensor_1: None /// Operator_1: = /// Value_1: hgf /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:27,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> added
+2019-04-21 13:45:31,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> deleted
+2019-04-21 13:45:47,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:51,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:54,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:45:57,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:46:00,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: gfd /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:46:18,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: gfd /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:46:22,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:49:45,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:49:46,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:49:48,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:49:54,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:49:59,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:51:42,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:51:43,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:51:45,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:51:46,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:51:57,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: > /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:52:02,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: > /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:52:09,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:52:26,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:52:28,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:52:33,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:07,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:53:08,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:53:10,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:53:17,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:19,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:22,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:24,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:27,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:31,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: = /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:53:42,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:55:01,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:55:02,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:55:02,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:55:04,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:55:06,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:55:11,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: tzr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:55:20,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-21 13:55:23,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: > /// Value_3: 
+2019-04-21 13:55:25,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: > /// Value_3: 65
+2019-04-21 13:55:29,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: = /// Value_3: 65
+2019-04-21 13:55:31,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: not /// Value_3: 65
+2019-04-21 13:55:34,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: 0x99999 /// Sensor_3: None /// Operator_3: not /// Value_3: 
+2019-04-21 13:55:35,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: 65 /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:55:45,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2: 65 /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:55:48,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: = /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:55:50,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:55:58,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1: 56 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:56:00,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:56:02,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:57:43,ERROR,|MQTT >>> [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-04-21 13:57:44,ERROR,ZigBee2MQTT >>> No connection
+2019-04-21 13:57:46,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-04-21 13:58:12,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: > /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:58:14,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: > /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 
+2019-04-21 13:58:17,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 
+2019-04-21 13:58:21,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: not /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: not /// Value_3: 
+2019-04-21 13:58:24,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: = /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 
+2019-04-21 13:58:27,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: = /// Value_2: ztr /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 565
+2019-04-21 13:58:30,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: not /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_1 /// Operator_2: < /// Value_2: ztr /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 565
+2019-04-21 14:00:00,EVENT,Scheduler >>> Time >>> Task >>> test_01 >>> started
+2019-04-21 14:00:04,ERROR,Scheduler >>> Time >>> Task >>> test_01 >>> string index out of range
+2019-04-21 14:00:04,EVENT,Scheduler >>> Time >>> Task >>> MQTT aktuallisieren >>> started
+2019-04-21 14:00:08,ERROR,Scheduler >>> Time >>> Task >>> MQTT aktuallisieren >>> Keine Verbindung zu MQTT
+2019-04-21 14:00:08,EVENT,Scheduler >>> Time >>> Task >>> test >>> started
+2019-04-21 14:00:12,ERROR,Scheduler >>> Time >>> Task >>> test >>> string index out of range
+2019-04-21 14:16:02,EVENT,MQTT >>> started
+2019-04-21 14:16:02,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:16:05,EVENT,Snowboy >>> started
+2019-04-21 14:16:13,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-21 14:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:17:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:18:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:18:50,EVENT,MQTT >>> started
+2019-04-21 14:18:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:18:53,EVENT,Snowboy >>> started
+2019-04-21 14:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:19:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:20:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-21 14:20:13,EVENT,MQTT >>> started
+2019-04-21 14:20:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:20:16,EVENT,Snowboy >>> started
+2019-04-21 14:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:21:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:22:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:23:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:24:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:25:01,EVENT,MQTT >>> started
+2019-04-21 14:25:01,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:25:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> string index out of range
+2019-04-21 14:25:04,EVENT,Snowboy >>> started
+2019-04-21 14:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:26:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:27:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:28:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:29:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:30:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:30:50,EVENT,MQTT >>> started
+2019-04-21 14:30:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:30:53,EVENT,Snowboy >>> started
+2019-04-21 14:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:31:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:32:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:32:43,EVENT,MQTT >>> started
+2019-04-21 14:32:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:32:47,EVENT,Snowboy >>> started
+2019-04-21 14:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:33:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:34:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:34:43,EVENT,MQTT >>> started
+2019-04-21 14:34:43,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:34:47,EVENT,Snowboy >>> started
+2019-04-21 14:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:35:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:36:42,EVENT,MQTT >>> started
+2019-04-21 14:36:42,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:36:46,EVENT,Snowboy >>> started
+2019-04-21 14:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:37:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:39:22,EVENT,MQTT >>> started
+2019-04-21 14:39:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:39:26,EVENT,Snowboy >>> started
+2019-04-21 14:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:40:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:41:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:41:18,EVENT,MQTT >>> started
+2019-04-21 14:41:18,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:41:22,EVENT,Snowboy >>> started
+2019-04-21 14:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:42:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:44:28,EVENT,MQTT >>> started
+2019-04-21 14:44:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:44:32,EVENT,Snowboy >>> started
+2019-04-21 14:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:45:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 14:46:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 14:52:26,EVENT,MQTT >>> started
+2019-04-21 14:52:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 14:52:30,EVENT,Snowboy >>> started

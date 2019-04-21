@@ -9,11 +9,11 @@ import sys
 from app import app
 from app.components.led_control import *
 from app.database.database import *
-from app.components.tasks import MQTT_UPDATE_DEVICES, MQTT_CHECK
+from app.components.tasks import MQTT_UPDATE_DEVICES
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
-from app.components.checks import CHECK_TASKS
+from app.components.checks import *
 
 
 # create role "superuser"
@@ -73,10 +73,17 @@ def dashboard_settings_mqtt():
         if request.form.get("change_settings") != None:    
             for i in range (1,25):
                 if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
-                    # rename devices
-                    new_name = request.form.get("set_name_" + str(i)) 
-                    SET_MQTT_DEVICE_TYPE_MQTT(i, new_name)
- 
+                                
+                    # rename devices                   
+                    new_name = request.form.get("set_name_" + str(i))
+                    old_name = GET_MQTT_DEVICE_BY_ID(i).name
+
+                    if new_name != old_name:          
+                        if not GET_MQTT_DEVICE_BY_NAME(new_name):                    
+                            SET_MQTT_DEVICE("mqtt", i, new_name)                         
+                        else: 
+                            error_message_table = "Name bereits vergeben >>> " + new_name
+
         # update device list
         if request.form.get("mqtt_update_devices") != None:
             MQTT_UPDATE_DEVICES("mqtt")
@@ -168,24 +175,42 @@ def dashboard_settings_zigbee2mqtt():
             # change settings
             if request.form.get("change_settings") != None:
                 for i in range (1,25):
-                    # set name + inputs
-                    if (request.form.get("set_name_" + str(i)) != "" and
-                        request.form.get("set_name_" + str(i)) != None):
+                    # set name
+                    if (request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None):
                             
                         new_name = request.form.get("set_name_" + str(i))
                         old_name = GET_MQTT_DEVICE_BY_ID(i).name 
                         
                         if new_name != old_name:
                         
+                            # name already exist
                             if not GET_MQTT_DEVICE_BY_NAME(new_name):
-                                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
-                                             '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
 
-                                inputs = request.form.get("set_inputs_" + str(i))         
-                                SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(i, new_name, inputs)
+                                # no connection to mqtt
+                                if MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
+                                                '{"old": "' + old_name + '", "new": "' + new_name + '"}') != "Keine Verbindung zu MQTT":
+
+                                    time.sleep(1)
+
+                                    # error in zigbee2mqtt
+                                    if MQTT_CHECK_NAME_CHANGED():
+                                        inputs = GET_MQTT_DEVICE_BY_ID(i).inputs        
+                                        SET_MQTT_DEVICE("zigbee2mqtt", i, new_name, inputs)
+
+                                    else:
+                                        error_message_table = "Name konnte in ZigBee2MQTT nicht verändert werden"
+
+                                else:
+                                    error_message_table = "Ohne eine Verbindung zu MQTT können die Namen der Geräte nicht verändert werden !"
                                 
                             else:
                                 error_message_table = "Name bereits vergeben >>> " + new_name
+
+                    # set inputs
+                    if request.form.get("set_inputs_" + str(i)) != None:                    
+                        name = GET_MQTT_DEVICE_BY_ID(i).name 
+                        inputs = request.form.get("set_inputs_" + str(i))         
+                        SET_MQTT_DEVICE("zigbee2mqtt", i, name, inputs)
                    
 
             # update device list

@@ -32,6 +32,12 @@ class Error_List(db.Model):
     id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
     content      = db.Column(db.String(100))
 
+class Global_Settings(db.Model):
+    __tablename__ = 'global_settings'
+    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    setting_name  = db.Column(db.String(50), unique=True)
+    setting_value = db.Column(db.String(50))   
+
 class LED_Groups(db.Model):
     __tablename__ = 'led_groups'
     id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -140,36 +146,8 @@ class Plants(db.Model):
     sensor_key     = db.Column(db.String(50))
     control_sensor = db.Column(db.String(50))     
 
-class Sensordata_Jobs(db.Model):
-    __tablename__  = 'sensordata_jobs'
-    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name             = db.Column(db.String(50), unique=True)
-    filename         = db.Column(db.String(50))
-    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device      = db.relationship('MQTT_Devices')  
-    sensor_key       = db.Column(db.String(50)) 
-    always_active    = db.Column(db.String(50))
-
-class Global_Settings(db.Model):
-    __tablename__ = 'global_settings'
-    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    setting_name  = db.Column(db.String(50), unique=True)
-    setting_value = db.Column(db.String(50))   
-
-class Snowboy_Settings(db.Model):
-    __tablename__ = 'snowboy_settings'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    sensitivity = db.Column(db.Integer)
-    delay       = db.Column(db.Integer)
-
-class Snowboy_Tasks(db.Model):
-    __tablename__ = 'snowboy_tasks'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name = db.Column(db.String(50), unique = True)
-    task = db.Column(db.String(100))
-
-class Taskmanagement_Time(db.Model):
-    __tablename__ = 'taskmanagement_time'
+class Scheduler_Time(db.Model):
+    __tablename__ = 'scheduler_time'
     id     = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name   = db.Column(db.String(50), unique=True)
     day    = db.Column(db.String(50))
@@ -178,8 +156,8 @@ class Taskmanagement_Time(db.Model):
     task   = db.Column(db.String(100))
     repeat = db.Column(db.String(50))
 
-class Taskmanagement_Sensor(db.Model):
-    __tablename__ = 'taskmanagement_sensor'
+class Scheduler_Sensor(db.Model):
+    __tablename__ = 'scheduler_sensor'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name                 = db.Column(db.String(50), unique=True)
     task                 = db.Column(db.String(100))          
@@ -203,6 +181,28 @@ class Taskmanagement_Sensor(db.Model):
     sensor_key_3         = db.Column(db.String(50))    
     value_3              = db.Column(db.String(100), server_default=(""))
     operator_3           = db.Column(db.String(50))   
+
+class Sensordata_Jobs(db.Model):
+    __tablename__  = 'sensordata_jobs'
+    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name             = db.Column(db.String(50), unique=True)
+    filename         = db.Column(db.String(50))
+    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
+    mqtt_device      = db.relationship('MQTT_Devices')  
+    sensor_key       = db.Column(db.String(50)) 
+    always_active    = db.Column(db.String(50))
+
+class Snowboy_Settings(db.Model):
+    __tablename__ = 'snowboy_settings'
+    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    sensitivity = db.Column(db.Integer)
+    delay       = db.Column(db.Integer)
+
+class Snowboy_Tasks(db.Model):
+    __tablename__ = 'snowboy_tasks'
+    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name = db.Column(db.String(50), unique = True)
+    task = db.Column(db.String(100))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -933,35 +933,37 @@ def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     db.session.commit()       
 
 
-def SET_MQTT_DEVICE_TYPE_MQTT(id, name):
+def SET_MQTT_DEVICE(device_type, id, name, inputs = 0):
+
     entry = MQTT_Devices.query.filter_by(id=id).first()
 
-    # values changed ?
-    if (entry.name != name):
+    if device_type == "mqtt":
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
-                            name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
-                            " /// Model: " + entry.model + " /// Inputs: " + str(entry.inputs) + " /// Outputs: " + 
-                            entry.outputs)
+        # values changed ?
+        if (entry.name != name):
 
-        entry.name = name
-        db.session.commit()    
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
+                                name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
+                                " /// Model: " + entry.model + " /// Inputs: " + str(entry.inputs) + " /// Outputs: " + 
+                                entry.outputs)
+
+            entry.name = name
+            db.session.commit()    
 
 
-def SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(id, name, inputs):
-    entry = MQTT_Devices.query.filter_by(id=id).first()
+    if device_type == "zigbee2mqtt":
 
-    # values changed ?
-    if (entry.name != name or entry.inputs != inputs):
-        
-        entry.inputs = inputs
-        
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> ZigBee2MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
-                            name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
-                            " /// Model: " + entry.model + " /// Inputs: " + inputs)
+        # values changed ?
+        if (entry.name != name or entry.inputs != inputs):
+            
+            entry.inputs = inputs
+            
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> ZigBee2MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
+                                name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
+                                " /// Model: " + entry.model + " /// Inputs: " + inputs)
 
-        entry.name = name
-        db.session.commit()    
+            entry.name = name
+            db.session.commit()    
 
 
 def DELETE_MQTT_DEVICE(id):
@@ -1092,10 +1094,17 @@ def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, contro
         
         db.session.commit()  
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
-                             " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
-                             " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " +
-                             entry.control_sensor)                
+        try:
+            # with pump_id
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
+                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
+                                " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " +
+                                entry.control_sensor)      
+        except:
+            # without pump_id
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
+                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
+                                " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " + entry.control_sensor)      
 
 
 def DELETE_PLANT(plant_id, log = ""):
@@ -1105,6 +1114,292 @@ def DELETE_PLANT(plant_id, log = ""):
         WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + entry.name + " >>> deleted")   
     
     Plants.query.filter_by(id=plant_id).delete()
+    db.session.commit()
+
+
+""" ################## """
+""" ################## """
+"""      scheduler     """
+""" ################## """
+""" ################## """
+
+
+def GET_SCHEDULER_TIME_TASK_BY_NAME(name):
+    return Scheduler_Time.query.filter_by(name=name).first()
+
+
+def GET_SCHEDULER_TIME_TASK_BY_ID(id):
+    return Scheduler_Time.query.filter_by(id=id).first()
+
+
+def GET_ALL_SCHEDULER_TIME_TASKS():
+    return Scheduler_Time.query.all()
+
+
+def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
+    # name exist ?
+    check_entry = Scheduler_Time.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Scheduler_Time.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                new_task = Scheduler_Time(
+                        id     = i,
+                        name   = name,
+                        task   = task,
+                        day    = day,
+                        hour   = hour,
+                        minute = minute,
+                        repeat = repeat,
+                    )
+                db.session.add(new_task)
+                db.session.commit()
+                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + name + " >>> added >>> Task: " + 
+                                     task + " /// Day: " + day + " /// Hour: " + str(hour) + " /// Minute: " + str(minute) + 
+                                     " /// Repeat: " +  repeat)                
+                
+                return ""
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_SCHEDULER_TIME_TASK(id, name, task, day, hour, minute, repeat):       
+    entry = Scheduler_Time.query.filter_by(id=id).first()
+    old_name = entry.name
+
+    # values changed ?
+    if (entry.name != name or entry.task != task or entry.day != day or entry.hour != hour 
+        or entry.minute != minute or entry.repeat != repeat):
+
+        entry.name = name
+        entry.task = task
+        entry.day = day
+        entry.hour = hour
+        entry.minute = minute
+        entry.repeat = repeat
+        db.session.commit()    
+
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + old_name + " >>> changed >>> Name: " + 
+                             entry.name + " /// Task: " + entry.task + " /// Day: " + entry.day + " /// Hour: " + 
+                             entry.hour + " /// Minute: " + entry.minute + " /// Repeat: " +  entry.repeat)
+
+
+def DELETE_SCHEDULER_TIME_TASK(task_id):
+    entry = GET_SCHEDULER_TIME_TASK_BY_ID(task_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + entry.name + " >>> deleted")    
+    
+    Scheduler_Time.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
+def GET_SCHEDULER_SENSOR_TASK_BY_NAME(name):
+    return Scheduler_Sensor.query.filter_by(name=name).first()
+
+
+def GET_SCHEDULER_SENSOR_TASK_BY_ID(id):
+    return Scheduler_Sensor.query.filter_by(id=id).first()
+    
+
+def GET_ALL_SCHEDULER_SENSOR_TASKS():
+    return Scheduler_Sensor.query.all()
+
+
+def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
+    entries = Scheduler_Sensor.query.all()
+    
+    list_tasks = []
+    
+    for entry in entries:
+
+        # check device 1
+        device_01 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_1)
+        
+        if (device_01.ieeeAddr == incoming_ieeeAddr or
+            device_01.ieeeAddr == incoming_ieeeAddr or
+            device_01.ieeeAddr == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id)
+                
+        if (device_01.name == incoming_ieeeAddr or
+            device_01.name == incoming_ieeeAddr or
+            device_01.name == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id)               
+                
+        # check device 2
+        device_02 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_2)
+        
+        if (device_02.ieeeAddr == incoming_ieeeAddr or
+            device_02.ieeeAddr == incoming_ieeeAddr or
+            device_02.ieeeAddr == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id)  
+    
+        if (device_02.name == incoming_ieeeAddr or
+            device_02.name == incoming_ieeeAddr or
+            device_02.name == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id)         
+    
+        # check device 3
+        device_03 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_3)
+        
+        if (device_03.ieeeAddr == incoming_ieeeAddr or
+            device_03.ieeeAddr == incoming_ieeeAddr or
+            device_03.ieeeAddr == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id) 
+                
+        if (device_03.name == incoming_ieeeAddr or
+            device_03.name == incoming_ieeeAddr or
+            device_03.name == incoming_ieeeAddr):
+            
+            if entry.id not in list_tasks:
+                list_tasks.append(entry.id)  
+                
+    if list_tasks != []:
+        return list_tasks
+    else:
+        return ""
+
+
+def ADD_SCHEDULER_SENSOR_TASK(name, task, log = ""):
+    check_entry = Scheduler_Sensor.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,25):
+            if Scheduler_Sensor.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                new_task = Scheduler_Sensor(
+                        id             = i,
+                        name           = name,
+                        task           = task,                        
+                    )
+                db.session.add(new_task)
+                db.session.commit()
+                
+                if log == "":
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + name + " >>> added")               
+                
+                return ""
+    else:
+        return "Name bereits vergeben"
+
+
+def ADD_SCHEDULER_SENSOR_TASK_OPTION(id):
+    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    operator_main_1 = entry.operator_main_1 
+    operator_main_2 = entry.operator_main_2 
+
+    if operator_main_1 == "None" or operator_main_1 == None:
+        entry.operator_main_1 = "and"
+        entry.operator_main_2 = "None"
+
+    if operator_main_1 != "None" and operator_main_1 != None:
+        entry.operator_main_2 = "and"
+
+    db.session.commit()
+
+
+def REMOVE_SCHEDULER_SENSOR_TASK_OPTION(id):
+    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    operator_main_1 = entry.operator_main_1 
+    operator_main_2 = entry.operator_main_2 
+
+    if operator_main_2 != "None":
+        entry.operator_main_2 = "None"
+
+    if operator_main_2 == "None" or operator_main_2 == None:
+        entry.operator_main_1 = "None"
+
+    db.session.commit()
+
+
+def SET_SCHEDULER_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
+                                                   sensor_key_1, operator_1, value_1, operator_main_1,
+                                                   mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                                   sensor_key_2, operator_2, value_2, operator_main_2,
+                                                   mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                                   sensor_key_3, operator_3, value_3):        
+                                                                                        
+    entry = Scheduler_Sensor.query.filter_by(id=id).first()
+    old_name = entry.name
+
+    # values changed ?
+    if (entry.name != name or entry.task != task or str(entry.mqtt_device_id_1) != mqtt_device_id_1 or
+        entry.sensor_key_1 != sensor_key_1 or entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
+        str(entry.mqtt_device_id_2) != mqtt_device_id_2 or entry.sensor_key_2 != sensor_key_2 or 
+        entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
+        str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
+        entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2):
+
+        entry.name = name        
+        entry.task = task
+        entry.mqtt_device_id_1 = mqtt_device_id_1
+        entry.mqtt_device_name_1 = mqtt_device_name_1
+        entry.mqtt_device_inputs_1 = mqtt_device_inputs_1
+        entry.sensor_key_1 = sensor_key_1
+        entry.operator_1 = operator_1
+        entry.value_1 = value_1
+        entry.operator_main_1=operator_main_1
+        entry.mqtt_device_id_2 = mqtt_device_id_2
+        entry.mqtt_device_name_2 = mqtt_device_name_2
+        entry.mqtt_device_inputs_2 = mqtt_device_inputs_2
+        entry.sensor_key_2 = sensor_key_2
+        entry.operator_2 = operator_2
+        entry.value_2 = value_2        
+        entry.operator_main_2=operator_main_2
+        entry.mqtt_device_id_3 = mqtt_device_id_3
+        entry.mqtt_device_name_3 = mqtt_device_name_3
+        entry.mqtt_device_inputs_3 = mqtt_device_inputs_3
+        entry.sensor_key_3 = sensor_key_3
+        entry.operator_3 = operator_3
+        entry.value_3 = value_3               
+        db.session.commit()    
+
+        if operator_main_1 == "not":
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
+                                  " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                  " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                  " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1)) 
+                                 
+        if operator_main_2 == "not":
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
+                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
+                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
+                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2))
+                                   
+        else:
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
+                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
+                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
+                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
+                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
+                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2) +
+                                 " /// MQTT-Device_3: " + mqtt_device_name_3 + " /// Sensor_3: " + sensor_key_3 + 
+                                 " /// Operator_3: " + str(operator_3) + " /// Value_3: " +  str(value_3))
+
+
+def DELETE_SCHEDULER_SENSOR_TASK(task_id, log = ""):
+    entry = GET_SCHEDULER_SENSOR_TASK_BY_ID(task_id)
+
+    if log == "":
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + entry.name + " >>> deleted")    
+    
+    Scheduler_Sensor.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
@@ -1127,13 +1422,13 @@ def GET_ALL_SENSORDATA_JOBS():
     return Sensordata_Jobs.query.all()
     
 
-def FIND_SENSORDATA_JOB_INPUT(device):
+def FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr):
     entries = Sensordata_Jobs.query.all()
     
     list_jobs = []
 
     for entry in entries:
-        if entry.mqtt_device.name == device and entry.always_active == "checked":
+        if entry.mqtt_device.ieeeAddr == incoming_ieeeAddr and entry.always_active == "checked":
             list_jobs.append(entry.id)
 
     return list_jobs
@@ -1275,243 +1570,6 @@ def DELETE_SNOWBOY_TASK(task_id):
     
     
     Snowboy_Tasks.query.filter_by(id=task_id).delete()
-    db.session.commit()
-
-
-""" ################## """
-""" ################## """
-"""   taskmanagement   """
-""" ################## """
-""" ################## """
-
-
-def GET_TASKMANAGEMENT_TIME_TASK_BY_NAME(name):
-    return Taskmanagement_Time.query.filter_by(name=name).first()
-
-
-def GET_TASKMANAGEMENT_TIME_TASK_BY_ID(id):
-    return Taskmanagement_Time.query.filter_by(id=id).first()
-
-
-def GET_ALL_TASKMANAGEMENT_TIME_TASKS():
-    return Taskmanagement_Time.query.all()
-
-
-def ADD_TASKMANAGEMENT_TIME_TASK(name, task, day, hour, minute, repeat):
-    # name exist ?
-    check_entry = Taskmanagement_Time.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,25):
-            if Taskmanagement_Time.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new task
-                new_task = Taskmanagement_Time(
-                        id     = i,
-                        name   = name,
-                        task   = task,
-                        day    = day,
-                        hour   = hour,
-                        minute = minute,
-                        repeat = repeat,
-                    )
-                db.session.add(new_task)
-                db.session.commit()
-                
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Time) >>> " + name + " >>> added >>> Task: " + 
-                                     task + " /// Day: " + day + " /// Hour: " + str(hour) + " /// Minute: " + str(minute) + 
-                                     " /// Repeat: " +  repeat)                
-                
-                return ""
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_TASKMANAGEMENT_TIME_TASK(id, name, task, day, hour, minute, repeat):       
-    entry = Taskmanagement_Time.query.filter_by(id=id).first()
-    old_name = entry.name
-
-    # values changed ?
-    if (entry.name != name or entry.task != task or entry.day != day or entry.hour != hour 
-        or entry.minute != minute or entry.repeat != repeat):
-
-        entry.name = name
-        entry.task = task
-        entry.day = day
-        entry.hour = hour
-        entry.minute = minute
-        entry.repeat = repeat
-        db.session.commit()    
-
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Time) >>> " + old_name + " >>> changed >>> Name: " + 
-                             entry.name + " /// Task: " + entry.task + " /// Day: " + entry.day + " /// Hour: " + 
-                             entry.hour + " /// Minute: " + entry.minute + " /// Repeat: " +  entry.repeat)
-
-
-def DELETE_TASKMANAGEMENT_TIME_TASK(task_id):
-    entry = GET_TASKMANAGEMENT_TIME_TASK_BY_ID(task_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Time) >>> " + entry.name + " >>> deleted")    
-    
-    Taskmanagement_Time.query.filter_by(id=task_id).delete()
-    db.session.commit()
-
-
-def GET_TASKMANAGEMENT_SENSOR_TASK_BY_NAME(name):
-    return Taskmanagement_Sensor.query.filter_by(name=name).first()
-
-
-def GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(id):
-    return Taskmanagement_Sensor.query.filter_by(id=id).first()
-    
-
-def GET_ALL_TASKMANAGEMENT_SENSOR_TASKS():
-    return Taskmanagement_Sensor.query.all()
-
-
-def FIND_TASKMANAGEMENT_SENSOR_TASK_INPUT(device):
-    entries = Taskmanagement_Sensor.query.all()
-    
-    list_tasks = []
-
-    for entry in entries:
-        if (entry.mqtt_device_name_1 == device or
-            entry.mqtt_device_name_2 == device or
-            entry.mqtt_device_name_3 == device):
-            
-            list_tasks.append(entry.id)
-
-    return list_tasks
-
-
-def ADD_TASKMANAGEMENT_SENSOR_TASK(name, task, log = ""):
-    check_entry = Taskmanagement_Sensor.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,25):
-            if Taskmanagement_Sensor.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new task
-                new_task = Taskmanagement_Sensor(
-                        id             = i,
-                        name           = name,
-                        task           = task,                        
-                    )
-                db.session.add(new_task)
-                db.session.commit()
-                
-                if log == "":
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + name + " >>> added")               
-                
-                return ""
-    else:
-        return "Name bereits vergeben"
-
-
-def ADD_TASKMANAGEMENT_SENSOR_TASK_OPTION(id):
-    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
-    operator_main_1 = entry.operator_main_1 
-    operator_main_2 = entry.operator_main_2 
-
-    if operator_main_1 == "None" or operator_main_1 == None:
-        entry.operator_main_1 = "and"
-        entry.operator_main_2 = "None"
-
-    if operator_main_1 != "None" and operator_main_1 != None:
-        entry.operator_main_2 = "and"
-
-    db.session.commit()
-
-
-def REMOVE_TASKMANAGEMENT_SENSOR_TASK_OPTION(id):
-    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
-    operator_main_1 = entry.operator_main_1 
-    operator_main_2 = entry.operator_main_2 
-
-    if operator_main_2 != "None":
-        entry.operator_main_2 = "None"
-
-    if operator_main_2 == "None" or operator_main_2 == None:
-        entry.operator_main_1 = "None"
-
-    db.session.commit()
-
-
-def SET_TASKMANAGEMENT_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
-                                                   sensor_key_1, operator_1, value_1, operator_main_1,
-                                                   mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
-                                                   sensor_key_2, operator_2, value_2, operator_main_2,
-                                                   mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
-                                                   sensor_key_3, operator_3, value_3):        
-                                                                                        
-    entry = Taskmanagement_Sensor.query.filter_by(id=id).first()
-    old_name = entry.name
-
-    # values changed ?
-    if (entry.name != name or entry.task != task or str(entry.mqtt_device_id_1) != mqtt_device_id_1 or
-        entry.sensor_key_1 != sensor_key_1 or entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
-        str(entry.mqtt_device_id_2) != mqtt_device_id_2 or entry.sensor_key_2 != sensor_key_2 or 
-        entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
-        str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
-        entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2):
-
-        entry.name = name        
-        entry.task = task
-        entry.mqtt_device_id_1 = mqtt_device_id_1
-        entry.mqtt_device_name_1 = mqtt_device_name_1
-        entry.mqtt_device_inputs_1 = mqtt_device_inputs_1
-        entry.sensor_key_1 = sensor_key_1
-        entry.operator_1 = operator_1
-        entry.value_1 = value_1
-        entry.operator_main_1=operator_main_1
-        entry.mqtt_device_id_2 = mqtt_device_id_2
-        entry.mqtt_device_name_2 = mqtt_device_name_2
-        entry.mqtt_device_inputs_2 = mqtt_device_inputs_2
-        entry.sensor_key_2 = sensor_key_2
-        entry.operator_2 = operator_2
-        entry.value_2 = value_2        
-        entry.operator_main_2=operator_main_2
-        entry.mqtt_device_id_3 = mqtt_device_id_3
-        entry.mqtt_device_name_3 = mqtt_device_name_3
-        entry.mqtt_device_inputs_3 = mqtt_device_inputs_3
-        entry.sensor_key_3 = sensor_key_3
-        entry.operator_3 = operator_3
-        entry.value_3 = value_3               
-        db.session.commit()    
-
-        if operator_main_1 == "not":
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
-                                  " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                  " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                  " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1)) 
-                                 
-        if operator_main_2 == "not":
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
-                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
-                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
-                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2))
-                                   
-        else:
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + old_name + 
-                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
-                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
-                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2) +
-                                 " /// MQTT-Device_3: " + mqtt_device_name_3 + " /// Sensor_3: " + sensor_key_3 + 
-                                 " /// Operator_3: " + str(operator_3) + " /// Value_3: " +  str(value_3))
-
-
-def DELETE_TASKMANAGEMENT_SENSOR_TASK(task_id, log = ""):
-    entry = GET_TASKMANAGEMENT_SENSOR_TASK_BY_ID(task_id)
-
-    if log == "":
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Taskmanagement (Sensor) >>> " + entry.name + " >>> deleted")    
-    
-    Taskmanagement_Sensor.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 

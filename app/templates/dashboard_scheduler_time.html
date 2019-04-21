@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_taskmanagement_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         {% if role == "superuser" %}
           <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
@@ -51,16 +51,16 @@
     <nav class="navbar navbar-default">
         <div class="container-fluid">
           <ul class="nav navbar-nav">
-            <li class={{active01}}><a href="{{ url_for('dashboard_taskmanagement_time') }}">Zeit</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_taskmanagement_sensor') }}">Sensor</a></li>          
+            <li class={{active01}}><a href="{{ url_for('dashboard_scheduler_time') }}">Zeit</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_scheduler_sensor') }}">Sensor</a></li>          
           </ul>
         </div>
       </nav>
 
-<!-- schedular table -->
+<!-- scheduler table -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Aufgabenplanung (Zeit)</b></font></div>
+        <div class="panel-heading"><font color="black"><b>Aufgabenplanung Zeit</b></font></div>
           <div class="panel-body">      
             <div class="well well-sm">
               
@@ -102,7 +102,7 @@
                   <th scope="col">Wiederholen</th> 
                 </thead>
                 <tbody> 
-                  {% for entry in schedular_list %}
+                  {% for entry in scheduler_list %}
                   <tr>
                     <td style="width:18%">
                       <form method="POST" class="verticalform">
@@ -130,13 +130,13 @@
                         </div>
                       </font>
                     </td>
-                    <td><a href="/dashboard/taskmanagement/time/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>  
+                    <td><a href="/dashboard/scheduler/time/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>  
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+              <input type="submit" onclick="window.location.href='/dashboard/scheduler/time#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
             </form> 
           </div>  
         </div>  
@@ -277,7 +277,7 @@
                   </div> 
                 </div>  
               </div>                     
-              <input type="submit" onclick="window.location.href='/dashboard/taskmanagement/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+              <input type="submit" onclick="window.location.href='/dashboard/scheduler/time#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
             </form> 
           </div>  
         </div>

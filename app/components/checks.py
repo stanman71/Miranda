@@ -13,7 +13,7 @@ def CHECK_PLANTS():
     entries = Plants.query.all()
     for entry in entries:
         if ((entry.sensor_key == "None" or entry.sensor_key == None) or
-            (entry.pump_key == "None" or entry.pump_key == None)):
+           ((entry.pump_key == "None" or entry.pump_key == None) and entry.control_sensor == "checked")):
             
             string_errors = string_errors + str(entry.name) + " "
      
@@ -301,22 +301,26 @@ def CHECK_ALL_SENSOR_SETTINGS(sensor_tasks):
                   list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
 
       # check values
-      if ((task.operator_1 == "<" or task.operator_1 == ">" or task.operator_1 == "=" or task.operator_1 == "None" or task.operator_1 == None) and 
-          (task.value_1 == "" or task.value_1 == "None" or task.value_1 == None)):
-         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")         
+      
+      if task.operator_1 != "not":
+         if task.value_1 == "" or task.value_1 == "None" or task.value_1 == None: 
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")       
+         elif (task.operator_1 == "<" or task.operator_1 == ">") and not task.value_1.isdigit():
+            list_errors_settings.append(task.name + " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden") 
 
-      if ((task.operator_2 == "<" or task.operator_2 == ">" or task.operator_2 == "=" or task.operator_1 == "None" or task.operator_2 == None) and 
-          (task.value_2 == "" or task.value_2 == "None" or task.value_2 == None)):
-         if task.operator_main_1 != "None" and task.operator_main_1 != None:
-            if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
-               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2") 
+      if task.operator_main_1 == "and" or task.operator_main_1 == "or":
+         if task.operator_2 != "not":
+            if task.value_2 == "" or task.value_2 == "None" or task.value_2 == None:
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")
+            elif (task.operator_2 == "<" or task.operator_2 == ">") and not task.value_2.isdigit():
+               list_errors_settings.append(task.name + " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")      
 
-      if ((task.operator_3 == "<" or task.operator_3 == ">" or task.operator_3 == "=" or task.operator_1 == "None" or task.operator_3 == None) and 
-          (task.value_3 == "" or task.value_3 == "None" or task.value_3 == None)):
-         if task.operator_main_1 != "None" and task.operator_main_1 != None:
-            if task.operator_main_2 != "None" and task.operator_main_2 != None:
-               if task.operator_main_2 != "<" and task.operator_main_2 != ">" and task.operator_main_2 != "=":
-                  list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3") 
+      if task.operator_main_2 == "and" or task.operator_main_2 == "or":
+         if task.operator_3 != "not":
+            if task.value_3 == "" or task.value_3 == "None" or task.value_3 == None:
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")
+            elif (task.operator_3 == "<" or task.operator_3 == ">") and not task.value_3.isdigit():
+               list_errors_settings.append(task.name + " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")     
 
    if list_errors_settings == []:
       error_message_settings = ""
@@ -353,3 +357,28 @@ def CHECK_LED_GROUP_SETTINGS(settings):
       return ""
    else:
       return list_errors
+
+
+""" ################### """
+"""     mqtt checks     """
+""" ################### """
+ 
+def MQTT_CHECK():
+   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
+
+
+def MQTT_CHECK_NAME_CHANGED():
+            
+   input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
+
+   if input_messages != "Message nicht gefunden":
+      for input_message in input_messages:
+         input_message = str(input_message[2])
+  
+         data = json.loads(input_message)
+            
+         if data["type"] == "device_renamed":
+            return True
+                    
+   else:
+      return False
