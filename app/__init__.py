@@ -131,3 +131,4 @@ if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
         if "signal only works in main thread" not in str(e): 
             print("Fehler in SnowBoy: " + str(e))
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
+            

@@ -108,6 +108,16 @@
 
       <div class="panel panel-default">
         <div class="panel-body">  
+          
+<!-- error message settings -->
+
+{% if error_message_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_settings }}
+  </div>      
+{% endif %}     
+          
+          
           <form method="POST">
             <div class="well well-sm">Empfindlichkeit: {{ sensitivity }}
             <br>
@@ -119,7 +129,7 @@
             <div class="well well-sm">
               <div class="row justify-content-md-center">
                 <div class="col-sm-3">              
-                  Verzögerung (Sekunden):
+                  Verzögerungswert (1 - 10 Sekunden):
                 </div>
                 <div class="col-sm-1">    
                   <input type="text" class="form-control" name="set_delay" value="{% if delay != None %}{{ delay }}{% endif %}" /> 
@@ -214,7 +224,7 @@
                 <tbody>
                   <tr>
                     <td>snowboy_active</td>
-                    <td>SnowBoy für weitere Befehle aktivieren, wird nach 1 Sekunde oder einem empfangenden Befehl wieder zurückgesetzt <br>
+                    <td>SnowBoy für weitere Befehle aktivieren, wird nach Ablauf des eingestellten Verzögerungswerts oder einem empfangenden Befehl wieder zurückgesetzt <br>
                         >>> Blaue LEDs vom Snowboy leuchten im aktiven Modus (bei Verwendung des ReSpeaker MicArrays)</td>
                   </tr> 
                   <tr>
@@ -223,7 +233,7 @@
                   </tr>
                   <tr>
                     <td>program:schlafzimmer:aufwachen</td>
-                    <td>starte LEDs der Gruppe "schlafzimmer" mit Szene "aufwachen"</td>
+                    <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
                   </tr>
                   <tr>
                     <td>led_off:group:flur</td>

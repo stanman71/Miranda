@@ -176,11 +176,16 @@ def dashboard_settings_zigbee2mqtt():
                         old_name = GET_MQTT_DEVICE_BY_ID(i).name 
                         
                         if new_name != old_name:
-                            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
-                                         '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
+                        
+                            if not GET_MQTT_DEVICE_BY_NAME(new_name):
+                                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
+                                             '{"old": "' + old_name + '", "new": "' + new_name + '"}')   
 
-                        inputs = request.form.get("set_inputs_" + str(i))         
-                        SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(i, new_name, inputs)
+                                inputs = request.form.get("set_inputs_" + str(i))         
+                                SET_MQTT_DEVICE_TYPE_ZIGBEE2MQTT(i, new_name, inputs)
+                                
+                            else:
+                                error_message_table = "Name bereits vergeben >>> " + new_name
                    
 
             # update device list
@@ -234,7 +239,7 @@ def dashboard_settings_zigbee2mqtt():
 @login_required
 @superuser_required
 def remove_zigbee2mqtt_device(id):
-    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_BY_ID(id)).name 
+    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_BY_ID(id).name) 
     DELETE_MQTT_DEVICE(id)
     return redirect(url_for('dashboard_settings_zigbee2mqtt'))
 
@@ -261,6 +266,7 @@ def download_zigbee2mqtt_logfile(filepath):
 @superuser_required
 def dashboard_settings_snowboy():
     error_message = ""
+    error_message_settings = ""
     error_message_snowboy = ""
     error_message_form = ""
     error_message_tasks = ""
@@ -304,14 +310,21 @@ def dashboard_settings_snowboy():
         if request.method == 'POST':
             # change settings
             if request.form.get("change_settings") is not None: 
-                if sensitivity is not None:     
+                
+                # check sensitivity
+                sensitivity = request.form.get("set_sensitivity")
+                if sensitivity != "":     
                     sensitivity = request.form.get("set_sensitivity") 
                 else:
                     sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
-                if delay is not None:
+                    
+                # check delay
+                delay = request.form.get("set_delay")     
+                if delay.isdigit() and (1 <= int(delay) <= 10):
                     delay = request.form.get("set_delay") 
                 else:
-                    delay = GET_SNOWBOY_SETTINGS().delay               
+                    delay = GET_SNOWBOY_SETTINGS().delay 
+                    error_message_settings = "Ungültiger Verzögerungswert >>> " + request.form.get("set_delay")             
              
                 SET_SNOWBOY_SETTINGS(sensitivity, delay)  
 
@@ -381,7 +394,8 @@ def dashboard_settings_snowboy():
     return render_template('dashboard_settings_snowboy.html',
                             sensitivity=sensitivity,
                             delay=delay,
-                            error_message=error_message,    
+                            error_message=error_message,   
+                            error_message_settings=error_message_settings, 
                             error_message_snowboy=error_message_snowboy,   
                             error_message_form=error_message_form,  
                             error_message_tasks=error_message_tasks,        

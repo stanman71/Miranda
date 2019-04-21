@@ -7934,3 +7934,148 @@ Timestamp,Type,Description
 2019-04-20 21:20:35,EVENT,Snowboy >>> Detection >>> snowboy_active
 2019-04-20 21:20:46,EVENT,Snowboy >>> Detection >>> snowboy_active
 2019-04-20 21:20:57,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 21:26:26,EVENT,MQTT >>> started
+2019-04-20 21:26:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 21:26:30,EVENT,Snowboy >>> started
+2019-04-20 21:26:32,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-20 21:27:21,ERROR,File >>> /logs/log_zigbee.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee.csv'
+2019-04-20 21:27:22,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 21:28:33,EVENT,MQTT >>> started
+2019-04-20 21:28:33,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 21:28:37,EVENT,Snowboy >>> started
+2019-04-20 21:30:06,ERROR,File >>> /logs/log_zigbee.csv >>> [Errno 2] No such file or directory: '/home/pi/SmartHome/logs/log_zigbee.csv'
+2019-04-20 21:30:07,ERROR,ZigBee2MQTT >>> No connection
+2019-04-20 21:39:58,EVENT,MQTT >>> started
+2019-04-20 21:39:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-20 21:40:01,EVENT,Snowboy >>> started
+2019-04-20 21:49:05,EVENT,Database >>> Taskmanagement (Time) >>> test_02 >>> deleted
+2019-04-20 22:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 22:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 22:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 22:00:07,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-20 22:00:07,EVENT,Task >>> test >>> started
+2019-04-20 22:00:11,SUCCESS,Task >>> test >>> successful
+2019-04-20 22:41:35,EVENT,Database >>> Snowboy Task >>> ausschalten >>> changed >>> Name: ausschalten /// Task: led_off:all
+2019-04-20 23:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-20 23:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-20 23:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-20 23:00:07,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-20 23:00:07,EVENT,Task >>> test >>> started
+2019-04-20 23:00:12,SUCCESS,Task >>> test >>> successful
+2019-04-20 23:25:36,EVENT,Snowboy >>> Detection >>> led_off:all
+2019-04-21 00:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 00:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-21 00:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-21 00:00:07,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 00:00:07,EVENT,Task >>> test >>> started
+2019-04-21 00:00:12,SUCCESS,Task >>> test >>> successful
+2019-04-21 00:00:12,EVENT,Task >>> Datenbank sichern >>> started
+2019-04-21 00:00:13,EVENT,Database_Backup >>> saved
+2019-04-21 00:00:13,SUCCESS,Task >>> Datenbank sichern >>> successful
+2019-04-21 00:30:00,EVENT,Task >>> schlafen >>> started
+2019-04-21 01:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 01:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-21 01:00:05,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-21 01:00:08,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 01:00:08,EVENT,Task >>> test >>> started
+2019-04-21 01:00:13,SUCCESS,Task >>> test >>> successful
+2019-04-21 01:04:23,EVENT,Snowboy >>> Detection >>> led_off:all
+2019-04-21 02:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 02:00:04,SUCCESS,Task >>> test_01 >>> successful
+2019-04-21 02:00:04,EVENT,Task >>> MQTT aktuallisieren >>> started
+2019-04-21 02:00:07,SUCCESS,Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 02:00:07,EVENT,Task >>> test >>> started
+2019-04-21 02:00:12,SUCCESS,Task >>> test >>> successful
+2019-04-21 02:29:31,EVENT,File >>> /logs/log_zigbee2mqtt.csv >>> downloaded
+2019-04-21 02:37:38,EVENT,Database >>> ZigBee2MQTT Device >>> Test >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:37:38,EVENT,Database >>> ZigBee2MQTT Device >>> 0x00178801040c9476 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:37:59,EVENT,Database >>> ZigBee2MQTT Device >>> 0x00178801040c9476 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:39:36,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_03 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:39:36,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:40:43,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:41:13,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_03 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:42:08,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:42:13,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:42:18,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:42:37,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:43:04,EVENT,Database >>> LED Group >>> wohnzimmer >>> deleted
+2019-04-21 02:44:56,EVENT,MQTT >>> started
+2019-04-21 02:44:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 02:44:59,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 02:45:04,EVENT,Database >>> MQTT Device >>> Deckenlampe_01 >>> deleted
+2019-04-21 02:45:07,EVENT,Database >>> MQTT Device >>> Deckenlampe_02 >>> deleted
+2019-04-21 02:45:10,EVENT,Database >>> MQTT Device >>> Deckenlampe_02 >>> added >>>  Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs:  /// Outputs: 
+2019-04-21 02:45:10,ERROR,|ZigBee2MQTT >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, 'Deckenlampe_02', 'zigbee2mqtt', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:11,ERROR,|ZigBee2MQTT >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, 'Deckenlampe_02', 'zigbee2mqtt', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:11,ERROR,|ZigBee2MQTT >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (4, 'Deckenlampe_02', 'zigbee2mqtt', '0x0017880104878b88', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:53,EVENT,Database >>> MQTT Device >>> 0x00178801040c9476 >>> added >>>  Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs:  /// Outputs: 
+2019-04-21 02:45:53,ERROR,|ZigBee2MQTT >>> (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x00178801040c9476', 'zigbee2mqtt', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:54,ERROR,|ZigBee2MQTT >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x00178801040c9476', 'zigbee2mqtt', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:54,ERROR,|ZigBee2MQTT >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x00178801040c9476', 'zigbee2mqtt', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:45:55,ERROR,|ZigBee2MQTT >>> This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (sqlite3.IntegrityError) UNIQUE constraint failed: mqtt_devices.name [SQL: 'INSERT INTO mqtt_devices (id, name, gateway, "ieeeAddr", model, inputs, outputs, last_contact) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'] [parameters: (5, '0x00178801040c9476', 'zigbee2mqtt', '0x00178801040c9476', '9290012573A', '', '', '')] (Background on this error at: http://sqlalche.me/e/gkpj)|
+2019-04-21 02:46:13,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_02 >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-21 02:52:41,EVENT,MQTT >>> started
+2019-04-21 02:52:41,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 02:52:44,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 02:55:30,EVENT,MQTT >>> started
+2019-04-21 02:55:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 02:55:34,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 02:56:20,EVENT,MQTT >>> started
+2019-04-21 02:56:20,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 02:56:23,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 02:57:31,EVENT,MQTT >>> started
+2019-04-21 02:57:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 02:57:34,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 02:59:12,EVENT,Database >>> ZigBee2MQTT Device >>> 0x00178801040c9476 >>> changed >>> Name: Deckenlampe_02 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x00178801040c9476 /// Model: 9290012573A /// Inputs: 
+2019-04-21 03:00:00,EVENT,Task >>> test_01 >>> started
+2019-04-21 03:00:03,ERROR,Task >>> test_01 >>> Message nicht gefunden
+2019-04-21 03:00:13,EVENT,MQTT >>> started
+2019-04-21 03:00:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:00:58,EVENT,MQTT >>> started
+2019-04-21 03:00:58,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:08:50,EVENT,MQTT >>> started
+2019-04-21 03:08:50,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:08:53,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 03:12:26,EVENT,MQTT >>> started
+2019-04-21 03:12:26,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:12:30,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-21 03:13:13,EVENT,MQTT >>> started
+2019-04-21 03:13:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:13:17,EVENT,Snowboy >>> started
+2019-04-21 03:15:52,EVENT,MQTT >>> started
+2019-04-21 03:15:52,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:15:55,EVENT,Snowboy >>> started
+2019-04-21 03:19:40,EVENT,MQTT >>> started
+2019-04-21 03:19:40,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:19:44,EVENT,Snowboy >>> started
+2019-04-21 03:19:46,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:20:01,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:20:03,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-21 03:20:03,ERROR,Snowboy >>> 'NoneType' object has no attribute 'id'
+2019-04-21 03:23:22,EVENT,MQTT >>> started
+2019-04-21 03:23:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:23:26,EVENT,Snowboy >>> started
+2019-04-21 03:23:28,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:23:34,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:23:38,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-21 03:23:38,ERROR,Task >>> mediterran >>> 'NoneType' object has no attribute 'id'
+2019-04-21 03:23:42,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:23:44,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-21 03:23:44,ERROR,Task >>> mediterran >>> 'NoneType' object has no attribute 'id'
+2019-04-21 03:27:28,EVENT,MQTT >>> started
+2019-04-21 03:27:28,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:27:32,EVENT,Snowboy >>> started
+2019-04-21 03:27:35,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:27:41,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:27:42,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-21 03:27:42,ERROR,SnowBoy >>> Task >>> mediterran >>> 'NoneType' object has no attribute 'id'
+2019-04-21 03:27:48,EVENT,Snowboy >>> Detection >>> snowboy_active
+2019-04-21 03:27:50,EVENT,Snowboy >>> Detection >>> scene:wohnzimmer:relax:100
+2019-04-21 03:27:50,ERROR,SnowBoy >>> Task >>> mediterran >>> 'NoneType' object has no attribute 'id'
+2019-04-21 03:28:11,EVENT,Database >>> LED Group >>> wohnzimmer >>> added
+2019-04-21 03:35:51,EVENT,MQTT >>> started
+2019-04-21 03:35:51,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:35:54,EVENT,Snowboy >>> started
+2019-04-21 03:45:14,EVENT,MQTT >>> started
+2019-04-21 03:45:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 03:45:18,EVENT,Snowboy >>> started

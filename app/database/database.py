@@ -558,7 +558,7 @@ def REMOVE_LED_GROUP_LED(id, led):
     db.session.commit()
 
 
-def LED_EXIST(id):
+def LED_CHECK_EXIST(id):
     led_list = []
 
     entry = LED_Groups.query.filter_by(id=id).first()
