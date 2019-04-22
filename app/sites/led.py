@@ -493,6 +493,8 @@ def get_media(filename):
 def dashboard_led_groups():
     error_message = ""
     error_message_table = ""
+    
+    UPDATE_LED_GROUP_LED_NAMES()
 
     if request.method == "POST":
         for i in range (1,25):

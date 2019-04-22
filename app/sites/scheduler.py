@@ -168,7 +168,7 @@ def dashboard_scheduler_time():
                             )
 
 
-# delete scheduler time tasks
+# delete scheduler time task
 @app.route('/dashboard/scheduler/time/delete/<int:id>')
 @login_required
 @user_required
@@ -320,7 +320,7 @@ def dashboard_scheduler_sensor():
     error_message_tasks    = CHECK_TASKS(GET_ALL_SCHEDULER_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
-    dropdown_list_operators     = ["=", ">", "<", "not"]
+    dropdown_list_operators     = ["=", ">", "<"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
     scheduler_list = GET_ALL_SCHEDULER_SENSOR_TASKS()
@@ -342,28 +342,28 @@ def dashboard_scheduler_sensor():
                             )
 
 
-# add scheduler time task option
+# add scheduler sensor task option
 @app.route('/dashboard/scheduler/sensor/option/add/<int:id>')
 @login_required
 @user_required
-def add_scheduler_sensor(id):
+def add_scheduler_sensor_option(id):
     ADD_SCHEDULER_SENSOR_TASK_OPTION(id)
     return redirect(url_for('dashboard_scheduler_sensor'))
 
 
-# remove scheduler time task option
+# remove scheduler sensor task option
 @app.route('/dashboard/scheduler/sensor/option/remove/<int:id>')
 @login_required
 @user_required
-def remove_scheduler_sensor(id):
+def remove_scheduler_sensor_option(id):
     REMOVE_SCHEDULER_SENSOR_TASK_OPTION(id)
     return redirect(url_for('dashboard_scheduler_sensor'))
 
 
-# delete scheduler time tasks
+# delete scheduler sensor task
 @app.route('/dashboard/scheduler/sensor/delete/<int:id>')
 @login_required
 @user_required
-def delete_scheduler_sensor(id):
+def delete_scheduler_sensor_task(id):
     DELETE_SCHEDULER_SENSOR_TASK(id)
     return redirect(url_for('dashboard_scheduler_sensor'))

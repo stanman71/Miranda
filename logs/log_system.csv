@@ -9147,3 +9147,304 @@ Timestamp,Type,Description
 2019-04-21 20:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
 2019-04-21 20:54:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
 2019-04-21 20:54:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:55:56,EVENT,MQTT >>> started
+2019-04-21 20:55:56,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 20:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:56:00,EVENT,Snowboy >>> started
+2019-04-21 20:56:03,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 20:56:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:56:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:57:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:57:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:58:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:58:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 20:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 20:59:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 20:59:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 21:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 21:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 21:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 21:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 21:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 21:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 21:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 21:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 21:01:16,EVENT,MQTT >>> started
+2019-04-21 21:01:16,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-21 21:01:20,EVENT,Snowboy >>> started
+2019-04-21 21:01:24,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-21 21:01:57,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-21 22:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 22:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 22:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 22:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 22:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 22:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 22:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 22:00:13,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 22:01:53,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-21 22:02:26,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_6 /// Always_Active: 
+2019-04-21 22:02:26,EVENT,Database >>> Sensordata Job >>> jhgjhgf >>> changed >>> Name: jhgjhgf /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_7 /// Always_Active: checked
+2019-04-21 22:02:26,EVENT,Database >>> Sensordata Job >>> ok >>> changed >>> Name: ok /// Filename: ok /// MQTT-Device: 0x99999 /// Sensor:  sensor_1 /// Always_Active: checked
+2019-04-21 23:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-21 23:00:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-21 23:00:05,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-21 23:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 23:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-21 23:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-21 23:00:13,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-21 23:00:13,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-21 23:58:17,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-22 00:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 00:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 00:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 00:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 00:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 00:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 00:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 00:00:12,EVENT,Scheduler >>> Time Task >>> Datenbank sichern >>> started
+2019-04-22 00:00:12,EVENT,Database_Backup >>> saved
+2019-04-22 00:00:12,SUCCESS,Scheduler >>> Time Task >>> Datenbank sichern >>> successful
+2019-04-22 00:00:13,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 00:30:00,EVENT,Scheduler >>> Time Task >>> schlafen >>> started
+2019-04-22 01:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 01:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 01:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 01:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 01:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 01:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 01:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 01:00:13,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 01:23:43,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-22 02:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 02:00:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 02:00:05,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 02:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 02:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 02:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 02:00:13,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 02:00:14,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 02:07:51,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-22 03:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 03:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 03:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 03:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 03:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 03:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 03:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 03:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 04:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 04:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 04:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 04:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 04:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 04:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 04:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 04:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 05:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 05:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 05:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 05:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 05:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 05:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 05:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 05:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 06:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 06:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 06:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 06:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 06:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 06:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 06:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 06:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 07:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 07:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 07:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 07:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 07:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 07:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 07:00:12,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-22 07:00:12,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 07:08:07,EVENT,Database >>> Scheduler >>> Time >>> test >>> changed >>> Name: test /// Task: request_sensordata:4 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-22 07:08:12,EVENT,Database >>> Scheduler >>> Time >>> test >>> changed >>> Name: test /// Task: request_sensordata:5 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-22 07:08:14,EVENT,Database >>> Scheduler >>> Time >>> test >>> changed >>> Name: test /// Task: request_sensordata:4 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-22 07:08:32,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-04-22 07:09:08,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Watervolume: 50 /// Control-Sensor: checked
+2019-04-22 07:09:13,EVENT,Database >>> Plant >>> gfd >>> changed >>> Name: gfd /// MQTT-Device: 0x99999 /// Sensor:  sensor_2 /// Pump: None /// Watervolume: 50 /// Control-Sensor: 
+2019-04-22 07:22:45,EVENT,MQTT >>> started
+2019-04-22 07:22:45,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:22:49,EVENT,Snowboy >>> started
+2019-04-22 07:23:00,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> added
+2019-04-22 07:24:03,EVENT,MQTT >>> started
+2019-04-22 07:24:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:24:06,EVENT,Snowboy >>> started
+2019-04-22 07:24:31,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:29:25,EVENT,MQTT >>> started
+2019-04-22 07:29:25,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:29:29,EVENT,Snowboy >>> started
+2019-04-22 07:30:10,EVENT,MQTT >>> started
+2019-04-22 07:30:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:30:14,EVENT,Snowboy >>> started
+2019-04-22 07:31:14,EVENT,MQTT >>> started
+2019-04-22 07:31:14,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:31:18,EVENT,Snowboy >>> started
+2019-04-22 07:33:30,EVENT,MQTT >>> started
+2019-04-22 07:33:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:33:34,EVENT,Snowboy >>> started
+2019-04-22 07:33:57,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:33:57,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:34:05,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:34:11,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:34:15,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:34:19,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:34:25,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:35:23,EVENT,MQTT >>> started
+2019-04-22 07:35:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:35:27,EVENT,Snowboy >>> started
+2019-04-22 07:35:41,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:35:48,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:38:48,EVENT,MQTT >>> started
+2019-04-22 07:38:48,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:38:52,EVENT,Snowboy >>> started
+2019-04-22 07:39:00,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:39:03,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:39:11,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:41:02,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:41:26,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:41:31,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:01,EVENT,MQTT >>> started
+2019-04-22 07:43:01,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:43:05,EVENT,Snowboy >>> started
+2019-04-22 07:43:16,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:25,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:34,EVENT,Database >>> Scheduler >>> Sensor >>> jhg >>> changed >>> Name: jhg /// Task: jhgjhg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_6 /// Operator_1: > /// Value_1: 59 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:37,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:41,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:47,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:43:50,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:44:18,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:44:22,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:44:38,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:44:57,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:45:02,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:49:31,EVENT,MQTT >>> started
+2019-04-22 07:49:31,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 07:49:35,EVENT,Snowboy >>> started
+2019-04-22 07:49:40,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:49:49,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: jhg /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: trj /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:49:52,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: jhg /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:49:59,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: jhg /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:50:00,EVENT,Scheduler >>> Time Task >>> zur Arbeit >>> started
+2019-04-22 07:50:04,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: jhg /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:50:22,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: = /// Value_1: jhg /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: 65 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:50:26,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:50:36,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:51:07,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:51:13,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:51:16,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:51:50,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:51:55,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:52:06,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:52:44,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 07:52:57,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 08:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 08:00:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 08:00:05,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 08:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 08:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 08:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 08:00:12,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-22 08:48:43,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 09:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 09:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 09:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 09:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 09:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 09:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 09:00:11,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-22 09:42:09,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-22 10:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 10:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 10:00:05,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 10:00:05,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 10:00:08,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 10:00:08,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 10:00:11,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-22 10:04:11,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-22 10:16:30,EVENT,MQTT >>> started
+2019-04-22 10:16:30,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:16:34,EVENT,Snowboy >>> started
+2019-04-22 10:17:19,EVENT,MQTT >>> started
+2019-04-22 10:17:19,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:17:23,EVENT,Snowboy >>> started
+2019-04-22 10:19:00,EVENT,MQTT >>> started
+2019-04-22 10:19:00,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:19:04,EVENT,Snowboy >>> started
+2019-04-22 10:19:21,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:19:24,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:19:29,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:20:24,EVENT,MQTT >>> started
+2019-04-22 10:20:24,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:20:28,EVENT,Snowboy >>> started
+2019-04-22 10:20:35,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> changed >>> Name: gfd /// Task: gfd /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:20:44,EVENT,Database >>> Scheduler >>> Sensor >>> gfd >>> deleted
+2019-04-22 10:20:48,EVENT,Database >>> Scheduler >>> Sensor >>> hfhgfh >>> added
+2019-04-22 10:22:18,EVENT,Database >>> Scheduler >>> Sensor >>> hfhgfh >>> changed >>> Name: hfhgfh /// Task: hgf /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:22:22,EVENT,Database >>> Scheduler >>> Sensor >>> hfhgfh >>> changed >>> Name: hfhgfh /// Task: hgf /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:22:40,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> added
+2019-04-22 10:25:03,EVENT,MQTT >>> started
+2019-04-22 10:25:03,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:25:07,EVENT,Snowboy >>> started
+2019-04-22 10:28:22,EVENT,MQTT >>> started
+2019-04-22 10:28:22,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:28:26,EVENT,Snowboy >>> started
+2019-04-22 10:30:23,EVENT,MQTT >>> started
+2019-04-22 10:30:23,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:30:27,EVENT,Snowboy >>> started
+2019-04-22 10:30:32,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:30:35,EVENT,Database >>> Scheduler >>> Sensor >>> hfhgfh >>> deleted
+2019-04-22 10:30:42,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:30:50,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:30:52,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_3 /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:31:14,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:33:10,EVENT,MQTT >>> started
+2019-04-22 10:33:10,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:33:14,EVENT,Snowboy >>> started
+2019-04-22 10:33:24,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> changed >>> Name: gfdgfd /// Task: gfdgfd /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:33:31,EVENT,Database >>> Scheduler >>> Sensor >>> gfdgfd >>> deleted
+2019-04-22 10:33:34,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> added
+2019-04-22 10:34:18,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:28,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:31,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:35,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:38,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:41,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:34:52,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: > /// Value_1: def /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-22 10:35:00,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: > /// Value_1: def /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: = /// Value_2: ztr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: < /// Value_3: ztr
+2019-04-22 10:35:05,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: > /// Value_1: def /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: > /// Value_2: ztr /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: < /// Value_3: ztr
+2019-04-22 10:35:15,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: 0x99999 /// Sensor_1: None /// Operator_1: > /// Value_1: def /// MQTT-Device_2: 0x99999 /// Sensor_2: None /// Operator_2: > /// Value_2: ztr /// MQTT-Device_3: 0x99999 /// Sensor_3: None /// Operator_3: < /// Value_3: ztr
+2019-04-22 10:35:19,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> changed >>> Name: ztrtzr /// Task: ztrtzr /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: > /// Value_1: def /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: > /// Value_2: ztr /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: < /// Value_3: ztr
+2019-04-22 10:35:22,EVENT,Database >>> Scheduler >>> Sensor >>> ztrtzr >>> deleted
+2019-04-22 10:49:01,EVENT,MQTT >>> started
+2019-04-22 10:49:01,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:49:05,EVENT,Snowboy >>> started
+2019-04-22 10:50:05,EVENT,MQTT >>> started
+2019-04-22 10:50:05,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:50:09,EVENT,Snowboy >>> started
+2019-04-22 10:50:19,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_01 >>> changed >>> Name: Deckenlampe_ /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-22 10:50:47,EVENT,Database >>> ZigBee2MQTT Device >>> Deckenlampe_ >>> changed >>> Name: Deckenlampe_01 /// Gateway: zigbee2mqtt /// ieeeAddr: 0x0017880104878b88 /// Model: 9290012573A /// Inputs: 
+2019-04-22 10:53:08,EVENT,MQTT >>> started
+2019-04-22 10:53:08,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:53:12,EVENT,Snowboy >>> started
+2019-04-22 10:55:13,EVENT,MQTT >>> started
+2019-04-22 10:55:13,EVENT,MQTT >>> Broker >>> localhost >>> connected
+2019-04-22 10:55:17,EVENT,Snowboy >>> started
+2019-04-22 11:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-22 11:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-22 11:00:04,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-22 11:00:04,EVENT,Scheduler >>> Sensor Task >>> jhg >>> started
+2019-04-22 11:00:07,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-22 11:00:07,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-22 11:00:11,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden

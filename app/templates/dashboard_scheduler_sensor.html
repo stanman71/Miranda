@@ -163,6 +163,7 @@
                           {% endif %}
                         </select>  
                       </td> 
+                      {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" or entry.operator_main_1 == "None" or entry.operator_main_1 == None %}
                       <td>
                         <select class="btn btn-default dropdown-toggle" name="set_operator_1_{{ entry.id }}">
                           <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
@@ -172,11 +173,11 @@
                           {% endfor %}
                         </select>  
                       </td>
-                      {% if entry.operator_1 != "not" %}
                       <td style="width:10%">          
                         <input type="text" class="form-control" name="set_value_1_{{ entry.id }}" value="{{ entry.value_1 }}" /> 
                       </td> 
                       {% else %}
+                      <td></td>
                       <td></td>
                       {% endif %}
                       <td><a href="/dashboard/scheduler/sensor/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>  
@@ -184,7 +185,7 @@
 
 <!-- section 2 -->
 
-                    {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None%}            
+                    {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None %}            
                     <tr>
                     <td></td>
                     <td></td>
@@ -230,13 +231,9 @@
                           {% endfor %}
                         </select>  
                       </td>
-                      {% if entry.operator_2 != "not" %}
                       <td style="width:10%">          
                         <input type="text" class="form-control" name="set_value_2_{{ entry.id }}" value="{{ entry.value_2 }}" /> 
                       </td> 
-                      {% else %}
-                      <td></td> 
-                      {% endif %}
                       </tr> 
                     {% endif %} 
 
@@ -288,13 +285,9 @@
                                   {% endfor %}
                                 </select>  
                               </td>
-                              {% if entry.operator_3 != "not" %}
                               <td style="width:10%">         
                                 <input type="text" class="form-control" name="set_value_3_{{ entry.id }}" value="{{ entry.value_3 }}" /> 
                               </td> 
-                              {% else %}
-                              <td></td> 
-                              {% endif %}
                             </tr>   
                             {% endif %}
                         {% endif %}

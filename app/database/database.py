@@ -450,17 +450,18 @@ def ADD_LED_GROUP(name):
 
 
 def SET_LED_GROUP(id, name, led_id_1, led_name_1,
-                           led_id_2, led_name_2,
-                           led_id_3, led_name_3,
-                           led_id_4, led_name_4,
-                           led_id_5, led_name_5,
-                           led_id_6, led_name_6,
-                           led_id_7, led_name_7,
-                           led_id_8, led_name_8,
-                           led_id_9, led_name_9):
+                            led_id_2, led_name_2,
+                            led_id_3, led_name_3,
+                            led_id_4, led_name_4,
+                            led_id_5, led_name_5,
+                            led_id_6, led_name_6,
+                            led_id_7, led_name_7,
+                            led_id_8, led_name_8,
+                            led_id_9, led_name_9):
 
     entry = LED_Groups.query.filter_by(id=id).first()
     entry.name = name
+    
     entry.led_id_1 = led_id_1
     entry.led_name_1 = led_name_1
     entry.led_id_2 = led_id_2
@@ -478,8 +479,56 @@ def SET_LED_GROUP(id, name, led_id_1, led_name_1,
     entry.led_id_8 = led_id_8
     entry.led_name_8 = led_name_8
     entry.led_id_9 = led_id_9
-    entry.led_name_9 = led_name_9        
+    entry.led_name_9 = led_name_9     
+       
     db.session.commit()  
+
+
+def UPDATE_LED_GROUP_LED_NAMES():
+    groups = GET_ALL_LED_GROUPS()
+    
+    for group in groups:
+        
+        entry = LED_Groups.query.filter_by(id=group.id).first()
+        
+        try:
+            entry.led_name_1 = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).name
+        except:
+            pass
+        try:
+            entry.led_name_2 = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).name 
+        except:
+            pass
+        try:
+            entry.led_name_3 = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).name
+        except:
+            pass
+        try:
+            entry.led_name_4 = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).name
+        except:
+            pass
+        try:
+            entry.led_name_5 = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).name
+        except:
+            pass
+        try:
+            entry.led_name_6 = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).name
+        except:
+            pass
+        try:
+            entry.led_name_7 = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).name
+        except:
+            pass
+        try:
+            entry.led_name_8 = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).name    
+        except:
+            pass
+        try:
+            entry.led_name_9 = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).name
+        except:
+            pass            
+        
+    db.session.commit()
 
 
 def ADD_LED_GROUP_LED(id):
@@ -519,6 +568,24 @@ def ADD_LED_GROUP_LED(id):
         return  
 
 
+def LED_CHECK_EXIST(id):
+    led_list = []
+
+    entry = LED_Groups.query.filter_by(id=id).first()
+
+    led_list.append(entry.led_id_1)
+    led_list.append(entry.led_id_2)
+    led_list.append(entry.led_id_3)
+    led_list.append(entry.led_id_4)
+    led_list.append(entry.led_id_5)
+    led_list.append(entry.led_id_6)
+    led_list.append(entry.led_id_7)
+    led_list.append(entry.led_id_8)
+    led_list.append(entry.led_id_9)
+
+    return led_list
+
+
 def REMOVE_LED_GROUP_LED(id, led):
     entry = LED_Groups.query.filter_by(id=id).first()
 
@@ -556,24 +623,6 @@ def REMOVE_LED_GROUP_LED(id, led):
         entry.led_name_9   = "None"
 
     db.session.commit()
-
-
-def LED_CHECK_EXIST(id):
-    led_list = []
-
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    led_list.append(entry.led_id_1)
-    led_list.append(entry.led_id_2)
-    led_list.append(entry.led_id_3)
-    led_list.append(entry.led_id_4)
-    led_list.append(entry.led_id_5)
-    led_list.append(entry.led_id_6)
-    led_list.append(entry.led_id_7)
-    led_list.append(entry.led_id_8)
-    led_list.append(entry.led_id_9)
-
-    return led_list
 
 
 def DELETE_LED_GROUP(id):
