@@ -1261,7 +1261,30 @@ def GET_ALL_SCHEDULER_SENSOR_TASKS():
     return Scheduler_Sensor_Tasks.query.all()
 
 
+forbitten_tasks = []
+
+
 def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
+    
+    global forbitten_tasks
+    
+    ##############
+    # waiter tread
+    
+    import threading
+
+    def WAITER_TREAD(task):
+        global forbitten_tasks
+        
+        time.sleep(30)
+        
+        if task in forbitten_tasks:
+            forbitten_tasks.remove(task)
+         
+    # waiter tread
+    ##############
+    
+   
     entries = Scheduler_Sensor_Tasks.query.all()
     
     list_tasks = []
@@ -1276,15 +1299,15 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_1.ieeeAddr == incoming_ieeeAddr or
                 device_1.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
                     list_tasks.append(entry.id)
                     
             if (device_1.name == incoming_ieeeAddr or
                 device_1.name == incoming_ieeeAddr or
                 device_1.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)        
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                    list_tasks.append(entry.id)     
         except:
             pass
                 
@@ -1296,15 +1319,15 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_2.ieeeAddr == incoming_ieeeAddr or
                 device_2.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
                     list_tasks.append(entry.id)  
-        
+
             if (device_2.name == incoming_ieeeAddr or
                 device_2.name == incoming_ieeeAddr or
                 device_2.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)         
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                    list_tasks.append(entry.id)      
         except:
             pass
         
@@ -1316,19 +1339,29 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_3.ieeeAddr == incoming_ieeeAddr or
                 device_3.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
                     list_tasks.append(entry.id) 
                     
             if (device_3.name == incoming_ieeeAddr or
                 device_3.name == incoming_ieeeAddr or
                 device_3.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks:
+                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
                     list_tasks.append(entry.id)  
         except:
             pass
-            
+                
+                
     if list_tasks != []:
+        
+        for task in list_tasks:
+        
+            forbitten_tasks.append(task)
+            
+            # start waiter tread
+            t = threading.Thread(target=WAITER_TREAD, args=(task,))
+            t.start() 
+        
         return list_tasks
     else:
         return ""

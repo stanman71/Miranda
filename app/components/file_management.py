@@ -301,6 +301,8 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
 
 def READ_LOGFILE_MQTT(gateway, channel, time):   
     
+    print("###### OK #######")
+    
     try:
         # open csv file
         file = PATH + "/logs/log_" + gateway + ".csv"
@@ -332,7 +334,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
                     pass
                     
             if list_temp == []:
-                return "Keine Verbindung zu MQTT"                    
+                return "Message nicht gefunden"                    
                 
             else:
                 # get the searched message
@@ -348,8 +350,8 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
      
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_" + gateway + ".csv >>> " + str(e))         
-
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_" + gateway + ".csv >>> " + str(e))   
+              
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
     if os.path.isfile(PATH + "/logs/log_system.csv") is False:
