@@ -11,6 +11,25 @@
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
+{% block scripts %}
+  {{ super() }}
+
+  <script>
+    var slider_1 = document.getElementById("input_1");
+    var output_1 = document.getElementById("output_1");
+    output_1.innerHTML = slider_1.value; 
+    slider_1.oninput = function() { output_1.innerHTML = this.value }
+  </script>
+
+  <script>
+      var slider_2 = document.getElementById("input_2");
+      var output_2 = document.getElementById("output_2");
+      output_2.innerHTML = slider_2.value;
+      slider_2.oninput = function() { output_2.innerHTML = this.value }
+    </script>
+
+{% endblock %}
+
 {% block content %}
 
 <!-- nav-bar -->
@@ -119,27 +138,24 @@
           
           
           <form method="POST">
-            <div class="well well-sm">Empfindlichkeit: {{ sensitivity }}
+            <div class="well well-sm">Empfindlichkeit: <span id="output_1"></span>
             <br>
             <br>
               <div class="slidecontainer">                        
-                <input type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+                <input id="input_1" type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
               </div>
             </div>
-            <div class="well well-sm">
-              <div class="row justify-content-md-center">
-                <div class="col-sm-3">              
-                  Verzögerungswert (1 - 10 Sekunden):
-                </div>
-                <div class="col-sm-1">    
-                  <input type="text" class="form-control" name="set_delay" value="{% if delay != None %}{{ delay }}{% endif %}" /> 
-                </div>  
+            <div class="well well-sm">Verzögerungswert: <span id="output_2"></span>
+            <br>
+            <br>
+              <div class="slidecontainer">                        
+                <input id="input_2" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
               </div>
-            </div>
+            </div>         
 
       <section id="table_tasks"></section> 
 
-            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#settings'" class="btn btn-default" name="change_settings" value="Einstellungen ändern" />       
+            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#settings'" class="btn btn-default" name="change_settings" value="Einstellungen speichern" />       
           </form>  
         </div>                    
       </div> 

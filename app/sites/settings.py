@@ -345,15 +345,13 @@ def dashboard_settings_snowboy():
                     
                 # check delay
                 delay = request.form.get("set_delay")     
-                if delay.isdigit() and (1 <= int(delay) <= 10):
+                if delay != "":     
                     delay = request.form.get("set_delay") 
                 else:
-                    delay = GET_SNOWBOY_SETTINGS().delay 
-                    error_message_settings = "Ungültiger Verzögerungswert >>> " + request.form.get("set_delay")             
+                    delay = GET_SNOWBOY_SETTINGS().delay                    
              
                 SET_SNOWBOY_SETTINGS(sensitivity, delay)  
-
-                                       
+                                    
             # add new task
             if request.form.get("add_task") is not None:
 

@@ -36,7 +36,7 @@ def dashboard_led_scenes():
     error_message_turn_off = ""
 
     if request.method == "POST":
-        for i in range (1,25):
+        for i in range (1,20):
 
             # change scene
             if request.form.get("set_name_" + str(i)) != None:  

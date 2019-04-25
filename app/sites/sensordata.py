@@ -2,8 +2,9 @@ from flask import render_template, redirect, url_for, request, send_from_directo
 from flask_login import login_required, current_user
 from flask_apscheduler import APScheduler
 from functools import wraps
-import datetime
 
+import datetime
+import time
 import pandas as pd
 
 from app import app
@@ -204,6 +205,8 @@ def dashboard_sensordata_statistics():
     error_message = ""
     devices = ""
     sensors = ""
+    time_min = ""
+    time_max = ""
     data_file_1 = ""
     data_file_2 = ""
     data_file_3 = ""
@@ -243,16 +246,20 @@ def dashboard_sensordata_statistics():
 
             # format data
             try:
-                devices = df.Device.unique().tolist()
-                devices = str(devices)
-                devices = devices[1:]
-                devices = devices[:-1]
-                devices = devices.replace("'", "") 
-                sensors = df.Sensor.unique().tolist()
-                sensors = str(sensors)                
-                sensors = sensors[1:]
-                sensors = sensors[:-1]
-                sensors = sensors.replace("'", "")
+                devices  = df.Device.unique().tolist()
+                devices  = str(devices)
+                devices  = devices[1:]
+                devices  = devices[:-1]
+                devices  = devices.replace("'", "") 
+                sensors  = df.Sensor.unique().tolist()
+                sensors  = str(sensors)                
+                sensors  = sensors[1:]
+                sensors  = sensors[:-1]
+                sensors  = sensors.replace("'", "")
+
+                time_min = min(df['Timestamp'])
+                time_max = max(df['Timestamp'])
+
             except:
                 error_message = "Datei konnte nicht geöffnet werden"
 
@@ -301,6 +308,8 @@ def dashboard_sensordata_statistics():
                 df_devices = df.loc[df['Device'].isin(selected_devices)]
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
 
+
+
                 print(df_devices)
                 print(df_sensors)
 
@@ -318,6 +327,8 @@ def dashboard_sensordata_statistics():
                             data_file_1=data_file_1,
                             data_file_2=data_file_2,
                             data_file_3=data_file_3,
+                            time_min=time_min,
+                            time_max=time_max,
                             statistics="active",
                             role=current_user.role,                      
                             )

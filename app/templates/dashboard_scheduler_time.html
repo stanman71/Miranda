@@ -104,20 +104,20 @@
                 <tbody> 
                   {% for entry in scheduler_list %}
                   <tr>
-                    <td style="width:18%">
+                    <td style="width:20%">
                       <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                     </td> 
-                    <td style="width:27%">        
+                    <td style="width:20%">        
                       <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
                     </td>
                     <td style="width:15%">                   
                       <input type="text" class="form-control" name="set_day_{{ entry.id }}" value="{{ entry.day }}" /> 
                     </td> 
-                    <td style="width:12%">                  
+                    <td style="width:15%">                  
                       <input type="text" class="form-control" name="set_hour_{{ entry.id }}" value="{{ entry.hour }}" /> 
                     </td>
-                    <td style="width:12%">
+                    <td style="width:15%">
                       <input type="text" class="form-control" name="set_minute_{{ entry.id }}" value="{{ entry.minute }}" /> 
                     </td>                         
                     <td>

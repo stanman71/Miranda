@@ -29,18 +29,18 @@ def MQTT_START():
 
 		try:
 			if incoming_topic[3] == "get":
-				incoming_ieeeAddr = ""   
+				pass  
 		except:
 			incoming_ieeeAddr = incoming_topic[2]
 
-		# input sensor data 
-		if FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr) != "":
-			list_jobs = FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr)
-			for job in list_jobs:
-				MQTT_SAVE_SENSORDATA(job) 
+			# input sensor data 
+			if FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr) != "":
+				list_jobs = FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr)
+				for job in list_jobs:
+					MQTT_SAVE_SENSORDATA(job) 
 
-		# schedular sensor
-		SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg)
+			# schedular sensor
+			SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg)
 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")

@@ -11,6 +11,31 @@
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
+{% block scripts %}
+  {{ super() }}
+
+  <script>
+    var slider_1 = document.getElementById("min_input");
+    var output_1 = document.getElementById("min_output");
+    output_1.innerHTML = slider_1.value;
+    
+    slider_1.oninput = function() {
+      output_1.innerHTML = this.value;
+    }
+  </script>
+
+  <script>
+      var slider_2 = document.getElementById("max_input");
+      var output_2 = document.getElementById("max_output");
+      output_2.innerHTML = slider_2.value;
+      
+      slider_2.oninput = function() {
+        output_2.innerHTML = this.value;
+      }
+    </script>
+
+{% endblock %}
+
 {% block content %}
 
 <!-- nav-bar -->
@@ -153,10 +178,23 @@
                       <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" />                
                     </div>                    
                   </div>  
-                  <div class="well well-sm">Zeitraum:   
+
+                  
+                  {{ time_min }}
+                  {{ time_max }}
+                  <br>
+                  <div class="well well-sm">Zeitraum: 
+
+                    <br>
+                    <span id="min_output"></span> - <span id="max_output"></span>
+                    <br>
+
                     <div class="form-group">    
-                      SLIDER
-                    </div>                    
+                      <input id="min_input" type="range" class="slider" name="set_time_min" min="{{ time_min }}" max="{{ time_max }}" value="{{ time_min }}" />
+                      <input id="max_input" type="range" class="slider" name="set_time_max" min="{{ time_min }}" max="{{ time_max }}" value="{{ time_max }}" />
+                    </div>     
+                    
+
                   </div>                    
                 </div>
               </div>
