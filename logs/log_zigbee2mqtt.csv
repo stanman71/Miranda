@@ -2662,3 +2662,55 @@ Timestamp,Channel,Message
 2019-04-24 15:12:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
 2019-04-24 15:12:53,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
 2019-04-24 15:12:53,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 17:28:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-24 17:28:58,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 17:29:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-24 17:29:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 17:39:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-24 17:39:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 17:39:55,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-24 17:39:55,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 20:16:09,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-24 20:16:09,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-24 20:16:12,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-24 20:16:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-04-25 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-04-25 00:30:00,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-04-25 00:30:00,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"Deckenlampe_02"},"message":"{\"state\": \"OFF\"}"}}|
+2019-04-25 07:50:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-04-25 07:50:00,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-04-25 07:50:00,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-04-25 07:50:01,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"Deckenlampe_02"},"message":"{\"state\": \"OFF\"}"}}|
+2019-04-25 09:16:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:16:02,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:16:06,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:16:06,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:22:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:22:02,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:22:06,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:22:06,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:34:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:34:58,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:35:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:35:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:35:38,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:35:38,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:35:42,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:35:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:43:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:43:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:43:46,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:43:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:44:21,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:44:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:44:24,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:44:25,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:55:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:55:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:55:46,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:55:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:58:21,SmartHome/zigbee2mqtt/bridge/state,online
+2019-04-25 09:58:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-04-25 09:58:25,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-04-25 09:58:25,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|

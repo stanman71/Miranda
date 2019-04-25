@@ -758,7 +758,7 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
                
             try:                    
                if entry.operator_main_1 == "=" and entry.operator_main_2 == ">":
-                  if int(sensor_value_1) == int(sensor_value_2) > int(sensor_value_3):
+                  if (int(sensor_value_1) == int(sensor_value_2)) > int(sensor_value_3):
                      passing = True
                   else:
                      passing = False                         
@@ -785,7 +785,7 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
                
             try:                                         
                if entry.operator_main_1 == "=" and entry.operator_main_2 == "<":
-                  if int(sensor_value_1) == int(sensor_value_2) < int(sensor_value_3):
+                  if (int(sensor_value_1) == int(sensor_value_2)) < int(sensor_value_3):
                      passing = True
                   else:
                      passing = False                         
@@ -812,7 +812,7 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
                
             try:                     
                if entry.operator_main_1 == "<" and entry.operator_main_2 == "=":
-                  if int(sensor_value_1) < int(sensor_value_2) == int(sensor_value_3):
+                  if int(sensor_value_1) < (int(sensor_value_2) == int(sensor_value_3)):
                      passing = True
                   else:
                      passing = False                                
@@ -821,7 +821,7 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
                
             try:                     
                if entry.operator_main_1 == ">" and entry.operator_main_2 == "=":
-                  if int(sensor_value_1) > int(sensor_value_2) == int(sensor_value_3):
+                  if int(sensor_value_1) > (int(sensor_value_2) == int(sensor_value_3)):
                      passing = True
                   else:
                      passing = False        
@@ -835,21 +835,20 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
              (entry.operator_main_1 == "and" or entry.operator_main_1 == "or") and
              (sensor_value_1 != "Message nicht gefunden" or sensor_value_2 != "Message nicht gefunden" 
               or sensor_value_3 != "Message nicht gefunden")):
-            
+                 
             # passing value 1
  
             try:              
                if entry.operator_1 == "=" and not entry.value_1.isdigit():
-                  try:
-                     if int(sensor_value_1) == int(entry.value_1):
-                        passing_1 = True    
-                     else:
-                        passing_1 = False      
-                  except:
-                     if sensor_value_1 == entry.value_1:
-                        passing_1 = True    
-                     else:
-                        passing_1 = False                 
+                  if int(sensor_value_1) == int(entry.value_1):
+                     passing_1 = True    
+                  else:
+                     passing_1 = False      
+               else:
+                  if sensor_value_1 == entry.value_1:
+                     passing_1 = True    
+                  else:
+                     passing_1 = False               
             except:
                pass
                
@@ -875,16 +874,15 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
  
             try:              
                if entry.operator_2 == "=" and not entry.value_2.isdigit():
-                  try:
-                     if int(sensor_value_2) == int(entry.value_2):
-                        passing_2 = True    
-                     else:
-                        passing_2 = False      
-                  except:
-                     if sensor_value_2 == entry.value_2:
-                        passing_2 = True    
-                     else:
-                        passing_2 = False                 
+                  if int(sensor_value_2) == int(entry.value_2):
+                     passing_2 = True    
+                  else:
+                     passing_2 = False      
+               else:
+                  if sensor_value_2 == entry.value_2:
+                     passing_2 = True    
+                  else:
+                     passing_2 = False   
             except:
                pass
                
@@ -910,16 +908,15 @@ def SCHEDULER_SENSOR_TASKS(incoming_ieeeAddr, msg):
  
             try:              
                if entry.operator_3 == "=" and not entry.value_3.isdigit():
-                  try:
-                     if int(sensor_value_3) == int(entry.value_3):
-                        passing_3 = True    
-                     else:
-                        passing_3 = False      
-                  except:
-                     if sensor_value_3 == entry.value_3:
-                        passing_3 = True    
-                     else:
-                        passing_3 = False                  
+                  if int(sensor_value_3) == int(entry.value_3):
+                     passing_3 = True    
+                  else:
+                     passing_3 = False      
+               else:
+                  if sensor_value_3 == entry.value_3:
+                     passing_3 = True    
+                  else:
+                     passing_3 = False                  
             except:
                pass
                

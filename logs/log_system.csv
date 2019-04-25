@@ -11582,3 +11582,224 @@ Timestamp,Type,Description
 2019-04-24 17:10:18,ERROR,Scheduler >>> Sensor Task > sensor_test_03 >>> Sensor > 0x88888 >>> Message nicht gefunden
 2019-04-24 17:10:18,EVENT,Scheduler >>> Sensor Task > sensor_test_03 >>> started
 2019-04-24 17:10:24,ERROR,Scheduler >>> Sensor Task > sensor_test_05 >>> Sensor > 0x88888 >>> Message nicht gefunden
+2019-04-24 17:28:58,EVENT,MQTT >>> started
+2019-04-24 17:28:58,EVENT,MQTT >>> Broker 'localhost' >>> connected
+2019-04-24 17:29:02,EVENT,Snowboy >>> started
+2019-04-24 17:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 17:30:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 17:30:09,ERROR,Scheduler >>> Sensor Task 'sensor_test_01' >>> Sensor '0x88888' >>> Message nicht gefunden
+2019-04-24 17:30:09,EVENT,Scheduler >>> Sensor Task 'sensor_test_01' >>> started
+2019-04-24 17:30:09,EVENT,Scheduler >>> Sensor Task 'sensor_test_02' >>> started
+2019-04-24 17:30:16,ERROR,Scheduler >>> Sensor Task 'sensor_test_03' >>> Sensor '0x88888' >>> Message nicht gefunden
+2019-04-24 17:30:16,ERROR,Scheduler >>> Sensor Task 'sensor_test_03' >>> Sensor '0x88888' >>> Message nicht gefunden
+2019-04-24 17:30:16,EVENT,Scheduler >>> Sensor Task 'sensor_test_03' >>> started
+2019-04-24 17:30:22,ERROR,Scheduler >>> Sensor Task 'sensor_test_05' >>> Sensor '0x88888' >>> Message nicht gefunden
+2019-04-24 17:39:51,EVENT,MQTT >>> started
+2019-04-24 17:39:51,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-24 17:39:55,EVENT,Snowboy >>> started
+2019-04-24 17:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 17:40:05,ERROR,Scheduler >>> Time Task >>> test_01 >>> Expecting value: line 1 column 1 (char 0)
+2019-04-24 17:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 17:50:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 17:50:12,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 17:50:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-24 17:50:12,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-24 17:50:21,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 17:50:21,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 17:50:21,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-24 17:50:28,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 17:53:55,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: jhg /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2:  humidity /// Operator_2: None /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_3 /// Operator_3: = /// Value_3: 0
+2019-04-24 17:54:16,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> changed >>> Name: sensor_test_01 /// Task: trs /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: > /// Value_1: 45 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: < /// Value_2: 675 /// MQTT-Device_3: 0x99999 /// Sensor_3: None /// Operator_3: < /// Value_3: 90
+2019-04-24 17:54:16,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: jhg /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2:  humidity /// Operator_2: None /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_3 /// Operator_3: None /// Value_3: 
+2019-04-24 17:54:21,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> changed >>> Name: sensor_test_01 /// Task: trs /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: > /// Value_1: 45 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_2 /// Operator_2: < /// Value_2: 675 /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_4 /// Operator_3: < /// Value_3: 90
+2019-04-24 17:54:43,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-24 17:56:35,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 18:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 18:00:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 18:00:05,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 18:00:10,ERROR,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> Message nicht gefunden
+2019-04-24 18:00:10,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 18:00:12,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 18:00:14,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 18:05:01,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 10 /// Repeat: checked
+2019-04-24 18:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 18:10:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 18:10:13,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 18:47:57,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 19:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 19:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-24 19:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 19:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 19:02:52,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 19:09:09,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 19:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 19:10:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 19:10:14,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 19:14:31,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 19:42:24,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 19:50:05,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 20:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 20:00:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-24 20:00:04,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 20:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 20:00:28,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 20:05:56,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 20:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 20:10:06,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 20:10:14,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 20:16:09,EVENT,MQTT >>> started
+2019-04-24 20:16:09,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-24 20:16:12,EVENT,Snowboy >>> started
+2019-04-24 20:17:58,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 20:19:24,EVENT,Snowboy >>> Detection Task >>> start_scene:99
+2019-04-24 21:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 21:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-24 21:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 21:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 21:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 21:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 21:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 21:39:37,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 22:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 22:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-24 22:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 22:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 22:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 22:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 22:10:10,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-24 22:46:31,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 22:48:06,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-04-24 23:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-24 23:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-24 23:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-24 23:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-24 23:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-24 23:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-24 23:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 00:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 00:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 00:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 00:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 00:00:07,EVENT,Scheduler >>> Time Task >>> Datenbank sichern >>> started
+2019-04-25 00:00:07,EVENT,Database_Backup >>> saved
+2019-04-25 00:00:07,SUCCESS,Scheduler >>> Time Task >>> Datenbank sichern >>> successful
+2019-04-25 00:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 00:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 00:10:10,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 00:30:00,EVENT,Scheduler >>> Time Task >>> schlafen >>> started
+2019-04-25 00:30:01,ERROR,|Scheduler >>> Time Task >>> schlafen >>> '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-04-25 01:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 01:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 01:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 01:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 01:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 01:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 01:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 02:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 02:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 02:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 02:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 02:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 02:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 02:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 03:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 03:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 03:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 03:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 03:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 03:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 03:10:10,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 04:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 04:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 04:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 04:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 04:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 04:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 04:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 05:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 05:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 05:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 05:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 05:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 05:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 05:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 06:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 06:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 06:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 06:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 06:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 06:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 06:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 07:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 07:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 07:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 07:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 07:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 07:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 07:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 07:50:00,EVENT,Scheduler >>> Time Task >>> zur Arbeit >>> started
+2019-04-25 07:50:01,ERROR,|Scheduler >>> Time Task >>> zur Arbeit >>> '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-04-25 08:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 08:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 08:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 08:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 08:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 08:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 08:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 09:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 09:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 09:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-25 09:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 09:10:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 09:10:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:16:02,EVENT,MQTT >>> started
+2019-04-25 09:16:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:16:06,EVENT,Snowboy >>> started
+2019-04-25 09:16:09,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-25 09:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 09:17:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 09:17:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:17:11,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-25 09:17:11,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-25 09:17:19,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:17:19,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:17:25,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:17:25,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-25 09:17:38,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-25 09:21:44,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: jhg /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2:  humidity /// Operator_2: None /// Value_2:  /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_3 /// Operator_3: None /// Value_3: 
+2019-04-25 09:22:02,EVENT,MQTT >>> started
+2019-04-25 09:22:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:22:06,EVENT,Snowboy >>> started
+2019-04-25 09:22:14,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 23 /// Repeat: checked
+2019-04-25 09:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-25 09:23:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-25 09:23:11,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:23:11,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-25 09:23:11,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-25 09:23:18,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:23:18,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:23:24,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-25 09:23:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-25 09:34:58,EVENT,MQTT >>> started
+2019-04-25 09:34:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:35:01,EVENT,Snowboy >>> started
+2019-04-25 09:35:38,EVENT,MQTT >>> started
+2019-04-25 09:35:38,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:35:42,EVENT,Snowboy >>> started
+2019-04-25 09:43:42,EVENT,MQTT >>> started
+2019-04-25 09:43:42,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:43:46,EVENT,Snowboy >>> started
+2019-04-25 09:44:21,EVENT,MQTT >>> started
+2019-04-25 09:44:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:44:25,EVENT,Snowboy >>> started
+2019-04-25 09:55:42,EVENT,MQTT >>> started
+2019-04-25 09:55:42,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:55:46,EVENT,Snowboy >>> started
+2019-04-25 09:58:21,EVENT,MQTT >>> started
+2019-04-25 09:58:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-25 09:58:25,EVENT,Snowboy >>> started
+2019-04-25 10:00:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-25 10:00:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-25 10:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-25 10:00:07,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
