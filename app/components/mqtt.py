@@ -189,7 +189,6 @@ def MQTT_GET_SENSORDATA(device_gateway, device_ieeeAddr, sensor_key):
 
       input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 30)    
 
-
    if input_messages != "Message nicht gefunden":
 
       for input_message in input_messages:

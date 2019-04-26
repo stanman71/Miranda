@@ -430,7 +430,7 @@ def ADD_LED_GROUP(name):
             return "Kein Name angegeben"
         else:
             # find a unused id
-            for i in range(1,25):
+            for i in range(1,21):
                 if LED_Groups.query.filter_by(id=i).first():
                     pass
                 else:
@@ -445,6 +445,9 @@ def ADD_LED_GROUP(name):
                     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Group >>> " + name + " >>> added")  
 
                     return ""
+
+            return "Gruppenlimit erreicht (20)"
+
     else:
         return "Name bereits vergeben"
 
@@ -657,7 +660,7 @@ def ADD_LED_PROGRAM(name):
     check_entry = LED_Programs.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,21):
             if LED_Programs.query.filter_by(id=i).first():
                 pass
             else:
@@ -673,6 +676,9 @@ def ADD_LED_PROGRAM(name):
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Program >>> " + name + " >>> added")  
 
                 return ""
+
+        return "Programmlimit erreicht (20)"
+
     else:
         return "Name bereits vergeben"
 
@@ -725,7 +731,7 @@ def ADD_LED_SCENE(name):
             return "Kein Name angegeben"
         else:
             # find a unused id
-            for i in range(1,25):
+            for i in range(1,21):
                 if LED_Scenes.query.filter_by(id=i).first():
                     pass
                 else:
@@ -740,6 +746,9 @@ def ADD_LED_SCENE(name):
                     WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Scene >>> " + name + " >>> added")  
 
                     return ""
+
+            return "Szenenlimit erreicht (20)"
+
     else:
         return "Name bereits vergeben"
 
@@ -951,7 +960,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 
     check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     if check_entry is None:       
         # find a unused id
-        for i in range(1,50):
+        for i in range(1,51):
             if MQTT_Devices.query.filter_by(id=i).first():
                 pass
             else:
@@ -973,7 +982,9 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 
                                      gateway + " /// ieeeAddr: " + ieeeAddr + " /// Model: " + model + 
                                      " /// Inputs: " + inputs + " /// Outputs: " + outputs)
 
-                SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)                                  
+                SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
+
+        return "Gerätelimit erreicht (50)"                           
                 
     else:
         SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)  
@@ -1107,7 +1118,7 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,26):
             if Plants.query.filter_by(id=i).first():
                 pass
             else:
@@ -1124,6 +1135,7 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
 
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + name + " >>> added")               
                 return ""
+        return "Pflanzenlimit erreicht (25)"
 
     else:
         return "Name bereits vergeben"
@@ -1191,7 +1203,7 @@ def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
     check_entry = Scheduler_Time_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,26):
             if Scheduler_Time_Tasks.query.filter_by(id=i).first():
                 pass
             else:
@@ -1213,6 +1225,9 @@ def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
                                      " /// Repeat: " +  repeat)                
                 
                 return ""
+
+        return "Aufgabenlimit erreicht (25)"
+
     else:
         return "Name bereits vergeben"
 
@@ -1368,7 +1383,7 @@ def ADD_SCHEDULER_SENSOR_TASK(name, task):
     check_entry = Scheduler_Sensor_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,26):
             if Scheduler_Sensor_Tasks.query.filter_by(id=i).first():
                 pass
             else:
@@ -1383,6 +1398,9 @@ def ADD_SCHEDULER_SENSOR_TASK(name, task):
                 
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + name + " >>> added")                
                 return ""
+        
+        return "Aufgabenlimit erreicht (25)"
+
     else:
         return "Name bereits vergeben"
 
@@ -1527,7 +1545,7 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active):
     check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
     if check_entry is None:        
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,26):
             if Sensordata_Jobs.query.filter_by(id=i).first():
                 pass
             else:
@@ -1544,6 +1562,8 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active):
 
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
                 return ""
+
+        return "Job-Limit erreicht (25)"
 
     else:
         return "Name bereits vergeben"
@@ -1612,7 +1632,7 @@ def ADD_SNOWBOY_TASK(name, task):
     check_entry = Snowboy_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
-        for i in range(1,25):
+        for i in range(1,26):
             if Snowboy_Tasks.query.filter_by(id=i).first():
                 pass
             else:
@@ -1628,6 +1648,9 @@ def ADD_SNOWBOY_TASK(name, task):
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + name + " >>> added") 
   
                 return ""
+
+        return "Aufgabenlimit erreicht (25)"
+
     else:
         return "Name bereits vergeben"
 

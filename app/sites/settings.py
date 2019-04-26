@@ -70,7 +70,7 @@ def dashboard_settings_mqtt():
 
         # change settings
         if request.form.get("change_settings") != None:    
-            for i in range (1,25):
+            for i in range (1,26):
                 if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
                                 
                     # rename devices                   
@@ -173,7 +173,7 @@ def dashboard_settings_zigbee2mqtt():
 
             # change settings
             if request.form.get("change_settings") != None:
-                for i in range (1,25):
+                for i in range (1,26):
                     # set name
                     if (request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None):
                             
@@ -369,7 +369,7 @@ def dashboard_settings_snowboy():
 
             # change settings
             if request.form.get("change_settings") != None: 
-                for i in range (1,25):
+                for i in range (1,26):
 
                     if request.form.get("set_name_" + str(i)) != None:  
                         
@@ -484,7 +484,7 @@ def dashboard_settings_user():
     if request.method == "POST":     
         # change user settings
         if request.form.get("change_user_settings") != None:
-            for i in range (1,25): 
+            for i in range (1,51): 
                 
                 if request.form.get("set_username_" + str(i)) != None:
 

@@ -7,26 +7,25 @@
 {% block styles %}
   {{super()}}
 
-  <script src="{{ url_for('static',filename='jquery.min.js') }}"></script>
   <script>
-    var sensor_options_list_1 = '{{ mqtt_device_1_inputs }}';
-    var sensor_options_list_1 = sensor_options_list_1.split(",");
-    var sensor_options_list_2 = '{{ mqtt_device_2_inputs }}';
-    var sensor_options_list_2 = sensor_options_list_2.split(",");
-    var sensor_options_list_3 = '{{ mqtt_device_3_inputs }}';
-    var sensor_options_list_3 = sensor_options_list_3.split(",");
-    var sensor_options_list_4 = '{{ mqtt_device_4_inputs }}';
-    var sensor_options_list_4 = sensor_options_list_4.split(",");
-    var sensor_options_list_5 = '{{ mqtt_device_5_inputs }}';
-    var sensor_options_list_5 = sensor_options_list_5.split(",");
-    var sensor_options_list_6 = '{{ mqtt_device_6_inputs }}';
-    var sensor_options_list_6 = sensor_options_list_6.split(",");
-    var sensor_options_list_7 = '{{ mqtt_device_7_inputs }}';
-    var sensor_options_list_7 = sensor_options_list_7.split(",");
-    var sensor_options_list_8 = '{{ mqtt_device_8_inputs }}';
-    var sensor_options_list_8 = sensor_options_list_8.split(",");
-    var sensor_options_list_9 = '{{ mqtt_device_9_inputs }}';
-    var sensor_options_list_9 = sensor_options_list_9.split(",");
+    var sensor_options_list_1  = '{{ mqtt_device_1_inputs }}';
+    var sensor_options_list_1  = sensor_options_list_1.split(",");
+    var sensor_options_list_2  = '{{ mqtt_device_2_inputs }}';
+    var sensor_options_list_2  = sensor_options_list_2.split(",");
+    var sensor_options_list_3  = '{{ mqtt_device_3_inputs }}';
+    var sensor_options_list_3  = sensor_options_list_3.split(",");
+    var sensor_options_list_4  = '{{ mqtt_device_4_inputs }}';
+    var sensor_options_list_4  = sensor_options_list_4.split(",");
+    var sensor_options_list_5  = '{{ mqtt_device_5_inputs }}';
+    var sensor_options_list_5  = sensor_options_list_5.split(",");
+    var sensor_options_list_6  = '{{ mqtt_device_6_inputs }}';
+    var sensor_options_list_6  = sensor_options_list_6.split(",");
+    var sensor_options_list_7  = '{{ mqtt_device_7_inputs }}';
+    var sensor_options_list_7  = sensor_options_list_7.split(",");
+    var sensor_options_list_8  = '{{ mqtt_device_8_inputs }}';
+    var sensor_options_list_8  = sensor_options_list_8.split(",");
+    var sensor_options_list_9  = '{{ mqtt_device_9_inputs }}';
+    var sensor_options_list_9  = sensor_options_list_9.split(",");
     var sensor_options_list_10 = '{{ mqtt_device_10_inputs }}';
     var sensor_options_list_10 = sensor_options_list_10.split(",");
     var sensor_options_list_11 = '{{ mqtt_device_11_inputs }}';
@@ -49,18 +48,28 @@
     var sensor_options_list_19 = sensor_options_list_19.split(",");
     var sensor_options_list_20 = '{{ mqtt_device_20_inputs }}';
     var sensor_options_list_20 = sensor_options_list_20.split(",");
+    var sensor_options_list_21 = '{{ mqtt_device_21_inputs }}';
+    var sensor_options_list_21 = sensor_options_list_21.split(",");
+    var sensor_options_list_22 = '{{ mqtt_device_22_inputs }}';
+    var sensor_options_list_22 = sensor_options_list_22.split(",");
+    var sensor_options_list_23 = '{{ mqtt_device_23_inputs }}';
+    var sensor_options_list_23 = sensor_options_list_23.split(",");
+    var sensor_options_list_24 = '{{ mqtt_device_24_inputs }}';
+    var sensor_options_list_24 = sensor_options_list_24.split(",");
+    var sensor_options_list_25 = '{{ mqtt_device_25_inputs }}';
+    var sensor_options_list_25 = sensor_options_list_25.split(",");
 
     var sensor_options = {};
 
-    sensor_options['1'] = sensor_options_list_1;
-    sensor_options['2'] = sensor_options_list_2;
-    sensor_options['3'] = sensor_options_list_3;
-    sensor_options['4'] = sensor_options_list_4;
-    sensor_options['5'] = sensor_options_list_5;
-    sensor_options['6'] = sensor_options_list_6;
-    sensor_options['7'] = sensor_options_list_7;
-    sensor_options['8'] = sensor_options_list_8;
-    sensor_options['9'] = sensor_options_list_9;
+    sensor_options['1']  = sensor_options_list_1;
+    sensor_options['2']  = sensor_options_list_2;
+    sensor_options['3']  = sensor_options_list_3;
+    sensor_options['4']  = sensor_options_list_4;
+    sensor_options['5']  = sensor_options_list_5;
+    sensor_options['6']  = sensor_options_list_6;
+    sensor_options['7']  = sensor_options_list_7;
+    sensor_options['8']  = sensor_options_list_8;
+    sensor_options['9']  = sensor_options_list_9;
     sensor_options['10'] = sensor_options_list_10;
     sensor_options['11'] = sensor_options_list_11;
     sensor_options['12'] = sensor_options_list_12;
@@ -72,15 +81,20 @@
     sensor_options['18'] = sensor_options_list_18;
     sensor_options['19'] = sensor_options_list_19;
     sensor_options['20'] = sensor_options_list_20;
+    sensor_options['21'] = sensor_options_list_21;
+    sensor_options['22'] = sensor_options_list_22;
+    sensor_options['23'] = sensor_options_list_23;
+    sensor_options['24'] = sensor_options_list_24;
+    sensor_options['25'] = sensor_options_list_25;
 
     function Choose_Sensor_1(entry_id) {
 
       var device_name = "device_1_" + entry_id
       var sensor_list_name = "selected_sensor_1_" + entry_id
-
       var device = document.getElementById(device_name);
       var sensor_list = document.getElementById(sensor_list_name);
       var selected_sensor = device.options[device.selectedIndex].value;
+
       while (sensor_list.options.length) {
         sensor_list.remove(0);
       }
@@ -98,10 +112,10 @@
 
       var device_name = "device_2_" + entry_id
       var sensor_list_name = "selected_sensor_2_" + entry_id
-
       var device = document.getElementById(device_name);
       var sensor_list = document.getElementById(sensor_list_name);
       var selected_sensor = device.options[device.selectedIndex].value;
+
       while (sensor_list.options.length) {
         sensor_list.remove(0);
       }
@@ -119,10 +133,10 @@
 
       var device_name = "device_3_" + entry_id
       var sensor_list_name = "selected_sensor_3_" + entry_id
-
       var device = document.getElementById(device_name);
       var sensor_list = document.getElementById(sensor_list_name);
       var selected_sensor = device.options[device.selectedIndex].value;
+
       while (sensor_list.options.length) {
         sensor_list.remove(0);
       }
@@ -136,7 +150,6 @@
       }
     } 
   </script>
-
 
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">

@@ -36,7 +36,7 @@ def dashboard_led_scenes():
     error_message_turn_off = ""
 
     if request.method == "POST":
-        for i in range (1,20):
+        for i in range (1,21):
 
             # change scene
             if request.form.get("set_name_" + str(i)) != None:  
@@ -408,7 +408,7 @@ def dashboard_led_programs():
                     program_delete = program
                     
         # i = program ID
-        for i in range(1,25):  
+        for i in range(1,21):  
             
             if (request.form.get("color_" + str(i)) is not None or
                 request.form.get("update_" + str(i)) is not None or
@@ -497,7 +497,7 @@ def dashboard_led_groups():
     UPDATE_LED_GROUP_LED_NAMES()
 
     if request.method == "POST":
-        for i in range (1,25):
+        for i in range (1,21):
 
             # change group
             if request.form.get("set_name_" + str(i)) != None:  
@@ -752,14 +752,14 @@ def dashboard_led_groups():
                     led_name_9 = "None"
 
                 SET_LED_GROUP(i, name, led_id_1, led_name_1,
-                                      led_id_2, led_name_2,
-                                      led_id_3, led_name_3,
-                                      led_id_4, led_name_4,
-                                      led_id_5, led_name_5,
-                                      led_id_6, led_name_6,
-                                      led_id_7, led_name_7,
-                                      led_id_8, led_name_8,
-                                      led_id_9, led_name_9)
+                                       led_id_2, led_name_2,
+                                       led_id_3, led_name_3,
+                                       led_id_4, led_name_4,
+                                       led_id_5, led_name_5,
+                                       led_id_6, led_name_6,
+                                       led_id_7, led_name_7,
+                                       led_id_8, led_name_8,
+                                       led_id_9, led_name_9)
 
         # add group
         if request.form.get("add_group") != None:
