@@ -116,9 +116,12 @@ def dashboard_sensordata_jobs():
                     sensor_key = request.form.get("set_sensor_" + str(i))
                     sensor_key = sensor_key.replace(" ", "")
                     if sensor_key.isdigit():
-                        sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
-                        sensor_list = sensor_list.split(",")
-                        sensor_key  = sensor_list[int(sensor_key)]
+                        if sensor_key == "0" or sensor_key == "1":
+                            sensor_key = "None"
+                        else:                                
+                            sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
+                            sensor_list = sensor_list.split(",")
+                            sensor_key  = sensor_list[int(sensor_key)-2]
 
                     if request.form.get("checkbox_table_" + str(i)):
                         always_active = "checked"
@@ -255,7 +258,7 @@ def dashboard_sensordata_jobs():
         mqtt_device_25_inputs = ""           
 
                         
-    error_message_table = CHECK_SENSORDATA_JOBS()
+    error_message_table = CHECK_SENSORDATA_JOBS_SETTINGS()
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     

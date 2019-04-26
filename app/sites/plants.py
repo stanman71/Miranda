@@ -98,9 +98,12 @@ def dashboard_plants():
                         pump_key = pump_key.replace(" ", "") 
 
                         if pump_key.isdigit():
-                            pump_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).outputs
-                            pump_list = pump_list.split(",")
-                            pump_key  = pump_list[int(pump_key)]
+                            if pump_key == "0" or pump_key == "1":
+                                pump_key = "None"
+                            else:
+                                pump_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).outputs
+                                pump_list = pump_list.split(",")
+                                pump_key  = pump_list[int(pump_key)-2]
                     except:
                         pass
 
@@ -108,9 +111,12 @@ def dashboard_plants():
                         sensor_key = sensor_key.replace(" ", "") 
                         
                         if sensor_key.isdigit():
-                            sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
-                            sensor_list = sensor_list.split(",")
-                            sensor_key  = sensor_list[int(sensor_key)]
+                            if sensor_key == "0" or sensor_key == "1":
+                                sensor_key = "None"
+                            else:                                
+                                sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
+                                sensor_list = sensor_list.split(",")
+                                sensor_key  = sensor_list[int(sensor_key)-2]
                     except:
                         pass
 
@@ -371,7 +377,7 @@ def dashboard_plants():
         mqtt_device_25_inputs = ""    
 
 
-    error_message_table = CHECK_PLANTS()
+    error_message_table = CHECK_PLANTS_SETTINGS()
 
     if set_mqtt_device_id != "":
         set_mqtt_device_name = GET_MQTT_DEVICE_BY_ID(int(set_mqtt_device_id)).name  

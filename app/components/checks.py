@@ -3,11 +3,65 @@ from app.database.database import *
 from app.components.mqtt import *
 
 
+""" ################### """
+"""     check mqtt      """
+""" ################### """
+ 
+def MQTT_CHECK():
+   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
+
+
+def MQTT_CHECK_NAME_CHANGED():
+            
+   input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
+
+   if input_messages != "Message nicht gefunden":
+      for input_message in input_messages:
+         input_message = str(input_message[2])
+  
+         data = json.loads(input_message)
+            
+         if data["type"] == "device_renamed":
+            return True
+                    
+   else:
+      return False
+
+
 """ ############### """
-""" check functions """
+"""  check settings """
 """ ############### """
 
-def CHECK_PLANTS():
+def CHECK_LED_GROUP_SETTINGS(settings):
+   list_errors = []
+
+   for element in settings:
+      if element.led_id_1 == None or element.led_id_1 == "None":
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 1")        
+      if element.active_led_2 == "on" and (element.led_id_2 == None or element.led_id_2 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 2") 
+      if element.active_led_3 == "on" and (element.led_id_3 == None or element.led_id_3 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 3") 
+      if element.active_led_4 == "on" and (element.led_id_4 == None or element.led_id_4 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 4") 
+      if element.active_led_5 == "on" and (element.led_id_5 == None or element.led_id_5 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 5") 
+      if element.active_led_6 == "on" and (element.led_id_6 == None or element.led_id_6 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 6") 
+      if element.active_led_7 == "on" and (element.led_id_7 == None or element.led_id_7 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 7") 
+      if element.active_led_8 == "on" and (element.led_id_8 == None or element.led_id_8 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 8") 
+      if element.active_led_9 == "on" and (element.led_id_9 == None or element.led_id_9 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")                     
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
+
+
+def CHECK_PLANTS_SETTINGS():
    list_errors = []
 
    plants  = GET_ALL_PLANTS()
@@ -49,17 +103,167 @@ def CHECK_PLANTS():
       return list_errors
 
 
-def CHECK_SENSORDATA_JOBS():
-    string_errors = ""
-    entries = Sensordata_Jobs.query.all()
-    for entry in entries:
-        if entry.sensor_key == "None" or entry.sensor_key == None:
-            string_errors = string_errors + str(entry.id) + " "
+def CHECK_SENSORDATA_JOBS_SETTINGS():
+
+   list_errors = []
+
+   entries = GET_ALL_SENSORDATA_JOBS()
+
+   # sensor missing ?
+   for entry in entries:
+        if ((entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "") and 
+             entry.control_sensor == "checked"):
+
+            list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
+
+
+def CHECK_SCHEDULER_TIME_SETTINGS(timer_tasks): 
+   list_errors_settings = []  
+
+   for task in timer_tasks:
+
+      ### check day
+      if "," in task.day:
+            day = task.day.split(",")
+            for element in day:
+               if element not in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]:
+                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+                  break                                 
+      else:
+            if task.day not in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su", "*"] and task.day != "*":
+               list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+
+      ### check hour
+      if "," in task.hour:
+            hour = task.hour.split(",")
+            for element in hour:
+               try:                                   
+                  if not (0 <= int(element) <= 24):
+                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+                        break   
+               except:
+                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+                  break   
+      else:
+            try:
+               if not (0 <= int(task.hour) <= 24) and task.hour != "*":
+                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+            except:
+               if task.hour != "*":
+                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde")    
+
+      ### check minute
+      if "," in task.minute:
+            minute = task.minute.split(",")
+            for element in minute:
+               try:                                   
+                  if not (0 <= int(element) <= 60):
+                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                        break   
+               except:
+                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                  break   
+      else:
+            try:
+               if not (0 <= int(task.minute) <= 60) and task.minute != "*":
+                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+            except:
+               if task.minute != "*":
+                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+
+   if list_errors_settings == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_errors_settings
+
+   return error_message_settings
+
+
+def CHECK_SCHEDULER_SENSOR_SETTINGS(sensor_tasks): 
+   list_errors_settings = []  
+
+   for task in sensor_tasks:
+
+      # check mqtt devices
+      
+      if task.mqtt_device_id_1 == "None" or task.mqtt_device_id_1 == "" or task.mqtt_device_id_1 == None:
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
+
+      if task.mqtt_device_id_2 == "None" or task.mqtt_device_id_2 == "" or task.mqtt_device_id_2 == None:
+         if task.operator_main_1 != "None" and task.operator_main_1 != None:
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
+
+      if task.mqtt_device_id_3 == "None" or task.mqtt_device_id_3 == "" or task.mqtt_device_id_3 == None:
+         if task.operator_main_1 != "None" and task.operator_main_1 != None:
+            if task.operator_main_2 != "None" and task.operator_main_2 != None:
+               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")             
+
+      # check sensors
+      
+      if task.sensor_key_1 == "None" or task.sensor_key_1 == None:
+         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
+         
+      if task.operator_main_1 != "None" and task.operator_main_1 != None:
+         if task.sensor_key_2 == "None" or task.sensor_key_2 == None:
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 2")  
             
-    if string_errors != "":
-        return ("Einstellungen unvollständig ( Job-ID: " + string_errors + ")")
-    else:
-        return ""
+      if task.operator_main_2 != "None" and task.operator_main_2 != None:
+         if task.sensor_key_3 == "None" or task.sensor_key_3 == None:
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 3") 
+
+      # check operators
+      
+      if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
+         if task.operator_1 == "" or task.operator_1 == "None" or task.operator_1 == None: 
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 1") 
+       
+      if task.operator_main_1 == "and" or task.operator_main_1 == "or":
+         if task.operator_2 == "None" or task.operator_2 == "" or task.operator_2 == None: 
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 2")  
+
+      if task.operator_main_2 == "and" or task.operator_main_2 == "or":
+         if task.operator_3 == "None" or task.operator_3 == "" or task.operator_3 == None: 
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
+
+      # check values
+      
+      if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
+         if task.value_1 == "" or task.value_1 == "None" or task.value_1 == None: 
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")       
+         elif (task.operator_1 == "<" or task.operator_1 == ">") and not task.value_1.isdigit():
+            list_errors_settings.append(task.name + 
+            " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden") 
+
+      if task.operator_main_1 == "and" or task.operator_main_1 == "or":
+         if task.value_2 == "" or task.value_2 == "None" or task.value_2 == None:
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")
+         elif (task.operator_2 == "<" or task.operator_2 == ">") and not task.value_2.isdigit():
+            list_errors_settings.append(task.name + 
+            " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")      
+
+      if task.operator_main_2 == "and" or task.operator_main_2 == "or":
+         if task.value_3 == "" or task.value_3 == "None" or task.value_3 == None:
+            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")
+         elif (task.operator_3 == "<" or task.operator_3 == ">") and not task.value_3.isdigit():
+            list_errors_settings.append(task.name + 
+            " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")     
+
+   if list_errors_settings == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_errors_settings
+
+   return error_message_settings
+
+
+""" ################### """
+"""     check tasks     """
+""" ################### """
 
 
 def CHECK_TASKS(tasks, task_type):
@@ -213,196 +417,3 @@ def CHECK_TASKS(tasks, task_type):
       return ""
    else:
       return list_errors
-
-
-def CHECK_ALL_TIMER_SETTINGS(timer_tasks): 
-   list_errors_settings = []  
-
-   for task in timer_tasks:
-
-      ### check day
-      if "," in task.day:
-            day = task.day.split(",")
-            for element in day:
-               if element not in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"]:
-                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
-                  break                                 
-      else:
-            if task.day not in ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su", "*"] and task.day != "*":
-               list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
-
-      ### check hour
-      if "," in task.hour:
-            hour = task.hour.split(",")
-            for element in hour:
-               try:                                   
-                  if not (0 <= int(element) <= 24):
-                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
-                        break   
-               except:
-                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
-                  break   
-      else:
-            try:
-               if not (0 <= int(task.hour) <= 24) and task.hour != "*":
-                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
-            except:
-               if task.hour != "*":
-                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Stunde")    
-
-      ### check minute
-      if "," in task.minute:
-            minute = task.minute.split(",")
-            for element in minute:
-               try:                                   
-                  if not (0 <= int(element) <= 60):
-                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-                        break   
-               except:
-                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-                  break   
-      else:
-            try:
-               if not (0 <= int(task.minute) <= 60) and task.minute != "*":
-                        list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-            except:
-               if task.minute != "*":
-                  list_errors_settings.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-
-   if list_errors_settings == []:
-      error_message_settings = ""
-   else:
-      error_message_settings = list_errors_settings
-
-   return error_message_settings
-
-
-def CHECK_ALL_SENSOR_SETTINGS(sensor_tasks): 
-   list_errors_settings = []  
-
-   for task in sensor_tasks:
-
-      # check mqtt devices
-      
-      if task.mqtt_device_id_1 == "None" or task.mqtt_device_id_1 == "" or task.mqtt_device_id_1 == None:
-         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
-
-      if task.mqtt_device_id_2 == "None" or task.mqtt_device_id_2 == "" or task.mqtt_device_id_2 == None:
-         if task.operator_main_1 != "None" and task.operator_main_1 != None:
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
-
-      if task.mqtt_device_id_3 == "None" or task.mqtt_device_id_3 == "" or task.mqtt_device_id_3 == None:
-         if task.operator_main_1 != "None" and task.operator_main_1 != None:
-            if task.operator_main_2 != "None" and task.operator_main_2 != None:
-               list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")             
-
-      # check sensors
-      
-      if task.sensor_key_1 == "None" or task.sensor_key_1 == None:
-         list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
-         
-      if task.operator_main_1 != "None" and task.operator_main_1 != None:
-         if task.sensor_key_2 == "None" or task.sensor_key_2 == None:
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 2")  
-            
-      if task.operator_main_2 != "None" and task.operator_main_2 != None:
-         if task.sensor_key_3 == "None" or task.sensor_key_3 == None:
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Sensor 3") 
-
-      # check operators
-      
-      if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
-         if task.operator_1 == "" or task.operator_1 == "None" or task.operator_1 == None: 
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 1") 
-       
-      if task.operator_main_1 == "and" or task.operator_main_1 == "or":
-         if task.operator_2 == "None" or task.operator_2 == "" or task.operator_2 == None: 
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 2")  
-
-      if task.operator_main_2 == "and" or task.operator_main_2 == "or":
-         if task.operator_3 == "None" or task.operator_3 == "" or task.operator_3 == None: 
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
-
-      # check values
-      
-      if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
-         if task.value_1 == "" or task.value_1 == "None" or task.value_1 == None: 
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")       
-         elif (task.operator_1 == "<" or task.operator_1 == ">") and not task.value_1.isdigit():
-            list_errors_settings.append(task.name + 
-            " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden") 
-
-      if task.operator_main_1 == "and" or task.operator_main_1 == "or":
-         if task.value_2 == "" or task.value_2 == "None" or task.value_2 == None:
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")
-         elif (task.operator_2 == "<" or task.operator_2 == ">") and not task.value_2.isdigit():
-            list_errors_settings.append(task.name + 
-            " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")      
-
-      if task.operator_main_2 == "and" or task.operator_main_2 == "or":
-         if task.value_3 == "" or task.value_3 == "None" or task.value_3 == None:
-            list_errors_settings.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")
-         elif (task.operator_3 == "<" or task.operator_3 == ">") and not task.value_3.isdigit():
-            list_errors_settings.append(task.name + 
-            " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")     
-
-   if list_errors_settings == []:
-      error_message_settings = ""
-   else:
-      error_message_settings = list_errors_settings
-
-   return error_message_settings
-
-
-def CHECK_LED_GROUP_SETTINGS(settings):
-   list_errors = []
-
-   for element in settings:
-      if element.led_id_1 == None or element.led_id_1 == "None":
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 1")        
-      if element.active_led_2 == "on" and (element.led_id_2 == None or element.led_id_2 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 2") 
-      if element.active_led_3 == "on" and (element.led_id_3 == None or element.led_id_3 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 3") 
-      if element.active_led_4 == "on" and (element.led_id_4 == None or element.led_id_4 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 4") 
-      if element.active_led_5 == "on" and (element.led_id_5 == None or element.led_id_5 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 5") 
-      if element.active_led_6 == "on" and (element.led_id_6 == None or element.led_id_6 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 6") 
-      if element.active_led_7 == "on" and (element.led_id_7 == None or element.led_id_7 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 7") 
-      if element.active_led_8 == "on" and (element.led_id_8 == None or element.led_id_8 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 8") 
-      if element.active_led_9 == "on" and (element.led_id_9 == None or element.led_id_9 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")                     
-
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
-
-
-""" ################### """
-"""     mqtt checks     """
-""" ################### """
- 
-def MQTT_CHECK():
-   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
-
-
-def MQTT_CHECK_NAME_CHANGED():
-            
-   input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
-
-   if input_messages != "Message nicht gefunden":
-      for input_message in input_messages:
-         input_message = str(input_message[2])
-  
-         data = json.loads(input_message)
-            
-         if data["type"] == "device_renamed":
-            return True
-                    
-   else:
-      return False

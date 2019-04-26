@@ -172,11 +172,13 @@
               
 <!-- error message table -->
 
-{% if error_message_table != "" %}
+{% if error_message_tasks != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_table }}
+    {% for entry in error_message_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
-{% endif %}   
+{% endif %} 
 
 <!-- error message form -->
 

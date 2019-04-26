@@ -145,7 +145,7 @@ def dashboard_scheduler_time():
                     SET_SCHEDULER_TIME_TASK(i, name, task, day, hour, minute, repeat)
 
 
-    error_message_settings = CHECK_ALL_TIMER_SETTINGS(GET_ALL_SCHEDULER_TIME_TASKS())
+    error_message_settings = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TIME_TASKS())
     error_message_tasks    = CHECK_TASKS(GET_ALL_SCHEDULER_TIME_TASKS(), "timer")
     
     scheduler_list = GET_ALL_SCHEDULER_TIME_TASKS()
@@ -270,9 +270,12 @@ def dashboard_scheduler_sensor():
                         sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
                         sensor_key_1 = sensor_key_1.replace(" ", "") 
                         if sensor_key_1.isdigit():
-                            sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_1).inputs
-                            sensor_list  = sensor_list.split(",")
-                            sensor_key_1 = sensor_list[int(sensor_key_1)]
+                            if sensor_key_1 == "0" or sensor_key_1 == "1":
+                                sensor_key_1 = "None"
+                            else:                                
+                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_1).inputs
+                                sensor_list  = sensor_list.split(",")
+                                sensor_key_1 = sensor_list[int(sensor_key_1)-2]
                             
                     except:
                         sensor_key_1 = "None"
@@ -287,9 +290,12 @@ def dashboard_scheduler_sensor():
                         sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
                         sensor_key_2 = sensor_key_2.replace(" ", "") 
                         if sensor_key_2.isdigit():
-                            sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_2).inputs
-                            sensor_list  = sensor_list.split(",")
-                            sensor_key_2 = sensor_list[int(sensor_key_2)]                        
+                            if sensor_key_2 == "0" or sensor_key_2 == "1":
+                                sensor_key_2 = "None"
+                            else:                                
+                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_2).inputs
+                                sensor_list  = sensor_list.split(",")
+                                sensor_key_2 = sensor_list[int(sensor_key_2)-2]                   
 
                     except:
                         sensor_key_2 = "None"
@@ -304,15 +310,17 @@ def dashboard_scheduler_sensor():
                         sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
                         sensor_key_3 = sensor_key_3.replace(" ", "") 
                         if sensor_key_3.isdigit():
-                            sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_3).inputs
-                            sensor_list  = sensor_list.split(",")
-                            sensor_key_3 = sensor_list[int(sensor_key_3)]                          
+                            if sensor_key_3 == "0" or sensor_key_3 == "1":
+                                sensor_key_3 = "None"
+                            else:                                
+                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_3).inputs
+                                sensor_list  = sensor_list.split(",")
+                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]                    
 
                     except:
                         sensor_key_3 = "None"
                         mqtt_device_id_3 = "None"
                         mqtt_device_name_3 = "None"
-
 
                     SET_SCHEDULER_SENSOR_TASK(i, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                                                   sensor_key_1, operator_1, value_1, operator_main_1,
@@ -448,7 +456,7 @@ def dashboard_scheduler_sensor():
     except:
         mqtt_device_25_inputs = ""           
 
-    error_message_settings = CHECK_ALL_SENSOR_SETTINGS(GET_ALL_SCHEDULER_SENSOR_TASKS())
+    error_message_settings = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_SENSOR_TASKS())
     error_message_tasks    = CHECK_TASKS(GET_ALL_SCHEDULER_SENSOR_TASKS(), "sensor")
 
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
