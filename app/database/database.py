@@ -140,7 +140,7 @@ class Plants(db.Model):
     id             = db.Column(db.Integer, primary_key=True, autoincrement = True)   
     name           = db.Column(db.String(50), unique=True)
     mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    watervolume    = db.Column(db.Integer)
+    pumptime       = db.Column(db.Integer)
     mqtt_device    = db.relationship('MQTT_Devices')  
     pump_key       = db.Column(db.String(50))
     sensor_key     = db.Column(db.String(50))
@@ -1102,7 +1102,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, log = ""):
+def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor, log = ""):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1116,7 +1116,7 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, log = ""):
                         id             = i,
                         name           = name,
                         mqtt_device_id = mqtt_device_id,
-                        watervolume    = watervolume, 
+                        pumptime       = pumptime, 
                         control_sensor = control_sensor,                    
                     )
                 db.session.add(plant)
@@ -1131,18 +1131,19 @@ def ADD_PLANT(name, mqtt_device_id, watervolume, control_sensor, log = ""):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, control_sensor):        
-    entry = Plants.query.filter_by(id=plant_id).first()
+def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime, control_sensor):        
+    entry = Plants.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.sensor_key != sensor_key or entry.pump_key != pump_key or 
-        entry.watervolume != int(watervolume) or entry.control_sensor != control_sensor):
+    if (entry.name != name or entry.mqtt_device_id != mqtt_device_id or entry.pump_key != pump_key or  
+        entry.sensor_key != sensor_key or entry.pumptime != int(pumptime) or entry.control_sensor != control_sensor):
 
         entry.name = name
-        entry.sensor_key = sensor_key
+        entry.mqtt_device_id = mqtt_device_id
         entry.pump_key = pump_key
-        entry.watervolume = watervolume
+        entry.sensor_key = sensor_key
+        entry.pumptime = pumptime
         entry.control_sensor = control_sensor
         
         db.session.commit()  
@@ -1150,14 +1151,14 @@ def SET_PLANT_SETTINGS(plant_id, name, sensor_key, pump_key, watervolume, contro
         try:
             # with pump_id
             WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
-                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
-                                " /// Pump: " + entry.pump_key + " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " +
+                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Pump: " + entry.pump_key + 
+                                " /// Sensor: " + entry.sensor_key + " /// Pumptime: " + str(pumptime) + " /// Control-Sensor: " +
                                 entry.control_sensor)      
         except:
-            # without pump_id
+            # without sensor_id
             WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
-                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Sensor: " + entry.sensor_key + 
-                                " /// Watervolume: " + str(watervolume) + " /// Control-Sensor: " + entry.control_sensor)      
+                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Pump: " + entry.pump_key + 
+                                " /// Pumptime: " + str(pumptime) + " /// Control-Sensor: " + entry.control_sensor)      
 
 
 def DELETE_PLANT(plant_id, log = ""):

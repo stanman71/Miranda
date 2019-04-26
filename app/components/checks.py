@@ -7,20 +7,46 @@ from app.components.mqtt import *
 """ check functions """
 """ ############### """
 
-
 def CHECK_PLANTS():
-    string_errors = ""
-    entries = Plants.query.all()
-    for entry in entries:
-        if ((entry.sensor_key == "None" or entry.sensor_key == None) or
-           ((entry.pump_key == "None" or entry.pump_key == None) and entry.control_sensor == "checked")):
-            
-            string_errors = string_errors + str(entry.name) + " "
-     
-    if string_errors != "":
-        return ("Einstellungen unvollständig ( Pflanzen-Name: " + string_errors + ")")
-    else:
-        return ""
+   list_errors = []
+
+   plants  = GET_ALL_PLANTS()
+   entries = GET_ALL_PLANTS()
+
+   # pump missing ?
+   for entry in entries:
+        if entry.pump_key == "None" or entry.pump_key == None or entry.pump_key == "":
+            list_errors.append(entry.name + " >>> keine Pumpe zugeordnet")
+
+   # check pumps multiple times ?
+   for plant in plants:
+      for entry in entries:
+
+         if entry.id != plant.id:
+            if ((entry.mqtt_device_id == plant.mqtt_device_id and entry.pump_key == plant.pump_key) and  
+                (entry.pump_key != None and entry.pump_key != "None" and entry.pump_key != "")):
+               list_errors.append(entry.name + " >>> Pumpe mehrmals zugeordnet")
+
+   # sensor missing ?
+   for entry in entries:
+        if ((entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "") and 
+             entry.control_sensor == "checked"):
+
+            list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
+
+   # check sensors multiple times ?
+   for plant in plants:
+      for entry in entries:
+
+         if entry.id != plant.id:
+            if ((entry.mqtt_device_id == plant.mqtt_device_id and entry.sensor_key == plant.sensor_key) and  
+                (entry.sensor_key != None and entry.sensor_key != "None" and entry.sensor_key != "")):
+               list_errors.append(entry.name + " >>> Sensor mehrmals zugeordnet")
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
 
 
 def CHECK_SENSORDATA_JOBS():

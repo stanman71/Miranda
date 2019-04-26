@@ -6,6 +6,180 @@
 
 {% block styles %}
   {{super()}}
+
+  <script src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+  <script>
+    var sensor_options_list_1 = '{{ mqtt_device_1_inputs }}';
+    var sensor_options_list_1 = sensor_options_list_1.split(",");
+    var sensor_options_list_2 = '{{ mqtt_device_2_inputs }}';
+    var sensor_options_list_2 = sensor_options_list_2.split(",");
+    var sensor_options_list_3 = '{{ mqtt_device_3_inputs }}';
+    var sensor_options_list_3 = sensor_options_list_3.split(",");
+    var sensor_options_list_4 = '{{ mqtt_device_4_inputs }}';
+    var sensor_options_list_4 = sensor_options_list_4.split(",");
+    var sensor_options_list_5 = '{{ mqtt_device_5_inputs }}';
+    var sensor_options_list_5 = sensor_options_list_5.split(",");
+    var sensor_options_list_6 = '{{ mqtt_device_6_inputs }}';
+    var sensor_options_list_6 = sensor_options_list_6.split(",");
+    var sensor_options_list_7 = '{{ mqtt_device_7_inputs }}';
+    var sensor_options_list_7 = sensor_options_list_7.split(",");
+    var sensor_options_list_8 = '{{ mqtt_device_8_inputs }}';
+    var sensor_options_list_8 = sensor_options_list_8.split(",");
+    var sensor_options_list_9 = '{{ mqtt_device_9_inputs }}';
+    var sensor_options_list_9 = sensor_options_list_9.split(",");
+    var sensor_options_list_10 = '{{ mqtt_device_10_inputs }}';
+    var sensor_options_list_10 = sensor_options_list_10.split(",");
+    var sensor_options_list_11 = '{{ mqtt_device_11_inputs }}';
+    var sensor_options_list_11 = sensor_options_list_11.split(",");
+    var sensor_options_list_12 = '{{ mqtt_device_12_inputs }}';
+    var sensor_options_list_12 = sensor_options_list_12.split(",");
+    var sensor_options_list_13 = '{{ mqtt_device_13_inputs }}';
+    var sensor_options_list_13 = sensor_options_list_13.split(",");
+    var sensor_options_list_14 = '{{ mqtt_device_14_inputs }}';
+    var sensor_options_list_14 = sensor_options_list_14.split(",");
+    var sensor_options_list_15 = '{{ mqtt_device_15_inputs }}';
+    var sensor_options_list_15 = sensor_options_list_15.split(",");
+    var sensor_options_list_16 = '{{ mqtt_device_16_inputs }}';
+    var sensor_options_list_16 = sensor_options_list_16.split(",");
+    var sensor_options_list_17 = '{{ mqtt_device_17_inputs }}';
+    var sensor_options_list_17 = sensor_options_list_17.split(",");
+    var sensor_options_list_18 = '{{ mqtt_device_18_inputs }}';
+    var sensor_options_list_18 = sensor_options_list_18.split(",");
+    var sensor_options_list_19 = '{{ mqtt_device_19_inputs }}';
+    var sensor_options_list_19 = sensor_options_list_19.split(",");
+    var sensor_options_list_20 = '{{ mqtt_device_20_inputs }}';
+    var sensor_options_list_20 = sensor_options_list_20.split(",");
+
+    var sensor_options = {};
+
+    sensor_options['1'] = sensor_options_list_1;
+    sensor_options['2'] = sensor_options_list_2;
+    sensor_options['3'] = sensor_options_list_3;
+    sensor_options['4'] = sensor_options_list_4;
+    sensor_options['5'] = sensor_options_list_5;
+    sensor_options['6'] = sensor_options_list_6;
+    sensor_options['7'] = sensor_options_list_7;
+    sensor_options['8'] = sensor_options_list_8;
+    sensor_options['9'] = sensor_options_list_9;
+    sensor_options['10'] = sensor_options_list_10;
+    sensor_options['11'] = sensor_options_list_11;
+    sensor_options['12'] = sensor_options_list_12;
+    sensor_options['13'] = sensor_options_list_13;
+    sensor_options['14'] = sensor_options_list_14;
+    sensor_options['15'] = sensor_options_list_15;
+    sensor_options['16'] = sensor_options_list_16;
+    sensor_options['17'] = sensor_options_list_17;
+    sensor_options['18'] = sensor_options_list_18;
+    sensor_options['19'] = sensor_options_list_19;
+    sensor_options['20'] = sensor_options_list_20;
+
+    var pump_options_list_1 = '{{ mqtt_device_1_outputs }}';
+    var pump_options_list_1 = pump_options_list_1.split(",");
+    var pump_options_list_2 = '{{ mqtt_device_2_outputs }}';
+    var pump_options_list_2 = pump_options_list_2.split(",");
+    var pump_options_list_3 = '{{ mqtt_device_3_outputs }}';
+    var pump_options_list_3 = pump_options_list_3.split(",");
+    var pump_options_list_4 = '{{ mqtt_device_4_outputs }}';
+    var pump_options_list_4 = pump_options_list_4.split(",");
+    var pump_options_list_5 = '{{ mqtt_device_5_outputs }}';
+    var pump_options_list_5 = pump_options_list_5.split(",");
+    var pump_options_list_6 = '{{ mqtt_device_6_outputs }}';
+    var pump_options_list_6 = pump_options_list_6.split(",");
+    var pump_options_list_7 = '{{ mqtt_device_7_outputs }}';
+    var pump_options_list_7 = pump_options_list_7.split(",");
+    var pump_options_list_8 = '{{ mqtt_device_8_outputs }}';
+    var pump_options_list_8 = pump_options_list_8.split(",");
+    var pump_options_list_9 = '{{ mqtt_device_9_outputs }}';
+    var pump_options_list_9 = pump_options_list_9.split(",");
+    var pump_options_list_10 = '{{ mqtt_device_10_outputs }}';
+    var pump_options_list_10 = pump_options_list_10.split(",");
+    var pump_options_list_11 = '{{ mqtt_device_11_outputs }}';
+    var pump_options_list_11 = pump_options_list_11.split(",");
+    var pump_options_list_12 = '{{ mqtt_device_12_outputs }}';
+    var pump_options_list_12 = pump_options_list_12.split(",");
+    var pump_options_list_13 = '{{ mqtt_device_13_outputs }}';
+    var pump_options_list_13 = pump_options_list_13.split(",");
+    var pump_options_list_14 = '{{ mqtt_device_14_outputs }}';
+    var pump_options_list_14 = pump_options_list_14.split(",");
+    var pump_options_list_15 = '{{ mqtt_device_15_outputs }}';
+    var pump_options_list_15 = pump_options_list_15.split(",");
+    var pump_options_list_16 = '{{ mqtt_device_16_outputs }}';
+    var pump_options_list_16 = pump_options_list_16.split(",");
+    var pump_options_list_17 = '{{ mqtt_device_17_outputs }}';
+    var pump_options_list_17 = pump_options_list_17.split(",");
+    var pump_options_list_18 = '{{ mqtt_device_18_outputs }}';
+    var pump_options_list_18 = pump_options_list_18.split(",");
+    var pump_options_list_19 = '{{ mqtt_device_19_outputs }}';
+    var pump_options_list_19 = pump_options_list_19.split(",");
+    var pump_options_list_20 = '{{ mqtt_device_20_outputs }}';
+    var pump_options_list_20 = pump_options_list_20.split(",");
+
+    var pump_options = {};
+
+    pump_options['1'] = pump_options_list_1;
+    pump_options['2'] = pump_options_list_2;
+    pump_options['3'] = pump_options_list_3;
+    pump_options['4'] = pump_options_list_4;
+    pump_options['5'] = pump_options_list_5;
+    pump_options['6'] = pump_options_list_6;
+    pump_options['7'] = pump_options_list_7;
+    pump_options['8'] = pump_options_list_8;
+    pump_options['9'] = pump_options_list_9;
+    pump_options['10'] = pump_options_list_10;
+    pump_options['11'] = pump_options_list_11;
+    pump_options['12'] = pump_options_list_12;
+    pump_options['13'] = pump_options_list_13;
+    pump_options['14'] = pump_options_list_14;
+    pump_options['15'] = pump_options_list_15;
+    pump_options['16'] = pump_options_list_16;
+    pump_options['17'] = pump_options_list_17;
+    pump_options['18'] = pump_options_list_18;
+    pump_options['19'] = pump_options_list_19;
+    pump_options['20'] = pump_options_list_20;
+
+    function Choose_Sensor(entry_id) {
+
+      var device_name = "device_" + entry_id
+      var sensor_list_name = "selected_sensor_" + entry_id
+
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+    } 
+
+    function Choose_Pump(entry_id) {
+
+      var device_name = "device_" + entry_id
+      var pump_list_name = "selected_pump_" + entry_id
+
+      var device = document.getElementById(device_name);
+      var pump_list = document.getElementById(pump_list_name);
+      var selected_pump = device.options[device.selectedIndex].value;
+      while (pump_list.options.length) {
+        pump_list.remove(0);
+      }
+      var pumps = pump_options[selected_pump];
+      if (pumps) {
+        var i;
+        for (i = 0; i < pumps.length; i++) {
+          var pump = new Option(pumps[i], i);
+          pump_list.options.add(pump);
+        }
+      }
+    } 
+  </script>
+
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
@@ -57,7 +231,9 @@
 
 {% if error_message_table != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_table }}
+    {% for entry in error_message_table %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %}   
  
@@ -72,10 +248,10 @@
               <table class="table">
                 <thead>
                   <th scope="col">Pflanze</th>   
-                  <th scope="col">Gerät</th>  
-                  <th scope="col">Sensor</th>
-                  <th scope="col">Pumpe</th>    
-                  <th scope="col">Wassermenge</th>   
+                  <th scope="col">Gerät</th> 
+                  <th scope="col">Pumpe</th>                    
+                  <th scope="col">Sensor</th>   
+                  <th scope="col">Pumpdauer (s)</th>   
                   <th></th>        
                   <th scope="col">Wasserkontrolle</th>  
                 </thead>
@@ -87,7 +263,7 @@
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
                     </td> 
                     <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
                         <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>                                           
                         {% for each in dropdown_list_mqtt_devices %}
@@ -96,20 +272,24 @@
                       </select> 
                     </td>                                     
                     <td>     
-                      <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
-                        <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
-                        <option value= "{{ entry.sensor_key }}" > -------------------- </option>
-                        {% for each in entry.mqtt_device.inputs.split(',') %}
+                      <select id="selected_pump_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
+                        <option value= "{{ entry.pump_key }}" > {{ entry.pump_key }} </option>
+                        <option value= "{{ entry.pump_key }}" > -------------------- </option>
+                        {% for each in entry.mqtt_device.outputs.split(',') %}
                           <option value= "{{ each }}" > {{ each }} </option>
                         {% endfor %}
-                      </select>    
+                      </select>                    
                     </td>    
                     {% if entry.control_sensor == "checked" %}                 
-                      <td>                
-                        <select class="btn btn-default dropdown-toggle" name="set_pump_{{ entry.id }}">
-                          <option value= "{{ entry.pump_key }}" > {{ entry.pump_key }} </option>
-                          <option value= "{{ entry.pump_key }}" > -------------------- </option>
-                          {% for each in entry.mqtt_device.outputs.split(',') %}
+                      <td>                                         
+                        <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                          {% if entry.sensor_key == None or  entry.sensor_key == "" %} 
+                            <option value= "" > None </option>
+                          {% else %}
+                            <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option> 
+                          {% endif %}  
+                            <option value= "{{ entry.sensor_key }}" > -------------------- </option>
+                          {% for each in entry.mqtt_device.inputs.split(',') %}
                             <option value= "{{ each }}" > {{ each }} </option>
                           {% endfor %}
                         </select>  
@@ -118,10 +298,10 @@
                       <td></td>    
                     {% endif %}       
                     <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_watervolume_{{ entry.id }}">
-                        <option value= "{{ entry.watervolume }}" > {{ entry.watervolume }} </option>
-                        <option value= "{{ entry.watervolume }}" > ---------- </option>
-                        {% for each in dropdown_list_watervolume %}
+                      <select class="btn btn-default dropdown-toggle" name="set_pumptime_{{ entry.id }}">
+                        <option value= "{{ entry.pumptime }}" > {{ entry.pumptime }} </option>
+                        <option value= "{{ entry.pumptime }}" > ---------- </option>
+                        {% for each in dropdown_list_pumptime %}
                           <option value="{{each}}"> {{ each }} </option>
                         {% endfor %}
                       </select>  
@@ -199,12 +379,12 @@
                         Wassermenge:
                       </div>
                       <div class="col-sm-1">                
-                        <select class="btn btn-default dropdown-toggle" name="set_watervolume">
-                          {% if set_watervolume != "" %}
-                            <option value= "{{ set_watervolume }}" > {{ set_watervolume }} </option>
-                            <option value= "{{ set_watervolume }}" > ---------- </option>                     
+                        <select class="btn btn-default dropdown-toggle" name="set_pumptime">
+                          {% if set_pumptime != "" %}
+                            <option value= "{{ set_pumptime }}" > {{ set_pumptime }} </option>
+                            <option value= "{{ set_pumptime }}" > ---------- </option>                     
                           {% endif %}   
-                          {% for each in dropdown_list_watervolume %}
+                          {% for each in dropdown_list_pumptime %}
                           <option value="{{each}}"> {{ each }} </option>
                           {% endfor %}
                         </select>    
