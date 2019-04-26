@@ -4,7 +4,7 @@ from functools import wraps
 
 from app import app
 from app.database.database import *
-from app.components.checks import CHECK_PLANTS
+from app.components.checks import CHECK_PLANTS_SETTINGS
 
 
 # access rights
