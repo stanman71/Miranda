@@ -1102,7 +1102,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor, log = ""):
+def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1121,10 +1121,8 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor, log = ""):
                     )
                 db.session.add(plant)
                 db.session.commit()
-                
-                if log == "":
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + name + " >>> added")               
-                
+
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + name + " >>> added")               
                 return ""
 
     else:
@@ -1161,11 +1159,9 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime,
                                 " /// Pumptime: " + str(pumptime) + " /// Control-Sensor: " + entry.control_sensor)      
 
 
-def DELETE_PLANT(plant_id, log = ""):
+def DELETE_PLANT(plant_id):
     entry = GET_PLANT_BY_ID(plant_id)
-
-    if log == "":
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + entry.name + " >>> deleted")   
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + entry.name + " >>> deleted")   
     
     Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
@@ -1368,7 +1364,7 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
         return ""
 
 
-def ADD_SCHEDULER_SENSOR_TASK(name, task, log = ""):
+def ADD_SCHEDULER_SENSOR_TASK(name, task):
     check_entry = Scheduler_Sensor_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
@@ -1385,9 +1381,7 @@ def ADD_SCHEDULER_SENSOR_TASK(name, task, log = ""):
                 db.session.add(new_task)
                 db.session.commit()
                 
-                if log == "":
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + name + " >>> added")               
-                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + name + " >>> added")                
                 return ""
     else:
         return "Name bereits vergeben"
@@ -1489,11 +1483,9 @@ def SET_SCHEDULER_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name
                                  " /// Operator_3: " + str(operator_3) + " /// Value_3: " +  str(value_3))
 
 
-def DELETE_SCHEDULER_SENSOR_TASK(task_id, log = ""):
+def DELETE_SCHEDULER_SENSOR_TASK(task_id):
     entry = GET_SCHEDULER_SENSOR_TASK_BY_ID(task_id)
-
-    if log == "":
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + entry.name + " >>> deleted")    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + entry.name + " >>> deleted")    
     
     Scheduler_Sensor_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
@@ -1530,7 +1522,7 @@ def FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr):
     return list_jobs
 
 
-def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active, log = ""):
+def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active):
     # name exist ?
     check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
     if check_entry is None:        
@@ -1550,10 +1542,9 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active, log = ""):
                 db.session.add(sensordata_job)
                 db.session.commit()
 
-                if log == "":
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
-             
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
                 return ""
+
     else:
         return "Name bereits vergeben"
 
@@ -1578,13 +1569,9 @@ def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_id, sensor_key, always_ac
                               " /// Sensor: " + entry.sensor_key + " /// Always_Active: " + entry.always_active)    
 
 
-def DELETE_SENSORDATA_JOB(id, log = ""):
+def DELETE_SENSORDATA_JOB(id):
     entry = GET_SENSORDATA_JOB_BY_ID(id)
-
-    print(log)
-
-    if log == "":
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
  
     Sensordata_Jobs.query.filter_by(id=id).delete()
     db.session.commit()

@@ -106,7 +106,7 @@ def dashboard_plants():
 
                     try:      
                         sensor_key = sensor_key.replace(" ", "") 
-
+                        
                         if sensor_key.isdigit():
                             sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
                             sensor_list = sensor_list.split(",")

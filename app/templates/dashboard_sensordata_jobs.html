@@ -6,6 +6,95 @@
 
 {% block styles %}
   {{super()}}
+
+  <script src="{{ url_for('static',filename='jquery.min.js') }}"></script>
+  <script>
+    var sensor_options_list_1 = '{{ mqtt_device_1_inputs }}';
+    var sensor_options_list_1 = sensor_options_list_1.split(",");
+    var sensor_options_list_2 = '{{ mqtt_device_2_inputs }}';
+    var sensor_options_list_2 = sensor_options_list_2.split(",");
+    var sensor_options_list_3 = '{{ mqtt_device_3_inputs }}';
+    var sensor_options_list_3 = sensor_options_list_3.split(",");
+    var sensor_options_list_4 = '{{ mqtt_device_4_inputs }}';
+    var sensor_options_list_4 = sensor_options_list_4.split(",");
+    var sensor_options_list_5 = '{{ mqtt_device_5_inputs }}';
+    var sensor_options_list_5 = sensor_options_list_5.split(",");
+    var sensor_options_list_6 = '{{ mqtt_device_6_inputs }}';
+    var sensor_options_list_6 = sensor_options_list_6.split(",");
+    var sensor_options_list_7 = '{{ mqtt_device_7_inputs }}';
+    var sensor_options_list_7 = sensor_options_list_7.split(",");
+    var sensor_options_list_8 = '{{ mqtt_device_8_inputs }}';
+    var sensor_options_list_8 = sensor_options_list_8.split(",");
+    var sensor_options_list_9 = '{{ mqtt_device_9_inputs }}';
+    var sensor_options_list_9 = sensor_options_list_9.split(",");
+    var sensor_options_list_10 = '{{ mqtt_device_10_inputs }}';
+    var sensor_options_list_10 = sensor_options_list_10.split(",");
+    var sensor_options_list_11 = '{{ mqtt_device_11_inputs }}';
+    var sensor_options_list_11 = sensor_options_list_11.split(",");
+    var sensor_options_list_12 = '{{ mqtt_device_12_inputs }}';
+    var sensor_options_list_12 = sensor_options_list_12.split(",");
+    var sensor_options_list_13 = '{{ mqtt_device_13_inputs }}';
+    var sensor_options_list_13 = sensor_options_list_13.split(",");
+    var sensor_options_list_14 = '{{ mqtt_device_14_inputs }}';
+    var sensor_options_list_14 = sensor_options_list_14.split(",");
+    var sensor_options_list_15 = '{{ mqtt_device_15_inputs }}';
+    var sensor_options_list_15 = sensor_options_list_15.split(",");
+    var sensor_options_list_16 = '{{ mqtt_device_16_inputs }}';
+    var sensor_options_list_16 = sensor_options_list_16.split(",");
+    var sensor_options_list_17 = '{{ mqtt_device_17_inputs }}';
+    var sensor_options_list_17 = sensor_options_list_17.split(",");
+    var sensor_options_list_18 = '{{ mqtt_device_18_inputs }}';
+    var sensor_options_list_18 = sensor_options_list_18.split(",");
+    var sensor_options_list_19 = '{{ mqtt_device_19_inputs }}';
+    var sensor_options_list_19 = sensor_options_list_19.split(",");
+    var sensor_options_list_20 = '{{ mqtt_device_20_inputs }}';
+    var sensor_options_list_20 = sensor_options_list_20.split(",");
+
+    var sensor_options = {};
+
+    sensor_options['1'] = sensor_options_list_1;
+    sensor_options['2'] = sensor_options_list_2;
+    sensor_options['3'] = sensor_options_list_3;
+    sensor_options['4'] = sensor_options_list_4;
+    sensor_options['5'] = sensor_options_list_5;
+    sensor_options['6'] = sensor_options_list_6;
+    sensor_options['7'] = sensor_options_list_7;
+    sensor_options['8'] = sensor_options_list_8;
+    sensor_options['9'] = sensor_options_list_9;
+    sensor_options['10'] = sensor_options_list_10;
+    sensor_options['11'] = sensor_options_list_11;
+    sensor_options['12'] = sensor_options_list_12;
+    sensor_options['13'] = sensor_options_list_13;
+    sensor_options['14'] = sensor_options_list_14;
+    sensor_options['15'] = sensor_options_list_15;
+    sensor_options['16'] = sensor_options_list_16;
+    sensor_options['17'] = sensor_options_list_17;
+    sensor_options['18'] = sensor_options_list_18;
+    sensor_options['19'] = sensor_options_list_19;
+    sensor_options['20'] = sensor_options_list_20;
+
+    function Choose_Sensor(entry_id) {
+
+      var device_name = "device_" + entry_id
+      var sensor_list_name = "selected_sensor_" + entry_id
+
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+    } 
+  </script>
+
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
@@ -103,7 +192,7 @@
                       <input type="text" class="form-control" name="set_filename_{{ entry.id }}" value="{{ entry.filename }}" />                    
                     </td> 
                     <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
                         <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>                                           
                         {% for each in dropdown_list_mqtt_devices %}
@@ -114,7 +203,7 @@
                     <td>                     
                       <div class="row justify-content-md-center">
                         <div class="col-sm-4">                       
-                          <select class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
+                          <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                             <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
                             <option value= "{{ entry.sensor_key }}" > -------------------- </option>
                             {% for each in entry.mqtt_device.inputs.split(',') %}
