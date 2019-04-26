@@ -301,8 +301,6 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
 
 def READ_LOGFILE_MQTT(gateway, channel, time):   
     
-    print("###### OK #######")
-    
     try:
         # open csv file
         file = PATH + "/logs/log_" + gateway + ".csv"
