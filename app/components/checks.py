@@ -111,9 +111,7 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
 
    # sensor missing ?
    for entry in entries:
-        if ((entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "") and 
-             entry.control_sensor == "checked"):
-
+        if entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "":
             list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
 
    if list_errors == []:
