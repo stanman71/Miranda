@@ -104,7 +104,6 @@ def CHECK_PLANTS_SETTINGS():
 
 
 def CHECK_SENSORDATA_JOBS_SETTINGS():
-
    list_errors = []
 
    entries = GET_ALL_SENSORDATA_JOBS()

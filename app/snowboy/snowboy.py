@@ -88,7 +88,7 @@ def SNOWBOY_TASKS(entry):
       snowboy_detect_on = True
       PIXEL_RING_CONTROL("on")
 
-      # set snowboy_detect_on to False after 1 second
+      # set snowboy_detect_on to False after selected delay
       class waiter(Thread):
          def run(self):
             global detect
