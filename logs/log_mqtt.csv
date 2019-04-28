@@ -7687,3 +7687,15 @@ mosquitto_pub -d -h localhost -p 1883 -t SmartHome/mqtt/0x99999/set -m output:1=
 2019-04-28 12:30:00,SmartHome/mqtt/devices,
 2019-04-28 12:30:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
 2019-04-28 12:30:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-04-28 17:00:00,SmartHome/mqtt/0x99999/get,
+2019-04-28 17:00:00,SmartHome/mqtt/0x99999,|{"sensor_0":663,"sensor_1":0,"sensor_2":0,"sensor_3":0,"sensor_4":0,"sensor_5":0,"sensor_6":420,"sensor_7":460}|
+2019-04-28 17:00:28,SmartHome/mqtt/0x88888/get,
+2019-04-28 17:00:28,SmartHome/mqtt/0x88888,|{"temperature":23.00,"humidity":35.00,"light":57}|
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888/get,
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888,|{"temperature":23.00,"humidity":35.00,"light":56}|
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888/get,
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888,|{"temperature":23.00,"humidity":35.00,"light":57}|
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888/get,
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888,|{"temperature":23.00,"humidity":35.00,"light":56}|
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888/get,
+2019-04-28 17:00:29,SmartHome/mqtt/0x88888,|{"temperature":23.00,"humidity":35.00,"light":57}|

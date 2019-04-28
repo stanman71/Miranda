@@ -195,7 +195,7 @@ def GET_ALL_HOTWORD_FILES():
         return file_list
 
 
-def GET_USED_HOTWORD_FILES(snowboy_tasks):
+def GET_HOTWORD_FILES_FROM_TASKS(snowboy_tasks):
     file_list = []
     exist_file_list = GET_ALL_HOTWORD_FILES()
     

@@ -3,7 +3,7 @@ from app import app
 from app.snowboy import snowboydetect
 from app.snowboy import snowboydecoder
 from app.database.database import *
-from app.components.file_management import GET_USED_HOTWORD_FILES, WRITE_LOGFILE_SYSTEM
+from app.components.file_management import GET_HOTWORD_FILES_FROM_TASKS, WRITE_LOGFILE_SYSTEM
 from app.components.led_control import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 
@@ -27,8 +27,16 @@ def SNOWBOY_START():
 
    signal.signal(signal.SIGINT, signal_handler)
 
+   sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
+   
+
+   
+   ############################
+   # without speech_recognition
+   ############################ 
+
    # voice models here:
-   models = GET_USED_HOTWORD_FILES(GET_ALL_SNOWBOY_TASKS())
+   models = GET_HOTWORD_FILES_FROM_TASKS(GET_ALL_SNOWBOY_TASKS())
 
    sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
 
@@ -58,7 +66,7 @@ def SNOWBOY_START():
                     lambda: SNOWBOY_TASKS(GET_ALL_SNOWBOY_TASKS()[19])]
 
    callbacks = callback_list[:len(GET_ALL_SNOWBOY_TASKS())]
-
+   
    print('Listening...')
    WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy >>> started") 
         
@@ -66,6 +74,35 @@ def SNOWBOY_START():
    detector.start(detected_callback=callbacks,
                   interrupt_check=interrupt_callback,
                   sleep_time=0.03)
+   
+
+   """
+   
+   #########################
+   # with speech_recognition
+   ######################### 
+   
+   
+   # voice models here:
+   models = GET_USED_HOTWORD_FILES(GET_ALL_SNOWBOY_TASKS())
+
+   sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
+
+   # modify sensitivity for better detection / accuracy
+   detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
+   
+   def detect_callback():
+      detector.terminate()
+      # start speech_recognition
+      time.sleep(5)
+      detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
+
+   # main loop
+   detector.start(detected_callback=detect_callback,
+                  interrupt_check=interrupt_callback,
+                  sleep_time=0.03)
+                 
+   """
 
    detector.terminate()
 

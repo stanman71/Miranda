@@ -13413,3 +13413,77 @@ Timestamp,Type,Description
 2019-04-28 12:29:37,ERROR,Snowboy >>> [Errno -9985] Device unavailable
 2019-04-28 12:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
 2019-04-28 12:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-28 16:41:26,EVENT,MQTT >>> started
+2019-04-28 16:41:26,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 16:41:30,EVENT,Snowboy >>> started
+2019-04-28 16:41:32,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 16:41:33,EVENT,Snowboy >>> Detection Task >>> start_scene:9:50
+2019-04-28 16:41:34,ERROR,SnowBoy Task >>> relax >>> 'NoneType' object has no attribute 'id'
+2019-04-28 17:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-28 17:00:05,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-28 17:00:05,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-28 17:00:11,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-28 17:00:14,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-28 17:00:14,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-28 17:00:14,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-28 17:00:22,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-28 17:00:22,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-28 17:00:28,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-28 17:00:28,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-28 17:02:41,EVENT,MQTT >>> started
+2019-04-28 17:02:41,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:02:45,EVENT,Snowboy >>> started
+2019-04-28 17:02:47,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:12:02,EVENT,MQTT >>> started
+2019-04-28 17:12:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:12:06,EVENT,Snowboy >>> started
+2019-04-28 17:12:12,ERROR,Snowboy >>> name 'timesleep' is not defined
+2019-04-28 17:12:46,EVENT,MQTT >>> started
+2019-04-28 17:12:46,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:12:50,EVENT,Snowboy >>> started
+2019-04-28 17:17:09,EVENT,MQTT >>> started
+2019-04-28 17:17:09,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:17:13,EVENT,Snowboy >>> started
+2019-04-28 17:17:16,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:17:18,EVENT,Snowboy >>> Detection Task >>> start_scene:9:50
+2019-04-28 17:17:18,ERROR,SnowBoy Task >>> relax >>> 'NoneType' object has no attribute 'id'
+2019-04-28 17:18:41,EVENT,MQTT >>> started
+2019-04-28 17:18:41,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:22:03,EVENT,MQTT >>> started
+2019-04-28 17:22:03,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:22:07,EVENT,Snowboy >>> started
+2019-04-28 17:22:48,EVENT,MQTT >>> started
+2019-04-28 17:22:48,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:22:52,EVENT,Snowboy >>> started
+2019-04-28 17:23:35,EVENT,MQTT >>> started
+2019-04-28 17:23:35,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:23:39,EVENT,Snowboy >>> started
+2019-04-28 17:23:41,ERROR,Snowboy >>> 'function' object has no attribute 'name'
+2019-04-28 17:24:04,EVENT,MQTT >>> started
+2019-04-28 17:24:04,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:24:08,EVENT,Snowboy >>> started
+2019-04-28 17:30:08,EVENT,MQTT >>> started
+2019-04-28 17:30:08,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:30:11,EVENT,Snowboy >>> started
+2019-04-28 17:30:16,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:30:17,EVENT,Snowboy >>> Detection Task >>> start_scene:9:50
+2019-04-28 17:30:17,ERROR,SnowBoy Task >>> relax >>> 'NoneType' object has no attribute 'id'
+2019-04-28 17:30:23,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:30:25,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:30:27,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:31:02,EVENT,MQTT >>> started
+2019-04-28 17:31:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:31:14,ERROR,Snowboy >>> name 'callback_list' is not defined
+2019-04-28 17:31:58,EVENT,MQTT >>> started
+2019-04-28 17:31:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:36:30,EVENT,MQTT >>> started
+2019-04-28 17:36:30,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:36:34,ERROR,Snowboy >>> cannot import name 'GET_USED_HOTWORD_FILES'
+2019-04-28 17:37:09,EVENT,MQTT >>> started
+2019-04-28 17:37:09,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-28 17:37:13,EVENT,Snowboy >>> started
+2019-04-28 17:37:21,EVENT,Snowboy >>> Detection Task >>> start_scene:9:50
+2019-04-28 17:37:23,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-28 17:37:25,EVENT,Snowboy >>> Detection Task >>> start_scene:9:50
+2019-04-28 17:37:25,ERROR,SnowBoy Task >>> relax >>> 'NoneType' object has no attribute 'id'
+2019-04-28 17:37:32,EVENT,Snowboy >>> Detection Task >>> snowboy_active
