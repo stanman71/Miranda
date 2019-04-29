@@ -204,6 +204,14 @@ class Snowboy_Tasks(db.Model):
     name = db.Column(db.String(50), unique = True)
     task = db.Column(db.String(100))
 
+class Speech_Control(db.Model):
+    __tablename__ = 'speech_control'
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    snowboy_hotword         = db.Column(db.String(100))
+    speech_control_provider = db.Column(db.String(100))
+    speech_control_username = db.Column(db.String(100))
+    speech_control_key      = db.Column(db.String(200))
+
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id                        = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -267,11 +275,11 @@ if Global_Settings.query.filter_by().first() is None:
     db.session.add(setting_zigbee2mqtt)    
     db.session.commit()
 
-    setting_snowboy = Global_Settings(
-        setting_name  = "snowboy",
+    setting_speech_control = Global_Settings(
+        setting_name  = "speech_control",
         setting_value = "False",
     )
-    db.session.add(setting_snowboy)    
+    db.session.add(setting_speech_control)    
     db.session.commit()
 
 
@@ -282,6 +290,14 @@ if Snowboy_Settings.query.filter_by().first() is None:
         delay = 3,
     )
     db.session.add(snowboy)
+    db.session.commit()
+
+
+# create default speech control settings
+if Speech_Control.query.filter_by().first() is None:
+    speech_control = Speech_Control(
+    )
+    db.session.add(speech_control)
     db.session.commit()
 
 
@@ -1677,6 +1693,26 @@ def DELETE_SNOWBOY_TASK(task_id):
     
     Snowboy_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
+
+
+""" ################### """
+""" ################### """
+"""    speech control   """
+""" ################### """
+""" ################### """
+
+
+def GET_SPEECH_CONTROL_SETTINGS():
+    return Speech_Control.query.filter_by().first()
+    
+
+def SET_SPEECH_CONTROL_SETTINGS(snowboy_hotword, speech_control_provider, speech_control_username, speech_control_key):
+    entry = Speech_Control.query.filter_by().first()
+    entry.snowboy_hotword         = snowboy_hotword
+    entry.speech_control_provider = speech_control_provider
+    entry.speech_control_username = speech_control_username
+    entry.speech_control_key      = speech_control_key
+    db.session.commit() 
 
 
 """ ################### """

@@ -119,13 +119,18 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
 
 
 # start snowboy
-if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
+if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
     
     try:
         from app.snowboy.snowboy import SNOWBOY_START
 
-        print("###### Start SNOWBOY ######")
-        SNOWBOY_START()
+        if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy":
+            print("###### Start SNOWBOY ######")
+            SNOWBOY_START("snowboy")
+            
+        if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
+            print("###### Start SNOWBOY + ######")
+            SNOWBOY_START("snowboy+")       
 
     except Exception as e:
         if "signal only works in main thread" not in str(e): 

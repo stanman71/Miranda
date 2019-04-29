@@ -282,48 +282,61 @@ def download_zigbee2mqtt_logfile(filepath):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/" + filepath + " >>> " + str(e))             
 
 
-""" ################ """
-""" snowboy settings """
-""" ################ """
+""" ############### """
+"""  speechcontrol  """
+""" ############### """
 
-@app.route('/dashboard/settings/snowboy', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/speechcontrol', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_settings_snowboy():
+def dashboard_settings_speechcontrol():
     error_message = ""
-    error_message_settings = ""
     error_message_snowboy = ""
     error_message_form = ""
     error_message_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
+    error_message_speech_control = ""
     sensitivity = ""
     delay = ""
-    check_value_snowboy = ["", ""]
-    set_name = ""
-    set_task = ""
-    set_delay = ""
+    check_value_speech_control = ["", "", ""]
+    name = ""
+    task = ""
+    snowboy_hotword = ""
+    speech_control_provider = ""
+    speech_control_username = ""
+    speech_control_key = ""
 
     if request.method == "POST":     
-        # change snowboy settings   
-        if request.form.get("radio_snowboy") is not None:
-            setting_snowboy = str(request.form.get("radio_snowboy"))
-            SET_GLOBAL_SETTING_VALUE("snowboy", setting_snowboy) 
+        # change speech_control settings   
+        if request.form.get("radio_speech_control") is not None:
+            setting_speech_control = str(request.form.get("radio_speech_control"))
+            SET_GLOBAL_SETTING_VALUE("speech_control", setting_speech_control) 
 
     # change radio check    
-    if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
-        check_value_snowboy[0] = "checked = 'on'"
-        check_value_snowboy[1] = ""
+    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy":
+        check_value_speech_control[0] = "checked = 'on'"
+        check_value_speech_control[1] = ""
+        check_value_speech_control[2] = ""
+    elif GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
+        check_value_speech_control[0] = ""
+        check_value_speech_control[1] = "checked = 'on'"
+        check_value_speech_control[2] = ""
     else:
-        check_value_snowboy[0] = ""
-        check_value_snowboy[1] = "checked = 'on'"
+        check_value_speech_control[0] = ""
+        check_value_speech_control[1] = ""
+        check_value_speech_control[2] = "checked = 'on'"
 
-    if GET_GLOBAL_SETTING_VALUE("snowboy") == "True":
+    ######################
+    # snowboy and snowboy+
+    ######################
+
+    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
 
         # check snowboy
         def START_SNOWBOY():
             from app.snowboy.snowboy import SNOWBOY_START
-            SNOWBOY_START()
+            SNOWBOY_START("snowboy")
           
         try:
             START_SNOWBOY()
@@ -351,16 +364,20 @@ def dashboard_settings_snowboy():
                     delay = GET_SNOWBOY_SETTINGS().delay                    
              
                 SET_SNOWBOY_SETTINGS(sensitivity, delay)  
-                                    
+
+            #########
+            # snowboy
+            #########
+
             # add new task
             if request.form.get("add_task") is not None:
 
                 if request.form.get("set_name") == "":
                     error_message = "Kein Name angegeben"
-                    set_task = request.form.get("set_task")
+                    task = request.form.get("set_task")
                 elif request.form.get("set_task") == "":
                     error_message = "Keine Aufgabe angegeben"  
-                    set_name = request.form.get("set_name")  
+                    name = request.form.get("set_name")  
                 else:         
                     name   = request.form.get("set_name")
                     task   = request.form.get("set_task")
@@ -392,10 +409,26 @@ def dashboard_settings_snowboy():
                         else:
                             task = GET_SNOWBOY_TASK_BY_ID(i).task 
                             error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
-                                            
-            
+                                           
                         SET_SNOWBOY_TASK(i, name, task)
-                    
+
+            ##########
+            # snowboy+
+            ##########
+
+            if request.form.get("set_speech_control_settings") != None: 
+                
+                snowboy_hotword = request.form.get("set_snowboy_hotword")        
+                speech_control_provider = request.form.get("set_speech_control_provider")
+                speech_control_username = request.form.get("set_speech_control_username")
+                speech_control_key = request.form.get("set_speech_control_key")
+
+                SET_SPEECH_CONTROL_SETTINGS(snowboy_hotword, speech_control_provider, 
+                                            speech_control_username, speech_control_key)
+
+            ######################
+            # snowboy and snowboy+
+            ######################
                     
             if request.form.get("file_upload") is not None:
                 # file upload
@@ -405,47 +438,59 @@ def dashboard_settings_snowboy():
                     file = request.files['file']
                     error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
-    snowboy_setting = GET_GLOBAL_SETTING_VALUE("snowboy")
+    snowboy_setting = GET_GLOBAL_SETTING_VALUE("speech_control")
     sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
     delay = GET_SNOWBOY_SETTINGS().delay
-    snowboy_list = GET_ALL_SNOWBOY_TASKS()
-    file_list = GET_ALL_HOTWORD_FILES()
+
+    snowboy_task_list = GET_ALL_SNOWBOY_TASKS()
+    hotword_file_list = GET_ALL_HOTWORD_FILES()
+    dropdown_list_speech_control_provider = ["Google Cloud Speech", "Google Speech Recognition",
+                                             "Houndify", "IBM Speech", "Microsoft Azure Speech", 
+                                             "Microsoft Bing Voice Recognition", "Wit.ai"]
     
+    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
+        if GET_SPEECH_CONTROL_SETTINGS().speech_control_key == "":
+            error_message_speech_control = "Keinen Key angegeben"
+
     error_message_tasks   = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
     error_message_hotword = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
-    return render_template('dashboard_settings_snowboy.html',
-                            sensitivity=sensitivity,
-                            delay=delay,
+    return render_template('dashboard_settings_speechcontrol.html',
                             error_message=error_message,   
-                            error_message_settings=error_message_settings, 
                             error_message_snowboy=error_message_snowboy,   
                             error_message_form=error_message_form,  
                             error_message_tasks=error_message_tasks,        
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
+                            error_message_speech_control=error_message_speech_control,
                             snowboy_setting=snowboy_setting,
-                            check_value_snowboy=check_value_snowboy,
-                            snowboy_list=snowboy_list,
-                            file_list=file_list,
-                            set_name=set_name,
-                            set_task=set_task,
-                            set_delay=set_delay,
+                            check_value_speech_control=check_value_speech_control,
+                            snowboy_task_list=snowboy_task_list,
+                            sensitivity=sensitivity,
+                            delay=delay,
+                            name=name,
+                            task=task,
+                            hotword_file_list=hotword_file_list,                            
+                            snowboy_hotword=snowboy_hotword,
+                            dropdown_list_speech_control_provider=dropdown_list_speech_control_provider,
+                            speech_control_provider=speech_control_provider,
+                            speech_control_username=speech_control_username,
+                            speech_control_key=speech_control_key,
                             active03="active",
                             )
 
 
 # delete snowboy tasks
-@app.route('/dashboard/settings/snowboy/delete/task/<int:id>')
+@app.route('/dashboard/settings/speechcontrol/snowboy/delete/task/<int:id>')
 @login_required
 @superuser_required
 def delete_snowboy_task(id):
     DELETE_SNOWBOY_TASK(id)
-    return redirect(url_for('dashboard_settings_snowboy'))
+    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 
 # download hotword file
-@app.route('/dashboard/settings/snowboy/download/hotword/<path:filepath>')
+@app.route('/dashboard/settings/speechcontrol/snowboy/download/hotword/<path:filepath>')
 @login_required
 @superuser_required
 def download_hotword_file(filepath):
@@ -466,7 +511,7 @@ def download_hotword_file(filepath):
 @superuser_required
 def delete_snowboy_hotword(filename):
     DELETE_HOTWORD_FILE(filename)
-    return redirect(url_for('dashboard_settings_snowboy'))
+    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 
 """ ############# """

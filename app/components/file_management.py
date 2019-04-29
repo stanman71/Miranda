@@ -248,6 +248,19 @@ def DELETE_HOTWORD_FILE(filename):
         WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/" + filename + " >>> " + str(e))  
 
 
+""" ############## """
+""" speech control """
+""" ############## """
+
+def GET_SPEECH_CONTROL_HOTWORD(settings):
+    hotword_file = settings
+    return (PATH + "/app/snowboy/resources/" + hotword_file)
+
+
+
+
+
+
 """ #### """
 """ logs """
 """ #### """

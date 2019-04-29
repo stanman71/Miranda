@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  HUE Einstellungen
+  Sprachsteuerung
 {% endblock %}
 
 {% block styles %}
@@ -22,11 +22,11 @@
   </script>
 
   <script>
-      var slider_2 = document.getElementById("input_2");
-      var output_2 = document.getElementById("output_2");
-      output_2.innerHTML = slider_2.value;
-      slider_2.oninput = function() { output_2.innerHTML = this.value }
-    </script>
+    var slider_2 = document.getElementById("input_2");
+    var output_2 = document.getElementById("output_2");
+    output_2.innerHTML = slider_2.value;
+    slider_2.oninput = function() { output_2.innerHTML = this.value }
+  </script>
 
 {% endblock %}
 
@@ -70,7 +70,7 @@
           <ul class="nav navbar-nav">
             <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
             <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li>          
-            <li class={{active03}}><a href="{{ url_for('dashboard_settings_snowboy') }}">SnowBoy</a></li>       
+            <li class={{active03}}><a href="{{ url_for('dashboard_settings_speechcontrol') }}">Sprachsteuerung</a></li>        
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
             <li class={{active05}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
             <li class={{active06}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
@@ -82,36 +82,45 @@
 <!-- settings snowboy -->
 
       <div class="panel panel-default">
-      <div class="panel-heading"><font color="black"><b>SnowBoy</b></font></div>
+      <div class="panel-heading"><font color="black"><b>Sprachsteuerung</b></font></div>
         <div class="panel-body">   
           <form method="POST">
             <div class="well well-sm">  
- 
-<section id="settings"></section> 
- 
               <div class="pretty p-default p-round">
-                <input {{check_value_snowboy[0]}} type="radio" value="True" name="radio_snowboy">
+                <input {{check_value_speech_control[0]}} type="radio" value="snowboy" name="radio_speech_control">
                 <div class="state">
-                  <label>SnowBoy aktivieren</label>
+                  <label>SnowBoy</label>
                 </div>
               </div>
               <br>
               <div class="pretty p-default p-round">
-                <input {{check_value_snowboy[1]}} type="radio" value="False" name="radio_snowboy">
+                <input {{check_value_speech_control[1]}} type="radio" value="snowboy+" name="radio_speech_control">
                 <div class="state">
-                  <label>SnowBoy deaktivieren</label>
+                  <label>SnowBoy + weiteren Anbieter</label>
+                </div>
+              </div>
+              <br>
+
+<section id="snowboy_settings"></section> 
+
+              <div class="pretty p-default p-round">
+                <input {{check_value_speech_control[2]}} type="radio" value="False" name="radio_speech_control">
+                <div class="state">
+                  <label>Sprachsteuerung deaktivieren</label>
                 </div>
               </div>
             </div>
-          <font color="red"><b>Flask neustarten, wenn SnowBoy Einstellungen geändert werden</b></font>
+          <font color="red"><b>Flask neustarten, wenn Einstellungen der Sprachsteuerung geändert werden</b></font>
           <br>     
           <br>        
-          <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#'" class="btn btn-default" value="Auswählen"/>
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#'" class="btn btn-default" value="Auswählen"/>
           </form>       
         </div>  
       </div>           
 
-<!-- SNOWBOY -->
+<!-------------------------->
+<!-- SNOWBOY and SNOWBOY+ -->
+<!-------------------------->
 
 {% if snowboy_setting != "False" %}
 
@@ -126,17 +135,11 @@
 <!-- snowboy settings -->
 
       <div class="panel panel-default">
-        <div class="panel-body">  
-          
-<!-- error message settings -->
-
-{% if error_message_settings != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_settings }}
-  </div>      
-{% endif %}     
-          
-          
+        <div class="panel-body"> 
+          <div class="text-center">   
+            <h3><span class="label label-default">SnowBoy Einstellungen</span></h3>
+          </div>          
+          <br>               
           <form method="POST">
             <div class="well well-sm">Empfindlichkeit: <span id="output_1"></span>
             <br>
@@ -153,12 +156,18 @@
               </div>
             </div>         
 
-      <section id="table_tasks"></section> 
+<section id="table_tasks"></section> 
 
-            <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#settings'" class="btn btn-default" name="change_settings" value="Einstellungen speichern" />       
+            <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#snowboy_settings'" class="btn btn-default" name="change_settings" value="Einstellungen speichern" />       
           </form>  
         </div>                    
       </div> 
+
+<!------------->
+<!-- SNOWBOY -->
+<!------------->
+
+{% if snowboy_setting == "snowboy" %}
 
 <!-- snowboy error message file missing -->
 
@@ -198,7 +207,7 @@
                 <th scope="col">Aufgabe</th> 
               </thead>
               <tbody> 
-                {% for entry in snowboy_list %}
+                {% for entry in snowboy_task_list %}
                 <tr>
                   <td>
                   <form method="POST" class="verticalform">
@@ -208,13 +217,13 @@
                     <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />                    
                   </td> 
                   <td></td>
-                  <td><a href="/dashboard/settings/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/settings/speechcontrol/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#table_tasks'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
           </form> 
         </div>  
       </div>  
@@ -280,22 +289,113 @@
             <form method="POST">
               <div class="well well-sm">Name:            
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_name" value="{% if set_name != None %}{{ set_name }}{% endif %}" />
+                  <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
                 </div>    
               </div>                      
               <div class="well well-sm">Aufgabe:            
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_task" value="{% if set_task != None %}{{ set_task }}{% endif %}" /> 
+                  <input type="text" class="form-control" name="set_task" value="{% if task != None %}{{ task }}{% endif %}" /> 
                 </div>    
               </div>           
 
 <section id="fileupload"></section>
 
-              <input type="submit" onclick="window.location.href='/dashboard/settings/snowboy#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
             </form>
           </div>  
         </div>
       </div>       
+
+{% endif %}
+
+{% if snowboy_setting == "snowboy+" %}
+
+<!-------------->
+<!-- SNOWBOY+ -->
+<!-------------->
+
+<section id="speech_control_settings"></section>
+
+      <div class="panel panel-default">
+        <div class="panel-body"> 
+          <div class="well well-sm">     
+            <form method="POST">   
+              <div class="form-group">
+                <div class="text-center">  
+                  <h3><span class="label label-default">Sprachsteuerung Einstellungen</span></h3>
+                </div>
+                <br>
+
+<!-- error message speech_control -->
+
+{% if error_message_speech_control != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_speech_control }}
+  </div>      
+{% endif %} 
+
+                <div class="well well-sm">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                      Snowboy Hotword:
+                    </div>
+                    <div class="col-sm-1">   
+                      <select class="btn btn-default dropdown-toggle" name="set_snowboy_hotword">
+                        {% if snowboy_hotword != "" %}
+                          <option value= "{{ snowboy_hotword }}" > {{ snowboy_hotword }} </option>
+                          <option value= "{{ snowboy_hotword }}" > -------------------- </option>                     
+                        {% endif %}   
+                        {% for each in hotword_file_list %}
+                        <option value="{{ each }}"> {{ each }} </option>
+                        {% endfor %}
+                      </select>    
+                    </div>
+                  </div>                     
+                </div>
+                <div class="well well-sm">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2">
+                      Onlinedienst:
+                    </div>
+                    <div class="col-sm-1">                
+                      <select class="btn btn-default dropdown-toggle" name="set_speech_control_provider">
+                        {% if speech_control_provider != "" %}
+                          <option value= "{{ speech_control_provider }}" > {{ speech_control_provider }} </option>
+                          <option value= "{{ speech_control_provider }}" > ---------- </option>                     
+                        {% endif %}   
+                        {% for each in dropdown_list_speech_control_provider %}
+                        <option value="{{ each }}"> {{ each }} </option>
+                        {% endfor %}
+                      </select>    
+                    </div>
+                  </div>  
+                </div> 
+                <div class="well well-sm">Username / Client ID (Optional):            
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_speech_control_username" value="{% if speech_control_username != None %}{{ speech_control_username }}{% endif %}" /> 
+                  </div>                  
+                </div> 
+                <div class="well well-sm">Key / Credentials:            
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="set_speech_control_key" value="{% if speech_control_key != None %}{{ speech_control_key }}{% endif %}" /> 
+                  </div>                  
+                </div> 
+              </div>   
+
+<section id="fileupload"></section>
+
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#speech_control_settings'" class="btn btn-default" name="set_speech_control_settings" value="Einstellungen speichern" />
+            </form>   
+          </div>  
+        </div>
+      </div>
+
+{% endif %}
+
+<!-------------------------->
+<!-- SNOWBOY and SNOWBOY+ -->
+<!-------------------------->
+
       <div class="panel panel-default">
         <div class="panel-body">  
           <div class="well well-sm">
@@ -319,7 +419,7 @@
               <form method=post enctype=multipart/form-data>
                 <input type=file name=file>
             </div>
-                <input type=submit onclick="window.location.href='/dashboard/settings/snowboy#fileupload'" class="btn btn-default" name="file_upload" value="Datei hochladen">
+                <input type=submit onclick="window.location.href='/dashboard/settings/speechcontrol#fileupload'" class="btn btn-default" name="file_upload" value="Datei hochladen">
               </form>   
           </div> 
         </div>                   
@@ -337,18 +437,18 @@
                 <th scope="col">Hotword Datein</th>   
               </thead>             
               <tbody> 
-                {% for entry in file_list %}
+                {% for entry in hotword_file_list %}
                 <tr>
                   <td>{{ entry }}</td> 
-                  <td class="text-right"><a href="/dashboard/settings/snowboy/download/hotword/{{ entry }}#table_hotwords"><b>herunterladen</b></font></a></td>
-                  <td class="text-right"><a href="/dashboard/settings/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/settings/speechcontrol/snowboy/download/hotword/{{ entry }}#table_hotwords"><b>herunterladen</b></font></a></td>
+                  <td class="text-right"><a href="/dashboard/settings/speechcontrol/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="red" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
           </div>
         </div>  
-      </div>               
+      </div>   
 
 {% endif %}
 
