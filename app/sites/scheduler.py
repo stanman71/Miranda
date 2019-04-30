@@ -191,6 +191,7 @@ def dashboard_scheduler_sensor():
     error_message_tasks = ""
     set_name = ""
     set_task = ""
+    
 
     if request.method == "POST": 
         if request.form.get("add_task") != None:
@@ -281,6 +282,7 @@ def dashboard_scheduler_sensor():
                         sensor_key_1 = "None"
                         mqtt_device_id_1 = "None"
                         mqtt_device_name_1 = "None"
+                        mqtt_device_inputs_1 = "None"  
 
                     # get mqtt device 2
                     try:
@@ -300,7 +302,8 @@ def dashboard_scheduler_sensor():
                     except:
                         sensor_key_2 = "None"
                         mqtt_device_id_2 = "None"
-                        mqtt_device_name_2 = "None"   
+                        mqtt_device_name_2 = "None"  
+                        mqtt_device_inputs_2 = "None"   
 
                     # get mqtt device 3 
                     try:
@@ -315,12 +318,14 @@ def dashboard_scheduler_sensor():
                             else:                                
                                 sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_3).inputs
                                 sensor_list  = sensor_list.split(",")
-                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]                    
+                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]        
 
                     except:
                         sensor_key_3 = "None"
                         mqtt_device_id_3 = "None"
-                        mqtt_device_name_3 = "None"
+                        mqtt_device_name_3 = "None"  
+                        mqtt_device_inputs_3 = "None"  
+                        
 
                     SET_SCHEDULER_SENSOR_TASK(i, name, task, mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                                                   sensor_key_1, operator_1, value_1, operator_main_1,

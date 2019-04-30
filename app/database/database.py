@@ -211,6 +211,13 @@ class Speech_Control(db.Model):
     speech_control_provider = db.Column(db.String(100))
     speech_control_username = db.Column(db.String(100))
     speech_control_key      = db.Column(db.String(200))
+    
+class Speech_Control_Tasks(db.Model):
+    __tablename__ = 'speech_control_tasks'
+    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name     = db.Column(db.String(50), unique = True)
+    keywords = db.Column(db.String(50))
+    task     = db.Column(db.String(100))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -1713,6 +1720,73 @@ def SET_SPEECH_CONTROL_SETTINGS(snowboy_hotword, speech_control_provider, speech
     entry.speech_control_username = speech_control_username
     entry.speech_control_key      = speech_control_key
     db.session.commit() 
+
+
+def GET_SPEECH_CONTROL_TASK_BY_NAME(name):
+    return Speech_Control_Tasks.query.filter_by(name=name).first()
+
+
+def GET_SPEECH_CONTROL_TASK_BY_ID(id):
+    return Speech_Control_Tasks.query.filter_by(id=id).first()
+
+
+def GET_ALL_SPEECH_CONTROL_TASKS():
+    return Speech_Control_Tasks.query.all()
+
+
+def ADD_SPEECH_CONTROL_TASK(name, keywords, task):
+    # name exist ?
+    check_entry = Speech_Control_Tasks.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,26):
+            if Speech_Control_Tasks.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                task = Speech_Control_Tasks(
+                        id       = i,
+                        name     = name,
+                        keywords = keywords,
+                        task     = task,
+                    )
+                db.session.add(task)
+                db.session.commit()
+  
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + name + " >>> added") 
+  
+                return ""
+
+        return "Aufgabenlimit erreicht (25)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_SPEECH_CONTROL_TASK(id, name, keywords, task):
+    entry = Speech_Control_Tasks.query.filter_by(id=id).first()
+    old_name = entry.name
+    
+    # values changed ?
+    if (entry.name != name or entry.keywords != keywords or entry.task != task):
+        
+        entry.name     = name
+        entry.keywords = keywords
+        entry.task     = task
+        
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + old_name + " >>> changed >>> Name: " +
+                             entry.name + " /// Task: " + entry.task) 
+
+
+def DELETE_SPEECH_CONTROL_TASK(task_id):
+    entry = GET_SPEECH_CONTROL_TASK_BY_ID(task_id)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + entry.name + " >>> deleted")    
+    
+    
+    Speech_Control_Tasks.query.filter_by(id=task_id).delete()
+    db.session.commit()
 
 
 """ ################### """

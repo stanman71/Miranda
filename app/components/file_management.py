@@ -218,7 +218,7 @@ def CHECK_HOTWORD_FILE_EXIST(snowboy_tasks):
         return list_files
     else:
         return ""
-
+        
 
 def UPLOAD_HOTWORD_FILE(file):
     ALLOWED_EXTENSIONS = set(['pmdl'])

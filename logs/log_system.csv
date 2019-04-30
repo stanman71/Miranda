@@ -14128,3 +14128,1835 @@ Timestamp,Type,Description
 2019-04-29 21:09:12,ERROR,Snowboy >>> name 'mod' is not defined
 2019-04-29 21:09:49,EVENT,MQTT >>> started
 2019-04-29 21:09:49,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-29 21:13:33,EVENT,MQTT >>> started
+2019-04-29 21:13:33,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-29 21:13:36,EVENT,Snowboy >>> started
+2019-04-29 21:13:41,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-04-29 21:13:42,EVENT,Snowboy >>> Detection Task >>> scene:wohnzimmer:mediterran:100
+2019-04-29 21:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-29 21:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-29 22:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-29 22:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 22:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-29 22:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-29 22:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-29 22:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-29 22:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 22:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 22:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 22:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-29 22:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-29 22:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-29 22:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-29 23:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-29 23:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 23:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-29 23:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-29 23:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 23:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 23:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-29 23:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-29 23:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-29 23:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-29 23:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-29 23:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-29 23:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 00:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 00:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 00:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 00:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 00:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 00:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 00:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 00:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 00:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 00:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 00:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 00:00:04,EVENT,Scheduler >>> Time Task >>> Datenbank sichern >>> started
+2019-04-30 00:00:04,EVENT,Database_Backup >>> saved
+2019-04-30 00:00:04,SUCCESS,Scheduler >>> Time Task >>> Datenbank sichern >>> successful
+2019-04-30 00:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 00:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 00:30:02,EVENT,Scheduler >>> Time Task >>> schlafen >>> started
+2019-04-30 01:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 01:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 01:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 01:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 01:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 01:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 01:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 01:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 01:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 01:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 01:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 01:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 01:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 02:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 02:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 02:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 02:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 02:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 02:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 02:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 02:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 02:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 02:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 02:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 02:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 02:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 03:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 03:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 03:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 03:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 03:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 03:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 03:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 03:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 03:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 03:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 03:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 03:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 03:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 04:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 04:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 04:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 04:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 04:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 04:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 04:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 04:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 04:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 04:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 04:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 04:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 04:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 05:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 05:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 05:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 05:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 05:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 05:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 05:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 05:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 05:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 05:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 05:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 05:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 05:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 06:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 06:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 06:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 06:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 06:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 06:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 06:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 06:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 06:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 06:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 06:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 06:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 06:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 07:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 07:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 07:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 07:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 07:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 07:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 07:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 07:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 07:00:04,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 07:00:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 07:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 07:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 07:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 07:50:00,EVENT,Scheduler >>> Time Task >>> zur Arbeit >>> started
+2019-04-30 08:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 08:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 08:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 08:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 08:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 08:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 08:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 08:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 08:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 08:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 08:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 08:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 08:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 09:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:00:01,ERROR,Scheduler >>> Sensor Task "sensor_test_01" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 09:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 09:00:01,EVENT,Scheduler >>> Sensor Task "sensor_test_02" >>> started
+2019-04-30 09:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 09:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 09:00:02,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 09:00:03,ERROR,Scheduler >>> Sensor Task "sensor_test_05" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 09:00:03,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 09:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 09:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 09:30:02,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 09:40:10,EVENT,MQTT >>> started
+2019-04-30 09:40:10,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:40:13,EVENT,Snowboy >>> started
+2019-04-30 09:40:34,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-30 09:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:41:01,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-30 09:41:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:41:34,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> deleted
+2019-04-30 09:41:36,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> deleted
+2019-04-30 09:41:37,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_05 >>> deleted
+2019-04-30 09:41:39,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> deleted
+2019-04-30 09:41:41,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> deleted
+2019-04-30 09:41:49,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-30 09:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:42:50,EVENT,MQTT >>> started
+2019-04-30 09:42:50,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:42:53,EVENT,Snowboy >>> started
+2019-04-30 09:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:43:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:43:48,EVENT,MQTT >>> started
+2019-04-30 09:43:48,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:43:51,EVENT,Snowboy >>> started
+2019-04-30 09:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:45:05,EVENT,MQTT >>> started
+2019-04-30 09:45:05,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:45:08,EVENT,Snowboy >>> started
+2019-04-30 09:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:48:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:48:58,EVENT,MQTT >>> started
+2019-04-30 09:48:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:49:01,EVENT,Snowboy >>> started
+2019-04-30 09:49:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:50:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:50:58,EVENT,MQTT >>> started
+2019-04-30 09:50:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:51:01,EVENT,Snowboy >>> started
+2019-04-30 09:51:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:52:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:53:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:55:05,EVENT,MQTT >>> started
+2019-04-30 09:55:05,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:55:08,EVENT,Snowboy >>> started
+2019-04-30 09:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:56:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:57:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:57:32,EVENT,MQTT >>> started
+2019-04-30 09:57:32,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 09:57:35,EVENT,Snowboy >>> started
+2019-04-30 09:57:39,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: 0x88888 /// Sensor_2:  humidity /// Operator_2: > /// Value_2: 90 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 09:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:58:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 09:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 09:59:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 10:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 10:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:01:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:02:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:03:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:03:38,EVENT,MQTT >>> started
+2019-04-30 10:03:38,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:03:41,EVENT,Snowboy >>> started
+2019-04-30 10:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:04:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:07:24,EVENT,MQTT >>> started
+2019-04-30 10:07:24,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:07:27,EVENT,Snowboy >>> started
+2019-04-30 10:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:08:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:08:42,EVENT,MQTT >>> started
+2019-04-30 10:08:42,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:08:45,EVENT,Snowboy >>> started
+2019-04-30 10:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:09:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:09:42,EVENT,MQTT >>> started
+2019-04-30 10:09:42,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:09:45,EVENT,Snowboy >>> started
+2019-04-30 10:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:10:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:11:14,EVENT,MQTT >>> started
+2019-04-30 10:11:15,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:11:18,EVENT,Snowboy >>> started
+2019-04-30 10:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:12:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:13:01,EVENT,MQTT >>> started
+2019-04-30 10:13:01,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:13:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 10:13:04,EVENT,Snowboy >>> started
+2019-04-30 10:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:14:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:15:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 10:15:04,EVENT,MQTT >>> started
+2019-04-30 10:15:04,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:15:07,EVENT,Snowboy >>> started
+2019-04-30 10:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:16:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:16:40,EVENT,MQTT >>> started
+2019-04-30 10:16:40,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:16:43,EVENT,Snowboy >>> started
+2019-04-30 10:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:17:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:18:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:18:39,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 10:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:20:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:20:58,EVENT,MQTT >>> started
+2019-04-30 10:20:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:21:01,EVENT,Snowboy >>> started
+2019-04-30 10:21:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:22:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:23:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:23:36,EVENT,MQTT >>> started
+2019-04-30 10:23:36,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:23:39,EVENT,Snowboy >>> started
+2019-04-30 10:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:24:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:25:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:25:50,EVENT,MQTT >>> started
+2019-04-30 10:25:50,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:25:53,EVENT,Snowboy >>> started
+2019-04-30 10:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:26:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:27:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:28:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:29:31,EVENT,MQTT >>> started
+2019-04-30 10:29:31,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:29:34,EVENT,Snowboy >>> started
+2019-04-30 10:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:30:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:30:02,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 10:30:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 10:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:31:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:32:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:33:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:34:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:35:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:36:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:37:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:38:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:39:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:40:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:41:05,EVENT,MQTT >>> started
+2019-04-30 10:41:05,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:41:08,EVENT,Snowboy >>> started
+2019-04-30 10:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:43:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:44:48,EVENT,MQTT >>> started
+2019-04-30 10:44:48,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:44:51,EVENT,Snowboy >>> started
+2019-04-30 10:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:45:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:46:56,EVENT,MQTT >>> started
+2019-04-30 10:46:56,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:46:59,EVENT,Snowboy >>> started
+2019-04-30 10:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:48:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:49:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:49:44,EVENT,MQTT >>> started
+2019-04-30 10:49:44,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:49:47,EVENT,Snowboy >>> started
+2019-04-30 10:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:50:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:51:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:51:47,EVENT,MQTT >>> started
+2019-04-30 10:51:47,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:51:51,EVENT,Snowboy >>> started
+2019-04-30 10:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:52:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:53:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:55:21,EVENT,MQTT >>> started
+2019-04-30 10:55:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:55:24,EVENT,Snowboy >>> started
+2019-04-30 10:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:56:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:57:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:58:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 10:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 10:59:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 10:59:02,EVENT,MQTT >>> started
+2019-04-30 10:59:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 10:59:06,EVENT,Snowboy >>> started
+2019-04-30 11:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 11:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 11:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:01:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:02:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:02:35,EVENT,MQTT >>> started
+2019-04-30 11:02:35,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:02:39,EVENT,Snowboy >>> started
+2019-04-30 11:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:03:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:04:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:05:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:06:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:06:48,EVENT,MQTT >>> started
+2019-04-30 11:06:48,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:06:51,EVENT,Snowboy >>> started
+2019-04-30 11:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:07:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:08:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:08:15,EVENT,MQTT >>> started
+2019-04-30 11:08:15,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:08:18,EVENT,Snowboy >>> started
+2019-04-30 11:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:09:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:12:12,EVENT,MQTT >>> started
+2019-04-30 11:12:12,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:12:15,EVENT,Snowboy >>> started
+2019-04-30 11:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:13:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:14:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:15:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:16:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:16:40,EVENT,MQTT >>> started
+2019-04-30 11:16:40,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:16:44,EVENT,Snowboy >>> started
+2019-04-30 11:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:17:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:18:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:23:36,EVENT,MQTT >>> started
+2019-04-30 11:23:36,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:23:39,EVENT,Snowboy >>> started
+2019-04-30 11:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:24:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:24:33,EVENT,MQTT >>> started
+2019-04-30 11:24:33,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:24:36,EVENT,Snowboy >>> started
+2019-04-30 11:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:25:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:26:13,EVENT,MQTT >>> started
+2019-04-30 11:26:13,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:26:17,EVENT,Snowboy >>> started
+2019-04-30 11:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:27:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:28:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:29:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:29:41,EVENT,MQTT >>> started
+2019-04-30 11:29:41,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:29:44,EVENT,Snowboy >>> started
+2019-04-30 11:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:30:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:30:02,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 11:30:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 11:30:59,EVENT,MQTT >>> started
+2019-04-30 11:30:59,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:31:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:31:02,EVENT,Snowboy >>> started
+2019-04-30 11:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:32:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:33:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:33:56,EVENT,MQTT >>> started
+2019-04-30 11:33:56,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:33:59,EVENT,Snowboy >>> started
+2019-04-30 11:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:34:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:35:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:35:28,EVENT,MQTT >>> started
+2019-04-30 11:35:28,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:35:31,EVENT,Snowboy >>> started
+2019-04-30 11:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:36:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:37:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:38:06,EVENT,MQTT >>> started
+2019-04-30 11:38:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:38:10,EVENT,Snowboy >>> started
+2019-04-30 11:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:39:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:40:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:41:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:41:33,EVENT,MQTT >>> started
+2019-04-30 11:41:33,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:41:37,EVENT,Snowboy >>> started
+2019-04-30 11:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:43:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:44:39,EVENT,MQTT >>> started
+2019-04-30 11:44:39,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:44:42,EVENT,Snowboy >>> started
+2019-04-30 11:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:45:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:47:25,EVENT,MQTT >>> started
+2019-04-30 11:47:25,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:47:28,EVENT,Snowboy >>> started
+2019-04-30 11:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:48:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:49:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:50:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:50:22,EVENT,MQTT >>> started
+2019-04-30 11:50:22,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:50:25,EVENT,Snowboy >>> started
+2019-04-30 11:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:51:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:52:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:52:21,EVENT,MQTT >>> started
+2019-04-30 11:52:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 11:52:25,EVENT,Snowboy >>> started
+2019-04-30 11:52:34,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 89 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 11:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:53:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:54:45,EVENT,Database >>> Scheduler >>> Sensor >>> test_02 >>> added
+2019-04-30 11:54:55,EVENT,Database >>> Scheduler >>> Sensor >>> test_02 >>> changed >>> Name: test_02 /// Task: hgfhgf /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: = /// Value_1: 76 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 11:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:55:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:55:19,EVENT,Database >>> Scheduler >>> Time >>> test >>> changed >>> Name: test /// Task: request_sensordata:4 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-30 11:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:56:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:56:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 11:56:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 11:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:57:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:57:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 11:57:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 11:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:58:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:58:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 11:58:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 11:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 11:59:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 11:59:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 11:59:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:01:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:01:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:01:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:02:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:02:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:03:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 12:03:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:03:04,ERROR,Scheduler >>> Time Task >>> test >>> Message nicht gefunden
+2019-04-30 12:03:04,EVENT,MQTT >>> started
+2019-04-30 12:03:04,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:03:07,EVENT,Snowboy >>> started
+2019-04-30 12:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:04:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:04:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:04:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:05:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:05:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:05:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:06:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:06:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:06:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:07:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:07:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:07:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:08:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:08:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:08:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:09:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:09:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:09:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:10:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:10:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:10:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:11:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:11:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:11:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:11:52,EVENT,MQTT >>> started
+2019-04-30 12:11:52,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:11:55,EVENT,Snowboy >>> started
+2019-04-30 12:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:12:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:12:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:12:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:13:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:13:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:13:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:14:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:14:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:14:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:15:06,EVENT,MQTT >>> started
+2019-04-30 12:15:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:15:09,EVENT,Snowboy >>> started
+2019-04-30 12:15:25,EVENT,Database >>> Scheduler >>> Sensor >>> test_02 >>> deleted
+2019-04-30 12:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:16:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:16:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:16:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:17:11,EVENT,MQTT >>> started
+2019-04-30 12:17:11,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:17:14,EVENT,Snowboy >>> started
+2019-04-30 12:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:18:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:18:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:18:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:19:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:19:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:19:26,EVENT,MQTT >>> started
+2019-04-30 12:19:26,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:19:29,EVENT,Snowboy >>> started
+2019-04-30 12:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:20:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:20:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:20:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:21:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:21:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:21:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:21:32,EVENT,MQTT >>> started
+2019-04-30 12:21:32,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:21:36,EVENT,Snowboy >>> started
+2019-04-30 12:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:22:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:22:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:22:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:23:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:23:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:23:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:24:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:24:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:24:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:24:59,EVENT,MQTT >>> started
+2019-04-30 12:24:59,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:25:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:25:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:25:02,EVENT,Snowboy >>> started
+2019-04-30 12:25:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:26:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:26:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 12:26:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 12:26:48,EVENT,Database >>> Scheduler >>> Time >>> test >>> changed >>> Name: test /// Task: request_sensordata:4 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-30 12:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:27:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:27:51,EVENT,MQTT >>> started
+2019-04-30 12:27:51,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:27:54,EVENT,Snowboy >>> started
+2019-04-30 12:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:28:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:29:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:29:15,EVENT,MQTT >>> started
+2019-04-30 12:29:15,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:29:19,EVENT,Snowboy >>> started
+2019-04-30 12:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:30:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:30:02,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 12:30:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 12:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:31:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:32:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:32:55,EVENT,MQTT >>> started
+2019-04-30 12:32:55,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:32:58,EVENT,Snowboy >>> started
+2019-04-30 12:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:33:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:34:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:34:24,EVENT,MQTT >>> started
+2019-04-30 12:34:24,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:34:27,EVENT,Snowboy >>> started
+2019-04-30 12:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:35:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:35:49,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 10 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 12:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:36:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:37:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:38:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:38:49,EVENT,MQTT >>> started
+2019-04-30 12:38:49,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:38:52,EVENT,Snowboy >>> started
+2019-04-30 12:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:39:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:40:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:40:16,EVENT,MQTT >>> started
+2019-04-30 12:40:16,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:40:19,EVENT,Snowboy >>> started
+2019-04-30 12:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:41:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:42:49,EVENT,MQTT >>> started
+2019-04-30 12:42:49,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:42:52,EVENT,Snowboy >>> started
+2019-04-30 12:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:43:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:45:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:46:21,EVENT,MQTT >>> started
+2019-04-30 12:46:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:46:24,EVENT,Snowboy >>> started
+2019-04-30 12:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:47:49,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 10 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: < /// Value_2: 76 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 12:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:48:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:49:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:49:58,EVENT,MQTT >>> started
+2019-04-30 12:49:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:50:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:50:02,EVENT,Snowboy >>> started
+2019-04-30 12:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:51:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:52:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:52:16,EVENT,MQTT >>> started
+2019-04-30 12:52:16,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:52:19,EVENT,Snowboy >>> started
+2019-04-30 12:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:53:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:55:05,EVENT,MQTT >>> started
+2019-04-30 12:55:05,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 12:55:08,EVENT,Snowboy >>> started
+2019-04-30 12:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:56:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:57:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:58:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 12:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 12:59:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:00:06,EVENT,MQTT >>> started
+2019-04-30 13:00:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:00:09,EVENT,Snowboy >>> started
+2019-04-30 13:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:01:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:02:05,EVENT,MQTT >>> started
+2019-04-30 13:02:05,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:02:08,EVENT,Snowboy >>> started
+2019-04-30 13:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:03:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:04:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:04:59,EVENT,MQTT >>> started
+2019-04-30 13:04:59,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:05:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:05:02,EVENT,Snowboy >>> started
+2019-04-30 13:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:06:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:07:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:08:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:09:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:10:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:11:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:12:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:13:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:13:19,EVENT,MQTT >>> started
+2019-04-30 13:13:19,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:13:22,EVENT,Snowboy >>> started
+2019-04-30 13:14:06,EVENT,MQTT >>> started
+2019-04-30 13:14:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:14:09,EVENT,Snowboy >>> started
+2019-04-30 13:14:43,EVENT,MQTT >>> started
+2019-04-30 13:14:43,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:14:46,EVENT,Snowboy >>> started
+2019-04-30 13:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:15:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:16:06,EVENT,MQTT >>> started
+2019-04-30 13:16:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:16:09,EVENT,Snowboy >>> started
+2019-04-30 13:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:17:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:18:07,EVENT,MQTT >>> started
+2019-04-30 13:18:07,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:18:10,EVENT,Snowboy >>> started
+2019-04-30 13:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:20:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 13:20:39,EVENT,MQTT >>> started
+2019-04-30 13:20:39,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:20:43,EVENT,Snowboy >>> started
+2019-04-30 13:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:21:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:22:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:23:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:24:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:25:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:26:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:27:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:28:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:29:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:30:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:30:02,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 13:30:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 13:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:31:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:32:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:33:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:34:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:35:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:36:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:36:17,EVENT,MQTT >>> started
+2019-04-30 13:36:17,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:36:20,EVENT,Snowboy >>> started
+2019-04-30 13:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:37:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:38:03,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 13:38:27,EVENT,MQTT >>> started
+2019-04-30 13:38:27,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:38:30,EVENT,Snowboy >>> started
+2019-04-30 13:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:39:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:40:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:41:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:43:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:45:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:48:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:49:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:50:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:51:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:51:18,EVENT,MQTT >>> started
+2019-04-30 13:51:18,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:51:21,EVENT,Snowboy >>> started
+2019-04-30 13:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:52:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:52:33,EVENT,MQTT >>> started
+2019-04-30 13:52:33,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:52:36,EVENT,Snowboy >>> started
+2019-04-30 13:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:53:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:55:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:56:10,EVENT,MQTT >>> started
+2019-04-30 13:56:10,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 13:56:14,EVENT,Snowboy >>> started
+2019-04-30 13:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:57:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:58:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 13:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 13:59:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:00:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:00:02,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 14:00:04,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 14:00:43,EVENT,MQTT >>> started
+2019-04-30 14:00:43,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:00:46,EVENT,Snowboy >>> started
+2019-04-30 14:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:01:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:02:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:03:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:04:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:05:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:05:39,EVENT,MQTT >>> started
+2019-04-30 14:05:39,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:05:42,EVENT,Snowboy >>> started
+2019-04-30 14:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:06:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:06:04,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 10 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: < /// Value_2: 76 /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_2 /// Operator_3: > /// Value_3: 89
+2019-04-30 14:06:14,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> added
+2019-04-30 14:06:21,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> added
+2019-04-30 14:06:26,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> added
+2019-04-30 14:06:31,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_05 >>> added
+2019-04-30 14:06:37,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> added
+2019-04-30 14:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:07:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> changed >>> Name: sensor_test_01 /// Task: fgdg /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_02 >>> changed >>> Name: sensor_test_02 /// Task: fgd /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_4 /// Operator_1: = /// Value_1: 10 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: < /// Value_2: 76 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_2 /// Operator_3: > /// Value_3: 89
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> changed >>> Name: sensor_test_04 /// Task: kloi /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_05 >>> changed >>> Name: sensor_test_05 /// Task: ölk /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:05,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> changed >>> Name: sensor_test_06 /// Task: lkj /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:33,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_01 >>> changed >>> Name: sensor_test_01 /// Task: fgdg /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_3 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:33,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: = /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3:  sensor_5 /// Operator_3: > /// Value_3: 876
+2019-04-30 14:07:48,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: = /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_5 /// Operator_3: > /// Value_3: 876
+2019-04-30 14:07:48,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> changed >>> Name: sensor_test_04 /// Task: kloi /// MQTT-Device_1: None /// Sensor_1: None /// Operator_1: None /// Value_1:  /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:07:58,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> changed >>> Name: sensor_test_04 /// Task: kloi /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_2 /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2:  humidity /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:08:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:08:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:08:08,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_04 >>> changed >>> Name: sensor_test_04 /// Task: kloi /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_2 /// Operator_1: None /// Value_1:  /// MQTT-Device_2: 0x88888 /// Sensor_2: humidity /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:08:08,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_05 >>> changed >>> Name: sensor_test_05 /// Task: ölk /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: > /// Value_1: 9 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:08:30,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> changed >>> Name: sensor_test_06 /// Task: lkj /// MQTT-Device_1: 0x99999 /// Sensor_1:  sensor_3 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: 0x99999 /// Sensor_2:  sensor_5 /// Operator_2: = /// Value_2: 0 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:09:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:09:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:10:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:10:15,EVENT,MQTT >>> started
+2019-04-30 14:10:15,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:10:19,EVENT,Snowboy >>> started
+2019-04-30 14:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:11:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:11:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:11:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:12:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:12:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:12:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:12:38,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: = /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_5 /// Operator_3: < /// Value_3: 876
+2019-04-30 14:12:38,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> changed >>> Name: sensor_test_06 /// Task: lkj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_3 /// Operator_1: = /// Value_1: 0 /// MQTT-Device_2: 0x99999 /// Sensor_2: sensor_5 /// Operator_2: = /// Value_2: 0 /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
+2019-04-30 14:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:13:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:13:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:13:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:14:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:14:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:14:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:15:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:15:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:15:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:16:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:16:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:16:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:17:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:17:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:17:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:18:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:18:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:18:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:19:00,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:19:04,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:19:40,EVENT,MQTT >>> started
+2019-04-30 14:19:40,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:19:43,EVENT,Snowboy >>> started
+2019-04-30 14:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:20:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:21:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:22:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:22:33,EVENT,MQTT >>> started
+2019-04-30 14:22:33,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:22:36,EVENT,Snowboy >>> started
+2019-04-30 14:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:23:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:23:45,EVENT,MQTT >>> started
+2019-04-30 14:23:45,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:23:48,EVENT,Snowboy >>> started
+2019-04-30 14:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:24:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:24:57,EVENT,MQTT >>> started
+2019-04-30 14:24:57,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:25:01,EVENT,Snowboy >>> started
+2019-04-30 14:25:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:26:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:27:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:27:23,EVENT,MQTT >>> started
+2019-04-30 14:27:23,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:27:26,EVENT,Snowboy >>> started
+2019-04-30 14:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:28:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:29:10,EVENT,MQTT >>> started
+2019-04-30 14:29:10,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:29:13,EVENT,Snowboy >>> started
+2019-04-30 14:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:30:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:30:02,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 14:30:04,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 14:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:31:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 14:31:04,EVENT,MQTT >>> started
+2019-04-30 14:31:04,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:31:07,EVENT,Snowboy >>> started
+2019-04-30 14:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:32:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:32:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:32:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:32:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:33:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:33:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:33:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:33:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:34:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:34:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:34:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:34:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:34:10,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:35:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:35:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:35:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:35:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:36:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:36:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:36:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:36:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:37:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:37:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:37:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:38:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:38:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:38:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:38:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:39:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:39:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:39:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:39:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:40:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:40:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:40:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:40:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:41:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:41:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:41:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:41:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:42:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:42:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:42:04,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:42:05,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:43:40,EVENT,MQTT >>> started
+2019-04-30 14:43:40,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:43:43,EVENT,Snowboy >>> started
+2019-04-30 14:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:44:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:44:07,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:44:11,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:44:37,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:44:37,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:44:41,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:45:01,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:45:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:45:09,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:45:12,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:45:14,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:45:35,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:45:40,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:45:42,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:45:45,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:46:00,EVENT,MQTT >>> started
+2019-04-30 14:46:00,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:46:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:46:04,EVENT,Snowboy >>> started
+2019-04-30 14:46:55,EVENT,MQTT >>> started
+2019-04-30 14:46:55,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:46:58,EVENT,Snowboy >>> started
+2019-04-30 14:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:47:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:47:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:47:19,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:47:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:48:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:48:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:48:21,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:48:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:49:02,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_5 /// Operator_3: < /// Value_3: 876
+2019-04-30 14:49:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:49:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:49:22,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:49:23,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:50:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:50:04,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:50:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:50:19,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:50:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:51:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:51:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:51:22,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:51:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:52:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:52:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:52:21,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:52:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:53:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:53:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:53:20,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:53:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:53:50,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:53:55,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:53:57,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:54:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:54:09,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:54:21,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:54:39,EVENT,MQTT >>> started
+2019-04-30 14:54:39,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 14:54:42,EVENT,Snowboy >>> started
+2019-04-30 14:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:55:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:55:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:55:24,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:55:38,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:55:39,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:55:48,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:55:54,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:56:01,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:56:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:56:14,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:56:20,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:56:26,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:56:30,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:56:47,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:56:52,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:56:58,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 14:57:01,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:57:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 14:57:23,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:57:23,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:57:29,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:57:32,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:57:36,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-30 14:57:54,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:58:00,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:58:01,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:58:04,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:58:25,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:58:31,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:58:37,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:58:38,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:58:56,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:59:02,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:59:14,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 14:59:14,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:59:27,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 14:59:33,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 14:59:36,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 14:59:58,EVENT,MQTT >>> started
+2019-04-30 14:59:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:00:02,EVENT,Snowboy >>> started
+2019-04-30 15:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 15:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 15:00:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:00:29,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:00:34,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:00:48,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:00:50,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:01:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:01:18,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:01:21,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:01:22,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:01:35,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:01:48,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:01:51,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:01:54,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:02:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:02:19,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:02:21,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:03:46,EVENT,MQTT >>> started
+2019-04-30 15:03:46,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:03:50,EVENT,Snowboy >>> started
+2019-04-30 15:04:54,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-30 15:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:05:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:05:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:06:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:06:17,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:06:47,EVENT,MQTT >>> started
+2019-04-30 15:06:47,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:06:50,EVENT,Snowboy >>> started
+2019-04-30 15:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:07:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:07:18,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:07:34,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:07:44,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-30 15:07:45,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:07:49,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:08:05,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:08:06,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:08:21,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:08:22,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:08:31,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:08:36,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:08:52,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:08:52,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:09:06,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:13:03,EVENT,MQTT >>> started
+2019-04-30 15:13:03,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:13:06,EVENT,Snowboy >>> started
+2019-04-30 15:13:46,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: * /// Repeat: checked
+2019-04-30 15:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:14:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:14:04,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:14:04,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:14:04,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:14:14,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:14:26,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:15:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:15:04,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:15:04,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:15:04,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:15:14,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:15:26,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:16:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:16:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:16:04,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:16:04,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:16:04,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:16:14,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:16:52,EVENT,MQTT >>> started
+2019-04-30 15:16:52,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:16:55,EVENT,Snowboy >>> started
+2019-04-30 15:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:17:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:17:04,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:17:05,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:17:07,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:17:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:17:30,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:18:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:18:04,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:18:05,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:18:06,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:18:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:18:29,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:19:02,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:19:05,ERROR,Scheduler >>> Sensor Task "sensor_test_02" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:19:06,ERROR,Scheduler >>> Sensor Task "sensor_test_03" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:19:07,ERROR,Scheduler >>> Sensor Task "sensor_test_04" >>> Sensor "0x88888" >>> Message nicht gefunden
+2019-04-30 15:19:14,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:19:30,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:20:06,EVENT,MQTT >>> started
+2019-04-30 15:20:06,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:20:10,EVENT,Snowboy >>> started
+2019-04-30 15:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:21:01,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:21:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:21:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:21:10,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:21:50,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: < /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_5 /// Operator_3: < /// Value_3: 876
+2019-04-30 15:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:22:02,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:22:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:22:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:22:10,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:23:02,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:23:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:23:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:23:10,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_03 >>> changed >>> Name: sensor_test_03 /// Task: lkjj /// MQTT-Device_1: 0x99999 /// Sensor_1: sensor_0 /// Operator_1: > /// Value_1: 54 /// MQTT-Device_2: 0x88888 /// Sensor_2: temperature /// Operator_2: > /// Value_2: 876 /// MQTT-Device_3: 0x99999 /// Sensor_3: sensor_5 /// Operator_3: < /// Value_3: 876
+2019-04-30 15:23:10,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:24:02,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:24:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:24:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:24:10,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:25:02,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:25:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:25:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:25:10,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:26:02,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:26:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:26:05,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:26:11,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:27:43,EVENT,MQTT >>> started
+2019-04-30 15:27:43,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:27:46,EVENT,Snowboy >>> started
+2019-04-30 15:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:28:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:28:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:28:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:28:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:28:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:29:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:29:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:29:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:29:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:29:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:30:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:30:03,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 15:30:06,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 15:30:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:30:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:30:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:30:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:31:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:31:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:31:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:31:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:31:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:31:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:32:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:32:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:32:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:32:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:32:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:32:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:33:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:33:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:33:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:33:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:33:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:33:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:34:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:34:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:34:11,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:34:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:34:12,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:34:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:35:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:35:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:35:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:35:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:35:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:35:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:36:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:36:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:36:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:36:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:36:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:36:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:37:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:37:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:37:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:37:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:37:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:37:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:38:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:38:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:38:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:38:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:38:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:38:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:39:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:39:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:39:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:39:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:39:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:39:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:40:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:40:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:40:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:40:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:40:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:40:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:41:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:41:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:41:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:41:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:41:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:41:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:42:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:42:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:42:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:42:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:42:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:42:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:43:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:43:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:43:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:43:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:43:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:43:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:44:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:44:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:44:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:44:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:44:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:44:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:45:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:45:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:45:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:45:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:45:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:45:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:46:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:46:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:46:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:46:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:46:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:46:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:47:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:47:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:47:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:47:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:47:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:47:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:48:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:48:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:48:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:48:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:48:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:48:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:49:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:49:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:49:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:49:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:49:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:49:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:50:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:50:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:50:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:50:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:50:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:50:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:51:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:51:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:51:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:51:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:51:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:51:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:52:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:52:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:52:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:52:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:52:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:52:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:53:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:53:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:53:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:53:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:53:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:53:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:54:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:54:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:54:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:54:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:54:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:54:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:55:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:55:01,EVENT,MQTT >>> started
+2019-04-30 15:55:01,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 15:55:02,ERROR,Scheduler >>> Time Task >>> test_01 >>> Message nicht gefunden
+2019-04-30 15:55:04,EVENT,Snowboy >>> started
+2019-04-30 15:55:33,EVENT,Database >>> Snowboy Task >>> ausschalten >>> changed >>> Name: ausschalten /// Task: led_off:al
+2019-04-30 15:55:39,EVENT,Database >>> Snowboy Task >>> ausschalten >>> changed >>> Name: ausschalten /// Task: led_off:all
+2019-04-30 15:56:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:56:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:56:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:56:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:56:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:56:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:57:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:57:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:57:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:57:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:57:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:57:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:58:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:58:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:58:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:58:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:58:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:58:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 15:59:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 15:59:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 15:59:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 15:59:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 15:59:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 15:59:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 16:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 16:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:00:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:01:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:01:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:01:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:01:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:01:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:01:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:02:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:02:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:02:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:02:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:02:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:02:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:03:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:03:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:03:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:03:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:03:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:03:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:04:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:04:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:04:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:04:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:04:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:04:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:05:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:05:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:05:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:05:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:05:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:05:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:06:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:06:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:06:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:06:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:06:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:06:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:07:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:07:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:07:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:07:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:07:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:07:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:08:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:08:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:08:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:08:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:08:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:08:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:09:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:09:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:09:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:09:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:09:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:09:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:10:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:10:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:10:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:10:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:10:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:10:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:11:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:11:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:11:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:11:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:11:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:11:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:12:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:12:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:12:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:12:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:12:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:12:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:13:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:13:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:13:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:13:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:13:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:13:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:14:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:14:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:14:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:14:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:14:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:14:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:15:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:15:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:15:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:15:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:15:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:15:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:16:45,EVENT,MQTT >>> started
+2019-04-30 16:16:45,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:16:48,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:17:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:17:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:17:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:17:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:17:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:17:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:17:23,EVENT,Database >>> Speech Control Task >>> trtzr >>> added
+2019-04-30 16:17:51,EVENT,MQTT >>> started
+2019-04-30 16:17:51,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:17:55,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:18:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:18:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:18:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:18:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:18:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:18:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:19:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:19:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:19:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:19:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:19:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:19:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:20:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:20:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:20:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:20:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:20:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:20:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:21:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:21:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:21:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:21:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:21:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:21:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:22:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:22:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:22:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:22:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:22:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:22:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:22:52,EVENT,MQTT >>> started
+2019-04-30 16:22:52,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:22:55,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:23:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:23:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:23:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:23:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:23:14,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:23:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:24:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:24:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:24:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:24:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:24:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:24:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:25:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:25:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:25:46,EVENT,MQTT >>> started
+2019-04-30 16:25:46,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:25:49,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:25:55,EVENT,Database >>> Speech Control Task >>> uztutzghf >>> added
+2019-04-30 16:26:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:26:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:26:05,EVENT,Database >>> Speech Control Task >>> uztutzghfuiz >>> added
+2019-04-30 16:26:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:26:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:26:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:26:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:26:17,EVENT,Database >>> Speech Control Task >>> uztutzghfuiziou >>> added
+2019-04-30 16:27:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:27:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:27:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:27:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:27:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:27:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:27:54,EVENT,MQTT >>> started
+2019-04-30 16:27:54,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:27:58,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:28:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:28:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:28:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:28:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:28:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:28:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:28:22,EVENT,Database >>> Speech Control Task >>> uztutzghf >>> changed >>> Name: uztutzghftreetr /// Task: gfdgfd
+2019-04-30 16:28:29,EVENT,Database >>> Speech Control Task >>> uztutzghftreetr >>> changed >>> Name: uztutzghftreetrdsa /// Task: gfdgfd
+2019-04-30 16:28:43,EVENT,Database >>> Speech Control Task >>> uztutzghftreetrdsa >>> changed >>> Name: uztutzghftreetrdsa /// Task: gfdgfd
+2019-04-30 16:28:47,EVENT,Database >>> Speech Control Task >>> uztutzghfuiz >>> changed >>> Name: uztutzghfuiz /// Task: gfdgfd
+2019-04-30 16:29:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:29:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:29:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:29:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:29:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:29:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:30:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 16:30:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 16:30:03,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 16:30:06,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 16:30:12,EVENT,Database >>> Scheduler >>> Time >>> test_01 >>> changed >>> Name: test_01 /// Task: request_sensordata:1 /// Day: * /// Hour: * /// Minute: 0 /// Repeat: checked
+2019-04-30 16:30:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 16:30:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 16:30:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 16:30:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 16:32:02,EVENT,MQTT >>> started
+2019-04-30 16:32:02,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:32:05,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:32:52,EVENT,MQTT >>> started
+2019-04-30 16:32:52,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:32:56,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 16:35:49,EVENT,MQTT >>> started
+2019-04-30 16:35:49,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 16:35:52,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 17:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 17:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 17:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 17:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 17:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 17:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 17:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 17:00:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 17:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 17:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 18:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-04-30 18:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-04-30 18:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-04-30 18:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-04-30 18:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-04-30 18:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-04-30 18:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-04-30 18:00:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-04-30 18:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-04-30 18:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-04-30 18:37:48,EVENT,MQTT >>> started
+2019-04-30 18:37:48,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 18:37:51,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
+2019-04-30 18:39:27,EVENT,MQTT >>> started
+2019-04-30 18:39:27,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-04-30 18:39:31,ERROR,Snowboy >>> unsupported operand type(s) for /: 'NoneType' and 'int'
