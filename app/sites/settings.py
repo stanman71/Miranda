@@ -292,50 +292,55 @@ def download_zigbee2mqtt_logfile(filepath):
 def dashboard_settings_speechcontrol():
     error_message = ""
     error_message_snowboy = ""
-    error_message_form = ""
-    error_message_tasks = ""
+    error_message_table = ""
+    error_message_snowboy_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
-    error_message_speech_control = ""
+    error_message_speech_recognition_provider_tasks = ""
+    error_message_speech_recognition_provider_settings = ""
     sensitivity = ""
     delay = ""
-    check_value_speech_control = ["", "", ""]
-    name = ""
-    task = ""
+    check_value_speechcontrol = ["", "", ""]
+    snowboy_name = ""
+    snowboy_task = ""   
+    speech_recognition_provider_name = ""
+    speech_recognition_provider_keywords = ""
+    speech_recognition_provider_task = ""
     snowboy_hotword = ""
-    speech_control_provider = ""
-    speech_control_username = ""
-    speech_control_key = ""
+    speech_recognition_provider = ""
+    speech_recognition_provider_username = ""
+    speech_recognition_provider_key = ""
+
 
     if request.method == "POST":     
         # change speech_control settings   
-        if request.form.get("radio_speech_control") is not None:
-            setting_speech_control = str(request.form.get("radio_speech_control"))
-            SET_GLOBAL_SETTING_VALUE("speech_control", setting_speech_control) 
+        if request.form.get("radio_speechcontrol") is not None:
+            setting_speechcontrol = str(request.form.get("radio_speechcontrol"))
+            SET_GLOBAL_SETTING_VALUE("speechcontrol", setting_speechcontrol) 
 
     # change radio check    
-    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy":
-        check_value_speech_control[0] = "checked = 'on'"
-        check_value_speech_control[1] = ""
-        check_value_speech_control[2] = ""
-    elif GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
-        check_value_speech_control[0] = ""
-        check_value_speech_control[1] = "checked = 'on'"
-        check_value_speech_control[2] = ""
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy":
+        check_value_speechcontrol[0] = "checked = 'on'"
+        check_value_speechcontrol[1] = ""
+        check_value_speechcontrol[2] = ""
+    elif GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+        check_value_speechcontrol[0] = ""
+        check_value_speechcontrol[1] = "checked = 'on'"
+        check_value_speechcontrol[2] = ""
     else:
-        check_value_speech_control[0] = ""
-        check_value_speech_control[1] = ""
-        check_value_speech_control[2] = "checked = 'on'"
+        check_value_speechcontrol[0] = ""
+        check_value_speechcontrol[1] = ""
+        check_value_speechcontrol[2] = "checked = 'on'"
 
-    ######################
-    # snowboy and snowboy+
-    ######################
+    ##########################
+    # general snowboy settings
+    ##########################
 
-    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
 
         # check snowboy
         def START_SNOWBOY():
-            from app.snowboy.snowboy import SNOWBOY_START
+            from app.speechcontrol.snowboy.snowboy import SNOWBOY_START
             SNOWBOY_START("snowboy")
           
         try:
@@ -369,66 +374,127 @@ def dashboard_settings_speechcontrol():
             # snowboy
             #########
 
-            # add new task
-            if request.form.get("add_task") is not None:
+            # add new snowboy task
+            if request.form.get("add_snowboy_task") is not None:
 
-                if request.form.get("set_name") == "":
+                if request.form.get("set_snowboy_name") == "":
                     error_message = "Kein Name angegeben"
-                    task = request.form.get("set_task")
-                elif request.form.get("set_task") == "":
+                    snowboy_task = request.form.get("set_snowboy_task")
+                elif request.form.get("set_snowboy_task") == "":
                     error_message = "Keine Aufgabe angegeben"  
-                    name = request.form.get("set_name")  
+                    snowboy_name = request.form.get("set_snowboy_name")  
                 else:         
-                    name   = request.form.get("set_name")
-                    task   = request.form.get("set_task")
-                    error_message = ADD_SNOWBOY_TASK(name, task)
-                    
+                    snowboy_name  = request.form.get("set_snowboy_name")
+                    snowboy_task  = request.form.get("set_snowboy_task")
+                    error_message = ADD_SNOWBOY_TASK(snowboy_name, snowboy_task)
 
-            # change settings
-            if request.form.get("change_settings") != None: 
+                    snowboy_name = ""
+                    snowboy_task = "" 
+
+            # change snowboy tasks
+            if request.form.get("change_snowboy_task") != None: 
                 for i in range (1,26):
 
-                    if request.form.get("set_name_" + str(i)) != None:  
+                    if request.form.get("set_snowboy_name_" + str(i)) != None:  
                         
-                        # check name
-                        if (request.form.get("set_name_" + str(i)) != "" and 
-                            GET_SNOWBOY_TASK_BY_NAME(request.form.get("set_name_" + str(i))) == None):
-                            name = request.form.get("set_name_" + str(i)) 
+                        # check snowboy name
+                        if (request.form.get("set_snowboy_name_" + str(i)) != "" and 
+                            GET_SNOWBOY_TASK_BY_NAME(request.form.get("set_snowboy_name_" + str(i))) == None):
+                            snowboy_name = request.form.get("set_snowboy_name_" + str(i)) 
                             
-                        elif request.form.get("set_name_" + str(i)) == GET_SNOWBOY_TASK_BY_ID(i).name:
-                            name = GET_SNOWBOY_TASK_BY_ID(i).name                        
+                        elif request.form.get("set_snowboy_name_" + str(i)) == GET_SNOWBOY_TASK_BY_ID(i).name:
+                            snowboy_name = GET_SNOWBOY_TASK_BY_ID(i).name                        
                             
                         else:
-                            name = GET_SNOWBOY_TASK_BY_ID(i).name 
-                            error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                            snowboy_name = GET_SNOWBOY_TASK_BY_ID(i).name 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
                         
                         # check task
-                        if request.form.get("set_task_" + str(i)) != "":
-                            task = request.form.get("set_task_" + str(i)) 
+                        if request.form.get("set_snowboy_task_" + str(i)) != "":
+                            snowboy_task = request.form.get("set_snowboy_task_" + str(i)) 
                         
                         else:
-                            task = GET_SNOWBOY_TASK_BY_ID(i).task 
-                            error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                            snowboy_task = GET_SNOWBOY_TASK_BY_ID(i).task 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
                                            
-                        SET_SNOWBOY_TASK(i, name, task)
+                        SET_SNOWBOY_TASK(i, snowboy_name, snowboy_task)
 
-            ##########
-            # snowboy+
-            ##########
+            #############################
+            # speech recognition provider
+            #############################
 
-            if request.form.get("set_speech_control_settings") != None: 
+            # add new speech_recognition_provider task
+            if request.form.get("add_speech_recognition_provider_task") is not None:
+
+                if request.form.get("set_speech_recognition_provider_name") == "":
+                    error_message = "Kein Name angegeben"
+                    speech_recognition_provider_task = request.form.get("set_speech_recognition_provider_task")
+                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
+                elif request.form.get("set_speech_recognition_provider_task") == "":
+                    error_message = "Keine Aufgabe angegeben"  
+                    speech_recognition_provider_name = request.form.get("set_speech_recognition_provider_name")  
+                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
+                else:         
+                    speech_recognition_provider_name     = request.form.get("set_speech_recognition_provider_name")
+                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
+                    speech_recognition_provider_task     = request.form.get("set_speech_recognition_provider_task")
+                    error_message = ADD_SPEECH_RECOGNITION_PROVIDER_TASK(speech_recognition_provider_name, speech_recognition_provider_keywords, speech_recognition_provider_task)
+                   
+                    speech_recognition_provider_name = ""
+                    speech_recognition_provider_keywords = ""
+                    speech_recognition_provider_task = ""
+
+            # change speech_recognition_provider tasks
+            if request.form.get("change_speech_recognition_provider_task") != None: 
+                for i in range (1,26):
+
+                    if request.form.get("set_speech_recognition_provider_name_" + str(i)) != None:  
+                        
+                        # check speech_recognition_provider name
+                        if (request.form.get("set_speech_recognition_provider_name_" + str(i)) != "" and 
+                            GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_NAME(request.form.get("set_speech_recognition_provider_name_" + str(i))) == None):
+                            speech_recognition_provider_name = request.form.get("set_speech_recognition_provider_name_" + str(i)) 
+                            
+                        elif request.form.get("set_speech_recognition_provider_name_" + str(i)) == GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name:
+                            speech_recognition_provider_name = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name                        
+                            
+                        else:
+                            speech_recognition_provider_name = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+
+                        # check keywords
+                        if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != "":
+                            speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
+                        
+                        else:
+                            speech_recognition_provider_keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).keywords 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"    
+
+                        # check task
+                        if request.form.get("set_speech_recognition_provider_task_" + str(i)) != "":
+                            speech_recognition_provider_task = request.form.get("set_speech_recognition_provider_task_" + str(i)) 
+                        
+                        else:
+                            speech_recognition_provider_task = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).task 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                                           
+                        SET_SPEECH_RECOGNITION_PROVIDER_TASK(i, speech_recognition_provider_name, speech_recognition_provider_keywords, speech_recognition_provider_task)
+
+
+            if request.form.get("set_speech_recognition_provider_settings") != None: 
                 
-                snowboy_hotword = request.form.get("set_snowboy_hotword")        
-                speech_control_provider = request.form.get("set_speech_control_provider")
-                speech_control_username = request.form.get("set_speech_control_username")
-                speech_control_key = request.form.get("set_speech_control_key")
+                snowboy_hotword                      = request.form.get("set_snowboy_hotword")        
+                speech_recognition_provider          = request.form.get("set_speech_recognition_provider")
+                speech_recognition_provider_username = request.form.get("set_speech_recognition_provider_username")
+                speech_recognition_provider_key      = request.form.get("set_speech_recognition_provider_key")
 
-                SET_SPEECH_CONTROL_SETTINGS(snowboy_hotword, speech_control_provider, 
-                                            speech_control_username, speech_control_key)
+                SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, 
+                                                  speech_recognition_provider_username, speech_recognition_provider_key)
 
-            ######################
-            # snowboy and snowboy+
-            ######################
+
+            #########################################
+            # snowboy and speech recognition provider
+            #########################################
                     
             if request.form.get("file_upload") is not None:
                 # file upload
@@ -438,49 +504,63 @@ def dashboard_settings_speechcontrol():
                     file = request.files['file']
                     error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
-    snowboy_setting = GET_GLOBAL_SETTING_VALUE("speech_control")
+
+    # general snowboy settings
+    speechcontrol_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
     sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
     delay = GET_SNOWBOY_SETTINGS().delay
 
+    # snowboy only
     snowboy_task_list = GET_ALL_SNOWBOY_TASKS()
     hotword_file_list = GET_ALL_HOTWORD_FILES()
-    dropdown_list_speech_control_provider = ["Google Cloud Speech", "Google Speech Recognition",
-                                             "Houndify", "IBM Speech", "Microsoft Azure Speech", 
-                                             "Microsoft Bing Voice Recognition", "Wit.ai"]
-    
-    if GET_GLOBAL_SETTING_VALUE("speech_control") == "snowboy+":
-        if GET_SPEECH_CONTROL_SETTINGS().speech_control_key == "":
-            error_message_speech_control = "Keinen Key angegeben"
+    error_message_snowboy_tasks = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
+    error_message_hotword       = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
-    error_message_tasks   = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
-    error_message_hotword = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
+    # speech_recognition_provider only
+    speech_recognition_provider_task_list = GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS()
+
+    dropdown_list_speech_recognition_provider = ["Google Cloud Speech", "Google Speech Recognition",
+                                                 "Houndify", "IBM Speech", "Microsoft Azure Speech", 
+                                                 "Microsoft Bing Voice Recognition", "Wit.ai"]
+    
+    error_message_speech_recognition_provider_tasks = ""
+    error_message_speech_recognition_provider_settings = CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS())
 
     return render_template('dashboard_settings_speechcontrol.html',
                             error_message=error_message,   
                             error_message_snowboy=error_message_snowboy,   
-                            error_message_form=error_message_form,  
-                            error_message_tasks=error_message_tasks,        
+                            error_message_table=error_message_table,  
+                            error_message_snowboy_tasks=error_message_snowboy_tasks,        
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
-                            error_message_speech_control=error_message_speech_control,
-                            snowboy_setting=snowboy_setting,
-                            check_value_speech_control=check_value_speech_control,
+                            error_message_speech_recognition_provider_tasks=error_message_speech_recognition_provider_tasks,
+                            error_message_speech_recognition_provider_settings=error_message_speech_recognition_provider_settings,
+                            
+                            speechcontrol_setting=speechcontrol_setting,
+                            check_value_speechcontrol=check_value_speechcontrol,
                             snowboy_task_list=snowboy_task_list,
                             sensitivity=sensitivity,
                             delay=delay,
-                            name=name,
-                            task=task,
+
+                            snowboy_name=snowboy_name,
+                            snowboy_task=snowboy_task,
                             hotword_file_list=hotword_file_list,                            
                             snowboy_hotword=snowboy_hotword,
-                            dropdown_list_speech_control_provider=dropdown_list_speech_control_provider,
-                            speech_control_provider=speech_control_provider,
-                            speech_control_username=speech_control_username,
-                            speech_control_key=speech_control_key,
+
+                            dropdown_list_speech_recognition_provider=dropdown_list_speech_recognition_provider,
+                            speech_recognition_provider_task_list=speech_recognition_provider_task_list,
+                            speech_recognition_provider=speech_recognition_provider,
+                            speech_recognition_provider_username=speech_recognition_provider_username,
+                            speech_recognition_provider_key=speech_recognition_provider_key,
+                            speech_recognition_provider_name=speech_recognition_provider_name,
+                            speech_recognition_provider_keywords=speech_recognition_provider_keywords,
+                            speech_recognition_provider_task=speech_recognition_provider_task,
+
                             active03="active",
                             )
 
 
-# delete snowboy tasks
+# delete snowboy task
 @app.route('/dashboard/settings/speechcontrol/snowboy/delete/task/<int:id>')
 @login_required
 @superuser_required
@@ -488,6 +568,13 @@ def delete_snowboy_task(id):
     DELETE_SNOWBOY_TASK(id)
     return redirect(url_for('dashboard_settings_speechcontrol'))
 
+# delete speech_recognition_provider task
+@app.route('/dashboard/settings/speechcontrol/speech_recognition_provider/delete/task/<int:id>')
+@login_required
+@superuser_required
+def delete_speech_recognition_provider_task(id):
+    DELETE_SPEECH_RECOGNITION_PROVIDER_TASK(id)
+    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 # download hotword file
 @app.route('/dashboard/settings/speechcontrol/snowboy/download/hotword/<path:filepath>')

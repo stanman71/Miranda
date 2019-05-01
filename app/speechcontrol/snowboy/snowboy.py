@@ -1,10 +1,10 @@
 from app import app
 
-from app.snowboy import snowboydetect
-from app.snowboy import snowboydecoder
-from app.snowboy.speech_control import SPEECH_CONTROL
+from app.speechcontrol.snowboy import snowboydetect
+from app.speechcontrol.snowboy import snowboydecoder
+from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PROVIDER
 from app.database.database import *
-from app.components.file_management import GET_HOTWORD_FILES_FROM_TASKS, WRITE_LOGFILE_SYSTEM, GET_SPEECH_CONTROL_HOTWORD
+from app.components.file_management import GET_HOTWORD_FILES_FROM_TASKS, WRITE_LOGFILE_SYSTEM, GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD
 from app.components.led_control import *
 from app.components.pixel_ring import PIXEL_RING_CONTROL
 
@@ -33,9 +33,9 @@ def SNOWBOY_START(modus):
    
 
    
-   ############################
-   # without speech_recognition
-   ############################ 
+   #########
+   # snowboy
+   ######### 
 
    if modus == "snowboy":
       
@@ -82,14 +82,14 @@ def SNOWBOY_START(modus):
       detector.terminate()
 
 
-   #########################
-   # with speech_recognition
-   ######################### 
+   #############################
+   # speech_recognition_provider
+   ############################# 
 
-   if modus == "snowboy+":
+   if modus == "speech_recognition_provider":
       
       # voice models here:
-      models = GET_SPEECH_CONTROL_HOTWORD(GET_SPEECH_CONTROL_SETTINGS().snowboy_hotword)
+      models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
       
       sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
 
@@ -99,7 +99,7 @@ def SNOWBOY_START(modus):
       def detect_callback():
          detector.terminate()
          PIXEL_RING_CONTROL("on")
-         print(SPEECH_CONTROL())
+         SPEECH_RECOGNITION_PROVIDER()
          time.sleep(5)
          PIXEL_RING_CONTROL("off")
          detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)

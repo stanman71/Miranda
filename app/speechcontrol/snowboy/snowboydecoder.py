@@ -1,4 +1,4 @@
-from app.snowboy import snowboydetect
+from app.speechcontrol.snowboy import snowboydetect
 
 import collections
 import pyaudio

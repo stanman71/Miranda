@@ -5,12 +5,12 @@ https://github.com/Uberi/speech_recognition/blob/master/examples/microphone_reco
 """
 
 from app import app
-from app.database.database import GET_SPEECH_CONTROL_SETTINGS
+from app.database.database import GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS
 
 import speech_recognition as sr
 
 
-def SPEECH_CONTROL():
+def SPEECH_RECOGNITION_PROVIDER():
 
     # obtain audio from the microphone
     r = sr.Recognizer()
@@ -23,10 +23,10 @@ def SPEECH_CONTROL():
     ### Google Cloud Speech ###
     ###########################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Google Cloud Speech":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Google Cloud Speech":
 
         """INSERT THE CONTENTS OF THE GOOGLE CLOUD SPEECH JSON CREDENTIALS FILE HERE"""
-        GOOGLE_CLOUD_SPEECH_CREDENTIALS = GET_SPEECH_CONTROL_SETTINGS().speech_control_key
+        GOOGLE_CLOUD_SPEECH_CREDENTIALS = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
 
         try:
             print("Google Cloud Speech thinks you said " + r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS))
@@ -42,7 +42,7 @@ def SPEECH_CONTROL():
     ### Google Speech Recognition ###
     #################################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Google Speech Recognition":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Google Speech Recognition":
 
         try:
             # for testing purposes, we're just using the default API key
@@ -61,12 +61,12 @@ def SPEECH_CONTROL():
     ### Houndify ###
     ################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Houndify":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Houndify":
 
         # Houndify client IDs are Base64-encoded strings
-        HOUNDIFY_CLIENT_ID = GET_SPEECH_CONTROL_SETTINGS().speech_control_username
+        HOUNDIFY_CLIENT_ID = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
         # Houndify client keys are Base64-encoded strings
-        HOUNDIFY_CLIENT_KEY = GET_SPEECH_CONTROL_SETTINGS().speech_control_key
+        HOUNDIFY_CLIENT_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
 
         try:
             print("Houndify thinks you said " + r.recognize_houndify(audio, client_id=HOUNDIFY_CLIENT_ID, client_key=HOUNDIFY_CLIENT_KEY))
@@ -82,12 +82,12 @@ def SPEECH_CONTROL():
     ### IBM Speech to Text ###
     ##########################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "IBM Speech to Text":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "IBM Speech to Text":
 
         # IBM Speech to Text usernames are strings of the form XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-        IBM_USERNAME = GET_SPEECH_CONTROL_SETTINGS().speech_control_username
+        IBM_USERNAME = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
         # IBM Speech to Text passwords are mixed-case alphanumeric strings
-        IBM_PASSWORD = GET_SPEECH_CONTROL_SETTINGS().speech_control_key   
+        IBM_PASSWORD = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key   
 
         try:
             print("IBM Speech to Text thinks you said " + r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD))
@@ -103,10 +103,10 @@ def SPEECH_CONTROL():
     ### Microsoft Azure Speech ###
     ##############################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Microsoft Azure Speech":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Microsoft Azure Speech":
 
         # Microsoft Speech API keys 32-character lowercase hexadecimal strings
-        AZURE_SPEECH_KEY = GET_SPEECH_CONTROL_SETTINGS().speech_control_key  
+        AZURE_SPEECH_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key  
 
         try:
             print("Microsoft Azure Speech thinks you said " + r.recognize_azure(audio, key=AZURE_SPEECH_KEY))
@@ -122,10 +122,10 @@ def SPEECH_CONTROL():
     ### Microsoft Bing Voice Recognition ###
     ########################################
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Microsoft Bing Voice Recognition":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Microsoft Bing Voice Recognition":
 
         # Microsoft Bing Voice Recognition API keys 32-character lowercase hexadecimal strings
-        BING_KEY = GET_SPEECH_CONTROL_SETTINGS().speech_control_key  
+        BING_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key  
 
         try:
             print("Microsoft Bing Voice Recognition thinks you said " + r.recognize_bing(audio, key=BING_KEY))
@@ -141,10 +141,10 @@ def SPEECH_CONTROL():
     ### Wit.ai ###
     ##############
 
-    if GET_SPEECH_CONTROL_SETTINGS().speech_control_provider == "Wit.ai":
+    if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Wit.ai":
 
         # Wit.ai keys are 32-character uppercase alphanumeric strings
-        WIT_AI_KEY = GET_SPEECH_CONTROL_SETTINGS().speech_control_key
+        WIT_AI_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
 
         try:
             answer = r.recognize_wit(audio, key=WIT_AI_KEY)

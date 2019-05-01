@@ -270,147 +270,173 @@ def CHECK_TASKS(tasks, task_type):
       task = element.task
       name = element.name
 
-      # check snowboy_active
-      if task == "snowboy_active" and task_type == "snowboy":
-         continue
+      try:
 
-      # check start_scene
-      if "scene" in task:
-         if ":" in task:
-            task = task.split(":") 
+         # check snowboy_active
+         if task == "snowboy_active" and task_type == "snowboy":
+            continue
 
-            # check group setting
-            try:
-               if GET_LED_GROUP_BY_NAME(task[1]):
-                  pass
-               else:
-                  list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
-            except:
-               list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
+         # check start_scene
+         if "scene" in task:
+            if ":" in task:
+               task = task.split(":") 
 
-            # check scene setting    
-            try:
-               if GET_LED_SCENE_BY_NAME(task[2]):
-                  pass
-               else:
-                  list_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
-            except:
-               list_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
-
-            # check global brightness    
-            try:
-               if task[3].isdigit():
-                  if 1 <= int(task[3]) <= 100:
-                     continue
+               # check group setting
+               try:
+                  if GET_LED_GROUP_BY_NAME(task[1]):
+                     pass
                   else:
-                     list_errors.append(name + " >>> ungültiger Wertebereich >>> Globale Helligkeit") 
-                     continue             
-               else:
-                  list_errors.append(name + " >>> ungültige Einstellung >>> Globale Helligkeit")
+                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
+               except:
+                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
+
+               # check scene setting    
+               try:
+                  if GET_LED_SCENE_BY_NAME(task[2]):
+                     pass
+                  else:
+                     list_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
+               except:
+                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
+
+               # check global brightness    
+               try:
+                  if task[3].isdigit():
+                     if 1 <= int(task[3]) <= 100:
+                        continue
+                     else:
+                        list_errors.append(name + " >>> ungültiger Wertebereich >>> Globale Helligkeit") 
+                        continue             
+                  else:
+                     list_errors.append(name + " >>> ungültige Einstellung >>> Globale Helligkeit")
+                     continue 
+               except:
                   continue 
-            except:
-               continue 
 
-         else:
-            list_errors.append(name + " >>> Ungültige Formatierung")
-            continue
+            else:
+               list_errors.append(name + " >>> Ungültige Formatierung")
+               continue
 
-      # check start_program
-      if "program" in task:
-         if ":" in task:
-            task = task.split(":") 
+         # check start_program
+         if "program" in task:
+            if ":" in task:
+               task = task.split(":") 
 
-            # check group setting
-            try:
-               if GET_LED_GROUP_BY_NAME(task[1]):
-                  pass
-               else:
-                  list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
-            except:
-               list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
+               # check group setting
+               try:
+                  if GET_LED_GROUP_BY_NAME(task[1]):
+                     pass
+                  else:
+                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
+               except:
+                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
 
-            # check program setting    
-            try:
-               if GET_LED_PROGRAM_BY_NAME(task[2]):
-                  continue
-               else:
-                  list_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
-                  continue
-            except:
-               list_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
-               continue  
-
-         else:
-            list_errors.append(name + " >>> Ungültige Formatierung")
-            continue
-
-      # check led_off
-      if "led_off" in task:
-         if ":" in task:
-            task = task.split(":")
-
-            # check group setting
-            if task[1] == "group":
-               try: 
-                  if GET_LED_GROUP_BY_NAME(task[2]):
+               # check program setting    
+               try:
+                  if GET_LED_PROGRAM_BY_NAME(task[2]):
                      continue
                   else:
-                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[2])
+                     list_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
                      continue
                except:
-                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
-                  continue                  
+                  list_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
+                  continue  
 
-            # check turn off all leds
-            try:
-               if task[1] == "all": 
-                  continue
-            except:
-               pass
-            
-            list_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
-            continue     
+            else:
+               list_errors.append(name + " >>> Ungültige Formatierung")
+               continue
 
-         else:
-            list_errors.append(name + " >>> Ungültige Formatierung")
+         # check led_off
+         if "led_off" in task:
+            if ":" in task:
+               task = task.split(":")
+
+               # check group setting
+               if task[1] == "group":
+                  try: 
+                     if GET_LED_GROUP_BY_NAME(task[2]):
+                        continue
+                     else:
+                        list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[2])
+                        continue
+                  except:
+                     list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                     continue                  
+
+               # check turn off all leds
+               try:
+                  if task[1] == "all": 
+                     continue
+               except:
+                  pass
+               
+               list_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
+               continue     
+
+            else:
+               list_errors.append(name + " >>> Ungültige Formatierung")
+               continue
+
+         # check watering_plants
+         if task == "watering_plants" and task_type == "timer":
             continue
 
-      # check watering_plants
-      if task == "watering_plants" and task_type == "timer":
-         continue
+         # check save_database         
+         if task == "save_database" and task_type == "timer":
+            continue
 
-      # check save_database         
-      if task == "save_database" and task_type == "timer":
-         continue
+         # check mqtt_update_devices
+         if task == "mqtt_update_devices" and task_type == "timer":
+            continue
 
-      # check mqtt_update_devices
-      if task == "mqtt_update_devices" and task_type == "timer":
-         continue
+         # check request_sensordata
+         if "request_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
+            if ":" in task:
+               task = task.split(":")
 
-      # check request_sensordata
-      if "request_sensordata" in task and (task_type == "timer" or task_type == "sensor"):
-         if ":" in task:
-            task = task.split(":")
-
-            # check job-id setting
-            try:          
-               if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
-                  continue
-               else:
-                  list_errors.append(name + " >>> Job-ID nicht vorhanden >>> " + task[1])
+               # check job-id setting
+               try:          
+                  if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
+                     continue
+                  else:
+                     list_errors.append(name + " >>> Job-ID nicht vorhanden >>> " + task[1])
+                     continue      
+               except:
+                  list_errors.append(name + " >>> fehlende Einstellung >>> Job-ID") 
                   continue      
-            except:
-               list_errors.append(name + " >>> fehlende Einstellung >>> Job-ID") 
-               continue      
 
-         else:
-            list_errors.append(name + " >>> Ungültige Formatierung")
-            continue 
+            else:
+               list_errors.append(name + " >>> Ungültige Formatierung")
+               continue 
 
-      # nothing found
-      list_errors.append(name + " >>> Ungültige Aufgabe") 
+         # nothing found
+         list_errors.append(name + " >>> Ungültige Aufgabe") 
+
+      except:
+         list_errors.append("MISSING NAME >>> Ungültige Aufgabe") 
 
    if list_errors == []:
       return ""
    else:
       return list_errors
+
+
+""" ################################## """
+"""  check speech recognition provider """
+""" ################################## """
+
+def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
+   list_errors = []
+
+   if settings.snowboy_hotword == "":
+      list_errors.append("Kein Snowboy Hotword angegeben") 
+   if settings.speech_recognition_provider == "":
+      list_errors.append("Keinen Provider angegeben")     
+   if settings.speech_recognition_provider_key == "":
+      list_errors.append("Keinen Key angegeben")
+
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors   

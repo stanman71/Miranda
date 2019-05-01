@@ -15,17 +15,17 @@
   {{ super() }}
 
   <script>
-    var slider_1 = document.getElementById("input_1");
-    var output_1 = document.getElementById("output_1");
-    output_1.innerHTML = slider_1.value; 
-    slider_1.oninput = function() { output_1.innerHTML = this.value }
+    var slider_sensitivity = document.getElementById("input_sensitivity");
+    var output_sensitivity = document.getElementById("output_sensitivity");
+    output_sensitivity.innerHTML = slider_sensitivity.value; 
+    slider_sensitivity.oninput = function() { output_sensitivity.innerHTML = this.value }
   </script>
 
   <script>
-    var slider_2 = document.getElementById("input_2");
-    var output_2 = document.getElementById("output_2");
-    output_2.innerHTML = slider_2.value;
-    slider_2.oninput = function() { output_2.innerHTML = this.value }
+    var slider_delay = document.getElementById("input_delay");
+    var output_delay = document.getElementById("output_delay");
+    output_delay.innerHTML = slider_delay.value;
+    slider_delay.oninput = function() { output_delay.innerHTML = this.value }
   </script>
 
 {% endblock %}
@@ -87,16 +87,16 @@
           <form method="POST">
             <div class="well well-sm">  
               <div class="pretty p-default p-round">
-                <input {{check_value_speech_control[0]}} type="radio" value="snowboy" name="radio_speech_control">
+                <input {{check_value_speechcontrol[0]}} type="radio" value="snowboy" name="radio_speechcontrol">
                 <div class="state">
                   <label>SnowBoy</label>
                 </div>
               </div>
               <br>
               <div class="pretty p-default p-round">
-                <input {{check_value_speech_control[1]}} type="radio" value="snowboy+" name="radio_speech_control">
+                <input {{check_value_speechcontrol[1]}} type="radio" value="speech_recognition_provider" name="radio_speechcontrol">
                 <div class="state">
-                  <label>SnowBoy + weiteren Anbieter</label>
+                  <label>Onlineanbieter</label>
                 </div>
               </div>
               <br>
@@ -104,7 +104,7 @@
 <section id="snowboy_settings"></section> 
 
               <div class="pretty p-default p-round">
-                <input {{check_value_speech_control[2]}} type="radio" value="False" name="radio_speech_control">
+                <input {{check_value_speechcontrol[2]}} type="radio" value="False" name="radio_speechcontrol">
                 <div class="state">
                   <label>Sprachsteuerung deaktivieren</label>
                 </div>
@@ -118,11 +118,11 @@
         </div>  
       </div>           
 
-<!-------------------------->
-<!-- SNOWBOY and SNOWBOY+ -->
-<!-------------------------->
+<!-- ------------------------ -->
+<!-- GENERAL SNOWBOY SETTINGS -->
+<!-- ------------------------ -->
 
-{% if snowboy_setting != "False" %}
+{% if speechcontrol_setting != "False" %}
 
 <!-- snowboy error message snowboy -->
 
@@ -141,18 +141,18 @@
           </div>          
           <br>               
           <form method="POST">
-            <div class="well well-sm">Empfindlichkeit: <span id="output_1"></span>
+            <div class="well well-sm">Empfindlichkeit: <span id="output_sensitivity"></span>
             <br>
             <br>
               <div class="slidecontainer">                        
-                <input id="input_1" type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+                <input id="input_sensitivity" type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
               </div>
             </div>
-            <div class="well well-sm">Verzögerungswert: <span id="output_2"></span>
+            <div class="well well-sm">Verzögerungswert: <span id="output_delay"></span>
             <br>
             <br>
               <div class="slidecontainer">                        
-                <input id="input_2" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
+                <input id="input_delay" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
               </div>
             </div>         
 
@@ -163,11 +163,12 @@
         </div>                    
       </div> 
 
-<!------------->
+<!-- ------- -->
 <!-- SNOWBOY -->
-<!------------->
+<!-- ------- -->
 
-{% if snowboy_setting == "snowboy" %}
+{% if speechcontrol_setting == "snowboy" %}
+
 
 <!-- snowboy error message file missing -->
 
@@ -177,30 +178,33 @@
   </div>      
 {% endif %} 
 
-<!-- snowboy table tasks --> 
+
+<!-- snowboy task table -->
 
       <div class="panel panel-default">     
         <div class="panel-body">
           <div class="well well-sm">
-            
-<!-- error message form -->
 
-{% if error_message_form != "" %}
+
+<!-- error message table -->
+
+{% if error_message_table != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_form }}
+    {{ error_message_table }}
   </div>      
 {% endif %}     
 
-<!-- error message tasks -->
+<!-- error message snowboy tasks -->
 
-{% if error_message_tasks != "" %}
+{% if error_message_snowboy_tasks != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_tasks %}
+    {% for entry in error_message_snowboy_tasks %}
       {{ entry }} <br>
     {% endfor %}
   </div>      
 {% endif %} 
-            
+
+
             <table class="table">
               <thead>                      
                 <th scope="col">Name</th> 
@@ -211,10 +215,10 @@
                 <tr>
                   <td>
                   <form method="POST" class="verticalform">
-                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                    <input type="text" class="form-control" name="set_snowboy_name_{{ entry.id }}" value="{{ entry.name }}" />                    
                   </td> 
                   <td>
-                    <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />                    
+                    <input type="text" class="form-control" name="set_snowboy_task_{{ entry.id }}" value="{{ entry.task }}" />                    
                   </td> 
                   <td></td>
                   <td><a href="/dashboard/settings/speechcontrol/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
@@ -223,12 +227,12 @@
               </tbody>
             </table>  
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_snowboy_task" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  
 
-<!-- snowboy scheduler -->    
+<!-- snowboy add task -->    
   
       <div class="panel panel-default">
         <div class="panel-body">  
@@ -278,7 +282,7 @@
             <br>
             <br>
 
-<!-- snowboy error message -->
+<!-- input error message -->
 
 {% if error_message != "" %}
 <div class="alert alert-danger" role="alert">
@@ -289,18 +293,18 @@
             <form method="POST">
               <div class="well well-sm">Name:            
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
+                  <input type="text" class="form-control" name="set_snowboy_name" value="{% if snowboy_name != None %}{{ snowboy_name }}{% endif %}" />
                 </div>    
               </div>                      
               <div class="well well-sm">Aufgabe:            
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_task" value="{% if task != None %}{{ task }}{% endif %}" /> 
+                  <input type="text" class="form-control" name="set_snowboy_task" value="{% if snowboy_task != None %}{{ snowboy_task }}{% endif %}" /> 
                 </div>    
               </div>           
 
 <section id="fileupload"></section>
 
-              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#add_task'" class="btn btn-default" name="add_task" value="Aufgabe anlegen" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#add_task'" class="btn btn-default" name="add_snowboy_task" value="Aufgabe anlegen" />
             </form>
           </div>  
         </div>
@@ -308,13 +312,15 @@
 
 {% endif %}
 
-{% if snowboy_setting == "snowboy+" %}
+<!-- --------------------------- -->
+<!-- SPEECH_RECOGNITION_PROVIDER -->
+<!-- --------------------------- -->
 
-<!-------------->
-<!-- SNOWBOY+ -->
-<!-------------->
+{% if speechcontrol_setting == "speech_recognition_provider" %}
 
-<section id="speech_control_settings"></section>
+<section id="speech_recognition_provider_settings"></section>
+
+<!-- speech_recognition_provider settings -->
 
       <div class="panel panel-default">
         <div class="panel-body"> 
@@ -322,15 +328,17 @@
             <form method="POST">   
               <div class="form-group">
                 <div class="text-center">  
-                  <h3><span class="label label-default">Sprachsteuerung Einstellungen</span></h3>
+                  <h3><span class="label label-default">Onlineanbieter Einstellungen</span></h3>
                 </div>
                 <br>
 
-<!-- error message speech_control -->
+<!-- error message speech_recognition_provider -->
 
-{% if error_message_speech_control != "" %}
+{% if error_message_speech_recognition_provider_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_speech_control }}
+    {% for entry in error_message_speech_recognition_provider_settings %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %} 
 
@@ -343,11 +351,16 @@
                       <select class="btn btn-default dropdown-toggle" name="set_snowboy_hotword">
                         {% if snowboy_hotword != "" %}
                           <option value= "{{ snowboy_hotword }}" > {{ snowboy_hotword }} </option>
-                          <option value= "{{ snowboy_hotword }}" > -------------------- </option>                     
+                          <option value= "{{ snowboy_hotword }}" > -------------------- </option> 
+                        {% else %}     
+                          <option value= "{{ "" }}" > Hotwords wählen: </option>
+                          <option value= "{{ "" }}" > -------------------- </option> 
                         {% endif %}   
                         {% for each in hotword_file_list %}
                         <option value="{{ each }}"> {{ each }} </option>
                         {% endfor %}
+                        <option value= "{{ "" }}" > -------------------- </option> 
+                        <option value= "{{ "" }}" > kein Snowboy Hotword </option> 
                       </select>    
                     </div>
                   </div>                     
@@ -358,43 +371,190 @@
                       Onlinedienst:
                     </div>
                     <div class="col-sm-1">                
-                      <select class="btn btn-default dropdown-toggle" name="set_speech_control_provider">
-                        {% if speech_control_provider != "" %}
-                          <option value= "{{ speech_control_provider }}" > {{ speech_control_provider }} </option>
-                          <option value= "{{ speech_control_provider }}" > ---------- </option>                     
+                      <select class="btn btn-default dropdown-toggle" name="set_speech_recognition_provider">
+                        {% if speech_recognition_provider != "" %}
+                          <option value= "{{ speech_recognition_provider }}" > {{ speech_recognition_provider }} </option>
+                          <option value= "{{ speech_recognition_provider }}" > ---------- </option>   
+                        {% else %}     
+                          <option value= "{{ "" }}" > Provider wählen: </option>
+                          <option value= "{{ "" }}" > -------------------- </option>                                             
                         {% endif %}   
-                        {% for each in dropdown_list_speech_control_provider %}
+                        {% for each in dropdown_list_speech_recognition_provider %}
                         <option value="{{ each }}"> {{ each }} </option>
                         {% endfor %}
+                        <option value= "{{ "" }}" > -------------------- </option> 
+                        <option value= "{{ "" }}" > kein Provider </option> 
                       </select>    
                     </div>
                   </div>  
                 </div> 
                 <div class="well well-sm">Username / Client ID (Optional):            
                   <div class="form-group">
-                    <input type="text" class="form-control" name="set_speech_control_username" value="{% if speech_control_username != None %}{{ speech_control_username }}{% endif %}" /> 
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_username" value="{% if speech_recognition_provider_username != None %}{{ speech_recognition_provider_username }}{% endif %}" /> 
                   </div>                  
                 </div> 
                 <div class="well well-sm">Key / Credentials:            
                   <div class="form-group">
-                    <input type="text" class="form-control" name="set_speech_control_key" value="{% if speech_control_key != None %}{{ speech_control_key }}{% endif %}" /> 
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_key" value="{% if speech_recognition_provider_key != None %}{{ speech_recognition_provider_key }}{% endif %}" /> 
                   </div>                  
                 </div> 
               </div>   
 
 <section id="fileupload"></section>
 
-              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#speech_control_settings'" class="btn btn-default" name="set_speech_control_settings" value="Einstellungen speichern" />
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#speech_recognition_provider_settings'" class="btn btn-default" name="set_speech_recognition_provider_settings" value="Einstellungen speichern" />
             </form>   
           </div>  
         </div>
       </div>
 
+
+<!-- speech_recognition_provider task table -->
+
+      <div class="panel panel-default">     
+        <div class="panel-body">
+          <div class="well well-sm">
+
+
+<!-- error message table -->
+
+{% if error_message_table != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_table }}
+  </div>      
+{% endif %}     
+
+<!-- error message speech_recognition_provider tasks -->
+
+{% if error_message_speech_recognition_provider_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speech_recognition_provider_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+            <table class="table">
+              <thead>                      
+                <th scope="col">Name</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col">Aufgabe</th> 
+              </thead>
+              <tbody> 
+                {% for entry in speech_recognition_provider_task_list %}
+                <tr>
+                  <td>
+                  <form method="POST" class="verticalform">
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_keywords_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_task_{{ entry.id }}" value="{{ entry.task }}" />                    
+                  </td> 
+                  <td></td>
+                  <td><a href="/dashboard/settings/speechcontrol/speech_recognition_provider/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_speech_recognition_provider_task" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+
+<!-- speech_recognition_provider add task -->    
+  
+      <div class="panel panel-default">
+        <div class="panel-body">  
+          <div class="well well-sm">
+            <div class="text-center">   
+              <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
+            </div>          
+            <br>
+            <div class="well well-sm">
+              <table class="table">
+                <thead>
+                  <tr><td></td><td></td></tr>
+                  <tr>
+                    <th>Aufgabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>snowboy_active</td>
+                    <td>SnowBoy für weitere Befehle aktivieren, wird nach Ablauf des eingestellten Verzögerungswerts oder einem empfangenden Befehl wieder zurückgesetzt <br>
+                        >>> Blaue LEDs vom Snowboy leuchten im aktiven Modus (bei Verwendung des ReSpeaker MicArrays)</td>
+                  </tr> 
+                  <tr>
+                    <td>scene:wohnzimmer:relax:100</td>
+                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relex" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
+                  </tr>
+                  <tr>
+                    <td>program:schlafzimmer:aufwachen</td>
+                    <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:group:flur</td>
+                    <td>LEDs der Gruppe "flur" ausschalten</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:all</td>
+                    <td>alle LEDs ausschalten</td>
+                  </tr> 
+                </tbody>
+              </table>  
+ 
+<section id="add_task"></section>
+ 
+            </div>            
+            <b>HINWEIS:</b> Hotword-Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
+            <br>
+            <br>
+
+<!-- input error message -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %} 
+
+            <form method="POST">
+              <div class="well well-sm">Name:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_speech_recognition_provider_name" value="{% if speech_recognition_provider_name != None %}{{ speech_recognition_provider_name }}{% endif %}" />
+                </div>    
+              </div>    
+              <div class="well well-sm">Schlüsselwörter::            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_speech_recognition_provider_keywords" value="{% if speech_recognition_provider_keywords != None %}{{ speech_recognition_provider_keywords }}{% endif %}" /> 
+                </div>    
+              </div>                                 
+              <div class="well well-sm">Aufgabe:            
+                <div class="form-group">
+                  <input type="text" class="form-control" name="set_speech_recognition_provider_task" value="{% if speech_recognition_provider_task != None %}{{ speech_recognition_provider_task }}{% endif %}" /> 
+                </div>    
+              </div>           
+
+<section id="fileupload"></section>
+
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#add_task'" class="btn btn-default" name="add_speech_recognition_provider_task" value="Aufgabe anlegen" />
+            </form>
+          </div>  
+        </div>
+      </div>       
+
 {% endif %}
 
-<!-------------------------->
-<!-- SNOWBOY and SNOWBOY+ -->
-<!-------------------------->
+
+<!-- --------------------------------------- -->
+<!-- SNOWBOY and SPEECH_RECOGNITION_PROVIDER -->
+<!-- --------------------------------------- -->
 
       <div class="panel panel-default">
         <div class="panel-body">  

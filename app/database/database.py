@@ -204,16 +204,16 @@ class Snowboy_Tasks(db.Model):
     name = db.Column(db.String(50), unique = True)
     task = db.Column(db.String(100))
 
-class Speech_Control(db.Model):
-    __tablename__ = 'speech_control'
+class Speech_Recognition_Provider(db.Model):
+    __tablename__ = 'speech_recognition_provider'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    snowboy_hotword         = db.Column(db.String(100))
-    speech_control_provider = db.Column(db.String(100))
-    speech_control_username = db.Column(db.String(100))
-    speech_control_key      = db.Column(db.String(200))
+    snowboy_hotword               = db.Column(db.String(100))
+    speech_recognition_provider          = db.Column(db.String(100))
+    speech_recognition_provider_username = db.Column(db.String(100))
+    speech_recognition_provider_key      = db.Column(db.String(200))
     
-class Speech_Control_Tasks(db.Model):
-    __tablename__ = 'speech_control_tasks'
+class Speech_Recognition_Provider_Tasks(db.Model):
+    __tablename__ = 'speech_recognition_provider_tasks'
     id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name     = db.Column(db.String(50), unique = True)
     keywords = db.Column(db.String(50))
@@ -301,10 +301,10 @@ if Snowboy_Settings.query.filter_by().first() is None:
 
 
 # create default speech control settings
-if Speech_Control.query.filter_by().first() is None:
-    speech_control = Speech_Control(
+if Speech_Recognition_Provider.query.filter_by().first() is None:
+    speech_recognition_provider = Speech_Recognition_Provider(
     )
-    db.session.add(speech_control)
+    db.session.add(speech_recognition_provider)
     db.session.commit()
 
 
@@ -1695,56 +1695,60 @@ def SET_SNOWBOY_TASK(id, name, task):
 
 def DELETE_SNOWBOY_TASK(task_id):
     entry = GET_SNOWBOY_TASK_BY_ID(task_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + entry.name + " >>> deleted")    
-    
-    
+
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + entry.name + " >>> deleted")   
+    except:
+        pass 
+      
     Snowboy_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
-""" ################### """
-""" ################### """
-"""    speech control   """
-""" ################### """
-""" ################### """
+""" ############################# """
+""" ############################# """
+"""  speech recognition provider  """
+""" ############################# """
+""" ############################# """
 
 
-def GET_SPEECH_CONTROL_SETTINGS():
-    return Speech_Control.query.filter_by().first()
+def GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS():
+    return Speech_Recognition_Provider.query.filter_by().first()
+    
     
 
-def SET_SPEECH_CONTROL_SETTINGS(snowboy_hotword, speech_control_provider, speech_control_username, speech_control_key):
-    entry = Speech_Control.query.filter_by().first()
-    entry.snowboy_hotword         = snowboy_hotword
-    entry.speech_control_provider = speech_control_provider
-    entry.speech_control_username = speech_control_username
-    entry.speech_control_key      = speech_control_key
+def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, speech_recognition_provider_username, speech_recognition_provider_key):
+    entry = Speech_Recognition_Provider.query.filter_by().first()
+    entry.snowboy_hotword                      = snowboy_hotword
+    entry.speech_recognition_provider          = speech_recognition_provider
+    entry.speech_recognition_provider_username = speech_recognition_provider_username
+    entry.speech_recognition_provider_key      = speech_recognition_provider_key
     db.session.commit() 
 
 
-def GET_SPEECH_CONTROL_TASK_BY_NAME(name):
-    return Speech_Control_Tasks.query.filter_by(name=name).first()
+def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_NAME(name):
+    return Speech_Recognition_Provider_Tasks.query.filter_by(name=name).first()
 
 
-def GET_SPEECH_CONTROL_TASK_BY_ID(id):
-    return Speech_Control_Tasks.query.filter_by(id=id).first()
+def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(id):
+    return Speech_Recognition_Provider_Tasks.query.filter_by(id=id).first()
 
 
-def GET_ALL_SPEECH_CONTROL_TASKS():
-    return Speech_Control_Tasks.query.all()
+def GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS():
+    return Speech_Recognition_Provider_Tasks.query.all()
 
 
-def ADD_SPEECH_CONTROL_TASK(name, keywords, task):
+def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(name, keywords, task):
     # name exist ?
-    check_entry = Speech_Control_Tasks.query.filter_by(name=name).first()
+    check_entry = Speech_Recognition_Provider_Tasks.query.filter_by(name=name).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,26):
-            if Speech_Control_Tasks.query.filter_by(id=i).first():
+            if Speech_Recognition_Provider_Tasks.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new task
-                task = Speech_Control_Tasks(
+                task = Speech_Recognition_Provider_Tasks(
                         id       = i,
                         name     = name,
                         keywords = keywords,
@@ -1763,8 +1767,8 @@ def ADD_SPEECH_CONTROL_TASK(name, keywords, task):
         return "Name bereits vergeben"
 
 
-def SET_SPEECH_CONTROL_TASK(id, name, keywords, task):
-    entry = Speech_Control_Tasks.query.filter_by(id=id).first()
+def SET_SPEECH_RECOGNITION_PROVIDER_TASK(id, name, keywords, task):
+    entry = Speech_Recognition_Provider_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
     
     # values changed ?
@@ -1780,12 +1784,15 @@ def SET_SPEECH_CONTROL_TASK(id, name, keywords, task):
                              entry.name + " /// Task: " + entry.task) 
 
 
-def DELETE_SPEECH_CONTROL_TASK(task_id):
-    entry = GET_SPEECH_CONTROL_TASK_BY_ID(task_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + entry.name + " >>> deleted")    
+def DELETE_SPEECH_RECOGNITION_PROVIDER_TASK(task_id):
+    entry = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(task_id)
+
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + entry.name + " >>> deleted")    
+    except:
+        pass
     
-    
-    Speech_Control_Tasks.query.filter_by(id=task_id).delete()
+    Speech_Recognition_Provider_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 
@@ -1847,7 +1854,11 @@ def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_
 
 def DELETE_USER(user_id):
     entry = GET_USER_BY_ID(user_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
+
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
+    except:
+        pass
     
     User.query.filter_by(id=user_id).delete()
     db.session.commit()

@@ -23,7 +23,7 @@ if os.name == "nt":
 else:                               
     PATH = os.path.abspath("") + "/SmartHome"
 
-UPLOAD_FOLDER = PATH + "/app/snowboy/resources/"
+UPLOAD_FOLDER = PATH + "/app/speechcontrol/snowboy/resources/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def GET_PATH():
@@ -181,7 +181,7 @@ def GET_ALL_HOTWORD_FILES():
     file_list_temp = []
     file_list = []
 
-    for files in os.walk(PATH + "/app/snowboy/resources/"):  
+    for files in os.walk(PATH + "/app/speechcontrol/snowboy/resources/"):  
         file_list_temp.append(files)
 
     if file_list_temp == []:
@@ -201,7 +201,7 @@ def GET_HOTWORD_FILES_FROM_TASKS(snowboy_tasks):
     
     for element in snowboy_tasks:
         if (element.name + ".pmdl") in exist_file_list:
-            file_list.append(PATH + "/app/snowboy/resources/" + element.name + ".pmdl")
+            file_list.append(PATH + "/app/speechcontrol/snowboy/resources/" + element.name + ".pmdl")
         
     return file_list
 
@@ -211,8 +211,12 @@ def CHECK_HOTWORD_FILE_EXIST(snowboy_tasks):
     exist_file_list = GET_ALL_HOTWORD_FILES()
     
     for element in snowboy_tasks:
-        if (element.name + ".pmdl") not in exist_file_list:
-            list_files.append(element.name + ".pmdl")
+
+        try:
+            if (element.name + ".pmdl") not in exist_file_list:
+                list_files.append(element.name + ".pmdl")
+        except:
+            list_files.append("Keine Datei angegeben")
             
     if list_files != []:
         return list_files
@@ -233,7 +237,7 @@ def UPLOAD_HOTWORD_FILE(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error_message_fileupload = ""
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + str(file.name) + ".pmdl >>> uploaded")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/speechcontrol/snowboy/resources/" + str(file.name) + ".pmdl >>> uploaded")  
     else:
         error_message_fileupload = "Ungültige Dateiendung"
 
@@ -242,19 +246,19 @@ def UPLOAD_HOTWORD_FILE(file):
 
 def DELETE_HOTWORD_FILE(filename):
     try:
-        os.remove (PATH + '/app/snowboy/resources/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/snowboy/resources/" + filename + " >>> deleted") 
+        os.remove (PATH + '/app/speechcontrol/snowboy/resources/' + filename)
+        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /app/speechcontrol/snowboy/resources/" + filename + " >>> deleted") 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/snowboy/resources/" + filename + " >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /app/speechcontrol/snowboy/resources/" + filename + " >>> " + str(e))  
 
 
 """ ############## """
 """ speech control """
 """ ############## """
 
-def GET_SPEECH_CONTROL_HOTWORD(settings):
+def GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(settings):
     hotword_file = settings
-    return (PATH + "/app/snowboy/resources/" + hotword_file)
+    return (PATH + "/app/speechcontrol/snowboy/resources/" + hotword_file)
 
 
 
