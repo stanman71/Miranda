@@ -6,6 +6,8 @@ https://github.com/Uberi/speech_recognition/blob/master/examples/microphone_reco
 
 from app import app
 from app.database.database import GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS
+from app.components.led_control import *
+from app.database.database import *
 
 import speech_recognition as sr
 
@@ -148,7 +150,8 @@ def SPEECH_RECOGNITION_PROVIDER():
 
         try:
             answer = r.recognize_wit(audio, key=WIT_AI_KEY)
-            #print("Wit.ai thinks you said " + answer)
+            answer = answer.lower()
+            SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
 
         except sr.UnknownValueError:
@@ -156,4 +159,79 @@ def SPEECH_RECOGNITION_PROVIDER():
 
         except sr.RequestError as e:
             print("Could not request results from Wit.ai service; {0}".format(e))
+
+
+""" ######################## """
+""" speech recognition tasks """
+""" ######################## """
+
+
+def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
+
+    print(answer)
+
+    WRITE_LOGFILE_SYSTEM("EVENT", 'Speech Recognition >>> Detection Task >>> ' + answer)
+
+    if "start" in answer:
+
+        # start scene  
+        try:
+            groups = GET_ALL_LED_GROUPS()
+            scenes = GET_ALL_LED_SCENES() 
+
+            group_id = None
+            scene_id = None
+
+            for group in groups:
+                if group.name.lower() in answer:
+                    group_id = group.id
+
+            for scene in scenes:
+                if scene.name.lower() in answer:
+                    scene_id = scene.id   
+
+            print(group_id)
+            print(scene_id)
+
+            if group_id != None and scene_id != None:                    
+                error_message = LED_START_SCENE(int(group_id), int(scene_id))            
+                if error_message != "":
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + error_message)     
+   
+        except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + str(e))  
+
+
+
+    if "start" in answer:
+
+        # start program  
+        try:
+            groups   = GET_ALL_LED_GROUPS()
+            programs = GET_ALL_LED_PROGRAMS() 
+
+            group_id   = None
+            program_id = None
+
+            for group in groups:
+                if group.name.lower() in answer:
+                    group_id = group.id
+
+            for program in programs:
+                if program.name.lower() in answer:
+                    program_id = program.id   
+
+            print(group_id)
+            print(program_id)
+
+            if group_id != None and program_id != None:                    
+                error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))            
+                if error_message != "":
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + error_message)     
+   
+        except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + str(e))  
+
 

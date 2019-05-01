@@ -306,11 +306,6 @@ def dashboard_settings_speechcontrol():
     speech_recognition_provider_name = ""
     speech_recognition_provider_keywords = ""
     speech_recognition_provider_task = ""
-    snowboy_hotword = ""
-    speech_recognition_provider = ""
-    speech_recognition_provider_username = ""
-    speech_recognition_provider_key = ""
-
 
     if request.method == "POST":     
         # change speech_control settings   
@@ -517,6 +512,12 @@ def dashboard_settings_speechcontrol():
     error_message_hotword       = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
     # speech_recognition_provider only
+
+    snowboy_hotword = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+    speech_recognition_provider = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
+    speech_recognition_provider_username = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
+    speech_recognition_provider_key = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
+
     speech_recognition_provider_task_list = GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS()
 
     dropdown_list_speech_recognition_provider = ["Google Cloud Speech", "Google Speech Recognition",

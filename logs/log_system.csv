@@ -16113,3 +16113,98 @@ Timestamp,Type,Description
 2019-05-01 11:50:52,ERROR,Snowboy >>> No module named '_snowboydetect'
 2019-05-01 11:50:59,ERROR,Snowboy >>> No module named '_snowboydetect'
 2019-05-01 11:51:02,ERROR,Snowboy >>> No module named '_snowboydetect'
+2019-05-01 12:25:58,EVENT,MQTT >>> started
+2019-05-01 12:25:58,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 12:26:01,ERROR,Snowboy >>> Can't convert 'NoneType' object to str implicitly
+2019-05-01 12:26:09,ERROR,Snowboy >>> No module named 'app.snowboy'
+2019-05-01 12:26:13,ERROR,Snowboy >>> No module named 'app.snowboy'
+2019-05-01 12:26:28,EVENT,MQTT >>> started
+2019-05-01 12:26:28,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 12:29:21,EVENT,MQTT >>> started
+2019-05-01 12:29:21,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 12:29:24,EVENT,Snowboy >>> started
+2019-05-01 12:29:27,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-05-01 12:29:34,ERROR,Snowboy >>> No module named 'app.snowboy'
+2019-05-01 12:29:36,ERROR,Snowboy >>> No module named 'app.snowboy'
+2019-05-01 12:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-05-01 12:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-05-01 12:30:55,EVENT,MQTT >>> started
+2019-05-01 12:30:55,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 12:30:58,EVENT,Snowboy >>> started
+2019-05-01 12:31:00,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-05-01 12:43:06,EVENT,Snowboy >>> Detection Task >>> led_off:all
+2019-05-01 13:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-05-01 13:00:04,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-05-01 13:00:04,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-05-01 13:00:07,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-05-01 13:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-05-01 13:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-05-01 13:00:14,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-05-01 13:00:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-05-01 13:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-05-01 13:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-05-01 14:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-05-01 14:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-05-01 14:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-05-01 14:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-05-01 14:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-05-01 14:00:12,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-05-01 14:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-05-01 14:00:15,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-05-01 14:30:00,EVENT,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> started
+2019-05-01 14:30:03,SUCCESS,Scheduler >>> Time Task >>> MQTT aktuallisieren >>> successful
+2019-05-01 14:34:45,EVENT,MQTT >>> started
+2019-05-01 14:34:45,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:34:49,EVENT,Snowboy >>> started
+2019-05-01 14:34:51,EVENT,Snowboy >>> Detection Task >>> snowboy_active
+2019-05-01 14:38:07,EVENT,MQTT >>> started
+2019-05-01 14:38:07,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:38:10,EVENT,Snowboy >>> started
+2019-05-01 14:39:56,EVENT,MQTT >>> started
+2019-05-01 14:39:56,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:40:07,EVENT,Speech Recognition >>> Detection Task >>> das ist ein Test
+2019-05-01 14:40:27,EVENT,Speech Recognition >>> Detection Task >>> starte Sehne warmweiss im Wohnzimmer
+2019-05-01 14:40:27,ERROR,Speech Recognition Task >>> starte Sehne warmweiss im Wohnzimmer >>> local variable 'error_message' referenced before assignment
+2019-05-01 14:42:41,EVENT,MQTT >>> started
+2019-05-01 14:42:41,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:42:44,ERROR,|Snowboy >>> expected an indented block (speech_recognition_provider.py, line 176)|
+2019-05-01 14:43:11,EVENT,MQTT >>> started
+2019-05-01 14:43:11,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:43:27,EVENT,Speech Recognition >>> Detection Task >>> starte Sehne relax im Wohnzimmer
+2019-05-01 14:45:29,EVENT,MQTT >>> started
+2019-05-01 14:45:29,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:46:37,EVENT,MQTT >>> started
+2019-05-01 14:46:37,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:46:50,EVENT,Speech Recognition >>> Detection Task >>> starte szene relax im wohnzimmer
+2019-05-01 14:47:23,EVENT,Speech Recognition >>> Detection Task >>> starte warmweiss im wohnzimmer
+2019-05-01 14:47:46,EVENT,Speech Recognition >>> Detection Task >>> starte relax im wohnzimmer
+2019-05-01 14:48:09,EVENT,Speech Recognition >>> Detection Task >>> starte relax im wohnzimmer
+2019-05-01 14:48:38,EVENT,Speech Recognition >>> Detection Task >>> starte mediterran im flur
+2019-05-01 14:48:51,EVENT,Speech Recognition >>> Detection Task >>> starte mediterran im wohnzimmer
+2019-05-01 14:48:53,ERROR,Speech Recognition Task >>> starte mediterran im wohnzimmer >>> Can't convert 'list' object to str implicitly
+2019-05-01 14:50:08,EVENT,Database >>> Speech Control Task >>> LED Szenen >>> added
+2019-05-01 14:52:19,EVENT,MQTT >>> started
+2019-05-01 14:52:19,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:52:36,EVENT,Speech Recognition >>> Detection Task >>> starte sunrise im wohnzimmer
+2019-05-01 14:52:36,ERROR,Speech Recognition Task >>> starte sunrise im wohnzimmer >>> name 'LED_START_PROGRAM' is not defined
+2019-05-01 14:53:53,EVENT,MQTT >>> started
+2019-05-01 14:53:53,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 14:54:07,EVENT,Speech Recognition >>> Detection Task >>> starte sunrise im wohnzimmer
+2019-05-01 14:54:07,ERROR,Speech Recognition Task >>> starte sunrise im wohnzimmer >>> Can't convert 'NoneType' object to str implicitly
+2019-05-01 14:55:35,EVENT,Database >>> Speech Control Task >>> LED Programme >>> added
+2019-05-01 14:55:43,EVENT,Database >>> Speech Control Task >>> LED Szenen >>> changed >>> Name: LED Szenen /// Task: start_led_scene
+2019-05-01 14:58:32,EVENT,MQTT >>> started
+2019-05-01 14:58:32,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 15:00:00,EVENT,Scheduler >>> Time Task >>> test_01 >>> started
+2019-05-01 15:00:03,SUCCESS,Scheduler >>> Time Task >>> test_01 >>> successful
+2019-05-01 15:00:03,EVENT,Scheduler >>> Time Task >>> test >>> started
+2019-05-01 15:00:06,SUCCESS,Scheduler >>> Time Task >>> test >>> successful
+2019-05-01 15:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_01" >>> started
+2019-05-01 15:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_06" >>> started
+2019-05-01 15:00:13,EVENT,Scheduler >>> Sensor Task "sensor_test_05" >>> started
+2019-05-01 15:00:16,EVENT,Scheduler >>> Sensor Task "sensor_test_03" >>> started
+2019-05-01 15:01:53,EVENT,Speech Recognition >>> Detection Task >>> 
+2019-05-01 15:02:12,EVENT,MQTT >>> started
+2019-05-01 15:02:12,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-01 15:02:26,EVENT,Speech Recognition >>> Detection Task >>> starte sehne relax im wohnzimmer
+2019-05-01 15:02:43,EVENT,Speech Recognition >>> Detection Task >>> starte warmweiss im wohnzimmer
