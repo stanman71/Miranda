@@ -235,3 +235,28 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
             WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + str(e))  
 
 
+    if "ausschalten" in answer: 
+
+        # led off
+        try:
+            groups = GET_ALL_LED_GROUPS()
+
+            group_id = None
+
+            for group in groups:
+                if group.name.lower() in answer:
+                    group_id = group.id            
+          
+            if group_id != None:
+                error_message = LED_TURN_OFF_GROUP(int(group_id))
+                if error_message != "":            
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + error_message)                    
+            else:
+                error_message = LED_TURN_OFF_ALL()   
+                if error_message != "":            
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + error_message)
+
+        except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + str(e))     
+                
