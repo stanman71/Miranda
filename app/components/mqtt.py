@@ -32,7 +32,7 @@ def MQTT_START():
 		incoming_topic = incoming_topic.split("/")
 
 		try:
-			if incoming_topic[3] == "get":
+			if incoming_topic[3] == "get" or incoming_topic[3] == "log":
 				pass  
 		except:
 			incoming_ieeeAddr = incoming_topic[2]
@@ -283,16 +283,26 @@ def MQTT_STOP_ALL_OUTPUTS():
 """ scheduler sensor """
 """ ################ """
 
-
 def SCHEDULER_SENSOR_THREAD(incoming_ieeeAddr):
-
+   
    tasks = FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr)
    
    print(tasks)
    
+  
    for task in tasks:
       task = threading.Thread(target=SCHEDULER_SENSOR_TASK, args=(task,))
-      task.start()      
+      task.start()   
+      
+
+   # reset saved_sensordata after 10 seconds
+   class waiter(Thread):
+      def run(self):
+         global saved_sensordata
+         time.sleep(10)
+         saved_sensordata = []
+   waiter().start()      
+      
 
       
 def SCHEDULER_SENSOR_TASK(task):
@@ -353,15 +363,14 @@ def SCHEDULER_SENSOR_TASK(task):
 
       print(sensor_value_1)
       print(value_1)
-      
-      # reset saved_sensordata
-      time.sleep(10)      
-      saved_sensordata = []
-      
+
       
       ####################
       # compare conditions
       ####################
+      
+      passing_1 = False
+           
       
       if entry.operator_1 == "=" and not entry.value_1.isdigit():
          if sensor_value_1 == entry.value_1:
@@ -457,7 +466,7 @@ def SCHEDULER_SENSOR_TASK(task):
          MQTT_PUBLISH(channel, "")              
 
          time.sleep(3)
-         
+
          for sensordata in saved_sensordata:
             if sensordata.split(">>>")[0] == device_ieeeAddr_2:
                msg_2 = sensordata.split(">>>")[1]
@@ -474,14 +483,13 @@ def SCHEDULER_SENSOR_TASK(task):
       print(sensor_value_2)
       print(value_2)
       
-      # reset saved_sensordata
-      time.sleep(10)      
-      saved_sensordata = []
-      
       
       ####################
       # compare conditions
       ####################
+      
+      passing_1 = False
+      passing_2 = False
       
       # Options: <, >, =
    
@@ -746,14 +754,13 @@ def SCHEDULER_SENSOR_TASK(task):
       print(value_3)
 
       
-      # reset saved_sensordata
-      time.sleep(10)
-      saved_sensordata = []
-      
-      
       ####################
       # compare conditions
       ####################
+      
+      passing_1 = False
+      passing_2 = False
+      passing_3 = False
       
       
       # Options: <, >, = /// and, or
@@ -1256,14 +1263,16 @@ def SCHEDULER_SENSOR_TASK(task):
          if "led_off" in entry.task:
             task = entry.task.split(":")
             if task[1] == "group":
-               group_id = GET_LED_GROUP_BY_NAME(task[2]).id
-               error_message = LED_TURN_OFF_GROUP(int(group_id))
                
-               if error_message != "":
-                  error_message = str(error_message)
-                  error_message = error_message[1:]
-                  error_message = error_message[:-1]                    
-                  WRITE_LOGFILE_SYSTEM('ERROR', 'Scheduler >>> Sensor Task "' + entry.name + '" >>> ' + error_message)              
+               for group in task[2]:
+                  group_id = GET_LED_GROUP_BY_NAME(group).id
+                  error_message = LED_TURN_OFF_GROUP(int(group_id))
+                  
+                  if error_message != "":
+                     error_message = str(error_message)
+                     error_message = error_message[1:]
+                     error_message = error_message[:-1]                    
+                     WRITE_LOGFILE_SYSTEM('ERROR', 'Scheduler >>> Sensor Task "' + entry.name + '" >>> ' + error_message)              
                
             if task[1] == "all":
                error_message = LED_TURN_OFF_ALL()   
@@ -1291,5 +1300,6 @@ def SCHEDULER_SENSOR_TASK(task):
                
       except Exception as e:
          print(e)
-         WRITE_LOGFILE_SYSTEM('ERROR', 'Scheduler >>> Sensor Task "' + entry.name + '" >>> ' + str(e))    
-         
+         WRITE_LOGFILE_SYSTEM('ERROR', 'Scheduler >>> Sensor Task "' + entry.name + '" >>> ' + str(e)) 
+            
+

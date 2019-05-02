@@ -303,9 +303,10 @@ def dashboard_settings_speechcontrol():
     check_value_speechcontrol = ["", "", ""]
     snowboy_name = ""
     snowboy_task = ""   
-    speech_recognition_provider_name = ""
-    speech_recognition_provider_keywords = ""
     speech_recognition_provider_task = ""
+    speech_recognition_provider_keywords = ""
+    speech_recognition_provider_parameters = ""
+    
 
     if request.method == "POST":     
         # change speech_control settings   
@@ -421,59 +422,47 @@ def dashboard_settings_speechcontrol():
             # add new speech_recognition_provider task
             if request.form.get("add_speech_recognition_provider_task") is not None:
 
-                if request.form.get("set_speech_recognition_provider_name") == "":
-                    error_message = "Kein Name angegeben"
-                    speech_recognition_provider_task = request.form.get("set_speech_recognition_provider_task")
-                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
-                elif request.form.get("set_speech_recognition_provider_task") == "":
-                    error_message = "Keine Aufgabe angegeben"  
-                    speech_recognition_provider_name = request.form.get("set_speech_recognition_provider_name")  
-                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
+                if request.form.get("set_speech_recognition_provider_task") == "":
+                    error_message = "Keine Aufgabe angegeben"
+                    speech_recognition_provider_keywords   = request.form.get("set_speech_recognition_provider_keywords")
+                    speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters")
                 else:         
-                    speech_recognition_provider_name     = request.form.get("set_speech_recognition_provider_name")
-                    speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords")
-                    speech_recognition_provider_task     = request.form.get("set_speech_recognition_provider_task")
-                    error_message = ADD_SPEECH_RECOGNITION_PROVIDER_TASK(speech_recognition_provider_name, speech_recognition_provider_keywords, speech_recognition_provider_task)
+                    speech_recognition_provider_task       = request.form.get("set_speech_recognition_provider_task")
+                    speech_recognition_provider_keywords   = request.form.get("set_speech_recognition_provider_keywords")
+                    speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters")
+                    
+                    error_message = ADD_SPEECH_RECOGNITION_PROVIDER_TASK(speech_recognition_provider_task, speech_recognition_provider_keywords, speech_recognition_provider_parameters)
                    
-                    speech_recognition_provider_name = ""
-                    speech_recognition_provider_keywords = ""
                     speech_recognition_provider_task = ""
+                    speech_recognition_provider_keywords = ""
+                    speech_recognition_provider_parameters = ""
 
             # change speech_recognition_provider tasks
             if request.form.get("change_speech_recognition_provider_task") != None: 
                 for i in range (1,26):
 
-                    if request.form.get("set_speech_recognition_provider_name_" + str(i)) != None:  
+                    if request.form.get("set_speech_recognition_provider_task_" + str(i)) != None:  
                         
-                        # check speech_recognition_provider name
-                        if (request.form.get("set_speech_recognition_provider_name_" + str(i)) != "" and 
-                            GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_NAME(request.form.get("set_speech_recognition_provider_name_" + str(i))) == None):
-                            speech_recognition_provider_name = request.form.get("set_speech_recognition_provider_name_" + str(i)) 
-                            
-                        elif request.form.get("set_speech_recognition_provider_name_" + str(i)) == GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name:
-                            speech_recognition_provider_name = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name                        
-                            
-                        else:
-                            speech_recognition_provider_name = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).name 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
-
-                        # check keywords
-                        if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != "":
-                            speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
-                        
-                        else:
-                            speech_recognition_provider_keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).keywords 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"    
-
                         # check task
                         if request.form.get("set_speech_recognition_provider_task_" + str(i)) != "":
                             speech_recognition_provider_task = request.form.get("set_speech_recognition_provider_task_" + str(i)) 
                         
                         else:
                             speech_recognition_provider_task = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).task 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Aufgabe schon vorhanden)"   
+                                                                  
+                        # check keywords
+                        if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != "":
+                            speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
+                        
+                        else:
+                            speech_recognition_provider_keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).keywords 
+                            error_message_table = "Ungültige Eingabe (leeres Feld / Aufgabe schon vorhanden)"    
+                            
+                        speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters_" + str(i)) 
+                    
                                            
-                        SET_SPEECH_RECOGNITION_PROVIDER_TASK(i, speech_recognition_provider_name, speech_recognition_provider_keywords, speech_recognition_provider_task)
+                        SET_SPEECH_RECOGNITION_PROVIDER_TASK(i, speech_recognition_provider_task, speech_recognition_provider_keywords, speech_recognition_provider_parameters)
 
 
             if request.form.get("set_speech_recognition_provider_settings") != None: 
@@ -553,9 +542,9 @@ def dashboard_settings_speechcontrol():
                             speech_recognition_provider=speech_recognition_provider,
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
-                            speech_recognition_provider_name=speech_recognition_provider_name,
-                            speech_recognition_provider_keywords=speech_recognition_provider_keywords,
                             speech_recognition_provider_task=speech_recognition_provider_task,
+                            speech_recognition_provider_keywords=speech_recognition_provider_keywords,
+                            speech_recognition_provider_parameters=speech_recognition_provider_parameters,
 
                             active03="active",
                             )

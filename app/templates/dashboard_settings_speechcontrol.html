@@ -265,8 +265,8 @@
                     <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
                   </tr>
                   <tr>
-                    <td>led_off:group:flur</td>
-                    <td>LEDs der Gruppe "flur" ausschalten</td>
+                    <td>led_off:group:["flur", "bad"]</td>
+                    <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
                   </tr>
                   <tr>
                     <td>led_off:all</td>
@@ -400,7 +400,7 @@
                 </div> 
               </div>   
 
-<section id="table_tasks"></section>
+<section id="table"></section>
 
               <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#speech_recognition_provider_settings'" class="btn btn-default" name="set_speech_recognition_provider_settings" value="Einstellungen speichern" />
             </form>   
@@ -437,36 +437,38 @@
 
             <table class="table">
               <thead>                      
-                <th scope="col">Name</th> 
-                <th scope="col">Schlüsselwörter</th> 
                 <th scope="col">Aufgabe</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col">Parameter</th>  
               </thead>
               <tbody> 
                 {% for entry in speech_recognition_provider_task_list %}
                 <tr>
                   <td>
                   <form method="POST" class="verticalform">
-                    <input type="text" class="form-control" name="set_speech_recognition_provider_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_task_{{ entry.id }}" value="{{ entry.task }}" />                    
                   </td> 
                   <td>
                     <input type="text" class="form-control" name="set_speech_recognition_provider_keywords_{{ entry.id }}" value="{{ entry.keywords }}" />                    
-                  </td> 
+                  </td>  
                   <td>
-                    <input type="text" class="form-control" name="set_speech_recognition_provider_task_{{ entry.id }}" value="{{ entry.task }}" />                    
-                  </td> 
+                    <input type="text" class="form-control" name="set_speech_recognition_provider_parameters_{{ entry.id }}" value="{{ entry.parameters }}" />                    
+                  </td>  
                   <td></td>
-                  <td><a href="/dashboard/settings/speechcontrol/speech_recognition_provider/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/settings/speechcontrol/speech_recognition_provider/delete/task/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_speech_recognition_provider_task" value="Änderungen speichern"/> 
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table'" class="btn btn-default" name="change_speech_recognition_provider_task" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  
 
 <!-- speech_recognition_provider add task -->    
+
+<section id="add_task"></section>
   
       <div class="panel panel-default">
         <div class="panel-body">  
@@ -475,10 +477,6 @@
               <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
             </div>          
             <br>
-
- 
-<section id="add_task"></section>
- 
 
 <!-- input error message -->
 
@@ -489,21 +487,21 @@
 {% endif %} 
 
             <form method="POST">
-              <div class="well well-sm">Name:            
+              <div class="well well-sm">Aufgabe:            
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_speech_recognition_provider_name" value="{% if speech_recognition_provider_name != None %}{{ speech_recognition_provider_name }}{% endif %}" />
+                  <input type="text" class="form-control" name="set_speech_recognition_provider_task" value="{% if speech_recognition_provider_task != None %}{{ speech_recognition_provider_task }}{% endif %}" />
                 </div>    
               </div>    
-              <div class="well well-sm">Schlüsselwörter::            
+              <div class="well well-sm">Schlüsselwörter:          
                 <div class="form-group">
                   <input type="text" class="form-control" name="set_speech_recognition_provider_keywords" value="{% if speech_recognition_provider_keywords != None %}{{ speech_recognition_provider_keywords }}{% endif %}" /> 
                 </div>    
-              </div>                                 
-              <div class="well well-sm">Aufgabe:            
+              </div>                                           
+              <div class="well well-sm">Parameter:          
                 <div class="form-group">
-                  <input type="text" class="form-control" name="set_speech_recognition_provider_task" value="{% if speech_recognition_provider_task != None %}{{ speech_recognition_provider_task }}{% endif %}" /> 
+                  <input type="text" class="form-control" name="set_speech_recognition_provider_parameters" value="{% if speech_recognition_provider_parameters != None %}{{ speech_recognition_provider_parameters }}{% endif %}" /> 
                 </div>    
-              </div>           
+              </div>    
 
 <section id="fileupload"></section>
 

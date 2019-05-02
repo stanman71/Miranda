@@ -162,15 +162,33 @@ def SCHEDULER_TIME_TASKS(entries):
             if "led_off" in entry.task:
                task = entry.task.split(":")
                if task[1] == "group":
-                  group_id = GET_LED_GROUP_BY_NAME(task[2]).id
-                  error_message = LED_TURN_OFF_GROUP(int(group_id))
                   
-                  if error_message != "":
-                     error_message = str(error_message)
-                     error_message = error_message[1:]
-                     error_message = error_message[:-1]                    
-                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)              
+                  print(task[2])
                   
+                  try:
+                      list_groups = task[2].split(",")
+                  except:
+                      list_groups = [task[2]]
+
+                  for group in list_groups:
+                      
+                     group = group.replace(" ", "")
+                     group = group.lower()
+                  
+                     try:
+                        group_id = GET_LED_GROUP_BY_NAME(group).id
+                        error_message = LED_TURN_OFF_GROUP(int(group_id))
+                        
+                        if error_message != "":
+                           error_message = str(error_message)
+                           error_message = error_message[1:]
+                           error_message = error_message[:-1]                    
+                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                           
+                     except:
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> Gruppe " + group + " nicht gefunden")
+                        
+                     
                if task[1] == "all":
                   error_message = LED_TURN_OFF_ALL()   
                   

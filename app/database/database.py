@@ -215,9 +215,9 @@ class Speech_Recognition_Provider(db.Model):
 class Speech_Recognition_Provider_Tasks(db.Model):
     __tablename__ = 'speech_recognition_provider_tasks'
     id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name     = db.Column(db.String(50), unique = True)
-    keywords = db.Column(db.String(50))
-    task     = db.Column(db.String(100))
+    task       = db.Column(db.String(50))
+    keywords   = db.Column(db.String(50))
+    parameters = db.Column(db.String(100))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -1726,8 +1726,8 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
     db.session.commit() 
 
 
-def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_NAME(name):
-    return Speech_Recognition_Provider_Tasks.query.filter_by(name=name).first()
+def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_TASK(t):
+    return Speech_Recognition_Provider_Tasks.query.filter_by(task=task).first()
 
 
 def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(id):
@@ -1738,9 +1738,9 @@ def GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS():
     return Speech_Recognition_Provider_Tasks.query.all()
 
 
-def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(name, keywords, task):
+def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(task, keywords, parameters):
     # name exist ?
-    check_entry = Speech_Recognition_Provider_Tasks.query.filter_by(name=name).first()
+    check_entry = Speech_Recognition_Provider_Tasks.query.filter_by(task=task).first()
     if check_entry is None:
         # find a unused id
         for i in range(1,26):
@@ -1749,39 +1749,39 @@ def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(name, keywords, task):
             else:
                 # add the new task
                 task = Speech_Recognition_Provider_Tasks(
-                        id       = i,
-                        name     = name,
-                        keywords = keywords,
-                        task     = task,
+                        id         = i,
+                        task       = task,
+                        keywords   = keywords,
+                        parameters = parameters,
                     )
                 db.session.add(task)
                 db.session.commit()
   
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + name + " >>> added") 
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + task + " >>> added") 
   
                 return ""
 
         return "Aufgabenlimit erreicht (25)"
 
     else:
-        return "Name bereits vergeben"
+        return "Aufgabe bereits vorhanden"
 
 
-def SET_SPEECH_RECOGNITION_PROVIDER_TASK(id, name, keywords, task):
+def SET_SPEECH_RECOGNITION_PROVIDER_TASK(id, task, keywords, parameters):
     entry = Speech_Recognition_Provider_Tasks.query.filter_by(id=id).first()
-    old_name = entry.name
+    old_task = entry.task
     
     # values changed ?
-    if (entry.name != name or entry.keywords != keywords or entry.task != task):
+    if (entry.task != task or entry.keywords != keywords or entry.parameters != parameters):
         
-        entry.name     = name
-        entry.keywords = keywords
-        entry.task     = task
+        entry.task       = task
+        entry.keywords   = keywords
+        entry.parameters = parameters
         
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + old_name + " >>> changed >>> Name: " +
-                             entry.name + " /// Task: " + entry.task) 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + old_task + " >>> changed >>> Task: " +
+                             entry.task + " /// Keywords: " + entry.keywords + " /// Parameters: " + entry.parameters)
 
 
 def DELETE_SPEECH_RECOGNITION_PROVIDER_TASK(task_id):

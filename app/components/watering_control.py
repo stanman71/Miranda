@@ -70,73 +70,69 @@ def STOP_PUMP(plant_id):
 """ ######### """
 
 def START_WATERING_THREAD():
-    class watering_Thread(threading.Thread):
-        def __init__(self, ID = 1, name = "watering_Thread"):
-            threading.Thread.__init__(self)
-            self.ID = ID
-            self.name = name
 
-        def run(self):
-            WRITE_LOGFILE_SYSTEM("EVENT", "Watering >>> Start Pumps") 
-       
-            i = 0
-            pump_running = 0
+    Thread = threading.Thread(target=WATERING_THREAD, args=("start",))
+    Thread.start()   
 
-            for plant in GET_ALL_PLANTS():
-                
-                if plant.control_sensor == "checked":
-                
-                    ieeeAddr   = plant.mqtt_device.ieeeAddr
-                    gateway    = plant.mqtt_device.gateway
-                    sensor_key = plant.sensor_key
-                    sensor_key = sensor_key.replace(" ","")
-                    
-                    # send request message
-                    channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/get"
-                    MQTT_PUBLISH(channel, "")
-                    
-                    time.sleep(2)
-                    
-                    # get sensor value
-                    input_messages = READ_LOGFILE_MQTT(gateway, "SmartHome/" + gateway + "/" + ieeeAddr, 5)
-                    
-                    for input_message in input_messages:
-                       
-                        input_message = str(input_message[2])
-                        
-                        data  = json.loads(input_message)
-                        value = data[sensor_key]
-                        
-                        print("SENSOR: " + str(value))
-                       
-                        if int(value) < 50:                        
-                            START_PUMP(plant.id)       
-                            pump_running = pump_running + 1  
-                            break   
-                                                 
-                        else:
-                            WRITE_LOGFILE_SYSTEM("WARNING", "Watering >>> Water on the Ground >>> " + plant.name) 
-                            break
-               
-                else:
-                    START_PUMP(plant.id)       
-                    pump_running = pump_running + 1
 
-            while pump_running != 0:
 
-                for plant in GET_ALL_PLANTS():
-                    if i == plant.watervolume:
-                        STOP_PUMP(plant.id)                 
-                        pump_running = pump_running - 1 
-                
-                # 10 ml / 15 sec
-                i = i + 10
-                time.sleep(15)
-                print(i) 
+def WATERING_THREAD(start):
 
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering >>> finished") 
+    i = 0
+    pump_running = 0
+
+    for plant in GET_ALL_PLANTS():
+        
+        if plant.control_sensor == "checked":
+        
+            ieeeAddr   = plant.mqtt_device.ieeeAddr
+            gateway    = plant.mqtt_device.gateway
+            sensor_key = plant.sensor_key
+            sensor_key = sensor_key.replace(" ","")
             
+            # send request message
+            channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/get"
+            MQTT_PUBLISH(channel, "")
+            
+            time.sleep(2)
+            
+            # get sensor value
+            input_messages = READ_LOGFILE_MQTT(gateway, "SmartHome/" + gateway + "/" + ieeeAddr, 5)
+            
+            for input_message in input_messages:
+               
+                input_message = str(input_message[2])
+                
+                data  = json.loads(input_message)
+                value = data[sensor_key]
+                
+                print("SENSOR: " + str(value))
+               
+                if int(value) < 50:                        
+                    START_PUMP(plant.id)       
+                    pump_running = pump_running + 1  
+                    break   
+                                         
+                else:
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering >>> Water on the Ground >>> " + plant.name) 
+                    break
+       
+        else:
+            START_PUMP(plant.id)       
+            pump_running = pump_running + 1
 
-    # start thread
-    t1 = watering_Thread()
-    t1.start()
+    while pump_running != 0:
+
+        for plant in GET_ALL_PLANTS():
+            if i == plant.pumptime:
+                STOP_PUMP(plant.id)                 
+                pump_running = pump_running - 1 
+        
+        # 10 ml / 15 sec
+        i = i + 10
+        time.sleep(15)
+        print(i) 
+
+    WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering >>> finished") 
+      
+      

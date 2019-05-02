@@ -201,17 +201,19 @@ def SNOWBOY_TASKS(entry):
       if "led_off" in entry.task and snowboy_detect_on == True:
          task = entry.task.split(":")
          if task[1] == "group":
-            group_id = GET_LED_GROUP_BY_NAME(task[2]).id
-            error_message = LED_TURN_OFF_GROUP(int(group_id))
             
             snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")   
+            PIXEL_RING_CONTROL("off")               
             
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)   
+            for group in task[2]:
+               group_id = GET_LED_GROUP_BY_NAME(group).id
+               error_message = LED_TURN_OFF_GROUP(int(group_id))
+                     
+               if error_message != "":
+                  error_message = str(error_message)
+                  error_message = error_message[1:]
+                  error_message = error_message[:-1]                    
+                  WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)   
             
          if task[1] == "all":
             error_message = LED_TURN_OFF_ALL()   
