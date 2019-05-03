@@ -353,15 +353,40 @@ def CHECK_TASKS(tasks, task_type):
 
                # check group setting
                if task[1] == "group":
-                  try: 
-                     if GET_LED_GROUP_BY_NAME(task[2]):
-                        continue
-                     else:
-                        list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[2])
-                        continue
+
+                  # get input group names and lower the letters
+                  try:
+                      list_groups = task[2].split(",")
                   except:
-                     list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
-                     continue                  
+                      list_groups = [task[2]]
+
+                  for input_group_name in list_groups:
+                      
+                     input_group_name = input_group_name.replace(" ", "")
+                     input_group_name = input_group_name.lower()
+   
+                     # get exist group names and lower the letters
+                     try:
+                        all_exist_group = GET_ALL_LED_GROUPS()
+                        
+                        for exist_group in all_exist_group:
+                           
+                           exist_group_name = exist_group.name
+                           exist_group_name = exist_group_name.lower()
+                           
+                           # compare the formated names
+                           if input_group_name == exist_group_name: 
+                              pass
+                              
+                           else:
+                              list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)
+                              
+                        
+                     except:
+                        list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                        continue   
+                        
+                  continue
 
                # check turn off all leds
                try:

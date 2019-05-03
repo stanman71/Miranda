@@ -106,10 +106,11 @@ def SCHEDULER_TIME_TASKS(entries):
 
          print(entry.name)
 
-         WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler >>> Time Task >>> ' + entry.name + ' >>> started') 
+         WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Time Task > ' + entry.name + ' | started') 
 
+
+         # start scene
          try:
-            # start scene
             if "scene" in entry.task:
                try:
                   task = entry.task.split(":")
@@ -121,7 +122,7 @@ def SCHEDULER_TIME_TASKS(entries):
                      error_message = str(error_message)
                      error_message = error_message[1:]
                      error_message = error_message[:-1]
-                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
                    
                except:
                   task = entry.task.split(":")
@@ -133,14 +134,15 @@ def SCHEDULER_TIME_TASKS(entries):
                      error_message = str(error_message)
                      error_message = error_message[1:]
                      error_message = error_message[:-1]                    
-                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
                       
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))      
 
+
+         # start program
          try:
-            # start program
             if "program" in entry.task:
                task = entry.task.split(":")
                group_id = GET_LED_GROUP_BY_NAME(task[1]).id
@@ -151,42 +153,56 @@ def SCHEDULER_TIME_TASKS(entries):
                   error_message = str(error_message)
                   error_message = error_message[1:]
                   error_message = error_message[:-1]                    
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
                 
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))      
 
+
+         # led off
          try:
-            # led off
             if "led_off" in entry.task:
                task = entry.task.split(":")
                if task[1] == "group":
                   
-                  print(task[2])
-                  
+                  # get input group names and lower the letters
                   try:
                       list_groups = task[2].split(",")
                   except:
                       list_groups = [task[2]]
 
-                  for group in list_groups:
+                  for input_group_name in list_groups:
                       
-                     group = group.replace(" ", "")
-                     group = group.lower()
-                  
+                     input_group_name = input_group_name.replace(" ", "")
+                     input_group_name = input_group_name.lower()
+   
+                     # get exist group names and lower the letters
                      try:
-                        group_id = GET_LED_GROUP_BY_NAME(group).id
-                        error_message = LED_TURN_OFF_GROUP(int(group_id))
+                        all_exist_group = GET_ALL_LED_GROUPS()
                         
-                        if error_message != "":
-                           error_message = str(error_message)
-                           error_message = error_message[1:]
-                           error_message = error_message[:-1]                    
-                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                        for exist_group in all_exist_group:
+                           
+                           exist_group_name       = exist_group.name
+                           exist_group_name_lower = exist_group_name.lower()
+                           
+                           # compare the formated names
+                           if input_group_name == exist_group_name_lower:                       
+                              group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
+                              error_message = LED_TURN_OFF_GROUP(int(group_id))
+                        
+                              if error_message != "":
+                                 error_message = str(error_message)
+                                 error_message = error_message[1:]
+                                 error_message = error_message[:-1]                    
+                                 WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
+                       
+                           else:
+                              WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | Gruppe > " + input_group_name + " | not founded")
+                       
                            
                      except:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> Gruppe " + group + " nicht gefunden")
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | Gruppe > " + input_group_name + " | not founded")
                         
                      
                if task[1] == "all":
@@ -196,43 +212,47 @@ def SCHEDULER_TIME_TASKS(entries):
                      error_message = str(error_message)
                      error_message = error_message[1:]
                      error_message = error_message[:-1]                    
-                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
                    
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))      
 
+
+         # watering plants
          try:
-            # watering plants
             if "watering_plants" in entry.task:
                START_WATERING_THREAD()
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))      
 
+
+         # save database 
          try:    
-            # save database               
             if "save_database" in entry.task:
                error_message = SAVE_DATABASE()  
                if error_message == "":
-                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler >>> Time Task >>> " + entry.name + " >>> successful")
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task > " + entry.name + " | successful")
                else:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)                   
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)                   
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))     
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))     
 
+
+         # update mqtt devices
          try:
-            # update mqtt devices
             if "mqtt_update_devices" in entry.task:
                error_message = MQTT_UPDATE_DEVICES("mqtt")
                if error_message == "":
-                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler >>> Time Task >>> " + entry.name + " >>> successful")
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task > " + entry.name + " | successful")
                else:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)              
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)              
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))      
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " >>> " + str(e))      
+
 
          # request sensordata
          try:
@@ -240,12 +260,12 @@ def SCHEDULER_TIME_TASKS(entries):
                task = entry.task.split(":")
                error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
                if error_message == "":
-                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler >>> Time Task >>> " + entry.name + " >>> successful")
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler >>> Time Task > " + entry.name + " | successful")
                else:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + error_message)
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler >>> Time Task >>> " + entry.name + " >>> " + str(e))              
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + str(e))              
    
          # remove scheduler task without repeat
          if entry.repeat == "":

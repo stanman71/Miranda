@@ -72,7 +72,7 @@ def SNOWBOY_START(modus):
       callbacks = callback_list[:len(GET_ALL_SNOWBOY_TASKS())]
       
       print('Listening...')
-      WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy >>> started") 
+      WRITE_LOGFILE_SYSTEM("EVENT", "Snowboy | started") 
          
       # main loop
       detector.start(detected_callback=callbacks,
@@ -104,6 +104,8 @@ def SNOWBOY_START(modus):
          PIXEL_RING_CONTROL("off")
          detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
+      WRITE_LOGFILE_SYSTEM("EVENT", "Speech Recognition Provider | started") 
+
       # main loop
       detector.start(detected_callback=detect_callback,
                      interrupt_check=interrupt_callback,
@@ -122,7 +124,7 @@ def SNOWBOY_TASKS(entry):
    
    global snowboy_detect_on
    
-   WRITE_LOGFILE_SYSTEM("EVENT", 'Snowboy >>> Detection Task >>> ' + str(entry.task))
+   WRITE_LOGFILE_SYSTEM("EVENT", 'Snowboy | Detection Task > ' + str(entry.task))
    
    # activate command mode
    if "snowboy_active" in entry.task:
@@ -154,7 +156,7 @@ def SNOWBOY_TASKS(entry):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)     
+               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task | " + entry.name + " | " + error_message)     
          
          except:
             task = entry.task.split(":")
@@ -169,11 +171,11 @@ def SNOWBOY_TASKS(entry):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + error_message)
                
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + str(e))     
+      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + str(e))     
          
    try:
       # start program
@@ -190,45 +192,74 @@ def SNOWBOY_TASKS(entry):
             error_message = str(error_message)
             error_message = error_message[1:]
             error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + error_message)
          
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + str(e))     
+      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + str(e))     
      
+
+   # led off
    try:
-      # led off
-      if "led_off" in entry.task and snowboy_detect_on == True:
+      if "led_off" in entry.task:
          task = entry.task.split(":")
          if task[1] == "group":
             
             snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")               
+            PIXEL_RING_CONTROL("off")             
             
-            for group in task[2]:
-               group_id = GET_LED_GROUP_BY_NAME(group).id
-               error_message = LED_TURN_OFF_GROUP(int(group_id))
+            # get input group names and lower the letters
+            try:
+                list_groups = task[2].split(",")
+            except:
+                list_groups = [task[2]]
+
+            for input_group_name in list_groups:
+                
+               input_group_name = input_group_name.replace(" ", "")
+               input_group_name = input_group_name.lower()
+
+               # get exist group names and lower the letters
+               try:
+                  all_exist_group = GET_ALL_LED_GROUPS()
+                  
+                  for exist_group in all_exist_group:
                      
-               if error_message != "":
-                  error_message = str(error_message)
-                  error_message = error_message[1:]
-                  error_message = error_message[:-1]                    
-                  WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)   
-            
+                     exist_group_name       = exist_group.name
+                     exist_group_name_lower = exist_group_name.lower()
+                     
+                     # compare the formated names
+                     if input_group_name == exist_group_name_lower:                       
+                        group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
+                        error_message = LED_TURN_OFF_GROUP(int(group_id))
+                  
+                        if error_message != "":
+                           error_message = str(error_message)
+                           error_message = error_message[1:]
+                           error_message = error_message[:-1]                    
+                           WRITE_LOGFILE_SYSTEM("ERROR", "SSnowBoy Task > " + entry.name + " | " + error_message)
+                 
+                     else:
+                        WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | Group > " + input_group_name + " | not founded")
+                 
+                     
+               except:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | Group > " + input_group_name + " | not founded")
+                  
+               
          if task[1] == "all":
             error_message = LED_TURN_OFF_ALL()   
             
             snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")   
+            PIXEL_RING_CONTROL("off")            
             
             if error_message != "":
                error_message = str(error_message)
                error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + error_message)
-
+               error_message = error_message[:-1]                   
+               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + error_message)
+      
+             
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task >>> " + entry.name + " >>> " + str(e))     
-         
-
+      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy Task > " + entry.name + " | " + str(e))      

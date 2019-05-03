@@ -33,6 +33,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try: 
             answer = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")  
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
             
@@ -56,6 +57,7 @@ def SPEECH_RECOGNITION_PROVIDER():
 
             answer = r.recognize_google(audio)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")  
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
             
@@ -80,6 +82,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try:
             answer = r.recognize_houndify(audio, client_id=HOUNDIFY_CLIENT_ID, client_key=HOUNDIFY_CLIENT_KEY)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")  
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
             
@@ -104,6 +107,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try:
             answer = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")  
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
             
@@ -126,6 +130,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try:
             answer = r.recognize_azure(audio, key=AZURE_SPEECH_KEY)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")  
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
 
@@ -148,6 +153,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try:
             answer = r.recognize_bing(audio, key=BING_KEY)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")            
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
             
@@ -170,6 +176,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         try:
             answer = r.recognize_wit(audio, key=WIT_AI_KEY)
             answer = answer.lower()
+            answer = answer.replace("ß", "ss")
             SPEECH_RECOGNITION_PROVIDER_TASKS(answer)
             return (answer)
 
@@ -290,6 +297,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                         for group in groups:
                             if group.name.lower() in answer:
                                 group_ids.append(group.id)          
+
                       
                         if group_ids != []:
                             
@@ -298,6 +306,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                                 if error_message != "":            
                                     WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " >>> " + error_message)                    
                        
+                        
                         else:
                             error_message = LED_TURN_OFF_ALL()   
                             if error_message != "":            

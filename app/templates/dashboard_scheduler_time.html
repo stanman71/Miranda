@@ -104,11 +104,11 @@
                 <tbody> 
                   {% for entry in scheduler_list %}
                   <tr>
-                    <td style="width:20%">
+                    <td style="width:18%">
                       <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                     </td> 
-                    <td style="width:20%">        
+                    <td style="width:25%">        
                       <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
                     </td>
                     <td style="width:15%">                   
@@ -170,7 +170,7 @@
                     <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
                   </tr>
                   <tr>
-                    <td>led_off:group:["flur", "bad"]</td>
+                    <td>led_off:group:flur, bad</td>
                     <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
                   </tr>
                   <tr>
