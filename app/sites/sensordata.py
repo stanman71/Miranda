@@ -332,11 +332,11 @@ def download_sensordata_file(filepath):
         print("Ungültiger Pfad angegeben")     
     try:
         path = GET_PATH() + "/csv/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "File >>> /csv/" + filepath + " >>> downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File > /csv/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /csv/" + filepath + " >>> " + str(e)) 
+        WRITE_LOGFILE_SYSTEM("ERROR", "File > /csv/" + filepath + " | " + str(e)) 
 
 
 # delete sensordata file

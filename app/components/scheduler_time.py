@@ -260,7 +260,7 @@ def SCHEDULER_TIME_TASKS(entries):
                task = entry.task.split(":")
                error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
                if error_message == "":
-                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler >>> Time Task > " + entry.name + " | successful")
+                  WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task > " + entry.name + " | successful")
                else:
                   WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task > " + entry.name + " | " + error_message)
          except Exception as e:

@@ -17426,3 +17426,114 @@ Timestamp,Type,Description
 2019-05-03 11:09:48,EVENT,Database >>> Scheduler >>> Sensor >>> sensor_test_06 >>> changed >>> Name: sensor_test_06 /// Task: lejhg /// MQTT-Device_1: 0x88888 /// Sensor_1: temperature /// Operator_1: > /// Value_1: 0 /// MQTT-Device_2: None /// Sensor_2: None /// Operator_2: None /// Value_2:  /// MQTT-Device_3: None /// Sensor_3: None /// Operator_3: None /// Value_3: 
 2019-05-03 11:12:38,EVENT,MQTT >>> started
 2019-05-03 11:12:38,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-03 11:18:37,EVENT,MQTT >>> started
+2019-05-03 11:18:37,EVENT,MQTT >>> Broker "localhost" >>> connected
+2019-05-03 11:18:40,EVENT,|Speech Recognition Provider || started|
+2019-05-03 11:28:37,EVENT,|MQTT || started|
+2019-05-03 11:28:37,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 11:28:40,EVENT,|Speech Recognition Provider || started|
+2019-05-03 11:28:52,EVENT,|Database || User > default || changed || Username > default / eMail > member@example.com / Role > superuser / eMail-Info > checked / eMail-Error > checked / eMail-Camera > checked|
+2019-05-03 12:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 12:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 12:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 12:00:04,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 12:00:04,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 12:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 12:00:06,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 12:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 12:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 12:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 12:01:20,EVENT,File >>> /csv/ok.csv >>> downloaded
+2019-05-03 12:10:43,EVENT,Database >>> Sensordata Job >>> fgduztzu >>> changed >>> Name: fgduztzu /// Filename: gfdfds /// MQTT-Device: 0x99999 /// Sensor:  sensor_3 /// Always_Active: 
+2019-05-03 12:10:43,EVENT,Database >>> Sensordata Job >>> sdsfdg >>> changed >>> Name: sdsfdg /// Filename: sda /// MQTT-Device: 0x88888 /// Sensor: humidity /// Always_Active: 
+2019-05-03 13:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 13:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 13:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 13:00:03,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 13:00:03,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 13:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 13:00:06,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 13:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 13:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 13:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 13:50:46,EVENT,|MQTT || started|
+2019-05-03 13:50:46,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 13:50:49,EVENT,|Speech Recognition Provider || started|
+2019-05-03 13:54:08,EVENT,|Database_Backup || saved|
+2019-05-03 13:56:18,EVENT,|Database || Scheduler Time || Task > MQTT aktuallisieren || changed || Name > MQTT aktuallisieren / Task > mqtt_update_device / Day > * / Hour > * / Minute > 0 / Repeat > checked|
+2019-05-03 13:56:22,EVENT,|Database || Scheduler Time || Task > MQTT aktuallisieren || changed || Name > MQTT aktuallisieren / Task > mqtt_update_devices / Day > * / Hour > * / Minute > 0 / Repeat > checked|
+2019-05-03 14:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 14:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 14:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 14:00:04,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 14:00:04,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 14:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 14:00:07,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 14:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 14:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 14:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 14:02:09,EVENT,|Database || User > default || changed || Username > default / eMail > member@example.com / Role > superuser / eMail-Info >  / eMail-Error >  / eMail-Camera > |
+2019-05-03 15:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 15:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 15:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 15:00:03,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 15:00:03,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 15:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 15:00:06,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 15:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 15:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 15:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 16:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 16:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 16:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 16:00:03,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 16:00:03,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 16:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 16:00:06,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 16:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 16:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 16:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 17:00:00,EVENT,|Scheduler || Time Task > test_01 || started|
+2019-05-03 17:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_01 || started|
+2019-05-03 17:00:03,EVENT,|Scheduler || Sensor Task > sensor_test_03 || started|
+2019-05-03 17:00:03,SUCCESS,|Scheduler >>> Time Task > test_01 || successful|
+2019-05-03 17:00:03,EVENT,|Scheduler || Time Task > MQTT aktuallisieren || started|
+2019-05-03 17:00:04,EVENT,|Scheduler || Sensor Task > sensor_test_06 || started|
+2019-05-03 17:00:06,EVENT,|Scheduler || Sensor Task > sensor_test_05 || started|
+2019-05-03 17:00:07,SUCCESS,|Scheduler || Time Task > MQTT aktuallisieren || successful|
+2019-05-03 17:00:07,EVENT,|Scheduler || Time Task > test || started|
+2019-05-03 17:00:10,SUCCESS,|Scheduler >>> Time Task > test || successful|
+2019-05-03 17:25:35,EVENT,|MQTT || started|
+2019-05-03 17:25:35,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 17:25:39,EVENT,|Speech Recognition Provider || started|
+2019-05-03 17:26:07,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-03 17:26:29,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-03 17:28:13,EVENT,|Speech Recognition || Detection Task || warmweiss wohnzimmer|
+2019-05-03 17:35:36,EVENT,|MQTT || started|
+2019-05-03 17:35:36,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 17:35:40,EVENT,|Speech Recognition Provider || started|
+2019-05-03 17:37:33,EVENT,|MQTT || started|
+2019-05-03 17:37:33,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 17:37:37,EVENT,|Speech Recognition Provider || started|
+2019-05-03 17:38:52,EVENT,|MQTT || started|
+2019-05-03 17:38:52,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 17:38:55,EVENT,|Speech Recognition Provider || started|
+2019-05-03 17:39:04,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-03 17:39:30,EVENT,|MQTT || started|
+2019-05-03 17:39:30,EVENT,|MQTT || Broker > localhost || connected|
+2019-05-03 17:39:34,EVENT,|Speech Recognition Provider || started|
+2019-05-03 17:39:44,EVENT,|Speech Recognition || Detection Task || sattel warmweiss im zimmer|
+2019-05-03 17:39:58,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-03 17:40:19,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-03 17:40:49,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer|
+2019-05-03 17:41:07,EVENT,|Speech Recognition || Detection Task || ausschalten gruppe|
+2019-05-03 17:41:41,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer|
+2019-05-03 17:41:59,EVENT,|Speech Recognition || Detection Task || flur ausschalten|
+2019-05-03 17:42:37,EVENT,|Database || LED Group > flur || added|
+2019-05-03 17:43:02,EVENT,|Speech Recognition || Detection Task || starte mediterran im wohnzimmer|
+2019-05-03 17:43:23,EVENT,|Speech Recognition || Detection Task || surpass schalten|
+2019-05-03 17:43:46,EVENT,|Speech Recognition || Detection Task || flur ausschalten|
+2019-05-03 17:43:46,ERROR,Speech Recognition Task >>> flur ausschalten >>> Can't convert 'NoneType' object to str implicitly
+2019-05-03 17:44:00,EVENT,|Speech Recognition || Detection Task || wohnzimmer ausschalten|
+2019-05-03 17:44:29,EVENT,|Database || Speech Control Task > LED Szenen || changed || Task > LED Szenen / Keywords > starte, aktiviere / Parameters > [Gruppenname] [Szenenname]|
+2019-05-03 17:44:43,EVENT,|Speech Recognition || Detection Task || aktiviere relax im wohnzimmer|

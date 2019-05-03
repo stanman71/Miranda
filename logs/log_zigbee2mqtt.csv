@@ -2315,3 +2315,312 @@ Timestamp,Channel,Message
 2019-05-03 11:12:38,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
 2019-05-03 11:12:42,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
 2019-05-03 11:12:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 11:18:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 11:18:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 11:18:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 11:18:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 11:28:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 11:28:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 11:28:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 11:28:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 12:06:40,SmartHome/zigbee2mqtt/bridge/config/,
+2019-05-03 12:06:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 12:06:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 12:07:42,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":254.0,"color": { "r":202,"g":175,"b":125,"transition": 3}}|
+2019-05-03 12:07:42,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":254.0,"color": { "r":205,"g":175,"b":129,"transition": 3}}|
+2019-05-03 12:07:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":60,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:43,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:43,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:43,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:07:45,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:05,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":170.0,"color": { "r":66,"g":93,"b":178,"transition": 3}}|
+2019-05-03 12:08:05,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":173.0,"color": { "r":91,"g":143,"b":203,"transition": 3}}|
+2019-05-03 12:08:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:10,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:17,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":192.0,"color": { "r":197,"g":140,"b":33,"transition": 3}}|
+2019-05-03 12:08:17,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":195.0,"color": { "r":204,"g":73,"b":27,"transition": 3}}|
+2019-05-03 12:08:17,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:18,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:18,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:18,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:18,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:20,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:22,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:22,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:33,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 12:08:33,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 12:08:34,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:34,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 12:08:34,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:34,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 12:08:54,SmartHome/zigbee2mqtt/bridge/config/,
+2019-05-03 12:08:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 12:08:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 13:50:46,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 13:50:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 13:50:49,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 13:50:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 14:01:59,SmartHome/zigbee2mqtt/bridge/config/,
+2019-05-03 14:01:59,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 14:01:59,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 15:06:54,SmartHome/zigbee2mqtt/bridge/config/,
+2019-05-03 15:06:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 15:06:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:25:35,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 17:25:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:25:39,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 17:25:39,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:26:07,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":254.0,"color": { "r":202,"g":175,"b":125,"transition": 3}}|
+2019-05-03 17:26:07,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":254.0,"color": { "r":205,"g":175,"b":129,"transition": 3}}|
+2019-05-03 17:26:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:26:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":41.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:09,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":41.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:09,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":41.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:09,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:09,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:10,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:10,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:10,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:10,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":7.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:11,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":7.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":254.0,"color": { "r":202,"g":175,"b":125,"transition": 3}}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":254.0,"color": { "r":205,"g":175,"b":129,"transition": 3}}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":7.3},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:12,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:14,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:26:14,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:35:36,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 17:35:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:35:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 17:35:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:37:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 17:37:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:37:37,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 17:37:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:38:52,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 17:38:52,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:38:55,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 17:38:55,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:04,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:30,SmartHome/zigbee2mqtt/bridge/state,online
+2019-05-03 17:39:30,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:39:33,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-05-03 17:39:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-05-03 17:39:58,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":254.0,"color": { "r":202,"g":175,"b":125,"transition": 3}}|
+2019-05-03 17:39:58,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":254.0,"color": { "r":205,"g":175,"b":129,"transition": 3}}|
+2019-05-03 17:39:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:39:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:00,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:00,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":68,"brightness":254,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:19,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":81,"brightness":254,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":170.0,"color": { "r":66,"g":93,"b":178,"transition": 3}}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":173.0,"color": { "r":91,"g":143,"b":203,"transition": 3}}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:49,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:50,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.421,"y":0.394,"saturation":28.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:50,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:50,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":46.1},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:51,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.421,"y":0.387,"saturation":24.8,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":307,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:52,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:53,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":39.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:53,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:53,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:53,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:40:53,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:07,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 17:41:07,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 17:41:07,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":60,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:41,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":170.0,"color": { "r":66,"g":93,"b":178,"transition": 3}}|
+2019-05-03 17:41:41,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":173.0,"color": { "r":91,"g":143,"b":203,"transition": 3}}|
+2019-05-03 17:41:41,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":60,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:41,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:43,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:43,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:43,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:43,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:43,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":68,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:41:59,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:02,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":192.0,"color": { "r":197,"g":140,"b":33,"transition": 3}}|
+2019-05-03 17:43:02,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":195.0,"color": { "r":204,"g":73,"b":27,"transition": 3}}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:03,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":244.7},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:06,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:43:07,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":63,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","linkquality":65,"brightness":192,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":84,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:00,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":195,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON", "brightness":170.0,"color": { "r":66,"g":93,"b":178,"transition": 3}}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON", "brightness":173.0,"color": { "r":91,"g":143,"b":203,"transition": 3}}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.538,"y":0.423,"saturation":100,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:45,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:45,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":41.3},"color_temp":500,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":41.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":68,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":41.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":78,"brightness":173,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:46,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.657,"y":0.33,"saturation":97.2,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":65,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","linkquality":60,"brightness":170,"color":{"x":0.174,"y":0.146,"saturation":91.7,"hue":244.7},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":7.3},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:48,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:48,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":81,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:48,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|
+2019-05-03 17:44:48,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":84,"brightness":173,"color":{"x":0.189,"y":0.22,"saturation":85.4,"hue":232.4},"color_temp":153,"color_mode":1}|

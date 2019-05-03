@@ -75,7 +75,7 @@ if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
 
             except Exception as e:
                 print("Fehler in MQTT: " + str(e))
-                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT >>> " + str(e)) 
+                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
     
     t2 = mqtt_Thread()
     t2.start()
@@ -92,7 +92,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
     time.sleep(3)
     
     if READ_LOGFILE_MQTT("zigbee2mqtt", "",5) != "Message nicht gefunden":
-        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT >>> No connection") 
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No connection") 
     
     # set pairing setting  
     pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
@@ -135,5 +135,5 @@ if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy" or GET_GLOBAL_SETTING_
     except Exception as e:
         if "signal only works in main thread" not in str(e): 
             print("Fehler in SnowBoy: " + str(e))
-            WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy >>> " + str(e)) 
+            WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
             

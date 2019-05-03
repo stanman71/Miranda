@@ -387,7 +387,7 @@ def SET_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mai
     email.mail_password       = mail_password
     db.session.commit()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> eMail Server Settings >>> changed")
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | eMail Server Settings | changed")
     return ""
 
 
@@ -465,7 +465,7 @@ def ADD_LED_GROUP(name):
                     db.session.add(group)
                     db.session.commit()
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Group >>> " + name + " >>> added")  
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group > " + name + " | added")  
 
                     return ""
 
@@ -653,7 +653,7 @@ def REMOVE_LED_GROUP_LED(id, led):
 
 def DELETE_LED_GROUP(id):
     name = GET_LED_GROUP_BY_ID(id).name
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Group >>> " + name + " >>> deleted")   
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group > " + name + " | deleted")   
     
     LED_Groups.query.filter_by(id=id).delete()
     db.session.commit() 
@@ -696,7 +696,7 @@ def ADD_LED_PROGRAM(name):
                 db.session.add(program)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Program >>> " + name + " >>> added")  
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program > " + name + " | added")  
 
                 return ""
 
@@ -721,7 +721,7 @@ def UPDATE_LED_PROGRAM(id, content):
 
 def DELETE_LED_PROGRAM(name):
     name = LED_Programs.query.filter_by(name=name).name
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Program >>> " + name + " >>> deleted")  
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program > " + name + " | deleted")  
 
     LED_Programs.query.filter_by(name=name).delete()
     db.session.commit() 
@@ -766,7 +766,7 @@ def ADD_LED_SCENE(name):
                     db.session.add(scene)
                     db.session.commit()
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Scene >>> " + name + " >>> added")  
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene > " + name + " | added")  
 
                     return ""
 
@@ -922,7 +922,7 @@ def REMOVE_LED_SCENE_SETTING(id, setting):
 
 def DELETE_LED_SCENE(id):
     name = GET_LED_SCENE_BY_ID(id).name
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> LED Scene >>> " + name + " >>> deleted")   
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene > " + name + " | deleted")   
 
     LED_Scenes.query.filter_by(id=id).delete()
     db.session.commit() 
@@ -1001,9 +1001,11 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 
                 db.session.add(device)
                 db.session.commit()
                 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + name + " >>> added >>>  Gateway: " + 
-                                     gateway + " /// ieeeAddr: " + ieeeAddr + " /// Model: " + model + 
-                                     " /// Inputs: " + inputs + " /// Outputs: " + outputs)
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device > " + name + " | added | Gateway > " + gateway + 
+                                     " / ieeeAddr > " + ieeeAddr + 
+                                     " / Model > " + model + 
+                                     " / Inputs > " + inputs + 
+                                     " / Outputs > " + outputs)
 
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
 
@@ -1029,10 +1031,12 @@ def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
         # values changed ?
         if (entry.name != name):
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
-                                name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
-                                " /// Model: " + entry.model + " /// Inputs: " + str(entry.inputs) + " /// Outputs: " + 
-                                entry.outputs)
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device > " + entry.name + " | changed | Name > " + name + 
+                                 " / Gateway > " + entry.gateway + 
+                                 " / ieeeAddr > " + entry.ieeeAddr + 
+                                 " / Model > " + entry.model + 
+                                 " / Inputs >" + str(entry.inputs) + 
+                                 " / Outputs > " + entry.outputs)
 
             entry.name = name
             db.session.commit()    
@@ -1045,9 +1049,11 @@ def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
             
             entry.inputs = inputs
             
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> ZigBee2MQTT Device >>> " + entry.name + " >>> changed >>> Name: " +
-                                name + " /// Gateway: " + entry.gateway + " /// ieeeAddr: " + entry.ieeeAddr + 
-                                " /// Model: " + entry.model + " /// Inputs: " + inputs)
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | ZigBee2MQTT Device > " + entry.name + " | changed | Name > " + name + 
+                                 " / Gateway > " + entry.gateway + 
+                                 " / ieeeAddr > " + entry.ieeeAddr + 
+                                 " / Model > " + entry.model + 
+                                 " / Inputs > " + inputs)
 
             entry.name = name
             db.session.commit()    
@@ -1106,7 +1112,7 @@ def DELETE_MQTT_DEVICE(id):
         SET_ERROR_LIST(error_list)           
     else:
         entry = GET_MQTT_DEVICE_BY_ID(id)
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> MQTT Device >>> " + entry.name + " >>> deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device > " + entry.name + " | deleted")
  
         MQTT_Devices.query.filter_by(id=id).delete()
         db.session.commit() 
@@ -1156,7 +1162,7 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
                 db.session.add(plant)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + name + " >>> added")               
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant > " + name + " | added")               
                 return ""
         return "Pflanzenlimit erreicht (25)"
 
@@ -1183,20 +1189,24 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime,
 
         try:
             # with pump_id
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
-                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Pump: " + entry.pump_key + 
-                                " /// Sensor: " + entry.sensor_key + " /// Pumptime: " + str(pumptime) + " /// Control-Sensor: " +
-                                entry.control_sensor)      
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant > " + old_name + " | changed | Name > " + entry.name + 
+                                 " / MQTT-Device > " + entry.mqtt_device.name + 
+                                 " / Pump > " + entry.pump_key + 
+                                 " / Sensor > " + entry.sensor_key + 
+                                 " / Pumptime > " + str(pumptime) + 
+                                 " / Control-Sensor > " + entry.control_sensor)      
         except:
             # without sensor_id
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + old_name + " >>> changed >>> Name: " + entry.name + 
-                                " /// MQTT-Device: " + entry.mqtt_device.name + " /// Pump: " + entry.pump_key + 
-                                " /// Pumptime: " + str(pumptime) + " /// Control-Sensor: " + entry.control_sensor)      
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant > " + old_name + " | changed | Name > " + entry.name + 
+                                 " / MQTT-Device > " + entry.mqtt_device.name + 
+                                 " / Pump > " + entry.pump_key + 
+                                 " / Sensor > " + entry.sensor_key + 
+                                 " / Pumptime > " + str(pumptime))       
 
 
 def DELETE_PLANT(plant_id):
     entry = GET_PLANT_BY_ID(plant_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Plant >>> " + entry.name + " >>> deleted")   
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant > " + entry.name + " | deleted")   
     
     Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
@@ -1242,10 +1252,12 @@ def ADD_SCHEDULER_TIME_TASK(name, task, day, hour, minute, repeat):
                     )
                 db.session.add(new_task)
                 db.session.commit()
-                
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + name + " >>> added >>> Task: " + 
-                                     task + " /// Day: " + day + " /// Hour: " + str(hour) + " /// Minute: " + str(minute) + 
-                                     " /// Repeat: " +  repeat)                
+            
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Time | Task > " + name + " | added | Task > " + task + 
+                                     " / Day > " + day + 
+                                     " / Hour > " + str(hour) + 
+                                     " / Minute > " + str(minute) + 
+                                     " / Repeat > " +  repeat)                
                 
                 return ""
 
@@ -1271,14 +1283,17 @@ def SET_SCHEDULER_TIME_TASK(id, name, task, day, hour, minute, repeat):
         entry.repeat = repeat
         db.session.commit()    
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + old_name + " >>> changed >>> Name: " + 
-                             entry.name + " /// Task: " + entry.task + " /// Day: " + entry.day + " /// Hour: " + 
-                             entry.hour + " /// Minute: " + entry.minute + " /// Repeat: " +  entry.repeat)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Time | Task > " + old_name + " | changed | Name > " + entry.name + 
+                             " / Task > " + entry.task + 
+                             " / Day > " + entry.day + 
+                             " / Hour > " + entry.hour + 
+                             " / Minute > " + entry.minute + 
+                             " / Repeat > " +  entry.repeat)
 
 
 def DELETE_SCHEDULER_TIME_TASK(task_id):
     entry = GET_SCHEDULER_TIME_TASK_BY_ID(task_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Time >>> " + entry.name + " >>> deleted")    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Time | Task > " + entry.name + " | deleted")    
     
     Scheduler_Time_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
@@ -1419,7 +1434,7 @@ def ADD_SCHEDULER_SENSOR_TASK(name, task):
                 db.session.add(new_task)
                 db.session.commit()
                 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + name + " >>> added")                
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Sensor | Task > " + name + " | added")                
                 return ""
         
         return "Aufgabenlimit erreicht (25)"
@@ -1500,33 +1515,47 @@ def SET_SCHEDULER_SENSOR_TASK(id, name, task, mqtt_device_id_1, mqtt_device_name
         db.session.commit()    
 
         if operator_main_1 == "not":
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
-                                  " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                  " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                  " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1)) 
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Sensor | Task > " + old_name + " | changed | Name > " + name + 
+                                 " / Task > " + task + 
+                                 " / MQTT-Device_1 > " + mqtt_device_name_1 + 
+                                 " / Sensor_1 > " + sensor_key_1 + 
+                                 " / Operator_1 > " + str(operator_1) + 
+                                 " / Value_1 > " +  str(value_1))  
+
                                  
         if operator_main_2 == "not":
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
-                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
-                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
-                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2))
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Sensor | Task > " + old_name + " | changed | Name > " + name + 
+                                 " / Task > " + task + 
+                                 " / MQTT-Device_1 > " + mqtt_device_name_1 + 
+                                 " / Sensor_1 > " + sensor_key_1 + 
+                                 " / Operator_1 > " + str(operator_1) + 
+                                 " / Value_1 > " +  str(value_1) + 
+                                 " / MQTT-Device_2 > " + mqtt_device_name_2 + 
+                                 " / Sensor_2 > " + sensor_key_2 + 
+                                 " / Operator_2 > " + str(operator_2) + 
+                                 " / Value_2 > " +  str(value_2)) 
+
                                    
         else:
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + old_name + 
-                                 " >>> changed >>> Name: " + name + " /// Task: " + task + 
-                                 " /// MQTT-Device_1: " + mqtt_device_name_1 + " /// Sensor_1: " + sensor_key_1 + 
-                                 " /// Operator_1: " + str(operator_1) + " /// Value_1: " +  str(value_1) + 
-                                 " /// MQTT-Device_2: " + mqtt_device_name_2 + " /// Sensor_2: " + sensor_key_2 + 
-                                 " /// Operator_2: " + str(operator_2) + " /// Value_2: " +  str(value_2) +
-                                 " /// MQTT-Device_3: " + mqtt_device_name_3 + " /// Sensor_3: " + sensor_key_3 + 
-                                 " /// Operator_3: " + str(operator_3) + " /// Value_3: " +  str(value_3))
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Sensor | Task > " + old_name + " | changed | Name > " + name + 
+                                 " / Task > " + task + 
+                                 " / MQTT-Device_1 > " + mqtt_device_name_1 + 
+                                 " / Sensor_1 > " + sensor_key_1 + 
+                                 " / Operator_1 > " + str(operator_1) + 
+                                 " / Value_1 > " +  str(value_1) + 
+                                 " / MQTT-Device_2 > " + mqtt_device_name_2 + 
+                                 " / Sensor_2 > " + sensor_key_2 + 
+                                 " / Operator_2 > " + str(operator_2) + 
+                                 " / Value_2 > " +  str(value_2) +
+                                 " / MQTT-Device_3 > " + mqtt_device_name_3 + 
+                                 " / Sensor_3 > " + sensor_key_3 + 
+                                 " / Operator_3 > " + str(operator_3) + 
+                                 " / Value_3 > " +  str(value_3))
 
 
 def DELETE_SCHEDULER_SENSOR_TASK(task_id):
     entry = GET_SCHEDULER_SENSOR_TASK_BY_ID(task_id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Scheduler >>> Sensor >>> " + entry.name + " >>> deleted")    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler Sensor | Task > " + entry.name + " | deleted")    
     
     Scheduler_Sensor_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
@@ -1583,7 +1612,7 @@ def ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active):
                 db.session.add(sensordata_job)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + name + " >>> added")                    
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job > " + name + " | added")                    
                 return ""
 
         return "Job-Limit erreicht (25)"
@@ -1607,14 +1636,16 @@ def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_id, sensor_key, always_ac
         entry.always_active = always_active
         db.session.commit()    
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> changed >>> Name: " + 
-                             entry.name + " /// Filename: " +  entry.filename + " /// MQTT-Device: " + entry.mqtt_device.name + 
-                              " /// Sensor: " + entry.sensor_key + " /// Always_Active: " + entry.always_active)    
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job > " + entry.name + " | changed | Name > " + entry.name + 
+                             " / Filename > " +  entry.filename + 
+                             " / MQTT-Device > " + entry.mqtt_device.name + 
+                             " / Sensor > " + entry.sensor_key + 
+                             " / Always_Active > " + entry.always_active)    
 
 
 def DELETE_SENSORDATA_JOB(id):
     entry = GET_SENSORDATA_JOB_BY_ID(id)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Sensordata Job >>> " + entry.name + " >>> deleted")
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job > " + entry.name + " | deleted")
  
     Sensordata_Jobs.query.filter_by(id=id).delete()
     db.session.commit()
@@ -1668,7 +1699,7 @@ def ADD_SNOWBOY_TASK(name, task):
                 db.session.add(task)
                 db.session.commit()
   
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + name + " >>> added") 
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task > " + name + " | added") 
   
                 return ""
 
@@ -1689,15 +1720,15 @@ def SET_SNOWBOY_TASK(id, name, task):
         entry.task = task
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + old_name + " >>> changed >>> Name: " +
-                             entry.name + " /// Task: " + entry.task) 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task > " + old_name + " | changed | Name > " +
+                             entry.name + " / Task > " + entry.task) 
 
 
 def DELETE_SNOWBOY_TASK(task_id):
     entry = GET_SNOWBOY_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Snowboy Task >>> " + entry.name + " >>> deleted")   
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task > " + entry.name + " | deleted")   
     except:
         pass 
       
@@ -1757,7 +1788,7 @@ def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(task, keywords, parameters):
                 db.session.add(task)
                 db.session.commit()
   
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + task + " >>> added") 
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Task > " + task + " | added") 
   
                 return ""
 
@@ -1780,15 +1811,16 @@ def SET_SPEECH_RECOGNITION_PROVIDER_TASK(id, task, keywords, parameters):
         
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + old_task + " >>> changed >>> Task: " +
-                             entry.task + " /// Keywords: " + entry.keywords + " /// Parameters: " + entry.parameters)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Task > " + old_task + " | changed | Task > " + entry.task + 
+                             " / Keywords > " + entry.keywords + 
+                             " / Parameters > " + entry.parameters)
 
 
 def DELETE_SPEECH_RECOGNITION_PROVIDER_TASK(task_id):
     entry = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> Speech Control Task >>> " + entry.name + " >>> deleted")    
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Task > " + entry.name + " | deleted")    
     except:
         pass
     
@@ -1824,7 +1856,7 @@ def ADD_USER(user_name, email, password):
     db.session.add(new_user)
     db.session.commit()
 
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + user_name + " >>> added") 
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | User > " + user_name + " | added") 
 
 
 def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_notification_error, email_notification_camera):
@@ -1845,18 +1877,19 @@ def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_
         entry.email_notification_camera = email_notification_camera
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + old_username + " >>> changed >>> Username: " +
-                             entry.username + " /// eMail: " + entry.email + " /// Role: " + role + 
-                             " /// eMail-Info: " + email_notification_info +
-                             " /// eMail-Error: " + email_notification_error +
-                             " /// eMail-Camera: " + email_notification_camera)
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User > " + old_username + " | changed | Username > " + entry.username +
+                             " / eMail > " + entry.email + 
+                             " / Role > " + role + 
+                             " / eMail-Info > " + email_notification_info +
+                             " / eMail-Error > " + email_notification_error +
+                             " / eMail-Camera > " + email_notification_camera)
 
 
 def DELETE_USER(user_id):
     entry = GET_USER_BY_ID(user_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database >>> User >>> " + entry.username + " >>> deleted")    
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User > " + entry.username + " | deleted")    
     except:
         pass
     

@@ -479,7 +479,7 @@ def get_media(filename):
         PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
         return send_from_directory(PATH_CSS, filename)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "LED: " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))
 
 
 """ ########## """
