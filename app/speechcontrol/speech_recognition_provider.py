@@ -216,7 +216,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
             
             keyword = keyword.replace(" ", "")
             
-            if keyword in answer:
+            if keyword.lower() in answer:
                 
                 try:
                     groups = GET_ALL_LED_GROUPS()
@@ -262,7 +262,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
             
             keyword = keyword.replace(" ", "")
                        
-            if keyword in answer:
+            if keyword.lower() in answer:
 
                 try:
                     groups   = GET_ALL_LED_GROUPS()
@@ -308,7 +308,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
             
             keyword = keyword.replace(" ", "")
                        
-            if keyword in answer:
+            if keyword.lower() in answer:
 
                 try:
           
