@@ -13,8 +13,8 @@ logger.setLevel(logging.DEBUG)
 TOP_DIR = os.path.dirname(os.path.abspath(__file__))
 
 RESOURCE_FILE = os.path.join(TOP_DIR, "resources/common.res")
-DETECT_DING = os.path.join(TOP_DIR, "resources/ding.wav")
-DETECT_DONG = os.path.join(TOP_DIR, "resources/dong.wav")
+DETECT_DING   = os.path.join(TOP_DIR, "resources/ding.wav")
+DETECT_DONG   = os.path.join(TOP_DIR, "resources/dong.wav")
 
 
 class RingBuffer(object):
@@ -71,20 +71,20 @@ class HotwordDetector(object):
                  sensitivity=[],
                  audio_gain=1):
 
-
         tm = type(decoder_model)
         ts = type(sensitivity)
         if tm is not list:
             decoder_model = [decoder_model]
         if ts is not list:
-            sensitivity = [sensitivity]
+            sensitivity = [sensitivity]  
+            
         model_str = ",".join(decoder_model)
 
         self.detector = snowboydetect.SnowboyDetect(
             resource_filename=resource.encode(), model_str=model_str.encode())
         self.detector.SetAudioGain(audio_gain)
         self.num_hotwords = self.detector.NumHotwords()
-
+            
         if len(decoder_model) > 1 and len(sensitivity) == 1:
             sensitivity = sensitivity*self.num_hotwords
         if len(sensitivity) != 0:
@@ -117,7 +117,7 @@ class HotwordDetector(object):
         :param float sleep_time: how much time in second every loop waits.
         :return: None
         """
-
+        
         def audio_callback(in_data, frame_count, time_info, status):
             self.ring_buffer.extend(in_data)
             play_data = chr(0) * len(in_data)
@@ -169,6 +169,7 @@ class HotwordDetector(object):
                     callback()
 
         logger.debug("finished.")
+
 
     def terminate(self):
         """

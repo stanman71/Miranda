@@ -34,7 +34,7 @@ def START_PUMP(plant_id):
         MQTT_PUBLISH(channel, "pump_3:on")  
         
     print("Start: " + pump_key)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Start Pump > " + plant.pump_key)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Start Pump - " + plant.pump_key)
         
     time.sleep(1)
   
@@ -60,7 +60,7 @@ def STOP_PUMP(plant_id):
         MQTT_PUBLISH(channel, "pump_3:off")    
         
     print("Stop: " + pump_key)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Stop Pump > " + plant.pump_key)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Stop Pump - " + plant.pump_key)
     
     time.sleep(1)
 
@@ -114,7 +114,7 @@ def WATERING_THREAD(start):
                     break   
                                          
                 else:
-                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | " + plant.name + " | Water on the Ground") 
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Water on the Ground") 
                     break
        
         else:

@@ -332,7 +332,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     else:
                         error_message = LED_TURN_OFF_ALL()   
                         if error_message != "":            
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task >>> " + answer + " | " + error_message)
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)
                             
                     break
 

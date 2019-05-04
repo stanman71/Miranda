@@ -125,10 +125,10 @@ def remove_mqtt_device(id):
 def download_mqtt_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /logs/" + filepath + " | downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/" + filepath + " | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))
              
 
 """ #################### """
@@ -276,10 +276,10 @@ def remove_zigbee2mqtt_device(id):
 def download_zigbee2mqtt_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /logs/" + filepath + " | downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/" + filepath + " | " + str(e))             
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))             
 
 
 """ ############### """
@@ -575,11 +575,11 @@ def download_hotword_file(filepath):
         print("Ungültiger Pfad angegeben")     
     try:
         path = GET_PATH() + "/app/snowboy/resources/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /app/snowboy/resources/" + filepath + " | downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /app/snowboy/resources/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /app/snowboy/resources/" + filepath + " | " + str(e)) 
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /app/snowboy/resources/" + filepath + " | " + str(e)) 
 
 
 # delete snowboy hotwords
@@ -814,7 +814,7 @@ def dashboard_settings_system_log():
 def download_system_logfile(filepath): 
     try:
         path = GET_PATH() + "/logs/"    
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /logs/" + filepath + " | downloaded")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/" + filepath + " | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))

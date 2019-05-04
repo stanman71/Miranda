@@ -62,7 +62,7 @@ def MQTT_START():
 	 
 	print("Connected to MQTT Broker: " + BROKER_ADDRESS)
 	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | started") 
-	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker > " + BROKER_ADDRESS + " | connected") 
+	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | connected") 
 	 
 	client.loop_forever()
 
@@ -352,8 +352,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_1 = sensordata.split(">>>")[1]
             
          if msg_1 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_1 + " | Message not founded")     
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_1 + " | Message not founded")     
             
 
       data_1 = json.loads(msg_1)
@@ -436,8 +436,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_1 = sensordata.split(">>>")[1]
             
          if msg_1 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_1 + " | Message not founded")     
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_1 + " | Message not founded")     
             
 
       data_1 = json.loads(msg_1)
@@ -472,8 +472,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_2 = sensordata.split(">>>")[1]
             
          if msg_2 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_2 + " | Message not founded")     
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_2 + " | Message not founded")     
 
       data_2 = json.loads(msg_2)
    
@@ -672,8 +672,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_1 = sensordata.split(">>>")[1]
             
          if msg_1 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_1 + " | Message not founded")   
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_1 + " | Message not founded")   
 
       data_1 = json.loads(msg_1)
    
@@ -707,8 +707,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_2 = sensordata.split(">>>")[1]
             
          if msg_2 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_2 + " | Message not founded")  
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_2 + " | Message not founded")  
 
       data_2 = json.loads(msg_2)
    
@@ -742,8 +742,8 @@ def SCHEDULER_SENSOR_TASK(task):
                msg_3 = sensordata.split(">>>")[1]
             
          if msg_3 == "":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + 
-                                 " | Sensor > " + device_ieeeAddr_3 + " | Message not founded")  
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + 
+                                 " | Sensor - " + device_ieeeAddr_3 + " | Message not founded")  
 
       data_3 = json.loads(msg_3)
    
@@ -1207,7 +1207,7 @@ def SCHEDULER_SENSOR_TASK(task):
       
       print(entry.name)
 
-      WRITE_LOGFILE_SYSTEM("EVENT", "Scheduler | Sensor Task > " + entry.name + " | started") 
+      WRITE_LOGFILE_SYSTEM("EVENT", "Scheduler | Sensor Task - " + entry.name + " | started") 
 
 
       # start scene
@@ -1223,7 +1223,7 @@ def SCHEDULER_SENSOR_TASK(task):
                   error_message = str(error_message)
                   error_message = error_message[1:]
                   error_message = error_message[:-1]
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + error_message)
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                   
             except:
                task = entry.task.split(":")
@@ -1235,11 +1235,11 @@ def SCHEDULER_SENSOR_TASK(task):
                   error_message = str(error_message)
                   error_message = error_message[1:]
                   error_message = error_message[:-1]                    
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + error_message)
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                      
       except Exception as e:
          print(e)
-         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + str(e))      
+         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + str(e))      
 
 
       # start program
@@ -1254,11 +1254,11 @@ def SCHEDULER_SENSOR_TASK(task):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                
       except Exception as e:
          print(e)
-         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + str(e))      
+         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + str(e))      
 
 
       # led off
@@ -1296,14 +1296,14 @@ def SCHEDULER_SENSOR_TASK(task):
                               error_message = str(error_message)
                               error_message = error_message[1:]
                               error_message = error_message[:-1]                    
-                              WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task | " + entry.name + " | " + error_message)
+                              WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                     
                         else:
-                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task | " + entry.name + " | Group > " + input_group_name + " | not founded")
+                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
                     
                         
                   except:
-                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task | " + entry.name + " | Group > " + input_group_name + " | not founded")
+                     WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
                      
                   
             if task[1] == "all":
@@ -1313,11 +1313,11 @@ def SCHEDULER_SENSOR_TASK(task):
                   error_message = str(error_message)
                   error_message = error_message[1:]
                   error_message = error_message[:-1]                    
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + error_message)
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                 
       except Exception as e:
          print(e)
-         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + str(e))      
+         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + str(e))      
 
 
       # request sensordata
@@ -1326,12 +1326,12 @@ def SCHEDULER_SENSOR_TASK(task):
             task = entry.task.split(":")
             error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
             if error_message == "":
-               WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Sensor Task > " + entry.name + " | successful")
+               WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Sensor Task - " + entry.name + " | successful")
             else:
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + error_message)
                
       except Exception as e:
          print(e)
-         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task > " + entry.name + " | " + str(e)) 
+         WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Sensor Task - " + entry.name + " | " + str(e)) 
             
 

@@ -95,9 +95,9 @@ def RESTORE_DATABASE(filename):
 def DELETE_DATABASE_BACKUP(filename):
     try:
         os.remove (PATH + '/backup/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /backup/" + filename + " | deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /backup/" + filename + " | deleted")
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /backup/" + filename + " | " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /backup/" + filename + " | " + str(e))  
 
 
 """ ########## """
@@ -126,11 +126,11 @@ def CREATE_SENSORDATA_FILE(filename):
                 filewriter.writerow(['Timestamp','Device','Sensor','Sensor_Value'])
                 csvfile.close()
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "File > /csv/" + filename + ".csv | created") 
+            WRITE_LOGFILE_SYSTEM("EVENT", "File | /csv/" + filename + ".csv | created") 
             return "" 
                 
         except Exception as e:
-            WRITE_LOGFILE_SYSTEM("ERROR", "File > /csv/" + filename + ".csv | " + str(e))
+            WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
 
     else:
         return ""
@@ -149,7 +149,7 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
             csvfile.close()
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /csv/" + filename + ".csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
 
 
 def READ_SENSORDATA_FILE(filename):
@@ -162,15 +162,15 @@ def READ_SENSORDATA_FILE(filename):
 
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /csv/" + filename + " | " + str(e))    
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + " | " + str(e))    
 
 
 def DELETE_SENSORDATA_FILE(filename):
     try:
         os.remove (PATH + '/csv/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /csv/" + filename + " | deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /csv/" + filename + " | deleted")
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /csv/" + filename + " | " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + " | " + str(e))  
 
 
 """ ####### """
@@ -237,7 +237,7 @@ def UPLOAD_HOTWORD_FILE(file):
         filename = secure_filename(file.filename)
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
         error_message_fileupload = ""
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /app/speechcontrol/snowboy/resources/" + str(file.name) + ".pmdl | uploaded")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /app/speechcontrol/snowboy/resources/" + str(file.name) + ".pmdl | uploaded")  
     else:
         error_message_fileupload = "Ungültige Dateiendung"
 
@@ -247,9 +247,9 @@ def UPLOAD_HOTWORD_FILE(file):
 def DELETE_HOTWORD_FILE(filename):
     try:
         os.remove (PATH + '/app/speechcontrol/snowboy/resources/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /app/speechcontrol/snowboy/resources/" + filename + " | deleted") 
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /app/speechcontrol/snowboy/resources/" + filename + " | deleted") 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /app/speechcontrol/snowboy/resources/" + filename + " | " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /app/speechcontrol/snowboy/resources/" + filename + " | " + str(e))  
 
 
 """ ############## """
@@ -285,17 +285,17 @@ def CREATE_LOGFILE(filename):
             
             csvfile.close()
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /logs/" + filename + ".csv | created")      
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | created")      
 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/" + filename + ".csv | " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filename + ".csv | " + str(e))  
 
         
 def RESET_LOGFILE(filename):
     if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
         os.remove (PATH + "/logs/" + filename + ".csv")
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "File > /logs/" + filename + ".csv | deleted")
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | deleted")
         
     CREATE_LOGFILE(filename)
         
@@ -313,7 +313,7 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
             csvfile.close()
       
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/log_" + gateway + ".csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))
 
 
 def READ_LOGFILE_MQTT(gateway, channel, time):   
@@ -365,7 +365,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
      
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/log_" + gateway + ".csv | " + str(e))   
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
               
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
@@ -383,7 +383,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
        
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File > /logs/log_system.csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
         
     
 def GET_LOGFILE_SYSTEM(rows):   
@@ -401,4 +401,4 @@ def GET_LOGFILE_SYSTEM(rows):
             
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File >>> /logs/log_system.csv >>> " + str(e))          
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))          

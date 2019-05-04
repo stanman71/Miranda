@@ -281,9 +281,26 @@ def CHECK_TASKS(tasks, task_type):
             if ":" in task:
                task = task.split(":") 
 
-               # check group setting
+               # check group setting 
                try:
-                  if GET_LED_GROUP_BY_NAME(task[1]):
+                  group_exist = False
+
+                  input_group_name = task[1]
+                  input_group_name = input_group_name.lower()
+
+                  # get exist group names and lower the letters
+                  all_exist_groups = GET_ALL_LED_GROUPS()
+                  
+                  for exist_group in all_exist_groups:
+                     
+                     exist_group_name       = exist_group.name
+                     exist_group_name_lower = exist_group_name.lower()
+                     
+                     # compare the formated names
+                     if input_group_name == exist_group_name_lower: 
+                        group_exist = True
+                        
+                  if group_exist == True:
                      pass
                   else:
                      list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
@@ -292,7 +309,24 @@ def CHECK_TASKS(tasks, task_type):
 
                # check scene setting    
                try:
-                  if GET_LED_SCENE_BY_NAME(task[2]):
+                  scene_exist = False
+
+                  input_scene_name = task[2]
+                  input_scene_name = input_scene_name.lower()
+
+                  # get exist scene names and lower the letters
+                  all_exist_scenes = GET_ALL_LED_SCENES()
+                  
+                  for exist_scene in all_exist_scenes:
+                     
+                     exist_scene_name       = exist_scene.name
+                     exist_scene_name_lower = exist_scene_name.lower()
+                     
+                     # compare the formated names
+                     if input_scene_name == exist_scene_name_lower: 
+                        scene_exist = True
+                        
+                  if scene_exist == True:
                      pass
                   else:
                      list_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
