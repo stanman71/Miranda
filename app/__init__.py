@@ -19,7 +19,7 @@ colorpicker(app)
 
 from app.sites import index, user_login, dashboard, led, scheduler, plants, sensordata, settings
 from app.database.database import *
-from app.components.pixel_ring import PIXEL_RING_CONTROL
+from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.mqtt_functions import MQTT_STOP_ALL_OUTPUTS

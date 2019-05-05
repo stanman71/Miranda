@@ -2,7 +2,7 @@ from app import app
 from app.components.led_control import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.pixel_ring import PIXEL_RING_CONTROL
+from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
 
 from threading import Thread
 

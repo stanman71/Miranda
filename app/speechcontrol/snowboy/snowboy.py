@@ -6,6 +6,7 @@ from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PRO
 from app.database.database import *
 from app.components.file_management import *
 from app.speechcontrol.speech_control_tasks import SNOWBOY_TASKS
+from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
 
 import sys
 import signal

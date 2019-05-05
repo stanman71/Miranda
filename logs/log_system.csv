@@ -18725,3 +18725,11 @@ Timestamp,Type,Description
 2019-05-05 22:40:30,EVENT,|Snowboy || started|
 2019-05-05 22:40:33,EVENT,|Snowboy || Detection || Task - snowboy_active|
 2019-05-05 22:40:34,EVENT,|Snowboy || Detection || Task - scene:wohnzimmer:relax:100|
+2019-05-05 22:42:41,EVENT,|MQTT || started|
+2019-05-05 22:42:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-05 22:42:45,EVENT,|Speech Recognition Provider || started|
+2019-05-05 22:42:49,ERROR,|Snowboy || name 'PIXEL_RING_CONTROL' is not defined|
+2019-05-05 22:46:23,EVENT,|MQTT || started|
+2019-05-05 22:46:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-05 22:46:27,EVENT,|Speech Recognition Provider || started|
+2019-05-05 22:46:37,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
