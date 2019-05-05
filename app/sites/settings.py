@@ -11,7 +11,7 @@ from app.components.led_control import *
 from app.database.database import *
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
-from app.components.mqtt import *
+from app.components.mqtt_functions import *
 from app.components.checks import *
 
 

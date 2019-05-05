@@ -32,6 +32,7 @@ def MQTT_CHECK_NAME_CHANGED():
 """  check settings """
 """ ############### """
 
+
 def CHECK_LED_GROUP_SETTINGS(settings):
    list_errors = []
 
@@ -59,6 +60,7 @@ def CHECK_LED_GROUP_SETTINGS(settings):
       return ""
    else:
       return list_errors
+
 
 
 def CHECK_PLANTS_SETTINGS():
@@ -103,6 +105,7 @@ def CHECK_PLANTS_SETTINGS():
       return list_errors
 
 
+
 def CHECK_SENSORDATA_JOBS_SETTINGS():
    list_errors = []
 
@@ -117,6 +120,7 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
       return ""
    else:
       return list_errors
+
 
 
 def CHECK_SCHEDULER_TIME_SETTINGS(timer_tasks): 
@@ -179,6 +183,7 @@ def CHECK_SCHEDULER_TIME_SETTINGS(timer_tasks):
       error_message_settings = list_errors_settings
 
    return error_message_settings
+
 
 
 def CHECK_SCHEDULER_SENSOR_SETTINGS(sensor_tasks): 
@@ -258,6 +263,31 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(sensor_tasks):
    return error_message_settings
 
 
+
+def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
+   list_errors = []
+
+   if settings.snowboy_hotword == "":
+      list_errors.append("Kein Snowboy Hotword angegeben") 
+   if settings.speech_recognition_provider == "":
+      list_errors.append("Keinen Provider angegeben")     
+   if settings.speech_recognition_provider_key == "":
+      list_errors.append("Keinen Key angegeben")
+      
+   # check hotword files exist
+   hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+   
+   if hotword_file not in GET_ALL_HOTWORD_FILES():
+      list_errors.append("Snowboy Hotword " + hotword_file + " nicht vorhanden")
+
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors   
+
+
+
 """ ################### """
 """     check tasks     """
 """ ################### """
@@ -328,8 +358,10 @@ def CHECK_TASKS(tasks, task_type):
                         
                   if scene_exist == True:
                      pass
+                     
                   else:
                      list_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
+                     
                except:
                   list_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
 
@@ -360,8 +392,10 @@ def CHECK_TASKS(tasks, task_type):
                try:
                   if GET_LED_GROUP_BY_NAME(task[1]):
                      pass
+                     
                   else:
-                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])                     
+                     list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
+                                       
                except:
                   list_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")        
 
@@ -369,9 +403,11 @@ def CHECK_TASKS(tasks, task_type):
                try:
                   if GET_LED_PROGRAM_BY_NAME(task[2]):
                      continue
+                     
                   else:
                      list_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
                      continue
+                     
                except:
                   list_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
                   continue  
@@ -403,6 +439,8 @@ def CHECK_TASKS(tasks, task_type):
                      try:
                         all_exist_group = GET_ALL_LED_GROUPS()
                         
+                        group_exist = False
+                        
                         for exist_group in all_exist_group:
                            
                            exist_group_name = exist_group.name
@@ -410,10 +448,13 @@ def CHECK_TASKS(tasks, task_type):
                            
                            # compare the formated names
                            if input_group_name == exist_group_name: 
-                              pass
-                              
-                           else:
-                              list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)
+                              group_exist = True
+                          
+                        if group_exist == True:
+                           pass
+                          
+                        else:
+                           list_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)
                               
                         
                      except:
@@ -426,6 +467,7 @@ def CHECK_TASKS(tasks, task_type):
                try:
                   if task[1] == "all": 
                      continue
+                     
                except:
                   pass
                
@@ -479,23 +521,3 @@ def CHECK_TASKS(tasks, task_type):
    else:
       return list_errors
 
-
-""" ################################## """
-"""  check speech recognition provider """
-""" ################################## """
-
-def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
-   list_errors = []
-
-   if settings.snowboy_hotword == "":
-      list_errors.append("Kein Snowboy Hotword angegeben") 
-   if settings.speech_recognition_provider == "":
-      list_errors.append("Keinen Provider angegeben")     
-   if settings.speech_recognition_provider_key == "":
-      list_errors.append("Keinen Key angegeben")
-
-
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors   

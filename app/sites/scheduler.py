@@ -5,7 +5,7 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.scheduler_time import *
+from app.components.scheduler_tasks import *
 from app.components.checks import *
 
 

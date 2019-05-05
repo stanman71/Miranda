@@ -471,6 +471,35 @@ def dashboard_sensordata_statistics():
                 error_message = "Datei konnte nicht verarbeitet werden"
         
 
+        # create graph
+
+        """
+
+        import pandas as pd
+        import numpy as np
+        import datetime as dt
+        import matplotlib.pyplot as plt
+        import matplotlib as pltt
+        import time
+        from matplotlib.ticker import AutoMinorLocator
+
+        df = pd.read_csv("C:/Users/Stefan/Desktop/Python_Projects-master/Machine Learning/Regression/CSV/testfile.csv", index_col=[0],date_parser=lambda x: dt.datetime.strptime(x, "%Y-%m-%d %H:%M:%S"))
+
+        df.head()
+
+        #df.reset_index(level=0, inplace=True)
+
+        df['Timestamp'] = df.index
+
+        df1 = df[['Sensor_Value']]
+        print(df1)
+
+        df1.plot()
+        plt.show()
+
+        """
+
+
     dropdown_list_files = GET_SENSORDATA_FILES()
 
     return render_template('dashboard_sensordata_statistics.html', 

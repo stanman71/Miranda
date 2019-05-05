@@ -127,7 +127,7 @@ def SNOWBOY_START(modus):
          detector.terminate()
 
       else:
-         WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Provider | Hotword - " + hotword_file + " | not founded")
+         WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Provider | Snowboy Hotword - " + hotword_file + " | not founded")
 
 """ ############# """
 """ snowboy tasks """

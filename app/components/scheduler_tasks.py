@@ -1,12 +1,40 @@
+import paho.mqtt.client as mqtt
+import datetime
+import time
+import json
+
 from app import app
 from app.components.led_control import *
 from app.database.database import *
 from app.components.watering_control import START_WATERING_THREAD
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
-from app.components.mqtt import *
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
+from app.components.mqtt_functions import *
 
-import datetime
 
+""" #################### """
+""" mqtt publish message """
+""" #################### """
+
+BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
+
+def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
+
+
+    def on_publish(client, userdata, mid):
+        print ('Message Published...')
+
+    client = mqtt.Client()
+    client.on_publish = on_publish
+    client.connect(BROKER_ADDRESS) 
+    client.publish(MQTT_TOPIC,MQTT_MSG)
+    client.disconnect()
+
+    return ""
+
+
+""" ############## """
+""" scheduler time """
+""" ############## """
 
 from flask_apscheduler import APScheduler
 
@@ -19,9 +47,9 @@ def scheduler_time():
     SCHEDULER_TIME_TASKS(entries)
 
 
-""" ############## """
-""" scheduler time """
-""" ############## """
+""" #################### """
+""" scheduler time tasks """
+""" #################### """
 
 def SCHEDULER_TIME_TASKS(entries):
 
@@ -271,4 +299,139 @@ def SCHEDULER_TIME_TASKS(entries):
          if entry.repeat == "":
             DELETE_SCHEDULER_TIME_TASK(entry.id)
 
+
+""" ###################### """
+""" scheduler sensor tasks """
+""" ###################### """
+
+
+def SCHEDULER_SENSOR_TASKS(entry):
+
+   print(entry.name)
+
+   WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Sensor Task - ' + entry.name + ' | started') 
+
+
+   # start scene
+   try:
+      if "scene" in entry.task:
+         try:
+            task = entry.task.split(":")
+            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+            error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
+            
+            if error_message != "":
+               error_message = str(error_message)
+               error_message = error_message[1:]
+               error_message = error_message[:-1]
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+             
+         except:
+            task = entry.task.split(":")
+            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
+            error_message = LED_START_SCENE(int(group_id), int(scene_id))   
+            
+            if error_message != "":
+               error_message = str(error_message)
+               error_message = error_message[1:]
+               error_message = error_message[:-1]                    
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+                
+   except Exception as e:
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + str(e))      
+
+
+   # start program
+   try:
+      if "program" in entry.task:
+         task = entry.task.split(":")
+         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+         program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
+         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]                    
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+          
+   except Exception as e:
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + str(e))      
+
+
+   # led off
+   try:
+      if "led_off" in entry.task:
+         task = entry.task.split(":")
+         if task[1] == "group":
+            
+            # get input group names and lower the letters
+            try:
+                list_groups = task[2].split(",")
+            except:
+                list_groups = [task[2]]
+
+            for input_group_name in list_groups:
+                
+               input_group_name = input_group_name.replace(" ", "")
+               input_group_name = input_group_name.lower()
+
+               # get exist group names and lower the letters
+               try:
+                  all_exist_group = GET_ALL_LED_GROUPS()
+                  
+                  for exist_group in all_exist_group:
+                     
+                     exist_group_name       = exist_group.name
+                     exist_group_name_lower = exist_group_name.lower()
+                     
+                     # compare the formated names
+                     if input_group_name == exist_group_name_lower:                       
+                        group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
+                        error_message = LED_TURN_OFF_GROUP(int(group_id))
+                  
+                        if error_message != "":
+                           error_message = str(error_message)
+                           error_message = error_message[1:]
+                           error_message = error_message[:-1]                    
+                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+                 
+                     else:
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
+                 
+                     
+               except:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
+                  
+               
+         if task[1] == "all":
+            error_message = LED_TURN_OFF_ALL()   
+            
+            if error_message != "":
+               error_message = str(error_message)
+               error_message = error_message[1:]
+               error_message = error_message[:-1]                    
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+             
+   except Exception as e:
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + str(e))      
+
+
+   # request sensordata
+   try:
+      if "request_sensordata" in entry.task:
+         task = entry.task.split(":")
+         error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
+         if error_message == "":
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task - " + entry.name + " | successful")
+         else:
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + error_message)
+   except Exception as e:
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + entry.name + " | " + str(e))   
 

@@ -1,3 +1,5 @@
+import paho.mqtt.client as mqtt
+
 import math
 import re
 import time
@@ -6,8 +8,28 @@ import json
 
 from app import app
 from app.database.database import *
-from app.components.mqtt import MQTT_PUBLISH
-from app.components.file_management import READ_LOGFILE_MQTT
+from app.components.file_management import READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
+
+
+""" #################### """
+""" mqtt publish message """
+""" #################### """
+
+BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
+
+def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
+
+
+    def on_publish(client, userdata, mid):
+        print ('Message Published...')
+
+    client = mqtt.Client()
+    client.on_publish = on_publish
+    client.connect(BROKER_ADDRESS) 
+    client.publish(MQTT_TOPIC,MQTT_MSG)
+    client.disconnect()
+
+    return ""
 
 
 """ ############# """
@@ -160,6 +182,8 @@ def LED_TURN_OFF_GROUP(group_id):
 
         try:
             group = GET_LED_GROUP_BY_ID(group_id)
+            
+            print(group.led_name_1)
 
             # led 1
             channel = "SmartHome/zigbee2mqtt/" + group.led_name_1 + "/set"
