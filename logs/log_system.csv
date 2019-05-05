@@ -18713,3 +18713,15 @@ Timestamp,Type,Description
 2019-05-05 22:27:46,EVENT,|MQTT || started|
 2019-05-05 22:27:46,EVENT,|MQTT || Broker - localhost || connected|
 2019-05-05 22:27:50,EVENT,|Speech Recognition Provider || started|
+2019-05-05 22:31:46,EVENT,|MQTT || started|
+2019-05-05 22:31:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-05 22:31:50,EVENT,|Speech Recognition Provider || started|
+2019-05-05 22:36:03,EVENT,|MQTT || started|
+2019-05-05 22:36:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-05 22:36:07,EVENT,|Speech Recognition Provider || started|
+2019-05-05 22:36:16,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-05 22:40:26,EVENT,|MQTT || started|
+2019-05-05 22:40:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-05 22:40:30,EVENT,|Snowboy || started|
+2019-05-05 22:40:33,EVENT,|Snowboy || Detection || Task - snowboy_active|
+2019-05-05 22:40:34,EVENT,|Snowboy || Detection || Task - scene:wohnzimmer:relax:100|
