@@ -6,7 +6,7 @@ from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PRO
 from app.database.database import *
 from app.components.file_management import *
 from app.speechcontrol.speech_control_tasks import SNOWBOY_TASKS
-from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
+from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 
 import sys
 import signal
@@ -108,10 +108,11 @@ def SNOWBOY_START(modus):
          
          def detect_callback():
             detector.terminate()
-            PIXEL_RING_CONTROL("on")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "on")
             SPEECH_RECOGNITION_PROVIDER()
             time.sleep(5)
-            PIXEL_RING_CONTROL("off")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+
             detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
          WRITE_LOGFILE_SYSTEM("EVENT", "Speech Recognition Provider | started") 

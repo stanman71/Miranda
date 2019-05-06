@@ -261,10 +261,6 @@ def GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(settings):
     return (PATH + "/app/speechcontrol/snowboy/resources/" + hotword_file)
 
 
-
-
-
-
 """ #### """
 """ logs """
 """ #### """

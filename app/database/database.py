@@ -193,10 +193,11 @@ class Sensordata_Jobs(db.Model):
     always_active    = db.Column(db.String(50))
 
 class Snowboy_Settings(db.Model):
-    __tablename__ = 'snowboy_settings'
-    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    sensitivity = db.Column(db.Integer)
-    delay       = db.Column(db.Integer)
+    __tablename__  = 'snowboy_settings'
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    sensitivity    = db.Column(db.Integer)
+    delay          = db.Column(db.Integer)
+    microphone_led = db.Column(db.String(50))
 
 class Snowboy_Tasks(db.Model):
     __tablename__ = 'snowboy_tasks'
@@ -204,8 +205,8 @@ class Snowboy_Tasks(db.Model):
     name = db.Column(db.String(50), unique = True)
     task = db.Column(db.String(100))
 
-class Speech_Recognition_Provider(db.Model):
-    __tablename__ = 'speech_recognition_provider'
+class Speech_Recognition_Provider_Settings(db.Model):
+    __tablename__ = 'speech_recognition_provider_settings'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     snowboy_hotword               = db.Column(db.String(100))
     speech_recognition_provider          = db.Column(db.String(100))
@@ -301,8 +302,8 @@ if Snowboy_Settings.query.filter_by().first() is None:
 
 
 # create default speech control settings
-if Speech_Recognition_Provider.query.filter_by().first() is None:
-    speech_recognition_provider = Speech_Recognition_Provider(
+if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
+    speech_recognition_provider = Speech_Recognition_Provider_Settings(
     )
     db.session.add(speech_recognition_provider)
     db.session.commit()
@@ -1694,10 +1695,11 @@ def GET_SNOWBOY_SETTINGS():
     return Snowboy_Settings.query.filter_by().first()
     
 
-def SET_SNOWBOY_SETTINGS(sensitivity, delay):
+def SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone_led):
     entry = Snowboy_Settings.query.filter_by().first()
     entry.sensitivity = sensitivity
     entry.delay = delay
+    entry.microphone_led = microphone_led
     db.session.commit() 
 
 
@@ -1776,12 +1778,12 @@ def DELETE_SNOWBOY_TASK(task_id):
 
 
 def GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS():
-    return Speech_Recognition_Provider.query.filter_by().first()
+    return Speech_Recognition_Provider_Settings.query.filter_by().first()
     
     
 
 def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, speech_recognition_provider_username, speech_recognition_provider_key):
-    entry = Speech_Recognition_Provider.query.filter_by().first()
+    entry = Speech_Recognition_Provider_Settings.query.filter_by().first()
     entry.snowboy_hotword                      = snowboy_hotword
     entry.speech_recognition_provider          = speech_recognition_provider
     entry.speech_recognition_provider_username = speech_recognition_provider_username
@@ -1789,7 +1791,7 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
     db.session.commit() 
 
 
-def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_TASK(t):
+def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_TASK(task):
     return Speech_Recognition_Provider_Tasks.query.filter_by(task=task).first()
 
 

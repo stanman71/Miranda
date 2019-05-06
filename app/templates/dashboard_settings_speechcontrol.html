@@ -100,9 +100,6 @@
                 </div>
               </div>
               <br>
-
-<section id="snowboy_settings"></section> 
-
               <div class="pretty p-default p-round">
                 <input {{check_value_speechcontrol[2]}} type="radio" value="False" name="radio_speechcontrol">
                 <div class="state">
@@ -117,6 +114,8 @@
           </form>       
         </div>  
       </div>           
+
+<section id="snowboy_settings"></section> 
 
 <!-- ------------------------ -->
 <!-- GENERAL SNOWBOY SETTINGS -->
@@ -154,11 +153,34 @@
               <div class="slidecontainer">                        
                 <input id="input_delay" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
               </div>
-            </div>         
+            </div>    
+            <div class="well well-sm">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-2">
+                Mikrofon LED:
+                </div>
+              <div class="col-sm-1">   
+                <select class="btn btn-default dropdown-toggle" name="set_microphone_led">
+                    {% if microphone_led != "" %}
+                      <option value= "{{ microphone_led }}" > {{ microphone_led }} </option>
+                      <option value= "{{ microphone_led }}" > -------------------- </option> 
+                    {% else %}     
+                      <option value= "{{ "" }}" > Mikrofon LED wählen: </option>
+                      <option value= "{{ "" }}" > -------------------- </option> 
+                    {% endif %}   
+                    {% for each in dropdown_list_microphone_led_options %}
+                    <option value="{{ each }}"> {{ each }} </option>
+                    {% endfor %}
+                    <option value= "None" > -------------------- </option> 
+                    <option value= "None" > None </option> 
+                  </select> 
+                </div>   
+              </div> 
+            </div>    
 
 <section id="table_tasks"></section> 
 
-            <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#snowboy_settings'" class="btn btn-default" name="change_settings" value="Einstellungen speichern" />       
+            <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#snowboy_settings'" class="btn btn-default" name="change_snowboy_settings" value="Einstellungen speichern" />       
           </form>  
         </div>                    
       </div> 
@@ -227,7 +249,7 @@
               </tbody>
             </table>  
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_snowboy_task" value="Änderungen speichern"/> 
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_snowboy_tasks" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  
@@ -461,7 +483,7 @@
               </tbody>
             </table>  
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table'" class="btn btn-default" name="change_speech_recognition_provider_task" value="Änderungen speichern"/> 
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table'" class="btn btn-default" name="change_speech_recognition_provider_tasks" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  

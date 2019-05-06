@@ -2,7 +2,7 @@ from app import app
 from app.components.led_control import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
+from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 
 from threading import Thread
 
@@ -15,147 +15,154 @@ snowboy_detect_on = False
 
 def SNOWBOY_TASKS(entry):
    
-   global snowboy_detect_on
-   
-   WRITE_LOGFILE_SYSTEM("EVENT", 'Snowboy | Detection | Task - ' + str(entry.task))
-   
-   # activate command mode
-   if "snowboy_active" in entry.task:
-      snowboy_detect_on = True
-      PIXEL_RING_CONTROL("on")
+    global snowboy_detect_on
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", 'Snowboy | Detection | Task - ' + str(entry.task))
+    
+    # activate command mode
+    if "snowboy_active" in entry.task:
+        snowboy_detect_on = True
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "on")
 
-      # set snowboy_detect_on to False after selected delay
-      class waiter(Thread):
-         def run(self):
-            global detect
-            time.sleep(GET_SNOWBOY_SETTINGS().delay)
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")
-      waiter().start()
-  
-   try:  
-      # start scene  
-      if "scene" in entry.task and snowboy_detect_on == True:
-         try:
-            task = entry.task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
-            error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
-               
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")         
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)     
-         
-         except:
-            task = entry.task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
-            error_message = LED_START_SCENE(int(group_id), int(scene_id))   
-            
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")   
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
-               
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))     
-         
-   try:
-      # start program
-      if "program" in entry.task and snowboy_detect_on == True:
-         task = entry.task.split(":")
-         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-         program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
-         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
-         
-         snowboy_detect_on = False
-         PIXEL_RING_CONTROL("off")   
-         
-         if error_message != "":
-            error_message = str(error_message)
-            error_message = error_message[1:]
-            error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
-         
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))     
-     
+        # set snowboy_detect_on to False after selected delay
+        class waiter(Thread):
+            def run(self):
+                global snowboy_detect_on
+                time.sleep(GET_SNOWBOY_SETTINGS().delay)
+                snowboy_detect_on = False
+                MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
 
-   # led off
-   try:
-      if "led_off" in entry.task:
-         task = entry.task.split(":")
-         if task[1] == "group":
-            
-            snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")             
-            
-            # get input group names and lower the letters
+        waiter().start()
+    
+         
+    # start scene  
+    try:
+        if "scene" in entry.task and snowboy_detect_on == True:
             try:
-                list_groups = task[2].split(",")
-            except:
-                list_groups = [task[2]]
-
-            for input_group_name in list_groups:
+                task = entry.task.split(":")
+                group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+                scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+                error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
                 
-               input_group_name = input_group_name.replace(" ", "")
-               input_group_name = input_group_name.lower()
-
-               # get exist group names and lower the letters
-               try:
-                  all_exist_group = GET_ALL_LED_GROUPS()
-                  
-                  for exist_group in all_exist_group:
-                     
-                     exist_group_name       = exist_group.name
-                     exist_group_name_lower = exist_group_name.lower()
-                     
-                     # compare the formated names
-                     if input_group_name == exist_group_name_lower:                       
-                        group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
-                        error_message = LED_TURN_OFF_GROUP(int(group_id))
-                  
-                        if error_message != "":
-                           error_message = str(error_message)
-                           error_message = error_message[1:]
-                           error_message = error_message[:-1]                    
-                           WRITE_LOGFILE_SYSTEM("ERROR", "SSnowBoy | Task - " + entry.name + " | " + error_message)
-                 
-                     else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
-                 
-                     
-               except:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
-                  
-               
-         if task[1] == "all":
-            error_message = LED_TURN_OFF_ALL()   
+                if error_message != "":
+                    error_message = str(error_message)
+                    error_message = error_message[1:]
+                    error_message = error_message[:-1]
+                    WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)     
             
+            except:
+                task = entry.task.split(":")
+                group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+                scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
+                error_message = LED_START_SCENE(int(group_id), int(scene_id))   
+                
+                if error_message != "":
+                    error_message = str(error_message)
+                    error_message = error_message[1:]
+                    error_message = error_message[:-1]                    
+                    WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
+                    
             snowboy_detect_on = False
-            PIXEL_RING_CONTROL("off")            
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+        
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))     
+        
+        snowboy_detect_on = False
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+    
+
+    # start program
+    try:
+        if "program" in entry.task and snowboy_detect_on == True:
+            task = entry.task.split(":")
+            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+            program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
+            error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
             
             if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                   
-               WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
-      
-             
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))    
+                error_message = str(error_message)
+                error_message = error_message[1:]
+                error_message = error_message[:-1]                    
+                WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
+                
+            snowboy_detect_on = False
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+    
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))    
+        
+        snowboy_detect_on = False
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off") 
+            
+
+    # led off
+    try:
+        if "led_off" in entry.task:
+            task = entry.task.split(":")
+            if task[1] == "group":
+
+                # get input group names and lower the letters
+                
+                try:
+                    list_groups = task[2].split(",")
+                except:
+                    list_groups = [task[2]]
+
+                for input_group_name in list_groups:
+                    
+                    input_group_name = input_group_name.replace(" ", "")
+                    input_group_name = input_group_name.lower()
+
+                # get exist group names and lower the letters
+                try:
+                    all_exist_group = GET_ALL_LED_GROUPS()
+                    
+                    for exist_group in all_exist_group:
+                        
+                        exist_group_name       = exist_group.name
+                        exist_group_name_lower = exist_group_name.lower()
+                        
+                        # compare the formated names
+                        if input_group_name == exist_group_name_lower:                       
+                            group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
+                            error_message = LED_TURN_OFF_GROUP(int(group_id))
+                    
+                            if error_message != "":
+                                error_message = str(error_message)
+                                error_message = error_message[1:]
+                                error_message = error_message[:-1]                    
+                                WRITE_LOGFILE_SYSTEM("ERROR", "SSnowBoy | Task - " + entry.name + " | " + error_message)
+                    
+                        else:
+                            WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
+                    
+                        
+                except:
+                    WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | Group - " + input_group_name + " | not founded")
+                    
+            
+            if task[1] == "all":
+                error_message = LED_TURN_OFF_ALL()   
+
+                if error_message != "":
+                    error_message = str(error_message)
+                    error_message = error_message[1:]
+                    error_message = error_message[:-1]                   
+                    WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
+                    
+            snowboy_detect_on = False
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+
+            
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))    
+        
+        snowboy_detect_on = False
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
 
 
 """ ######################## """
@@ -203,9 +210,6 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                         if scene.name.lower() in answer:
                             scene_id = scene.id   
 
-                    print(group_id)
-                    print(scene_id)
-
                     if group_id != None and scene_id != None:                    
                         error_message = LED_START_SCENE(int(group_id), int(scene_id))            
                         if error_message != "":
@@ -248,9 +252,6 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     for program in programs:
                         if program.name.lower() in answer:
                             program_id = program.id   
-
-                    print(group_id)
-                    print(program_id)
 
                     if group_id != None and program_id != None:                    
                         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))            

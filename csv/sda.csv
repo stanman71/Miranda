@@ -175,3 +175,4 @@ Timestamp,Device,Sensor,Sensor_Value
 2019-05-05 19:00:11,0x88888,humidity,35.0
 2019-05-05 20:00:11,0x88888,humidity,35.0
 2019-05-05 21:00:12,0x88888,humidity,35.0
+2019-05-06 19:00:11,0x88888,humidity,36.0

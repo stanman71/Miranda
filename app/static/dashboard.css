@@ -148,3 +148,15 @@ body {
 .glyphicon{
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
 }
+
+.img-container {
+  position:relative;
+  padding-top:66.59%;
+}
+
+img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+}

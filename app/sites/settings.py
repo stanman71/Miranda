@@ -144,6 +144,7 @@ def dashboard_settings_zigbee2mqtt():
     error_message_table = ""
     check_value_zigbee2mqtt = ["", ""]
     check_value_pairing = ["", ""]
+    zigbee_topology_show = False
 
     if request.method == "POST":     
         # change mqtt settings   
@@ -217,7 +218,10 @@ def dashboard_settings_zigbee2mqtt():
             if request.form.get("update_zigbee2mqtt_devices") is not None:
                 MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
-                
+            # request zigbee topology
+            if request.form.get("request_zigbee_topology") is not None: 
+                zigbee_topology_show = True
+
             # change pairing setting
             if request.form.get("set_pairing") is not None: 
                 setting_pairing = str(request.form.get("radio_pairing"))
@@ -253,7 +257,8 @@ def dashboard_settings_zigbee2mqtt():
                             check_value_zigbee2mqtt=check_value_zigbee2mqtt,  
                             check_value_pairing=check_value_pairing,
                             zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
-                            zigbee2mqtt_setting=zigbee2mqtt_setting,                  
+                            zigbee2mqtt_setting=zigbee2mqtt_setting, 
+                            zigbee_topology_show=zigbee_topology_show,                 
                             active02="active",
                             timestamp=timestamp,
                             )
@@ -300,6 +305,7 @@ def dashboard_settings_speechcontrol():
     error_message_speech_recognition_provider_settings = ""
     sensitivity = ""
     delay = ""
+    microphone_led = ""
     check_value_speechcontrol = ["", "", ""]
     snowboy_name = ""
     snowboy_task = ""   
@@ -347,8 +353,9 @@ def dashboard_settings_speechcontrol():
                 WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
                 
         if request.method == 'POST':
-            # change settings
-            if request.form.get("change_settings") is not None: 
+
+            # change snowboy settings
+            if request.form.get("change_snowboy_settings") is not None: 
                 
                 # check sensitivity
                 sensitivity = request.form.get("set_sensitivity")
@@ -362,9 +369,12 @@ def dashboard_settings_speechcontrol():
                 if delay != "":     
                     delay = request.form.get("set_delay") 
                 else:
-                    delay = GET_SNOWBOY_SETTINGS().delay                    
+                    delay = GET_SNOWBOY_SETTINGS().delay  
+
+                # microphone_led
+                microphone_led = request.form.get("set_microphone_led")                                            
              
-                SET_SNOWBOY_SETTINGS(sensitivity, delay)  
+                SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone_led)  
 
             #########
             # snowboy
@@ -388,7 +398,7 @@ def dashboard_settings_speechcontrol():
                     snowboy_task = "" 
 
             # change snowboy tasks
-            if request.form.get("change_snowboy_task") != None: 
+            if request.form.get("change_snowboy_tasks") != None: 
                 for i in range (1,26):
 
                     if request.form.get("set_snowboy_name_" + str(i)) != None:  
@@ -438,7 +448,7 @@ def dashboard_settings_speechcontrol():
                     speech_recognition_provider_parameters = ""
 
             # change speech_recognition_provider tasks
-            if request.form.get("change_speech_recognition_provider_task") != None: 
+            if request.form.get("change_speech_recognition_provider_tasks") != None: 
                 for i in range (1,26):
 
                     if request.form.get("set_speech_recognition_provider_task_" + str(i)) != None:  
@@ -464,7 +474,7 @@ def dashboard_settings_speechcontrol():
                                            
                         SET_SPEECH_RECOGNITION_PROVIDER_TASK(i, speech_recognition_provider_task, speech_recognition_provider_keywords, speech_recognition_provider_parameters)
 
-
+            # change speech_recognition_provider settings
             if request.form.get("set_speech_recognition_provider_settings") != None: 
                 
                 snowboy_hotword                      = request.form.get("set_snowboy_hotword")        
@@ -489,23 +499,25 @@ def dashboard_settings_speechcontrol():
                     error_message_fileupload = UPLOAD_HOTWORD_FILE(file)
 
 
-    # general snowboy settings
+    # snowboy settings
     speechcontrol_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
-    sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
-    delay = GET_SNOWBOY_SETTINGS().delay
+    sensitivity           = GET_SNOWBOY_SETTINGS().sensitivity
+    delay                 = GET_SNOWBOY_SETTINGS().delay
+    microphone_led        = GET_SNOWBOY_SETTINGS().microphone_led
+
+    dropdown_list_microphone_led_options = ["ReSpeaker 2-Mics Pi HAT", "ReSpeaker Mic 4 Array v2.0"]   
 
     # snowboy only
-    snowboy_task_list = GET_ALL_SNOWBOY_TASKS()
-    hotword_file_list = GET_ALL_HOTWORD_FILES()
+    snowboy_task_list           = GET_ALL_SNOWBOY_TASKS()
+    hotword_file_list           = GET_ALL_HOTWORD_FILES()
     error_message_snowboy_tasks = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
     error_message_hotword       = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
     # speech_recognition_provider only
-
-    snowboy_hotword = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
-    speech_recognition_provider = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
+    snowboy_hotword                      = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+    speech_recognition_provider          = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
     speech_recognition_provider_username = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
-    speech_recognition_provider_key = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
+    speech_recognition_provider_key      = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
 
     speech_recognition_provider_task_list = GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS()
 
@@ -531,6 +543,8 @@ def dashboard_settings_speechcontrol():
                             snowboy_task_list=snowboy_task_list,
                             sensitivity=sensitivity,
                             delay=delay,
+                            microphone_led=microphone_led,
+                            dropdown_list_microphone_led_options=dropdown_list_microphone_led_options,
 
                             snowboy_name=snowboy_name,
                             snowboy_task=snowboy_task,

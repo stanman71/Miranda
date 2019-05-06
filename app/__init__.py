@@ -5,32 +5,34 @@ from flask_bootstrap import Bootstrap
 
 from app.components.colorpicker_local import colorpicker
 
-
 """ ###### """
 """ flasks """
 """ ###### """
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
 colorpicker(app)
 
 from app.sites import index, user_login, dashboard, led, scheduler, plants, sensordata, settings
 from app.database.database import *
-from app.speechcontrol.pixel_ring import PIXEL_RING_CONTROL
+from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
 from app.components.mqtt import MQTT_PUBLISH
 from app.components.mqtt_functions import MQTT_STOP_ALL_OUTPUTS
 
 
 # deactivate pixel_ring
-PIXEL_RING_CONTROL("off")
-
+MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
 
 # turn_off all outputs
-MQTT_STOP_ALL_OUTPUTS()
+if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
+    try:    
+        MQTT_STOP_ALL_OUTPUTS()
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
 
 
 # start flask
