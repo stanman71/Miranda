@@ -12,7 +12,7 @@ const char* mqtt_server = "";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
-char msg[100];
+char msg[200];
 char path[50];
 int value = 0;
 
@@ -74,7 +74,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if(check_ieeeAddr == "devices"){
 
         // create msg  
-        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\",\"model\":\"envi_sensor\"," +
+        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," +
+                         "\"model\":\"envi_sensor\"," +
+                         "\"device_type\":\"sensor\"," +
+                         "\"description\":\"Raumsensor (Feuchtigkeit / Temperatur / Licht)\"," +   
                          "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
         char attributes[200];
         payload.toCharArray( msg, 200 );
@@ -101,8 +104,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
                              ",\"humidity\":" + STR_humidity + 
                              ",\"light\":" + STR_light + "}";
 
-        char attributes_msg[100];
-        payload_msg.toCharArray( msg, 100 );
+        char attributes_msg[200];
+        payload_msg.toCharArray( msg, 200 );
 
         // create channelpath   
         String payload_path = "SmartHome/mqtt/" + ieeeAddr;

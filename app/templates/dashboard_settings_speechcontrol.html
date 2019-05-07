@@ -157,18 +157,18 @@
             <div class="well well-sm">
               <div class="row justify-content-md-center">
                 <div class="col-sm-2">
-                Mikrofon LED:
+                Mikrofon:
                 </div>
               <div class="col-sm-1">   
-                <select class="btn btn-default dropdown-toggle" name="set_microphone_led">
-                    {% if microphone_led != "" %}
-                      <option value= "{{ microphone_led }}" > {{ microphone_led }} </option>
-                      <option value= "{{ microphone_led }}" > -------------------- </option> 
+                <select class="btn btn-default dropdown-toggle" name="set_microphone">
+                    {% if microphone != "" %}
+                      <option value= "{{ microphone }}" > {{ microphone }} </option>
+                      <option value= "{{ microphone }}" > -------------------- </option> 
                     {% else %}     
-                      <option value= "{{ "" }}" > Mikrofon LED wählen: </option>
+                      <option value= "{{ "" }}" > Mikrofon wählen: </option>
                       <option value= "{{ "" }}" > -------------------- </option> 
                     {% endif %}   
-                    {% for each in dropdown_list_microphone_led_options %}
+                    {% for each in dropdown_list_microphone_options %}
                     <option value="{{ each }}"> {{ each }} </option>
                     {% endfor %}
                     <option value= "None" > -------------------- </option> 

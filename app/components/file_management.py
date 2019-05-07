@@ -12,10 +12,6 @@ from app import app
 from app.database.database import *
 
 
-""" ########### """
-""" global path """
-""" ########### """
-
 # windows
 if os.name == "nt":                 
     PATH = os.path.abspath("") 
@@ -30,24 +26,143 @@ def GET_PATH():
     return (PATH)
 
 
-""" ########### """
-""" config file """
-""" ########### """
+""" #### """
+""" logs """
+""" #### """
 
-with open(PATH + "/app/config.yaml", 'r') as cfg:
-    yamlcfg=yaml.load(cfg)
+def CREATE_LOGFILE(filename):
+    try:
+        # create csv file
+        file = PATH + "/logs/" + filename + ".csv"
+        with open(file, 'w', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
-# print check
-print("Version: " + str((yamlcfg['config']['version'])))
+            if filename == "log_mqtt":                   
+                filewriter.writerow(['Timestamp','Channel','Message'])
+            if filename == "log_zigbee2mqtt":                   
+                filewriter.writerow(['Timestamp','Channel','Message'])                
+            if filename == "log_system":                   
+                filewriter.writerow(['Timestamp','Type','Description'])                
+            
+            csvfile.close()
 
-def GET_CONFIG_VERSION():
-    return (str((yamlcfg['config']['version'])))
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | created")      
 
-def GET_CONFIG_MQTT_BROKER():
-    return str((yamlcfg['config']['mqtt_broker']))
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filename + ".csv | " + str(e))  
 
-def GET_CONFIG_DATABASE():
-    return str((yamlcfg['config']['database']))
+        
+def RESET_LOGFILE(filename):
+    if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
+        os.remove (PATH + "/logs/" + filename + ".csv")
+
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | deleted")
+        
+    CREATE_LOGFILE(filename)
+        
+
+def WRITE_LOGFILE_MQTT(gateway, channel, msg):
+    if os.path.isfile(PATH + "/logs/log_" + gateway + ".csv") is False:
+        CREATE_LOGFILE("log_" + gateway)
+
+    try:
+        # open csv file
+        file = PATH + "/logs/log_" + gateway + ".csv"
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), msg ])
+            csvfile.close()
+      
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))
+
+
+def READ_LOGFILE_MQTT(gateway, channel, time):   
+    
+    try:
+        # open csv file
+        file = PATH + "/logs/log_" + gateway + ".csv"
+        
+        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
+            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            
+            # reverse messages
+            data = [row for row in rowReader] 
+            headers = data.pop(0)             
+            data_reversed = data[::-1]        
+
+            # get time value of the time setting
+            date_check = datetime.datetime.now() - datetime.timedelta(seconds=time)
+            date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
+            
+            # get all elements of the selected time
+            list_temp = []
+            list_result = []
+        
+            for element in data_reversed:
+                
+                try:
+                    date_entry   = datetime.datetime.strptime(element[0],"%Y-%m-%d %H:%M:%S")   
+                    date_control = datetime.datetime.strptime(date_check, "%Y-%m-%d %H:%M:%S")
+                    if date_entry > date_control:
+                        list_temp.append(element)
+                except:
+                    pass
+                    
+            if list_temp == []:
+                return "Message nicht gefunden"                    
+                
+            else:
+                # get the searched message
+                
+                for element in list_temp:
+                    if element[1] == channel:
+                        list_result.append(element)
+                    
+                if list_result != []:
+                    return list_result
+                if list_result == []:
+                    return "Message nicht gefunden" 
+     
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
+              
+
+def WRITE_LOGFILE_SYSTEM(log_type, description):
+    if os.path.isfile(PATH + "/logs/log_system.csv") is False:
+        CREATE_LOGFILE("log_system")
+
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
+
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
+            csvfile.close()
+       
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
+        
+    
+def GET_LOGFILE_SYSTEM(rows):   
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
+        
+        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
+            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            data = [row for row in rowReader] # get data
+            headers = data.pop(0)             # get headers and remove from data
+            data_reversed = data[::-1]        # reverse the data
+
+            return data_reversed[0:rows]
+            
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))          
 
 
 """ ############### """
@@ -98,6 +213,70 @@ def DELETE_DATABASE_BACKUP(filename):
         WRITE_LOGFILE_SYSTEM("EVENT", "File | /backup/" + filename + " | deleted")
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /backup/" + filename + " | " + str(e))  
+
+
+
+""" ############# """
+"""  file config  """
+""" ############# """
+
+try:
+    # open config file
+    with open(PATH + "/app/config.yaml", "r") as file_config:
+        config = yaml.load(file_config)
+
+    # print check
+    print("Version: " + str(config['config']['version']))
+    
+except Exception as e:
+    print("##### ERROR: config file not founded #####")
+    WRITE_LOGFILE_SYSTEM("ERROR", "File | config.ymal | " + str(e) + " | !!! DEFAULT SETTINGS LOADED !!! ")
+
+
+def GET_CONFIG_VERSION():
+    try:
+        return str(config['config']['version'])
+    except:
+        return "DEFAULT SETTINGS"
+
+def GET_CONFIG_MQTT_BROKER():
+    try:
+        return str(config['config']['mqtt_broker'])
+    except:
+        
+        return "localhost"
+        
+def GET_CONFIG_DATABASE():
+    try:
+        return str(config['config']['database'])
+    except:
+        return "sqlite:///database/smarthome.sqlite3"
+
+
+""" ################################ """
+"""  file zigbee device informations """
+""" ################################ """
+
+try:
+    # open mqtt file
+    with open(PATH + "/app/zigbee_device_informations.yaml", 'r') as file_zigbee:
+        zigbee_devices = yaml.load(file_zigbee)
+        
+except:
+    WRITE_LOGFILE_SYSTEM("ERROR", "File | zigbee_device_informations.ymal | " + str(e))
+
+
+def GET_MQTT_DEVICE_INFORMATIONS(model):
+    
+    try:
+        return (str(zigbee_devices[model]['device_type']),
+                str(zigbee_devices[model]['description']),
+                str(zigbee_devices[model]['inputs']),
+                str(zigbee_devices[model]['outputs']),
+        )
+        
+    except:
+        return ""
 
 
 """ ########## """
@@ -259,142 +438,3 @@ def DELETE_HOTWORD_FILE(filename):
 def GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(settings):
     hotword_file = settings
     return (PATH + "/app/speechcontrol/snowboy/resources/" + hotword_file)
-
-
-""" #### """
-""" logs """
-""" #### """
-
-def CREATE_LOGFILE(filename):
-    try:
-        # create csv file
-        file = PATH + "/logs/" + filename + ".csv"
-        with open(file, 'w', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)    
-
-            if filename == "log_mqtt":                   
-                filewriter.writerow(['Timestamp','Channel','Message'])
-            if filename == "log_zigbee2mqtt":                   
-                filewriter.writerow(['Timestamp','Channel','Message'])                
-            if filename == "log_system":                   
-                filewriter.writerow(['Timestamp','Type','Description'])                
-            
-            csvfile.close()
-
-        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | created")      
-
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filename + ".csv | " + str(e))  
-
-        
-def RESET_LOGFILE(filename):
-    if os.path.isfile(PATH + "/logs/" + filename + ".csv"):
-        os.remove (PATH + "/logs/" + filename + ".csv")
-
-        WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | deleted")
-        
-    CREATE_LOGFILE(filename)
-        
-
-def WRITE_LOGFILE_MQTT(gateway, channel, msg):
-    if os.path.isfile(PATH + "/logs/log_" + gateway + ".csv") is False:
-        CREATE_LOGFILE("log_" + gateway)
-
-    try:
-        # open csv file
-        file = PATH + "/logs/log_" + gateway + ".csv"
-        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), msg ])
-            csvfile.close()
-      
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))
-
-
-def READ_LOGFILE_MQTT(gateway, channel, time):   
-    
-    try:
-        # open csv file
-        file = PATH + "/logs/log_" + gateway + ".csv"
-        
-        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
-            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            
-            # reverse messages
-            data = [row for row in rowReader] 
-            headers = data.pop(0)             
-            data_reversed = data[::-1]        
-
-            # get time value of the time setting
-            date_check = datetime.datetime.now() - datetime.timedelta(seconds=time)
-            date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
-            
-            # get all elements of the selected time
-            list_temp = []
-            list_result = []
-        
-            for element in data_reversed:
-                
-                try:
-                    date_entry   = datetime.datetime.strptime(element[0],"%Y-%m-%d %H:%M:%S")   
-                    date_control = datetime.datetime.strptime(date_check, "%Y-%m-%d %H:%M:%S")
-                    if date_entry > date_control:
-                        list_temp.append(element)
-                except:
-                    pass
-                    
-            if list_temp == []:
-                return "Message nicht gefunden"                    
-                
-            else:
-                # get the searched message
-                
-                for element in list_temp:
-                    if element[1] == channel:
-                        list_result.append(element)
-                    
-                if list_result != []:
-                    return list_result
-                if list_result == []:
-                    return "Message nicht gefunden" 
-     
-    except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
-              
-
-def WRITE_LOGFILE_SYSTEM(log_type, description):
-    if os.path.isfile(PATH + "/logs/log_system.csv") is False:
-        CREATE_LOGFILE("log_system")
-
-    try:
-        # open csv file
-        file = PATH + "/logs/log_system.csv"
-
-        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
-            csvfile.close()
-       
-    except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
-        
-    
-def GET_LOGFILE_SYSTEM(rows):   
-    try:
-        # open csv file
-        file = PATH + "/logs/log_system.csv"
-        
-        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
-            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            data = [row for row in rowReader] # get data
-            headers = data.pop(0)             # get headers and remove from data
-            data_reversed = data[::-1]        # reverse the data
-
-            return data_reversed[0:rows]
-            
-    except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))          

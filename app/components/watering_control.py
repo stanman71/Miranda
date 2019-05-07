@@ -47,13 +47,13 @@ def START_PUMP(plant_id):
     channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
     
     if pump_key == "pump_0":
-        MQTT_PUBLISH(channel, "pump_0:on")
+        MQTT_PUBLISH(channel, "set_pump_0:on")
     if pump_key == "pump_1":
-        MQTT_PUBLISH(channel, "pump_1:on")
+        MQTT_PUBLISH(channel, "set_pump_1:on")
     if pump_key == "pump_2": 
-        MQTT_PUBLISH(channel, "pump_2:on")  
+        MQTT_PUBLISH(channel, "set_pump_2:on")  
     if pump_key == "pump_3":
-        MQTT_PUBLISH(channel, "pump_3:on")  
+        MQTT_PUBLISH(channel, "set_pump_3:on")  
         
     print("Start: " + pump_key)
     WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Start Pump - " + plant.pump_key)
@@ -73,13 +73,13 @@ def STOP_PUMP(plant_id):
     channel = "SmartHome/mqtt" + gateway + "/" + ieeeAddr + "/set"
     
     if pump_key == "pump_0":
-        MQTT_PUBLISH(channel, "pump_0:off")
+        MQTT_PUBLISH(channel, "set_pump_0:off")
     if pump_key == "pump_1": 
-        MQTT_PUBLISH(channel, "pump_1:off")
+        MQTT_PUBLISH(channel, "set_pump_1:off")
     if pump_key == "pump_2": 
-        MQTT_PUBLISH(channel, "pump_2:off")  
+        MQTT_PUBLISH(channel, "set_pump_2:off")  
     if pump_key == "pump_3":   
-        MQTT_PUBLISH(channel, "pump_3:off")    
+        MQTT_PUBLISH(channel, "set_pump_3:off")    
         
     print("Stop: " + pump_key)
     WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Stop Pump - " + plant.pump_key)

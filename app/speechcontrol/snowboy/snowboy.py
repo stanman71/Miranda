@@ -108,10 +108,10 @@ def SNOWBOY_START(modus):
          
          def detect_callback():
             detector.terminate()
-            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "on")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "on")
             SPEECH_RECOGNITION_PROVIDER()
-            time.sleep(5)
-            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+            time.sleep(GET_SNOWBOY_SETTINGS().delay)
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
             detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 

@@ -39,35 +39,37 @@ class Global_Settings(db.Model):
     setting_value = db.Column(db.String(50))   
 
 class LED_Groups(db.Model):
-    __tablename__ = 'led_groups'
-    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name          = db.Column(db.String(50), unique = True)
-    led_id_1      = db.Column(db.Integer)
-    led_name_1    = db.Column(db.String(50))
-    active_led_2  = db.Column(db.String(50))
-    led_id_2      = db.Column(db.Integer)
-    led_name_2    = db.Column(db.String(50))
-    active_led_3  = db.Column(db.String(50))
-    led_id_3      = db.Column(db.Integer)
-    led_name_3    = db.Column(db.String(50))
-    active_led_4  = db.Column(db.String(50))
-    led_id_4      = db.Column(db.Integer)
-    led_name_4    = db.Column(db.String(50))
-    active_led_5  = db.Column(db.String(50))
-    led_id_5      = db.Column(db.Integer)
-    led_name_5    = db.Column(db.String(50))      
-    active_led_6  = db.Column(db.String(50))
-    led_id_6      = db.Column(db.Integer)
-    led_name_6    = db.Column(db.String(50))
-    active_led_7  = db.Column(db.String(50))
-    led_id_7      = db.Column(db.Integer)
-    led_name_7    = db.Column(db.String(50))
-    active_led_8  = db.Column(db.String(50))
-    led_id_8      = db.Column(db.Integer)
-    led_name_8    = db.Column(db.String(50))
-    active_led_9  = db.Column(db.String(50))
-    led_id_9      = db.Column(db.Integer)
-    led_name_9    = db.Column(db.String(50))  
+    __tablename__      = 'led_groups'
+    id                 = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name               = db.Column(db.String(50), unique = True)
+    led_id_1           = db.Column(db.Integer)
+    led_name_1         = db.Column(db.String(50))
+    active_led_2       = db.Column(db.String(50))
+    led_id_2           = db.Column(db.Integer)
+    led_name_2         = db.Column(db.String(50))
+    active_led_3       = db.Column(db.String(50))
+    led_id_3           = db.Column(db.Integer)
+    led_name_3         = db.Column(db.String(50))
+    active_led_4       = db.Column(db.String(50))
+    led_id_4           = db.Column(db.Integer)
+    led_name_4         = db.Column(db.String(50))
+    active_led_5       = db.Column(db.String(50))
+    led_id_5           = db.Column(db.Integer)
+    led_name_5         = db.Column(db.String(50))      
+    active_led_6       = db.Column(db.String(50))
+    led_id_6           = db.Column(db.Integer)
+    led_name_6         = db.Column(db.String(50))
+    active_led_7       = db.Column(db.String(50))
+    led_id_7           = db.Column(db.Integer)
+    led_name_7         = db.Column(db.String(50))
+    active_led_8       = db.Column(db.String(50))
+    led_id_8           = db.Column(db.Integer)
+    led_name_8         = db.Column(db.String(50))
+    active_led_9       = db.Column(db.String(50))
+    led_id_9           = db.Column(db.Integer)
+    led_name_9         = db.Column(db.String(50))  
+    current_setting    = db.Column(db.String(50))
+    current_brightness = db.Column(db.Integer)
 
 class LED_Programs(db.Model):
     __tablename__ = 'led_programs'
@@ -126,14 +128,17 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name          = db.Column(db.String(50), unique=True)
-    gateway       = db.Column(db.String(50)) 
-    ieeeAddr      = db.Column(db.String(50))  
-    model         = db.Column(db.String(50))
-    inputs        = db.Column(db.String(200))
-    outputs       = db.Column(db.String(200))
-    last_contact  = db.Column(db.String(50))
+    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name         = db.Column(db.String(50), unique=True)
+    gateway      = db.Column(db.String(50)) 
+    ieeeAddr     = db.Column(db.String(50), unique=True)  
+    model        = db.Column(db.String(50))
+    device_type  = db.Column(db.String(50))
+    description  = db.Column(db.String(200))
+    inputs       = db.Column(db.String(200))
+    outputs      = db.Column(db.String(200))
+    last_contact = db.Column(db.String(50))
+    last_values  = db.Column(db.String(200))    
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -194,10 +199,10 @@ class Sensordata_Jobs(db.Model):
 
 class Snowboy_Settings(db.Model):
     __tablename__  = 'snowboy_settings'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    sensitivity    = db.Column(db.Integer)
-    delay          = db.Column(db.Integer)
-    microphone_led = db.Column(db.String(50))
+    id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    sensitivity = db.Column(db.Integer)
+    delay       = db.Column(db.Integer)
+    microphone  = db.Column(db.String(50))
 
 class Snowboy_Tasks(db.Model):
     __tablename__ = 'snowboy_tasks'
@@ -508,6 +513,18 @@ def SET_LED_GROUP(id, name, led_id_1, led_name_1,
     entry.led_id_9 = led_id_9
     entry.led_name_9 = led_name_9     
        
+    db.session.commit()  
+
+
+def SET_LED_GROUP_CURRENT_SETTING(id, current_setting):
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.current_setting = current_setting     
+    db.session.commit()  
+
+
+def SET_LED_GROUP_CURRENT_BRIGHTNESS(id, current_brightness):
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.current_brightness = current_brightness     
     db.session.commit()  
 
 
@@ -971,34 +988,37 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
-            if device.inputs:
+            if device.device_type == "sensor":
                 device_list.append(device)  
                 
-    if selector == "watering":
+    if selector == "watering_array":
         for device in devices:
-            if device.inputs and device.outputs:
+            if device.device_type == "watering_array":
                 device_list.append(device)    
 
     if selector == "led":
         for device in devices:
-            if device.model == "9290012573A":
+            if device.device_type == "led":
                 device_list.append(device)                                 
                 
     return device_list
         
-
+"""
 def GET_MQTT_DEVICE_INPUTS_BY_ID(id):
     return MQTT_Devices.query.filter_by(id=id).first().inputs   
+"""
 
-
-def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = "", last_contact = ""):
+def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", inputs = "", outputs = "", last_contact = ""):
     # path exist ?
     check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
-    if check_entry is None:       
+    if check_entry is None:   
+            
         # find a unused id
         for i in range(1,51):
+            
             if MQTT_Devices.query.filter_by(id=i).first():
                 pass
+                
             else:
                 # add the new device            
                 device = MQTT_Devices(
@@ -1007,6 +1027,8 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 
                         gateway      = gateway,                       
                         ieeeAddr     = ieeeAddr,
                         model        = model,
+                        device_type  = device_type,
+                        description  = description,
                         inputs       = inputs,
                         outputs      = outputs,
                         last_contact = last_contact,
@@ -1017,10 +1039,14 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", inputs = "", outputs = 
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + name + " | added || Gateway - " + gateway + 
                                      " | ieeeAddr - " + ieeeAddr + 
                                      " | Model - " + model + 
+                                     " | device_type - " + device_type + 
+                                     " | description - " + description + 
                                      " | Inputs - " + inputs + 
                                      " | Outputs - " + outputs)
 
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
+                
+                return ""
 
         return "Gerätelimit erreicht (50)"                           
                 
@@ -1035,8 +1061,16 @@ def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     db.session.commit()       
 
 
-def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
+def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    
+    timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    entry.last_values  = last_values
+    entry.last_contact = timestamp
+    db.session.commit()   
 
+
+def SET_MQTT_DEVICE(gateway, id, name, device_type = "", description = "", inputs = "", outputs = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
 
     if gateway == "mqtt":
@@ -1044,12 +1078,7 @@ def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
         # values changed ?
         if (entry.name != name):
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + " | changed || Name - " + name + 
-                                 " | Gateway - " + entry.gateway + 
-                                 " | ieeeAddr - " + entry.ieeeAddr + 
-                                 " | Model - " + entry.model + 
-                                 " | Inputs - " + str(entry.inputs) + 
-                                 " | Outputs - " + entry.outputs)
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + " | changed || Name - " + name)
 
             entry.name = name
             db.session.commit()    
@@ -1058,15 +1087,22 @@ def SET_MQTT_DEVICE(gateway, id, name, inputs = 0):
     if gateway == "zigbee2mqtt":
 
         # values changed ?
-        if (entry.name != name or entry.inputs != inputs):
+        if (entry.name != name or entry.device_type != device_type or entry.description != description 
+            or entry.inputs != inputs or entry.outputs != outputs):
             
+            entry.device_type = device_type
+            entry.description = description
             entry.inputs = inputs
+            entry.outputs = outputs
             
             WRITE_LOGFILE_SYSTEM("EVENT", "Database | ZigBee2MQTT Device - " + entry.name + " | changed || Name - " + name + 
                                  " | Gateway - " + entry.gateway + 
                                  " | ieeeAddr - " + entry.ieeeAddr + 
-                                 " | Model - " + entry.model + 
-                                 " | Inputs - " + inputs)
+                                 " | Model - " + entry.model +
+                                 " | device_type - " + entry.device_type +
+                                 " | description - " + entry.description +
+                                 " | inputs - " + entry.inputs + 
+                                 " | outputs - " + outputs)
 
             entry.name = name
             db.session.commit()    
@@ -1081,6 +1117,13 @@ def DELETE_MQTT_DEVICE(id):
         if entry.mqtt_device_id == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
             error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze >>> " + entry.name     
+    
+    # check scheduler sensor
+    entries = GET_ALL_SCHEDULER_SENSOR_TASKS()
+    for entry in entries:
+        if (entry.mqtt_device_id_1 == id) or (entry.mqtt_device_id_2 == id) or (entry.mqtt_device_id_3 == id):
+            device = GET_MQTT_DEVICE_BY_ID(id)
+            error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung >>> Sensor >>> " + entry.name      
     
     # check sensordata
     entries = GET_ALL_SENSORDATA_JOBS()
@@ -1179,8 +1222,10 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
                 db.session.add(plant)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + name + " | added")               
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + name + " | added")    
+                           
                 return ""
+                
         return "Pflanzenlimit erreicht (25)"
 
     else:
@@ -1695,11 +1740,11 @@ def GET_SNOWBOY_SETTINGS():
     return Snowboy_Settings.query.filter_by().first()
     
 
-def SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone_led):
+def SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone):
     entry = Snowboy_Settings.query.filter_by().first()
     entry.sensitivity = sensitivity
-    entry.delay = delay
-    entry.microphone_led = microphone_led
+    entry.delay       = delay
+    entry.microphone  = microphone
     db.session.commit() 
 
 

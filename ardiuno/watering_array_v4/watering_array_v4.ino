@@ -12,7 +12,7 @@ const char* mqtt_server = "";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
-char msg[200];
+char msg[300];
 char path[50];
 int value = 0;
 
@@ -82,12 +82,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if(check_ieeeAddr == "devices"){
 
         // create msg  
-        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\",\"model\":\"watering_array_v4\"," + 
+        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," + 
+                         "\"model\":\"watering_array_v4\"," +
+                         "\"device_type\":\"watering_array\"," +
+                         "\"description\":\"Bewässerung (4 Pflanzen)\"," +
                          "\"inputs\":[\"sensor_0\",\"sensor_1\",\"sensor_2\",\"sensor_3\"," +
                          "\"sensor_4\",\"sensor_5\",\"sensor_6\",\"sensor_7\"]," +
-                         "\"outputs\":[\"pump_0\",\"pump_1\",\"pump_2\",\"pump_3\"]}";                     
-        char attributes[200];
-        payload.toCharArray( msg, 200 );
+                         "\"outputs\":[\"pump_0\",\"pump_1\",\"pump_2\",\"pump_3\"]}";   
+                                           
+        char attributes[300];
+        payload.toCharArray( msg, 300 );
         
         Serial.print("Publish message: ");
         Serial.println(msg);
@@ -162,7 +166,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String pump        = getValue(msg,':',0);      
         String pump_state  = getValue(msg,':',1); 
         
-        if (pump == "pump_0") {
+        if (pump == "set_pump_0") {
             if (pump_state == "on") {
                 digitalWrite(Pin_D0, HIGH);
                 client.publish(path, "pump_0:on");
@@ -174,7 +178,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("pump_0:off");
             }
         }
-        if (pump == "pump_1") {
+        if (pump == "set_pump_1") {
             if (pump_state == "on") {
                 digitalWrite(Pin_D3, HIGH);
                 client.publish(path, "pump_1:on");
@@ -186,7 +190,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("pump_1:off");
             }
         }     
-        if (pump == "pump_2") {
+        if (pump == "set_pump_2") {
             if (pump_state == "on") {
                 digitalWrite(Pin_D2, HIGH);
                 client.publish(path, "pump_2:on");
@@ -198,7 +202,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 Serial.println("pump_2:off");
             }
         }
-        if (pump == "pump_3") {
+        if (pump == "set_pump_3") {
             if (pump_state == "on") {
                 digitalWrite(Pin_D1, HIGH);
                 client.publish(path, "pump_3:on");

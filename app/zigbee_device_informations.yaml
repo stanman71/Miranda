@@ -1,0 +1,11 @@
+9290012573A:
+    device_type: led
+    description: Philips HUE color 
+    inputs: 
+    outputs: 
+
+0x8418260000105fa0:
+    device_type: OSRAM Smart+ Plug
+    description: ZigBee Steckdose
+    inputs: 
+    outputs: on/off     

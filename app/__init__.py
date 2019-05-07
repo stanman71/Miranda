@@ -25,7 +25,7 @@ from app.components.mqtt_functions import MQTT_STOP_ALL_OUTPUTS
 
 
 # deactivate pixel_ring
-MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
 # turn_off all outputs
 if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":

@@ -22,7 +22,7 @@ def SNOWBOY_TASKS(entry):
     # activate command mode
     if "snowboy_active" in entry.task:
         snowboy_detect_on = True
-        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "on")
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "on")
 
         # set snowboy_detect_on to False after selected delay
         class waiter(Thread):
@@ -30,7 +30,7 @@ def SNOWBOY_TASKS(entry):
                 global snowboy_detect_on
                 time.sleep(GET_SNOWBOY_SETTINGS().delay)
                 snowboy_detect_on = False
-                MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+                MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
         waiter().start()
     
@@ -63,14 +63,14 @@ def SNOWBOY_TASKS(entry):
                     WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
                     
             snowboy_detect_on = False
-            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
         
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))     
         
         snowboy_detect_on = False
-        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
     
 
     # start program
@@ -88,14 +88,14 @@ def SNOWBOY_TASKS(entry):
                 WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
                 
             snowboy_detect_on = False
-            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
     
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))    
         
         snowboy_detect_on = False
-        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off") 
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off") 
             
 
     # led off
@@ -154,7 +154,7 @@ def SNOWBOY_TASKS(entry):
                     WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
                     
             snowboy_detect_on = False
-            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
             
     except Exception as e:
@@ -162,7 +162,7 @@ def SNOWBOY_TASKS(entry):
         WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + str(e))    
         
         snowboy_detect_on = False
-        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone_led, "off")
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
 
 """ ######################## """

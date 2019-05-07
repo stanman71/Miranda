@@ -41,8 +41,21 @@ def MQTT_START():
 		incoming_topic = incoming_topic.split("/")
 
 		try:
-			if incoming_topic[3] == "get" or incoming_topic[3] == "log":
-				pass  
+			if incoming_topic[3] == "get":
+				pass
+			if incoming_topic[3] == "log":
+				pass              
+			if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
+
+				# generate graphviz diagram
+				from graphviz import Source, render
+            
+				src = Source(msg)
+				src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
+
+			if incoming_topic[3] == "networkmap":
+				pass                         
+            
 		except:
 			incoming_ieeeAddr = incoming_topic[2]
 
@@ -57,7 +70,9 @@ def MQTT_START():
 
 			# schedular sensor thread
 			SCHEDULER_SENSOR_THREAD(incoming_ieeeAddr)
-   
+ 
+			# set last values
+			SET_MQTT_DEVICE_LAST_VALUES(incoming_ieeeAddr, msg) 
          
 
 	def on_connect(client, userdata, flags, rc):

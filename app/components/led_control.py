@@ -166,6 +166,12 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 MQTT_PUBLISH(channel, msg) 
                 
             time.sleep(1)
+            
+            # set current state
+            scene_name = GET_LED_SCENE_BY_ID(scene_id).name
+            
+            SET_LED_GROUP_CURRENT_SETTING(group_id, scene_name)
+            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness_global)
                 
             return LED_CHECK_SETTING() 
 
@@ -240,6 +246,10 @@ def LED_TURN_OFF_GROUP(group_id):
             
             time.sleep(1)
             
+            # set current state
+            SET_LED_GROUP_CURRENT_SETTING(group_id, "off") 
+            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, 0)           
+            
             return LED_CHECK_SETTING() 
 
         except Exception as e:
@@ -263,6 +273,11 @@ def LED_TURN_OFF_ALL():
                 MQTT_PUBLISH(channel, msg) 
                 
             time.sleep(1)
+            
+            # set current state
+            for group_id in GET_ALL_LED_GROUPS().id:
+                SET_LED_GROUP_CURRENT_SETTING(group_id, "off")
+                SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, 0)
                 
             return LED_CHECK_SETTING() 
             
@@ -316,6 +331,11 @@ def LED_START_PROGRAM_THREAD(group_id, program_id):
                             time.sleep(break_value)
                             
                     time.sleep(1)
+                    
+                    # set current state
+                    program_name = GET_LED_PROGRAM_BY_ID(program_id).name
+            
+                    SET_LED_GROUP_CURRENT_SETTING(group_id, program_name)
                     
                     return LED_CHECK_SETTING() 
                     
@@ -398,9 +418,13 @@ def LED_PROGRAM_SET_RGB(group_id, led_id, red, green, blue):
         MQTT_PUBLISH(channel, msg) 
 
 
-def LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness):
+def LED_PROGRAM_SET_BRIGHTNESS(group_id, led_id, brightness_global):
 
     group = GET_LED_GROUP_BY_ID(group_id)
+    
+    SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness_global)
+    
+    brightness = int(brightness_global * 2,54)
 
     # led 1
     if led_id == "1":

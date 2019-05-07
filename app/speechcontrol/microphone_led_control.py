@@ -1,8 +1,14 @@
+import usb.core
+import usb.util
+
+import time
+import threading
+import queue as Queue
 
 from app import app
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
-def MICROPHONE_LED_CONTROL(led_type, led_setting):
+def MICROPHONE_LED_CONTROL(microphone, led_setting):
 
 
     """ ####################### """
@@ -15,7 +21,7 @@ def MICROPHONE_LED_CONTROL(led_type, led_setting):
 
     """
 
-    if led_type == "ReSpeaker 2-Mics Pi HAT":
+    if microphone == "ReSpeaker 2-Mics Pi HAT":
         pass
 
 
@@ -38,10 +44,7 @@ def MICROPHONE_LED_CONTROL(led_type, led_setting):
 
     """
 
-    import usb.core
-    import usb.util
-
-    if led_type == "ReSpeaker Mic 4 Array v2.0":
+    if microphone == "ReSpeaker Mic 4 Array v2.0":
 
         class PixelRing:
             TIMEOUT = 8000    

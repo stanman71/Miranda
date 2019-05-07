@@ -19167,3 +19167,847 @@ Timestamp,Type,Description
 2019-05-06 19:02:24,EVENT,|Snowboy || Detection || Task - snowboy_active|
 2019-05-06 19:02:26,EVENT,|Snowboy || Detection || Task - led_off:all|
 2019-05-06 19:02:36,EVENT,|Snowboy || Detection || Task - snowboy_active|
+2019-05-06 19:03:44,EVENT,|MQTT || started|
+2019-05-06 19:03:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-06 19:03:48,EVENT,|Speech Recognition Provider || started|
+2019-05-06 19:04:15,EVENT,|Speech Recognition || Detection Task || starter warmweiss im zimmer|
+2019-05-06 19:04:29,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-06 19:07:20,EVENT,|Speech Recognition || Detection Task || smarthome|
+2019-05-06 19:07:49,EVENT,|Speech Recognition || Detection Task || |
+2019-05-06 19:18:43,EVENT,|Speech Recognition || Detection Task || |
+2019-05-06 19:20:34,EVENT,|Speech Recognition || Detection Task || müssen wir eine halbe stunde besser gemacht oder stunde|
+2019-05-06 19:21:02,EVENT,|Speech Recognition || Detection Task || du hast ja wie du sagst|
+2019-05-06 19:29:14,EVENT,|Speech Recognition || Detection Task || |
+2019-05-06 19:55:56,EVENT,|Speech Recognition || Detection Task || |
+2019-05-06 20:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-06 20:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-06 20:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-06 20:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-06 20:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-06 20:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-06 20:23:14,EVENT,|Speech Recognition || Detection Task || adriane wirklich geniale köpfe und der rest ist für den arsch ja denke ich auch|
+2019-05-06 21:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-06 21:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-06 21:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-06 21:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-06 21:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-06 21:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-06 22:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-06 22:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-06 22:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-06 22:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-06 22:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-06 22:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-06 23:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-06 23:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-06 23:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-06 23:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-06 23:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-06 23:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-06 23:02:56,EVENT,|Speech Recognition || Detection Task || |
+2019-05-07 00:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 00:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 00:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 00:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 00:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 00:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 00:00:11,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-07 00:00:11,EVENT,|Database_Backup || saved|
+2019-05-07 00:00:11,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-07 00:30:00,EVENT,|Scheduler || Time Task - schlafen || started|
+2019-05-07 00:33:06,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-07 01:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 01:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 01:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 01:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 01:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 01:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 01:46:41,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-07 02:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 02:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 02:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 02:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 02:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 02:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 03:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 03:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 03:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 03:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 03:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 03:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 04:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 04:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 04:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 04:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 04:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 04:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 05:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 05:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 05:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 05:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 05:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 05:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 06:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 06:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 06:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 06:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 06:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 06:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 07:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 07:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 07:00:05,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 07:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 07:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 07:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 07:50:00,EVENT,|Scheduler || Time Task - zur Arbeit || started|
+2019-05-07 08:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 08:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 08:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 08:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 08:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 08:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 09:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 09:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 09:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 09:00:05,EVENT,|Scheduler || Sensor Task - LEDs ausschalten || started|
+2019-05-07 09:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 09:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 09:00:12,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 10:10:53,EVENT,|MQTT || started|
+2019-05-07 10:10:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:10:57,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:17:56,EVENT,|MQTT || started|
+2019-05-07 10:17:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:18:00,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:24:04,EVENT,|MQTT || started|
+2019-05-07 10:24:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:24:08,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:25:55,EVENT,|MQTT || started|
+2019-05-07 10:25:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:25:59,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:28:02,EVENT,|MQTT || started|
+2019-05-07 10:28:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:28:06,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:30:52,EVENT,|MQTT || started|
+2019-05-07 10:30:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:30:56,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:34:14,EVENT,|MQTT || started|
+2019-05-07 10:34:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:34:18,EVENT,|Speech Recognition Provider || started|
+2019-05-07 10:50:08,EVENT,|MQTT || started|
+2019-05-07 10:50:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 10:50:12,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 11:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 11:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 11:00:04,EVENT,|Scheduler || Sensor Task - LEDs ausschalten || started|
+2019-05-07 11:00:05,ERROR,|Scheduler || Time Task - LEDs ausschalten || list' object has no attribute 'id|
+2019-05-07 11:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 11:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 11:00:11,SUCCESS,|Scheduler || Time Task - test || successful|
+2019-05-07 11:04:44,EVENT,|MQTT || started|
+2019-05-07 11:04:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:04:48,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:05:05,EVENT,|Database || Sensordata Job - sdsfdg || deleted|
+2019-05-07 11:05:10,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:06:49,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-07 11:11:27,EVENT,|MQTT || started|
+2019-05-07 11:11:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:11:31,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:11:37,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:12:22,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:12:28,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:13:14,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:13:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:14:13,EVENT,|MQTT || started|
+2019-05-07 11:14:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:14:17,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:14:24,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:14:29,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:03,EVENT,|MQTT || started|
+2019-05-07 11:16:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:16:07,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:16:17,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:22,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:24,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:24,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:24,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:24,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:24,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:16:40,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:41,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:42,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:42,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:43,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:43,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:44,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:45,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:46,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:47,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:16:51,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:18:45,EVENT,|MQTT || started|
+2019-05-07 11:18:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:18:49,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:19:08,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:19:13,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:20:29,EVENT,|MQTT || started|
+2019-05-07 11:20:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:20:33,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:21:29,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:21:35,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:22:07,EVENT,|MQTT || started|
+2019-05-07 11:22:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:22:11,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:22:38,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:22:44,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:23:05,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:23:14,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:23:44,EVENT,|MQTT || started|
+2019-05-07 11:23:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:23:48,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:23:52,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:24:00,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:26:19,EVENT,|MQTT || started|
+2019-05-07 11:26:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:26:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:26:39,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:26:44,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:51:45,EVENT,|MQTT || started|
+2019-05-07 11:51:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:51:49,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:51:59,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:52:04,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:52:50,EVENT,|MQTT || started|
+2019-05-07 11:52:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:52:54,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:53:01,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:53:06,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 11:55:10,EVENT,|MQTT || started|
+2019-05-07 11:55:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:55:14,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:55:59,EVENT,|MQTT || started|
+2019-05-07 11:55:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 11:56:03,EVENT,|Speech Recognition Provider || started|
+2019-05-07 11:56:18,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 11:56:23,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 12:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 12:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 12:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 12:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 12:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 12:00:08,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 12:38:56,EVENT,|MQTT || started|
+2019-05-07 12:38:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 12:39:00,EVENT,|Speech Recognition Provider || started|
+2019-05-07 12:51:07,EVENT,|MQTT || started|
+2019-05-07 12:51:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 12:51:11,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 13:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-07 13:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 13:00:04,EVENT,|MQTT || started|
+2019-05-07 13:00:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:00:06,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-07 13:00:06,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 13:00:06,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 13:00:08,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:07:13,ERROR,|File || config.ymal || [Errno 2] No such file or directory: '/home/pi/SmartHome/app/config.yaml'|
+2019-05-07 13:07:19,EVENT,|MQTT || started|
+2019-05-07 13:07:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:07:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:08:36,ERROR,|File || config.ymal || [Errno 2] No such file or directory: '/home/pi/SmartHome/app/config.yaml' || !!! DEFAULT SETTINGS LOADED !!! |
+2019-05-07 13:08:42,EVENT,|MQTT || started|
+2019-05-07 13:08:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:08:46,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:15:45,EVENT,|MQTT || started|
+2019-05-07 13:15:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:15:49,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:15:56,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:15:57,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:15:58,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:15:59,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:00,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:37,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:38,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:39,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:40,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:16:41,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:17:12,EVENT,|MQTT || started|
+2019-05-07 13:17:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:17:16,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:17:21,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:17:22,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:17:23,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:17:24,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:17:25,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:18:04,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:18:04,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:18:05,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:18:06,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:18:07,ERROR,|ZigBee2MQTT || local variable 'model' referenced before assignment|
+2019-05-07 13:19:12,EVENT,|MQTT || started|
+2019-05-07 13:19:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:19:16,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:19:20,ERROR,|ZigBee2MQTT || local variable 'device_type' referenced before assignment|
+2019-05-07 13:19:21,ERROR,|ZigBee2MQTT || local variable 'device_type' referenced before assignment|
+2019-05-07 13:19:22,ERROR,|ZigBee2MQTT || local variable 'device_type' referenced before assignment|
+2019-05-07 13:19:23,ERROR,|ZigBee2MQTT || local variable 'device_type' referenced before assignment|
+2019-05-07 13:19:24,ERROR,|ZigBee2MQTT || local variable 'device_type' referenced before assignment|
+2019-05-07 13:20:24,EVENT,|MQTT || started|
+2019-05-07 13:20:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:20:28,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:20:33,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:20:34,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:20:35,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:20:35,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:20:36,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:21:41,EVENT,|MQTT || started|
+2019-05-07 13:21:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:21:45,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:21:47,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:21:48,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:21:49,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:21:50,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:21:51,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:22:26,EVENT,|MQTT || started|
+2019-05-07 13:22:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:22:30,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:22:32,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:22:33,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:22:34,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:22:35,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:22:36,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:23:34,EVENT,|MQTT || started|
+2019-05-07 13:23:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:23:38,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:23:40,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:23:41,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:23:42,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:23:43,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:23:44,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:24:36,EVENT,|MQTT || started|
+2019-05-07 13:24:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:24:40,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:24:42,ERROR,|ZigBee2MQTT || invalid literal for int() with base 10: 'Philips HUE color E27'|
+2019-05-07 13:24:42,ERROR,|ZigBee2MQTT || invalid literal for int() with base 10: 'Philips HUE color E27'|
+2019-05-07 13:24:43,ERROR,|ZigBee2MQTT || invalid literal for int() with base 10: 'Philips HUE color E27'|
+2019-05-07 13:24:44,ERROR,|ZigBee2MQTT || invalid literal for int() with base 10: 'Philips HUE color E27'|
+2019-05-07 13:24:45,ERROR,|ZigBee2MQTT || invalid literal for int() with base 10: 'Philips HUE color E27'|
+2019-05-07 13:30:01,EVENT,|MQTT || started|
+2019-05-07 13:30:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:30:05,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:30:08,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:30:09,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:30:10,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:30:11,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:30:12,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:31:11,EVENT,|MQTT || started|
+2019-05-07 13:31:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:31:15,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:31:17,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:31:18,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:31:19,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:31:19,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:31:20,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:32:08,EVENT,|MQTT || started|
+2019-05-07 13:32:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:32:12,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:32:14,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:32:15,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:32:16,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:32:17,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:32:18,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:33:19,EVENT,|MQTT || started|
+2019-05-07 13:33:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:33:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:33:25,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:33:26,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:33:27,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:33:28,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:33:29,ERROR,|ZigBee2MQTT || Can't convert 'NoneType' object to str implicitly|
+2019-05-07 13:35:45,EVENT,|MQTT || started|
+2019-05-07 13:35:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:35:49,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:35:50,ERROR,|ZigBee2MQTT || Can't convert 'int' object to str implicitly|
+2019-05-07 13:35:51,ERROR,|ZigBee2MQTT || Can't convert 'int' object to str implicitly|
+2019-05-07 13:35:52,ERROR,|ZigBee2MQTT || Can't convert 'int' object to str implicitly|
+2019-05-07 13:35:53,ERROR,|ZigBee2MQTT || Can't convert 'int' object to str implicitly|
+2019-05-07 13:35:54,ERROR,|ZigBee2MQTT || Can't convert 'int' object to str implicitly|
+2019-05-07 13:37:57,EVENT,|MQTT || started|
+2019-05-07 13:37:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:38:01,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:38:02,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_01 || changed |||| Name - Deckenlampe_01 || Gateway - zigbee2mqtt || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - LED || description - Philips HUE color E27 || inputs - 0 || outputs - 0|
+2019-05-07 13:38:02,ERROR,|ZigBee2MQTT || local variable 'ieeeAddr' referenced before assignment|
+2019-05-07 13:38:03,ERROR,|ZigBee2MQTT || local variable 'ieeeAddr' referenced before assignment|
+2019-05-07 13:38:04,ERROR,|ZigBee2MQTT || local variable 'ieeeAddr' referenced before assignment|
+2019-05-07 13:38:05,ERROR,|ZigBee2MQTT || local variable 'ieeeAddr' referenced before assignment|
+2019-05-07 13:38:06,ERROR,|ZigBee2MQTT || local variable 'ieeeAddr' referenced before assignment|
+2019-05-07 13:39:49,EVENT,|MQTT || started|
+2019-05-07 13:39:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 13:39:53,EVENT,|Speech Recognition Provider || started|
+2019-05-07 13:39:56,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_02 || changed |||| Name - Deckenlampe_02 || Gateway - zigbee2mqtt || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - LED || description - Philips HUE color E27 || inputs - 0 || outputs - 0|
+2019-05-07 14:00:22,EVENT,|MQTT || started|
+2019-05-07 14:00:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:00:26,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:00:47,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_01 || changed |||| Name - Deckenlampe_01 || Gateway - zigbee2mqtt || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - LED || description - Philips HUE color E27 || inputs - None || outputs - None|
+2019-05-07 14:00:47,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_02 || changed |||| Name - Deckenlampe_02 || Gateway - zigbee2mqtt || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - LED || description - Philips HUE color E27 || inputs - None || outputs - None|
+2019-05-07 14:03:20,EVENT,|MQTT || started|
+2019-05-07 14:03:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:03:24,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:03:26,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_01 || changed |||| Name - Deckenlampe_01 || Gateway - zigbee2mqtt || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - LED || description - Philips HUE color || inputs - None || outputs - None|
+2019-05-07 14:03:26,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_02 || changed |||| Name - Deckenlampe_02 || Gateway - zigbee2mqtt || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - LED || description - Philips HUE color || inputs - None || outputs - None|
+2019-05-07 14:52:06,EVENT,|MQTT || started|
+2019-05-07 14:52:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:52:10,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:53:03,EVENT,|MQTT || started|
+2019-05-07 14:53:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:53:07,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:56:34,EVENT,|MQTT || started|
+2019-05-07 14:56:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:56:39,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:58:10,EVENT,|MQTT || started|
+2019-05-07 14:58:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 14:58:14,EVENT,|Speech Recognition Provider || started|
+2019-05-07 14:59:58,EVENT,|MQTT || started|
+2019-05-07 14:59:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 15:00:04,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:00:07,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 15:00:07,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 15:00:07,EVENT,|Scheduler || Sensor Task - LEDs ausschalten || started|
+2019-05-07 15:00:08,ERROR,|Scheduler || Time Task - LEDs ausschalten || list' object has no attribute 'id|
+2019-05-07 15:00:10,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 15:00:10,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 15:00:10,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 15:03:11,EVENT,|MQTT || started|
+2019-05-07 15:03:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:03:15,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:04:13,EVENT,|MQTT || started|
+2019-05-07 15:04:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:04:17,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:05:04,EVENT,|MQTT || started|
+2019-05-07 15:05:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:05:08,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:07:22,EVENT,|MQTT || started|
+2019-05-07 15:07:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:07:26,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:18:58,EVENT,|MQTT || started|
+2019-05-07 15:18:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:19:02,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:20:52,EVENT,|MQTT || started|
+2019-05-07 15:20:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:20:56,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:23:18,EVENT,|MQTT || started|
+2019-05-07 15:23:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:23:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:24:27,EVENT,|MQTT || started|
+2019-05-07 15:24:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:24:31,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:26:03,EVENT,|MQTT || started|
+2019-05-07 15:26:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:26:07,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:27:08,EVENT,|MQTT || started|
+2019-05-07 15:27:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:27:12,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:29:15,EVENT,|MQTT || started|
+2019-05-07 15:29:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:29:19,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:31:41,EVENT,|MQTT || started|
+2019-05-07 15:31:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:31:45,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:34:11,EVENT,|MQTT || started|
+2019-05-07 15:34:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:34:15,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:37:34,EVENT,|MQTT || started|
+2019-05-07 15:37:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:37:38,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:38:32,EVENT,|MQTT || started|
+2019-05-07 15:38:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:38:36,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:40:12,EVENT,|MQTT || started|
+2019-05-07 15:40:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:40:16,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:41:09,EVENT,|MQTT || started|
+2019-05-07 15:41:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:41:13,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:41:57,EVENT,|MQTT || started|
+2019-05-07 15:41:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:42:01,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:43:16,EVENT,|MQTT || started|
+2019-05-07 15:43:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:43:20,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:48:35,EVENT,|MQTT || started|
+2019-05-07 15:48:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:48:39,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:54:18,EVENT,|MQTT || started|
+2019-05-07 15:54:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:54:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 15:58:48,EVENT,|MQTT || started|
+2019-05-07 15:58:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 15:58:52,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 16:00:05,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 16:00:05,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 16:00:05,EVENT,|Scheduler || Sensor Task - LEDs ausschalten || started|
+2019-05-07 16:00:06,ERROR,|Scheduler || Time Task - LEDs ausschalten || list' object has no attribute 'id|
+2019-05-07 16:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 16:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 16:00:08,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 16:01:07,EVENT,|MQTT || started|
+2019-05-07 16:01:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:01:11,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:05:35,EVENT,|MQTT || started|
+2019-05-07 16:05:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:05:39,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:06:30,EVENT,|MQTT || started|
+2019-05-07 16:06:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:06:34,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:07:29,EVENT,|MQTT || started|
+2019-05-07 16:07:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:07:33,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:08:56,EVENT,|MQTT || started|
+2019-05-07 16:08:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:09:01,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:09:37,EVENT,|MQTT || started|
+2019-05-07 16:09:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:09:41,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:10:51,EVENT,|MQTT || started|
+2019-05-07 16:10:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:10:56,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:12:27,EVENT,|MQTT || started|
+2019-05-07 16:12:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:12:31,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:13:12,EVENT,|MQTT || started|
+2019-05-07 16:13:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:13:17,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:13:47,EVENT,|MQTT || started|
+2019-05-07 16:13:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:13:51,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:14:37,EVENT,|MQTT || started|
+2019-05-07 16:14:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:14:41,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:15:35,EVENT,|MQTT || started|
+2019-05-07 16:15:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:15:39,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:16:42,EVENT,|MQTT || started|
+2019-05-07 16:16:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:16:46,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:17:31,EVENT,|MQTT || started|
+2019-05-07 16:17:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:17:50,EVENT,|MQTT || started|
+2019-05-07 16:17:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:17:54,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:18:48,EVENT,|MQTT || started|
+2019-05-07 16:18:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:18:53,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:20:22,EVENT,|MQTT || started|
+2019-05-07 16:20:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:20:27,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:24:59,EVENT,|MQTT || started|
+2019-05-07 16:24:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:25:03,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:25:50,EVENT,|MQTT || started|
+2019-05-07 16:25:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:25:55,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:26:47,EVENT,|MQTT || started|
+2019-05-07 16:26:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:26:51,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:31:44,EVENT,|MQTT || started|
+2019-05-07 16:31:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:31:48,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:33:17,EVENT,|MQTT || started|
+2019-05-07 16:33:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:33:21,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:35:12,EVENT,|MQTT || started|
+2019-05-07 16:35:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:35:16,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:37:28,EVENT,|MQTT || started|
+2019-05-07 16:37:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:37:32,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:38:40,EVENT,|MQTT || started|
+2019-05-07 16:38:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:38:44,EVENT,|Speech Recognition Provider || started|
+2019-05-07 16:54:24,EVENT,|MQTT || started|
+2019-05-07 16:54:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 16:54:28,EVENT,|Speech Recognition Provider || started|
+2019-05-07 17:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 17:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 17:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 17:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 17:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 17:00:08,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 18:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 18:00:05,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 18:00:05,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 18:00:07,ERROR,|Scheduler || Sensor Task - sensor_test_01 || Sensor - 0x88888 || Message not founded|
+2019-05-07 18:00:09,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 18:00:09,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 18:00:09,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 18:08:44,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:08:45,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:08:47,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:08:48,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:08:49,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:11:02,EVENT,|MQTT || started|
+2019-05-07 18:11:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:11:06,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:12:08,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:12:09,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:12:10,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:12:11,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:12:13,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:13:19,EVENT,|MQTT || started|
+2019-05-07 18:13:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:13:23,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:13:26,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:13:27,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:13:28,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:13:30,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:13:31,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:14:11,EVENT,|MQTT || started|
+2019-05-07 18:14:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:14:15,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:14:21,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:14:22,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:14:23,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:14:25,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:14:26,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:15:12,EVENT,|MQTT || started|
+2019-05-07 18:15:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:15:17,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:15:22,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:15:23,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:15:24,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:15:25,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:15:27,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:16:36,EVENT,|MQTT || started|
+2019-05-07 18:16:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:16:40,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:16:50,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:16:51,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:16:52,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:16:54,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:16:55,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:17:24,EVENT,|MQTT || started|
+2019-05-07 18:17:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:17:29,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:17:34,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:17:35,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:17:36,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:17:38,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:17:39,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:18:23,EVENT,|MQTT || started|
+2019-05-07 18:18:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:18:27,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:18:32,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:18:33,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:18:35,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:18:36,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:18:37,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:19:54,EVENT,|MQTT || started|
+2019-05-07 18:19:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:19:59,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:20:01,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:20:02,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:20:03,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:20:05,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:20:06,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:21:24,EVENT,|MQTT || started|
+2019-05-07 18:21:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:21:29,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:21:33,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:21:34,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:21:36,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:21:37,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:21:38,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:22:59,EVENT,|MQTT || started|
+2019-05-07 18:22:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:23:03,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:23:06,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:23:07,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:23:08,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:23:10,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:23:11,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:25:20,EVENT,|MQTT || started|
+2019-05-07 18:25:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:25:24,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:25:28,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:25:29,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:25:30,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:25:32,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:25:33,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:26:50,EVENT,|MQTT || started|
+2019-05-07 18:26:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:26:54,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:26:55,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:27:40,EVENT,|MQTT || started|
+2019-05-07 18:27:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:27:44,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:27:46,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:28:20,EVENT,|MQTT || started|
+2019-05-07 18:28:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:28:26,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:28:26,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:29:44,EVENT,|MQTT || started|
+2019-05-07 18:29:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:29:48,ERROR,|ZigBee2MQTT || name 'device' is not defined|
+2019-05-07 18:29:50,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:30:32,EVENT,|MQTT || started|
+2019-05-07 18:30:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:30:35,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:30:38,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:31:15,EVENT,|MQTT || started|
+2019-05-07 18:31:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:31:19,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:31:21,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:32:48,EVENT,|MQTT || started|
+2019-05-07 18:32:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:32:54,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:32:54,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:34:09,EVENT,|MQTT || started|
+2019-05-07 18:34:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:34:14,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:34:16,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:35:06,EVENT,|MQTT || started|
+2019-05-07 18:35:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:35:10,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:35:12,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:36:22,EVENT,|MQTT || started|
+2019-05-07 18:36:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:36:26,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:36:28,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:37:45,EVENT,|MQTT || started|
+2019-05-07 18:37:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:37:50,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:37:51,ERROR,|ZigBee2MQTT || 'model'|
+2019-05-07 18:38:34,EVENT,|MQTT || started|
+2019-05-07 18:38:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:38:39,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:39:51,EVENT,|MQTT || started|
+2019-05-07 18:39:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:39:56,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:42:00,EVENT,|MQTT || started|
+2019-05-07 18:42:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:42:05,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:42:06,EVENT,|Database || MQTT Device - 0x8418260000105fa0 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x8418260000105fa0 || Model -  || device_type - LED || description - Philips HUE color || Inputs - None || Outputs - None|
+2019-05-07 18:44:39,EVENT,|MQTT || started|
+2019-05-07 18:44:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:44:44,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:45:26,EVENT,|MQTT || started|
+2019-05-07 18:45:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:45:31,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:46:03,EVENT,|MQTT || started|
+2019-05-07 18:46:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:46:08,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:46:42,EVENT,|MQTT || started|
+2019-05-07 18:46:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:46:47,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:47:16,EVENT,|MQTT || started|
+2019-05-07 18:47:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:47:21,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:47:25,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:47:31,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:48:12,EVENT,|MQTT || started|
+2019-05-07 18:48:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:48:16,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:48:27,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:49:02,EVENT,|MQTT || started|
+2019-05-07 18:49:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:49:08,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:49:22,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:49:26,EVENT,|Database || MQTT Device - 0x8418260000105fa0 || deleted|
+2019-05-07 18:49:30,EVENT,|Database || MQTT Device - 0x8418260000105fa0 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x8418260000105fa0 || Model -  || device_type - LED || description - Philips HUE color || Inputs - None || Outputs - None|
+2019-05-07 18:49:31,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:49:37,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:50:12,EVENT,|Database || ZigBee2MQTT Device - 0x8418260000105fa0 || changed |||| Name - Osram || Gateway - zigbee2mqtt || ieeeAddr - 0x8418260000105fa0 || Model -  || device_type -  || description -  || inputs -  || outputs - |
+2019-05-07 18:51:22,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-07 18:53:26,EVENT,|MQTT || started|
+2019-05-07 18:53:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:53:30,EVENT,|Speech Recognition Provider || started|
+2019-05-07 18:55:34,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-07 18:57:20,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-07 18:59:44,EVENT,|MQTT || started|
+2019-05-07 18:59:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 18:59:48,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-07 19:00:04,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-07 19:00:04,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-07 19:00:07,ERROR,|Scheduler || Sensor Task - sensor_test_01 || Sensor - 0x88888 || Message not founded|
+2019-05-07 19:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-07 19:00:08,EVENT,|Scheduler || Time Task - test || started|
+2019-05-07 19:00:08,ERROR,|Scheduler || Time Task - test || 'NoneType' object has no attribute 'mqtt_device'|
+2019-05-07 19:01:06,EVENT,|MQTT || started|
+2019-05-07 19:01:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:01:10,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:03:44,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-07 19:04:04,EVENT,|Database || Plant - sdsf || deleted|
+2019-05-07 19:04:05,EVENT,|Database || Plant - gfdgfd || deleted|
+2019-05-07 19:04:06,EVENT,|Database || Plant - gfd || deleted|
+2019-05-07 19:04:13,EVENT,|Database || Scheduler Sensor || Task - LEDs ausschalten || deleted|
+2019-05-07 19:04:26,EVENT,|Database || Sensordata Job - fgduztzu || deleted|
+2019-05-07 19:04:27,EVENT,|Database || Sensordata Job - jhgjhgf || deleted|
+2019-05-07 19:04:28,EVENT,|Database || Sensordata Job - ok || deleted|
+2019-05-07 19:04:39,EVENT,|Database || MQTT Device - 0x99999 || deleted|
+2019-05-07 19:06:31,EVENT,|MQTT || started|
+2019-05-07 19:06:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:06:35,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:07:20,EVENT,|MQTT || started|
+2019-05-07 19:07:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:07:25,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:09:44,EVENT,|MQTT || started|
+2019-05-07 19:09:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:09:49,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:10:03,EVENT,|Database || MQTT Device - 0x99999 || added |||| Gateway - mqtt || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Bewässerung (4 Pflanzen) || Inputs - sensor_0, sensor_1, sensor_2, sensor_3, sensor_4, sensor_5, sensor_6, sensor_7 || Outputs - pump_0, pump_1, pump_2, pump_3|
+2019-05-07 19:11:49,EVENT,|MQTT || started|
+2019-05-07 19:11:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:11:54,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:12:03,EVENT,|Database || Scheduler Sensor || Task - sensor_test_01 || deleted|
+2019-05-07 19:12:08,EVENT,|Database || MQTT Device - 0x88888 || deleted|
+2019-05-07 19:17:40,EVENT,|Database || MQTT Device - 0x88888 || added |||| Gateway - mqtt || ieeeAddr - 0x88888 || Model - envi_sensor || device_type - sensor || description - Raumsensor (Feuchtigkeit / Temperatur / Licht) || Inputs - temperature, humidity, light || Outputs - |
+2019-05-07 19:19:08,EVENT,|MQTT || started|
+2019-05-07 19:19:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-07 19:19:14,EVENT,|Speech Recognition Provider || started|
+2019-05-07 19:19:18,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_01 || changed |||| Name - Deckenlampe_01 || Gateway - zigbee2mqtt || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led || description - Philips HUE color || inputs - None || outputs - None|
+2019-05-07 19:19:18,EVENT,|Database || ZigBee2MQTT Device - Deckenlampe_02 || changed |||| Name - Deckenlampe_02 || Gateway - zigbee2mqtt || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led || description - Philips HUE color || inputs - None || outputs - None|
+2019-05-07 19:19:18,ERROR,|ZigBee2MQTT || string index out of range|

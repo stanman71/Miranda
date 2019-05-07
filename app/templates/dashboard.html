@@ -8,6 +8,19 @@
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <script>
+    var slider_sensitivity = document.getElementById("input_brightness");
+    var output_sensitivity = document.getElementById("output_brightness");
+    output_sensitivity.innerHTML = slider_sensitivity.value; 
+    slider_sensitivity.oninput = function() { output_sensitivity.innerHTML = this.value }
+  </script>
+
 {% endblock %}
 
 {% block content %}
@@ -43,19 +56,118 @@
 </nav>
 <br>
 
-<!-- table logs -->
 
 <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
   <div class="row">
     <div class="col">
+ 
+ 
+<!-- table led -->      
+      
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>LED</b></font></div>       
+          <div class="panel-body">  
+            <div class="well well-sm">
+
+
+{% if error_message_led != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_led }}
+  </div>      
+{% endif %}
+
+            <form method="POST">
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Gruppe</th> 
+                  <th scope="col">LEDs</th> 
+                  <th scope="col">Szene / Programm</th> 
+                  <th scope="col">Helligkeit</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in data_led %}
+                  <tr>
+                    <td style="width:20%"> {{entry.name}} </td> 
+                    <td style="width:30%"> 
+                      {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
+                        {{entry.led_name_1}}
+                      {% endif %} 
+                      {% if entry.led_name_2 != "None" and entry.led_name_2 != None %}
+                        ,{{entry.led_name_2}}
+                      {% endif %} 
+                      {% if entry.led_name_3 != "None" and entry.led_name_3 != None %}
+                        ,{{entry.led_name_3}}
+                      {% endif %}                      
+                      {% if entry.led_name_4 != "None" and entry.led_name_4 != None %}
+                        ,{{entry.led_name_4}}
+                      {% endif %} 
+                      {% if entry.led_name_5 != "None" and entry.led_name_5 != None %}
+                        ,{{entry.led_name_5}}
+                      {% endif %} 
+                      {% if entry.led_name_6 != "None" and entry.led_name_6 != None %}
+                        ,{{entry.led_name_6}}
+                      {% endif %}                          
+                      {% if entry.led_name_7 != "None" and entry.led_name_7 != None %}
+                        ,{{entry.led_name_7}}
+                      {% endif %} 
+                      {% if entry.led_name_8 != "None" and entry.led_name_8 != None %}
+                        ,{{entry.led_name_8}}
+                      {% endif %} 
+                      {% if entry.led_name_9 != "None" and entry.led_name_9 != None %}
+                        ,{{entry.led_name_9}}
+                      {% endif %}                                         
+                    </td> 
+                    <td> 
+                      <select class="btn btn-default dropdown-toggle" name="set_group_{{ entry.id }}">
+                        {% if entry.current_setting != "" %}
+                          <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
+                          <option value= "{{ entry.current_setting }}" >  </option> 
+                        {% endif %}     
+                        <option value= "{{ "" }}" > LED Szenen: </option>
+                        <option value= "{{ "" }}" > -------------------- </option> 
+                        {% for each_scene in dropdown_list_led_scenes %}
+                        <option value="scene_{{ each_scene.id }}"> {{ each_scene.name }} </option>
+                        {% endfor %}
+                        <option value= "{{ "" }}" >  </option> 
+                        <option value= "{{ "" }}" > LED Programme: </option>
+                        <option value= "{{ "" }}" > -------------------- </option> 
+                        {% for each_program in dropdown_list_led_programs %}
+                        <option value="program_{{ each_program.id }}"> {{ each_program.name }} </option>
+                        {% endfor %}
+                        <option value= "{{ "" }}" >  </option> 
+                        <option value= "turn_off" > LED Gruppe ausschalten </option>                   
+                      </select> 
+                  </td>
+                  <td>
+                    Helligkeit: <span id="output_brightness"></span> %
+                    <div class="slidecontainer">                        
+                      <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
+                    </div>
+                  </td>
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table> 
+            </div> 
+              <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_led_settings" value="Einstellungen ändern" />       
+            </form>         
+          </div>    
+        </div>  
+      </div> 
+ 
+      
+<!-- table logs -->      
+      
+      
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Ereignisse</b></font></div>       
           <div class="panel-body">  
             <div class="well well-sm">
 
-{% if error_message != "" %}
+{% if error_message_log != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message }}
+    {{ error_message_log }}
   </div>      
 {% endif %}
 

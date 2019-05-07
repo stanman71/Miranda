@@ -172,10 +172,11 @@ def dashboard_settings_zigbee2mqtt():
         
         if request.method == 'POST':
 
-            # change settings
+            # change name
             if request.form.get("change_settings") != None:
+                
                 for i in range (1,26):
-                    # set name
+
                     if (request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None):
                             
                         new_name = request.form.get("set_name_" + str(i))
@@ -193,9 +194,8 @@ def dashboard_settings_zigbee2mqtt():
                                     time.sleep(1)
 
                                     # error in zigbee2mqtt
-                                    if MQTT_CHECK_NAME_CHANGED():
-                                        inputs = GET_MQTT_DEVICE_BY_ID(i).inputs        
-                                        SET_MQTT_DEVICE("zigbee2mqtt", i, new_name, inputs)
+                                    if MQTT_CHECK_NAME_CHANGED():       
+                                        SET_MQTT_DEVICE("zigbee2mqtt", i, new_name)
 
                                     else:
                                         error_message_table = "Name konnte in ZigBee2MQTT nicht verändert werden"
@@ -207,20 +207,15 @@ def dashboard_settings_zigbee2mqtt():
                             else:
                                 error_message_table = "Name bereits vergeben >>> " + new_name
 
-                    # set inputs
-                    if request.form.get("set_inputs_" + str(i)) != None:                    
-                        name = GET_MQTT_DEVICE_BY_ID(i).name 
-                        inputs = request.form.get("set_inputs_" + str(i))         
-                        SET_MQTT_DEVICE("zigbee2mqtt", i, name, inputs)
-                   
-
             # update device list
             if request.form.get("update_zigbee2mqtt_devices") is not None:
                 MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
             # request zigbee topology
             if request.form.get("request_zigbee_topology") is not None: 
+                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/networkmap", "graphviz")
                 zigbee_topology_show = True
+                time.sleep(1)
 
             # change pairing setting
             if request.form.get("set_pairing") is not None: 
@@ -305,7 +300,7 @@ def dashboard_settings_speechcontrol():
     error_message_speech_recognition_provider_settings = ""
     sensitivity = ""
     delay = ""
-    microphone_led = ""
+    microphone = ""
     check_value_speechcontrol = ["", "", ""]
     snowboy_name = ""
     snowboy_task = ""   
@@ -371,10 +366,10 @@ def dashboard_settings_speechcontrol():
                 else:
                     delay = GET_SNOWBOY_SETTINGS().delay  
 
-                # microphone_led
-                microphone_led = request.form.get("set_microphone_led")                                            
+                # set microphone
+                microphone = request.form.get("set_microphone")                                            
              
-                SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone_led)  
+                SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone)  
 
             #########
             # snowboy
@@ -503,9 +498,9 @@ def dashboard_settings_speechcontrol():
     speechcontrol_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
     sensitivity           = GET_SNOWBOY_SETTINGS().sensitivity
     delay                 = GET_SNOWBOY_SETTINGS().delay
-    microphone_led        = GET_SNOWBOY_SETTINGS().microphone_led
+    microphone            = GET_SNOWBOY_SETTINGS().microphone
 
-    dropdown_list_microphone_led_options = ["ReSpeaker 2-Mics Pi HAT", "ReSpeaker Mic 4 Array v2.0"]   
+    dropdown_list_microphone_options = ["ReSpeaker 2-Mics Pi HAT", "ReSpeaker Mic 4 Array v2.0", "Other"]   
 
     # snowboy only
     snowboy_task_list           = GET_ALL_SNOWBOY_TASKS()
@@ -543,8 +538,8 @@ def dashboard_settings_speechcontrol():
                             snowboy_task_list=snowboy_task_list,
                             sensitivity=sensitivity,
                             delay=delay,
-                            microphone_led=microphone_led,
-                            dropdown_list_microphone_led_options=dropdown_list_microphone_led_options,
+                            microphone=microphone,
+                            dropdown_list_microphone_options=dropdown_list_microphone_options,
 
                             snowboy_name=snowboy_name,
                             snowboy_task=snowboy_task,

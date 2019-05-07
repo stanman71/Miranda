@@ -41,14 +41,14 @@ def MQTT_UPDATE_DEVICES(gateway):
       time.sleep(2)
 
       try:
-         messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log",30)
+         messages = READ_LOGFILE_MQTT("mqtt", "SmartHome/mqtt/log",10)
 
          if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu MQTT":
 
             for message in messages:
                
                message = str(message[2])
-
+               
                data = json.loads(message)
                
                inputs_temp = str(data['inputs'])
@@ -63,15 +63,37 @@ def MQTT_UPDATE_DEVICES(gateway):
                outputs_temp = outputs_temp.replace("'", "")
                outputs_temp = outputs_temp.replace('"', "")  
 
-               name     = data['ieeeAddr']
-               gateway  = "mqtt"
-               ieeeAddr = data['ieeeAddr']
-               model    = data['model']
-               inputs   = inputs_temp
-               outputs  = outputs_temp
-
-               ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, inputs, outputs)
+               name        = data['ieeeAddr']
+               gateway     = "mqtt"
+               ieeeAddr    = data['ieeeAddr']
+               model       = data['model']
                
+               try:
+                  device_type = data['device_type']
+               except:
+                  device_type = ""                 
+                  
+               try:
+                  description = data['description']
+               except:
+                  description = ""
+
+               try:
+                  inputs = inputs_temp
+               except:
+                  inputs = ""
+                  
+               try:
+                  outputs = outputs_temp
+               except:
+                  outputs = ""
+                  
+               if not GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
+                  ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, outputs)
+                  
+               else:
+                  SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
+
             return ""
 
          else: 
@@ -86,44 +108,63 @@ def MQTT_UPDATE_DEVICES(gateway):
 
       MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
        
-      for i in range (0,5):
+      try:
+         messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log",30)
+         
+         if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
+             for message in messages:
+           
+                 message = str(message[2])
+                 message = message.replace("'","")
 
-         try:
-            messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log",30)
-            
-            if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
-                for message in messages:
-		  		  
-                    message = str(message[2])
-                    message = message.replace("'","")
+                 data = json.loads(message)
+                 
+                 if (data['type']) == "devices":
+                     devices = (data['message'])
+                     
+                     for i in range(len(devices)):
+                        
+                        device = devices[i]
+                        
+                        # add new device
+                        if not GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']):
+                           
+                           name         = device['friendly_name']
+                           gateway      = "zigbee2mqtt"              
+                           ieeeAddr     = device['ieeeAddr']
+                           
+                           try:
+                              device_model = device['model']
+                           except:
+                              device_model = ""
+                           
+                           device_type = GET_MQTT_DEVICE_INFORMATIONS(model)[0]
+                           description = GET_MQTT_DEVICE_INFORMATIONS(model)[1]
+                           inputs      = GET_MQTT_DEVICE_INFORMATIONS(model)[2]
+                           outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3]     
+                           
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs)
 
-                    data = json.loads(message)
-                  
-                    if (data['type']) == "devices":
-                        for device in (data['message']):
-
-                           # add new device
-                           if not GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']):
-                              name     = device['friendly_name']
-                              gateway  = "zigbee2mqtt"              
-                              ieeeAddr = device['ieeeAddr']
-                              model    = device['model']
-			      
-                              ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model)
-
-                           # get device informations
-                           else:
-                              gateway  = "zigbee2mqtt"
-                              id       = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']).id	      
-                              name     = device['friendly_name']
-                              inputs   = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']).inputs	
-			      	      	      
-                              SET_MQTT_DEVICE(gateway, id, name, inputs)
-
-         except Exception as e:
-            print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | " + str(e))            
-
+                        # update device informations
+                        else:
+                           
+                           gateway  = "zigbee2mqtt"
+                           id       = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']).id	      
+                           name     = device['friendly_name']
+                           model    = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']).model
+                           
+                           device_type = GET_MQTT_DEVICE_INFORMATIONS(model)[0]
+                           description = GET_MQTT_DEVICE_INFORMATIONS(model)[1]
+                           inputs      = GET_MQTT_DEVICE_INFORMATIONS(model)[2]
+                           outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3]                           
+                              
+                           SET_MQTT_DEVICE(gateway, id, name, device_type, description, inputs, outputs)
+                           SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
+      
+      except Exception as e:
+         print(e)
+         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | " + str(e))            
+      
 
 """ ################### """
 """    get sensordata   """
