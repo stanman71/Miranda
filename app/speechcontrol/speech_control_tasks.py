@@ -267,8 +267,51 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     break
 
 
-        # turn off led 
+        # set brightness
         keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(3).keywords
+        
+        try:
+            list_keywords = keywords.split(",")
+        except:
+            list_keywords = [keywords]
+
+        for keyword in list_keywords:
+            
+            keyword = keyword.replace(" ", "")
+                       
+            if keyword.lower() in answer:
+
+                try:
+          
+                    groups = GET_ALL_LED_GROUPS()
+
+                    for group in groups:
+                        if group.name.lower() in answer:
+                            
+                            # search for brightness value
+                            for element in answer.split():
+                                element = element.replace("%","")
+                                if element.isdigit():
+                                    brightness = element
+                                 
+                            # check brightness value
+                            if 1 <= int(brightness) <= 100:
+         
+                                error_message = LED_SET_BRIGHTNESS(int(group.id), int(brightness))                      
+                                if error_message != "":            
+                                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)                    
+                       
+                        break
+
+                except Exception as e:
+                    print(e)
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(e))    
+                    
+                    break
+
+
+        # turn off led 
+        keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(4).keywords
         
         try:
             list_keywords = keywords.split(",")
@@ -313,4 +356,3 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     
                     break
                         
-                  

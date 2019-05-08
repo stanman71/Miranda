@@ -9,6 +9,7 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.led_control import *
+from app.components.mqtt_functions import MQTT_SET_SWITCH
 
 
 class LoginForm(FlaskForm):
@@ -21,9 +22,11 @@ class LoginForm(FlaskForm):
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
+    error_message_led = ""
+    error_message_switch = ""
     error_message_log = ""
-    error_message_led = ""    
-    
+    checkbox = ""
+        
     
     if request.method == "POST":
         
@@ -43,7 +46,7 @@ def dashboard():
 
                         if setting_type == "scene":
                             brightness = request.form.get("set_brightness_" + str(i))
-                            error_message_led = LED_START_SCENE(i, int(setting.split("_")[1]), int(brightness))
+                            error_message_led = LED_START_SCENE(i, int(setting.split("_")[1]), int(brightness))                         
                             continue
                         
                         if setting_type == "program":
@@ -65,17 +68,39 @@ def dashboard():
                                 
                                 # brightness changed ?
                                 if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:
-                                    
-                                    scene_id = GET_LED_SCENE_BY_NAME(setting).id
-                                    error_message_led = LED_START_SCENE(i, int(scene_id), int(brightness)) 
-                                    continue    
+                                    error_message_led = LED_SET_BRIGHTNESS(i, int(brightness)) 
+                                    continue              
+    
+    
+        if request.form.get("change_switch_settings") != None:
+            
+            for i in range (1,21):
 
+                # set switch  
+                if request.form.get("set_switch_" + str(i)) != None:
+                    setting = request.form.get("set_switch_" + str(i))
+                else:
+                    setting = ""
                 
-    
-    
-    data_led = GET_ALL_LED_GROUPS()
+                devices = GET_ALL_MQTT_DEVICES("switch")
+                
+                for device in devices:
+                    if device.id == i:
+                        
+                        name     = device.name
+                        gateway  = device.gateway
+                        ieeeAddr = device.ieeeAddr
+                        
+                        SET_MQTT_DEVICE_SETTING(ieeeAddr, setting)
+                        error_message_switch = MQTT_SET_SWITCH(name, gateway, ieeeAddr, setting)
+                        break 
+                          
+
+    data_led = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes   = GET_ALL_LED_SCENES()
     dropdown_list_led_programs = GET_ALL_LED_PROGRAMS()
+    
+    data_switch = GET_ALL_MQTT_DEVICES("switch")
 
     if GET_LOGFILE_SYSTEM(10) is not None:
         data_log_system = GET_LOGFILE_SYSTEM(10)
@@ -89,9 +114,12 @@ def dashboard():
                             data_led=data_led,
                             dropdown_list_led_scenes=dropdown_list_led_scenes,
                             dropdown_list_led_programs=dropdown_list_led_programs,
+                            data_switch=data_switch,
+                            checkbox=checkbox,
                             data_log_system=data_log_system, 
                             version=version,  
                             error_message_led=error_message_led,
-                            error_message_log=error_message_log,    
+                            error_message_log=error_message_log,  
+                            error_message_switch=error_message_switch,   
                             role=current_user.role,
                             )

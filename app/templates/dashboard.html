@@ -136,15 +136,15 @@
                         <option value="program_{{ each_program.id }}"> {{ each_program.name }} </option>
                         {% endfor %}
                         <option value= "{{ "" }}" >  </option> 
-                        <option value= "turn_off" > LED Gruppe ausschalten </option>                   
+                        <option value= "turn_off" > ausschalten </option>                   
                       </select> 
-                  </td>
-                  <td>
-                    Helligkeit: <span id="output_brightness"></span> %
-                    <div class="slidecontainer">                        
-                      <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
-                    </div>
-                  </td>
+                    </td>
+                    <td>
+                      Helligkeit: <span id="output_brightness"></span> %
+                      <div class="slidecontainer">                        
+                        <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
+                      </div>
+                    </td>
                   </tr>
                   {% endfor %} 
                 </tbody>
@@ -155,6 +155,51 @@
           </div>    
         </div>  
       </div> 
+ 
+ 
+ <!-- table switch -->      
+      
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Schalter</b></font></div>       
+          <div class="panel-body">  
+            <div class="well well-sm">
+
+
+{% if error_message_switch != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_switch }}
+  </div>      
+{% endif %}
+
+            <form method="POST">
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Schalter</th> 
+                  <th scope="col">Beschreibung</th>
+                  <th scope="col">Einstellung</th> 
+                </thead>
+                <tbody> 
+                  {% for entry in data_switch %}
+                  <tr>
+                    <td> {{entry.name}} </td>
+                    <td> {{entry.description}} </td> 
+                    <td>
+                      <div class="material-switch pull-left">
+                        <input id="someSwitchOptionDefault" {{ entry.setting }} name="set_switch_{{ entry.id }}" type="checkbox" value="checked" />
+                        <label for="someSwitchOptionDefault" class="label-default"></label>
+                      </div
+                    </td>
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table> 
+            </div> 
+            <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_switch_settings" value="Einstellungen ändern" />       
+          </form>         
+        </div>    
+      </div>  
+
  
       
 <!-- table logs -->      

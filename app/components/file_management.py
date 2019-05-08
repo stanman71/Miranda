@@ -262,7 +262,7 @@ try:
     with open(PATH + "/app/zigbee_device_informations.yaml", 'r') as file_zigbee:
         zigbee_devices = yaml.load(file_zigbee)
         
-except:
+except Exception as e:
     WRITE_LOGFILE_SYSTEM("ERROR", "File | zigbee_device_informations.ymal | " + str(e))
 
 

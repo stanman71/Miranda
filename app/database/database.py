@@ -138,7 +138,8 @@ class MQTT_Devices(db.Model):
     inputs       = db.Column(db.String(200))
     outputs      = db.Column(db.String(200))
     last_contact = db.Column(db.String(50))
-    last_values  = db.Column(db.String(200))    
+    last_values  = db.Column(db.String(200))  
+    setting      = db.Column(db.String(50))  
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -441,7 +442,17 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
 
 def GET_ALL_LED_GROUPS():
     return LED_Groups.query.all()   
+  
+    
+def GET_ALL_ACTIVE_LED_GROUPS():
+    list_active_groups = []
 
+    for group in LED_Groups.query.all():
+        if group.led_id_1 != None and group.led_id_1 != "None":
+            list_active_groups.append(group)
+            
+    return list_active_groups
+          
 
 def GET_LED_GROUP_BY_ID(id):
     return LED_Groups.query.filter_by(id=id).first()
@@ -736,8 +747,10 @@ def SET_LED_PROGRAM_NAME(id, name):
         db.session.commit()    
 
 
-def UPDATE_LED_PROGRAM(id, content):
-    entry = LED_Programs.query.filter_by(id=id).update(dict(content=content))
+def SAVE_LED_PROGRAM(id, content):
+    entry = LED_Programs.query.filter_by(id=id).first()
+    entry.content = content
+    
     db.session.commit()
 
 
@@ -980,6 +993,11 @@ def GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
 def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
     devices = MQTT_Devices.query.all()
+  
+    if selector == "led":
+        for device in devices:
+            if device.device_type == "led":
+                device_list.append(device)    
     
     if selector == "mqtt" or selector == "zigbee2mqtt":
         for device in devices:
@@ -989,24 +1007,20 @@ def GET_ALL_MQTT_DEVICES(selector):
     if selector == "sensor":
         for device in devices:
             if device.device_type == "sensor":
-                device_list.append(device)  
+                device_list.append(device)   
+     
+    if selector == "switch":
+        for device in devices:
+            if device.device_type == "switch" or device.device_type == "powerswitch":
+                device_list.append(device)       
                 
     if selector == "watering_array":
         for device in devices:
             if device.device_type == "watering_array":
-                device_list.append(device)    
-
-    if selector == "led":
-        for device in devices:
-            if device.device_type == "led":
-                device_list.append(device)                                 
+                device_list.append(device)                                                
                 
     return device_list
         
-"""
-def GET_MQTT_DEVICE_INPUTS_BY_ID(id):
-    return MQTT_Devices.query.filter_by(id=id).first().inputs   
-"""
 
 def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", inputs = "", outputs = "", last_contact = ""):
     # path exist ?
@@ -1033,6 +1047,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                         outputs      = outputs,
                         last_contact = last_contact,
                         )
+                        
                 db.session.add(device)
                 db.session.commit()
                 
@@ -1054,6 +1069,18 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
         SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)  
 
 
+def SET_MQTT_DEVICE_NAME(ieeeAddr, new_name):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+                         " | Gateway - " + entry.gateway +
+                         " | Name changed" + 
+                         " || Name - " + new_name)
+    
+    entry.name = new_name
+    db.session.commit()       
+
+
 def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
@@ -1070,44 +1097,45 @@ def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     db.session.commit()   
 
 
-def SET_MQTT_DEVICE(gateway, id, name, device_type = "", description = "", inputs = "", outputs = ""):
+def SET_MQTT_DEVICE_SETTING(ieeeAddr, setting):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+                         " | Gateway - " + entry.gateway +
+                         " | Setting changed" + 
+                         " || Setting - " + setting)
+    
+    entry.setting  = setting
+    db.session.commit()  
+    
+    
+def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
+    
+    # values changed ?
+    if (entry.name != name or entry.device_type != device_type or entry.description != description 
+        or entry.inputs != inputs or entry.outputs != outputs):
+        
+        entry.device_type = device_type
+        entry.description = description
+        entry.inputs = inputs
+        entry.outputs = outputs
+        
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+                             " | Gateway - " + entry.gateway +
+                             " | changed" + 
+                             " || Name - " + name + 
+                             " | ieeeAddr - " + entry.ieeeAddr + 
+                             " | Model - " + entry.model +
+                             " | device_type - " + entry.device_type +
+                             " | description - " + entry.description +
+                             " | inputs - " + entry.inputs + 
+                             " | outputs - " + outputs)
 
-    if gateway == "mqtt":
-
-        # values changed ?
-        if (entry.name != name):
-
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + " | changed || Name - " + name)
-
-            entry.name = name
-            db.session.commit()    
-
-
-    if gateway == "zigbee2mqtt":
-
-        # values changed ?
-        if (entry.name != name or entry.device_type != device_type or entry.description != description 
-            or entry.inputs != inputs or entry.outputs != outputs):
-            
-            entry.device_type = device_type
-            entry.description = description
-            entry.inputs = inputs
-            entry.outputs = outputs
-            
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | ZigBee2MQTT Device - " + entry.name + " | changed || Name - " + name + 
-                                 " | Gateway - " + entry.gateway + 
-                                 " | ieeeAddr - " + entry.ieeeAddr + 
-                                 " | Model - " + entry.model +
-                                 " | device_type - " + entry.device_type +
-                                 " | description - " + entry.description +
-                                 " | inputs - " + entry.inputs + 
-                                 " | outputs - " + outputs)
-
-            entry.name = name
-            db.session.commit()    
-
-
+        entry.name = name
+        db.session.commit()    
+   
+    
 def DELETE_MQTT_DEVICE(id):
     error_list = ""
 

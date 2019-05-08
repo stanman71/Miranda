@@ -386,79 +386,71 @@ def dashboard_led_programs():
     rgb = "rgb(0, 0, 0)"
     led_update = ""
     error_message = ""
-    program_delete = ""
     
     if request.method == 'POST':
-        if request.form.get("add_program") is not None:    
+        if request.form.get("add_program") != None:  
+              
             # create a new program
             new_program = request.form.get("new_program") 
-            if new_program is not None and new_program is not "":
+            if new_program != None and new_program != "":
                 error_message = ADD_LED_PROGRAM(new_program) 
             else:
                 error_message = "Kein Name angegeben" 
     
-        if request.form.get("get_program_name") is not None: 
-            # get the selected program, remove SUNRISE delete option
+        if request.form.get("get_program_name") != None: 
+            
+            # get the selected program
             get_Program = request.form.get("get_program_name") 
-            if get_Program is not None:
-                program = GET_LED_PROGRAM_BY_NAME(get_Program)
-                if "SUNRISE" in program.name:
-                    program_delete = ""
-                else:
-                    program_delete = program
-                    
+            if get_Program != None:
+                program = GET_LED_PROGRAM_BY_NAME(get_Program)            
+              
         # i = program ID
         for i in range(1,21):  
             
-            if (request.form.get("color_" + str(i)) is not None or
-                request.form.get("update_" + str(i)) is not None or
-                request.form.get("start_" + str(i)) is not None or
-                request.form.get("change_name_" + str(i)) is not None):
+            if (request.form.get("save_" + str(i)) != None or
+                request.form.get("color_" + str(i)) != None or
+                request.form.get("start_" + str(i)) != None or
+                request.form.get("change_name_" + str(i)) != None):
                     
-                # update programs
-                update_Program = request.form.get("update_" + str(i))
-                if update_Program is not None:
-                    UPDATE_LED_PROGRAM(i, update_Program)
+                # save content
+                content = request.form.get("content")
+                SAVE_LED_PROGRAM(i, content)                 
+                       
                 # start program
                 start_Program = request.form.get("start_" + str(i))
-                if start_Program is not None:   
+                if start_Program != None:  
                     if request.form.get("get_group") != "":   
                         group = request.form.get("get_group")
                         LED_START_PROGRAM_THREAD(int(group), i)  
 
                 # get rgb values
                 get_rgb = request.form.get("get_rgb_" + str(i)) 
-                if get_rgb is not None:
+                if get_rgb != None:
                     rgb = get_rgb               
-                    program = GET_LED_PROGRAM_BY_ID(i)   
+                    program = GET_LED_PROGRAM_BY_ID(i) 
+                    
                 # change program name                    
                 program_name = request.form.get("program_name_" + str(i)) 
-                if program_name is not None:
+                if program_name != None:
                     SET_LED_PROGRAM_NAME(i, program_name)              
                     program = GET_LED_PROGRAM_BY_ID(i)  
+                    
                 
-                program = GET_LED_PROGRAM_BY_ID(i)
-                if "SUNRISE" in program.name:
-                    program_delete = ""
-                else:
-                    program_delete = program
-                
-                
-        if request.form.get("delete_program") is not None:     
+        if request.form.get("delete_program") != None: 
             # delete the selected program
             delete_Program = request.form.get("delete_program") 
             delete_Program = delete_Program.split(" ")[0]
             DELETE_LED_PROGRAM(delete_Program)     
 
+
     dropdown_list_programs = GET_ALL_LED_PROGRAMS()
-    dropdown_list_groups   = GET_ALL_LED_GROUPS()
+    dropdown_list_groups   = GET_ALL_ACTIVE_LED_GROUPS()
 
     return render_template('dashboard_led_programs.html',
                             led_update=led_update,
                             dropdown_list_programs=dropdown_list_programs,
                             dropdown_list_groups=dropdown_list_groups,
                             program=program,
-                            program_delete=program_delete,
                             rgb=rgb,
                             programs="active",
                             error_message=error_message,

@@ -78,14 +78,15 @@ def dashboard_settings_mqtt():
                     old_name = GET_MQTT_DEVICE_BY_ID(i).name
 
                     if new_name != old_name:          
-                        if not GET_MQTT_DEVICE_BY_NAME(new_name):                    
-                            SET_MQTT_DEVICE("mqtt", i, new_name)                         
+                        if not GET_MQTT_DEVICE_BY_NAME(new_name):  
+                            ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
+                            SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)                         
                         else: 
                             error_message_table = "Name bereits vergeben >>> " + new_name
 
         # update device list
         if request.form.get("mqtt_update_devices") != None:
-            MQTT_UPDATE_DEVICES("mqtt")
+            error_message_table = MQTT_UPDATE_DEVICES("mqtt")
             
         # reset logfile
         if request.form.get("reset_logfile") != None: 
@@ -191,11 +192,12 @@ def dashboard_settings_zigbee2mqtt():
                                 if MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
                                                 '{"old": "' + old_name + '", "new": "' + new_name + '"}') != "Keine Verbindung zu MQTT":
 
-                                    time.sleep(1)
+                                    time.sleep(3)
 
                                     # error in zigbee2mqtt
                                     if MQTT_CHECK_NAME_CHANGED():       
-                                        SET_MQTT_DEVICE("zigbee2mqtt", i, new_name)
+                                        ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
+                                        SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)  
 
                                     else:
                                         error_message_table = "Name konnte in ZigBee2MQTT nicht verändert werden"
@@ -209,7 +211,7 @@ def dashboard_settings_zigbee2mqtt():
 
             # update device list
             if request.form.get("update_zigbee2mqtt_devices") is not None:
-                MQTT_UPDATE_DEVICES("zigbee2mqtt")
+                error_message_table = MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
             # request zigbee topology
             if request.form.get("request_zigbee_topology") is not None: 
