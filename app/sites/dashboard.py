@@ -102,6 +102,8 @@ def dashboard():
     
     data_switch = GET_ALL_MQTT_DEVICES("switch")
 
+    data_sensor = GET_ALL_MQTT_DEVICES("sensor")
+
     if GET_LOGFILE_SYSTEM(10) is not None:
         data_log_system = GET_LOGFILE_SYSTEM(10)
     else:
@@ -117,6 +119,7 @@ def dashboard():
                             data_switch=data_switch,
                             checkbox=checkbox,
                             data_log_system=data_log_system, 
+                            data_sensor=data_sensor,
                             version=version,  
                             error_message_led=error_message_led,
                             error_message_log=error_message_log,  

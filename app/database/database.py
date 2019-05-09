@@ -18,6 +18,18 @@ db = SQLAlchemy(app)
 """ ###################### """
 """ ###################### """
 
+class Controller(db.Model):
+    __tablename__ = 'controller'
+    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    controller_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
+    mqtt_device   = db.relationship('MQTT_Devices') 
+    input_1       = db.Column(db.String(50))
+    task_1        = db.Column(db.String(50))
+    input_2       = db.Column(db.String(50))
+    task_2        = db.Column(db.String(50))
+    input_3       = db.Column(db.String(50))
+    task_3        = db.Column(db.String(50))    
+
 class eMail(db.Model):
     __tablename__ = 'email'
     id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -128,18 +140,19 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name         = db.Column(db.String(50), unique=True)
-    gateway      = db.Column(db.String(50)) 
-    ieeeAddr     = db.Column(db.String(50), unique=True)  
-    model        = db.Column(db.String(50))
-    device_type  = db.Column(db.String(50))
-    description  = db.Column(db.String(200))
-    inputs       = db.Column(db.String(200))
-    outputs      = db.Column(db.String(200))
-    last_contact = db.Column(db.String(50))
-    last_values  = db.Column(db.String(200))  
-    setting      = db.Column(db.String(50))  
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                 = db.Column(db.String(50), unique=True)
+    gateway              = db.Column(db.String(50)) 
+    ieeeAddr             = db.Column(db.String(50), unique=True)  
+    model                = db.Column(db.String(50))
+    device_type          = db.Column(db.String(50))
+    description          = db.Column(db.String(200))
+    inputs               = db.Column(db.String(200))
+    outputs              = db.Column(db.String(200))
+    last_contact         = db.Column(db.String(50))
+    last_values          = db.Column(db.String(200))  
+    last_values_formated = db.Column(db.String(200)) 
+    setting              = db.Column(db.String(50))  
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -342,6 +355,82 @@ if ZigBee2MQTT.query.filter_by().first() is None:
 """ ################################ """
 """ ################################ """
 
+
+""" ################## """
+""" ################## """
+"""     Controller     """
+""" ################## """
+""" ################## """
+
+
+def GET_ALL_CONTROLLER():   
+    return Controller.query.all()
+
+
+def GET_CONTROLLER_BY_ID(id):
+    return Controller.query.filter_by(id=id).first()
+
+
+def GET_CONTROLLER_BY_NAME(name):
+    return Controller.query.filter_by(name=name).first()
+    
+
+def ADD_CONTROLLER(controller_id):
+    # controller exist ?
+    
+    check_entry = Controller.query.filter_by(controller_id=controller_id).first()
+    if check_entry is None:
+        if controller_id == "":
+            return "Keinen Controller angegeben"
+        else:
+            # find a unused id
+            for i in range(1,21):
+                if Controller.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add new controller
+                    new_controller = Controller(
+                                   id = i,
+                        controller_id = controller_id,
+                        )
+                    db.session.add(new_controller)
+                    db.session.commit()
+                    
+                    controller_name = GET_MQTT_DEVICE_BY_ID(controller_id).name
+
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | added")  
+
+                    return ""
+
+            return "Controllerlimit erreicht (20)"
+
+    else:
+        return "Controller bereits vorhanden"    
+
+
+def SET_CONTROLLER_SETTINGS(id, controller, input_1 = "", task_1 = "", input_2 = "", task_2 = "", input_3 = "", task_3 = ""): 
+    entry = Controller.query.filter_by(id=id).first()
+    entry.controller = controller
+    entry.input_1    = input_1
+    entry.task_1     = task_1
+    entry.input_2    = input_2
+    entry.task_2     = task_2
+    entry.input_3    = input_3
+    entry.task_3     = task_3    
+    db.session.commit()
+
+
+def DELETE_CONTROLLER(id):
+    controller_name = GET_MQTT_DEVICE_BY_ID(id).name
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | deleted")   
+    except:
+        pass     
+    
+    Controller.query.filter_by(id=id).delete()
+    db.session.commit() 
+    
 
 """ ################## """
 """ ################## """
@@ -994,6 +1083,11 @@ def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
     devices = MQTT_Devices.query.all()
   
+    if selector == "controller":
+        for device in devices:
+            if device.device_type == "controller":
+                device_list.append(device)      
+  
     if selector == "led":
         for device in devices:
             if device.device_type == "led":
@@ -1006,12 +1100,12 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
-            if device.device_type == "sensor":
+            if device.device_type == "active_sensor" or device.device_type == "passiv_sensor" or device.device_type == "sensor":
                 device_list.append(device)   
      
     if selector == "switch":
         for device in devices:
-            if device.device_type == "switch" or device.device_type == "powerswitch":
+            if device.device_type == "switch" or device.device_type == "power_switch":
                 device_list.append(device)       
                 
     if selector == "watering_array":
@@ -1091,9 +1185,16 @@ def SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr):
 def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
+    last_values_formated = last_values.replace("{","")
+    last_values_formated = last_values_formated.replace("}","")
+    last_values_formated = last_values_formated.replace('"',"")
+    last_values_formated = last_values_formated.replace(":",": ")
+    last_values_formated = last_values_formated.replace(",",", ")
+    
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-    entry.last_values  = last_values
-    entry.last_contact = timestamp
+    entry.last_values          = last_values
+    entry.last_values_formated = last_values_formated
+    entry.last_contact         = timestamp
     db.session.commit()   
 
 
@@ -1409,30 +1510,7 @@ def GET_ALL_SCHEDULER_SENSOR_TASKS():
     return Scheduler_Sensor_Tasks.query.all()
 
 
-forbitten_tasks = []
-
-
 def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
-    
-    global forbitten_tasks
-    
-    ##############
-    # waiter tread
-    
-    import threading
-
-    def WAITER_TREAD(task):
-        global forbitten_tasks
-        
-        time.sleep(30)
-        
-        if task in forbitten_tasks:
-            forbitten_tasks.remove(task)
-         
-    # waiter tread
-    ##############
-    
-   
     entries = Scheduler_Sensor_Tasks.query.all()
     
     list_tasks = []
@@ -1447,14 +1525,14 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_1.ieeeAddr == incoming_ieeeAddr or
                 device_1.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id)
                     
             if (device_1.name == incoming_ieeeAddr or
                 device_1.name == incoming_ieeeAddr or
                 device_1.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id)     
         except:
             pass
@@ -1467,14 +1545,14 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_2.ieeeAddr == incoming_ieeeAddr or
                 device_2.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id)  
 
             if (device_2.name == incoming_ieeeAddr or
                 device_2.name == incoming_ieeeAddr or
                 device_2.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id)      
         except:
             pass
@@ -1487,29 +1565,20 @@ def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
                 device_3.ieeeAddr == incoming_ieeeAddr or
                 device_3.ieeeAddr == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id) 
                     
             if (device_3.name == incoming_ieeeAddr or
                 device_3.name == incoming_ieeeAddr or
                 device_3.name == incoming_ieeeAddr):
                 
-                if entry.id not in list_tasks and entry.id not in forbitten_tasks:
+                if entry.id not in list_tasks:
                     list_tasks.append(entry.id)  
         except:
             pass
                 
                 
     if list_tasks != []:
-        
-        for task in list_tasks:
-        
-            forbitten_tasks.append(task)
-            
-            # start waiter tread
-            t = threading.Thread(target=WAITER_TREAD, args=(task,))
-            t.start() 
-        
         return list_tasks
     else:
         return ""

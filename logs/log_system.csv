@@ -20646,3 +20646,366 @@ Timestamp,Type,Description
 2019-05-08 19:04:10,EVENT,|MQTT || started|
 2019-05-08 19:04:10,EVENT,|MQTT || Broker - localhost || connected|
 2019-05-08 19:04:15,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:07:23,EVENT,|MQTT || started|
+2019-05-08 19:07:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 19:07:28,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:07:37,EVENT,|Speech Recognition || Detection Task || |
+2019-05-08 19:12:34,EVENT,|Database || MQTT Device - 0x00158d000349876a || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - powerswitch || description - OSRAM Smart+ Plug Steckdose || Inputs - None || Outputs - None|
+2019-05-08 19:16:42,ERROR,|File || zigbee_device_informations.ymal || while scanning for the next token
+found character '\t' that cannot start any token
+  in "/home/pi/SmartHome/app/zigbee_device_informations.yaml", line 18, column 1|
+2019-05-08 19:16:48,EVENT,|MQTT || started|
+2019-05-08 19:16:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 19:16:53,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:18:15,ERROR,|File || zigbee_device_informations.ymal || while scanning for the next token
+found character '\t' that cannot start any token
+  in "/home/pi/SmartHome/app/zigbee_device_informations.yaml", line 18, column 1|
+2019-05-08 19:18:21,EVENT,|MQTT || started|
+2019-05-08 19:18:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 19:18:26,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:19:51,EVENT,|MQTT || started|
+2019-05-08 19:19:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 19:19:56,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:20:01,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor || description - AQARA Sensor || inputs - None || outputs - ['temperature', 'humidity', 'pressure']|
+2019-05-08 19:24:33,EVENT,|MQTT || started|
+2019-05-08 19:24:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 19:24:38,EVENT,|Speech Recognition Provider || started|
+2019-05-08 19:24:48,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor || description - AQARA Sensor || inputs - temperature, humidity, pressure || outputs - None|
+2019-05-08 19:25:10,EVENT,|Database || Sensordata Job - test || changed |||| Name - test || Filename - test || MQTT-Device - 0x00158d000349876a || Sensor - temperature || Always_Active - |
+2019-05-08 19:25:21,EVENT,|Database || Scheduler Time || Task - test_01 || changed |||| Name - test_01 || Task - request_sensordata:1 || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-08 19:26:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-08 19:26:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-08 19:26:30,EVENT,|Database || Sensordata Job - test || changed |||| Name - test || Filename - test || MQTT-Device - 0x88888 || Sensor - temperature || Always_Active - checked|
+2019-05-08 19:26:37,EVENT,|Database || Scheduler Time || Task - test_01 || changed |||| Name - test_01 || Task - request_sensordata:1 || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-05-08 19:27:00,EVENT,|Database || Sensordata Job - aqara || added|
+2019-05-08 19:27:00,EVENT,|File || /csv/aqara.csv || created|
+2019-05-08 19:27:04,EVENT,|Database || Sensordata Job - aqara || changed |||| Name - aqara || Filename - aqara || MQTT-Device - 0x00158d000349876a || Sensor - temperature || Always_Active - checked|
+2019-05-08 19:27:07,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-08 19:27:24,EVENT,|Database || Sensordata Job - test || changed |||| Name - test || Filename - test || MQTT-Device - 0x88888 || Sensor - temperature || Always_Active - |
+2019-05-08 19:28:01,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 60 prozent|
+2019-05-08 20:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-08 20:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-08 20:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-08 20:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-08 20:14:57,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-08 20:15:49,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-08 20:38:09,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-08 20:38:18,EVENT,|File || /csv/sda.csv || deleted|
+2019-05-08 20:38:21,EVENT,|File || /csv/ok.csv || deleted|
+2019-05-08 20:38:27,EVENT,|File || /csv/testfile_4.csv || deleted|
+2019-05-08 20:38:29,EVENT,|File || /csv/testfile.csv || deleted|
+2019-05-08 20:38:31,EVENT,|File || /csv/testfile_2.csv || deleted|
+2019-05-08 20:38:33,EVENT,|File || /csv/testfile_3.csv || deleted|
+2019-05-08 20:38:34,EVENT,|File || /csv/gfdfds.csv || deleted|
+2019-05-08 20:45:06,EVENT,|Speech Recognition || Detection Task || |
+2019-05-08 21:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-08 21:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-08 21:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-08 21:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-08 21:04:45,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-08 21:22:34,EVENT,|MQTT || started|
+2019-05-08 21:22:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-08 21:22:39,EVENT,|Speech Recognition Provider || started|
+2019-05-08 21:22:56,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor || description - AQARA Sensor (Temperature, Humidity, Pressure) || inputs - temperature, humidity, pressure || outputs - None|
+2019-05-08 22:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-08 22:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-08 22:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-08 22:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-08 22:30:47,EVENT,|Speech Recognition || Detection Task || |
+2019-05-08 23:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-08 23:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-08 23:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-08 23:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-08 23:00:56,EVENT,|Speech Recognition || Detection Task || ist das ein bug oder s-bahn|
+2019-05-08 23:45:20,EVENT,|Speech Recognition || Detection Task || |
+2019-05-08 23:49:53,EVENT,|Speech Recognition || Detection Task || bonedigger behandlung|
+2019-05-09 00:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 00:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 00:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 00:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 00:00:07,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-09 00:00:07,EVENT,|Database_Backup || saved|
+2019-05-09 00:00:07,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-09 00:30:00,EVENT,|Scheduler || Time Task - schlafen || started|
+2019-05-09 00:43:29,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-09 01:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 01:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 01:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 01:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 02:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 02:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 02:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 02:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 03:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 03:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 03:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 03:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 04:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 04:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 04:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 04:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 05:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 05:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 05:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 05:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 06:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 06:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 06:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 06:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 07:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 07:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 07:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 07:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 07:28:46,EVENT,|Database || MQTT Device - 0x00158d000275de23 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - powerswitch || description - OSRAM Smart+ Plug Steckdose || Inputs - None || Outputs - None|
+2019-05-09 07:33:07,EVENT,|MQTT || started|
+2019-05-09 07:33:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 07:33:12,EVENT,|Speech Recognition Provider || started|
+2019-05-09 07:34:15,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || changed |||| Name - Bett || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - power_switch || description - OSRAM Smart+ Plug Steckdose || inputs - None || outputs - None|
+2019-05-09 07:34:15,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - passiv_sensor || description - AQARA Sensor (Temperature, Humidity, Pressure) || inputs - temperature, humidity, pressure, battery, voltage || outputs - None|
+2019-05-09 07:34:15,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || changed |||| Name - 0x7cb03eaa0a02fa78 || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - power_switch || description - OSRAM Smart+ Plug Steckdose || inputs - None || outputs - None|
+2019-05-09 07:34:15,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - Aqara Cube || inputs - angle, side, from_side, to_side, brightness, battery, voltage || outputs - None|
+2019-05-09 07:35:57,EVENT,|MQTT || started|
+2019-05-09 07:35:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 07:36:02,EVENT,|Speech Recognition Provider || started|
+2019-05-09 07:36:53,EVENT,|MQTT || started|
+2019-05-09 07:36:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 07:36:58,EVENT,|Speech Recognition Provider || started|
+2019-05-09 07:37:04,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - angle, side, from_side, to_side, brightness, battery, voltage || outputs - None|
+2019-05-09 07:50:00,EVENT,|Scheduler || Time Task - zur Arbeit || started|
+2019-05-09 08:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 08:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 08:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 08:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 09:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 09:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 09:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 09:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 10:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 10:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 10:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 10:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 10:56:33,ERROR,|MQTT || name 'topic' is not defined|
+2019-05-09 10:56:38,EVENT,|Speech Recognition Provider || started|
+2019-05-09 10:58:36,EVENT,|MQTT || started|
+2019-05-09 10:58:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 10:58:41,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:00:06,EVENT,|MQTT || started|
+2019-05-09 11:00:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:00:11,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:01:42,EVENT,|MQTT || started|
+2019-05-09 11:01:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:01:47,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:02:46,EVENT,|MQTT || started|
+2019-05-09 11:02:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:02:51,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:26:39,EVENT,|MQTT || started|
+2019-05-09 11:26:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:26:44,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:27:53,EVENT,|MQTT || started|
+2019-05-09 11:27:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:27:57,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:29:03,EVENT,|MQTT || started|
+2019-05-09 11:29:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:29:08,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:31:24,EVENT,|MQTT || started|
+2019-05-09 11:31:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:31:30,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:31:35,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:31:39,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:31:48,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:31:52,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:33:26,EVENT,|MQTT || started|
+2019-05-09 11:33:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:33:31,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:33:35,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:33:39,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:33:55,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:33:59,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:35:04,EVENT,|MQTT || started|
+2019-05-09 11:35:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:35:09,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:35:15,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:35:19,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:37:18,EVENT,|MQTT || started|
+2019-05-09 11:37:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:37:23,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:37:53,EVENT,|MQTT || started|
+2019-05-09 11:37:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:37:58,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:38:23,EVENT,|MQTT || started|
+2019-05-09 11:38:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:38:28,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:38:58,EVENT,|MQTT || started|
+2019-05-09 11:38:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:39:03,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:39:09,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:39:13,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:39:23,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:39:27,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:40:47,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-09 11:42:44,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 11:42:48,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:46:35,EVENT,|MQTT || started|
+2019-05-09 11:46:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:46:40,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:46:44,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:46:48,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 11:52:42,EVENT,|MQTT || started|
+2019-05-09 11:52:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:52:47,EVENT,|Speech Recognition Provider || started|
+2019-05-09 11:59:52,EVENT,|MQTT || started|
+2019-05-09 11:59:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 11:59:57,EVENT,|Speech Recognition Provider || started|
+2019-05-09 12:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 12:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 12:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 12:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 12:00:21,EVENT,|MQTT || started|
+2019-05-09 12:00:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 12:00:26,EVENT,|Speech Recognition Provider || started|
+2019-05-09 12:01:49,EVENT,|Database || Scheduler Time || Task - test_01 || changed |||| Name - test_01 || Task - request_sensordata:1 || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-09 12:02:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 12:02:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 12:02:17,EVENT,|Database || Scheduler Time || Task - test_01 || changed |||| Name - test_01 || Task - request_sensordata:1 || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-05-09 12:17:57,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 12:18:01,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 12:19:44,EVENT,|MQTT || started|
+2019-05-09 12:19:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 12:19:49,EVENT,|Speech Recognition Provider || started|
+2019-05-09 12:21:34,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-09 12:36:56,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-09 12:48:21,EVENT,|MQTT || started|
+2019-05-09 12:48:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 12:48:28,EVENT,|Speech Recognition Provider || started|
+2019-05-09 12:49:21,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-09 13:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 13:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 13:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 13:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 13:02:07,EVENT,|MQTT || started|
+2019-05-09 13:02:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:02:12,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:26:10,EVENT,|MQTT || started|
+2019-05-09 13:26:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:26:15,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:28:48,EVENT,|MQTT || started|
+2019-05-09 13:28:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:28:54,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:30:55,EVENT,|MQTT || started|
+2019-05-09 13:30:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:31:01,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:32:33,EVENT,|MQTT || started|
+2019-05-09 13:32:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:32:38,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:33:34,EVENT,|MQTT || started|
+2019-05-09 13:33:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:33:40,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:34:25,EVENT,|MQTT || started|
+2019-05-09 13:34:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:34:31,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:35:27,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 13:35:31,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 13:37:59,EVENT,|MQTT || started|
+2019-05-09 13:37:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:38:04,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:41:01,EVENT,|MQTT || started|
+2019-05-09 13:41:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:41:07,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:43:02,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 13:43:06,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 13:45:13,EVENT,|MQTT || started|
+2019-05-09 13:45:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:45:18,EVENT,|Speech Recognition Provider || started|
+2019-05-09 13:45:42,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 13:45:46,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 13:46:02,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 13:46:06,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 13:49:09,EVENT,|MQTT || started|
+2019-05-09 13:49:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 13:49:14,EVENT,|Speech Recognition Provider || started|
+2019-05-09 14:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 14:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 14:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 14:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 14:11:42,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 14:11:46,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 14:33:51,EVENT,|Database || Scheduler Sensor || Task - sensor_test_01 || added|
+2019-05-09 14:46:45,EVENT,|Database || Scheduler Sensor || Task - sensor_test_01 || deleted|
+2019-05-09 15:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 15:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 15:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 15:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 15:20:37,EVENT,|MQTT || started|
+2019-05-09 15:20:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:20:42,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:35:00,EVENT,|MQTT || started|
+2019-05-09 15:35:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:35:05,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:36:35,EVENT,|MQTT || started|
+2019-05-09 15:36:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:36:40,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:39:34,EVENT,|MQTT || started|
+2019-05-09 15:39:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:39:40,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:39:44,EVENT,|Database || Controller - <MQTT_Devices 8> || added|
+2019-05-09 15:41:11,EVENT,|MQTT || started|
+2019-05-09 15:41:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:41:16,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:41:21,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-05-09 15:42:56,EVENT,|MQTT || started|
+2019-05-09 15:42:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:43:01,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:45:16,EVENT,|MQTT || started|
+2019-05-09 15:45:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:45:21,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:46:19,EVENT,|MQTT || started|
+2019-05-09 15:46:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:46:24,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:48:11,EVENT,|MQTT || started|
+2019-05-09 15:48:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:48:17,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:53:44,EVENT,|MQTT || started|
+2019-05-09 15:53:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:53:50,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:54:36,EVENT,|MQTT || started|
+2019-05-09 15:54:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:54:41,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:54:46,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-05-09 15:55:39,EVENT,|MQTT || started|
+2019-05-09 15:55:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:55:44,EVENT,|Speech Recognition Provider || started|
+2019-05-09 15:57:09,EVENT,|MQTT || started|
+2019-05-09 15:57:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 15:57:17,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:04:53,EVENT,|MQTT || started|
+2019-05-09 16:04:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:04:59,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:05:11,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-05-09 16:12:55,EVENT,|MQTT || started|
+2019-05-09 16:12:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:13:00,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:15:41,EVENT,|MQTT || started|
+2019-05-09 16:15:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:15:46,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:16:29,EVENT,|MQTT || started|
+2019-05-09 16:16:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:16:34,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:17:37,EVENT,|MQTT || started|
+2019-05-09 16:17:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:17:42,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:17:46,EVENT,|Database || Controller - 0x99999 || deleted|
+2019-05-09 16:17:49,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-05-09 16:18:09,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || Name changed |||| Name - THE CUBE|
+2019-05-09 16:19:13,EVENT,|MQTT || started|
+2019-05-09 16:19:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:19:18,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:23:18,EVENT,|MQTT || started|
+2019-05-09 16:23:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:23:23,EVENT,|Speech Recognition Provider || started|
+2019-05-09 16:24:21,EVENT,|MQTT || started|
+2019-05-09 16:24:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 16:24:26,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 17:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 17:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 17:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|

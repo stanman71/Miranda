@@ -88,8 +88,8 @@
                 <tbody> 
                   {% for entry in data_led %}
                   <tr>
-                    <td style="width:20%"> {{entry.name}} </td> 
-                    <td style="width:30%"> 
+                    <td style="width:17%"> {{entry.name}} </td> 
+                    <td style="width:43%"> 
                       {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
                         {{entry.led_name_1}}
                       {% endif %} 
@@ -118,7 +118,7 @@
                         ,{{entry.led_name_9}}
                       {% endif %}                                         
                     </td> 
-                    <td> 
+                    <td style="width:20%"> 
                       <select class="btn btn-default dropdown-toggle" name="set_group_{{ entry.id }}">
                         {% if entry.current_setting != "" %}
                           <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
@@ -139,16 +139,16 @@
                         <option value= "turn_off" > ausschalten </option>                   
                       </select> 
                     </td>
-                    <td>
-                      Helligkeit: <span id="output_brightness"></span> %
-                      <div class="slidecontainer">                        
-                        <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
-                      </div>
+                    <td style="width:20%">                     
+                      <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
                     </td>
                   </tr>
                   {% endfor %} 
                 </tbody>
               </table> 
+              
+<section id="switch_table"></section>             
+              
             </div> 
               <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_led_settings" value="Einstellungen ändern" />       
             </form>         
@@ -157,7 +157,7 @@
       </div> 
  
  
- <!-- table switch -->      
+<!-- table switch -->      
       
       
       <div class="panel panel-default">
@@ -182,24 +182,66 @@
                 <tbody> 
                   {% for entry in data_switch %}
                   <tr>
-                    <td> {{entry.name}} </td>
-                    <td> {{entry.description}} </td> 
-                    <td>
-                      <div class="material-switch pull-left">
-                        <input id="someSwitchOptionDefault" {{ entry.setting }} name="set_switch_{{ entry.id }}" type="checkbox" value="checked" />
-                        <label for="someSwitchOptionDefault" class="label-default"></label>
-                      </div
+                    <td style="width:17%"> {{entry.name}} </td>
+                    <td style="width:63%"> {{entry.description}} </td> 
+                    <td style="width:20%">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3">
+                          <div class="material-switch pull-left">
+                            <input id="switch_{{ entry.id }}" {{ entry.setting }} name="set_switch_{{ entry.id }}" type="checkbox" value="checked" />
+                            <label for="switch_{{ entry.id }}" class="label-default"></label>
+                          </div>
+                        </div>  
+                        <div class="col-sm-5">
+                          {% if entry.setting != "" %}
+                            ON
+                          {% else %}
+                            OFF
+                          {% endif %}
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   {% endfor %} 
                 </tbody>
               </table> 
             </div> 
-            <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_switch_settings" value="Einstellungen ändern" />       
+            <input type="submit" onclick="window.location.href='/dashboard#switch_table'" class="btn btn-default" name="change_switch_settings" value="Einstellungen ändern" />       
           </form>         
         </div>    
       </div>  
 
+
+ <!-- table sensor values -->      
+      
+      
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Sensoren</b></font></div>       
+          <div class="panel-body">  
+            <div class="well well-sm">
+              <table class="table">
+                <thead>                      
+                  <th scope="col">Sensor</th> 
+                  <th scope="col">Sensortyp</th> 
+                  <th scope="col">Beschreibung</th>
+                  <th scope="col">Werte</th> 
+                  <th scope="col">Letzter Kontakt</th>
+                </thead>
+                <tbody> 
+                  {% for entry in data_sensor %}
+                  <tr>
+                    <td style="width:17%"> {{entry.name}} </td>
+                    <td style="width:10%"> {{entry.device_type}} </td>
+                    <td style="width:23%"> {{entry.description}} </td> 
+                    <td style="width:30%"> {{entry.last_values_formated}} </td>
+                    <td style="width:20%"> {{entry.last_contact}} </td>
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table> 
+            </div>        
+          </div>    
+        </div>  
  
       
 <!-- table logs -->      
@@ -225,14 +267,14 @@
                 <tbody> 
                   {% for entry in data_log_system %}
                   <tr>
-                    <td>{{ entry[0] }}</td> 
-                    <td>
+                    <td style="width:17%">{{ entry[0] }}</td> 
+                    <td style="width:10%">
                       {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
                     </td>                   
-                    <td>{{ entry[2] }}</td>  
+                    <td style="width:73%">{{ entry[2] }}</td>  
                   </tr>
                   {% endfor %} 
                 </tbody>

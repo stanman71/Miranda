@@ -344,7 +344,7 @@ def LED_TURN_OFF_GROUP(group_id):
             time.sleep(1)
             
             # set current state
-            SET_LED_GROUP_CURRENT_SETTING(group_id, "off") 
+            SET_LED_GROUP_CURRENT_SETTING(group_id, "OFF") 
             SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, 0)           
             
             return LED_CHECK_SETTING() 
@@ -376,7 +376,7 @@ def LED_TURN_OFF_ALL():
             
             # set current state
             for group in GET_ALL_ACTIVE_LED_GROUPS():   
-                SET_LED_GROUP_CURRENT_SETTING(group.id, "off")
+                SET_LED_GROUP_CURRENT_SETTING(group.id, "OFF")
                 SET_LED_GROUP_CURRENT_BRIGHTNESS(group.id, 0)
                 
             return LED_CHECK_SETTING() 

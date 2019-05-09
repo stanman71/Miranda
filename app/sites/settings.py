@@ -284,6 +284,56 @@ def download_zigbee2mqtt_logfile(filepath):
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))             
 
 
+""" ############ """
+"""  controller  """
+""" ############ """
+
+@app.route('/dashboard/settings/controller', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_settings_controller():
+    error_message_add_controller = ""
+    error_message_table = ""
+
+    if request.method == "POST": 
+
+        if request.form.get("add_controller") != None: 
+            
+            if request.form.get("set_controller_id") != None:
+                controller_id = request.form.get("set_controller_id")
+                error_message_add_controller = ADD_CONTROLLER(controller_id)
+
+            else:
+                error_message_add_controller = "Keinen Controller angegeben"  
+   
+        if request.form.get("save_task_settings") != None: 
+            pass
+              
+                                                        
+
+   
+    data_controller = GET_ALL_CONTROLLER()
+    dropdown_list_controller = GET_ALL_MQTT_DEVICES("controller")
+   
+    return render_template('dashboard_settings_controller.html',
+                            error_message_add_controller=error_message_add_controller, 
+                            error_message_table=error_message_table,
+                            data_controller=data_controller,
+                            dropdown_list_controller=dropdown_list_controller,                                   
+                            active03="active",
+                            )
+
+
+# delete controller
+@app.route('/dashboard/settings/controller/delete/<int:id>')
+@login_required
+@superuser_required
+def delete_controller(id):
+    DELETE_CONTROLLER(id)
+    return redirect(url_for('dashboard_settings_controller'))
+
+
+
 """ ############### """
 """  speechcontrol  """
 """ ############### """
@@ -557,7 +607,7 @@ def dashboard_settings_speechcontrol():
                             speech_recognition_provider_keywords=speech_recognition_provider_keywords,
                             speech_recognition_provider_parameters=speech_recognition_provider_parameters,
 
-                            active03="active",
+                            active04="active",
                             )
 
 
@@ -673,7 +723,7 @@ def dashboard_settings_user():
                             error_message_form=error_message_form,
                             user_list=user_list,  
                             dropdown_list_roles=dropdown_list_roles,             
-                            active04="active",
+                            active05="active",
                             )
 
 
@@ -729,7 +779,7 @@ def dashboard_settings_email():
                             error_message_test=error_message_test,
                             email_config=email_config,
                             mail_encoding_list=mail_encoding_list,                          
-                            active05="active",
+                            active06="active",
                             )
 
 
@@ -767,7 +817,7 @@ def dashboard_settings_system():
                             error_message=error_message,
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,                                                     
-                            active06="active",
+                            active07="active",
                             )
 
 
@@ -814,7 +864,7 @@ def dashboard_settings_system_log():
                             error_message=error_message,
                             timestamp=timestamp,
                             data_log_system=data_log_system,                                                       
-                            active07="active",
+                            active08="active",
                             )
 
 

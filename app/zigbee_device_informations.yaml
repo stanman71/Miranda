@@ -5,7 +5,20 @@
     outputs: 
 
 AB3257001NJ:
-    device_type: powerswitch
+    device_type: power_switch
     description: OSRAM Smart+ Plug Steckdose
     inputs: 
     outputs:      
+
+WSDCGQ11LM:
+    device_type: passiv_sensor
+    description: AQARA Sensor (Temperature, Humidity, Pressure)
+    inputs: [temperature, humidity, pressure, battery] 
+    outputs: 
+
+MFKZQ01LM:
+    device_type: controller
+    description: AQARA Cube Controller
+    inputs: [angle, side, from_side, to_side, brightness, battery] 
+    outputs: 
+

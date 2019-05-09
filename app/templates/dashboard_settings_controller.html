@@ -1,0 +1,158 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Controller
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
+        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
+        <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+    <div class="row">
+      <div class="col">
+  
+<!-- settings navs -->
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class={{active01}}><a href="{{ url_for('dashboard_settings_mqtt') }}">MQTT</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
+            <li class={{active03}}><a href="{{ url_for('dashboard_settings_controller') }}">Controller</a></li>             
+            <li class={{active04}}><a href="{{ url_for('dashboard_settings_speechcontrol') }}">Sprachsteuerung</a></li>                
+            <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
+            <li class={{active06}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
+            <li class={{active07}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
+            <li class={{active08}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
+          </ul>
+        </div>
+      </nav>
+
+
+<!-- add new controller -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Controller</b></font></div>       
+          <div class="panel-body">  
+            <div class="well well-sm">
+       
+{% if error_message_add_controller != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_controller }}
+  </div>      
+{% endif %}       
+              
+              <form method="POST"> 
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3">
+                  <select class="btn btn-default dropdown-toggle" name="set_controller_id">
+                    <option value= "" > Controller wählen: </option>
+                    <option value= "" > ------------------ </option>
+                    {% for each in dropdown_list_controller %}
+                      <option value="{{ each.id }}" > {{ each.name }} </option>
+                    {% endfor %}
+                  </select>                     
+                </div>
+                <div class="col-sm-2">
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/controller#'" class="btn btn-default" name="add_controller" value="Controller hinzufügen" />
+                </div> 
+                
+<section id="table"></section>                
+                
+              </div>
+              </form> 
+            </div>
+
+<!-- controller table -->
+
+            <div class="well well-sm">
+              
+{% if error_message_table != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_table }}
+  </div>      
+{% endif %}               
+              
+              <form method="POST"> 
+                <table class="table">
+                  <thead>  
+                    <th scope="col">Controller</th>                     
+                    <th scope="col">Eingabe</th> 
+                    <th scope="col">Aufgabe</th> 
+                  </thead>
+                  <tbody> 
+                    {% for entry in data_controller %}
+                    <tr>
+                      <td style="width:17%"> {{entry.mqtt_device.name}} </td>                
+                      <td style="width:25%"> {{entry.input_1}} </td>
+                      <td style="width:53%"> 
+                        <input type="text" class="form-control" name="set_task_1_{{entry.id}}" value="{{entry.task_1}}" />  
+                      </td>
+                      <td style="width:5%"><a href="/dashboard/settings/controller/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td> 
+                    </tr>
+                    <tr>
+                      <td></td> 
+                      <td style="width:25%"> {{entry.input_2}} </td>
+                      <td style="width:53%"> 
+                        <input type="text" class="form-control" name="set_task_2_{{entry.id}}" value="{{entry.task_2}}" />  
+                      </td>
+                    </tr>    
+                    <tr>
+                      <td></td> 
+                      <td style="width:25%"> {{entry.input_3}} </td>
+                      <td style="width:53%"> 
+                        <input type="text" class="form-control" name="set_task_3_{{entry.id}}" value="{{entry.task_3}}" />  
+                      </td>
+                    </tr>                                    
+                    {% endfor %} 
+                  </tbody>
+                </table>   
+              </div>
+              <input type="submit" onclick="window.location.href='/dashboard/settings/controller#table'" class="btn btn-default" name="save_task_settings" value="Änderungen speichern" />
+              </form> 
+            </div>        
+          </div>    
+        </div>  
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

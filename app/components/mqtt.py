@@ -16,6 +16,7 @@ from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA
 
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
+forbitten_topics = []
 saved_sensordata = []
 
 
@@ -26,42 +27,75 @@ saved_sensordata = []
 
 def MQTT_START():
 
-	def on_message(client, userdata, message):  
+	def on_message(client, userdata, message): 
+      
+		global forbitten_topics
+             
 		msg = str(message.payload.decode("utf-8"))
-		print("message topic: ", message.topic)		
-		print("message received: ", msg)
+      
+      
+		##############################################
+		# waiter tread to prevent messages from router
 
-		if "zigbee" not in message.topic:
-			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
-		else:
-			WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
+		import threading
+
+		def WAITER_TREAD(topic):
+			global forbitten_topics
+
+			time.sleep(5)
+
+			if topic in forbitten_topics:
+				forbitten_topics.remove(topic)
+
+		# waiter tread
+		############################################## 
 
 
-		incoming_topic = message.topic
-		incoming_topic = incoming_topic.split("/")
+		if message.topic not in forbitten_topics:
 
-		try:
-			if incoming_topic[3] == "get":
-				pass
-			if incoming_topic[3] == "log":
-				pass              
-			if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
+			forbitten_topics.append(message.topic)
 
-				# generate graphviz diagram
-				from graphviz import Source, render
-            
-				src = Source(msg)
-				src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
+			# start waiter tread
+			t = threading.Thread(target=WAITER_TREAD, args=(message.topic,))
+			t.start()      
 
-			if incoming_topic[3] == "networkmap":
-				pass                         
-            
-		except:
-			incoming_ieeeAddr = incoming_topic[2]
+			print("message topic: ", message.topic)		
+			print("message received: ", msg)
+
+			if "zigbee" not in message.topic:
+				WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
+			else:
+				WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
+
+
+			# get ieeeAddr
+			incoming_topic = message.topic
+			incoming_topic = incoming_topic.split("/")
+
+			try:
+				if incoming_topic[3] == "get":
+					pass
+				if incoming_topic[3] == "log":
+					pass              
+				if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
+
+					# generate graphviz diagram
+					from graphviz import Source, render
+
+					src = Source(msg)
+					src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
+
+				if incoming_topic[3] == "networkmap":
+					pass                         
+
+			except:
+				incoming_ieeeAddr = incoming_topic[2]
+
 
 			# input sensor data 
 			if FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr) != "":
 				list_jobs = FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr)
+				
 				for job in list_jobs:
 					MQTT_SAVE_SENSORDATA(job) 
 
@@ -70,10 +104,10 @@ def MQTT_START():
 
 			# schedular sensor thread
 			SCHEDULER_SENSOR_THREAD(incoming_ieeeAddr)
- 
+
 			# set last values
 			SET_MQTT_DEVICE_LAST_VALUES(incoming_ieeeAddr, msg) 
-         
+			 
 
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")

@@ -157,9 +157,7 @@ def MQTT_UPDATE_DEVICES(gateway):
                         else:
                            
                            device_data = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr'])
-                           
-                           print(device_data)
-                           
+  
                            id       = device_data.id	      
                            name     = device['friendly_name']
                            gateway  = "zigbee2mqtt"
@@ -169,7 +167,13 @@ def MQTT_UPDATE_DEVICES(gateway):
                               device_type = GET_MQTT_DEVICE_INFORMATIONS(model)[0]
                               description = GET_MQTT_DEVICE_INFORMATIONS(model)[1]
                               inputs      = GET_MQTT_DEVICE_INFORMATIONS(model)[2]
-                              outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3]     
+                              inputs      = inputs.replace("[","")
+                              inputs      = inputs.replace("]","")
+                              inputs      = inputs.replace("'","")
+                              outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3] 
+                              outputs     = outputs.replace("[","")
+                              outputs     = outputs.replace("]","")
+                              outputs     = outputs.replace("'","")    
                            except:
                               device_type = device_data.device_type
                               description = device_data.description 
@@ -278,16 +282,20 @@ def MQTT_STOP_ALL_OUTPUTS():
    
    
 def MQTT_SET_SWITCH(name, gateway, ieeeAddr, setting):
-   
+
+   # create channel
+   if gateway == "mqtt":
+      channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
+   else:
+      channel = "SmartHome/" + gateway + "/" + name + "/set"
+
+   # create message
    if setting == "checked":
       msg = '{"state": "ON"}'
       setting = "ON"
-      
    else:
       msg = '{"state": "OFF"}'
       setting = "OFF"
-      
-   channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
 
    MQTT_PUBLISH(channel, msg)   
    
@@ -326,4 +334,3 @@ def MQTT_CHECK_SETTING(gateway, Addr, key, setting):
      
    return False
    
-
