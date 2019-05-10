@@ -147,7 +147,7 @@
                 </tbody>
               </table> 
               
-<section id="switch_table"></section>             
+<section id="device_table"></section>             
               
             </div> 
               <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_led_settings" value="Einstellungen ändern" />       
@@ -157,30 +157,30 @@
       </div> 
  
  
-<!-- table switch -->      
+<!-- table device -->      
       
       
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Schalter</b></font></div>       
+        <div class="panel-heading"><font color="black"><b>Geräte</b></font></div>       
           <div class="panel-body">  
             <div class="well well-sm">
 
 
-{% if error_message_switch != "" %}
+{% if error_message_device != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_switch }}
+    {{ error_message_device }}
   </div>      
 {% endif %}
 
             <form method="POST">
               <table class="table">
                 <thead>                      
-                  <th scope="col">Schalter</th> 
+                  <th scope="col">Gerät</th> 
                   <th scope="col">Beschreibung</th>
                   <th scope="col">Einstellung</th> 
                 </thead>
                 <tbody> 
-                  {% for entry in data_switch %}
+                  {% for entry in data_device %}
                   <tr>
                     <td style="width:17%"> {{entry.name}} </td>
                     <td style="width:63%"> {{entry.description}} </td> 
@@ -188,12 +188,12 @@
                       <div class="row justify-content-md-center">
                         <div class="col-sm-3">
                           <div class="material-switch pull-left">
-                            <input id="switch_{{ entry.id }}" {{ entry.setting }} name="set_switch_{{ entry.id }}" type="checkbox" value="checked" />
-                            <label for="switch_{{ entry.id }}" class="label-default"></label>
+                            <input id="device_{{ entry.id }}" {{ entry.power_setting }} name="set_device_power_{{ entry.id }}" type="checkbox" value="checked" />
+                            <label for="device_{{ entry.id }}" class="label-default"></label>
                           </div>
                         </div>  
                         <div class="col-sm-5">
-                          {% if entry.setting != "" %}
+                          {% if entry.power_setting != "" %}
                             ON
                           {% else %}
                             OFF
@@ -206,7 +206,7 @@
                 </tbody>
               </table> 
             </div> 
-            <input type="submit" onclick="window.location.href='/dashboard#switch_table'" class="btn btn-default" name="change_switch_settings" value="Einstellungen ändern" />       
+            <input type="submit" onclick="window.location.href='/dashboard#device_table'" class="btn btn-default" name="change_device_settings" value="Einstellungen ändern" />       
           </form>         
         </div>    
       </div>  

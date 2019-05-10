@@ -9,7 +9,7 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.led_control import *
-from app.components.mqtt_functions import MQTT_SET_SWITCH
+from app.components.mqtt_functions import MQTT_SET_DEVICE
 
 
 class LoginForm(FlaskForm):
@@ -23,7 +23,7 @@ class LoginForm(FlaskForm):
 @login_required
 def dashboard():
     error_message_led = ""
-    error_message_switch = ""
+    error_message_device = ""
     error_message_log = ""
     checkbox = ""
         
@@ -61,28 +61,28 @@ def dashboard():
                             continue                     
 
                         # change brightness
-                        for scene in GET_ALL_LED_SCENES():
-                            if scene.name == setting:
-                                
-                                brightness = request.form.get("set_brightness_" + str(i))
-                                
-                                # brightness changed ?
-                                if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:
-                                    error_message_led = LED_SET_BRIGHTNESS(i, int(brightness)) 
-                                    continue              
+                        if request.form.get("set_brightness_" + str(i)) != None:
+                            
+                            brightness = request.form.get("set_brightness_" + str(i))
+
+                            # brightness changed ?
+                            if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:
+
+                                error_message_led = LED_SET_BRIGHTNESS(i, int(brightness)) 
+                                continue              
     
     
-        if request.form.get("change_switch_settings") != None:
+        if request.form.get("change_device_settings") != None:
             
             for i in range (1,21):
 
-                # set switch  
-                if request.form.get("set_switch_" + str(i)) != None:
-                    setting = request.form.get("set_switch_" + str(i))
+                # set device  
+                if request.form.get("set_device_power_" + str(i)) != None:
+                    power_setting = request.form.get("set_device_power_" + str(i))
                 else:
-                    setting = ""
+                    power_setting = ""
                 
-                devices = GET_ALL_MQTT_DEVICES("switch")
+                devices = GET_ALL_MQTT_DEVICES("device")
                 
                 for device in devices:
                     if device.id == i:
@@ -91,16 +91,19 @@ def dashboard():
                         gateway  = device.gateway
                         ieeeAddr = device.ieeeAddr
                         
-                        SET_MQTT_DEVICE_SETTING(ieeeAddr, setting)
-                        error_message_switch = MQTT_SET_SWITCH(name, gateway, ieeeAddr, setting)
-                        break 
+                        # setting changed ?
+                        if device.power_setting != power_setting:
+                        
+                            SET_MQTT_DEVICE_SETTINGS(ieeeAddr, power_setting)
+                            error_message_device = MQTT_SET_DEVICE(name, gateway, ieeeAddr, power_setting)
+                            break 
                           
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes   = GET_ALL_LED_SCENES()
     dropdown_list_led_programs = GET_ALL_LED_PROGRAMS()
     
-    data_switch = GET_ALL_MQTT_DEVICES("switch")
+    data_device = GET_ALL_MQTT_DEVICES("device")
 
     data_sensor = GET_ALL_MQTT_DEVICES("sensor")
 
@@ -116,13 +119,13 @@ def dashboard():
                             data_led=data_led,
                             dropdown_list_led_scenes=dropdown_list_led_scenes,
                             dropdown_list_led_programs=dropdown_list_led_programs,
-                            data_switch=data_switch,
+                            data_device=data_device,
                             checkbox=checkbox,
                             data_log_system=data_log_system, 
                             data_sensor=data_sensor,
                             version=version,  
                             error_message_led=error_message_led,
                             error_message_log=error_message_log,  
-                            error_message_switch=error_message_switch,   
+                            error_message_device=error_message_device,   
                             role=current_user.role,
                             )

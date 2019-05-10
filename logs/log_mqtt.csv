@@ -7121,3 +7121,84 @@ Timestamp,Channel,Message
 2019-05-09 17:00:00,SmartHome/mqtt/0x88888/get,
 2019-05-09 17:00:03,SmartHome/mqtt/devices,
 2019-05-09 17:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-09 17:37:51,SmartHome/mqtt/0x88888,connected
+2019-05-09 19:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-09 19:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":268}|
+2019-05-09 20:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-09 20:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":112}|
+2019-05-09 21:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-09 21:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":90}|
+2019-05-09 22:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-09 22:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":86}|
+2019-05-09 23:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-09 23:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":24}|
+2019-05-10 00:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 00:00:00,SmartHome/mqtt/0x88888,|{"temperature":19.00,"humidity":36.00,"light":79}|
+2019-05-10 01:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 01:00:00,SmartHome/mqtt/0x88888,|{"temperature":20.00,"humidity":36.00,"light":1}|
+2019-05-10 02:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 02:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":2}|
+2019-05-10 03:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 03:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":2}|
+2019-05-10 04:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 04:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":1}|
+2019-05-10 05:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 05:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":2}|
+2019-05-10 06:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 06:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":14}|
+2019-05-10 07:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 07:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":64}|
+2019-05-10 08:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 08:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":209}|
+2019-05-10 09:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 09:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":244}|
+2019-05-10 10:22:00,SmartHome/mqtt/test,
+2019-05-10 10:22:00,SmartHome/mqtt/devices,
+2019-05-10 10:22:01,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 10:22:01,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 10:24:57,SmartHome/mqtt/test,
+2019-05-10 11:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 11:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":342}|
+2019-05-10 11:00:03,SmartHome/mqtt/devices,
+2019-05-10 11:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 11:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 12:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 12:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":297}|
+2019-05-10 12:00:03,SmartHome/mqtt/devices,
+2019-05-10 12:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 12:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 12:17:57,SmartHome/mqtt/test,
+2019-05-10 12:18:41,SmartHome/mqtt/test,
+2019-05-10 12:21:06,SmartHome/mqtt/test,
+2019-05-10 12:38:10,SmartHome/mqtt/0x88888,connected
+2019-05-10 12:40:44,SmartHome/mqtt/test,
+2019-05-10 13:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 13:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":405}|
+2019-05-10 13:00:03,SmartHome/mqtt/devices,
+2019-05-10 13:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 13:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 14:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 14:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":436}|
+2019-05-10 14:00:03,SmartHome/mqtt/devices,
+2019-05-10 14:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 14:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 14:12:25,SmartHome/mqtt/test,
+2019-05-10 15:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 15:00:00,SmartHome/mqtt/0x88888,|{"temperature":21.00,"humidity":35.00,"light":416}|
+2019-05-10 15:00:06,SmartHome/mqtt/devices,
+2019-05-10 15:00:06,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 15:00:07,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 15:13:48,SmartHome/mqtt/test,
+2019-05-10 15:19:51,SmartHome/mqtt/test,
+2019-05-10 15:59:15,SmartHome/mqtt/0x99999,connected
+2019-05-10 16:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 16:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":385}|
+2019-05-10 16:00:03,SmartHome/mqtt/devices,
+2019-05-10 16:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 16:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 17:00:00,SmartHome/mqtt/0x88888/get,
+2019-05-10 17:00:00,SmartHome/mqtt/0x88888,|{"temperature":22.00,"humidity":35.00,"light":366}|
+2019-05-10 17:00:03,SmartHome/mqtt/devices,
+2019-05-10 17:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v4","device_type":"watering_array","description":"Bewässerung (4 Pflanzen)","inputs":["sensor_0","sensor_1","sensor_2","sensor_3","sensor_4","sensor_5","sensor_6","sensor_7"],"outputs":["pump_0","pump_1","pump_2","pump_3"]}|
+2019-05-10 17:00:03,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor","description":"Raumsensor (Feuchtigkeit / Temperatur / Licht)","inputs":["temperature","humidity","light"],"outputs":0}|
+2019-05-10 17:29:25,SmartHome/mqtt/test,

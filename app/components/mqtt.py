@@ -29,11 +29,10 @@ def MQTT_START():
 
 	def on_message(client, userdata, message): 
       
-		global forbitten_topics
-             
+		global forbitten_topics 
+      
 		msg = str(message.payload.decode("utf-8"))
-      
-      
+            
 		##############################################
 		# waiter tread to prevent messages from router
 
@@ -49,29 +48,37 @@ def MQTT_START():
 
 		# waiter tread
 		############################################## 
-
-
+      
 		if message.topic not in forbitten_topics:
+         
+			# get ieeeAddr
+			incoming_topic = message.topic
+			incoming_topic = incoming_topic.split("/")
+			ieeeAddr       = incoming_topic[2]
 
-			forbitten_topics.append(message.topic)
+			try:
+				# ignore incomming messages for 5 seconds, exept controller 
+				if GET_MQTT_DEVICE_BY_NAME(ieeeAddr).device_type != "controller":
+				
+					forbitten_topics.append(message.topic)
 
-			# start waiter tread
-			t = threading.Thread(target=WAITER_TREAD, args=(message.topic,))
-			t.start()      
+					# start waiter tread
+					t = threading.Thread(target=WAITER_TREAD, args=(message.topic,))
+					t.start()      
+
+			except:
+				pass
 
 			print("message topic: ", message.topic)		
 			print("message received: ", msg)
 
+			# write data in logs
 			if "zigbee" not in message.topic:
 				WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
 			else:
 				WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
 
-
-			# get ieeeAddr
-			incoming_topic = message.topic
-			incoming_topic = incoming_topic.split("/")
-
+			# start functions
 			try:
 				if incoming_topic[3] == "get":
 					pass
@@ -86,27 +93,25 @@ def MQTT_START():
 					src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
 
 				if incoming_topic[3] == "networkmap":
-					pass                         
+					pass  
 
 			except:
-				incoming_ieeeAddr = incoming_topic[2]
 
+				# input sensor data 
+				if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
+					list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
+					
+					for job in list_jobs:
+						MQTT_SAVE_SENSORDATA(job) 
 
-			# input sensor data 
-			if FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr) != "":
-				list_jobs = FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr)
-				
-				for job in list_jobs:
-					MQTT_SAVE_SENSORDATA(job) 
+				# save message
+				MQTT_SAVE_SENSORDATA_TEMP(ieeeAddr, msg)   
 
-			# save message
-			MQTT_SAVE_SENSORDATA_TEMP(incoming_ieeeAddr, msg)   
+				# schedular sensor thread
+				SCHEDULER_SENSOR_THREAD(ieeeAddr)
 
-			# schedular sensor thread
-			SCHEDULER_SENSOR_THREAD(incoming_ieeeAddr)
-
-			# set last values
-			SET_MQTT_DEVICE_LAST_VALUES(incoming_ieeeAddr, msg) 
+				# set last values
+				SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 			 
 
 	def on_connect(client, userdata, flags, rc):

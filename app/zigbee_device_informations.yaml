@@ -1,12 +1,12 @@
 9290012573A:
-    device_type: led
+    device_type: led_rgb
     description: Philips HUE color LED (E14/E27)
     inputs: 
     outputs: 
 
 AB3257001NJ:
-    device_type: power_switch
-    description: OSRAM Smart+ Plug Steckdose
+    device_type: device
+    description: OSRAM Smart+ Plug
     inputs: 
     outputs:      
 

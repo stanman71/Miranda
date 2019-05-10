@@ -295,9 +295,9 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                                     brightness = element
                                  
                             # check brightness value
-                            if 1 <= int(brightness) <= 100:
-         
-                                error_message = LED_SET_BRIGHTNESS(int(group.id), int(brightness))                      
+                            if 1 <= int(brightness) <= 100:      
+                                error_message = LED_SET_BRIGHTNESS(int(group.id), int(brightness))     
+                                                 
                                 if error_message != "":            
                                     WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)                    
                        

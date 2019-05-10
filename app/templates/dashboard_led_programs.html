@@ -88,11 +88,10 @@
             </form> 
             </div> 
           </div> 
-   
           <br>
           <br>          
 
-          {% if program != "" %}
+{% if program != "" %}
     
 <!-- instructions -->
 
@@ -113,18 +112,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1:rgb(255, 0, 0)</td>
-                    <td>LED Nummer 1, Farbe ändern auf rot</td>
+                    <td>1:rgb(255, 0, 0):254</td>
+                    <td>LED Nummer 1, Farbe ändern auf rot, maximale Helligkeit</td>
                   </tr>
                   <tr>
-                    <td>2:bri(100)</td>
-                    <td>LED Nummer 2, Helligkeit in Prozent</td>
-                  </tr>
+                    <td>3:color_temp(255):120</td>
+                    <td>LED Nummer 3, Farbtemperatur, mittlere Helligkeit</td>
+                  </tr>                  
                   <tr>
                     <td>pause:30</td>
                     <td>Pause für 30 Sekunden</td>
                   </tr>                  
-              </table>
+                </table>
               
 <section id="rgb_color"></section>   
 <section id="save_program"></section>
@@ -191,15 +190,12 @@
               <div class="col-sm-3">              
                 <input type="submit" onclick="window.location.href='/dashboard/led/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
               </div>   
-            </div>             
-          {% endif %}   
+            </div>                     
           </div>     
         </div>
       </div> 
 
 <!-- rename a program -->
-
-      {% if program_delete != "" %}  
 
       <div class="panel panel-default">
         <div class="panel-body">    
@@ -220,10 +216,12 @@
               <input type="submit" onclick="window.location.href='/dashboard/led/programs#'" class="btn btn-danger text-right" name="delete_program" value="{{ program.name }} löschen">
             </form>
           </div> 
-        </div>
+        
+{% endif %}
+   
       </div>
+    </div>
 
-      {% endif %}
 
 <section id="add_program"></section>  
 

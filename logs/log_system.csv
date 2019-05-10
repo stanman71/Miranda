@@ -21009,3 +21009,567 @@ found character '\t' that cannot start any token
 2019-05-09 17:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
 2019-05-09 17:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
 2019-05-09 17:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-09 17:37:25,EVENT,|MQTT || started|
+2019-05-09 17:37:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:37:30,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:37:39,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-09 17:37:43,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-09 17:50:01,EVENT,|MQTT || started|
+2019-05-09 17:50:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:50:06,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:53:25,EVENT,|MQTT || started|
+2019-05-09 17:53:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:53:30,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:54:38,EVENT,|MQTT || started|
+2019-05-09 17:54:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:54:43,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:55:56,EVENT,|MQTT || started|
+2019-05-09 17:55:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:56:02,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:57:53,EVENT,|MQTT || started|
+2019-05-09 17:57:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:57:58,EVENT,|Speech Recognition Provider || started|
+2019-05-09 17:59:46,EVENT,|MQTT || started|
+2019-05-09 17:59:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 17:59:51,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 18:00:03,ERROR,|Scheduler || Time Task - test_01 || Message nicht gefunden|
+2019-05-09 18:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 18:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-09 18:01:25,EVENT,|MQTT || started|
+2019-05-09 18:01:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:01:30,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:03:21,EVENT,|MQTT || started|
+2019-05-09 18:03:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:03:26,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:04:48,EVENT,|MQTT || started|
+2019-05-09 18:04:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:04:53,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:05:40,EVENT,|MQTT || started|
+2019-05-09 18:05:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:05:45,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:09:32,EVENT,|MQTT || started|
+2019-05-09 18:09:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:09:37,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:10:38,EVENT,|MQTT || started|
+2019-05-09 18:10:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:10:43,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:12:26,EVENT,|MQTT || started|
+2019-05-09 18:12:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:12:31,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:12:44,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - passiv_sensor || description - AQARA Sensor (Temperature, Humidity, Pressure) || inputs - temperature, humidity, pressure, battery || outputs - None|
+2019-05-09 18:12:44,EVENT,|Database || MQTT Device - THE CUBE || Gateway - zigbee2mqtt || changed |||| Name - THE_CUBE || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - angle, side, from_side, to_side, brightness, battery || outputs - None|
+2019-05-09 18:14:15,EVENT,|MQTT || started|
+2019-05-09 18:14:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:14:20,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:15:40,EVENT,|MQTT || started|
+2019-05-09 18:15:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:15:45,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:16:27,EVENT,|MQTT || started|
+2019-05-09 18:16:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:16:32,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:17:05,EVENT,|MQTT || started|
+2019-05-09 18:17:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 18:17:10,EVENT,|Speech Recognition Provider || started|
+2019-05-09 18:25:12,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-09 19:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 19:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 19:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 19:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-09 19:18:25,EVENT,|Speech Recognition || Detection Task || mondigo|
+2019-05-09 19:32:29,EVENT,|Speech Recognition || Detection Task || |
+2019-05-09 19:38:34,EVENT,|Speech Recognition || Detection Task || |
+2019-05-09 20:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 20:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 20:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 20:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-09 20:08:51,EVENT,|MQTT || started|
+2019-05-09 20:08:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-09 20:08:57,EVENT,|Speech Recognition Provider || started|
+2019-05-09 20:09:41,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-09 20:09:57,EVENT,|Speech Recognition || Detection Task || |
+2019-05-09 20:10:18,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 60%|
+2019-05-09 20:43:39,EVENT,|Speech Recognition || Detection Task || wo ist der nacken|
+2019-05-09 20:54:29,EVENT,|Speech Recognition || Detection Task || |
+2019-05-09 21:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 21:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 21:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 21:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-09 22:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 22:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 22:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 22:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-09 22:44:13,EVENT,|Speech Recognition || Detection Task || starte mediterran im wohnzimmer|
+2019-05-09 22:46:08,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 60%|
+2019-05-09 22:46:58,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 50%|
+2019-05-09 22:47:34,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 100%|
+2019-05-09 22:47:49,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 50%|
+2019-05-09 23:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-09 23:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-09 23:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-09 23:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 00:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 00:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 00:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 00:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 00:00:07,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-10 00:00:07,EVENT,|Database_Backup || saved|
+2019-05-10 00:00:07,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-10 00:02:18,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 00:30:00,EVENT,|Scheduler || Time Task - schlafen || started|
+2019-05-10 01:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 01:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 01:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 01:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 02:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 02:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 02:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 02:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 03:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 03:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 03:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 03:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 04:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 04:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 04:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 04:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 05:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 05:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 05:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 05:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 06:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 06:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 06:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 06:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 07:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 07:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 07:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 07:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 07:07:29,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-10 07:50:00,EVENT,|Scheduler || Time Task - zur Arbeit || started|
+2019-05-10 08:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 08:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 08:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 08:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 09:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 09:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 09:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 09:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 09:52:05,EVENT,|MQTT || started|
+2019-05-10 09:52:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 09:52:10,EVENT,|Speech Recognition Provider || started|
+2019-05-10 09:53:19,EVENT,|MQTT || started|
+2019-05-10 09:53:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 09:53:24,EVENT,|Speech Recognition Provider || started|
+2019-05-10 09:58:32,EVENT,|MQTT || started|
+2019-05-10 09:58:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 09:58:38,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:00:41,EVENT,|MQTT || started|
+2019-05-10 10:00:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:00:46,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:02:58,EVENT,|MQTT || started|
+2019-05-10 10:02:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:03:03,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:04:31,EVENT,|MQTT || started|
+2019-05-10 10:04:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:04:37,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:07:42,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-10 10:10:48,EVENT,|MQTT || started|
+2019-05-10 10:10:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:10:54,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:15:14,EVENT,|MQTT || started|
+2019-05-10 10:15:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:15:20,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:17:27,EVENT,|MQTT || started|
+2019-05-10 10:17:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:17:32,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:19:08,EVENT,|MQTT || started|
+2019-05-10 10:19:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:19:13,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:21:56,EVENT,|MQTT || started|
+2019-05-10 10:21:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:22:02,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:22:18,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - Philips HUE color LED (E14/E27) || inputs - None || outputs - None|
+2019-05-10 10:22:18,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - Philips HUE color LED (E14/E27) || inputs - None || outputs - None|
+2019-05-10 10:23:56,EVENT,|MQTT || started|
+2019-05-10 10:23:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:24:01,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:25:08,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-10 10:26:19,EVENT,|MQTT || started|
+2019-05-10 10:26:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:26:24,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:29:34,EVENT,|MQTT || started|
+2019-05-10 10:29:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:29:39,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:31:01,EVENT,|MQTT || started|
+2019-05-10 10:31:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:31:07,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:32:05,EVENT,|MQTT || started|
+2019-05-10 10:32:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:32:10,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:44:45,EVENT,|MQTT || started|
+2019-05-10 10:44:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:44:51,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:45:04,ERROR,|LED || set brightness || LED_SET_RGB_BRIGHTNESS() missing 3 required positional arguments: 'green', 'blue', and 'brightness'|
+2019-05-10 10:45:56,EVENT,|MQTT || started|
+2019-05-10 10:45:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:46:01,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 10:46:01,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 10:46:02,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:46:18,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 10:46:18,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 10:47:53,EVENT,|MQTT || started|
+2019-05-10 10:47:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:47:58,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:50:26,EVENT,|MQTT || started|
+2019-05-10 10:50:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:50:31,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:52:56,EVENT,|MQTT || started|
+2019-05-10 10:52:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:53:01,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:55:02,EVENT,|MQTT || started|
+2019-05-10 10:55:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:55:07,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:56:21,EVENT,|MQTT || started|
+2019-05-10 10:56:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:56:26,EVENT,|Speech Recognition Provider || started|
+2019-05-10 10:58:08,EVENT,|MQTT || started|
+2019-05-10 10:58:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 10:58:14,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 11:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 11:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 11:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 11:00:46,EVENT,|MQTT || started|
+2019-05-10 11:00:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:00:52,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:00:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:00:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:01:31,EVENT,|MQTT || started|
+2019-05-10 11:01:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:01:36,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:01:43,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:01:43,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:02:48,EVENT,|MQTT || started|
+2019-05-10 11:02:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:02:53,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:02:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:02:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:03:48,EVENT,|MQTT || started|
+2019-05-10 11:03:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:03:54,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:03:55,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:03:55,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:04:47,EVENT,|MQTT || started|
+2019-05-10 11:04:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:04:52,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:04:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:04:54,ERROR,|LED || set brightness || 'NoneType' object has no attribute 'current_setting'|
+2019-05-10 11:06:38,EVENT,|MQTT || started|
+2019-05-10 11:06:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:06:43,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:09:48,EVENT,|MQTT || started|
+2019-05-10 11:09:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:09:53,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:11:11,EVENT,|MQTT || started|
+2019-05-10 11:11:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:11:16,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:12:13,EVENT,|MQTT || started|
+2019-05-10 11:12:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:12:18,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:13:09,EVENT,|MQTT || started|
+2019-05-10 11:13:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:13:14,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:13:54,EVENT,|MQTT || started|
+2019-05-10 11:13:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:13:59,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:14:55,EVENT,|MQTT || started|
+2019-05-10 11:14:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:15:00,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:16:17,EVENT,|MQTT || started|
+2019-05-10 11:16:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:16:23,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:17:47,EVENT,|MQTT || started|
+2019-05-10 11:17:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:17:52,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:18:42,EVENT,|MQTT || started|
+2019-05-10 11:18:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:18:47,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:19:26,EVENT,|MQTT || started|
+2019-05-10 11:19:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:19:31,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:22:12,EVENT,|MQTT || started|
+2019-05-10 11:22:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:22:17,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:51:21,EVENT,|MQTT || started|
+2019-05-10 11:51:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:51:26,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:57:05,EVENT,|MQTT || started|
+2019-05-10 11:57:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 11:57:10,EVENT,|Speech Recognition Provider || started|
+2019-05-10 11:57:14,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-10 11:58:46,ERROR,|LED || turn_off || Can't convert 'int' object to str implicitly|
+2019-05-10 11:58:57,ERROR,|LED || turn_off || Can't convert 'int' object to str implicitly|
+2019-05-10 12:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 12:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 12:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 12:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 12:00:28,EVENT,|MQTT || started|
+2019-05-10 12:00:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:00:33,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:01:49,EVENT,|MQTT || started|
+2019-05-10 12:01:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:01:54,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:09:43,EVENT,|MQTT || started|
+2019-05-10 12:09:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:09:49,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:11:13,ERROR,|LED || start program || name 'LED_PROGRAM_SET_RGB' is not defined|
+2019-05-10 12:16:21,EVENT,|MQTT || started|
+2019-05-10 12:16:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:16:27,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:17:51,EVENT,|MQTT || started|
+2019-05-10 12:17:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:17:56,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:18:32,EVENT,|MQTT || started|
+2019-05-10 12:18:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:18:38,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:18:52,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || changed |||| Name - Bett || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device || description - OSRAM Smart+ Plug || inputs - None || outputs - None|
+2019-05-10 12:18:52,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || changed |||| Name - 0x7cb03eaa0a02fa78 || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device || description - OSRAM Smart+ Plug || inputs - None || outputs - None|
+2019-05-10 12:20:20,EVENT,|MQTT || started|
+2019-05-10 12:20:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:20:25,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:20:30,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-10 12:20:34,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-10 12:21:32,EVENT,|Database || MQTT Device - Bett || Gateway - zigbee2mqtt || Name changed |||| Name - Steckdose Bett|
+2019-05-10 12:21:37,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Name changed |||| Name - Steckdose TV|
+2019-05-10 12:21:48,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Setting - |
+2019-05-10 12:21:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Setting - checked|
+2019-05-10 12:31:30,EVENT,|MQTT || started|
+2019-05-10 12:31:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:31:36,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:32:21,EVENT,|MQTT || started|
+2019-05-10 12:32:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:32:26,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:33:00,EVENT,|MQTT || started|
+2019-05-10 12:33:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:33:05,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:33:58,EVENT,|MQTT || started|
+2019-05-10 12:33:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:34:04,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:34:09,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - |
+2019-05-10 12:36:24,EVENT,|MQTT || started|
+2019-05-10 12:36:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:36:29,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:37:08,EVENT,|MQTT || started|
+2019-05-10 12:37:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:37:13,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:37:47,EVENT,|MQTT || started|
+2019-05-10 12:37:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:37:52,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:37:53,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - checked|
+2019-05-10 12:38:03,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - checked|
+2019-05-10 12:40:02,EVENT,|MQTT || started|
+2019-05-10 12:40:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:40:07,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:40:12,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - OFF|
+2019-05-10 12:41:17,EVENT,|Database || Speech Control Task - Alle LED ausschalten || added|
+2019-05-10 12:41:35,EVENT,|Database || Speech Control Task - LED ausschalten || changed |||| Task - LED Gruppe ausschalten || Keywords - ausschalten, ausmachen || Parameters - [Gruppenname] [Gruppenname]...|
+2019-05-10 12:42:10,EVENT,|Database || Speech Control Task - LED Gruppe ausschalten || changed |||| Task - LED Gruppe ausschalten || Keywords - ausschalten, ausmachen || Parameters - [Gruppenname] |
+2019-05-10 12:48:52,EVENT,|MQTT || started|
+2019-05-10 12:48:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:48:57,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:50:33,EVENT,|MQTT || started|
+2019-05-10 12:50:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:50:38,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:52:53,EVENT,|MQTT || started|
+2019-05-10 12:52:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:52:59,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:55:36,EVENT,|MQTT || started|
+2019-05-10 12:55:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:55:41,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:56:18,EVENT,|MQTT || started|
+2019-05-10 12:56:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 12:56:24,EVENT,|Speech Recognition Provider || started|
+2019-05-10 12:56:33,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - gfdgfd|
+2019-05-10 12:56:40,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten|
+2019-05-10 12:56:44,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten, ausmachen|
+2019-05-10 12:56:51,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - Programm|
+2019-05-10 13:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 13:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 13:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 13:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 13:03:31,EVENT,|MQTT || started|
+2019-05-10 13:03:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:03:37,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:04:27,EVENT,|MQTT || started|
+2019-05-10 13:04:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:04:32,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:05:28,EVENT,|MQTT || started|
+2019-05-10 13:05:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:05:33,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:07:52,EVENT,|MQTT || started|
+2019-05-10 13:07:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:07:57,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1893142032|
+2019-05-10 13:08:52,EVENT,|MQTT || started|
+2019-05-10 13:08:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:08:57,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:10:07,EVENT,|MQTT || started|
+2019-05-10 13:10:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:10:12,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:10:54,EVENT,|MQTT || started|
+2019-05-10 13:10:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:10:59,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:13:06,EVENT,|MQTT || started|
+2019-05-10 13:13:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:13:11,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:14:36,EVENT,|MQTT || started|
+2019-05-10 13:14:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:14:42,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:16:36,EVENT,|MQTT || started|
+2019-05-10 13:16:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:16:42,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:18:09,EVENT,|MQTT || started|
+2019-05-10 13:18:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:18:14,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:21:07,EVENT,|MQTT || started|
+2019-05-10 13:21:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:21:12,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:22:01,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 13:41:31,EVENT,|MQTT || started|
+2019-05-10 13:41:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:41:36,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:42:27,EVENT,|MQTT || started|
+2019-05-10 13:42:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:42:32,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1896719312|
+2019-05-10 13:42:39,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - Programm|
+2019-05-10 13:42:44,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 13:42:49,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - starte|
+2019-05-10 13:44:00,EVENT,|MQTT || started|
+2019-05-10 13:44:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:44:05,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:44:05,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 13:44:20,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - Programm|
+2019-05-10 13:49:18,EVENT,|MQTT || started|
+2019-05-10 13:49:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:49:23,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1883803216|
+2019-05-10 13:49:33,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten|
+2019-05-10 13:50:43,EVENT,|MQTT || started|
+2019-05-10 13:50:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:50:48,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1893234032|
+2019-05-10 13:52:01,EVENT,|MQTT || started|
+2019-05-10 13:52:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:52:06,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:55:07,EVENT,|MQTT || started|
+2019-05-10 13:55:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:55:12,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:57:07,EVENT,|MQTT || started|
+2019-05-10 13:57:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:57:13,EVENT,|Speech Recognition Provider || started|
+2019-05-10 13:57:57,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten, ausmachen|
+2019-05-10 13:58:05,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten Lampe|
+2019-05-10 13:58:08,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten |
+2019-05-10 13:59:40,EVENT,|MQTT || started|
+2019-05-10 13:59:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 13:59:45,EVENT,|Speech Recognition Provider || started|
+2019-05-10 14:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 14:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 14:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 14:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 14:01:02,EVENT,|MQTT || started|
+2019-05-10 14:01:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:01:08,EVENT,|Speech Recognition Provider || started|
+2019-05-10 14:02:09,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalte|
+2019-05-10 14:02:16,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten|
+2019-05-10 14:02:20,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten   |
+2019-05-10 14:03:17,EVENT,|MQTT || started|
+2019-05-10 14:03:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:03:22,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1893506064|
+2019-05-10 14:03:27,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 14:03:32,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - Helligkeit|
+2019-05-10 14:03:36,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 14:03:54,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten Lampe|
+2019-05-10 14:03:58,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - ausschalten|
+2019-05-10 14:04:00,EVENT,|Database || Speech Control Task - Alle LED ausschalten || Keywords changed |||| Keywords - |
+2019-05-10 14:09:02,EVENT,|MQTT || started|
+2019-05-10 14:09:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:09:08,EVENT,|Speech Recognition Provider || started|
+2019-05-10 14:10:00,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - ON|
+2019-05-10 14:11:41,EVENT,|MQTT || started|
+2019-05-10 14:11:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:11:46,EVENT,|Speech Recognition Provider || started|
+2019-05-10 14:17:43,EVENT,|MQTT || started|
+2019-05-10 14:17:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:17:49,EVENT,|Speech Recognition Provider || started|
+2019-05-10 14:17:55,ERROR,|LED || start scene || name 'scene_color_temp_1' is not defined|
+2019-05-10 14:18:35,ERROR,|LED || start scene || name 'scene_color_temp_1' is not defined|
+2019-05-10 14:19:09,EVENT,|MQTT || started|
+2019-05-10 14:19:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 14:19:14,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 15:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 15:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 15:00:07,ERROR,|Scheduler || Time Task - MQTT aktuallisieren || Message nicht gefunden|
+2019-05-10 15:11:10,EVENT,|MQTT || started|
+2019-05-10 15:11:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:11:15,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:11:44,EVENT,|MQTT || started|
+2019-05-10 15:11:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:11:50,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:12:19,EVENT,|MQTT || started|
+2019-05-10 15:12:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:12:25,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:17:27,EVENT,|MQTT || started|
+2019-05-10 15:17:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:17:32,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:18:10,EVENT,|MQTT || started|
+2019-05-10 15:18:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:18:15,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:18:39,EVENT,|MQTT || started|
+2019-05-10 15:18:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:18:45,EVENT,|Speech Recognition Provider || started|
+2019-05-10 15:21:19,EVENT,|MQTT || started|
+2019-05-10 15:21:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:21:37,EVENT,|MQTT || started|
+2019-05-10 15:21:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 15:21:43,EVENT,|Speech Recognition Provider || started|
+2019-05-10 16:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 16:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 16:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 16:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 17:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 17:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 17:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 17:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 17:33:07,ERROR,|LED || start program || name 'LED_PROGRAM_SET_RGB' is not defined|
+2019-05-10 17:34:46,EVENT,|MQTT || started|
+2019-05-10 17:34:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:34:52,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:38:29,EVENT,|MQTT || started|
+2019-05-10 17:38:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:38:34,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:38:49,ERROR,|LED || start program || unsupported operand type(s) for /: 'str' and 'float'|
+2019-05-10 17:41:29,EVENT,|MQTT || started|
+2019-05-10 17:41:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:41:36,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:41:44,ERROR,|LED || start program || unsupported operand type(s) for /: 'str' and 'float'|
+2019-05-10 17:43:07,EVENT,|MQTT || started|
+2019-05-10 17:43:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:43:13,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:43:22,ERROR,|LED || start program || unsupported operand type(s) for /: 'str' and 'float'|
+2019-05-10 17:46:26,EVENT,|MQTT || started|
+2019-05-10 17:46:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:46:32,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:47:47,EVENT,|MQTT || started|
+2019-05-10 17:47:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:47:53,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:49:12,ERROR,|LED || start program || local variable 'brightness' referenced before assignment|
+2019-05-10 17:50:18,EVENT,|MQTT || started|
+2019-05-10 17:50:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:50:23,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:50:46,ERROR,|LED || start program || local variable 'brightness' referenced before assignment|
+2019-05-10 17:53:12,EVENT,|MQTT || started|
+2019-05-10 17:53:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:53:17,EVENT,|Speech Recognition Provider || started|
+2019-05-10 17:54:47,EVENT,|MQTT || started|
+2019-05-10 17:54:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 17:54:53,EVENT,|Speech Recognition Provider || started|

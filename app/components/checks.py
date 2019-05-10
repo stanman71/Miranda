@@ -4,7 +4,7 @@ from app.components.mqtt import *
 
 
 """ ################### """
-"""     check mqtt      """
+"""      check mqtt     """
 """ ################### """
  
 def MQTT_CHECK():
@@ -286,6 +286,42 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
    else:
       return list_errors   
 
+
+""" ############################################ """
+"""  check speech recognition provider keywords  """
+""" ############################################ """
+
+
+def CHECK_SPEECH_RECOGNITION_PROVIDER_KEYWORDS(tasks):
+   list_errors = []
+
+   # get list with all keywords
+   list_all_keywords = []
+   
+   for task in tasks:
+      list_keywords = task.keywords.split(",")
+      
+      for keyword in list_keywords:
+         keyword = keyword.replace(" ", "")
+         list_all_keywords.append(keyword)
+   
+   # search for double keywords
+   for task in tasks:
+      
+      if task.keywords != "":
+         keywords = task.keywords.split(",")
+         
+         for keyword in keywords:
+            keyword = keyword.replace(" ", "")
+            num = list_all_keywords.count(keyword)
+         
+            if num > 1:
+               list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword) 
+         
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
 
 
 """ ################### """

@@ -277,11 +277,11 @@ def MQTT_STOP_ALL_OUTPUTS():
             
             
 """ ################### """
-"""      set switch     """
+"""      set device     """
 """ ################### """
    
    
-def MQTT_SET_SWITCH(name, gateway, ieeeAddr, setting):
+def MQTT_SET_DEVICE(name, gateway, ieeeAddr, setting):
 
    # create channel
    if gateway == "mqtt":

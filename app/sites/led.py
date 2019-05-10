@@ -66,7 +66,10 @@ def dashboard_led_scenes():
                 except:
                     red_1   = 0
                     green_1 = 0
-                    blue_1  = 0                      
+                    blue_1  = 0       
+                                   
+                # check color_temp
+                color_temp_1 = request.form.get("set_color_temp_1_" + str(i))  
 
                 # check brightness
                 brightness_1 = request.form.get("set_brightness_1_" + str(i))   
@@ -90,6 +93,9 @@ def dashboard_led_scenes():
                         green_2 = 0
                         blue_2  = 0 
 
+                    # check color_temp
+                    color_temp_2 = request.form.get("set_color_temp_2_" + str(i))  
+
                     # check brightness
                     brightness_2 = request.form.get("set_brightness_2_" + str(i))   
 
@@ -97,6 +103,7 @@ def dashboard_led_scenes():
                     red_2 = 0
                     green_2 = 0
                     blue_2 = 0
+                    color_temp_2 = 0                    
                     brightness_2 = 254
 
                 #######
@@ -118,6 +125,9 @@ def dashboard_led_scenes():
                         green_3 = 0
                         blue_3  = 0 
 
+                    # check color_temp
+                    color_temp_3 = request.form.get("set_color_temp_3_" + str(i))  
+
                     # check brightness
                     brightness_3 = request.form.get("set_brightness_3_" + str(i))   
 
@@ -125,6 +135,7 @@ def dashboard_led_scenes():
                     red_3 = 0
                     green_3 = 0
                     blue_3 = 0
+                    color_temp_3 = 0                    
                     brightness_3 = 254
 
                 #######
@@ -146,6 +157,9 @@ def dashboard_led_scenes():
                         green_4 = 0
                         blue_4  = 0 
 
+                    # check color_temp
+                    color_temp_4 = request.form.get("set_color_temp_4_" + str(i))  
+
                     # check brightness
                     brightness_4 = request.form.get("set_brightness_4_" + str(i))   
 
@@ -153,6 +167,7 @@ def dashboard_led_scenes():
                     red_4 = 0
                     green_4 = 0
                     blue_4 = 0
+                    color_temp_4 = 0                   
                     brightness_4 = 254
 
                 #######
@@ -174,6 +189,9 @@ def dashboard_led_scenes():
                         green_5 = 0
                         blue_5  = 0 
 
+                    # check color_temp
+                    color_temp_5 = request.form.get("set_color_temp_5_" + str(i))  
+
                     # check brightness
                     brightness_5 = request.form.get("set_brightness_5_" + str(i))   
 
@@ -181,6 +199,7 @@ def dashboard_led_scenes():
                     red_5 = 0
                     green_5 = 0
                     blue_5 = 0
+                    color_temp_5 = 0                    
                     brightness_5 = 254
 
                 #######
@@ -202,6 +221,9 @@ def dashboard_led_scenes():
                         green_6 = 0
                         blue_6  = 0 
 
+                    # check color_temp
+                    color_temp_6 = request.form.get("set_color_temp_6_" + str(i))  
+
                     # check brightness
                     brightness_6 = request.form.get("set_brightness_6_" + str(i))   
 
@@ -209,6 +231,7 @@ def dashboard_led_scenes():
                     red_6 = 0
                     green_6 = 0
                     blue_6 = 0
+                    color_temp_6 = 0                   
                     brightness_6 = 254
 
                 #######
@@ -230,6 +253,9 @@ def dashboard_led_scenes():
                         green_7 = 0
                         blue_7  = 0 
 
+                    # check color_temp
+                    color_temp_7 = request.form.get("set_color_temp_7_" + str(i))  
+
                     # check brightness
                     brightness_7 = request.form.get("set_brightness_7_" + str(i))   
 
@@ -237,6 +263,7 @@ def dashboard_led_scenes():
                     red_7 = 0
                     green_7 = 0
                     blue_7 = 0
+                    color_temp_7 = 0                    
                     brightness_7 = 254
 
                 #######
@@ -258,6 +285,9 @@ def dashboard_led_scenes():
                         green_8 = 0
                         blue_8  = 0 
 
+                    # check color_temp
+                    color_temp_8 = request.form.get("set_color_temp_8_" + str(i))  
+
                     # check brightness
                     brightness_8 = request.form.get("set_brightness_8_" + str(i))   
 
@@ -265,6 +295,7 @@ def dashboard_led_scenes():
                     red_8 = 0
                     green_8 = 0
                     blue_8 = 0
+                    color_temp_8 = 0                    
                     brightness_8 = 254
 
                 #######
@@ -286,6 +317,9 @@ def dashboard_led_scenes():
                         green_9 = 0
                         blue_9  = 0 
 
+                    # check color_temp
+                    color_temp_9 = request.form.get("set_color_temp_9_" + str(i))  
+
                     # check brightness
                     brightness_9 = request.form.get("set_brightness_9_" + str(i))   
 
@@ -293,18 +327,19 @@ def dashboard_led_scenes():
                     red_9 = 0
                     green_9 = 0
                     blue_9 = 0
+                    color_temp_9 = 0
                     brightness_9 = 254                                                                                                    
 
 
-                SET_LED_SCENE(i, name, red_1, green_1, blue_1, brightness_1,
-                                       red_2, green_2, blue_2, brightness_2,
-                                       red_3, green_3, blue_3, brightness_3,
-                                       red_4, green_4, blue_4, brightness_4,
-                                       red_5, green_5, blue_5, brightness_5,
-                                       red_6, green_6, blue_6, brightness_6,
-                                       red_7, green_7, blue_7, brightness_7,
-                                       red_8, green_8, blue_8, brightness_8,
-                                       red_9, green_9, blue_9, brightness_9)
+                SET_LED_SCENE(i, name, red_1, green_1, blue_1, color_temp_1, brightness_1,
+                                       red_2, green_2, blue_2, color_temp_2, brightness_2,
+                                       red_3, green_3, blue_3, color_temp_3, brightness_3,
+                                       red_4, green_4, blue_4, color_temp_4, brightness_4,
+                                       red_5, green_5, blue_5, color_temp_5, brightness_5,
+                                       red_6, green_6, blue_6, color_temp_6, brightness_6,
+                                       red_7, green_7, blue_7, color_temp_7, brightness_7,
+                                       red_8, green_8, blue_8, color_temp_8, brightness_8,
+                                       red_9, green_9, blue_9, color_temp_9, brightness_9)
 
             # start scene
             if request.form.get("start_scene_" + str(i)) != None: 

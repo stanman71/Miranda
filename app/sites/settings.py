@@ -344,11 +344,10 @@ def delete_controller(id):
 def dashboard_settings_speechcontrol():
     error_message = ""
     error_message_snowboy = ""
-    error_message_table = ""
     error_message_snowboy_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
-    error_message_speech_recognition_provider_tasks = ""
+    error_message_speech_recognition_provider_keywords = ""
     error_message_speech_recognition_provider_settings = ""
     sensitivity = ""
     delay = ""
@@ -356,9 +355,6 @@ def dashboard_settings_speechcontrol():
     check_value_speechcontrol = ["", "", ""]
     snowboy_name = ""
     snowboy_task = ""   
-    speech_recognition_provider_task = ""
-    speech_recognition_provider_keywords = ""
-    speech_recognition_provider_parameters = ""
     
 
     if request.method == "POST":     
@@ -476,50 +472,16 @@ def dashboard_settings_speechcontrol():
             # speech recognition provider
             #############################
 
-            # add new speech_recognition_provider task
-            if request.form.get("add_speech_recognition_provider_task") is not None:
-
-                if request.form.get("set_speech_recognition_provider_task") == "":
-                    error_message = "Keine Aufgabe angegeben"
-                    speech_recognition_provider_keywords   = request.form.get("set_speech_recognition_provider_keywords")
-                    speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters")
-                else:         
-                    speech_recognition_provider_task       = request.form.get("set_speech_recognition_provider_task")
-                    speech_recognition_provider_keywords   = request.form.get("set_speech_recognition_provider_keywords")
-                    speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters")
-                    
-                    error_message = ADD_SPEECH_RECOGNITION_PROVIDER_TASK(speech_recognition_provider_task, speech_recognition_provider_keywords, speech_recognition_provider_parameters)
-                   
-                    speech_recognition_provider_task = ""
-                    speech_recognition_provider_keywords = ""
-                    speech_recognition_provider_parameters = ""
-
             # change speech_recognition_provider tasks
             if request.form.get("change_speech_recognition_provider_tasks") != None: 
                 for i in range (1,26):
-
-                    if request.form.get("set_speech_recognition_provider_task_" + str(i)) != None:  
-                        
-                        # check task
-                        if request.form.get("set_speech_recognition_provider_task_" + str(i)) != "":
-                            speech_recognition_provider_task = request.form.get("set_speech_recognition_provider_task_" + str(i)) 
-                        
-                        else:
-                            speech_recognition_provider_task = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).task 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Aufgabe schon vorhanden)"   
-                                                                  
-                        # check keywords
-                        if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != "":
-                            speech_recognition_provider_keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
-                        
-                        else:
-                            speech_recognition_provider_keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(i).keywords 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Aufgabe schon vorhanden)"    
-                            
-                        speech_recognition_provider_parameters = request.form.get("set_speech_recognition_provider_parameters_" + str(i)) 
                     
-                                           
-                        SET_SPEECH_RECOGNITION_PROVIDER_TASK(i, speech_recognition_provider_task, speech_recognition_provider_keywords, speech_recognition_provider_parameters)
+                    if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != None:  
+                        
+                        keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
+              
+                        SET_SPEECH_RECOGNITION_PROVIDER_TASK_KEYWORDS(i, keywords)   
+                        
 
             # change speech_recognition_provider settings
             if request.form.get("set_speech_recognition_provider_settings") != None: 
@@ -561,10 +523,11 @@ def dashboard_settings_speechcontrol():
     error_message_hotword       = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
 
     # speech_recognition_provider only
-    snowboy_hotword                      = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
-    speech_recognition_provider          = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
-    speech_recognition_provider_username = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
-    speech_recognition_provider_key      = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
+    snowboy_hotword                                    = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+    speech_recognition_provider                        = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
+    speech_recognition_provider_username               = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
+    speech_recognition_provider_key                    = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
+    error_message_speech_recognition_provider_keywords = CHECK_SPEECH_RECOGNITION_PROVIDER_KEYWORDS(GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS())
 
     speech_recognition_provider_task_list = GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS()
 
@@ -577,12 +540,11 @@ def dashboard_settings_speechcontrol():
 
     return render_template('dashboard_settings_speechcontrol.html',
                             error_message=error_message,   
-                            error_message_snowboy=error_message_snowboy,   
-                            error_message_table=error_message_table,  
+                            error_message_snowboy=error_message_snowboy,    
                             error_message_snowboy_tasks=error_message_snowboy_tasks,        
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
-                            error_message_speech_recognition_provider_tasks=error_message_speech_recognition_provider_tasks,
+                            error_message_speech_recognition_provider_keywords=error_message_speech_recognition_provider_keywords,                             
                             error_message_speech_recognition_provider_settings=error_message_speech_recognition_provider_settings,
                             
                             speechcontrol_setting=speechcontrol_setting,
@@ -603,9 +565,6 @@ def dashboard_settings_speechcontrol():
                             speech_recognition_provider=speech_recognition_provider,
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
-                            speech_recognition_provider_task=speech_recognition_provider_task,
-                            speech_recognition_provider_keywords=speech_recognition_provider_keywords,
-                            speech_recognition_provider_parameters=speech_recognition_provider_parameters,
 
                             active04="active",
                             )
@@ -619,13 +578,6 @@ def delete_snowboy_task(id):
     DELETE_SNOWBOY_TASK(id)
     return redirect(url_for('dashboard_settings_speechcontrol'))
 
-# delete speech_recognition_provider task
-@app.route('/dashboard/settings/speechcontrol/speech_recognition_provider/delete/task/<int:id>')
-@login_required
-@superuser_required
-def delete_speech_recognition_provider_task(id):
-    DELETE_SPEECH_RECOGNITION_PROVIDER_TASK(id)
-    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 # download hotword file
 @app.route('/dashboard/settings/speechcontrol/snowboy/download/hotword/<path:filepath>')
