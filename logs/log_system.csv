@@ -21805,3 +21805,16 @@ found character '\t' that cannot start any token
 2019-05-11 09:53:56,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
 2019-05-11 09:53:57,EVENT,|Database || Plant - 444 || changed |||| Name - 444 || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - None || Pumptime - 270|
 2019-05-11 09:54:00,EVENT,|Database || Plant - 444 || deleted|
+2019-05-11 09:57:21,EVENT,|MQTT || started|
+2019-05-11 09:57:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:57:27,EVENT,|Speech Recognition Provider || started|
+2019-05-11 10:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 10:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 10:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 10:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 10:06:33,EVENT,|Speech Recognition || Detection Task || |
+2019-05-11 10:10:20,EVENT,|Speech Recognition || Detection Task || der dritte ist schon abgehauen|
+2019-05-11 10:13:31,EVENT,|Speech Recognition || Detection Task || ergebnis|
+2019-05-11 10:48:26,EVENT,|MQTT || started|
+2019-05-11 10:48:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 10:48:33,EVENT,|Speech Recognition Provider || started|

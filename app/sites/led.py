@@ -550,17 +550,21 @@ def dashboard_led_groups():
                     led_id_1 = int(request.form.get("set_led_id_1_" + str(i)))
 
                     if led_id_1 == GET_LED_GROUP_BY_ID(i).led_id_1: 
-                        led_name_1 = GET_MQTT_DEVICE_BY_ID(led_id_1).name            
+                        led_name_1        = GET_MQTT_DEVICE_BY_ID(led_id_1).name   
+                        led_device_type_1 = GET_MQTT_DEVICE_BY_ID(led_id_1).device_type         
                     elif led_id_1 not in LED_CHECK_EXIST(i):
-                        led_name_1 = GET_MQTT_DEVICE_BY_ID(led_id_1).name
+                        led_name_1        = GET_MQTT_DEVICE_BY_ID(led_id_1).name   
+                        led_device_type_1 = GET_MQTT_DEVICE_BY_ID(led_id_1).device_type 
                     else:
                         error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_1).name 
-                        led_id_1   = "None"
-                        led_name_1 = "None"
+                        led_id_1            = "None"
+                        led_name_1          = "None"
+                        led_device_type_1   = "None"
 
                 except:
-                    led_id_1   = "None"
-                    led_name_1 = "None"
+                    led_id_1          = "None"
+                    led_name_1        = "None"
+                    led_device_type_1 = "None"
 
                 #######
                 ## 2 ##
@@ -573,21 +577,25 @@ def dashboard_led_groups():
                         led_id_2 = int(request.form.get("set_led_id_2_" + str(i)))
 
                         if led_id_2 == GET_LED_GROUP_BY_ID(i).led_id_2: 
-                            led_name_2 = GET_MQTT_DEVICE_BY_ID(led_id_2).name            
+                            led_name_2        = GET_MQTT_DEVICE_BY_ID(led_id_2).name  
+                            led_device_type_2 = GET_MQTT_DEVICE_BY_ID(led_id_2).device_type           
                         elif led_id_2 not in LED_CHECK_EXIST(i):
-                            led_name_2 = GET_MQTT_DEVICE_BY_ID(led_id_2).name
+                            led_name_2        = GET_MQTT_DEVICE_BY_ID(led_id_2).name
+                            led_device_type_2 = GET_MQTT_DEVICE_BY_ID(led_id_2).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_2).name 
-                            led_id_2   = "None"
-                            led_name_2 = "None"
+                            led_id_2          = "None"
+                            led_name_2        = "None"
+                            led_device_type_2 = "None"
 
                     except:
-                        led_id_2   = "None"
-                        led_name_2 = "None"
-
+                        led_id_2          = "None"
+                        led_name_2        = "None"
+                        led_device_type_2 = "None"
                 else:
-                    led_id_2 = ""
-                    led_name_2 = "None"
+                    led_id_2          = "None"
+                    led_name_2        = "None"
+                    led_device_type_2 = "None"
 
                 #######
                 ## 3 ##
@@ -600,21 +608,25 @@ def dashboard_led_groups():
                         led_id_3 = int(request.form.get("set_led_id_3_" + str(i)))
 
                         if led_id_3 == GET_LED_GROUP_BY_ID(i).led_id_3: 
-                            led_name_3 = GET_MQTT_DEVICE_BY_ID(led_id_3).name            
+                            led_name_3        = GET_MQTT_DEVICE_BY_ID(led_id_3).name  
+                            led_device_type_3 = GET_MQTT_DEVICE_BY_ID(led_id_3).device_type           
                         elif led_id_3 not in LED_CHECK_EXIST(i):
-                            led_name_3 = GET_MQTT_DEVICE_BY_ID(led_id_3).name
+                            led_name_3        = GET_MQTT_DEVICE_BY_ID(led_id_3).name
+                            led_device_type_3 = GET_MQTT_DEVICE_BY_ID(led_id_3).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_3).name 
-                            led_id_3   = "None"
-                            led_name_3 = "None"
+                            led_id_3          = "None"
+                            led_name_3        = "None"
+                            led_device_type_3 = "None"
 
                     except:
-                        led_id_3   = "None"
-                        led_name_3 = "None"
-
+                        led_id_3          = "None"
+                        led_name_3        = "None"
+                        led_device_type_3 = "None"
                 else:
-                    led_id_3 = ""
-                    led_name_3 = "None"
+                    led_id_3          = "None"
+                    led_name_3        = "None"
+                    led_device_type_3 = "None"
 
                 #######
                 ## 4 ##
@@ -627,21 +639,25 @@ def dashboard_led_groups():
                         led_id_4 = int(request.form.get("set_led_id_4_" + str(i)))
 
                         if led_id_4 == GET_LED_GROUP_BY_ID(i).led_id_4: 
-                            led_name_4 = GET_MQTT_DEVICE_BY_ID(led_id_4).name            
+                            led_name_4        = GET_MQTT_DEVICE_BY_ID(led_id_4).name  
+                            led_device_type_4 = GET_MQTT_DEVICE_BY_ID(led_id_4).device_type           
                         elif led_id_4 not in LED_CHECK_EXIST(i):
-                            led_name_4 = GET_MQTT_DEVICE_BY_ID(led_id_4).name
+                            led_name_4        = GET_MQTT_DEVICE_BY_ID(led_id_4).name
+                            led_device_type_4 = GET_MQTT_DEVICE_BY_ID(led_id_4).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_4).name 
-                            led_id_4   = "None"
-                            led_name_4 = "None"
+                            led_id_4          = "None"
+                            led_name_4        = "None"
+                            led_device_type_4 = "None"
 
                     except:
-                        led_id_4   = "None"
-                        led_name_4 = "None"
-
+                        led_id_4          = "None"
+                        led_name_4        = "None"
+                        led_device_type_4 = "None"
                 else:
-                    led_id_4 = ""
-                    led_name_4 = "None"
+                    led_id_4          = "None"
+                    led_name_4        = "None"
+                    led_device_type_4 = "None"
 
                 #######
                 ## 5 ##
@@ -654,21 +670,25 @@ def dashboard_led_groups():
                         led_id_5 = int(request.form.get("set_led_id_5_" + str(i)))
 
                         if led_id_5 == GET_LED_GROUP_BY_ID(i).led_id_5: 
-                            led_name_5 = GET_MQTT_DEVICE_BY_ID(led_id_5).name            
+                            led_name_5        = GET_MQTT_DEVICE_BY_ID(led_id_5).name  
+                            led_device_type_5 = GET_MQTT_DEVICE_BY_ID(led_id_5).device_type           
                         elif led_id_5 not in LED_CHECK_EXIST(i):
-                            led_name_5 = GET_MQTT_DEVICE_BY_ID(led_id_5).name
+                            led_name_5        = GET_MQTT_DEVICE_BY_ID(led_id_5).name
+                            led_device_type_5 = GET_MQTT_DEVICE_BY_ID(led_id_5).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_5).name 
-                            led_id_5   = "None"
-                            led_name_5 = "None"
+                            led_id_5          = "None"
+                            led_name_5        = "None"
+                            led_device_type_5 = "None"
 
                     except:
-                        led_id_5   = "None"
-                        led_name_5 = "None"
-
+                        led_id_5          = "None"
+                        led_name_5        = "None"
+                        led_device_type_5 = "None"
                 else:
-                    led_id_5 = ""
-                    led_name_5 = "None"
+                    led_id_5          = "None"
+                    led_name_5        = "None"
+                    led_device_type_5 = "None"
 
                 #######
                 ## 6 ##
@@ -681,21 +701,25 @@ def dashboard_led_groups():
                         led_id_6 = int(request.form.get("set_led_id_6_" + str(i)))
 
                         if led_id_6 == GET_LED_GROUP_BY_ID(i).led_id_6: 
-                            led_name_6 = GET_MQTT_DEVICE_BY_ID(led_id_6).name            
+                            led_name_6        = GET_MQTT_DEVICE_BY_ID(led_id_6).name  
+                            led_device_type_6 = GET_MQTT_DEVICE_BY_ID(led_id_6).device_type           
                         elif led_id_6 not in LED_CHECK_EXIST(i):
-                            led_name_6 = GET_MQTT_DEVICE_BY_ID(led_id_6).name
+                            led_name_6        = GET_MQTT_DEVICE_BY_ID(led_id_6).name
+                            led_device_type_6 = GET_MQTT_DEVICE_BY_ID(led_id_6).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_6).name 
-                            led_id_6   = "None"
-                            led_name_6 = "None"
+                            led_id_6          = "None"
+                            led_name_6        = "None"
+                            led_device_type_6 = "None"
 
                     except:
-                        led_id_6   = "None"
-                        led_name_6 = "None"
-
+                        led_id_6          = "None"
+                        led_name_6        = "None"
+                        led_device_type_6 = "None"
                 else:
-                    led_id_6 = ""
-                    led_name_6 = "None"
+                    led_id_6          = "None"
+                    led_name_6        = "None"
+                    led_device_type_6 = "None"
 
                 #######
                 ## 7 ##
@@ -708,21 +732,25 @@ def dashboard_led_groups():
                         led_id_7 = int(request.form.get("set_led_id_7_" + str(i)))
 
                         if led_id_7 == GET_LED_GROUP_BY_ID(i).led_id_7: 
-                            led_name_7 = GET_MQTT_DEVICE_BY_ID(led_id_7).name            
+                            led_name_7        = GET_MQTT_DEVICE_BY_ID(led_id_7).name  
+                            led_device_type_7 = GET_MQTT_DEVICE_BY_ID(led_id_7).device_type           
                         elif led_id_7 not in LED_CHECK_EXIST(i):
-                            led_name_7 = GET_MQTT_DEVICE_BY_ID(led_id_7).name
+                            led_name_7        = GET_MQTT_DEVICE_BY_ID(led_id_7).name
+                            led_device_type_7 = GET_MQTT_DEVICE_BY_ID(led_id_7).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_7).name 
-                            led_id_7   = "None"
-                            led_name_7 = "None"
+                            led_id_7          = "None"
+                            led_name_7        = "None"
+                            led_device_type_7 = "None"
 
                     except:
-                        led_id_7   = "None"
-                        led_name_7 = "None"
-
+                        led_id_7          = "None"
+                        led_name_7        = "None"
+                        led_device_type_7 = "None"
                 else:
-                    led_id_7 = ""
-                    led_name_7 = "None"
+                    led_id_7          = "None"
+                    led_name_7        = "None"
+                    led_device_type_7 = "None"
 
                 #######
                 ## 8 ##
@@ -735,21 +763,25 @@ def dashboard_led_groups():
                         led_id_8 = int(request.form.get("set_led_id_8_" + str(i)))
 
                         if led_id_8 == GET_LED_GROUP_BY_ID(i).led_id_8: 
-                            led_name_8 = GET_MQTT_DEVICE_BY_ID(led_id_8).name            
+                            led_name_8        = GET_MQTT_DEVICE_BY_ID(led_id_8).name  
+                            led_device_type_8 = GET_MQTT_DEVICE_BY_ID(led_id_8).device_type           
                         elif led_id_8 not in LED_CHECK_EXIST(i):
-                            led_name_8 = GET_MQTT_DEVICE_BY_ID(led_id_8).name
+                            led_name_8        = GET_MQTT_DEVICE_BY_ID(led_id_8).name
+                            led_device_type_8 = GET_MQTT_DEVICE_BY_ID(led_id_8).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_8).name 
-                            led_id_8   = "None"
-                            led_name_8 = "None"
+                            led_id_8          = "None"
+                            led_name_8        = "None"
+                            led_device_type_8 = "None"
 
                     except:
-                        led_id_8   = "None"
-                        led_name_8 = "None"
-
+                        led_id_8          = "None"
+                        led_name_8        = "None"
+                        led_device_type_8 = "None"
                 else:
-                    led_id_8 = ""
-                    led_name_8 = "None"
+                    led_id_8          = "None"
+                    led_name_8        = "None"
+                    led_device_type_8 = "None"
 
                 #######
                 ## 9 ##
@@ -762,31 +794,35 @@ def dashboard_led_groups():
                         led_id_9 = int(request.form.get("set_led_id_9_" + str(i)))
 
                         if led_id_9 == GET_LED_GROUP_BY_ID(i).led_id_9: 
-                            led_name_9 = GET_MQTT_DEVICE_BY_ID(led_id_9).name            
+                            led_name_9        = GET_MQTT_DEVICE_BY_ID(led_id_9).name  
+                            led_device_type_9 = GET_MQTT_DEVICE_BY_ID(led_id_9).device_type           
                         elif led_id_9 not in LED_CHECK_EXIST(i):
-                            led_name_9 = GET_MQTT_DEVICE_BY_ID(led_id_9).name
+                            led_name_9        = GET_MQTT_DEVICE_BY_ID(led_id_9).name
+                            led_device_type_9 = GET_MQTT_DEVICE_BY_ID(led_id_9).device_type                             
                         else:
                             error_message_table = "LED bereits verwendet >>> " + GET_MQTT_DEVICE_BY_ID(led_id_9).name 
-                            led_id_9   = "None"
-                            led_name_9 = "None"
+                            led_id_9          = "None"
+                            led_name_9        = "None"
+                            led_device_type_9 = "None"
 
                     except:
-                        led_id_9   = "None"
-                        led_name_9 = "None"
-
+                        led_id_9          = "None"
+                        led_name_9        = "None"
+                        led_device_type_9 = "None"
                 else:
-                    led_id_9 = ""
-                    led_name_9 = "None"
+                    led_id_9          = "None"
+                    led_name_9        = "None"
+                    led_device_type_9 = "None"
 
-                SET_LED_GROUP(i, name, led_id_1, led_name_1,
-                                       led_id_2, led_name_2,
-                                       led_id_3, led_name_3,
-                                       led_id_4, led_name_4,
-                                       led_id_5, led_name_5,
-                                       led_id_6, led_name_6,
-                                       led_id_7, led_name_7,
-                                       led_id_8, led_name_8,
-                                       led_id_9, led_name_9)
+                SET_LED_GROUP(i, name, led_id_1, led_name_1, led_device_type_1,
+                                       led_id_2, led_name_2, led_device_type_2,
+                                       led_id_3, led_name_3, led_device_type_3,
+                                       led_id_4, led_name_4, led_device_type_4,
+                                       led_id_5, led_name_5, led_device_type_5,
+                                       led_id_6, led_name_6, led_device_type_6,
+                                       led_id_7, led_name_7, led_device_type_7,
+                                       led_id_8, led_name_8, led_device_type_8,
+                                       led_id_9, led_name_9, led_device_type_9)
 
         # add group
         if request.form.get("add_group") != None:

@@ -56,30 +56,39 @@ class LED_Groups(db.Model):
     name               = db.Column(db.String(50), unique = True)
     led_id_1           = db.Column(db.Integer)
     led_name_1         = db.Column(db.String(50))
+    led_device_type_1  = db.Column(db.String(50))
     active_led_2       = db.Column(db.String(50))
     led_id_2           = db.Column(db.Integer)
     led_name_2         = db.Column(db.String(50))
+    led_device_type_2  = db.Column(db.String(50))
     active_led_3       = db.Column(db.String(50))
     led_id_3           = db.Column(db.Integer)
     led_name_3         = db.Column(db.String(50))
+    led_device_type_3  = db.Column(db.String(50))
     active_led_4       = db.Column(db.String(50))
     led_id_4           = db.Column(db.Integer)
     led_name_4         = db.Column(db.String(50))
+    led_device_type_4  = db.Column(db.String(50))
     active_led_5       = db.Column(db.String(50))
     led_id_5           = db.Column(db.Integer)
-    led_name_5         = db.Column(db.String(50))      
+    led_name_5         = db.Column(db.String(50)) 
+    led_device_type_5  = db.Column(db.String(50))
     active_led_6       = db.Column(db.String(50))
     led_id_6           = db.Column(db.Integer)
     led_name_6         = db.Column(db.String(50))
+    led_device_type_6  = db.Column(db.String(50))
     active_led_7       = db.Column(db.String(50))
     led_id_7           = db.Column(db.Integer)
     led_name_7         = db.Column(db.String(50))
+    led_device_type_7  = db.Column(db.String(50))
     active_led_8       = db.Column(db.String(50))
     led_id_8           = db.Column(db.Integer)
     led_name_8         = db.Column(db.String(50))
+    led_device_type_8  = db.Column(db.String(50))
     active_led_9       = db.Column(db.String(50))
     led_id_9           = db.Column(db.Integer)
-    led_name_9         = db.Column(db.String(50))  
+    led_name_9         = db.Column(db.String(50)) 
+    led_device_type_9  = db.Column(db.String(50))
     current_setting    = db.Column(db.String(50))
     current_brightness = db.Column(db.Integer)
 
@@ -590,37 +599,46 @@ def ADD_LED_GROUP(name):
         return "Name bereits vergeben"
 
 
-def SET_LED_GROUP(id, name, led_id_1, led_name_1,
-                            led_id_2, led_name_2,
-                            led_id_3, led_name_3,
-                            led_id_4, led_name_4,
-                            led_id_5, led_name_5,
-                            led_id_6, led_name_6,
-                            led_id_7, led_name_7,
-                            led_id_8, led_name_8,
-                            led_id_9, led_name_9):
+def SET_LED_GROUP(id, name, led_id_1, led_name_1, led_device_type_1, 
+                            led_id_2, led_name_2, led_device_type_2,
+                            led_id_3, led_name_3, led_device_type_3,
+                            led_id_4, led_name_4, led_device_type_4,
+                            led_id_5, led_name_5, led_device_type_5,
+                            led_id_6, led_name_6, led_device_type_6,
+                            led_id_7, led_name_7, led_device_type_7,
+                            led_id_8, led_name_8, led_device_type_8,
+                            led_id_9, led_name_9, led_device_type_9):
 
     entry = LED_Groups.query.filter_by(id=id).first()
     entry.name = name
     
-    entry.led_id_1 = led_id_1
-    entry.led_name_1 = led_name_1
-    entry.led_id_2 = led_id_2
-    entry.led_name_2 = led_name_2
-    entry.led_id_3 = led_id_3
-    entry.led_name_3 = led_name_3
-    entry.led_id_4 = led_id_4
-    entry.led_name_4 = led_name_4
-    entry.led_id_5 = led_id_5
-    entry.led_name_5 = led_name_5
-    entry.led_id_6 = led_id_6
-    entry.led_name_6 = led_name_6
-    entry.led_id_7 = led_id_7
-    entry.led_name_7 = led_name_7
-    entry.led_id_8 = led_id_8
-    entry.led_name_8 = led_name_8
-    entry.led_id_9 = led_id_9
-    entry.led_name_9 = led_name_9     
+    entry.led_id_1          = led_id_1
+    entry.led_name_1        = led_name_1
+    entry.led_device_type_1 = led_device_type_1
+    entry.led_id_2          = led_id_2
+    entry.led_name_2        = led_name_2
+    entry.led_device_type_2 = led_device_type_2 
+    entry.led_id_3          = led_id_3
+    entry.led_name_3        = led_name_3
+    entry.led_device_type_3 = led_device_type_3
+    entry.led_id_4          = led_id_4
+    entry.led_name_4        = led_name_4
+    entry.led_device_type_4 = led_device_type_4
+    entry.led_id_5          = led_id_5
+    entry.led_name_5        = led_name_5
+    entry.led_device_type_5 = led_device_type_5
+    entry.led_id_6          = led_id_6
+    entry.led_name_6        = led_name_6
+    entry.led_device_type_6 = led_device_type_6 
+    entry.led_id_7          = led_id_7
+    entry.led_name_7        = led_name_7
+    entry.led_device_type_7 = led_device_type_7
+    entry.led_id_8          = led_id_8
+    entry.led_name_8        = led_name_8
+    entry.led_device_type_8 = led_device_type_8
+    entry.led_id_9          = led_id_9
+    entry.led_name_9        = led_name_9
+    entry.led_device_type_9 = led_device_type_9
        
     db.session.commit()  
 
@@ -645,39 +663,48 @@ def UPDATE_LED_GROUP_LED_NAMES():
         entry = LED_Groups.query.filter_by(id=group.id).first()
         
         try:
-            entry.led_name_1 = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).name
+            entry.led_name_1        = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).name
+            entry.led_device_type_1 = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).device_type
         except:
             pass
         try:
-            entry.led_name_2 = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).name 
+            entry.led_name_2        = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).name 
+            entry.led_device_type_2 = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).device_type
         except:
             pass
         try:
-            entry.led_name_3 = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).name
+            entry.led_name_3        = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).name 
+            entry.led_device_type_3 = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).device_type
         except:
             pass
         try:
-            entry.led_name_4 = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).name
+            entry.led_name_4        = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).name 
+            entry.led_device_type_4 = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).device_type
         except:
             pass
         try:
-            entry.led_name_5 = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).name
+            entry.led_name_5        = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).name 
+            entry.led_device_type_5 = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).device_type
         except:
             pass
         try:
-            entry.led_name_6 = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).name
+            entry.led_name_6        = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).name 
+            entry.led_device_type_6 = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).device_type
         except:
             pass
         try:
-            entry.led_name_7 = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).name
+            entry.led_name_7        = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).name 
+            entry.led_device_type_7 = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).device_type
         except:
             pass
         try:
-            entry.led_name_8 = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).name    
+            entry.led_name_8        = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).name 
+            entry.led_device_type_8 = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).device_type  
         except:
             pass
         try:
-            entry.led_name_9 = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).name
+            entry.led_name_9        = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).name 
+            entry.led_device_type_9 = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).device_type
         except:
             pass            
         
@@ -743,37 +770,45 @@ def REMOVE_LED_GROUP_LED(id, led):
     entry = LED_Groups.query.filter_by(id=id).first()
 
     if led == 2:
-        entry.active_led_2 = "None"
-        entry.led_id_2     = "None"
-        entry.led_name_2   = "None"
+        entry.active_led_2      = "None"
+        entry.led_id_2          = "None"
+        entry.led_name_2        = "None"
+        entry.led_device_type_2 = "None"
     if led == 3:
-        entry.active_led_3 = "None"     
-        entry.led_id_3     = "None"
-        entry.led_name_3   = "None" 
+        entry.active_led_3      = "None"     
+        entry.led_id_3          = "None"
+        entry.led_name_3        = "None" 
+        entry.led_device_type_3 = "None"
     if led == 4:
-        entry.active_led_4 = "None"
-        entry.led_id_4     = "None"
-        entry.led_name_4   = "None"
+        entry.active_led_4      = "None"     
+        entry.led_id_4          = "None"
+        entry.led_name_4        = "None" 
+        entry.led_device_type_4 = "None"
     if led == 5:
-        entry.active_led_5 = "None"
-        entry.led_id_5     = "None"
-        entry.led_name_5   = "None" 
+        entry.active_led_5      = "None"     
+        entry.led_id_5          = "None"
+        entry.led_name_5        = "None" 
+        entry.led_device_type_5 = "None"
     if led == 6:
-        entry.active_led_6 = "None"
-        entry.led_id_6     = "None"
-        entry.led_name_6   = "None"
+        entry.active_led_6      = "None"     
+        entry.led_id_6          = "None"
+        entry.led_name_6        = "None" 
+        entry.led_device_type_6 = "None"
     if led == 7:
-        entry.active_led_7 = "None"
-        entry.led_id_7     = "None"
-        entry.led_name_7   = "None"
+        entry.active_led_7      = "None"     
+        entry.led_id_7          = "None"
+        entry.led_name_7        = "None" 
+        entry.led_device_type_7 = "None"
     if led == 8:
-        entry.active_led_8 = "None"
-        entry.led_id_8     = "None"
-        entry.led_name_8   = "None"
+        entry.active_led_8      = "None"     
+        entry.led_id_8          = "None"
+        entry.led_name_8        = "None" 
+        entry.led_device_type_8 = "None"
     if led == 9:
-        entry.active_led_9 = "None"
-        entry.led_id_9     = "None"
-        entry.led_name_9   = "None"
+        entry.active_led_9      = "None"     
+        entry.led_id_9          = "None"
+        entry.led_name_9        = "None" 
+        entry.led_device_type_9 = "None"
 
     db.session.commit()
 
@@ -1121,7 +1156,10 @@ def GET_ALL_MQTT_DEVICES(selector):
   
     if selector == "led":
         for device in devices:
-            if device.device_type == "led_rgb" or device.device_type == "led_white":
+            if (device.device_type == "rgb_led" or 
+                device.device_type == "white_led" or
+                device.device_type == "strip_led"):
+
                 device_list.append(device)    
     
     if selector == "mqtt" or selector == "zigbee2mqtt":
