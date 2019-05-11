@@ -295,13 +295,15 @@ def dashboard_settings_controller():
     error_message_add_controller = ""
     error_message_table = ""
 
+    UPDATE_CONTROLLER_COMMANDS()
+
     if request.method == "POST": 
 
         if request.form.get("add_controller") != None: 
             
-            if request.form.get("set_controller_id") != None:
-                controller_id = request.form.get("set_controller_id")
-                error_message_add_controller = ADD_CONTROLLER(controller_id)
+            if request.form.get("set_mqtt_device_id") != None:
+                mqtt_device_id = request.form.get("set_mqtt_device_id")
+                error_message_add_controller = ADD_CONTROLLER(mqtt_device_id)
 
             else:
                 error_message_add_controller = "Keinen Controller angegeben"  

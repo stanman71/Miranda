@@ -231,8 +231,8 @@
                   {% for entry in data_sensor %}
                   <tr>
                     <td style="width:17%"> {{entry.name}} </td>
-                    <td style="width:10%"> {{entry.device_type}} </td>
-                    <td style="width:23%"> {{entry.description}} </td> 
+                    <td style="width:13%"> {{entry.device_type}} </td>
+                    <td style="width:20%"> {{entry.description}} </td> 
                     <td style="width:30%"> {{entry.last_values_formated}} </td>
                     <td style="width:20%"> {{entry.last_contact}} </td>
                   </tr>
@@ -268,13 +268,13 @@
                   {% for entry in data_log_system %}
                   <tr>
                     <td style="width:17%">{{ entry[0] }}</td> 
-                    <td style="width:10%">
+                    <td style="width:13%">
                       {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
                     </td>                   
-                    <td style="width:73%">{{ entry[2] }}</td>  
+                    <td style="width:70%">{{ entry[2] }}</td>  
                   </tr>
                   {% endfor %} 
                 </tbody>

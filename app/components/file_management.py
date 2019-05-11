@@ -222,7 +222,7 @@ def DELETE_DATABASE_BACKUP(filename):
 
 try:
     # open config file
-    with open(PATH + "/app/config.yaml", "r") as file_config:
+    with open(PATH + "/app/config/config.yaml", "r") as file_config:
         config = yaml.load(file_config)
 
     # print check
@@ -230,7 +230,7 @@ try:
     
 except Exception as e:
     print("##### ERROR: config file not founded #####")
-    WRITE_LOGFILE_SYSTEM("ERROR", "File | config.ymal | " + str(e) + " | !!! DEFAULT SETTINGS LOADED !!! ")
+    WRITE_LOGFILE_SYSTEM("ERROR", "File | config/config.ymal | " + str(e) + " | !!! DEFAULT SETTINGS LOADED !!! ")
 
 
 def GET_CONFIG_VERSION():
@@ -259,11 +259,11 @@ def GET_CONFIG_DATABASE():
 
 try:
     # open mqtt file
-    with open(PATH + "/app/zigbee_device_informations.yaml", 'r') as file_zigbee:
+    with open(PATH + "/app/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
         zigbee_devices = yaml.load(file_zigbee)
         
 except Exception as e:
-    WRITE_LOGFILE_SYSTEM("ERROR", "File | zigbee_device_informations.ymal | " + str(e))
+    WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.ymal | " + str(e))
 
 
 def GET_MQTT_DEVICE_INFORMATIONS(model):
@@ -273,6 +273,7 @@ def GET_MQTT_DEVICE_INFORMATIONS(model):
                 str(zigbee_devices[model]['description']),
                 str(zigbee_devices[model]['inputs']),
                 str(zigbee_devices[model]['outputs']),
+                str(zigbee_devices[model]['commands']),
         )
         
     except:

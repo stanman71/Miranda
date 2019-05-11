@@ -148,9 +148,19 @@ def MQTT_UPDATE_DEVICES(gateway):
                            device_type = GET_MQTT_DEVICE_INFORMATIONS(model)[0]
                            description = GET_MQTT_DEVICE_INFORMATIONS(model)[1]
                            inputs      = GET_MQTT_DEVICE_INFORMATIONS(model)[2]
-                           outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3]     
+                           inputs      = inputs.replace("[","")
+                           inputs      = inputs.replace("]","")
+                           inputs      = inputs.replace("'","")                           
+                           outputs     = GET_MQTT_DEVICE_INFORMATIONS(model)[3]   
+                           outputs     = outputs.replace("[","")
+                           outputs     = outputs.replace("]","")
+                           outputs     = outputs.replace("'","")                             
+                           commands    = GET_MQTT_DEVICE_INFORMATIONS(model)[4] 
+                           commands    = commands.replace("[","")
+                           commands    = commands.replace("]","")
+                           commands    = commands.replace("'","")    
                            
-                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs)
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs, commands)
 
                         # update device informations
                         
@@ -174,15 +184,21 @@ def MQTT_UPDATE_DEVICES(gateway):
                               outputs     = outputs.replace("[","")
                               outputs     = outputs.replace("]","")
                               outputs     = outputs.replace("'","")    
-                           except:
+                              commands    = GET_MQTT_DEVICE_INFORMATIONS(model)[4] 
+                              commands    = commands.replace("[","")
+                              commands    = commands.replace("]","")
+                              commands    = commands.replace("'","")                               
+                       
+                           except Exception as e:
                               device_type = device_data.device_type
                               description = device_data.description 
                               inputs      = device_data.inputs
                               outputs     = device_data.outputs	
+                              commands    = device_data.commands
                               
-                              error = "Error: File zigbee_device_informations.yaml not founded"
+                              error = "Error: File zigbee_device_informations.yaml >>> " + str(e)
                                                                      
-                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs)
+                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs, commands)
                            SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
                            
                      if error != "":

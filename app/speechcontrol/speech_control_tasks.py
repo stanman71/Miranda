@@ -134,7 +134,7 @@ def SNOWBOY_TASKS(entry):
                                 error_message = str(error_message)
                                 error_message = error_message[1:]
                                 error_message = error_message[:-1]                    
-                                WRITE_LOGFILE_SYSTEM("ERROR", "SSnowBoy | Task - " + entry.name + " | " + error_message)
+                                WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | " + error_message)
                     
                         else:
                             WRITE_LOGFILE_SYSTEM("ERROR", "SnowBoy | Task - " + entry.name + " | Group - " + input_group_name + " | not founded")

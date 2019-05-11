@@ -1,29 +1,34 @@
 9290012573A:
-    device_type: led_rgb
+    device_type: rgb_led
     description: Philips HUE color LED (E14/E27)
     inputs: 
     outputs: 
+    commands:
 
 AB3257001NJ:
     device_type: device
     description: OSRAM Smart+ Plug
     inputs: 
     outputs:      
+    commands:
 
 WSDCGQ11LM:
     device_type: passiv_sensor
     description: AQARA Environment Sensor
     inputs: [temperature, humidity, pressure, battery] 
     outputs: 
+    commands:
 
 MFKZQ01LM:
     device_type: controller
     description: AQARA Cube Controller
     inputs: [angle, side, from_side, to_side, brightness, battery] 
     outputs: 
+    commands: [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
 
 RTCGQ11LM:
     device_type: passiv_sensor
     description: AQARA Human Detector Sensor
     inputs: [illuminance, occupancy, battery] 
     outputs: 
+    commands:

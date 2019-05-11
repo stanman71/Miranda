@@ -19,17 +19,29 @@ db = SQLAlchemy(app)
 """ ###################### """
 
 class Controller(db.Model):
-    __tablename__ = 'controller'
-    id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    controller_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
-    mqtt_device   = db.relationship('MQTT_Devices') 
-    input_1       = db.Column(db.String(50))
-    task_1        = db.Column(db.String(50))
-    input_2       = db.Column(db.String(50))
-    task_2        = db.Column(db.String(50))
-    input_3       = db.Column(db.String(50))
-    task_3        = db.Column(db.String(50))    
-
+    __tablename__  = 'controller'
+    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
+    mqtt_device    = db.relationship('MQTT_Devices') 
+    command_1      = db.Column(db.String(50))
+    task_1         = db.Column(db.String(50))
+    command_2      = db.Column(db.String(50))
+    task_2         = db.Column(db.String(50))
+    command_3      = db.Column(db.String(50))
+    task_3         = db.Column(db.String(50))    
+    command_4      = db.Column(db.String(50))
+    task_4         = db.Column(db.String(50))
+    command_5      = db.Column(db.String(50))
+    task_5         = db.Column(db.String(50))
+    command_6      = db.Column(db.String(50))
+    task_6         = db.Column(db.String(50))   
+    command_7      = db.Column(db.String(50))
+    task_7         = db.Column(db.String(50))
+    command_8      = db.Column(db.String(50))
+    task_8         = db.Column(db.String(50))
+    command_9      = db.Column(db.String(50))
+    task_9         = db.Column(db.String(50))   
+    
 class eMail(db.Model):
     __tablename__ = 'email'
     id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -167,6 +179,7 @@ class MQTT_Devices(db.Model):
     description          = db.Column(db.String(200))
     inputs               = db.Column(db.String(200))
     outputs              = db.Column(db.String(200))
+    commands             = db.Column(db.String(200))
     last_contact         = db.Column(db.String(50))
     last_values          = db.Column(db.String(200))  
     last_values_formated = db.Column(db.String(200)) 
@@ -393,12 +406,12 @@ def GET_CONTROLLER_BY_NAME(name):
     return Controller.query.filter_by(name=name).first()
     
 
-def ADD_CONTROLLER(controller_id):
+def ADD_CONTROLLER(mqtt_device_id):
     # controller exist ?
     
-    check_entry = Controller.query.filter_by(controller_id=controller_id).first()
+    check_entry = Controller.query.filter_by(mqtt_device_id=mqtt_device_id).first()
     if check_entry is None:
-        if controller_id == "":
+        if mqtt_device_id == "":
             return "Keinen Controller angegeben"
         else:
             # find a unused id
@@ -408,13 +421,15 @@ def ADD_CONTROLLER(controller_id):
                 else:
                     # add new controller
                     new_controller = Controller(
-                                   id = i,
-                        controller_id = controller_id,
+                                    id = i,
+                        mqtt_device_id = mqtt_device_id,
                         )
                     db.session.add(new_controller)
                     db.session.commit()
                     
-                    controller_name = GET_MQTT_DEVICE_BY_ID(controller_id).name
+                    UPDATE_CONTROLLER_COMMANDS()
+                    
+                    controller_name = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).name
 
                     WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | added")  
 
@@ -426,15 +441,84 @@ def ADD_CONTROLLER(controller_id):
         return "Controller bereits vorhanden"    
 
 
-def SET_CONTROLLER_SETTINGS(id, controller, input_1 = "", task_1 = "", input_2 = "", task_2 = "", input_3 = "", task_3 = ""): 
+def UPDATE_CONTROLLER_COMMANDS(): 
+    
+    for controller in GET_ALL_CONTROLLER():
+    
+        mqtt_device_commands = GET_MQTT_DEVICE_BY_ID(controller.mqtt_device_id).commands
+        mqtt_device_commands = mqtt_device_commands.split(",")
+        
+        try:
+            mqtt_device_command  = mqtt_device_commands[0].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_1 = mqtt_device_command
+        except:
+            controller.command_1 = "None"
+        try:
+            mqtt_device_command  = mqtt_device_commands[1].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_2 = mqtt_device_command
+        except:
+            controller.command_2 = "None"
+        try:
+            mqtt_device_command  = mqtt_device_commands[2].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_3 = mqtt_device_command
+        except:
+            controller.command_3 = "None"            
+        try:
+            mqtt_device_command  = mqtt_device_commands[3].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_4 = mqtt_device_command
+        except:
+            controller.command_4 = "None"
+        try:
+            mqtt_device_command  = mqtt_device_commands[4].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_5 = mqtt_device_command
+        except:
+            controller.command_5 = "None"            
+        try:
+            mqtt_device_command  = mqtt_device_commands[5].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_6 = mqtt_device_command
+        except:
+            controller.command_6 = "None"                                    
+        try:
+            mqtt_device_command  = mqtt_device_commands[6].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_7 = mqtt_device_command
+        except:
+            controller.command_7 = "None"        
+        try:
+            mqtt_device_command  = mqtt_device_commands[7].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_8 = mqtt_device_command
+        except:
+            controller.command_8 = "None"        
+        try:
+            mqtt_device_command  = mqtt_device_commands[8].replace(" ","")
+            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
+            controller.command_9 = mqtt_device_command
+        except:
+            controller.command_9 = "None"    
+            
+        db.session.commit()
+
+
+def SET_CONTROLLER_TASKS(id, task_1 = "", task_2 = "", task_3 = "", task_4 = "", task_5 = "",
+                             task_6 = "", task_7 = "", task_8 = "", task_9 = ""):
+                                 
     entry = Controller.query.filter_by(id=id).first()
-    entry.controller = controller
-    entry.input_1    = input_1
-    entry.task_1     = task_1
-    entry.input_2    = input_2
-    entry.task_2     = task_2
-    entry.input_3    = input_3
-    entry.task_3     = task_3    
+    entry.task_1 = task_1
+    entry.task_2 = task_2
+    entry.task_3 = task_3   
+    entry.task_4 = task_4
+    entry.task_5 = task_5
+    entry.task_6 = task_6     
+    entry.task_7 = task_7
+    entry.task_8 = task_8
+    entry.task_9 = task_9               
     db.session.commit()
 
 
@@ -1159,7 +1243,7 @@ def GET_ALL_MQTT_DEVICES(selector):
             if (device.device_type == "rgb_led" or 
                 device.device_type == "white_led" or
                 device.device_type == "strip_led"):
-
+                    
                 device_list.append(device)    
     
     if selector == "mqtt" or selector == "zigbee2mqtt":
@@ -1188,7 +1272,13 @@ def GET_ALL_MQTT_DEVICES(selector):
     return device_list
         
 
-def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", inputs = "", outputs = "", last_contact = ""):
+def GET_MQTT_DEVICE_COMMANDS(id):
+    return MQTT_Devices.query.filter_by(id=id).first().commands
+
+
+def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", 
+                    inputs = "", outputs = "", commands = "", last_contact = ""):
+                        
     # path exist ?
     check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     if check_entry is None:   
@@ -1211,6 +1301,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                         description  = description,
                         inputs       = inputs,
                         outputs      = outputs,
+                        commands     = commands,
                         last_contact = last_contact,
                         )
                         
@@ -1223,7 +1314,8 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                                      " | device_type - " + device_type + 
                                      " | description - " + description + 
                                      " | Inputs - " + inputs + 
-                                     " | Outputs - " + outputs)
+                                     " | Outputs - " + outputs + 
+                                     " | Commands - " + commands)
 
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
                 
@@ -1287,17 +1379,18 @@ def SET_MQTT_DEVICE_SETTINGS(ieeeAddr, power_setting):
     db.session.commit()  
     
     
-def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = ""):
+def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     
     # values changed ?
     if (entry.name != name or entry.device_type != device_type or entry.description != description 
-        or entry.inputs != inputs or entry.outputs != outputs):
+        or entry.inputs != inputs or entry.outputs != outputs or entry.commands != commands):
         
         entry.device_type = device_type
         entry.description = description
-        entry.inputs = inputs
-        entry.outputs = outputs
+        entry.inputs      = inputs
+        entry.outputs     = outputs
+        entry.commands    = commands
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway +
@@ -1308,7 +1401,8 @@ def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", in
                              " | device_type - " + entry.device_type +
                              " | description - " + entry.description +
                              " | inputs - " + entry.inputs + 
-                             " | outputs - " + outputs)
+                             " | outputs - " + outputs + 
+                             " | commands - " + commands)
 
         entry.name = name
         db.session.commit()    
@@ -1317,57 +1411,64 @@ def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", in
 def DELETE_MQTT_DEVICE(id):
     error_list = ""
 
+    # check controller
+    entries = GET_ALL_CONTROLLER()
+    for entry in entries:
+        if entry.mqtt_device_id == id:
+            device = GET_MQTT_DEVICE_BY_ID(id)
+            error_list = error_list + "," + device.name + " eingetragen in Systemeinstellungen / Controller"     
+
     # check plants
     entries = GET_ALL_PLANTS()
     for entry in entries:
         if entry.mqtt_device_id == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze >>> " + entry.name     
+            error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze - " + entry.name     
     
     # check scheduler sensor
     entries = GET_ALL_SCHEDULER_SENSOR_TASKS()
     for entry in entries:
         if (entry.mqtt_device_id_1 == id) or (entry.mqtt_device_id_2 == id) or (entry.mqtt_device_id_3 == id):
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung >>> Sensor >>> " + entry.name      
+            error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung >>> Sensor - " + entry.name      
     
     # check sensordata
     entries = GET_ALL_SENSORDATA_JOBS()
     for entry in entries:
         if entry.mqtt_device_id == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job - " + entry.name  
         
     # check led groups
     entries = GET_ALL_LED_GROUPS()
     for entry in entries:
         if entry.led_id_1 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
         if entry.led_id_2 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name     
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name     
         if entry.led_id_3 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
         if entry.led_id_4 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
         if entry.led_id_5 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
         if entry.led_id_6 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name   
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name   
         if entry.led_id_7 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
         if entry.led_id_8 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name          
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name          
         if entry.led_id_9 == id:
             device = GET_MQTT_DEVICE_BY_ID(id)
-            error_list = error_list + "," + device.name + " eingetragen in LED >>> LED-Gruppen >>> Gruppe >>> " + entry.name                       
+            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name                       
        
     if error_list != "":
         error_list = error_list[1:]
