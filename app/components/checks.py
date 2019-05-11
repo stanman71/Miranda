@@ -74,6 +74,11 @@ def CHECK_PLANTS_SETTINGS():
         if entry.pump_key == "None" or entry.pump_key == None or entry.pump_key == "":
             list_errors.append(entry.name + " >>> keine Pumpe zugeordnet")
 
+   # pumptime missing ?
+   for entry in entries:
+        if entry.pumptime == "None" or entry.pumptime == None or entry.pumptime == "":
+            list_errors.append(entry.name + " >>> keine Pumpedauer eingestellt")
+
    # check pumps multiple times ?
    for plant in plants:
       for entry in entries:

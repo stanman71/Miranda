@@ -201,17 +201,29 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
 
                     group_id = None
                     scene_id = None
+                    brightness = 100
 
+                    # search group
                     for group in groups:
                         if group.name.lower() in answer:
                             group_id = group.id
 
+                    # search scene
                     for scene in scenes:
                         if scene.name.lower() in answer:
                             scene_id = scene.id   
 
+                    # search brightness value
+                    for element in answer.split():
+                        element = element.replace("%","")
+                        
+                        # check value
+                        if element.isdigit() and (1 <= int(element) <= 100):
+                            brightness = int(element)
+                         
+                         
                     if group_id != None and scene_id != None:                    
-                        error_message = LED_START_SCENE(int(group_id), int(scene_id))            
+                        error_message = LED_START_SCENE(int(group_id), int(scene_id), brightness)            
                         if error_message != "":
                             WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message) 
                             
@@ -245,10 +257,12 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     group_id   = None
                     program_id = None
 
+                    # search group
                     for group in groups:
                         if group.name.lower() in answer:
                             group_id = group.id
 
+                    # search program
                     for program in programs:
                         if program.name.lower() in answer:
                             program_id = program.id   
@@ -288,7 +302,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     for group in groups:
                         if group.name.lower() in answer:
                             
-                            # search for brightness value
+                            # search brightness value
                             for element in answer.split():
                                 element = element.replace("%","")
                                 if element.isdigit():
@@ -310,7 +324,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     break
 
 
-        # turn off led 
+        # turn off led group
         keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(4).keywords
         
         try:
@@ -347,6 +361,35 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                         error_message = LED_TURN_OFF_ALL()   
                         if error_message != "":            
                             WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)
+                            
+                    break
+
+                except Exception as e:
+                    print(e)
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(e))    
+                    
+                    break
+                        
+
+        # turn off all leds
+        keywords = GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(5).keywords
+        
+        try:
+            list_keywords = keywords.split(",")
+        except:
+            list_keywords = [keywords]
+
+        for keyword in list_keywords:
+            
+            keyword = keyword.replace(" ", "")
+                       
+            if keyword.lower() in answer:
+
+                try:
+        
+                    error_message = LED_TURN_OFF_ALL()   
+                    if error_message != "":            
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)
                             
                     break
 

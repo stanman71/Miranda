@@ -1131,7 +1131,10 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
-            if device.device_type == "active_sensor" or device.device_type == "passiv_sensor" or device.device_type == "sensor":
+            if (device.device_type == "active_sensor" or 
+                device.device_type == "passiv_sensor" or 
+                device.device_type == "watering_array"):
+                
                 device_list.append(device)   
      
     if selector == "switch":
@@ -1367,7 +1370,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
+def ADD_PLANT(name, mqtt_device_id):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1379,10 +1382,8 @@ def ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor):
                 # add the new plant
                 plant = Plants(
                         id             = i,
-                        name           = name,
-                        mqtt_device_id = mqtt_device_id,
-                        pumptime       = pumptime, 
-                        control_sensor = control_sensor,                    
+                        name           = name, 
+                        mqtt_device_id = mqtt_device_id                
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1413,22 +1414,12 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime,
         entry.control_sensor = control_sensor
         
         db.session.commit()  
-
-        try:
-            # with pump_id
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + old_name + " | changed || Name - " + entry.name + 
-                                 " | MQTT-Device - " + entry.mqtt_device.name + 
-                                 " | Pump - " + entry.pump_key + 
-                                 " | Sensor - " + entry.sensor_key + 
-                                 " | Pumptime - " + str(pumptime) + 
-                                 " | Control-Sensor - " + entry.control_sensor)      
-        except:
-            # without sensor_id
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + old_name + " | changed || Name - " + entry.name + 
-                                 " | MQTT-Device - " + entry.mqtt_device.name + 
-                                 " | Pump - " + entry.pump_key + 
-                                 " | Sensor - " + entry.sensor_key + 
-                                 " | Pumptime - " + str(pumptime))       
+        
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + old_name + " | changed || Name - " + entry.name + 
+                             " | MQTT-Device - " + entry.mqtt_device.name + 
+                             " | Pump - " + entry.pump_key + 
+                             " | Sensor - " + entry.sensor_key + 
+                             " | Pumptime - " + str(entry.pumptime))       
 
 
 def DELETE_PLANT(plant_id):

@@ -21573,3 +21573,235 @@ found character '\t' that cannot start any token
 2019-05-10 17:54:47,EVENT,|MQTT || started|
 2019-05-10 17:54:47,EVENT,|MQTT || Broker - localhost || connected|
 2019-05-10 17:54:53,EVENT,|Speech Recognition Provider || started|
+2019-05-10 18:17:09,EVENT,|MQTT || started|
+2019-05-10 18:17:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 18:17:14,EVENT,|Speech Recognition Provider || started|
+2019-05-10 18:17:37,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - schlafen|
+2019-05-10 18:17:46,EVENT,|Speech Recognition || Detection Task || schlafen|
+2019-05-10 18:20:45,EVENT,|MQTT || started|
+2019-05-10 18:20:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 18:20:50,EVENT,|Speech Recognition Provider || started|
+2019-05-10 18:21:04,EVENT,|Speech Recognition || Detection Task || schlafen|
+2019-05-10 18:27:15,EVENT,|Database || MQTT Device - 0x00158d000313fbc5 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - controller || description - AQARA Cube Controller || Inputs - ['angle', 'side', 'from_side', 'to_side', 'brightness', 'battery'] || Outputs - None|
+2019-05-10 18:32:00,EVENT,|MQTT || started|
+2019-05-10 18:32:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 18:32:05,EVENT,|Speech Recognition Provider || started|
+2019-05-10 18:32:13,EVENT,|Database || MQTT Device - 0x00158d000313fbc5 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000313fbc5 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - passiv_sensor || description - AQARA Human Detector || inputs - illuminance, occupancy, battery || outputs - None|
+2019-05-10 18:33:36,EVENT,|MQTT || started|
+2019-05-10 18:33:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 18:33:41,EVENT,|Speech Recognition Provider || started|
+2019-05-10 18:34:00,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - passiv_sensor || description - AQARA Environment Sensor || inputs - temperature, humidity, pressure, battery || outputs - None|
+2019-05-10 18:34:00,EVENT,|Database || MQTT Device - 0x00158d000313fbc5 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000313fbc5 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - passiv_sensor || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || outputs - None|
+2019-05-10 18:56:22,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - OFF|
+2019-05-10 18:57:20,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - ON|
+2019-05-10 18:57:47,EVENT,|Speech Recognition || Detection Task || ramasuri|
+2019-05-10 19:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 19:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 19:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 19:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 19:36:40,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-10 19:36:58,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-10 19:38:20,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 60%|
+2019-05-10 19:50:24,EVENT,|MQTT || started|
+2019-05-10 19:50:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 19:50:29,EVENT,|Speech Recognition Provider || started|
+2019-05-10 19:50:52,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer auf 50%|
+2019-05-10 19:51:12,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 100%|
+2019-05-10 19:51:34,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 19:52:06,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 50%|
+2019-05-10 19:54:30,EVENT,|MQTT || started|
+2019-05-10 19:54:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 19:54:35,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1893750320|
+2019-05-10 19:56:00,EVENT,|MQTT || started|
+2019-05-10 19:56:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 19:56:05,EVENT,|Speech Recognition Provider || started|
+2019-05-10 19:56:18,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer|
+2019-05-10 19:56:39,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 50%|
+2019-05-10 20:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 20:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 20:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 20:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 20:08:42,EVENT,|MQTT || started|
+2019-05-10 20:08:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-10 20:08:47,EVENT,|Speech Recognition Provider || started|
+2019-05-10 20:41:26,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 20:43:29,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 20:45:11,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 21:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 21:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 21:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 21:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 21:00:37,EVENT,|Speech Recognition || Detection Task || starte mediterran im wohnzimmer auf 80%|
+2019-05-10 22:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 22:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 22:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 22:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 23:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-10 23:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-10 23:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-10 23:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-10 23:16:57,EVENT,|Speech Recognition || Detection Task || |
+2019-05-10 23:28:39,EVENT,|Speech Recognition || Detection Task || |
+2019-05-11 00:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 00:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 00:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 00:00:08,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 00:00:08,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-11 00:00:08,EVENT,|Database_Backup || saved|
+2019-05-11 00:00:08,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-11 00:30:00,EVENT,|Scheduler || Time Task - schlafen || started|
+2019-05-11 01:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 01:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 01:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 01:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 01:25:29,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-11 02:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 02:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 02:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 02:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 03:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 03:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 03:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 03:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 04:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 04:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 04:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 04:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 05:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 05:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 05:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 05:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 06:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 06:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 06:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 06:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 07:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 07:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 07:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 07:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 08:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 08:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 08:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 08:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 09:00:00,EVENT,|Scheduler || Time Task - test_01 || started|
+2019-05-11 09:00:03,SUCCESS,|Scheduler || Time Task - test_01 || successful|
+2019-05-11 09:00:03,EVENT,|Scheduler || Time Task - MQTT aktuallisieren || started|
+2019-05-11 09:00:07,SUCCESS,|Scheduler || Time Task - MQTT aktuallisieren || successful|
+2019-05-11 09:02:05,EVENT,|MQTT || started|
+2019-05-11 09:02:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:02:11,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:03:43,EVENT,|Database || Plant - ghfhf || added|
+2019-05-11 09:07:13,EVENT,|MQTT || started|
+2019-05-11 09:07:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:07:18,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:11:55,EVENT,|MQTT || started|
+2019-05-11 09:11:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:12:02,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:13:10,EVENT,|MQTT || started|
+2019-05-11 09:13:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:13:19,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:13:44,EVENT,|Database || Plant - fhgf || added|
+2019-05-11 09:15:07,EVENT,|MQTT || started|
+2019-05-11 09:15:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:15:12,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:15:52,EVENT,|MQTT || started|
+2019-05-11 09:15:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:15:58,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:19:30,EVENT,|MQTT || started|
+2019-05-11 09:19:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:19:35,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:21:22,EVENT,|MQTT || started|
+2019-05-11 09:21:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:21:27,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:22:56,EVENT,|Database || Plant - fhgf || deleted|
+2019-05-11 09:23:04,EVENT,|Database || Plant - fds || added|
+2019-05-11 09:23:44,EVENT,|MQTT || started|
+2019-05-11 09:23:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:23:49,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:26:21,EVENT,|MQTT || started|
+2019-05-11 09:26:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:26:27,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:29:33,EVENT,|MQTT || started|
+2019-05-11 09:29:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:29:38,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:32:53,EVENT,|MQTT || started|
+2019-05-11 09:32:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:32:59,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:34:30,EVENT,|MQTT || started|
+2019-05-11 09:34:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:34:36,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:37:28,EVENT,|MQTT || started|
+2019-05-11 09:37:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:37:33,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:39:40,EVENT,|MQTT || started|
+2019-05-11 09:39:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:39:45,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:42:00,EVENT,|MQTT || started|
+2019-05-11 09:42:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:42:05,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:42:08,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:15,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:18,EVENT,|Database || Plant - jhg || added|
+2019-05-11 09:42:21,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:21,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - None || Pumptime - None|
+2019-05-11 09:42:24,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:24,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - None || Pumptime - 240|
+2019-05-11 09:42:28,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:28,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Pumptime - 240|
+2019-05-11 09:42:32,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:32,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Pumptime - 240|
+2019-05-11 09:42:51,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Pumptime - 150|
+2019-05-11 09:42:51,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240 || Control-Sensor - checked|
+2019-05-11 09:45:53,EVENT,|MQTT || started|
+2019-05-11 09:45:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:45:58,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:46:56,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:46:56,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:03,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:03,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:06,EVENT,|Database || Plant - trt || added|
+2019-05-11 09:47:10,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:10,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:10,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - None || Sensor -  || Pumptime - None|
+2019-05-11 09:47:13,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:13,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:13,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - None || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:21,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:21,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:21,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:33,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:33,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:33,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:36,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:36,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - Kein || Pumptime - 240|
+2019-05-11 09:47:36,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor -  || Pumptime - 240|
+2019-05-11 09:47:45,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor -  || Pumptime - 150|
+2019-05-11 09:47:45,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - Kein || Pumptime - 240|
+2019-05-11 09:47:45,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - Kein || Pumptime - 240|
+2019-05-11 09:50:34,EVENT,|MQTT || started|
+2019-05-11 09:50:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:50:40,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:50:42,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:50:43,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - Kein || Pumptime - 240|
+2019-05-11 09:50:43,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - Kein || Pumptime - 240|
+2019-05-11 09:50:47,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:50:47,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
+2019-05-11 09:50:47,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - None || Pumptime - 240|
+2019-05-11 09:50:55,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:50:55,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
+2019-05-11 09:50:55,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - None || Pumptime - 240|
+2019-05-11 09:51:05,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:51:05,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
+2019-05-11 09:51:05,EVENT,|Database || Plant - trt || changed |||| Name - trt || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - None || Pumptime - 240|
+2019-05-11 09:52:11,EVENT,|Database || Plant - trt || deleted|
+2019-05-11 09:52:21,EVENT,|Database || Plant - 444 || added|
+2019-05-11 09:53:42,EVENT,|MQTT || started|
+2019-05-11 09:53:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-11 09:53:49,EVENT,|Speech Recognition Provider || started|
+2019-05-11 09:53:53,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:53:53,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
+2019-05-11 09:53:53,EVENT,|Database || Plant - 444 || changed |||| Name - 444 || MQTT-Device - 0x99999 || Pump - None || Sensor - None || Pumptime - 270|
+2019-05-11 09:53:56,EVENT,|Database || Plant - fds || changed |||| Name - fds || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - None || Pumptime - 150|
+2019-05-11 09:53:56,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - None || Pumptime - 240|
+2019-05-11 09:53:57,EVENT,|Database || Plant - 444 || changed |||| Name - 444 || MQTT-Device - 0x99999 || Pump - pump_0 || Sensor - None || Pumptime - 270|
+2019-05-11 09:54:00,EVENT,|Database || Plant - 444 || deleted|

@@ -37,40 +37,29 @@ def dashboard_plants():
     set_control_sensor = ""
 
     if request.method == "POST": 
+        
+        # add plant
         if request.form.get("add_plant") != None: 
             
             if request.form.get("set_name") != None:
                 # missing name
                 if request.form.get("set_name") == "":
-                    set_mqtt_device_id = request.form.get("set_mqtt_device_id")    
-                    set_pumptime    = request.form.get("set_pumptime")  
-
-                    if request.form.get("set_control_sensor"):
-                        set_control_sensor = "checked" 
-                    
                     error_message = "Keinen Namen angegeben"  
                                         
                 else:         
-                    # add plant
                     name           = request.form.get("set_name")
-                    mqtt_device_id = request.form.get("set_mqtt_device_id")    
-                    pumptime    = request.form.get("set_pumptime") 
-
-                    if request.form.get("set_control_sensor"):
-                        control_sensor = "checked" 
-                    else:
-                        control_sensor = ""
-
-                    error_message  = ADD_PLANT(name, mqtt_device_id, pumptime, control_sensor)
+                    mqtt_device_id = request.form.get("set_mqtt_device_id")
+                    
+                    error_message = ADD_PLANT(name, mqtt_device_id)
         
         
         # change settings
         if request.form.get("change_settings") != None: 
              
             for i in range (1,26):
-                
-                if request.form.get("set_name_" + str(i)) != None:
 
+                if request.form.get("set_name_" + str(i)) != None:
+                    
                     # check name
                     if (request.form.get("set_name_" + str(i)) != "" and 
                         GET_PLANT_BY_NAME(request.form.get("set_name_" + str(i))) == None):
@@ -97,6 +86,7 @@ def dashboard_plants():
                     try:
                         pump_key = pump_key.replace(" ", "") 
 
+                        # convert array number to name
                         if pump_key.isdigit():
                             if pump_key == "0" or pump_key == "1":
                                 pump_key = "None"
@@ -110,6 +100,7 @@ def dashboard_plants():
                     try:      
                         sensor_key = sensor_key.replace(" ", "") 
                         
+                        # convert array number to name
                         if sensor_key.isdigit():
                             if sensor_key == "0" or sensor_key == "1":
                                 sensor_key = "None"
