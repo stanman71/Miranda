@@ -26,8 +26,8 @@ def user_required(f):
 @login_required
 @user_required
 def dashboard_plants():
-    error_message = ""
-    error_message_table = ""
+    error_message_add_plant = ""
+    error_message_change_settings = ""
     error_message_form = ""
     pumptime = ""
     moisture = ""
@@ -44,13 +44,12 @@ def dashboard_plants():
             if request.form.get("set_name") != None:
                 # missing name
                 if request.form.get("set_name") == "":
-                    error_message = "Keinen Namen angegeben"  
+                    error_message_add_plant = "Keinen Namen angegeben"  
                                         
                 else:         
-                    name           = request.form.get("set_name")
-                    mqtt_device_id = request.form.get("set_mqtt_device_id")
-                    
-                    error_message = ADD_PLANT(name, mqtt_device_id)
+                    name                    = request.form.get("set_name")
+                    mqtt_device_id          = request.form.get("set_mqtt_device_id") 
+                    error_message_add_plant = ADD_PLANT(name, mqtt_device_id)
         
         
         # change settings
@@ -368,7 +367,7 @@ def dashboard_plants():
         mqtt_device_25_inputs = ""    
 
 
-    error_message_table = CHECK_PLANTS_SETTINGS()
+    error_message_change_settings = CHECK_PLANTS_SETTINGS()
 
     if set_mqtt_device_id != "":
         set_mqtt_device_name = GET_MQTT_DEVICE_BY_ID(int(set_mqtt_device_id)).name  
@@ -386,8 +385,8 @@ def dashboard_plants():
                             set_mqtt_device_id=set_mqtt_device_id,
                             set_mqtt_device_name=set_mqtt_device_name,
                             set_pumptime=set_pumptime,
-                            error_message=error_message,
-                            error_message_table=error_message_table,
+                            error_message_add_plant=error_message_add_plant,
+                            error_message_change_settings=error_message_change_settings,
                             error_message_form=error_message_form,
                             mqtt_device_1_outputs=mqtt_device_1_outputs,
                             mqtt_device_2_outputs=mqtt_device_2_outputs,

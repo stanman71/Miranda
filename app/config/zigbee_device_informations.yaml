@@ -1,5 +1,5 @@
 9290012573A:
-    device_type: rgb_led
+    device_type: led_rgb
     description: Philips HUE color LED (E14/E27)
     inputs: 
     outputs: 
@@ -13,7 +13,7 @@ AB3257001NJ:
     commands:
 
 WSDCGQ11LM:
-    device_type: passiv_sensor
+    device_type: sensor_passiv
     description: AQARA Environment Sensor
     inputs: [temperature, humidity, pressure, battery] 
     outputs: 
@@ -27,7 +27,7 @@ MFKZQ01LM:
     commands: [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
 
 RTCGQ11LM:
-    device_type: passiv_sensor
+    device_type: sensor_passiv
     description: AQARA Human Detector Sensor
     inputs: [illuminance, occupancy, battery] 
     outputs: 

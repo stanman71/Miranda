@@ -234,7 +234,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         {% if role == "superuser" %}
           <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
@@ -250,58 +250,62 @@
   <div class="row">
     <div class="col">
 
+<!-- add new plant -->        
+
+      <div class="well well-sm">  
+
+<!-- error message add plant -->
+
+{% if error_message_add_plant != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_plant }}
+  </div>      
+{% endif %}               
+
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-2">                     
+              <button type="button" class="btn btn-secondary">Neue Pflanze:</button>
+            </div>
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_name" value="" />
+            </div>  
+            <div class="col-sm-1">                     
+              <button type="button" class="btn btn-secondary">Gerät:</button>
+            </div>            
+            <div class="col-sm-2"> 
+              <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
+                {% if set_mqtt_device_id != "" %}
+                  <option value= "{{ set_mqtt_device_id }}" > {{ set_mqtt_device_name }} </option>
+                  <option value= "{{ set_mqtt_device_id }}" > -------------------- </option>                     
+                {% endif %}   
+                {% for each in dropdown_list_mqtt_devices %}
+                <option value="{{each.id}}"> {{ each.name }} </option>
+                {% endfor %}
+              </select>                         
+            </div>  
+
+<section id="table"></section> 
+
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="add_plant" value="Pflanze erstellen" />
+            </div>
+          </div>
+        </form>       
+      </div>    
+
 <!-- plants table -->
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>      
-          <div class="panel-body"> 
-              
-<!-- add new plant -->              
-   
-<!-- error message -->
-
-{% if error_message != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message }}
-</div>      
-{% endif %}         
-   
-              
-            <div class="well well-sm">              
-              <form method="POST"> 
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-2">                     
-                    Neue Pflanze:
-                  </div>
-                  <div class="col-sm-3"> 
-                    <input type="text" class="form-control" name="set_name" value="" />
-                  </div>  
-                  <div class="col-sm-2"> 
-                    <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
-                      {% if set_mqtt_device_id != "" %}
-                        <option value= "{{ set_mqtt_device_id }}" > {{ set_mqtt_device_name }} </option>
-                        <option value= "{{ set_mqtt_device_id }}" > -------------------- </option>                     
-                      {% endif %}   
-                      {% for each in dropdown_list_mqtt_devices %}
-                      <option value="{{each.id}}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </select>                         
-                  </div>  
-                  <div class="col-sm-1">                                      
-                    <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="add_plant" value="hinzufügen" />
-                  </div>
-                </div>
-              </form>       
-            </div>    
-            
-            
+          <div class="panel-body">                       
             <div class="well well-sm">  
  
 <!-- error message table -->
 
-{% if error_message_table != "" %}
+{% if error_message_change_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_table %}
+    {% for entry in error_message_change_settings %}
       {{ entry }} <br>
     {% endfor %}
   </div>      
@@ -393,7 +397,7 @@
                 </tbody>
               </table>  
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
             </form>  
           </div>  
         </div>  
@@ -412,14 +416,10 @@
                <br>
                <br>
                Alle hier eingerichteten Pflanzen werden dann versorgt.
-                
-   
             </div>
           </div>
         </div>
-      </div>
-      
-      
+      </div>   
     </div>
   </div>    
 </div>

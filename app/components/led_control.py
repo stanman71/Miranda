@@ -76,10 +76,17 @@ def SETTING_LED_RGB(led_name, red, green, blue, brightness):
     MQTT_PUBLISH(channel, msg) 
 
 
-def SETTING_LED_COLOR_TEMP(led_name, color_temp, brightness):
+def SETTING_LED_WHITE(led_name, color_temp, brightness):
 
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
-    msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '%"}'
+    msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '"}'
+    MQTT_PUBLISH(channel, msg) 
+
+
+def SETTING_LED_SIMPLE(led_name, brightness):
+
+    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    msg     = '{"state": "ON","brightness":' + str(brightness) + '"}'
     MQTT_PUBLISH(channel, msg) 
 
 
@@ -103,7 +110,7 @@ def SETTING_LED_TURN_OFF(led_name):
 
 
 def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
-
+    
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
         try:      
@@ -115,21 +122,23 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             brightness_1 = scene.brightness_1*(brightness_global/100)
             
             if led_1.device_type == "led_rgb":
-                SETTING_LED_RGB(led_1.name, scene.red_1, scene.green_1, scene.blue_1, int(brightness_1))
-            
+                SETTING_LED_RGB(led_1.name, scene.red_1, scene.green_1, scene.blue_1, int(brightness_1))            
             if led_1.device_type == "led_white":
-                SETTING_LED_COLOR_TEMP(led_1.name, scene.color_temp_1, int(brightness_1))                
-                           
+                SETTING_LED_WHITE(led_1.name, scene.color_temp_1, int(brightness_1))                
+            if led_1.device_type == "led_simple":
+                SETTING_LED_SIMPLE(led_1.name, int(brightness_1))   
+
             # led 2
             if group.active_led_2 == "on": 
                 led_2        = GET_MQTT_DEVICE_BY_ID(group.led_id_2)
                 brightness_2 = scene.brightness_2*(brightness_global/100)
                 
                 if led_2.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_2.name, scene.red_2, scene.green_2, scene.blue_2, int(brightness_2)) 
-                    
+                    SETTING_LED_RGB(led_2.name, scene.red_2, scene.green_2, scene.blue_2, int(brightness_2))                    
                 if led_2.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_2.name, scene.color_temp_2, int(brightness_2))                                            
+                    SETTING_LED_WHITE(led_2.name, scene.color_temp_2, int(brightness_2))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_2.name, int(brightness_2))  
 
             # led 3
             if group.active_led_3 == "on": 
@@ -138,9 +147,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_3.device_type == "led_rgb":
                     SETTING_LED_RGB(led_3.name, scene.red_3, scene.green_3, scene.blue_3, int(brightness_3)) 
-                    
                 if led_3.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_3.name, scene.color_temp_3, int(brightness_3))  
+                    SETTING_LED_WHITE(led_3.name, scene.color_temp_3, int(brightness_3))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_3.name, int(brightness_3))   
 
             # led 4
             if group.active_led_4 == "on": 
@@ -149,9 +159,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_4.device_type == "led_rgb":
                     SETTING_LED_RGB(led_4.name, scene.red_4, scene.green_4, scene.blue_4, int(brightness_4)) 
-                    
                 if led_4.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_4.name, scene.color_temp_4, int(brightness_4))  
+                    SETTING_LED_WHITE(led_4.name, scene.color_temp_4, int(brightness_4))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_4.name, int(brightness_4))  
 
             # led 5
             if group.active_led_5 == "on": 
@@ -160,9 +171,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_5.device_type == "led_rgb":
                     SETTING_LED_RGB(led_5.name, scene.red_5, scene.green_5, scene.blue_5, int(brightness_5)) 
-                    
                 if led_5.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_5.name, scene.color_temp_5, int(brightness_5))  
+                    SETTING_LED_WHITE(led_5.name, scene.color_temp_5, int(brightness_5))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_5.name, int(brightness_5))  
                     
             # led 6
             if group.active_led_6 == "on": 
@@ -171,9 +183,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_6.device_type == "led_rgb":
                     SETTING_LED_RGB(led_6.name, scene.red_6, scene.green_6, scene.blue_6, int(brightness_6)) 
-                    
                 if led_6.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_6.name, scene.color_temp_6, int(brightness_6))                      
+                    SETTING_LED_WHITE(led_6.name, scene.color_temp_6, int(brightness_6))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_6.name, int(brightness_6))                       
                     
             # led 7
             if group.active_led_7 == "on": 
@@ -182,9 +195,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_7.device_type == "led_rgb":
                     SETTING_LED_RGB(led_7.name, scene.red_7, scene.green_7, scene.blue_7, int(brightness_7)) 
-                    
                 if led_7.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_7.name, scene.color_temp_7, int(brightness_7))  
+                    SETTING_LED_WHITE(led_7.name, scene.color_temp_7, int(brightness_7))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_7.name, int(brightness_7))    
                     
             # led 8
             if group.active_led_8 == "on": 
@@ -193,9 +207,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_8.device_type == "led_rgb":
                     SETTING_LED_RGB(led_8.name, scene.red_8, scene.green_8, scene.blue_8, int(brightness_8)) 
-                    
                 if led_8.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_8.name, scene.color_temp_8, int(brightness_8))  
+                    SETTING_LED_WHITE(led_8.name, scene.color_temp_8, int(brightness_8))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_8.name, int(brightness_8))   
                     
             # led 9
             if group.active_led_9 == "on":  
@@ -204,9 +219,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 
                 if led_9.device_type == "led_rgb":
                     SETTING_LED_RGB(led_9.name, scene.red_9, scene.green_9, scene.blue_9, int(brightness_9)) 
-                    
                 if led_9.device_type == "led_white":
-                    SETTING_LED_COLOR_TEMP(led_9.name, scene.color_temp_9, int(brightness_9))                                           
+                    SETTING_LED_WHITE(led_9.name, scene.color_temp_9, int(brightness_9))                                            
+                if led_1.device_type == "led_simple":
+                    SETTING_LED_SIMPLE(led_9.name, int(brightness_9))                                           
                     
 
             # set current state
@@ -222,10 +238,10 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
         
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | start scene | " + str(e))
-            return str(e)
+            return [str(e)]
         
     else:
-        return ["Keine LED-Steuerung aktiviert"]  
+        return ["Keine LED-Steuerung aktiviert"]
                 
 
 def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
@@ -308,7 +324,7 @@ def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
         
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | set brightness | " + str(e))
-            return str(e)
+            return [str(e)]
 
     else:
         return ["Keine LED-Steuerung aktiviert"]  
@@ -359,7 +375,7 @@ def LED_TURN_OFF_GROUP(group_id):
 
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | turn_off | " + str(e))
-            return str(e)
+            return [str(e)]
 
     else:
         return ["Keine LED-Steuerung aktiviert"]  
@@ -437,7 +453,7 @@ def LED_PROGRAM_THREAD(group_id, program_id):
         # select each command line
         for line in content.splitlines():
 
-            if "rgb" in line: 
+            if "led_rgb" in line: 
                 led_id = line.split(":")[0]
                 
                 if led_id == "1":
@@ -468,7 +484,7 @@ def LED_PROGRAM_THREAD(group_id, program_id):
                 
                 SETTING_LED_RGB(led_name, int(red), int(green), int(blue), int(brightness))
 
-            if "color_temp" in line: 
+            if "led_white" in line: 
                 led_id = line.split(":")[0]
 
                 if led_id == "1":
@@ -495,7 +511,33 @@ def LED_PROGRAM_THREAD(group_id, program_id):
                 
                 brightness = line.split(":")[2]
                 
-                SETTING_LED_COLOR_TEMP(led_name, int(color_temp), int(brightness))
+                SETTING_LED_WHITE(led_name, int(color_temp), int(brightness))
+
+            if "led_simple" in line: 
+                led_id = line.split(":")[0]
+
+                if led_id == "1":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_1
+                if led_id == "2":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_2                    
+                if led_id == "3":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_3                  
+                if led_id == "4":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_4  
+                if led_id == "5":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_5  
+                if led_id == "6":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_6                    
+                if led_id == "7":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_7                  
+                if led_id == "8":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_8  
+                if led_id == "9":
+                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_9   
+
+                brightness = line.split(":")[1]
+                
+                SETTING_LED_SIMPLE(led_name, int(brightness))
 
             if "pause" in line: 
                 break_value = line.split(":")

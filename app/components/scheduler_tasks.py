@@ -43,8 +43,9 @@ scheduler.start()
 
 @scheduler.task('cron', id='scheduler_time', minute='*')
 def scheduler_time():
-    entries = GET_ALL_SCHEDULER_TIME_TASKS()
-    SCHEDULER_TIME_TASKS(entries)
+   pass
+   #entries = GET_ALL_SCHEDULER_TASKS()
+   #SCHEDULER_TIME_TASKS(entries)
 
 
 """ #################### """

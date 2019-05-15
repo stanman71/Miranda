@@ -36,12 +36,12 @@ def superuser_required(f):
 def dashboard_settings_mqtt():   
     error_message = ""
     error_message_mqtt = ""
-    error_message_table = ""
+    error_message_change_settings = ""
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
 
     if GET_ERROR_LIST() is not "":
-        error_message_table = GET_ERROR_LIST()
+        error_message_change_settings = GET_ERROR_LIST()
         SET_ERROR_LIST("")
 
     if request.method == "POST":     
@@ -82,11 +82,11 @@ def dashboard_settings_mqtt():
                             ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
                             SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)                         
                         else: 
-                            error_message_table = "Name bereits vergeben >>> " + new_name
+                            error_message_change_settings = "Name bereits vergeben >>> " + new_name
 
         # update device list
         if request.form.get("mqtt_update_devices") != None:
-            error_message_table = MQTT_UPDATE_DEVICES("mqtt")
+            error_message_change_settings = MQTT_UPDATE_DEVICES("mqtt")
             
         # reset logfile
         if request.form.get("reset_logfile") != None: 
@@ -101,7 +101,7 @@ def dashboard_settings_mqtt():
     return render_template('dashboard_settings_mqtt.html',                    
                             error_message=error_message,
                             error_message_mqtt=error_message_mqtt,
-                            error_message_table=error_message_table,
+                            error_message_change_settings=error_message_change_settings,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
                             check_value_mqtt=check_value_mqtt,
@@ -142,7 +142,7 @@ def download_mqtt_logfile(filepath):
 def dashboard_settings_zigbee2mqtt():
     error_message = ""
     error_message_zigbee2mqtt = ""
-    error_message_table = ""
+    error_message_change_settings = ""
     check_value_zigbee2mqtt = ["", ""]
     check_value_pairing = ["", ""]
     zigbee_topology_show = False
@@ -166,7 +166,7 @@ def dashboard_settings_zigbee2mqtt():
     if zigbee2mqtt_setting == "True":
 
         if GET_ERROR_LIST() is not "":
-            error_message_table = GET_ERROR_LIST()
+            error_message_change_settings = GET_ERROR_LIST()
             SET_ERROR_LIST("")
         
         error_message_zigbee2mqtt = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
@@ -200,18 +200,18 @@ def dashboard_settings_zigbee2mqtt():
                                         SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)  
 
                                     else:
-                                        error_message_table = "Name konnte in ZigBee2MQTT nicht verändert werden"
+                                        error_message_change_settings = "Name konnte in ZigBee2MQTT nicht verändert werden"
                                         MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
                                 else:
-                                    error_message_table = "Ohne eine Verbindung zu MQTT können die Namen der Geräte nicht verändert werden !"
+                                    error_message_change_settings = "Ohne eine Verbindung zu MQTT können die Namen der Geräte nicht verändert werden !"
                                 
                             else:
-                                error_message_table = "Name bereits vergeben >>> " + new_name
+                                error_message_change_settings = "Name bereits vergeben >>> " + new_name
 
             # update device list
             if request.form.get("update_zigbee2mqtt_devices") is not None:
-                error_message_table = MQTT_UPDATE_DEVICES("zigbee2mqtt")
+                error_message_change_settings = MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
             # request zigbee topology
             if request.form.get("request_zigbee_topology") is not None: 
@@ -250,7 +250,7 @@ def dashboard_settings_zigbee2mqtt():
     return render_template('dashboard_settings_zigbee2mqtt.html',
                             error_message=error_message,
                             error_message_zigbee2mqtt=error_message_zigbee2mqtt,
-                            error_message_table=error_message_table,
+                            error_message_change_settings=error_message_change_settings,
                             check_value_zigbee2mqtt=check_value_zigbee2mqtt,  
                             check_value_pairing=check_value_pairing,
                             zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
@@ -293,7 +293,6 @@ def download_zigbee2mqtt_logfile(filepath):
 @superuser_required
 def dashboard_settings_controller():
     error_message_add_controller = ""
-    error_message_table = ""
 
     UPDATE_CONTROLLER_COMMANDS()
 
@@ -319,7 +318,6 @@ def dashboard_settings_controller():
    
     return render_template('dashboard_settings_controller.html',
                             error_message_add_controller=error_message_add_controller, 
-                            error_message_table=error_message_table,
                             data_controller=data_controller,
                             dropdown_list_controller=dropdown_list_controller,                                   
                             active03="active",
@@ -344,8 +342,9 @@ def delete_controller(id):
 @login_required
 @superuser_required
 def dashboard_settings_speechcontrol():
-    error_message = ""
     error_message_snowboy = ""
+    error_message_add_snowboy_task = ""
+    error_message_change_snowboy_settings = ""
     error_message_snowboy_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
@@ -429,15 +428,15 @@ def dashboard_settings_speechcontrol():
             if request.form.get("add_snowboy_task") is not None:
 
                 if request.form.get("set_snowboy_name") == "":
-                    error_message = "Kein Name angegeben"
+                    error_message_add_snowboy_task = "Kein Name angegeben"
                     snowboy_task = request.form.get("set_snowboy_task")
                 elif request.form.get("set_snowboy_task") == "":
-                    error_message = "Keine Aufgabe angegeben"  
+                    error_message_add_snowboy_task = "Keine Aufgabe angegeben"  
                     snowboy_name = request.form.get("set_snowboy_name")  
                 else:         
                     snowboy_name  = request.form.get("set_snowboy_name")
                     snowboy_task  = request.form.get("set_snowboy_task")
-                    error_message = ADD_SNOWBOY_TASK(snowboy_name, snowboy_task)
+                    error_message_add_snowboy_task = ADD_SNOWBOY_TASK(snowboy_name, snowboy_task)
 
                     snowboy_name = ""
                     snowboy_task = "" 
@@ -447,28 +446,48 @@ def dashboard_settings_speechcontrol():
                 for i in range (1,26):
 
                     if request.form.get("set_snowboy_name_" + str(i)) != None:  
-                        
-                        # check snowboy name
-                        if (request.form.get("set_snowboy_name_" + str(i)) != "" and 
-                            GET_SNOWBOY_TASK_BY_NAME(request.form.get("set_snowboy_name_" + str(i))) == None):
+
+                    # ############
+                    # name setting
+                    # ############
+
+                        snowboy_task_data = GET_SNOWBOY_TASK_BY_ID(i)
+                        new_name          = request.form.get("set_snowboy_name_" + str(i))                    
+
+                        # add new name
+                        if ((new_name != "") and (GET_SNOWBOY_TASK_BY_NAME(new_name) == None)):
                             snowboy_name = request.form.get("set_snowboy_name_" + str(i)) 
+                        
+                        # nothing changed 
+                        elif new_name == snowboy_task_data.name:
+                            snowboy_name = snowboy_task_data.name                        
                             
-                        elif request.form.get("set_snowboy_name_" + str(i)) == GET_SNOWBOY_TASK_BY_ID(i).name:
-                            snowboy_name = GET_SNOWBOY_TASK_BY_ID(i).name                        
-                            
-                        else:
+                        # name already exist
+                        elif ((GET_SNOWBOY_TASK_BY_NAME(new_name) != None) and (snowboy_task_data.name != new_name)):
+                            snowboy_name = snowboy_task_data.name 
+                            error_message_change_snowboy_settings = error_message_change_snowboy_settings + (new_name + " >>> Name schon vergeben,")
+
+                        # no input commited
+                        else:                          
                             snowboy_name = GET_SNOWBOY_TASK_BY_ID(i).name 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
-                        
-                        # check task
+                            error_message_change_snowboy_settings = error_message_change_snowboy_settings + (name + " >>> Keinen Namen angegeben,")
+
+
+                        # ############
+                        # task setting
+                        # ############
+
                         if request.form.get("set_snowboy_task_" + str(i)) != "":
-                            snowboy_task = request.form.get("set_snowboy_task_" + str(i)) 
-                        
+                            snowboy_task = request.form.get("set_snowboy_task_" + str(i))
                         else:
-                            snowboy_task = GET_SNOWBOY_TASK_BY_ID(i).task 
-                            error_message_table = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
-                                           
+                            snowboy_task = GET_SNOWBOY_TASK_BY_ID(i).task
+
+
+                        if error_message_change_snowboy_settings != "":
+                            error_message_change_snowboy_settings = error_message_change_snowboy_settings[:-1]
+
                         SET_SNOWBOY_TASK(i, snowboy_name, snowboy_task)
+
 
             #############################
             # speech recognition provider
@@ -541,8 +560,9 @@ def dashboard_settings_speechcontrol():
     error_message_speech_recognition_provider_settings = CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS())
 
     return render_template('dashboard_settings_speechcontrol.html',
-                            error_message=error_message,   
-                            error_message_snowboy=error_message_snowboy,    
+                            error_message_snowboy=error_message_snowboy,   
+                            error_message_add_snowboy_task=error_message_add_snowboy_task,
+                            error_message_change_snowboy_settings=error_message_change_snowboy_settings,                                
                             error_message_snowboy_tasks=error_message_snowboy_tasks,        
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,

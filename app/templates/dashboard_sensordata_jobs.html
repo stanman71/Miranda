@@ -134,7 +134,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         {% if role == "superuser" %}
           <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
@@ -145,8 +145,6 @@
   </div>
 </nav>
 <br>
-
-<section id="table"></section>  
 
 <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
     <div class="row">
@@ -163,28 +161,66 @@
           </div>
         </nav>       
 
+
+<!-- add sensordata job -->        
+
+    <div class="well well-sm">     
+
+<!-- error message add job -->
+
+{% if error_message_add_sensordata_job != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_sensordata_job }}
+  </div>      
+{% endif %}              
+
+      <form method="POST"> 
+        <div class="row justify-content-md-center">
+          <div class="col-sm-2">  
+            <button type="button" style="background-color:transparent" class="btn btn-secondary">Neuer Job:</button>                   
+          </div>
+          <div class="col-sm-3"> 
+            <input type="text" class="form-control" name="set_job_name" value="{% if job_name != None %}{{ job_name }}{% endif %}" />                         
+          </div>  
+          <div class="col-sm-1">
+            <button type="button" style="background-color:transparent" class="btn btn-secondary">Datei:</button>
+          </div>
+          <div class="col-sm-3"> 
+            <input type="text" class="form-control" name="set_job_filename" value="{% if job_filename != None %}{{ job_filename }}{% endif %}" />                         
+          </div>           
+          <div class="col-sm-1">                                      
+            <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-default" name="add_job" value="Job erstellen" />
+        </form>
+        </div>
+      </div>
+    </div>  
+
+<section id="table"></section>
+
 <!-- sensordata table -->
 
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b>Sensordaten Jobs</b></font></div>    
-            <div class="panel-body">   
+            <div class="panel-body"> 
             <div class="well well-sm">
-              
-<!-- error message table -->
 
-{% if error_message_table != "" %}
+<!-- error message settings -->
+
+{% if error_message_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_table %}
+    {% for entry in error_message_settings %}
       {{ entry }} <br>
     {% endfor %}
   </div>      
 {% endif %} 
 
-<!-- error message form -->
+<!-- error message change settings -->
 
-{% if error_message_form != "" %}
+{% if error_message_change_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_form }}
+    {% for entry in error_message_change_settings %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %}               
               
@@ -192,7 +228,7 @@
                 <thead>
                   <th scope="col">ID</th>  
                   <th scope="col">Job</th>  
-                  <th scope="col">Dateiname</th>   
+                  <th scope="col">Datei</th>   
                   <th scope="col">Gerät</th>
                   <th scope="col">Sensor</th>
                   <th scope="col">Sensor-Inputs speichern</th>
@@ -210,22 +246,29 @@
                     </td> 
                     <td>
                       <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
-                        <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
-                        <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>                                           
+                        {% if entry.mqtt_device_id == "None" or  entry.mqtt_device_id == None %} 
+                         <option value= "" > Sensor wählen </option>
+                         <option value= "" > -------------------- </option>                           
+                        {% else %}
+                          <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
+                          <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>
+                        {% endif %}
                         {% for each in dropdown_list_mqtt_devices %}
                           <option value="{{ each.id }}"> {{ each.name }} </option>
                         {% endfor %}
                       </select> 
                     </td>
-                    <td>                     
+                    <td>                  
                       <div class="row justify-content-md-center">
                         <div class="col-sm-4">                       
                           <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                             <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
                             <option value= "{{ entry.sensor_key }}" > -------------------- </option>
-                            {% for each in entry.mqtt_device.inputs.split(',') %}
-                              <option value= "{{ each }}" > {{ each }} </option>
-                            {% endfor %}
+                            {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
+                              {% for each in entry.mqtt_device.inputs.split(',') %}
+                                <option value= "{{ each }}" > {{ each }} </option>
+                              {% endfor %}
+                            {% endif %}
                           </select>  
                         </div>
                       </div>
@@ -240,7 +283,7 @@
                         </div>
                       </font>
                     </td>           
-                    <td><a href="/dashboard/sensordata/jobs/delete/job/{{ entry.id }}#table_jobs"><font color="red" size="5"><b>X</b></font></a></td>   
+                    <td><a href="/dashboard/sensordata/jobs/delete/job/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -251,70 +294,43 @@
           </div>  
         </div>  
 
-<!-- add job -->
-  
-<section id="add_job"></section>  
 
-        <div class="panel panel-default">          
-          <div class="panel-body">  
-            <div class="well well-sm">
-              <form method="POST">   
-                <div class="form-group">
-                  <div class="text-center">   
-                    <h3><span class="label label-default">Job anlegen</span></h3> 
-                  </div>     
-                  <br>
+<!-- informations -->
 
-<!-- error message -->
-
-{% if error_message != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message }}
-  </div>      
-{% endif %}                  
-
-                  <div class="well well-sm">Job:     
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="set_name" value="{% if name != None %}{{ name }}{% endif %}" />
-                    </div>
-                  </div>
-                  <div class="well well-sm">Dateiname:   
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="set_filename" value="{% if filename != None %}{{ filename }}{% endif %}" />
-                    </div>
-                  </div>
-                  <div class="well well-sm">
-                    <div class="row justify-content-md-center">
-                      <div class="col-sm-1">
-                        Gerät:
-                      </div>
-                      <div class="col-sm-1">                                 
-                        <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
-                          {% if set_mqtt_device_id != "" %}
-                            <option value= "{{ set_mqtt_device_id }}" > {{ set_mqtt_device_name }} </option>
-                            <option value= "{{ set_mqtt_device_id }}" > -------------------- </option>                     
-                          {% endif %}                         
-                          {% for each in dropdown_list_mqtt_devices %}
-                          <option value="{{ each.id }}"> {{ each.name }} </option>
-                          {% endfor %}
-                        </select> 
-                      </div>
-                    </div> 
-                  </div>  
-                  <div class="well well-sm">
-                      <div class="pretty p-default p-curve p-fill p-bigger">
-                          <input type="checkbox" {{ set_checkbox }} name="checkbox">
-                        <div class="state">
-                          <label>Sensor-Inputs ohne Auftrag automatisch speichern (z.B. bei Geräten die jede Stunde Daten zusenden und ansonsten im SLEEP-Modus sind)</label>
-                        </div>
-                      </div> 
-                    </div>                            
-                  <input type="submit" onclick="window.location.href='/dashboard/sensordata/jobs#add_job'" class="btn btn-default" name="add_job" value="Job anlegen" />
-                </form> 
-              </div>  
+       <div class="panel panel-default">
+         <div class="panel-body"> 
+           <div class="well well-sm">     
+             <div class="form-group">
+               <div class="text-center">  
+                  <h3><span class="label label-default">Hinweise</span></h3>
+               </div>
+               <br>
+               Datein
+               <br>
+               <br>
+               - Die Sensordaten werden in den angegebenen Datein gespeichert
+               <br>
+               - Diese Datein werden automatisch angelegt und können können von beliebig vielen Jobs gemeinsam verwendet werden
+               <br>               
+               - Die Daten können innerhalb von SmartHome unter Sensordaten/Statistiken ausgewertet werden
+               <br>               
+               - In der Tablle "Datein" lassen sich auch die Datein herunterladen und mit einem anderen Programm verarbeiten
+               <br>
+               <br>
+               <br>               
+               Option Sensor-Inputs speichern
+               <br>
+               <br>               
+               - Mit dieser Option können Sensordaten von passiven Sensoren aufgezeichnet werden
+               <br>               
+               - Passive Sensoren senden Daten von sich aus und können nicht direkt abgefragt werden
+               <br>               
+               - Aktive Sensoren senden keine Daten von sich aus und müssen mit einem Auftrag in der Aufgabenplanung dazu aufgefordert werden
             </div>
-          </div>      
+          </div>
         </div>
+      </div>   
+
 
 <section id="table_files"></section> 
 

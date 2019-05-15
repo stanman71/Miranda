@@ -123,11 +123,12 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
                     return list_result
                 if list_result == []:
                     return "Message nicht gefunden" 
-     
+    
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
-              
+        return ("ZigBee2MQTT >>> ERROR >>> " + str(e))
+    
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
     if os.path.isfile(PATH + "/logs/log_system.csv") is False:
@@ -145,6 +146,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
+        return ("ERROR: " + str(e))
         
     
 def GET_LOGFILE_SYSTEM(rows):   
@@ -162,7 +164,8 @@ def GET_LOGFILE_SYSTEM(rows):
             
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))          
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e)) 
+        return ("ERROR: " + str(e))         
 
 
 """ ############### """
@@ -195,6 +198,7 @@ def SAVE_DATABASE():
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e)) 
         return str(e)
+        return ("ERROR: " + str(e))
 
 
 def RESTORE_DATABASE(filename):
@@ -203,17 +207,20 @@ def RESTORE_DATABASE(filename):
         if filename.split("_")[1] == "smarthome.sqlite3":
             shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
             WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup | " + filename + " | restored")
+            
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e))  
+        return ("ERROR: " + str(e))
         
         
 def DELETE_DATABASE_BACKUP(filename):
     try:
         os.remove (PATH + '/backup/' + filename)
         WRITE_LOGFILE_SYSTEM("EVENT", "File | /backup/" + filename + " | deleted")
+        
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /backup/" + filename + " | " + str(e))  
-
+        return ("ERROR: " + str(e))
 
 
 """ ############# """

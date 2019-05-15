@@ -31,12 +31,12 @@ def user_required(f):
 @login_required
 @user_required
 def dashboard_sensordata_jobs():
-    error_message = ""
-    error_message_table = ""
-    error_message_form = ""
+    error_message_add_sensordata_job = ""
+    error_message_settings = ""
+    error_message_change_settings = []
     error_message_file = ""
-    name = ""
-    filename = ""
+    job_name = ""
+    job_filename = ""
     set_mqtt_device_id = ""
     set_mqtt_device_name = ""
     set_checkbox = ""
@@ -44,44 +44,25 @@ def dashboard_sensordata_jobs():
     if request.method == 'POST':
         if request.form.get("add_job") is not None: 
 
-            if request.form.get("set_name") is "":
+            if request.form.get("set_job_name") is "":
                 # missing name
-                error_message = "Kein Name angegeben"   
-                filename = request.form.get("set_filename")  
-                set_mqtt_device_id = request.form.get("set_mqtt_device_id") 
-                
-                if request.form.get("checkbox"):
-                    set_checkbox = "checked"
-                else:
-                    set_checkbox = ""
+                error_message_add_sensordata_job = "Kein Name angegeben"   
+                job_filename = request.form.get("set_job_filename")  
                   
-            elif request.form.get("set_filename") is "":
+            elif request.form.get("set_job_filename") is "":
                 # missing file name
-                error_message = "Kein Deteiname angegeben"    
-                name = request.form.get("set_name") 
-                set_mqtt_device_id = request.form.get("set_mqtt_device_id")
-                
-                if request.form.get("checkbox"):
-                    set_checkbox = "checked"
-                else:
-                    set_checkbox = ""
+                error_message_add_sensordata_job = "Kein Deteiname angegeben"    
+                job_name = request.form.get("set_job_name") 
                 
             else:
                 # add sensordata job
-                name = request.form.get("set_name") 
-                filename = request.form.get("set_filename") 
-                mqtt_device_id = request.form.get("set_mqtt_device_id") 
-                
-                if request.form.get("checkbox"):
-                    always_active = "checked"
-                else:
-                    always_active = ""
+                job_name = request.form.get("set_job_name") 
+                job_filename = request.form.get("set_job_filename") 
 
-                if mqtt_device_id is not None:
-                    error_message = ADD_SENSORDATA_JOB(name, filename, mqtt_device_id, always_active)
-                    error_message_file = CREATE_SENSORDATA_FILE(filename)
-                    name = ""
-                    filename = ""   
+                error_message_add_sensordata_job = ADD_SENSORDATA_JOB(job_name, job_filename)
+                error_message_file = CREATE_SENSORDATA_FILE(job_filename)
+                job_name = ""
+                job_filename = ""   
 
 
         # change settings
@@ -90,45 +71,61 @@ def dashboard_sensordata_jobs():
 
                 if request.form.get("set_name_" + str(i)) != None:  
                     
-                    # check name
-                    if (request.form.get("set_name_" + str(i)) != "" and 
-                        GET_SENSORDATA_JOB_BY_NAME(request.form.get("set_name_" + str(i))) == None):
+                    job_data = GET_SENSORDATA_JOB_BY_ID(i)
+                    new_name = request.form.get("set_name_" + str(i))
+
+                    # add new name
+                    if ((new_name != "") and (GET_SENSORDATA_JOB_BY_NAME(new_name) == None)):
                         name = request.form.get("set_name_" + str(i)) 
+                      
+                    # nothing changed 
+                    elif new_name == job_data.name:
+                        name = job_data.name                        
                         
-                    elif request.form.get("set_name_" + str(i)) == GET_SENSORDATA_JOB_BY_ID(i).name:
-                        name = GET_SENSORDATA_JOB_BY_ID(i).name                        
-                        
-                    else:
+                    # name already exist
+                    elif ((GET_SENSORDATA_JOB_BY_NAME(new_name) != None) and (job_data.name != name)):
+                        name = job_data.name 
+                        error_message_change_settings.append(job_data.name + " >>> Name schon vergeben")
+
+                    # no input commited
+                    else:                          
                         name = GET_SENSORDATA_JOB_BY_ID(i).name 
-                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
-                    
+                        error_message_change_settings.append(job_data.name + " >>> Keinen Namen angegeben")
+
+
                     # check filename
                     if request.form.get("set_filename_" + str(i)) != "":
                         filename = request.form.get("set_filename_" + str(i)) 
                     
                     else:
                         filename = GET_SENSORDATA_JOB_BY_ID(i).filename 
-                        error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                        error_message_change_settings.append(job_data.name + " >>> Keine Datei angegeben")  
                                            
-                    # other values
+                    # check sensor
                     mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i)) 
 
-                    sensor_key = request.form.get("set_sensor_" + str(i))
-                    sensor_key = sensor_key.replace(" ", "")
-                    if sensor_key.isdigit():
-                        if sensor_key == "0" or sensor_key == "1":
-                            sensor_key = "None"
-                        else:                                
-                            sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
-                            sensor_list = sensor_list.split(",")
-                            sensor_key  = sensor_list[int(sensor_key)-2]
+                    if mqtt_device_id == "":
+                        error_message_change_settings.append(job_data.name + " >>> Keinen Sensor angegeben") 
 
-                    if request.form.get("checkbox_table_" + str(i)):
-                        always_active = "checked"
                     else:
-                        always_active = ""  
+                        # get sensor name
+                        sensor_key = request.form.get("set_sensor_" + str(i))
+                        sensor_key = sensor_key.replace(" ", "")
+                        if sensor_key.isdigit():
+                            if sensor_key == "0" or sensor_key == "1":
+                                sensor_key = "None"
+                            else:                                
+                                sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
+                                sensor_list = sensor_list.split(",")
+                                sensor_key  = sensor_list[int(sensor_key)-2]
 
-                    SET_SENSORDATA_JOB(i, name, filename, int(mqtt_device_id), sensor_key, always_active)
+                        # get checkbox
+                        if request.form.get("checkbox_table_" + str(i)):
+                            always_active = "checked"
+                        else:
+                            always_active = ""  
+
+                        SET_SENSORDATA_JOB(i, name, filename, int(mqtt_device_id), sensor_key, always_active)
 
     # get sensor list
     try:
@@ -257,8 +254,11 @@ def dashboard_sensordata_jobs():
     except:
         mqtt_device_25_inputs = ""           
 
-                        
-    error_message_table = CHECK_SENSORDATA_JOBS_SETTINGS()
+
+    if error_message_change_settings == []:
+        error_message_change_settings = ""
+
+    error_message_settings = CHECK_SENSORDATA_JOBS_SETTINGS()
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     
@@ -271,15 +271,15 @@ def dashboard_sensordata_jobs():
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('dashboard_sensordata_jobs.html',
-                            name=name,
-                            filename=filename,
+                            job_name=job_name,
+                            job_filename=job_filename,
                             set_mqtt_device_id=set_mqtt_device_id,
                             set_mqtt_device_name=set_mqtt_device_name,
                             set_checkbox=set_checkbox,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
-                            error_message=error_message,
-                            error_message_table=error_message_table,
-                            error_message_form=error_message_form,
+                            error_message_add_sensordata_job=error_message_add_sensordata_job,
+                            error_message_settings=error_message_settings,
+                            error_message_change_settings=error_message_change_settings,
                             error_message_file=error_message_file,
                             list_sensordata=list_sensordata,
                             list_files=list_files,     

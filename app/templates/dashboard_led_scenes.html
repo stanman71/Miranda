@@ -56,7 +56,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         {% if role == "superuser" %}
           <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
@@ -83,45 +83,34 @@
             </ul>
           </div>
         </nav>
-        
-<!-- error message turn_off-->
 
-{% if error_message_turn_off != "" %}
+
+<!-- add scene -->        
+
+     <div class="well well-sm">     
+
+<!-- error message add scene -->
+
+{% if error_message_add_scene != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_turn_off %}
-      {{ entry }} <br>
-    {% endfor %}
+    {{ error_message_add_scene }}
   </div>      
-{% endif %}
-   
+{% endif %}              
 
-<!-- turn off leds -->     
-
-      <div class="well well-sm">
-        <form method="POST">
+        <form method="POST"> 
           <div class="row justify-content-md-center">
-            <div class="col-sm-3">
-              <select class="btn btn-default dropdown-toggle" name="get_group">
-                  <option value= "" > Gruppe wählen: </option>
-                  <option value= "" > ------------------------------- </option>                                        
-                {% for each in dropdown_list_groups %}
-                  <option value="{{ each.id }}"> {{ each.name }} </option>
-                {% endfor %}
-              </select> 
-            </div> 
-            <div class="col-sm-3">
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="turn_off_group" value="Gruppe ausschalten" />
-            </div>   
-            <div class="col-sm-3">
-            </div>              
-            <div class="dropdown text-right">
-              <div class="col-sm-3">
-                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="turn_off_all" value="Alle LEDs ausschalten" />
-              </div>         
+            <div class="col-sm-2">  
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Szene:</button>                   
+            </div>
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_scene_name" value="" />                         
             </div>  
-          </div               
-        </form>          
-      </div>
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="add_scene" value="Szene erstellen" />
+          </form>
+          </div>
+        </div>
+      </div>     
 
 <!-- start table -->
 
@@ -130,28 +119,25 @@
 <section id="scene_table_{{ entry.id }}"></section>  
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>{{ entry.name }} (ID: {{ entry.id }})</b></font></div>    
+          <div class="panel-heading"><font color="black"><b> {{ entry.name }} </b></font></div>    
             <div class="panel-body">   
             <div class="well well-sm">     
                 
-<!-- error message -->
+<!-- error message change settings -->
 
-{% if error_message != "" %}
+{% if entry.error_change_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message %}
-      {{ entry }} <br>
-    {% endfor %}
+    {{ entry.error_change_settings }} 
+  </div>      
+{% endif %} 
+
+<!-- error message led control -->
+
+{% if entry.error_led_control != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ entry.error_led_control }} 
   </div>      
 {% endif %}
-
-<!-- error message table -->
-
-{% if error_message_table != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_table }}
-  </div>      
-{% endif %}  
-
 
             <table class="table">
               <thead>                       
@@ -185,7 +171,7 @@
 <!-- section 1 -->
 
                   <td>
-                    1
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">1</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_1_{{ entry.id }}" class="form-control led_1_{{ entry.id }}" value="rgb({{ entry.red_1 }}, {{ entry.green_1 }}, {{ entry.blue_1 }}) "/>
@@ -216,7 +202,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    2
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">2</button> 
                   </td>  
                   <td>
                     <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
@@ -249,7 +235,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    3
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">3</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_3_{{ entry.id }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
@@ -282,7 +268,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    4
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">4</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_4_{{ entry.id }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
@@ -315,7 +301,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    5
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">5</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_5_{{ entry.id }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
@@ -348,7 +334,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    6
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">6</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_6_{{ entry.id }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
@@ -381,7 +367,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    7
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">7</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_7_{{ entry.id }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
@@ -414,7 +400,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    8
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">8</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_8_{{ entry.id }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
@@ -447,7 +433,7 @@
                   <td></td>
                   <td></td>
                   <td>
-                    9
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">9</button> 
                   </td> 
                   <td>
                     <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_9_{{ entry.id }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
@@ -482,6 +468,8 @@
             <div class="col-sm-3">
                 <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
             </div> 
+            <div class="col-sm-1">    
+            </div>             
             <div class="col-sm-3">
               <select class="btn btn-default dropdown-toggle" name="group_{{ entry.id }}">
                   <option value= "" > Gruppe wählen: </option>
@@ -491,50 +479,34 @@
                 {% endfor %}
               </select> 
             </div> 
-            <div class="col-sm-3">              
+            <div class="col-sm-2">              
               <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
-            </div>   
+            </div> 
+            <div class="col-sm-2">
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
+            </div>
           </div>
           </form>
         </div>  
       </div>  
       {% endfor %}
+      
+<!-- informations -->
 
-<section id="add_scene"></section>     
+       <div class="panel panel-default">
+         <div class="panel-body"> 
+           <div class="well well-sm">     
+             <div class="form-group">
+               <div class="text-center">  
+                  <h3><span class="label label-default">Hinweise</span></h3>
+               </div>
 
-<!-- new scene -->
-  
-        <div class="well well-sm">
-          <form method="POST">   
-            <div class="form-group">
-              <div class="text-center">   
-                <h3><span class="label label-default">Szene anlegen</span></h3> 
-              </div>     
-              <br>
-
-<!-- error message -->
-
-{% if error_message != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message }}
-  </div>      
-{% endif %}   
-
-              <div class="well well-sm">     
-                <div class="well well-sm">Szene:         
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_name" value="" />
-                  </div>  
-                </div>                 
-                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#add_scene'" class="btn btn-default" name="add_led_scene" value="Szene anlegen" />
-                </form>
-              </div>   
-            </div>  
+            </div>
           </div>
         </div>
-      </div>
+      </div>   
     </div>
   </div>    
-</div>    
+</div>
 
 {% endblock %}

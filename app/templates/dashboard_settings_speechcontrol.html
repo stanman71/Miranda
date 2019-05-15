@@ -49,7 +49,7 @@
       <ul class="nav navbar-nav">
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
         <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_scheduler_time') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
         <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
@@ -209,11 +209,13 @@
           <div class="well well-sm">
 
 
-<!-- error message table -->
+<!-- error message change snowboy settings -->
 
-{% if error_message_table != "" %}
+{% if error_message_change_snowboy_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_table }}
+    {% for message in error_message_change_snowboy_settings.split(",") %}
+      {{ message }} <br>
+    {% endfor %}
   </div>      
 {% endif %}     
 
@@ -305,11 +307,11 @@
             <br>
             <br>
 
-<!-- input error message -->
+<!-- error message add snowboy task -->
 
-{% if error_message != "" %}
+{% if error_message_add_snowboy_task != "" %}
 <div class="alert alert-danger" role="alert">
-  {{ error_message }}
+  {{ error_message_add_snowboy_task }}
 </div>      
 {% endif %} 
 
