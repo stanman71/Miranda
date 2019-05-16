@@ -231,83 +231,6 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
    return error_message_time_settings
 
 
-def CHECK_SCHEDULER_TIMER_SETTINGS(scheduler_tasks):
-   list_timer_errors_general = []  
-   error_message_timer_settings = ""
-
-   for task in scheduler_tasks:
-
-      if task.option_timer == "checked":
-
-         list_timer_errors_device = []
-
-         try:
-            ### check minutes
-            if not task.timer_minutes.isdigit():
-               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-
-            elif int(task.timer_minutes) > 99:
-               list_timer_errors_general.append(task.name + " >>> Wert über 99 Minuten")
-               list_timer_errors_device.append(task.name + " >>> Wert über 99 Minuten")
-
-            else:
-               pass
-
-         except:
-            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-
-         try:
-            ### check seconds
-            if not task.timer_seconds.isdigit():
-               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-
-            elif int(task.timer_seconds) > 59:
-               list_timer_errors_general.append(task.name + " >>> Wert über 59 Sekunden")
-               list_timer_errors_device.append(task.name + " >>> Wert über 59 Sekunden")
-
-            else:
-               pass
-
-         except:
-            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-
-         try:
-            ### check endtask
-            list_task_errors = CHECK_TASK_OPERATION(task.timer_endtask, task.name, "timer")
-
-            if list_task_errors != []:
-
-               # merge errors to device list
-               list_timer_errors_device = list_timer_errors_device + list_task_errors
-
-               # merge errors to general list
-               list_timer_errors_general = list_timer_errors_general + list_task_errors
-
-         except:
-            pass
-
-         # add errors for each device to database
-
-         if list_timer_errors_device != []:
-
-            list_timer_errors_device = str(list_timer_errors_device)
-            list_timer_errors_device = list_timer_errors_device.replace("[", "")
-            list_timer_errors_device = list_timer_errors_device.replace("]", "")
-            SET_SCHEDULER_SETTING_TIMER_ERRORS(task.id, list_timer_errors_device)
-
-
-   if list_timer_errors_general == []:
-      error_message_timer_settings = ""
-   else:
-      error_message_timer_settings = list_timer_errors_general
-
-   return error_message_timer_settings
-
-
 
 def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks): 
    list_sensor_errors_general = []  
@@ -429,18 +352,28 @@ def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
 
          list_expanded_errors_device = []
 
+         # check setting home / away
+         if task.expanded_home == "checked" and task.expanded_away == "checked":
+            list_expanded_errors_device.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
+
+         # check setting ip-addresses
          if task.expanded_home == "checked" or task.expanded_away == "checked":
 
-            # search for wrong chars
             if task.expanded_ip_adresses != "None":
+               
+               # search for wrong chars
                for element in task.expanded_ip_adresses:
-                  if not element.isdigit() and element != "." and element != ",":
+                  if not element.isdigit() and element != "." and element != "," and element != " ":
                      list_expanded_errors_device.append(task.name + " >>> Ungültige IP-Adressen")
                      break
+                     
+            else:
+               list_expanded_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
 
-               # merge errors to general list
-               list_expanded_errors_general = list_expanded_errors_general + list_expanded_errors_device         
 
+         # merge errors to general list
+         list_expanded_errors_general = list_expanded_errors_general + list_expanded_errors_device 
+      
 
          # add errors for each device to database
          if list_expanded_errors_device != []:
@@ -774,4 +707,86 @@ def CHECK_TASK_OPERATION(task, name, task_type):
    except:
       list_task_errors.append("MISSING NAME >>> Ungültige Aufgabe") 
       return list_task_errors
+
+
+""" ####################### """
+"""   check timer settings  """
+""" ####################### """
+
+
+def CHECK_TIMER_SETTINGS(scheduler_tasks):
+   list_timer_errors_general = []  
+   error_message_timer_settings = ""
+
+   for task in scheduler_tasks:
+
+      if task.option_timer == "checked":
+
+         list_timer_errors_device = []
+
+         try:
+            ### check minutes
+            if not task.timer_minutes.isdigit():
+               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
+               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
+
+            elif int(task.timer_minutes) > 99:
+               list_timer_errors_general.append(task.name + " >>> Wert über 99 Minuten")
+               list_timer_errors_device.append(task.name + " >>> Wert über 99 Minuten")
+
+            else:
+               pass
+
+         except:
+            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
+            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
+
+         try:
+            ### check seconds
+            if not task.timer_seconds.isdigit():
+               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
+               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
+
+            elif int(task.timer_seconds) > 59:
+               list_timer_errors_general.append(task.name + " >>> Wert über 59 Sekunden")
+               list_timer_errors_device.append(task.name + " >>> Wert über 59 Sekunden")
+
+            else:
+               pass
+
+         except:
+            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
+            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
+
+         try:
+            ### check endtask
+            list_task_errors = CHECK_TASK_OPERATION(task.timer_endtask, task.name, "timer")
+
+            if list_task_errors != []:
+
+               # merge errors to device list
+               list_timer_errors_device = list_timer_errors_device + list_task_errors
+
+               # merge errors to general list
+               list_timer_errors_general = list_timer_errors_general + list_task_errors
+
+         except:
+            pass
+
+         # add errors for each device to database
+
+         if list_timer_errors_device != []:
+
+            list_timer_errors_device = str(list_timer_errors_device)
+            list_timer_errors_device = list_timer_errors_device.replace("[", "")
+            list_timer_errors_device = list_timer_errors_device.replace("]", "")
+            SET_SCHEDULER_SETTING_TIMER_ERRORS(task.id, list_timer_errors_device)
+
+
+   if list_timer_errors_general == []:
+      error_message_timer_settings = ""
+   else:
+      error_message_timer_settings = list_timer_errors_general
+
+   return error_message_timer_settings
 

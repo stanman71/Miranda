@@ -367,16 +367,6 @@
   </div>      
 {% endif %} 
 
-<!-- error message timer settings -->
-
-{% if error_message_timer_settings != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for message in error_message_timer_settings %}
-      {{ message }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
 <!-- error message sensor settings -->
 
 {% if error_message_sensor_settings != "" %}
@@ -441,16 +431,6 @@
     </div>      
   {% endif %} 
 
-  <!-- error message timer settings -->
-
-  {% if entry.error_timer_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_timer_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
-
   <!-- error message sensor settings -->
 
   {% if entry.error_sensor_settings != "" %}
@@ -477,9 +457,9 @@
                 <table class="table">          
                   <thead>                       
                     <th scope="col">Name</th> 
-                    <th scope="col">Aufgabe</th>               
-                    <th scope="col">Zeit</th>
-                    <th scope="col">Timer</th>                  
+                    <th scope="col">Aufgabe</th>    
+                    <th scope="col"></th>            
+                    <th scope="col">Zeit</th>               
                     <th scope="col">Sensoren</th>
                     <th scope="col">Erweitert</th>
                     <th scope="col">Wiederholen</th>
@@ -492,7 +472,10 @@
                       </td> 
                       <td style="width:30%">        
                         <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
-                      </td>                
+                      </td>  
+                      <td>
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary"><font size="3">Optionen</font></button> 
+                      </td>                                      
                       <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-fill p-bigger">
@@ -502,17 +485,7 @@
                             </div>
                           </div>
                         </font>
-                      </td>
-                      <td>
-                        <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
-                            <input type="checkbox" {{ entry.option_timer }} name="checkbox_option_timer_{{ entry.id }}" >
-                            <div class="state">
-                              <label></label>
-                            </div>
-                          </div>
-                        </font>
-                      </td>                      
+                      </td>                    
                       <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-fill p-bigger">
@@ -580,43 +553,6 @@
                     </tr>
 
   {% endif %}
-
-
-  <!-- section timer -->
-
-  {% if entry.option_timer == "checked" %}
-
-                    <tr>
-                      <td colspan="9"></td>
-                    </tr>
-                    <tr>
-                      <td colspan="1"></td>
-                      <td colspan="8">
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-2">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Minuten:</button>
-                          </div>                      
-                          <div class="col-sm-1">                                       
-                            <input type="text" class="form-control" name="set_timer_minutes_{{ entry.id }}" value="{{ entry.timer_minutes }}" /> 
-                          </div>
-                          <div class="col-sm-2">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sekunden:</button>
-                          </div>   
-                          <div class="col-sm-1">   
-                            <input type="text" class="form-control" name="set_timer_seconds_{{ entry.id }}" value="{{ entry.timer_seconds }}" /> 
-                          </div>
-                          <div class="col-sm-2">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Abschlussaktion:</button>
-                          </div>                                                   
-                          <div class="col-sm-4"> 
-                            <input type="text" class="form-control" name="set_timer_endtask_{{ entry.id }}" value="{{ entry.timer_endtask }}" /> 
-                          </div>                          
-                        </div>
-                      </td>                           
-                    </tr>
-
-  {% endif %}
-
 
   <!-- section sensors -->
 

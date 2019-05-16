@@ -5,7 +5,6 @@ import datetime
 
 from app import app
 from app.database.database import *
-from app.components.scheduler_tasks import *
 from app.components.checks import *
 
 
@@ -36,7 +35,6 @@ def dashboard_scheduler():
     error_message_add_scheduler_task         = ""    
     error_change_settings                    = ""
     error_message_time_settings              = ""
-    error_message_timer_settings             = ""
     error_message_sensor_settings            = ""
     error_message_expanded_settings          = ""
     error_message_scheduler_tasks            = ""
@@ -144,14 +142,9 @@ def dashboard_scheduler():
                     else:
                         option_repeat = "None"  
 
-
                     option_time          = "checked"
-                    option_timer         = "None"
                     option_sensors       = "None"
                     option_expanded      = "None"
-                    timer_hour           = "None"
-                    timer_minute         = "None"
-                    timer_endtask        = "None"
                     mqtt_device_id_1     = "None"
                     mqtt_device_name_1   = "None"
                     mqtt_device_inputs_1 = "None"
@@ -182,9 +175,8 @@ def dashboard_scheduler():
                         error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
 
                     SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_timer, option_sensors, option_expanded, option_repeat, 
+                                          option_time, option_sensors, option_expanded, option_repeat, 
                                           day, hour, minute,
-                                          timer_hour, timer_minute, timer_endtask,
                                           mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
                                           mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
@@ -263,12 +255,6 @@ def dashboard_scheduler():
                     else:
                         option_time = "None"  
 
-                    ### set checkbox timer
-                    if request.form.get("checkbox_option_timer_" + str(i)):
-                        option_timer = "checked"
-                    else:
-                        option_timer = "None"  
-
                     ### set checkbox sensors
                     if request.form.get("checkbox_option_sensors_" + str(i)):
                         option_sensors = "checked"
@@ -309,29 +295,6 @@ def dashboard_scheduler():
                         minute = request.form.get("set_minute_" + str(i))
                     else:
                         minute = GET_SCHEDULER_TASK_BY_ID(i).minute 
-
-
-                    # ##############
-                    # timer settings
-                    # ##############    
-
-                    ### set minutes
-                    if request.form.get("set_timer_minutes_" + str(i)) != "":
-                        timer_minutes = request.form.get("set_timer_minutes_" + str(i))
-                    else:
-                        timer_minutes = GET_SCHEDULER_TASK_BY_ID(i).timer_minutes
-
-                    ### set seconds
-                    if request.form.get("set_timer_seconds_" + str(i)) != "":
-                        timer_seconds = request.form.get("set_timer_seconds_" + str(i))
-                    else:
-                        timer_seconds = GET_SCHEDULER_TASK_BY_ID(i).timer_seconds
-
-                    ### set end task
-                    if request.form.get("set_timer_endtask_" + str(i)) != "":
-                        timer_endtask = request.form.get("set_timer_endtask_" + str(i))
-                    else:
-                        timer_endtask = GET_SCHEDULER_TASK_BY_ID(i).timer_endtask 
 
 
                     # ###############
@@ -477,9 +440,8 @@ def dashboard_scheduler():
                     SET_SCHEDULER_CHANGE_ERRORS(i, error_change_settings)
 
                     SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_timer, option_sensors, option_expanded, option_repeat, 
+                                          option_time, option_sensors, option_expanded, option_repeat, 
                                           day, hour, minute,
-                                          timer_minutes, timer_seconds, timer_endtask,
                                           mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
                                           mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
@@ -494,7 +456,6 @@ def dashboard_scheduler():
 
     error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""), "scheduler")
     error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
-    error_message_timer_settings    = CHECK_SCHEDULER_TIMER_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
     error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
     error_message_expanded_settings = CHECK_SCHEDULER_EXPANDED_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
 
@@ -640,7 +601,6 @@ def dashboard_scheduler():
                             error_message_reduced_scheduler_tasks=error_message_reduced_scheduler_tasks,
                             error_message_add_scheduler_task=error_message_add_scheduler_task,
                             error_message_time_settings=error_message_time_settings,
-                            error_message_timer_settings=error_message_timer_settings,
                             error_message_sensor_settings=error_message_sensor_settings,
                             error_message_expanded_settings=error_message_expanded_settings,
                             error_message_scheduler_tasks=error_message_scheduler_tasks,                        

@@ -206,16 +206,12 @@ class Scheduler_Tasks(db.Model):
     task                    = db.Column(db.String(50), server_default=("None"))
     task_type               = db.Column(db.String(50))    
     option_time             = db.Column(db.String(50), server_default=("None"))
-    option_timer            = db.Column(db.String(50), server_default=("None"))    
     option_sensors          = db.Column(db.String(50), server_default=("None"))
     option_expanded         = db.Column(db.String(50), server_default=("None"))    
     option_repeat           = db.Column(db.String(50), server_default=("None"))
     day                     = db.Column(db.String(50), server_default=("None"))
     hour                    = db.Column(db.String(50), server_default=("None"))
     minute                  = db.Column(db.String(50), server_default=("None"))
-    timer_minutes           = db.Column(db.String(50), server_default=("None"))
-    timer_seconds           = db.Column(db.String(50), server_default=("None"))
-    timer_endtask           = db.Column(db.String(50), server_default=("None"))
     mqtt_device_id_1        = db.Column(db.Integer)  
     mqtt_device_name_1      = db.Column(db.String(50), server_default=("None")) 
     mqtt_device_inputs_1    = db.Column(db.String(100), server_default=("None")) 
@@ -242,8 +238,7 @@ class Scheduler_Tasks(db.Model):
     expanded_sunrise        = db.Column(db.String(50), server_default=("None")) 
     expanded_sunset         = db.Column(db.String(50), server_default=("None")) 
     error_change_settings   = db.Column(db.String(500), server_default=(""))  
-    error_time_settings     = db.Column(db.String(500), server_default=("")) 
-    error_timer_settings    = db.Column(db.String(500), server_default=(""))      
+    error_time_settings     = db.Column(db.String(500), server_default=(""))   
     error_sensor_settings   = db.Column(db.String(500), server_default=(""))   
     error_expanded_settings = db.Column(db.String(500), server_default=(""))        
     error_task_settings     = db.Column(db.String(500), server_default=(""))  
@@ -1685,9 +1680,8 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
 
 
 def SET_SCHEDULER_TASK(id, name, task,
-                       option_time, option_timer, option_sensors, option_expanded, option_repeat, 
+                       option_time, option_sensors, option_expanded, option_repeat, 
                        day, hour, minute,
-                       timer_minutes, timer_seconds, timer_endtask,
                        mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
                        sensor_key_1, operator_1, value_1, operator_main_1,
                        mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
@@ -1701,10 +1695,9 @@ def SET_SCHEDULER_TASK(id, name, task,
 
     # values changed ?
     if (entry.name != name or entry.task != task or 
-        entry.option_time != option_time or entry.option_timer != option_timer or entry.option_sensors != option_sensors or 
+        entry.option_time != option_time or entry.option_sensors != option_sensors or 
         entry.option_expanded != option_expanded or entry.option_repeat != option_repeat or
         entry.day != day or entry.hour != hour or entry.minute != minute or
-        entry.timer_minutes != timer_minutes or entry.timer_seconds != timer_seconds or entry.timer_endtask != timer_endtask or
         str(entry.mqtt_device_id_1) != mqtt_device_id_1 or entry.sensor_key_1 != sensor_key_1 or 
         entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
         str(entry.mqtt_device_id_2) != mqtt_device_id_2 or entry.sensor_key_2 != sensor_key_2 or 
@@ -1716,17 +1709,13 @@ def SET_SCHEDULER_TASK(id, name, task,
 
         entry.name                 = name
         entry.task                 = task      
-        entry.option_time          = option_time
-        entry.option_timer         = option_timer        
+        entry.option_time          = option_time      
         entry.option_sensors       = option_sensors
         entry.option_expanded      = option_expanded        
         entry.option_repeat        = option_repeat
         entry.day                  = day
         entry.hour                 = hour
         entry.minute               = minute
-        entry.timer_minutes        = timer_minutes
-        entry.timer_seconds        = timer_seconds
-        entry.timer_endtask        = timer_endtask
         entry.mqtt_device_id_1     = mqtt_device_id_1
         entry.mqtt_device_name_1   = mqtt_device_name_1
         entry.mqtt_device_inputs_1 = mqtt_device_inputs_1
@@ -1770,20 +1759,6 @@ def SET_SCHEDULER_TASK(id, name, task,
             log_message = log_message + (" | Day - " + entry.day + 
                                          " | Hour - " + entry.hour + 
                                          " | Minute - " + entry.minute)
-
-        # option timer
-        if entry.option_timer == "checked":
-
-            if entry.timer_minutes == None:
-                entry.timer_minutes = "None"
-            if entry.timer_seconds == None:
-                entry.timer_seconds = "None"
-            if entry.timer_endtask == None:
-                entry.timer_endtask = "None"
-
-            log_message = log_message + (" | Timer_Minutes - " + entry.timer_minutes + 
-                                         " | Timer_Seconds - " + entry.timer_seconds + 
-                                         " | Timer_End_Task - " + entry.timer_endtask)
 
         # option sensors
         if entry.option_sensors == "checked":
@@ -1921,84 +1896,6 @@ def REMOVE_SCHEDULER_TASK_OPTION(id):
         entry.operator_main_1 = "None"
 
     db.session.commit()
-
-
-"""
-
-def FIND_SCHEDULER_SENSOR_TASK_INPUT(incoming_ieeeAddr):
-    entries = Scheduler_Tasks.query.all()
-    
-    list_tasks = []
-    
-    for entry in entries:
-
-        try:
-            # check device 1
-            device_1 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_1)
-            
-            if (device_1.ieeeAddr == incoming_ieeeAddr or
-                device_1.ieeeAddr == incoming_ieeeAddr or
-                device_1.ieeeAddr == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)
-                    
-            if (device_1.name == incoming_ieeeAddr or
-                device_1.name == incoming_ieeeAddr or
-                device_1.name == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)     
-        except:
-            pass
-                
-        try:
-            # check device 2
-            device_2 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_2)
-            
-            if (device_2.ieeeAddr == incoming_ieeeAddr or
-                device_2.ieeeAddr == incoming_ieeeAddr or
-                device_2.ieeeAddr == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)  
-
-            if (device_2.name == incoming_ieeeAddr or
-                device_2.name == incoming_ieeeAddr or
-                device_2.name == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)      
-        except:
-            pass
-        
-        try:
-            # check device 3
-            device_3 = GET_MQTT_DEVICE_BY_ID(entry.mqtt_device_id_3)
-            
-            if (device_3.ieeeAddr == incoming_ieeeAddr or
-                device_3.ieeeAddr == incoming_ieeeAddr or
-                device_3.ieeeAddr == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id) 
-                    
-            if (device_3.name == incoming_ieeeAddr or
-                device_3.name == incoming_ieeeAddr or
-                device_3.name == incoming_ieeeAddr):
-                
-                if entry.id not in list_tasks:
-                    list_tasks.append(entry.id)  
-        except:
-            pass
-                
-                
-    if list_tasks != []:
-        return list_tasks
-    else:
-        return ""
-
-"""
 
 
 def DELETE_SCHEDULER_TASK(task_id):
