@@ -230,7 +230,7 @@ def DELETE_DATABASE_BACKUP(filename):
 try:
     # open config file
     with open(PATH + "/app/config/config.yaml", "r") as file_config:
-        config = yaml.load(file_config)
+        config = yaml.load(file_config, Loader=yaml.SafeLoader)
 
     # print check
     print("Version: " + str(config['config']['version']))
@@ -267,7 +267,7 @@ def GET_CONFIG_DATABASE():
 try:
     # open mqtt file
     with open(PATH + "/app/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
-        zigbee_devices = yaml.load(file_zigbee)
+        zigbee_devices = yaml.load(file_zigbee, Loader=yaml.SafeLoader)
         
 except Exception as e:
     WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.ymal | " + str(e))
@@ -275,16 +275,45 @@ except Exception as e:
 
 def GET_MQTT_DEVICE_INFORMATIONS(model):
     
+    if model.isdigit():
+        model = int(model)
+    
     try:
-        return (str(zigbee_devices[model]['device_type']),
-                str(zigbee_devices[model]['description']),
-                str(zigbee_devices[model]['inputs']),
-                str(zigbee_devices[model]['outputs']),
-                str(zigbee_devices[model]['commands']),
-        )
-        
+        device_type = str(zigbee_devices[model]['device_type'])
     except:
-        return ""
+        device_type = ""
+        
+    try:
+        description = str(zigbee_devices[model]['description'])
+    except:
+        description = ""
+        
+    try:        
+        inputs      = str(zigbee_devices[model]['inputs'])
+        inputs      = inputs.replace("[","")
+        inputs      = inputs.replace("]","")
+        inputs      = inputs.replace("'","")        
+    except:
+        inputs      = ""
+        
+    try:        
+        outputs     = str(zigbee_devices[model]['outputs'])
+        outputs     = outputs.replace("[","")
+        outputs     = outputs.replace("]","")
+        outputs     = outputs.replace("'","")    
+    except:
+        outputs     = ""
+        
+    try:        
+        commands    = str(zigbee_devices[model]['commands'])
+        commands    = commands.replace("[","")
+        commands    = commands.replace("]","")
+        commands    = commands.replace("'","")         
+    except:
+        commands    = ""
+      
+        
+    return (device_type, description, inputs, outputs, commands)
 
 
 """ ########## """

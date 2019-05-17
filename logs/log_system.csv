@@ -25005,3 +25005,574 @@ found character '\t' that cannot start any token
 2019-05-16 15:42:10,EVENT,|Speech Recognition Provider || started|
 2019-05-16 15:55:16,EVENT,|Scheduler || Time Task - vcx || started|
 2019-05-16 15:55:20,SUCCESS,|Scheduler || Time Task - vcx || successful|
+2019-05-16 15:56:39,EVENT,|MQTT || started|
+2019-05-16 15:56:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 15:56:42,EVENT,|Speech Recognition Provider || started|
+2019-05-16 16:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 16:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 16:00:37,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 16:00:41,SUCCESS,|Scheduler || Time Task - vcx || successful|
+2019-05-16 16:04:22,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - vcx || Task - mqtt_update_devices || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-16 16:04:30,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - None || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_3 || Operator_1 - = || Value_1 - 0 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || MQTT-Device_3 - 0x00158d000313fbc5 || Sensor_3 - illuminance || Operator_3 - < || Value_3 - 50 || Repeat - checked|
+2019-05-16 16:06:37,EVENT,|MQTT || started|
+2019-05-16 16:06:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 16:06:41,EVENT,|Speech Recognition Provider || started|
+2019-05-16 16:06:54,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - vcx || Task - mqtt_update_device || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-16 16:10:58,EVENT,|MQTT || started|
+2019-05-16 16:10:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 16:11:01,EVENT,|Speech Recognition Provider || started|
+2019-05-16 16:32:55,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 17:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 17:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 17:26:34,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - vcx || Task - mqtt_update_device || Day - None || Hour - None || Minute - None || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-16 17:26:39,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - vcx || Task - mqtt_update_device || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-16 17:34:23,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 -  occupancy || Operator_1 - = || Value_1 - true || Repeat - checked|
+2019-05-16 17:40:54,EVENT,|MQTT || started|
+2019-05-16 17:40:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:40:58,EVENT,|Speech Recognition Provider || started|
+2019-05-16 17:41:32,EVENT,|MQTT || started|
+2019-05-16 17:41:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:41:35,EVENT,|Speech Recognition Provider || started|
+2019-05-16 17:45:12,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 17:46:46,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || Repeat - checked|
+2019-05-16 17:47:51,EVENT,|MQTT || started|
+2019-05-16 17:47:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:47:55,EVENT,|Speech Recognition Provider || started|
+2019-05-16 17:50:13,EVENT,|MQTT || started|
+2019-05-16 17:50:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:50:16,EVENT,|Speech Recognition Provider || started|
+2019-05-16 17:52:42,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 17:53:29,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 17:55:13,EVENT,|MQTT || started|
+2019-05-16 17:55:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:55:16,EVENT,|Speech Recognition Provider || started|
+2019-05-16 17:55:19,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 17:56:19,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 17:56:35,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnmmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 17:56:54,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-16 17:57:17,EVENT,|MQTT || started|
+2019-05-16 17:57:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 17:57:20,EVENT,|Speech Recognition Provider || started|
+2019-05-16 18:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 18:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 18:09:21,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 18:10:21,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 18:33:11,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 18:48:04,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 18:58:39,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnmmer:relax:100 || Day - None || Hour - None || Minute - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 18:59:01,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnmmer:relax:100 || Day - None || Hour - None || Minute - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Home - None || Away - None || Sunrise - None || Sunset - None || IP-Adressen - None || Repeat - checked|
+2019-05-16 18:59:53,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnmmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 19:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 19:00:01,EVENT,|Database || Scheduler || Task - gfdgfd || Task_Type -  || added|
+2019-05-16 19:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 19:00:12,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - None || Home - None || Away - None || Sunrise - None || Sunset - None || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:00:26,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:relax:100 || Home - None || Away - None || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:02:28,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 19:13:55,EVENT,|MQTT || started|
+2019-05-16 19:13:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 19:13:58,EVENT,|Speech Recognition Provider || started|
+2019-05-16 19:15:15,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:relax:100 || Day - None || Hour - None || Minute - None || Home - None || Away - None || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:15:27,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:relax:100 || Day - None || Hour - None || Minute - None || Home - None || Away - None || Sunrise - None || Sunset - None || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:15:32,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:relax:100 || Home - None || Away - None || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:19:22,EVENT,|MQTT || started|
+2019-05-16 19:19:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 19:19:26,EVENT,|Speech Recognition Provider || started|
+2019-05-16 19:19:39,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:20:32,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - checked || Away - checked || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:20:45,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || Sunrise - None || Sunset - checked || IP-Adressen - None || Repeat - checked|
+2019-05-16 19:23:33,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 19:44:27,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 19:59:31,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 20:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 20:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 20:34:29,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 20:35:42,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 20:36:44,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 20:38:59,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 20:51:13,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 20:55:21,EVENT,|Database || LED Group - jhg || deleted|
+2019-05-16 20:56:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-16 21:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 21:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 21:26:50,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 21:32:42,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 21:50:46,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 21:58:09,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - sensor_passiv || description - AQARA Human Detector Sensor || Inputs - illuminance, occupancy, battery || Outputs - None || Commands - None|
+2019-05-16 22:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 22:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 22:04:22,EVENT,|MQTT || started|
+2019-05-16 22:04:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:04:26,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:04:30,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - Philips Hue white and color ambiance E26/E27/E14 || inputs - None || outputs - None || commands - None|
+2019-05-16 22:04:30,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - Philips Hue white and color ambiance E26/E27/E14 || inputs - None || outputs - None || commands - None|
+2019-05-16 22:04:30,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - None || outputs - None || commands - action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5|
+2019-05-16 22:05:36,EVENT,|MQTT || started|
+2019-05-16 22:05:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:05:40,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:06:45,EVENT,|MQTT || started|
+2019-05-16 22:06:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:06:48,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:08:23,EVENT,|MQTT || started|
+2019-05-16 22:08:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:08:26,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:09:44,EVENT,|MQTT || started|
+2019-05-16 22:09:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:09:47,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:11:06,EVENT,|MQTT || started|
+2019-05-16 22:11:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:11:10,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:12:04,EVENT,|MQTT || started|
+2019-05-16 22:12:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:12:07,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:15:00,EVENT,|MQTT || started|
+2019-05-16 22:15:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:15:03,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:16:17,EVENT,|MQTT || started|
+2019-05-16 22:16:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:16:20,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:18:55,EVENT,|MQTT || started|
+2019-05-16 22:18:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:18:58,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:20:23,EVENT,|MQTT || started|
+2019-05-16 22:20:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:20:26,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:22:25,EVENT,|MQTT || started|
+2019-05-16 22:22:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:22:29,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:23:01,EVENT,|Database || MQTT Device - 0x00178801067147c7 || deleted|
+2019-05-16 22:23:13,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - sensor_passiv || description - AQARA Human Detector Sensor || Inputs - illuminance, occupancy, battery || Outputs - None || Commands - None|
+2019-05-16 22:26:38,EVENT,|MQTT || started|
+2019-05-16 22:26:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:26:42,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:26:56,EVENT,|Database || MQTT Device - 0x00178801067147c7 || Gateway - zigbee2mqtt || changed |||| Name - HUE Dimmer || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - sensor_passiv || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || outputs - None || commands - None|
+2019-05-16 22:28:07,EVENT,|MQTT || started|
+2019-05-16 22:28:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:28:11,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:29:24,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || Name changed |||| Name - HUE Dim|
+2019-05-16 22:29:35,EVENT,|Database || MQTT Device - HUE Dim || Gateway - zigbee2mqtt || Name changed |||| Name - HUE Dimmer|
+2019-05-16 22:32:32,EVENT,|MQTT || started|
+2019-05-16 22:32:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:32:36,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:32:45,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 22:34:09,EVENT,|MQTT || started|
+2019-05-16 22:34:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:34:12,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:34:16,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || changed |||| Name - HUE Dimmer || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:36:27,EVENT,|MQTT || started|
+2019-05-16 22:36:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:36:30,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:38:57,EVENT,|MQTT || started|
+2019-05-16 22:38:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:39:00,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:39:04,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Bett || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:39:04,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:39:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:39:04,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:39:04,EVENT,|Database || MQTT Device - 0x00158d000313fbc5 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000313fbc5 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type -  || description -  || inputs -  || outputs -  || commands - |
+2019-05-16 22:40:44,EVENT,|MQTT || started|
+2019-05-16 22:40:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-16 22:40:47,EVENT,|Speech Recognition Provider || started|
+2019-05-16 22:41:39,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Bett || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device || description - OSRAM Smart+ Plug || inputs - None || outputs - None || commands - None|
+2019-05-16 22:41:39,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor_passiv || description - AQARA Environment Sensor || inputs - temperature, humidity, pressure, battery || outputs - None || commands - None|
+2019-05-16 22:41:39,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device || description - OSRAM Smart+ Plug || inputs - None || outputs - None || commands - None|
+2019-05-16 22:41:39,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - None || outputs - None || commands - action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5|
+2019-05-16 22:41:39,EVENT,|Database || MQTT Device - 0x00158d000313fbc5 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000313fbc5 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - sensor_passiv || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || outputs - None || commands - None|
+2019-05-16 22:42:18,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - vcx || Task - mqtt_update_device || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-16 22:42:25,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnmmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 -  occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-16 22:58:21,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-16 23:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-16 23:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-16 23:07:02,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 23:18:25,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 23:31:18,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-16 23:46:42,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 00:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 00:00:00,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-17 00:00:00,EVENT,|Database_Backup || saved|
+2019-05-17 00:00:00,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-17 00:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 00:19:19,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 00:22:36,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-17 00:27:11,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 00:47:36,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 01:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 01:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 01:15:42,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 01:22:43,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 01:39:38,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 01:59:42,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 02:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 02:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 02:18:06,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 02:20:57,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 02:34:20,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 03:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 03:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 03:04:27,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 03:21:11,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 03:29:23,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 04:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 04:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 04:10:22,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 04:17:23,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 05:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 05:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 05:11:45,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 05:13:26,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 05:58:46,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 06:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 06:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 06:04:47,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 06:57:39,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 07:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 07:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 07:01:04,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 07:15:36,EVENT,|MQTT || started|
+2019-05-17 07:15:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 07:15:40,EVENT,|Speech Recognition Provider || started|
+2019-05-17 07:16:48,EVENT,|MQTT || started|
+2019-05-17 07:16:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 07:16:52,EVENT,|Speech Recognition Provider || started|
+2019-05-17 07:55:52,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 08:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 08:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 08:06:37,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 08:07:47,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 08:11:27,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 08:12:33,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 08:13:39,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 08:34:01,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 08:49:14,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 09:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 09:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 09:28:48,EVENT,|MQTT || started|
+2019-05-17 09:28:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:28:51,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:29:44,EVENT,|MQTT || started|
+2019-05-17 09:29:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:29:47,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:30:20,EVENT,|MQTT || started|
+2019-05-17 09:30:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:30:23,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:36:40,EVENT,|MQTT || started|
+2019-05-17 09:36:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:36:44,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:37:39,EVENT,|MQTT || started|
+2019-05-17 09:37:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:37:42,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:38:38,EVENT,|MQTT || started|
+2019-05-17 09:38:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:38:41,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:38:48,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || changed |||| Name - HUE Dimmer || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - Philips Hue dimmer switch || inputs - None || outputs - None || commands - action=on-press, action=up-press, action=down-press, action=off-press|
+2019-05-17 09:42:28,EVENT,|MQTT || started|
+2019-05-17 09:42:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:42:32,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:45:59,EVENT,|MQTT || started|
+2019-05-17 09:45:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:46:02,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:47:26,EVENT,|MQTT || started|
+2019-05-17 09:47:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:47:29,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:48:20,EVENT,|MQTT || started|
+2019-05-17 09:48:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:48:24,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:49:17,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 09:49:38,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 09:52:52,EVENT,|MQTT || started|
+2019-05-17 09:52:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:52:55,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:53:43,EVENT,|MQTT || started|
+2019-05-17 09:53:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:53:47,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:57:01,EVENT,|MQTT || started|
+2019-05-17 09:57:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:57:05,EVENT,|Speech Recognition Provider || started|
+2019-05-17 09:59:56,EVENT,|MQTT || started|
+2019-05-17 09:59:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 09:59:59,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 10:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 10:01:51,EVENT,|MQTT || started|
+2019-05-17 10:01:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:01:55,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:02:40,EVENT,|MQTT || started|
+2019-05-17 10:02:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:02:44,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:05:06,EVENT,|MQTT || started|
+2019-05-17 10:05:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:05:09,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:06:53,EVENT,|MQTT || started|
+2019-05-17 10:06:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:06:56,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:08:22,EVENT,|MQTT || started|
+2019-05-17 10:08:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:08:25,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:10:18,EVENT,|MQTT || started|
+2019-05-17 10:10:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:10:21,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:14:11,EVENT,|MQTT || started|
+2019-05-17 10:14:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:14:14,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:15:07,EVENT,|MQTT || started|
+2019-05-17 10:15:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:15:11,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:16:42,EVENT,|MQTT || started|
+2019-05-17 10:16:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:16:46,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:17:44,EVENT,|MQTT || started|
+2019-05-17 10:17:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:17:47,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:19:23,EVENT,|MQTT || started|
+2019-05-17 10:19:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:19:26,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:21:22,EVENT,|MQTT || started|
+2019-05-17 10:21:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:21:25,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:23:05,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 10:23:49,EVENT,|MQTT || started|
+2019-05-17 10:23:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:23:53,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:24:44,EVENT,|MQTT || started|
+2019-05-17 10:24:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:24:47,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:25:26,EVENT,|MQTT || started|
+2019-05-17 10:25:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:25:30,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:31:21,EVENT,|MQTT || started|
+2019-05-17 10:31:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:31:25,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:32:58,EVENT,|MQTT || started|
+2019-05-17 10:32:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:33:02,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:34:29,EVENT,|MQTT || started|
+2019-05-17 10:34:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:34:32,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:35:03,EVENT,|MQTT || started|
+2019-05-17 10:35:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:35:07,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:36:07,EVENT,|MQTT || started|
+2019-05-17 10:36:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:36:11,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:39:59,EVENT,|MQTT || started|
+2019-05-17 10:39:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:40:02,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:42:02,EVENT,|MQTT || started|
+2019-05-17 10:42:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:42:06,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:42:57,EVENT,|MQTT || started|
+2019-05-17 10:42:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:43:00,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 10:43:01,EVENT,|Speech Recognition Provider || started|
+2019-05-17 10:43:48,EVENT,|MQTT || started|
+2019-05-17 10:43:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 10:43:52,EVENT,|Speech Recognition Provider || started|
+2019-05-17 11:23:58,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:24:00,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:24:02,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:24:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:27:33,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:27:35,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:27:37,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:27:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:28:30,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:28:32,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:28:34,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:28:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:28:51,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:28:53,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:28:56,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:28:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:31:44,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:31:47,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:31:49,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:31:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:32:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:33:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:34:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:35:57,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:35:59,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:36:01,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:36:04,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2874989727928|
+2019-05-17 11:36:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:36:47,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:36:49,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:36:51,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:36:54,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1688871109576|
+2019-05-17 11:36:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:37:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:41:42,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:41:44,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:41:46,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:41:49,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2062953284888|
+2019-05-17 11:41:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:42:38,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:42:40,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:42:42,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:42:45,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2064224396904|
+2019-05-17 11:42:45,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:44:56,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:44:58,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:45:00,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:45:03,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2000912702656|
+2019-05-17 11:45:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:46:18,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:46:20,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:46:22,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:46:25,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2077732379168|
+2019-05-17 11:46:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:48:09,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:48:11,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:48:14,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:48:17,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2250589984528|
+2019-05-17 11:48:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 11:59:42,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 11:59:44,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:59:46,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 11:59:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 12:00:02,ERROR,|Scheduler || Time Task - MQTT aktualisieren || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:01:02,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:01:04,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:01:06,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:01:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:02:02,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:02:04,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:02:06,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:02:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:03:55,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:03:57,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:03:59,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:04:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:04:19,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - None || Repeat - checked|
+2019-05-17 12:05:53,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:05:55,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:05:57,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:06:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:06:03,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 12:06:07,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - None || Repeat - checked|
+2019-05-17 12:08:59,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:09:01,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:09:03,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:09:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:09:39,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:09:41,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:09:43,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:09:44,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - checked || Repeat - checked|
+2019-05-17 12:09:46,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:09:58,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - None || Repeat - checked|
+2019-05-17 12:10:05,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - checked || Repeat - checked|
+2019-05-17 12:11:30,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:11:32,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:11:34,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:11:36,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - Aachen || Repeat - checked|
+2019-05-17 12:11:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:11:39,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - None || Repeat - checked|
+2019-05-17 12:11:50,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - Aachen || Repeat - checked|
+2019-05-17 12:11:53,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - Aachen || Repeat - checked|
+2019-05-17 12:12:27,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 12:12:29,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:12:31,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 12:12:33,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - Aachen || Repeat - checked|
+2019-05-17 12:12:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 12:12:35,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 12:12:41,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 12:12:44,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - None || Repeat - checked|
+2019-05-17 12:12:47,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - checked || Zone - Aachen || Repeat - checked|
+2019-05-17 13:34:52,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:34:54,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:34:56,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:34:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 13:36:03,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:36:05,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:36:07,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:36:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 13:36:30,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:36:32,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:36:34,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:36:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 13:37:36,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:37:38,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:37:40,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:37:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 13:39:41,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:39:43,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:39:45,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:39:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 13:40:06,EVENT,|Database || Controller - HUE Dimmer || added|
+2019-05-17 13:41:22,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 13:41:24,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:41:26,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 13:41:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 14:00:02,ERROR,|Scheduler || Time Task - MQTT aktualisieren || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:01:46,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:01:48,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:01:50,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:01:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:07:16,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:07:18,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:07:20,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:07:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:08:18,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:08:20,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:08:23,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:08:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:09:36,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:09:39,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:09:41,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:09:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:10:12,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:10:14,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:10:16,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:10:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:11:56,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:11:58,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:12:00,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:12:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:13:16,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:13:18,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:13:20,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:13:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:14:13,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:14:15,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:14:17,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:14:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:17:51,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:17:53,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:17:55,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:17:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:23:13,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:23:15,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:23:17,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:23:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:24:11,EVENT,|Database || Controller - 0x88888 || deleted|
+2019-05-17 14:24:16,EVENT,|Database || Controller - HUE Dimmer || added|
+2019-05-17 14:38:00,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:38:02,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:38:04,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:38:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:39:07,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:39:09,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:39:11,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:39:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:40:23,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:40:25,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:40:27,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:40:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:41:04,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Role - superuser || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-05-17 14:44:01,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:44:03,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:44:05,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:44:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:46:12,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:46:14,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:46:16,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:46:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:46:27,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:46:29,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:46:31,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:46:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:49:09,ERROR,|Microphone LED Control || No backend available|
+2019-05-17 14:49:11,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:49:13,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-17 14:49:16,ERROR,|Snowboy || No module named '_snowboydetect'|

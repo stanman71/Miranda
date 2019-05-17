@@ -169,7 +169,8 @@ def dashboard_scheduler():
                     expanded_away        = "None"
                     expanded_ip_adresses = "None"
                     expanded_sunrise     = "None"
-                    expanded_sunset      = "None"     
+                    expanded_sunset      = "None" 
+                    expanded_timezone    = "None"    
 
                     if error_message_reduced_change_settings != "":
                         error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
@@ -183,7 +184,7 @@ def dashboard_scheduler():
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset)
+                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone)
 
 
         # #################
@@ -435,6 +436,11 @@ def dashboard_scheduler():
                     else:              
                         expanded_sunset = "None"  
 
+                    ### set expanded timezone
+                    expanded_timezone = request.form.get("set_expanded_timezone_" + str(i))
+                    
+                    if expanded_timezone == "":           
+                        expanded_timezone = "None"  
 
 
                     SET_SCHEDULER_CHANGE_ERRORS(i, error_change_settings)
@@ -448,7 +454,7 @@ def dashboard_scheduler():
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset)
+                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone)
 
 
     error_message_reduced_scheduler_tasks = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"), "scheduler")
@@ -464,6 +470,8 @@ def dashboard_scheduler():
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
     dropdown_list_operators     = ["=", ">", "<"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
+
+    dropdown_list_timezones = ["Aachen", "Köln"]
 
     # get sensor list
     try:
@@ -607,6 +615,7 @@ def dashboard_scheduler():
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             dropdown_list_operator_main=dropdown_list_operator_main,
+                            dropdown_list_timezones=dropdown_list_timezones,
                             mqtt_device_1_inputs=mqtt_device_1_inputs,
                             mqtt_device_2_inputs=mqtt_device_2_inputs,
                             mqtt_device_3_inputs=mqtt_device_3_inputs,

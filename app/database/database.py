@@ -4,9 +4,68 @@ from werkzeug.security import generate_password_hash
 import re
 import time
 import datetime
+import os
+import yaml
+import csv
 
 from app import app
-from app.components.file_management import WRITE_LOGFILE_SYSTEM, GET_CONFIG_DATABASE
+
+
+""" ###################### """
+""" ###################### """
+"""     file management    """
+""" ###################### """
+""" ###################### """
+
+
+""" ######## """
+""" get PATH """
+""" ######## """
+
+# windows
+if os.name == "nt":                 
+    PATH = os.path.abspath("") 
+# linux
+else:                               
+    PATH = os.path.abspath("") + "/SmartHome"
+
+
+""" ######### """
+""" Systemlog """
+""" ######### """
+
+def WRITE_LOGFILE_SYSTEM(log_type, description):
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
+
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
+            csvfile.close()
+       
+    except:
+        pass
+
+
+""" ############ """
+""" get database """
+""" ############ """
+
+try:
+    # open config file
+    with open(PATH + "/app/config/config.yaml", "r") as file_config:
+        config = yaml.load(file_config, Loader=yaml.SafeLoader)
+except:
+    pass
+
+        
+def GET_CONFIG_DATABASE():
+    try:
+        return str(config['config']['database'])
+    except:
+        return "sqlite:///database/smarthome.sqlite3"
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = GET_CONFIG_DATABASE()
 db = SQLAlchemy(app)
@@ -19,28 +78,29 @@ db = SQLAlchemy(app)
 """ ###################### """
 
 class Controller(db.Model):
-    __tablename__  = 'controller'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
-    mqtt_device    = db.relationship('MQTT_Devices') 
-    command_1      = db.Column(db.String(50))
-    task_1         = db.Column(db.String(50))
-    command_2      = db.Column(db.String(50))
-    task_2         = db.Column(db.String(50))
-    command_3      = db.Column(db.String(50))
-    task_3         = db.Column(db.String(50))    
-    command_4      = db.Column(db.String(50))
-    task_4         = db.Column(db.String(50))
-    command_5      = db.Column(db.String(50))
-    task_5         = db.Column(db.String(50))
-    command_6      = db.Column(db.String(50))
-    task_6         = db.Column(db.String(50))   
-    command_7      = db.Column(db.String(50))
-    task_7         = db.Column(db.String(50))
-    command_8      = db.Column(db.String(50))
-    task_8         = db.Column(db.String(50))
-    command_9      = db.Column(db.String(50))
-    task_9         = db.Column(db.String(50))   
+    __tablename__       = 'controller'
+    id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    mqtt_device_id      = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
+    mqtt_device         = db.relationship('MQTT_Devices') 
+    command_1           = db.Column(db.String(50))
+    task_1              = db.Column(db.String(50))
+    command_2           = db.Column(db.String(50))
+    task_2              = db.Column(db.String(50))
+    command_3           = db.Column(db.String(50))
+    task_3              = db.Column(db.String(50))    
+    command_4           = db.Column(db.String(50))
+    task_4              = db.Column(db.String(50))
+    command_5           = db.Column(db.String(50))
+    task_5              = db.Column(db.String(50))
+    command_6           = db.Column(db.String(50))
+    task_6              = db.Column(db.String(50))   
+    command_7           = db.Column(db.String(50))
+    task_7              = db.Column(db.String(50))
+    command_8           = db.Column(db.String(50))
+    task_8              = db.Column(db.String(50))
+    command_9           = db.Column(db.String(50))
+    task_9              = db.Column(db.String(50))   
+    error_task_settings = db.Column(db.String(500), server_default=(""))      
     
 class eMail(db.Model):
     __tablename__ = 'email'
@@ -237,6 +297,7 @@ class Scheduler_Tasks(db.Model):
     expanded_ip_adresses    = db.Column(db.String(100), server_default=("None")) 
     expanded_sunrise        = db.Column(db.String(50), server_default=("None")) 
     expanded_sunset         = db.Column(db.String(50), server_default=("None")) 
+    expanded_timezone       = db.Column(db.String(50), server_default=("None"))
     error_change_settings   = db.Column(db.String(500), server_default=(""))  
     error_time_settings     = db.Column(db.String(500), server_default=(""))   
     error_sensor_settings   = db.Column(db.String(500), server_default=(""))   
@@ -518,8 +579,8 @@ def UPDATE_CONTROLLER_COMMANDS():
 
 
 def SET_CONTROLLER_TASKS(id, task_1 = "", task_2 = "", task_3 = "", task_4 = "", task_5 = "",
-                             task_6 = "", task_7 = "", task_8 = "", task_9 = ""):
-                                 
+                             task_6 = "", task_7 = "", task_8 = "", task_9 = ""):  
+
     entry = Controller.query.filter_by(id=id).first()
     entry.task_1 = task_1
     entry.task_2 = task_2
@@ -531,6 +592,20 @@ def SET_CONTROLLER_TASKS(id, task_1 = "", task_2 = "", task_3 = "", task_4 = "",
     entry.task_8 = task_8
     entry.task_9 = task_9               
     db.session.commit()
+
+
+def SET_CONTROLLER_TASK_ERRORS(id, error_task_settings):    
+    entry = Controller.query.filter_by(id=id).first()
+
+    entry.error_task_settings = error_task_settings
+    db.session.commit()   
+
+
+def RESET_CONTROLLER_ERRORS(id):    
+    entry = Controller.query.filter_by(id=id).first()
+
+    entry.error_task_settings     = ""
+    db.session.commit()   
 
 
 def DELETE_CONTROLLER(id):
@@ -1688,7 +1763,7 @@ def SET_SCHEDULER_TASK(id, name, task,
                        sensor_key_2, operator_2, value_2, operator_main_2,
                        mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                        sensor_key_3, operator_3, value_3,
-                       expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset):   
+                       expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone):   
      
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
@@ -1705,7 +1780,7 @@ def SET_SCHEDULER_TASK(id, name, task,
         str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
         entry.expanded_home != expanded_home or entry.expanded_away != expanded_away or entry.expanded_ip_adresses != expanded_ip_adresses or
-        entry.expanded_sunrise != expanded_sunrise or entry.expanded_sunset != expanded_sunset):
+        entry.expanded_sunrise != expanded_sunrise or entry.expanded_sunset != expanded_sunset or entry.expanded_timezone != expanded_timezone):
 
         entry.name                 = name
         entry.task                 = task      
@@ -1741,6 +1816,7 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.expanded_ip_adresses = expanded_ip_adresses
         entry.expanded_sunrise     = expanded_sunrise
         entry.expanded_sunset      = expanded_sunset
+        entry.expanded_timezone    = expanded_timezone
 
         db.session.commit()   
 
@@ -1801,12 +1877,15 @@ def SET_SCHEDULER_TASK(id, name, task,
 
             if entry.expanded_ip_adresses == None:
                 entry.expanded_ip_adresses = "None"
+            if entry.expanded_timezone == None:
+                entry.expanded_timezone = "None"
 
             log_message = log_message + (" | Home - " + entry.expanded_home + 
                                          " | Away - " + entry.expanded_away + 
+                                         " | IP-Adressen - " + entry.expanded_ip_adresses +
                                          " | Sunrise - " + entry.expanded_sunrise +
                                          " | Sunset - " + entry.expanded_sunset +
-                                         " | IP-Adressen - " + entry.expanded_ip_adresses)                                 
+                                         " | Zone - " + entry.expanded_timezone) 
 
         # option repeat
         if entry.option_repeat == "checked":
@@ -1827,13 +1906,6 @@ def SET_SCHEDULER_SETTING_TIME_ERRORS(id, error_time_settings):
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_time_settings = error_time_settings
-    db.session.commit()   
-
-
-def SET_SCHEDULER_SETTING_TIMER_ERRORS(id, error_timer_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_timer_settings = error_timer_settings
     db.session.commit()   
 
 

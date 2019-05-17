@@ -3,7 +3,7 @@ import paho.mqtt.client as mqtt
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.scheduler_control import SCHEDULER_MAIN
+from app.components.control_scheduler import SCHEDULER_MAIN
 from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA
 
 
@@ -96,6 +96,9 @@ def MQTT_START():
 					pass  
 
 			except:
+
+				# save last values
+				SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 				
 				# schedular
 				SCHEDULER_MAIN("sensor", ieeeAddr)
@@ -107,8 +110,6 @@ def MQTT_START():
 					for job in list_jobs:
 						MQTT_SAVE_SENSORDATA(job) 
 
-				# save last values
-				SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 
 
 

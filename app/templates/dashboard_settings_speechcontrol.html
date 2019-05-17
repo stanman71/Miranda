@@ -141,43 +141,45 @@
           </div>          
           <br>               
           <form method="POST">
-            <div class="well well-sm">Empfindlichkeit: <span id="output_sensitivity"></span>
-            <br>
-            <br>
-              <div class="slidecontainer">                        
-                <input id="input_sensitivity" type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+          <div class="well well-sm">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Empfindlichkeit: <span id="output_sensitivity"></span></button>
+              </div>          
+            </div>           
+              <input id="input_sensitivity" type="range" class="slider" name="set_sensitivity" min="0" max="100" value="{{ sensitivity }}" />
+            </div>     
+          <div class="well well-sm">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Verzögerungswert: <span id="output_delay"></span></button>
+              </div>                                            
+            </div>     
+              <input id="input_delay" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
+            </div>     
+          <div class="well well-sm">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Mikrofon:</button>
               </div>
-            </div>
-            <div class="well well-sm">Verzögerungswert: <span id="output_delay"></span>
-            <br>
-            <br>
-              <div class="slidecontainer">                        
-                <input id="input_delay" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
-              </div>
-            </div>    
-            <div class="well well-sm">
-              <div class="row justify-content-md-center">
-                <div class="col-sm-2">
-                Mikrofon:
-                </div>
-              <div class="col-sm-1">   
-                <select class="btn btn-default dropdown-toggle" name="set_microphone">
-                    {% if microphone != "" %}
-                      <option value= "{{ microphone }}" > {{ microphone }} </option>
-                      <option value= "{{ microphone }}" > -------------------- </option> 
-                    {% else %}     
-                      <option value= "{{ "" }}" > Mikrofon wählen: </option>
-                      <option value= "{{ "" }}" > -------------------- </option> 
-                    {% endif %}   
-                    {% for each in dropdown_list_microphone_options %}
-                    <option value="{{ each }}"> {{ each }} </option>
-                    {% endfor %}
-                    <option value= "None" > -------------------- </option> 
-                    <option value= "None" > None </option> 
-                  </select> 
-                </div>   
-              </div> 
-            </div>    
+            <div class="col-sm-1">   
+              <select class="btn btn-default dropdown-toggle" name="set_microphone">
+                  {% if microphone != "" %}
+                    <option value= "{{ microphone }}" > {{ microphone }} </option>
+                    <option value= "{{ microphone }}" > -------------------- </option> 
+                  {% else %}     
+                    <option value= "{{ "" }}" > Mikrofon wählen: </option>
+                    <option value= "{{ "" }}" > -------------------- </option> 
+                  {% endif %}   
+                  {% for each in dropdown_list_microphone_options %}
+                  <option value="{{ each }}"> {{ each }} </option>
+                  {% endfor %}
+                  <option value= "None" > -------------------- </option> 
+                  <option value= "None" > None </option> 
+                </select> 
+              </div>   
+            </div> 
+          </div>    
 
 <section id="table_tasks"></section> 
 
@@ -370,7 +372,7 @@
                 <div class="well well-sm">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-2">
-                      Snowboy Hotword:
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Snowboy Hotword:</button>
                     </div>
                     <div class="col-sm-1">   
                       <select class="btn btn-default dropdown-toggle" name="set_snowboy_hotword">
@@ -393,7 +395,7 @@
                 <div class="well well-sm">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-2">
-                      Onlinedienst:
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Onlinedienst:</button>
                     </div>
                     <div class="col-sm-1">                
                       <select class="btn btn-default dropdown-toggle" name="set_speech_recognition_provider">

@@ -8,7 +8,7 @@ from functools import wraps
 from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
-from app.components.led_control import *
+from app.components.control_led import *
 from app.components.mqtt_functions import MQTT_SET_DEVICE
 
 

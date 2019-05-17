@@ -5,7 +5,7 @@ import os
 import re
 
 from app import app
-from app.components.led_control import *
+from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import GET_PATH
 from app.components.checks import CHECK_LED_GROUP_SETTINGS

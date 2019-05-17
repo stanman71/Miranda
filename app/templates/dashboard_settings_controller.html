@@ -64,10 +64,7 @@
 
 <!-- add new controller -->
 
-      <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Controller</b></font></div>       
-          <div class="panel-body">  
-            <div class="well well-sm">
+      <div class="well well-sm">
        
 {% if error_message_add_controller != "" %}
   <div class="alert alert-danger" role="alert">
@@ -75,135 +72,195 @@
   </div>      
 {% endif %}       
               
-              <form method="POST"> 
-              <div class="row justify-content-md-center">
-                <div class="col-sm-3">
-                  <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
-                    <option value= "" > Controller wählen: </option>
-                    <option value= "" > ------------------ </option>
-                    {% for each in dropdown_list_controller %}
-                      <option value="{{ each.id }}" > {{ each.name }} </option>
-                    {% endfor %}
-                  </select>                     
-                </div>
-                <div class="col-sm-2">
-                  <input type="submit" onclick="window.location.href='/dashboard/settings/controller#'" class="btn btn-default" name="add_controller" value="Controller hinzufügen" />
-                </div> 
-                
-<section id="table"></section>                
-                
-              </div>
-              </form> 
-            </div>
+        <form method="POST"> 
+        <div class="row justify-content-md-center">
+          <div class="col-sm-3">
+            <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_id">
+              <option value= "" > Controller wählen: </option>
+              <option value= "" > ------------------ </option>
+              {% for each in dropdown_list_controller %}
+                <option value="{{ each.id }}" > {{ each.name }} </option>
+              {% endfor %}
+            </select>                     
+          </div>
+          <div class="col-sm-2">
+            <input type="submit" onclick="window.location.href='/dashboard/settings/controller#'" class="btn btn-default" name="add_controller" value="Controller hinzufügen" />
+          </div>         
+        </div>
+        </form> 
+      </div>
+
+<!-- error message tasks -->
+
+{% if error_message_controller_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_controller_tasks %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}  
 
 <!-- controller table -->
 
+{% for entry in data_controller %}
+
+<section id="table_{{entry.id}}"></section>  
+
+      <div class="panel panel-default">  
+        <div class="panel-heading"><font color="black"><b>{{entry.mqtt_device.name}}</b></font></div> 
+        <div class="panel-body">  
+          <div class="well well-sm">
+
+  <!-- error message task settings -->
+
+  {% if entry.error_task_settings != "" %}
+    <div class="alert alert-danger" role="alert">
+      {% for entry in entry.error_task_settings.split(',') %}
+        {{ entry }} <br>
+      {% endfor %}
+    </div>      
+  {% endif %} 
+
+            <form method="POST"> 
+              <table class="table">
+                <thead>  
+                  <th scope="col">Controller</th>                     
+                  <th scope="col">Eingabebefehle</th> 
+                  <th scope="col">Aufgabe</th> 
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td style="width:17%"> {{entry.mqtt_device.name}} </td>                
+                    <td style="width:17%"> {{entry.command_1}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_1_{{entry.id}}" value="{{entry.task_1}}" />  
+                    </td>
+                    <td style="width:5%"><a href="/dashboard/settings/controller/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td> 
+                  </tr>
+                  {% if entry.command_2 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_2}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_2_{{entry.id}}" value="{{entry.task_2}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_3 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_3}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_3_{{entry.id}}" value="{{entry.task_3}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_4 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_4}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_4_{{entry.id}}" value="{{entry.task_4}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_5 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_5}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_5_{{entry.id}}" value="{{entry.task_5}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_6 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_6}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_6_{{entry.id}}" value="{{entry.task_6}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_7 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_7}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_7_{{entry.id}}" value="{{entry.task_7}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}  
+                  {% if entry.command_8 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_8}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_8_{{entry.id}}" value="{{entry.task_8}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}   
+                  {% if entry.command_9 != "None" %}
+                    <tr>
+                    <td></td> 
+                    <td style="width:17%"> {{entry.command_9}} </td>
+                    <td style="width:66%"> 
+                      <input type="text" class="form-control" name="set_task_9_{{entry.id}}" value="{{entry.task_9}}" />  
+                    </td>
+                    </tr>  
+                  {% endif %}                                                                  
+                </tbody>
+              </table>   
+            </div>
+            <input type="submit" onclick="window.location.href='/dashboard/settings/controller#table_{{entry.id}}'" class="btn btn-default" name="save_task_settings" value="Änderungen speichern" />
+            </form> 
+          </div>        
+        </div>    
+
+{% endfor %} 
+
+<!-- instructions -->
+
+        <div class="panel panel-default">         
+          <div class="panel-body">   
             <div class="well well-sm">
-              <form method="POST"> 
-                <table class="table">
-                  <thead>  
-                    <th scope="col">Controller</th>                     
-                    <th scope="col">Eingabebefehle</th> 
-                    <th scope="col">Aufgabe</th> 
-                  </thead>
-                  <tbody> 
-                    {% for entry in data_controller %}
-                      <tr>
-                        <td style="width:17%"> {{entry.mqtt_device.name}} </td>                
-                        <td style="width:17%"> {{entry.command_1}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_1_{{entry.id}}" value="{{entry.task_1}}" />  
-                        </td>
-                        <td style="width:5%"><a href="/dashboard/settings/controller/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td> 
-                      </tr>
-                      {% if entry.command_2 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_2}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_2_{{entry.id}}" value="{{entry.task_2}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_3 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_3}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_3_{{entry.id}}" value="{{entry.task_3}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_4 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_4}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_4_{{entry.id}}" value="{{entry.task_4}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_5 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_5}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_5_{{entry.id}}" value="{{entry.task_5}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_6 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_6}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_6_{{entry.id}}" value="{{entry.task_6}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_7 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_7}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_7_{{entry.id}}" value="{{entry.task_7}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}  
-                      {% if entry.command_8 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_8}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_8_{{entry.id}}" value="{{entry.task_8}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}   
-                      {% if entry.command_9 != "None" %}
-                        <tr>
-                        <td></td> 
-                        <td style="width:17%"> {{entry.command_9}} </td>
-                        <td style="width:66%"> 
-                          <input type="text" class="form-control" name="set_task_9_{{entry.id}}" value="{{entry.task_9}}" />  
-                        </td>
-                        </tr>  
-                      {% endif %}                                                                  
-                    {% endfor %} 
-                  </tbody>
-                </table>   
+              <div class="text-center"> 
+                <h3><span class="label label-default">Hinweise</span></h3>         
               </div>
-              <input type="submit" onclick="window.location.href='/dashboard/settings/controller#table'" class="btn btn-default" name="save_task_settings" value="Änderungen speichern" />
-              </form> 
-            </div>        
-          </div>    
-        </div>  
-
-
-
-
-
-    </div>
+              <br>
+              <div class="well well-sm">
+                <table class="table">
+                <thead>
+                  <tr><td></td><td></td></tr>
+                  <tr>
+                    <th>Aufgabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>scene:wohnzimmer:relax:100</td>
+                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relex" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
+                  </tr>
+                  <tr>
+                    <td>program:schlafzimmer:aufwachen</td>
+                    <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:group:flur, bad</td>
+                    <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
+                  </tr>
+                  <tr>
+                    <td>led_off:all</td>
+                    <td>alle LEDs ausschalten</td>
+                  </tr>                             
+                </tbody>
+              </table>     
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>    
   </div>
-</div>
 
 {% endblock %}

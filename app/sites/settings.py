@@ -7,7 +7,7 @@ import json
 import sys
 
 from app import app
-from app.components.led_control import *
+from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
@@ -293,8 +293,15 @@ def download_zigbee2mqtt_logfile(filepath):
 @superuser_required
 def dashboard_settings_controller():
     error_message_add_controller = ""
+    error_message_controller_tasks = ""
 
     UPDATE_CONTROLLER_COMMANDS()
+
+    for i in range (1,21):
+        try:
+            RESET_CONTROLLER_ERRORS(i)
+        except:
+            pass
 
     if request.method == "POST": 
 
@@ -308,16 +315,60 @@ def dashboard_settings_controller():
                 error_message_add_controller = "Keinen Controller angegeben"  
    
         if request.form.get("save_task_settings") != None: 
-            pass
-              
-                                                        
 
-   
+            for i in range (1,21):
+
+                if request.form.get("set_task_1_" + str(i)) != None:
+
+                    ### set tasks
+                    if request.form.get("set_task_1_" + str(i)) != "":
+                        task_1 = request.form.get("set_task_1_" + str(i))
+                    else:
+                        task_1 = "None"                   
+                    if request.form.get("set_task_2_" + str(i)) != "":
+                        task_2 = request.form.get("set_task_2_" + str(i))
+                    else:
+                        task_2 = "None"  
+                    if request.form.get("set_task_3_" + str(i)) != "":
+                        task_3 = request.form.get("set_task_3_" + str(i))
+                    else:
+                        task_3 = "None"  
+                    if request.form.get("set_task_4_" + str(i)) != "":
+                        task_4 = request.form.get("set_task_4_" + str(i))
+                    else:
+                        task_4 = "None"                   
+                    if request.form.get("set_task_5_" + str(i)) != "":
+                        task_5 = request.form.get("set_task_5_" + str(i))
+                    else:
+                        task_5 = "None"  
+                    if request.form.get("set_task_6_" + str(i)) != "":
+                        task_6 = request.form.get("set_task_6_" + str(i))
+                    else:
+                        task_6 = "None"  
+                    if request.form.get("set_task_7_" + str(i)) != "":
+                        task_7 = request.form.get("set_task_7_" + str(i))
+                    else:
+                        task_7 = "None"                   
+                    if request.form.get("set_task_8_" + str(i)) != "":
+                        task_8 = request.form.get("set_task_8_" + str(i))
+                    else:
+                        task_8 = "None"  
+                    if request.form.get("set_task_9_" + str(i)) != "":
+                        task_9 = request.form.get("set_task_9_" + str(i))
+                    else:
+                        task_9 = "None"  
+
+                    SET_CONTROLLER_TASKS(i, task_1, task_2, task_3, task_4, task_5, task_6, task_7, task_8, task_9)
+
+                                                        
+    error_message_controller_tasks = CHECK_TASKS(GET_ALL_CONTROLLER(), "controller")
+
     data_controller = GET_ALL_CONTROLLER()
     dropdown_list_controller = GET_ALL_MQTT_DEVICES("controller")
    
     return render_template('dashboard_settings_controller.html',
-                            error_message_add_controller=error_message_add_controller, 
+                            error_message_add_controller=error_message_add_controller,
+                            error_message_controller_tasks=error_message_controller_tasks, 
                             data_controller=data_controller,
                             dropdown_list_controller=dropdown_list_controller,                                   
                             active03="active",

@@ -1,3 +1,5 @@
+import json
+
 from app import app
 from app.database.database import *
 from app.components.mqtt import *
@@ -140,6 +142,11 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
       if task.option_time == "checked":
 
          list_time_errors_device = []
+
+         # check settings sunrise / sunset
+         if task.expanded_sunrise == "checked" or task.expanded_sunset == "checked":
+            list_time_errors_general.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")
+            list_time_errors_device.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")           
 
          try:
             ### check day
@@ -366,10 +373,14 @@ def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
                   if not element.isdigit() and element != "." and element != "," and element != " ":
                      list_expanded_errors_device.append(task.name + " >>> Ungültige IP-Adressen")
                      break
-                     
+  
             else:
                list_expanded_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
 
+         # check setting timezone
+         if task.expanded_sunrise == "checked" or task.expanded_sunset == "checked":
+            if task.expanded_timezone == "None":
+               list_expanded_errors_device.append(task.name + " >>> Zone wurde noch nicht eingestellt")
 
          # merge errors to general list
          list_expanded_errors_general = list_expanded_errors_general + list_expanded_errors_device 
@@ -458,21 +469,89 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_KEYWORDS(tasks):
 def CHECK_TASKS(tasks, task_type):
    list_task_errors_general = []
 
-   for element in tasks:
+   if task_type == "scheduler": 
 
-      list_task_errors = CHECK_TASK_OPERATION(element.task, element.name, task_type)
+      for element in tasks:
 
-      if list_task_errors != []:
+         list_task_errors = CHECK_TASK_OPERATION(element.task, element.name, task_type)
 
-         # merge errors to general list
-         list_task_errors_general = list_task_errors_general + list_task_errors
+         if list_task_errors != []:
 
-         # save errors for each scheduler task 
-         if task_type == "scheduler":    
+            # merge errors to general list
+            list_task_errors_general = list_task_errors_general + list_task_errors
+
+            # save errors for each scheduler task 
             list_task_errors = str(list_task_errors)
             list_task_errors = list_task_errors.replace("[", "")
             list_task_errors = list_task_errors.replace("]", "")
-            SET_SCHEDULER_SETTING_TASK_ERRORS(element.id, list_task_errors)         
+            SET_SCHEDULER_SETTING_TASK_ERRORS(element.id, list_task_errors)    
+
+
+   if task_type == "controller": 
+
+      for controller in tasks:
+
+         name = GET_MQTT_DEVICE_BY_ID(controller.mqtt_device_id).name
+
+         if controller.command_1 != None and controller.command_1 != "None": 
+            list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type)
+         else:
+            list_task_errors_1 = []
+
+         if controller.command_2 != None and controller.command_2 != "None":   
+            list_task_errors_2 = CHECK_TASK_OPERATION(controller.task_2, name, task_type)
+         else:
+            list_task_errors_2 = []  
+
+         if controller.command_3 != None and controller.command_3 != "None":   
+            list_task_errors_3 = CHECK_TASK_OPERATION(controller.task_3, name, task_type)
+         else:
+            list_task_errors_3 = [] 
+
+         if controller.command_4 != None and controller.command_4 != "None":   
+            list_task_errors_4 = CHECK_TASK_OPERATION(controller.task_4, name, task_type)
+         else:
+            list_task_errors_4 = []  
+
+         if controller.command_5 != None and controller.command_5 != "None":   
+            list_task_errors_5 = CHECK_TASK_OPERATION(controller.task_5, name, task_type)
+         else:
+            list_task_errors_5 = [] 
+
+         if controller.command_6 != None and controller.command_6 != "None":   
+            list_task_errors_6 = CHECK_TASK_OPERATION(controller.task_6, name, task_type)
+         else:
+            list_task_errors_6 = []  
+
+         if controller.command_7 != None and controller.command_7 != "None":   
+            list_task_errors_7 = CHECK_TASK_OPERATION(controller.task_7, name, task_type)
+         else:
+            list_task_errors_7 = []  
+
+         if controller.command_8 != None and controller.command_8 != "None":   
+            list_task_errors_8 = CHECK_TASK_OPERATION(controller.task_8, name, task_type)
+         else:
+            list_task_errors_8 = [] 
+                       
+         if controller.command_9 != None and controller.command_9 != "None":   
+            list_task_errors_9 = CHECK_TASK_OPERATION(controller.task_9, name, task_type)
+         else:
+            list_task_errors_9 = []            
+
+         list_task_errors = (list_task_errors_1 + list_task_errors_2 + list_task_errors_3 +
+                             list_task_errors_4 + list_task_errors_5 + list_task_errors_6 +
+                             list_task_errors_7 + list_task_errors_8 + list_task_errors_9)
+
+         if list_task_errors != []:
+
+            # merge errors to general list
+            list_task_errors_general = list_task_errors_general + list_task_errors    
+
+            # save errors for each controller task 
+            list_task_errors = str(list_task_errors)
+            list_task_errors = list_task_errors.replace("[", "")
+            list_task_errors = list_task_errors.replace("]", "")
+            SET_CONTROLLER_TASK_ERRORS(controller.id, list_task_errors)                
 
 
    if list_task_errors_general == []:
@@ -709,9 +788,10 @@ def CHECK_TASK_OPERATION(task, name, task_type):
       return list_task_errors
 
 
-""" ####################### """
-"""   check timer settings  """
-""" ####################### """
+
+""" ###################### """
+"""  check timer settings  """
+""" ###################### """
 
 
 def CHECK_TIMER_SETTINGS(scheduler_tasks):

@@ -1,9 +1,8 @@
 from flask import render_template, url_for, request
 
-from app.components.led_control import *
-from app.database.database import *
-from app.components.file_management import GET_CONFIG_VERSION
+from app import app
 
+from app.components.file_management import GET_CONFIG_VERSION
 
 """ ##### """
 """ index """

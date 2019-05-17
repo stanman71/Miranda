@@ -192,12 +192,13 @@
 <section id="start_program"></section> 
 
         <div class="well well-sm">
-          <div class="text-center">            
-            <div class="form-group">                    
-              <textarea class="form-control" name="content" rows="20">{{ program.content }}</textarea>      
-            </div>  
+          <div class="text-center">                             
+              <textarea class="form-control" name="content" rows="20">{{ program.content }}</textarea>  
+            <br>
+            <br>    
             <div class="row justify-content-md-center">
-              <div class="col-sm-3">                            
+              <div class="col-sm-1"></div>
+              <div class="col-sm-3">                         
                 <input type="submit" onclick="window.location.href='/dashboard/led/programs#save_program'" class="btn btn-default" name="save_{{ program.id }}" value="Programm speichern" />
               </div>
 
@@ -258,20 +259,6 @@
 
 {% endif %}
    
-<!-- informations -->
-
-       <div class="panel panel-default">
-         <div class="panel-body"> 
-           <div class="well well-sm">     
-             <div class="form-group">
-               <div class="text-center">  
-                  <h3><span class="label label-default">Hinweise</span></h3>
-               </div>
-
-            </div>
-          </div>
-        </div>
-      </div>   
     </div>
   </div>    
 </div>

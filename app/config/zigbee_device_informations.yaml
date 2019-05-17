@@ -1,9 +1,16 @@
 9290012573A:
     device_type: led_rgb
-    description: Philips HUE color LED (E14/E27)
+    description: Philips Hue white and color ambiance E26/E27/E14
     inputs: 
     outputs: 
     commands:
+
+324131092621:
+    device_type: controller
+    description: Philips Hue Dimmer Switch
+    inputs:  
+    outputs: 
+    commands: [action=on-press, action=up-press, action=down-press, action=off-press]
 
 AB3257001NJ:
     device_type: device
@@ -22,7 +29,7 @@ WSDCGQ11LM:
 MFKZQ01LM:
     device_type: controller
     description: AQARA Cube Controller
-    inputs: [angle, side, from_side, to_side, brightness, battery] 
+    inputs: 
     outputs: 
     commands: [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
 

@@ -205,3 +205,8 @@ img {
     background: inherit;
     left: 20px;
 }
+
+table td {
+  vertical-align: middle !important;
+}
+

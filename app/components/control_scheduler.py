@@ -9,9 +9,9 @@ from astral import Astral
 
 
 from app import app
-from app.components.led_control import *
+from app.components.control_led import *
 from app.database.database import *
-from app.components.watering_control import START_WATERING_THREAD
+from app.components.control_plants import START_WATERING_THREAD
 from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
 from app.components.mqtt_functions import *
 
@@ -119,25 +119,44 @@ def SCHEDULER_TIME_THREAD(task):
             if CHECK_SCHEDULER_PING(task):
                return         
    
-         if task.expanded_sunrise == "checked":
-            if not CHECK_SCHEDULER_SUNRISE(task):
-               return
-            
-         if task.expanded_sunset == "checked":
-            if not CHECK_SCHEDULER_SUNSET(task):
-               return
-               
       START_SCHEDULER_TASK(task)
 
 
+   # check sunrise / sunset
+   if (task.expanded_sunrise == "checked" or task.expanded_sunset == "checked"):
+       
+      print("Start Scheduler input Time")
+
+      # check sensors
+      if task.option_sensors == "checked":
+         if not CHECK_SCHEDULER_SENSORS(task):
+            return
+         
+      # check expanded
+      if task.option_expanded == "checked":
+         
+         if task.expanded_home == "checked":
+            if not CHECK_SCHEDULER_PING(task):
+               return               
+         
+         if task.expanded_away == "checked":
+            if CHECK_SCHEDULER_PING(task):
+               return         
+         
+         if task.expanded_sunrise == "checked":
+            if CHECK_SCHEDULER_SUNRISE(task):
+               START_SCHEDULER_TASK(task) 
+            
+         if task.expanded_sunset == "checked":
+            if CHECK_SCHEDULER_SUNSET(task):
+               START_SCHEDULER_TASK(task)          
+               
+
 
 def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
-      
+   
    try:
       incoming_mqtt_device_id = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
-   
-      print(incoming_mqtt_device_id)
-
 
       # find sensor jobs with fitting ieeeAddr only
       if (task.mqtt_device_id_1 == incoming_mqtt_device_id or
@@ -168,12 +187,12 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
                   return         
             
             if task.expanded_sunrise == "checked":
-               if not CHECK_SCHEDULER_SUNRISE(task):
-                  return
+               if CHECK_SCHEDULER_SUNRISE(task):
+                  START_SCHEDULER_TASK(task) 
                
             if task.expanded_sunset == "checked":
-               if not CHECK_SCHEDULER_SUNSET(task):
-                  return
+               if CHECK_SCHEDULER_SUNSET(task):
+                  START_SCHEDULER_TASK(task) 
 
          START_SCHEDULER_TASK(task)          
          
@@ -204,12 +223,12 @@ def SCHEDULER_PING_THREAD(task):
       if task.option_expanded == "checked":
          
          if task.expanded_sunrise == "checked":
-            if not CHECK_SCHEDULER_SUNRISE(task):
-               return
+            if CHECK_SCHEDULER_SUNRISE(task):
+               START_SCHEDULER_TASK(task)
             
          if task.expanded_sunset == "checked":
-            if not CHECK_SCHEDULER_SUNSET(task):
-               return
+            if CHECK_SCHEDULER_SUNSET(task):
+               START_SCHEDULER_TASK(task)
 
       START_SCHEDULER_TASK(task)      
 
@@ -338,7 +357,7 @@ def CHECK_SCHEDULER_SENSORS(task):
 
 
       if task.operator_1 == "=" and not task.value_1.isdigit():
-         if sensor_value_1 == task.value_1:
+         if str(sensor_value_1) == str(task.value_1):
             passing = True
          else:
             passing = False
@@ -421,7 +440,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                else:
                   passing = False
             except:
-               if sensor_value_1 == sensor_value_2:
+               if str(sensor_value_1) == str(sensor_value_2):
                   passing = True    
                else:
                   passing = False           
@@ -448,7 +467,7 @@ def CHECK_SCHEDULER_SENSORS(task):
          
          try:
             if task.operator_1 == "=" and not task.value_1.isdigit() and sensor_value_1 != "Message nicht gefunden":
-               if sensor_value_1 == task.value_1:
+               if str(sensor_value_1) == str(task.value_1):
                   passing_1 = True
                else:
                   passing_1 = False
@@ -491,7 +510,7 @@ def CHECK_SCHEDULER_SENSORS(task):
             
          try:             
             if task.operator_2 == "=" and not task.value_2.isdigit() and sensor_value_1 != "Message nicht gefunden":
-               if sensor_value_2 == task.value_2:
+               if str(sensor_value_2) == str(task.value_2):
                   passing_2 = True
                else:
                   passing_2 = False
@@ -625,7 +644,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   else:
                      passing_1 = False                                 
                except:
-                  if sensor_value_1 == sensor_value_2 and sensor_value_1 != "Message nicht gefunden":
+                  if str(sensor_value_1) == str(sensor_value_2) and str(sensor_value_1) != "Message nicht gefunden":
                      passing_1 = True 
                   else:
                      passing_1 = False                    
@@ -660,7 +679,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   else:
                      passing_2 = False      
                except:
-                  if sensor_value_3 == task.value_3:
+                  if str(sensor_value_3) == str(task.value_3):
                      passing_2 = True    
                   else:
                      passing_2 = False                  
@@ -718,7 +737,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   else:
                      passing_1 = False      
                except:
-                  if sensor_value_1 == task.value_1:
+                  if str(sensor_value_1) == str(task.value_1):
                      passing_1 = True    
                   else:
                      passing_1 = False                 
@@ -753,7 +772,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   else:
                      passing_2 = False      
                except:
-                  if sensor_value_2 == sensor_value_3:
+                  if str(sensor_value_2) == str(sensor_value_3):
                      passing_2 = True    
                   else:
                      passing_2 = False                 
@@ -809,7 +828,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   else:
                      passing = False      
                except:
-                  if sensor_value_1 == sensor_value_2 == sensor_value_3:
+                  if str(sensor_value_1) == str(sensor_value_2) == str(sensor_value_3):
                      passing = True    
                   else:
                      passing = False                  
@@ -905,7 +924,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                else:
                   passing_1 = False      
             else:
-               if sensor_value_1 == task.value_1:
+               if str(sensor_value_1) == str(task.value_1):
                   passing_1 = True    
                else:
                   passing_1 = False               
@@ -939,7 +958,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                else:
                   passing_2 = False      
             else:
-               if sensor_value_2 == task.value_2:
+               if str(sensor_value_2) == str(task.value_2):
                   passing_2 = True    
                else:
                   passing_2 = False   
@@ -973,7 +992,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                else:
                   passing_3 = False      
             else:
-               if sensor_value_3 == task.value_3:
+               if str(sensor_value_3) == str(task.value_3):
                   passing_3 = True    
                else:
                   passing_3 = False                  

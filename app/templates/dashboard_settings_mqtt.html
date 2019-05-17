@@ -132,10 +132,8 @@
                   {% for entry in mqtt_device_list %}
                   <tr>
                     <td>                     
-                      <form method="POST" class="verticalform">                                                     
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
-                      </div>
+                      <form method="POST" class="verticalform">                                                   
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                     </td>      
                     <td>{{ entry.ieeeAddr }}</td>        
                     <td>{{ entry.model }}</td>   

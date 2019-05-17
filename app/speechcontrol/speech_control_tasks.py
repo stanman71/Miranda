@@ -1,5 +1,5 @@
 from app import app
-from app.components.led_control import *
+from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL

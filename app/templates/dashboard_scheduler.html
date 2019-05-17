@@ -213,7 +213,7 @@
         <form method="POST"> 
           <div class="row justify-content-md-center">
             <div class="col-sm-2">  
-              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue reduzierte Aufgabe:</button>                   
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue einfache Aufgabe:</button>                   
             </div>
             <div class="col-sm-3"> 
               <input type="text" class="form-control" name="set_reduced_scheduler_task_name" value="" />                         
@@ -335,7 +335,7 @@
         <form method="POST"> 
           <div class="row justify-content-md-center">
             <div class="col-sm-2">  
-              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue vollwärtige Aufgabe:</button>                   
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue vollständige Aufgabe:</button>                   
             </div>
             <div class="col-sm-3"> 
               <input type="text" class="form-control" name="set_scheduler_task_name" value="" />                         
@@ -863,6 +863,28 @@
                               </div>
                             </font>                           
                           </div>
+
+                          {% if entry.expanded_sunrise == "checked" or entry.expanded_sunset == "checked" %}
+
+                            <div class="col-sm-1">
+                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Zone:</button>
+                            </div>
+                            <div class="col-sm-1">
+                              <select class="btn btn-default dropdown-toggle" name="set_expanded_timezone_{{ entry.id }}">
+                                {% if entry.expanded_timezone != None %}
+                                  <option value= "{{ entry.expanded_timezone }}" > {{ entry.expanded_timezone }} </option>
+                                  <option value= "{{ entry.expanded_timezone }}" > ------------------------- </option>
+                                {% endif %}
+                                {% for each in dropdown_list_timezones %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}   
+                                <option value= "" > ------------------------- </option>                                                         
+                                <option value= "" > None </option>                        
+                              </select>
+                            </div>
+
+                          {% endif %}
+
                         </div>
                       </td>                           
                     </tr>
@@ -880,12 +902,6 @@
   {% endif %}
 
 {% endfor %}
-
-
-
-
-
-
 
 <!-- instructions -->
 
