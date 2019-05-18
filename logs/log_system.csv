@@ -25576,3 +25576,429 @@ found character '\t' that cannot start any token
 2019-05-17 14:49:11,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
 2019-05-17 14:49:13,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
 2019-05-17 14:49:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-17 14:51:35,EVENT,|MQTT || started|
+2019-05-17 14:51:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 14:51:39,ERROR,|Snowboy || No module named 'app.components.led_control'|
+2019-05-17 14:52:33,EVENT,|MQTT || started|
+2019-05-17 14:52:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 14:52:37,EVENT,|Speech Recognition Provider || started|
+2019-05-17 14:54:48,EVENT,|File || /csv/aqara.csv || downloaded|
+2019-05-17 14:57:26,EVENT,|MQTT || started|
+2019-05-17 14:57:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 14:57:29,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 15:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 15:01:41,EVENT,|MQTT || started|
+2019-05-17 15:01:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 15:01:45,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:04:07,EVENT,|MQTT || started|
+2019-05-17 15:04:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 15:04:10,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:05:06,EVENT,|MQTT || started|
+2019-05-17 15:05:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 15:05:09,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:06:37,EVENT,|MQTT || started|
+2019-05-17 15:06:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 15:06:40,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:07:19,EVENT,|MQTT || started|
+2019-05-17 15:07:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 15:07:22,EVENT,|Speech Recognition Provider || started|
+2019-05-17 15:08:29,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || changed |||| Name - HUE Dimmer || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - Philips Hue Dimmer Switch || inputs - None || outputs - None || commands - action=on-press, action=up-press, action=down-press, action=off-press|
+2019-05-17 15:08:43,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || Name changed |||| Name - THE_CUBE|
+2019-05-17 15:31:34,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 15:50:39,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 16:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 16:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 16:26:36,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 16:37:19,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 17:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 17:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 17:06:15,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 17:22:19,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 17:30:51,EVENT,|Scheduler || Time Task - vcx || started|
+2019-05-17 17:53:19,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:53:57,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:54:58,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:56:00,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:57:01,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:58:09,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzmmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-17 17:58:11,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 17:58:15,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - jkhkh || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-17 17:59:11,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 18:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 18:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 18:02:04,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 18:03:14,EVENT,|Scheduler || Time Task - jkhkh || started|
+2019-05-17 18:03:44,EVENT,|Database || Scheduler || Task - jkhkh || changed |||| Name - detection_on || Task - scene:wohnzimmer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-17 18:04:09,EVENT,|Database || Scheduler || Task - vcx || changed |||| Name - detection_off || Task - led_off:group:wohnzimmer || MQTT-Device_1 - 0x99999 || Sensor_1 - sensor_5 || Operator_1 - > || Value_1 - 700 || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - temperature || Operator_2 - > || Value_2 - 20 || Repeat - checked|
+2019-05-17 18:04:20,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:04:24,EVENT,|Database || Scheduler || Task - detection_off || changed |||| Name - detection_off || Task - led_off:group:wohnzimmer || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 -  occupancy || Operator_1 - = || Value_1 - False || Repeat - checked|
+2019-05-17 18:05:22,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:06:52,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:06:58,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:08:12,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:09:42,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:17:24,EVENT,|MQTT || started|
+2019-05-17 18:17:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:17:28,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:17:35,EVENT,|Speech Recognition || Detection Task || |
+2019-05-17 18:17:46,EVENT,|Speech Recognition || Detection Task || |
+2019-05-17 18:17:58,EVENT,|Speech Recognition || Detection Task || das ist ein test|
+2019-05-17 18:20:22,EVENT,|MQTT || started|
+2019-05-17 18:20:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:20:25,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:21:53,EVENT,|MQTT || started|
+2019-05-17 18:21:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:21:57,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:22:17,EVENT,|MQTT || started|
+2019-05-17 18:22:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:22:20,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:24:19,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:25:49,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:32:58,EVENT,|MQTT || started|
+2019-05-17 18:32:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:33:02,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:36:35,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:37:36,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:38:36,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:39:37,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:40:47,EVENT,|MQTT || started|
+2019-05-17 18:40:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:40:51,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:41:39,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:43:09,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:43:56,EVENT,|MQTT || started|
+2019-05-17 18:43:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:43:59,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:44:12,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:45:17,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:45:56,EVENT,|MQTT || started|
+2019-05-17 18:45:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:46:00,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:47:22,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:49:18,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:50:48,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:51:15,EVENT,|MQTT || started|
+2019-05-17 18:51:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:51:18,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:52:12,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 18:53:09,EVENT,|MQTT || started|
+2019-05-17 18:53:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:53:12,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:53:42,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:54:35,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:55:20,EVENT,|MQTT || started|
+2019-05-17 18:55:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:55:24,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:56:05,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:57:20,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 18:58:27,EVENT,|MQTT || started|
+2019-05-17 18:58:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 18:58:30,EVENT,|Speech Recognition Provider || started|
+2019-05-17 18:58:39,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 19:00:03,ERROR,|Scheduler || Time Task - MQTT aktualisieren || Message nicht gefunden|
+2019-05-17 19:00:09,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:02:03,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - checked || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - Aachen || Repeat - checked|
+2019-05-17 19:02:10,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:03:07,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - checked || Away - None || IP-Adressen - 192.168.1.101 || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 19:03:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:03:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:03:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:03:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:03:40,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:03:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:04:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:05:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:05:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:05:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:05:35,EVENT,|MQTT || started|
+2019-05-17 19:05:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:05:39,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:05:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:05:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:06:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:06:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:06:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:06:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:06:40,EVENT,|MQTT || started|
+2019-05-17 19:06:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:06:44,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:06:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:07:50,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:07:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:08:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:08:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:08:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:08:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:08:41,EVENT,|MQTT || started|
+2019-05-17 19:08:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:08:45,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:08:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:20,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:09:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:38,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:09:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:09:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:10:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:09,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:11:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:11:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:12:56,EVENT,|MQTT || started|
+2019-05-17 19:12:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:13:00,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:13:38,EVENT,|MQTT || started|
+2019-05-17 19:13:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:13:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:13:42,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:13:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:14:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:14:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:14:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:14:21,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:14:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:14:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:01,EVENT,|MQTT || started|
+2019-05-17 19:15:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:15:05,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:15:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:30,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:40,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:15:50,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:16:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:16:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:16:20,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:16:21,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - scene:wohnzimmer:warmweiss:50 || Home - None || Away - checked || IP-Adressen - 192.168.1.101 || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 19:16:23,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:16:31,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Home - None || Away - checked || IP-Adressen - 192.168.1.101 || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 19:17:00,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:17:10,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:17:13,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:17:23,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:17:33,EVENT,|Scheduler || Time Task - gfdgfd || started|
+2019-05-17 19:17:56,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:18:36,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-17 19:22:44,EVENT,|MQTT || started|
+2019-05-17 19:22:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:22:48,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:23:51,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:25:26,EVENT,|MQTT || started|
+2019-05-17 19:25:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:25:30,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:25:58,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-17 19:27:34,EVENT,|MQTT || started|
+2019-05-17 19:27:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:27:38,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:28:24,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:35:35,EVENT,|MQTT || started|
+2019-05-17 19:35:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:35:39,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:36:30,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:39:15,EVENT,|MQTT || started|
+2019-05-17 19:39:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:39:19,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:39:35,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:39:35,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:39:38,ERROR,|Scheduler || Time Task - detection_on || (sqlite3.ProgrammingError) SQLite objects created in a thread can only be used in that same thread.The object was created in thread id 1838146672 and this is thread id 1857025136 [SQL: 'SELECT scheduler_tasks.id AS scheduler_tasks_id, scheduler_tasks.name AS scheduler_tasks_name, scheduler_tasks.task AS scheduler_tasks_task, scheduler_tasks.task_type AS scheduler_tasks_task_type, scheduler_tasks.option_time AS scheduler_tasks_option_time, scheduler_tasks.option_sensors AS scheduler_tasks_option_sensors, scheduler_tasks.option_expanded AS scheduler_tasks_option_expanded, scheduler_tasks.option_repeat AS scheduler_tasks_option_repeat, scheduler_tasks.day AS scheduler_tasks_day, scheduler_tasks.hour AS scheduler_tasks_hour, scheduler_tasks.minute AS scheduler_tasks_minute, scheduler_tasks.mqtt_device_id_1 AS scheduler_tasks_mqtt_device_id_1, scheduler_tasks.mqtt_device_name_1 AS scheduler_tasks_mqtt_device_name_1, scheduler_tasks.mqtt_device_inputs_1 AS scheduler_tasks_mqtt_device_inputs_1, scheduler_tasks.sensor_key_1 AS scheduler_tasks_sensor_key_1, scheduler_tasks.value_1 AS scheduler_tasks_value_1, scheduler_tasks.operator_1 AS scheduler_tasks_operator_1, scheduler_tasks.operator_main_1 AS scheduler_tasks_operator_main_1, scheduler_tasks.mqtt_device_id_2 AS scheduler_tasks_mqtt_device_id_2, scheduler_tasks.mqtt_device_name_2 AS scheduler_tasks_mqtt_device_name_2, scheduler_tasks.mqtt_device_inputs_2 AS scheduler_tasks_mqtt_device_inputs_2, scheduler_tasks.sensor_key_2 AS scheduler_tasks_sensor_key_2, scheduler_tasks.value_2 AS scheduler_tasks_value_2, scheduler_tasks.operator_2 AS scheduler_tasks_operator_2, scheduler_tasks.operator_main_2 AS scheduler_tasks_operator_main_2, scheduler_tasks.mqtt_device_id_3 AS scheduler_tasks_mqtt_device_id_3, scheduler_tasks.mqtt_device_name_3 AS scheduler_tasks_mqtt_device_name_3, scheduler_tasks.mqtt_device_inputs_3 AS scheduler_tasks_mqtt_device_inputs_3, scheduler_tasks.sensor_key_3 AS scheduler_tasks_sensor_key_3, scheduler_tasks.value_3 AS scheduler_tasks_value_3, scheduler_tasks.operator_3 AS scheduler_tasks_operator_3, scheduler_tasks.expanded_home AS scheduler_tasks_expanded_home, scheduler_tasks.expanded_away AS scheduler_tasks_expanded_away, scheduler_tasks.expanded_ip_adresses AS scheduler_tasks_expanded_ip_adresses, scheduler_tasks.expanded_sunrise AS scheduler_tasks_expanded_sunrise, scheduler_tasks.expanded_sunset AS scheduler_tasks_expanded_sunset, scheduler_tasks.expanded_timezone AS scheduler_tasks_expanded_timezone, scheduler_tasks.error_change_settings AS scheduler_tasks_error_change_settings, scheduler_tasks.error_time_settings AS scheduler_tasks_error_time_settings, scheduler_tasks.error_sensor_settings AS scheduler_tasks_error_sensor_settings, scheduler_tasks.error_expanded_settings AS scheduler_tasks_error_expanded_settings, scheduler_tasks.error_task_settings AS scheduler_tasks_error_task_settings \nFROM scheduler_tasks \nWHERE scheduler_tasks.id = ?'] [parameters: [{'%(1858363184 param)s': 1}]] (Background on this error at: http://sqlalche.me/e/f405)|
+2019-05-17 19:43:33,EVENT,|MQTT || started|
+2019-05-17 19:43:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:43:37,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:44:26,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:46:32,EVENT,|MQTT || started|
+2019-05-17 19:46:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:46:36,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:47:37,EVENT,|MQTT || started|
+2019-05-17 19:47:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:47:40,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:48:36,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:48:36,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:52:38,EVENT,|MQTT || started|
+2019-05-17 19:52:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:52:41,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:53:42,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 19:53:43,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:54:55,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:54:55,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:57:01,EVENT,|MQTT || started|
+2019-05-17 19:57:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:57:05,EVENT,|Speech Recognition Provider || started|
+2019-05-17 19:57:11,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:57:11,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 19:59:39,EVENT,|MQTT || started|
+2019-05-17 19:59:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 19:59:43,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 20:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 20:00:33,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:00:34,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:00:36,ERROR,|Scheduler || Time Task - detection_on || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-17 20:00:37,ERROR,|Scheduler || Time Task - detection_on || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-17 20:03:26,EVENT,|MQTT || started|
+2019-05-17 20:03:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:03:30,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:03:55,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:03:55,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:08:45,EVENT,|MQTT || started|
+2019-05-17 20:08:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:08:48,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:10:22,EVENT,|MQTT || started|
+2019-05-17 20:10:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:10:26,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:11:26,EVENT,|MQTT || started|
+2019-05-17 20:11:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:11:30,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:11:34,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 20:11:35,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:11:36,ERROR,|Scheduler || Time Task - detection_off || This session is in 'prepared' state; no further SQL can be emitted within this transaction.|
+2019-05-17 20:13:00,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:13:01,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:14:07,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:14:07,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:22:06,EVENT,|MQTT || started|
+2019-05-17 20:22:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:22:10,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:24:34,EVENT,|MQTT || started|
+2019-05-17 20:24:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:24:38,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:25:55,EVENT,|MQTT || started|
+2019-05-17 20:25:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:25:59,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:27:16,EVENT,|MQTT || started|
+2019-05-17 20:27:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:27:20,EVENT,|Speech Recognition Provider || started|
+2019-05-17 20:27:45,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:27:45,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:28:10,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:29:15,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 20:29:24,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:29:24,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:30:54,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 20:31:42,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:31:42,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-17 20:31:49,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-17 20:31:54,EVENT,|Database || Scheduler || Task - detection_off || changed |||| Name - detection_off || Task - led_off:group:wohnzimer || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - False || Repeat - checked|
+2019-05-17 20:32:09,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-05-17 20:33:17,EVENT,|MQTT || started|
+2019-05-17 20:33:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-17 20:33:21,EVENT,|Speech Recognition Provider || started|
+2019-05-17 21:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 21:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 21:21:50,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 21:21:50,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-17 22:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 22:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 22:03:56,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Repeat - checked|
+2019-05-17 22:16:52,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 22:16:52,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-17 22:18:16,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Role - superuser || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-05-17 23:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-17 23:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-17 23:11:52,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-17 23:11:52,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 00:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 00:00:00,EVENT,|Scheduler || Time Task - Datenbank sichern || started|
+2019-05-18 00:00:00,EVENT,|Database_Backup || saved|
+2019-05-18 00:00:00,SUCCESS,|Scheduler || Time Task - Datenbank sichern || successful|
+2019-05-18 00:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 00:06:52,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 00:06:52,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 00:19:25,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-05-18 00:19:30,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Repeat - checked|
+2019-05-18 00:22:40,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Day - None || Hour - None || Minute - None || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Zone - None || Repeat - checked|
+2019-05-18 00:22:59,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Day - None || Hour - None || Minute - None || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || MQTT-Device_3 - None || Sensor_3 - None || Operator_3 - None || Value_3 - None || Home - None || Away - checked || IP-Adressen - None || Sunrise - checked || Sunset - None || Zone - None || Repeat - checked|
+2019-05-18 00:24:05,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Day - None || Hour - None || Minute - None || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || MQTT-Device_3 - None || Sensor_3 - None || Operator_3 - None || Value_3 - None || Home - None || Away - checked || IP-Adressen - None || Sunrise - checked || Sunset - None || Zone - Köln || Repeat - checked|
+2019-05-18 00:24:27,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Day - None || Hour - 3 || Minute - 3 || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || MQTT-Device_3 - None || Sensor_3 - None || Operator_3 - None || Value_3 - None || Home - None || Away - checked || IP-Adressen - None || Sunrise - checked || Sunset - None || Zone - Köln || Repeat - checked|
+2019-05-18 00:25:14,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || MQTT-Device_3 - None || Sensor_3 - None || Operator_3 - None || Value_3 - None || Home - None || Away - checked || IP-Adressen - None || Sunrise - checked || Sunset - None || Zone - Köln || Repeat - checked|
+2019-05-18 00:25:24,EVENT,|Database || Scheduler || Task - gfdgfd || changed |||| Name - gfdgfd || Task - led_off:all || Repeat - checked|
+2019-05-18 00:25:29,EVENT,|Database || Scheduler || Task - gfdgfd || deleted|
+2019-05-18 00:38:21,EVENT,|Speech Recognition || Detection Task || |
+2019-05-18 01:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 01:00:04,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 01:01:54,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 01:01:54,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 01:29:01,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-18 01:39:07,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-18 01:39:07,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-18 01:39:08,ERROR,|Scheduler || Time Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 01:39:08,ERROR,|Scheduler || Time Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 01:40:37,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 01:40:37,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 01:42:07,EVENT,|Speech Recognition || Detection Task || |
+2019-05-18 01:52:05,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 01:52:05,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 02:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 02:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 02:47:07,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 02:47:07,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 03:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 03:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 03:42:09,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 03:42:09,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 04:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 04:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 04:37:09,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 04:37:09,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 05:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 05:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 05:32:12,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 05:32:12,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 06:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 06:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 06:27:12,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 06:27:12,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 07:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 07:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 07:22:13,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 07:22:13,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 08:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 08:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 08:17:15,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 08:17:15,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 09:00:00,EVENT,|Scheduler || Time Task - MQTT aktualisieren || started|
+2019-05-18 09:00:03,SUCCESS,|Scheduler || Time Task - MQTT aktualisieren || successful|
+2019-05-18 09:02:59,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-18 09:02:59,ERROR,|Scheduler || Time Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 09:02:59,EVENT,|Scheduler || Time Task - detection_on || started|
+2019-05-18 09:02:59,ERROR,|Scheduler || Time Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 09:04:29,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 09:04:29,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 09:06:19,EVENT,|Scheduler || Time Task - detection_off || started|
+2019-05-18 09:06:19,ERROR,|Scheduler || Time Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 09:22:40,EVENT,|Database || Scheduler || Task - zur Arbeit || Task_Type - reduced || added|
+2019-05-18 09:22:52,EVENT,|Database || Scheduler || Task - schlafen || Task_Type - reduced || added|
+2019-05-18 09:23:26,EVENT,|Database || Scheduler || Task - MQTT aktualisieren || changed |||| Name - MQTT aktualisieren || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-05-18 09:23:26,EVENT,|Database || Scheduler || Task - Datenbank sichern || changed |||| Name - Datenbank sichern || Task - save_database || Day - * || Hour - 0 || Minute - 0 || Repeat - checked|
+2019-05-18 09:23:26,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off:all || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50|
+2019-05-18 09:23:26,EVENT,|Database || Scheduler || Task - schlafen || changed |||| Name - schlafen || Task - led_off:all || Day - * || Hour - 0 || Minute - 30|
+2019-05-18 09:23:41,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off:all || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-05-18 09:23:41,EVENT,|Database || Scheduler || Task - schlafen || changed |||| Name - schlafen || Task - led_off:all || Day - * || Hour - 0 || Minute - 30 || Repeat - checked|
+2019-05-18 09:41:35,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|

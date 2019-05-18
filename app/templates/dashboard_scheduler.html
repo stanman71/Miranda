@@ -225,8 +225,10 @@
         </div>
       </div> 
 
-      <div class="well well-sm"> 
 
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b> einfache Aufgaben </b></font></div>
+          <div class="panel-body">  
 
 <!-- error message reduced change settings -->
 
@@ -260,59 +262,60 @@
 
 <!-- reduced scheduler table -->
 
-             <table class="table">          
-                <thead>                       
-                  <th scope="col">Name</th> 
-                  <th scope="col">Aufgabe</th>                 
-                  <th scope="col">Tag</th> 
-                  <th scope="col">Stunde</th> 
-                  <th scope="col">Minute</th> 
-                  <th scope="col">Wiederholen</th> 
-                </thead>
-                <tbody> 
-                  {% for entry in scheduler_task_list %}
-                    {% if entry.task_type == "reduced" %}
-                      <tr>
-                        <td style="width:18%">
-                          <form method="POST" class="verticalform">
-                          <input type="text" class="form-control" name="set_name_reduced_{{ entry.id }}" value="{{ entry.name }}" />                                     
-                        </td> 
-                        <td style="width:25%">        
-                          <input type="text" class="form-control" name="set_task_reduced_{{ entry.id }}" value="{{ entry.task }}" />  
-                        </td>
-                        <td style="width:15%">                   
-                          <input type="text" class="form-control" name="set_day_reduced_{{ entry.id }}" value="{{ entry.day }}" /> 
-                        </td> 
-                        <td style="width:15%">                  
-                          <input type="text" class="form-control" name="set_hour_reduced_{{ entry.id }}" value="{{ entry.hour }}" /> 
-                        </td>
-                        <td style="width:15%">
-                          <input type="text" class="form-control" name="set_minute_reduced_{{ entry.id }}" value="{{ entry.minute }}" /> 
-                        </td>                         
-                        <td>
-                          <font size="+2">
-                            <div class="pretty p-default p-curve p-fill p-bigger">
-                              <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_reduced_{{ entry.id }}" >
-                              <div class="state">
-                                <label></label>
-                              </div>
-                            </div>
-                          </font>
-                        </td>
-                        <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td>  
-                      </tr>
-                    {% endif %} 
-                  {% endfor %}
-                </tbody>
-              </table>  
+              <div class="well well-sm"> 
+                 <table class="table">          
+                    <thead>                       
+                      <th scope="col">Name</th> 
+                      <th scope="col">Aufgabe</th>                 
+                      <th scope="col">Tag</th> 
+                      <th scope="col">Stunde</th> 
+                      <th scope="col">Minute</th> 
+                      <th scope="col">Wiederholen</th> 
+                    </thead>
+                    <tbody> 
+                      {% for entry in scheduler_task_list %}
+                        {% if entry.task_type == "reduced" %}
+                          <tr>
+                            <td style="width:18%">
+                              <form method="POST" class="verticalform">
+                              <input type="text" class="form-control" name="set_name_reduced_{{ entry.id }}" value="{{ entry.name }}" />                                     
+                            </td> 
+                            <td style="width:25%">        
+                              <input type="text" class="form-control" name="set_task_reduced_{{ entry.id }}" value="{{ entry.task }}" />  
+                            </td>
+                            <td style="width:15%">                   
+                              <input type="text" class="form-control" name="set_day_reduced_{{ entry.id }}" value="{{ entry.day }}" /> 
+                            </td> 
+                            <td style="width:15%">                  
+                              <input type="text" class="form-control" name="set_hour_reduced_{{ entry.id }}" value="{{ entry.hour }}" /> 
+                            </td>
+                            <td style="width:15%">
+                              <input type="text" class="form-control" name="set_minute_reduced_{{ entry.id }}" value="{{ entry.minute }}" /> 
+                            </td>                         
+                            <td>
+                              <font size="+2">
+                                <div class="pretty p-default p-curve p-fill p-bigger">
+                                  <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_reduced_{{ entry.id }}" >
+                                  <div class="state">
+                                    <label></label>
+                                  </div>
+                                </div>
+                              </font>
+                            </td>
+                            <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td>  
+                          </tr>
+                        {% endif %} 
+                      {% endfor %}
+                    </tbody>
+                  </table>  
+                </div>
 
 <section id="tasks"></section>
 
-              <input type="submit" onclick="window.location.href='/dashboard/scheduler#'" class="btn btn-default" name="change_reduced_settings" value="Änderungen speichern"/>             
-            </form> 
+                <input type="submit" onclick="window.location.href='/dashboard/scheduler#'" class="btn btn-default" name="change_reduced_settings" value="Änderungen speichern"/>             
+              </form> 
+            </div>
           </div>
-
-
 
 <!-- -------------------------- -->   
 <!-- -------------------------- -->   

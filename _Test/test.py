@@ -13,7 +13,7 @@ city = a[city_name]
 sun = city.sun(date=datetime.date(2009, 4, 22), local=True)
 
 print(sun['sunrise'])
-
+"""
 
 a = Astral()
 a.solar_depression = 'civil'
@@ -37,3 +37,5 @@ print sun.getSunriseTime( coords )['decimal']
 
 # Sunset time UTC (decimal, 24 hour format)
 print sun.getSunsetTime( coords )['decimal']
+
+"""

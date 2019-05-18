@@ -1343,6 +1343,10 @@ def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
     devices = MQTT_Devices.query.all()
   
+    if selector == "":
+        for device in devices:
+            device_list.append(device)     
+  
     if selector == "controller":
         for device in devices:
             if device.device_type == "controller":

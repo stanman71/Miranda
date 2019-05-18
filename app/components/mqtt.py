@@ -6,6 +6,7 @@ from app.components.file_management import *
 from app.components.control_scheduler import SCHEDULER_MAIN
 from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA
 
+import threading
 
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
@@ -18,101 +19,35 @@ forbitten_topics = []
 
 
 def MQTT_START():
+	
+    Thread = threading.Thread(target=MQTT_THREAD, args=("start",))
+    Thread.start()   	
+	
+
+		
+def MQTT_THREAD(start):
 
 	def on_message(client, userdata, message): 
       
-		global forbitten_topics 
-      
 		msg = str(message.payload.decode("utf-8"))
-            
-		##############################################
-		# waiter tread to prevent messages from router
-
-		import threading
-
-		def WAITER_TREAD(topic):
-			global forbitten_topics
-
-			time.sleep(5)
-
-			if topic in forbitten_topics:
-				forbitten_topics.remove(topic)
-
-		############################################## 
       
-		if message.topic not in forbitten_topics:
-         
-			# get ieeeAddr
-			incoming_topic   = message.topic
-			incoming_topic   = incoming_topic.split("/")
-			mqtt_device_name = incoming_topic[2]
-         
-			try:
-				ieeeAddr = GET_MQTT_DEVICE_BY_NAME(mqtt_device_name).ieeeAddr
-			except:
-				ieeeAddr = mqtt_device_name
-
-
-			try:
-				# ignore incomming messages for 5 seconds, exept controller 
-				if GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).device_type != "controller":
-				
-					forbitten_topics.append(message.topic)
-
-					# start waiter tread
-					t = threading.Thread(target=WAITER_TREAD, args=(message.topic,))
-					t.start()      
-
-			except:
-				pass
-
-
-			print("message topic: ", message.topic)		
-			print("message received: ", msg)
-
-
-			# write data in logs
-			if "zigbee" not in message.topic:
-				WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
-			else:
-				WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
-
-
-			# start functions
-			try:
-				if incoming_topic[3] == "get":
-					pass
-				if incoming_topic[3] == "log":
-					pass              
-				if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
-
-					# generate graphviz diagram
-					from graphviz import Source, render
-
-					src = Source(msg)
-					src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
-
-				if incoming_topic[3] == "networkmap":
-					pass  
-
-			except:
-
-				# save last values
-				SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
-				
-				# schedular
-				SCHEDULER_MAIN("sensor", ieeeAddr)
-
-				# save sensor data of passive devices
-				if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
-					list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
-					
-					for job in list_jobs:
-						MQTT_SAVE_SENSORDATA(job) 
-
-
-
-
+		print("message topic: ", message.topic)		
+		print("message received: ", msg)	
+		
+		# write data in logs
+		if "zigbee" not in message.topic:
+			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
+		else:
+			WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
+		
+		
+		channel = message.topic
+		
+		if channel != "" and channel != None:		
+			Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ))
+			Thread.start()    
+		
+	
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")
 
@@ -127,6 +62,65 @@ def MQTT_START():
 	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | connected") 
 	 
 	client.loop_forever()
+
+
+def MQTT_MESSAGE_THREAD(channel, msg):
+
+	# get ieeeAddr and device_type
+	incoming_topic   = channel
+	incoming_topic   = incoming_topic.split("/")
+	mqtt_device_name = incoming_topic[2]
+ 
+	mqtt_devices = GET_ALL_MQTT_DEVICES("")
+ 
+	try:
+		for device in mqtt_devices:
+			if device.name == mqtt_device_name:				
+				ieeeAddr = device.ieeeAddr
+	except:
+		ieeeAddr = mqtt_device_name
+
+	try:
+		for device in mqtt_devices:
+			if device.name == mqtt_device_name:				
+				device_type = device.device_type			
+	except:
+		device_type = ""
+		
+	print(ieeeAddr)
+	print(device_type)
+		
+
+	# start functions
+	try:        
+		if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
+
+			# generate graphviz diagram
+			from graphviz import Source, render
+
+			src = Source(msg)
+			src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
+	except:
+		pass
+
+
+	# save last values
+	SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+	
+	
+	if device_type == "sensor_passiv" or device_type == "sensor_active":
+		
+		# schedular
+		SCHEDULER_MAIN("sensor", ieeeAddr)
+
+		# save sensor data of passive devices
+		if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
+			list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
+			
+			for job in list_jobs:
+				MQTT_SAVE_SENSORDATA(job) 
+
+
 
 
 """ #################### """

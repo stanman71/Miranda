@@ -156,6 +156,7 @@ def SCHEDULER_TIME_THREAD(task):
 def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
    
    try:
+      
       incoming_mqtt_device_id = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
 
       # find sensor jobs with fitting ieeeAddr only
@@ -195,10 +196,9 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
                   START_SCHEDULER_TASK(task) 
 
          START_SCHEDULER_TASK(task)          
-         
+
    except:
       pass
-
 
 
 def SCHEDULER_PING_THREAD(task):
@@ -1147,15 +1147,15 @@ def CHECK_SCHEDULER_SUNSET(task):
 """ ##################### """
 
 
-def START_SCHEDULER_TASK(task):
-
-   WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Time Task - ' + task.name + ' | started') 
+def START_SCHEDULER_TASK(task_object):
+   
+   WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started') 
 
    # start scene
    try:
-      if "scene" in task.task:
+      if "scene" in task_object.task:
          try:
-            task = task.task.split(":")
+            task = task_object.task.split(":")
             group_id = GET_LED_GROUP_BY_NAME(task[1]).id
             scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
             error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
@@ -1164,10 +1164,10 @@ def START_SCHEDULER_TASK(task):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
                
          except:
-            task = task.task.split(":")
+            task = task_object.task.split(":")
             group_id = GET_LED_GROUP_BY_NAME(task[1]).id
             scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
             error_message = LED_START_SCENE(int(group_id), int(scene_id))   
@@ -1176,17 +1176,17 @@ def START_SCHEDULER_TASK(task):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
                   
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))      
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # start program
    try:
-      if "program" in task.task:
-         task = task.task.split(":")
+      if "program" in task_object.task:
+         task = task_object.task.split(":")
          group_id = GET_LED_GROUP_BY_NAME(task[1]).id
          program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
          error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
@@ -1195,17 +1195,17 @@ def START_SCHEDULER_TASK(task):
             error_message = str(error_message)
             error_message = error_message[1:]
             error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
             
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))      
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # led off
    try:
-      if "led_off" in task.task:
-         task = task.task.split(":")
+      if "led_off" in task_object.task:
+         task = task_object.task.split(":")
          if task[1] == "group":
             
             # get input group names and lower the letters
@@ -1237,14 +1237,14 @@ def START_SCHEDULER_TASK(task):
                            error_message = str(error_message)
                            error_message = error_message[1:]
                            error_message = error_message[:-1]                    
-                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
                   
                      else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | Group - " + input_group_name + " | not founded")
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
                   
                      
                except:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | Group - " + input_group_name + " | not founded")
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
                   
                
          if task[1] == "all":
@@ -1254,62 +1254,62 @@ def START_SCHEDULER_TASK(task):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
                
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))      
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # watering plants
    try:
-      if "watering_plants" in task.task:
+      if "watering_plants" in task_object.task:
          START_WATERING_THREAD()
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))      
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # save database 
    try:    
-      if "save_database" in task.task:
+      if "save_database" in task_object.task:
          error_message = SAVE_DATABASE()  
          if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task - " + task.name + " | successful")
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)                   
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)                   
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))     
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
 
 
    # update mqtt devices
    try:
-      if "mqtt_update_devices" in task.task:
+      if "mqtt_update_devices" in task_object.task:
          error_message = MQTT_UPDATE_DEVICES("mqtt")
          if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task - " + task.name + " | successful")
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)              
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)              
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))      
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # request sensordata
    try:
-      if "request_sensordata" in task.task:
-         task = task.task.split(":")
+      if "request_sensordata" in task_object.task:
+         task = task_object.task.split(":")
          error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
          if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Time Task - " + task.name + " | successful")
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
    except Exception as e:
       print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Time Task - " + task.name + " | " + str(e))              
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              
 
 
    # remove scheduler task without repeat
-   if task.option_repeat != "checked":
-      DELETE_SCHEDULER_TASK(task.id)
+   if task_object.option_repeat != "checked":
+      DELETE_SCHEDULER_TASK(task_object.id)
