@@ -85,10 +85,12 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
         
         with open(file, 'r', newline='', encoding='utf-8') as csvfile:
             rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            
-            # reverse messages
             data = [row for row in rowReader] 
-            headers = data.pop(0)             
+            csvfile.close()
+
+            headers = data.pop(0)  
+
+            # reverse messages           
             data_reversed = data[::-1]        
 
             # get time value of the time setting
@@ -98,7 +100,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
             # get all elements of the selected time
             list_temp = []
             list_result = []
-        
+
             for element in data_reversed:
                 
                 try:
@@ -123,6 +125,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
                     return list_result
                 if list_result == []:
                     return "Message nicht gefunden" 
+
     
     except Exception as e:
         print(e)
@@ -159,6 +162,7 @@ def GET_LOGFILE_SYSTEM(rows):
             data = [row for row in rowReader] # get data
             headers = data.pop(0)             # get headers and remove from data
             data_reversed = data[::-1]        # reverse the data
+            csvfile.close()
 
             return data_reversed[0:rows]
             
@@ -231,6 +235,7 @@ try:
     # open config file
     with open(PATH + "/app/config/config.yaml", "r") as file_config:
         config = yaml.load(file_config, Loader=yaml.SafeLoader)
+        file_config.close()
 
     # print check
     print("Version: " + str(config['config']['version']))
@@ -268,6 +273,7 @@ try:
     # open mqtt file
     with open(PATH + "/app/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
         zigbee_devices = yaml.load(file_zigbee, Loader=yaml.SafeLoader)
+        file_zigbee.close()
         
 except Exception as e:
     WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.ymal | " + str(e))
