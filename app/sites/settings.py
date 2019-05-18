@@ -669,7 +669,7 @@ def download_hotword_file(filepath):
 
 
 # delete snowboy hotwords
-@app.route('/dashboard/settings/snowboy/delete/hotword/<string:filename>')
+@app.route('/dashboard/settings/speechcontrol/snowboy/delete/hotword/<string:filename>')
 @login_required
 @superuser_required
 def delete_snowboy_hotword(filename):

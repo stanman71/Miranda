@@ -36,58 +36,45 @@ if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
 
 
 # start flask
-class flask_Thread(threading.Thread):
-    def __init__(self, ID = 1, name = "flask_Thread"):
-        threading.Thread.__init__(self)
-        self.ID = ID
-        self.name = name
+def START_FLASK_THREAD(start):
+    print("###### Start FLASK ######")
 
-    def run(self):
-        print("###### Start FLASK ######")
-
-        @app.before_first_request
-        def initialisation():
-            pass
-         
-        app.run(host='0.0.0.0', port=5000)
-        #app.run()
+    @app.before_first_request
+    def initialisation():
+        pass
+        
+    #app.run(host='0.0.0.0', port=5000)
+    app.run()
      
-t1 = flask_Thread()
-t1.start()
+Thread = threading.Thread(target=START_FLASK_THREAD, args=("start",))
+Thread.start() 
 
 
 """ ###### """
 """  mqtt  """
 """ ###### """
 
-
 # start MQTT
-if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
-    class mqtt_Thread(threading.Thread):
-        def __init__(self, ID = 2, name = "mqtt_Thread"):
-            threading.Thread.__init__(self)
-            self.ID = ID
-            self.name = name
+def START_MQTT_THREAD(start):
+    try:
+        from app.components.mqtt import MQTT_START
 
-        def run(self):
-            try:
-                from app.components.mqtt import MQTT_START
+        print("###### Start MQTT ######")
+        MQTT_START()
 
-                print("###### Start MQTT ######")
-                MQTT_START()
-
-            except Exception as e:
-                print("Fehler in MQTT: " + str(e))
-                WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
+    except Exception as e:
+        print("Fehler in MQTT: " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
     
-    t2 = mqtt_Thread()
-    t2.start()
+
+if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
+    Thread = threading.Thread(target=START_MQTT_THREAD, args=("start",))
+    Thread.start() 
     
     
 """ ###### """
 """ zigbee """
 """ ###### """
- 
  
 # start zigbee    
 if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
@@ -115,11 +102,9 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
         pass
 
 
-
 """ ####### """
 """ snowboy """
 """ ####### """
-
 
 # start snowboy
 if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":

@@ -26002,3 +26002,6 @@ found character '\t' that cannot start any token
 2019-05-18 09:23:41,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off:all || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
 2019-05-18 09:23:41,EVENT,|Database || Scheduler || Task - schlafen || changed |||| Name - schlafen || Task - led_off:all || Day - * || Hour - 0 || Minute - 30 || Repeat - checked|
 2019-05-18 09:41:35,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-18 20:47:10,ERROR,|Microphone LED Control || No backend available|
+2019-05-18 20:47:12,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-18 20:47:17,ERROR,|Snowboy || No module named '_snowboydetect'|
