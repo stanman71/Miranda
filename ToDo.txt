@@ -1,0 +1,82 @@
+
+scheduler:
+
+- dt. Städte hinzufügen
+- ADD ERROR: No trigger selected
+
+
+GUI
+
+- Option > Reihenfolge in Tabelle ändern (ändern der ID)
+- rework led program
+- change order sensordata jobs
+
+
+Controller:
+
+- add task connection
+
+2019-05-18 09:45:42,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":107,"action":"off-press","duration":0,"counter":1}|
+2019-05-18 09:45:43,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":107,"action":"off-press","duration":0,"counter":1}|
+2019-05-18 09:45:43,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":107,"action":"off-press","duration":0,"counter":1}|
+2019-05-18 09:45:45,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":94,"action":"on-press","duration":0,"counter":1}|
+2019-05-18 09:45:46,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":94,"action":"on-press","duration":0,"counter":1}|
+2019-05-18 09:45:47,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":94,"action":"on-press","duration":0,"counter":1}|
+2019-05-18 09:45:49,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":100}|
+2019-05-18 09:45:50,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":113,"action":"up-press","duration":0,"counter":1,"brightness":150}|
+2019-05-18 09:45:51,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"down-press","duration":0,"counter":1,"brightness":100}|
+2019-05-18 09:45:52,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"down-press","duration":0,"counter":1,"brightness":50}|
+2019-05-18 09:52:16,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"down-press","duration":0,"counter":1,"brightness":0}|
+2019-05-18 09:52:17,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":113,"action":"down-press","duration":0,"counter":1,"brightness":0}|
+2019-05-18 09:52:18,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"down-press","duration":0,"counter":1,"brightness":0}|
+2019-05-18 09:52:27,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":50}|
+2019-05-18 09:52:28,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":100}|
+2019-05-18 09:52:28,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":113,"action":"up-press","duration":0,"counter":1,"brightness":150}|
+2019-05-18 09:52:29,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":200}|
+2019-05-18 09:52:56,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":250}|
+2019-05-18 09:52:57,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":255}|
+2019-05-18 09:52:57,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":255}|
+2019-05-18 09:52:58,SmartHome/zigbee2mqtt/HUE Dimmer,|{"battery":100,"linkquality":110,"action":"up-press","duration":0,"counter":1,"brightness":255}|
+
+
+
+2019-05-18 09:45:55,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":34,"action":"wakeup"}|
+2019-05-18 09:45:59,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"rotate_left","angle":-127.25}|
+2019-05-18 09:46:00,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"rotate_right","angle":3.68}|
+2019-05-18 09:46:01,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"rotate_right","angle":241.97}|
+2019-05-18 09:46:01,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"rotate_right","angle":5.68}|
+2019-05-18 09:46:03,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"rotate_left","angle":-18.49}|
+2019-05-18 09:46:05,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":28,"action":"flip90","from_side":0,"to_side":4}|
+2019-05-18 09:46:07,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"flip90","from_side":4,"to_side":0}|
+2019-05-18 09:46:08,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":28,"action":"flip90","from_side":0,"to_side":2}|
+2019-05-18 09:46:14,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"flip90","from_side":0,"to_side":1}|
+2019-05-18 09:46:16,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"flip90","from_side":1,"to_side":0}|
+2019-05-18 09:46:17,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":28,"action":"flip90","from_side":0,"to_side":2}|
+2019-05-18 09:46:18,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":21,"action":"flip90","from_side":2,"to_side":0}|
+2019-05-18 09:46:20,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"rotate_left","angle":-130.45}|
+2019-05-18 09:46:23,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"slide","side":0}|
+2019-05-18 09:46:24,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"slide","side":0}|
+2019-05-18 09:46:28,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"slide","side":0}|
+2019-05-18 09:46:34,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":26,"action":"rotate_right","angle":120.9}|
+2019-05-18 09:46:35,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":31,"action":"rotate_right","angle":121.01}|
+2019-05-18 09:46:40,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":23,"action":"flip90","from_side":0,"to_side":4}|
+2019-05-18 09:46:41,SmartHome/zigbee2mqtt/THE_CUBE,|{"battery":91,"voltage":2985,"linkquality":21,"action":"flip90","from_side":4,"to_side":0}|
+
+
+Spotify
+
+- Web API
+- Spotify Connect
+
+
+Filemanagement:
+
+- replace zigbee2mqtt files over 1.5 mb
+- delete oldest backup file
+
+MQTT-Microphone
+
+- add mqtt gui options
+- add mqtt communication features
+- install 2 mic array
+- add 2 mic led control
