@@ -22,12 +22,12 @@
   </script>
 
   <script>
-    var slider_delay = document.getElementById("input_delay");
-    var output_delay = document.getElementById("output_delay");
-    output_delay.innerHTML = slider_delay.value;
-    slider_delay.oninput = function() { output_delay.innerHTML = this.value }
+    var slider_timeout = document.getElementById("input_timeout");
+    var output_timeout = document.getElementById("output_timeout");
+    output_timeout.innerHTML = slider_timeout.value; 
+    slider_timeout.oninput = function() { output_timeout.innerHTML = this.value }
   </script>
-
+  
 {% endblock %}
 
 {% block content %}
@@ -88,21 +88,14 @@
           <form method="POST">
             <div class="well well-sm">  
               <div class="pretty p-default p-round">
-                <input {{check_value_speechcontrol[0]}} type="radio" value="snowboy" name="radio_speechcontrol">
+                <input {{check_value_speechcontrol[0]}} type="radio" value="speech_recognition_provider" name="radio_speechcontrol">
                 <div class="state">
-                  <label>SnowBoy</label>
+                  <label>Sprachsteuerung aktivieren</label>
                 </div>
               </div>
               <br>
               <div class="pretty p-default p-round">
-                <input {{check_value_speechcontrol[1]}} type="radio" value="speech_recognition_provider" name="radio_speechcontrol">
-                <div class="state">
-                  <label>Onlineanbieter</label>
-                </div>
-              </div>
-              <br>
-              <div class="pretty p-default p-round">
-                <input {{check_value_speechcontrol[2]}} type="radio" value="False" name="radio_speechcontrol">
+                <input {{check_value_speechcontrol[1]}} type="radio" value="False" name="radio_speechcontrol">
                 <div class="state">
                   <label>Sprachsteuerung deaktivieren</label>
                 </div>
@@ -118,9 +111,9 @@
 
 <section id="snowboy_settings"></section> 
 
-<!-- ------------------------ -->
-<!-- GENERAL SNOWBOY SETTINGS -->
-<!-- ------------------------ -->
+<!-- ----------------- -->
+<!--  SNOWBOY SETTINGS -->
+<!-- ----------------- -->
 
 {% if speechcontrol_setting != "False" %}
 
@@ -152,10 +145,10 @@
           <div class="well well-sm">
             <div class="row justify-content-md-center">
               <div class="col-sm-2">
-                <button type="button" style="background-color:transparent" class="btn btn-secondary">Verzögerungswert: <span id="output_delay"></span></button>
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Timeout: <span id="output_timeout"></span></button>
               </div>                                            
             </div>     
-              <input id="input_delay" type="range" class="slider" name="set_delay" min="1" max="10" value="{{ delay }}" />
+              <input id="input_timeout" type="range" class="slider" name="set_timeout" min="1" max="10" value="{{ timeout }}" />
             </div>     
           <div class="well well-sm">
             <div class="row justify-content-md-center">
@@ -181,171 +174,12 @@
             </div> 
           </div>    
 
-<section id="table_tasks"></section> 
+<section id="speech_recognition_provider_settings"></section> 
 
             <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#snowboy_settings'" class="btn btn-default" name="change_snowboy_settings" value="Einstellungen speichern" />       
           </form>  
         </div>                    
       </div> 
-
-<!-- ------- -->
-<!-- SNOWBOY -->
-<!-- ------- -->
-
-{% if speechcontrol_setting == "snowboy" %}
-
-
-<!-- snowboy error message file missing -->
-
-{% if error_message_hotword != "" %}
-  <div class="alert alert-danger" role="alert">
-    Hotword-Datein fehlen: {{ error_message_hotword }}
-  </div>      
-{% endif %} 
-
-
-<!-- snowboy task table -->
-
-      <div class="panel panel-default">     
-        <div class="panel-body">
-          <div class="well well-sm">
-
-
-<!-- error message change snowboy settings -->
-
-{% if error_message_change_snowboy_settings != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for message in error_message_change_snowboy_settings.split(",") %}
-      {{ message }} <br>
-    {% endfor %}
-  </div>      
-{% endif %}     
-
-<!-- error message snowboy tasks -->
-
-{% if error_message_snowboy_tasks != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_snowboy_tasks %}
-      {{ entry }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
-
-            <table class="table">
-              <thead>                      
-                <th scope="col">Name</th> 
-                <th scope="col">Aufgabe</th> 
-              </thead>
-              <tbody> 
-                {% for entry in snowboy_task_list %}
-                <tr>
-                  <td>
-                  <form method="POST" class="verticalform">
-                    <input type="text" class="form-control" name="set_snowboy_name_{{ entry.id }}" value="{{ entry.name }}" />                    
-                  </td> 
-                  <td>
-                    <input type="text" class="form-control" name="set_snowboy_task_{{ entry.id }}" value="{{ entry.task }}" />                    
-                  </td> 
-                  <td></td>
-                  <td><a href="/dashboard/settings/speechcontrol/snowboy/delete/task/{{ entry.id }}#table_tasks"><font color="red" size="5"><b>X</b></font></a></td>  
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
-          </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table_tasks'" class="btn btn-default" name="change_snowboy_tasks" value="Änderungen speichern"/> 
-          </form> 
-        </div>  
-      </div>  
-
-<!-- snowboy add task -->    
-  
-      <div class="panel panel-default">
-        <div class="panel-body">  
-          <div class="well well-sm">
-            <div class="text-center">   
-              <h3><span class="label label-default">Neue Aufgabe erstellen</span></h3>
-            </div>          
-            <br>
-            <div class="well well-sm">
-              <table class="table">
-                <thead>
-                  <tr><td></td><td></td></tr>
-                  <tr>
-                    <th>Aufgabe</th>
-                    <th>Erklärung</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>snowboy_active</td>
-                    <td>SnowBoy für weitere Befehle aktivieren, wird nach Ablauf des eingestellten Verzögerungswerts oder einem empfangenden Befehl wieder zurückgesetzt <br>
-                        >>> Blaue LEDs vom Snowboy leuchten im aktiven Modus (bei Verwendung des ReSpeaker MicArrays)</td>
-                  </tr> 
-                  <tr>
-                    <td>scene:wohnzimmer:relax:100</td>
-                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relex" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
-                  </tr>
-                  <tr>
-                    <td>program:schlafzimmer:aufwachen</td>
-                    <td>starte LEDs der Gruppe "schlafzimmer" mit Programm "aufwachen"</td>
-                  </tr>
-                  <tr>
-                    <td>led_off:group:flur, bad</td>
-                    <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
-                  </tr>
-                  <tr>
-                    <td>led_off:all</td>
-                    <td>alle LEDs ausschalten</td>
-                  </tr> 
-                </tbody>
-              </table>  
- 
-<section id="add_task"></section>
- 
-            </div>            
-            <b>HINWEIS:</b> Hotword-Dateiname soll gleich dem Aufgabennamen und auszusprechenden Wort sein
-            <br>
-            <br>
-
-<!-- error message add snowboy task -->
-
-{% if error_message_add_snowboy_task != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message_add_snowboy_task }}
-</div>      
-{% endif %} 
-
-            <form method="POST">
-              <div class="well well-sm">Name:            
-                <div class="form-group">
-                  <input type="text" class="form-control" name="set_snowboy_name" value="{% if snowboy_name != None %}{{ snowboy_name }}{% endif %}" />
-                </div>    
-              </div>                      
-              <div class="well well-sm">Aufgabe:            
-                <div class="form-group">
-                  <input type="text" class="form-control" name="set_snowboy_task" value="{% if snowboy_task != None %}{{ snowboy_task }}{% endif %}" /> 
-                </div>    
-              </div>           
-
-<section id="fileupload"></section>
-
-              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#add_task'" class="btn btn-default" name="add_snowboy_task" value="Aufgabe anlegen" />
-            </form>
-          </div>  
-        </div>
-      </div>       
-
-{% endif %}
-
-<!-- --------------------------- -->
-<!-- SPEECH_RECOGNITION_PROVIDER -->
-<!-- --------------------------- -->
-
-{% if speechcontrol_setting == "speech_recognition_provider" %}
-
-<section id="speech_recognition_provider_settings"></section>
 
 <!-- speech_recognition_provider settings -->
 
@@ -481,12 +315,7 @@
         </div>  
       </div>  
 
-{% endif %}
-
-
-<!-- --------------------------------------- -->
-<!-- SNOWBOY and SPEECH_RECOGNITION_PROVIDER -->
-<!-- --------------------------------------- -->
+<!-- fileupload --> 
 
       <div class="panel panel-default">
         <div class="panel-body">  
@@ -499,9 +328,9 @@
 <!-- error message fileupload --> 
 
 {% if error_message_fileupload != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message_fileupload }}
-</div>      
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_fileupload }}
+  </div>      
 {% endif %}   
 
             <div class="well well-sm">
@@ -542,7 +371,7 @@
         </div>  
       </div>   
 
-{% endif %}
+{% endif %} 
 
     </div>
   </div>    

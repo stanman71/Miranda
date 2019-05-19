@@ -318,14 +318,8 @@ class Snowboy_Settings(db.Model):
     __tablename__  = 'snowboy_settings'
     id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
     sensitivity = db.Column(db.Integer)
-    delay       = db.Column(db.Integer)
+    timeout     = db.Column(db.Integer)
     microphone  = db.Column(db.String(50))
-
-class Snowboy_Tasks(db.Model):
-    __tablename__ = 'snowboy_tasks'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name = db.Column(db.String(50), unique = True)
-    task = db.Column(db.String(100))
 
 class Speech_Recognition_Provider_Settings(db.Model):
     __tablename__ = 'speech_recognition_provider_settings'
@@ -406,7 +400,7 @@ if Global_Settings.query.filter_by().first() is None:
     db.session.commit()
 
     setting_speech_control = Global_Settings(
-        setting_name  = "speech_control",
+        setting_name  = "speechcontrol",
         setting_value = "False",
     )
     db.session.add(setting_speech_control)    
@@ -416,8 +410,8 @@ if Global_Settings.query.filter_by().first() is None:
 # create default snowboy settings
 if Snowboy_Settings.query.filter_by().first() is None:
     snowboy = Snowboy_Settings(
-        sensitivity  = 45,
-        delay = 3,
+        sensitivity  = 50,
+        timeout = 5,
     )
     db.session.add(snowboy)
     db.session.commit()
@@ -2089,79 +2083,12 @@ def GET_SNOWBOY_SETTINGS():
     return Snowboy_Settings.query.filter_by().first()
     
 
-def SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone):
+def SET_SNOWBOY_SETTINGS(sensitivity, timeout, microphone):
     entry = Snowboy_Settings.query.filter_by().first()
     entry.sensitivity = sensitivity
-    entry.delay       = delay
+    entry.timeout     = timeout
     entry.microphone  = microphone
     db.session.commit() 
-
-
-def GET_SNOWBOY_TASK_BY_NAME(name):
-    return Snowboy_Tasks.query.filter_by(name=name).first()
-
-
-def GET_SNOWBOY_TASK_BY_ID(id):
-    return Snowboy_Tasks.query.filter_by(id=id).first()
-
-
-def GET_ALL_SNOWBOY_TASKS():
-    return Snowboy_Tasks.query.all()
-
-
-def ADD_SNOWBOY_TASK(name, task):
-    # name exist ?
-    check_entry = Snowboy_Tasks.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,26):
-            if Snowboy_Tasks.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new task
-                task = Snowboy_Tasks(
-                        id     = i,
-                        name   = name,
-                        task   = task,
-                    )
-                db.session.add(task)
-                db.session.commit()
-  
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task - " + name + " | added") 
-  
-                return ""
-
-        return "Aufgabenlimit erreicht (25)"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_SNOWBOY_TASK(id, name, task):
-    entry = Snowboy_Tasks.query.filter_by(id=id).first()
-    old_name = entry.name
-    
-    # values changed ?
-    if (entry.name != name or entry.task != task):
-        
-        entry.name = name
-        entry.task = task
-        db.session.commit()
-        
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task - " + old_name + " | changed || Name - " +
-                             entry.name + " | Task - " + entry.task) 
-
-
-def DELETE_SNOWBOY_TASK(task_id):
-    entry = GET_SNOWBOY_TASK_BY_ID(task_id)
-
-    try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Snowboy Task - " + entry.name + " | deleted")   
-    except:
-        pass 
-      
-    Snowboy_Tasks.query.filter_by(id=task_id).delete()
-    db.session.commit()
 
 
 """ ############################# """

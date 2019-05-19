@@ -99,6 +99,9 @@ def MQTT_UPDATE_DEVICES(gateway):
                                 
                   UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs)
                   SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
+                  
+               # update input values
+               MQTT_PUBLISH("SmartHome/mqtt/" + ieeeAddr + "/get", "")  
 
             return ""
 

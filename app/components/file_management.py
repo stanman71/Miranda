@@ -11,7 +11,6 @@ from werkzeug.utils import secure_filename
 from app import app
 from app.database.database import *
 
-
 # windows
 if os.name == "nt":                 
     PATH = os.path.abspath("") 
@@ -90,7 +89,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
 
             headers = data.pop(0)  
 
-            # reverse messages           
+            # reverse messages             
             data_reversed = data[::-1]        
 
             # get time value of the time setting
@@ -100,7 +99,7 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
             # get all elements of the selected time
             list_temp = []
             list_result = []
-
+        
             for element in data_reversed:
                 
                 try:
@@ -148,7 +147,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
        
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
         return ("ERROR: " + str(e))
         
     
@@ -159,10 +158,11 @@ def GET_LOGFILE_SYSTEM(rows):
         
         with open(file, 'r', newline='', encoding='utf-8') as csvfile:
             rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            data = [row for row in rowReader] # get data
+            data = [row for row in rowReader] 
+            csvfile.close()
+            
             headers = data.pop(0)             # get headers and remove from data
             data_reversed = data[::-1]        # reverse the data
-            csvfile.close()
 
             return data_reversed[0:rows]
             
@@ -416,35 +416,6 @@ def GET_ALL_HOTWORD_FILES():
                 
         return file_list
 
-
-def GET_HOTWORD_FILES_FROM_TASKS(snowboy_tasks):
-    file_list = []
-    exist_file_list = GET_ALL_HOTWORD_FILES()
-    
-    for element in snowboy_tasks:
-        if (element.name + ".pmdl") in exist_file_list:
-            file_list.append(PATH + "/app/speechcontrol/snowboy/resources/" + element.name + ".pmdl")
-        
-    return file_list
-
-
-def CHECK_HOTWORD_FILE_EXIST(snowboy_tasks):
-    list_files = []
-    exist_file_list = GET_ALL_HOTWORD_FILES()
-    
-    for element in snowboy_tasks:
-
-        try:
-            if (element.name + ".pmdl") not in exist_file_list:
-                list_files.append(element.name + ".pmdl")
-        except:
-            list_files.append("Keine Datei angegeben")
-            
-    if list_files != []:
-        return list_files
-    else:
-        return ""
-        
 
 def UPLOAD_HOTWORD_FILE(file):
     ALLOWED_EXTENSIONS = set(['pmdl'])

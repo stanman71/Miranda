@@ -26005,3 +26005,487 @@ found character '\t' that cannot start any token
 2019-05-18 20:47:10,ERROR,|Microphone LED Control || No backend available|
 2019-05-18 20:47:12,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
 2019-05-18 20:47:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-18 20:56:51,EVENT,|MQTT || started|
+2019-05-18 20:56:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-18 20:56:54,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:56:54,ERROR,|ZigBee2MQTT || No connection|
+2019-05-18 20:56:54,EVENT,|Speech Recognition Provider || started|
+2019-05-18 20:57:06,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 70%|
+2019-05-18 20:57:07,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:57:07,ERROR,|LED || start scene || string index out of range|
+2019-05-18 20:57:07,ERROR,|Speech Recognition Task || starte warmweiss im wohnzimmer auf 70% || Can't convert 'list' object to str implicitly|
+2019-05-18 20:57:09,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:57:09,ERROR,|LED || set brightness || string index out of range|
+2019-05-18 20:57:09,ERROR,|Speech Recognition Task || starte warmweiss im wohnzimmer auf 70% || Can't convert 'list' object to str implicitly|
+2019-05-18 20:57:34,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:12,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:12,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:12,ERROR,|ZigBee2MQTT || No connection|
+2019-05-18 20:59:28,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:28,ERROR,|ZigBee2MQTT || string index out of range|
+2019-05-18 20:59:28,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:28,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 20:59:28,ERROR,|ZigBee2MQTT || No connection|
+2019-05-18 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-18 21:00:02,ERROR,|File || /logs/log_mqtt.csv || I/O operation on closed file.|
+2019-05-18 21:00:02,ERROR,|MQTT || No connection|
+2019-05-18 21:00:02,ERROR,|Scheduler || Task - MQTT aktualisieren || Error: string index out of range|
+2019-05-18 21:00:13,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - OFF|
+2019-05-18 21:00:15,ERROR,|File || /logs/log_zigbee2mqtt.csv || I/O operation on closed file.|
+2019-05-18 21:01:34,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:01:34,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:01:34,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:01:34,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:02:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:02:51,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:02:51,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:02:51,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:03:19,EVENT,|MQTT || started|
+2019-05-18 21:03:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-18 21:03:23,EVENT,|Speech Recognition Provider || started|
+2019-05-18 21:03:45,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - ON|
+2019-05-18 21:04:21,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:04:21,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:06:35,EVENT,|MQTT || started|
+2019-05-18 21:06:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-18 21:06:39,EVENT,|Speech Recognition Provider || started|
+2019-05-18 21:06:43,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - OFF|
+2019-05-18 21:06:55,EVENT,|Database || MQTT Device - Steckdose Bett || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - ON|
+2019-05-18 21:08:57,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:08:57,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:08:57,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:08:57,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:10:26,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:10:27,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:11:07,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:11:07,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:13:37,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:13:37,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:13:37,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:13:37,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:15:07,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:15:07,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:21:38,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:21:38,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:21:38,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:21:38,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:23:00,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:23:00,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:23:00,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:23:00,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:23:06,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 100%|
+2019-05-18 21:24:30,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:24:30,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:30:40,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:30:40,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:30:40,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:30:40,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:32:10,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:32:10,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:41:56,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:41:56,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:41:56,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:41:56,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:43:26,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:43:26,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:53:31,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:53:31,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:53:31,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:53:31,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:55:01,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:55:01,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 21:56:26,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:56:26,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:56:26,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 21:56:26,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 21:57:56,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 21:57:56,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-18 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-18 22:01:07,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:01:07,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:03:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:03:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:03:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:03:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:05:20,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:05:20,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:09:25,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:09:25,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:09:25,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:09:25,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:10:55,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:10:55,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:13:05,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:13:05,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:13:05,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:13:05,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:14:35,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:14:35,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:24:12,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:24:12,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:24:12,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:24:12,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:25:42,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:25:42,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:32:21,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:32:21,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:32:21,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:32:21,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:33:39,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:33:39,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:33:39,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:33:39,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:35:09,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:35:09,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:35:22,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:35:22,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:35:22,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:35:22,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:36:23,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:36:24,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:36:24,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:36:24,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:37:39,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:37:39,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:37:39,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:37:39,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:38:48,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:38:48,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:38:48,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:38:48,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:39:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:39:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:39:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:39:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:40:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:40:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:40:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:40:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:42:22,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:42:22,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:42:26,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:42:26,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:42:26,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:42:26,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:43:56,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:43:56,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:52:27,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:52:27,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 22:57:35,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:57:35,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:57:35,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 22:57:35,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 22:59:05,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 22:59:05,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-18 23:00:03,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-18 23:02:49,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 23:02:49,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 23:02:49,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-18 23:02:49,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-18 23:04:19,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 23:04:19,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-18 23:46:19,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-18 23:46:19,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 00:00:00,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-05-19 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 00:00:00,EVENT,|Database_Backup || saved|
+2019-05-19 00:00:00,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-05-19 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-05-19 00:41:19,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 00:41:19,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 01:36:20,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 01:36:20,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 01:46:41,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:46:41,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:46:41,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:46:41,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:48:05,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:48:05,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:48:05,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:48:05,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:49:35,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 01:49:35,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 01:50:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:50:28,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:50:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:50:28,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:51:58,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 01:51:58,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 01:55:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:55:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:55:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 01:55:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 01:57:22,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 01:57:22,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 02:26:48,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 02:26:48,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 02:26:48,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 02:26:48,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 02:27:13,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 02:27:13,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 02:28:18,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 02:28:18,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 03:00:03,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 03:07:07,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 03:07:07,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 03:07:07,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 03:07:08,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 03:08:37,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 03:08:37,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 03:16:00,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 03:16:00,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 03:17:29,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 03:17:29,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 03:17:29,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 03:17:29,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 03:18:59,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 03:18:59,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 04:10:47,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 04:10:47,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 04:16:35,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:16:35,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:16:35,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:16:35,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:18:05,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 04:18:05,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 04:40:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:40:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:40:50,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:40:50,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:42:20,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 04:42:20,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 04:45:58,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:45:58,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:45:58,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:45:58,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:47:28,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 04:47:28,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 04:57:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:57:28,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:57:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 04:57:29,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 04:58:58,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 04:58:58,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 05:00:03,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 05:00:10,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 05:00:10,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 05:35:58,ERROR,|File || /logs/log_system.csv || [Errno 24] Too many open files: '/home/pi/SmartHome/logs/log_system.csv'|
+2019-05-19 05:35:59,ERROR,|File || /logs/log_system.csv || [Errno 24] Too many open files: '/home/pi/SmartHome/logs/log_system.csv'|
+2019-05-19 08:31:42,EVENT,|MQTT || started|
+2019-05-19 08:31:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:31:46,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:34:15,EVENT,|MQTT || started|
+2019-05-19 08:34:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:34:19,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:36:17,EVENT,|MQTT || started|
+2019-05-19 08:36:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:36:21,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:38:12,EVENT,|MQTT || started|
+2019-05-19 08:38:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:38:16,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:39:41,EVENT,|MQTT || started|
+2019-05-19 08:39:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:39:45,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:41:11,EVENT,|MQTT || started|
+2019-05-19 08:41:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:41:15,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:48:43,EVENT,|MQTT || started|
+2019-05-19 08:48:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:48:47,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:48:55,EVENT,|Speech Recognition || Detection Task || |
+2019-05-19 08:55:09,EVENT,|MQTT || started|
+2019-05-19 08:55:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:55:14,EVENT,|Speech Recognition Provider || started|
+2019-05-19 08:59:01,EVENT,|MQTT || started|
+2019-05-19 08:59:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 08:59:05,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 09:00:03,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 09:16:18,EVENT,|MQTT || started|
+2019-05-19 09:16:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:16:22,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:17:49,EVENT,|MQTT || started|
+2019-05-19 09:17:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:17:53,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:18:20,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-19 09:21:02,EVENT,|MQTT || started|
+2019-05-19 09:21:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:21:05,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:24:24,EVENT,|MQTT || started|
+2019-05-19 09:24:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:24:28,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:24:35,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering_Control with Sensors(4 Plants) || inputs - sensor_0, sensor_1, sensor_2, sensor_3, sensor_4, sensor_5, sensor_6, sensor_7 || outputs - pump_0, pump_1, pump_2, pump_3 || commands - |
+2019-05-19 09:25:02,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 09:25:02,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 09:25:38,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering_Control with Sensors (4 Plants) || inputs - sensor_0, sensor_1, sensor_2, sensor_3, sensor_4, sensor_5, sensor_6, sensor_7 || outputs - pump_0, pump_1, pump_2, pump_3 || commands - |
+2019-05-19 09:29:58,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 09:29:59,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 09:29:59,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 09:29:59,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 09:31:28,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 09:31:29,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 09:31:45,EVENT,|Database || MQTT Device - 0x88888 || Gateway - mqtt || changed |||| Name - 0x88888 || ieeeAddr - 0x88888 || Model - envi_sensor || device_type - sensor_active || description - MQTT Environment Sensor || inputs - temperature, humidity, light || outputs -  || commands - |
+2019-05-19 09:33:53,EVENT,|MQTT || started|
+2019-05-19 09:33:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:33:57,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:35:30,EVENT,|MQTT || started|
+2019-05-19 09:35:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:35:34,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:37:56,EVENT,|Database || Sensordata Job - watersensor || changed |||| Name - watersensor || Filename - watersensor || MQTT-Device - 0x99999 || Sensor -  sensor_5 || Always_Active - checked|
+2019-05-19 09:38:29,EVENT,|Database || Sensordata Job - watersensor || changed |||| Name - watersensor || Filename - watersensor || MQTT-Device - 0x99999 || Sensor - sensor_5 || Always_Active - checked|
+2019-05-19 09:39:27,EVENT,|MQTT || started|
+2019-05-19 09:39:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:39:31,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:39:59,EVENT,|MQTT || started|
+2019-05-19 09:39:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 09:40:03,EVENT,|Speech Recognition Provider || started|
+2019-05-19 09:40:22,EVENT,|File || /csv/watersensor.csv || created|
+2019-05-19 09:40:38,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-19 09:46:55,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 09:46:55,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 09:46:55,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 09:46:55,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 09:48:25,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 09:48:25,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 10:14:24,EVENT,|Speech Recognition || Detection Task || |
+2019-05-19 10:17:20,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 10:17:20,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 10:36:54,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:36:54,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:36:54,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:36:55,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:38:18,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:38:18,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:38:18,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:38:18,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:39:48,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 10:39:48,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 10:56:29,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:56:29,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:56:29,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 10:56:29,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 10:57:59,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 10:57:59,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 11:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 11:07:33,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 11:07:33,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 11:16:11,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:16:11,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:16:11,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:16:11,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:17:41,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 11:17:41,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 11:18:24,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:18:24,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:18:24,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:18:24,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:19:43,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:19:43,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:19:43,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:19:43,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:20:55,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:20:55,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:20:55,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:20:55,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:22:00,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:22:00,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:22:00,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:22:00,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:23:30,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 11:23:30,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 11:58:16,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:58:16,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:58:17,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:58:17,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:58:42,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 11:58:42,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 11:59:46,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 11:59:46,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-19 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-19 12:04:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:04:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:04:52,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:04:52,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:06:22,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 12:06:22,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 12:07:40,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:07:40,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:07:40,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:07:40,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:09:10,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 12:09:10,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 12:20:43,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:20:43,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:20:43,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:20:43,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:28:45,ERROR,|Microphone LED Control || No backend available|
+2019-05-19 12:28:47,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-19 12:28:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:28:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:29:44,ERROR,|Microphone LED Control || No backend available|
+2019-05-19 12:29:46,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-19 12:29:52,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2342482554496|
+2019-05-19 12:29:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:32:04,ERROR,|Microphone LED Control || No backend available|
+2019-05-19 12:32:06,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-19 12:32:11,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1847315013528|
+2019-05-19 12:32:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:32:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:14,ERROR,|Microphone LED Control || No backend available|
+2019-05-19 12:33:16,ERROR,|MQTT || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-05-19 12:33:21,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2379337248720|
+2019-05-19 12:33:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:40,EVENT,|File || /app/speechcontrol/snowboy/resources/mediterran.pmdl || deleted|
+2019-05-19 12:33:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:43,EVENT,|File || /app/speechcontrol/snowboy/resources/relax.pmdl || deleted|
+2019-05-19 12:33:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:44,EVENT,|File || /app/speechcontrol/snowboy/resources/warmweiss.pmdl || deleted|
+2019-05-19 12:33:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:47,EVENT,|File || /app/speechcontrol/snowboy/resources/ausschalten.pmdl || deleted|
+2019-05-19 12:33:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:33:57,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-19 12:35:41,EVENT,|MQTT || started|
+2019-05-19 12:35:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:37:03,EVENT,|MQTT || started|
+2019-05-19 12:37:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:37:29,EVENT,|MQTT || started|
+2019-05-19 12:37:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:37:33,EVENT,|Speech Recognition Provider || started|
+2019-05-19 12:37:42,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-19 12:43:31,EVENT,|MQTT || started|
+2019-05-19 12:43:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:43:35,EVENT,|Speech Recognition Provider || started|
+2019-05-19 12:44:56,EVENT,|MQTT || started|
+2019-05-19 12:44:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:45:00,EVENT,|Speech Recognition Provider || started|
+2019-05-19 12:49:37,EVENT,|MQTT || started|
+2019-05-19 12:49:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:49:41,EVENT,|Speech Recognition Provider || started|
+2019-05-19 12:50:05,EVENT,|Speech Recognition || Detection Task || |
+2019-05-19 12:50:06,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 12:50:06,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 12:50:21,EVENT,|Speech Recognition || Detection Task || |
+2019-05-19 12:50:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:50:28,EVENT,|Scheduler || Task - detection_on || started|
+2019-05-19 12:50:28,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:50:28,ERROR,|Scheduler || Task - detection_on || 'NoneType' object has no attribute 'id'|
+2019-05-19 12:51:58,EVENT,|Scheduler || Task - detection_off || started|
+2019-05-19 12:51:58,ERROR,|Scheduler || Task - detection_off || Group - wohnzimer || not founded|
+2019-05-19 12:54:20,EVENT,|MQTT || started|
+2019-05-19 12:54:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-19 12:54:24,EVENT,|Speech Recognition Provider || started|

@@ -65,6 +65,9 @@ def MQTT_THREAD(start):
 
 
 def MQTT_MESSAGE_THREAD(channel, msg):
+	
+	ieeeAddr = ""
+	device_type = ""
 
 	# get ieeeAddr and device_type
 	incoming_topic   = channel
@@ -87,8 +90,10 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 	except:
 		device_type = ""
 		
-	print(ieeeAddr)
-	print(device_type)
+	if ieeeAddr != "":
+		print(ieeeAddr)
+	if device_type != "":
+		print(device_type)
 		
 
 	# start functions
@@ -103,12 +108,12 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 	except:
 		pass
 
-
-	# save last values
-	SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+	if ieeeAddr != "":
+		# save last values
+		SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+		
 	
-	
-	if device_type == "sensor_passiv" or device_type == "sensor_active":
+	if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array" :
 		
 		# schedular
 		SCHEDULER_MAIN("sensor", ieeeAddr)

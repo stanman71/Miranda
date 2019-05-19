@@ -81,24 +81,30 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     if(check_ieeeAddr == "devices"){
 
+        // create path   
+        String payload_path = "SmartHome/mqtt/log";
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );    
+               
         // create msg  
-        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," + 
-                         "\"model\":\"watering_array_v4\"," +
-                         "\"device_type\":\"watering_array\"," +
-                         "\"description\":\"Bewässerung (4 Pflanzen)\"," +
-                         "\"inputs\":[\"sensor_0\",\"sensor_1\",\"sensor_2\",\"sensor_3\"," +
-                         "\"sensor_4\",\"sensor_5\",\"sensor_6\",\"sensor_7\"]," +
-                         "\"outputs\":[\"pump_0\",\"pump_1\",\"pump_2\",\"pump_3\"]}";   
+        String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," + 
+                             "\"model\":\"watering_array_v4\"," +
+                             "\"device_type\":\"watering_array\"," +
+                             "\"description\":\"Watering_Control with Sensors (4 Plants)\"," +
+                             "\"inputs\":[\"sensor_0\",\"sensor_1\",\"sensor_2\",\"sensor_3\"," +
+                             "\"sensor_4\",\"sensor_5\",\"sensor_6\",\"sensor_7\"]," +
+                             "\"outputs\":[\"pump_0\",\"pump_1\",\"pump_2\",\"pump_3\"]}";   
                                            
         char attributes[300];
-        payload.toCharArray( msg, 300 );
+        payload_msg.toCharArray( msg, 300 );
         
+        Serial.print("Channel: ");
+        Serial.println(path);         
         Serial.print("Publish message: ");
         Serial.println(msg);
-        Serial.print("Channel: ");
-        Serial.println("SmartHome/mqtt/log");
-        Serial.println();        
-        client.publish("SmartHome/mqtt/log", msg);        
+        Serial.println();      
+          
+        client.publish(path, msg);        
     }
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
@@ -120,6 +126,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
         int sensor_7 = adc.readADC(7) - 1; 
         String STR_sensor_7 = String(sensor_7);
 
+        // create path   
+        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );   
+
         // create msg   
         String payload_msg = "{\"sensor_0\":" + STR_sensor_0 + 
                              ",\"sensor_1\":" + STR_sensor_1 + 
@@ -130,18 +141,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
                              ",\"sensor_6\":" + STR_sensor_6 +
                              ",\"sensor_7\":" + STR_sensor_7 + "}";
         char attributes_msg[100];
-        payload_msg.toCharArray(  msg, 200 );
+        payload_msg.toCharArray(  msg, 200 );     
 
-        // create path   
-        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
-        char attributes_path[100];
-        payload_path.toCharArray( path, 100 );        
-
+        Serial.print("Channel: ");
+        Serial.println(path);
         Serial.print("Publish message: ");
         Serial.println(msg);
-        Serial.print("Channel: ");
-        Serial.println("SmartHome/mqtt/" + ieeeAddr);
         Serial.println();
+        
         client.publish(path, msg);         
     }    
 

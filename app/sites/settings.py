@@ -394,17 +394,15 @@ def delete_controller(id):
 @superuser_required
 def dashboard_settings_speechcontrol():
     error_message_snowboy = ""
-    error_message_add_snowboy_task = ""
     error_message_change_snowboy_settings = ""
-    error_message_snowboy_tasks = ""
     error_message_fileupload = ""
     error_message_hotword = ""
     error_message_speech_recognition_provider_keywords = ""
     error_message_speech_recognition_provider_settings = ""
     sensitivity = ""
-    delay = ""
+    timeout = ""
     microphone = ""
-    check_value_speechcontrol = ["", "", ""]
+    check_value_speechcontrol = ["", ""]
     snowboy_name = ""
     snowboy_task = ""   
     
@@ -416,29 +414,23 @@ def dashboard_settings_speechcontrol():
             SET_GLOBAL_SETTING_VALUE("speechcontrol", setting_speechcontrol) 
 
     # change radio check    
-    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy":
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
         check_value_speechcontrol[0] = "checked = 'on'"
         check_value_speechcontrol[1] = ""
-        check_value_speechcontrol[2] = ""
-    elif GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
-        check_value_speechcontrol[0] = ""
-        check_value_speechcontrol[1] = "checked = 'on'"
-        check_value_speechcontrol[2] = ""
     else:
         check_value_speechcontrol[0] = ""
-        check_value_speechcontrol[1] = ""
-        check_value_speechcontrol[2] = "checked = 'on'"
+        check_value_speechcontrol[1] = "checked = 'on'"
 
-    ##########################
-    # general snowboy settings
-    ##########################
+    ##################
+    # snowboy settings
+    ##################
 
-    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
 
         # check snowboy
         def START_SNOWBOY():
             from app.speechcontrol.snowboy.snowboy import SNOWBOY_START
-            SNOWBOY_START("snowboy")
+            SNOWBOY_START()
           
         try:
             START_SNOWBOY()
@@ -459,85 +451,17 @@ def dashboard_settings_speechcontrol():
                 else:
                     sensitivity = GET_SNOWBOY_SETTINGS().sensitivity
                     
-                # check delay
-                delay = request.form.get("set_delay")     
-                if delay != "":     
-                    delay = request.form.get("set_delay") 
+                # check timeout
+                timeout = request.form.get("set_timeout")     
+                if timeout != "":     
+                    timeout = request.form.get("set_timeout") 
                 else:
-                    delay = GET_SNOWBOY_SETTINGS().delay  
+                    timeout = GET_SNOWBOY_SETTINGS().timeout  
 
                 # set microphone
                 microphone = request.form.get("set_microphone")                                            
              
-                SET_SNOWBOY_SETTINGS(sensitivity, delay, microphone)  
-
-            #########
-            # snowboy
-            #########
-
-            # add new snowboy task
-            if request.form.get("add_snowboy_task") is not None:
-
-                if request.form.get("set_snowboy_name") == "":
-                    error_message_add_snowboy_task = "Kein Name angegeben"
-                    snowboy_task = request.form.get("set_snowboy_task")
-                elif request.form.get("set_snowboy_task") == "":
-                    error_message_add_snowboy_task = "Keine Aufgabe angegeben"  
-                    snowboy_name = request.form.get("set_snowboy_name")  
-                else:         
-                    snowboy_name  = request.form.get("set_snowboy_name")
-                    snowboy_task  = request.form.get("set_snowboy_task")
-                    error_message_add_snowboy_task = ADD_SNOWBOY_TASK(snowboy_name, snowboy_task)
-
-                    snowboy_name = ""
-                    snowboy_task = "" 
-
-            # change snowboy tasks
-            if request.form.get("change_snowboy_tasks") != None: 
-                for i in range (1,26):
-
-                    if request.form.get("set_snowboy_name_" + str(i)) != None:  
-
-                    # ############
-                    # name setting
-                    # ############
-
-                        snowboy_task_data = GET_SNOWBOY_TASK_BY_ID(i)
-                        new_name          = request.form.get("set_snowboy_name_" + str(i))                    
-
-                        # add new name
-                        if ((new_name != "") and (GET_SNOWBOY_TASK_BY_NAME(new_name) == None)):
-                            snowboy_name = request.form.get("set_snowboy_name_" + str(i)) 
-                        
-                        # nothing changed 
-                        elif new_name == snowboy_task_data.name:
-                            snowboy_name = snowboy_task_data.name                        
-                            
-                        # name already exist
-                        elif ((GET_SNOWBOY_TASK_BY_NAME(new_name) != None) and (snowboy_task_data.name != new_name)):
-                            snowboy_name = snowboy_task_data.name 
-                            error_message_change_snowboy_settings = error_message_change_snowboy_settings + (new_name + " >>> Name schon vergeben,")
-
-                        # no input commited
-                        else:                          
-                            snowboy_name = GET_SNOWBOY_TASK_BY_ID(i).name 
-                            error_message_change_snowboy_settings = error_message_change_snowboy_settings + (name + " >>> Keinen Namen angegeben,")
-
-
-                        # ############
-                        # task setting
-                        # ############
-
-                        if request.form.get("set_snowboy_task_" + str(i)) != "":
-                            snowboy_task = request.form.get("set_snowboy_task_" + str(i))
-                        else:
-                            snowboy_task = GET_SNOWBOY_TASK_BY_ID(i).task
-
-
-                        if error_message_change_snowboy_settings != "":
-                            error_message_change_snowboy_settings = error_message_change_snowboy_settings[:-1]
-
-                        SET_SNOWBOY_TASK(i, snowboy_name, snowboy_task)
+                SET_SNOWBOY_SETTINGS(sensitivity, timeout, microphone)  
 
 
             #############################
@@ -583,16 +507,12 @@ def dashboard_settings_speechcontrol():
     # snowboy settings
     speechcontrol_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
     sensitivity           = GET_SNOWBOY_SETTINGS().sensitivity
-    delay                 = GET_SNOWBOY_SETTINGS().delay
+    timeout               = GET_SNOWBOY_SETTINGS().timeout
     microphone            = GET_SNOWBOY_SETTINGS().microphone
 
     dropdown_list_microphone_options = ["ReSpeaker 2-Mics Pi HAT", "ReSpeaker Mic 4 Array v2.0", "Other"]   
 
-    # snowboy only
-    snowboy_task_list           = GET_ALL_SNOWBOY_TASKS()
-    hotword_file_list           = GET_ALL_HOTWORD_FILES()
-    error_message_snowboy_tasks = CHECK_TASKS(GET_ALL_SNOWBOY_TASKS(), "snowboy")
-    error_message_hotword       = CHECK_HOTWORD_FILE_EXIST(GET_ALL_SNOWBOY_TASKS())
+    hotword_file_list = GET_ALL_HOTWORD_FILES()
 
     # speech_recognition_provider only
     snowboy_hotword                                    = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
@@ -612,9 +532,7 @@ def dashboard_settings_speechcontrol():
 
     return render_template('dashboard_settings_speechcontrol.html',
                             error_message_snowboy=error_message_snowboy,   
-                            error_message_add_snowboy_task=error_message_add_snowboy_task,
-                            error_message_change_snowboy_settings=error_message_change_snowboy_settings,                                
-                            error_message_snowboy_tasks=error_message_snowboy_tasks,        
+                            error_message_change_snowboy_settings=error_message_change_snowboy_settings,                                   
                             error_message_fileupload=error_message_fileupload,
                             error_message_hotword=error_message_hotword,
                             error_message_speech_recognition_provider_keywords=error_message_speech_recognition_provider_keywords,                             
@@ -622,34 +540,20 @@ def dashboard_settings_speechcontrol():
                             
                             speechcontrol_setting=speechcontrol_setting,
                             check_value_speechcontrol=check_value_speechcontrol,
-                            snowboy_task_list=snowboy_task_list,
                             sensitivity=sensitivity,
-                            delay=delay,
+                            timeout=timeout,
                             microphone=microphone,
                             dropdown_list_microphone_options=dropdown_list_microphone_options,
 
-                            snowboy_name=snowboy_name,
-                            snowboy_task=snowboy_task,
-                            hotword_file_list=hotword_file_list,                            
+                            hotword_file_list=hotword_file_list,
                             snowboy_hotword=snowboy_hotword,
-
                             dropdown_list_speech_recognition_provider=dropdown_list_speech_recognition_provider,
                             speech_recognition_provider_task_list=speech_recognition_provider_task_list,
                             speech_recognition_provider=speech_recognition_provider,
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
-
                             active04="active",
                             )
-
-
-# delete snowboy task
-@app.route('/dashboard/settings/speechcontrol/snowboy/delete/task/<int:id>')
-@login_required
-@superuser_required
-def delete_snowboy_task(id):
-    DELETE_SNOWBOY_TASK(id)
-    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 
 # download hotword file

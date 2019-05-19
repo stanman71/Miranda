@@ -12,7 +12,7 @@ from app.speechcontrol.speech_control_tasks import SPEECH_RECOGNITION_PROVIDER_T
 import speech_recognition as sr
 
 
-def SPEECH_RECOGNITION_PROVIDER():
+def SPEECH_RECOGNITION_PROVIDER(timeout_value):
 
     try:
         
@@ -20,7 +20,7 @@ def SPEECH_RECOGNITION_PROVIDER():
         r = sr.Recognizer()
         with sr.Microphone() as source:
             print("Say something!")
-            audio = r.listen(source, timeout=10)
+            audio = r.listen(source, timeout=timeout_value)
 
 
         ###########################

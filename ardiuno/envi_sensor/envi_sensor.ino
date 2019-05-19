@@ -73,21 +73,27 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
     if(check_ieeeAddr == "devices"){
 
+        // create path   
+        String payload_path = "SmartHome/mqtt/log";
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );    
+
         // create msg  
-        String payload = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," +
-                         "\"model\":\"envi_sensor\"," +
-                         "\"device_type\":\"sensor\"," +
-                         "\"description\":\"Raumsensor (Feuchtigkeit / Temperatur / Licht)\"," +   
-                         "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
+        String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," +
+                             "\"model\":\"envi_sensor\"," +
+                             "\"device_type\":\"sensor_active\"," +
+                             "\"description\":\"MQTT Environment Sensor\"," +   
+                             "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
         char attributes[200];
-        payload.toCharArray( msg, 200 );
-        
+        payload_msg.toCharArray( msg, 200 );
+
+        Serial.print("Channel: ");
+        Serial.println(path);        
         Serial.print("Publish message: ");
         Serial.println(msg);
-        Serial.print("Channel: ");
-        Serial.println("SmartHome/mqtt/log");
-        Serial.println();        
-        client.publish("SmartHome/mqtt/log", msg);        
+        Serial.println();   
+             
+        client.publish(path, msg);        
     }
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
@@ -99,6 +105,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
         int light = analogRead(LIGHTPIN);
         String STR_light = String(light);  
 
+        // create channelpath   
+        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );        
+
         // create msg   
         String payload_msg = "{\"temperature\":" + STR_temperature +        
                              ",\"humidity\":" + STR_humidity + 
@@ -107,16 +118,12 @@ void callback(char* topic, byte* payload, unsigned int length) {
         char attributes_msg[200];
         payload_msg.toCharArray( msg, 200 );
 
-        // create channelpath   
-        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
-        char attributes_path[100];
-        payload_path.toCharArray( path, 100 );        
-
+        Serial.print("Channel: ");
+        Serial.println(path);
         Serial.print("Publish message: ");
         Serial.println(msg);
-        Serial.print("Channel: ");
-        Serial.println("SmartHome/mqtt/" + ieeeAddr);
         Serial.println();
+        
         client.publish(path, msg);         
     }    
 }

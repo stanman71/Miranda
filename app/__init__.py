@@ -43,8 +43,8 @@ def START_FLASK_THREAD(start):
     def initialisation():
         pass
         
-    #app.run(host='0.0.0.0', port=5000)
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
+    #app.run()
      
 Thread = threading.Thread(target=START_FLASK_THREAD, args=("start",))
 Thread.start() 
@@ -102,23 +102,18 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
         pass
 
 
-""" ####### """
-""" snowboy """
-""" ####### """
+""" ############# """
+""" speechcontrol """
+""" ############# """
 
 # start snowboy
-if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy" or GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
     
     try:
         from app.speechcontrol.snowboy.snowboy import SNOWBOY_START
 
-        if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "snowboy":
-            print("###### Start SNOWBOY ######")
-            SNOWBOY_START("snowboy")
-            
-        if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
-            print("###### Start SPEECH RECOGNITION PROVIDER ######")
-            SNOWBOY_START("speech_recognition_provider")       
+        print("###### Start SPEECH RECOGNITION PROVIDER ######")
+        SNOWBOY_START()       
 
     except Exception as e:
         if "signal only works in main thread" not in str(e): 
