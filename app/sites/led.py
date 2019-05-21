@@ -79,7 +79,6 @@ def dashboard_led_scenes():
                     error_change_settings = "Keinen Namen angegeben"
 
 
-
                 #######
                 ## 1 ##
                 #######
@@ -611,53 +610,55 @@ def dashboard_led_groups():
                 led_list = []
 
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_1_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_1_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_2_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_2_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_3_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_3_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_4_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_4_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_5_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_5_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_6_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_6_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_7_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_7_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_8_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_8_" + str(i)))
                 except:
                     pass
                 try: 
-                    led_list.append(int(request.form.get("set_led_id_9_" + str(i))))
+                    led_list.append(request.form.get("set_led_ieeeAddr_9_" + str(i)))
                 except:
                     pass
 
-                for led_id in led_list:
-                    num = led_list.count(led_id)
+                for led_ieeeAddr in led_list:
+                    num = led_list.count(led_ieeeAddr)
                 
                     # led exist multiple times
                     if num > 1:
 
-                        if GET_MQTT_DEVICE_BY_ID(led_id).name not in error_change_settings:
-                            error_change_settings = error_change_settings + "LED mehrmals eingetragen >>> " + GET_MQTT_DEVICE_BY_ID(led_id).name + ","
+                        if led_ieeeAddr != "None" and led_ieeeAddr != None:
 
-                        SET_LED_GROUP_CHANGE_ERRORS(i, error_change_settings[:-1])
-                        SET_LED_GROUP_NAME(i, name)
+                            if GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr).name not in error_change_settings:
+                                error_change_settings = error_change_settings + "LED mehrmals eingetragen >>> " + GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr).name + ","
+
+                            SET_LED_GROUP_CHANGE_ERRORS(i, error_change_settings[:-1])
+                            SET_LED_GROUP_NAME(i, name)
 
                     else:
 
@@ -666,12 +667,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_1          = int(request.form.get("set_led_id_1_" + str(i)))
-                            led_name_1        = GET_MQTT_DEVICE_BY_ID(led_id_1).name   
-                            led_device_type_1 = GET_MQTT_DEVICE_BY_ID(led_id_1).device_type         
+                            led_ieeeAddr_1    = request.form.get("set_led_ieeeAddr_1_" + str(i))
+                            led_name_1        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_1).name   
+                            led_device_type_1 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_1).device_type         
 
                         except:
-                            led_id_1          = "None"
+                            led_ieeeAddr_1    = "None"
                             led_name_1        = "None"
                             led_device_type_1 = "None"
 
@@ -680,12 +681,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_2          = int(request.form.get("set_led_id_2_" + str(i)))
-                            led_name_2        = GET_MQTT_DEVICE_BY_ID(led_id_2).name   
-                            led_device_type_2 = GET_MQTT_DEVICE_BY_ID(led_id_2).device_type         
+                            led_ieeeAddr_2    = request.form.get("set_led_ieeeAddr_2_" + str(i))
+                            led_name_2        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_2).name   
+                            led_device_type_2 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_2).device_type         
 
                         except:
-                            led_id_2          = "None"
+                            led_ieeeAddr_2    = "None"
                             led_name_2        = "None"
                             led_device_type_2 = "None"
 
@@ -694,12 +695,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_3          = int(request.form.get("set_led_id_3_" + str(i)))
-                            led_name_3        = GET_MQTT_DEVICE_BY_ID(led_id_3).name   
-                            led_device_type_3 = GET_MQTT_DEVICE_BY_ID(led_id_3).device_type         
+                            led_ieeeAddr_3    = request.form.get("set_led_ieeeAddr_3_" + str(i))
+                            led_name_3        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_3).name   
+                            led_device_type_3 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_3).device_type         
 
                         except:
-                            led_id_3          = "None"
+                            led_ieeeAddr_3    = "None"
                             led_name_3        = "None"
                             led_device_type_3 = "None"
 
@@ -708,12 +709,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_4          = int(request.form.get("set_led_id_4_" + str(i)))
-                            led_name_4        = GET_MQTT_DEVICE_BY_ID(led_id_4).name   
-                            led_device_type_4 = GET_MQTT_DEVICE_BY_ID(led_id_4).device_type         
+                            led_ieeeAddr_4    = request.form.get("set_led_ieeeAddr_4_" + str(i))
+                            led_name_4        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_4).name   
+                            led_device_type_4 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_4).device_type         
 
                         except:
-                            led_id_4          = "None"
+                            led_ieeeAddr_4    = "None"
                             led_name_4        = "None"
                             led_device_type_4 = "None"
 
@@ -722,12 +723,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_5          = int(request.form.get("set_led_id_5_" + str(i)))
-                            led_name_5        = GET_MQTT_DEVICE_BY_ID(led_id_5).name   
-                            led_device_type_5 = GET_MQTT_DEVICE_BY_ID(led_id_5).device_type         
+                            led_ieeeAddr_5    = request.form.get("set_led_ieeeAddr_5_" + str(i))
+                            led_name_5        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_5).name   
+                            led_device_type_5 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_5).device_type         
 
                         except:
-                            led_id_5          = "None"
+                            led_ieeeAddr_5    = "None"
                             led_name_5        = "None"
                             led_device_type_5 = "None"
 
@@ -736,12 +737,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_6          = int(request.form.get("set_led_id_6_" + str(i)))
-                            led_name_6        = GET_MQTT_DEVICE_BY_ID(led_id_6).name   
-                            led_device_type_6 = GET_MQTT_DEVICE_BY_ID(led_id_6).device_type         
+                            led_ieeeAddr_6    = request.form.get("set_led_ieeeAddr_6_" + str(i))
+                            led_name_6        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_6).name   
+                            led_device_type_6 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_6).device_type         
 
                         except:
-                            led_id_6          = "None"
+                            led_ieeeAddr_6    = "None"
                             led_name_6        = "None"
                             led_device_type_6 = "None"
 
@@ -750,12 +751,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_7          = int(request.form.get("set_led_id_7_" + str(i)))
-                            led_name_7        = GET_MQTT_DEVICE_BY_ID(led_id_7).name   
-                            led_device_type_7 = GET_MQTT_DEVICE_BY_ID(led_id_7).device_type         
+                            led_ieeeAddr_7    = request.form.get("set_led_ieeeAddr_7_" + str(i))
+                            led_name_7        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_7).name   
+                            led_device_type_7 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_7).device_type         
 
                         except:
-                            led_id_7          = "None"
+                            led_ieeeAddr_7    = "None"
                             led_name_7        = "None"
                             led_device_type_7 = "None"
 
@@ -764,12 +765,12 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_8          = int(request.form.get("set_led_id_8_" + str(i)))
-                            led_name_8        = GET_MQTT_DEVICE_BY_ID(led_id_8).name   
-                            led_device_type_8 = GET_MQTT_DEVICE_BY_ID(led_id_8).device_type         
+                            led_ieeeAddr_8    = request.form.get("set_led_ieeeAddr_8_" + str(i))
+                            led_name_8        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_8).name   
+                            led_device_type_8 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_8).device_type         
 
                         except:
-                            led_id_8          = "None"
+                            led_ieeeAddr_8    = "None"
                             led_name_8        = "None"
                             led_device_type_8 = "None"
 
@@ -778,27 +779,27 @@ def dashboard_led_groups():
                         #######
 
                         try: 
-                            led_id_9          = int(request.form.get("set_led_id_9_" + str(i)))
-                            led_name_9        = GET_MQTT_DEVICE_BY_ID(led_id_9).name   
-                            led_device_type_9 = GET_MQTT_DEVICE_BY_ID(led_id_9).device_type         
+                            led_ieeeAddr_9    = request.form.get("set_led_ieeeAddr_9_" + str(i))
+                            led_name_9        = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_9).name   
+                            led_device_type_9 = GET_MQTT_DEVICE_BY_IEEEADDR(led_ieeeAddr_9).device_type         
 
                         except:
-                            led_id_9          = "None"
+                            led_ieeeAddr_9    = "None"
                             led_name_9        = "None"
                             led_device_type_9 = "None"
 
 
                         SET_LED_GROUP_CHANGE_ERRORS(i, error_change_settings[:-1])
 
-                        SET_LED_GROUP(i, name, led_id_1, led_name_1, led_device_type_1,
-                                               led_id_2, led_name_2, led_device_type_2,
-                                               led_id_3, led_name_3, led_device_type_3,
-                                               led_id_4, led_name_4, led_device_type_4,
-                                               led_id_5, led_name_5, led_device_type_5,
-                                               led_id_6, led_name_6, led_device_type_6,
-                                               led_id_7, led_name_7, led_device_type_7,
-                                               led_id_8, led_name_8, led_device_type_8,
-                                               led_id_9, led_name_9, led_device_type_9)
+                        SET_LED_GROUP(i, name, led_ieeeAddr_1, led_name_1, led_device_type_1,
+                                               led_ieeeAddr_2, led_name_2, led_device_type_2,
+                                               led_ieeeAddr_3, led_name_3, led_device_type_3,
+                                               led_ieeeAddr_4, led_name_4, led_device_type_4,
+                                               led_ieeeAddr_5, led_name_5, led_device_type_5,
+                                               led_ieeeAddr_6, led_name_6, led_device_type_6,
+                                               led_ieeeAddr_7, led_name_7, led_device_type_7,
+                                               led_ieeeAddr_8, led_name_8, led_device_type_8,
+                                               led_ieeeAddr_9, led_name_9, led_device_type_9)
  
 
     error_message_settings = CHECK_LED_GROUP_SETTINGS(GET_ALL_LED_GROUPS())

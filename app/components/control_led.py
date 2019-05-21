@@ -118,7 +118,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             scene = GET_LED_SCENE_BY_ID(scene_id)
         
             # led 1
-            led_1        = GET_MQTT_DEVICE_BY_ID(group.led_id_1)
+            led_1        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_1)
             brightness_1 = scene.brightness_1*(brightness_global/100)
             
             if led_1.device_type == "led_rgb":
@@ -130,7 +130,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
             # led 2
             if group.active_led_2 == "on": 
-                led_2        = GET_MQTT_DEVICE_BY_ID(group.led_id_2)
+                led_2        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
                 brightness_2 = scene.brightness_2*(brightness_global/100)
                 
                 if led_2.device_type == "led_rgb":
@@ -142,7 +142,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
             # led 3
             if group.active_led_3 == "on": 
-                led_3        = GET_MQTT_DEVICE_BY_ID(group.led_id_3)
+                led_3        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)
                 brightness_3 = scene.brightness_3*(brightness_global/100)
                 
                 if led_3.device_type == "led_rgb":
@@ -154,7 +154,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
             # led 4
             if group.active_led_4 == "on": 
-                led_4        = GET_MQTT_DEVICE_BY_ID(group.led_id_4)
+                led_4        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)
                 brightness_4 = scene.brightness_4*(brightness_global/100)
                 
                 if led_4.device_type == "led_rgb":
@@ -166,7 +166,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
 
             # led 5
             if group.active_led_5 == "on": 
-                led_5        = GET_MQTT_DEVICE_BY_ID(group.led_id_5)
+                led_5        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)
                 brightness_5 = scene.brightness_5*(brightness_global/100)
                 
                 if led_5.device_type == "led_rgb":
@@ -178,7 +178,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                     
             # led 6
             if group.active_led_6 == "on": 
-                led_6        = GET_MQTT_DEVICE_BY_ID(group.led_id_6)
+                led_6        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)
                 brightness_6 = scene.brightness_6*(brightness_global/100)
                 
                 if led_6.device_type == "led_rgb":
@@ -190,7 +190,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                     
             # led 7
             if group.active_led_7 == "on": 
-                led_7        = GET_MQTT_DEVICE_BY_ID(group.led_id_7)
+                led_7        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)
                 brightness_7 = scene.brightness_7*(brightness_global/100)
                 
                 if led_7.device_type == "led_rgb":
@@ -202,7 +202,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                     
             # led 8
             if group.active_led_8 == "on": 
-                led_8        = GET_MQTT_DEVICE_BY_ID(group.led_id_8)
+                led_8        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)
                 brightness_8 = scene.brightness_8*(brightness_global/100)
                 
                 if led_8.device_type == "led_rgb":
@@ -214,7 +214,7 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                     
             # led 9
             if group.active_led_9 == "on":  
-                led_9        = GET_MQTT_DEVICE_BY_ID(group.led_id_9)
+                led_9        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)
                 brightness_9 = scene.brightness_9*(brightness_global/100)
                 
                 if led_9.device_type == "led_rgb":
@@ -254,63 +254,63 @@ def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
             scene      = GET_LED_SCENE_BY_NAME(scene_name)
             
             # led 1
-            led_1        = GET_MQTT_DEVICE_BY_ID(group.led_id_1)
+            led_1        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_1)
             brightness_1 = scene.brightness_1*(brightness_global/100)
             
             SETTING_LED_BRIGHTNESS(led_1.name, int(brightness_1))
                 
             # led 2
             if group.active_led_2 == "on":       
-                led_2        = GET_MQTT_DEVICE_BY_ID(group.led_id_2)
+                led_2        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
                 brightness_2 = scene.brightness_2*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_2.name, int(brightness_2))
 
             # led 3
             if group.active_led_3 == "on":      
-                led_3        = GET_MQTT_DEVICE_BY_ID(group.led_id_3)
+                led_3        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)
                 brightness_3 = scene.brightness_3*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_3.name, int(brightness_3))
 
             # led 4
             if group.active_led_4 == "on":      
-                led_4        = GET_MQTT_DEVICE_BY_ID(group.led_id_4)
+                led_4        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)
                 brightness_4 = scene.brightness_4*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_4.name, int(brightness_4))
 
             # led 5
             if group.active_led_5 == "on":      
-                led_5        = GET_MQTT_DEVICE_BY_ID(group.led_id_5)
+                led_5        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)
                 brightness_5 = scene.brightness_5*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_5.name, int(brightness_5))
 
             # led 6
             if group.active_led_6 == "on":       
-                led_6        = GET_MQTT_DEVICE_BY_ID(group.led_id_6)
+                led_6        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)
                 brightness_6 = scene.brightness_6*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_6.name, int(brightness_6))
 
             # led 7
             if group.active_led_7 == "on":      
-                led_7        = GET_MQTT_DEVICE_BY_ID(group.led_id_7)
+                led_7        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)
                 brightness_7 = scene.brightness_7*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_7.name, int(brightness_7))
 
             # led 8
             if group.active_led_8 == "on":      
-                led_8        = GET_MQTT_DEVICE_BY_ID(group.led_id_8)
+                led_8        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)
                 brightness_8 = scene.brightness_8*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_8.name, int(brightness_8))
 
             # led 9
             if group.active_led_9 == "on":      
-                led_9        = GET_MQTT_DEVICE_BY_ID(group.led_id_9)
+                led_9        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)
                 brightness_9 = scene.brightness_9*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_9.name, int(brightness_9))

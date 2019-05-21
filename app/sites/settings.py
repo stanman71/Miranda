@@ -327,9 +327,8 @@ def dashboard_settings_controller():
 
         if request.form.get("add_controller") != None: 
             
-            if request.form.get("set_mqtt_device_id") != None:
-                mqtt_device_id               = request.form.get("set_mqtt_device_id")
-                mqtt_device_ieeeAddr         = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).ieeeAddr
+            if request.form.get("set_mqtt_device_ieeeAddr") != None:
+                mqtt_device_ieeeAddr         = request.form.get("set_mqtt_device_ieeeAddr")
                 error_message_add_controller = ADD_CONTROLLER(mqtt_device_ieeeAddr)
 
             else:

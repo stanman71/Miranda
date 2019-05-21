@@ -145,11 +145,11 @@
                   <td>1</td>
                   <td>{{ entry.led_device_type_1 }}</td> 
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_1_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_1 }}" > {{ entry.led_name_1 }} </option>
-                        <option value= "{{ entry.led_id_1 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_1_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_1 }}" > {{ entry.led_name_1 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_1 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -168,11 +168,11 @@
                   <td>2</td>
                   <td>{{ entry.led_device_type_2 }}</td>               
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_2_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_2 }}" > {{ entry.led_name_2 }} </option>
-                        <option value= "{{ entry.led_id_2 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_2_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_2 }}" > {{ entry.led_name_2 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_2 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -193,11 +193,11 @@
                   <td>3</td>
                   <td>{{ entry.led_device_type_3 }}</td>              
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_3_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_3 }}" > {{ entry.led_name_3 }} </option>
-                        <option value= "{{ entry.led_id_3 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_3_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_3 }}" > {{ entry.led_name_3 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_3 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -218,11 +218,11 @@
                   <td>4</td>
                   <td>{{ entry.led_device_type_4 }}</td>                
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_4_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_4 }}" > {{ entry.led_name_4 }} </option>
-                        <option value= "{{ entry.led_id_4 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_4_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_4 }}" > {{ entry.led_name_4 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_4 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -243,11 +243,11 @@
                   <td>5</td>
                   <td>{{ entry.led_device_type_5 }}</td>               
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_5_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_5 }}" > {{ entry.led_name_5 }} </option>
-                        <option value= "{{ entry.led_id_5 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_5_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_5 }}" > {{ entry.led_name_5 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_5 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -268,11 +268,11 @@
                   <td>6</td>
                   <td>{{ entry.led_device_type_6 }}</td>               
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_6_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_6 }}" > {{ entry.led_name_6 }} </option>
-                        <option value= "{{ entry.led_id_6 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_6_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_6 }}" > {{ entry.led_name_6 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_6 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -293,11 +293,11 @@
                   <td>7</td>
                   <td>{{ entry.led_device_type_7 }}</td>               
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_7_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_7 }}" > {{ entry.led_name_7 }} </option>
-                        <option value= "{{ entry.led_id_7 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_7_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_7 }}" > {{ entry.led_name_7 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_7 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -318,11 +318,11 @@
                   <td>8</td>
                   <td>{{ entry.led_device_type_8 }}</td>              
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_8_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_8 }}" > {{ entry.led_name_8 }} </option>
-                        <option value= "{{ entry.led_id_8 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_8_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_8 }}" > {{ entry.led_name_8 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_8 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 
@@ -343,11 +343,11 @@
                   <td>9</td>
                   <td>{{ entry.led_device_type_9 }}</td>                
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_led_id_9_{{ entry.id }}">
-                        <option value= "{{ entry.led_id_9 }}" > {{ entry.led_name_9 }} </option>
-                        <option value= "{{ entry.led_id_9 }}" > ------------------------------- </option>                                        
+                    <select class="btn btn-default dropdown-toggle" name="set_led_ieeeAddr_9_{{ entry.id }}">
+                        <option value= "{{ entry.led_ieeeAddr_9 }}" > {{ entry.led_name_9 }} </option>
+                        <option value= "{{ entry.led_ieeeAddr_9 }}" > ------------------------------- </option>                                        
                       {% for each in dropdown_list_leds %}
-                        <option value="{{ each.id }}"> {{ each.name }} </option>
+                        <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
                       {% endfor %}
                     </select> 
                   </td> 

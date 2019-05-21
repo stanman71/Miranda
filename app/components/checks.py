@@ -39,23 +39,23 @@ def CHECK_LED_GROUP_SETTINGS(settings):
    list_errors = []
 
    for element in settings:
-      if element.led_id_1 == None or element.led_id_1 == "None":
+      if element.led_ieeeAddr_1 == None or element.led_ieeeAddr_1 == "None":
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 1")        
-      if element.active_led_2 == "on" and (element.led_id_2 == None or element.led_id_2 == "None"):
+      if element.active_led_2 == "on" and (element.led_ieeeAddr_2 == None or element.led_ieeeAddr_2 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 2") 
-      if element.active_led_3 == "on" and (element.led_id_3 == None or element.led_id_3 == "None"):
+      if element.active_led_3 == "on" and (element.led_ieeeAddr_3 == None or element.led_ieeeAddr_3 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 3") 
-      if element.active_led_4 == "on" and (element.led_id_4 == None or element.led_id_4 == "None"):
+      if element.active_led_4 == "on" and (element.led_ieeeAddr_4 == None or element.led_ieeeAddr_4 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 4") 
-      if element.active_led_5 == "on" and (element.led_id_5 == None or element.led_id_5 == "None"):
+      if element.active_led_5 == "on" and (element.led_ieeeAddr_5 == None or element.led_ieeeAddr_5 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 5") 
-      if element.active_led_6 == "on" and (element.led_id_6 == None or element.led_id_6 == "None"):
+      if element.active_led_6 == "on" and (element.led_ieeeAddr_6 == None or element.led_ieeeAddr_6 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 6") 
-      if element.active_led_7 == "on" and (element.led_id_7 == None or element.led_id_7 == "None"):
+      if element.active_led_7 == "on" and (element.led_ieeeAddr_7 == None or element.led_ieeeAddr_7 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 7") 
-      if element.active_led_8 == "on" and (element.led_id_8 == None or element.led_id_8 == "None"):
+      if element.active_led_8 == "on" and (element.led_ieeeAddr_8 == None or element.led_ieeeAddr_8 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 8") 
-      if element.active_led_9 == "on" and (element.led_id_9 == None or element.led_id_9 == "None"):
+      if element.active_led_9 == "on" and (element.led_ieeeAddr_9 == None or element.led_ieeeAddr_9 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")                     
 
    if list_errors == []:
@@ -86,7 +86,7 @@ def CHECK_PLANTS_SETTINGS():
       for entry in entries:
 
          if entry.id != plant.id:
-            if ((entry.mqtt_device_id == plant.mqtt_device_id and entry.pump_key == plant.pump_key) and  
+            if ((entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr and entry.pump_key == plant.pump_key) and  
                 (entry.pump_key != None and entry.pump_key != "None" and entry.pump_key != "")):
                list_errors.append(entry.name + " >>> Pumpe mehrmals zugeordnet")
 
@@ -102,7 +102,7 @@ def CHECK_PLANTS_SETTINGS():
       for entry in entries:
 
          if entry.id != plant.id:
-            if ((entry.mqtt_device_id == plant.mqtt_device_id and entry.sensor_key == plant.sensor_key) and  
+            if ((entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr and entry.sensor_key == plant.sensor_key) and  
                 (entry.sensor_key != None and entry.sensor_key != "None" and entry.sensor_key != "")):
                list_errors.append(entry.name + " >>> Sensor mehrmals zugeordnet")
 
@@ -279,16 +279,16 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
 
          # check mqtt devices
          
-         if task.mqtt_device_id_1 == "None" or task.mqtt_device_id_1 == "" or task.mqtt_device_id_1 == None:
+         if task.mqtt_device_ieeeAddr_1 == "None" or task.mqtt_device_ieeeAddr_1 == "" or task.mqtt_device_ieeeAddr_1 == None:
             list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
             list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1")
 
-         if task.mqtt_device_id_2 == "None" or task.mqtt_device_id_2 == "" or task.mqtt_device_id_2 == None:
+         if task.mqtt_device_ieeeAddr_2 == "None" or task.mqtt_device_ieeeAddr_2 == "" or task.mqtt_device_ieeeAddr_2 == None:
             if task.operator_main_1 != "None" and task.operator_main_1 != None:
                list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
                list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2")
 
-         if task.mqtt_device_id_3 == "None" or task.mqtt_device_id_3 == "" or task.mqtt_device_id_3 == None:
+         if task.mqtt_device_ieeeAddr_3 == "None" or task.mqtt_device_ieeeAddr_3 == "" or task.mqtt_device_ieeeAddr_3 == None:
             if task.operator_main_1 != "None" and task.operator_main_1 != None:
                if task.operator_main_2 != "None" and task.operator_main_2 != None:
                   list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")  

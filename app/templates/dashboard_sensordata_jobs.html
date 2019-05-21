@@ -250,13 +250,13 @@
                       <input type="text" class="form-control" name="set_filename_{{ entry.id }}" value="{{ entry.filename }}" />                    
                     </td> 
                     <td>
-                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_{{ entry.id }}">
-                        {% if entry.mqtt_device_id == "None" or  entry.mqtt_device_id == None %} 
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_{{ entry.id }}">
+                        {% if entry.mqtt_device_ieeeAddr == "None" or  entry.mqtt_device_ieeeAddr == None %} 
                          <option value= "" > Sensor wählen </option>
                          <option value= "" > -------------------- </option>                           
                         {% else %}
-                          <option value= "{{ entry.mqtt_device_id }}" > {{ entry.mqtt_device.name }} </option>
-                          <option value= "{{ entry.mqtt_device_id }}" > -------------------- </option>
+                          <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
+                          <option value= "{{ entry.mqtt_device_ieeeAddr }}" > -------------------- </option>
                         {% endif %}
                         {% for each in dropdown_list_mqtt_devices %}
                           <option value="{{ each.id }}"> {{ each.name }} </option>

@@ -126,39 +126,39 @@ class LED_Groups(db.Model):
     __tablename__         = 'led_groups'
     id                    = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name                  = db.Column(db.String(50), unique = True)
-    led_id_1              = db.Column(db.Integer)
+    led_ieeeAddr_1        = db.Column(db.String(50))
     led_name_1            = db.Column(db.String(50))
     led_device_type_1     = db.Column(db.String(50))
     active_led_2          = db.Column(db.String(50))
-    led_id_2              = db.Column(db.Integer)
+    led_ieeeAddr_2        = db.Column(db.String(50))           
     led_name_2            = db.Column(db.String(50))
     led_device_type_2     = db.Column(db.String(50))
     active_led_3          = db.Column(db.String(50))
-    led_id_3              = db.Column(db.Integer)
+    led_ieeeAddr_3        = db.Column(db.String(50))           
     led_name_3            = db.Column(db.String(50))
     led_device_type_3     = db.Column(db.String(50))
     active_led_4          = db.Column(db.String(50))
-    led_id_4              = db.Column(db.Integer)
+    led_ieeeAddr_4        = db.Column(db.String(50))       
     led_name_4            = db.Column(db.String(50))
     led_device_type_4     = db.Column(db.String(50))
     active_led_5          = db.Column(db.String(50))
-    led_id_5              = db.Column(db.Integer)
+    led_ieeeAddr_5        = db.Column(db.String(50))         
     led_name_5            = db.Column(db.String(50)) 
     led_device_type_5     = db.Column(db.String(50))
     active_led_6          = db.Column(db.String(50))
-    led_id_6              = db.Column(db.Integer)
+    led_ieeeAddr_6        = db.Column(db.String(50))
     led_name_6            = db.Column(db.String(50))
     led_device_type_6     = db.Column(db.String(50))
     active_led_7          = db.Column(db.String(50))
-    led_id_7              = db.Column(db.Integer)
+    led_ieeeAddr_7        = db.Column(db.String(50))
     led_name_7            = db.Column(db.String(50))
     led_device_type_7     = db.Column(db.String(50))
     active_led_8          = db.Column(db.String(50))
-    led_id_8              = db.Column(db.Integer)
+    led_ieeeAddr_8        = db.Column(db.String(50))
     led_name_8            = db.Column(db.String(50))
     led_device_type_8     = db.Column(db.String(50))
     active_led_9          = db.Column(db.String(50))
-    led_id_9              = db.Column(db.Integer)
+    led_ieeeAddr_9        = db.Column(db.String(50))
     led_name_9            = db.Column(db.String(50)) 
     led_device_type_9     = db.Column(db.String(50))
     current_setting       = db.Column(db.String(50))
@@ -249,14 +249,14 @@ class MQTT_Devices(db.Model):
 
 class Plants(db.Model):
     __tablename__  = 'plants'
-    id             = db.Column(db.Integer, primary_key=True, autoincrement = True)   
-    name           = db.Column(db.String(50), unique=True)
-    mqtt_device_id = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    pumptime       = db.Column(db.Integer)
-    mqtt_device    = db.relationship('MQTT_Devices')  
-    pump_key       = db.Column(db.String(50))
-    sensor_key     = db.Column(db.String(50))
-    control_sensor = db.Column(db.String(50))     
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name                 = db.Column(db.String(50), unique=True)
+    mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr'))   
+    mqtt_device          = db.relationship('MQTT_Devices')      
+    pumptime             = db.Column(db.Integer)
+    pump_key             = db.Column(db.String(50))
+    sensor_key           = db.Column(db.String(50))
+    control_sensor       = db.Column(db.String(50))     
 
 class Scheduler_Tasks(db.Model):
     __tablename__ = 'scheduler_tasks'
@@ -271,21 +271,21 @@ class Scheduler_Tasks(db.Model):
     day                     = db.Column(db.String(50), server_default=("None"))
     hour                    = db.Column(db.String(50), server_default=("None"))
     minute                  = db.Column(db.String(50), server_default=("None"))
-    mqtt_device_id_1        = db.Column(db.Integer)  
+    mqtt_device_ieeeAddr_1  = db.Column(db.String(50), server_default=("None"))  
     mqtt_device_name_1      = db.Column(db.String(50), server_default=("None")) 
     mqtt_device_inputs_1    = db.Column(db.String(100), server_default=("None")) 
     sensor_key_1            = db.Column(db.String(50), server_default=("None"))    
     value_1                 = db.Column(db.String(100), server_default=("None"))
     operator_1              = db.Column(db.String(50), server_default=("None"))
     operator_main_1         = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_id_2        = db.Column(db.Integer) 
+    mqtt_device_ieeeAddr_2  = db.Column(db.String(50), server_default=("None"))  
     mqtt_device_name_2      = db.Column(db.String(50), server_default=("None"))        
     mqtt_device_inputs_2    = db.Column(db.String(100), server_default=("None")) 
     sensor_key_2            = db.Column(db.String(50), server_default=("None"))    
     value_2                 = db.Column(db.String(100), server_default=("None"))
     operator_2              = db.Column(db.String(50), server_default=("None"))   
     operator_main_2         = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_id_3        = db.Column(db.Integer) 
+    mqtt_device_ieeeAddr_3  = db.Column(db.String(50), server_default=("None"))  
     mqtt_device_name_3      = db.Column(db.String(50), server_default=("None"))        
     mqtt_device_inputs_3    = db.Column(db.String(100), server_default=("None")) 
     sensor_key_3            = db.Column(db.String(50), server_default=("None"))    
@@ -308,13 +308,13 @@ class Scheduler_Tasks(db.Model):
 
 class Sensordata_Jobs(db.Model):
     __tablename__  = 'sensordata_jobs'
-    id               = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name             = db.Column(db.String(50), unique=True)
-    filename         = db.Column(db.String(50))
-    mqtt_device_id   = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id'))   
-    mqtt_device      = db.relationship('MQTT_Devices')  
-    sensor_key       = db.Column(db.String(50)) 
-    always_active    = db.Column(db.String(50))
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                 = db.Column(db.String(50), unique=True)
+    filename             = db.Column(db.String(50))
+    mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr'))  
+    mqtt_device          = db.relationship('MQTT_Devices')  
+    sensor_key           = db.Column(db.String(50)) 
+    always_active        = db.Column(db.String(50))
 
 class Snowboy_Settings(db.Model):
     __tablename__  = 'snowboy_settings'
@@ -516,8 +516,6 @@ def UPDATE_CONTROLLER_COMMANDS():
         mqtt_device_inputs = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).inputs
         mqtt_device_inputs = mqtt_device_inputs.split(",")
 
-        print(mqtt_device_inputs)
-        
         try:
             mqtt_device_input    = mqtt_device_inputs[0].replace(" ","")
             mqtt_device_input    = mqtt_device_input.replace("=", " = ")
@@ -530,9 +528,49 @@ def UPDATE_CONTROLLER_COMMANDS():
             controller.command_2 = mqtt_device_input
         except:
             controller.command_2 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[2].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_3 = mqtt_device_input
+        except:
+            controller.command_3 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[3].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_4 = mqtt_device_input
+        except:
+            controller.command_4 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[4].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_5 = mqtt_device_input
+        except:
+            controller.command_5 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[5].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_6 = mqtt_device_input
+        except:
+            controller.command_6 = "None"            
+        try:
+            mqtt_device_input    = mqtt_device_inputs[6].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_7 = mqtt_device_input
+        except:
+            controller.command_7 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[7].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_8 = mqtt_device_input
+        except:
+            controller.command_8 = "None"
+        try:
+            mqtt_device_input    = mqtt_device_inputs[8].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_9 = mqtt_device_input
+        except:
+            controller.command_9 = "None"      
 
-
-            
         db.session.commit()
 
 
@@ -1090,7 +1128,7 @@ def GET_ALL_ACTIVE_LED_GROUPS():
     list_active_groups = []
 
     for group in LED_Groups.query.all():
-        if group.led_id_1 != None and group.led_id_1 != "None":
+        if group.led_ieeeAddr_1 != None and group.led_ieeeAddr_1 != "None":
             list_active_groups.append(group)
             
     return list_active_groups
@@ -1136,44 +1174,44 @@ def ADD_LED_GROUP(name):
         return "Name bereits vergeben"
 
 
-def SET_LED_GROUP(id, name, led_id_1, led_name_1, led_device_type_1, 
-                            led_id_2, led_name_2, led_device_type_2,
-                            led_id_3, led_name_3, led_device_type_3,
-                            led_id_4, led_name_4, led_device_type_4,
-                            led_id_5, led_name_5, led_device_type_5,
-                            led_id_6, led_name_6, led_device_type_6,
-                            led_id_7, led_name_7, led_device_type_7,
-                            led_id_8, led_name_8, led_device_type_8,
-                            led_id_9, led_name_9, led_device_type_9):
+def SET_LED_GROUP(id, name, led_ieeeAddr_1, led_name_1, led_device_type_1, 
+                            led_ieeeAddr_2, led_name_2, led_device_type_2,
+                            led_ieeeAddr_3, led_name_3, led_device_type_3,
+                            led_ieeeAddr_4, led_name_4, led_device_type_4,
+                            led_ieeeAddr_5, led_name_5, led_device_type_5,
+                            led_ieeeAddr_6, led_name_6, led_device_type_6,
+                            led_ieeeAddr_7, led_name_7, led_device_type_7,
+                            led_ieeeAddr_8, led_name_8, led_device_type_8,
+                            led_ieeeAddr_9, led_name_9, led_device_type_9):
 
     entry = LED_Groups.query.filter_by(id=id).first()
     entry.name = name
     
-    entry.led_id_1          = led_id_1
+    entry.led_ieeeAddr_1    = led_ieeeAddr_1
     entry.led_name_1        = led_name_1
     entry.led_device_type_1 = led_device_type_1
-    entry.led_id_2          = led_id_2
+    entry.led_ieeeAddr_2    = led_ieeeAddr_2
     entry.led_name_2        = led_name_2
     entry.led_device_type_2 = led_device_type_2 
-    entry.led_id_3          = led_id_3
+    entry.led_ieeeAddr_3    = led_ieeeAddr_3
     entry.led_name_3        = led_name_3
     entry.led_device_type_3 = led_device_type_3
-    entry.led_id_4          = led_id_4
+    entry.led_ieeeAddr_4    = led_ieeeAddr_4
     entry.led_name_4        = led_name_4
     entry.led_device_type_4 = led_device_type_4
-    entry.led_id_5          = led_id_5
+    entry.led_ieeeAddr_5    = led_ieeeAddr_5
     entry.led_name_5        = led_name_5
     entry.led_device_type_5 = led_device_type_5
-    entry.led_id_6          = led_id_6
+    entry.led_ieeeAddr_6    = led_ieeeAddr_6
     entry.led_name_6        = led_name_6
     entry.led_device_type_6 = led_device_type_6 
-    entry.led_id_7          = led_id_7
+    entry.led_ieeeAddr_7    = led_ieeeAddr_7
     entry.led_name_7        = led_name_7
     entry.led_device_type_7 = led_device_type_7
-    entry.led_id_8          = led_id_8
+    entry.led_ieeeAddr_8    = led_ieeeAddr_8
     entry.led_name_8        = led_name_8
     entry.led_device_type_8 = led_device_type_8
-    entry.led_id_9          = led_id_9
+    entry.led_ieeeAddr_9    = led_ieeeAddr_9
     entry.led_name_9        = led_name_9
     entry.led_device_type_9 = led_device_type_9
        
@@ -1207,48 +1245,48 @@ def UPDATE_LED_GROUP_LED_NAMES():
         entry = LED_Groups.query.filter_by(id=group.id).first()
         
         try:
-            entry.led_name_1        = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).name
-            entry.led_device_type_1 = GET_MQTT_DEVICE_BY_ID(entry.led_id_1).device_type
+            entry.led_name_1        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).name
+            entry.led_device_type_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).device_type
         except:
             pass
         try:
-            entry.led_name_2        = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).name 
-            entry.led_device_type_2 = GET_MQTT_DEVICE_BY_ID(entry.led_id_2).device_type
+            entry.led_name_2        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).name
+            entry.led_device_type_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).device_type
         except:
             pass
         try:
-            entry.led_name_3        = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).name 
-            entry.led_device_type_3 = GET_MQTT_DEVICE_BY_ID(entry.led_id_3).device_type
+            entry.led_name_3        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).name
+            entry.led_device_type_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).device_type
         except:
             pass
         try:
-            entry.led_name_4        = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).name 
-            entry.led_device_type_4 = GET_MQTT_DEVICE_BY_ID(entry.led_id_4).device_type
+            entry.led_name_4        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).name
+            entry.led_device_type_4 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).device_type
         except:
             pass
         try:
-            entry.led_name_5        = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).name 
-            entry.led_device_type_5 = GET_MQTT_DEVICE_BY_ID(entry.led_id_5).device_type
+            entry.led_name_5        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).name
+            entry.led_device_type_5 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).device_type
         except:
             pass
         try:
-            entry.led_name_6        = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).name 
-            entry.led_device_type_6 = GET_MQTT_DEVICE_BY_ID(entry.led_id_6).device_type
+            entry.led_name_6        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).name
+            entry.led_device_type_6 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).device_type
         except:
             pass
         try:
-            entry.led_name_7        = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).name 
-            entry.led_device_type_7 = GET_MQTT_DEVICE_BY_ID(entry.led_id_7).device_type
+            entry.led_name_7        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).name
+            entry.led_device_type_7 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).device_type
         except:
             pass
         try:
-            entry.led_name_8        = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).name 
-            entry.led_device_type_8 = GET_MQTT_DEVICE_BY_ID(entry.led_id_8).device_type  
+            entry.led_name_8        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).name
+            entry.led_device_type_8 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).device_type
         except:
             pass
         try:
-            entry.led_name_9        = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).name 
-            entry.led_device_type_9 = GET_MQTT_DEVICE_BY_ID(entry.led_id_9).device_type
+            entry.led_name_9        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).name
+            entry.led_device_type_9 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).device_type
         except:
             pass            
         
@@ -1354,42 +1392,42 @@ def REMOVE_LED_GROUP_LED(id, led):
 
     if led == 2:
         entry.active_led_2      = "None"
-        entry.led_id_2          = "None"
+        entry.led_ieeeAddr_2    = "None"
         entry.led_name_2        = "None"
         entry.led_device_type_2 = "None"
     if led == 3:
         entry.active_led_3      = "None"     
-        entry.led_id_3          = "None"
+        entry.led_ieeeAddr_3    = "None"
         entry.led_name_3        = "None" 
         entry.led_device_type_3 = "None"
     if led == 4:
         entry.active_led_4      = "None"     
-        entry.led_id_4          = "None"
+        entry.led_ieeeAddr_4    = "None"
         entry.led_name_4        = "None" 
         entry.led_device_type_4 = "None"
     if led == 5:
         entry.active_led_5      = "None"     
-        entry.led_id_5          = "None"
+        entry.led_ieeeAddr_5    = "None"
         entry.led_name_5        = "None" 
         entry.led_device_type_5 = "None"
     if led == 6:
         entry.active_led_6      = "None"     
-        entry.led_id_6          = "None"
+        entry.led_ieeeAddr_6    = "None"
         entry.led_name_6        = "None" 
         entry.led_device_type_6 = "None"
     if led == 7:
         entry.active_led_7      = "None"     
-        entry.led_id_7          = "None"
+        entry.led_ieeeAddr_7    = "None"
         entry.led_name_7        = "None" 
         entry.led_device_type_7 = "None"
     if led == 8:
         entry.active_led_8      = "None"     
-        entry.led_id_8          = "None"
+        entry.led_ieeeAddr_8    = "None"
         entry.led_name_8        = "None" 
         entry.led_device_type_8 = "None"
     if led == 9:
         entry.active_led_9      = "None"     
-        entry.led_id_9          = "None"
+        entry.led_ieeeAddr_9    = "None"
         entry.led_name_9        = "None" 
         entry.led_device_type_9 = "None"
 
@@ -1753,7 +1791,7 @@ def GET_ALL_PLANTS():
     return Plants.query.all()
 
 
-def ADD_PLANT(name, mqtt_device_id):
+def ADD_PLANT(name, mqtt_device_ieeeAddr):
     # name exist ?
     check_entry = Plants.query.filter_by(name=name).first()
     if check_entry is None:
@@ -1764,9 +1802,10 @@ def ADD_PLANT(name, mqtt_device_id):
             else:
                 # add the new plant
                 plant = Plants(
-                        id             = i,
-                        name           = name, 
-                        mqtt_device_id = mqtt_device_id                
+                        id                   = i,
+                        name                 = name, 
+                        pumptime             = 30,
+                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr                
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1781,16 +1820,16 @@ def ADD_PLANT(name, mqtt_device_id):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime, control_sensor):        
+def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pump_key, sensor_key, pumptime, control_sensor):        
     entry = Plants.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.mqtt_device_id != mqtt_device_id or entry.pump_key != pump_key or  
+    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.pump_key != pump_key or  
         entry.sensor_key != sensor_key or entry.pumptime != int(pumptime) or entry.control_sensor != control_sensor):
 
         entry.name = name
-        entry.mqtt_device_id = mqtt_device_id
+        entry.mqtt_device_ieeeAddr = mqtt_device_ieeeAddr
         entry.pump_key = pump_key
         entry.sensor_key = sensor_key
         entry.pumptime = pumptime
@@ -1915,7 +1954,7 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
                 db.session.add(new_task)
                 db.session.commit()
 
-                SET_SCHEDULER_CHANGE_ERRORS(i, "")
+                SET_SCHEDULER_TASK_CHANGE_ERRORS(i, "")
             
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler | Task - " + name + " | Task_Type - " + task_type + " | added")            
                 
@@ -1930,11 +1969,11 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
 def SET_SCHEDULER_TASK(id, name, task,
                        option_time, option_sensors, option_expanded, option_repeat, 
                        day, hour, minute,
-                       mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1,  
+                       mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1,  
                        sensor_key_1, operator_1, value_1, operator_main_1,
-                       mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                       mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                        sensor_key_2, operator_2, value_2, operator_main_2,
-                       mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                       mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                        sensor_key_3, operator_3, value_3,
                        expanded_option_home, expanded_option_away, expanded_ip_adresses, 
                        expanded_option_sunrise, expanded_option_sunset, expanded_location):   
@@ -1947,11 +1986,11 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.option_time != option_time or entry.option_sensors != option_sensors or 
         entry.option_expanded != option_expanded or entry.option_repeat != option_repeat or
         entry.day != day or entry.hour != hour or entry.minute != minute or
-        str(entry.mqtt_device_id_1) != mqtt_device_id_1 or entry.sensor_key_1 != sensor_key_1 or 
+        str(entry.mqtt_device_ieeeAddr_1) != mqtt_device_ieeeAddr_1 or entry.sensor_key_1 != sensor_key_1 or 
         entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
-        str(entry.mqtt_device_id_2) != mqtt_device_id_2 or entry.sensor_key_2 != sensor_key_2 or 
+        str(entry.mqtt_device_ieeeAddr_2) != mqtt_device_ieeeAddr_2 or entry.sensor_key_2 != sensor_key_2 or 
         entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
-        str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
+        str(entry.mqtt_device_ieeeAddr_3) != mqtt_device_ieeeAddr_3 or entry.sensor_key_3 != sensor_key_3 or 
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
         entry.expanded_option_home != expanded_option_home or entry.expanded_option_away != expanded_option_away or 
         entry.expanded_ip_adresses != expanded_ip_adresses or entry.expanded_option_sunrise != expanded_option_sunrise or 
@@ -1966,21 +2005,21 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.day                     = day
         entry.hour                    = hour
         entry.minute                  = minute
-        entry.mqtt_device_id_1        = mqtt_device_id_1
+        entry.mqtt_device_ieeeAddr_1  = mqtt_device_ieeeAddr_1
         entry.mqtt_device_name_1      = mqtt_device_name_1
         entry.mqtt_device_inputs_1    = mqtt_device_inputs_1
         entry.sensor_key_1            = sensor_key_1
         entry.operator_1              = operator_1
         entry.value_1                 = value_1
         entry.operator_main_1         = operator_main_1
-        entry.mqtt_device_id_2        = mqtt_device_id_2
+        entry.mqtt_device_ieeeAddr_2  = mqtt_device_ieeeAddr_2
         entry.mqtt_device_name_2      = mqtt_device_name_2
         entry.mqtt_device_inputs_2    = mqtt_device_inputs_2
         entry.sensor_key_2            = sensor_key_2
         entry.operator_2              = operator_2
         entry.value_2                 = value_2        
         entry.operator_main_2         = operator_main_2
-        entry.mqtt_device_id_3        = mqtt_device_id_3
+        entry.mqtt_device_ieeeAddr_3  = mqtt_device_ieeeAddr_3
         entry.mqtt_device_name_3      = mqtt_device_name_3
         entry.mqtt_device_inputs_3    = mqtt_device_inputs_3
         entry.sensor_key_3            = sensor_key_3
@@ -2288,17 +2327,17 @@ def ADD_SENSORDATA_JOB(name, filename):
         return "Name bereits vergeben"
 
 
-def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_id, sensor_key, always_active):        
+def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_ieeeAddr, sensor_key, always_active):        
     entry = Sensordata_Jobs.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed?
-    if (entry.name != name or entry.filename != filename or entry.mqtt_device_id != mqtt_device_id or 
+    if (entry.name != name or entry.filename != filename or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or 
         entry.sensor_key != sensor_key or entry.always_active != always_active):
 
         entry.name = name
         entry.filename = filename
-        entry.mqtt_device_id = mqtt_device_id
+        entry.mqtt_device_ieeeAddr = mqtt_device_ieeeAddr
         entry.sensor_key = sensor_key
         entry.always_active = always_active
         db.session.commit()    

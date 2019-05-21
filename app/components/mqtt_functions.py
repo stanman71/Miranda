@@ -126,6 +126,7 @@ def MQTT_UPDATE_DEVICES(gateway):
       time.sleep(2)
       
       try:
+         
          messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log",10)
          
          if messages != "Message nicht gefunden" and messages != "Keine Verbindung zu ZigBee2MQTT":
@@ -158,9 +159,8 @@ def MQTT_UPDATE_DEVICES(gateway):
                            description = device_informations[1]
                            inputs      = device_informations[2]
                            outputs     = device_informations[3]  
-                           commands    = device_informations[4]    
-                           
-                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs, commands)
+
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs)
 
                         # update device informations
                         
@@ -180,19 +180,17 @@ def MQTT_UPDATE_DEVICES(gateway):
                               description = device_informations[1]
                               inputs      = device_informations[2]
                               outputs     = device_informations[3]  
-                              commands    = device_informations[4] 
 
                            except Exception as e:
                               device_type = device_data.device_type
                               description = device_data.description 
                               inputs      = device_data.inputs
                               outputs     = device_data.outputs	
-                              commands    = device_data.commands
                              
-                              error = "Error: >>> " + model + " not founded >>> " + str(e)
+                              error = "Error: >>> " + str(model) + " not founded >>> " + str(e)
                            
                                                                      
-                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs, commands)
+                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs)
                            SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
                            
                      if error != "":

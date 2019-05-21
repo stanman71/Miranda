@@ -148,21 +148,21 @@ def dashboard_scheduler():
                     option_time             = "checked"
                     option_sensors          = "None"
                     option_expanded         = "None"
-                    mqtt_device_id_1        = "None"
+                    mqtt_device_ieeeAddr_1  = "None"
                     mqtt_device_name_1      = "None"
                     mqtt_device_inputs_1    = "None"
                     sensor_key_1            = "None"
                     operator_1              = "None"
                     value_1                 = "None"
                     operator_main_1         = "None"
-                    mqtt_device_id_2        = "None"
+                    mqtt_device_ieeeAddr_2  = "None"
                     mqtt_device_name_2      = "None"
                     mqtt_device_inputs_2    = "None"
                     sensor_key_2            = "None"
                     operator_2              = "None"
                     value_2                 = "None"
                     operator_main_2         = "None"
-                    mqtt_device_id_3        = "None"
+                    mqtt_device_ieeeAddr_3  = "None"
                     mqtt_device_name_3      = "None"
                     mqtt_device_inputs_3    = "None"
                     sensor_key_3            = "None"
@@ -181,11 +181,11 @@ def dashboard_scheduler():
                     SET_SCHEDULER_TASK(i, name, task, 
                                           option_time, option_sensors, option_expanded, option_repeat, 
                                           day, hour, minute,
-                                          mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
+                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
                                           expanded_option_home, expanded_option_away, expanded_ip_adresses, 
                                           expanded_option_sunrise, expanded_option_sunset, expanded_location)
@@ -306,9 +306,33 @@ def dashboard_scheduler():
                     # sensor settings
                     # ###############              
 
-                    mqtt_device_id_1 = request.form.get("set_mqtt_device_id_1_" + str(i))
-                    mqtt_device_id_2 = request.form.get("set_mqtt_device_id_2_" + str(i))
-                    mqtt_device_id_3 = request.form.get("set_mqtt_device_id_3_" + str(i))                    
+                    mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))
+
+                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_1):
+                        mqtt_device_ieeeAddr_1 = mqtt_device_1
+                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_1):
+                        mqtt_device_ieeeAddr_1 = GET_MQTT_DEVICE_BY_ID(mqtt_device_1).ieeeAddr
+                    else:
+                        mqtt_device_ieeeAddr_1 = "None"
+                         
+                    mqtt_device_2 = request.form.get("set_mqtt_device_2_" + str(i))
+
+                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_2):
+                        mqtt_device_ieeeAddr_2 = mqtt_device_2
+                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_2):
+                        mqtt_device_ieeeAddr_2 = GET_MQTT_DEVICE_BY_ID(mqtt_device_2).ieeeAddr
+                    else:
+                        mqtt_device_ieeeAddr_2 = "None"
+                        
+                    mqtt_device_3 = request.form.get("set_mqtt_device_3_" + str(i)) 
+
+                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_3):
+                        mqtt_device_ieeeAddr_3 = mqtt_device_3
+                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_3):
+                        mqtt_device_ieeeAddr_3 = GET_MQTT_DEVICE_BY_ID(mqtt_device_3).ieeeAddr
+                    else:
+                        mqtt_device_ieeeAddr_3 = "None"
+                        
                     operator_1       = request.form.get("set_operator_1_" + str(i))
                     operator_2       = request.form.get("set_operator_2_" + str(i))
                     operator_3       = request.form.get("set_operator_3_" + str(i))     
@@ -337,66 +361,69 @@ def dashboard_scheduler():
 
                     # get mqtt device 1
                     try:
-                        mqtt_device_name_1   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_1)).name
-                        mqtt_device_inputs_1 = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_1)).inputs
+                        mqtt_device_name_1   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).name
+                        mqtt_device_inputs_1 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).inputs
 
+                        # get sensorkey value
                         sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
                         sensor_key_1 = sensor_key_1.replace(" ", "") 
                         if sensor_key_1.isdigit():
                             if sensor_key_1 == "0" or sensor_key_1 == "1":
                                 sensor_key_1 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_1).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).inputs
                                 sensor_list  = sensor_list.split(",")
                                 sensor_key_1 = sensor_list[int(sensor_key_1)-2]
                             
                     except:
-                        sensor_key_1 = "None"
-                        mqtt_device_id_1 = "None"
-                        mqtt_device_name_1 = "None"
-                        mqtt_device_inputs_1 = "None"  
+                        sensor_key_1           = "None"
+                        mqtt_device_ieeeAddr_1 = "None"
+                        mqtt_device_name_1     = "None"
+                        mqtt_device_inputs_1   = "None"  
 
                     # get mqtt device 2
                     try:
-                        mqtt_device_name_2   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_2)).name
-                        mqtt_device_inputs_2 = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_2)).inputs
+                        mqtt_device_name_2   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
+                        mqtt_device_inputs_2 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).inputs
 
+                        # get sensorkey value
                         sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
                         sensor_key_2 = sensor_key_2.replace(" ", "") 
                         if sensor_key_2.isdigit():
-                            if sensor_key_2 == "0" or sensor_key_2 == "1":
+                            if sensor_key_2 == "0" or sensor_key_2 == "2":
                                 sensor_key_2 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_2).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).inputs
                                 sensor_list  = sensor_list.split(",")
-                                sensor_key_2 = sensor_list[int(sensor_key_2)-2]                   
-
+                                sensor_key_2 = sensor_list[int(sensor_key_2)-2]
+                            
                     except:
-                        sensor_key_2 = "None"
-                        mqtt_device_id_2 = "None"
-                        mqtt_device_name_2 = "None"  
-                        mqtt_device_inputs_2 = "None"   
+                        sensor_key_2           = "None"
+                        mqtt_device_ieeeAddr_2 = "None"
+                        mqtt_device_name_2     = "None"
+                        mqtt_device_inputs_2   = "None"   
 
-                    # get mqtt device 3 
+                    # get mqtt device 3
                     try:
-                        mqtt_device_name_3   = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_3)).name
-                        mqtt_device_inputs_3 = GET_MQTT_DEVICE_BY_ID(int(mqtt_device_id_3)).inputs
+                        mqtt_device_name_3   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
+                        mqtt_device_inputs_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).inputs
 
+                        # get sensorkey value
                         sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
                         sensor_key_3 = sensor_key_3.replace(" ", "") 
                         if sensor_key_3.isdigit():
-                            if sensor_key_3 == "0" or sensor_key_3 == "1":
+                            if sensor_key_3 == "0" or sensor_key_3 == "3":
                                 sensor_key_3 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_ID(mqtt_device_id_3).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).inputs
                                 sensor_list  = sensor_list.split(",")
-                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]        
-
+                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]
+                            
                     except:
-                        sensor_key_3 = "None"
-                        mqtt_device_id_3 = "None"
-                        mqtt_device_name_3 = "None"  
-                        mqtt_device_inputs_3 = "None"  
+                        sensor_key_3           = "None"
+                        mqtt_device_ieeeAddr_3 = "None"
+                        mqtt_device_name_3     = "None"
+                        mqtt_device_inputs_3   = "None"   
 
 
                     # #################
@@ -457,9 +484,13 @@ def dashboard_scheduler():
                         # get coordinates
                         coordinates = GET_LOCATION_COORDINATES(expanded_location)
                          
-                        if coordinates != "None" and coordinates != None: 
+                        try:
+                            
                             SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
                             SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+                                
+                        except:
+                            pass
 
 
                     SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
@@ -467,11 +498,11 @@ def dashboard_scheduler():
                     SET_SCHEDULER_TASK(i, name, task, 
                                           option_time, option_sensors, option_expanded, option_repeat, 
                                           day, hour, minute,
-                                          mqtt_device_id_1, mqtt_device_name_1, mqtt_device_inputs_1, 
+                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_id_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
                                           expanded_option_home, expanded_option_away, expanded_ip_adresses, 
                                           expanded_option_sunrise, expanded_option_sunset, expanded_location)

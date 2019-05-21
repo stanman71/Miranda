@@ -42,8 +42,8 @@ def START_FLASK_THREAD(start):
     def initialisation():
         pass
         
-    #app.run(host='0.0.0.0', port=5000)
-    app.run()
+    app.run(host='0.0.0.0', port=5000)
+    #app.run()
      
 Thread = threading.Thread(target=START_FLASK_THREAD, args=("",))
 Thread.start() 

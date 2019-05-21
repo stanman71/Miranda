@@ -27737,3 +27737,160 @@ could not find expected ':'
 2019-05-21 13:41:19,EVENT,|Database || User - test || changed |||| Username - testuser || eMail - martin@gmx.de || Role - user || eMail-Info -  || eMail-Error -  || eMail-Camera - |
 2019-05-21 13:41:25,ERROR,|Snowboy || No module named '_snowboydetect'|
 2019-05-21 13:41:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 13:55:02,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 13:55:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 13:57:14,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 13:57:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 13:57:22,EVENT,|Database || LED Scene - hgf || added|
+2019-05-21 13:57:27,EVENT,|Database || LED Scene - hgf || deleted|
+2019-05-21 13:59:08,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 13:59:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-21 14:00:05,ERROR,|Scheduler || Task - MQTT aktualisieren || Message nicht gefunden|
+2019-05-21 14:10:22,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 14:10:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:10:30,EVENT,|Database || LED Group - wohnzimmer || deleted|
+2019-05-21 14:10:36,EVENT,|Database || LED Group - wohnzimmer || added|
+2019-05-21 14:12:49,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 14:12:55,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:14:20,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 14:14:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:16:22,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 14:16:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:17:21,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 14:17:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 14:29:11,EVENT,|MQTT || started|
+2019-05-21 14:29:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:29:33,EVENT,|MQTT || started|
+2019-05-21 14:29:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:29:37,ERROR,|Snowboy || cannot import name 'SNOWBOY_TASKS'|
+2019-05-21 14:31:37,EVENT,|MQTT || started|
+2019-05-21 14:31:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:31:41,EVENT,|Speech Control || started|
+2019-05-21 14:32:37,ERROR,|ZigBee2MQTT || UPDATE_MQTT_DEVICE() takes from 3 to 7 positional arguments but 8 were given|
+2019-05-21 14:33:18,ERROR,|ZigBee2MQTT || UPDATE_MQTT_DEVICE() takes from 3 to 7 positional arguments but 8 were given|
+2019-05-21 14:37:04,EVENT,|MQTT || started|
+2019-05-21 14:37:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:37:08,EVENT,|Speech Control || started|
+2019-05-21 14:37:15,EVENT,|Database || MQTT Device - THE_CUBE || Gateway - zigbee2mqtt || changed |||| Name - THE_CUBE || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5 || outputs - None|
+2019-05-21 14:37:16,ERROR,|ZigBee2MQTT || Can't convert 'float' object to str implicitly|
+2019-05-21 14:37:58,ERROR,|ZigBee2MQTT || Can't convert 'float' object to str implicitly|
+2019-05-21 14:41:12,EVENT,|MQTT || started|
+2019-05-21 14:41:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:41:16,EVENT,|Speech Control || started|
+2019-05-21 14:41:33,EVENT,|MQTT || started|
+2019-05-21 14:41:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:41:37,EVENT,|Speech Control || started|
+2019-05-21 14:42:46,EVENT,|MQTT || started|
+2019-05-21 14:42:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:42:50,EVENT,|Speech Control || started|
+2019-05-21 14:44:49,EVENT,|MQTT || started|
+2019-05-21 14:44:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:44:53,EVENT,|Speech Control || started|
+2019-05-21 14:51:02,EVENT,|MQTT || started|
+2019-05-21 14:51:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 14:51:06,EVENT,|Speech Control || started|
+2019-05-21 14:51:17,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || changed |||| Name - HUE Dimmer || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - Philips Hue Dimmer Switch || inputs - action=on-press, action=up-press, action=down-press, action=off-press || outputs - None|
+2019-05-21 14:52:06,EVENT,|Database || MQTT Device - HUE Dimmer || Gateway - zigbee2mqtt || Name changed |||| Name - Dimmer|
+2019-05-21 15:08:26,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:08:32,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:09:41,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:09:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:11:15,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:11:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:12:26,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x88888 || Pump - None || Sensor - None || Pumptime - 240|
+2019-05-21 15:12:37,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x88888 || Pump - None || Sensor - temperature || Pumptime - 240|
+2019-05-21 15:13:39,EVENT,|Database || Plant - jhg || deleted|
+2019-05-21 15:13:40,EVENT,|Database || Plant - fds || deleted|
+2019-05-21 15:13:44,EVENT,|Database || Plant - jhgjhg || added|
+2019-05-21 15:15:34,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:15:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:15:51,EVENT,|Database || Plant - jhg || added|
+2019-05-21 15:15:55,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - sensor_2 || Pumptime - None|
+2019-05-21 15:22:15,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:22:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:25:25,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:25:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:27:42,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:27:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:28:59,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:29:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:29:30,EVENT,|Database || Plant - jhgj || added|
+2019-05-21 15:31:34,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:31:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:33:19,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:33:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:33:31,EVENT,|Database || Plant - gf || added|
+2019-05-21 15:34:34,EVENT,|Database || Plant - jhgjg || added|
+2019-05-21 15:35:15,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:35:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:35:52,EVENT,|Database || Plant - hgf || added|
+2019-05-21 15:37:16,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:37:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:37:41,EVENT,|Database || Plant - hgfhgf || added|
+2019-05-21 15:41:14,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:41:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:41:28,EVENT,|Database || Plant - fdsfds || added|
+2019-05-21 15:42:46,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:42:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:44:58,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:45:01,EVENT,|Database || Plant - hgfhf || added|
+2019-05-21 15:45:03,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - None || Sensor - None || Pumptime - 50|
+2019-05-21 15:45:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 15:45:14,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - sensor_2 || Pumptime - 50|
+2019-05-21 15:45:19,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump -  pump_2 || Sensor -  sensor_3 || Pumptime - 50|
+2019-05-21 15:45:47,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - None || Sensor - None || Pumptime - 50|
+2019-05-21 15:45:51,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - sensor_3 || Pumptime - 50|
+2019-05-21 15:45:54,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - None || Sensor - None || Pumptime - 50|
+2019-05-21 15:45:57,EVENT,|Database || Plant - iuz || added|
+2019-05-21 15:46:00,EVENT,|Database || Plant - iuz || changed |||| Name - iuz || MQTT-Device - 0x99999 || Pump - None || Sensor - None || Pumptime - 50|
+2019-05-21 15:46:07,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - pump_2 || Sensor - sensor_1 || Pumptime - 50|
+2019-05-21 15:46:07,EVENT,|Database || Plant - iuz || changed |||| Name - iuz || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - sensor_1 || Pumptime - 50|
+2019-05-21 15:46:10,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - pump_1 || Sensor - sensor_1 || Pumptime - 50|
+2019-05-21 15:46:13,EVENT,|Database || Plant - iuz || deleted|
+2019-05-21 15:47:08,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 15:47:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-21 16:00:04,ERROR,|Scheduler || Task - MQTT aktualisieren || Message nicht gefunden|
+2019-05-21 16:06:33,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:06:39,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:07:50,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:07:56,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:10:46,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:10:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:12:15,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:12:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:13:07,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:13:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:14:47,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:14:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:15:13,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-21 16:15:19,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-21 16:15:25,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x88888 || Sensor_1 -  humidity || Operator_1 - > || Value_1 - None || Repeat - checked|
+2019-05-21 16:15:32,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x88888 || Sensor_1 - humidity || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 -  sensor_5 || Operator_2 - None || Value_2 - None || Repeat - checked|
+2019-05-21 16:15:37,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x88888 || Sensor_1 - humidity || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 -  humidity || Operator_2 - None || Value_2 - None || Repeat - checked|
+2019-05-21 16:15:42,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - None || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - humidity || Operator_2 - None || Value_2 - None || Repeat - checked|
+2019-05-21 16:15:44,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x00158d000349876a || Sensor_2 - humidity || Operator_2 - None || Value_2 - None || Repeat - checked|
+2019-05-21 16:15:52,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 -  sensor_1 || Operator_2 - None || Value_2 - None || Repeat - checked|
+2019-05-21 16:29:34,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 16:29:40,EVENT,|Database || Sensordata Job - fds || added|
+2019-05-21 16:29:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 16:29:40,EVENT,|File || /csv/fsd.csv || created|
+2019-05-21 16:29:45,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x99999 || Sensor -  sensor_2 || Always_Active - |
+2019-05-21 16:29:49,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x00158d000349876a || Sensor -  battery || Always_Active - |
+2019-05-21 16:29:52,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x88888 || Sensor -  humidity || Always_Active - |
+2019-05-21 16:29:55,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x00158d000349876a || Sensor - None || Always_Active - |
+2019-05-21 16:30:01,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x00158d000349876a || Sensor -  humidity || Always_Active - |
+2019-05-21 16:30:03,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x00158d000349876a || Sensor - None || Always_Active - |
+2019-05-21 16:30:07,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x88888 || Sensor -  humidity || Always_Active - |
+2019-05-21 16:31:30,EVENT,|MQTT || started|
+2019-05-21 16:31:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 16:31:34,EVENT,|Speech Control || started|
+2019-05-21 16:32:04,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-21 16:33:48,EVENT,|MQTT || started|
+2019-05-21 16:33:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-21 16:33:52,EVENT,|Speech Control || started|
+2019-05-21 16:33:53,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - None || Repeat - checked|
+2019-05-21 16:34:01,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Berlin || Repeat - checked|
+2019-05-21 16:35:29,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Nürnberg || Repeat - checked|
+2019-05-21 16:38:42,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - 0 || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - = || Value_2 - 0 || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Nürnberg || Repeat - checked|

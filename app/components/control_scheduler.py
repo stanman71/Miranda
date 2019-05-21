@@ -223,12 +223,10 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
    
    try:
       
-      incoming_mqtt_device_id = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
-
       # find sensor jobs with fitting ieeeAddr only
-      if (task.mqtt_device_id_1 == incoming_mqtt_device_id or
-          task.mqtt_device_id_2 == incoming_mqtt_device_id or
-          task.mqtt_device_id_3 == incoming_mqtt_device_id):
+      if (task.mqtt_device_ieeeAddr_1 == ieeeAddr or
+          task.mqtt_device_ieeeAddr_2 == ieeeAddr or
+          task.mqtt_device_ieeeAddr_3 == ieeeAddr):
              
          print("Start Scheduler input Sensor")
          
@@ -398,15 +396,15 @@ def CHECK_SCHEDULER_SENSORS(task):
    
    if task.operator_main_1 == "None" or task.operator_main_1 == None:
 
-      device_id_1  = task.mqtt_device_id_1
-      sensor_key_1 = task.sensor_key_1
-      value_1      = task.value_1
+      device_ieeeAddr_1  = task.mqtt_device_ieeeAddr_1
+      sensor_key_1       = task.sensor_key_1
+      value_1            = task.value_1
     
       ##################
       # get sensordata 1
       ##################     
 
-      data_1 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_1).last_values)
+      data_1 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_1).last_values)
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
@@ -453,19 +451,19 @@ def CHECK_SCHEDULER_SENSORS(task):
        (task.operator_main_2 == "None" or task.operator_main_2 == None)):
           
           
-      device_id_1  = task.mqtt_device_id_1
-      device_id_2  = task.mqtt_device_id_2
-      sensor_key_1 = task.sensor_key_1
-      sensor_key_2 = task.sensor_key_2
-      value_1      = task.value_1
-      value_2      = task.value_2
+      device_ieeeAddr_1 = task.mqtt_device_ieeeAddr_1
+      device_ieeeAddr_2 = task.mqtt_device_ieeeAddr_2
+      sensor_key_1      = task.sensor_key_1
+      sensor_key_2      = task.sensor_key_2
+      value_1           = task.value_1
+      value_2           = task.value_2
       
       
       ##################
       # get sensordata 1
       ##################     
 
-      data_1 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_1).last_values)
+      data_1 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_1).last_values)
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
@@ -478,7 +476,7 @@ def CHECK_SCHEDULER_SENSORS(task):
       # get sensordata 2
       ##################     
 
-      data_2 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_2).last_values)
+      data_2 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_2).last_values)
    
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
@@ -636,22 +634,22 @@ def CHECK_SCHEDULER_SENSORS(task):
    if ((task.operator_main_1 != "None" and task.operator_main_1 != None) and 
        (task.operator_main_2 != "None" and task.operator_main_2 != None)):
 
-      device_id_1  = task.mqtt_device_id_1
-      device_id_2  = task.mqtt_device_id_2
-      device_id_3  = task.mqtt_device_id_3           
-      sensor_key_1 = task.sensor_key_1
-      sensor_key_2 = task.sensor_key_2
-      sensor_key_3 = task.sensor_key_3
-      value_1      = task.value_1
-      value_2      = task.value_2
-      value_3      = task.value_3
+      device_ieeeAddr_1 = task.mqtt_device_ieeeAddr_1
+      device_ieeeAddr_2 = task.mqtt_device_ieeeAddr_2
+      device_ieeeAddr_3 = task.mqtt_device_ieeeAddr_3           
+      sensor_key_1      = task.sensor_key_1
+      sensor_key_2      = task.sensor_key_2
+      sensor_key_3      = task.sensor_key_3
+      value_1           = task.value_1
+      value_2           = task.value_2
+      value_3           = task.value_3
       
       
       ##################
       # get sensordata 1
       ##################     
 
-      data_1 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_1).last_values)
+      data_1 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_1).last_values)
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
@@ -664,7 +662,7 @@ def CHECK_SCHEDULER_SENSORS(task):
       # get sensordata 2
       ##################     
       
-      data_2 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_2).last_values)
+      data_2 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_2).last_values)
    
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
@@ -677,7 +675,7 @@ def CHECK_SCHEDULER_SENSORS(task):
       # get sensordata 3
       ##################     
 
-      data_3 = json.loads(GET_MQTT_DEVICE_BY_ID(device_id_3).last_values)
+      data_3 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_3).last_values)
    
       sensor_key_3   = sensor_key_3.replace(" ","")          
       sensor_value_3 = data_3[sensor_key_3]
@@ -1127,6 +1125,8 @@ def CHECK_SCHEDULER_SENSORS(task):
         
                
    # Options ended
+   
+   print("SENSORTASK_RESULT: " + passing)  
                                           
    return passing
 

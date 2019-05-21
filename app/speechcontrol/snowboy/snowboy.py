@@ -5,7 +5,6 @@ from app.speechcontrol.snowboy import snowboydecoder
 from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PROVIDER
 from app.database.database import *
 from app.components.file_management import *
-from app.speechcontrol.speech_control_tasks import SNOWBOY_TASKS
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 
 import sys

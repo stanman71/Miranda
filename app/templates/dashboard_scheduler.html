@@ -632,9 +632,9 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_1_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_id_1 }}" > {{ entry.mqtt_device_name_1 }} </option>
-                              <option value= "{{ entry.mqtt_device_id_1 }}" > ------------------------- </option>                                           
+                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_1_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > ------------------------- </option>                                           
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}
@@ -702,9 +702,9 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_2_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_id_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
-                              <option value= "{{ entry.mqtt_device_id_2 }}" > ------------------------- </option>                                           
+                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_2_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > ------------------------- </option>                                           
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}
@@ -773,9 +773,9 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_id_3_{{ entry.id }}">
-                                <option value= "{{ entry.mqtt_device_id_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
-                                <option value= "{{ entry.mqtt_device_id_3 }}" > ------------------------- </option>                                        
+                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_3_{{ entry.id }}">
+                                <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
+                                <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > ------------------------- </option>                                        
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}

@@ -31,10 +31,10 @@ def dashboard_plants():
     error_message_form = ""
     pumptime = ""
     moisture = ""
-    set_mqtt_device_id = ""
-    set_mqtt_device_name = ""
-    set_pumptime = ""
-    set_control_sensor = ""
+    mqtt_device_ieeeAddr = ""
+    mqtt_device_name = ""
+    pumptime = ""
+    control_sensor = ""
 
     if request.method == "POST": 
         
@@ -48,8 +48,8 @@ def dashboard_plants():
                                         
                 else:         
                     name                    = request.form.get("set_name")
-                    mqtt_device_id          = request.form.get("set_mqtt_device_id") 
-                    error_message_add_plant = ADD_PLANT(name, mqtt_device_id)
+                    mqtt_device_ieeeAddr    = request.form.get("set_mqtt_device_ieeeAddr") 
+                    error_message_add_plant = ADD_PLANT(name, mqtt_device_ieeeAddr)
         
         
         # change settings
@@ -72,10 +72,18 @@ def dashboard_plants():
                         error_message_form = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                        
 
                     # other values       
-                    mqtt_device_id = request.form.get("set_mqtt_device_id_" + str(i))
-                    pump_key       = request.form.get("set_pump_" + str(i))                  
-                    sensor_key     = request.form.get("set_sensor_" + str(i))                                
-                    pumptime       = request.form.get("set_pumptime_" + str(i))
+                    mqtt_device = request.form.get("set_mqtt_device_" + str(i))
+
+                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device):
+                        mqtt_device_ieeeAddr = mqtt_device
+                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device):
+                        mqtt_device_ieeeAddr = GET_MQTT_DEVICE_BY_ID(mqtt_device).ieeeAddr
+                    else:
+                        mqtt_device_ieeeAddr == ""
+                        
+                    pump_key             = request.form.get("set_pump_" + str(i))                  
+                    sensor_key           = request.form.get("set_sensor_" + str(i))                                
+                    pumptime             = request.form.get("set_pumptime_" + str(i))
 
                     if request.form.get("set_control_sensor_" + str(i)):
                         control_sensor = "checked" 
@@ -90,7 +98,7 @@ def dashboard_plants():
                             if pump_key == "0" or pump_key == "1":
                                 pump_key = "None"
                             else:
-                                pump_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).outputs
+                                pump_list = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).outputs
                                 pump_list = pump_list.split(",")
                                 pump_key  = pump_list[int(pump_key)-2]
                     except:
@@ -104,13 +112,15 @@ def dashboard_plants():
                             if sensor_key == "0" or sensor_key == "1":
                                 sensor_key = "None"
                             else:                                
-                                sensor_list = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).inputs
+                                sensor_list = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).inputs
                                 sensor_list = sensor_list.split(",")
                                 sensor_key  = sensor_list[int(sensor_key)-2]
                     except:
                         pass
 
-                    SET_PLANT_SETTINGS(i, name, mqtt_device_id, pump_key, sensor_key, pumptime, control_sensor)                       
+
+                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, pump_key, sensor_key, pumptime, control_sensor)                       
+
 
     # get pump list
     try:
@@ -369,9 +379,9 @@ def dashboard_plants():
 
     error_message_change_settings = CHECK_PLANTS_SETTINGS()
 
-    if set_mqtt_device_id != "":
-        set_mqtt_device_name = GET_MQTT_DEVICE_BY_ID(int(set_mqtt_device_id)).name  
-     
+    if mqtt_device_ieeeAddr != "":
+        mqtt_device_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name  
+
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_array")  
     dropdown_list_pumptime = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
     plants_list = GET_ALL_PLANTS()
@@ -382,9 +392,8 @@ def dashboard_plants():
                             plants_list=plants_list,
                             moisture=moisture,
                             pumptime=pumptime,
-                            set_mqtt_device_id=set_mqtt_device_id,
-                            set_mqtt_device_name=set_mqtt_device_name,
-                            set_pumptime=set_pumptime,
+                            mqtt_device_ieeeAddr=mqtt_device_ieeeAddr,
+                            mqtt_device_name=mqtt_device_name,
                             error_message_add_plant=error_message_add_plant,
                             error_message_change_settings=error_message_change_settings,
                             error_message_form=error_message_form,
