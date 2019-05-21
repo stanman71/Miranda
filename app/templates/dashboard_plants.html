@@ -321,6 +321,7 @@
  
               <table class="table">
                 <thead>
+                  <th scope="col"></th> 
                   <th scope="col">Pflanze</th>   
                   <th scope="col">Gerät</th> 
                   <th scope="col">Pumpe</th>                    
@@ -332,6 +333,10 @@
                 <tbody> 
                   {% for entry in plants_list %}
                   <tr>
+                    <td style="width:3%">
+                      <a href="/dashboard/plants/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/dashboard/plants/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    </td>                   
                     <td>
                       <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    

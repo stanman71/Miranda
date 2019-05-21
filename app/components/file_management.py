@@ -65,13 +65,14 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
         CREATE_LOGFILE("log_" + gateway)
 
     try:
+        
         # open csv file
         file = PATH + "/logs/log_" + gateway + ".csv"
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), msg ])
             csvfile.close()
-      
+
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))
 
@@ -132,23 +133,48 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
         return ("ZigBee2MQTT >>> ERROR >>> " + str(e))
     
 
+log_messages = []
+
+
 def WRITE_LOGFILE_SYSTEM(log_type, description):
-    if os.path.isfile(PATH + "/logs/log_system.csv") is False:
-        CREATE_LOGFILE("log_system")
+    
+    global log_messages
+    
+    # save new log messages temporary
+    log_messages.append([log_type,description])
+    
+    
+def WRITE_LOGFILE_SYSTEM_THREAD():
 
-    try:
-        # open csv file
-        file = PATH + "/logs/log_system.csv"
+    global log_messages
+    
+    while True:
 
-        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
-            csvfile.close()
-       
-    except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
-        return ("ERROR: " + str(e))
+        if os.path.isfile(PATH + "/logs/log_system.csv") is False:
+            CREATE_LOGFILE("log_system")
+
+        try:
+            # open csv file
+            file = PATH + "/logs/log_system.csv"
+
+            with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+                filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)   
+                
+                # write new log messages
+                if log_messages != []:
+                    for message in log_messages:
+                        filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(message[0]), str(message[1]) ])
+                
+                csvfile.close()
+                
+                log_messages = []
+                
+                time.sleep(1)
+           
+        except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
+            return ("ERROR: " + str(e))
         
     
 def GET_LOGFILE_SYSTEM(rows):   
@@ -233,7 +259,7 @@ def DELETE_DATABASE_BACKUP(filename):
 
 try:
     # open config file
-    with open(PATH + "/app/config/config.yaml", "r") as file_config:
+    with open(PATH + "/config/config.yaml", "r") as file_config:
         config = yaml.load(file_config, Loader=yaml.SafeLoader)
         file_config.close()
 
@@ -265,13 +291,47 @@ def GET_CONFIG_DATABASE():
         return "sqlite:///database/smarthome.sqlite3"
 
 
+
+""" ################ """
+"""  file locations  """
+""" ################ """
+
+try:
+    # open locations file
+    with open(PATH + "/config/locations.ymal", "r") as file_locations:
+        locations = yaml.load(file_locations, Loader=yaml.SafeLoader)
+        file_locations.close()
+
+except Exception as e:
+    print(str(e))
+    WRITE_LOGFILE_SYSTEM("ERROR", "File | config/locations.ymal | " + str(e))
+
+
+def GET_ALL_LOCATIONS():
+    try:
+        return (locations["Locations"].keys())
+        
+    except Exception as e:    
+        return ("ERROR: Locations Import >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | config/locations.ymal | " + str(e))
+        
+
+def GET_LOCATION_COORDINATES(location):
+    try:
+        return (locations["Locations"][location])
+        
+    except Exception as e:    
+        return ("ERROR: Locations Import >>> " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | config/locations.ymal | " + str(e))
+
+
 """ ################################ """
 """  file zigbee device informations """
 """ ################################ """
 
 try:
     # open mqtt file
-    with open(PATH + "/app/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
+    with open(PATH + "/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
         zigbee_devices = yaml.load(file_zigbee, Loader=yaml.SafeLoader)
         file_zigbee.close()
         

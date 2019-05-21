@@ -6,6 +6,7 @@ import datetime
 from app import app
 from app.database.database import *
 from app.components.checks import *
+from app.components.control_scheduler import *
 
 
 # access rights
@@ -34,15 +35,17 @@ def dashboard_scheduler():
 
     error_message_add_scheduler_task         = ""    
     error_change_settings                    = ""
+    error_message_general_settings           = ""    
     error_message_time_settings              = ""
     error_message_sensor_settings            = ""
     error_message_expanded_settings          = ""
     error_message_scheduler_tasks            = ""
+    error_message_locations_import           = ""
 
 
     for i in range (1,26):
         try:
-            RESET_SCHEDULER_ERRORS(i)
+            RESET_SCHEDULER_TASK_ERRORS(i)
         except:
             pass
 
@@ -142,35 +145,35 @@ def dashboard_scheduler():
                     else:
                         option_repeat = "None"  
 
-                    option_time          = "checked"
-                    option_sensors       = "None"
-                    option_expanded      = "None"
-                    mqtt_device_id_1     = "None"
-                    mqtt_device_name_1   = "None"
-                    mqtt_device_inputs_1 = "None"
-                    sensor_key_1         = "None"
-                    operator_1           = "None"
-                    value_1              = "None"
-                    operator_main_1      = "None"
-                    mqtt_device_id_2     = "None"
-                    mqtt_device_name_2   = "None"
-                    mqtt_device_inputs_2 = "None"
-                    sensor_key_2         = "None"
-                    operator_2           = "None"
-                    value_2              = "None"
-                    operator_main_2      = "None"
-                    mqtt_device_id_3     = "None"
-                    mqtt_device_name_3   = "None"
-                    mqtt_device_inputs_3 = "None"
-                    sensor_key_3         = "None"
-                    operator_3           = "None"
-                    value_3              = "None"
-                    expanded_home        = "None"
-                    expanded_away        = "None"
-                    expanded_ip_adresses = "None"
-                    expanded_sunrise     = "None"
-                    expanded_sunset      = "None" 
-                    expanded_timezone    = "None"    
+                    option_time             = "checked"
+                    option_sensors          = "None"
+                    option_expanded         = "None"
+                    mqtt_device_id_1        = "None"
+                    mqtt_device_name_1      = "None"
+                    mqtt_device_inputs_1    = "None"
+                    sensor_key_1            = "None"
+                    operator_1              = "None"
+                    value_1                 = "None"
+                    operator_main_1         = "None"
+                    mqtt_device_id_2        = "None"
+                    mqtt_device_name_2      = "None"
+                    mqtt_device_inputs_2    = "None"
+                    sensor_key_2            = "None"
+                    operator_2              = "None"
+                    value_2                 = "None"
+                    operator_main_2         = "None"
+                    mqtt_device_id_3        = "None"
+                    mqtt_device_name_3      = "None"
+                    mqtt_device_inputs_3    = "None"
+                    sensor_key_3            = "None"
+                    operator_3              = "None"
+                    value_3                 = "None"
+                    expanded_option_home    = "None"
+                    expanded_option_away    = "None"
+                    expanded_ip_adresses    = "None"
+                    expanded_option_sunrise = "None"
+                    expanded_option_sunset  = "None" 
+                    expanded_location       = "None"    
 
                     if error_message_reduced_change_settings != "":
                         error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
@@ -184,7 +187,8 @@ def dashboard_scheduler():
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone)
+                                          expanded_option_home, expanded_option_away, expanded_ip_adresses, 
+                                          expanded_option_sunrise, expanded_option_sunset, expanded_location)
 
 
         # #################
@@ -200,7 +204,7 @@ def dashboard_scheduler():
             if scheduler_task_name == "":               
                 error_message_add_scheduler_task = "Keinen Namen angegeben"
             else:         
-                error_message_add_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "")          
+                error_message_add_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "complete")          
 
         # change settings
         if request.form.get("change_settings") != None: 
@@ -399,20 +403,20 @@ def dashboard_scheduler():
                     # expanded settings
                     # #################   
 
-                    ### set expanded home
-                    if request.form.get("checkbox_expanded_home_" + str(i)):
-                        expanded_home = "checked"
+                    ### set expanded option home
+                    if request.form.get("checkbox_expanded_option_home_" + str(i)):
+                        expanded_option_home = "checked"
                     else:
-                        expanded_home = "None"  
+                        expanded_option_home = "None"  
 
-                    ### set expanded away
-                    if request.form.get("checkbox_expanded_away_" + str(i)):
-                        expanded_away = "checked"
+                    ### set expanded option away
+                    if request.form.get("checkbox_expanded_option_away_" + str(i)):
+                        expanded_option_away = "checked"
                     else:
-                        expanded_away = "None"  
+                        expanded_option_away = "None"  
 
 
-                    if expanded_home != "None" or expanded_away != "None":
+                    if expanded_option_home != "None" or expanded_option_away != "None":
 
                         ### set ip_addresses
                         if request.form.get("set_expanded_ip_adresses_" + str(i)) != "":
@@ -424,26 +428,41 @@ def dashboard_scheduler():
                         expanded_ip_adresses = "None"
 
 
-                    ### set expanded sunrise
-                    if request.form.get("checkbox_expanded_sunrise_" + str(i)):
-                        expanded_sunrise = "checked"
+                    ### set expanded option sunrise
+                    if request.form.get("checkbox_expanded_option_sunrise_" + str(i)):
+                        expanded_option_sunrise = "checked"
                     else:
-                        expanded_sunrise = "None"  
+                        expanded_option_sunrise = "None"  
 
-                    ### set expanded sunset
-                    if request.form.get("checkbox_expanded_sunset_" + str(i)):
-                        expanded_sunset = "checked"
+                    ### set expanded option sunset
+                    if request.form.get("checkbox_expanded_option_sunset_" + str(i)):
+                        expanded_option_sunset = "checked"
                     else:              
-                        expanded_sunset = "None"  
+                        expanded_option_sunset = "None"  
 
-                    ### set expanded timezone
-                    expanded_timezone = request.form.get("set_expanded_timezone_" + str(i))
+                    ### set expanded location
+                    if expanded_option_sunrise != "None" or expanded_option_sunset != "None":
+                        expanded_location = request.form.get("set_expanded_location_" + str(i))
+                        
+                        if expanded_location == "":           
+                            expanded_location = "None"  
+                            
+                    else:
+                        expanded_location = "None" 
+                        
                     
-                    if expanded_timezone == "":           
-                        expanded_timezone = "None"  
+                    # update sunrise / sunset  
+                    if ((expanded_option_sunrise != "None" or expanded_option_sunset != "None") and expanded_location != "None"):
+                        
+                        # get coordinates
+                        coordinates = GET_LOCATION_COORDINATES(expanded_location)
+                         
+                        if coordinates != "None" and coordinates != None: 
+                            SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+                            SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
 
 
-                    SET_SCHEDULER_CHANGE_ERRORS(i, error_change_settings)
+                    SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
 
                     SET_SCHEDULER_TASK(i, name, task, 
                                           option_time, option_sensors, option_expanded, option_repeat, 
@@ -454,16 +473,18 @@ def dashboard_scheduler():
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone)
+                                          expanded_option_home, expanded_option_away, expanded_ip_adresses, 
+                                          expanded_option_sunrise, expanded_option_sunset, expanded_location)
 
 
     error_message_reduced_scheduler_tasks = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"), "scheduler")
     error_message_reduced_time_settings   = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"))
 
-    error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""), "scheduler")
-    error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
-    error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
-    error_message_expanded_settings = CHECK_SCHEDULER_EXPANDED_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE(""))
+    error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"), "scheduler")
+    error_message_general_settings  = CHECK_SCHEDULER_GENERAL_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_expanded_settings = CHECK_SCHEDULER_EXPANDED_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
 
     scheduler_task_list = GET_ALL_SCHEDULER_TASKS()
 
@@ -471,7 +492,11 @@ def dashboard_scheduler():
     dropdown_list_operators     = ["=", ">", "<"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
-    dropdown_list_timezones = ["Aachen", "Köln"]
+    dropdown_list_locations = GET_ALL_LOCATIONS()
+    
+    if "ERROR" in dropdown_list_locations:
+        error_message_locations_import = dropdown_list_locations
+        dropdown_list_locations = ""
 
     # get sensor list
     try:
@@ -608,14 +633,16 @@ def dashboard_scheduler():
                             error_message_reduced_time_settings=error_message_reduced_time_settings,
                             error_message_reduced_scheduler_tasks=error_message_reduced_scheduler_tasks,
                             error_message_add_scheduler_task=error_message_add_scheduler_task,
+                            error_message_general_settings=error_message_general_settings,
                             error_message_time_settings=error_message_time_settings,
                             error_message_sensor_settings=error_message_sensor_settings,
                             error_message_expanded_settings=error_message_expanded_settings,
-                            error_message_scheduler_tasks=error_message_scheduler_tasks,                        
+                            error_message_scheduler_tasks=error_message_scheduler_tasks,   
+                            error_message_locations_import=error_message_locations_import,                     
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_operators=dropdown_list_operators,
                             dropdown_list_operator_main=dropdown_list_operator_main,
-                            dropdown_list_timezones=dropdown_list_timezones,
+                            dropdown_list_locations=dropdown_list_locations,
                             mqtt_device_1_inputs=mqtt_device_1_inputs,
                             mqtt_device_2_inputs=mqtt_device_2_inputs,
                             mqtt_device_3_inputs=mqtt_device_3_inputs,
@@ -645,21 +672,30 @@ def dashboard_scheduler():
                             )
 
 
-# add scheduler sensor task option
-@app.route('/dashboard/scheduler/sensor_option/add/<int:id>')
+# change scheduler task position 
+@app.route('/dashboard/scheduler/position/<string:direction>/<string:task_type>/<int:id>')
 @login_required
 @user_required
-def add_scheduler_sensor_option(id):
-    ADD_SCHEDULER_TASK_OPTION(id)
+def change_scheduler_task_position(id, task_type, direction):
+    CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction)
     return redirect(url_for('dashboard_scheduler'))
 
 
-# remove scheduler sensor task option
-@app.route('/dashboard/scheduler/sensor_option/remove/<int:id>')
+# add scheduler sensor row
+@app.route('/dashboard/scheduler/sensor_row/add/<int:id>')
 @login_required
 @user_required
-def remove_scheduler_sensor_option(id):
-    REMOVE_SCHEDULER_TASK_OPTION(id)
+def add_scheduler_sensor_row(id):
+    ADD_SCHEDULER_TASK_SENSOR_ROW(id)
+    return redirect(url_for('dashboard_scheduler'))
+
+
+# remove scheduler sensor row
+@app.route('/dashboard/scheduler/sensor_row/remove/<int:id>')
+@login_required
+@user_required
+def remove_scheduler_sensor_row(id):
+    REMOVE_SCHEDULER_TASK_SENSOR_ROW(id)
     return redirect(url_for('dashboard_scheduler'))
 
 

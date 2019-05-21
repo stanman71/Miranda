@@ -110,6 +110,16 @@ def dashboard_settings_mqtt():
                             timestamp=timestamp,
                             )
      
+
+# change mqtt device position 
+@app.route('/dashboard/settings/mqtt/position/<string:direction>/<string:device_type>/<int:id>')
+@login_required
+@superuser_required
+def change_mqtt_device_position(id, direction, device_type):
+    CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction)
+    return redirect(url_for('dashboard_settings_mqtt'))
+
+
 # remove mqtt device
 @app.route('/dashboard/settings/mqtt/delete/<int:id>')
 @login_required
@@ -261,6 +271,16 @@ def dashboard_settings_zigbee2mqtt():
                             )
 
 
+# change zigbee2mqtt device position 
+@app.route('/dashboard/settings/zigbee2mqtt/position/<string:direction>/<string:device_type>/<int:id>')
+@login_required
+@superuser_required
+def change_zigbee2mqtt_device_position(id, direction, device_type):
+    CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction)
+
+    return redirect(url_for('dashboard_settings_zigbee2mqtt'))
+
+
 # remove zigbee2mqtt device
 @app.route('/dashboard/settings/zigbee2mqtt/delete/<int:id>')
 @login_required
@@ -308,8 +328,9 @@ def dashboard_settings_controller():
         if request.form.get("add_controller") != None: 
             
             if request.form.get("set_mqtt_device_id") != None:
-                mqtt_device_id = request.form.get("set_mqtt_device_id")
-                error_message_add_controller = ADD_CONTROLLER(mqtt_device_id)
+                mqtt_device_id               = request.form.get("set_mqtt_device_id")
+                mqtt_device_ieeeAddr         = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).ieeeAddr
+                error_message_add_controller = ADD_CONTROLLER(mqtt_device_ieeeAddr)
 
             else:
                 error_message_add_controller = "Keinen Controller angegeben"  
@@ -373,6 +394,15 @@ def dashboard_settings_controller():
                             dropdown_list_controller=dropdown_list_controller,                                   
                             active03="active",
                             )
+
+
+# change controller position 
+@app.route('/dashboard/settings/controller/position/<string:direction>/<int:id>')
+@login_required
+@superuser_required
+def change_controller_position(id, direction):
+    CHANGE_CONTROLLER_POSITION(id, direction)
+    return redirect(url_for('dashboard_settings_controller'))
 
 
 # delete controller
@@ -654,6 +684,15 @@ def dashboard_settings_user():
                             dropdown_list_roles=dropdown_list_roles,             
                             active05="active",
                             )
+
+
+# change users position 
+@app.route('/dashboard/settings/user/position/<string:direction>/<int:id>')
+@login_required
+@superuser_required
+def change_user_position(id, direction):
+    CHANGE_USER_POSITION(id, direction)
+    return redirect(url_for('dashboard_settings_user'))
 
 
 # delete user

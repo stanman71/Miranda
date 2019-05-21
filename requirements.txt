@@ -14,5 +14,4 @@ numpy
 scikit-learn
 matplotlib
 graphviz
-astral
 

@@ -442,6 +442,15 @@ def dashboard_plants():
                             )
 
 
+# change plants position 
+@app.route('/dashboard/plants/position/<string:direction>/<int:id>')
+@login_required
+@user_required
+def change_plants_position(id, direction):
+    CHANGE_PLANTS_POSITION(id, direction)
+    return redirect(url_for('dashboard_plants'))
+
+
 # Delete plant
 @app.route('/dashboard/plants/delete/<int:id>')
 @login_required

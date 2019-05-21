@@ -78,29 +78,29 @@ db = SQLAlchemy(app)
 """ ###################### """
 
 class Controller(db.Model):
-    __tablename__       = 'controller'
-    id                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    mqtt_device_id      = db.Column(db.Integer, db.ForeignKey('mqtt_devices.id')) 
-    mqtt_device         = db.relationship('MQTT_Devices') 
-    command_1           = db.Column(db.String(50))
-    task_1              = db.Column(db.String(50))
-    command_2           = db.Column(db.String(50))
-    task_2              = db.Column(db.String(50))
-    command_3           = db.Column(db.String(50))
-    task_3              = db.Column(db.String(50))    
-    command_4           = db.Column(db.String(50))
-    task_4              = db.Column(db.String(50))
-    command_5           = db.Column(db.String(50))
-    task_5              = db.Column(db.String(50))
-    command_6           = db.Column(db.String(50))
-    task_6              = db.Column(db.String(50))   
-    command_7           = db.Column(db.String(50))
-    task_7              = db.Column(db.String(50))
-    command_8           = db.Column(db.String(50))
-    task_8              = db.Column(db.String(50))
-    command_9           = db.Column(db.String(50))
-    task_9              = db.Column(db.String(50))   
-    error_task_settings = db.Column(db.String(500), server_default=(""))      
+    __tablename__        = 'controller'
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr')) 
+    mqtt_device          = db.relationship('MQTT_Devices') 
+    command_1            = db.Column(db.String(50))
+    task_1               = db.Column(db.String(50))
+    command_2            = db.Column(db.String(50))
+    task_2               = db.Column(db.String(50))
+    command_3            = db.Column(db.String(50))
+    task_3               = db.Column(db.String(50))    
+    command_4            = db.Column(db.String(50))
+    task_4               = db.Column(db.String(50))
+    command_5            = db.Column(db.String(50))
+    task_5               = db.Column(db.String(50))
+    command_6            = db.Column(db.String(50))
+    task_6               = db.Column(db.String(50))   
+    command_7            = db.Column(db.String(50))
+    task_7               = db.Column(db.String(50))
+    command_8            = db.Column(db.String(50))
+    task_8               = db.Column(db.String(50))
+    command_9            = db.Column(db.String(50))
+    task_9               = db.Column(db.String(50))   
+    error_task_settings  = db.Column(db.String(500), server_default=(""))      
     
 class eMail(db.Model):
     __tablename__ = 'email'
@@ -242,7 +242,6 @@ class MQTT_Devices(db.Model):
     description          = db.Column(db.String(200))
     inputs               = db.Column(db.String(200))
     outputs              = db.Column(db.String(200))
-    commands             = db.Column(db.String(200))
     last_contact         = db.Column(db.String(50))
     last_values          = db.Column(db.String(200))  
     last_values_formated = db.Column(db.String(200)) 
@@ -292,13 +291,16 @@ class Scheduler_Tasks(db.Model):
     sensor_key_3            = db.Column(db.String(50), server_default=("None"))    
     value_3                 = db.Column(db.String(100), server_default=("None"))
     operator_3              = db.Column(db.String(50), server_default=("None")) 
-    expanded_home           = db.Column(db.String(50), server_default=("None")) 
-    expanded_away           = db.Column(db.String(50), server_default=("None")) 
+    expanded_option_home    = db.Column(db.String(50), server_default=("None")) 
+    expanded_option_away    = db.Column(db.String(50), server_default=("None")) 
     expanded_ip_adresses    = db.Column(db.String(100), server_default=("None")) 
+    expanded_option_sunrise = db.Column(db.String(50), server_default=("None")) 
+    expanded_option_sunset  = db.Column(db.String(50), server_default=("None")) 
+    expanded_location       = db.Column(db.String(50), server_default=("None"))
     expanded_sunrise        = db.Column(db.String(50), server_default=("None")) 
-    expanded_sunset         = db.Column(db.String(50), server_default=("None")) 
-    expanded_timezone       = db.Column(db.String(50), server_default=("None"))
-    error_change_settings   = db.Column(db.String(500), server_default=(""))  
+    expanded_sunset         = db.Column(db.String(50), server_default=("None"))     
+    error_change_settings   = db.Column(db.String(500), server_default=("")) 
+    error_general_settings  = db.Column(db.String(500), server_default=(""))  
     error_time_settings     = db.Column(db.String(500), server_default=(""))   
     error_sensor_settings   = db.Column(db.String(500), server_default=(""))   
     error_expanded_settings = db.Column(db.String(500), server_default=(""))        
@@ -323,15 +325,15 @@ class Snowboy_Settings(db.Model):
 
 class Speech_Recognition_Provider_Settings(db.Model):
     __tablename__ = 'speech_recognition_provider_settings'
-    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    snowboy_hotword               = db.Column(db.String(100))
+    id                                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    snowboy_hotword                      = db.Column(db.String(100))
     speech_recognition_provider          = db.Column(db.String(100))
     speech_recognition_provider_username = db.Column(db.String(100))
     speech_recognition_provider_key      = db.Column(db.String(200))
     
 class Speech_Recognition_Provider_Tasks(db.Model):
     __tablename__ = 'speech_recognition_provider_tasks'
-    id   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    id         = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task       = db.Column(db.String(50))
     keywords   = db.Column(db.String(50))
     parameters = db.Column(db.String(100))
@@ -400,7 +402,7 @@ if Global_Settings.query.filter_by().first() is None:
     db.session.commit()
 
     setting_speech_control = Global_Settings(
-        setting_name  = "speechcontrol",
+        setting_name  = "speech_control",
         setting_value = "False",
     )
     db.session.add(setting_speech_control)    
@@ -472,12 +474,12 @@ def GET_CONTROLLER_BY_NAME(name):
     return Controller.query.filter_by(name=name).first()
     
 
-def ADD_CONTROLLER(mqtt_device_id):
+def ADD_CONTROLLER(mqtt_device_ieeeAddr):
     # controller exist ?
     
-    check_entry = Controller.query.filter_by(mqtt_device_id=mqtt_device_id).first()
+    check_entry = Controller.query.filter_by(mqtt_device_ieeeAddr=mqtt_device_ieeeAddr).first()
     if check_entry is None:
-        if mqtt_device_id == "":
+        if mqtt_device_ieeeAddr == "":
             return "Keinen Controller angegeben"
         else:
             # find a unused id
@@ -487,15 +489,15 @@ def ADD_CONTROLLER(mqtt_device_id):
                 else:
                     # add new controller
                     new_controller = Controller(
-                                    id = i,
-                        mqtt_device_id = mqtt_device_id,
+                                          id = i,
+                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,
                         )
                     db.session.add(new_controller)
                     db.session.commit()
                     
                     UPDATE_CONTROLLER_COMMANDS()
                     
-                    controller_name = GET_MQTT_DEVICE_BY_ID(mqtt_device_id).name
+                    controller_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
 
                     WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | added")  
 
@@ -511,63 +513,25 @@ def UPDATE_CONTROLLER_COMMANDS():
     
     for controller in GET_ALL_CONTROLLER():
     
-        mqtt_device_commands = GET_MQTT_DEVICE_BY_ID(controller.mqtt_device_id).commands
-        mqtt_device_commands = mqtt_device_commands.split(",")
+        mqtt_device_inputs = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).inputs
+        mqtt_device_inputs = mqtt_device_inputs.split(",")
+
+        print(mqtt_device_inputs)
         
         try:
-            mqtt_device_command  = mqtt_device_commands[0].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_1 = mqtt_device_command
+            mqtt_device_input    = mqtt_device_inputs[0].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_1 = mqtt_device_input
         except:
             controller.command_1 = "None"
         try:
-            mqtt_device_command  = mqtt_device_commands[1].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_2 = mqtt_device_command
+            mqtt_device_input    = mqtt_device_inputs[1].replace(" ","")
+            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
+            controller.command_2 = mqtt_device_input
         except:
             controller.command_2 = "None"
-        try:
-            mqtt_device_command  = mqtt_device_commands[2].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_3 = mqtt_device_command
-        except:
-            controller.command_3 = "None"            
-        try:
-            mqtt_device_command  = mqtt_device_commands[3].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_4 = mqtt_device_command
-        except:
-            controller.command_4 = "None"
-        try:
-            mqtt_device_command  = mqtt_device_commands[4].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_5 = mqtt_device_command
-        except:
-            controller.command_5 = "None"            
-        try:
-            mqtt_device_command  = mqtt_device_commands[5].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_6 = mqtt_device_command
-        except:
-            controller.command_6 = "None"                                    
-        try:
-            mqtt_device_command  = mqtt_device_commands[6].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_7 = mqtt_device_command
-        except:
-            controller.command_7 = "None"        
-        try:
-            mqtt_device_command  = mqtt_device_commands[7].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_8 = mqtt_device_command
-        except:
-            controller.command_8 = "None"        
-        try:
-            mqtt_device_command  = mqtt_device_commands[8].replace(" ","")
-            mqtt_device_command  = mqtt_device_command.replace("=", " = ")
-            controller.command_9 = mqtt_device_command
-        except:
-            controller.command_9 = "None"    
+
+
             
         db.session.commit()
 
@@ -602,8 +566,52 @@ def RESET_CONTROLLER_ERRORS(id):
     db.session.commit()   
 
 
+def CHANGE_CONTROLLER_POSITION(id, direction):
+    
+    if direction == "up":
+        controller_list = GET_ALL_CONTROLLER()
+        controller_list = controller_list[::-1]
+        
+        for controller in controller_list:
+            
+            if controller.id < id:     
+                new_id = controller.id
+                
+                # change ids
+                controller_1 = GET_CONTROLLER_BY_ID(id)
+                controller_2 = GET_CONTROLLER_BY_ID(new_id)
+                
+                controller_1.id = 99
+                db.session.commit()
+                
+                controller_2.id = id
+                controller_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for controller in GET_ALL_CONTROLLER():
+            if controller.id > id:       
+                new_id = controller.id
+                
+                # change ids
+                controller_1 = GET_CONTROLLER_BY_ID(id)
+                controller_2 = GET_CONTROLLER_BY_ID(new_id)
+                
+                controller_1.id = 99
+                db.session.commit()
+                
+                controller_2.id = id
+                controller_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
 def DELETE_CONTROLLER(id):
-    controller_name = GET_MQTT_DEVICE_BY_ID(id).name
+    mqtt_device_ieeeAddr = GET_CONTROLLER_BY_ID(id).mqtt_device_ieeeAddr
+    controller_name      = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
     
     try:
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | deleted")   
@@ -703,6 +711,369 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
     entry.setting_value = value
     db.session.commit()    
     
+
+""" ################### """
+""" ################### """
+"""    led scenes     """
+""" ################### """
+""" ################### """
+
+
+def GET_ALL_LED_SCENES():
+    return LED_Scenes.query.all()   
+
+
+def GET_LED_SCENE_BY_ID(id):
+    return LED_Scenes.query.filter_by(id=id).first()
+
+
+def GET_LED_SCENE_BY_NAME(name):
+    return LED_Scenes.query.filter_by(name=name).first()
+
+
+def ADD_LED_SCENE(name):
+    # name exist ?
+    check_entry = LED_Scenes.query.filter_by(name=name).first()
+    if check_entry is None:
+        if name == "":
+            return "Kein Name angegeben"
+        else:
+            # find a unused id
+            for i in range(1,21):
+                if LED_Scenes.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new program
+                    scene = LED_Scenes(
+                            id = i,
+                            name = name,
+                        )
+                    db.session.add(scene)
+                    db.session.commit()
+
+                    RESET_LED_SCENE_ERRORS(i)
+
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | added")  
+
+                    return ""
+
+            return "Szenenlimit erreicht (20)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_LED_SCENE(id, name, red_1, green_1, blue_1, color_temp_1, brightness_1,
+                            red_2, green_2, blue_2, color_temp_2, brightness_2,
+                            red_3, green_3, blue_3, color_temp_3, brightness_3,
+                            red_4, green_4, blue_4, color_temp_4, brightness_4,
+                            red_5, green_5, blue_5, color_temp_5, brightness_5,
+                            red_6, green_6, blue_6, color_temp_6, brightness_6,
+                            red_7, green_7, blue_7, color_temp_7, brightness_7,
+                            red_8, green_8, blue_8, color_temp_8, brightness_8,
+                            red_9, green_9, blue_9, color_temp_9, brightness_9):
+
+    entry = LED_Scenes.query.filter_by(id=id).first()
+    entry.name  = name
+    entry.red_1 = red_1
+    entry.green_1 = green_1   
+    entry.blue_1 = blue_1
+    entry.color_temp_1 = color_temp_1
+    entry.brightness_1 = brightness_1
+    entry.red_2 = red_2
+    entry.green_2 = green_2   
+    entry.blue_2 = blue_2
+    entry.color_temp_2 = color_temp_2
+    entry.brightness_2 = brightness_2
+    entry.red_3 = red_3
+    entry.green_3 = green_3   
+    entry.blue_3 = blue_3
+    entry.color_temp_3 = color_temp_3
+    entry.brightness_3 = brightness_3    
+    entry.red_4 = red_4
+    entry.green_4 = green_4   
+    entry.blue_4 = blue_4
+    entry.color_temp_4 = color_temp_4
+    entry.brightness_4 = brightness_4
+    entry.red_5 = red_5
+    entry.green_5 = green_5   
+    entry.blue_5 = blue_5
+    entry.color_temp_5 = color_temp_5
+    entry.brightness_5 = brightness_5
+    entry.red_6 = red_6
+    entry.green_6 = green_6   
+    entry.blue_6 = blue_6
+    entry.color_temp_6 = color_temp_6
+    entry.brightness_6 = brightness_6
+    entry.red_7 = red_7
+    entry.green_7 = green_7   
+    entry.blue_7 = blue_7
+    entry.color_temp_7 = color_temp_7
+    entry.brightness_7 = brightness_7
+    entry.red_8 = red_8
+    entry.green_8 = green_8   
+    entry.blue_8 = blue_8
+    entry.color_temp_8 = color_temp_8
+    entry.brightness_8 = brightness_8
+    entry.red_9 = red_9
+    entry.green_9 = green_9   
+    entry.blue_9 = blue_9
+    entry.color_temp_9 = color_temp_9
+    entry.brightness_9 = brightness_9                    
+    db.session.commit()  
+
+
+def ADD_LED_SCENE_SETTING(id):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    if entry.active_setting_2 != "on":
+        entry.active_setting_2 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_3 != "on":
+        entry.active_setting_3 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_4 != "on":
+        entry.active_setting_4 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_5 != "on":
+        entry.active_setting_5 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_6 != "on":
+        entry.active_setting_6 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_7 != "on":
+        entry.active_setting_7 = "on"
+        db.session.commit()
+        return
+    if entry.active_setting_8 != "on":
+        entry.active_setting_8 = "on"
+        db.session.commit()
+        return       
+    if entry.active_setting_9 != "on":
+        entry.active_setting_9 = "on"
+        db.session.commit()
+        return  
+
+
+def SET_LED_SCENE_CHANGE_ERRORS(id, error_change_settings):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    entry.error_change_settings = error_change_settings
+    db.session.commit()
+
+
+def SET_LED_SCENE_CONTROL_ERRORS(id, error_led_control):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    entry.error_led_control = error_led_control
+    db.session.commit()
+
+
+def RESET_LED_SCENE_ERRORS(id):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    entry.error_change_settings = ""
+    entry.error_led_control = ""
+    db.session.commit()
+
+
+def CHANGE_LED_SCENE_POSITION(id, direction):
+    
+    if direction == "up":
+        scenes_list = GET_ALL_LED_SCENES()
+        scenes_list = scenes_list[::-1]
+        
+        for scene in scenes_list:
+            
+            if scene.id < id:    
+                new_id = scene.id
+                
+                # change ids
+                scene_1 = GET_LED_SCENE_BY_ID(id)
+                scene_2 = GET_LED_SCENE_BY_ID(new_id)
+                
+                scene_1.id = 99
+                db.session.commit()
+                
+                scene_2.id = id
+                scene_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for scene in GET_ALL_LED_SCENES():
+            if scene.id > id:   
+                new_id = scene.id
+                
+                # change ids
+                scene_1 = GET_LED_SCENE_BY_ID(id)
+                scene_2 = GET_LED_SCENE_BY_ID(new_id)
+                
+                scene_1.id = 99
+                db.session.commit()
+                
+                scene_2.id = id
+                scene_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
+def REMOVE_LED_SCENE_SETTING(id, setting):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    if setting == 2:
+        entry.active_setting_2 = "None"
+        entry.red_2            = 0
+        entry.green_2          = 0
+        entry.blue_2           = 0
+        entry.color_temp_2     = 0
+        entry.brightness_2     = 254
+    if setting == 3:
+        entry.active_setting_3 = "None"
+        entry.red_3            = 0
+        entry.green_3          = 0
+        entry.blue_3           = 0
+        entry.color_temp_3     = 0
+        entry.brightness_3     = 254        
+    if setting == 4:
+        entry.active_setting_4 = "None"
+        entry.red_4            = 0
+        entry.green_4          = 0
+        entry.blue_4           = 0
+        entry.color_temp_4     = 0
+        entry.brightness_4     = 254
+    if setting == 5:
+        entry.active_setting_5 = "None"
+        entry.red_5            = 0
+        entry.green_5          = 0
+        entry.blue_5           = 0
+        entry.color_temp_5     = 0
+        entry.brightness_5     = 254
+    if setting == 6:
+        entry.active_setting_6 = "None"
+        entry.red_6            = 0
+        entry.green_6          = 0
+        entry.blue_6           = 0
+        entry.color_temp_6     = 0
+        entry.brightness_6     = 254
+    if setting == 7:
+        entry.active_setting_7 = "None"
+        entry.red_7            = 0
+        entry.green_7          = 0
+        entry.blue_7           = 0
+        entry.color_temp_7     = 0
+        entry.brightness_7     = 254
+    if setting == 8:
+        entry.active_setting_8 = "None"
+        entry.red_8            = 0
+        entry.green_8          = 0
+        entry.blue_8           = 0
+        entry.color_temp_8     = 0
+        entry.brightness_8     = 254
+    if setting == 9:
+        entry.active_setting_9 = "None"
+        entry.red_9            = 0
+        entry.green_9          = 0
+        entry.blue_9           = 0
+        entry.color_temp_9     = 0
+        entry.brightness_9     = 254
+
+    db.session.commit()
+    return
+
+
+def DELETE_LED_SCENE(id):
+    name = GET_LED_SCENE_BY_ID(id).name
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | deleted") 
+    except:
+        pass 
+
+    LED_Scenes.query.filter_by(id=id).delete()
+    db.session.commit() 
+
+
+""" ################### """
+""" ################### """
+"""    led programs     """
+""" ################### """
+""" ################### """
+
+
+def GET_ALL_LED_PROGRAMS():
+    return LED_Programs.query.all()   
+
+
+def GET_LED_PROGRAM_BY_NAME(name):
+    return LED_Programs.query.filter_by(name=name).first()
+
+
+def GET_LED_PROGRAM_BY_ID(id):
+    return LED_Programs.query.filter_by(id=id).first()
+
+
+def ADD_LED_PROGRAM(name):
+    # name exist ?
+    check_entry = LED_Programs.query.filter_by(name=name).first()
+    if check_entry is None:
+        # find a unused id
+        for i in range(1,21):
+            if LED_Programs.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new program
+                program = LED_Programs(
+                        id = i,
+                        name = name,
+                        content = "",
+                    )
+                db.session.add(program)
+                db.session.commit()
+
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | added")  
+
+                return ""
+
+        return "Programmlimit erreicht (20)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_LED_PROGRAM_NAME(id, name):
+    check_entry = LED_Programs.query.filter_by(name=name).first()
+    if check_entry is None:
+        entry = LED_Programs.query.filter_by(id=id).first()
+        entry.name = name
+        db.session.commit()    
+
+
+def SAVE_LED_PROGRAM(id, content):
+    entry = LED_Programs.query.filter_by(id=id).first()
+    entry.content = content
+    
+    db.session.commit()
+
+
+def DELETE_LED_PROGRAM(id):
+    name = LED_Programs.query.filter_by(id=id).first().name
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | deleted")  
+    except:
+        pass 
+
+    LED_Programs.query.filter_by(id=id).delete()
+    db.session.commit() 
+
 
 """ ################### """
 """ ################### """
@@ -935,6 +1306,49 @@ def RESET_LED_GROUP_ERRORS(id):
     db.session.commit()
 
 
+def CHANGE_LED_GROUP_POSITION(id, direction):
+    
+    if direction == "up":
+        groups_list = GET_ALL_LED_GROUPS()
+        groups_list = groups_list[::-1]
+        
+        for group in groups_list:
+            
+            if group.id < id: 
+                new_id = group.id
+                
+                # change ids
+                group_1 = GET_LED_GROUP_BY_ID(id)
+                group_2 = GET_LED_GROUP_BY_ID(new_id)
+                
+                group_1.id = 99
+                db.session.commit()
+                
+                group_2.id = id
+                group_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for group in GET_ALL_LED_GROUPS():
+            if group.id > id:
+                new_id = group.id
+                
+                # change ids
+                group_1 = GET_LED_GROUP_BY_ID(id)
+                group_2 = GET_LED_GROUP_BY_ID(new_id)
+                
+                group_1.id = 99
+                db.session.commit()
+                
+                group_2.id = id
+                group_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
 def REMOVE_LED_GROUP_LED(id, led):
     entry = LED_Groups.query.filter_by(id=id).first()
 
@@ -991,326 +1405,6 @@ def DELETE_LED_GROUP(id):
         pass     
     
     LED_Groups.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-
-""" ################### """
-""" ################### """
-"""    led programs     """
-""" ################### """
-""" ################### """
-
-
-def GET_ALL_LED_PROGRAMS():
-    return LED_Programs.query.all()   
-
-
-def GET_LED_PROGRAM_BY_NAME(name):
-    return LED_Programs.query.filter_by(name=name).first()
-
-
-def GET_LED_PROGRAM_BY_ID(id):
-    return LED_Programs.query.filter_by(id=id).first()
-
-
-def ADD_LED_PROGRAM(name):
-    # name exist ?
-    check_entry = LED_Programs.query.filter_by(name=name).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,21):
-            if LED_Programs.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new program
-                program = LED_Programs(
-                        id = i,
-                        name = name,
-                        content = "",
-                    )
-                db.session.add(program)
-                db.session.commit()
-
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | added")  
-
-                return ""
-
-        return "Programmlimit erreicht (20)"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_LED_PROGRAM_NAME(id, name):
-    check_entry = LED_Programs.query.filter_by(name=name).first()
-    if check_entry is None:
-        entry = LED_Programs.query.filter_by(id=id).first()
-        entry.name = name
-        db.session.commit()    
-
-
-def SAVE_LED_PROGRAM(id, content):
-    entry = LED_Programs.query.filter_by(id=id).first()
-    entry.content = content
-    
-    db.session.commit()
-
-
-def DELETE_LED_PROGRAM(id):
-    name = LED_Programs.query.filter_by(id=id).first().name
-    
-    try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | deleted")  
-    except:
-        pass 
-
-    LED_Programs.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-
-""" ################### """
-""" ################### """
-"""    led scenes     """
-""" ################### """
-""" ################### """
-
-
-def GET_ALL_LED_SCENES():
-    return LED_Scenes.query.all()   
-
-
-def GET_LED_SCENE_BY_ID(id):
-    return LED_Scenes.query.filter_by(id=id).first()
-
-
-def GET_LED_SCENE_BY_NAME(name):
-    return LED_Scenes.query.filter_by(name=name).first()
-
-
-def ADD_LED_SCENE(name):
-    # name exist ?
-    check_entry = LED_Scenes.query.filter_by(name=name).first()
-    if check_entry is None:
-        if name == "":
-            return "Kein Name angegeben"
-        else:
-            # find a unused id
-            for i in range(1,21):
-                if LED_Scenes.query.filter_by(id=i).first():
-                    pass
-                else:
-                    # add the new program
-                    scene = LED_Scenes(
-                            id = i,
-                            name = name,
-                        )
-                    db.session.add(scene)
-                    db.session.commit()
-
-                    RESET_LED_SCENE_ERRORS(i)
-
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | added")  
-
-                    return ""
-
-            return "Szenenlimit erreicht (20)"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_LED_SCENE(id, name, red_1, green_1, blue_1, color_temp_1, brightness_1,
-                            red_2, green_2, blue_2, color_temp_2, brightness_2,
-                            red_3, green_3, blue_3, color_temp_3, brightness_3,
-                            red_4, green_4, blue_4, color_temp_4, brightness_4,
-                            red_5, green_5, blue_5, color_temp_5, brightness_5,
-                            red_6, green_6, blue_6, color_temp_6, brightness_6,
-                            red_7, green_7, blue_7, color_temp_7, brightness_7,
-                            red_8, green_8, blue_8, color_temp_8, brightness_8,
-                            red_9, green_9, blue_9, color_temp_9, brightness_9):
-
-    entry = LED_Scenes.query.filter_by(id=id).first()
-    entry.name  = name
-    entry.red_1 = red_1
-    entry.green_1 = green_1   
-    entry.blue_1 = blue_1
-    entry.color_temp_1 = color_temp_1
-    entry.brightness_1 = brightness_1
-    entry.red_2 = red_2
-    entry.green_2 = green_2   
-    entry.blue_2 = blue_2
-    entry.color_temp_2 = color_temp_2
-    entry.brightness_2 = brightness_2
-    entry.red_3 = red_3
-    entry.green_3 = green_3   
-    entry.blue_3 = blue_3
-    entry.color_temp_3 = color_temp_3
-    entry.brightness_3 = brightness_3    
-    entry.red_4 = red_4
-    entry.green_4 = green_4   
-    entry.blue_4 = blue_4
-    entry.color_temp_4 = color_temp_4
-    entry.brightness_4 = brightness_4
-    entry.red_5 = red_5
-    entry.green_5 = green_5   
-    entry.blue_5 = blue_5
-    entry.color_temp_5 = color_temp_5
-    entry.brightness_5 = brightness_5
-    entry.red_6 = red_6
-    entry.green_6 = green_6   
-    entry.blue_6 = blue_6
-    entry.color_temp_6 = color_temp_6
-    entry.brightness_6 = brightness_6
-    entry.red_7 = red_7
-    entry.green_7 = green_7   
-    entry.blue_7 = blue_7
-    entry.color_temp_7 = color_temp_7
-    entry.brightness_7 = brightness_7
-    entry.red_8 = red_8
-    entry.green_8 = green_8   
-    entry.blue_8 = blue_8
-    entry.color_temp_8 = color_temp_8
-    entry.brightness_8 = brightness_8
-    entry.red_9 = red_9
-    entry.green_9 = green_9   
-    entry.blue_9 = blue_9
-    entry.color_temp_9 = color_temp_9
-    entry.brightness_9 = brightness_9                    
-    db.session.commit()  
-
-
-def ADD_LED_SCENE_SETTING(id):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    if entry.active_setting_2 != "on":
-        entry.active_setting_2 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_3 != "on":
-        entry.active_setting_3 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_4 != "on":
-        entry.active_setting_4 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_5 != "on":
-        entry.active_setting_5 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_6 != "on":
-        entry.active_setting_6 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_7 != "on":
-        entry.active_setting_7 = "on"
-        db.session.commit()
-        return
-    if entry.active_setting_8 != "on":
-        entry.active_setting_8 = "on"
-        db.session.commit()
-        return       
-    if entry.active_setting_9 != "on":
-        entry.active_setting_9 = "on"
-        db.session.commit()
-        return  
-
-
-def SET_LED_SCENE_CHANGE_ERRORS(id, error_change_settings):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    entry.error_change_settings = error_change_settings
-    db.session.commit()
-
-
-def SET_LED_SCENE_CONTROL_ERRORS(id, error_led_control):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    entry.error_led_control = error_led_control
-    db.session.commit()
-
-
-def RESET_LED_SCENE_ERRORS(id):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    entry.error_change_settings = ""
-    entry.error_led_control = ""
-    db.session.commit()
-
-
-def REMOVE_LED_SCENE_SETTING(id, setting):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    if setting == 2:
-        entry.active_setting_2 = "None"
-        entry.red_2            = 0
-        entry.green_2          = 0
-        entry.blue_2           = 0
-        entry.color_temp_2     = 0
-        entry.brightness_2     = 254
-    if setting == 3:
-        entry.active_setting_3 = "None"
-        entry.red_3            = 0
-        entry.green_3          = 0
-        entry.blue_3           = 0
-        entry.color_temp_3     = 0
-        entry.brightness_3     = 254        
-    if setting == 4:
-        entry.active_setting_4 = "None"
-        entry.red_4            = 0
-        entry.green_4          = 0
-        entry.blue_4           = 0
-        entry.color_temp_4     = 0
-        entry.brightness_4     = 254
-    if setting == 5:
-        entry.active_setting_5 = "None"
-        entry.red_5            = 0
-        entry.green_5          = 0
-        entry.blue_5           = 0
-        entry.color_temp_5     = 0
-        entry.brightness_5     = 254
-    if setting == 6:
-        entry.active_setting_6 = "None"
-        entry.red_6            = 0
-        entry.green_6          = 0
-        entry.blue_6           = 0
-        entry.color_temp_6     = 0
-        entry.brightness_6     = 254
-    if setting == 7:
-        entry.active_setting_7 = "None"
-        entry.red_7            = 0
-        entry.green_7          = 0
-        entry.blue_7           = 0
-        entry.color_temp_7     = 0
-        entry.brightness_7     = 254
-    if setting == 8:
-        entry.active_setting_8 = "None"
-        entry.red_8            = 0
-        entry.green_8          = 0
-        entry.blue_8           = 0
-        entry.color_temp_8     = 0
-        entry.brightness_8     = 254
-    if setting == 9:
-        entry.active_setting_9 = "None"
-        entry.red_9            = 0
-        entry.green_9          = 0
-        entry.blue_9           = 0
-        entry.color_temp_9     = 0
-        entry.brightness_9     = 254
-
-    db.session.commit()
-    return
-
-
-def DELETE_LED_SCENE(id):
-    name = GET_LED_SCENE_BY_ID(id).name
-    
-    try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | deleted") 
-    except:
-        pass 
-
-    LED_Scenes.query.filter_by(id=id).delete()
     db.session.commit() 
 
 
@@ -1385,12 +1479,8 @@ def GET_ALL_MQTT_DEVICES(selector):
     return device_list
         
 
-def GET_MQTT_DEVICE_COMMANDS(id):
-    return MQTT_Devices.query.filter_by(id=id).first().commands
-
-
 def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", 
-                    inputs = "", outputs = "", commands = "", last_contact = ""):
+                    inputs = "", outputs = "", last_contact = ""):
                         
     # path exist ?
     check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
@@ -1414,7 +1504,6 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                         description  = description,
                         inputs       = inputs,
                         outputs      = outputs,
-                        commands     = commands,
                         last_contact = last_contact,
                         )
                         
@@ -1427,8 +1516,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                                      " | device_type - " + device_type + 
                                      " | description - " + description + 
                                      " | Inputs - " + inputs + 
-                                     " | Outputs - " + outputs + 
-                                     " | Commands - " + commands)
+                                     " | Outputs - " + outputs)
 
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
                 
@@ -1492,18 +1580,17 @@ def SET_MQTT_DEVICE_SETTINGS(ieeeAddr, power_setting):
     db.session.commit()  
     
     
-def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = "", commands = ""):
+def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     
     # values changed ?
     if (entry.name != name or entry.device_type != device_type or entry.description != description 
-        or entry.inputs != inputs or entry.outputs != outputs or entry.commands != commands):
+        or entry.inputs != inputs or entry.outputs != outputs):
         
         entry.device_type = device_type
         entry.description = description
         entry.inputs      = inputs
         entry.outputs     = outputs
-        entry.commands    = commands
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway +
@@ -1514,13 +1601,57 @@ def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", in
                              " | device_type - " + entry.device_type +
                              " | description - " + entry.description +
                              " | inputs - " + entry.inputs + 
-                             " | outputs - " + outputs + 
-                             " | commands - " + commands)
+                             " | outputs - " + outputs)
 
         entry.name = name
         db.session.commit()    
    
     
+def CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction):
+    
+    if direction == "up":
+        device_list = GET_ALL_MQTT_DEVICES(device_type)
+        device_list = device_list[::-1]
+        
+        for device in device_list:
+            
+            if device.id < id:
+                
+                new_id = device.id
+                
+                # change ids
+                device_1 = GET_MQTT_DEVICE_BY_ID(id)
+                device_2 = GET_MQTT_DEVICE_BY_ID(new_id)
+                
+                device_1.id = 99
+                db.session.commit()
+                
+                device_2.id = id
+                device_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for device in GET_ALL_MQTT_DEVICES(device_type):
+            if device.id > id:
+                
+                new_id = device.id
+                
+                # change ids
+                device_1 = GET_MQTT_DEVICE_BY_ID(id)
+                device_2 = GET_MQTT_DEVICE_BY_ID(new_id)
+                
+                device_1.id = 99
+                db.session.commit()
+                
+                device_2.id = id
+                device_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
 def DELETE_MQTT_DEVICE(id):
     error_list = ""
 
@@ -1674,6 +1805,49 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_id, pump_key, sensor_key, pumptime,
                              " | Pumptime - " + str(entry.pumptime))       
 
 
+def CHANGE_PLANTS_POSITION(id, direction):
+    
+    if direction == "up":
+        plants_list = GET_ALL_PLANTS()
+        plants_list = plants_list[::-1]
+        
+        for plant in plants_list:
+            
+            if plant.id < id:     
+                new_id = plant.id
+                
+                # change ids
+                plant_1 = GET_PLANT_BY_ID(id)
+                plant_2 = GET_PLANT_BY_ID(new_id)
+                
+                plant_1.id = 99
+                db.session.commit()
+                
+                plant_2.id = id
+                plant_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for plant in GET_ALL_PLANTS():
+            if plant.id > id:       
+                new_id = plant.id
+                
+                # change ids
+                plant_1 = GET_PLANT_BY_ID(id)
+                plant_2 = GET_PLANT_BY_ID(new_id)
+                
+                plant_1.id = 99
+                db.session.commit()
+                
+                plant_2.id = id
+                plant_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
 def DELETE_PLANT(plant_id):
     entry = GET_PLANT_BY_ID(plant_id)
     
@@ -1710,12 +1884,12 @@ def GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type):
 
     for task in Scheduler_Tasks.query.all():
 
-        if task_type == "":
-            if task.task_type == task_type:
+        if task_type == "reduced":
+            if task.task_type == "reduced":
                 list_tasks.append(task)
 
-        if task_type == "reduced":
-            if task.task_type == task_type:
+        if task_type == "complete":
+            if task.task_type == "complete":
                 list_tasks.append(task)
 
     return list_tasks       
@@ -1732,10 +1906,11 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
             else:
                 # add the new task
                 new_task = Scheduler_Tasks(
-                        id          = i,
-                        name        = name,
-                        task_type   = task_type,
-                        option_time = option_time,
+                        id            = i,
+                        name          = name,
+                        task_type     = task_type,
+                        option_time   = option_time,
+                        option_repeat = "checked",
                     )
                 db.session.add(new_task)
                 db.session.commit()
@@ -1761,7 +1936,8 @@ def SET_SCHEDULER_TASK(id, name, task,
                        sensor_key_2, operator_2, value_2, operator_main_2,
                        mqtt_device_id_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                        sensor_key_3, operator_3, value_3,
-                       expanded_home, expanded_away, expanded_ip_adresses, expanded_sunrise, expanded_sunset, expanded_timezone):   
+                       expanded_option_home, expanded_option_away, expanded_ip_adresses, 
+                       expanded_option_sunrise, expanded_option_sunset, expanded_location):   
      
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
@@ -1777,44 +1953,45 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
         str(entry.mqtt_device_id_3) != mqtt_device_id_3 or entry.sensor_key_3 != sensor_key_3 or 
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
-        entry.expanded_home != expanded_home or entry.expanded_away != expanded_away or entry.expanded_ip_adresses != expanded_ip_adresses or
-        entry.expanded_sunrise != expanded_sunrise or entry.expanded_sunset != expanded_sunset or entry.expanded_timezone != expanded_timezone):
+        entry.expanded_option_home != expanded_option_home or entry.expanded_option_away != expanded_option_away or 
+        entry.expanded_ip_adresses != expanded_ip_adresses or entry.expanded_option_sunrise != expanded_option_sunrise or 
+        entry.expanded_option_sunset != expanded_option_sunset or entry.expanded_location != expanded_location):
 
-        entry.name                 = name
-        entry.task                 = task      
-        entry.option_time          = option_time      
-        entry.option_sensors       = option_sensors
-        entry.option_expanded      = option_expanded        
-        entry.option_repeat        = option_repeat
-        entry.day                  = day
-        entry.hour                 = hour
-        entry.minute               = minute
-        entry.mqtt_device_id_1     = mqtt_device_id_1
-        entry.mqtt_device_name_1   = mqtt_device_name_1
-        entry.mqtt_device_inputs_1 = mqtt_device_inputs_1
-        entry.sensor_key_1         = sensor_key_1
-        entry.operator_1           = operator_1
-        entry.value_1              = value_1
-        entry.operator_main_1      = operator_main_1
-        entry.mqtt_device_id_2     = mqtt_device_id_2
-        entry.mqtt_device_name_2   = mqtt_device_name_2
-        entry.mqtt_device_inputs_2 = mqtt_device_inputs_2
-        entry.sensor_key_2         = sensor_key_2
-        entry.operator_2           = operator_2
-        entry.value_2              = value_2        
-        entry.operator_main_2      = operator_main_2
-        entry.mqtt_device_id_3     = mqtt_device_id_3
-        entry.mqtt_device_name_3   = mqtt_device_name_3
-        entry.mqtt_device_inputs_3 = mqtt_device_inputs_3
-        entry.sensor_key_3         = sensor_key_3
-        entry.operator_3           = operator_3
-        entry.value_3              = value_3      
-        entry.expanded_home        = expanded_home
-        entry.expanded_away        = expanded_away
-        entry.expanded_ip_adresses = expanded_ip_adresses
-        entry.expanded_sunrise     = expanded_sunrise
-        entry.expanded_sunset      = expanded_sunset
-        entry.expanded_timezone    = expanded_timezone
+        entry.name                    = name
+        entry.task                    = task      
+        entry.option_time             = option_time      
+        entry.option_sensors          = option_sensors
+        entry.option_expanded         = option_expanded        
+        entry.option_repeat           = option_repeat
+        entry.day                     = day
+        entry.hour                    = hour
+        entry.minute                  = minute
+        entry.mqtt_device_id_1        = mqtt_device_id_1
+        entry.mqtt_device_name_1      = mqtt_device_name_1
+        entry.mqtt_device_inputs_1    = mqtt_device_inputs_1
+        entry.sensor_key_1            = sensor_key_1
+        entry.operator_1              = operator_1
+        entry.value_1                 = value_1
+        entry.operator_main_1         = operator_main_1
+        entry.mqtt_device_id_2        = mqtt_device_id_2
+        entry.mqtt_device_name_2      = mqtt_device_name_2
+        entry.mqtt_device_inputs_2    = mqtt_device_inputs_2
+        entry.sensor_key_2            = sensor_key_2
+        entry.operator_2              = operator_2
+        entry.value_2                 = value_2        
+        entry.operator_main_2         = operator_main_2
+        entry.mqtt_device_id_3        = mqtt_device_id_3
+        entry.mqtt_device_name_3      = mqtt_device_name_3
+        entry.mqtt_device_inputs_3    = mqtt_device_inputs_3
+        entry.sensor_key_3            = sensor_key_3
+        entry.operator_3              = operator_3
+        entry.value_3                 = value_3      
+        entry.expanded_option_home    = expanded_option_home
+        entry.expanded_option_away    = expanded_option_away
+        entry.expanded_ip_adresses    = expanded_ip_adresses
+        entry.expanded_option_sunrise = expanded_option_sunrise
+        entry.expanded_option_sunset  = expanded_option_sunset
+        entry.expanded_location       = expanded_location
 
         db.session.commit()   
 
@@ -1875,15 +2052,15 @@ def SET_SCHEDULER_TASK(id, name, task,
 
             if entry.expanded_ip_adresses == None:
                 entry.expanded_ip_adresses = "None"
-            if entry.expanded_timezone == None:
-                entry.expanded_timezone = "None"
+            if entry.expanded_location == None:
+                entry.expanded_location = "None"
 
-            log_message = log_message + (" | Home - " + entry.expanded_home + 
-                                         " | Away - " + entry.expanded_away + 
+            log_message = log_message + (" | Home - " + entry.expanded_option_home + 
+                                         " | Away - " + entry.expanded_option_away + 
                                          " | IP-Adressen - " + entry.expanded_ip_adresses +
-                                         " | Sunrise - " + entry.expanded_sunrise +
-                                         " | Sunset - " + entry.expanded_sunset +
-                                         " | Zone - " + entry.expanded_timezone) 
+                                         " | Sunrise - " + entry.expanded_option_sunrise +
+                                         " | Sunset - " + entry.expanded_option_sunset +
+                                         " | Location - " + entry.expanded_location) 
 
         # option repeat
         if entry.option_repeat == "checked":
@@ -1893,45 +2070,75 @@ def SET_SCHEDULER_TASK(id, name, task,
         WRITE_LOGFILE_SYSTEM("EVENT", log_message) 
 
 
-def SET_SCHEDULER_CHANGE_ERRORS(id, error_change_settings):    
+def SET_SCHEDULER_TASK_SUNRISE(id, sunrise):    
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+
+    entry.expanded_sunrise = sunrise
+    db.session.commit()   
+
+
+def GET_SCHEDULER_TASK_SUNRISE(id):    
+    return (Scheduler_Tasks.query.filter_by(id=id).first().expanded_sunrise)
+
+
+def SET_SCHEDULER_TASK_SUNSET(id, sunset):    
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+
+    entry.expanded_sunset = sunset
+    db.session.commit()   
+
+
+def GET_SCHEDULER_TASK_SUNSET(id):    
+    return (Scheduler_Tasks.query.filter_by(id=id).first().expanded_sunset)
+
+
+def SET_SCHEDULER_TASK_CHANGE_ERRORS(id, error_change_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_change_settings = error_change_settings
     db.session.commit()   
 
 
-def SET_SCHEDULER_SETTING_TIME_ERRORS(id, error_time_settings):    
+def SET_SCHEDULER_TASK_SETTING_GENERAL_ERRORS(id, error_general_settings):    
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+
+    entry.error_general_settings = error_general_settings
+    db.session.commit()   
+    
+
+def SET_SCHEDULER_TASK_SETTING_TIME_ERRORS(id, error_time_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_time_settings = error_time_settings
     db.session.commit()   
 
 
-def SET_SCHEDULER_SETTING_SENSOR_ERRORS(id, error_sensor_settings):    
+def SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(id, error_sensor_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_sensor_settings = error_sensor_settings
     db.session.commit()   
 
 
-def SET_SCHEDULER_SETTING_EXPANDED_ERRORS(id, error_expanded_settings):    
+def SET_SCHEDULER_TASK_SETTING_EXPANDED_ERRORS(id, error_expanded_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_expanded_settings = error_expanded_settings
     db.session.commit()   
 
 
-def SET_SCHEDULER_SETTING_TASK_ERRORS(id, error_task_settings):    
+def SET_SCHEDULER_TASK_SETTING_TASK_ERRORS(id, error_task_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_task_settings = error_task_settings
     db.session.commit()   
 
 
-def RESET_SCHEDULER_ERRORS(id):    
+def RESET_SCHEDULER_TASK_ERRORS(id):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
     entry.error_change_settings   = ""
+    entry.error_general_settings  = ""
     entry.error_time_settings     = ""
     entry.error_sensor_settings   = ""
     entry.error_expanded_settings = ""
@@ -1939,7 +2146,7 @@ def RESET_SCHEDULER_ERRORS(id):
     db.session.commit()   
 
 
-def ADD_SCHEDULER_TASK_OPTION(id):
+def ADD_SCHEDULER_TASK_SENSOR_ROW(id):
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
     operator_main_1 = entry.operator_main_1 
     operator_main_2 = entry.operator_main_2 
@@ -1954,7 +2161,7 @@ def ADD_SCHEDULER_TASK_OPTION(id):
     db.session.commit()
 
 
-def REMOVE_SCHEDULER_TASK_OPTION(id):
+def REMOVE_SCHEDULER_TASK_SENSOR_ROW(id):
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
     operator_main_1 = entry.operator_main_1 
     operator_main_2 = entry.operator_main_2 
@@ -1967,6 +2174,49 @@ def REMOVE_SCHEDULER_TASK_OPTION(id):
 
     db.session.commit()
 
+
+def CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction):
+    
+    if direction == "up":
+        task_list = GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type)
+        task_list = task_list[::-1]
+        
+        for task in task_list:  
+            if task.id < id:
+                
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SCHEDULER_TASK_BY_ID(id)
+                task_2 = GET_SCHEDULER_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for task in GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type):
+            if task.id > id:       
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SCHEDULER_TASK_BY_ID(id)
+                task_2 = GET_SCHEDULER_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return 
+            
 
 def DELETE_SCHEDULER_TASK(task_id):
     entry = GET_SCHEDULER_TASK_BY_ID(task_id)
@@ -2058,6 +2308,49 @@ def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_id, sensor_key, always_ac
                              " | MQTT-Device - " + entry.mqtt_device.name + 
                              " | Sensor - " + entry.sensor_key + 
                              " | Always_Active - " + entry.always_active)    
+
+
+def CHANGE_SENSORDATA_JOBS_POSITION(id, direction):
+    
+    if direction == "up":
+        sensordata_jobs_list = GET_ALL_SENSORDATA_JOBS()
+        sensordata_jobs_list = sensordata_jobs_list[::-1]
+        
+        for sensordata_job in sensordata_jobs_list:
+            
+            if sensordata_job.id < id:  
+                new_id = sensordata_job.id
+                
+                # change ids
+                sensordata_job_1 = GET_SENSORDATA_JOB_BY_ID(id)
+                sensordata_job_2 = GET_SENSORDATA_JOB_BY_ID(new_id)
+                
+                sensordata_job_1.id = 99
+                db.session.commit()
+                
+                sensordata_job_2.id = id
+                sensordata_job_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for sensordata_job in GET_ALL_SENSORDATA_JOBS():
+            if sensordata_job.id > id:    
+                new_id = sensordata_job.id
+                
+                # change ids
+                sensordata_job_1 = GET_SENSORDATA_JOB_BY_ID(id)
+                sensordata_job_2 = GET_SENSORDATA_JOB_BY_ID(new_id)
+                
+                sensordata_job_1.id = 99
+                db.session.commit()
+                
+                sensordata_job_2.id = id
+                sensordata_job_1.id = new_id
+                db.session.commit()
+                
+                return 
 
 
 def DELETE_SENSORDATA_JOB(id):
@@ -2221,6 +2514,49 @@ def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_
                              " | eMail-Info - " + email_notification_info +
                              " | eMail-Error - " + email_notification_error +
                              " | eMail-Camera - " + email_notification_camera)
+
+
+def CHANGE_USER_POSITION(id, direction):
+    
+    if direction == "up":
+        users_list = GET_ALL_USERS()
+        users_list = users_list[::-1]
+        
+        for user in users_list:
+            
+            if user.id < id:     
+                new_id = user.id
+                
+                # change ids
+                user_1 = GET_USER_BY_ID(id)
+                user_2 = GET_USER_BY_ID(new_id)
+                
+                user_1.id = 99
+                db.session.commit()
+                
+                user_2.id = id
+                user_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for user in GET_ALL_USERS():
+            if user.id > id:       
+                new_id = user.id
+                
+                # change ids
+                user_1 = GET_USER_BY_ID(id)
+                user_2 = GET_USER_BY_ID(new_id)
+                
+                user_1.id = 99
+                db.session.commit()
+                
+                user_2.id = id
+                user_1.id = new_id
+                db.session.commit()
+                
+                return 
 
 
 def DELETE_USER(user_id):

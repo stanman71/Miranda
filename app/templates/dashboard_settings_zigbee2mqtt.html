@@ -105,7 +105,7 @@
   </div>      
 {% endif %}   
 
-{% if error_message_change_settings != "" %}
+{% if error_message_change_settings != "" and error_message_change_settings != None %}
   <div class="alert alert-danger" role="alert">
     {% for entry in error_message_change_settings.split(',') %}
       {{ entry }} <br>
@@ -121,6 +121,7 @@
             <div class="well well-sm">   
               <table class="table">
                 <thead>
+                  <th scope="col"></th>
                   <th scope="col">Gerät</th>                        
                   <th scope="col">Adresse</th> 
                   <th scope="col">Modell</th>   
@@ -131,6 +132,10 @@
                 <tbody> 
                   {% for entry in zigbee2mqtt_device_list %}
                   <tr>
+                    <td style="width:3%">
+                      <a href="/dashboard/settings/zigbee2mqtt/position/up/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/dashboard/settings/zigbee2mqtt/position/down/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    </td>                     
                     <td>                     
                       <form method="POST" class="verticalform">                                                      
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 

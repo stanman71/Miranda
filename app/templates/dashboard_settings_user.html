@@ -89,6 +89,7 @@
             <table class="table">
               <thead>
                 <tr>
+                <th scope="col"></th>
                 <th scope="col">Benutzer</th>
                 <th scope="col">eMail</th>
                 <th scope="col">Rolle</th>                
@@ -96,19 +97,23 @@
                 <tr>
               </thead>
               <tbody>
-                {% for user in user_list %}
+                {% for entry in user_list %}
                 <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/settings/user/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/settings/user/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                 
                   <td>
                   <form method="POST" class="verticalform">
-                    <input type="text" class="form-control" name="set_username_{{ user.id }}" value="{{ user.username }}" />                    
+                    <input type="text" class="form-control" name="set_username_{{ entry.id }}" value="{{ entry.username }}" />                    
                   </td> 
                   <td>
-                    <input type="text" class="form-control" name="set_email_{{ user.id }}" value="{{ user.email }}" />                    
+                    <input type="text" class="form-control" name="set_email_{{ entry.id }}" value="{{ entry.email }}" />                    
                   </td> 
                   <td>
-                    <select class="btn btn-default dropdown-toggle" name="set_role_{{ user.id }}">
-                      <option value= "{{ user.role }}" > {{ user.role }} </option>
-                      <option value= "{{ user.role }}" > ----- </option>                      
+                    <select class="btn btn-default dropdown-toggle" name="set_role_{{ entry.id }}">
+                      <option value= "{{ entry.role }}" > {{ entry.role }} </option>
+                      <option value= "{{ entry.role }}" > ----- </option>                      
                       {% for each in dropdown_list_roles %}
                       <option value="{{each}}"> {{ each }} </option>
                       {% endfor %}
@@ -123,7 +128,7 @@
                         <div class="col-sm-1">    
                           <font size="-2">
                             <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" class="form-check-input" {{ user.email_notification_info }} name="checkbox_info_{{ user.id }}">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_info }} name="checkbox_info_{{ entry.id }}">
                               <div class="state">
                                 <label></label>
                               </div>
@@ -138,7 +143,7 @@
                         <div class="col-sm-1">  
                           <font size="-2">
                             <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" class="form-check-input" {{ user.email_notification_error }} name="checkbox_error_{{ user.id }}">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_error }} name="checkbox_error_{{ entry.id }}">
                               <div class="state">
                                 <label></label>
                               </div>
@@ -153,7 +158,7 @@
                         <div class="col-sm-1">  
                           <font size="-2">
                             <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" class="form-check-input" {{ user.email_notification_camera }} name="checkbox_camera_{{ user.id }}">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_camera }} name="checkbox_camera_{{ entry.id }}">
                               <div class="state">
                                 <label></label>
                               </div>
@@ -162,7 +167,7 @@
                         </div>
                       </div>                          
                     </td>    
-                    <td><a href="/dashboard/settings/user/delete/{{ user.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
+                    <td><a href="/dashboard/settings/user/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>

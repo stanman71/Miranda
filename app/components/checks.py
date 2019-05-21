@@ -133,6 +133,34 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
 """  check scheduler settings """
 """ ######################### """
 
+def CHECK_SCHEDULER_GENERAL_SETTINGS(scheduler_tasks): 
+   list_general_errors_general = []  
+   error_message_general_settings = ""
+
+   for task in scheduler_tasks:
+      
+      list_general_errors_device = []
+      
+      if task.option_time != "checked" and task.option_sensors != "checked" and task.option_expanded != "checked":    
+         list_general_errors_general.append(task.name + " >>> Keine Bedingungsoption ausgewählt")
+         list_general_errors_device.append(task.name + " >>> Keine Bedingungsoption ausgewählt")            
+
+      # add errors for each device to database  
+
+      if list_general_errors_device != []:
+
+         list_general_errors_device = str(list_general_errors_device)
+         list_general_errors_device = list_general_errors_device.replace("[", "")
+         list_general_errors_device = list_general_errors_device.replace("]", "")
+         SET_SCHEDULER_TASK_SETTING_GENERAL_ERRORS(task.id, list_general_errors_device)
+
+
+   if list_general_errors_general != []:
+      error_message_general_settings = list_general_errors_general
+
+   return error_message_general_settings
+
+
 def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks): 
    list_time_errors_general = []  
    error_message_time_settings = ""
@@ -143,8 +171,8 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
 
          list_time_errors_device = []
 
-         # check settings sunrise / sunset
-         if task.expanded_sunrise == "checked" or task.expanded_sunset == "checked":
+         # check settings sunrise / sunset option
+         if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
             list_time_errors_general.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")
             list_time_errors_device.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")           
 
@@ -229,7 +257,7 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
             list_time_errors_device = str(list_time_errors_device)
             list_time_errors_device = list_time_errors_device.replace("[", "")
             list_time_errors_device = list_time_errors_device.replace("]", "")
-            SET_SCHEDULER_SETTING_TIME_ERRORS(task.id, list_time_errors_device)
+            SET_SCHEDULER_TASK_SETTING_TIME_ERRORS(task.id, list_time_errors_device)
 
 
    if list_time_errors_general != []:
@@ -338,7 +366,7 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
             list_sensor_errors_device = str(list_sensor_errors_device)
             list_sensor_errors_device = list_sensor_errors_device.replace("[", "")
             list_sensor_errors_device = list_sensor_errors_device.replace("]", "")
-            SET_SCHEDULER_SETTING_SENSOR_ERRORS(task.id, list_sensor_errors_device)
+            SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(task.id, list_sensor_errors_device)
 
 
    if list_sensor_errors_general == []:
@@ -360,11 +388,11 @@ def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
          list_expanded_errors_device = []
 
          # check setting home / away
-         if task.expanded_home == "checked" and task.expanded_away == "checked":
+         if task.expanded_option_home == "checked" and task.expanded_option_away == "checked":
             list_expanded_errors_device.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
 
          # check setting ip-addresses
-         if task.expanded_home == "checked" or task.expanded_away == "checked":
+         if task.expanded_option_home == "checked" or task.expanded_option_away == "checked":
 
             if task.expanded_ip_adresses != "None":
                
@@ -377,9 +405,9 @@ def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
             else:
                list_expanded_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
 
-         # check setting timezone
-         if task.expanded_sunrise == "checked" or task.expanded_sunset == "checked":
-            if task.expanded_timezone == "None":
+         # check setting location
+         if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
+            if task.expanded_location == "None":
                list_expanded_errors_device.append(task.name + " >>> Zone wurde noch nicht eingestellt")
 
          # merge errors to general list
@@ -391,7 +419,7 @@ def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
             list_expanded_errors_device = str(list_expanded_errors_device)
             list_expanded_errors_device = list_expanded_errors_device.replace("[", "")
             list_expanded_errors_device = list_expanded_errors_device.replace("]", "")
-            SET_SCHEDULER_SETTING_EXPANDED_ERRORS(task.id, list_expanded_errors_device)
+            SET_SCHEDULER_TASK_SETTING_EXPANDED_ERRORS(task.id, list_expanded_errors_device)
 
 
    if list_expanded_errors_general == []:
@@ -484,14 +512,14 @@ def CHECK_TASKS(tasks, task_type):
             list_task_errors = str(list_task_errors)
             list_task_errors = list_task_errors.replace("[", "")
             list_task_errors = list_task_errors.replace("]", "")
-            SET_SCHEDULER_SETTING_TASK_ERRORS(element.id, list_task_errors)    
+            SET_SCHEDULER_TASK_SETTING_TASK_ERRORS(element.id, list_task_errors)    
 
 
    if task_type == "controller": 
 
       for controller in tasks:
 
-         name = GET_MQTT_DEVICE_BY_ID(controller.mqtt_device_id).name
+         name = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).name
 
          if controller.command_1 != None and controller.command_1 != "None": 
             list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type)
@@ -788,6 +816,7 @@ def CHECK_TASK_OPERATION(task, name, task_type):
       return list_task_errors
 
 
+'''
 
 """ ###################### """
 """  check timer settings  """
@@ -860,7 +889,7 @@ def CHECK_TIMER_SETTINGS(scheduler_tasks):
             list_timer_errors_device = str(list_timer_errors_device)
             list_timer_errors_device = list_timer_errors_device.replace("[", "")
             list_timer_errors_device = list_timer_errors_device.replace("]", "")
-            SET_SCHEDULER_SETTING_TIMER_ERRORS(task.id, list_timer_errors_device)
+            SET_SCHEDULER_TASK_SETTING_TIMER_ERRORS(task.id, list_timer_errors_device)
 
 
    if list_timer_errors_general == []:
@@ -870,3 +899,4 @@ def CHECK_TIMER_SETTINGS(scheduler_tasks):
 
    return error_message_timer_settings
 
+'''

@@ -8,9 +8,9 @@
 324131092621:
     device_type: controller
     description: Philips Hue Dimmer Switch
-    inputs:  
+    inputs:      [action=on-press, action=up-press, action=down-press, action=off-press]
     outputs: 
-    commands: [action=on-press, action=up-press, action=down-press, action=off-press]
+    commands: 
 
 AB3257001NJ:
     device_type: device
@@ -29,9 +29,9 @@ WSDCGQ11LM:
 MFKZQ01LM:
     device_type: controller
     description: AQARA Cube Controller
-    inputs: 
+    inputs:      [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
     outputs: 
-    commands: [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
+    commands: 
 
 RTCGQ11LM:
     device_type: sensor_passiv

@@ -108,6 +108,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 	except:
 		pass
 
+
 	if ieeeAddr != "":
 		# save last values
 		SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 

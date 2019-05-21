@@ -264,7 +264,8 @@
 
               <div class="well well-sm"> 
                  <table class="table">          
-                    <thead>                       
+                    <thead>   
+                      <th scope="col"></th>                     
                       <th scope="col">Name</th> 
                       <th scope="col">Aufgabe</th>                 
                       <th scope="col">Tag</th> 
@@ -276,6 +277,10 @@
                       {% for entry in scheduler_task_list %}
                         {% if entry.task_type == "reduced" %}
                           <tr>
+                            <td style="width:3%">
+                              <a href="/dashboard/scheduler/position/up/reduced/{{ entry.id }}#"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                              <a href="/dashboard/scheduler/position/down/reduced/{{ entry.id }}#"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                            </td> 
                             <td style="width:18%">
                               <form method="POST" class="verticalform">
                               <input type="text" class="form-control" name="set_name_reduced_{{ entry.id }}" value="{{ entry.name }}" />                                     
@@ -360,6 +365,16 @@
   </div>      
 {% endif %}  
 
+<!-- error message general settings -->
+
+{% if error_message_general_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_general_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
 <!-- error message time settings -->
 
 {% if error_message_time_settings != "" %}
@@ -390,12 +405,20 @@
   </div>      
 {% endif %} 
 
+<!-- error message location imports -->
+
+{% if error_message_locations_import != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_locations_import }} 
+  </div>      
+{% endif %}  
+
 
 <!-- scheduler table -->
 
 {% for entry in scheduler_task_list %}
 
-  {% if entry.task_type == "" %}
+  {% if entry.task_type == "complete" %}
 
 
   <section id="table_{{ entry.id }}"></section> 
@@ -419,6 +442,16 @@
   {% if entry.error_task_settings != "" %}
     <div class="alert alert-danger" role="alert">
       {% for entry in entry.error_task_settings.split(',') %}
+        {{ entry }} <br>
+      {% endfor %}
+    </div>      
+  {% endif %} 
+
+  <!-- error message general settings -->
+
+  {% if entry.error_general_settings != "" %}
+    <div class="alert alert-danger" role="alert">
+      {% for entry in entry.error_general_settings.split(',') %}
         {{ entry }} <br>
       {% endfor %}
     </div>      
@@ -458,7 +491,8 @@
   <!-- section main -->
 
                 <table class="table">          
-                  <thead>                       
+                  <thead>          
+                    <th scope="col"></th>              
                     <th scope="col">Name</th> 
                     <th scope="col">Aufgabe</th>    
                     <th scope="col"></th>            
@@ -469,6 +503,10 @@
                   </thead>
                   <tbody> 
                     <tr>
+                      <td style="width:3%">
+                        <a href="/dashboard/scheduler/position/up/complete/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                        <a href="/dashboard/scheduler/position/down/complete/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                      </td>                       
                       <td style="width:18%">
                         <form method="POST" class="verticalform">
                         <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
@@ -527,9 +565,10 @@
   {% if entry.option_time == "checked" %}
 
                     <tr>
-                      <td colspan="9"></td>
+                      <td colspan="10"></td>
                     </tr>
                     <tr>
+                      <td colspan="1"></td>
                       <td colspan="1"></td>
                       <td colspan="8">
                         <div class="row justify-content-md-center">
@@ -564,21 +603,22 @@
   <!-- section 1 -->
 
                     <tr>
-                      <td colspan="9"></td>
+                      <td colspan="10"></td>
                     </tr>            
                     <tr>
+                      <td colspan="1"></td>
                       <td colspan="1">
                         <font size="+2">
                           <div class="row justify-content-md-center">
                             <div class="col-sm-6">   
                             </div>   
                             <div class="col-sm-2">                
-                              <a href="/dashboard/scheduler/sensor_option/add/{{ entry.id }}#table_{{ entry.id }}">
+                              <a href="/dashboard/scheduler/sensor_row/add/{{ entry.id }}#table_{{ entry.id }}">
                                 <span class="glyphicon glyphicon-plus" style="color:white"></span>
                               </a>                  
                             </div>
                             <div class="col-sm-1">          
-                              <a href="/dashboard/scheduler/sensor_option/remove/{{ entry.id }}#table_{{ entry.id }}">
+                              <a href="/dashboard/scheduler/sensor_row/remove/{{ entry.id }}#table_{{ entry.id }}">
                                 <span class="glyphicon glyphicon-minus" style="color:white"></span>
                               </a>   
                             </div>
@@ -643,6 +683,7 @@
 
                     {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None %}            
                     <tr>
+                      <td colspan="1"></td>
                       <td colspan="1">
                         <div class="dropdown text-right">                    
                           <select class="btn btn-default dropdown-toggle" name="set_operator_main_1_{{ entry.id }}">
@@ -713,6 +754,7 @@
 
                     {% if entry.operator_main_2 != "None" and entry.operator_main_2 != None %}                    
                     <tr>
+                      <td colspan="1"></td>
                       <td colspan="1">
                         <div class="dropdown text-right">
                           <select class="btn btn-default dropdown-toggle" name="set_operator_main_2_{{ entry.id }}">
@@ -788,9 +830,10 @@
 
 
                     <tr>
-                      <td colspan="9"></td>
+                      <td colspan="10"></td>
                     </tr>
                     <tr>
+                      <td colspan="1"></td>
                       <td colspan="1"></td>
                       <td colspan="8">
                         <div class="row justify-content-md-center">
@@ -800,7 +843,7 @@
                           <div class="col-sm-1"> 
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_home }} name="checkbox_expanded_home_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.expanded_option_home }} name="checkbox_expanded_option_home_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -813,7 +856,7 @@
                           <div class="col-sm-1">                                       
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_away }} name="checkbox_expanded_away_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.expanded_option_away }} name="checkbox_expanded_option_away_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -821,7 +864,7 @@
                             </font>
                           </div>
 
-                          {% if entry.expanded_home == "checked" or entry.expanded_away == "checked" %}
+                          {% if entry.expanded_option_home == "checked" or entry.expanded_option_away == "checked" %}
 
                             <div class="col-sm-2">  
                               <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
@@ -838,15 +881,16 @@
                     <tr>     
                     <tr>
                       <td colspan="1"></td>
+                      <td colspan="1"></td>
                       <td colspan="8">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang:</button>
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.expanded_sunrise }}):</button>
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_sunrise }} name="checkbox_expanded_sunrise_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.expanded_option_sunrise }} name="checkbox_expanded_option_sunrise_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -854,12 +898,12 @@
                             </font>
                           </div>  
                           <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang:</button>
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.expanded_sunset }}):</button>
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_sunset }} name="checkbox_expanded_sunset_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.expanded_option_sunset }} name="checkbox_expanded_option_sunset_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -867,22 +911,27 @@
                             </font>                           
                           </div>
 
-                          {% if entry.expanded_sunrise == "checked" or entry.expanded_sunset == "checked" %}
+                          {% if entry.expanded_option_sunrise == "checked" or entry.expanded_option_sunset == "checked" %}
 
                             <div class="col-sm-1">
-                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Zone:</button>
+                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
                             </div>
                             <div class="col-sm-1">
-                              <select class="btn btn-default dropdown-toggle" name="set_expanded_timezone_{{ entry.id }}">
-                                {% if entry.expanded_timezone != None %}
-                                  <option value= "{{ entry.expanded_timezone }}" > {{ entry.expanded_timezone }} </option>
-                                  <option value= "{{ entry.expanded_timezone }}" > ------------------------- </option>
+                              <select class="btn btn-default dropdown-toggle" name="set_expanded_location_{{ entry.id }}">
+                                
+                                {% if entry.expanded_location != None %}
+                                  <option value= "{{ entry.expanded_location }}" > {{ entry.expanded_location }} </option>
+                                  <option value= "{{ entry.expanded_location }}" > ------------------------- </option>
                                 {% endif %}
-                                {% for each in dropdown_list_timezones %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}   
-                                <option value= "" > ------------------------- </option>                                                         
-                                <option value= "" > None </option>                        
+                                
+                                {% if error_message_locations_import == "" %}
+                                  {% for each in dropdown_list_locations %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}   
+                                  <option value= "" > ------------------------- </option>                                                         
+                                  <option value= "" > None </option>   
+                                {% endif %} 
+                                
                               </select>
                             </div>
 

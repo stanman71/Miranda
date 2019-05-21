@@ -90,7 +90,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," + 
                              "\"model\":\"watering_array_v4\"," +
                              "\"device_type\":\"watering_array\"," +
-                             "\"description\":\"Watering_Control with Sensors (4 Plants)\"," +
+                             "\"description\":\"Watering with Sensors (4 Plants)\"," +
                              "\"inputs\":[\"sensor_0\",\"sensor_1\",\"sensor_2\",\"sensor_3\"," +
                              "\"sensor_4\",\"sensor_5\",\"sensor_6\",\"sensor_7\"]," +
                              "\"outputs\":[\"pump_0\",\"pump_1\",\"pump_2\",\"pump_3\"]}";   

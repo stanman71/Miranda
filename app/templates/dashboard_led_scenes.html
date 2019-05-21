@@ -116,7 +116,7 @@
 
         {% for entry in scenes_list %}
 
-<section id="scene_table_{{ entry.id }}"></section>  
+<section id="table_{{ entry.id }}"></section>  
 
         <div class="panel panel-default">
           <div class="panel-heading"><font color="black"><b> {{ entry.name }} </b></font></div>    
@@ -140,7 +140,8 @@
 {% endif %}
 
             <table class="table">
-              <thead>                       
+              <thead>    
+                <th scope="col"></th>                      
                 <th scope="col">Szene</th> 
                 <th></th>
                 <th></th>
@@ -151,6 +152,10 @@
               </thead>
               <tbody> 
                 <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/led/scenes/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/led/scenes/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                 
                   <td style="width:20%">
                     <form method="POST" class="verticalform">
                     <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
@@ -160,7 +165,7 @@
                   <font size="+2">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-1">                       
-                        <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#scene_table_{{ entry.id }}">
+                        <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#table_{{ entry.id }}">
                           <span class="glyphicon glyphicon-plus" style="color:white"></span>
                         </a>                  
                       </div>
@@ -199,6 +204,7 @@
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
                   <td>2</td> 
                   <td>
                     <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
@@ -217,7 +223,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -227,6 +233,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -248,7 +255,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -258,6 +265,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -279,7 +287,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -289,6 +297,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -310,7 +319,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -320,6 +329,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -341,7 +351,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -351,6 +361,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -372,7 +383,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -382,6 +393,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -403,7 +415,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -413,6 +425,7 @@
 
                 </tr>
                 <tr>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -434,7 +447,7 @@
                       </div> 
                     </div> 
                   </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#scene_table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
+                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#table_{{ entry.id }}"><font color="red" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -448,7 +461,7 @@
 
           <div class="row justify-content-md-center">
             <div class="col-sm-3">
-                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
             </div> 
             <div class="col-sm-1">    
             </div>             
@@ -462,10 +475,10 @@
               </select> 
             </div> 
             <div class="col-sm-2">              
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
             </div> 
             <div class="col-sm-2">
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#scene_table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
+              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
             </div>
           </div>
           </form>

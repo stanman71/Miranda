@@ -403,6 +403,15 @@ def dashboard_led_scenes():
                             )
 
 
+# change led scene position 
+@app.route('/dashboard/led/scenes/position/<string:direction>/<int:id>')
+@login_required
+@user_required
+def change_scene_position(id, direction):
+    CHANGE_LED_SCENE_POSITION(id, direction)
+    return redirect(url_for('dashboard_led_scenes'))
+
+
 # add setting
 @app.route('/dashboard/led/scenes/setting/add/<int:scene_id>')
 @login_required
@@ -804,6 +813,15 @@ def dashboard_led_groups():
                             groups="active",
                             role=current_user.role,
                             )
+
+
+# change led group position 
+@app.route('/dashboard/led/groups/position/<string:direction>/<int:id>')
+@login_required
+@user_required
+def change_group_position(id, direction):
+    CHANGE_LED_GROUP_POSITION(id, direction)
+    return redirect(url_for('dashboard_led_groups'))
 
 
 # add led

@@ -49,7 +49,7 @@ def SNOWBOY_START():
 
          detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
-      WRITE_LOGFILE_SYSTEM("EVENT", "Speech Recognition Provider | started") 
+      WRITE_LOGFILE_SYSTEM("EVENT", "Speech Control | started") 
 
       # main loop
       detector.start(detected_callback=detect_callback,
@@ -59,6 +59,6 @@ def SNOWBOY_START():
       detector.terminate()
 
    else:
-      WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Provider | Snowboy Hotword - " + hotword_file + " | not founded")
+      WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Snowboy Hotword - " + hotword_file + " | not founded")
 
 

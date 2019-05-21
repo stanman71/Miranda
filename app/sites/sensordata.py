@@ -314,6 +314,15 @@ def dashboard_sensordata_jobs():
                             )
 
 
+# change sensordata job position 
+@app.route('/dashboard/sensordata/jobs/position/<string:direction>/<int:id>')
+@login_required
+@user_required
+def change_sensordata_jobs_position(id, direction):
+    CHANGE_SENSORDATA_JOBS_POSITION(id, direction)
+    return redirect(url_for('dashboard_sensordata_jobs'))
+
+
 # remove sensordata job
 @app.route('/dashboard/sensordata/jobs/delete/job/<int:id>')
 @login_required

@@ -4,9 +4,7 @@ import time
 import json
 import os
 import threading
-
-from astral import Astral
-
+import requests
 
 from app import app
 from app.components.control_led import *
@@ -47,6 +45,22 @@ from flask_apscheduler import APScheduler
 scheduler = APScheduler()
 scheduler.start()   
 
+@scheduler.task('cron', id='update_sunrise_sunset', hour='*')
+def update_sunrise_sunset():
+   
+   for task in GET_ALL_SCHEDULER_TASKS():
+      
+      if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
+         
+         # get coordinates
+         coordinates = GET_LOCATION_COORDINATES(task.expanded_location)
+         
+         if coordinates != "None" and coordinates != None: 
+         
+            # update sunrise / sunset
+            SET_SCHEDULER_TASK_SUNRISE(task.id, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+            SET_SCHEDULER_TASK_SUNSET(task.id, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+            
 
 @scheduler.task('cron', id='scheduler_time', minute='*')
 def scheduler_time():
@@ -56,6 +70,58 @@ def scheduler_time():
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
 def scheduler_ping():
    SCHEDULER_MAIN("ping")
+
+
+""" ################ """
+""" sunrise / sunset """
+""" ################ """
+   
+# https://stackoverflow.com/questions/41072147/python-retrieve-the-sunrise-and-sunset-times-from-google
+
+def GET_SUNRISE_TIME(lat, long):
+   
+   try:
+   
+      link = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
+      f = requests.get(link)
+      data = f.text
+      sunrise = data[34:42]
+      sunset = data[71:79]
+
+      sunrise = sunrise.split(":")
+      sunrise_hour   = int(sunrise[0]) + 1
+      sunrise_minute = int(sunrise[1])
+      
+      sunrise = str(sunrise_hour) + ":" + str(sunrise_minute)
+
+      return (sunrise)
+      
+   except Exception as e:    
+      WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
+           
+
+
+def GET_SUNSET_TIME(lat, long):
+ 
+   try:
+      
+      link = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
+      f = requests.get(link)
+      data = f.text
+      sunrise = data[34:42]
+      sunset = data[71:79]
+
+      sunset = sunset.split(":")
+      sunset_hour   = int(sunset[0]) + 1
+      sunset_minute = int(sunset[1])    
+
+      sunset = str(sunset_hour) + ":" + str(sunset_minute)
+
+      return (sunset)
+
+   except Exception as e:    
+      WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
+
 
 
 """ ############## """
@@ -108,22 +174,22 @@ def SCHEDULER_TIME_THREAD(task):
          if not CHECK_SCHEDULER_SENSORS(task):
             return
          
-      # check expanded
+      # check expanded options
       if task.option_expanded == "checked":
          
-         if task.expanded_home == "checked":
+         if task.expanded_option_home == "checked":
             if not CHECK_SCHEDULER_PING(task):
                return               
          
-         if task.expanded_away == "checked":
+         if task.expanded_option_away == "checked":
             if CHECK_SCHEDULER_PING(task):
                return         
    
       START_SCHEDULER_TASK(task)
 
 
-   # check sunrise / sunset
-   if (task.expanded_sunrise == "checked" or task.expanded_sunset == "checked"):
+   # check sunrise / sunset option
+   if (task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked"):
        
       print("Start Scheduler input Time")
 
@@ -132,22 +198,22 @@ def SCHEDULER_TIME_THREAD(task):
          if not CHECK_SCHEDULER_SENSORS(task):
             return
          
-      # check expanded
+      # check expanded options
       if task.option_expanded == "checked":
          
-         if task.expanded_home == "checked":
+         if task.expanded_option_home == "checked":
             if not CHECK_SCHEDULER_PING(task):
                return               
          
-         if task.expanded_away == "checked":
+         if task.expanded_option_away == "checked":
             if CHECK_SCHEDULER_PING(task):
                return         
          
-         if task.expanded_sunrise == "checked":
+         if task.expanded_option_sunrise == "checked":
             if CHECK_SCHEDULER_SUNRISE(task):
                START_SCHEDULER_TASK(task) 
             
-         if task.expanded_sunset == "checked":
+         if task.expanded_option_sunset == "checked":
             if CHECK_SCHEDULER_SUNSET(task):
                START_SCHEDULER_TASK(task)          
                
@@ -176,22 +242,22 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
             if not CHECK_SCHEDULER_SENSORS(task):
                return
            
-         # check expanded
+         # check expanded options
          if task.option_expanded == "checked":
 
-            if task.expanded_home == "checked":
+            if task.expanded_option_home == "checked":
                if not CHECK_SCHEDULER_PING(task):
                   return               
             
-            if task.expanded_away == "checked":
+            if task.expanded_option_away == "checked":
                if CHECK_SCHEDULER_PING(task):
                   return         
             
-            if task.expanded_sunrise == "checked":
+            if task.expanded_option_sunrise == "checked":
                if CHECK_SCHEDULER_SUNRISE(task):
                   START_SCHEDULER_TASK(task) 
                
-            if task.expanded_sunset == "checked":
+            if task.expanded_option_sunset == "checked":
                if CHECK_SCHEDULER_SUNSET(task):
                   START_SCHEDULER_TASK(task) 
 
@@ -204,8 +270,8 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
 def SCHEDULER_PING_THREAD(task):
    
    # find ping jobs only (home / away)
-   if ((task.expanded_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
-       (task.expanded_away == "checked" and CHECK_SCHEDULER_PING(task) == False)):
+   if ((task.expanded_option_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
+       (task.expanded_option_away == "checked" and CHECK_SCHEDULER_PING(task) == False)):
 
       print("Start Scheduler input Ping")
 
@@ -219,14 +285,14 @@ def SCHEDULER_PING_THREAD(task):
          if not CHECK_SCHEDULER_SENSORS(task):
             return
         
-      # check expanded
+      # check expanded options
       if task.option_expanded == "checked":
          
-         if task.expanded_sunrise == "checked":
+         if task.expanded_option_sunrise == "checked":
             if CHECK_SCHEDULER_SUNRISE(task):
                START_SCHEDULER_TASK(task)
             
-         if task.expanded_sunset == "checked":
+         if task.expanded_option_sunset == "checked":
             if CHECK_SCHEDULER_SUNSET(task):
                START_SCHEDULER_TASK(task)
 
@@ -1086,28 +1152,20 @@ def CHECK_SCHEDULER_SUNRISE(task):
    current_hour   = now.strftime('%H')
    current_minute = now.strftime('%M')
 
-   # calculate sunrise
-   city_name = 'Berlin'
-   a = Astral()
-   a.solar_depression = 'civil'
-   city = a[city_name]
-
-   timezone = city.timezone
-   sun = city.sun(date=datetime.date.today(), local=True)
-
-   # format sunrise
-   sunrise = str(sun['sunrise']).split("+")[0]
-   sunrise = sunrise.split(" ")[1]
+   # get sunrise time
+   sunrise_data = GET_SCHEDULER_TASK_SUNRISE(task.id)
    
-   sunrise_hour   = sunrise.split(":")[0]
-   sunrise_minute = sunrise.split(":")[1]
-   
-   if current_hour == sunrise_hour and current_minute == sunrise_minute:
-      return True
+   try:
+      sunrise_data = sunrise_data.split(":")
       
-   else:
+      if int(current_hour) == int(sunrise_data[0]) and int(current_minute) == int(sunrise_data[1]):
+         return True
+         
+      else:
+         return False
+         
+   except:
       return False
-   
    
    
 def CHECK_SCHEDULER_SUNSET(task):
@@ -1117,28 +1175,20 @@ def CHECK_SCHEDULER_SUNSET(task):
    current_hour   = now.strftime('%H')
    current_minute = now.strftime('%M')
 
-   # calculate sunset
-   city_name = 'Berlin'
-   a = Astral()
-   a.solar_depression = 'civil'
-   city = a[city_name]
-
-   timezone = city.timezone
-   sun = city.sun(date=datetime.date.today(), local=True)
+   # get sunset time
+   sunset_data = GET_SCHEDULER_TASK_SUNSET(task.id)
    
-   # format sunset
-   sunset = str(sun['sunset']).split("+")[0]
-   sunset = sunset.split(" ")[1]
-   
-   sunset_hour   = sunset.split(":")[0]
-   sunset_minute = sunset.split(":")[1]   
-   
-   if current_hour == sunset_hour and current_minute == sunset_minute:
-      return True
+   try:
+      sunset_data = sunset_data.split(":")
       
-   else:
+      if int(current_hour) == int(sunset_data[0]) and int(current_minute) == int(sunset_data[1]):
+         return True
+         
+      else:
+         return False
+         
+   except:
       return False
-
 
 
 
