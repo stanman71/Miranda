@@ -207,7 +207,6 @@ def MQTT_UPDATE_DEVICES(gateway):
 """    get sensordata   """
 """ ################### """
 
-
 def MQTT_REQUEST_SENSORDATA(job_id):
    sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
    device_gateway  = sensordata_job.mqtt_device.gateway
@@ -220,7 +219,7 @@ def MQTT_REQUEST_SENSORDATA(job_id):
 
    time.sleep(2)
 
-   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 30)
+   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 10)
 
    if input_messages != "Message nicht gefunden":
       
@@ -239,13 +238,14 @@ def MQTT_REQUEST_SENSORDATA(job_id):
    
    
 def MQTT_SAVE_SENSORDATA(job_id):
+   
    sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
    device_gateway  = sensordata_job.mqtt_device.gateway
    device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
    sensor_key = sensordata_job.sensor_key
    sensor_key = sensor_key.replace(" ", "")
 
-   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 30)
+   input_messages = READ_LOGFILE_MQTT(device_gateway, "SmartHome/" + device_gateway + "/" + device_ieeeAddr, 10)
 
    for input_message in input_messages:
       input_message = str(input_message[2])
@@ -289,7 +289,7 @@ def MQTT_STOP_ALL_OUTPUTS():
 """ ################### """
    
    
-def MQTT_SET_DEVICE(name, gateway, ieeeAddr, setting):
+def MQTT_SET_DEVICE_POWERSTATE(name, gateway, ieeeAddr, setting):
 
    # create channel
    if gateway == "mqtt":
@@ -319,7 +319,7 @@ def MQTT_SET_DEVICE(name, gateway, ieeeAddr, setting):
    if check_setting:
       return ""
    else:
-      return ("Fehler, Einstellung konnte nicht bestätigt werden >>> " + name)
+      return ("Fehler >>> Einstellung konnte nicht bestätigt werden >>> " + name)
    
 
    

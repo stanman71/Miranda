@@ -141,7 +141,7 @@ def CHECK_SCHEDULER_GENERAL_SETTINGS(scheduler_tasks):
       
       list_general_errors_device = []
       
-      if task.option_time != "checked" and task.option_sensors != "checked" and task.option_expanded != "checked":    
+      if task.option_time != "checked" and task.option_sun != "checked" and task.option_sensors != "checked" and task.option_position != "checked":    
          list_general_errors_general.append(task.name + " >>> Keine Bedingungsoption ausgewählt")
          list_general_errors_device.append(task.name + " >>> Keine Bedingungsoption ausgewählt")            
 
@@ -172,9 +172,9 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
          list_time_errors_device = []
 
          # check settings sunrise / sunset option
-         if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
-            list_time_errors_general.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")
-            list_time_errors_device.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonnenstand nur getrennt verwenden")           
+         if task.option_sun == "checked":
+            list_time_errors_general.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonne nur getrennt verwenden")
+            list_time_errors_device.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonne nur getrennt verwenden")           
 
          try:
             ### check day
@@ -265,6 +265,40 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
 
    return error_message_time_settings
 
+
+def CHECK_SCHEDULER_SUN_SETTINGS(scheduler_tasks):
+   list_sun_errors_general = []  
+   error_message_sun_settings = ""
+
+   for task in scheduler_tasks:
+
+      if task.option_sun == "checked":
+
+         list_sun_errors_device = []
+
+         # check setting location
+         if task.option_sunrise == "checked" or task.option_sunset == "checked":
+            if task.location == "None":
+               list_sun_errors_device.append(task.name + " >>> Zone wurde noch nicht eingestellt")
+
+         # merge errors to general list
+         list_sun_errors_general = list_sun_errors_general + list_sun_errors_device 
+      
+
+         # add errors for each device to database
+         if list_sun_errors_device != []:
+            list_sun_errors_device = str(list_sun_errors_device)
+            list_sun_errors_device = list_sun_errors_device.replace("[", "")
+            list_sun_errors_device = list_sun_errors_device.replace("]", "")
+            SET_SCHEDULER_TASK_SETTING_SUN_ERRORS(task.id, list_sun_errors_device)
+
+
+   if list_sun_errors_general == []:
+      error_message_sun_settings = ""
+   else:
+      error_message_sun_settings = list_sun_errors_general
+
+   return error_message_sun_settings
 
 
 def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks): 
@@ -377,58 +411,52 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
    return error_message_sensor_settings
 
 
-def CHECK_SCHEDULER_EXPANDED_SETTINGS(scheduler_tasks):
-   list_expanded_errors_general = []  
-   error_message_expanded_settings = ""
+def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
+   list_position_errors_general = []  
+   error_message_position_settings = ""
 
    for task in scheduler_tasks:
 
-      if task.option_expanded == "checked":
+      if task.option_position == "checked":
 
-         list_expanded_errors_device = []
+         list_position_errors_device = []
 
          # check setting home / away
-         if task.expanded_option_home == "checked" and task.expanded_option_away == "checked":
-            list_expanded_errors_device.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
+         if task.option_home == "checked" and task.option_away == "checked":
+            list_position_errors_device.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
 
          # check setting ip-addresses
-         if task.expanded_option_home == "checked" or task.expanded_option_away == "checked":
+         if task.option_home == "checked" or task.option_away == "checked":
 
-            if task.expanded_ip_adresses != "None":
+            if task.ip_addresses != "None":
                
                # search for wrong chars
-               for element in task.expanded_ip_adresses:
+               for element in task.ip_addresses:
                   if not element.isdigit() and element != "." and element != "," and element != " ":
-                     list_expanded_errors_device.append(task.name + " >>> Ungültige IP-Adressen")
+                     list_position_errors_device.append(task.name + " >>> Ungültige IP-Adressen")
                      break
   
             else:
-               list_expanded_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
-
-         # check setting location
-         if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
-            if task.expanded_location == "None":
-               list_expanded_errors_device.append(task.name + " >>> Zone wurde noch nicht eingestellt")
+               list_position_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
 
          # merge errors to general list
-         list_expanded_errors_general = list_expanded_errors_general + list_expanded_errors_device 
+         list_position_errors_general = list_position_errors_general + list_position_errors_device 
       
 
          # add errors for each device to database
-         if list_expanded_errors_device != []:
-            list_expanded_errors_device = str(list_expanded_errors_device)
-            list_expanded_errors_device = list_expanded_errors_device.replace("[", "")
-            list_expanded_errors_device = list_expanded_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_EXPANDED_ERRORS(task.id, list_expanded_errors_device)
+         if list_position_errors_device != []:
+            list_position_errors_device = str(list_position_errors_device)
+            list_position_errors_device = list_position_errors_device.replace("[", "")
+            list_position_errors_device = list_position_errors_device.replace("]", "")
+            SET_SCHEDULER_TASK_SETTING_POSITION_ERRORS(task.id, list_position_errors_device)
 
 
-   if list_expanded_errors_general == []:
-      error_message_expanded_settings = ""
+   if list_position_errors_general == []:
+      error_message_position_settings = ""
    else:
-      error_message_expanded_settings = list_expanded_errors_general
+      error_message_position_settings = list_position_errors_general
 
-   return error_message_expanded_settings
-
+   return error_message_position_settings
 
 
 """ ################### """

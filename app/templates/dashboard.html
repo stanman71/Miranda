@@ -88,8 +88,8 @@
                 <tbody> 
                   {% for entry in data_led %}
                   <tr>
-                    <td style="width:17%"> {{entry.name}} </td> 
-                    <td style="width:43%"> 
+                    <td style="width:15%"> {{entry.name}} </td> 
+                    <td style="width:45%"> 
                       {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
                         {{entry.led_name_1}}
                       {% endif %} 
@@ -133,7 +133,7 @@
                         <option value= "{{ "" }}" > LED Programme: </option>
                         <option value= "{{ "" }}" > -------------------- </option> 
                         {% for each_program in dropdown_list_led_programs %}
-                        <option value="program_{{ each_program.id }}"> {{ each_program.name }} </option>
+                          <option value="program_{{ each_program.id }}"> {{ each_program.name }} </option>
                         {% endfor %}
                         <option value= "{{ "" }}" >  </option> 
                         <option value= "turn_off" > OFF </option>                   
@@ -177,13 +177,69 @@
                 <thead>                      
                   <th scope="col">Gerät</th> 
                   <th scope="col">Beschreibung</th>
-                  <th scope="col">Einstellung</th> 
+                  <th scope="col">Optionen</th> 
+                  <th scope="col">Power ON/OFF</th> 
                 </thead>
                 <tbody> 
                   {% for entry in data_device %}
                   <tr>
-                    <td style="width:17%"> {{entry.name}} </td>
-                    <td style="width:63%"> {{entry.description}} </td> 
+                    <td style="width:15%"> {{entry.name}} </td>
+                    <td style="width:20%"> {{entry.description}} </td> 
+                    <td style="width:45%">  
+                      <select class="btn btn-default dropdown-toggle" name="set_options_{{ entry.id }}">
+                        {% if entry.options != None %}
+                          <option value= "{{ entry.options }}" > {{ entry.options }} </option>
+                          <option value= "{{ entry.options }}" >  </option> 
+                        {% else %}     
+                          <option value= "{{ "" }}" > Optionen: </option>
+                          <option value= "{{ "" }}" > -------------------- </option> 
+                        {% endif %}   
+                        {% for each in dropdown_list_options %}
+                          <option value= {{each}} > {{each}} </option>
+                        {% endfor %}
+                        {% for each in list_mqtt_devices %}
+                          <option value= {{ each.ieeeAddr }} > {{ each.name }} </option>
+                        {% endfor %}                         
+                        <option value= "None" > -------------------- </option> 
+                        <option value= "None" > None </option>                   
+                      </select> 
+                      
+                      {% if entry.options != "None" %} 
+                      
+                      <br>
+                      <br>
+                      
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-6">  
+                          {% if entry.options == "IP-Adresse" %} 
+                            <input type="text" class="form-control" name="set_options_value_1_{{ entry.id }}" value="{% if entry.options_value_1 != None %}{{ entry.options_value_1 }}{% endif %}" /> 
+                          {% else %} 
+                            <select class="btn btn-default dropdown-toggle" name="set_options_value_1_{{ entry.id }}">
+                              {% if entry.options_value_1_ != None %}
+                                <option value= "{{ entry.options_value_1_ }}" > {{ entry.options_value_1_ }} </option>
+                                <option value= "{{ entry.options_value_1_ }}" >  </option> 
+                              {% else %}     
+                                <option value= "{{ "" }}" > Operator: </option>
+                                <option value= "{{ "" }}" > -------------------- </option> 
+                              {% endif %}   
+                              {% for each in dropdown_list_operators %}
+                                <option value= {{each}} > {{each}} </option>
+                              {% endfor %}
+                              <option value= "None" > -------------------- </option> 
+                              <option value= "None" > None </option>                   
+                            </select> 
+                          {% endif %}                              
+                        </div>
+                        <div class="col-sm-6"> 
+                          {% if entry.options != "IP-Adresse" and entry.options != "None" %}
+                            <input type="text" class="form-control" name="set_options_value_2_{{ entry.id }}" value="{% if entry.options_value_2 != None %}{{ entry.options_value_2 }}{% endif %}" />                         
+                          {% endif %} 
+                        </div>                                              
+                      </div>
+                      
+                      {% endif %} 
+                      
+                    </td>
                     <td style="width:20%">
                       <div class="row justify-content-md-center">
                         <div class="col-sm-3">
@@ -230,8 +286,8 @@
                 <tbody> 
                   {% for entry in data_sensor %}
                   <tr>
-                    <td style="width:17%"> {{entry.name}} </td>
-                    <td style="width:13%"> {{entry.device_type}} </td>
+                    <td style="width:15%"> {{entry.name}} </td>
+                    <td style="width:15%"> {{entry.device_type}} </td>
                     <td style="width:20%"> {{entry.description}} </td> 
                     <td style="width:30%"> {{entry.last_values_formated}} </td>
                     <td style="width:20%"> {{entry.last_contact}} </td>

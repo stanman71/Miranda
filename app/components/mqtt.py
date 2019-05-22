@@ -3,7 +3,8 @@ import paho.mqtt.client as mqtt
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.control_scheduler import SCHEDULER_MAIN
+from app.components.control_scheduler import SCHEDULER_SENSOR_THREAD
+from app.components.control_controller import CONTROLLER_THREAD
 from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA
 
 import threading
@@ -20,12 +21,12 @@ forbitten_topics = []
 
 def MQTT_START():
 	
-    Thread = threading.Thread(target=MQTT_THREAD, args=("start",))
+    Thread = threading.Thread(target=MQTT_THREAD)
     Thread.start()   	
 	
 
 		
-def MQTT_THREAD(start):
+def MQTT_THREAD():
 
 	def on_message(client, userdata, message): 
       
@@ -90,13 +91,15 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 	except:
 		device_type = ""
 		
+	
+	# control input
 	if ieeeAddr != "":
 		print(ieeeAddr)
 	if device_type != "":
 		print(device_type)
 		
 
-	# start functions
+	# start function networkmap
 	try:        
 		if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
 
@@ -109,24 +112,44 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 		pass
 
 
-	if ieeeAddr != "":
-		# save last values
-		SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+	# filter sended messages
+	try:
 		
-	
-	if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array" :
-		
-		# schedular
-		SCHEDULER_MAIN("sensor", ieeeAddr)
+		if incoming_topic[3] == "get":
+			pass
+		if incoming_topic[3] == "set":
+			pass			
 
-		# save sensor data of passive devices
-		if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
-			list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
+	except:
+		
+		if ieeeAddr != "":
+			# save last values
+			SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 			
-			for job in list_jobs:
-				MQTT_SAVE_SENSORDATA(job) 
+		
+		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array" :
+			
+			# schedular
+			for task in GET_ALL_SCHEDULER_TASKS():
+				if task.option_sensors == "checked":
+					Thread = threading.Thread(target=SCHEDULER_SENSOR_THREAD, args=(task, ieeeAddr, ))
+					Thread.start()   
+					Thread.join() 
+
+			# save sensor data of passive devices
+			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
+				list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
+				
+				for job in list_jobs:
+					MQTT_SAVE_SENSORDATA(job) 
 
 
+		if device_type == "controller":
+			
+			# start controller thread
+			Thread = threading.Thread(target=CONTROLLER_THREAD, args=(ieeeAddr, msg, ))
+			Thread.start()   
+			Thread.join() 
 
 
 """ #################### """
@@ -137,6 +160,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
    try:
+	   
       def on_publish(client, userdata, mid):
          print ('Message Published...')
 

@@ -22,17 +22,21 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
+   try:
+      
+      def on_publish(client, userdata, mid):
+         print ('Message Published...')
 
-    def on_publish(client, userdata, mid):
-        print ('Message Published...')
+      client = mqtt.Client()
+      client.on_publish = on_publish
+      client.connect(BROKER_ADDRESS) 
+      client.publish(MQTT_TOPIC,MQTT_MSG)
+      client.disconnect()
 
-    client = mqtt.Client()
-    client.on_publish = on_publish
-    client.connect(BROKER_ADDRESS) 
-    client.publish(MQTT_TOPIC,MQTT_MSG)
-    client.disconnect()
+      return ""
 
-    return ""
+   except:
+      pass
 
 
 """ ################ """
@@ -50,10 +54,10 @@ def update_sunrise_sunset():
    
    for task in GET_ALL_SCHEDULER_TASKS():
       
-      if task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked":
+      if task.option_sunrise == "checked" or task.option_sunset == "checked":
          
          # get coordinates
-         coordinates = GET_LOCATION_COORDINATES(task.expanded_location)
+         coordinates = GET_LOCATION_COORDINATES(task.location)
          
          if coordinates != "None" and coordinates != None: 
          
@@ -64,13 +68,23 @@ def update_sunrise_sunset():
 
 @scheduler.task('cron', id='scheduler_time', minute='*')
 def scheduler_time():
-   SCHEDULER_MAIN("time")
-
+   
+   for task in GET_ALL_SCHEDULER_TASKS():
+      if task.option_time == "checked" or task.option_sun == "checked":
+         Thread = threading.Thread(target=SCHEDULER_TIME_THREAD, args=(task, ))
+         Thread.start()   
+         Thread.join() 
+         
 
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
 def scheduler_ping():
-   SCHEDULER_MAIN("ping")
-
+   
+   for task in GET_ALL_SCHEDULER_TASKS():
+      if task.option_position == "checked":
+         Thread = threading.Thread(target=SCHEDULER_PING_THREAD, args=(task, ))
+         Thread.start()   
+         Thread.join() 
+      
 
 """ ################ """
 """ sunrise / sunset """
@@ -100,7 +114,6 @@ def GET_SUNRISE_TIME(lat, long):
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
            
 
-
 def GET_SUNSET_TIME(lat, long):
  
    try:
@@ -123,36 +136,71 @@ def GET_SUNSET_TIME(lat, long):
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
 
 
+'''
 
-""" ############## """
-""" scheduler main """
-""" ############## """
+""" ##### """
+""" queue """
+""" ##### """
+
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def isEmpty(self):
+        return self.items == []
+
+    def enqueue(self, item):
+        self.items.insert(0,item)
+
+    def dequeue(self):
+        return self.items.pop()
+
+    def size(self):
+        return len(self.items)
+        
+scheduler_queue = Queue()
 
 
-def SCHEDULER_MAIN(input_source, ieeeAddr = ""):
+def SCHEDULER_QUEUE_ADD_JOB(input_source, ieeeAddr = ""):
+   scheduler_queue.enqueue([input_source, ieeeAddr])
+
+
+def QUEUE_THREAD():
    
-   if input_source == "time":
+   while True:
       
-      for task in GET_ALL_SCHEDULER_TASKS():
+      if not scheduler_queue.isEmpty():
          
-         Thread = threading.Thread(target=SCHEDULER_TIME_THREAD, args=(task,))
-         Thread.start()            
+         scheduler_job = scheduler_queue.dequeue()
+         
+         if scheduler_job[0] == "time":
+            for task in GET_ALL_SCHEDULER_TASKS():
+               Thread = threading.Thread(target=SCHEDULER_TIME_JOB, args=(task, ))
+               Thread.start()
+               Thread.join()    
             
-
-   if input_source == "sensor":   
-      
-      for task in GET_ALL_SCHEDULER_TASKS():
-         
-         Thread = threading.Thread(target=SCHEDULER_SENSOR_THREAD, args=(task, ieeeAddr, ))
-         Thread.start()           
+         if scheduler_job[0] == "sensor":   
+            for task in GET_ALL_SCHEDULER_TASKS():   
+               Thread = threading.Thread(target=SCHEDULER_SENSOR_JOB, args=(task, scheduler_job[1], ))
+               Thread.start()
+               Thread.join()                   
    
-      
-   if input_source == "ping":   
-      
-      for task in GET_ALL_SCHEDULER_TASKS():
+         if scheduler_job[0] == "ping":   
+            for task in GET_ALL_SCHEDULER_TASKS():
+               Thread = threading.Thread(target=SCHEDULER_PING_JOB, args=(task, ))
+               Thread.start()
+               Thread.join()    
          
-         Thread = threading.Thread(target=SCHEDULER_PING_THREAD, args=(task, ))
-         Thread.start()     
+         #print(scheduler_job)
+         
+         time.sleep(1)
+
+
+# start scheduler queue thread
+Thread = threading.Thread(target=QUEUE_THREAD)
+#Thread.start()   
+
+'''
 
 
 """ ################# """
@@ -162,62 +210,70 @@ def SCHEDULER_MAIN(input_source, ieeeAddr = ""):
 
 def SCHEDULER_TIME_THREAD(task):
    
-   # check time
+   # ######
+   #  time
+   # ######
+   
    if task.option_time == "checked":
       if not CHECK_SCHEDULER_TIME(task):
          return
          
-      print("Start Scheduler input Time")
+      print("Start Scheduler Time")
 
       # check sensors
       if task.option_sensors == "checked":
          if not CHECK_SCHEDULER_SENSORS(task):
             return
          
-      # check expanded options
-      if task.option_expanded == "checked":
+      # check position
+      if task.option_position == "checked":
          
-         if task.expanded_option_home == "checked":
+         if task.option_home == "checked":
             if not CHECK_SCHEDULER_PING(task):
                return               
          
-         if task.expanded_option_away == "checked":
+         if task.option_away == "checked":
             if CHECK_SCHEDULER_PING(task):
                return         
    
       START_SCHEDULER_TASK(task)
 
 
-   # check sunrise / sunset option
-   if (task.expanded_option_sunrise == "checked" or task.expanded_option_sunset == "checked"):
+   # ##################
+   #  sunrise / sunset
+   # ##################
+   
+   if (task.option_sunrise == "checked" or task.option_sunset == "checked"):
        
-      print("Start Scheduler input Time")
+      print("Start Scheduler Sun")
 
       # check sensors
       if task.option_sensors == "checked":
          if not CHECK_SCHEDULER_SENSORS(task):
             return
          
-      # check expanded options
-      if task.option_expanded == "checked":
-         
-         if task.expanded_option_home == "checked":
-            if not CHECK_SCHEDULER_PING(task):
-               return               
-         
-         if task.expanded_option_away == "checked":
-            if CHECK_SCHEDULER_PING(task):
-               return         
-         
-         if task.expanded_option_sunrise == "checked":
-            if CHECK_SCHEDULER_SUNRISE(task):
-               START_SCHEDULER_TASK(task) 
-            
-         if task.expanded_option_sunset == "checked":
-            if CHECK_SCHEDULER_SUNSET(task):
-               START_SCHEDULER_TASK(task)          
-               
+         # check position 
+         if task.option_position == "checked":
 
+            if task.option_home == "checked":
+               if not CHECK_SCHEDULER_PING(task):
+                  return               
+            
+            if task.option_away == "checked":
+               if CHECK_SCHEDULER_PING(task):
+                  return         
+
+         # check sun
+         if task.option_sun == "checked":
+
+            if task.option_sunrise == "checked":
+               if CHECK_SCHEDULER_SUNRISE(task):
+                  START_SCHEDULER_TASK(task) 
+               
+            if task.option_sunset == "checked":
+               if CHECK_SCHEDULER_SUNSET(task):
+                  START_SCHEDULER_TASK(task)       
+               
 
 def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
    
@@ -228,7 +284,7 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
           task.mqtt_device_ieeeAddr_2 == ieeeAddr or
           task.mqtt_device_ieeeAddr_3 == ieeeAddr):
              
-         print("Start Scheduler input Sensor")
+         print("Start Scheduler Sensor")
          
          # check time
          if task.option_time == "checked":
@@ -240,22 +296,25 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
             if not CHECK_SCHEDULER_SENSORS(task):
                return
            
-         # check expanded options
-         if task.option_expanded == "checked":
+         # check position 
+         if task.option_position == "checked":
 
-            if task.expanded_option_home == "checked":
+            if task.option_home == "checked":
                if not CHECK_SCHEDULER_PING(task):
                   return               
             
-            if task.expanded_option_away == "checked":
+            if task.option_away == "checked":
                if CHECK_SCHEDULER_PING(task):
                   return         
-            
-            if task.expanded_option_sunrise == "checked":
+
+         # check sun
+         if task.option_sun == "checked":
+
+            if task.option_sunrise == "checked":
                if CHECK_SCHEDULER_SUNRISE(task):
                   START_SCHEDULER_TASK(task) 
                
-            if task.expanded_option_sunset == "checked":
+            if task.option_sunset == "checked":
                if CHECK_SCHEDULER_SUNSET(task):
                   START_SCHEDULER_TASK(task) 
 
@@ -268,10 +327,10 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
 def SCHEDULER_PING_THREAD(task):
    
    # find ping jobs only (home / away)
-   if ((task.expanded_option_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
-       (task.expanded_option_away == "checked" and CHECK_SCHEDULER_PING(task) == False)):
+   if ((task.option_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
+       (task.option_away == "checked" and CHECK_SCHEDULER_PING(task) == False)):
 
-      print("Start Scheduler input Ping")
+      print("Start Scheduler Ping")
 
       # check time
       if task.option_time == "checked":
@@ -283,19 +342,18 @@ def SCHEDULER_PING_THREAD(task):
          if not CHECK_SCHEDULER_SENSORS(task):
             return
         
-      # check expanded options
-      if task.option_expanded == "checked":
+      # check sun options
+      if task.option_sun == "checked":
          
-         if task.expanded_option_sunrise == "checked":
+         if task.option_sunrise == "checked":
             if CHECK_SCHEDULER_SUNRISE(task):
                START_SCHEDULER_TASK(task)
             
-         if task.expanded_option_sunset == "checked":
+         if task.option_sunset == "checked":
             if CHECK_SCHEDULER_SUNSET(task):
                START_SCHEDULER_TASK(task)
 
       START_SCHEDULER_TASK(task)      
-
 
 
 """ #################### """
@@ -1126,15 +1184,14 @@ def CHECK_SCHEDULER_SENSORS(task):
                
    # Options ended
    
-   print("SENSORTASK_RESULT: " + passing)  
+   print("SENSORTASK_RESULT: " + str(passing))
                                           
    return passing
 
 
-
 def CHECK_SCHEDULER_PING(task):
 
-      ip_addresses = task.expanded_ip_adresses.split(",")
+      ip_addresses = task.ip_addresses.split(",")
 
       for ip_address in ip_addresses:
       
@@ -1144,7 +1201,6 @@ def CHECK_SCHEDULER_PING(task):
       return False
 
          
-
 def CHECK_SCHEDULER_SUNRISE(task):
 
    # get current time
@@ -1189,7 +1245,6 @@ def CHECK_SCHEDULER_SUNSET(task):
          
    except:
       return False
-
 
 
 """ ##################### """

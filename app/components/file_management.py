@@ -61,8 +61,17 @@ def RESET_LOGFILE(filename):
         
 
 def WRITE_LOGFILE_MQTT(gateway, channel, msg):
+    
+    # create file if not exist
     if os.path.isfile(PATH + "/logs/log_" + gateway + ".csv") is False:
         CREATE_LOGFILE("log_" + gateway)
+        
+    # replace file if size > 1.5 mb
+    file_size = os.path.getsize(PATH + "/logs/log_" + gateway + ".csv")
+    file_size = round(file_size / 1024 / 1024, 2)
+    
+    if file_size > 1.5:
+        RESET_LOGFILE("log_" + gateway)
 
     try:
         
@@ -133,51 +142,36 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
         return ("ZigBee2MQTT >>> ERROR >>> " + str(e))
     
 
-log_messages = []
-
-
 def WRITE_LOGFILE_SYSTEM(log_type, description):
     
-    global log_messages
-    
-    # save new log messages temporary
-    log_messages.append([log_type,description])
-    
-    
-def WRITE_LOGFILE_SYSTEM_THREAD():
+    # create file if not exist
+    if os.path.isfile(PATH + "/logs/log_system.csv") is False:
+        CREATE_LOGFILE("log_system")
 
-    global log_messages
+    # replace file if size > 2.5 mb
+    file_size = os.path.getsize(PATH + "/logs/log_system.csv")
+    file_size = round(file_size / 1024 / 1024, 2)
     
-    while True:
+    if file_size > 2.5:
+        RESET_LOGFILE("log_system")
 
-        if os.path.isfile(PATH + "/logs/log_system.csv") is False:
-            CREATE_LOGFILE("log_system")
+    try:
+        # open csv file
+        file = PATH + "/logs/log_system.csv"
 
-        try:
-            # open csv file
-            file = PATH + "/logs/log_system.csv"
-
-            with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-                filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)   
-                
-                # write new log messages
-                if log_messages != []:
-                    for message in log_messages:
-                        filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(message[0]), str(message[1]) ])
-                
-                csvfile.close()
-                
-                log_messages = []
-                
-                time.sleep(1)
-           
-        except Exception as e:
-            print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
-            return ("ERROR: " + str(e))
+        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
+            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)   
+            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), log_type, description])
+            csvfile.close()
+       
+    except Exception as e:
+        print(e)
+        WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
+        return ("ERROR: " + str(e))
         
     
 def GET_LOGFILE_SYSTEM(rows):   
+    
     try:
         # open csv file
         file = PATH + "/logs/log_system.csv"
@@ -210,19 +204,28 @@ def GET_BACKUP_FILES():
     if file_list == []:
         return ""
     else:
-        return file_list[0][2]    
+        file_list = file_list[0][2]
+        file_list = sorted(file_list, reverse=True)
+        return file_list 
 
 
 def SAVE_DATABASE():  
-    # delete old backup files
-    if len(GET_BACKUP_FILES()) == 10:
-        file_list = GET_BACKUP_FILES()
-        os.remove (PATH + '/backup/' + file_list[0])
 
     try:
+        # save database
         shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
                         PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
         WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup | saved")
+       
+       
+        # delete old backup files
+        list_of_files = os.listdir(PATH + '/backup/')    
+        full_path     = [PATH + '/backup/{0}'.format(x) for x in list_of_files]
+
+        if len([name for name in list_of_files]) > 11:
+            oldest_file = min(full_path, key=os.path.getctime)
+            os.remove(oldest_file)        
+        
         return ""
         
     except Exception as e:

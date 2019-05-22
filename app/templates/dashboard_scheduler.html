@@ -385,6 +385,16 @@
   </div>      
 {% endif %} 
 
+<!-- error message sun settings -->
+
+{% if error_message_sun_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_sun_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
 <!-- error message sensor settings -->
 
 {% if error_message_sensor_settings != "" %}
@@ -395,11 +405,11 @@
   </div>      
 {% endif %} 
 
-<!-- error message expanded settings -->
+<!-- error message position settings -->
 
-{% if error_message_expanded_settings != "" %}
+{% if error_message_position_settings != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for message in error_message_expanded_settings %}
+    {% for message in error_message_position_settings %}
       {{ message }} <br>
     {% endfor %}
   </div>      
@@ -467,6 +477,16 @@
     </div>      
   {% endif %} 
 
+  <!-- error message sun settings -->
+
+  {% if entry.error_sun_settings != "" %}
+    <div class="alert alert-danger" role="alert">
+      {% for entry in entry.error_sun_settings.split(',') %}
+        {{ entry }} <br>
+      {% endfor %}
+    </div>      
+  {% endif %} 
+
   <!-- error message sensor settings -->
 
   {% if entry.error_sensor_settings != "" %}
@@ -477,11 +497,11 @@
     </div>      
   {% endif %} 
 
-  <!-- error message expanded settings -->
+  <!-- error message position settings -->
 
-  {% if entry.error_expanded_settings != "" %}
+  {% if entry.error_position_settings != "" %}
     <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_expanded_settings.split(',') %}
+      {% for entry in entry.error_position_settings.split(',') %}
         {{ entry }} <br>
       {% endfor %}
     </div>      
@@ -496,9 +516,10 @@
                     <th scope="col">Name</th> 
                     <th scope="col">Aufgabe</th>    
                     <th scope="col"></th>            
-                    <th scope="col">Zeit</th>               
+                    <th scope="col">Zeit</th>   
+                    <th scope="col">Sonne</th>              
                     <th scope="col">Sensoren</th>
-                    <th scope="col">Erweitert</th>
+                    <th scope="col">Position</th>
                     <th scope="col">Wiederholen</th>
                   </thead>
                   <tbody> 
@@ -526,7 +547,17 @@
                             </div>
                           </div>
                         </font>
-                      </td>                    
+                      </td>    
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-fill p-bigger">
+                            <input type="checkbox" {{ entry.option_sun }} name="checkbox_option_sun_{{ entry.id }}" >
+                            <div class="state">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>                                         
                       <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-fill p-bigger">
@@ -540,7 +571,7 @@
                       <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-fill p-bigger">
-                            <input type="checkbox" {{ entry.option_expanded }} name="checkbox_option_expanded_{{ entry.id }}" >
+                            <input type="checkbox" {{ entry.option_position }} name="checkbox_option_position_{{ entry.id }}" >
                             <div class="state">
                               <label></label>
                             </div>
@@ -565,12 +596,12 @@
   {% if entry.option_time == "checked" %}
 
                     <tr>
-                      <td colspan="10"></td>
+                      <td colspan="11"></td>
                     </tr>
                     <tr>
                       <td colspan="1"></td>
                       <td colspan="1"></td>
-                      <td colspan="8">
+                      <td colspan="9">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Tag:</button>
@@ -596,6 +627,77 @@
 
   {% endif %}
 
+  <!-- section sun -->
+
+  {% if entry.option_sun == "checked" %}
+
+                    <tr>
+                      <td colspan="11"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1"></td>
+                      <td colspan="9">
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.sunrise }}):</button>
+                          </div>   
+                          <div class="col-sm-1">   
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" {{ entry.option_sunrise }} name="checkbox_option_sunrise_{{ entry.id }}" >
+                                <div class="state">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>
+                          </div>  
+                          <div class="col-sm-3">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.sunset }}):</button>
+                          </div>   
+                          <div class="col-sm-1">   
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" {{ entry.option_sunset }} name="checkbox_option_sunset_{{ entry.id }}" >
+                                <div class="state">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>                           
+                          </div>
+
+                          {% if entry.option_sunrise == "checked" or entry.option_sunset == "checked" %}
+
+                            <div class="col-sm-1">
+                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
+                            </div>
+                            <div class="col-sm-1">
+                              <select class="btn btn-default dropdown-toggle" name="set_location_{{ entry.id }}">
+                                
+                                {% if entry.location != None %}
+                                  <option value= "{{ entry.location }}" > {{ entry.location }} </option>
+                                  <option value= "{{ entry.location }}" > ------------------------- </option>
+                                {% endif %}
+                                
+                                {% if error_message_locations_import == "" %}
+                                  {% for each in dropdown_list_locations %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}   
+                                  <option value= "" > ------------------------- </option>                                                         
+                                  <option value= "" > None </option>   
+                                {% endif %} 
+                                
+                              </select>
+                            </div>
+
+                          {% endif %}
+
+                        </div>
+                      </td>                           
+                    </tr>
+
+  {% endif %}
+
   <!-- section sensors -->
 
   {% if entry.option_sensors == "checked" %}
@@ -603,7 +705,7 @@
   <!-- section 1 -->
 
                     <tr>
-                      <td colspan="10"></td>
+                      <td colspan="11"></td>
                     </tr>            
                     <tr>
                       <td colspan="1"></td>
@@ -626,7 +728,7 @@
                         </font>                  
                       </td>
                       
-                      <td colspan="8">    
+                      <td colspan="9">    
                         <div class="row justify-content-md-center">
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
@@ -696,7 +798,7 @@
                         </div>               
                       </td>
                       
-                      <td colspan="8">    
+                      <td colspan="9">    
                         <div class="row justify-content-md-center">
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
@@ -767,7 +869,7 @@
                         </div>
                       </td>
                       
-                      <td colspan="8">    
+                      <td colspan="9">    
                         <div class="row justify-content-md-center">
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
@@ -824,18 +926,18 @@
 
   {% endif %}
 
-  <!-- section expanded -->
+  <!-- section position -->
 
-  {% if entry.option_expanded == "checked" %}
+  {% if entry.option_position == "checked" %}
 
 
                     <tr>
-                      <td colspan="10"></td>
+                      <td colspan="11"></td>
                     </tr>
                     <tr>
                       <td colspan="1"></td>
                       <td colspan="1"></td>
-                      <td colspan="8">
+                      <td colspan="9">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">HOME:</button>
@@ -843,7 +945,7 @@
                           <div class="col-sm-1"> 
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_option_home }} name="checkbox_expanded_option_home_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.option_home }} name="checkbox_option_home_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -856,7 +958,7 @@
                           <div class="col-sm-1">                                       
                             <font size="+2">
                               <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_option_away }} name="checkbox_expanded_option_away_{{ entry.id }}" >
+                                <input type="checkbox" {{ entry.option_away }} name="checkbox_option_away_{{ entry.id }}" >
                                 <div class="state">
                                   <label></label>
                                 </div>
@@ -864,81 +966,19 @@
                             </font>
                           </div>
 
-                          {% if entry.expanded_option_home == "checked" or entry.expanded_option_away == "checked" %}
+                          {% if entry.option_home == "checked" or entry.option_away == "checked" %}
 
                             <div class="col-sm-2">  
                               <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
                             </div>
                             <div class="col-sm-6">
-                              <input type="text" class="form-control" name="set_expanded_ip_adresses_{{ entry.id }}" value="{{ entry.expanded_ip_adresses }}" /> 
+                              <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}" value="{{ entry.ip_addresses }}" /> 
                             </div>
 
                           {% endif %}
 
                         </div>
                       </td>
-                    </tr>
-                    <tr>     
-                    <tr>
-                      <td colspan="1"></td>
-                      <td colspan="1"></td>
-                      <td colspan="8">
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.expanded_sunrise }}):</button>
-                          </div>   
-                          <div class="col-sm-1">   
-                            <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_option_sunrise }} name="checkbox_expanded_option_sunrise_{{ entry.id }}" >
-                                <div class="state">
-                                  <label></label>
-                                </div>
-                              </div>
-                            </font>
-                          </div>  
-                          <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.expanded_sunset }}):</button>
-                          </div>   
-                          <div class="col-sm-1">   
-                            <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
-                                <input type="checkbox" {{ entry.expanded_option_sunset }} name="checkbox_expanded_option_sunset_{{ entry.id }}" >
-                                <div class="state">
-                                  <label></label>
-                                </div>
-                              </div>
-                            </font>                           
-                          </div>
-
-                          {% if entry.expanded_option_sunrise == "checked" or entry.expanded_option_sunset == "checked" %}
-
-                            <div class="col-sm-1">
-                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
-                            </div>
-                            <div class="col-sm-1">
-                              <select class="btn btn-default dropdown-toggle" name="set_expanded_location_{{ entry.id }}">
-                                
-                                {% if entry.expanded_location != None %}
-                                  <option value= "{{ entry.expanded_location }}" > {{ entry.expanded_location }} </option>
-                                  <option value= "{{ entry.expanded_location }}" > ------------------------- </option>
-                                {% endif %}
-                                
-                                {% if error_message_locations_import == "" %}
-                                  {% for each in dropdown_list_locations %}
-                                    <option value= "{{ each }}" > {{ each }} </option>
-                                  {% endfor %}   
-                                  <option value= "" > ------------------------- </option>                                                         
-                                  <option value= "" > None </option>   
-                                {% endif %} 
-                                
-                              </select>
-                            </div>
-
-                          {% endif %}
-
-                        </div>
-                      </td>                           
                     </tr>
 
   {% endif %}

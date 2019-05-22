@@ -245,6 +245,10 @@ class MQTT_Devices(db.Model):
     last_contact         = db.Column(db.String(50))
     last_values          = db.Column(db.String(200))  
     last_values_formated = db.Column(db.String(200)) 
+    options              = db.Column(db.String(50))
+    options_value_1      = db.Column(db.String(50))
+    options_value_2      = db.Column(db.String(50))
+    options_value_3      = db.Column(db.String(50))
     power_setting        = db.Column(db.String(50))  
 
 class Plants(db.Model):
@@ -265,12 +269,18 @@ class Scheduler_Tasks(db.Model):
     task                    = db.Column(db.String(50), server_default=("None"))
     task_type               = db.Column(db.String(50))    
     option_time             = db.Column(db.String(50), server_default=("None"))
+    option_sun              = db.Column(db.String(50), server_default=("None"))
     option_sensors          = db.Column(db.String(50), server_default=("None"))
-    option_expanded         = db.Column(db.String(50), server_default=("None"))    
+    option_position         = db.Column(db.String(50), server_default=("None"))    
     option_repeat           = db.Column(db.String(50), server_default=("None"))
     day                     = db.Column(db.String(50), server_default=("None"))
     hour                    = db.Column(db.String(50), server_default=("None"))
     minute                  = db.Column(db.String(50), server_default=("None"))
+    option_sunrise          = db.Column(db.String(50), server_default=("None")) 
+    option_sunset           = db.Column(db.String(50), server_default=("None")) 
+    location                = db.Column(db.String(50), server_default=("None"))
+    sunrise                 = db.Column(db.String(50), server_default=("None")) 
+    sunset                  = db.Column(db.String(50), server_default=("None"))         
     mqtt_device_ieeeAddr_1  = db.Column(db.String(50), server_default=("None"))  
     mqtt_device_name_1      = db.Column(db.String(50), server_default=("None")) 
     mqtt_device_inputs_1    = db.Column(db.String(100), server_default=("None")) 
@@ -291,19 +301,15 @@ class Scheduler_Tasks(db.Model):
     sensor_key_3            = db.Column(db.String(50), server_default=("None"))    
     value_3                 = db.Column(db.String(100), server_default=("None"))
     operator_3              = db.Column(db.String(50), server_default=("None")) 
-    expanded_option_home    = db.Column(db.String(50), server_default=("None")) 
-    expanded_option_away    = db.Column(db.String(50), server_default=("None")) 
-    expanded_ip_adresses    = db.Column(db.String(100), server_default=("None")) 
-    expanded_option_sunrise = db.Column(db.String(50), server_default=("None")) 
-    expanded_option_sunset  = db.Column(db.String(50), server_default=("None")) 
-    expanded_location       = db.Column(db.String(50), server_default=("None"))
-    expanded_sunrise        = db.Column(db.String(50), server_default=("None")) 
-    expanded_sunset         = db.Column(db.String(50), server_default=("None"))     
+    option_home             = db.Column(db.String(50), server_default=("None")) 
+    option_away             = db.Column(db.String(50), server_default=("None")) 
+    ip_addresses            = db.Column(db.String(100), server_default=("None")) 
     error_change_settings   = db.Column(db.String(500), server_default=("")) 
     error_general_settings  = db.Column(db.String(500), server_default=(""))  
     error_time_settings     = db.Column(db.String(500), server_default=(""))   
+    error_sun_settings      = db.Column(db.String(500), server_default=(""))       
     error_sensor_settings   = db.Column(db.String(500), server_default=(""))   
-    error_expanded_settings = db.Column(db.String(500), server_default=(""))        
+    error_position_settings = db.Column(db.String(500), server_default=(""))        
     error_task_settings     = db.Column(db.String(500), server_default=(""))  
 
 class Sensordata_Jobs(db.Model):
@@ -1480,7 +1486,7 @@ def GET_ALL_MQTT_DEVICES(selector):
  
     if selector == "device":
         for device in devices:
-            if device.device_type == "device":
+            if device.device_type == "device_switch":
                 device_list.append(device)      
   
     if selector == "led":
@@ -1601,7 +1607,25 @@ def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     db.session.commit()   
 
 
-def SET_MQTT_DEVICE_SETTINGS(ieeeAddr, power_setting):
+def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, options, options_value_1, options_value_2, options_value_3):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+                         " | Gateway - " + entry.gateway +
+                         " | Setting changed" + 
+                         " || Options - " + options +
+                         " | Options_Value_1 - " + options_value_1 +
+                         " | Options_Value_2 - " + options_value_2 +                        
+                         " | Options_Value_3 - " + options_value_3)
+    
+    entry.options         = options
+    entry.options_value_1 = options_value_1
+    entry.options_value_2 = options_value_2
+    entry.options_value_3 = options_value_3
+    db.session.commit()  
+
+
+def SET_MQTT_DEVICE_POWERSTATE(ieeeAddr, power_setting):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
     if power_setting == "checked":
@@ -1967,44 +1991,48 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
 
 
 def SET_SCHEDULER_TASK(id, name, task,
-                       option_time, option_sensors, option_expanded, option_repeat, 
+                       option_time, option_sun, option_sensors, option_position, option_repeat, 
                        day, hour, minute,
+                       option_sunrise, option_sunset, location,
                        mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1,  
                        sensor_key_1, operator_1, value_1, operator_main_1,
                        mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                        sensor_key_2, operator_2, value_2, operator_main_2,
                        mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                        sensor_key_3, operator_3, value_3,
-                       expanded_option_home, expanded_option_away, expanded_ip_adresses, 
-                       expanded_option_sunrise, expanded_option_sunset, expanded_location):   
+                       option_home, option_away, ip_addresses):
+                          
      
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
     if (entry.name != name or entry.task != task or 
-        entry.option_time != option_time or entry.option_sensors != option_sensors or 
-        entry.option_expanded != option_expanded or entry.option_repeat != option_repeat or
+        entry.option_time != option_time or entry.option_sun != option_sun or entry.option_sensors != option_sensors or 
+        entry.option_position != option_position or entry.option_repeat != option_repeat or
         entry.day != day or entry.hour != hour or entry.minute != minute or
-        str(entry.mqtt_device_ieeeAddr_1) != mqtt_device_ieeeAddr_1 or entry.sensor_key_1 != sensor_key_1 or 
+        entry.option_sunrise != option_sunrise or entry.option_sunset != option_sunset or entry.location != location or
+        entry.mqtt_device_ieeeAddr_1 != mqtt_device_ieeeAddr_1 or entry.sensor_key_1 != sensor_key_1 or 
         entry.operator_1 != operator_1 or entry.value_1 != value_1 or 
-        str(entry.mqtt_device_ieeeAddr_2) != mqtt_device_ieeeAddr_2 or entry.sensor_key_2 != sensor_key_2 or 
+        entry.mqtt_device_ieeeAddr_2 != mqtt_device_ieeeAddr_2 or entry.sensor_key_2 != sensor_key_2 or 
         entry.operator_2 != operator_2 or entry.value_2 != value_2 or entry.operator_main_1 != operator_main_1 or
-        str(entry.mqtt_device_ieeeAddr_3) != mqtt_device_ieeeAddr_3 or entry.sensor_key_3 != sensor_key_3 or 
+        entry.mqtt_device_ieeeAddr_3 != mqtt_device_ieeeAddr_3 or entry.sensor_key_3 != sensor_key_3 or 
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
-        entry.expanded_option_home != expanded_option_home or entry.expanded_option_away != expanded_option_away or 
-        entry.expanded_ip_adresses != expanded_ip_adresses or entry.expanded_option_sunrise != expanded_option_sunrise or 
-        entry.expanded_option_sunset != expanded_option_sunset or entry.expanded_location != expanded_location):
+        entry.option_home != option_home or entry.option_away != option_away or entry.ip_addresses != ip_addresses):
 
         entry.name                    = name
         entry.task                    = task      
-        entry.option_time             = option_time      
+        entry.option_time             = option_time    
+        entry.option_sun              = option_sun            
         entry.option_sensors          = option_sensors
-        entry.option_expanded         = option_expanded        
+        entry.option_position         = option_position        
         entry.option_repeat           = option_repeat
         entry.day                     = day
         entry.hour                    = hour
         entry.minute                  = minute
+        entry.option_sunrise          = option_sunrise
+        entry.option_sunset           = option_sunset
+        entry.location                = location        
         entry.mqtt_device_ieeeAddr_1  = mqtt_device_ieeeAddr_1
         entry.mqtt_device_name_1      = mqtt_device_name_1
         entry.mqtt_device_inputs_1    = mqtt_device_inputs_1
@@ -2025,12 +2053,9 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.sensor_key_3            = sensor_key_3
         entry.operator_3              = operator_3
         entry.value_3                 = value_3      
-        entry.expanded_option_home    = expanded_option_home
-        entry.expanded_option_away    = expanded_option_away
-        entry.expanded_ip_adresses    = expanded_ip_adresses
-        entry.expanded_option_sunrise = expanded_option_sunrise
-        entry.expanded_option_sunset  = expanded_option_sunset
-        entry.expanded_location       = expanded_location
+        entry.option_home             = option_home
+        entry.option_away             = option_away
+        entry.ip_addresses            = ip_addresses
 
         db.session.commit()   
 
@@ -2049,6 +2074,16 @@ def SET_SCHEDULER_TASK(id, name, task,
             log_message = log_message + (" | Day - " + entry.day + 
                                          " | Hour - " + entry.hour + 
                                          " | Minute - " + entry.minute)
+
+        # option sun
+        if entry.option_sun == "checked":
+
+            if entry.location == None:
+                entry.location = "None"
+
+            log_message = log_message + (" | Sunrise - " + entry.option_sunrise +
+                                         " | Sunset - " + entry.option_sunset +
+                                         " | Location - " + entry.location) 
 
         # option sensors
         if entry.option_sensors == "checked":
@@ -2086,20 +2121,15 @@ def SET_SCHEDULER_TASK(id, name, task,
                                              " | Operator_3 - " + entry.operator_3 + 
                                              " | Value_3 - " + entry.value_3)
 
-        # option expanded
-        if entry.option_expanded == "checked":
+        # option position
+        if entry.option_position == "checked":
 
-            if entry.expanded_ip_adresses == None:
-                entry.expanded_ip_adresses = "None"
-            if entry.expanded_location == None:
-                entry.expanded_location = "None"
+            if entry.ip_addresses == None:
+                entry.ip_addresses = "None"
 
-            log_message = log_message + (" | Home - " + entry.expanded_option_home + 
-                                         " | Away - " + entry.expanded_option_away + 
-                                         " | IP-Adressen - " + entry.expanded_ip_adresses +
-                                         " | Sunrise - " + entry.expanded_option_sunrise +
-                                         " | Sunset - " + entry.expanded_option_sunset +
-                                         " | Location - " + entry.expanded_location) 
+            log_message = log_message + (" | Home - " + entry.option_home + 
+                                         " | Away - " + entry.option_away + 
+                                         " | IP-Addresses - " + entry.ip_addresses) 
 
         # option repeat
         if entry.option_repeat == "checked":
@@ -2112,23 +2142,23 @@ def SET_SCHEDULER_TASK(id, name, task,
 def SET_SCHEDULER_TASK_SUNRISE(id, sunrise):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
-    entry.expanded_sunrise = sunrise
+    entry.sunrise = sunrise
     db.session.commit()   
 
 
 def GET_SCHEDULER_TASK_SUNRISE(id):    
-    return (Scheduler_Tasks.query.filter_by(id=id).first().expanded_sunrise)
+    return (Scheduler_Tasks.query.filter_by(id=id).first().sunrise)
 
 
 def SET_SCHEDULER_TASK_SUNSET(id, sunset):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
-    entry.expanded_sunset = sunset
+    entry.sunset = sunset
     db.session.commit()   
 
 
 def GET_SCHEDULER_TASK_SUNSET(id):    
-    return (Scheduler_Tasks.query.filter_by(id=id).first().expanded_sunset)
+    return (Scheduler_Tasks.query.filter_by(id=id).first().sunset)
 
 
 def SET_SCHEDULER_TASK_CHANGE_ERRORS(id, error_change_settings):    
@@ -2152,6 +2182,13 @@ def SET_SCHEDULER_TASK_SETTING_TIME_ERRORS(id, error_time_settings):
     db.session.commit()   
 
 
+def SET_SCHEDULER_TASK_SETTING_SUN_ERRORS(id, error_sun_settings):    
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+
+    entry.error_sun_settings = error_sun_settings
+    db.session.commit()   
+
+
 def SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(id, error_sensor_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
@@ -2159,10 +2196,10 @@ def SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(id, error_sensor_settings):
     db.session.commit()   
 
 
-def SET_SCHEDULER_TASK_SETTING_EXPANDED_ERRORS(id, error_expanded_settings):    
+def SET_SCHEDULER_TASK_SETTING_POSITION_ERRORS(id, error_position_settings):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
-    entry.error_expanded_settings = error_expanded_settings
+    entry.error_position_settings = error_position_settings
     db.session.commit()   
 
 
@@ -2179,8 +2216,9 @@ def RESET_SCHEDULER_TASK_ERRORS(id):
     entry.error_change_settings   = ""
     entry.error_general_settings  = ""
     entry.error_time_settings     = ""
+    entry.error_sun_settings      = ""    
     entry.error_sensor_settings   = ""
-    entry.error_expanded_settings = ""
+    entry.error_position_settings = ""
     entry.error_task_settings     = ""
     db.session.commit()   
 

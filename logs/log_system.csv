@@ -27894,3 +27894,376 @@ could not find expected ':'
 2019-05-21 16:34:01,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Berlin || Repeat - checked|
 2019-05-21 16:35:29,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - None || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Nürnberg || Repeat - checked|
 2019-05-21 16:38:42,EVENT,|Database || Scheduler || Task - detection_on || changed |||| Name - detection_on || Task - scene:wohnzimer:relax:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - > || Value_1 - 0 || MQTT-Device_2 - 0x99999 || Sensor_2 - sensor_1 || Operator_2 - = || Value_2 - 0 || Home - None || Away - None || IP-Adressen - None || Sunrise - checked || Sunset - checked || Location - Nürnberg || Repeat - checked|
+2019-05-21 20:06:46,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:06:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:07:04,EVENT,|Database || Scheduler || Task - fgd || Task_Type - complete || added|
+2019-05-21 20:09:23,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:09:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:15:31,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:15:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:15:39,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-21 20:15:51,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-21 20:16:27,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - None || Repeat - checked|
+2019-05-21 20:16:37,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - Mannheim || Repeat - checked|
+2019-05-21 20:16:44,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - Mannheim || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-21 20:16:50,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - Mannheim || Home - checked || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-05-21 20:18:45,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:18:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:19:43,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:19:44,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - Mannheim || Home - checked || Away - checked || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-05-21 20:19:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:21:08,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:21:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-21 20:21:15,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Sunrise - checked || Sunset - checked || Location - Mannheim || Home - checked || Away - None || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-05-21 20:21:19,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Day - None || Hour - None || Minute - None || Home - checked || Away - None || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-05-21 20:21:48,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Home - checked || Away - None || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-05-21 20:22:07,EVENT,|Database || Scheduler || Task - MQTT aktualisieren || Task_Type - reduced || added|
+2019-05-21 20:22:24,EVENT,|Database || Scheduler || Task - MQTT aktualisieren || changed |||| Name - MQTT aktualisieren || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-05-21 20:22:31,EVENT,|Database || Scheduler || Task - Datenbank sichern || Task_Type - reduced || added|
+2019-05-21 20:22:50,EVENT,|Database || Scheduler || Task - Datenbank sichern || changed |||| Name - Datenbank sichern || Task - save_database || Day - * || Hour - 0 || Minute - 0 || Repeat - checked|
+2019-05-21 20:22:55,EVENT,|Database || Scheduler || Task - schlafen || Task_Type - reduced || added|
+2019-05-21 20:23:14,EVENT,|Database || Scheduler || Task - schlafen || changed |||| Name - schlafen || Task - led_off:all || Day - * || Hour - 0 || Minute - 30 || Repeat - checked|
+2019-05-21 20:23:18,EVENT,|Database || Scheduler || Task - zur Arbeit || Task_Type - reduced || added|
+2019-05-21 20:23:32,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off:all || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-05-21 20:23:39,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-21 20:23:48,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Sunrise - None || Sunset - checked || Location - None || Repeat - checked|
+2019-05-21 20:23:54,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Sunrise - None || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:24:06,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - fgd || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:24:15,EVENT,|Database || Scheduler || Task - fgd || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:24:27,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-21 20:24:41,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Home - None || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-05-21 20:24:47,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:29:49,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-21 20:29:54,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:29:58,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-21 20:30:03,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-21 20:32:44,ERROR,|Microphone LED Control || No backend available|
+2019-05-21 20:32:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-22 09:41:16,EVENT,|MQTT || started|
+2019-05-22 09:41:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 09:41:20,EVENT,|Speech Control || started|
+2019-05-22 09:54:02,EVENT,|MQTT || started|
+2019-05-22 09:54:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 09:54:07,EVENT,|Speech Control || started|
+2019-05-22 09:55:50,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Role - superuser || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-05-22 10:30:46,EVENT,|MQTT || started|
+2019-05-22 10:30:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:30:52,EVENT,|Speech Control || started|
+2019-05-22 10:39:42,EVENT,|MQTT || started|
+2019-05-22 10:39:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:39:49,EVENT,|Speech Control || started|
+2019-05-22 10:41:06,EVENT,|MQTT || started|
+2019-05-22 10:41:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:41:13,EVENT,|Speech Control || started|
+2019-05-22 10:44:40,EVENT,|MQTT || started|
+2019-05-22 10:44:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:44:46,EVENT,|Speech Control || started|
+2019-05-22 10:45:31,EVENT,|MQTT || started|
+2019-05-22 10:45:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:45:35,EVENT,|Speech Control || started|
+2019-05-22 10:46:23,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-22 10:46:26,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - KÃ¶ln || Repeat - checked|
+2019-05-22 10:48:26,EVENT,|MQTT || started|
+2019-05-22 10:48:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:48:33,EVENT,|Speech Control || started|
+2019-05-22 10:49:19,EVENT,|MQTT || started|
+2019-05-22 10:49:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:49:25,EVENT,|Speech Control || started|
+2019-05-22 10:50:36,EVENT,|MQTT || started|
+2019-05-22 10:50:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:50:41,EVENT,|Speech Control || started|
+2019-05-22 10:55:59,EVENT,|MQTT || started|
+2019-05-22 10:55:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 10:56:06,EVENT,|Speech Control || started|
+2019-05-22 11:00:01,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 11:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-22 11:00:37,EVENT,|MQTT || started|
+2019-05-22 11:00:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:00:41,EVENT,|Speech Control || started|
+2019-05-22 11:02:49,EVENT,|MQTT || started|
+2019-05-22 11:02:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:02:53,EVENT,|Speech Control || started|
+2019-05-22 11:03:51,EVENT,|Database || Scheduler || Task - test_02 || Task_Type - complete || added|
+2019-05-22 11:03:56,EVENT,|Database || Scheduler || Task - test_02 || changed |||| Name - test_02 || Task - None || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-22 11:08:49,EVENT,|MQTT || started|
+2019-05-22 11:08:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:08:53,EVENT,|Speech Control || started|
+2019-05-22 11:19:20,EVENT,|MQTT || started|
+2019-05-22 11:19:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:19:24,EVENT,|Speech Control || started|
+2019-05-22 11:41:53,EVENT,|MQTT || started|
+2019-05-22 11:41:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:41:57,EVENT,|Speech Control || started|
+2019-05-22 11:42:21,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-22 11:44:30,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-05-22 11:44:34,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-05-22 11:47:11,EVENT,|MQTT || started|
+2019-05-22 11:47:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:47:15,EVENT,|Speech Control || started|
+2019-05-22 11:52:02,EVENT,|MQTT || started|
+2019-05-22 11:52:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:52:06,EVENT,|Speech Control || started|
+2019-05-22 11:52:56,EVENT,|MQTT || started|
+2019-05-22 11:52:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 11:53:00,EVENT,|Speech Control || started|
+2019-05-22 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-22 12:02:02,EVENT,|MQTT || started|
+2019-05-22 12:02:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:02:06,EVENT,|Speech Control || started|
+2019-05-22 12:04:38,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || Repeat - checked|
+2019-05-22 12:04:55,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump -  pump_2 || Sensor -  sensor_5 || Pumptime - 50|
+2019-05-22 12:05:04,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-22 12:05:11,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || MQTT-Device_1 - 0x99999 || Sensor_1 -  sensor_2 || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-22 12:05:17,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || MQTT-Device_1 - 0x00158d000349876a || Sensor_1 -  pressure || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-05-22 12:05:23,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || Repeat - checked|
+2019-05-22 12:05:32,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x00158d000349876a || Sensor -  humidity || Always_Active - |
+2019-05-22 12:05:38,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x99999 || Sensor -  sensor_5 || Always_Active - |
+2019-05-22 12:05:42,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x99999 || Sensor - sensor_5 || Always_Active - checked|
+2019-05-22 12:23:08,EVENT,|MQTT || started|
+2019-05-22 12:23:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:23:13,EVENT,|Speech Control || started|
+2019-05-22 12:23:26,EVENT,|Database_Backup || saved|
+2019-05-22 12:23:52,EVENT,|Database_Backup || saved|
+2019-05-22 12:24:48,EVENT,|MQTT || started|
+2019-05-22 12:24:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:24:52,EVENT,|Speech Control || started|
+2019-05-22 12:25:01,EVENT,|Database_Backup || saved|
+2019-05-22 12:25:12,EVENT,|Database_Backup || saved|
+2019-05-22 12:26:42,EVENT,|MQTT || started|
+2019-05-22 12:26:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:26:47,EVENT,|Speech Control || started|
+2019-05-22 12:26:59,EVENT,|Database_Backup || saved|
+2019-05-22 12:28:02,EVENT,|Database_Backup || saved|
+2019-05-22 12:29:36,EVENT,|MQTT || started|
+2019-05-22 12:29:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:29:41,EVENT,|Speech Control || started|
+2019-05-22 12:31:03,EVENT,|MQTT || started|
+2019-05-22 12:31:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:31:07,EVENT,|Speech Control || started|
+2019-05-22 12:32:18,EVENT,|MQTT || started|
+2019-05-22 12:32:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:32:22,EVENT,|Speech Control || started|
+2019-05-22 12:33:14,EVENT,|MQTT || started|
+2019-05-22 12:33:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:33:18,EVENT,|Speech Control || started|
+2019-05-22 12:34:53,EVENT,|MQTT || started|
+2019-05-22 12:34:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:34:58,EVENT,|Speech Control || started|
+2019-05-22 12:36:35,EVENT,|MQTT || started|
+2019-05-22 12:36:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 12:36:40,EVENT,|Speech Control || started|
+2019-05-22 12:36:59,EVENT,|File || /backup/2019-05-05_smarthome.sqlite3 || deleted|
+2019-05-22 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-22 13:18:20,EVENT,|MQTT || started|
+2019-05-22 13:18:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:18:24,EVENT,|Speech Control || started|
+2019-05-22 13:20:12,EVENT,|MQTT || started|
+2019-05-22 13:20:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:20:17,EVENT,|Speech Control || started|
+2019-05-22 13:21:04,EVENT,|MQTT || started|
+2019-05-22 13:21:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:21:09,EVENT,|Speech Control || started|
+2019-05-22 13:27:03,EVENT,|MQTT || started|
+2019-05-22 13:27:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:27:07,EVENT,|Speech Control || started|
+2019-05-22 13:30:46,EVENT,|MQTT || started|
+2019-05-22 13:30:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:30:51,EVENT,|Speech Control || started|
+2019-05-22 13:32:08,EVENT,|MQTT || started|
+2019-05-22 13:32:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:32:12,EVENT,|Speech Control || started|
+2019-05-22 13:41:22,EVENT,|MQTT || started|
+2019-05-22 13:41:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:41:26,EVENT,|Speech Control || started|
+2019-05-22 13:58:05,EVENT,|MQTT || started|
+2019-05-22 13:58:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:58:09,EVENT,|Speech Control || started|
+2019-05-22 13:59:26,EVENT,|MQTT || started|
+2019-05-22 13:59:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 13:59:30,EVENT,|Speech Control || started|
+2019-05-22 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 14:00:16,EVENT,|MQTT || started|
+2019-05-22 14:00:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:00:21,EVENT,|Speech Control || started|
+2019-05-22 14:01:37,EVENT,|MQTT || started|
+2019-05-22 14:01:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:01:42,EVENT,|Speech Control || started|
+2019-05-22 14:02:22,EVENT,|MQTT || started|
+2019-05-22 14:02:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:02:26,EVENT,|Speech Control || started|
+2019-05-22 14:10:04,EVENT,|MQTT || started|
+2019-05-22 14:10:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:10:09,EVENT,|Speech Control || started|
+2019-05-22 14:11:16,EVENT,|MQTT || started|
+2019-05-22 14:11:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:11:21,EVENT,|Speech Control || started|
+2019-05-22 14:11:52,EVENT,|MQTT || started|
+2019-05-22 14:11:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:11:57,EVENT,|Speech Control || started|
+2019-05-22 14:12:35,EVENT,|MQTT || started|
+2019-05-22 14:12:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:12:40,EVENT,|Speech Control || started|
+2019-05-22 14:13:54,EVENT,|MQTT || started|
+2019-05-22 14:13:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:13:59,EVENT,|Speech Control || started|
+2019-05-22 14:14:47,EVENT,|MQTT || started|
+2019-05-22 14:14:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:14:52,EVENT,|Speech Control || started|
+2019-05-22 14:15:28,EVENT,|MQTT || started|
+2019-05-22 14:15:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:15:33,EVENT,|Speech Control || started|
+2019-05-22 14:42:04,EVENT,|Database || Scheduler || Task - request_water || Task_Type - complete || added|
+2019-05-22 14:42:17,EVENT,|Database || Scheduler || Task - request_water || changed |||| Name - request_water || Task - request_sensordata:1 || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-05-22 14:42:25,EVENT,|Database || Scheduler || Task - request_water || changed |||| Name - request_water || Task - request_sensordata:1 || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-22 14:43:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:43:08,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:43:37,EVENT,|Database || Scheduler || Task - request_water || changed |||| Name - request_water || Task - request_sensordata:1 || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-05-22 14:44:08,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x99999 || Sensor - sensor_5 || Always_Active - |
+2019-05-22 14:44:17,EVENT,|Database || Scheduler || Task - request_water || changed |||| Name - request_water || Task - request_sensordata:1 || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-22 14:45:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:45:03,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:45:26,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-22 14:45:46,EVENT,|File || /csv/fsd.csv || downloaded|
+2019-05-22 14:46:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:46:00,EVENT,|Database || Sensordata Job - fds || changed |||| Name - fds || Filename - fsd || MQTT-Device - 0x99999 || Sensor - sensor_5 || Always_Active - checked|
+2019-05-22 14:46:03,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:47:07,EVENT,|MQTT || started|
+2019-05-22 14:47:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:47:12,EVENT,|Speech Control || started|
+2019-05-22 14:48:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:48:07,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:49:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:49:10,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:50:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:50:07,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:51:11,EVENT,|MQTT || started|
+2019-05-22 14:51:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:51:16,EVENT,|Speech Control || started|
+2019-05-22 14:52:00,EVENT,|Scheduler || Task - request_water || started|
+2019-05-22 14:52:04,SUCCESS,|Scheduler || Task - request_water || successful|
+2019-05-22 14:52:39,EVENT,|File || /csv/fsd.csv || downloaded|
+2019-05-22 14:52:59,EVENT,|Database || Scheduler || Task - request_water || deleted|
+2019-05-22 14:55:03,EVENT,|MQTT || started|
+2019-05-22 14:55:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 14:55:08,EVENT,|Speech Control || started|
+2019-05-22 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-22 15:00:14,EVENT,|File || /csv/fsd.csv || downloaded|
+2019-05-22 15:07:47,EVENT,|MQTT || started|
+2019-05-22 15:07:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:07:51,EVENT,|Speech Control || started|
+2019-05-22 15:08:00,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-22 15:08:06,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - None || Sunset - checked || Location - None || Repeat - checked|
+2019-05-22 15:08:12,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - None || Sunset - checked || Location - Köln || Repeat - checked|
+2019-05-22 15:08:17,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Repeat - checked|
+2019-05-22 15:08:21,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-05-22 15:08:24,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - None || Sunset - checked || Location - None || Repeat - checked|
+2019-05-22 15:08:30,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || Repeat - checked|
+2019-05-22 15:08:46,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - None || Repeat - checked|
+2019-05-22 15:08:52,EVENT,|Database || Scheduler || Task - test_01 || changed |||| Name - test_01 || Task - None || Sunrise - checked || Sunset - checked || Location - Köln || Repeat - checked|
+2019-05-22 15:18:11,EVENT,|MQTT || started|
+2019-05-22 15:18:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:18:16,EVENT,|Speech Control || started|
+2019-05-22 15:18:26,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || outputs - None|
+2019-05-22 15:18:26,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || outputs - None|
+2019-05-22 15:20:06,EVENT,|MQTT || started|
+2019-05-22 15:20:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:20:11,EVENT,|Speech Control || started|
+2019-05-22 15:33:18,EVENT,|MQTT || started|
+2019-05-22 15:33:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:33:22,EVENT,|Speech Control || started|
+2019-05-22 15:39:51,EVENT,|MQTT || started|
+2019-05-22 15:39:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:39:55,EVENT,|Speech Control || started|
+2019-05-22 15:43:20,EVENT,|MQTT || started|
+2019-05-22 15:43:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:43:25,EVENT,|Speech Control || started|
+2019-05-22 15:51:37,EVENT,|MQTT || started|
+2019-05-22 15:51:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:51:41,EVENT,|Speech Control || started|
+2019-05-22 15:51:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - OFF|
+2019-05-22 15:51:58,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Power_Setting - ON|
+2019-05-22 15:58:12,EVENT,|MQTT || started|
+2019-05-22 15:58:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:58:16,EVENT,|Speech Control || started|
+2019-05-22 15:59:04,EVENT,|MQTT || started|
+2019-05-22 15:59:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 15:59:08,EVENT,|Speech Control || started|
+2019-05-22 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-22 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-22 16:05:34,EVENT,|MQTT || started|
+2019-05-22 16:05:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:05:38,EVENT,|Speech Control || started|
+2019-05-22 16:06:02,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Setting changed |||| Options - IP-Adresse || Options_Value_1 -  || Options_Value_2 -  || Options_Value_3 - |
+2019-05-22 16:06:02,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Options - None || Options_Value_1 -  || Options_Value_2 -  || Options_Value_3 - |
+2019-05-22 16:08:04,EVENT,|MQTT || started|
+2019-05-22 16:08:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:08:09,EVENT,|Speech Control || started|
+2019-05-22 16:08:45,EVENT,|MQTT || started|
+2019-05-22 16:08:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:08:50,EVENT,|Speech Control || started|
+2019-05-22 16:09:29,EVENT,|MQTT || started|
+2019-05-22 16:09:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:09:33,EVENT,|Speech Control || started|
+2019-05-22 16:09:49,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Setting changed |||| Options - IP-Adresse || Options_Value_1 -  || Options_Value_2 -  || Options_Value_3 - |
+2019-05-22 16:09:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Options - None || Options_Value_1 -  || Options_Value_2 -  || Options_Value_3 - |
+2019-05-22 16:11:17,EVENT,|MQTT || started|
+2019-05-22 16:11:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:11:21,EVENT,|Speech Control || started|
+2019-05-22 16:12:17,EVENT,|MQTT || started|
+2019-05-22 16:12:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:12:22,EVENT,|Speech Control || started|
+2019-05-22 16:13:32,EVENT,|MQTT || started|
+2019-05-22 16:13:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:13:37,EVENT,|Speech Control || started|
+2019-05-22 16:14:09,EVENT,|MQTT || started|
+2019-05-22 16:14:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:14:13,EVENT,|Speech Control || started|
+2019-05-22 16:14:39,EVENT,|MQTT || started|
+2019-05-22 16:14:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:14:44,EVENT,|Speech Control || started|
+2019-05-22 16:16:07,EVENT,|MQTT || started|
+2019-05-22 16:16:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:16:12,EVENT,|Speech Control || started|
+2019-05-22 16:17:31,EVENT,|MQTT || started|
+2019-05-22 16:17:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:17:36,EVENT,|Speech Control || started|
+2019-05-22 16:18:39,EVENT,|MQTT || started|
+2019-05-22 16:18:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:18:43,EVENT,|Speech Control || started|
+2019-05-22 16:19:43,EVENT,|MQTT || started|
+2019-05-22 16:19:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:19:48,EVENT,|Speech Control || started|
+2019-05-22 16:20:24,EVENT,|MQTT || started|
+2019-05-22 16:20:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:20:28,EVENT,|Speech Control || started|
+2019-05-22 16:20:56,EVENT,|MQTT || started|
+2019-05-22 16:20:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:21:00,EVENT,|Speech Control || started|
+2019-05-22 16:21:35,EVENT,|MQTT || started|
+2019-05-22 16:21:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:21:40,EVENT,|Speech Control || started|
+2019-05-22 16:29:28,EVENT,|MQTT || started|
+2019-05-22 16:29:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:29:32,EVENT,|Speech Control || started|
+2019-05-22 16:32:20,EVENT,|MQTT || started|
+2019-05-22 16:32:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:32:24,EVENT,|Speech Control || started|
+2019-05-22 16:35:26,EVENT,|MQTT || started|
+2019-05-22 16:35:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:35:30,EVENT,|Speech Control || started|
+2019-05-22 16:38:25,EVENT,|MQTT || started|
+2019-05-22 16:38:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:38:30,EVENT,|Speech Control || started|
+2019-05-22 16:41:41,EVENT,|MQTT || started|
+2019-05-22 16:41:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:41:46,EVENT,|Speech Control || started|
+2019-05-22 16:42:33,EVENT,|MQTT || started|
+2019-05-22 16:42:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-22 16:42:37,EVENT,|Speech Control || started|
+2019-05-22 16:43:06,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Setting changed |||| Options - None || Options_Value_1 -  || Options_Value_2 - None || Options_Value_3 - None|
+2019-05-22 16:43:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Options - None || Options_Value_1 - None || Options_Value_2 - None || Options_Value_3 - None|
+2019-05-22 16:43:11,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Setting changed |||| Options - IP-Adresse || Options_Value_1 - None || Options_Value_2 - None || Options_Value_3 - None|
+2019-05-22 16:43:11,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Setting changed |||| Options - None || Options_Value_1 - None || Options_Value_2 - None || Options_Value_3 - None|

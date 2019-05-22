@@ -11,7 +11,7 @@
     outputs: 
 
 AB3257001NJ:
-    device_type: device
+    device_type: device_switch
     description: OSRAM Smart+ Plug
     inputs: 
     outputs:      

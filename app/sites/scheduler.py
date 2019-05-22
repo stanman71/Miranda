@@ -37,8 +37,9 @@ def dashboard_scheduler():
     error_change_settings                    = ""
     error_message_general_settings           = ""    
     error_message_time_settings              = ""
+    error_message_sun_settings               = ""
     error_message_sensor_settings            = ""
-    error_message_expanded_settings          = ""
+    error_message_position_settings          = ""
     error_message_scheduler_tasks            = ""
     error_message_locations_import           = ""
 
@@ -146,8 +147,12 @@ def dashboard_scheduler():
                         option_repeat = "None"  
 
                     option_time             = "checked"
+                    option_sun              = "None"
                     option_sensors          = "None"
-                    option_expanded         = "None"
+                    option_position         = "None"
+                    option_sunrise          = "None"
+                    option_sunset           = "None" 
+                    location                = "None" 
                     mqtt_device_ieeeAddr_1  = "None"
                     mqtt_device_name_1      = "None"
                     mqtt_device_inputs_1    = "None"
@@ -168,27 +173,24 @@ def dashboard_scheduler():
                     sensor_key_3            = "None"
                     operator_3              = "None"
                     value_3                 = "None"
-                    expanded_option_home    = "None"
-                    expanded_option_away    = "None"
-                    expanded_ip_adresses    = "None"
-                    expanded_option_sunrise = "None"
-                    expanded_option_sunset  = "None" 
-                    expanded_location       = "None"    
+                    option_home             = "None"
+                    option_away             = "None"
+                    ip_addresses             = "None"   
 
                     if error_message_reduced_change_settings != "":
                         error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
 
                     SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_sensors, option_expanded, option_repeat, 
+                                          option_time, option_sun, option_sensors, option_position, option_repeat, 
                                           day, hour, minute,
+                                          option_sunrise, option_sunset, location,
                                           mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
                                           mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_option_home, expanded_option_away, expanded_ip_adresses, 
-                                          expanded_option_sunrise, expanded_option_sunset, expanded_location)
+                                          option_home, option_away, ip_addresses)
 
 
         # #################
@@ -260,17 +262,23 @@ def dashboard_scheduler():
                     else:
                         option_time = "None"  
 
+                    ### set checkbox sun
+                    if request.form.get("checkbox_option_sun_" + str(i)):
+                        option_sun = "checked"
+                    else:
+                        option_sun = "None" 
+
                     ### set checkbox sensors
                     if request.form.get("checkbox_option_sensors_" + str(i)):
                         option_sensors = "checked"
                     else:
                         option_sensors = "None"  
 
-                    ### set checkbox expanded
-                    if request.form.get("checkbox_option_expanded_" + str(i)):
-                        option_expanded = "checked"
+                    ### set checkbox position
+                    if request.form.get("checkbox_option_position_" + str(i)):
+                        option_position = "checked"
                     else:
-                        option_expanded = "None"  
+                        option_position = "None"  
 
                     ### set checkbox repeat
                     if request.form.get("checkbox_option_repeat_" + str(i)):
@@ -300,6 +308,51 @@ def dashboard_scheduler():
                         minute = request.form.get("set_minute_" + str(i))
                     else:
                         minute = GET_SCHEDULER_TASK_BY_ID(i).minute 
+
+
+                    # ############
+                    # sun settings
+                    # ############
+
+                    ### set option sunrise
+                    if request.form.get("checkbox_option_sunrise_" + str(i)):
+                        option_sunrise = "checked"
+                    else:
+                        option_sunrise = "None"  
+
+                    ### set option sunset
+                    if request.form.get("checkbox_option_sunset_" + str(i)):
+                        option_sunset = "checked"
+                    else:              
+                        option_sunset = "None"  
+
+                    ### set location
+                    if option_sunrise != "None" or option_sunset != "None":
+                        location = request.form.get("set_location_" + str(i))
+                        
+                        if location == "":           
+                            location = "None"  
+                            
+                    else:
+                        location = "None" 
+                               
+                    # update sunrise / sunset  
+                    if ((option_sunrise != "None" or option_sunset != "None") and location != "None"):
+                        
+                        # get coordinates
+                        coordinates = GET_LOCATION_COORDINATES(location)
+                         
+                        try:
+                            
+                            SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+                            SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+                                
+                        except:
+                            pass
+                            
+                    else:
+                        SET_SCHEDULER_TASK_SUNRISE(i, "None")
+                        SET_SCHEDULER_TASK_SUNSET(i, "None")                        
 
 
                     # ###############
@@ -427,85 +480,47 @@ def dashboard_scheduler():
 
 
                     # #################
-                    # expanded settings
+                    # position settings
                     # #################   
 
-                    ### set expanded option home
-                    if request.form.get("checkbox_expanded_option_home_" + str(i)):
-                        expanded_option_home = "checked"
+                    ### set option home
+                    if request.form.get("checkbox_option_home_" + str(i)):
+                        option_home = "checked"
                     else:
-                        expanded_option_home = "None"  
+                        option_home = "None"  
 
-                    ### set expanded option away
-                    if request.form.get("checkbox_expanded_option_away_" + str(i)):
-                        expanded_option_away = "checked"
+                    ### set option away
+                    if request.form.get("checkbox_option_away_" + str(i)):
+                        option_away = "checked"
                     else:
-                        expanded_option_away = "None"  
+                        option_away = "None"  
 
 
-                    if expanded_option_home != "None" or expanded_option_away != "None":
+                    if option_home != "None" or option_away != "None":
 
                         ### set ip_addresses
-                        if request.form.get("set_expanded_ip_adresses_" + str(i)) != "":
-                            expanded_ip_adresses = request.form.get("set_expanded_ip_adresses_" + str(i))
+                        if request.form.get("set_ip_addresses_" + str(i)) != "":
+                            ip_addresses = request.form.get("set_ip_addresses_" + str(i))
                         else:
-                            expanded_ip_adresses = "None"
+                            ip_addresses = "None"
                     
                     else:
-                        expanded_ip_adresses = "None"
-
-
-                    ### set expanded option sunrise
-                    if request.form.get("checkbox_expanded_option_sunrise_" + str(i)):
-                        expanded_option_sunrise = "checked"
-                    else:
-                        expanded_option_sunrise = "None"  
-
-                    ### set expanded option sunset
-                    if request.form.get("checkbox_expanded_option_sunset_" + str(i)):
-                        expanded_option_sunset = "checked"
-                    else:              
-                        expanded_option_sunset = "None"  
-
-                    ### set expanded location
-                    if expanded_option_sunrise != "None" or expanded_option_sunset != "None":
-                        expanded_location = request.form.get("set_expanded_location_" + str(i))
-                        
-                        if expanded_location == "":           
-                            expanded_location = "None"  
-                            
-                    else:
-                        expanded_location = "None" 
-                        
-                    
-                    # update sunrise / sunset  
-                    if ((expanded_option_sunrise != "None" or expanded_option_sunset != "None") and expanded_location != "None"):
-                        
-                        # get coordinates
-                        coordinates = GET_LOCATION_COORDINATES(expanded_location)
-                         
-                        try:
-                            
-                            SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
-                            SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
-                                
-                        except:
-                            pass
+                        ip_addresses = "None"
 
 
                     SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
 
                     SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_sensors, option_expanded, option_repeat, 
+                                          option_time, option_sun, option_sensors, option_position, option_repeat, 
                                           day, hour, minute,
+                                          option_sunrise, option_sunset, location,
                                           mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
                                           mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
                                           mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
                                           sensor_key_3, operator_3, value_3,
-                                          expanded_option_home, expanded_option_away, expanded_ip_adresses, 
-                                          expanded_option_sunrise, expanded_option_sunset, expanded_location)
+                                          option_home, option_away, ip_addresses)
 
 
     error_message_reduced_scheduler_tasks = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"), "scheduler")
@@ -514,8 +529,9 @@ def dashboard_scheduler():
     error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"), "scheduler")
     error_message_general_settings  = CHECK_SCHEDULER_GENERAL_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
     error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_sun_settings      = CHECK_SCHEDULER_SUN_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
     error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
-    error_message_expanded_settings = CHECK_SCHEDULER_EXPANDED_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_position_settings = CHECK_SCHEDULER_POSITION_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
 
     scheduler_task_list = GET_ALL_SCHEDULER_TASKS()
 
@@ -666,8 +682,9 @@ def dashboard_scheduler():
                             error_message_add_scheduler_task=error_message_add_scheduler_task,
                             error_message_general_settings=error_message_general_settings,
                             error_message_time_settings=error_message_time_settings,
+                            error_message_sun_settings=error_message_sun_settings,
                             error_message_sensor_settings=error_message_sensor_settings,
-                            error_message_expanded_settings=error_message_expanded_settings,
+                            error_message_position_settings=error_message_position_settings,
                             error_message_scheduler_tasks=error_message_scheduler_tasks,   
                             error_message_locations_import=error_message_locations_import,                     
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,

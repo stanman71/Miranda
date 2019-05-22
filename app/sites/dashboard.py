@@ -9,7 +9,7 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.control_led import *
-from app.components.mqtt_functions import MQTT_SET_DEVICE
+from app.components.mqtt_functions import MQTT_SET_DEVICE_POWERSTATE
 
 
 class LoginForm(FlaskForm):
@@ -75,33 +75,64 @@ def dashboard():
         if request.form.get("change_device_settings") != None:
             
             for i in range (1,21):
+                
+                if request.form.get("set_options_" + str(i)) != None:
+                    
+                    device = GET_MQTT_DEVICE_BY_ID(i)
 
-                # set device  
-                if request.form.get("set_device_power_" + str(i)) != None:
-                    power_setting = request.form.get("set_device_power_" + str(i))
-                else:
-                    power_setting = ""
-                
-                devices = GET_ALL_MQTT_DEVICES("device")
-                
-                for device in devices:
-                    if device.id == i:
-                        
-                        name     = device.name
-                        gateway  = device.gateway
-                        ieeeAddr = device.ieeeAddr
-                        
-                        # setting changed ?
-                        if device.power_setting != power_setting:
-                        
-                            SET_MQTT_DEVICE_SETTINGS(ieeeAddr, power_setting)
-                            error_message_device = MQTT_SET_DEVICE(name, gateway, ieeeAddr, power_setting)
-                            break 
+                    name     = device.name
+                    gateway  = device.gateway
+                    ieeeAddr = device.ieeeAddr
+                    
+
+                    # set device options
+                    if request.form.get("set_options_" + str(i)) != None:
+                        options = request.form.get("set_options_" + str(i))
+                    else:
+                        options = "None"
+   
+                    # set device options value 1
+                    if request.form.get("set_options_value_1_" + str(i)) != None:
+                        options_value_1 = request.form.get("set_options_value_1_" + str(i))
+                    else:
+                        options_value_1 = "None"   
+   
+                    # set device options value 2
+                    if request.form.get("set_options_value_2_" + str(i)) != None:
+                        options_value_2 = request.form.get("set_options_value_2_" + str(i))
+                    else:
+                        options_value_2 = "None"      
+   
+                    # set device options value 3
+                    if request.form.get("set_options_value_3_" + str(i)) != None:
+                        options_value_3 = request.form.get("set_options_value_3_" + str(i))
+                    else:
+                        options_value_3 = "None"    
+ 
+                    SET_MQTT_DEVICE_OPTIONS(ieeeAddr, options, options_value_1, options_value_2, options_value_3)
+                    
+
+                    # set device powerstate
+                    if request.form.get("set_device_power_" + str(i)) != None:
+                        power_setting = request.form.get("set_device_power_" + str(i))
+                    else:
+                        power_setting = ""
+                    
+                    # setting changed ?
+                    if device.power_setting != power_setting:
+                    
+                        SET_MQTT_DEVICE_POWERSTATE(ieeeAddr, power_setting)
+                        error_message_device = MQTT_SET_DEVICE_POWERSTATE(name, gateway, ieeeAddr, power_setting)
                           
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes   = GET_ALL_LED_SCENES()
     dropdown_list_led_programs = GET_ALL_LED_PROGRAMS()
+    
+    list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
+    
+    dropdown_list_options   = ["IP-Adresse"] 
+    dropdown_list_operators = ["=", ">", "<"]
     
     data_device = GET_ALL_MQTT_DEVICES("device")
 
@@ -119,6 +150,9 @@ def dashboard():
                             data_led=data_led,
                             dropdown_list_led_scenes=dropdown_list_led_scenes,
                             dropdown_list_led_programs=dropdown_list_led_programs,
+                            dropdown_list_options=dropdown_list_options,
+                            dropdown_list_operators=dropdown_list_operators,
+                            list_mqtt_devices=list_mqtt_devices,
                             data_device=data_device,
                             checkbox=checkbox,
                             data_log_system=data_log_system, 
