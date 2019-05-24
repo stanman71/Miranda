@@ -1,35 +1,41 @@
 9290012573A:
     device_type: led_rgb
-    description: Philips Hue white and color ambiance E26/E27/E14
+    description: PHILIPS HUE white and color ambiance E26/E27/E14
     inputs: 
     outputs: 
 
 324131092621:
     device_type: controller
-    description: Philips Hue Dimmer Switch
-    inputs:      [action=on-press, action=up-press, action=down-press, action=off-press]
+    description: PHILIPS HUE Dimmer Switch
+    inputs:      ["action=on-press", "action=up-press", "action=down-press", "action=off-press"]
+    outputs: 
+
+LED1649C5:
+    device_type: led_simple
+    description: IKEA TRADFRI LED bulb E12/E14/E17 400 lumen
+    inputs: 
     outputs: 
 
 AB3257001NJ:
     device_type: device_switch
     description: OSRAM Smart+ Plug
     inputs: 
-    outputs:      
+    outputs:     ["ON", "OFF"]
 
 WSDCGQ11LM:
-    device_type: sensor_passiv
+    device_type: sensor_active
     description: AQARA Environment Sensor
-    inputs:      [temperature, humidity, pressure, battery] 
+    inputs:      ["temperature", "humidity", "pressure", "battery"] 
     outputs: 
 
 MFKZQ01LM:
     device_type: controller
     description: AQARA Cube Controller
-    inputs:      [action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5]
+    inputs:      ["action=shake", "action=rotate_left", "action=rotate_right", "to_side=1", "to_side=2", "to_side=4", "to_side=5"]
     outputs: 
 
 RTCGQ11LM:
-    device_type: sensor_passiv
+    device_type: sensor_active
     description: AQARA Human Detector Sensor
-    inputs:      [illuminance, occupancy, battery] 
+    inputs:      ["illuminance", "occupancy", "battery"] 
     outputs: 

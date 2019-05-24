@@ -145,7 +145,7 @@
                     <td>{{ entry.device_type }}</td> 
                     <td>{{ entry.description }}</td> 
                     <td>{{ entry.last_contact }}</td>                   
-                    <td><a href="/dashboard/settings/zigbee2mqtt/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
+                    <td><a href="/dashboard/settings/zigbee2mqtt/delete/{{ entry.ieeeAddr }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>

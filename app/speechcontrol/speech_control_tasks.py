@@ -34,7 +34,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
             keyword = keyword.replace(" ", "")
             
             if keyword.lower() in answer:
-                
+
                 try:
                     groups = GET_ALL_LED_GROUPS()
                     scenes = GET_ALL_LED_SCENES() 
@@ -60,7 +60,6 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                         # check value
                         if element.isdigit() and (1 <= int(element) <= 100):
                             brightness = int(element)
-                         
                          
                     if group_id != None and scene_id != None:                    
                         error_message = LED_START_SCENE(int(group_id), int(scene_id), brightness)            

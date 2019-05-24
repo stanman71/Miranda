@@ -121,11 +121,11 @@ def change_mqtt_device_position(id, direction, device_type):
 
 
 # remove mqtt device
-@app.route('/dashboard/settings/mqtt/delete/<int:id>')
+@app.route('/dashboard/settings/mqtt/delete/<string:ieeeAddr>')
 @login_required
 @superuser_required
-def remove_mqtt_device(id):
-    DELETE_MQTT_DEVICE(id)
+def remove_mqtt_device(ieeeAddr):
+    DELETE_MQTT_DEVICE(ieeeAddr)
     return redirect(url_for('dashboard_settings_mqtt'))
      
      
@@ -282,12 +282,17 @@ def change_zigbee2mqtt_device_position(id, direction, device_type):
 
 
 # remove zigbee2mqtt device
-@app.route('/dashboard/settings/zigbee2mqtt/delete/<int:id>')
+@app.route('/dashboard/settings/zigbee2mqtt/delete/<string:ieeeAddr>')
 @login_required
 @superuser_required
-def remove_zigbee2mqtt_device(id):
-    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", GET_MQTT_DEVICE_BY_ID(id).name) 
-    DELETE_MQTT_DEVICE(id)
+def remove_zigbee2mqtt_device(ieeeAddr):
+    
+    device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+    result = DELETE_MQTT_DEVICE(ieeeAddr)
+    
+    if result == True:
+        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device.name) 
+
     return redirect(url_for('dashboard_settings_zigbee2mqtt'))
 
 

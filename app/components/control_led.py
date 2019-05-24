@@ -19,17 +19,21 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
+    try:
 
-    def on_publish(client, userdata, mid):
-        print ('Message Published...')
+        def on_publish(client, userdata, mid):
+            print ('Message Published...')
 
-    client = mqtt.Client()
-    client.on_publish = on_publish
-    client.connect(BROKER_ADDRESS) 
-    client.publish(MQTT_TOPIC,MQTT_MSG)
-    client.disconnect()
+        client = mqtt.Client()
+        client.on_publish = on_publish
+        client.connect(BROKER_ADDRESS) 
+        client.publish(MQTT_TOPIC,MQTT_MSG)
+        client.disconnect()
 
-    return ""
+        return ""
+        
+    except:
+        pass
 
 
 """ ################### """
@@ -86,7 +90,7 @@ def SETTING_LED_WHITE(led_name, color_temp, brightness):
 def SETTING_LED_SIMPLE(led_name, brightness):
 
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
-    msg     = '{"state": "ON","brightness":' + str(brightness) + '"}'
+    msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     MQTT_PUBLISH(channel, msg) 
 
 
@@ -243,6 +247,30 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
     else:
         return ["Keine LED-Steuerung aktiviert"]
                 
+
+
+def LED_SET_BRIGHTNESS_DIMMER(group_id, command):
+    
+    group              = GET_LED_GROUP_BY_ID(group_id)
+    current_brightness = group.current_brightness
+    
+    if command == "turn_up":
+        target_brightness = int(current_brightness) + 20
+        
+        if target_brightness > 100:
+            target_brightness = 100
+    
+    if command == "turn_down":
+        target_brightness = int(current_brightness) - 20
+        
+        if target_brightness < 0:
+            target_brightness = 0    
+             
+    error_message = LED_SET_BRIGHTNESS(group.id, target_brightness)
+    
+    return error_message
+    
+    
 
 def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
     

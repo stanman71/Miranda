@@ -136,72 +136,6 @@ def GET_SUNSET_TIME(lat, long):
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
 
 
-'''
-
-""" ##### """
-""" queue """
-""" ##### """
-
-class Queue:
-    def __init__(self):
-        self.items = []
-
-    def isEmpty(self):
-        return self.items == []
-
-    def enqueue(self, item):
-        self.items.insert(0,item)
-
-    def dequeue(self):
-        return self.items.pop()
-
-    def size(self):
-        return len(self.items)
-        
-scheduler_queue = Queue()
-
-
-def SCHEDULER_QUEUE_ADD_JOB(input_source, ieeeAddr = ""):
-   scheduler_queue.enqueue([input_source, ieeeAddr])
-
-
-def QUEUE_THREAD():
-   
-   while True:
-      
-      if not scheduler_queue.isEmpty():
-         
-         scheduler_job = scheduler_queue.dequeue()
-         
-         if scheduler_job[0] == "time":
-            for task in GET_ALL_SCHEDULER_TASKS():
-               Thread = threading.Thread(target=SCHEDULER_TIME_JOB, args=(task, ))
-               Thread.start()
-               Thread.join()    
-            
-         if scheduler_job[0] == "sensor":   
-            for task in GET_ALL_SCHEDULER_TASKS():   
-               Thread = threading.Thread(target=SCHEDULER_SENSOR_JOB, args=(task, scheduler_job[1], ))
-               Thread.start()
-               Thread.join()                   
-   
-         if scheduler_job[0] == "ping":   
-            for task in GET_ALL_SCHEDULER_TASKS():
-               Thread = threading.Thread(target=SCHEDULER_PING_JOB, args=(task, ))
-               Thread.start()
-               Thread.join()    
-         
-         #print(scheduler_job)
-         
-         time.sleep(1)
-
-
-# start scheduler queue thread
-Thread = threading.Thread(target=QUEUE_THREAD)
-#Thread.start()   
-
-'''
-
 
 """ ################# """
 """ scheduler threads """
@@ -243,7 +177,7 @@ def SCHEDULER_TIME_THREAD(task):
    #  sunrise / sunset
    # ##################
    
-   if (task.option_sunrise == "checked" or task.option_sunset == "checked"):
+   if task.option_sun == "checked":
        
       print("Start Scheduler Sun")
 
@@ -252,27 +186,25 @@ def SCHEDULER_TIME_THREAD(task):
          if not CHECK_SCHEDULER_SENSORS(task):
             return
          
-         # check position 
-         if task.option_position == "checked":
+      # check position 
+      if task.option_position == "checked":
 
-            if task.option_home == "checked":
-               if not CHECK_SCHEDULER_PING(task):
-                  return               
-            
-            if task.option_away == "checked":
-               if CHECK_SCHEDULER_PING(task):
-                  return         
+         if task.option_home == "checked":
+            if not CHECK_SCHEDULER_PING(task):
+               return               
+         
+         if task.option_away == "checked":
+            if CHECK_SCHEDULER_PING(task):
+               return         
 
-         # check sun
-         if task.option_sun == "checked":
-
-            if task.option_sunrise == "checked":
-               if CHECK_SCHEDULER_SUNRISE(task):
-                  START_SCHEDULER_TASK(task) 
-               
-            if task.option_sunset == "checked":
-               if CHECK_SCHEDULER_SUNSET(task):
-                  START_SCHEDULER_TASK(task)       
+      # check sun
+      if task.option_sunrise == "checked":
+         if CHECK_SCHEDULER_SUNRISE(task):
+            START_SCHEDULER_TASK(task) 
+         
+      if task.option_sunset == "checked":
+         if CHECK_SCHEDULER_SUNSET(task):
+            START_SCHEDULER_TASK(task)       
                
 
 def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
@@ -309,7 +241,7 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
 
          # check sun
          if task.option_sun == "checked":
-
+            
             if task.option_sunrise == "checked":
                if CHECK_SCHEDULER_SUNRISE(task):
                   START_SCHEDULER_TASK(task) 
@@ -1311,45 +1243,40 @@ def START_SCHEDULER_TASK(task_object):
    try:
       if "led_off" in task_object.task:
          task = task_object.task.split(":")
+         
          if task[1] == "group":
-            
             # get input group names and lower the letters
             try:
                   list_groups = task[2].split(",")
             except:
                   list_groups = [task[2]]
-
-            for input_group_name in list_groups:
                   
+            for input_group_name in list_groups: 
                input_group_name = input_group_name.replace(" ", "")
-               input_group_name = input_group_name.lower()
-
-               # get exist group names and lower the letters
-               try:
-                  all_exist_group = GET_ALL_LED_GROUPS()
+               
+               group_founded = False
+               
+               # get exist group names 
+               for group in GET_ALL_LED_GROUPS():
+               
+                  if input_group_name.lower() == group.name.lower():
                   
-                  for exist_group in all_exist_group:
-                     
-                     exist_group_name       = exist_group.name
-                     exist_group_name_lower = exist_group_name.lower()
-                     
-                     # compare the formated names
-                     if input_group_name == exist_group_name_lower:                       
-                        group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
-                        error_message = LED_TURN_OFF_GROUP(int(group_id))
-                  
-                        if error_message != "":
-                           error_message = str(error_message)
-                           error_message = error_message[1:]
-                           error_message = error_message[:-1]                    
-                           WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
-                  
-                     else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
-                  
-                     
-               except:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
+                     print("#######")
+                     print(input_group_name.lower())
+                                         
+                     group_id = group.id
+                     error_message = LED_TURN_OFF_GROUP(int(group_id))
+               
+                     if error_message != "":
+                        error_message = str(error_message)
+                        error_message = error_message[1:]
+                        error_message = error_message[:-1]                    
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message) 
+                        
+                     group_founded = True
+               
+               if group_founded == False:
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | 08 Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
                   
                
          if task[1] == "all":
@@ -1405,7 +1332,7 @@ def START_SCHEDULER_TASK(task_object):
    try:
       if "request_sensordata" in task_object.task:
          task = task_object.task.split(":")
-         error_message = MQTT_REQUEST_SENSORDATA(int(task[1]))          
+         error_message = MQTT_REQUEST_SENSORDATA(task[1])          
          if error_message == "":
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:

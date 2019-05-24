@@ -6,6 +6,44 @@ from app.components.mqtt import *
 
 
 """ ################### """
+"""   check dashboard   """
+""" ################### """
+
+def CHECK_DASHBOARD_CHECKS(devices):
+   list_settings_errors = []  
+   error_message_settings = ""
+
+   for device in devices:
+
+      if device.option_check != "None":
+
+         if device.option_check == "IP-Address":
+
+            # search for wrong chars
+            for element in device.option_check_value_1:
+               if not element.isdigit() and element != "." and element != "," and element != " ":
+                  list_settings_errors.append(device.name + " >>> Ungültige IP-Adresse")
+                  break
+
+               
+         if device.option_check != "IP-Address": 
+            
+            if device.option_check_value_1 == "None" or device.option_check_value_1 == None:
+               list_settings_errors.append(device.name + " >>> Keinen Operator ausgewählt")
+
+            if device.option_check_value_2 == "None" or device.option_check_value_2 == None:
+               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen")
+
+
+   if list_settings_errors == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_settings_errors
+
+   return error_message_settings
+
+
+""" ################### """
 """      check mqtt     """
 """ ################### """
  
@@ -30,10 +68,9 @@ def MQTT_CHECK_NAME_CHANGED():
       return False
 
 
-""" ############### """
-"""  check settings """
-""" ############### """
-
+""" ################## """
+"""  check led groups  """
+""" ################## """
 
 def CHECK_LED_GROUP_SETTINGS(settings):
    list_errors = []
@@ -64,6 +101,9 @@ def CHECK_LED_GROUP_SETTINGS(settings):
       return list_errors
 
 
+""" ############## """
+"""  check plants  """
+""" ############## """
 
 def CHECK_PLANTS_SETTINGS():
    list_errors = []
@@ -112,6 +152,9 @@ def CHECK_PLANTS_SETTINGS():
       return list_errors
 
 
+""" ####################### """
+"""  check sensordata jobs  """
+""" ####################### """
 
 def CHECK_SENSORDATA_JOBS_SETTINGS():
    list_errors = []
@@ -459,9 +502,9 @@ def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
    return error_message_position_settings
 
 
-""" ################### """
-"""  speech recognition """
-""" ################### """
+""" ########################## """
+"""  check speech recognition  """
+""" ########################## """
 
 def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
    list_errors = []
@@ -550,47 +593,47 @@ def CHECK_TASKS(tasks, task_type):
          name = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).name
 
          if controller.command_1 != None and controller.command_1 != "None": 
-            list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type)
+            list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type, controller.command_1)
          else:
             list_task_errors_1 = []
 
          if controller.command_2 != None and controller.command_2 != "None":   
-            list_task_errors_2 = CHECK_TASK_OPERATION(controller.task_2, name, task_type)
+            list_task_errors_2 = CHECK_TASK_OPERATION(controller.task_2, name, task_type, controller.command_2)
          else:
             list_task_errors_2 = []  
 
          if controller.command_3 != None and controller.command_3 != "None":   
-            list_task_errors_3 = CHECK_TASK_OPERATION(controller.task_3, name, task_type)
+            list_task_errors_3 = CHECK_TASK_OPERATION(controller.task_3, name, task_type, controller.command_3)
          else:
             list_task_errors_3 = [] 
 
          if controller.command_4 != None and controller.command_4 != "None":   
-            list_task_errors_4 = CHECK_TASK_OPERATION(controller.task_4, name, task_type)
+            list_task_errors_4 = CHECK_TASK_OPERATION(controller.task_4, name, task_type, controller.command_4)
          else:
             list_task_errors_4 = []  
 
          if controller.command_5 != None and controller.command_5 != "None":   
-            list_task_errors_5 = CHECK_TASK_OPERATION(controller.task_5, name, task_type)
+            list_task_errors_5 = CHECK_TASK_OPERATION(controller.task_5, name, task_type, controller.command_5)
          else:
             list_task_errors_5 = [] 
 
          if controller.command_6 != None and controller.command_6 != "None":   
-            list_task_errors_6 = CHECK_TASK_OPERATION(controller.task_6, name, task_type)
+            list_task_errors_6 = CHECK_TASK_OPERATION(controller.task_6, name, task_type, controller.command_6)
          else:
             list_task_errors_6 = []  
 
          if controller.command_7 != None and controller.command_7 != "None":   
-            list_task_errors_7 = CHECK_TASK_OPERATION(controller.task_7, name, task_type)
+            list_task_errors_7 = CHECK_TASK_OPERATION(controller.task_7, name, task_type, controller.command_7)
          else:
             list_task_errors_7 = []  
 
          if controller.command_8 != None and controller.command_8 != "None":   
-            list_task_errors_8 = CHECK_TASK_OPERATION(controller.task_8, name, task_type)
+            list_task_errors_8 = CHECK_TASK_OPERATION(controller.task_8, name, task_type, controller.command_8)
          else:
             list_task_errors_8 = [] 
                        
          if controller.command_9 != None and controller.command_9 != "None":   
-            list_task_errors_9 = CHECK_TASK_OPERATION(controller.task_9, name, task_type)
+            list_task_errors_9 = CHECK_TASK_OPERATION(controller.task_9, name, task_type, controller.command_9)
          else:
             list_task_errors_9 = []            
 
@@ -617,7 +660,7 @@ def CHECK_TASKS(tasks, task_type):
 
 
 
-def CHECK_TASK_OPERATION(task, name, task_type):
+def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
    list_task_errors = []
 
    try:
@@ -652,11 +695,18 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                      
                if group_exist == True:
                   pass
+                  
                else:
-                  list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1])
+                  else:
+                     list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])
 
             except:
-               list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")
+               else:
+                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
 
             # check scene setting    
             try:
@@ -681,10 +731,16 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                   pass
                   
                else:
-                  list_task_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> LED Szene nicht vorhanden >>> " + task[2])
+                  else:                  
+                     list_task_errors.append(name + " >>> LED Szene nicht vorhanden >>> " + task[2])
 
             except:
-               list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Szene")
+               else:               
+                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Szene")
 
             # check global brightness    
             try:
@@ -693,19 +749,29 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                      return list_task_errors
 
                   else:
-                     list_task_errors.append(name + " >>> ungültiger Wertebereich >>> Globale Helligkeit") 
+                     if task_type == "controller":
+                        list_task_errors.append(name + " >>> " + command + " >>> ungültiger Wertebereich >>> Globale Helligkeit")
+                     else:                        
+                        list_task_errors.append(name + " >>> ungültiger Wertebereich >>> Globale Helligkeit") 
                      return list_task_errors    
 
                else:
-                  list_task_errors.append(name + " >>> ungültige Einstellung >>> Globale Helligkeit")
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> ungültige Einstellung >>> Globale Helligkeit")
+                  else:                     
+                     list_task_errors.append(name + " >>> ungültige Einstellung >>> Globale Helligkeit")
                   return list_task_errors
 
             except:
                return list_task_errors
 
          else:
-            list_task_errors.append(name + " >>> Ungültige Formatierung")
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung")
+            else:                
+               list_task_errors.append(name + " >>> Ungültige Formatierung")
             return list_task_errors
+
 
       # check start_program
       if "program" in task:
@@ -718,10 +784,16 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                   pass
                   
                else:
-                  list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1]) 
+                  else:                     
+                     list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
                                     
             except:
-               list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")      
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe") 
+               else:                  
+                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")      
 
             # check program setting    
             try:
@@ -729,16 +801,60 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                   return list_task_errors
                   
                else:
-                  list_task_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> LED Programm nicht vorhanden >>> " + task[2])
+                  else:                       
+                     list_task_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
                   return list_task_errors
                   
             except:
-               list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Programm")
+               else:                    
+                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
                return list_task_errors
 
          else:
-            list_task_errors.append(name + " >>> Ungültige Formatierung")
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
+            else:                 
+               list_task_errors.append(name + " >>> Ungültige Formatierung")
             return list_task_errors
+
+
+      # check brightness dimmer
+      if "brightness" in task and task_type == "controller":
+         if ":" in task:
+            task = task.split(":") 
+
+            # check group setting
+            try:
+               if GET_LED_GROUP_BY_NAME(task[1]):
+                  pass
+                  
+               else:
+                  list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
+                                    
+            except:
+               list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")      
+
+            # check brightness setting    
+            try:
+               if task[2] == "turn_up" or task[2] == "turn_down":
+                  return list_task_errors
+                  
+               else:
+                  list_task_errors.append(name + " >>> " + command + " >>> turn_up oder turn_down ?")
+                  return list_task_errors
+                  
+            except:
+               list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> turn_up oder turn_down")    
+               return list_task_errors
+
+         else:
+            list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung")
+            return list_task_errors
+
 
       # check led_off
       if "led_off" in task:
@@ -778,10 +894,16 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                         pass
                         
                      else:
-                        list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
+                        if task_type == "controller":
+                           list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
+                        else:                               
+                           list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
                      
                   except:
-                     list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                     if task_type == "controller":
+                        list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")
+                     else:                            
+                        list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
                      return list_task_errors
 
                return list_task_errors
@@ -793,51 +915,63 @@ def CHECK_TASK_OPERATION(task, name, task_type):
                   
             except:
                pass
-            
-            list_task_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
+               
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
+            else:                   
+               list_task_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group' ?")
             return list_task_errors  
 
          else:
-            list_task_errors.append(name + " >>> Ungültige Formatierung")
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
+            else:                   
+               list_task_errors.append(name + " >>> Ungültige Formatierung")
             return list_task_errors
+
 
       # check watering_plants
       if task == "watering_plants" and task_type == "scheduler":
          return list_task_errors
 
+
       # check save_database         
       if task == "save_database" and task_type == "scheduler":
          return list_task_errors
 
+
       # check mqtt_update_devices
       if task == "mqtt_update_devices" and task_type == "scheduler":
          return list_task_errors
+
 
       # check request_sensordata
       if "request_sensordata" in task and task_type == "scheduler":
          if ":" in task:
             task = task.split(":")
 
-            # check job-id setting
+            # check job name setting
             try:          
-               if GET_SENSORDATA_JOB_BY_ID(int(task[1])):
+               if GET_SENSORDATA_JOB_BY_NAME(task[1]):
                   return list_task_errors
 
                else:
-                  list_task_errors.append(name + " >>> Job-ID nicht vorhanden >>> " + task[1])
+                  list_task_errors.append(name + " >>> Job nicht vorhanden >>> " + task[1])
                   return list_task_errors   
 
             except:
-               list_task_errors.append(name + " >>> fehlende Einstellung >>> Job-ID") 
+               list_task_errors.append(name + " >>> fehlende Einstellung >>> Job-Name") 
                return list_task_errors
 
          else:
             list_task_errors.append(name + " >>> Ungültige Formatierung")
             return list_task_errors
 
+
       # nothing found
       list_task_errors.append(name + " >>> Ungültige Aufgabe") 
       return list_task_errors
+   
    
    except:
       list_task_errors.append("MISSING NAME >>> Ungültige Aufgabe") 

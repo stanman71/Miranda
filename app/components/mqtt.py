@@ -1,11 +1,13 @@
 import paho.mqtt.client as mqtt
+import json
+import time
 
 from app import app
 from app.database.database import *
 from app.components.file_management import *
 from app.components.control_scheduler import SCHEDULER_SENSOR_THREAD
 from app.components.control_controller import CONTROLLER_THREAD
-from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA
+from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA, MQTT_UPDATE_DEVICES
 
 import threading
 
@@ -18,13 +20,11 @@ forbitten_topics = []
 """ mqtt receive message """
 """ #################### """
 
-
 def MQTT_START():
 	
     Thread = threading.Thread(target=MQTT_THREAD)
     Thread.start()   	
 	
-
 		
 def MQTT_THREAD():
 
@@ -90,14 +90,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 				device_type = device.device_type			
 	except:
 		device_type = ""
-		
-	
-	# control input
-	if ieeeAddr != "":
-		print(ieeeAddr)
-	if device_type != "":
-		print(device_type)
-		
+
 
 	# start function networkmap
 	try:        
@@ -111,7 +104,6 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 	except:
 		pass
 
-
 	# filter sended messages
 	try:
 		
@@ -119,7 +111,15 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 			pass
 		if incoming_topic[3] == "set":
 			pass			
-
+		if incoming_topic[3] == "log":
+			
+			data = json.loads(msg)
+			
+			# update zigbee device table
+			if data["type"] == "device_connected":
+				time.sleep(1)
+				MQTT_UPDATE_DEVICES("zigbee2mqtt")
+					
 	except:
 		
 		if ieeeAddr != "":

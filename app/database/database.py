@@ -233,23 +233,25 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name                 = db.Column(db.String(50), unique=True)
-    gateway              = db.Column(db.String(50)) 
-    ieeeAddr             = db.Column(db.String(50), unique=True)  
-    model                = db.Column(db.String(50))
-    device_type          = db.Column(db.String(50))
-    description          = db.Column(db.String(200))
-    inputs               = db.Column(db.String(200))
-    outputs              = db.Column(db.String(200))
-    last_contact         = db.Column(db.String(50))
-    last_values          = db.Column(db.String(200))  
-    last_values_formated = db.Column(db.String(200)) 
-    options              = db.Column(db.String(50))
-    options_value_1      = db.Column(db.String(50))
-    options_value_2      = db.Column(db.String(50))
-    options_value_3      = db.Column(db.String(50))
-    power_setting        = db.Column(db.String(50))  
+    id                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                    = db.Column(db.String(50), unique=True)
+    gateway                 = db.Column(db.String(50)) 
+    ieeeAddr                = db.Column(db.String(50), unique=True)  
+    model                   = db.Column(db.String(50))
+    device_type             = db.Column(db.String(50))
+    description             = db.Column(db.String(200))
+    inputs                  = db.Column(db.String(200))
+    outputs                 = db.Column(db.String(200))
+    last_contact            = db.Column(db.String(50))
+    last_values             = db.Column(db.String(200))  
+    last_values_formated    = db.Column(db.String(200)) 
+    option_check            = db.Column(db.String(50)) 
+    option_check_ieeeAddr   = db.Column(db.String(50))    
+    option_check_value_1    = db.Column(db.String(50))
+    option_check_value_2    = db.Column(db.String(50))
+    option_command          = db.Column(db.String(50)) 
+    previous_option_command = db.Column(db.String(50)) 
+    status                  = db.Column(db.String(50))                  
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -436,10 +438,10 @@ if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
 # create default user
 if User.query.filter_by(username='default').first() is None:
     user = User(
-        username='default',
-        email='member@example.com',
-        password=generate_password_hash('qwer1234', method='sha256'),
-        role='superuser'
+        username ='default',
+        email    = 'member@example.com',
+        password = generate_password_hash('qwer1234', method='sha256'),
+        role     = 'superuser'
     )
     db.session.add(user)
     db.session.commit()
@@ -468,25 +470,25 @@ if ZigBee2MQTT.query.filter_by().first() is None:
 """ ################## """
 
 
-def GET_ALL_CONTROLLER():   
-    return Controller.query.all()
-
-
 def GET_CONTROLLER_BY_ID(id):
     return Controller.query.filter_by(id=id).first()
-
-
-def GET_CONTROLLER_BY_NAME(name):
-    return Controller.query.filter_by(name=name).first()
     
+    
+def GET_CONTROLLER_BY_IEEEADDR(mqtt_device_ieeeAddr):
+    return Controller.query.filter_by(mqtt_device_ieeeAddr=mqtt_device_ieeeAddr).first()
+    
+    
+def GET_ALL_CONTROLLER():   
+    return Controller.query.all()
+        
 
 def ADD_CONTROLLER(mqtt_device_ieeeAddr):
     # controller exist ?
-    
-    check_entry = Controller.query.filter_by(mqtt_device_ieeeAddr=mqtt_device_ieeeAddr).first()
-    if check_entry is None:
+    if not GET_CONTROLLER_BY_IEEEADDR(mqtt_device_ieeeAddr):
+        
         if mqtt_device_ieeeAddr == "":
             return "Keinen Controller angegeben"
+            
         else:
             # find a unused id
             for i in range(1,21):
@@ -772,15 +774,19 @@ def GET_LED_SCENE_BY_ID(id):
 
 
 def GET_LED_SCENE_BY_NAME(name):
-    return LED_Scenes.query.filter_by(name=name).first()
-
+    for scene in LED_Scenes.query.all():
+        
+        if scene.name.lower() == name.lower():
+            return scene    
+            
 
 def ADD_LED_SCENE(name):
     # name exist ?
-    check_entry = LED_Scenes.query.filter_by(name=name).first()
-    if check_entry is None:
+    if not GET_LED_SCENE_BY_NAME(name):
+        
         if name == "":
             return "Kein Name angegeben"
+            
         else:
             # find a unused id
             for i in range(1,21):
@@ -1057,8 +1063,11 @@ def GET_ALL_LED_PROGRAMS():
 
 
 def GET_LED_PROGRAM_BY_NAME(name):
-    return LED_Programs.query.filter_by(name=name).first()
-
+    for program in LED_Programs.query.all():
+        
+        if program.name.lower() == name.lower():
+            return program    
+    
 
 def GET_LED_PROGRAM_BY_ID(id):
     return LED_Programs.query.filter_by(id=id).first()
@@ -1066,8 +1075,8 @@ def GET_LED_PROGRAM_BY_ID(id):
 
 def ADD_LED_PROGRAM(name):
     # name exist ?
-    check_entry = LED_Programs.query.filter_by(name=name).first()
-    if check_entry is None:
+    if not GET_LED_PROGRAM_BY_NAME(name):
+        
         # find a unused id
         for i in range(1,21):
             if LED_Programs.query.filter_by(id=i).first():
@@ -1145,15 +1154,19 @@ def GET_LED_GROUP_BY_ID(id):
 
 
 def GET_LED_GROUP_BY_NAME(name):
-    return LED_Groups.query.filter_by(name=name).first()
-
+    for group in LED_Groups.query.all():
+        
+        if group.name.lower() == name.lower():
+            return group
+        
 
 def ADD_LED_GROUP(name):
     # name exist ?
-    check_entry = LED_Groups.query.filter_by(name=name).first()
-    if check_entry is None:
+    if not GET_LED_GROUP_BY_NAME(name):
+        
         if name == "":
             return "Kein Name angegeben"
+            
         else:
             # find a unused id
             for i in range(1,21):
@@ -1464,7 +1477,10 @@ def GET_MQTT_DEVICE_BY_ID(id):
 
 
 def GET_MQTT_DEVICE_BY_NAME(name):
-    return MQTT_Devices.query.filter_by(name=name).first()
+    for device in MQTT_Devices.query.all():
+        
+        if device.name.lower() == name.lower():
+            return device 
     
     
 def GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
@@ -1527,8 +1543,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                     inputs = "", outputs = "", last_contact = ""):
                         
     # path exist ?
-    check_entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
-    if check_entry is None:   
+    if not GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):   
             
         # find a unused id
         for i in range(1,51):
@@ -1607,40 +1622,62 @@ def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     db.session.commit()   
 
 
-def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, options, options_value_1, options_value_2, options_value_3):
-    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
-    
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
-                         " | Gateway - " + entry.gateway +
-                         " | Setting changed" + 
-                         " || Options - " + options +
-                         " | Options_Value_1 - " + options_value_1 +
-                         " | Options_Value_2 - " + options_value_2 +                        
-                         " | Options_Value_3 - " + options_value_3)
-    
-    entry.options         = options
-    entry.options_value_1 = options_value_1
-    entry.options_value_2 = options_value_2
-    entry.options_value_3 = options_value_3
-    db.session.commit()  
+def UPDATE_DASHBOARD_SENSOR_OPTION_NAMES():
+
+    for device in GET_ALL_MQTT_DEVICES("device"):
+        
+        if device.option_check_ieeeAddr != "None":
+            device.option_check = GET_MQTT_DEVICE_BY_IEEEADDR(device.option_check_ieeeAddr).name
+        
+    db.session.commit()
 
 
-def SET_MQTT_DEVICE_POWERSTATE(ieeeAddr, power_setting):
+def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, option_check, option_check_ieeeAddr, option_check_value_1, option_check_value_2, option_command):
+              
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+             
+    # values changed ?
+    if (entry.option_check != option_check or entry.option_check_ieeeAddr != option_check_ieeeAddr or
+        entry.option_check_value_1 != option_check_value_1 or entry.option_check_value_2 != option_check_value_2 or 
+        entry.option_command != option_command):              
+                            
+        entry.option_check          = option_check
+        entry.option_check_ieeeAddr = option_check_ieeeAddr
+        entry.option_check_value_1  = option_check_value_1
+        entry.option_check_value_2  = option_check_value_2 
+        entry.option_command        = option_command     
+        
+        db.session.commit()  
+        
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+                             " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
+                             " || Option Check - " + entry.option_check +
+                             " | Option Check ieeeAddr - " + option_check_ieeeAddr +
+                             " | Options_Value_1 - " + entry.option_check_value_1 +
+                             " | Options_Value_2 - " + entry.option_check_value_2 +                        
+                             " | Option Command - " + entry.option_command) 
+
+                                                
+def SET_MQTT_DEVICE_STATUS(ieeeAddr, status):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    if power_setting == "checked":
-        power = "ON"
-    else:
-        power = "OFF"
+    entry.status = status
+    db.session.commit()    
+ 
+ 
+def UPDATE_MQTT_DEVICE_PREVIOUS_OPTION_COMMAND(ieeeAddr):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
-                         " | Gateway - " + entry.gateway +
-                         " | Setting changed" + 
-                         " || Power_Setting - " + power)
+    entry.previous_option_command = entry.option_command
+    db.session.commit()        
+ 
+ 
+def RESET_MQTT_DEVICE_OPTION_COMMAND(ieeeAddr):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    entry.power_setting = power_setting
-    db.session.commit()  
-    
+    entry.option_command = "None"
+    db.session.commit()    
+ 
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", outputs = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
@@ -1714,82 +1751,85 @@ def CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction):
                 return 
 
 
-def DELETE_MQTT_DEVICE(id):
+def DELETE_MQTT_DEVICE(ieeeAddr):
     error_list = ""
 
     # check controller
     entries = GET_ALL_CONTROLLER()
     for entry in entries:
-        if entry.mqtt_device_id == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.mqtt_device_ieeeAddr == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in Systemeinstellungen / Controller"     
 
     # check plants
     entries = GET_ALL_PLANTS()
     for entry in entries:
-        if entry.mqtt_device_id == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.mqtt_device_ieeeAddr == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze - " + entry.name     
     
     # check scheduler sensor
     entries = GET_ALL_SCHEDULER_TASKS()
     for entry in entries:
-        if (entry.mqtt_device_id_1 == id) or (entry.mqtt_device_id_2 == id) or (entry.mqtt_device_id_3 == id):
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if (entry.mqtt_device_ieeeAddr_1 == ieeeAddr) or (entry.mqtt_device_ieeeAddr_2 == ieeeAddr) or (entry.mqtt_device_ieeeAddr_3 == ieeeAddr):
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung >>> Sensor - " + entry.name      
     
     # check sensordata
     entries = GET_ALL_SENSORDATA_JOBS()
     for entry in entries:
-        if entry.mqtt_device_id == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.mqtt_device_ieeeAddr == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job - " + entry.name  
         
     # check led groups
     entries = GET_ALL_LED_GROUPS()
     for entry in entries:
-        if entry.led_id_1 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_1 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
-        if entry.led_id_2 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_2 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name     
-        if entry.led_id_3 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_3 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
-        if entry.led_id_4 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_4 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
-        if entry.led_id_5 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_5 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
-        if entry.led_id_6 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_6 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name   
-        if entry.led_id_7 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_7 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
-        if entry.led_id_8 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_8 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name          
-        if entry.led_id_9 == id:
-            device = GET_MQTT_DEVICE_BY_ID(id)
+        if entry.led_ieeeAddr_9 == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name                       
        
     if error_list != "":
-        error_list = error_list[1:]
-        SET_ERROR_LIST(error_list)           
-    else:
-        entry = GET_MQTT_DEVICE_BY_ID(id)
         
-        try:
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + " | deleted")
-        except:
-            pass 
- 
-        MQTT_Devices.query.filter_by(id=id).delete()
+        error_list = error_list[1:]
+        SET_ERROR_LIST(error_list)  
+        
+        return False  
+               
+    else:
+        
+        device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+        
+        MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).delete()
         db.session.commit() 
-        return "MQTT-Device gelöscht"
+        
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + device.name + " | deleted")
+        
+        return True
 
 
 """ ################### """
@@ -1804,12 +1844,11 @@ def GET_PLANT_BY_ID(plant_id):
 
 
 def GET_PLANT_BY_NAME(name):
-    plants = Plants.query.all()
-
-    for plant in plants:
-        if plant.name == name:
-            return plant
-
+    for plant in Plants.query.all():
+        
+        if plant.name.lower() == name.lower():
+            return plant    
+    
 
 def GET_ALL_PLANTS():
     return Plants.query.all()
@@ -1817,8 +1856,8 @@ def GET_ALL_PLANTS():
 
 def ADD_PLANT(name, mqtt_device_ieeeAddr):
     # name exist ?
-    check_entry = Plants.query.filter_by(name=name).first()
-    if check_entry is None:
+    if not GET_PLANT_BY_NAME(name):
+        
         # find a unused id
         for i in range(1,26):
             if Plants.query.filter_by(id=i).first():
@@ -1930,13 +1969,16 @@ def DELETE_PLANT(plant_id):
 """ ################## """
 
 
-def GET_SCHEDULER_TASK_BY_NAME(name):
-    return Scheduler_Tasks.query.filter_by(name=name).first()
-
-
 def GET_SCHEDULER_TASK_BY_ID(id):
     return Scheduler_Tasks.query.filter_by(id=id).first()
 
+
+def GET_SCHEDULER_TASK_BY_NAME(name):
+    for task in Scheduler_Tasks.query.all():
+        
+        if task.name.lower() == name.lower():
+            return task    
+    
 
 def GET_ALL_SCHEDULER_TASKS():
     return Scheduler_Tasks.query.all()
@@ -1960,8 +2002,8 @@ def GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type):
 
 def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
     # name exist ?
-    check_entry = Scheduler_Tasks.query.filter_by(name=name).first()
-    if check_entry is None:
+    if not GET_SCHEDULER_TASK_BY_NAME(name):
+        
         # find a unused id
         for i in range(1,26):
             if Scheduler_Tasks.query.filter_by(id=i).first():
@@ -2319,9 +2361,12 @@ def GET_SENSORDATA_JOB_BY_ID(id):
 
 
 def GET_SENSORDATA_JOB_BY_NAME(name):
-    return Sensordata_Jobs.query.filter_by(name=name).first()
-
-
+    for job in Sensordata_Jobs.query.all():
+        
+        if job.name.lower() == name.lower():
+            return job   
+            
+            
 def GET_ALL_SENSORDATA_JOBS():
     return Sensordata_Jobs.query.all()
     
@@ -2340,8 +2385,8 @@ def FIND_SENSORDATA_JOB_INPUT(incoming_ieeeAddr):
 
 def ADD_SENSORDATA_JOB(name, filename):
     # name exist ?
-    check_entry = Sensordata_Jobs.query.filter_by(name=name).first()
-    if check_entry is None:        
+    if not GET_SENSORDATA_JOB_BY_NAME(name):
+                
         # find a unused id
         for i in range(1,26):
             if Sensordata_Jobs.query.filter_by(id=i).first():
@@ -2471,7 +2516,6 @@ def SET_SNOWBOY_SETTINGS(sensitivity, timeout, microphone):
 def GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS():
     return Speech_Recognition_Provider_Settings.query.filter_by().first()
     
-    
 
 def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, speech_recognition_provider_username, speech_recognition_provider_key):
     entry = Speech_Recognition_Provider_Settings.query.filter_by().first()
@@ -2482,45 +2526,19 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
     db.session.commit() 
 
 
-def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_TASK(task):
-    return Speech_Recognition_Provider_Tasks.query.filter_by(task=task).first()
-
-
 def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_ID(id):
     return Speech_Recognition_Provider_Tasks.query.filter_by(id=id).first()
-
-
+    
+    
+def GET_SPEECH_RECOGNITION_PROVIDER_TASK_BY_NAME(name):
+    for task in Speech_Recognition_Provider_Tasks.query.all():
+        
+        if task.name.lower() == name.lower():
+            return task       
+ 
+    
 def GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS():
     return Speech_Recognition_Provider_Tasks.query.all()
-
-
-def ADD_SPEECH_RECOGNITION_PROVIDER_TASK(task, keywords, parameters):
-    # name exist ?
-    check_entry = Speech_Recognition_Provider_Tasks.query.filter_by(task=task).first()
-    if check_entry is None:
-        # find a unused id
-        for i in range(1,26):
-            if Speech_Recognition_Provider_Tasks.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new task
-                new_task = Speech_Recognition_Provider_Tasks(
-                        id         = i,
-                        task       = task,
-                        keywords   = keywords,
-                        parameters = parameters,
-                    )
-                db.session.add(new_task)
-                db.session.commit()
-  
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Task - " + task + " | added") 
-  
-                return ""
-
-        return "Aufgabenlimit erreicht (25)"
-
-    else:
-        return "Aufgabe bereits vorhanden"
 
 
 def SET_SPEECH_RECOGNITION_PROVIDER_TASK_KEYWORDS(id, keywords):
@@ -2543,31 +2561,48 @@ def SET_SPEECH_RECOGNITION_PROVIDER_TASK_KEYWORDS(id, keywords):
 """ ################### """
 
 
-def GET_USER_BY_ID(user_id):
-    return User.query.get(int(user_id))
+def GET_USER_BY_ID(id):
+    return User.query.get(int(id))
 
 
-def GET_USER_BY_NAME(user_name):
-    return User.query.filter_by(username=user_name).first()
-
+def GET_USER_BY_NAME(name):
+    for user in User.query.all():
+        
+        if user.username.lower() == name.lower():
+            return user       
+ 
+  
+def GET_ALL_USERS():
+    return User.query.all()  
+    
 
 def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
 
-def GET_ALL_USERS():
-    return User.query.all()
+def ADD_USER(name, email, password):
+    # name exist ?
+    if not GET_USER_BY_NAME(name):
+        
+        # add the new user
+        new_user = User(
+                username = name,
+                email    = email,
+                password = password,
+            )
+        db.session.add(new_user)
+        db.session.commit()
 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + name + " | added") 
 
-def ADD_USER(user_name, email, password):
-    new_user = User(username=user_name, email=email, password=password)
-    db.session.add(new_user)
-    db.session.commit()
+        return ""
 
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + user_name + " | added") 
+    else:
+        return "Name bereits vorhanden"    
 
 
 def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_notification_error, email_notification_camera):
+    
     entry = User.query.filter_by(id=id).first()
     old_username = entry.username
 

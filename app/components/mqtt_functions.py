@@ -151,16 +151,19 @@ def MQTT_UPDATE_DEVICES(gateway):
                            name         = device['friendly_name']
                            gateway      = "zigbee2mqtt"              
                            ieeeAddr     = device['ieeeAddr']
-                           device_model = device['model']
+                           model        = device['model']
 
-                           device_informations = GET_MQTT_DEVICE_INFORMATIONS(model)
+                           try:
+                              new_device = GET_MQTT_DEVICE_INFORMATIONS(model)
+                           except:
+                              new_device = ["", "", "", ""]
                            
-                           device_type = device_informations[0]
-                           description = device_informations[1]
-                           inputs      = device_informations[2]
-                           outputs     = device_informations[3]  
+                           device_type = new_device[0]
+                           description = new_device[1]
+                           inputs      = new_device[2]
+                           outputs     = new_device[3]  
 
-                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, device_model, device_type, description, inputs, outputs)
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, outputs)
 
                         # update device informations
                         
@@ -174,12 +177,12 @@ def MQTT_UPDATE_DEVICES(gateway):
                            model    = device_data.model                
                         
                            try:                  
-                              device_informations = GET_MQTT_DEVICE_INFORMATIONS(model)
+                              existing_device = GET_MQTT_DEVICE_INFORMATIONS(model)
                               
-                              device_type = device_informations[0]
-                              description = device_informations[1]
-                              inputs      = device_informations[2]
-                              outputs     = device_informations[3]  
+                              device_type = existing_device[0]
+                              description = existing_device[1]
+                              inputs      = existing_device[2]
+                              outputs     = existing_device[3]  
 
                            except Exception as e:
                               device_type = device_data.device_type
@@ -207,8 +210,8 @@ def MQTT_UPDATE_DEVICES(gateway):
 """    get sensordata   """
 """ ################### """
 
-def MQTT_REQUEST_SENSORDATA(job_id):
-   sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
+def MQTT_REQUEST_SENSORDATA(job_name):
+   sensordata_job  = GET_SENSORDATA_JOB_BY_NAME(job_name)
    device_gateway  = sensordata_job.mqtt_device.gateway
    device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
    sensor_key = sensordata_job.sensor_key
@@ -289,7 +292,7 @@ def MQTT_STOP_ALL_OUTPUTS():
 """ ################### """
    
    
-def MQTT_SET_DEVICE_POWERSTATE(name, gateway, ieeeAddr, setting):
+def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, option_command):
 
    # create channel
    if gateway == "mqtt":
@@ -298,10 +301,11 @@ def MQTT_SET_DEVICE_POWERSTATE(name, gateway, ieeeAddr, setting):
       channel = "SmartHome/" + gateway + "/" + name + "/set"
 
    # create message
-   if setting == "checked":
+   if option_command == "ON":
       msg = '{"state": "ON"}'
       setting = "ON"
-   else:
+      
+   if option_command == "OFF":
       msg = '{"state": "OFF"}'
       setting = "OFF"
 
@@ -315,9 +319,10 @@ def MQTT_SET_DEVICE_POWERSTATE(name, gateway, ieeeAddr, setting):
    else:
       check_setting = MQTT_CHECK_SETTING(gateway, name, "state", setting)
    
-   
    if check_setting:
+      SET_MQTT_DEVICE_STATUS(ieeeAddr, setting)
       return ""
+      
    else:
       return ("Fehler >>> Einstellung konnte nicht bestätigt werden >>> " + name)
    
@@ -336,7 +341,7 @@ def MQTT_CHECK_SETTING(gateway, Addr, key, setting):
          input_message = str(input_message[2])
 
          data = json.loads(input_message)
-         
+
          if data[key] == setting:
             return True
      

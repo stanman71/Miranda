@@ -199,11 +199,6 @@ def CONTROLLER_THREAD(ieeeAddr, msg):
 
 def START_CONTROLLER_TASK(task, controller_name, controller_command):
    
-   print(controller_name)
-   print(controller_command)
-   print(task)
-   
-   
    # start scene
    try:
       if "scene" in task:
@@ -255,50 +250,64 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
       WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
 
 
+   # change brightness
+   try:
+      if "brightness" in task:
+         task = task.split(":")
+         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+         command  = task[2]
+         error_message = LED_SET_BRIGHTNESS_DIMMER(int(group_id), command)  
+         
+         if error_message != "":
+            error_message = str(error_message)
+            error_message = error_message[1:]
+            error_message = error_message[:-1]                    
+            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+            
+   except Exception as e:
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
+
+
    # led off
    try:
       if "led_off" in task:
          task = task.split(":")
+	 
          if task[1] == "group":
-            
             # get input group names and lower the letters
             try:
                   list_groups = task[2].split(",")
             except:
                   list_groups = [task[2]]
-
-            for input_group_name in list_groups:
                   
+            for input_group_name in list_groups: 
                input_group_name = input_group_name.replace(" ", "")
-               input_group_name = input_group_name.lower()
-
-               # get exist group names and lower the letters
-               try:
-                  all_exist_group = GET_ALL_LED_GROUPS()
+               
+               group_founded = False
+               
+               # get exist group names 
+               for group in GET_ALL_LED_GROUPS():
+               
+                  if input_group_name.lower() == group.name.lower():
                   
-                  for exist_group in all_exist_group:
-                     
-                     exist_group_name       = exist_group.name
-                     exist_group_name_lower = exist_group_name.lower()
-                     
-                     # compare the formated names
-                     if input_group_name == exist_group_name_lower:                       
-                        group_id = GET_LED_GROUP_BY_NAME(exist_group_name).id
-                        error_message = LED_TURN_OFF_GROUP(int(group_id))
-                  
-                        if error_message != "":
-                           error_message = str(error_message)
-                           error_message = error_message[1:]
-                           error_message = error_message[:-1]                    
-                           WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
-                  
-                     else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
-                  
-                     
-               except:
+                     print("#######")
+                     print(input_group_name.lower())
+                                         
+                     group_id = group.id
+                     error_message = LED_TURN_OFF_GROUP(int(group_id))
+               
+                     if error_message != "":
+                        error_message = str(error_message)
+                        error_message = error_message[1:]
+                        error_message = error_message[:-1]                    
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+                        
+                     group_founded = True
+               
+               if group_founded == False:
                   WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
-                  
+                        
                
          if task[1] == "all":
             error_message = LED_TURN_OFF_ALL()   
@@ -308,9 +317,9 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
                WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
-               
+          
+	       
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
-
 

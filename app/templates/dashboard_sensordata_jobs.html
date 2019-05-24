@@ -226,8 +226,7 @@
               
               <table class="table">
                 <thead>
-                  <th scope="col"></th> 
-                  <th scope="col">ID</th>  
+                  <th scope="col"></th>  
                   <th scope="col">Job</th>  
                   <th scope="col">Datei</th>   
                   <th scope="col">Gerät</th>
@@ -241,7 +240,6 @@
                       <a href="/dashboard/sensordata/jobs/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/sensordata/jobs/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     
-                    <td>{{ entry.id }}</td> 
                     <td>
                     <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
