@@ -29,10 +29,19 @@ def CHECK_DASHBOARD_CHECKS(devices):
          if device.option_check != "IP-Address": 
             
             if device.option_check_value_1 == "None" or device.option_check_value_1 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Operator ausgewählt")
+               list_settings_errors.append(device.name + " >>> Keinen Sensor ausgewählt")
 
             if device.option_check_value_2 == "None" or device.option_check_value_2 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen")
+               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) und Vergleichswert eingetragen")
+               continue
+               
+            if device.option_check_value_2[:1] != "<" and device.option_check_value_2[:1] != ">" and device.option_check_value_2[:1] != "=":
+               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")               
+
+            if ((device.option_check_value_2[:1] == "<" or device.option_check_value_2[:1] == ">" or device.option_check_value_2[:1] == "=") and
+                 len(device.option_check_value_2.replace(" ","")) < 2):
+                  
+               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen") 
 
 
    if list_settings_errors == []:

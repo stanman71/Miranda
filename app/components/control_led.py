@@ -133,101 +133,156 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                 SETTING_LED_SIMPLE(led_1.name, int(brightness_1))   
 
             # led 2
+            led_2 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
+            
             if group.active_led_2 == "on": 
-                led_2        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
-                brightness_2 = scene.brightness_2*(brightness_global/100)
+
+                if scene.active_setting_2 == "on":
                 
-                if led_2.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_2.name, scene.red_2, scene.green_2, scene.blue_2, int(brightness_2))                    
-                if led_2.device_type == "led_white":
-                    SETTING_LED_WHITE(led_2.name, scene.color_temp_2, int(brightness_2))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_2.name, int(brightness_2))  
+                    brightness_2 = scene.brightness_2*(brightness_global/100)
+                    
+                    if led_2.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_2.name, scene.red_2, scene.green_2, scene.blue_2, int(brightness_2))                    
+                    if led_2.device_type == "led_white":
+                        SETTING_LED_WHITE(led_2.name, scene.color_temp_2, int(brightness_2))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_2.name, int(brightness_2))  
+                        
+                else:
+                    SETTING_LED_TURN_OFF(led_2.name)
 
             # led 3
+            led_3 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)           
+            
             if group.active_led_3 == "on": 
-                led_3        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)
-                brightness_3 = scene.brightness_3*(brightness_global/100)
                 
-                if led_3.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_3.name, scene.red_3, scene.green_3, scene.blue_3, int(brightness_3)) 
-                if led_3.device_type == "led_white":
-                    SETTING_LED_WHITE(led_3.name, scene.color_temp_3, int(brightness_3))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_3.name, int(brightness_3))   
+                if scene.active_setting_3 == "on":
 
+                    brightness_3 = scene.brightness_3*(brightness_global/100)
+                    
+                    if led_3.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_3.name, scene.red_3, scene.green_3, scene.blue_3, int(brightness_3)) 
+                    if led_3.device_type == "led_white":
+                        SETTING_LED_WHITE(led_3.name, scene.color_temp_3, int(brightness_3))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_3.name, int(brightness_3))   
+
+                else:
+                    SETTING_LED_TURN_OFF(led_3.name)
+                
             # led 4
+            led_4 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)            
+            
             if group.active_led_4 == "on": 
-                led_4        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)
-                brightness_4 = scene.brightness_4*(brightness_global/100)
                 
-                if led_4.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_4.name, scene.red_4, scene.green_4, scene.blue_4, int(brightness_4)) 
-                if led_4.device_type == "led_white":
-                    SETTING_LED_WHITE(led_4.name, scene.color_temp_4, int(brightness_4))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_4.name, int(brightness_4))  
+                if scene.active_setting_4 == "on":
 
+                    brightness_4 = scene.brightness_4*(brightness_global/100)
+                    
+                    if led_4.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_4.name, scene.red_4, scene.green_4, scene.blue_4, int(brightness_4)) 
+                    if led_4.device_type == "led_white":
+                        SETTING_LED_WHITE(led_4.name, scene.color_temp_4, int(brightness_4))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_4.name, int(brightness_4))  
+
+                else:
+                    SETTING_LED_TURN_OFF(led_4.name)
+                
             # led 5
+            led_5 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)           
+            
             if group.active_led_5 == "on": 
-                led_5        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)
-                brightness_5 = scene.brightness_5*(brightness_global/100)
                 
-                if led_5.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_5.name, scene.red_5, scene.green_5, scene.blue_5, int(brightness_5)) 
-                if led_5.device_type == "led_white":
-                    SETTING_LED_WHITE(led_5.name, scene.color_temp_5, int(brightness_5))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_5.name, int(brightness_5))  
+                if scene.active_setting_5 == "on":
+
+                    brightness_5 = scene.brightness_5*(brightness_global/100)
                     
+                    if led_5.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_5.name, scene.red_5, scene.green_5, scene.blue_5, int(brightness_5)) 
+                    if led_5.device_type == "led_white":
+                        SETTING_LED_WHITE(led_5.name, scene.color_temp_5, int(brightness_5))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_5.name, int(brightness_5))  
+        
+                else:
+                    SETTING_LED_TURN_OFF(led_5.name)
+                                    
             # led 6
+            led_6 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)           
+            
             if group.active_led_6 == "on": 
-                led_6        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)
-                brightness_6 = scene.brightness_6*(brightness_global/100)
                 
-                if led_6.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_6.name, scene.red_6, scene.green_6, scene.blue_6, int(brightness_6)) 
-                if led_6.device_type == "led_white":
-                    SETTING_LED_WHITE(led_6.name, scene.color_temp_6, int(brightness_6))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_6.name, int(brightness_6))                       
+                if scene.active_setting_6 == "on":
+
+                    brightness_6 = scene.brightness_6*(brightness_global/100)
                     
+                    if led_6.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_6.name, scene.red_6, scene.green_6, scene.blue_6, int(brightness_6)) 
+                    if led_6.device_type == "led_white":
+                        SETTING_LED_WHITE(led_6.name, scene.color_temp_6, int(brightness_6))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_6.name, int(brightness_6))                       
+     
+                else:
+                    SETTING_LED_TURN_OFF(led_6.name)
+                                    
             # led 7
+            led_7 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)            
+            
             if group.active_led_7 == "on": 
-                led_7        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)
-                brightness_7 = scene.brightness_7*(brightness_global/100)
                 
-                if led_7.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_7.name, scene.red_7, scene.green_7, scene.blue_7, int(brightness_7)) 
-                if led_7.device_type == "led_white":
-                    SETTING_LED_WHITE(led_7.name, scene.color_temp_7, int(brightness_7))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_7.name, int(brightness_7))    
+                if scene.active_setting_7 == "on":
+
+                    brightness_7 = scene.brightness_7*(brightness_global/100)
                     
+                    if led_7.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_7.name, scene.red_7, scene.green_7, scene.blue_7, int(brightness_7)) 
+                    if led_7.device_type == "led_white":
+                        SETTING_LED_WHITE(led_7.name, scene.color_temp_7, int(brightness_7))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_7.name, int(brightness_7))    
+           
+                else:
+                    SETTING_LED_TURN_OFF(led_7.name)
+                                    
             # led 8
+            led_8 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)           
+            
             if group.active_led_8 == "on": 
-                led_8        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)
-                brightness_8 = scene.brightness_8*(brightness_global/100)
                 
-                if led_8.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_8.name, scene.red_8, scene.green_8, scene.blue_8, int(brightness_8)) 
-                if led_8.device_type == "led_white":
-                    SETTING_LED_WHITE(led_8.name, scene.color_temp_8, int(brightness_8))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_8.name, int(brightness_8))   
+                if scene.active_setting_8 == "on":
+
+                    brightness_8 = scene.brightness_8*(brightness_global/100)
                     
+                    if led_8.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_8.name, scene.red_8, scene.green_8, scene.blue_8, int(brightness_8)) 
+                    if led_8.device_type == "led_white":
+                        SETTING_LED_WHITE(led_8.name, scene.color_temp_8, int(brightness_8))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_8.name, int(brightness_8))   
+      
+                else:
+                    SETTING_LED_TURN_OFF(led_8.name)
+                                    
             # led 9
+            led_9 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)           
+            
             if group.active_led_9 == "on":  
-                led_9        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)
-                brightness_9 = scene.brightness_9*(brightness_global/100)
                 
-                if led_9.device_type == "led_rgb":
-                    SETTING_LED_RGB(led_9.name, scene.red_9, scene.green_9, scene.blue_9, int(brightness_9)) 
-                if led_9.device_type == "led_white":
-                    SETTING_LED_WHITE(led_9.name, scene.color_temp_9, int(brightness_9))                                            
-                if led_1.device_type == "led_simple":
-                    SETTING_LED_SIMPLE(led_9.name, int(brightness_9))                                           
+                if scene.active_setting_9 == "on":
+
+                    brightness_9 = scene.brightness_9*(brightness_global/100)
                     
+                    if led_9.device_type == "led_rgb":
+                        SETTING_LED_RGB(led_9.name, scene.red_9, scene.green_9, scene.blue_9, int(brightness_9)) 
+                    if led_9.device_type == "led_white":
+                        SETTING_LED_WHITE(led_9.name, scene.color_temp_9, int(brightness_9))                                            
+                    if led_1.device_type == "led_simple":
+                        SETTING_LED_SIMPLE(led_9.name, int(brightness_9))                                           
+        
+                else:
+                    SETTING_LED_TURN_OFF(led_9.name)                    
 
             # set current state
             scene_name = GET_LED_SCENE_BY_ID(scene_id).name

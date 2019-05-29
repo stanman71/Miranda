@@ -85,14 +85,14 @@
                 <tbody> 
                   {% for entry in data_log_system %}
                   <tr>
-                    <td>{{ entry[0] }}</td> 
-                    <td>
+                    <td style="width:16%">{{ entry[0] }}</td> 
+                    <td style="width:10%">
                       {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
                     </td>                   
-                    <td>{{ entry[2] }}</td>  
+                    <td style="width:74%">{{ entry[2] }}</td>  
                   </tr>
                   {% endfor %} 
                 </tbody>

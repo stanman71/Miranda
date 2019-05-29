@@ -3,7 +3,6 @@ import datetime
 import time
 import json
 import os
-import threading
 import requests
 
 from app import app
@@ -38,53 +37,6 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
    except:
       pass
 
-
-""" ################ """
-"""  scheduler jobs  """
-""" ################ """
-
-
-from flask_apscheduler import APScheduler
-
-scheduler = APScheduler()
-scheduler.start()   
-
-@scheduler.task('cron', id='update_sunrise_sunset', hour='*')
-def update_sunrise_sunset():
-   
-   for task in GET_ALL_SCHEDULER_TASKS():
-      
-      if task.option_sunrise == "checked" or task.option_sunset == "checked":
-         
-         # get coordinates
-         coordinates = GET_LOCATION_COORDINATES(task.location)
-         
-         if coordinates != "None" and coordinates != None: 
-         
-            # update sunrise / sunset
-            SET_SCHEDULER_TASK_SUNRISE(task.id, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
-            SET_SCHEDULER_TASK_SUNSET(task.id, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
-            
-
-@scheduler.task('cron', id='scheduler_time', minute='*')
-def scheduler_time():
-   
-   for task in GET_ALL_SCHEDULER_TASKS():
-      if task.option_time == "checked" or task.option_sun == "checked":
-         Thread = threading.Thread(target=SCHEDULER_TIME_THREAD, args=(task, ))
-         Thread.start()   
-         Thread.join() 
-         
-
-@scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
-def scheduler_ping():
-   
-   for task in GET_ALL_SCHEDULER_TASKS():
-      if task.option_position == "checked":
-         Thread = threading.Thread(target=SCHEDULER_PING_THREAD, args=(task, ))
-         Thread.start()   
-         Thread.join() 
-      
 
 """ ################ """
 """ sunrise / sunset """
@@ -136,13 +88,12 @@ def GET_SUNSET_TIME(lat, long):
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
 
 
+""" ################### """
+""" scheduler processes """
+""" ################### """
 
-""" ################# """
-""" scheduler threads """
-""" ################# """
 
-
-def SCHEDULER_TIME_THREAD(task):
+def SCHEDULER_TIME_PROCESS(task):
    
    # ######
    #  time
@@ -207,7 +158,7 @@ def SCHEDULER_TIME_THREAD(task):
             START_SCHEDULER_TASK(task)       
                
 
-def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
+def SCHEDULER_SENSOR_PROCESS(task, ieeeAddr):
    
    try:
       
@@ -256,7 +207,7 @@ def SCHEDULER_SENSOR_THREAD(task, ieeeAddr):
       pass
 
 
-def SCHEDULER_PING_THREAD(task):
+def SCHEDULER_PING_PROCESS(task):
    
    # find ping jobs only (home / away)
    if ((task.option_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
@@ -1201,7 +1152,7 @@ def START_SCHEDULER_TASK(task_object):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
                
          except:
             task = task_object.task.split(":")
@@ -1213,7 +1164,7 @@ def START_SCHEDULER_TASK(task_object):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
                   
    except Exception as e:
       print(e)
@@ -1232,7 +1183,7 @@ def START_SCHEDULER_TASK(task_object):
             error_message = str(error_message)
             error_message = error_message[1:]
             error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
             
    except Exception as e:
       print(e)
@@ -1271,7 +1222,7 @@ def START_SCHEDULER_TASK(task_object):
                         error_message = str(error_message)
                         error_message = error_message[1:]
                         error_message = error_message[:-1]                    
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message) 
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message)) 
                         
                      group_founded = True
                
@@ -1286,7 +1237,7 @@ def START_SCHEDULER_TASK(task_object):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
                
    except Exception as e:
       print(e)
@@ -1309,7 +1260,7 @@ def START_SCHEDULER_TASK(task_object):
          if error_message == "":
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)                   
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))                   
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
@@ -1322,7 +1273,7 @@ def START_SCHEDULER_TASK(task_object):
          if error_message == "":
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)              
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))              
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -1336,7 +1287,7 @@ def START_SCHEDULER_TASK(task_object):
          if error_message == "":
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
          else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              

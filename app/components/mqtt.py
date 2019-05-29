@@ -5,9 +5,8 @@ import time
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.control_scheduler import SCHEDULER_SENSOR_THREAD
-from app.components.control_controller import CONTROLLER_THREAD
 from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA, MQTT_UPDATE_DEVICES
+from app.components.process_management import ADD_TASK_TO_PROCESS_MANAGEMENT
 
 import threading
 
@@ -132,9 +131,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 			# schedular
 			for task in GET_ALL_SCHEDULER_TASKS():
 				if task.option_sensors == "checked":
-					Thread = threading.Thread(target=SCHEDULER_SENSOR_THREAD, args=(task, ieeeAddr, ))
-					Thread.start()   
-					Thread.join() 
+					ADD_TASK_TO_PROCESS_MANAGEMENT(5, "sensor", task.id, ieeeAddr)
 
 			# save sensor data of passive devices
 			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
@@ -145,11 +142,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 
 
 		if device_type == "controller":
-			
-			# start controller thread
-			Thread = threading.Thread(target=CONTROLLER_THREAD, args=(ieeeAddr, msg, ))
-			Thread.start()   
-			Thread.join() 
+			ADD_TASK_TO_PROCESS_MANAGEMENT(1, "controller", "", ieeeAddr, msg)			
 
 
 """ #################### """

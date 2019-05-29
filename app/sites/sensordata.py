@@ -115,12 +115,16 @@ def dashboard_sensordata_jobs():
                         error_message_change_settings.append(job_data.name + " >>> Keinen Sensor angegeben") 
 
                     else:
-                        # get sensor name
+                        # replace array_position to sensor name 
                         sensor_key = request.form.get("set_sensor_" + str(i))
                         sensor_key = sensor_key.replace(" ", "")
+                        
                         if sensor_key.isdigit():
+                            
+                            # first two array elements are no sensors
                             if sensor_key == "0" or sensor_key == "1":
                                 sensor_key = "None"
+                                
                             else:                                
                                 sensor_list = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).inputs
                                 sensor_list = sensor_list.split(",")

@@ -246,7 +246,8 @@ class MQTT_Devices(db.Model):
     last_values             = db.Column(db.String(200))  
     last_values_formated    = db.Column(db.String(200)) 
     option_check            = db.Column(db.String(50)) 
-    option_check_ieeeAddr   = db.Column(db.String(50))    
+    option_check_ieeeAddr   = db.Column(db.String(50))   
+    option_check_inputs     = db.Column(db.String(50))     
     option_check_value_1    = db.Column(db.String(50))
     option_check_value_2    = db.Column(db.String(50))
     option_command          = db.Column(db.String(50)) 
@@ -1632,17 +1633,19 @@ def UPDATE_DASHBOARD_SENSOR_OPTION_NAMES():
     db.session.commit()
 
 
-def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, option_check, option_check_ieeeAddr, option_check_value_1, option_check_value_2, option_command):
+def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, option_check, option_check_ieeeAddr, option_check_inputs,
+                            option_check_value_1, option_check_value_2, option_command):
               
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
              
     # values changed ?
     if (entry.option_check != option_check or entry.option_check_ieeeAddr != option_check_ieeeAddr or
-        entry.option_check_value_1 != option_check_value_1 or entry.option_check_value_2 != option_check_value_2 or 
-        entry.option_command != option_command):              
+        entry.option_check_inputs != option_check_inputs or entry.option_check_value_1 != option_check_value_1 or 
+        entry.option_check_value_2 != option_check_value_2 or entry.option_command != option_command):              
                             
         entry.option_check          = option_check
         entry.option_check_ieeeAddr = option_check_ieeeAddr
+        entry.option_check_inputs   = option_check_inputs
         entry.option_check_value_1  = option_check_value_1
         entry.option_check_value_2  = option_check_value_2 
         entry.option_command        = option_command     

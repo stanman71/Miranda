@@ -64,7 +64,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     if group_id != None and scene_id != None:                    
                         error_message = LED_START_SCENE(int(group_id), int(scene_id), brightness)            
                         if error_message != "":
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message) 
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))
                             
                     break
            
@@ -109,7 +109,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                     if group_id != None and program_id != None:                    
                         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))            
                         if error_message != "":
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message) 
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))
                             
                     break
            
@@ -152,7 +152,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                                 error_message = LED_SET_BRIGHTNESS(int(group.id), int(brightness))     
                                                  
                                 if error_message != "":            
-                                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)                    
+                                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))                   
                        
                         break
 
@@ -193,13 +193,13 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
                         for group_id in group_ids:
                             error_message = LED_TURN_OFF_GROUP(int(group_id))
                             if error_message != "":            
-                                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)                    
+                                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))                    
                    
                     
                     else:
                         error_message = LED_TURN_OFF_ALL()   
                         if error_message != "":            
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))
                             
                     break
 
@@ -228,7 +228,7 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
         
                     error_message = LED_TURN_OFF_ALL()   
                     if error_message != "":            
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + error_message)
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Recognition Task | " + answer + " | " + str(error_message))
                             
                     break
 

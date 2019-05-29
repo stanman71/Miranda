@@ -34,12 +34,11 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
     
       
       
-""" ##################### """
-"""   controller thread   """
-""" ##################### """     
+""" ###################### """
+"""   controller process   """
+""" ###################### """     
 
-
-def CONTROLLER_THREAD(ieeeAddr, msg):
+def CONTROLLER_PROCESS(ieeeAddr, msg):
 	
 	for controller in GET_ALL_CONTROLLER():
 		
@@ -212,7 +211,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
                
          except:
             task = task.split(":")
@@ -224,7 +223,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
                   
    except Exception as e:
       print(e)
@@ -243,7 +242,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
             error_message = str(error_message)
             error_message = error_message[1:]
             error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
             
    except Exception as e:
       print(e)
@@ -262,7 +261,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
             error_message = str(error_message)
             error_message = error_message[1:]
             error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
             
    except Exception as e:
       print(e)
@@ -301,7 +300,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                         error_message = str(error_message)
                         error_message = error_message[1:]
                         error_message = error_message[:-1]                    
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
                         
                      group_founded = True
                
@@ -316,7 +315,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                error_message = str(error_message)
                error_message = error_message[1:]
                error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + error_message)
+               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
           
 	       
    except Exception as e:

@@ -833,3 +833,1136 @@ Timestamp,Type,Description
 2019-05-24 18:07:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
 2019-05-24 18:07:11,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
 2019-05-24 18:41:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 18:47:03,EVENT,|MQTT || started|
+2019-05-24 18:47:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-24 18:47:08,EVENT,|Speech Control || started|
+2019-05-24 18:47:22,EVENT,|Speech Recognition || Detection Task || |
+2019-05-24 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-24 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-24 19:35:55,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-24 19:36:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-24 19:36:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 19:49:20,EVENT,|Database || LED Scene - hgf || added|
+2019-05-24 19:53:55,EVENT,|MQTT || started|
+2019-05-24 19:53:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-24 19:54:00,EVENT,|Speech Control || started|
+2019-05-24 19:54:05,ERROR,|LED || start scene || local variable 'led_3' referenced before assignment|
+2019-05-24 19:54:16,ERROR,|LED || start scene || local variable 'led_3' referenced before assignment|
+2019-05-24 19:54:45,ERROR,|LED || start scene || local variable 'led_3' referenced before assignment|
+2019-05-24 19:57:40,EVENT,|MQTT || started|
+2019-05-24 19:57:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-24 19:57:45,EVENT,|Speech Control || started|
+2019-05-24 19:57:52,ERROR,|LED || start scene || 'NoneType' object has no attribute 'name'|
+2019-05-24 19:57:57,ERROR,|LED || start scene || 'NoneType' object has no attribute 'name'|
+2019-05-24 19:58:07,ERROR,|LED || start scene || 'NoneType' object has no attribute 'name'|
+2019-05-24 19:58:18,ERROR,|LED || start scene || 'NoneType' object has no attribute 'name'|
+2019-05-24 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-24 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-24 20:03:39,EVENT,|MQTT || started|
+2019-05-24 20:03:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-24 20:03:44,EVENT,|Speech Control || started|
+2019-05-24 20:04:06,EVENT,|Database || LED Scene - hgf || deleted|
+2019-05-24 20:05:24,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-24 20:05:51,EVENT,|Speech Recognition || Detection Task || starte cineplex im wohnzimmer|
+2019-05-24 20:06:14,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer|
+2019-05-24 20:09:06,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-24 20:31:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 20:46:38,EVENT,|Database || Scheduler || Task - ts || Task_Type - complete || added|
+2019-05-24 20:46:49,EVENT,|Database || Scheduler || Task - ts || changed |||| Name - test || Task - request_sensordata:watersensor || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-05-24 20:46:55,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - request_sensordata:watersensor || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-24 20:47:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:47:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:48:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:48:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:49:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:49:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:50:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:50:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:51:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:51:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:52:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:52:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:53:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:53:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:54:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:54:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:55:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:55:03,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:56:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:56:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:57:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:57:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:58:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:58:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 20:59:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 20:59:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-24 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-24 21:00:04,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:00:13,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:00:33,EVENT,|Speech Recognition || Detection Task || |
+2019-05-24 21:01:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:01:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:02:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:02:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:03:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:03:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:04:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:04:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:05:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:05:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:06:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:06:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:07:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:07:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:08:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:08:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:09:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:09:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:10:00,EVENT,|Scheduler || Task - test || started|
+2019-05-24 21:10:04,SUCCESS,|Scheduler || Task - test || successful|
+2019-05-24 21:10:14,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-05-24 21:16:42,EVENT,|Database || Scheduler || Task - jhg || Task_Type - complete || added|
+2019-05-24 21:16:49,EVENT,|Database || Scheduler || Task - jhg || changed |||| Name - jhg || Task - request_sensordata:watersensor || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-05-24 21:16:57,EVENT,|Database || Scheduler || Task - jhg || changed |||| Name - jhg || Task - request_sensordata:watersensor || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-05-24 21:17:00,EVENT,|Scheduler || Task - jhg || started|
+2019-05-24 21:17:04,SUCCESS,|Scheduler || Task - jhg || successful|
+2019-05-24 21:17:09,EVENT,|Database || Scheduler || Task - jhg || deleted|
+2019-05-24 21:17:16,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-24 21:22:02,EVENT,|Database || MQTT Device - 0x88888 || Gateway - mqtt || changed |||| Name - 0x88888 || ieeeAddr - 0x88888 || Model - envi_sensor || device_type - sensor_passiv || description - MQTT Environment Sensor || inputs - temperature, humidity, light || outputs - |
+2019-05-24 21:22:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:23:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:23:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:23:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:25:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 21:25:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:25:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-24 21:26:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-24 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-24 22:17:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-24 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-24 23:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-24 23:12:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-05-25 00:00:04,EVENT,|Database_Backup || saved|
+2019-05-25 00:00:04,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-05-25 00:07:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-05-25 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 01:02:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 01:32:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 01:33:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 01:33:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 01:33:41,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 01:33:41,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 01:35:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 01:53:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 02:48:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 03:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 03:43:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 04:38:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 05:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 05:33:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 06:28:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 07:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 07:23:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 08:11:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 08:11:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 08:12:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 08:12:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 08:12:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 08:12:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 08:14:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 08:14:11,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 08:19:22,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 08:29:46,EVENT,|MQTT || started|
+2019-05-25 08:29:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:29:52,EVENT,|Speech Control || started|
+2019-05-25 08:33:06,EVENT,|MQTT || started|
+2019-05-25 08:33:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:33:12,EVENT,|Speech Control || started|
+2019-05-25 08:33:53,EVENT,|MQTT || started|
+2019-05-25 08:33:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:33:58,EVENT,|Speech Control || started|
+2019-05-25 08:42:46,EVENT,|MQTT || started|
+2019-05-25 08:42:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:42:52,EVENT,|Speech Control || started|
+2019-05-25 08:43:31,EVENT,|MQTT || started|
+2019-05-25 08:43:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:43:36,EVENT,|Speech Control || started|
+2019-05-25 08:47:49,EVENT,|MQTT || started|
+2019-05-25 08:47:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:47:54,EVENT,|Speech Control || started|
+2019-05-25 08:48:50,EVENT,|MQTT || started|
+2019-05-25 08:48:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:48:55,EVENT,|Speech Control || started|
+2019-05-25 08:51:03,EVENT,|Speech Recognition || Detection Task || |
+2019-05-25 08:55:58,EVENT,|MQTT || started|
+2019-05-25 08:55:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:56:03,EVENT,|Speech Control || started|
+2019-05-25 08:56:37,EVENT,|MQTT || started|
+2019-05-25 08:56:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:56:43,EVENT,|Speech Control || started|
+2019-05-25 08:59:39,EVENT,|MQTT || started|
+2019-05-25 08:59:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 08:59:45,EVENT,|Speech Control || started|
+2019-05-25 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 09:00:07,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 1 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:02:07,EVENT,|MQTT || started|
+2019-05-25 09:02:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:02:13,EVENT,|Speech Control || started|
+2019-05-25 09:02:19,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 2 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:07:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 09:07:16,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 09:07:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 2 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:08:28,EVENT,|MQTT || started|
+2019-05-25 09:08:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:08:33,EVENT,|Speech Control || started|
+2019-05-25 09:09:02,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 1 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:11:18,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 2 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:14:59,EVENT,|MQTT || started|
+2019-05-25 09:14:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:15:05,EVENT,|Speech Control || started|
+2019-05-25 09:15:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:15:27,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:16:47,EVENT,|MQTT || started|
+2019-05-25 09:16:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:16:52,EVENT,|Speech Control || started|
+2019-05-25 09:16:59,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:17:56,EVENT,|MQTT || started|
+2019-05-25 09:17:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:18:01,EVENT,|File || /logs/log_zigbee2mqtt.csv || deleted|
+2019-05-25 09:18:01,EVENT,|File || /logs/log_zigbee2mqtt.csv || created|
+2019-05-25 09:18:01,EVENT,|Speech Control || started|
+2019-05-25 09:18:07,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 3 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:19:19,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:19:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 1 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:24:08,EVENT,|MQTT || started|
+2019-05-25 09:24:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:24:11,EVENT,|Speech Control || started|
+2019-05-25 09:24:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 3 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:26:03,EVENT,|MQTT || started|
+2019-05-25 09:26:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:26:06,EVENT,|Speech Control || started|
+2019-05-25 09:26:19,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:28:10,EVENT,|MQTT || started|
+2019-05-25 09:28:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:28:13,EVENT,|Speech Control || started|
+2019-05-25 09:29:11,EVENT,|MQTT || started|
+2019-05-25 09:29:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:29:14,EVENT,|Speech Control || started|
+2019-05-25 09:30:02,EVENT,|MQTT || started|
+2019-05-25 09:30:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:30:06,EVENT,|Speech Control || started|
+2019-05-25 09:30:13,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 6 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:31:52,EVENT,|MQTT || started|
+2019-05-25 09:31:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:31:55,EVENT,|Speech Control || started|
+2019-05-25 09:32:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 3 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:32:58,EVENT,|MQTT || started|
+2019-05-25 09:32:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 09:33:01,EVENT,|Speech Control || started|
+2019-05-25 09:33:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:33:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:33:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:33:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:33:41,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:34:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 09:46:08,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off:group:bad || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - None || Location - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - False || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-25 09:46:17,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off:group:bad || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - checked || Location - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - False || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-25 09:46:23,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off:group:bad || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - checked || Location - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - False || Home - None || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-05-25 09:47:03,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off:group:bad || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - False || Repeat - checked|
+2019-05-25 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 10:02:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 10:02:11,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 10:57:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 10:57:12,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 11:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 11:52:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 11:52:13,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 11:56:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 11:56:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 11:56:17,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 11:56:17,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 11:57:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 11:57:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 11:59:50,EVENT,|MQTT || started|
+2019-05-25 11:59:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 11:59:53,EVENT,|Speech Control || started|
+2019-05-25 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 12:02:28,EVENT,|MQTT || started|
+2019-05-25 12:02:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:02:31,EVENT,|Speech Control || started|
+2019-05-25 12:02:55,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:03:54,EVENT,|MQTT || started|
+2019-05-25 12:03:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:03:57,EVENT,|Speech Control || started|
+2019-05-25 12:05:32,EVENT,|MQTT || started|
+2019-05-25 12:05:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:05:35,EVENT,|Speech Control || started|
+2019-05-25 12:05:41,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.100 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:05:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:05:45,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:05:48,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:05:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:06:18,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:06:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:08:43,EVENT,|MQTT || started|
+2019-05-25 12:08:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:08:47,EVENT,|Speech Control || started|
+2019-05-25 12:09:57,EVENT,|MQTT || started|
+2019-05-25 12:09:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:10:00,EVENT,|Speech Control || started|
+2019-05-25 12:10:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:10:13,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:10:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:10:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:15:06,EVENT,|MQTT || started|
+2019-05-25 12:15:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:15:09,EVENT,|Speech Control || started|
+2019-05-25 12:15:16,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:15:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:15:40,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_1 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:15:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:17:54,EVENT,|MQTT || started|
+2019-05-25 12:17:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:17:57,EVENT,|Speech Control || started|
+2019-05-25 12:18:38,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - ghf || Option Command - None|
+2019-05-25 12:19:43,EVENT,|MQTT || started|
+2019-05-25 12:19:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:19:46,EVENT,|Speech Control || started|
+2019-05-25 12:21:16,EVENT,|MQTT || started|
+2019-05-25 12:21:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:21:19,EVENT,|Speech Control || started|
+2019-05-25 12:21:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:21:42,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.100 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:21:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.100 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:21:46,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - IP-Address || Option Check ieeeAddr - None || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:21:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:22:25,EVENT,|MQTT || started|
+2019-05-25 12:22:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:22:28,EVENT,|Speech Control || started|
+2019-05-25 12:22:33,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:23:55,EVENT,|MQTT || started|
+2019-05-25 12:23:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:23:58,EVENT,|Speech Control || started|
+2019-05-25 12:24:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:24:05,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:24:15,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - 192.168.1.10 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:29:07,EVENT,|MQTT || started|
+2019-05-25 12:29:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:29:10,EVENT,|Speech Control || started|
+2019-05-25 12:29:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - 0 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:29:50,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - None || Options_Value_1 -  humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:30:48,EVENT,|MQTT || started|
+2019-05-25 12:30:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:30:51,EVENT,|Speech Control || started|
+2019-05-25 12:31:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:32:29,EVENT,|MQTT || started|
+2019-05-25 12:32:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:32:33,EVENT,|Speech Control || started|
+2019-05-25 12:32:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:36:23,EVENT,|MQTT || started|
+2019-05-25 12:36:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:36:26,EVENT,|Speech Control || started|
+2019-05-25 12:37:55,EVENT,|MQTT || started|
+2019-05-25 12:37:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:37:58,EVENT,|Speech Control || started|
+2019-05-25 12:38:03,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - None || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:38:12,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:38:59,EVENT,|MQTT || started|
+2019-05-25 12:38:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:39:02,EVENT,|Speech Control || started|
+2019-05-25 12:39:26,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:40:34,EVENT,|MQTT || started|
+2019-05-25 12:40:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:40:37,EVENT,|Speech Control || started|
+2019-05-25 12:41:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:42:12,EVENT,|MQTT || started|
+2019-05-25 12:42:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:42:15,EVENT,|Speech Control || started|
+2019-05-25 12:42:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:43:55,EVENT,|MQTT || started|
+2019-05-25 12:43:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:43:58,EVENT,|Speech Control || started|
+2019-05-25 12:44:10,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:44:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:44:22,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - temperature || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:44:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:44:39,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:45:55,EVENT,|MQTT || started|
+2019-05-25 12:45:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:45:58,EVENT,|Speech Control || started|
+2019-05-25 12:46:11,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:46:16,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_1 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:46:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:46:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000349876a || Option Check ieeeAddr - 0x00158d000349876a || Options_Value_1 -  humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:46:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - temperature || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:46:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 12:47:40,EVENT,|MQTT || started|
+2019-05-25 12:47:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:47:43,EVENT,|Speech Control || started|
+2019-05-25 12:47:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_3 || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:47:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000349876a || Option Check ieeeAddr - 0x00158d000349876a || Options_Value_1 - temperature || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:48:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:48:11,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - bvc || Option Command - None|
+2019-05-25 12:57:14,EVENT,|MQTT || started|
+2019-05-25 12:57:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:57:17,EVENT,|Speech Control || started|
+2019-05-25 12:57:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - =bvc || Option Command - None|
+2019-05-25 12:57:27,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - = bvc || Option Command - None|
+2019-05-25 12:57:30,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - =  || Option Command - None|
+2019-05-25 12:58:21,EVENT,|MQTT || started|
+2019-05-25 12:58:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:58:25,EVENT,|Speech Control || started|
+2019-05-25 12:58:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 5 || Option Command - None|
+2019-05-25 12:58:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 5h || Option Command - None|
+2019-05-25 12:58:51,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 5 || Option Command - None|
+2019-05-25 12:58:55,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - = || Option Command - None|
+2019-05-25 12:59:00,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 12:59:03,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 8 || Option Command - None|
+2019-05-25 12:59:52,EVENT,|MQTT || started|
+2019-05-25 12:59:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 12:59:55,EVENT,|Speech Control || started|
+2019-05-25 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 13:00:45,EVENT,|MQTT || started|
+2019-05-25 13:00:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:00:49,EVENT,|Speech Control || started|
+2019-05-25 13:00:55,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - = || Option Command - None|
+2019-05-25 13:02:33,EVENT,|MQTT || started|
+2019-05-25 13:02:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:02:36,EVENT,|Speech Control || started|
+2019-05-25 13:03:35,EVENT,|MQTT || started|
+2019-05-25 13:03:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:03:38,EVENT,|Speech Control || started|
+2019-05-25 13:03:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - =0 || Option Command - None|
+2019-05-25 13:03:47,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 0 || Option Command - None|
+2019-05-25 13:03:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - < || Option Command - None|
+2019-05-25 13:03:58,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - <4 || Option Command - None|
+2019-05-25 13:04:00,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - < 4 || Option Command - None|
+2019-05-25 13:04:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - <  || Option Command - None|
+2019-05-25 13:04:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - < 7 || Option Command - None|
+2019-05-25 13:04:12,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:05:16,EVENT,|MQTT || started|
+2019-05-25 13:05:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:05:19,EVENT,|Speech Control || started|
+2019-05-25 13:05:27,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - 7 || Option Command - None|
+2019-05-25 13:05:36,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:05:41,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - tz || Option Command - None|
+2019-05-25 13:05:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - =tz || Option Command - None|
+2019-05-25 13:05:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_2 || Options_Value_2 - =tz || Option Command - None|
+2019-05-25 13:22:28,EVENT,|MQTT || started|
+2019-05-25 13:22:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:22:31,EVENT,|Speech Control || started|
+2019-05-25 13:22:34,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - =tz || Option Command - None|
+2019-05-25 13:22:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_0 || Options_Value_2 - =0 || Option Command - None|
+2019-05-25 13:22:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_0 || Options_Value_2 - =0 || Option Command - OFF|
+2019-05-25 13:23:30,EVENT,|MQTT || started|
+2019-05-25 13:23:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:23:33,EVENT,|Speech Control || started|
+2019-05-25 13:25:28,EVENT,|MQTT || started|
+2019-05-25 13:25:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:25:32,EVENT,|Speech Control || started|
+2019-05-25 13:25:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_0 || Options_Value_2 - =120 || Option Command - ON|
+2019-05-25 13:26:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 -  occupancy || Options_Value_2 - =False || Option Command - None|
+2019-05-25 13:26:05,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = False || Option Command - None|
+2019-05-25 13:27:32,EVENT,|MQTT || started|
+2019-05-25 13:27:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:27:35,EVENT,|Speech Control || started|
+2019-05-25 13:27:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = Fals || Option Command - None|
+2019-05-25 13:27:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = False || Option Command - None|
+2019-05-25 13:27:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = False || Option Command - ON|
+2019-05-25 13:27:57,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = True || Option Command - None|
+2019-05-25 13:28:00,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - occupancy || Options_Value_2 - = True || Option Command - OFF|
+2019-05-25 13:28:10,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000313fbc5 || Option Check ieeeAddr - 0x00158d000313fbc5 || Options_Value_1 - illuminance || Options_Value_2 - = True || Option Command - None|
+2019-05-25 13:28:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - = True || Option Command - None|
+2019-05-25 13:28:22,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_1 || Options_Value_2 - = True || Option Command - None|
+2019-05-25 13:30:39,EVENT,|MQTT || started|
+2019-05-25 13:30:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:30:42,EVENT,|Speech Control || started|
+2019-05-25 13:31:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:31:38,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:31:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:32:02,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - >100 || Option Command - None|
+2019-05-25 13:32:57,EVENT,|MQTT || started|
+2019-05-25 13:32:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:33:01,EVENT,|Speech Control || started|
+2019-05-25 13:33:07,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:33:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_1 || Options_Value_2 - =ui || Option Command - None|
+2019-05-25 13:33:21,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:33:33,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:34:46,EVENT,|MQTT || started|
+2019-05-25 13:34:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:34:49,EVENT,|Speech Control || started|
+2019-05-25 13:34:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:35:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:35:07,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:35:07,EVENT,|Speech Recognition || Detection Task || |
+2019-05-25 13:35:49,EVENT,|MQTT || started|
+2019-05-25 13:35:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:35:52,EVENT,|Speech Control || started|
+2019-05-25 13:35:57,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:36:05,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_2 || Options_Value_2 - gfd || Option Command - None|
+2019-05-25 13:36:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_1 || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:36:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:36:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:36:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - hgf || Option Command - None|
+2019-05-25 13:36:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - gfdgfd || Option Command - None|
+2019-05-25 13:36:47,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - < 100 || Option Command - None|
+2019-05-25 13:36:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:36:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - sensor_2 || Options_Value_2 - gfd || Option Command - None|
+2019-05-25 13:37:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:37:48,EVENT,|MQTT || started|
+2019-05-25 13:37:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-25 13:37:51,EVENT,|Speech Control || started|
+2019-05-25 13:37:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:38:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:38:38,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 -  light || Options_Value_2 - < 100 || Option Command - None|
+2019-05-25 13:38:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - < 100 || Option Command - ON|
+2019-05-25 13:38:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - < 100 || Option Command - OFF|
+2019-05-25 13:39:15,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - > 100 || Option Command - OFF|
+2019-05-25 13:39:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - light || Options_Value_2 - > 100 || Option Command - ON|
+2019-05-25 13:39:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:39:53,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:41:39,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - temperature || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:41:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 13:41:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 14:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 14:36:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 15:02:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 15:02:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 15:02:38,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 15:02:38,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 15:04:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 15:12:20,EVENT,|Speech Recognition || Detection Task || reduzierung hüpstedt|
+2019-05-25 15:28:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 16:23:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 17:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 17:04:06,EVENT,|Speech Recognition || Detection Task || starte plex im wohnzimmer|
+2019-05-25 17:04:21,EVENT,|Speech Recognition || Detection Task || starte relax im wohnzimmer|
+2019-05-25 17:04:35,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-25 17:16:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 17:18:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 17:41:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x00158d000349876a || Option Check ieeeAddr - 0x00158d000349876a || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 17:41:55,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 17:42:22,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-25 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 18:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 18:13:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 18:14:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:14:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:15:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 18:56:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:57:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:57:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:58:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:58:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:59:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:59:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 18:59:48,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 18:59:48,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 19:01:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 19:01:18,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 19:03:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 19:03:10,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 19:06:23,EVENT,|Speech Recognition || Detection Task || |
+2019-05-25 19:24:50,EVENT,|Speech Recognition || Detection Task || also wie also du hast doppelpunkte datumswert|
+2019-05-25 19:29:34,EVENT,|Speech Recognition || Detection Task || |
+2019-05-25 19:36:36,EVENT,|Speech Recognition || Detection Task || cool dann warten wir noch mal zugucken|
+2019-05-25 19:58:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 19:58:11,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 20:00:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:00:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:01:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:01:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:02:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:02:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:03:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 20:12:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:13:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:13:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:14:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 20:40:50,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-05-25 20:40:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:42:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 20:48:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 20:48:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:48:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 20:49:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 20:50:00,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 21:36:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 21:36:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 21:36:05,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 21:36:05,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-25 21:37:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-25 21:37:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 22:17:22,EVENT,|Speech Recognition || Detection Task || |
+2019-05-25 22:32:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-25 23:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-25 23:27:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-25 23:50:38,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || Day - None || Hour - None || Minute - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-25 23:50:49,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-05-26 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-05-26 00:00:04,EVENT,|Database_Backup || saved|
+2019-05-26 00:00:04,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-05-26 00:12:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-26 00:13:37,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x99999 || Option Check ieeeAddr - 0x99999 || Options_Value_1 -  sensor_1 || Options_Value_2 - None || Option Command - None|
+2019-05-26 00:13:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-26 00:16:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:16:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:17:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:17:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:17:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:18:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:18:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 00:18:56,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-26 00:20:08,EVENT,|Speech Recognition || Detection Task || |
+2019-05-26 00:20:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-05-26 00:30:01,ERROR,|Scheduler || Task - schlafen || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-26 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 03:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 03:01:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 03:56:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 04:51:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 05:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 05:46:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 06:41:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 07:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 07:36:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 07:59:04,EVENT,|File || /logs/log_system.csv || downloaded|
+2019-05-26 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 08:00:05,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-26 08:00:08,ERROR,|Speech Recognition Task || starte warmweiss im wohnzimmer || Can't convert 'list' object to str implicitly|
+2019-05-26 08:00:23,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-26 08:03:23,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-26 08:07:16,EVENT,|MQTT || started|
+2019-05-26 08:07:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-26 08:07:20,EVENT,|Speech Control || started|
+2019-05-26 08:07:28,EVENT,|Speech Recognition || Detection Task || ausschau|
+2019-05-26 08:07:38,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-26 08:07:40,ERROR,|Speech Recognition Task || ausschalten || ['0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.']|
+2019-05-26 08:11:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-26 08:11:33,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-26 08:31:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 08:31:41,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-26 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 09:26:27,EVENT,|Database || Sensordata Job - watersensor_billig || added|
+2019-05-26 09:26:27,EVENT,|File || /csv/watersensor_billig.csv || created|
+2019-05-26 09:26:35,EVENT,|Database || Sensordata Job - watersensor || changed |||| Name - watersensor || Filename - watersensor || MQTT-Device - 0x99999 || Sensor - sensor_5 || Always_Active - checked|
+2019-05-26 09:26:35,EVENT,|Database || Sensordata Job - watersensor_billig || changed |||| Name - watersensor_billig || Filename - watersensor_billig || MQTT-Device - 0x99999 || Sensor -  sensor_7 || Always_Active - checked|
+2019-05-26 09:26:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 09:26:50,EVENT,|File || /csv/aqara.csv || deleted|
+2019-05-26 09:26:53,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-26 09:26:59,EVENT,|File || /csv/watersensor_billig.csv || downloaded|
+2019-05-26 09:27:16,EVENT,|File || /csv/watersensor_billig.csv || downloaded|
+2019-05-26 09:36:58,EVENT,|MQTT || started|
+2019-05-26 09:36:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-26 09:37:01,EVENT,|Speech Control || started|
+2019-05-26 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 10:09:46,EVENT,|Database || Sensordata Job - watersensor_billig_1 || changed |||| Name - watersensor_billig_1 || Filename - watersensor_billig || MQTT-Device - 0x99999 || Sensor - sensor_7 || Always_Active - checked|
+2019-05-26 10:10:02,EVENT,|Database || Sensordata Job - watersensor_billig_2 || changed |||| Name - watersensor_billig_2 || Filename - watersensor_billig || MQTT-Device - 0x99999 || Sensor - sensor_7 || Always_Active - checked|
+2019-05-26 10:10:07,EVENT,|Database || Sensordata Job - watersensor_billig_1 || added|
+2019-05-26 10:10:16,EVENT,|Database || Sensordata Job - watersensor_billig_1 || changed |||| Name - watersensor_billig_1 || Filename - watersensor || MQTT-Device - 0x99999 || Sensor -  sensor_6 || Always_Active - |
+2019-05-26 10:10:20,EVENT,|Database || Sensordata Job - watersensor_billig_1 || changed |||| Name - watersensor_billig_1 || Filename - watersensor || MQTT-Device - 0x99999 || Sensor - sensor_6 || Always_Active - checked|
+2019-05-26 10:21:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 10:30:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:30:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:32:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:32:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:33:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:33:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 10:34:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 11:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 11:15:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 11:15:36,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-26 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 12:10:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 13:05:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 14:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 14:00:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 14:55:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 15:50:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 16:45:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 16:48:37,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-05-26 16:48:38,ERROR,|Speech Recognition Task || starte warmweiss im wohnzimmer auf 60% || ['0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.']|
+2019-05-26 16:48:40,ERROR,|Speech Recognition Task || starte warmweiss im wohnzimmer auf 60% || ['0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.']|
+2019-05-26 16:49:06,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-05-26 16:51:41,EVENT,|Database || MQTT Device - 0x00178801067147c7 || deleted|
+2019-05-26 16:52:15,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || Inputs - action=on-press, action=up-press, action=down-press, action=off-press || Outputs - None|
+2019-05-26 16:55:19,EVENT,|Database || Controller - THE_CUBE || deleted|
+2019-05-26 16:55:28,EVENT,|Database || MQTT Device - THE_CUBE || deleted|
+2019-05-26 16:59:37,EVENT,|Database || MQTT Device - 0x00158d000275de23 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || Inputs - action=shake, action=rotate_left, action=rotate_right, to_side=1, to_side=2, to_side=4, to_side=5 || Outputs - None|
+2019-05-26 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 17:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 17:33:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 17:33:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 17:34:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 17:35:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 17:49:47,EVENT,|Database || MQTT Device - 0x00178801067147c7 || deleted|
+2019-05-26 17:50:39,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || Inputs - action=on-press, action=up-press, action=down-press, action=off-press || Outputs - None|
+2019-05-26 17:54:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 17:55:19,EVENT,|Database || MQTT Device - 0x00178801067147c7 || deleted|
+2019-05-26 17:56:49,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || Inputs - action=on-press, action=up-press, action=down-press, action=off-press || Outputs - None|
+2019-05-26 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 18:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 18:02:44,EVENT,|Speech Recognition || Detection Task || starte baumeister|
+2019-05-26 18:03:38,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-26 18:29:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 18:46:20,EVENT,|Database || Controller - 0x00178801067147c7 || added|
+2019-05-26 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 19:24:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 20:19:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 21:14:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-26 22:09:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 22:34:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:34:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:35:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 22:35:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:35:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:37:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 22:40:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:40:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:42:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 22:42:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:42:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:43:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:43:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:44:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:44:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:45:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:45:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:46:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:46:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:47:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:47:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-26 22:48:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-26 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-26 23:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-05-27 00:00:04,EVENT,|Database_Backup || saved|
+2019-05-27 00:00:04,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-05-27 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-05-27 00:51:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 00:51:24,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-27 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 01:40:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 01:40:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 01:40:35,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-27 01:40:35,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-27 01:40:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 01:40:59,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 01:41:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 01:41:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 01:42:12,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-27 01:43:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 02:34:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 03:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 03:29:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 04:24:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 05:00:16,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 07:42:21,EVENT,|MQTT || started|
+2019-05-27 07:42:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-27 07:42:25,EVENT,|Speech Control || started|
+2019-05-27 07:42:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 07:45:33,EVENT,|MQTT || started|
+2019-05-27 07:45:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-27 07:45:37,EVENT,|Speech Control || started|
+2019-05-27 07:46:17,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-27 07:46:48,ERROR,|Controller - 0x00178801067147c7 || Command - action = on-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-27 07:47:04,EVENT,|Speech Recognition || Detection Task || stadt warmweiss im wohnzimmer|
+2019-05-27 07:47:22,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-27 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-05-27 07:54:59,EVENT,|MQTT || started|
+2019-05-27 07:54:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-27 07:55:02,EVENT,|Speech Control || started|
+2019-05-27 07:55:34,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-27 07:57:35,ERROR,|Controller - 0x00178801067147c7 || Command - action = on-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-27 07:59:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 07:59:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 08:00:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:00:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:00:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:02:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 08:02:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:02:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-27 08:04:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 08:04:14,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 08:53:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 08:53:58,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 09:48:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 09:48:59,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 15:34:47,EVENT,|MQTT || started|
+2019-05-27 15:34:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-27 15:34:51,EVENT,|Speech Control || started|
+2019-05-27 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 16:14:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 16:14:06,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 17:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 17:09:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 17:09:08,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 18:49:58,EVENT,|MQTT || started|
+2019-05-27 18:49:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-27 18:50:02,EVENT,|Speech Control || started|
+2019-05-27 18:50:23,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-27 18:50:25,ERROR,|Speech Recognition Task || ausschalten || ['0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.']|
+2019-05-27 18:53:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 18:53:35,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 19:48:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 19:48:38,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-27 20:43:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-27 20:43:41,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-27 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-27 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 10:52:14,EVENT,|MQTT || started|
+2019-05-28 10:52:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:52:18,EVENT,|Speech Control || started|
+2019-05-28 10:53:19,EVENT,|Database || Scheduler || Task - test_queue || Task_Type - complete || added|
+2019-05-28 10:53:28,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - None || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-28 10:54:49,EVENT,|MQTT || started|
+2019-05-28 10:54:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:54:53,EVENT,|Speech Control || started|
+2019-05-28 10:56:06,EVENT,|MQTT || started|
+2019-05-28 10:56:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:56:10,EVENT,|Speech Control || started|
+2019-05-28 10:57:21,EVENT,|MQTT || started|
+2019-05-28 10:57:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:57:25,EVENT,|Speech Control || started|
+2019-05-28 10:58:17,EVENT,|MQTT || started|
+2019-05-28 10:58:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:58:21,EVENT,|Speech Control || started|
+2019-05-28 10:58:35,EVENT,|MQTT || started|
+2019-05-28 10:58:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:58:39,EVENT,|Speech Control || started|
+2019-05-28 10:59:20,EVENT,|MQTT || started|
+2019-05-28 10:59:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 10:59:24,EVENT,|Speech Control || started|
+2019-05-28 11:01:14,EVENT,|MQTT || started|
+2019-05-28 11:01:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:01:18,EVENT,|Speech Control || started|
+2019-05-28 11:17:00,EVENT,|MQTT || started|
+2019-05-28 11:17:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:17:04,EVENT,|Speech Control || started|
+2019-05-28 11:30:52,EVENT,|MQTT || started|
+2019-05-28 11:30:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:30:56,EVENT,|Speech Control || started|
+2019-05-28 11:31:46,EVENT,|MQTT || started|
+2019-05-28 11:31:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:31:50,EVENT,|Speech Control || started|
+2019-05-28 11:33:08,EVENT,|MQTT || started|
+2019-05-28 11:33:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:33:11,EVENT,|Speech Control || started|
+2019-05-28 11:33:29,EVENT,|MQTT || started|
+2019-05-28 11:33:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 11:33:33,EVENT,|Speech Control || started|
+2019-05-28 11:34:00,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - None || Home - None || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-05-28 11:34:10,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:34:18,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - scene:wohnzimmer:relax:100 || Home - None || Away - checked || IP-Addresses - 192.168.1.103 || Repeat - checked|
+2019-05-28 11:34:20,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:34:30,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:34:40,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:34:50,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:00,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:13,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:15,ERROR,|Scheduler || Task - test_queue || '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:35:23,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:25,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:35:34,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:36,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:35:43,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:45,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:35:53,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:35:55,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:36:03,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:36:05,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:36:12,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - scene:wohnzimmer:relax:100 || Home - checked || Away - None || IP-Addresses - 192.168.1.103 || Repeat - checked|
+2019-05-28 11:36:13,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:36:15,ERROR,|Scheduler || Task - test_queue || '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:36:29,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - led_off:all || Home - None || Away - checked || IP-Addresses - 192.168.1.103 || Repeat - checked|
+2019-05-28 11:37:13,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:37:15,ERROR,|Scheduler || Task - test_queue || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:37:23,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:37:25,ERROR,|Scheduler || Task - test_queue || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:37:33,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:37:35,ERROR,|Scheduler || Task - test_queue || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:37:43,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:37:45,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - led_off:all || Repeat - checked|
+2019-05-28 11:37:45,ERROR,|Scheduler || Task - test_queue || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 11:37:56,EVENT,|Database || Scheduler || Task - test_queue || changed |||| Name - test_queue || Task - kjhjkh || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-05-28 11:38:03,EVENT,|Scheduler || Task - test_queue || started|
+2019-05-28 11:38:05,ERROR,|Scheduler || Task - test_queue || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 14:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 17:00:17,EVENT,|MQTT || started|
+2019-05-28 17:00:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 17:00:21,EVENT,|Speech Control || started|
+2019-05-28 17:02:51,EVENT,|MQTT || started|
+2019-05-28 17:02:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 17:02:55,EVENT,|Speech Control || started|
+2019-05-28 17:05:00,ERROR,|Controller - 0x00178801067147c7 || Command - action = down-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x00178801040c9476', 'Error: Timed out after 30000 ms'|
+2019-05-28 17:05:21,ERROR,|Controller - 0x00178801067147c7 || Command - action = off-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-28 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 18:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 18:02:04,ERROR,|Controller - 0x00178801067147c7 || Command - action = on-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 18:05:59,ERROR,|Controller - 0x00178801067147c7 || Command - action = up-press || '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-28 18:06:02,ERROR,|Controller - 0x00178801067147c7 || Command - action = up-press || '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.', '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-28 18:06:13,ERROR,|Controller - 0x00178801067147c7 || Command - action = off-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 18:06:16,ERROR,|Controller - 0x00178801067147c7 || Command - action = off-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 18:25:13,EVENT,|MQTT || started|
+2019-05-28 18:25:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-28 18:25:17,EVENT,|Speech Control || started|
+2019-05-28 18:25:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 18:25:20,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 18:25:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 18:25:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 18:27:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 18:42:55,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-05-28 18:43:28,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-28 18:43:31,ERROR,|Speech Recognition Task || ausschalten || ['0x00178801040c9476', 'Error: Timed out after 30000 ms']|
+2019-05-28 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 19:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 19:13:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 20:08:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 20:55:14,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-28 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 21:02:44,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-28 21:03:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 21:03:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 21:03:38,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 21:03:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 21:04:33,EVENT,|Speech Recognition || Detection Task || wohnzimmer auf 50%|
+2019-05-28 21:05:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 21:05:06,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x00178801040c9476', 'Error: Timed out after 30000 ms', '0x0017880104878b88', 'Error: Timed out after 30000 ms'|
+2019-05-28 21:05:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 21:05:44,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 21:05:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 21:05:47,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 21:07:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 21:13:05,ERROR,|Controller - 0x00178801067147c7 || Command - action = off-press || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-28 21:13:18,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer auf 70 %|
+2019-05-28 21:57:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 21:58:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - 0x88888 || Option Check ieeeAddr - 0x88888 || Options_Value_1 - humidity || Options_Value_2 - None || Option Command - None|
+2019-05-28 21:58:06,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-28 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 22:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 22:16:05,EVENT,|Speech Recognition || Detection Task || |
+2019-05-28 22:16:50,EVENT,|Speech Recognition || Detection Task || |
+2019-05-28 22:27:51,EVENT,|Speech Recognition || Detection Task || |
+2019-05-28 22:35:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:35:49,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 22:35:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:36:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:36:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:37:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:37:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:38:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:38:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:40:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:40:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:41:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:41:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:42:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:42:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:43:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:43:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:44:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 22:44:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:44:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:46:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 22:47:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:47:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:48:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:48:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:48:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:49:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:49:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:50:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:50:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:51:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:51:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:52:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 22:52:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:52:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 22:54:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 22:54:26,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-28 23:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-28 23:43:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-28 23:43:08,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 23:53:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:53:52,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 23:53:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:53:55,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-28 23:55:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:55:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:56:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:56:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:57:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:57:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:58:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:58:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-28 23:59:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 00:00:06,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-05-29 00:00:06,EVENT,|Database_Backup || saved|
+2019-05-29 00:00:06,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-05-29 00:25:09,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-29 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-05-29 00:36:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 01:31:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 02:26:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 03:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 03:21:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 04:16:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 05:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 05:11:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 06:06:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 07:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 07:01:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:16:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:16:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:17:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:18:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:19:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:19:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:19:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:20:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:20:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:21:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:21:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:22:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:22:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:23:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:23:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:24:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:24:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 07:26:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 07:50:01,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-05-29 07:50:04,ERROR,|Scheduler || Task - zur Arbeit || '0x00178801040c9476', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-29 07:54:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 08:08:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:08:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:09:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:09:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:10:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:10:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-29 08:12:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 08:48:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 09:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-29 09:43:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-29 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-29 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|

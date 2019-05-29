@@ -81,7 +81,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         // create msg  
         String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," +
                              "\"model\":\"envi_sensor\"," +
-                             "\"device_type\":\"sensor_active\"," +
+                             "\"device_type\":\"sensor_passiv\"," +
                              "\"description\":\"MQTT Environment Sensor\"," +   
                              "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
         char attributes[200];
