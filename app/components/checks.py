@@ -1,8 +1,5 @@
-import json
-
 from app import app
 from app.database.database import *
-from app.components.mqtt import *
 
 
 """ ################### """
@@ -50,31 +47,6 @@ def CHECK_DASHBOARD_CHECKS(devices):
       error_message_settings = list_settings_errors
 
    return error_message_settings
-
-
-""" ################### """
-"""      check mqtt     """
-""" ################### """
- 
-def MQTT_CHECK():
-   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
-
-
-def MQTT_CHECK_NAME_CHANGED():
-            
-   input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
-
-   if input_messages != "Message nicht gefunden":
-      for input_message in input_messages:
-         input_message = str(input_message[2])
-  
-         data = json.loads(input_message)
-            
-         if data["type"] == "device_renamed":
-            return True
-                    
-   else:
-      return False
 
 
 """ ################## """

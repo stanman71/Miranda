@@ -1966,3 +1966,185 @@ Timestamp,Type,Description
 2019-05-29 09:43:11,EVENT,|Scheduler || Task - bad_off || started|
 2019-05-29 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
 2019-05-29 10:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 10:25:30,ERROR,|Microphone LED Control || No backend available|
+2019-05-31 10:25:46,ERROR,|MQTT || No module named 'app.components.mqtt'|
+2019-05-31 10:25:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-31 10:27:16,ERROR,|Microphone LED Control || No backend available|
+2019-05-31 10:27:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-05-31 11:49:07,EVENT,|MQTT || started|
+2019-05-31 11:49:07,EVENT,|Speech Control || started|
+2019-05-31 11:49:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 11:54:08,ERROR,|Snowboy || cannot import name 'SNOWBOY_START'|
+2019-05-31 11:54:08,EVENT,|MQTT || started|
+2019-05-31 11:54:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 11:58:02,ERROR,|Snowboy || inconsistent use of tabs and spaces in indentation (process_management.py, line 92)|
+2019-05-31 11:59:18,ERROR,|Snowboy || inconsistent use of tabs and spaces in indentation (process_management.py, line 92)|
+2019-05-31 12:00:27,ERROR,|MQTT || name 'MQTT_THREAD' is not defined|
+2019-05-31 12:00:31,EVENT,|Speech Control || started|
+2019-05-31 12:01:24,ERROR,|MQTT || name 'MQTT_THREAD' is not defined|
+2019-05-31 12:01:28,EVENT,|Speech Control || started|
+2019-05-31 12:02:54,EVENT,|MQTT || started|
+2019-05-31 12:02:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 12:02:58,EVENT,|Speech Control || started|
+2019-05-31 12:03:56,EVENT,|Database || MQTT Device - 0x777777 || added |||| Gateway - mqtt || ieeeAddr - 0x777777 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensors (1 Plant) || Inputs - sensor_0, sensor_1 || Outputs - pump_0|
+2019-05-31 12:04:16,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x777777 || Pump - pump_0 || Sensor - sensor_0 || Pumptime - 50|
+2019-05-31 12:04:21,EVENT,|Database || Sensordata Job - watersensor_billig_2 || deleted|
+2019-05-31 12:04:23,EVENT,|Database || Sensordata Job - watersensor_billig_1 || deleted|
+2019-05-31 12:04:24,EVENT,|File || /csv/watersensor_billig.csv || deleted|
+2019-05-31 12:04:30,EVENT,|Database || Sensordata Job - watersensor || changed |||| Name - watersensor || Filename - watersensor || MQTT-Device - 0x777777 || Sensor - sensor_0 || Always_Active - checked|
+2019-05-31 12:04:34,EVENT,|Database || MQTT Device - 0x99999 || deleted|
+2019-05-31 12:04:48,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-05-31 12:06:34,EVENT,|MQTT || started|
+2019-05-31 12:06:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 12:06:38,EVENT,|Speech Control || started|
+2019-05-31 12:34:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 13:07:42,EVENT,|MQTT || started|
+2019-05-31 13:07:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:07:47,EVENT,|Speech Control || started|
+2019-05-31 13:08:59,EVENT,|MQTT || started|
+2019-05-31 13:08:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:09:03,EVENT,|Speech Control || started|
+2019-05-31 13:13:03,EVENT,|MQTT || started|
+2019-05-31 13:13:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:13:07,EVENT,|Speech Control || started|
+2019-05-31 13:13:58,EVENT,|MQTT || started|
+2019-05-31 13:13:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:14:02,EVENT,|Speech Control || started|
+2019-05-31 13:24:17,EVENT,|MQTT || started|
+2019-05-31 13:24:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:24:22,EVENT,|Speech Control || started|
+2019-05-31 13:26:50,EVENT,|MQTT || started|
+2019-05-31 13:26:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:26:55,EVENT,|Speech Control || started|
+2019-05-31 13:27:30,EVENT,|MQTT || started|
+2019-05-31 13:27:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:27:35,EVENT,|Speech Control || started|
+2019-05-31 13:28:24,EVENT,|MQTT || started|
+2019-05-31 13:28:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:28:29,EVENT,|Speech Control || started|
+2019-05-31 13:29:49,EVENT,|MQTT || started|
+2019-05-31 13:29:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:29:53,EVENT,|Speech Control || started|
+2019-05-31 13:38:32,EVENT,|MQTT || started|
+2019-05-31 13:38:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:38:36,EVENT,|Speech Control || started|
+2019-05-31 13:41:51,EVENT,|MQTT || started|
+2019-05-31 13:41:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:41:55,EVENT,|Speech Control || started|
+2019-05-31 13:44:10,EVENT,|MQTT || started|
+2019-05-31 13:44:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:44:15,EVENT,|Speech Control || started|
+2019-05-31 13:46:52,EVENT,|MQTT || started|
+2019-05-31 13:46:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:46:56,EVENT,|Speech Control || started|
+2019-05-31 13:47:50,EVENT,|MQTT || started|
+2019-05-31 13:47:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:47:54,EVENT,|Speech Control || started|
+2019-05-31 13:50:39,EVENT,|MQTT || started|
+2019-05-31 13:50:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:50:44,EVENT,|Speech Control || started|
+2019-05-31 13:54:09,EVENT,|MQTT || started|
+2019-05-31 13:54:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:54:13,EVENT,|Speech Control || started|
+2019-05-31 13:56:12,EVENT,|MQTT || started|
+2019-05-31 13:56:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:56:17,EVENT,|Speech Control || started|
+2019-05-31 13:56:58,EVENT,|MQTT || started|
+2019-05-31 13:56:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:57:02,EVENT,|Speech Control || started|
+2019-05-31 13:58:19,EVENT,|MQTT || started|
+2019-05-31 13:58:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:58:24,EVENT,|Speech Control || started|
+2019-05-31 13:58:57,EVENT,|MQTT || started|
+2019-05-31 13:58:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:59:02,EVENT,|Speech Control || started|
+2019-05-31 13:59:42,EVENT,|MQTT || started|
+2019-05-31 13:59:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 13:59:46,EVENT,|Speech Control || started|
+2019-05-31 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 14:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 14:01:46,EVENT,|MQTT || started|
+2019-05-31 14:01:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:01:51,EVENT,|Speech Control || started|
+2019-05-31 14:01:59,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:03:59,EVENT,|MQTT || started|
+2019-05-31 14:03:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:04:03,EVENT,|Speech Control || started|
+2019-05-31 14:04:09,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:05:55,EVENT,|MQTT || started|
+2019-05-31 14:05:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:05:59,EVENT,|Speech Control || started|
+2019-05-31 14:06:04,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:06:58,EVENT,|MQTT || started|
+2019-05-31 14:06:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:07:02,EVENT,|Speech Control || started|
+2019-05-31 14:11:02,EVENT,|MQTT || started|
+2019-05-31 14:11:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:11:06,EVENT,|Speech Control || started|
+2019-05-31 14:17:21,EVENT,|MQTT || started|
+2019-05-31 14:17:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:17:26,EVENT,|Speech Control || started|
+2019-05-31 14:18:33,EVENT,|MQTT || started|
+2019-05-31 14:18:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:18:38,EVENT,|Speech Control || started|
+2019-05-31 14:21:02,EVENT,|MQTT || started|
+2019-05-31 14:21:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:21:07,EVENT,|Speech Control || started|
+2019-05-31 14:22:00,EVENT,|MQTT || started|
+2019-05-31 14:22:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:22:05,EVENT,|Speech Control || started|
+2019-05-31 14:23:35,EVENT,|MQTT || started|
+2019-05-31 14:23:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:23:40,EVENT,|Speech Control || started|
+2019-05-31 14:25:30,EVENT,|MQTT || started|
+2019-05-31 14:25:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:25:35,EVENT,|Speech Control || started|
+2019-05-31 14:27:09,EVENT,|MQTT || started|
+2019-05-31 14:27:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:27:13,EVENT,|Speech Control || started|
+2019-05-31 14:30:37,EVENT,|MQTT || started|
+2019-05-31 14:30:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:30:42,EVENT,|Speech Control || started|
+2019-05-31 14:31:13,EVENT,|MQTT || started|
+2019-05-31 14:31:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:31:18,EVENT,|Speech Control || started|
+2019-05-31 14:31:52,EVENT,|MQTT || started|
+2019-05-31 14:31:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:31:56,EVENT,|Speech Control || started|
+2019-05-31 14:35:25,EVENT,|MQTT || started|
+2019-05-31 14:35:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:35:30,EVENT,|Speech Control || started|
+2019-05-31 14:39:11,EVENT,|MQTT || started|
+2019-05-31 14:39:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:39:15,EVENT,|Speech Control || started|
+2019-05-31 14:41:48,EVENT,|MQTT || started|
+2019-05-31 14:41:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:41:52,EVENT,|Speech Control || started|
+2019-05-31 14:41:57,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:43:49,EVENT,|MQTT || started|
+2019-05-31 14:43:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:43:54,EVENT,|Speech Control || started|
+2019-05-31 14:43:57,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:47:22,EVENT,|MQTT || started|
+2019-05-31 14:47:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:47:26,EVENT,|Speech Control || started|
+2019-05-31 14:49:27,EVENT,|MQTT || started|
+2019-05-31 14:49:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:49:31,EVENT,|Speech Control || started|
+2019-05-31 14:49:38,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-05-31 14:51:52,EVENT,|MQTT || started|
+2019-05-31 14:51:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 14:51:56,EVENT,|Speech Control || started|
+2019-05-31 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 15:19:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 16:14:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 17:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 17:09:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 17:15:15,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-31 17:15:28,EVENT,|Speech Recognition || Detection Task || ausschalten|

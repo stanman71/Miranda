@@ -11,6 +11,7 @@ from app import app
 from app.database.database import *
 from app.components.file_management import *
 from app.components.checks import CHECK_SENSORDATA_JOBS_SETTINGS
+from app.components.build_graph import BUILD_GRAPH
 
 # access rights
 def user_required(f):
@@ -378,6 +379,7 @@ def dashboard_sensordata_statistics():
     data_file_1 = ""
     data_file_2 = ""
     data_file_3 = ""
+    graph = False
 
     if request.method == 'POST':
 
@@ -472,46 +474,49 @@ def dashboard_sensordata_statistics():
                 selected_devices = selected_devices.split(",")
                 selected_sensors = sensors.replace(" ", "")
                 selected_sensors = selected_sensors.split(",")
-
+            
+                # complete list
                 df_devices = df.loc[df['Device'].isin(selected_devices)]
+                #print(df_devices)
+                
+                # selected divices
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
-
-
-
-                print(df_devices)
-                print(df_sensors)
+                #print(df_sensors)
 
             except:
                 error_message = "Datei konnte nicht verarbeitet werden"
-        
 
-        # create graph
 
-        """
+            #create table
 
-        import pandas as pd
-        import numpy as np
-        import datetime as dt
-        import matplotlib.pyplot as plt
-        import matplotlib as pltt
-        import time
-        from matplotlib.ticker import AutoMinorLocator
+            """
+            selected_sensors = (df_sensors['Sensor'].unique().tolist())
+            
+            list_sensor_values = []
+            
+            for sensor in selected_sensors:
+                
+                print(sensor)
+                
+                df_sensor_data = df_sensors[df_sensors['Sensor'].isin([sensor])]
+                values         = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                
+                list_sensor_values.append(list_sensor_values) 
+                
+            """
+                
+                
+            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_5"])]
+            values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+            
+            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_6"])]
+            values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
 
-        df = pd.read_csv("C:/Users/Stefan/Desktop/Python_Projects-master/Machine Learning/Regression/CSV/testfile.csv", index_col=[0],date_parser=lambda x: dt.datetime.strptime(x, "%Y-%m-%d %H:%M:%S"))
-
-        df.head()
-
-        #df.reset_index(level=0, inplace=True)
-
-        df['Timestamp'] = df.index
-
-        df1 = df[['Sensor_Value']]
-        print(df1)
-
-        df1.plot()
-        plt.show()
-
-        """
+            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_0"])]
+            values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+            
+            
+            graph = BUILD_GRAPH("plot", values_1, values_2, values_3)
 
 
     dropdown_list_files = GET_SENSORDATA_FILES()
@@ -526,6 +531,7 @@ def dashboard_sensordata_statistics():
                             data_file_3=data_file_3,
                             time_min=time_min,
                             time_max=time_max,
+                            graph=graph,
                             statistics="active",
                             role=current_user.role,                      
                             )

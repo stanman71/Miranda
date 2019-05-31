@@ -12,12 +12,12 @@ from app.components.file_management import *
 """ mqtt publish message """
 """ #################### """
 
+
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
    try:
-
       def on_publish(client, userdata, mid):
          print ('Message Published...')
 
@@ -36,6 +36,7 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 """ ################### """
 """    update devices   """
 """ ################### """
+
 
 def MQTT_UPDATE_DEVICES(gateway):
    
@@ -210,6 +211,7 @@ def MQTT_UPDATE_DEVICES(gateway):
 """    get sensordata   """
 """ ################### """
 
+
 def MQTT_REQUEST_SENSORDATA(job_name):
    sensordata_job  = GET_SENSORDATA_JOB_BY_NAME(job_name)
    device_gateway  = sensordata_job.mqtt_device.gateway
@@ -260,7 +262,6 @@ def MQTT_SAVE_SENSORDATA(job_id):
    WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
    
    
-   
 """ ################### """
 """     stop outputs    """
 """ ################### """
@@ -285,8 +286,7 @@ def MQTT_STOP_ALL_OUTPUTS():
             
             time.sleep(1)
        
-            
-            
+                
 """ ################### """
 """      set device     """
 """ ################### """
@@ -327,7 +327,6 @@ def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, option_command):
       return ("Fehler >>> Einstellung konnte nicht bestätigt werden >>> " + name)
    
 
-   
 """ ################### """
 """  mqtt check setting """
 """ ################### """
@@ -347,3 +346,27 @@ def MQTT_CHECK_SETTING(gateway, Addr, key, setting):
      
    return False
    
+
+""" ################### """
+"""      check mqtt     """
+""" ################### """
+ 
+def MQTT_CHECK():
+   MQTT_PUBLISH("SmartHome/mqtt/test", "") 
+
+
+def MQTT_CHECK_NAME_CHANGED():
+            
+   input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
+
+   if input_messages != "Message nicht gefunden":
+      for input_message in input_messages:
+         input_message = str(input_message[2])
+  
+         data = json.loads(input_message)
+            
+         if data["type"] == "device_renamed":
+            return True
+                    
+   else:
+      return False

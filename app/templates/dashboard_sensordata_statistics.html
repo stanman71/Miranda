@@ -209,8 +209,27 @@
               </form> 
             </div>
           </div>      
-        </div>       
-      </div>           
+        </div>    
+           
+        {% if graph == True %}
+        
+        <div class="panel panel-default">
+          <div class="panel-body">           
+            <div class="well well-sm"> 
+              <div class="well well-sm">
+                <div class="img-container">
+                  <div class="img">
+                     <div><img src="{{ url_for('static', filename='images/graph.png') }}"></img></div>
+                  </div>
+                </div>
+              </div>                  
+            </div> 
+          </div>                  
+        </div> 
+                        
+        {% endif %} 
+        
+      </div>        
     </div>  
   </div>       
 </div>
