@@ -483,41 +483,45 @@ def dashboard_sensordata_statistics():
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
                 #print(df_sensors)
 
+     
+                selected_sensors = (df_sensors['Sensor'].unique().tolist())
+                
+                try:
+                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[0]])]
+                    values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                except:
+                    values_1 = ""
+                    
+                try:
+                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[1]])]
+                    values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                except:
+                    values_2 = ""
+
+                try:
+                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[2]])]
+                    values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                except:
+                    values_3 = ""
+                
+                try:
+                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[3]])]
+                    values_4 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                except:
+                    values_4 = ""           
+
+                try:
+                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[4]])]
+                    values_5 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                except:
+                    values_5 = ""
+                
+                graph = BUILD_GRAPH(values_1, values_2, values_3, values_4, values_5)
+
+
             except:
-                error_message = "Datei konnte nicht verarbeitet werden"
-
-
-            #create table
-
-            """
-            selected_sensors = (df_sensors['Sensor'].unique().tolist())
-            
-            list_sensor_values = []
-            
-            for sensor in selected_sensors:
-                
-                print(sensor)
-                
-                df_sensor_data = df_sensors[df_sensors['Sensor'].isin([sensor])]
-                values         = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
-                
-                list_sensor_values.append(list_sensor_values) 
-                
-            """
-                
-                
-            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_5"])]
-            values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
-            
-            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_6"])]
-            values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
-
-            df_sensor_data = df_sensors[df_sensors['Sensor'].isin(["sensor_0"])]
-            values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
-            
-            
-            graph = BUILD_GRAPH("plot", values_1, values_2, values_3)
-
+                error_message = "Daten konnten nicht verarbeitet werden"
+                     
 
     dropdown_list_files = GET_SENSORDATA_FILES()
 

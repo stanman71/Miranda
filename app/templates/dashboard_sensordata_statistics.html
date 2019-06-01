@@ -109,11 +109,19 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message }}
   </div>      
-{% endif %}                     
+{% endif %}      
+
+<!-- error message graph -->
+
+{% if graph != True and graph != False %}
+  <div class="alert alert-danger" role="alert">
+    {{ graph }}
+  </div>      
+{% endif %}                 
 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      Datenquellen auswählen:
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Datenquellen auswählen:</button> 
                     </div>  
                     <div class="col-sm-2">
                       <div class="dropdown">
@@ -216,11 +224,9 @@
         <div class="panel panel-default">
           <div class="panel-body">           
             <div class="well well-sm"> 
-              <div class="well well-sm">
-                <div class="img-container">
-                  <div class="img">
-                     <div><img src="{{ url_for('static', filename='images/graph.png') }}"></img></div>
-                  </div>
+              <div class="img-container">
+                <div class="img">
+                  <div><img src="{{ url_for('static', filename='images/graph.png') }}"></img></div>
                 </div>
               </div>                  
             </div> 

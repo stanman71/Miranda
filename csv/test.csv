@@ -1,0 +1,9 @@
+Timestamp,Device,Sensor,Sensor_Value
+2019-03-28 23:00:00,watering_array_v4,4,618
+2019-03-29 04:00:00,watering_array_v4,4,680
+2019-03-30 23:00:00,watering_array_v4,4,633
+2019-03-31 00:00:00,watering_array_v4,4,633
+2019-04-02 23:00:00,watering_array_v4,7,487
+2019-04-03 01:00:00,watering_array_v4,7,486
+2019-04-04 22:00:00,watering_array_v4,7,485
+2019-04-05 00:00:00,watering_array_v4,7,488

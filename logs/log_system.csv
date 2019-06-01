@@ -2532,3 +2532,140 @@ Timestamp,Type,Description
 2019-06-01 10:56:53,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
 2019-06-01 10:57:38,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
 2019-06-01 10:57:52,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-06-01 11:01:24,EVENT,|MQTT || started|
+2019-06-01 11:01:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 11:01:29,EVENT,|Speech Control || started|
+2019-06-01 11:01:47,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-01 11:01:59,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-06-01 11:05:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 12:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 12:00:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:22:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:23:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:26:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:26:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:27:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:27:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:28:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:28:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:29:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:29:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:29:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:31:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:32:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:32:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:33:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:34:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:34:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:35:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 12:35:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 12:51:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 13:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 13:46:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 14:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 14:41:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 15:36:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 15:42:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:42:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:43:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:43:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:44:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 15:51:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:51:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:52:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:52:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:53:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:53:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 15:54:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 16:02:54,ERROR,|ZigBee2MQTT || 'model'|
+2019-06-01 16:03:46,EVENT,|Database || MQTT Device - 0x00158d000302c8fe || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000302c8fe || Model - RTCGQ11LM || device_type - sensor_active || description - AQARA Human Detector Sensor || Inputs - illuminance, occupancy, battery || Commands - None|
+2019-06-01 16:13:23,EVENT,|MQTT || started|
+2019-06-01 16:13:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:13:28,EVENT,|Speech Control || started|
+2019-06-01 16:17:45,EVENT,|MQTT || started|
+2019-06-01 16:17:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:17:50,EVENT,|Speech Control || started|
+2019-06-01 16:20:08,EVENT,|MQTT || started|
+2019-06-01 16:20:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:20:13,EVENT,|Speech Control || started|
+2019-06-01 16:22:41,EVENT,|MQTT || started|
+2019-06-01 16:22:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:22:46,EVENT,|Speech Control || started|
+2019-06-01 16:23:43,EVENT,|MQTT || started|
+2019-06-01 16:23:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:23:48,EVENT,|Speech Control || started|
+2019-06-01 16:24:59,EVENT,|MQTT || started|
+2019-06-01 16:24:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:25:04,EVENT,|Speech Control || started|
+2019-06-01 16:30:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 16:33:03,EVENT,|MQTT || started|
+2019-06-01 16:33:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:33:08,EVENT,|Speech Control || started|
+2019-06-01 16:33:22,EVENT,|MQTT || started|
+2019-06-01 16:33:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:33:28,EVENT,|Speech Control || started|
+2019-06-01 16:34:11,EVENT,|MQTT || started|
+2019-06-01 16:34:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:34:16,EVENT,|Speech Control || started|
+2019-06-01 16:39:27,EVENT,|MQTT || started|
+2019-06-01 16:39:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:39:32,EVENT,|Speech Control || started|
+2019-06-01 16:45:32,EVENT,|MQTT || started|
+2019-06-01 16:45:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:45:37,EVENT,|Speech Control || started|
+2019-06-01 16:46:40,EVENT,|MQTT || started|
+2019-06-01 16:46:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:46:46,EVENT,|Speech Control || started|
+2019-06-01 16:48:34,EVENT,|MQTT || started|
+2019-06-01 16:48:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:48:39,EVENT,|Speech Control || started|
+2019-06-01 16:49:33,EVENT,|MQTT || started|
+2019-06-01 16:49:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:49:39,EVENT,|Speech Control || started|
+2019-06-01 16:50:05,EVENT,|MQTT || started|
+2019-06-01 16:50:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:50:10,EVENT,|Speech Control || started|
+2019-06-01 16:54:29,EVENT,|MQTT || started|
+2019-06-01 16:54:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:54:34,EVENT,|Speech Control || started|
+2019-06-01 16:56:07,EVENT,|MQTT || started|
+2019-06-01 16:56:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:56:12,EVENT,|Speech Control || started|
+2019-06-01 16:56:17,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:56:19,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:56:21,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:57:37,EVENT,|MQTT || started|
+2019-06-01 16:57:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:57:42,EVENT,|Speech Control || started|
+2019-06-01 16:57:47,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:57:49,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:57:53,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:58:03,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 16:58:32,EVENT,|MQTT || started|
+2019-06-01 16:58:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:58:37,EVENT,|Speech Control || started|
+2019-06-01 16:59:31,EVENT,|MQTT || started|
+2019-06-01 16:59:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 16:59:36,EVENT,|Speech Control || started|
+2019-06-01 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 17:00:06,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 17:01:04,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 17:02:40,EVENT,|Speech Control || Detection Task || atsv|
+2019-06-01 17:06:21,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-06-01 17:06:33,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || moisture - None|
+2019-06-01 17:06:40,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank -  || Control Sensor Moisture -  || moisture - normal|
+2019-06-01 17:07:00,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - None || Location - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-01 17:07:11,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - checked || Location - None || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-01 17:07:16,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - checked || Location - Stuttgart || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-01 17:07:25,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || Day - None || Hour - None || Minute - None || Sunrise - None || Sunset - checked || Location - Stuttgart || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || MQTT-Device_2 - None || Sensor_2 - None || Operator_2 - None || Value_2 - None || Home - None || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-06-01 17:08:13,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Home - checked || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-06-01 17:08:22,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warmweiss:100 || MQTT-Device_1 - 0x00158d000313fbc5 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || Repeat - checked|
+2019-06-01 17:09:28,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-01 17:09:29,ERROR,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|

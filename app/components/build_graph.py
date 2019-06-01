@@ -8,7 +8,7 @@ import base64
 from app.components.file_management import GET_PATH
 
 
-def BUILD_GRAPH(type, values_1, values_2 = "", values_3 = ""):
+def BUILD_GRAPH(values_1, values_2 = "", values_3 = "", values_4 = "", values_5 = ""):
 
 	try:
 		x1_coordinates = values_1[0]
@@ -25,34 +25,39 @@ def BUILD_GRAPH(type, values_1, values_2 = "", values_3 = ""):
 			y3_coordinates = values_3[1]
 		except:
 			x3_coordinates = None	
+	
+		try:
+			x4_coordinates = values_4[0]
+			y4_coordinates = values_4[1]
+		except:
+			x4_coordinates = None		
+	
+		try:
+			x5_coordinates = values_5[0]
+			y5_coordinates = values_5[1]
+		except:
+			x5_coordinates = None		
 			
 		img = io.BytesIO()
-		
-		if type == "plot":    
-			plt.plot(x1_coordinates, y1_coordinates)
+		  
+		plt.plot(x1_coordinates, y1_coordinates)
 
-			if x2_coordinates is not None:
-				plt.plot(x2_coordinates, y2_coordinates)
+		if x2_coordinates is not None:
+			plt.plot(x2_coordinates, y2_coordinates)
 
-			if x3_coordinates is not None:
-				plt.plot(x3_coordinates, y3_coordinates)
+		if x3_coordinates is not None:
+			plt.plot(x3_coordinates, y3_coordinates)
 
+		if x4_coordinates is not None:
+			plt.plot(x4_coordinates, y4_coordinates)
 
-
-		if type == "scatter":    
-			plt.scatter(x_coordinates, y_coordinates)
-
-			if y2_coordinates is not None:
-				plt.scatter(x_coordinates, y2_coordinates)
-				plt.fill_between(y_coordinates, y2_coordinates, color='grey', alpha='0.5')  
-
-
-
-
+		if x5_coordinates is not None:
+			plt.plot(x5_coordinates, y5_coordinates)
+				
 		plt.savefig(GET_PATH() + '/app/static/images/graph.png')
 		plt.close()
 		
 		return True   
 	
-	except:
-		return False
+	except Exception as e:
+		return ("Fehler in der Grapherstellung: " + str(e))
