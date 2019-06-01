@@ -17,18 +17,11 @@ from app.sites import index, user_login, dashboard, led, scheduler, plants, sens
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
-from app.components.mqtt_functions import MQTT_PUBLISH, MQTT_STOP_ALL_OUTPUTS
+from app.components.mqtt_functions import MQTT_PUBLISH
 
 
 # deactivate pixel_ring
 MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
-
-# turn_off all outputs
-if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
-    try:    
-        MQTT_STOP_ALL_OUTPUTS()
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
 
 
 """ ##### """

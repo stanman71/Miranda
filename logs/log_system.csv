@@ -2148,3 +2148,387 @@ Timestamp,Type,Description
 2019-05-31 17:09:49,EVENT,|Scheduler || Task - bad_off || started|
 2019-05-31 17:15:15,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
 2019-05-31 17:15:28,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-05-31 17:25:01,EVENT,|MQTT || started|
+2019-05-31 17:25:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 17:25:06,EVENT,|Speech Control || started|
+2019-05-31 17:25:17,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-05-31 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 18:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 18:04:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 18:05:29,EVENT,|Database || MQTT Device - 0x777777 || Gateway - mqtt || changed |||| Name - 0x777777 || ieeeAddr - 0x777777 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:06:34,EVENT,|Database || MQTT Device - 0x99999 || added |||| Gateway - mqtt || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensor (1 Plant) || Inputs - sensor_0, sensor_1 || Outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:06:49,EVENT,|Database || MQTT Device - 0x99999 || deleted|
+2019-05-31 18:15:28,EVENT,|Speech Recognition || Detection Task || ok|
+2019-05-31 18:25:25,EVENT,|Database || MQTT Device - 0x99999 || added |||| Gateway - mqtt || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensor (1 Plant) || Inputs - sensor_0, sensor_1 || Outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:38:31,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - device_watering_array || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:41:34,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - device_switch || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:45:42,EVENT,|MQTT || started|
+2019-05-31 18:45:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 18:45:46,EVENT,|Speech Control || started|
+2019-05-31 18:45:59,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - None|
+2019-05-31 18:46:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - PUMP_ON|
+2019-05-31 18:49:49,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - device_switch || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - ON, OFF|
+2019-05-31 18:50:04,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - ON|
+2019-05-31 18:50:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - OFF|
+2019-05-31 18:53:50,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - OFF|
+2019-05-31 18:54:00,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - ON|
+2019-05-31 18:54:12,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - OFF|
+2019-05-31 18:55:45,EVENT,|MQTT || started|
+2019-05-31 18:55:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 18:55:50,EVENT,|Speech Control || started|
+2019-05-31 18:56:41,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - device_switch || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:56:47,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - PUMP_ON|
+2019-05-31 18:57:08,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - PUMP_OFF|
+2019-05-31 18:58:54,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensor (1 Plant) || inputs - sensor_0, sensor_1 || outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:59:13,EVENT,|Database || MQTT Device - 0x99999 || deleted|
+2019-05-31 18:59:20,EVENT,|Database || MQTT Device - 0x99999 || added |||| Gateway - mqtt || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensor (1 Plant) || Inputs - sensor_0, sensor_1 || Outputs - PUMP_ON, PUMP_OFF|
+2019-05-31 18:59:40,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - PUMP_ON || Sensor - sensor_0 || Pumptime - 50|
+2019-05-31 18:59:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 18:59:54,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 18:59:56,EVENT,|Database || Sensordata Job - watersensor || changed |||| Name - watersensor || Filename - watersensor || MQTT-Device - 0x99999 || Sensor - sensor_0 || Always_Active - checked|
+2019-05-31 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 19:00:00,EVENT,|Database || MQTT Device - 0x777777 || deleted|
+2019-05-31 19:00:06,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 19:07:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:07:51,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 19:07:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:07:55,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 19:08:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:08:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:10:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 19:10:22,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-05-31 19:20:40,EVENT,|MQTT || started|
+2019-05-31 19:20:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 19:20:45,EVENT,|Speech Control || started|
+2019-05-31 19:20:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - ON|
+2019-05-31 19:21:11,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - PUMP_OFF || Sensor - sensor_0 || Pumptime - 50|
+2019-05-31 19:21:17,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - None || Sensor - sensor_0 || Pumptime - 50|
+2019-05-31 19:21:20,EVENT,|Database || Plant - hgfhf || changed |||| Name - hgfhf || MQTT-Device - 0x99999 || Pump - PUMP_ON || Sensor - sensor_0 || Pumptime - 50|
+2019-05-31 19:27:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - OFF|
+2019-05-31 19:39:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 19:39:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 19:41:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 19:42:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:42:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 19:44:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 19:49:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 20:44:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 20:50:54,EVENT,|Speech Recognition || Detection Task || starte warmweiss wohnzimmer|
+2019-05-31 20:58:54,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - MQTT Watering_Array || inputs - sensor_0, sensor_1 || commands - PUMP_ON, PUMP_OFF|
+2019-05-31 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 21:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 21:01:24,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - ON|
+2019-05-31 21:03:38,EVENT,|MQTT || started|
+2019-05-31 21:03:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-05-31 21:03:43,EVENT,|Speech Control || started|
+2019-05-31 21:04:02,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - POWER_ON, POWER_OFF|
+2019-05-31 21:04:02,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - POWER_ON, POWER_OFF|
+2019-05-31 21:04:11,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - POWER_OFF|
+2019-05-31 21:04:18,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Option Check - None || Option Check ieeeAddr - None || Options_Value_1 - None || Options_Value_2 - None || Option Command - POWER_ON|
+2019-05-31 21:19:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 21:19:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 21:21:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 21:21:27,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 21:35:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 21:35:20,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 233. MAC no ack.', '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 22:30:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 22:30:21,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-05-31 23:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-05-31 23:25:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-05-31 23:25:21,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 23:55:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:55:50,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 23:55:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:55:53,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-05-31 23:56:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:56:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:57:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:58:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-05-31 23:59:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 00:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 00:00:07,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-01 00:00:07,EVENT,|Database_Backup || saved|
+2019-06-01 00:00:07,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-06-01 00:16:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 00:16:26,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-06-01 00:30:01,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-01 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 01:11:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 02:06:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 03:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 03:01:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 03:56:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 04:51:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 05:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 05:46:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 06:41:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 07:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 07:34:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:34:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:34:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:35:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 07:36:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:36:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:37:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 07:39:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:39:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:40:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:40:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:41:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:41:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:42:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 07:57:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:57:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:58:02,ERROR,|Scheduler || Task - bad_on || '0x000b3cfffeff0aa8', 'Error: AF data request fails, status code: 233. MAC no ack.'|
+2019-06-01 07:58:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 07:59:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 08:00:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 08:02:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:02:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:03:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:03:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:05:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 08:19:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:19:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 08:20:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 08:24:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 09:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 09:15:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 09:15:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 09:16:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 09:16:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-01 09:18:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 09:34:21,EVENT,|MQTT || started|
+2019-06-01 09:34:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:34:26,EVENT,|Speech Control || started|
+2019-06-01 09:34:40,EVENT,|Database || Plant - kjh || added|
+2019-06-01 09:37:46,EVENT,|MQTT || started|
+2019-06-01 09:37:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:37:51,EVENT,|Speech Control || started|
+2019-06-01 09:40:46,EVENT,|MQTT || started|
+2019-06-01 09:40:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:40:51,EVENT,|Speech Control || started|
+2019-06-01 09:41:28,EVENT,|MQTT || started|
+2019-06-01 09:41:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:41:33,EVENT,|Speech Control || started|
+2019-06-01 09:42:06,EVENT,|MQTT || started|
+2019-06-01 09:42:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:42:11,EVENT,|Speech Control || started|
+2019-06-01 09:46:17,EVENT,|MQTT || started|
+2019-06-01 09:46:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:46:22,EVENT,|Speech Control || started|
+2019-06-01 09:55:59,EVENT,|MQTT || started|
+2019-06-01 09:55:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:56:04,EVENT,|Speech Control || started|
+2019-06-01 09:57:58,EVENT,|MQTT || started|
+2019-06-01 09:57:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:58:03,EVENT,|Speech Control || started|
+2019-06-01 09:58:08,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - |
+2019-06-01 09:58:11,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - |
+2019-06-01 09:58:13,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 09:58:16,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 09:58:18,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 09:59:44,EVENT,|MQTT || started|
+2019-06-01 09:59:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 09:59:49,EVENT,|Speech Control || started|
+2019-06-01 09:59:54,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-01 10:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-01 10:00:37,EVENT,|MQTT || started|
+2019-06-01 10:00:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:00:42,EVENT,|Speech Control || started|
+2019-06-01 10:00:44,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:01:17,EVENT,|MQTT || started|
+2019-06-01 10:01:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:01:22,EVENT,|Speech Control || started|
+2019-06-01 10:01:45,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:02:10,EVENT,|Database || Plant - ghfhgf || added|
+2019-06-01 10:06:47,EVENT,|MQTT || started|
+2019-06-01 10:06:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:06:51,EVENT,|Speech Control || started|
+2019-06-01 10:07:05,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:07:05,EVENT,|Database || Plant - ghfhgf || changed |||| Name - ghfhgf || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:08:35,EVENT,|MQTT || started|
+2019-06-01 10:08:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:08:39,EVENT,|Speech Control || started|
+2019-06-01 10:09:25,EVENT,|MQTT || started|
+2019-06-01 10:09:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:09:30,EVENT,|Speech Control || started|
+2019-06-01 10:09:34,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:09:34,EVENT,|Database || Plant - ghfhgf || changed |||| Name - ghfhgf || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:09:37,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:09:37,EVENT,|Database || Plant - ghfhgf || changed |||| Name - ghfhgf || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:09:41,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:09:41,EVENT,|Database || Plant - ghfhgf || changed |||| Name - ghfhgf || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:09:44,EVENT,|Database || Plant - ghfhgf || deleted|
+2019-06-01 10:10:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-01 10:12:22,EVENT,|MQTT || started|
+2019-06-01 10:12:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:12:27,EVENT,|Speech Control || started|
+2019-06-01 10:13:39,EVENT,|MQTT || started|
+2019-06-01 10:13:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:13:44,EVENT,|Speech Control || started|
+2019-06-01 10:13:45,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:14:40,EVENT,|MQTT || started|
+2019-06-01 10:14:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:14:45,EVENT,|Speech Control || started|
+2019-06-01 10:15:23,EVENT,|MQTT || started|
+2019-06-01 10:15:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:15:28,EVENT,|Speech Control || started|
+2019-06-01 10:16:14,EVENT,|MQTT || started|
+2019-06-01 10:16:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:16:19,EVENT,|Speech Control || started|
+2019-06-01 10:19:24,EVENT,|MQTT || started|
+2019-06-01 10:19:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:19:29,EVENT,|Speech Control || started|
+2019-06-01 10:20:04,EVENT,|MQTT || started|
+2019-06-01 10:20:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:20:09,EVENT,|Speech Control || started|
+2019-06-01 10:22:48,EVENT,|MQTT || started|
+2019-06-01 10:22:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:22:53,EVENT,|Speech Control || started|
+2019-06-01 10:23:27,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:23:33,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:23:37,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:24:12,EVENT,|MQTT || started|
+2019-06-01 10:24:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:24:17,EVENT,|Speech Control || started|
+2019-06-01 10:24:18,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:24:22,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:24:25,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:24:31,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:24:39,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:25:19,EVENT,|MQTT || started|
+2019-06-01 10:25:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:25:25,EVENT,|Speech Control || started|
+2019-06-01 10:25:27,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:25:30,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:25:35,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:25:38,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:25:51,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:27:32,EVENT,|MQTT || started|
+2019-06-01 10:27:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:27:37,EVENT,|Speech Control || started|
+2019-06-01 10:27:42,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:28:09,EVENT,|MQTT || started|
+2019-06-01 10:28:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:28:14,EVENT,|Speech Control || started|
+2019-06-01 10:28:16,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:28:23,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:28:27,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:29:12,EVENT,|MQTT || started|
+2019-06-01 10:29:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:29:17,EVENT,|Speech Control || started|
+2019-06-01 10:29:20,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:29:23,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:29:58,EVENT,|MQTT || started|
+2019-06-01 10:29:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:30:03,EVENT,|Speech Control || started|
+2019-06-01 10:30:07,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:30:09,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:30:30,EVENT,|MQTT || started|
+2019-06-01 10:30:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:30:35,EVENT,|Speech Control || started|
+2019-06-01 10:30:38,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:30:40,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:30:44,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:30:46,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:07,EVENT,|MQTT || started|
+2019-06-01 10:31:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:31:12,EVENT,|Speech Control || started|
+2019-06-01 10:31:15,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:20,EVENT,|Database || Plant - jhg || added|
+2019-06-01 10:31:23,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:23,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:31:25,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:25,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:31:27,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:27,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:31:29,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:29,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:31:39,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:39,EVENT,|Database || Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - |
+2019-06-01 10:31:40,EVENT,|Database || Plant - jhg || deleted|
+2019-06-01 10:31:43,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - viel || Control Sensor Watertank - checked|
+2019-06-01 10:31:45,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - viel || Control Sensor Watertank - checked|
+2019-06-01 10:31:48,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:31:50,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:32:34,EVENT,|MQTT || started|
+2019-06-01 10:32:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:32:39,EVENT,|Speech Control || started|
+2019-06-01 10:32:51,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:33:20,EVENT,|MQTT || started|
+2019-06-01 10:33:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:33:26,EVENT,|Speech Control || started|
+2019-06-01 10:33:29,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:33:32,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:33:34,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:33:40,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:33:43,EVENT,|Database || Plant - test || added|
+2019-06-01 10:33:48,EVENT,|Database || Plant - test || deleted|
+2019-06-01 10:33:51,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:35:09,EVENT,|MQTT || started|
+2019-06-01 10:35:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:35:14,EVENT,|Speech Control || started|
+2019-06-01 10:35:20,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:35:23,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture -  || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:35:40,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - None || Control Sensor Watertank - checked|
+2019-06-01 10:35:42,EVENT,|Database || Plant - kjh || changed |||| Name - kjh || MQTT-Device - 0x99999 || Pumptime - 120 || Control Sensor Moisture - checked || moisture - wenig || Control Sensor Watertank - checked|
+2019-06-01 10:38:57,EVENT,|MQTT || started|
+2019-06-01 10:38:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:39:02,EVENT,|Speech Control || started|
+2019-06-01 10:39:20,EVENT,|MQTT || started|
+2019-06-01 10:39:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:39:25,EVENT,|Speech Control || started|
+2019-06-01 10:39:29,EVENT,|Database || Plant - kjh || deleted|
+2019-06-01 10:39:33,EVENT,|Database || Plant - test || added|
+2019-06-01 10:39:36,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank - checked || Control Sensor Moisture -  || moisture - None|
+2019-06-01 10:39:37,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || moisture - None|
+2019-06-01 10:39:40,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || moisture - normal|
+2019-06-01 10:39:42,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank - checked || Control Sensor Moisture -  || moisture - normal|
+2019-06-01 10:39:44,EVENT,|Database || Plant - test || changed |||| Name - test || MQTT-Device - 0x99999 || Pumptime - 30 || Control Sensor Watertank -  || Control Sensor Moisture -  || moisture - None|
+2019-06-01 10:46:08,ERROR,|Snowboy || inconsistent use of tabs and spaces in indentation (process_management.py, line 387)|
+2019-06-01 10:46:58,EVENT,|MQTT || started|
+2019-06-01 10:46:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:47:03,EVENT,|Speech Control || started|
+2019-06-01 10:47:10,EVENT,|Speech Recognition || Detection Task || |
+2019-06-01 10:47:31,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-01 10:47:46,EVENT,|Speech Recognition || Detection Task || ausschalten|
+2019-06-01 10:51:00,ERROR,|Snowboy || inconsistent use of tabs and spaces in indentation (process_management.py, line 389)|
+2019-06-01 10:51:23,ERROR,|Snowboy || inconsistent use of tabs and spaces in indentation (process_management.py, line 389)|
+2019-06-01 10:53:13,EVENT,|MQTT || started|
+2019-06-01 10:53:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:53:18,EVENT,|Speech Control || started|
+2019-06-01 10:54:03,ERROR,|Snowboy || name 'answer' is not defined|
+2019-06-01 10:54:30,EVENT,|MQTT || started|
+2019-06-01 10:54:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:54:35,EVENT,|Speech Control || started|
+2019-06-01 10:54:49,EVENT,|MQTT || started|
+2019-06-01 10:54:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:54:54,EVENT,|Speech Control || started|
+2019-06-01 10:55:08,ERROR,|Speech Control || starte warmweiss im wohnzimmer|
+2019-06-01 10:56:24,EVENT,|MQTT || started|
+2019-06-01 10:56:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-01 10:56:30,EVENT,|Speech Control || started|
+2019-06-01 10:56:53,EVENT,|Speech Recognition || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-01 10:57:38,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-01 10:57:52,EVENT,|Speech Recognition || Detection Task || ausschalten|

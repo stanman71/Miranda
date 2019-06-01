@@ -1,18 +1,17 @@
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include "DHT.h"
+#include <ArduinoJson.h>
+
 String ieeeAddr = "0x88888";
 
 const char* ssid        = ""; 
 const char* password    = ""; 
 const char* mqtt_server = "";
 
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-#include "DHT.h"
-
 // mqtt connection
 WiFiClient espClient;
 PubSubClient client(espClient);
-long lastMsg = 0;
-char msg[200];
 char path[50];
 int value = 0;
 
@@ -78,53 +77,64 @@ void callback(char* topic, byte* payload, unsigned int length) {
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );    
 
-        // create msg  
-        String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," +
-                             "\"model\":\"envi_sensor\"," +
-                             "\"device_type\":\"sensor_passiv\"," +
-                             "\"description\":\"MQTT Environment Sensor\"," +   
-                             "\"inputs\":[\"temperature\",\"humidity\",\"light\"],\"outputs\":0}";      
-        char attributes[200];
-        payload_msg.toCharArray( msg, 200 );
+        // create msg as json
+        DynamicJsonDocument msg(1024);
+        
+        msg["ieeeAddr"]    = ieeeAddr;
+        msg["model"]       = "envi_sensor";
+        msg["device_type"] = "sensor_passiv";
+        msg["description"] = "MQTT Environment Sensor";
+    
+        JsonArray data_inputs = msg.createNestedArray("inputs");
+        data_inputs.add("temperature");
+        data_inputs.add("humidity");
+        data_inputs.add("light");
 
+        JsonArray data_commands = msg.createNestedArray("commands");
+        data_commands.add("");
+
+        // convert msg to char
+        char msg_Char[512];
+        serializeJson(msg, msg_Char);
+       
         Serial.print("Channel: ");
         Serial.println(path);        
         Serial.print("Publish message: ");
-        Serial.println(msg);
+        Serial.println(msg_Char);
         Serial.println();   
              
-        client.publish(path, msg);        
+        client.publish(path, msg_Char);        
     }
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
-    
-        float temperature = dht.readTemperature(); 
-        String STR_temperature = String(temperature);
-        float humidity = dht.readHumidity();
-        String STR_humidity = String(humidity);
-        int light = analogRead(LIGHTPIN);
-        String STR_light = String(light);  
 
         // create channelpath   
         String payload_path = "SmartHome/mqtt/" + ieeeAddr;
         char attributes_path[100];
-        payload_path.toCharArray( path, 100 );        
-
-        // create msg   
-        String payload_msg = "{\"temperature\":" + STR_temperature +        
-                             ",\"humidity\":" + STR_humidity + 
-                             ",\"light\":" + STR_light + "}";
-
-        char attributes_msg[200];
-        payload_msg.toCharArray( msg, 200 );
-
+        payload_path.toCharArray( path, 100 );      
+            
+        float temperature = dht.readTemperature(); 
+        float humidity    = dht.readHumidity();
+        int light         = analogRead(LIGHTPIN);
+  
+        // create msg as json
+        DynamicJsonDocument msg(1024);
+        
+        msg["temperature"] = temperature;
+        msg["humidity"]    = humidity;
+        msg["light"]       = light;
+        
+        // convert msg to char
+        char msg_Char[100];
+        serializeJson(msg, msg_Char);
+        
         Serial.print("Channel: ");
         Serial.println(path);
         Serial.print("Publish message: ");
-        Serial.println(msg);
+        Serial.println(msg_Char);
         Serial.println();
         
-        client.publish(path, msg);         
+        client.publish(path, msg_Char);         
     }    
 }
 

@@ -344,6 +344,7 @@ def scheduler_ping():
 from app.speechcontrol.snowboy import snowboydetect
 from app.speechcontrol.snowboy import snowboydecoder
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
+from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PROVIDER
 
 import sys
 import signal
@@ -361,231 +362,48 @@ def interrupt_callback():
 
 def SNOWBOY_START():
 
-   signal.signal(signal.SIGINT, signal_handler)
+	signal.signal(signal.SIGINT, signal_handler)
 
-   sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
-    
-   hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+	sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
+
+	hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+
+	# check hotword files exist
+	if hotword_file in GET_ALL_HOTWORD_FILES():
    
-   # check hotword files exist
-   if hotword_file in GET_ALL_HOTWORD_FILES():
-   
-      # voice models here:
-      models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
+		# voice models here:
+		models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
       
-      sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
+		sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
 
-      # modify sensitivity for better detection / accuracy
-      detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
+		# modify sensitivity for better detection / accuracy
+		detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
       
-      def detect_callback():
-         detector.terminate()
-         MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "on")
-         SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().timeout)
-         MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
+		def detect_callback():
+			detector.terminate()
+			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "on")
+	 
+			speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().timeout)
+	 
+			if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:	 
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + speech_recognition_answer) 
+			
+			else:	 
+				ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)	 
 
-         detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
+			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
-      WRITE_LOGFILE_SYSTEM("EVENT", "Speech Control | started") 
+			detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
-      # main loop
-      detector.start(detected_callback=detect_callback,
-                     interrupt_check=interrupt_callback,
-                     sleep_time=0.03)
+		WRITE_LOGFILE_SYSTEM("EVENT", "Speech Control | started") 
 
-      detector.terminate()
+		# main loop
+		detector.start(detected_callback=detect_callback,
+						interrupt_check=interrupt_callback,
+						sleep_time=0.03)
 
-   else:
-      WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Snowboy Hotword - " + hotword_file + " | not founded")
+		detector.terminate()
 
-
-""" ############################# """
-"""  speech recognition provider  """
-""" ############################# """
-
-
-# https://github.com/Uberi/speech_recognition/blob/master/examples/microphone_recognition.py
-
-
-import speech_recognition as sr
-
-
-def SPEECH_RECOGNITION_PROVIDER(timeout_value):
-
-    try:
-        
-        # obtain audio from the microphone
-        r = sr.Recognizer()
-        with sr.Microphone() as source:
-            print("Say something!")
-            audio = r.listen(source, timeout=timeout_value)
-
-
-        ###########################
-        ### Google Cloud Speech ###
-        ###########################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Google Cloud Speech":
-
-            """INSERT THE CONTENTS OF THE GOOGLE CLOUD SPEECH JSON CREDENTIALS FILE HERE"""
-            GOOGLE_CLOUD_SPEECH_CREDENTIALS = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
-
-            try: 
-                speech_recognition_answer = r.recognize_google_cloud(audio, credentials_json=GOOGLE_CLOUD_SPEECH_CREDENTIALS)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")  
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-                
-            except sr.UnknownValueError:
-                return ("Google Cloud Speech could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from Google Cloud Speech service; {0}".format(e))
-
-
-        #################################
-        ### Google Speech Recognition ###
-        #################################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Google Speech Recognition":
-
-            try:
-                # for testing purposes, we're just using the default API key
-                # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
-                # instead of `r.recognize_google(audio)`
-
-                speech_recognition_answer = r.recognize_google(audio)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")  
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-                
-            except sr.UnknownValueError:
-                return ("Google Speech Recognition could not understand audio")
-                
-            except sr.RequestError as e:
-                return ("Could not request results from Google Speech Recognition service; {0}".format(e))
-
-
-        ################
-        ### Houndify ###
-        ################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Houndify":
-
-            # Houndify client IDs are Base64-encoded strings
-            HOUNDIFY_CLIENT_ID = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
-            # Houndify client keys are Base64-encoded strings
-            HOUNDIFY_CLIENT_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
-
-            try:
-                speech_recognition_answer = r.recognize_houndify(audio, client_id=HOUNDIFY_CLIENT_ID, client_key=HOUNDIFY_CLIENT_KEY)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")  
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-                
-            except sr.UnknownValueError:
-                return ("Houndify could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from Houndify service; {0}".format(e))
-
-
-        ##########################
-        ### IBM Speech to Text ###
-        ##########################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "IBM Speech to Text":
-
-            # IBM Speech to Text usernames are strings of the form XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-            IBM_USERNAME = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
-            # IBM Speech to Text passwords are mixed-case alphanumeric strings
-            IBM_PASSWORD = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key   
-
-            try:
-                speech_recognition_answer = r.recognize_ibm(audio, username=IBM_USERNAME, password=IBM_PASSWORD)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")  
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-                
-            except sr.UnknownValueError:
-                return ("IBM Speech to Text could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from IBM Speech to Text service; {0}".format(e))
-
-
-        ##############################
-        ### Microsoft Azure Speech ###
-        ##############################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Microsoft Azure Speech":
-
-            # Microsoft Speech API keys 32-character lowercase hexadecimal strings
-            AZURE_SPEECH_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key  
-
-            try:
-                speech_recognition_answer = r.recognize_azure(audio, key=AZURE_SPEECH_KEY)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")  
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-
-            except sr.UnknownValueError:
-                return ("Microsoft Azure Speech could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from Microsoft Azure Speech service; {0}".format(e))
-
-
-        ########################################
-        ### Microsoft Bing Voice Recognition ###
-        ########################################
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Microsoft Bing Voice Recognition":
-
-            # Microsoft Bing Voice Recognition API keys 32-character lowercase hexadecimal strings
-            BING_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key  
-
-            try:
-                speech_recognition_answer = r.recognize_bing(audio, key=BING_KEY)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")            
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-                
-            except sr.UnknownValueError:
-                return ("Microsoft Bing Voice Recognition could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from Microsoft Bing Voice Recognition service; {0}".format(e))
-
-
-        ##############
-        ### Wit.ai ###
-        ##############
-
-        if GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider == "Wit.ai":
-
-            # Wit.ai keys are 32-character uppercase alphanumeric strings
-            WIT_AI_KEY = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
-
-            try:
-                speech_recognition_answer = r.recognize_wit(audio, key=WIT_AI_KEY)
-                speech_recognition_answer = speech_recognition_answer.lower()
-                speech_recognition_answer = speech_recognition_answer.replace("ß", "ss")
-                ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)
-                return (speech_recognition_answer)
-
-            except sr.UnknownValueError:
-                return ("Wit.ai could not understand audio")
-
-            except sr.RequestError as e:
-                return ("Could not request results from Wit.ai service; {0}".format(e))
-
-    except:
-        pass
+	else:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Snowboy Hotword - " + hotword_file + " | not founded")
 

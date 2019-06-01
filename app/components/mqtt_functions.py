@@ -62,11 +62,11 @@ def MQTT_UPDATE_DEVICES(gateway):
                inputs_temp = inputs_temp.replace("'", "")
                inputs_temp = inputs_temp.replace('"', "")
 
-               outputs_temp = str(data['outputs'])
-               outputs_temp = outputs_temp[1:]
-               outputs_temp = outputs_temp[:-1]
-               outputs_temp = outputs_temp.replace("'", "")
-               outputs_temp = outputs_temp.replace('"', "")  
+               commands_temp = str(data['commands'])
+               commands_temp = commands_temp[1:]
+               commands_temp = commands_temp[:-1]
+               commands_temp = commands_temp.replace("'", "")
+               commands_temp = commands_temp.replace('"', "")  
 
                name        = data['ieeeAddr']
                gateway     = "mqtt"
@@ -89,20 +89,20 @@ def MQTT_UPDATE_DEVICES(gateway):
                   inputs = ""
                   
                try:
-                  outputs = outputs_temp
+                  commands = commands_temp
                except:
-                  outputs = ""
+                  commands = ""
                   
                # add new device
                if not GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
-                  ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, outputs)
+                  ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, commands)
                   
                # update existing device
                else:
                   id   = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
                   name = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
                                 
-                  UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs)
+                  UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, commands)
                   SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
                   
                # update input values
@@ -162,9 +162,9 @@ def MQTT_UPDATE_DEVICES(gateway):
                            device_type = new_device[0]
                            description = new_device[1]
                            inputs      = new_device[2]
-                           outputs     = new_device[3]  
+                           commands    = new_device[3]  
 
-                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, outputs)
+                           ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, commands)
 
                         # update device informations
                         
@@ -183,18 +183,18 @@ def MQTT_UPDATE_DEVICES(gateway):
                               device_type = existing_device[0]
                               description = existing_device[1]
                               inputs      = existing_device[2]
-                              outputs     = existing_device[3]  
+                              commands    = existing_device[3]  
 
                            except Exception as e:
                               device_type = device_data.device_type
                               description = device_data.description 
                               inputs      = device_data.inputs
-                              outputs     = device_data.outputs	
+                              commands    = device_data.commands	
                              
                               error = "Error: >>> " + str(model) + " not founded >>> " + str(e)
                            
                                                                      
-                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, outputs)
+                           UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, commands)
                            SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
                            
                      if error != "":
@@ -261,38 +261,13 @@ def MQTT_SAVE_SENSORDATA(job_id):
 
    WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
    
-   
-""" ################### """
-"""     stop outputs    """
-""" ################### """
-   
-   
-def MQTT_STOP_ALL_OUTPUTS():
-   devices = GET_ALL_MQTT_DEVICES("mqtt")
-   
-   for device in devices:
-
-      if device.outputs != "" or device.outputs != None or device.outputs != "None":
-         outputs = device.outputs
-         outputs = outputs.replace(" ","")
-         outputs = outputs.split(",")
-	 
-         for output in outputs:
-            
-            channel = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
-            msg = output + ":off"
-
-            MQTT_PUBLISH(channel, msg)
-            
-            time.sleep(1)
-       
                 
 """ ################### """
 """      set device     """
 """ ################### """
    
    
-def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, option_command):
+def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, command):
 
    # create channel
    if gateway == "mqtt":
@@ -301,14 +276,22 @@ def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, option_command):
       channel = "SmartHome/" + gateway + "/" + name + "/set"
 
    # create message
-   if option_command == "ON":
-      msg = '{"state": "ON"}'
+   if command == "POWER_ON":
+      msg     = '{"state": "ON"}'
       setting = "ON"
       
-   if option_command == "OFF":
-      msg = '{"state": "OFF"}'
+   if command == "POWER_OFF":
+      msg     = '{"state": "OFF"}'
       setting = "OFF"
-
+      
+   if command == "PUMP_ON":
+      msg     = '{"state": "PUMP_ON"}'
+      setting = "PUMP_ON"
+      
+   if command == "PUMP_OFF":
+      msg     = '{"state": "PUMP_OFF"}'
+      setting = "PUMP_OFF"      
+      
    MQTT_PUBLISH(channel, msg)   
    
    time.sleep(2)

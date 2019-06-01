@@ -92,40 +92,18 @@ def CHECK_PLANTS_SETTINGS():
    plants  = GET_ALL_PLANTS()
    entries = GET_ALL_PLANTS()
 
-   # pump missing ?
-   for entry in entries:
-        if entry.pump_key == "None" or entry.pump_key == None or entry.pump_key == "":
-            list_errors.append(entry.name + " >>> keine Pumpe zugeordnet")
-
-   # pumptime missing ?
-   for entry in entries:
-        if entry.pumptime == "None" or entry.pumptime == None or entry.pumptime == "":
-            list_errors.append(entry.name + " >>> keine Pumpedauer eingestellt")
-
-   # check pumps multiple times ?
+   # check mqtt_device multiple times ?
    for plant in plants:
       for entry in entries:
 
          if entry.id != plant.id:
-            if ((entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr and entry.pump_key == plant.pump_key) and  
-                (entry.pump_key != None and entry.pump_key != "None" and entry.pump_key != "")):
-               list_errors.append(entry.name + " >>> Pumpe mehrmals zugeordnet")
+            if entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr:
+               list_errors.append(entry.name + " >>> Gerät mehrmals zugeordnet")
 
-   # sensor missing ?
+   # moisture missing ?
    for entry in entries:
-        if ((entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "") and 
-             entry.control_sensor == "checked"):
-
-            list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
-
-   # check sensors multiple times ?
-   for plant in plants:
-      for entry in entries:
-
-         if entry.id != plant.id:
-            if ((entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr and entry.sensor_key == plant.sensor_key) and  
-                (entry.sensor_key != None and entry.sensor_key != "None" and entry.sensor_key != "")):
-               list_errors.append(entry.name + " >>> Sensor mehrmals zugeordnet")
+        if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):
+            list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
 
    if list_errors == []:
       return ""

@@ -366,14 +366,14 @@ def GET_MQTT_DEVICE_INFORMATIONS(model):
         inputs      = ""
         
     try:        
-        outputs     = str(zigbee_devices[model]['outputs'])
-        outputs     = outputs.replace("[","")
-        outputs     = outputs.replace("]","")
-        outputs     = outputs.replace("'","")    
+        commands    = str(zigbee_devices[model]['commands'])
+        commands    = commands.replace("[","")
+        commands    = commands.replace("]","")
+        commands    = commands.replace("'","")    
     except:
-        outputs     = ""
+        commands    = ""
         
-    return (device_type, description, inputs, outputs)
+    return (device_type, description, inputs, commands)
 
 
 """ ########## """

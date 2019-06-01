@@ -362,8 +362,8 @@
                         {% endif %} 
                         <option value= "None" > ----------------------- </option>
                          
-                        {% if entry.outputs != "None" %}
-                          {% for each in entry.outputs.split(',') %}
+                        {% if entry.commands != "None" %}
+                          {% for each in entry.commands.split(',') %}
                             <option value= "{{ each }}" > {{ each }} </option>
                           {% endfor %}  
                         {% endif %} 

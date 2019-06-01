@@ -1,26 +1,27 @@
-String ieeeAddr = "0x777777";
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include <ArduinoJson.h>
+
+String ieeeAddr = "0x99999";
 
 const char* ssid        = ""; 
 const char* password    = ""; 
 const char* mqtt_server = "";
 
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-
 // mqtt connection
 WiFiClient espClient;
 PubSubClient client(espClient);
-long lastMsg = 0;
-char msg[300];
 char path[50];
 int value = 0;
 
 // INPUT
-int PIN_ANALOG = A0
-int PIN_DIGITAL = 5;
+int PIN_ANALOG = A0;
+int PIN_DIGITAL = 14;
 
 // OUTPUT 
-int PIN_PUMP = 4;
+int PIN_PUMP = 0;
+int PIN_LED_GREEN = 12;
+int PIN_LED_RED = 13;
 
 // split string
 String getValue(String data, char separator, int index) {
@@ -75,53 +76,71 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String payload_path = "SmartHome/mqtt/log";
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );    
-               
-        // create msg  
-        String payload_msg = "{\"ieeeAddr\":\"" + ieeeAddr + "\"," + 
-                             "\"model\":\"watering_array_v1\"," +
-                             "\"device_type\":\"watering_array\"," +
-                             "\"description\":\"Watering with Sensors (1 Plant)\"," +
-                             "\"inputs\":[\"sensor_0\",\"sensor_1\"]," +
-                             "\"outputs\":[\"pump_0\"]}";   
-                                           
-        char attributes[300];
-        payload_msg.toCharArray( msg, 300 );
+
+        // create msg as json
+        DynamicJsonDocument msg(1024);
         
+        msg["ieeeAddr"]    = ieeeAddr;
+        msg["model"]       = "watering_array_v1";
+        msg["device_type"] = "watering_array";
+        msg["description"] = "MQTT Watering_Array";
+    
+        JsonArray data_inputs = msg.createNestedArray("inputs");
+        data_inputs.add("sensor_0");
+        data_inputs.add("sensor_1");
+
+        JsonArray data_commands = msg.createNestedArray("commands");
+        data_commands.add("PUMP_ON");
+        data_commands.add("PUMP_OFF");
+
+        // convert msg to char
+        char msg_Char[512];
+        serializeJson(msg, msg_Char);
+
         Serial.print("Channel: ");
         Serial.println(path);         
         Serial.print("Publish message: ");
-        Serial.println(msg);
+        Serial.println(msg_Char);
         Serial.println();      
           
-        client.publish(path, msg);        
+        client.publish(path, msg_Char);        
     }
 
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
-
-        int sensor_0 = analogRead(PIN_ANALOG);
-        int sensor_1 = digitalRead(PIN_DIGITAL);
 
         // create path   
         String payload_path = "SmartHome/mqtt/" + ieeeAddr;
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );   
 
-        // create msg   
-        String payload_msg = "{\"sensor_0\":" + STR_sensor_0 + 
-                             ",\"sensor_1\":" + STR_sensor_1 + "}";
-        char attributes_msg[100];
-        payload_msg.toCharArray(  msg, 200 );     
+        int sensor_0 = analogRead(PIN_ANALOG);
+        int sensor_1 = digitalRead(PIN_DIGITAL);
 
+        // create msg as json
+        DynamicJsonDocument msg(1024);
+        
+        msg["sensor_0"] = sensor_0;
+        msg["sensor_1"] = sensor_1;
+
+        // convert msg to char
+        char msg_Char[100];
+        serializeJson(msg, msg_Char);
+        
         Serial.print("Channel: ");
         Serial.println(path);
         Serial.print("Publish message: ");
-        Serial.println(msg);
+        Serial.println(msg_Char);
         Serial.println();
         
-        client.publish(path, msg);         
+        client.publish(path, msg_Char);         
     }    
 
     if(check_ieeeAddr == ieeeAddr and check_command == "set"){
+
+        // create path   
+        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
+        char attributes_path[100];
+        payload_path.toCharArray( path, 100 );    
 
         char msg[length+1];
   
@@ -133,24 +152,39 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.print("msg: ");
         Serial.println(msg);
 
-        // create path   
-        String payload_path = "SmartHome/mqtt/" + ieeeAddr;
-        char attributes_path[100];
-        payload_path.toCharArray( path, 100 );          
-
-        // get command
-        String pump        = getValue(msg,':',0);      
-        String pump_state  = getValue(msg,':',1); 
+        // convert msg to json
+        DynamicJsonDocument msg_json(50);
+        deserializeJson(msg_json, msg);
         
-        if (pump_state == "on") {
+        String pump_setting = msg_json["state"];      
+
+        if (pump_setting == "PUMP_ON") {
             digitalWrite(PIN_PUMP, HIGH);
-            client.publish(path, "pump_0:on");
-            Serial.println("pump_0:on");
+
+            // create msg as json
+            DynamicJsonDocument msg(50);     
+            msg["state"] = "PUMP_ON";
+
+            // convert msg to char
+            char msg_Char[50];
+            serializeJson(msg, msg_Char);
+            
+            client.publish(path, msg_Char);
+            Serial.println("PUMP_ON");
         }
-        else {
+        if (pump_setting == "PUMP_OFF") {
             digitalWrite(PIN_PUMP, LOW); 
-            client.publish(path, "pump_0:off");
-            Serial.println("pump_0:off");
+
+            // create msg as json
+            DynamicJsonDocument msg(50);     
+            msg["state"] = "PUMP_OFF";
+
+            // convert msg to char
+            char msg_Char[50];
+            serializeJson(msg, msg_Char);
+            
+            client.publish(path, msg_Char);
+            Serial.println("PUMP_OFF");
         }   
     }     
 }
@@ -164,6 +198,7 @@ void reconnect() {
         digitalWrite(BUILTIN_LED, HIGH);
         
         if (client.connect(clientId.c_str())) {     
+          
             // create channel  
             String payload_path = "SmartHome/mqtt/" + ieeeAddr;      
             char attributes[100];
@@ -193,8 +228,9 @@ void setup() {
 
     pinMode(PIN_DIGITAL,INPUT);
     pinMode(PIN_PUMP,OUTPUT);
+    pinMode(PIN_LED_RED,OUTPUT);
+    pinMode(PIN_LED_GREEN,OUTPUT);
     pinMode(BUILTIN_LED, OUTPUT); 
-    
 }
 
 void loop() {
@@ -203,5 +239,18 @@ void loop() {
         reconnect();
     }
     
+    int sensor_1 = digitalRead(PIN_DIGITAL);
+
+    if (sensor_1 == 1) {
+      digitalWrite(PIN_LED_RED, HIGH);
+      digitalWrite(PIN_LED_GREEN, LOW);
+    }
+
+    if (sensor_1 == 0) {
+      digitalWrite(PIN_LED_RED, LOW);
+      digitalWrite(PIN_LED_GREEN, HIGH);
+    }
+    
+    delay(100);
     client.loop();
 }
