@@ -83,7 +83,7 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
             csvfile.close()
 
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))
+        print(str(e))
 
 
 def READ_LOGFILE_MQTT(gateway, channel, time):   

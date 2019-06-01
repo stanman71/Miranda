@@ -488,31 +488,31 @@ def dashboard_sensordata_statistics():
                 
                 try:
                     df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[0]])]
-                    values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                    values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[0])
                 except:
                     values_1 = ""
                     
                 try:
                     df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[1]])]
-                    values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                    values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[1])
                 except:
                     values_2 = ""
 
                 try:
                     df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[2]])]
-                    values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                    values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[2])
                 except:
                     values_3 = ""
                 
                 try:
                     df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[3]])]
-                    values_4 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                    values_4 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[3])
                 except:
                     values_4 = ""           
 
                 try:
                     df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[4]])]
-                    values_5 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'])
+                    values_5 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[4])
                 except:
                     values_5 = ""
                 

@@ -10129,3 +10129,11 @@ Timestamp,Channel,Message
 2019-06-01 17:00:05,SmartHome/mqtt/0x99999,|{"sensor_0":116,"sensor_1":1}|
 2019-06-01 17:00:05,SmartHome/mqtt/0x88888/get,
 2019-06-01 17:00:06,SmartHome/mqtt/0x88888,|{"temperature":24,"humidity":38,"light":304}|
+2019-06-01 18:00:00,SmartHome/mqtt/devices,
+2019-06-01 18:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor_passiv","description":"MQTT Environment Sensor","inputs":["temperature","humidity","light"],"commands":[""]}|
+2019-06-01 18:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_0","sensor_1"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-01 18:00:04,SmartHome/mqtt/0x99999/get,
+2019-06-01 18:00:05,SmartHome/mqtt/0x99999,|{"sensor_0":116,"sensor_1":1}|
+2019-06-01 18:00:05,SmartHome/mqtt/0x88888/get,
+2019-06-01 18:00:05,SmartHome/mqtt/0x88888,|{"temperature":24,"humidity":37,"light":288}|
+2019-06-01 18:05:11,SmartHome/mqtt/0x99999,connected

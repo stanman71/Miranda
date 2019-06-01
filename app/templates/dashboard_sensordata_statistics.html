@@ -185,25 +185,7 @@
                     <div class="form-group">    
                       <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" />                
                     </div>                    
-                  </div>  
-
-                  
-                  {{ time_min }}
-                  {{ time_max }}
-                  <br>
-                  <div class="well well-sm">Zeitraum: 
-
-                    <br>
-                    <span id="min_output"></span> - <span id="max_output"></span>
-                    <br>
-
-                    <div class="form-group">    
-                      <input id="min_input" type="range" class="slider" name="set_time_min" min="{{ time_min }}" max="{{ time_max }}" value="{{ time_min }}" />
-                      <input id="max_input" type="range" class="slider" name="set_time_max" min="{{ time_min }}" max="{{ time_max }}" value="{{ time_max }}" />
-                    </div>     
-                    
-
-                  </div>                    
+                  </div>                   
                 </div>
               </div>
               <div class="row justify-content-md-center">
