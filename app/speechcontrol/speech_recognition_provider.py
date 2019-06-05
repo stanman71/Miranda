@@ -13,6 +13,11 @@ def SPEECH_RECOGNITION_PROVIDER(timeout_value):
         
         # obtain audio from the microphone
         r = sr.Recognizer()
+        
+        # set volume level
+        r.dynamic_energy_threshold = False
+        r.energy_threshold = 400
+
         with sr.Microphone() as source:
             print("Say something!")
             audio = r.listen(source, timeout=timeout_value)

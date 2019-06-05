@@ -233,26 +233,28 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name                    = db.Column(db.String(50), unique=True)
-    gateway                 = db.Column(db.String(50)) 
-    ieeeAddr                = db.Column(db.String(50), unique=True)  
-    model                   = db.Column(db.String(50))
-    device_type             = db.Column(db.String(50))
-    description             = db.Column(db.String(200))
-    inputs                  = db.Column(db.String(200))
-    commands                = db.Column(db.String(200))
-    last_contact            = db.Column(db.String(50))
-    last_values             = db.Column(db.String(200))  
-    last_values_formated    = db.Column(db.String(200)) 
-    option_check            = db.Column(db.String(50)) 
-    option_check_ieeeAddr   = db.Column(db.String(50))   
-    option_check_inputs     = db.Column(db.String(50))     
-    option_check_value_1    = db.Column(db.String(50))
-    option_check_value_2    = db.Column(db.String(50))
-    option_command          = db.Column(db.String(50)) 
-    previous_option_command = db.Column(db.String(50)) 
-    status                  = db.Column(db.String(50))                  
+    id                              = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                            = db.Column(db.String(50), unique=True)
+    gateway                         = db.Column(db.String(50)) 
+    ieeeAddr                        = db.Column(db.String(50), unique=True)  
+    model                           = db.Column(db.String(50))
+    device_type                     = db.Column(db.String(50))
+    description                     = db.Column(db.String(200))
+    inputs                          = db.Column(db.String(200))
+    commands                        = db.Column(db.String(200))
+    last_contact                    = db.Column(db.String(50))
+    last_values                     = db.Column(db.String(200))  
+    last_values_formated            = db.Column(db.String(200)) 
+    dashboard_check_option          = db.Column(db.String(50)) 
+    dashboard_check_command         = db.Column(db.String(50))     
+    dashboard_check_sensor_ieeeAddr = db.Column(db.String(50))   
+    dashboard_check_sensor_inputs   = db.Column(db.String(50))     
+    dashboard_check_value_1         = db.Column(db.String(50))
+    dashboard_check_value_2         = db.Column(db.String(50))
+    dashboard_check_value_3         = db.Column(db.String(50)) 
+    dashboard_command               = db.Column(db.String(50))       
+    previous_dashboard_command      = db.Column(db.String(50)) 
+    status                          = db.Column(db.String(50))                  
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -1623,7 +1625,7 @@ def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     db.session.commit()   
 
 
-def UPDATE_DASHBOARD_SENSOR_OPTION_NAMES():
+def UPDATE_DASHBOARD_CHECK_SENSOR_NAMES():
 
     try:
         for device in GET_ALL_MQTT_DEVICES("device"):
@@ -1637,32 +1639,36 @@ def UPDATE_DASHBOARD_SENSOR_OPTION_NAMES():
         pass
 
 
-def SET_MQTT_DEVICE_OPTIONS(ieeeAddr, option_check, option_check_ieeeAddr, option_check_inputs,
-                            option_check_value_1, option_check_value_2, option_command):
+def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_command,
+                                    dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_inputs, dashboard_check_value_1, 
+                                    dashboard_check_value_2, dashboard_check_value_3):
               
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
              
     # values changed ?
-    if (entry.option_check != option_check or entry.option_check_ieeeAddr != option_check_ieeeAddr or
-        entry.option_check_inputs != option_check_inputs or entry.option_check_value_1 != option_check_value_1 or 
-        entry.option_check_value_2 != option_check_value_2 or entry.option_command != option_command):              
-                            
-        entry.option_check          = option_check
-        entry.option_check_ieeeAddr = option_check_ieeeAddr
-        entry.option_check_inputs   = option_check_inputs
-        entry.option_check_value_1  = option_check_value_1
-        entry.option_check_value_2  = option_check_value_2 
-        entry.option_command        = option_command     
+    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_command != dashboard_check_command or
+        entry.dashboard_check_sensor_ieeeAddr != dashboard_check_sensor_ieeeAddr or 
+        entry.dashboard_check_sensor_inputs != dashboard_check_sensor_inputs or entry.dashboard_check_value_1 != dashboard_check_value_1 or 
+        entry.dashboard_check_value_2 != dashboard_check_value_2 or entry.dashboard_check_value_3 != dashboard_check_value_3):              
+                                         
+        entry.dashboard_check_option          = dashboard_check_option
+        entry.dashboard_check_command         = dashboard_check_command          
+        entry.dashboard_check_sensor_ieeeAddr = dashboard_check_sensor_ieeeAddr
+        entry.dashboard_check_sensor_inputs   = dashboard_check_sensor_inputs
+        entry.dashboard_check_value_1         = dashboard_check_value_1
+        entry.dashboard_check_value_2         = dashboard_check_value_2 
+        entry.dashboard_check_value_3         = dashboard_check_value_3         
         
         db.session.commit()  
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
-                             " || Option Check - " + entry.option_check +
-                             " | Option Check ieeeAddr - " + option_check_ieeeAddr +
-                             " | Options_Value_1 - " + entry.option_check_value_1 +
-                             " | Options_Value_2 - " + entry.option_check_value_2 +                        
-                             " | Option Command - " + entry.option_command) 
+                             " || Dashboard Check - " + entry.dashboard_check_option +
+                             " | Dashboard Check Command - " + entry.dashboard_check_command +                          
+                             " | Dashboard Check ieeeAddr - " + entry.dashboard_check_sensor_ieeeAddr +
+                             " | Dashboard Check Value 1 - " + entry.dashboard_check_value_1 +
+                             " | Dashboard Check Value 2 - " + entry.dashboard_check_value_2 +      
+                             " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
 
                                                 
 def SET_MQTT_DEVICE_STATUS(ieeeAddr, status):
@@ -1672,19 +1678,12 @@ def SET_MQTT_DEVICE_STATUS(ieeeAddr, status):
     db.session.commit()    
  
  
-def UPDATE_MQTT_DEVICE_PREVIOUS_OPTION_COMMAND(ieeeAddr):
+def UPDATE_MQTT_DEVICE_PREVIOUS_DASHBOARD_COMMAND(ieeeAddr, dashboard_command):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    entry.previous_option_command = entry.option_command
-    db.session.commit()        
- 
- 
-def RESET_MQTT_DEVICE_OPTION_COMMAND(ieeeAddr):
-    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    entry.previous_dashboard_command = dashboard_command
+    db.session.commit()  
     
-    entry.option_command = "None"
-    db.session.commit()    
- 
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
@@ -2344,6 +2343,32 @@ def CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction):
                 db.session.commit()
                 
                 return 
+       
+       
+def UPDATE_MQTT_DEVICE_NAMES():
+    tasks = GET_ALL_SCHEDULER_TASKS()
+    
+    for task in tasks:
+        
+        entry = Scheduler_Tasks.query.filter_by(id=task.id).first()
+        
+        try:
+            entry.mqtt_device_name_1   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).name
+            entry.mqtt_device_inputs_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).inputs
+        except:
+            pass
+        try:
+            entry.mqtt_device_name_2   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).name
+            entry.mqtt_device_inputs_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).inputs
+        except:
+            pass
+        try:
+            entry.mqtt_device_name_3   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).name
+            entry.mqtt_device_inputs_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).inputs
+        except:
+            pass       
+        
+    db.session.commit()
             
 
 def DELETE_SCHEDULER_TASK(task_id):

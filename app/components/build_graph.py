@@ -43,26 +43,26 @@ def BUILD_GRAPH(values_1, values_2 = "", values_3 = "", values_4 = "", values_5 
 		except:
 			x5_coordinates = None		
 			
-		img = io.BytesIO()
-		  
-		plt.plot(x1_coordinates, y1_coordinates, label=graph_1_name)
+			
+		fig, ax = plt.subplots()
+
+		ax.plot(x1_coordinates, y1_coordinates, label=graph_1_name)
 
 		if x2_coordinates is not None:
-			plt.plot(x2_coordinates, y2_coordinates, label=graph_2_name)
+			ax.plot(x2_coordinates, y2_coordinates, label=graph_2_name)
 
 		if x3_coordinates is not None:
-			plt.plot(x3_coordinates, y3_coordinates, label=graph_3_name)
+			ax.plot(x3_coordinates, y3_coordinates, label=graph_3_name)
 
 		if x4_coordinates is not None:
-			plt.plot(x4_coordinates, y4_coordinates, label=graph_4_name)
+			ax.plot(x4_coordinates, y4_coordinates, label=graph_4_name)
 
 		if x5_coordinates is not None:
-			plt.plot(x5_coordinates, y5_coordinates, label=graph_5_name)
+			ax.plot(x5_coordinates, y5_coordinates, label=graph_5_name)
 			
-			
-		plt.xticks(rotation='vertical')
+		ax.xaxis.set_major_formatter(plt.NullFormatter())
 
-		# Put a legend below current axis	
+		# Put a legend up current axis	
 		plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.135),
 				  ncol=3, fancybox=True, shadow=True)				
 				
@@ -72,4 +72,4 @@ def BUILD_GRAPH(values_1, values_2 = "", values_3 = "", values_4 = "", values_5 
 		return True   
 	
 	except Exception as e:
-		return ("Fehler in der Grapherstellung: " + str(e))
+		return ("Fehler in Graph: " + str(e))

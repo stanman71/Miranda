@@ -241,12 +241,12 @@ void loop() {
     
     int sensor_1 = digitalRead(PIN_DIGITAL);
 
-    if (sensor_1 == 1) {
+    if (sensor_1 == 0) {
       digitalWrite(PIN_LED_RED, HIGH);
       digitalWrite(PIN_LED_GREEN, LOW);
     }
 
-    if (sensor_1 == 0) {
+    if (sensor_1 == 1) {
       digitalWrite(PIN_LED_RED, LOW);
       digitalWrite(PIN_LED_GREEN, HIGH);
     }

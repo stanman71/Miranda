@@ -44,8 +44,6 @@ def PROCESS_MANAGEMENT_THREAD():
 		try:
 			process = heapq.heappop(process_management_queue)[1:]
 			
-			print(process)
-         
 			if process[0] == "time":
 				task = GET_SCHEDULER_TASK_BY_ID(process[1])
 				SCHEDULER_TIME_PROCESS(task)
@@ -385,11 +383,13 @@ def SNOWBOY_START():
 	 
 			speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().timeout)
 	 
-			if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:	 
-				WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + speech_recognition_answer) 
+			if speech_recognition_answer != None:
 			
-			else:	 
-				ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)	 
+				if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:	 
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + speech_recognition_answer) 
+				
+				else:	 
+					ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)	 
 
 			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 

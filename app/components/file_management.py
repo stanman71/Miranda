@@ -222,7 +222,7 @@ def SAVE_DATABASE():
         list_of_files = os.listdir(PATH + '/backup/')    
         full_path     = [PATH + '/backup/{0}'.format(x) for x in list_of_files]
 
-        if len([name for name in list_of_files]) > 11:
+        if len([name for name in list_of_files]) > 10:
             oldest_file = min(full_path, key=os.path.getctime)
             os.remove(oldest_file)        
         
@@ -406,7 +406,7 @@ def CREATE_SENSORDATA_FILE(filename):
             return "" 
                 
         except Exception as e:
-            WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
+            WRITE_LOGFILE_SYSTEM("ERROR TEST_01", "File | /csv/" + filename + ".csv | " + str(e))
 
     else:
         return ""
@@ -425,7 +425,7 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
             csvfile.close()
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR TEST_02", "File | /csv/" + filename + ".csv | " + str(e))
 
 
 def READ_SENSORDATA_FILE(filename):
@@ -438,7 +438,7 @@ def READ_SENSORDATA_FILE(filename):
 
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + " | " + str(e))    
+        WRITE_LOGFILE_SYSTEM("ERROR TEST_03", "File | /csv/" + filename + " | " + str(e))    
 
 
 def DELETE_SENSORDATA_FILE(filename):

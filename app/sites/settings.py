@@ -463,7 +463,7 @@ def dashboard_settings_speechcontrol():
 
         # check snowboy
         def START_SNOWBOY():
-            from app.speechcontrol.snowboy.snowboy import SNOWBOY_START
+            from app.components.process_management import SNOWBOY_START
             SNOWBOY_START()
           
         try:

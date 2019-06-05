@@ -119,63 +119,64 @@
   </div>      
 {% endif %}                 
 
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Datenquellen auswählen:</button> 
-                    </div>  
-                    <div class="col-sm-2">
-                      <div class="dropdown">
-                        <select class="btn btn-default dropdown-toggle" name="get_file_1">
-                          {% if data_file_1 != "" %}
-                            <option value= "{{ data_file_1 }}" > {{ data_file_1 }} </option>
-                            <option value= "{{ data_file_1 }}" > -------------------- </option>                                          
-                          {% endif %}    
-                          <option value= "" > None </option>    
-                          <option value= "" > -------------------- </option>           
-                          {% for each in dropdown_list_files %}
-                            {% if each != None %}
-                            <option value="{{ each }}">{{ each }}</option>
-                            {% endif %}
-                          {% endfor %}
-                        </select>
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Datenquellen auswählen:</button> 
+                      </div>  
+                      <div class="col-sm-2">
+                        <div class="dropdown">
+                          <select class="btn btn-default dropdown-toggle" name="get_file_1">
+                            {% if data_file_1 != "" %}
+                              <option value= "{{ data_file_1 }}" > {{ data_file_1 }} </option>
+                              <option value= "{{ data_file_1 }}" > -------------------- </option>                                          
+                            {% endif %}    
+                            <option value= "" > None </option>    
+                            <option value= "" > -------------------- </option>           
+                            {% for each in dropdown_list_files %}
+                              {% if each != None %}
+                              <option value="{{ each }}">{{ each }}</option>
+                              {% endif %}
+                            {% endfor %}
+                          </select>
+                        </div> 
                       </div> 
+                      <div class="col-sm-2">
+                        <div class="dropdown">
+                          <select class="btn btn-default dropdown-toggle" name="get_file_2">
+                            {% if data_file_2 != "" %}
+                              <option value= "{{ data_file_2 }}" > {{ data_file_2 }} </option>
+                              <option value= "{{ data_file_2 }}" > -------------------- </option>                                                 
+                            {% endif %}   
+                            <option value= "" > None </option>  
+                            <option value= "" > -------------------- </option>                         
+                            {% for each in dropdown_list_files %}
+                              {% if each != None %}
+                              <option value="{{ each }}">{{ each }}</option>
+                              {% endif %}
+                            {% endfor %}
+                          </select>
+                        </div> 
+                      </div>    
+                      <div class="col-sm-2">
+                        <div class="dropdown">
+                          <select class="btn btn-default dropdown-toggle" name="get_file_3">
+                            {% if data_file_3 != "" %}
+                              <option value= "{{ data_file_3 }}" > {{ data_file_3 }} </option>
+                              <option value= "{{ data_file_3 }}" > -------------------- </option>                                          
+                            {% endif %}    
+                            <option value= "" > None </option>   
+                            <option value= "" > -------------------- </option>           
+                            {% for each in dropdown_list_files %}
+                              {% if each != None %}
+                              <option value="{{ each }}">{{ each }}</option>
+                              {% endif %}
+                            {% endfor %}
+                          </select>
+                        </div> 
+                      </div>                     
                     </div> 
-                    <div class="col-sm-2">
-                      <div class="dropdown">
-                        <select class="btn btn-default dropdown-toggle" name="get_file_2">
-                          {% if data_file_2 != "" %}
-                            <option value= "{{ data_file_2 }}" > {{ data_file_2 }} </option>
-                            <option value= "{{ data_file_2 }}" > -------------------- </option>                                                 
-                          {% endif %}   
-                          <option value= "" > None </option>  
-                          <option value= "" > -------------------- </option>                         
-                          {% for each in dropdown_list_files %}
-                            {% if each != None %}
-                            <option value="{{ each }}">{{ each }}</option>
-                            {% endif %}
-                          {% endfor %}
-                        </select>
-                      </div> 
-                    </div>    
-                    <div class="col-sm-2">
-                      <div class="dropdown">
-                        <select class="btn btn-default dropdown-toggle" name="get_file_3">
-                          {% if data_file_3 != "" %}
-                            <option value= "{{ data_file_3 }}" > {{ data_file_3 }} </option>
-                            <option value= "{{ data_file_3 }}" > -------------------- </option>                                          
-                          {% endif %}    
-                          <option value= "" > None </option>   
-                          <option value= "" > -------------------- </option>           
-                          {% for each in dropdown_list_files %}
-                            {% if each != None %}
-                            <option value="{{ each }}">{{ each }}</option>
-                            {% endif %}
-                          {% endfor %}
-                        </select>
-                      </div> 
-                    </div>                     
-                  </div>   
-                  <br>                
+                  </div>              
                   <div class="well well-sm">Geräte:   
                     <div class="form-group">  
                       <input type="text" class="form-control" name="set_devices" value="{% if devices != None %}{{ devices }}{% endif %}" />  

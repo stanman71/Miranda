@@ -1,46 +1,39 @@
 from app import app
 from app.database.database import *
+from app.components.file_management import GET_ALL_HOTWORD_FILES
 
 
 """ ################### """
 """   check dashboard   """
 """ ################### """
 
-def CHECK_DASHBOARD_CHECKS(devices):
+def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
    list_settings_errors = []  
    error_message_settings = ""
 
    for device in devices:
 
-      if device.option_check != "None":
+      if device.dashboard_check_option != "None":
 
-         if device.option_check == "IP-Address":
+         if device.dashboard_check_option == "IP-Address":
 
             # search for wrong chars
-            for element in device.option_check_value_1:
+            for element in device.dashboard_check_value_1:
                if not element.isdigit() and element != "." and element != "," and element != " ":
                   list_settings_errors.append(device.name + " >>> Ungültige IP-Adresse")
                   break
-
                
-         if device.option_check != "IP-Address": 
+         if device.dashboard_check_option != "IP-Address": 
             
-            if device.option_check_value_1 == "None" or device.option_check_value_1 == None:
+            if device.dashboard_check_value_1 == "None" or device.dashboard_check_value_1 == None:
                list_settings_errors.append(device.name + " >>> Keinen Sensor ausgewählt")
 
-            if device.option_check_value_2 == "None" or device.option_check_value_2 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) und Vergleichswert eingetragen")
-               continue
-               
-            if device.option_check_value_2[:1] != "<" and device.option_check_value_2[:1] != ">" and device.option_check_value_2[:1] != "=":
-               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")               
+            if device.dashboard_check_value_2 == "None" or device.dashboard_check_value_2 == None:
+               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")
 
-            if ((device.option_check_value_2[:1] == "<" or device.option_check_value_2[:1] == ">" or device.option_check_value_2[:1] == "=") and
-                 len(device.option_check_value_2.replace(" ","")) < 2):
+            if device.dashboard_check_value_3 == "None" or device.dashboard_check_value_3 == None:
+               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen")
                   
-               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen") 
-
-
    if list_settings_errors == []:
       error_message_settings = ""
    else:

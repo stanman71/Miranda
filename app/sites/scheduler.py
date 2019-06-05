@@ -43,13 +43,13 @@ def dashboard_scheduler():
     error_message_scheduler_tasks            = ""
     error_message_locations_import           = ""
 
+    UPDATE_MQTT_DEVICE_NAMES()
 
     for i in range (1,26):
         try:
             RESET_SCHEDULER_TASK_ERRORS(i)
         except:
             pass
-
 
     if request.method == "POST": 
 

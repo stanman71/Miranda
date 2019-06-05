@@ -191,7 +191,7 @@
                   {% for entry in data_led %}
                   <tr>
                     <td style="width:16%"> {{entry.name}} </td> 
-                    <td style="width:48%"> 
+                    <td style="width:50%"> 
                       {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
                         {{entry.led_name_1}}
                       {% endif %} 
@@ -220,7 +220,7 @@
                       , {{entry.led_name_9}}
                       {% endif %}                                         
                     </td> 
-                    <td style="width:18%"> 
+                    <td style="width:17%"> 
                       <select class="btn btn-default dropdown-toggle" name="set_group_{{ entry.id }}">
                         {% if entry.current_setting != "" %}
                           <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
@@ -242,7 +242,7 @@
                         <option value= "turn_off" > OFF </option>                   
                       </select> 
                     </td>
-                    <td style="width:18%">                     
+                    <td style="width:17%">                     
                       <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
                     </td>                 
                   </tr>
@@ -292,86 +292,126 @@
                 </thead>
                 <tbody> 
                   {% for entry in data_device %}
-                  <tr>
-                    <td style="width:16%"> {{entry.name}} </td>
-                    <td style="width:48%">      
-                      <div class="row justify-content-md-center">
-                        <div class="col-sm-5">                                        
-                          <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_option_check_{{ entry.id }}">
-                            {% if entry.option_check != "None" %}
-                              <option value = "{{ entry.option_check }}" > {{ entry.option_check }} </option>
-                            {% else %}   
-                              <option value = "None" > None </option> 
-                            {% endif %} 
-                            <option value= "None" > ------------------------- </option>  
-                            {% for each in dropdown_list_checks %}
-                              <option value = {{each}} > {{each}} </option>
-                            {% endfor %}
-                            {% for each in list_mqtt_devices %}
-                              <option value = {{ each.id }} > {{ each.name }} </option>
-                            {% endfor %}                         
-                            <option value= "None" > ------------------------- </option> 
-                            <option value= "None" > None </option>                   
-                          </select> 
-                        </div>
-  
-                      {% if entry.option_check == "IP-Address" %}         
-                        <div class="col-sm-4"> 
-                          <input type="text" class="form-control" name="set_option_check_value_1_{{ entry.id }}" value="{{ entry.option_check_value_1 }}" />
-                        </div> 
-                      {% endif %}
-                     
-                      {% if entry.option_check_ieeeAddr != "None" %} 
- 
-                        <div class="col-sm-4"> 
-                          <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_option_check_value_1_{{ entry.id }}">
-                            {% if entry.option_check_value_1 != "None" %}
-                              <option value = "{{ entry.option_check_value_1 }}" > {{ entry.option_check_value_1 }} </option>
-                            {% else %}   
-                              <option value = "None" > None </option>   
-                            {% endif %} 
-                            <option value= "None" > ------------------------- </option>
-                            
-                            {% if entry.inputs != "None" %}
-                              {% for each in entry.inputs.split(',') %}
+                    <tr>
+                      <td style="width:16%"> {{entry.name}} </td>
+                      <td style="width:50%">      
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-5">                                        
+                            <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_dashboard_check_option_{{ entry.id }}">
+                              {% if entry.dashboard_check_option != "None" %}
+                                <option value = "{{ entry.dashboard_check_option }}" > {{ entry.dashboard_check_option }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option> 
+                              {% endif %} 
+                              <option value= "None" > ------------------------- </option>  
+                              {% for each in dropdown_list_check_options %}
+                                <option value = {{each}} > {{each}} </option>
+                              {% endfor %}
+                              {% for each in list_mqtt_devices %}
+                                <option value = {{ each.id }} > {{ each.name }} </option>
+                              {% endfor %}                         
+                              <option value= "None" > ------------------------- </option> 
+                              <option value= "None" > None </option>                   
+                            </select> 
+                          </div>
+                                  
+      
+                          <div class="col-sm-5"> 
+                            <select class="btn btn-default dropdown-toggle" name="set_dashboard_check_command_{{ entry.id }}">
+                              {% if entry.dashboard_check_command != "None" %}
+                                <option value = "{{ entry.dashboard_check_command }}" > {{ entry.dashboard_check_command }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option> 
+                              {% endif %} 
+                              <option value= "None" > ------------------------- </option>  
+                              {% if entry.commands != "None" %}
+                                {% for each in entry.commands.split(',') %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}  
+                              {% endif %} 
+                                               
+                            </select>   
+                          </div>         
+                        </div>                                        
+                      </td>
+                      
+                      <td style="width:17%">   
+                        <select class="btn btn-default dropdown-toggle" name="set_dashboard_command_{{ entry.id }}">
+                          
+                          <option value= "None" > None </option> 
+                          <option value= "None" > ----------------------- </option>
+                          {% if entry.commands != "None" %}
+                            {% for each in entry.commands.split(',') %}
+                              <option value= "{{ each }}" > {{ each }} </option>
+                            {% endfor %}  
+                          {% endif %} 
+                                           
+                        </select>                           
+                      </td>
+                      <td style="width:17%"> {{entry.status}} </td>    
+                    
+                    </tr>
+                    <tr>
+                      <td></td> 
+                      <td>
+                        <div class="row justify-content-md-center">
+   
+                        {% if entry.dashboard_check_option == "IP-Address" %}         
+                          <div class="col-sm-4"> 
+                            <input type="text" class="form-control" name="set_dashboard_check_value_1_{{ entry.id }}" value="{{ entry.dashboard_check_value_1 }}" />
+                          </div> 
+                        {% endif %}
+                       
+                       
+                        {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
+   
+                          <div class="col-sm-5"> 
+                            <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_dashboard_check_value_1_{{ entry.id }}">
+                              {% if entry.dashboard_check_value_1 != "None" %}
+                                <option value = "{{ entry.dashboard_check_value_1 }}" > {{ entry.dashboard_check_value_1 }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option>   
+                              {% endif %} 
+                              <option value= "None" > -------------------------------- </option>
+                              
+                              {% if entry.inputs != "None" %}
+                                {% for each in entry.inputs.split(',') %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}      
+                              {% else %}
+                                {% for each in entry.dashboard_check_sensor_inputs.split(',') %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}     
+                              {% endif %}    
+                            </select> 
+                          </div>   
+        
+                          <div class="col-sm-4"> 
+                            <select class="btn btn-default dropdown-toggle" name="set_dashboard_check_value_2_{{ entry.id }}">
+                              {% if entry.dashboard_check_value_2 != "None" %}
+                                <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option>   
+                              {% endif %} 
+                              <option value= "None" > ------------------------- </option>
+                              {% for each in dropdown_list_operators %}
                                 <option value= "{{ each }}" > {{ each }} </option>
                               {% endfor %}      
-                            {% else %}
-                              {% for each in entry.option_check_inputs.split(',') %}
-                                <option value= "{{ each }}" > {{ each }} </option>
-                              {% endfor %}     
-                            {% endif %}    
-                
-                          </select> 
-                        </div>   
-                                
-                        <div class="col-sm-3"> 
-                          <input type="text" class="form-control" name="set_option_check_value_2_{{ entry.id }}" value="{{ entry.option_check_value_2 }}" />
-                        </div>                          
-                          
-                        {% endif %}  
-                          
-                      </div>                                        
-                    </td>
-                    <td style="width:18%">   
-                      <select class="btn btn-default dropdown-toggle" name="set_option_command_{{ entry.id }}">
-                        {% if entry.option_command != "None" %}
-                          <option value= "{{ entry.option_command }}" > {{ entry.option_command }} </option>
-                        {% else %}   
-                          <option value= "None" > None </option> 
-                        {% endif %} 
-                        <option value= "None" > ----------------------- </option>
-                         
-                        {% if entry.commands != "None" %}
-                          {% for each in entry.commands.split(',') %}
-                            <option value= "{{ each }}" > {{ each }} </option>
-                          {% endfor %}  
-                        {% endif %} 
-                                         
-                      </select>                           
-                    </td>
-                    <td style="width:18%"> {{entry.status}} </td>     
-                  </tr>
+                            </select> 
+                          </div>           
+                                  
+                          <div class="col-sm-3"> 
+                            <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
+                          </div>                          
+                            
+                          {% endif %}                  
+                      
+                        </div> 
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  
                   {% endfor %} 
                 </tbody>
               </table> 
@@ -401,8 +441,8 @@
                   <tr>
                     <td style="width:16%"> {{entry.name}} </td>
                     <td style="width:25%"> {{entry.description}} </td> 
-                    <td style="width:41%"> {{entry.last_values_formated}} </td>
-                    <td style="width:18%"> {{entry.last_contact}} </td>
+                    <td style="width:42%"> {{entry.last_values_formated}} </td>
+                    <td style="width:17%"> {{entry.last_contact}} </td>
                   </tr>
                   {% endfor %} 
                 </tbody>
