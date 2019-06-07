@@ -269,7 +269,7 @@
                 </div> 
               </div>   
 
-<section id="table"></section>
+<section id="led_task_table"></section>
 
               <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#speech_recognition_provider_settings'" class="btn btn-default" name="set_speech_recognition_provider_settings" value="Einstellungen speichern" />
             </form>   
@@ -278,17 +278,17 @@
       </div>
 
 
-<!-- speech_recognition_provider task table -->
+<!-- speech control led task table -->
 
       <div class="panel panel-default">     
         <div class="panel-body">
           <div class="well well-sm">  
 
-<!-- error message speech_recognition_provider_keywords  -->
+<!-- error message speech control led tasks  -->
 
-{% if error_message_speech_recognition_provider_keywords != "" %}
+{% if error_message_speech_control_led_tasks != "" %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_speech_recognition_provider_keywords %}
+    {% for entry in error_message_speech_control_led_tasks %}
       {{ entry }} <br>
     {% endfor %}
   </div>      
@@ -297,32 +297,137 @@
 
           <form method="POST"> 
             <table class="table">
-              <thead>                      
+              <thead>                    
                 <th scope="col">Aufgabe</th> 
+                <th scope="col">Parameter</th> 
                 <th scope="col">Schlüsselwörter</th> 
-                <th scope="col">Parameter</th>  
               </thead>
               <tbody> 
-                {% for entry in speech_recognition_provider_task_list %}
-                <tr>
-                  <td>{{ entry.task }}</td> 
-                  <td>
-                    <input type="text" class="form-control" name="set_speech_recognition_provider_keywords_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                {% for entry in speech_control_led_task_list %}
+                <tr>                  
+                  <td style="width:20%">{{ entry.task }}</td> 
+                  <td style="width:40%">{{ entry.parameters }}</td> 
+                  <td style="width:40%">
+                    <input type="text" class="form-control" name="set_speech_control_led_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
                   </td>  
-                  <td>{{ entry.parameters }}</td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
-            
-<section id="fileupload"></section>           
+                     
+<section id="device_task_table"></section>           
             
           </div>
-          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#table'" class="btn btn-default" name="change_speech_recognition_provider_tasks" value="Änderungen speichern"/> 
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#led_task_table'" class="btn btn-default" name="change_speech_control_led_tasks" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  
+      
 
+<!-- add speech control device task -->        
+
+    <div class="well well-sm">     
+
+<!-- error message add speech control device task -->
+
+{% if error_message_add_speech_control_device_task != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_speech_control_device_task }}
+  </div>      
+{% endif %}              
+
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-2">                     
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Geräte-Aufgabe:</button>
+            </div>
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_speech_control_device_task" value="" />
+            </div>  
+            <div class="col-sm-1">                     
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+            </div>            
+            <div class="col-sm-2"> 
+              <select class="btn btn-default dropdown-toggle" name="set_peech_control_device_task_mqtt_device_ieeeAddr">
+                {% for each in dropdown_list_mqtt_devices %}
+                <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
+                {% endfor %}
+              </select>                         
+            </div>  
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#device_task_table'" class="btn btn-default" name="add_speech_control_device_task" value="Aufgabe erstellen" />
+            </div>
+          </div>
+        </form>       
+      </div>    
+
+<!-- speech control device task table -->
+
+      <div class="panel panel-default">     
+        <div class="panel-body">
+          <div class="well well-sm">  
+
+<!-- error message speech control device tasks  -->
+
+{% if error_message_speech_control_device_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speech_control_device_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col"></th>                    
+                <th scope="col">Aufgabe</th> 
+                <th scope="col">Gerät</th> 
+                <th scope="col">Befehl</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col"></th> 
+              </thead>
+              <tbody> 
+                {% for entry in speech_control_device_task_list %}
+                <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/settings/speechcontrol/device_task/position/up/{{ entry.id }}#task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/settings/speechcontrol/device_task/position/down/{{ entry.id }}#task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                     
+                  <td style="width:17%">{{ entry.task }}</td> 
+                  <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
+                  <td style="width:20%">   
+                    <select class="btn btn-default dropdown-toggle" name="set_speech_control_device_task_command_{{ entry.id }}">
+                      {% if entry.command != "None" %}
+                        <option value = "{{ entry.command }}" > {{ entry.command }} </option>
+                      {% else %}   
+                        <option value = "None" > None </option> 
+                      {% endif %} 
+                      <option value= "None" > ------------------------- </option>  
+                      {% for each in entry.mqtt_device.commands.split(',') %}
+                        <option value= "{{ each }}" > {{ each }} </option>
+                      {% endfor %}    
+                    </select>                 
+                  </td> 
+                  <td style="width:37%">
+                    <input type="text" class="form-control" name="set_speech_control_device_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                  <td style="width:3%"><td><a href="/dashboard/settings/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="red" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+                     
+<section id="fileupload"></section>           
+            
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#device_task_table'" class="btn btn-default" name="change_speech_control_device_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+      
+  
 <!-- fileupload --> 
 
       <div class="panel panel-default">

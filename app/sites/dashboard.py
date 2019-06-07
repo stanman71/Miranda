@@ -230,7 +230,7 @@ def dashboard():
                         dashboard_command = dashboard_command.replace(" ","")
 
                         # setting changed ?
-                        if dashboard_command != device.previous_dashboard_command and dashboard_command != "None":
+                        if dashboard_command != device.previous_command and dashboard_command != "None":
                             
                             change_state = True
                             
@@ -282,13 +282,9 @@ def dashboard():
                                 error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                                 
                                 
-                            if change_state:              
-                                       
+                            if change_state:                              
                                 error_message_device = MQTT_SET_DEVICE_SETTING(device.name, device.gateway, device.ieeeAddr, dashboard_command)
-                        
-                                UPDATE_MQTT_DEVICE_PREVIOUS_DASHBOARD_COMMAND(device.ieeeAddr, dashboard_command)
-                                  
-                                
+                                   
                 except Exception as e:
                     print(e)
                               

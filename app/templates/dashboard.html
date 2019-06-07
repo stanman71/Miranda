@@ -315,6 +315,7 @@
                             </select> 
                           </div>
                                   
+                          {% if entry.dashboard_check_option != "None" %} 
       
                           <div class="col-sm-5"> 
                             <select class="btn btn-default dropdown-toggle" name="set_dashboard_check_command_{{ entry.id }}">
@@ -331,7 +332,10 @@
                               {% endif %} 
                                                
                             </select>   
-                          </div>         
+                          </div>       
+                          
+                          {% endif %} 
+                            
                         </div>                                        
                       </td>
                       
@@ -410,6 +414,12 @@
                       </td>
                       <td></td>
                       <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>                      
+                      <td></td>
+                      <td></td>                      
                     </tr>
                   
                   {% endfor %} 

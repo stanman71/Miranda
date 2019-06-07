@@ -4312,3 +4312,801 @@ Timestamp,Type,Description
 2019-06-05 13:45:48,EVENT,|Speech Control || started|
 2019-06-05 13:46:40,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command -  POWER_OFF || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
 2019-06-05 13:47:04,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command -  POWER_OFF || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - < || Dashboard Check Value 3 - 10|
+2019-06-05 13:49:57,EVENT,|MQTT || started|
+2019-06-05 13:49:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 13:50:02,EVENT,|Speech Control || started|
+2019-06-05 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 14:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 14:14:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 14:14:39,ERROR,|Scheduler || Task - bad_off || '0x000b3cfffef56003', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-06-05 14:21:33,EVENT,|MQTT || started|
+2019-06-05 14:21:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:21:37,EVENT,|Speech Control || started|
+2019-06-05 14:21:43,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:21:44,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:21:48,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:22:40,EVENT,|MQTT || started|
+2019-06-05 14:22:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:22:44,EVENT,|Speech Control || started|
+2019-06-05 14:22:45,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:23:48,EVENT,|MQTT || started|
+2019-06-05 14:23:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:23:52,EVENT,|Speech Control || started|
+2019-06-05 14:23:53,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:25:17,EVENT,|MQTT || started|
+2019-06-05 14:25:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:25:21,EVENT,|Speech Control || started|
+2019-06-05 14:25:22,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:28:37,EVENT,|MQTT || started|
+2019-06-05 14:28:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:28:41,EVENT,|Speech Control || started|
+2019-06-05 14:28:44,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:31:17,EVENT,|MQTT || started|
+2019-06-05 14:31:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:31:22,EVENT,|Speech Control || started|
+2019-06-05 14:31:23,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:31:45,EVENT,|MQTT || started|
+2019-06-05 14:31:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:31:50,EVENT,|Speech Control || started|
+2019-06-05 14:31:51,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-05 14:32:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 14:59:29,EVENT,|MQTT || started|
+2019-06-05 14:59:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 14:59:33,EVENT,|Speech Control || started|
+2019-06-05 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 15:02:08,EVENT,|MQTT || started|
+2019-06-05 15:02:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 15:02:13,EVENT,|Speech Control || started|
+2019-06-05 15:09:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 15:27:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 15:40:22,EVENT,|MQTT || started|
+2019-06-05 15:40:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 15:40:26,EVENT,|Speech Control || started|
+2019-06-05 15:41:39,EVENT,|MQTT || started|
+2019-06-05 15:41:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 15:41:43,EVENT,|Speech Control || started|
+2019-06-05 15:41:50,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - schlaf|
+2019-06-05 15:41:54,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - schlafen|
+2019-06-05 15:42:35,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - starte|
+2019-06-05 15:42:43,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - schlafen|
+2019-06-05 15:58:07,EVENT,|MQTT || started|
+2019-06-05 15:58:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 15:58:11,EVENT,|Speech Control || started|
+2019-06-05 15:58:24,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - starte|
+2019-06-05 15:58:30,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || Keywords changed |||| Keywords - schlafen|
+2019-06-05 15:59:46,EVENT,|MQTT || started|
+2019-06-05 15:59:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 15:59:51,EVENT,|Speech Control || started|
+2019-06-05 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 16:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 16:02:05,EVENT,|MQTT || started|
+2019-06-05 16:02:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:02:10,EVENT,|Speech Control || started|
+2019-06-05 16:04:23,EVENT,|MQTT || started|
+2019-06-05 16:04:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:04:27,EVENT,|Speech Control || started|
+2019-06-05 16:04:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 16:05:27,EVENT,|MQTT || started|
+2019-06-05 16:05:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:05:32,EVENT,|Speech Control || started|
+2019-06-05 16:08:21,EVENT,|MQTT || started|
+2019-06-05 16:08:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:08:26,EVENT,|Speech Control || started|
+2019-06-05 16:09:43,EVENT,|MQTT || started|
+2019-06-05 16:09:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:09:47,EVENT,|Speech Control || started|
+2019-06-05 16:09:52,EVENT,|Database || Speech Control additionally Task - Steckdose TV || added|
+2019-06-05 16:10:04,EVENT,|Database || Speech Control additionally Task - Steckdose Server || added|
+2019-06-05 16:15:20,EVENT,|MQTT || started|
+2019-06-05 16:15:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:15:25,EVENT,|Speech Control || started|
+2019-06-05 16:19:52,EVENT,|MQTT || started|
+2019-06-05 16:19:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:19:57,EVENT,|Speech Control || started|
+2019-06-05 16:20:57,EVENT,|MQTT || started|
+2019-06-05 16:20:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:21:01,EVENT,|Speech Control || started|
+2019-06-05 16:21:35,EVENT,|MQTT || started|
+2019-06-05 16:21:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:21:39,EVENT,|Speech Control || started|
+2019-06-05 16:22:38,EVENT,|MQTT || started|
+2019-06-05 16:22:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 16:22:43,EVENT,|Speech Control || started|
+2019-06-05 16:22:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 16:23:57,EVENT,|Database || Speech Control additionally Task - Steckdose Server || added|
+2019-06-05 16:59:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 17:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 17:17:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 17:37:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 17:37:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 17:38:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 17:38:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 17:40:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 17:49:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 18:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 18:04:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 18:04:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 18:05:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 18:12:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 18:43:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 19:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 19:07:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 19:12:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  POWER_OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-05 19:14:20,EVENT,|MQTT || started|
+2019-06-05 19:14:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 19:14:24,EVENT,|Speech Control || started|
+2019-06-05 19:15:41,EVENT,|MQTT || started|
+2019-06-05 19:15:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-05 19:15:46,EVENT,|Speech Control || started|
+2019-06-05 19:16:19,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-05 19:16:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  POWER_OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-05 19:38:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 19:53:17,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  POWER_OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-05 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 20:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 20:02:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 20:33:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 20:47:01,EVENT,|Speech Control || Detection Task || |
+2019-06-05 20:52:01,EVENT,|Speech Control || Detection Task || interviews|
+2019-06-05 20:57:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:57:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:57:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:58:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:58:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:59:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 20:59:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 21:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 21:00:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:00:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:02:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 21:02:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 21:02:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 21:03:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:03:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:03:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-05 21:04:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 21:14:13,EVENT,|Speech Control || Detection Task || stadt warmweiss im wohnzimmer auf 60%|
+2019-06-05 21:14:43,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-06-05 21:17:07,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-06-05 21:18:34,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer 60%|
+2019-06-05 21:19:12,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-05 21:24:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 21:53:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 22:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 22:19:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 22:48:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-05 23:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-05 23:14:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-05 23:29:38,EVENT,|Speech Control || Detection Task || und welchen kommentaren hat sogar noch mehr|
+2019-06-05 23:43:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 00:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 00:00:07,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-06 00:00:07,EVENT,|Database_Backup || saved|
+2019-06-06 00:00:07,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-06-06 00:09:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-06 00:38:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 01:02:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:02:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:02:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:03:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:03:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:04:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:04:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 01:05:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 01:29:23,EVENT,|MQTT || started|
+2019-06-06 01:29:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 01:29:28,EVENT,|Speech Control || started|
+2019-06-06 01:33:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 01:36:02,EVENT,|Database || MQTT Device - Deckenlampe_02 || deleted|
+2019-06-06 01:36:06,EVENT,|Database || MQTT Device - Deckenlampe_01 || deleted|
+2019-06-06 01:39:07,EVENT,|Database || MQTT Device - 0x0017880104878b88 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || Inputs - None || Commands - None|
+2019-06-06 01:40:28,EVENT,|Database || MQTT Device - 0x00178801040c9476 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || Inputs - None || Commands - None|
+2019-06-06 01:41:30,EVENT,|Database || MQTT Device - 0x0017880104878b88 || Gateway - zigbee2mqtt || Name changed |||| Name - Deckenlampe_01|
+2019-06-06 01:41:35,EVENT,|Database || MQTT Device - 0x00178801040c9476 || Gateway - zigbee2mqtt || Name changed |||| Name - Deckenlampe_02|
+2019-06-06 01:42:50,EVENT,|Database || MQTT Device - 0x00178801067147c7 || deleted|
+2019-06-06 01:43:39,EVENT,|Database || MQTT Device - 0x00178801067147c7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || Inputs - action=on-press, action=up-press, action=down-press, action=off-press || Commands - None|
+2019-06-06 01:44:27,EVENT,|Database || MQTT Device - 0x00178801067147c7 || Gateway - zigbee2mqtt || Name changed |||| Name - HUE_Switch|
+2019-06-06 01:44:34,EVENT,|Database || Controller - HUE_Switch || added|
+2019-06-06 01:47:23,EVENT,|MQTT || started|
+2019-06-06 01:47:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 01:47:28,EVENT,|Speech Control || started|
+2019-06-06 01:47:38,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-06 01:56:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 01:58:30,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-06 01:58:54,EVENT,|Speech Control || Detection Task || ausschalten|
+2019-06-06 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 02:00:06,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 02:51:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 03:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 03:46:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 04:18:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 04:41:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 05:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 05:13:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 05:36:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 06:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 06:08:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 06:31:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 07:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 07:03:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 07:26:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 07:31:57,EVENT,|Speech Control || Detection Task || starte baumwachs im wohnzimmer|
+2019-06-06 07:32:11,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-06 07:32:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:32:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:33:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:33:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:33:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:33:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:34:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:34:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:34:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:35:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:35:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:36:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:36:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:36:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:36:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:37:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:37:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:37:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:38:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:38:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:39:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:39:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 07:40:27,EVENT,|Speech Control || Detection Task || starte mediterran im wohnzimmer|
+2019-06-06 07:41:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-06-06 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 08:00:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 08:00:55,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-06 08:01:28,EVENT,|Speech Control || Detection Task || ausschalten|
+2019-06-06 08:01:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:01:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:02:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:02:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:03:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:03:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 08:05:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 08:18:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 08:55:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 09:13:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 09:50:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 10:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 10:08:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 10:28:42,EVENT,|MQTT || started|
+2019-06-06 10:28:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:28:47,EVENT,|Speech Control || started|
+2019-06-06 10:28:47,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-06-06 10:29:54,EVENT,|MQTT || started|
+2019-06-06 10:29:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:29:59,EVENT,|Speech Control || started|
+2019-06-06 10:33:21,EVENT,|MQTT || started|
+2019-06-06 10:33:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:33:26,EVENT,|Speech Control || started|
+2019-06-06 10:35:57,EVENT,|MQTT || started|
+2019-06-06 10:35:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:36:03,EVENT,|Speech Control || started|
+2019-06-06 10:36:46,EVENT,|MQTT || started|
+2019-06-06 10:36:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:36:51,EVENT,|Speech Control || started|
+2019-06-06 10:37:15,EVENT,|Database || Speech Control Task - Steckdose Server || added|
+2019-06-06 10:39:27,EVENT,|MQTT || started|
+2019-06-06 10:39:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:39:32,EVENT,|Speech Control || started|
+2019-06-06 10:39:36,EVENT,|Database || Speech Control Task - Steckdose Server || added|
+2019-06-06 10:40:37,EVENT,|MQTT || started|
+2019-06-06 10:40:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:40:42,EVENT,|Speech Control || started|
+2019-06-06 10:40:45,EVENT,|Database || Speech Control Task - Steckdose Server || added|
+2019-06-06 10:42:06,EVENT,|MQTT || started|
+2019-06-06 10:42:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:42:11,EVENT,|Speech Control || started|
+2019-06-06 10:42:13,EVENT,|Database || Speech Control Task - Steckdose Server || added|
+2019-06-06 10:45:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 10:51:02,EVENT,|MQTT || started|
+2019-06-06 10:51:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:51:07,EVENT,|Speech Control || started|
+2019-06-06 10:52:55,EVENT,|MQTT || started|
+2019-06-06 10:52:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:53:01,EVENT,|Speech Control || started|
+2019-06-06 10:54:57,EVENT,|MQTT || started|
+2019-06-06 10:54:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:55:02,EVENT,|Speech Control || started|
+2019-06-06 10:55:18,EVENT,|Database || Speech Control Task - LED Szene starten (Optional Helligkeit) || changed |||| Command - None || Keywords - starte || Parameters - [Gruppenname] [Szenenname] [Helligkeit in Prozent]|
+2019-06-06 10:55:18,EVENT,|Database || Speech Control Task - LED Programm starten || changed |||| Command - None || Keywords - Programm || Parameters - [Gruppenname] [Programmname]|
+2019-06-06 10:55:18,EVENT,|Database || Speech Control Task - LED Helligkeit ändern || changed |||| Command - None || Keywords - Helligkeit, Prozent, % || Parameters - [Gruppenname] [Helligkeit in Prozent]|
+2019-06-06 10:55:18,EVENT,|Database || Speech Control Task - LED Gruppe ausschalten || changed |||| Command - None || Keywords - ausschalten, ausmachen || Parameters - [Gruppenname] |
+2019-06-06 10:55:18,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || changed |||| Command - None || Keywords - schlafen || Parameters - |
+2019-06-06 10:57:58,EVENT,|MQTT || started|
+2019-06-06 10:57:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:58:03,EVENT,|Speech Control || started|
+2019-06-06 10:58:08,EVENT,|Database || Speech Control Task - Steckdose Server || added|
+2019-06-06 10:58:12,EVENT,|Database || Speech Control Task - LED Szene starten (Optional Helligkeit) || changed |||| Command - None || Keywords - starte || Parameters - [Gruppenname] [Szenenname] [Helligkeit in Prozent]|
+2019-06-06 10:58:12,EVENT,|Database || Speech Control Task - LED Programm starten || changed |||| Command - None || Keywords - Programm || Parameters - [Gruppenname] [Programmname]|
+2019-06-06 10:58:12,EVENT,|Database || Speech Control Task - LED Helligkeit ändern || changed |||| Command - None || Keywords - Helligkeit, Prozent, % || Parameters - [Gruppenname] [Helligkeit in Prozent]|
+2019-06-06 10:58:12,EVENT,|Database || Speech Control Task - LED Gruppe ausschalten || changed |||| Command - None || Keywords - ausschalten, ausmachen || Parameters - [Gruppenname] |
+2019-06-06 10:58:12,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || changed |||| Command - None || Keywords - schlafen || Parameters - |
+2019-06-06 10:58:57,EVENT,|MQTT || started|
+2019-06-06 10:58:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 10:59:02,EVENT,|Speech Control || started|
+2019-06-06 10:59:04,EVENT,|Database || Speech Control Task - Alle LEDs ausschalten || changed |||| Command - None || Keywords - schlafen || Parameters - None|
+2019-06-06 11:00:07,EVENT,|MQTT || started|
+2019-06-06 11:00:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:00:12,EVENT,|Speech Control || started|
+2019-06-06 11:03:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 11:07:47,EVENT,|MQTT || started|
+2019-06-06 11:07:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:07:53,EVENT,|Speech Control || started|
+2019-06-06 11:09:50,EVENT,|MQTT || started|
+2019-06-06 11:09:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:09:55,EVENT,|Speech Control || started|
+2019-06-06 11:10:54,EVENT,|MQTT || started|
+2019-06-06 11:10:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:10:59,EVENT,|Speech Control || started|
+2019-06-06 11:12:46,EVENT,|MQTT || started|
+2019-06-06 11:12:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:12:51,EVENT,|Speech Control || started|
+2019-06-06 11:16:26,EVENT,|MQTT || started|
+2019-06-06 11:16:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:16:31,EVENT,|Speech Control || started|
+2019-06-06 11:18:08,EVENT,|MQTT || started|
+2019-06-06 11:18:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:18:13,EVENT,|Speech Control || started|
+2019-06-06 11:20:49,EVENT,|MQTT || started|
+2019-06-06 11:20:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:20:54,EVENT,|Speech Control || started|
+2019-06-06 11:23:42,EVENT,|MQTT || started|
+2019-06-06 11:23:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:23:47,EVENT,|Speech Control || started|
+2019-06-06 11:25:59,EVENT,|MQTT || started|
+2019-06-06 11:25:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:26:04,EVENT,|Speech Control || started|
+2019-06-06 11:29:07,EVENT,|MQTT || started|
+2019-06-06 11:29:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:29:12,EVENT,|Speech Control || started|
+2019-06-06 11:37:49,EVENT,|MQTT || started|
+2019-06-06 11:37:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 11:37:54,EVENT,|Speech Control || started|
+2019-06-06 11:40:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 11:58:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 12:11:01,EVENT,|MQTT || started|
+2019-06-06 12:11:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:11:06,EVENT,|Speech Control || started|
+2019-06-06 12:14:26,EVENT,|MQTT || started|
+2019-06-06 12:14:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:14:31,EVENT,|Speech Control || started|
+2019-06-06 12:17:52,EVENT,|MQTT || started|
+2019-06-06 12:17:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:17:58,EVENT,|Speech Control || started|
+2019-06-06 12:20:08,EVENT,|MQTT || started|
+2019-06-06 12:20:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:20:14,EVENT,|Speech Control || started|
+2019-06-06 12:22:03,EVENT,|Database || Speech Control Device Task - Steckdose Server || added|
+2019-06-06 12:24:04,EVENT,|MQTT || started|
+2019-06-06 12:24:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:24:09,EVENT,|Speech Control || started|
+2019-06-06 12:35:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 12:45:28,EVENT,|MQTT || started|
+2019-06-06 12:45:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:45:33,EVENT,|Speech Control || started|
+2019-06-06 12:50:30,EVENT,|MQTT || started|
+2019-06-06 12:50:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:50:35,EVENT,|Speech Control || started|
+2019-06-06 12:51:42,EVENT,|MQTT || started|
+2019-06-06 12:51:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:51:48,EVENT,|Speech Control || started|
+2019-06-06 12:52:37,EVENT,|MQTT || started|
+2019-06-06 12:52:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:52:43,EVENT,|Speech Control || started|
+2019-06-06 12:53:16,EVENT,|MQTT || started|
+2019-06-06 12:53:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:53:21,EVENT,|Speech Control || started|
+2019-06-06 12:53:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 12:54:48,EVENT,|MQTT || started|
+2019-06-06 12:54:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:54:53,EVENT,|Speech Control || started|
+2019-06-06 12:59:17,EVENT,|MQTT || started|
+2019-06-06 12:59:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 12:59:22,EVENT,|Speech Control || started|
+2019-06-06 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 13:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 13:03:29,EVENT,|MQTT || started|
+2019-06-06 13:03:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:03:35,EVENT,|Speech Control || started|
+2019-06-06 13:04:25,EVENT,|MQTT || started|
+2019-06-06 13:04:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:04:31,EVENT,|Speech Control || started|
+2019-06-06 13:06:24,EVENT,|MQTT || started|
+2019-06-06 13:06:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:06:29,EVENT,|Speech Control || started|
+2019-06-06 13:09:21,EVENT,|MQTT || started|
+2019-06-06 13:09:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:09:26,EVENT,|Speech Control || started|
+2019-06-06 13:09:31,EVENT,|Database || Speech Control Device Task - iuz || added|
+2019-06-06 13:09:34,EVENT,|Database || Speech Control Task - iuz || changed |||| Command - POWER_ON || Keywords - None || Parameters - None|
+2019-06-06 13:09:37,EVENT,|Database || Speech Control Task - iuz || changed |||| Command - POWER_ON || Keywords - iuziuz || Parameters - None|
+2019-06-06 13:09:39,EVENT,|Database || Speech Control Task - iuz || changed |||| Command - POWER_ON || Keywords - None || Parameters - None|
+2019-06-06 13:09:42,EVENT,|Database || Speech Control Device Task - iuz || deleted|
+2019-06-06 13:09:46,EVENT,|Database || Speech Control Device Task - kjhkh || added|
+2019-06-06 13:10:03,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - None || Keywords - None || Parameters - None|
+2019-06-06 13:14:47,EVENT,|MQTT || started|
+2019-06-06 13:14:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:14:52,EVENT,|Speech Control || started|
+2019-06-06 13:15:21,EVENT,|MQTT || started|
+2019-06-06 13:15:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:15:26,EVENT,|Speech Control || started|
+2019-06-06 13:16:33,EVENT,|MQTT || started|
+2019-06-06 13:16:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:16:38,EVENT,|Speech Control || started|
+2019-06-06 13:16:39,EVENT,|Database || Speech Control LED Task - kjhkh || changed |||| Keywords - starte|
+2019-06-06 13:19:05,EVENT,|MQTT || started|
+2019-06-06 13:19:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:19:10,EVENT,|Speech Control || started|
+2019-06-06 13:19:26,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - fhgfhgf|
+2019-06-06 13:19:31,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - starte|
+2019-06-06 13:19:37,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-06 13:20:39,EVENT,|MQTT || started|
+2019-06-06 13:20:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:20:44,EVENT,|Speech Control || started|
+2019-06-06 13:22:12,EVENT,|MQTT || started|
+2019-06-06 13:22:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:22:17,EVENT,|Speech Control || started|
+2019-06-06 13:22:49,EVENT,|MQTT || started|
+2019-06-06 13:22:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:22:54,EVENT,|Speech Control || started|
+2019-06-06 13:23:01,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - starte|
+2019-06-06 13:23:04,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - starte|
+2019-06-06 13:23:35,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - None|
+2019-06-06 13:23:42,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-06 13:30:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 13:45:53,EVENT,|MQTT || started|
+2019-06-06 13:45:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:45:58,EVENT,|Speech Control || started|
+2019-06-06 13:46:06,EVENT,|Database || Speech Control Device Task - kh || added|
+2019-06-06 13:46:17,EVENT,|Database || Speech Control Device Task - jhg || added|
+2019-06-06 13:48:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 13:48:43,EVENT,|MQTT || started|
+2019-06-06 13:48:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:48:48,EVENT,|Speech Control || started|
+2019-06-06 13:48:48,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-06-06 13:49:33,EVENT,|MQTT || started|
+2019-06-06 13:49:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:49:38,EVENT,|Speech Control || started|
+2019-06-06 13:49:56,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - starte|
+2019-06-06 13:49:56,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - None || Keywords - None|
+2019-06-06 13:50:00,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - None || Keywords - starte|
+2019-06-06 13:55:10,EVENT,|MQTT || started|
+2019-06-06 13:55:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:55:15,EVENT,|Speech Control || started|
+2019-06-06 13:55:53,EVENT,|MQTT || started|
+2019-06-06 13:55:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 13:55:58,EVENT,|Speech Control || started|
+2019-06-06 14:02:44,EVENT,|MQTT || started|
+2019-06-06 14:02:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:02:49,EVENT,|Speech Control || started|
+2019-06-06 14:02:57,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - None|
+2019-06-06 14:02:57,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - None || Keywords - None|
+2019-06-06 14:03:58,EVENT,|MQTT || started|
+2019-06-06 14:03:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:04:03,EVENT,|Speech Control || started|
+2019-06-06 14:04:11,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - starte|
+2019-06-06 14:04:14,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - None|
+2019-06-06 14:07:21,EVENT,|MQTT || started|
+2019-06-06 14:07:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:07:27,EVENT,|Speech Control || started|
+2019-06-06 14:08:42,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - starte|
+2019-06-06 14:08:45,EVENT,|Database || Speech Control Task - kh || changed |||| Command - None || Keywords - None|
+2019-06-06 14:09:15,EVENT,|MQTT || started|
+2019-06-06 14:09:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:09:20,EVENT,|Speech Control || started|
+2019-06-06 14:10:20,EVENT,|MQTT || started|
+2019-06-06 14:10:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:10:26,EVENT,|Speech Control || started|
+2019-06-06 14:11:37,EVENT,|MQTT || started|
+2019-06-06 14:11:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:11:42,EVENT,|Speech Control || started|
+2019-06-06 14:11:47,EVENT,|Database || Speech Control Task - kh || changed |||| Command -  POWER_OFF || Keywords - None|
+2019-06-06 14:11:50,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - POWER_ON || Keywords - None|
+2019-06-06 14:15:39,EVENT,|MQTT || started|
+2019-06-06 14:15:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:15:44,EVENT,|Speech Control || started|
+2019-06-06 14:17:04,EVENT,|MQTT || started|
+2019-06-06 14:17:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:17:09,EVENT,|Speech Control || started|
+2019-06-06 14:17:41,EVENT,|Database || Speech Control Task - jhg || changed |||| Command -  POWER_OFF || Keywords - None|
+2019-06-06 14:18:19,EVENT,|MQTT || started|
+2019-06-06 14:18:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:18:25,EVENT,|Speech Control || started|
+2019-06-06 14:18:30,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - POWER_ON || Keywords - None|
+2019-06-06 14:18:32,EVENT,|Database || Speech Control Task - jhg || changed |||| Command -  POWER_OFF || Keywords - None|
+2019-06-06 14:18:37,EVENT,|Database || Speech Control Task - kh || changed |||| Command -  POWER_OFF || Keywords - starte|
+2019-06-06 14:20:23,EVENT,|MQTT || started|
+2019-06-06 14:20:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 14:20:28,EVENT,|Speech Control || started|
+2019-06-06 14:20:36,EVENT,|Database || Speech Control Task - kh || changed |||| Command -  POWER_OFF || Keywords - None|
+2019-06-06 14:20:40,EVENT,|Database || Speech Control Task - jhg || changed |||| Command - POWER_ON || Keywords - None|
+2019-06-06 14:20:55,EVENT,|Database || Speech Control Device Task - trerte || added|
+2019-06-06 14:20:58,EVENT,|Database || Speech Control Device Task - jhg || deleted|
+2019-06-06 14:21:10,EVENT,|Database || Speech Control Task - kh || changed |||| Command -  POWER_OFF || Keywords - jhgjg|
+2019-06-06 14:21:10,EVENT,|Database || Speech Control Task - trerte || changed |||| Command - POWER_ON || Keywords - jgh|
+2019-06-06 14:21:15,EVENT,|Database || Speech Control Device Task - trerte || deleted|
+2019-06-06 14:21:44,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - None|
+2019-06-06 14:21:53,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-06 14:25:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 14:43:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 15:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 15:03:58,EVENT,|Database || Speech Control Device Task - kh || deleted|
+2019-06-06 15:04:11,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - anschalten|
+2019-06-06 15:04:47,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - Fernseher anschalten|
+2019-06-06 15:20:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 15:38:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 16:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 16:15:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 16:33:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 17:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 17:10:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 17:28:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 18:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 18:05:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 18:23:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 18:27:24,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-06 18:30:20,EVENT,|Speech Control || Detection Task || fernseher ausschalten|
+2019-06-06 18:30:31,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - Fernseher|
+2019-06-06 18:30:39,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:32:25,EVENT,|MQTT || started|
+2019-06-06 18:32:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 18:32:30,EVENT,|Speech Control || started|
+2019-06-06 18:32:38,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:33:52,EVENT,|MQTT || started|
+2019-06-06 18:33:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 18:33:57,EVENT,|Speech Control || started|
+2019-06-06 18:34:23,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:36:03,EVENT,|MQTT || started|
+2019-06-06 18:36:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 18:36:09,EVENT,|Speech Control || started|
+2019-06-06 18:36:17,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:36:17,ERROR,|Speech Control Device Task || fernseher || name 'MQTT_SET_DEVICE_SETTING' is not defined|
+2019-06-06 18:39:58,EVENT,|MQTT || started|
+2019-06-06 18:39:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 18:40:03,EVENT,|Speech Control || started|
+2019-06-06 18:40:13,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:40:13,ERROR,|Speech Control Device Task || fernseher || local variable 'msg' referenced before assignment|
+2019-06-06 18:40:29,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - starte|
+2019-06-06 18:40:34,EVENT,|Database || Speech Control LED Task - Alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-06 18:40:37,EVENT,|Database || Speech Control Device Task - hgf || added|
+2019-06-06 18:40:42,EVENT,|Database || Speech Control Task - hgf || changed |||| Command - None || Keywords - Fernseher|
+2019-06-06 18:40:46,EVENT,|Database || Speech Control Task - hgf || changed |||| Command -  POWER_OFF || Keywords - Fernseher|
+2019-06-06 18:40:48,EVENT,|Database || Speech Control Device Task - hgf || deleted|
+2019-06-06 18:41:40,EVENT,|MQTT || started|
+2019-06-06 18:41:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-06 18:41:45,EVENT,|Speech Control || started|
+2019-06-06 18:41:51,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:42:06,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-06 18:53:09,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-06 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 19:00:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 19:18:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 19:55:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 20:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 20:13:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 20:50:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 21:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 21:08:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 21:45:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 22:03:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 22:40:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 22:58:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-06 23:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-06 23:00:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:00:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:01:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:01:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:02:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:02:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:03:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:03:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:04:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:04:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:04:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:05:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:05:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:05:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:05:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:06:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:06:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:06:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:07:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:07:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:08:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:08:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:09:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:09:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:09:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:09:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:10:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:10:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:11:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:11:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:11:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:11:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:11:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:12:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-06 23:13:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 23:37:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-06 23:52:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 00:00:06,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-07 00:00:07,EVENT,|Database_Backup || saved|
+2019-06-07 00:00:07,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-06-07 00:25:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:25:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:26:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:26:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:27:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:27:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:28:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 00:28:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-07 00:34:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 00:43:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 01:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 01:29:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 01:38:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 02:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 02:24:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 02:33:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 03:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 03:19:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 03:28:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 04:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 04:14:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 04:23:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 05:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 05:09:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 05:18:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 06:04:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 06:13:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 06:59:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 07:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 07:01:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:01:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:02:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:02:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:03:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:03:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:03:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:04:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:04:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:05:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:05:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:05:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:05:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:06:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:06:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:06:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 07:07:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 07:42:40,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-07 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-06-07 07:54:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 07:57:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 08:01:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:01:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:02:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:02:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:03:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:03:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:04:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:04:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:06:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:06:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 08:07:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 08:49:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 08:51:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 09:44:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 09:46:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 10:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 10:39:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 10:41:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 11:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 11:35:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 11:36:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 12:30:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 12:31:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 13:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 13:25:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 13:27:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 14:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 14:22:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 15:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 15:15:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 15:16:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 16:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 16:10:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 16:12:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 17:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 17:05:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 17:07:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 18:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 18:00:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 18:02:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 18:13:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:13:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:14:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:14:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:15:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:15:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:16:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:16:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 18:18:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 18:44:00,EVENT,|Speech Control || Detection Task || |
+2019-06-07 18:55:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 18:55:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 19:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 19:38:42,EVENT,|MQTT || started|
+2019-06-07 19:38:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-07 19:38:49,EVENT,|Speech Control || started|
+2019-06-07 19:39:21,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Fernseher|
+2019-06-07 19:39:28,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-07 19:41:01,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - Fernseher|
+2019-06-07 19:41:12,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - starte|
+2019-06-07 19:41:25,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer auf 60%|
+2019-06-07 19:41:38,ERROR,|Speech Control Device Task || starte warmweiss im wohnzimmer auf 60% || Fehler >>> Einstellung konnte nicht bestätigt werden >>> Steckdose TV|
+2019-06-07 19:41:46,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Fernseher|

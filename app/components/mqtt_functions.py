@@ -303,7 +303,7 @@ def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, command):
       check_setting = MQTT_CHECK_SETTING(gateway, name, "state", setting)
    
    if check_setting:
-      SET_MQTT_DEVICE_STATUS(ieeeAddr, setting)
+      SET_MQTT_DEVICE_PREVIOUS_COMMAND_AND_STATUS(ieeeAddr, command, setting)
       return ""
       
    else:

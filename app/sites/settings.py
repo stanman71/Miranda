@@ -433,6 +433,9 @@ def dashboard_settings_speechcontrol():
     error_message_hotword = ""
     error_message_speech_recognition_provider_keywords = ""
     error_message_speech_recognition_provider_settings = ""
+    error_message_speech_control_led_tasks = ""    
+    error_message_add_speech_control_device_task = ""
+    error_message_speech_control_device_tasks = ""
     sensitivity = ""
     timeout = ""
     microphone = ""
@@ -454,6 +457,7 @@ def dashboard_settings_speechcontrol():
     else:
         check_value_speechcontrol[0] = ""
         check_value_speechcontrol[1] = "checked = 'on'"
+
 
     ##################
     # snowboy settings
@@ -502,17 +506,6 @@ def dashboard_settings_speechcontrol():
             # speech recognition provider
             #############################
 
-            # change speech_recognition_provider tasks
-            if request.form.get("change_speech_recognition_provider_tasks") != None: 
-                for i in range (1,26):
-                    
-                    if request.form.get("set_speech_recognition_provider_keywords_" + str(i)) != None:  
-                        
-                        keywords = request.form.get("set_speech_recognition_provider_keywords_" + str(i)) 
-              
-                        SET_SPEECH_RECOGNITION_PROVIDER_TASK_KEYWORDS(i, keywords)   
-                        
-
             # change speech_recognition_provider settings
             if request.form.get("set_speech_recognition_provider_settings") != None: 
                 
@@ -522,8 +515,65 @@ def dashboard_settings_speechcontrol():
                 speech_recognition_provider_key      = request.form.get("set_speech_recognition_provider_key")
 
                 SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, 
-                                                  speech_recognition_provider_username, speech_recognition_provider_key)
+                                                  speech_recognition_provider_username, speech_recognition_provider_key)    
 
+
+            ##########################
+            # speech control led tasks
+            ##########################
+            
+            # change speech control led tasks
+            if request.form.get("change_speech_control_led_tasks") != None: 
+                for i in range (1,26):
+                    
+                    if request.form.get("set_speech_control_led_task_keyword_" + str(i)) != None:  
+
+                        if request.form.get("set_speech_control_led_task_keyword_" + str(i)) != "":  
+                            keywords = request.form.get("set_speech_control_led_task_keyword_" + str(i))    
+                        else:
+                            keywords = "None"                
+                                     
+                        UPDATE_SPEECH_CONTROL_LED_TASK(i, keywords)               
+
+
+            #############################
+            # speech control device tasks
+            #############################
+
+            # add device task
+            if request.form.get("add_speech_control_device_task") != None:
+
+                # check name
+                if (request.form.get("set_speech_control_device_task") != "" and 
+                    GET_SPEECH_CONTROL_DEVICE_TASK_BY_TASK(request.form.get("set_speech_control_device_task")) == None):
+                    task = request.form.get("set_speech_control_device_task") 
+                            
+                    mqtt_device_ieeeAddr = request.form.get("set_peech_control_device_task_mqtt_device_ieeeAddr") 
+                    
+                    error_message_add_speech_control_device_task = ADD_SPEECH_CONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr)                          
+                    
+                else:
+                    error_message_add_speech_control_device_task = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"             
+
+
+            # change speech control device tasks
+            if request.form.get("change_speech_control_device_tasks") != None: 
+                for i in range (1,26):
+                    
+                    if request.form.get("set_speech_control_device_task_command_" + str(i)) != None:  
+                    
+                        if request.form.get("set_speech_control_device_task_command_" + str(i)) != None:  
+                            command = request.form.get("set_speech_control_device_task_command_" + str(i))
+                        else:
+                            command = "None"
+                  
+                        if request.form.get("set_speech_control_device_task_keyword_" + str(i)) != "":  
+                            keywords = request.form.get("set_speech_control_device_task_keyword_" + str(i))               
+                        else:
+                            keywords = "None"                        
+                                     
+                        UPDATE_SPEECH_CONTROL_DEVICE_TASK(i, command, keywords)   
+                       
 
             #########################################
             # snowboy and speech recognition provider
@@ -553,13 +603,18 @@ def dashboard_settings_speechcontrol():
     speech_recognition_provider                        = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider
     speech_recognition_provider_username               = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_username
     speech_recognition_provider_key                    = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_key
-    error_message_speech_recognition_provider_keywords = CHECK_SPEECH_RECOGNITION_PROVIDER_KEYWORDS(GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS())
+    
+    error_message_speech_control_led_tasks    = CHECK_SPEECH_CONTROL_LED_TASKS(GET_ALL_SPEECH_CONTROL_LED_TASKS())
+    error_message_speech_control_device_tasks = CHECK_SPEECH_CONTROL_DEVICE_TASKS(GET_ALL_SPEECH_CONTROL_DEVICE_TASKS())
 
-    speech_recognition_provider_task_list = GET_ALL_SPEECH_RECOGNITION_PROVIDER_TASKS()
+    speech_control_led_task_list    = GET_ALL_SPEECH_CONTROL_LED_TASKS()
+    speech_control_device_task_list = GET_ALL_SPEECH_CONTROL_DEVICE_TASKS()
 
     dropdown_list_speech_recognition_provider = ["Google Cloud Speech", "Google Speech Recognition",
                                                  "Houndify", "IBM Speech", "Microsoft Azure Speech", 
                                                  "Microsoft Bing Voice Recognition", "Wit.ai"]
+                                                 
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("device")
     
     error_message_speech_recognition_provider_tasks = ""
     error_message_speech_recognition_provider_settings = CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS())
@@ -568,9 +623,11 @@ def dashboard_settings_speechcontrol():
                             error_message_snowboy=error_message_snowboy,   
                             error_message_change_snowboy_settings=error_message_change_snowboy_settings,                                   
                             error_message_fileupload=error_message_fileupload,
-                            error_message_hotword=error_message_hotword,
-                            error_message_speech_recognition_provider_keywords=error_message_speech_recognition_provider_keywords,                             
+                            error_message_hotword=error_message_hotword,                       
                             error_message_speech_recognition_provider_settings=error_message_speech_recognition_provider_settings,
+                            error_message_speech_control_led_tasks=error_message_speech_control_led_tasks,                              
+                            error_message_add_speech_control_device_task=error_message_add_speech_control_device_task,
+                            error_message_speech_control_device_tasks=error_message_speech_control_device_tasks,                    
                             
                             speechcontrol_setting=speechcontrol_setting,
                             check_value_speechcontrol=check_value_speechcontrol,
@@ -582,12 +639,32 @@ def dashboard_settings_speechcontrol():
                             hotword_file_list=hotword_file_list,
                             snowboy_hotword=snowboy_hotword,
                             dropdown_list_speech_recognition_provider=dropdown_list_speech_recognition_provider,
-                            speech_recognition_provider_task_list=speech_recognition_provider_task_list,
+                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
+                            speech_control_led_task_list=speech_control_led_task_list,
+                            speech_control_device_task_list=speech_control_device_task_list,
                             speech_recognition_provider=speech_recognition_provider,
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
                             active04="active",
                             )
+
+
+# change device task position 
+@app.route('/dashboard/settings/speechcontrol/device_task/position/<string:direction>/<int:id>')
+@login_required
+@superuser_required
+def change_speech_control_device_task_position(id, direction):
+    CHANGE_SPEECH_CONTROL_DEVICE_TASK_POSITION(id, direction)
+    return redirect(url_for('dashboard_settings_speechcontrol'))
+    
+
+# delete device task position 
+@app.route('/dashboard/settings/speechcontrol/device_task/delete/<int:id>')
+@login_required
+@superuser_required
+def delete_speech_control_device_task(id):
+    DELETE_SPEECH_CONTROL_DEVICE_TASK(id)
+    return redirect(url_for('dashboard_settings_speechcontrol'))
 
 
 # download hotword file

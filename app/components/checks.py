@@ -15,6 +15,9 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
 
       if device.dashboard_check_option != "None":
 
+         if device.dashboard_check_command == "None" or device.dashboard_check_command == None:
+            list_settings_errors.append(device.name + " >>> Keine Aufgabe ausgewählt")         
+
          if device.dashboard_check_option == "IP-Address":
 
             # search for wrong chars
@@ -481,32 +484,100 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
       return list_errors   
 
 
-def CHECK_SPEECH_RECOGNITION_PROVIDER_KEYWORDS(tasks):
+def CHECK_SPEECH_CONTROL_LED_TASKS(tasks):
    list_errors = []
+
 
    # get list with all keywords
    list_all_keywords = []
    
    for task in tasks:
-      list_keywords = task.keywords.split(",")
       
-      for keyword in list_keywords:
-         keyword = keyword.replace(" ", "")
-         list_all_keywords.append(keyword)
+      if task.keywords != None and task.keywords != "None":
+      
+         list_keywords = task.keywords.split(",")
+         
+         for keyword in list_keywords:
+            keyword = keyword.replace(" ", "")
+            list_all_keywords.append(keyword)
+   
    
    # search for double keywords
    for task in tasks:
       
       if task.keywords != "":
-         keywords = task.keywords.split(",")
          
-         for keyword in keywords:
+         if task.keywords != None and task.keywords != "None":
+         
+            keywords = task.keywords.split(",")
+            
+            for keyword in keywords:
+               keyword = keyword.replace(" ", "")
+               num = list_all_keywords.count(keyword)
+            
+               if num > 1:
+                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)          
+         
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
+
+
+def CHECK_SPEECH_CONTROL_DEVICE_TASKS(tasks):
+   list_errors = []
+
+   # search for missing commands 
+   for task in tasks:
+      if task.command == None or task.command == "None":
+         list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
+         
+         
+   # search for missing keywords 
+   for task in tasks:
+      if task.keywords == None or task.keywords == "None":
+         list_errors.append(task.task + " >>> Keine Schlüsselwörter eingetragen")             
+         
+         
+   # get list with all keywords
+   list_all_keywords = []
+   
+   for task in tasks:
+      
+      if task.keywords != None and task.keywords != "None":
+      
+         list_keywords = task.keywords.split(",")
+         
+         for keyword in list_keywords:
             keyword = keyword.replace(" ", "")
-            num = list_all_keywords.count(keyword)
+            list_all_keywords.append(keyword)
+   
+   
+   # search for double keywords
+   for task in tasks:
+      
+      if task.keywords != "":
          
-            if num > 1:
-               list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword) 
+         if task.keywords != None and task.keywords != "None":
          
+            keywords = task.keywords.split(",")
+            
+            for keyword in keywords:
+               keyword = keyword.replace(" ", "")
+               num = list_all_keywords.count(keyword)
+            
+               if num > 1:
+                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)            
+         
+         
+   # search for double commands 
+   for task_1 in tasks:
+      for task_2 in tasks:
+      
+         if (task_1.id != task_2.id) and (task_1.mqtt_device_ieeeAddr == task_2.mqtt_device_ieeeAddr) and (task_1.command == task_2.command):
+            list_errors.append(task.task + " >>> Gerät " + task_1.mqtt_device.name + " mit Befehlt " + task_1.command + " doppelt eingetragen") 
+                        
+                        
    if list_errors == []:
       return ""
    else:
