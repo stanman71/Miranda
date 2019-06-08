@@ -1065,83 +1065,6 @@ def DELETE_LED_SCENE(id):
 
 """ ################### """
 """ ################### """
-"""    led programs     """
-""" ################### """
-""" ################### """
-
-
-def GET_ALL_LED_PROGRAMS():
-    return LED_Programs.query.all()   
-
-
-def GET_LED_PROGRAM_BY_NAME(name):
-    for program in LED_Programs.query.all():
-        
-        if program.name.lower() == name.lower():
-            return program    
-    
-
-def GET_LED_PROGRAM_BY_ID(id):
-    return LED_Programs.query.filter_by(id=id).first()
-
-
-def ADD_LED_PROGRAM(name):
-    # name exist ?
-    if not GET_LED_PROGRAM_BY_NAME(name):
-        
-        # find a unused id
-        for i in range(1,21):
-            if LED_Programs.query.filter_by(id=i).first():
-                pass
-            else:
-                # add the new program
-                program = LED_Programs(
-                        id = i,
-                        name = name,
-                        content = "",
-                    )
-                db.session.add(program)
-                db.session.commit()
-
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | added")  
-
-                return ""
-
-        return "Programmlimit erreicht (20)"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_LED_PROGRAM_NAME(id, name):
-    check_entry = LED_Programs.query.filter_by(name=name).first()
-    if check_entry is None:
-        entry = LED_Programs.query.filter_by(id=id).first()
-        entry.name = name
-        db.session.commit()    
-
-
-def SAVE_LED_PROGRAM(id, content):
-    entry = LED_Programs.query.filter_by(id=id).first()
-    entry.content = content
-    
-    db.session.commit()
-
-
-def DELETE_LED_PROGRAM(id):
-    name = LED_Programs.query.filter_by(id=id).first().name
-    
-    try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | deleted")  
-    except:
-        pass 
-
-    LED_Programs.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-
-""" ################### """
-""" ################### """
 """     led groups      """
 """ ################### """
 """ ################### """
@@ -1971,6 +1894,84 @@ def DELETE_PLANT(plant_id):
     
     Plants.query.filter_by(id=plant_id).delete()
     db.session.commit()
+
+
+""" ################### """
+""" ################### """
+"""       programs      """
+""" ################### """
+""" ################### """
+
+
+def GET_ALL_LED_PROGRAMS():
+    return LED_Programs.query.all()   
+
+
+def GET_LED_PROGRAM_BY_NAME(name):
+    for program in LED_Programs.query.all():
+        
+        if program.name.lower() == name.lower():
+            return program    
+    
+
+def GET_LED_PROGRAM_BY_ID(id):
+    return LED_Programs.query.filter_by(id=id).first()
+
+
+def ADD_LED_PROGRAM(name):
+    # name exist ?
+    if not GET_LED_PROGRAM_BY_NAME(name):
+        
+        # find a unused id
+        for i in range(1,21):
+            if LED_Programs.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new program
+                program = LED_Programs(
+                        id = i,
+                        name = name,
+                        content = "",
+                    )
+                db.session.add(program)
+                db.session.commit()
+
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | added")  
+
+                return ""
+
+        return "Programmlimit erreicht (20)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_LED_PROGRAM_NAME(id, name):
+    check_entry = LED_Programs.query.filter_by(name=name).first()
+    if check_entry is None:
+        entry = LED_Programs.query.filter_by(id=id).first()
+        entry.name = name
+        db.session.commit()    
+
+
+def SAVE_LED_PROGRAM(id, content):
+    entry = LED_Programs.query.filter_by(id=id).first()
+    entry.content = content
+    
+    db.session.commit()
+
+
+def DELETE_LED_PROGRAM(id):
+    name = LED_Programs.query.filter_by(id=id).first().name
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | deleted")  
+    except:
+        pass 
+
+    LED_Programs.query.filter_by(id=id).delete()
+    db.session.commit() 
+
 
 
 """ ################## """

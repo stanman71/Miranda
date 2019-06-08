@@ -108,6 +108,7 @@ def dashboard_settings_mqtt():
                             mqtt_device_list=mqtt_device_list,
                             active01="active",
                             timestamp=timestamp,
+                            role=current_user.role,
                             )
      
 
@@ -268,6 +269,7 @@ def dashboard_settings_zigbee2mqtt():
                             zigbee_topology_show=zigbee_topology_show,                 
                             active02="active",
                             timestamp=timestamp,
+                            role=current_user.role,
                             )
 
 
@@ -397,6 +399,7 @@ def dashboard_settings_controller():
                             data_controller=data_controller,
                             dropdown_list_controller=dropdown_list_controller,                                   
                             active03="active",
+                            role=current_user.role,
                             )
 
 
@@ -646,6 +649,7 @@ def dashboard_settings_speechcontrol():
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
                             active04="active",
+                            role=current_user.role,
                             )
 
 
@@ -764,6 +768,7 @@ def dashboard_settings_user():
                             user_list=user_list,  
                             dropdown_list_roles=dropdown_list_roles,             
                             active05="active",
+                            role=current_user.role,
                             )
 
 
@@ -829,6 +834,7 @@ def dashboard_settings_email():
                             email_config=email_config,
                             mail_encoding_list=mail_encoding_list,                          
                             active06="active",
+                            role=current_user.role,
                             )
 
 
@@ -846,6 +852,7 @@ def dashboard_settings_spotify():
     return render_template('dashboard_settings_spotify.html',
                             error_message=error_message,                                              
                             active07="active",
+                            role=current_user.role,
                             )
 
 
@@ -884,6 +891,7 @@ def dashboard_settings_backup():
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,                                                     
                             active08="active",
+                            role=current_user.role,
                             )
 
 
@@ -931,6 +939,7 @@ def dashboard_settings_system_log():
                             timestamp=timestamp,
                             data_log_system=data_log_system,                                                       
                             active09="active",
+                            role=current_user.role,
                             )
 
 

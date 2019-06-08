@@ -230,25 +230,6 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
       WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
 
 
-   # start program
-   try:
-      if "program" in task:
-         task = task.split(":")
-         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-         program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
-         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
-         
-         if error_message != "":
-            error_message = str(error_message)
-            error_message = error_message[1:]
-            error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-            
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
-
-
    # change brightness
    try:
       if "brightness" in task:

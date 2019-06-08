@@ -85,56 +85,10 @@ def START_LED_TASK(answer):
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))  
                 
                 break
-
-
-    # start program 
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(2).keywords
-    
-    try:
-        list_keywords = keywords.split(",")
-    except:
-        list_keywords = [keywords]
-
-    for keyword in list_keywords:
-        
-        keyword = keyword.replace(" ", "")
-                   
-        if keyword.lower() in answer:
-
-            try:
-                groups   = GET_ALL_LED_GROUPS()
-                programs = GET_ALL_LED_PROGRAMS() 
-
-                group_id   = None
-                program_id = None
-
-                # search group
-                for group in groups:
-                    if group.name.lower() in answer:
-                        group_id = group.id
-
-                # search program
-                for program in programs:
-                    if program.name.lower() in answer:
-                        program_id = program.id   
-
-                if group_id != None and program_id != None:                    
-                    error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))            
-                    if error_message != "":
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))
-                        
-                time.sleep(1)
-                break
-       
-            except Exception as e:
-                print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))  
                 
-                break
-
 
     # set brightness
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(3).keywords
+    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(2).keywords
     
     try:
         list_keywords = keywords.split(",")
@@ -178,7 +132,7 @@ def START_LED_TASK(answer):
 
 
     # turn off led group
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(4).keywords
+    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(3).keywords
     
     try:
         list_keywords = keywords.split(",")
@@ -226,7 +180,7 @@ def START_LED_TASK(answer):
                     
 
     # turn off all leds
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(5).keywords
+    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(4).keywords
     
     try:
         list_keywords = keywords.split(",")

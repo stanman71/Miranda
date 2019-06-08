@@ -657,6 +657,7 @@ def LED_CHECK_SETTING():
                     list_errors.append(data["message"])
                     
     if list_errors != []:
+        WRITE_LOGFILE_SYSTEM("WARNING", "LED | >>> " + str(list_errors))
         return list_errors
         
     else:

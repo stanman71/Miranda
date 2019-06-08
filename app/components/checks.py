@@ -794,56 +794,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
             else:                
                list_task_errors.append(name + " >>> Ungültige Formatierung")
             return list_task_errors
-
-
-      # check start_program
-      if "program" in task:
-         if ":" in task:
-            task = task.split(":") 
-
-            # check group setting
-            try:
-               if GET_LED_GROUP_BY_NAME(task[1]):
-                  pass
-                  
-               else:
-                  if task_type == "controller":
-                     list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1]) 
-                  else:                     
-                     list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
-                                    
-            except:
-               if task_type == "controller":
-                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe") 
-               else:                  
-                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")      
-
-            # check program setting    
-            try:
-               if GET_LED_PROGRAM_BY_NAME(task[2]):
-                  return list_task_errors
-                  
-               else:
-                  if task_type == "controller":
-                     list_task_errors.append(name + " >>> " + command + " >>> LED Programm nicht vorhanden >>> " + task[2])
-                  else:                       
-                     list_task_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
-                  return list_task_errors
-                  
-            except:
-               if task_type == "controller":
-                  list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Programm")
-               else:                    
-                  list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
-               return list_task_errors
-
-         else:
-            if task_type == "controller":
-               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
-            else:                 
-               list_task_errors.append(name + " >>> Ungültige Formatierung")
-            return list_task_errors
-
+     
 
       # check brightness dimmer
       if "brightness" in task and task_type == "controller":
@@ -1001,7 +952,64 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
       return list_task_errors
 
 
+
+
+
 '''
+
+# ###################
+# check start_program
+# ###################
+
+
+if "program" in task:
+   if ":" in task:
+      task = task.split(":") 
+
+      # check group setting
+      try:
+         if GET_LED_GROUP_BY_NAME(task[1]):
+            pass
+            
+         else:
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1]) 
+            else:                     
+               list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
+                              
+      except:
+         if task_type == "controller":
+            list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe") 
+         else:                  
+            list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")      
+
+      # check program setting    
+      try:
+         if GET_LED_PROGRAM_BY_NAME(task[2]):
+            return list_task_errors
+            
+         else:
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> LED Programm nicht vorhanden >>> " + task[2])
+            else:                       
+               list_task_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
+            return list_task_errors
+            
+      except:
+         if task_type == "controller":
+            list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Programm")
+         else:                    
+            list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
+         return list_task_errors
+
+   else:
+      if task_type == "controller":
+         list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
+      else:                 
+         list_task_errors.append(name + " >>> Ungültige Formatierung")
+      return list_task_errors
+
+
 
 """ ###################### """
 """  check timer settings  """

@@ -7,9 +7,10 @@ import heapq
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA, MQTT_UPDATE_DEVICES
+from app.components.mqtt_functions import MQTT_SAVE_SENSORDATA, MQTT_UPDATE_DEVICES, MQTT_SET_DEVICE_SETTING
 from app.components.control_scheduler import SCHEDULER_TIME_PROCESS, SCHEDULER_SENSOR_PROCESS, SCHEDULER_PING_PROCESS, GET_SUNRISE_TIME, GET_SUNSET_TIME
 from app.components.control_controller import CONTROLLER_PROCESS
+from app.components.control_led import *
 from app.speechcontrol.speech_control_tasks import SPEECH_RECOGNITION_PROVIDER_TASKS
 
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
@@ -17,7 +18,7 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 """ ################################ """
 """ ################################ """
-"""          process management      """
+"""         process management       """
 """ ################################ """
 """ ################################ """
 
@@ -30,10 +31,10 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 process_management_queue = []
 
-def ADD_TASK_TO_PROCESS_MANAGEMENT(priority, task_type, task_id, ieeeAddr = "", msg = "", speech_recognition_answer = ""):
+def ADD_TASK_TO_PROCESS_MANAGEMENT(priority, data):
 	global process_management_queue
    
-	heapq.heappush(process_management_queue, (priority, task_type, task_id, ieeeAddr, msg, speech_recognition_answer))
+	heapq.heappush(process_management_queue, (priority, data))
 
 
 def PROCESS_MANAGEMENT_THREAD():
@@ -42,7 +43,7 @@ def PROCESS_MANAGEMENT_THREAD():
 	while True:
       
 		try:
-			process = heapq.heappop(process_management_queue)[1:]
+			process = heapq.heappop(process_management_queue)[1]
 			
 			if process[0] == "time":
 				task = GET_SCHEDULER_TASK_BY_ID(process[1])
@@ -58,14 +59,26 @@ def PROCESS_MANAGEMENT_THREAD():
 				SCHEDULER_PING_PROCESS(task)    
 							  
 			if process[0] == "controller":
-				ieeeAddr = process[2]
-				msg      = process[3]
+				ieeeAddr = process[1]
+				msg      = process[2]
 				CONTROLLER_PROCESS(ieeeAddr, msg)    	    
 
 			if process[0] == "speech_control":
-				speech_recognition_answer = process[4]
-				SPEECH_RECOGNITION_PROVIDER_TASKS(speech_recognition_answer)  				     
-			  
+				speech_recognition_answer = process[1]
+				SPEECH_RECOGNITION_PROVIDER_TASKS(speech_recognition_answer)  	
+				
+			if process[0] == "dasboard_command":
+				command_type = process[1]
+				
+				if command_type == "led_scene":
+					LED_START_SCENE(process[2], process[3], process[4])  
+				if command_type == "led_brightness":
+					LED_SET_BRIGHTNESS(process[2], process[3])  					
+				if command_type == "led_off":
+					LED_TURN_OFF_GROUP(process[2])  	
+				if command_type == "device":
+					MQTT_SET_DEVICE_SETTING(process[2], process[3], process[4], process[5])										
+					
 		except:
 			pass
       
@@ -234,7 +247,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 			# schedular
 			for task in GET_ALL_SCHEDULER_TASKS():
 				if task.option_sensors == "checked":
-					ADD_TASK_TO_PROCESS_MANAGEMENT(5, "sensor", task.id, ieeeAddr, "")
+					ADD_TASK_TO_PROCESS_MANAGEMENT(5, ("sensor", task.id, ieeeAddr))
 
 			# save sensor data of passive devices
 			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
@@ -245,7 +258,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 
 		# controller inputs
 		if device_type == "controller":
-			ADD_TASK_TO_PROCESS_MANAGEMENT(1, "controller", "", ieeeAddr, msg, "")		
+			ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("controller", ieeeAddr, msg))		
 	
 
 """ ################################ """
@@ -316,7 +329,7 @@ def scheduler_time():
    
 	for task in GET_ALL_SCHEDULER_TASKS():
 		if task.option_time == "checked" or task.option_sun == "checked":
-			ADD_TASK_TO_PROCESS_MANAGEMENT(10, "time", task.id)
+			ADD_TASK_TO_PROCESS_MANAGEMENT(10, ("time", task.id))
          
 
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
@@ -324,7 +337,7 @@ def scheduler_ping():
    
 	for task in GET_ALL_SCHEDULER_TASKS():
 		if task.option_position == "checked":
-			ADD_TASK_TO_PROCESS_MANAGEMENT(10, "ping", task.id)
+			ADD_TASK_TO_PROCESS_MANAGEMENT(10, ("ping", task.id))
 
 
 """ ################################ """
@@ -389,7 +402,7 @@ def SNOWBOY_START():
 					WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + speech_recognition_answer) 
 				
 				else:	 
-					ADD_TASK_TO_PROCESS_MANAGEMENT(1, "speech_control", "", "", "", speech_recognition_answer)	 
+					ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("speech_control", speech_recognition_answer)) 
 
 			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 

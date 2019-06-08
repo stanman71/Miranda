@@ -483,41 +483,15 @@ def dashboard_sensordata_statistics():
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
                 #print(df_sensors)
 
-     
-                selected_sensors = (df_sensors['Sensor'].unique().tolist())
                 
-                try:
-                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[0]])]
-                    values_1 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[0])
-                except:
-                    values_1 = ""
-                    
-                try:
-                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[1]])]
-                    values_2 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[1])
-                except:
-                    values_2 = ""
-
-                try:
-                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[2]])]
-                    values_3 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[2])
-                except:
-                    values_3 = ""
+                # set datetime as index and remove former row datetime
+                df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
                 
-                try:
-                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[3]])]
-                    values_4 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[3])
-                except:
-                    values_4 = ""           
+                df_sensors = df_sensors.set_index('date')
+                df_sensors = df_sensors.drop(columns=['Timestamp'])
 
-                try:
-                    df_sensor_data = df_sensors[df_sensors['Sensor'].isin([selected_sensors[4]])]
-                    values_5 = (df_sensor_data['Timestamp'], df_sensor_data['Sensor_Value'], selected_sensors[4])
-                except:
-                    values_5 = ""
-                
-                graph = BUILD_GRAPH(values_1, values_2, values_3, values_4, values_5)
 
+                graph  = BUILD_GRAPH(df_sensors)
 
             except:
                 error_message = "Daten konnten nicht verarbeitet werden"

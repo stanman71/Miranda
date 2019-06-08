@@ -8,9 +8,8 @@ from functools import wraps
 from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
-from app.components.control_led import *
-from app.components.mqtt_functions import MQTT_SET_DEVICE_SETTING
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
+from app.components.process_management import ADD_TASK_TO_PROCESS_MANAGEMENT
 
 
 class LoginForm(FlaskForm):
@@ -40,27 +39,24 @@ def dashboard():
                 # set led group
                 if request.form.get("set_group_" + str(i)) != None:  
 
-                    setting = request.form.get("set_group_" + str(i))
-                            
+                    setting      = request.form.get("set_group_" + str(i))    
                     setting_type = setting.split("_")[0]
                     
-                    # start another scene / program
-                    if setting_type == "scene" or setting_type == "program":
+                    # start scene
+                    if setting_type == "scene":
 
-                        if setting_type == "scene":
-                            brightness = request.form.get("set_brightness_" + str(i))
-                            error_message_led = LED_START_SCENE(i, int(setting.split("_")[1]), int(brightness))                         
-                            continue
-                        
-                        if setting_type == "program":
-                            error_message_led = LED_START_PROGRAM_THREAD(i, int(setting.split("_")[1])) 
-                            continue  
-                            
+                        brightness = request.form.get("set_brightness_" + str(i))
+                        ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_scene", i, int(setting.split("_")[1]), int(brightness)))  
+                        time.sleep(3)                    
+                        continue
+
+    
                     else:
 
                         # turn led group off
                         if setting == "turn_off":
-                            error_message_led = LED_TURN_OFF_GROUP(i)  
+                            ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_off", i))  
+                            time.sleep(3)                               
                             continue                     
 
                         # change brightness
@@ -70,8 +66,8 @@ def dashboard():
 
                             # brightness changed ?
                             if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:
-
-                                error_message_led = LED_SET_BRIGHTNESS(i, int(brightness)) 
+                                ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_brightness", i, int(brightness)))  
+                                time.sleep(3)     
                                 continue              
     
     
@@ -282,17 +278,18 @@ def dashboard():
                                 error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                                 
                                 
-                            if change_state:                              
-                                error_message_device = MQTT_SET_DEVICE_SETTING(device.name, device.gateway, device.ieeeAddr, dashboard_command)
-                                   
+                            if change_state:     
+                                
+                                ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "device", device.name, device.gateway, device.ieeeAddr, dashboard_command))  
+                                time.sleep(3)                            
+
                 except Exception as e:
                     print(e)
                               
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes   = GET_ALL_LED_SCENES()
-    dropdown_list_led_programs = GET_ALL_LED_PROGRAMS()
-    
+
     list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     
     dropdown_list_check_options = ["IP-Address"] 
@@ -443,7 +440,6 @@ def dashboard():
     return render_template('dashboard.html',
                             data_led=data_led,
                             dropdown_list_led_scenes=dropdown_list_led_scenes,
-                            dropdown_list_led_programs=dropdown_list_led_programs,
                             dropdown_list_check_options=dropdown_list_check_options,
                             dropdown_list_operators=dropdown_list_operators,
                             list_mqtt_devices=list_mqtt_devices,

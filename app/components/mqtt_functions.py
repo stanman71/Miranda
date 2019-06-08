@@ -307,7 +307,7 @@ def MQTT_SET_DEVICE_SETTING(name, gateway, ieeeAddr, command):
       return ""
       
    else:
-      return ("Fehler >>> Einstellung konnte nicht bestätigt werden >>> " + name)
+      WRITE_LOGFILE_SYSTEM("WARNING", "MQTT | Setting not confirmed >>> " + name)
    
 
 """ ################### """

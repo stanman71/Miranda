@@ -1171,25 +1171,6 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
-   # start program
-   try:
-      if "program" in task_object.task:
-         task = task_object.task.split(":")
-         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-         program_id = GET_LED_PROGRAM_BY_NAME(task[2]).id
-         error_message = LED_START_PROGRAM_THREAD(int(group_id), int(program_id))  
-         
-         if error_message != "":
-            error_message = str(error_message)
-            error_message = error_message[1:]
-            error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
-            
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-
-
    # led off
    try:
       if "led_off" in task_object.task:
