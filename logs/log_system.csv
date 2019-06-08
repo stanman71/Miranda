@@ -5110,3 +5110,148 @@ Timestamp,Type,Description
 2019-06-07 19:41:25,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer auf 60%|
 2019-06-07 19:41:38,ERROR,|Speech Control Device Task || starte warmweiss im wohnzimmer auf 60% || Fehler >>> Einstellung konnte nicht bestätigt werden >>> Steckdose TV|
 2019-06-07 19:41:46,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Fernseher|
+2019-06-07 19:47:10,EVENT,|MQTT || started|
+2019-06-07 19:47:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-07 19:47:15,EVENT,|Speech Control || started|
+2019-06-07 19:48:23,EVENT,|Database || Speech Control Device Task - hfghgf || added|
+2019-06-07 19:48:27,EVENT,|Database || Speech Control Task - hfghgf || changed |||| Command - None || Keywords - Fernseher|
+2019-06-07 19:48:29,EVENT,|Database || Speech Control Task - hfghgf || changed |||| Command - None || Keywords - Fernsehger|
+2019-06-07 19:48:32,EVENT,|Database || Speech Control Device Task - hfghgf || deleted|
+2019-06-07 19:50:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 19:50:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 20:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 20:05:30,EVENT,|Speech Control || Detection Task || was ist eine projekte 30a 2 stunden die woche und ich schau dir das mal an die rückmeldungen diesem typen frankfurt sitzt und der wein passt alles super klasse mach weiter und dann sage ich ja passt alles super ich mach so weiter hat in letzter zeit mache ich das was ich machen will|
+2019-06-07 20:25:02,EVENT,|Speech Control || Detection Task || |
+2019-06-07 20:42:04,EVENT,|Speech Control || Detection Task || also arbeiten|
+2019-06-07 20:45:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 20:45:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 20:49:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:49:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:50:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:50:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:51:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:51:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:53:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 20:53:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:53:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:54:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:54:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:55:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:55:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:56:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:56:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 20:58:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 21:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 21:40:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 21:40:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 21:58:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 21:58:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 21:59:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 21:59:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 22:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 22:00:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:00:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:00:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:00:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:01:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-07 22:01:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 22:02:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 22:32:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 22:36:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-07 23:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-07 23:13:43,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command -  POWER_OFF || Keywords - Fernseher|
+2019-06-07 23:13:52,EVENT,|Speech Control || Detection Task || fernseher|
+2019-06-07 23:13:59,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Fernseher|
+2019-06-07 23:14:07,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - starte|
+2019-06-07 23:14:20,EVENT,|Speech Control || Detection Task || starte mediterran im wohnzimmer|
+2019-06-07 23:15:05,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Steckdose |
+2019-06-07 23:15:19,EVENT,|Database || Speech Control Task - kjhkh || changed |||| Command - POWER_ON || Keywords - Steckdose|
+2019-06-07 23:27:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 23:31:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-07 23:34:12,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-08 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 00:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 00:00:06,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-08 00:00:06,EVENT,|Database_Backup || saved|
+2019-06-08 00:00:06,SUCCESS,|Scheduler || Task - Datenbank sichern || successful|
+2019-06-08 00:12:10,EVENT,|Speech Control || Detection Task || instagram|
+2019-06-08 00:22:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 00:26:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-08 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 01:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 01:17:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 01:21:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 02:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 02:12:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 02:16:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 02:53:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 02:53:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 02:54:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 02:54:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 02:56:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 03:00:06,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 03:02:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 03:11:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 03:57:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 04:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 04:06:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 04:52:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 05:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 05:01:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 05:47:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 05:56:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 06:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 06:42:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 06:51:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 07:00:02,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 07:00:15,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 07:37:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 07:46:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 08:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 08:04:04,EVENT,|File || /logs/log_zigbee2mqtt.csv || deleted|
+2019-06-08 08:04:04,EVENT,|File || /logs/log_zigbee2mqtt.csv || created|
+2019-06-08 08:32:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 08:41:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 08:52:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 08:52:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 08:53:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 08:53:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 08:54:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 09:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 09:17:36,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:17:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:20:05,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:20:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:21:16,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:21:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:27:06,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:27:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:32:50,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:32:55,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:33:20,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:33:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:35:02,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:35:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:36:59,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:37:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:38:02,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:38:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:42:00,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:42:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 09:52:13,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 09:52:18,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 10:06:47,ERROR,|Microphone LED Control || No backend available|
+2019-06-08 10:06:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-06-08 10:07:26,ERROR,|Snowboy || No module named '_snowboydetect'|

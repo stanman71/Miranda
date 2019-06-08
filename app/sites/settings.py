@@ -832,14 +832,31 @@ def dashboard_settings_email():
                             )
 
 
-""" ############### """
-""" system settings """
-""" ############### """
+""" ################ """
+""" spotify settings """
+""" ################ """
 
-@app.route('/dashboard/settings/system', methods=['GET', 'POST'])
+@app.route('/dashboard/settings/spotify', methods=['GET', 'POST'])
 @login_required
 @superuser_required
-def dashboard_settings_system():
+def dashboard_settings_spotify():
+    error_message = ""
+
+
+    return render_template('dashboard_settings_spotify.html',
+                            error_message=error_message,                                              
+                            active07="active",
+                            )
+
+
+""" ############### """
+""" backup settings """
+""" ############### """
+
+@app.route('/dashboard/settings/backup', methods=['GET', 'POST'])
+@login_required
+@superuser_required
+def dashboard_settings_backup():
     error_message = ""
 
     def GET_CPU_TEMPERATURE():
@@ -862,11 +879,11 @@ def dashboard_settings_system():
     file_list = GET_BACKUP_FILES()
     cpu_temperature = GET_CPU_TEMPERATURE()
 
-    return render_template('dashboard_settings_system.html',
+    return render_template('dashboard_settings_backup.html',
                             error_message=error_message,
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,                                                     
-                            active07="active",
+                            active08="active",
                             )
 
 
@@ -913,7 +930,7 @@ def dashboard_settings_system_log():
                             error_message=error_message,
                             timestamp=timestamp,
                             data_log_system=data_log_system,                                                       
-                            active08="active",
+                            active09="active",
                             )
 
 

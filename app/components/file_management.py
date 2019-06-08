@@ -6,6 +6,7 @@ import yaml
 
 import pandas as pd
 
+from flask import send_from_directory
 from werkzeug.utils import secure_filename
 
 from app import app
@@ -256,6 +257,22 @@ def DELETE_DATABASE_BACKUP(filename):
         return ("ERROR: " + str(e))
 
 
+""" ########### """
+""" colorpicker """
+""" ########### """
+
+# Host files for colorpicker_local
+@app.route('/get_media/<path:filename>', methods=['GET'])
+def get_media(filename):
+    if filename is None:
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | File not founded")
+    try:
+        PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
+        return send_from_directory(PATH_CSS, filename)
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))
+
+
 """ ############# """
 """  file config  """
 """ ############# """
@@ -292,7 +309,6 @@ def GET_CONFIG_DATABASE():
         return str(config['config']['database'])
     except:
         return "sqlite:///database/smarthome.sqlite3"
-
 
 
 """ ################ """

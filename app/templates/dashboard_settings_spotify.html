@@ -1,13 +1,14 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  System Log
+  Benutzerverwaltung
 {% endblock %}
 
 {% block styles %}
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -45,8 +46,8 @@
 <br>
 
 <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
-    <div class="row">
-      <div class="col">
+  <div class="row">
+    <div class="col">
   
 <!-- settings navs -->
 
@@ -66,63 +67,19 @@
         </div>
       </nav>
 
-<!-- error message -->
 
-{% if error_message != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message }}
-</div>      
-{% endif %}
-
-<!-- table  --> 
-
-<section id="table_tasks"></section>
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>System Log</b></font></div>       
-          <div class="panel-body">  
-            <div class="well well-sm">
-              <table class="table">
-                <thead>                      
-                  <th scope="col">Zeitpunkt</th> 
-                  <th scope="col">Typ</th> 
-                  <th scope="col">Beschreibung</th> 
-                </thead>
-                <tbody> 
-                  {% for entry in data_log_system %}
-                  <tr>
-                    <td style="width:16%">{{ entry[0] }}</td> 
-                    <td style="width:10%">
-                      {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
-                    </td>                   
-                    <td style="width:74%">{{ entry[2] }}</td>  
-                  </tr>
-                  {% endfor %} 
-                </tbody>
-              </table>  
+        <div class="panel-heading"><font color="black"><b>Spotify Einstellungen</b></font></div>      
+          <div class="panel-body">                       
+            <div class="well well-sm">  
+ 
             </div>
-          </div>  
-        </div> 
-
-<!-- system logs -->
-
-<section id="logfile"></section>
-
-        <div class="panel panel-default">
-          <div class="panel-body">    
-            <a href="/dashboard/settings/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
-            <div class="dropdown text-right">
-            <form method="POST" enctype="multipart/form-data">
-              <input type="submit" onclick="window.location.href='/dashboard/settings/system_log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
-            </form>
-          </div>        
-        </div>  
-      </div>        
+          </div>
+        </div>
+      </div>  
     </div>
-  </div>       
+  </div>    
 </div>
 
 {% endblock %}

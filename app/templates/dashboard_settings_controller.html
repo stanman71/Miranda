@@ -24,15 +24,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartHome</a>
+      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>
-        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>  
-        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>               
-        <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> Systemeinstellungen </a></li>
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>        
+        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
+        <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
+        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
+        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Porgramme</a></li> 
+        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
+        <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
+        {% if role == "superuser" %}
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System </a></li>
+        {% endif %}    
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
       </ul>
     </div>
@@ -53,10 +58,11 @@
             <li class={{active02}}><a href="{{ url_for('dashboard_settings_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
             <li class={{active03}}><a href="{{ url_for('dashboard_settings_controller') }}">Controller</a></li>             
             <li class={{active04}}><a href="{{ url_for('dashboard_settings_speechcontrol') }}">Sprachsteuerung</a></li>                
-            <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>    
-            <li class={{active06}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>        
-            <li class={{active07}}><a href="{{ url_for('dashboard_settings_system') }}">System</a></li> 
-            <li class={{active08}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
+            <li class={{active05}}><a href="{{ url_for('dashboard_settings_user') }}">Benutzer</a></li>             
+            <li class={{active06}}><a href="{{ url_for('dashboard_settings_email') }}">eMail</a></li>     
+            <li class={{active07}}><a href="{{ url_for('dashboard_settings_spotify') }}">Spotify</a></li>   
+            <li class={{active08}}><a href="{{ url_for('dashboard_settings_backup') }}">Backup</a></li> 
+            <li class={{active09}}><a href="{{ url_for('dashboard_settings_system_log') }}">System Log</a></li> 
           </ul>
         </div>
       </nav>
@@ -253,7 +259,7 @@
                 <tbody>
                   <tr>
                     <td>scene:wohnzimmer:relax:100</td>
-                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relex" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
+                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
                   </tr>
                   <tr>
                     <td>program:schlafzimmer:aufwachen</td>
