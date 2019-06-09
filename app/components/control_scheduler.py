@@ -4,43 +4,70 @@ import time
 import json
 import os
 import requests
+import heapq
 
 from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.control_plants import START_WATERING_THREAD
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
+from app.components.mqtt import MQTT_PUBLISH
 from app.components.mqtt_functions import *
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
+from app.components.config import process_management_queue
 
 
-""" #################### """
-""" mqtt publish message """
-""" #################### """
 
-BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
-
-def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
-
-   try:
-      
-      def on_publish(client, userdata, mid):
-         print ('Message Published...')
-
-      client = mqtt.Client()
-      client.on_publish = on_publish
-      client.connect(BROKER_ADDRESS) 
-      client.publish(MQTT_TOPIC,MQTT_MSG)
-      client.disconnect()
-
-      return ""
-
-   except:
-      pass
+""" ################################ """
+""" ################################ """
+"""            scheduler             """
+""" ################################ """
+""" ################################ """
 
 
-""" ################ """
-""" sunrise / sunset """
-""" ################ """
+from flask_apscheduler import APScheduler
+
+scheduler = APScheduler()
+scheduler.start()   
+
+
+@scheduler.task('cron', id='update_sunrise_sunset', hour='*')
+def update_sunrise_sunset():
+
+	for task in GET_ALL_SCHEDULER_TASKS():
+
+		if task.option_sunrise == "checked" or task.option_sunset == "checked":
+
+			# get coordinates
+			coordinates = GET_LOCATION_COORDINATES(task.location)
+
+			if coordinates != "None" and coordinates != None: 
+
+				# update sunrise / sunset
+				SET_SCHEDULER_TASK_SUNRISE(task.id, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+				SET_SCHEDULER_TASK_SUNSET(task.id, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+							
+
+@scheduler.task('cron', id='scheduler_time', minute='*')
+def scheduler_time():
+   
+	for task in GET_ALL_SCHEDULER_TASKS():
+		if task.option_time == "checked" or task.option_sun == "checked":
+			heapq.heappush(process_management_queue, (10, ("time", task.id)))         
+
+
+@scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
+def scheduler_ping():
+   
+	for task in GET_ALL_SCHEDULER_TASKS():
+		if task.option_position == "checked":
+			heapq.heappush(process_management_queue, (10, ("ping", task.id)))
+
+
+""" ################################ """
+""" ################################ """
+"""         sunrise / sunset         """
+""" ################################ """
+""" ################################ """
    
 # https://stackoverflow.com/questions/41072147/python-retrieve-the-sunrise-and-sunset-times-from-google
 
@@ -88,9 +115,12 @@ def GET_SUNSET_TIME(lat, long):
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
 
 
-""" ################### """
-""" scheduler processes """
-""" ################### """
+
+""" ################################ """
+""" ################################ """
+"""       scheduler processes        """
+""" ################################ """
+""" ################################ """
 
 
 def SCHEDULER_TIME_PROCESS(task):
@@ -239,9 +269,11 @@ def SCHEDULER_PING_PROCESS(task):
       START_SCHEDULER_TASK(task)      
 
 
-""" #################### """
-""" check scheduler time """
-""" #################### """
+""" ################################ """
+""" ################################ """
+"""     check scheduler processes    """
+""" ################################ """
+""" ################################ """
 
 
 def CHECK_SCHEDULER_TIME(task):
@@ -1130,9 +1162,11 @@ def CHECK_SCHEDULER_SUNSET(task):
       return False
 
 
-""" ##################### """
-""" start scheduler tasks """
-""" ##################### """
+""" ################################ """
+""" ################################ """
+"""           scheduler tasks        """
+""" ################################ """
+""" ################################ """
 
 
 def START_SCHEDULER_TASK(task_object):

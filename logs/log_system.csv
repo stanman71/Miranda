@@ -5371,3 +5371,304 @@ Timestamp,Type,Description
 2019-06-08 16:04:30,EVENT,|File || /csv/test.csv || deleted|
 2019-06-08 16:04:32,EVENT,|File || /csv/testfile.csv || deleted|
 2019-06-08 16:04:33,EVENT,|File || /csv/testfile3.csv || deleted|
+2019-06-08 16:07:16,EVENT,|MQTT || started|
+2019-06-08 16:07:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-08 16:07:21,EVENT,|Speech Control || started|
+2019-06-08 16:07:34,EVENT,|Speech Control || Detection Task || |
+2019-06-08 16:18:29,EVENT,|MQTT || started|
+2019-06-08 16:18:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-08 16:18:34,EVENT,|Speech Control || started|
+2019-06-08 16:18:55,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-08 16:18:56,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-08 16:19:03,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-08 16:26:44,EVENT,|MQTT || started|
+2019-06-08 16:26:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-08 16:26:49,EVENT,|Speech Control || started|
+2019-06-08 16:29:53,EVENT,|MQTT || started|
+2019-06-08 16:29:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-08 16:29:58,EVENT,|Speech Control || started|
+2019-06-08 16:31:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 16:31:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 16:32:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 16:33:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 16:43:18,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-06-08 16:43:26,EVENT,|File || /csv/temperature.csv || downloaded|
+2019-06-08 16:56:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 17:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 17:28:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 17:51:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 18:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 18:23:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 18:34:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 18:34:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 18:35:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 18:35:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-08 18:37:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 18:46:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 19:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 19:17:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 19:41:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-08 20:00:05,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-08 20:12:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-08 20:26:41,EVENT,|Speech Control || Detection Task || liebevolle|
+2019-06-08 20:31:25,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer auf 50%|
+2019-06-08 20:31:38,EVENT,|Speech Control || Detection Task || wohnzimmer auf 70%|
+2019-06-08 20:36:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 09:09:20,EVENT,|MQTT || started|
+2019-06-09 09:09:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:09:23,ERROR,|File || /logs/log_zigbee2mqtt.csv || line contains NULL byte|
+2019-06-09 09:09:23,ERROR,|ZigBee2MQTT || No connection|
+2019-06-09 09:09:24,EVENT,|Speech Control || started|
+2019-06-09 09:09:40,ERROR,|File || /logs/log_zigbee2mqtt.csv || line contains NULL byte|
+2019-06-09 09:09:40,ERROR,|LED || turn_off || string index out of range|
+2019-06-09 09:10:05,ERROR,|File || /logs/log_zigbee2mqtt.csv || line contains NULL byte|
+2019-06-09 09:10:05,ERROR,|LED || start scene || string index out of range|
+2019-06-09 09:10:30,ERROR,|File || /logs/log_zigbee2mqtt.csv || line contains NULL byte|
+2019-06-09 09:10:30,ERROR,|LED || turn_off || string index out of range|
+2019-06-09 09:12:10,EVENT,|MQTT || started|
+2019-06-09 09:12:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:12:13,ERROR,|File || /logs/log_zigbee2mqtt.csv || line contains NULL byte|
+2019-06-09 09:12:13,ERROR,|ZigBee2MQTT || No connection|
+2019-06-09 09:12:14,EVENT,|Speech Control || started|
+2019-06-09 09:12:38,EVENT,|MQTT || started|
+2019-06-09 09:12:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:12:38,EVENT,|File || /logs/log_zigbee2mqtt.csv || created|
+2019-06-09 09:12:43,EVENT,|Speech Control || started|
+2019-06-09 09:15:53,EVENT,|MQTT || started|
+2019-06-09 09:15:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:15:57,EVENT,|Speech Control || started|
+2019-06-09 09:21:15,EVENT,|MQTT || started|
+2019-06-09 09:21:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:22:00,EVENT,|MQTT || started|
+2019-06-09 09:22:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:22:05,EVENT,|Speech Control || started|
+2019-06-09 09:23:11,EVENT,|MQTT || started|
+2019-06-09 09:23:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:23:16,EVENT,|Speech Control || started|
+2019-06-09 09:23:48,EVENT,|MQTT || started|
+2019-06-09 09:23:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:23:53,EVENT,|Speech Control || started|
+2019-06-09 09:24:18,EVENT,|MQTT || started|
+2019-06-09 09:24:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:24:22,EVENT,|Speech Control || started|
+2019-06-09 09:26:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 09:27:23,EVENT,|MQTT || started|
+2019-06-09 09:27:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:27:28,EVENT,|Speech Control || started|
+2019-06-09 09:27:39,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:27:41,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:28:40,EVENT,|MQTT || started|
+2019-06-09 09:28:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:28:44,EVENT,|Speech Control || started|
+2019-06-09 09:28:45,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:29:16,EVENT,|MQTT || started|
+2019-06-09 09:29:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:29:20,EVENT,|Speech Control || started|
+2019-06-09 09:29:22,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:29:55,EVENT,|MQTT || started|
+2019-06-09 09:29:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:29:59,EVENT,|Speech Control || started|
+2019-06-09 09:30:00,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:30:08,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:30:20,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:30:22,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:30:47,EVENT,|MQTT || started|
+2019-06-09 09:30:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:30:51,EVENT,|Speech Control || started|
+2019-06-09 09:30:53,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:31:23,EVENT,|MQTT || started|
+2019-06-09 09:31:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:31:28,EVENT,|Speech Control || started|
+2019-06-09 09:31:29,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:31:50,EVENT,|MQTT || started|
+2019-06-09 09:31:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:31:54,EVENT,|Speech Control || started|
+2019-06-09 09:31:57,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:32:13,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:32:15,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:33:57,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:33:58,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:34:10,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:34:27,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:34:28,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:34:45,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:40:10,EVENT,|MQTT || started|
+2019-06-09 09:40:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:40:36,EVENT,|MQTT || started|
+2019-06-09 09:40:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:40:41,EVENT,|Speech Control || started|
+2019-06-09 09:40:43,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:44:09,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:44:10,ERROR TEST_03,|File || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:46:00,EVENT,|MQTT || started|
+2019-06-09 09:46:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:46:04,EVENT,|Speech Control || started|
+2019-06-09 09:46:11,ERROR,|File Test || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:46:12,ERROR,|File Test || /csv/ || Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'.|
+2019-06-09 09:48:21,EVENT,|MQTT || started|
+2019-06-09 09:48:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:48:25,EVENT,|Speech Control || started|
+2019-06-09 09:48:32,ERROR,|File Test || /csv/ || [Errno 21] Is a directory: '/home/pi/SmartHome/csv/'|
+2019-06-09 09:48:45,ERROR,|File Test || /csv/ || [Errno 21] Is a directory: '/home/pi/SmartHome/csv/'|
+2019-06-09 09:51:53,EVENT,|MQTT || started|
+2019-06-09 09:51:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 09:51:58,EVENT,|Speech Control || started|
+2019-06-09 09:56:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-09 10:00:04,ERROR,|Scheduler || Task - MQTT aktualisieren || Message nicht gefunden|
+2019-06-09 10:19:32,EVENT,|MQTT || started|
+2019-06-09 10:19:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:19:35,EVENT,|Speech Control || started|
+2019-06-09 10:21:50,EVENT,|MQTT || started|
+2019-06-09 10:21:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:21:54,EVENT,|Speech Control || started|
+2019-06-09 10:23:30,EVENT,|MQTT || started|
+2019-06-09 10:23:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:23:34,EVENT,|Speech Control || started|
+2019-06-09 10:24:08,EVENT,|MQTT || started|
+2019-06-09 10:24:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:24:12,EVENT,|Speech Control || started|
+2019-06-09 10:26:54,EVENT,|MQTT || started|
+2019-06-09 10:26:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:26:58,EVENT,|Speech Control || started|
+2019-06-09 10:28:52,EVENT,|MQTT || started|
+2019-06-09 10:28:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:28:56,EVENT,|Speech Control || started|
+2019-06-09 10:32:51,EVENT,|MQTT || started|
+2019-06-09 10:32:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:32:55,EVENT,|Speech Control || started|
+2019-06-09 10:36:53,EVENT,|MQTT || started|
+2019-06-09 10:36:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:36:58,EVENT,|Speech Control || started|
+2019-06-09 10:45:45,EVENT,|MQTT || started|
+2019-06-09 10:45:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:45:49,EVENT,|Speech Control || started|
+2019-06-09 10:46:47,EVENT,|MQTT || started|
+2019-06-09 10:46:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:46:51,EVENT,|Speech Control || started|
+2019-06-09 10:46:54,WARNING,|LED || >>> ['0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.']|
+2019-06-09 10:50:50,EVENT,|MQTT || started|
+2019-06-09 10:50:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:50:53,EVENT,|Speech Control || started|
+2019-06-09 10:51:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 10:58:33,EVENT,|MQTT || started|
+2019-06-09 10:58:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:58:36,EVENT,|Speech Control || started|
+2019-06-09 10:59:48,EVENT,|MQTT || started|
+2019-06-09 10:59:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 10:59:52,EVENT,|Speech Control || started|
+2019-06-09 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-09 11:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-09 11:01:02,EVENT,|Database || Scheduler || Task - jhg || Task_Type - complete || added|
+2019-06-09 11:01:09,EVENT,|Database || Scheduler || Task - jhg || changed |||| Name - jhg || Task - None || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-09 11:03:14,EVENT,|MQTT || started|
+2019-06-09 11:03:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:03:17,EVENT,|Speech Control || started|
+2019-06-09 11:04:56,EVENT,|MQTT || started|
+2019-06-09 11:04:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:05:00,EVENT,|Speech Control || started|
+2019-06-09 11:05:29,EVENT,|Database || Scheduler || Task - jhg || deleted|
+2019-06-09 11:05:45,EVENT,|MQTT || started|
+2019-06-09 11:05:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:05:48,EVENT,|Speech Control || started|
+2019-06-09 11:13:07,EVENT,|Speech Control || started|
+2019-06-09 11:14:00,EVENT,|MQTT || started|
+2019-06-09 11:14:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:14:03,EVENT,|Speech Control || started|
+2019-06-09 11:16:18,EVENT,|MQTT || started|
+2019-06-09 11:16:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:16:21,EVENT,|Speech Control || started|
+2019-06-09 11:18:27,EVENT,|MQTT || started|
+2019-06-09 11:18:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:18:31,EVENT,|Speech Control || started|
+2019-06-09 11:19:30,EVENT,|MQTT || started|
+2019-06-09 11:19:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:19:34,EVENT,|Speech Control || started|
+2019-06-09 11:27:03,EVENT,|MQTT || started|
+2019-06-09 11:27:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:27:07,ERROR,|Snowboy || cannot import name 'SNOWBOY_THREAD'|
+2019-06-09 11:28:23,EVENT,|MQTT || started|
+2019-06-09 11:28:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:28:26,ERROR,|Snowboy || cannot import name 'SNOWBOY_THREAD'|
+2019-06-09 11:29:23,EVENT,|MQTT || started|
+2019-06-09 11:29:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:29:26,ERROR,|Snowboy || cannot import name 'SNOWBOY_START'|
+2019-06-09 11:30:45,EVENT,|MQTT || started|
+2019-06-09 11:30:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:30:49,ERROR,|Snowboy || cannot import name 'SNOWBOY_THREAD'|
+2019-06-09 11:35:12,EVENT,|MQTT || started|
+2019-06-09 11:35:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 11:35:16,EVENT,|Speech Control || started|
+2019-06-09 11:35:28,ERROR,|Snowboy || name 'ADD_TASK_TO_PROCESS_MANAGEMENT' is not defined|
+2019-06-09 11:46:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-09 12:00:04,SUCCESS,|Scheduler || Task - MQTT aktualisieren || successful|
+2019-06-09 12:01:21,EVENT,|MQTT || started|
+2019-06-09 12:01:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:02:13,EVENT,|MQTT || started|
+2019-06-09 12:02:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:02:16,ERROR,|Snowboy || No module named 'app.speechcontrol.snownoy'|
+2019-06-09 12:02:38,EVENT,|MQTT || started|
+2019-06-09 12:02:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:02:41,EVENT,|Speech Control || started|
+2019-06-09 12:02:52,ERROR,|Snowboy || name 'heapq' is not defined|
+2019-06-09 12:03:30,EVENT,|MQTT || started|
+2019-06-09 12:03:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:03:33,EVENT,|Speech Control || started|
+2019-06-09 12:05:46,EVENT,|MQTT || started|
+2019-06-09 12:05:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:05:49,EVENT,|Speech Control || started|
+2019-06-09 12:06:44,EVENT,|MQTT || started|
+2019-06-09 12:06:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:06:47,EVENT,|Speech Control || started|
+2019-06-09 12:07:11,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: No server is available for the request|
+2019-06-09 12:09:27,EVENT,|MQTT || started|
+2019-06-09 12:09:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:09:30,EVENT,|Speech Control || started|
+2019-06-09 12:09:42,EVENT,|Speech Control || Detection Task || starte warmweiss im wohnzimmer|
+2019-06-09 12:11:24,EVENT,|MQTT || started|
+2019-06-09 12:11:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:11:27,EVENT,|Speech Control || started|
+2019-06-09 12:11:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 12:13:12,EVENT,|MQTT || started|
+2019-06-09 12:13:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:13:15,EVENT,|Speech Control || started|
+2019-06-09 12:15:19,EVENT,|File || /csv/temperature.csv || downloaded|
+2019-06-09 12:16:36,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-06-09 12:22:35,EVENT,|MQTT || started|
+2019-06-09 12:22:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:22:38,EVENT,|Speech Control || started|
+2019-06-09 12:22:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-09 12:22:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-09 12:23:46,EVENT,|Database || Scheduler || Task - test || Task_Type - complete || added|
+2019-06-09 12:23:55,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-06-09 12:24:01,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Day - * || Hour - * || Minute - * || Repeat - checked|
+2019-06-09 12:24:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-09 12:25:01,EVENT,|Scheduler || Task - test || started|
+2019-06-09 12:25:20,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-09 12:25:25,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Home - checked || Away - None || IP-Addresses - None || Repeat - checked|
+2019-06-09 12:25:42,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Home - checked || Away - None || IP-Addresses - 192.168.1.103 || Repeat - checked|
+2019-06-09 12:25:52,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Home - checked || Away - None || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-06-09 12:26:10,EVENT,|Scheduler || Task - test || started|
+2019-06-09 12:26:11,WARNING,|LED || >>> ['0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.']|
+2019-06-09 12:26:11,ERROR,|Scheduler || Task - test || '0x0017880104878b88', 'Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.'|
+2019-06-09 12:26:20,EVENT,|Scheduler || Task - test || started|
+2019-06-09 12:26:23,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Sunrise - None || Sunset - None || Location - None || Repeat - checked|
+2019-06-09 12:26:27,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Sunrise - checked || Sunset - None || Location - None || Repeat - checked|
+2019-06-09 12:26:33,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Sunrise - checked || Sunset - None || Location - Berlin || Repeat - checked|
+2019-06-09 12:27:23,EVENT,|MQTT || started|
+2019-06-09 12:27:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:27:26,EVENT,|Speech Control || started|
+2019-06-09 12:29:36,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-09 12:32:22,EVENT,|MQTT || started|
+2019-06-09 12:32:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:32:26,EVENT,|Speech Control || started|
+2019-06-09 12:34:23,EVENT,|MQTT || started|
+2019-06-09 12:34:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-09 12:34:27,EVENT,|Speech Control || started|
+2019-06-09 12:37:41,ERROR,|Microphone LED Control || No backend available|
+2019-06-09 12:37:46,ERROR,|Snowboy || No module named '_snowboydetect'|

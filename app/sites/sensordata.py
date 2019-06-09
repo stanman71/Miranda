@@ -491,6 +491,8 @@ def dashboard_sensordata_statistics():
                 df_sensors = df_sensors.drop(columns=['Timestamp'])
 
 
+                #print(df_sensors.index)
+
                 graph  = BUILD_GRAPH(df_sensors)
 
             except:

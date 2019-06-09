@@ -1,38 +1,10 @@
-import paho.mqtt.client as mqtt
 import json
-import threading
 
 from app import app
 from app.components.control_led import *
 from app.database.database import *
-from app.components.file_management import WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
-
-""" #################### """
-""" mqtt publish message """
-""" #################### """
-
-BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
-
-def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
-
-   try:
-      
-      def on_publish(client, userdata, mid):
-         print ('Message Published...')
-
-      client = mqtt.Client()
-      client.on_publish = on_publish
-      client.connect(BROKER_ADDRESS) 
-      client.publish(MQTT_TOPIC,MQTT_MSG)
-      client.disconnect()
-
-      return ""
-
-   except:
-      pass
-    
-      
       
 """ ###################### """
 """   controller process   """

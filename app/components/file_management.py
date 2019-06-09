@@ -167,7 +167,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
        
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR 404", "File | /logs/log_system.csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
         return ("ERROR: " + str(e))
         
     
@@ -422,7 +422,7 @@ def CREATE_SENSORDATA_FILE(filename):
             return "" 
                 
         except Exception as e:
-            WRITE_LOGFILE_SYSTEM("ERROR TEST_01", "File | /csv/" + filename + ".csv | " + str(e))
+            WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
 
     else:
         return ""
@@ -441,8 +441,13 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
             csvfile.close()
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR TEST_02", "File | /csv/" + filename + ".csv | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
 
+
+
+#############################
+# ERROR while creating graph
+#############################
 
 def READ_SENSORDATA_FILE(filename):
     try:
@@ -454,7 +459,7 @@ def READ_SENSORDATA_FILE(filename):
 
     except Exception as e:
         print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR TEST_03", "File | /csv/" + filename + " | " + str(e))    
+        WRITE_LOGFILE_SYSTEM("ERROR", "File Test | /csv/" + filename + " | " + str(e))    
 
 
 def DELETE_SENSORDATA_FILE(filename):

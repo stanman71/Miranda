@@ -9,7 +9,9 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
-from app.components.process_management import ADD_TASK_TO_PROCESS_MANAGEMENT
+from app.components.config import process_management_queue
+
+import heapq
 
 
 class LoginForm(FlaskForm):
@@ -44,9 +46,8 @@ def dashboard():
                     
                     # start scene
                     if setting_type == "scene":
-
                         brightness = request.form.get("set_brightness_" + str(i))
-                        ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_scene", i, int(setting.split("_")[1]), int(brightness)))  
+                        heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_scene", i, int(setting.split("_")[1]), int(brightness))))
                         time.sleep(3)                    
                         continue
 
@@ -54,8 +55,8 @@ def dashboard():
                     else:
 
                         # turn led group off
-                        if setting == "turn_off":
-                            ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_off", i))  
+                        if setting == "turn_off":  
+                            heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_off", i)))
                             time.sleep(3)                               
                             continue                     
 
@@ -65,8 +66,8 @@ def dashboard():
                             brightness = request.form.get("set_brightness_" + str(i))
 
                             # brightness changed ?
-                            if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:
-                                ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "led_brightness", i, int(brightness)))  
+                            if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:                   
+                                heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_brightness", i, int(brightness))))
                                 time.sleep(3)     
                                 continue              
     
@@ -278,9 +279,8 @@ def dashboard():
                                 error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                                 
                                 
-                            if change_state:     
-                                
-                                ADD_TASK_TO_PROCESS_MANAGEMENT(1, ("dasboard_command", "device", device.name, device.gateway, device.ieeeAddr, dashboard_command))  
+                            if change_state:                               
+                                heapq.heappush(process_management_queue, (1, ("dasboard_command", "device", device.name, device.gateway, device.ieeeAddr, dashboard_command)))  
                                 time.sleep(3)                            
 
                 except Exception as e:

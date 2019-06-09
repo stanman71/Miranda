@@ -17,11 +17,20 @@ from app.sites import index, user_login, dashboard, camera, led, scheduler, prog
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
-from app.components.mqtt_functions import MQTT_PUBLISH
+from app.components.mqtt import MQTT_THREAD, MQTT_PUBLISH
+from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 
 
 # deactivate pixel_ring
 MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
+
+
+""" ################## """
+""" process_management """
+""" ################## """
+
+Thread = threading.Thread(target=PROCESS_MANAGEMENT_THREAD)
+Thread.start() 
 
 
 """ ##### """
@@ -52,6 +61,52 @@ Thread = threading.Thread(target=START_FLASK_THREAD)
 Thread.start() 
 
 
+""" #### """
+""" mqtt """
+""" #### """
+
+# start MQTT
+if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
+    try:
+        print("###### Start MQTT ######")
+        Thread = threading.Thread(target=MQTT_THREAD)	
+        Thread.start()
+
+    except Exception as e:
+        print("Fehler in MQTT: " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
+
+
+""" ###### """
+""" zigbee """
+""" ###### """
+ 
+# start zigbee    
+if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
+    
+    time.sleep(3)
+    
+    if READ_LOGFILE_MQTT("zigbee2mqtt", "",5) != "Message nicht gefunden":
+        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No connection") 
+    
+    # set pairing setting  
+    pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
+    if pairing_setting == "True":
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "true")   
+    else:
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "false")
+
+# disable pairing
+if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
+    try:
+        channel = "SmartHome/zigbee2mqtt/bridge/config/permit_join"
+        MQTT_PUBLISH(channel, "false") 
+    except:
+        pass
+
+
 """ ############# """
 """ speechcontrol """
 """ ############# """
@@ -62,10 +117,10 @@ Thread.start()
 if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
     
     try:
-        from app.components.process_management import SNOWBOY_START
+        from app.speechcontrol.snowboy.snowboy import SNOWBOY_THREAD
 
         print("###### Start SPEECH CONTROL ######")
-        SNOWBOY_START()       
+        SNOWBOY_THREAD()       
 
     except Exception as e:
         if "signal only works in main thread" not in str(e): 

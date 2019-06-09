@@ -6,7 +6,7 @@ import datetime
 from app import app
 from app.database.database import *
 from app.components.checks import *
-from app.components.control_scheduler import *
+from app.components.file_management import GET_ALL_LOCATIONS
 
 
 # access rights
