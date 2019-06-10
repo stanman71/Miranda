@@ -5,7 +5,9 @@ from app.database.database import *
 from app.components.file_management import *
 from app.components.control_scheduler import SCHEDULER_TIME_PROCESS, SCHEDULER_SENSOR_PROCESS, SCHEDULER_PING_PROCESS
 from app.components.control_controller import CONTROLLER_PROCESS
-from app.components.config import process_management_queue
+from app.components.control_led import *
+from app.components.mqtt import *
+from app.components.shared_resources import process_management_queue
 from app.speechcontrol.speech_control_tasks import SPEECH_RECOGNITION_PROVIDER_TASKS
 
 
@@ -25,6 +27,11 @@ def PROCESS_MANAGEMENT_THREAD():
 
 		try:
 			process = heapq.heappop(process_management_queue)[1]
+			
+			
+			""" ############### """
+			""" process threads """
+			""" ############### """
 			
 			if process[0] == "time":
 				task = GET_SCHEDULER_TASK_BY_ID(process[1])
@@ -48,20 +55,42 @@ def PROCESS_MANAGEMENT_THREAD():
 				speech_recognition_answer = process[1]
 				SPEECH_RECOGNITION_PROVIDER_TASKS(speech_recognition_answer)  	
 				
-			if process[0] == "dasboard_command":
-				command_type = process[1]
 				
-				if command_type == "led_scene":
-					LED_START_SCENE(process[2], process[3], process[4])  
-				if command_type == "led_brightness":
-					LED_SET_BRIGHTNESS(process[2], process[3])  					
-				if command_type == "led_off":
-					LED_TURN_OFF_GROUP(process[2])  	
-				if command_type == "device":
-					MQTT_SET_DEVICE_SETTING(process[2], process[3], process[4], process[5])										
+			""" ############# """
+			""" process tasks """
+			""" ############# """					
+				
+			if process[0]  == "led_scene":
+				LED_START_SCENE(process[1], process[2], process[3])  
+				
+			if process[0]  == "led_brightness":
+				LED_SET_BRIGHTNESS(process[1], process[2])  
+		
+			if process[0]  == "led_brightness_dimmer":
+				LED_SET_BRIGHTNESS_DIMMER(process[1], process[2])  		
+							
+			if process[0]  == "led_off_group":
+				LED_TURN_OFF_GROUP(process[1])  
+				
+			if process[0]  == "led_off_all":
+				LED_TURN_OFF_ALL()  	
+								
+			if process[0]  == "device":
+				MQTT_SET_DEVICE_SETTING(process[1], process[2])										
+		
+			if process[0]  == "save_database":
+				SAVE_DATABASE()			
+	
+			if process[0]  == "mqtt_update_devices":
+				MQTT_UPDATE_DEVICES("mqtt")	
+	
+			if process[0]  == "request_sensordata":
+				MQTT_REQUEST_SENSORDATA(process[1])  	
+	
 					
-		except:
-			pass
+		except Exception as e:
+			if "index out of range" not in str(e):
+				print(str(e))
       
 		time.sleep(0.25)
    

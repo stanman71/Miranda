@@ -78,7 +78,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         payload_path.toCharArray( path, 100 );    
 
         // create msg as json
-        DynamicJsonDocument msg(1024);
+        DynamicJsonDocument msg(512);
         
         msg["ieeeAddr"]    = ieeeAddr;
         msg["model"]       = "watering_array_v1";
@@ -86,8 +86,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
         msg["description"] = "MQTT Watering_Array";
     
         JsonArray data_inputs = msg.createNestedArray("inputs");
-        data_inputs.add("sensor_0");
-        data_inputs.add("sensor_1");
+        data_inputs.add("sensor_moisture");
+        data_inputs.add("sensor_watertank");
 
         JsonArray data_commands = msg.createNestedArray("commands");
         data_commands.add("PUMP_ON");
@@ -113,14 +113,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );   
 
-        int sensor_0 = analogRead(PIN_ANALOG);
-        int sensor_1 = digitalRead(PIN_DIGITAL);
+        int sensor_moisture  = analogRead(PIN_ANALOG);
+        int sensor_watertank = digitalRead(PIN_DIGITAL);
 
         // create msg as json
-        DynamicJsonDocument msg(1024);
+        DynamicJsonDocument msg(100);
         
-        msg["sensor_0"] = sensor_0;
-        msg["sensor_1"] = sensor_1;
+        msg["sensor_moisture"]  = sensor_moisture;
+        msg["sensor_watertank"] = sensor_watertank;
 
         // convert msg to char
         char msg_Char[100];

@@ -9,7 +9,7 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
-from app.components.config import process_management_queue
+from app.components.shared_resources import process_management_queue
 
 import heapq
 
@@ -47,7 +47,7 @@ def dashboard():
                     # start scene
                     if setting_type == "scene":
                         brightness = request.form.get("set_brightness_" + str(i))
-                        heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_scene", i, int(setting.split("_")[1]), int(brightness))))
+                        heapq.heappush(process_management_queue, (1, ("led_scene", i, int(setting.split("_")[1]), int(brightness))))
                         time.sleep(3)                    
                         continue
 
@@ -56,7 +56,7 @@ def dashboard():
 
                         # turn led group off
                         if setting == "turn_off":  
-                            heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_off", i)))
+                            heapq.heappush(process_management_queue, (1, ("led_off_group", i)))
                             time.sleep(3)                               
                             continue                     
 
@@ -67,7 +67,7 @@ def dashboard():
 
                             # brightness changed ?
                             if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:                   
-                                heapq.heappush(process_management_queue, (1, ("dasboard_command", "led_brightness", i, int(brightness))))
+                                heapq.heappush(process_management_queue, (1, ("led_brightness", i, int(brightness))))
                                 time.sleep(3)     
                                 continue              
     
@@ -280,7 +280,7 @@ def dashboard():
                                 
                                 
                             if change_state:                               
-                                heapq.heappush(process_management_queue, (1, ("dasboard_command", "device", device.name, device.gateway, device.ieeeAddr, dashboard_command)))  
+                                heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command)))  
                                 time.sleep(3)                            
 
                 except Exception as e:

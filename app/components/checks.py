@@ -904,6 +904,35 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
             return list_task_errors
 
 
+      # check device
+      if "device" in task:
+         if ":" in task:
+            task = task.split(":") 
+
+            try:
+               device         = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+               device_command = task[2].upper()
+               
+               if device_command in GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands:
+                  return list_task_errors
+                  
+               else:
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> Befehl " + task[2] + " ungültig")
+                  else:
+                     list_task_errors.append(name + " >>> " + task[2] + " ungültig")
+                     
+                  return list_task_errors                  
+                        
+            except:
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> Gerät " + task[1] + " nicht gefunden")
+               else:
+                  list_task_errors.append(name + " >>> " + task[1] + " nicht gefunden")
+                  
+               return list_task_errors
+
+
       # check watering_plants
       if task == "watering_plants" and task_type == "scheduler":
          return list_task_errors
@@ -943,7 +972,11 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
 
       # nothing found
-      list_task_errors.append(name + " >>> Ungültige Aufgabe") 
+      if command != "":
+         list_task_errors.append(name + " >>> " + command + " >>> Ungültige Aufgabe") 
+      else:
+         list_task_errors.append(name + " >>> Ungültige Aufgabe")
+         
       return list_task_errors
    
    

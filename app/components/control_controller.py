@@ -1,9 +1,11 @@
 import json
+import heapq
 
 from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.shared_resources import process_management_queue
 
       
 """ ###################### """
@@ -170,108 +172,94 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 
 def START_CONTROLLER_TASK(task, controller_name, controller_command):
    
-   # start scene
-   try:
-      if "scene" in task:
-         try:
-            task = task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
-            error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
+	# start scene
+	try:
+		if "scene" in task:
+			try:
+				task = task.split(":")
+				group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+				scene_id = GET_LED_SCENE_BY_NAME(task[2]).id    
+				heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), int(task[3]))))    
+
+			except:
+				task = task.split(":")
+				group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+				scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
+				heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), 100)))  
             
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-               
-         except:
-            task = task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
-            error_message = LED_START_SCENE(int(group_id), int(scene_id))   
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-                  
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
+	except Exception as e:
+		print(e)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
 
 
-   # change brightness
-   try:
-      if "brightness" in task:
-         task = task.split(":")
-         group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-         command  = task[2]
-         error_message = LED_SET_BRIGHTNESS_DIMMER(int(group_id), command)  
-         
-         if error_message != "":
-            error_message = str(error_message)
-            error_message = error_message[1:]
-            error_message = error_message[:-1]                    
-            WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-            
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
+	# change brightness
+	try:
+		if "brightness" in task:
+			task = task.split(":")
+			group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+			command  = task[2]
+			heapq.heappush(process_management_queue, (5, ("led_brightness_dimmer", int(group_id), command)))  
+
+	except Exception as e:
+		print(e)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
 
 
-   # led off
-   try:
-      if "led_off" in task:
-         task = task.split(":")
+	# led off
+	try:
+		if "led_off" in task:
+			task = task.split(":")
 	 
-         if task[1] == "group":
-            # get input group names and lower the letters
-            try:
-                  list_groups = task[2].split(",")
-            except:
-                  list_groups = [task[2]]
+			if task[1] == "group":
+				# get input group names and lower the letters
+				try:
+					list_groups = task[2].split(",")
+				except:
+					list_groups = [task[2]]
                   
-            for input_group_name in list_groups: 
-               input_group_name = input_group_name.replace(" ", "")
+				for input_group_name in list_groups: 
+					input_group_name = input_group_name.replace(" ", "")
                
-               group_founded = False
+					group_founded = False
                
-               # get exist group names 
-               for group in GET_ALL_LED_GROUPS():
+				# get exist group names 
+				for group in GET_ALL_LED_GROUPS():
                
-                  if input_group_name.lower() == group.name.lower():
-                  
-                     print("#######")
-                     print(input_group_name.lower())
-                                         
-                     group_id = group.id
-                     error_message = LED_TURN_OFF_GROUP(int(group_id))
-               
-                     if error_message != "":
-                        error_message = str(error_message)
-                        error_message = error_message[1:]
-                        error_message = error_message[:-1]                    
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-                        
-                     group_founded = True
-               
-               if group_founded == False:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
-                        
-               
-         if task[1] == "all":
-            error_message = LED_TURN_OFF_ALL()   
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(error_message))
-          
-	       
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))      
+					if input_group_name.lower() == group.name.lower():
+                             
+						group_id      = group.id
+						group_founded = True
+		     
+						heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
 
+				if group_founded == False:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
+                        
+               
+			if task[1] == "all":
+				heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
+
+	       
+	except Exception as e:
+		print(e)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))    
+		
+		
+	# device
+	try:
+		if "device" in task:
+			task = task.split(":")
+        
+			try:
+				device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+				command = task[2].upper()
+				
+				if command != device.previous_command:
+					heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command)))				
+				
+			except:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
+						
+	except Exception as e:
+		print(e)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | " + str(e))   

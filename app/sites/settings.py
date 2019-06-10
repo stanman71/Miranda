@@ -11,7 +11,7 @@ from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
-from app.components.mqtt_functions import *
+from app.components.mqtt import *
 from app.components.checks import *
 
 
@@ -454,7 +454,7 @@ def dashboard_settings_speechcontrol():
             SET_GLOBAL_SETTING_VALUE("speechcontrol", setting_speechcontrol) 
 
     # change radio check    
-    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
         check_value_speechcontrol[0] = "checked = 'on'"
         check_value_speechcontrol[1] = ""
     else:
@@ -466,12 +466,12 @@ def dashboard_settings_speechcontrol():
     # snowboy settings
     ##################
 
-    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+    if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
 
         # check snowboy
         def START_SNOWBOY():
-            from app.components.process_management import SNOWBOY_START
-            SNOWBOY_START()
+            from app.speechcontrol.snowboy.snowboy import SNOWBOY_THREAD
+            SNOWBOY_THREAD()
           
         try:
             START_SNOWBOY()

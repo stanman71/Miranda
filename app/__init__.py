@@ -21,9 +21,6 @@ from app.components.mqtt import MQTT_THREAD, MQTT_PUBLISH
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 
 
-# deactivate pixel_ring
-MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
-
 
 """ ################## """
 """ process_management """
@@ -114,7 +111,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
 # snowboy operates in main only
 # start snowboy
 
-if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
+if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
     
     try:
         from app.speechcontrol.snowboy.snowboy import SNOWBOY_THREAD
@@ -127,3 +124,5 @@ if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "speech_recognition_provider":
             print("Fehler in SnowBoy: " + str(e))
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
 
+    # deactivate pixel_ring
+    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")

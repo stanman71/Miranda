@@ -6,7 +6,7 @@ from app.speechcontrol.speech_recognition_provider import SPEECH_RECOGNITION_PRO
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.config import process_management_queue
+from app.components.shared_resources import process_management_queue
 
 import sys
 import signal

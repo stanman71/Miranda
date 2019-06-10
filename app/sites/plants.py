@@ -107,7 +107,7 @@ def dashboard_plants():
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_array")  
     dropdown_list_pumptime = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
-    dropdown_list_moisture = ["wenig", "normal", "viel"]
+    dropdown_list_moisture = ["less", "normal", "much"]
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_plants.html',

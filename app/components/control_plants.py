@@ -1,68 +1,37 @@
 import threading
 import time
 import json
+import heapq
 
 from app import app
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
-from app.components.mqtt import MQTT_PUBLISH
+from app.components.mqtt import MQTT_PUBLISH, MQTT_SET_DEVICE_SETTING, MQTT_CHECK_SETTING
+from app.components.shared_resources import process_management_queue
 
 
 """ ################ """
 """ watering control """
 """ ################ """
 
-# 40 ml / minute
 def START_PUMP(plant_id):
     
-    plant = GET_PLANT_BY_ID(plant_id)
-    
-    gateway  = plant.mqtt_device.gateway 
+    plant    = GET_PLANT_BY_ID(plant_id)
     ieeeAddr = plant.mqtt_device.ieeeAddr 
-    pump_key = plant.pump_key
-    pump_key = pump_key.replace(" ","")
     
-    channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
+    heapq.heappush(process_management_queue, (5, ("device", ieeeAddr, "PUMP_ON")))	
     
-    if pump_key == "pump_0":
-        MQTT_PUBLISH(channel, "set_pump_0:on")
-    if pump_key == "pump_1":
-        MQTT_PUBLISH(channel, "set_pump_1:on")
-    if pump_key == "pump_2": 
-        MQTT_PUBLISH(channel, "set_pump_2:on")  
-    if pump_key == "pump_3":
-        MQTT_PUBLISH(channel, "set_pump_3:on")  
-        
-    print("Start: " + pump_key)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Start Pump - " + plant.pump_key)
-        
-    time.sleep(1)
-  
+    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Start Pump - " + plant.name)
+
 
 def STOP_PUMP(plant_id):
     
-    plant = GET_PLANT_BY_ID(plant_id)
-    
-    gateway  = plant.mqtt_device.gateway 
+    plant    = GET_PLANT_BY_ID(plant_id)
     ieeeAddr = plant.mqtt_device.ieeeAddr 
-    pump_key = plant.pump_key 
-    pump_key = pump_key.replace(" ","")  
     
-    channel = "SmartHome/mqtt" + gateway + "/" + ieeeAddr + "/set"
+    heapq.heappush(process_management_queue, (5, ("device", ieeeAddr, "PUMP_OFF")))	
     
-    if pump_key == "pump_0":
-        MQTT_PUBLISH(channel, "set_pump_0:off")
-    if pump_key == "pump_1": 
-        MQTT_PUBLISH(channel, "set_pump_1:off")
-    if pump_key == "pump_2": 
-        MQTT_PUBLISH(channel, "set_pump_2:off")  
-    if pump_key == "pump_3":   
-        MQTT_PUBLISH(channel, "set_pump_3:off")    
-        
-    print("Stop: " + pump_key)
-    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Stop Pump - " + plant.pump_key)
-    
-    time.sleep(1)
+    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Stop Pump - " + plant.name)
 
 
 """ ######### """
@@ -83,44 +52,38 @@ def WATERING_THREAD(start):
 
     for plant in GET_ALL_PLANTS():
         
-        if plant.control_sensor == "checked":
+        watering = False
         
-            ieeeAddr   = plant.mqtt_device.ieeeAddr
-            gateway    = plant.mqtt_device.gateway
-            sensor_key = plant.sensor_key
-            sensor_key = sensor_key.replace(" ","")
+        if plant.control_sensor_moisture == "checked":
             
-            # send request message
-            channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/get"
-            MQTT_PUBLISH(channel, "")
+            sensor_values      = plant.mqtt_device.last_values
+            sensor_values_json = json.loads(sensor_values)                     
             
-            time.sleep(2)
+            moisture_level     = plant.moisture
+            current_moisture   = sensor_values_json["sensor_moisture"] 
             
-            # get sensor value
-            input_messages = READ_LOGFILE_MQTT(gateway, "SmartHome/" + gateway + "/" + ieeeAddr, 5)
-            
-            for input_message in input_messages:
-               
-                input_message = str(input_message[2])
+            if moisture_level == "much" and current_moisture < 400:
+                watering = True
+            if moisture_level == "normal" and current_moisture < 300:
+                watering = True                
+            if moisture_level == "less" and current_moisture < 200:
+                watering = True     
                 
-                data  = json.loads(input_message)
-                value = data[sensor_key]
-                
-                print("SENSOR: " + str(value))
-               
-                if int(value) < 50:                        
-                    START_PUMP(plant.id)       
-                    pump_running = pump_running + 1  
-                    break   
-                                         
-                else:
-                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Water on the Ground") 
-                    break
-       
         else:
+            watering = True
+            
+        
+        if plant.control_sensor_watertank == "checked":
+            current_watertank = sensor_values_json["sensor_watertank"] 
+            
+            if current_watertank == 0:
+                WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Watertank low") 
+
+        if watering:
             START_PUMP(plant.id)       
             pump_running = pump_running + 1
-
+            
+            
     while pump_running != 0:
 
         for plant in GET_ALL_PLANTS():
@@ -128,8 +91,7 @@ def WATERING_THREAD(start):
                 STOP_PUMP(plant.id)                 
                 pump_running = pump_running - 1 
         
-        # 10 ml / 15 sec
-        i = i + 10
+        i = i + 15
         time.sleep(15)
         print(i) 
 

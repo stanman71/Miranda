@@ -10,10 +10,9 @@ from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.control_plants import START_WATERING_THREAD
-from app.components.mqtt import MQTT_PUBLISH
-from app.components.mqtt_functions import *
+from app.components.mqtt import *
 from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
-from app.components.config import process_management_queue
+from app.components.shared_resources import process_management_queue
 
 
 
@@ -1180,26 +1179,14 @@ def START_SCHEDULER_TASK(task_object):
             task = task_object.task.split(":")
             group_id = GET_LED_GROUP_BY_NAME(task[1]).id
             scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
-            error_message = LED_START_SCENE(int(group_id), int(scene_id), int(task[3]))  
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
-               
+            heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), int(task[3]))))  
+
          except:
             task = task_object.task.split(":")
             group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
-            error_message = LED_START_SCENE(int(group_id), int(scene_id))   
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
-                  
+            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id  
+            heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), 100)))         
+
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -1226,37 +1213,41 @@ def START_SCHEDULER_TASK(task_object):
                for group in GET_ALL_LED_GROUPS():
                
                   if input_group_name.lower() == group.name.lower():
-                  
-                     print("#######")
-                     print(input_group_name.lower())
-                                         
-                     group_id = group.id
-                     error_message = LED_TURN_OFF_GROUP(int(group_id))
-               
-                     if error_message != "":
-                        error_message = str(error_message)
-                        error_message = error_message[1:]
-                        error_message = error_message[:-1]                    
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message)) 
-                        
+                               
+                     group_id      = group.id
                      group_founded = True
-               
+                     
+                     heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
+
                if group_founded == False:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | 08 Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
                   
                
          if task[1] == "all":
-            error_message = LED_TURN_OFF_ALL()   
-            
-            if error_message != "":
-               error_message = str(error_message)
-               error_message = error_message[1:]
-               error_message = error_message[:-1]                    
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
+            heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
                
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
+
+   # device
+   try:
+	   if "device" in task_object.task:
+		   task = task_object.task.split(":")
+        
+		   try:
+			   device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+			   command = task[2].upper()
+				
+			   if command != device.previous_command:
+			      heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command)))				
+				
+		   except:
+		   	WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | not founded")
+						
+   except Exception as e:
+	   print(e)
+	   WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
 
 
    # watering plants
@@ -1271,11 +1262,8 @@ def START_SCHEDULER_TASK(task_object):
    # save database 
    try:    
       if "save_database" in task_object.task:
-         error_message = SAVE_DATABASE()  
-         if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
-         else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))                   
+         heapq.heappush(process_management_queue, (20, ("save_database", 0)))
+  
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
@@ -1284,11 +1272,8 @@ def START_SCHEDULER_TASK(task_object):
    # update mqtt devices
    try:
       if "mqtt_update_devices" in task_object.task:
-         error_message = MQTT_UPDATE_DEVICES("mqtt")
-         if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
-         else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))              
+         heapq.heappush(process_management_queue, (20, ("mqtt_update_devices", 0)))
+
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -1298,11 +1283,8 @@ def START_SCHEDULER_TASK(task_object):
    try:
       if "request_sensordata" in task_object.task:
          task = task_object.task.split(":")
-         error_message = MQTT_REQUEST_SENSORDATA(task[1])          
-         if error_message == "":
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Scheduler | Task - " + task_object.name + " | successful")
-         else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(error_message))
+         heapq.heappush(process_management_queue, (20, ("request_sensordata", task[1])))
+         
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              

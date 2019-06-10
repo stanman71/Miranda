@@ -1,9 +1,13 @@
+
+import heapq
+
 from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
-from app.components.mqtt_functions import MQTT_SET_DEVICE_SETTING
+from app.components.mqtt import MQTT_SET_DEVICE_SETTING
+from app.components.shared_resources import process_management_queue
 
 
 """ #################### """
@@ -72,18 +76,14 @@ def START_LED_TASK(answer):
                     if element.isdigit() and (1 <= int(element) <= 100):
                         brightness = int(element)
                      
-                if group_id != None and scene_id != None:                    
-                    error_message = LED_START_SCENE(int(group_id), int(scene_id), brightness)            
-                    if error_message != "":
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))
-                        
-                time.sleep(1)
-                break
+                if group_id != None and scene_id != None:   
+                    heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), brightness)))                   
+                    time.sleep(1)
+                    break
        
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))  
-                
                 break
                 
 
@@ -102,7 +102,6 @@ def START_LED_TASK(answer):
         if keyword.lower() in answer:
 
             try:
-      
                 groups = GET_ALL_LED_GROUPS()
 
                 for group in groups:
@@ -116,18 +115,13 @@ def START_LED_TASK(answer):
                              
                         # check brightness value
                         if 1 <= int(brightness) <= 100:      
-                            error_message = LED_SET_BRIGHTNESS(int(group.id), int(brightness))     
-                                             
-                            if error_message != "":            
-                                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))                   
-                   
-                    time.sleep(1)
-                    break
+                            heapq.heappush(process_management_queue, (5, ("led_brightness", int(group.id), int(brightness))))    
+                            time.sleep(1)
+                            break
 
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
-                
                 break
 
 
@@ -146,7 +140,6 @@ def START_LED_TASK(answer):
         if keyword.lower() in answer:
 
             try:
-      
                 groups = GET_ALL_LED_GROUPS()
 
                 group_ids = []
@@ -159,23 +152,17 @@ def START_LED_TASK(answer):
                 if group_ids != []:
                     
                     for group_id in group_ids:
-                        error_message = LED_TURN_OFF_GROUP(int(group_id))
-                        if error_message != "":            
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))                    
-               
+                        heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
+                        time.sleep(1)
                 
                 else:
-                    error_message = LED_TURN_OFF_ALL()   
-                    if error_message != "":            
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))
-                       
-                time.sleep(1)
-                break
+                    heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
+                    time.sleep(1)
+                    break
 
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
-                
                 break
                     
 
@@ -194,18 +181,13 @@ def START_LED_TASK(answer):
         if keyword.lower() in answer:
 
             try:
-    
-                error_message = LED_TURN_OFF_ALL()   
-                if error_message != "":            
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(error_message))
-                        
+                heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
                 time.sleep(1)
                 break
 
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
-                
                 break
                     
             
@@ -228,23 +210,16 @@ def START_DEVICE_TASK(answer):
                        
             if keyword.lower() in answer:
                 
-                try:
-                    
+                try:      
                     device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
                     
                     if task.command != device.previous_command:
-                    
-                        error_message = MQTT_SET_DEVICE_SETTING(device.name, device.gateway, device.ieeeAddr, task.command.replace(" ",""))
-                            
-                        if error_message != "":            
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control Device Task | " + answer + " | " + str(error_message))    
-                            
+                        heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, task.command.replace(" ",""))))
                         time.sleep(1)
                         break
                     
                 except Exception as e:
                     print(e)
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control Device Task | " + answer + " | " + str(e))    
-                    
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control Device Task | " + answer + " | " + str(e))      
                     break                    
                     
