@@ -279,8 +279,12 @@ def dashboard():
                                 error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                                 
                                 
-                            if change_state:                               
-                                heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command)))  
+                            if change_state:                         
+                                if dashboard_command == "POWER_ON":
+                                    heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command, '{"state": "ON"}', "state", "ON")))  
+                                if dashboard_command == "POWER_OFF":
+                                    heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command, '{"state": "OFF"}', "state", "OFF")))  
+                                
                                 time.sleep(3)                            
 
                 except Exception as e:

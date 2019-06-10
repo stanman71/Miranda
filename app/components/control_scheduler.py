@@ -1172,6 +1172,7 @@ def START_SCHEDULER_TASK(task_object):
    
    WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started') 
 
+
    # start scene
    try:
       if "scene" in task_object.task:
@@ -1230,24 +1231,29 @@ def START_SCHEDULER_TASK(task_object):
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
+
    # device
    try:
-	   if "device" in task_object.task:
-		   task = task_object.task.split(":")
-        
-		   try:
-			   device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
-			   command = task[2].upper()
-				
-			   if command != device.previous_command:
-			      heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command)))				
-				
-		   except:
-		   	WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | not founded")
-						
+      if "device" in task_object.task and "mqtt_update" not in task_object.task:
+         task = task_object.task.split(":")
+
+         try:
+            device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+            command = task[2].upper()
+
+            if command != device.previous_command:
+
+               if command == "POWER_ON":                 
+                  heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command, '{"state": "ON"}', "state", "ON")))                  
+               if command == "POWER_OFF": 
+                  heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command, '{"state": "OFF"}', "state", "OFF")))                 		
+
+         except:
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | not founded")
+
    except Exception as e:
-	   print(e)
-	   WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
+      print(e)
+      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
 
 
    # watering plants

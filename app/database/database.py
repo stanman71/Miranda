@@ -1607,9 +1607,6 @@ def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_
 def SET_MQTT_DEVICE_PREVIOUS_COMMAND_AND_STATUS(ieeeAddr, command, setting_value):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    print("################")
-    print(setting_value)
-    
     entry.status           = setting_value
     entry.previous_command = command
     db.session.commit()  

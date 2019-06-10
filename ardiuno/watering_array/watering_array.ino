@@ -117,13 +117,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
         int sensor_watertank = digitalRead(PIN_DIGITAL);
 
         // create msg as json
-        DynamicJsonDocument msg(100);
+        DynamicJsonDocument msg(128);
         
         msg["sensor_moisture"]  = sensor_moisture;
         msg["sensor_watertank"] = sensor_watertank;
 
         // convert msg to char
-        char msg_Char[100];
+        char msg_Char[128];
         serializeJson(msg, msg_Char);
         
         Serial.print("Channel: ");
@@ -153,34 +153,58 @@ void callback(char* topic, byte* payload, unsigned int length) {
         Serial.println(msg);
 
         // convert msg to json
-        DynamicJsonDocument msg_json(50);
+        DynamicJsonDocument msg_json(64);
         deserializeJson(msg_json, msg);
         
-        String pump_setting = msg_json["state"];      
+        String pump_setting = msg_json["state"];
 
         if (pump_setting == "PUMP_ON") {
+
+            int pumptime = msg_json["pumptime"];
+            pumptime = pumptime * 1000; 
+
+            // start pump
             digitalWrite(PIN_PUMP, HIGH);
 
             // create msg as json
-            DynamicJsonDocument msg(50);     
+            DynamicJsonDocument msg(64);     
             msg["state"] = "PUMP_ON";
 
             // convert msg to char
-            char msg_Char[50];
+            char msg_Char[64];
             serializeJson(msg, msg_Char);
             
             client.publish(path, msg_Char);
             Serial.println("PUMP_ON");
+
+            delay(pumptime);
+
+            // stop pump
+            digitalWrite(PIN_PUMP, LOW);
+            
+            // create msg as json   
+            msg["state"] = "PUMP_OFF";
+
+            // convert msg to char
+            serializeJson(msg, msg_Char);
+
+            while (!client.connected()) {
+                reconnect();
+            }
+            
+            client.publish(path, msg_Char);
+            Serial.println("PUMP_OFF");
+                            
         }
         if (pump_setting == "PUMP_OFF") {
             digitalWrite(PIN_PUMP, LOW); 
 
             // create msg as json
-            DynamicJsonDocument msg(50);     
+            DynamicJsonDocument msg(64);     
             msg["state"] = "PUMP_OFF";
 
             // convert msg to char
-            char msg_Char[50];
+            char msg_Char[64];
             serializeJson(msg, msg_Char);
             
             client.publish(path, msg_Char);
@@ -231,6 +255,8 @@ void setup() {
     pinMode(PIN_LED_RED,OUTPUT);
     pinMode(PIN_LED_GREEN,OUTPUT);
     pinMode(BUILTIN_LED, OUTPUT); 
+
+    digitalWrite(PIN_PUMP, LOW); 
 }
 
 void loop() {

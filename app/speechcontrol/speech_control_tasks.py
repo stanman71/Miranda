@@ -214,7 +214,11 @@ def START_DEVICE_TASK(answer):
                     device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
                     
                     if task.command != device.previous_command:
-                        heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, task.command.replace(" ",""))))
+                        if task.command == "POWER_ON":
+                            heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, task.command, '{"state": "ON"}', "state", "ON")))  
+                        if task.command == "POWER_OFF":
+                            heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, task.command, '{"state": "OFF"}', "state", "OFF")))  
+                                
                         time.sleep(1)
                         break
                     

@@ -216,10 +216,8 @@ def SAVE_DATABASE():
         # save database
         shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
                         PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup | saved")
-       
-       
-        # delete old backup files
+                
+        # if more then 10 backups saved, delete oldest backup file
         list_of_files = os.listdir(PATH + '/backup/')    
         full_path     = [PATH + '/backup/{0}'.format(x) for x in list_of_files]
 
@@ -227,12 +225,12 @@ def SAVE_DATABASE():
             oldest_file = min(full_path, key=os.path.getctime)
             os.remove(oldest_file)        
         
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | saved")
         return ""
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e)) 
         return str(e)
-        return ("ERROR: " + str(e))
 
 
 def RESTORE_DATABASE(filename):
@@ -240,7 +238,7 @@ def RESTORE_DATABASE(filename):
     try:
         if filename.split("_")[1] == "smarthome.sqlite3":
             shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database_Backup | " + filename + " | restored")
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | " + filename + " | restored")
             
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e))  
@@ -444,22 +442,18 @@ def WRITE_SENSORDATA_FILE(filename, device, sensor, value):
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + ".csv | " + str(e))
 
 
-
-#############################
-# ERROR while creating graph
-#############################
-
 def READ_SENSORDATA_FILE(filename):
     try:
         # open csv file with pandas
         file = PATH + "/csv/" + filename
         
-        df = pd.read_csv(file, sep=",", skiprows = 1, names=["Timestamp","Device","Sensor","Sensor_Value"])
+        df = pd.read_csv(file, sep = ",", skiprows = 1, names = ["Timestamp","Device","Sensor","Sensor_Value"])
         return df
 
     except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File Test | /csv/" + filename + " | " + str(e))    
+        if "Error tokenizing data. C error: Calling read(nbytes) on source failed. Try engine='python'." not in str(e):
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "File | /csv/" + filename + " | " + str(e))    
 
 
 def DELETE_SENSORDATA_FILE(filename):

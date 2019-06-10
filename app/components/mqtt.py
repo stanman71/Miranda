@@ -250,9 +250,11 @@ def MQTT_UPDATE_DEVICES(gateway):
 					# update input values
 					MQTT_PUBLISH("SmartHome/mqtt/" + ieeeAddr + "/get", "")  
 
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Update Devices")
 				return ""
 
 			else: 
+				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(messages))
 				return messages
 
 		except Exception as e:
@@ -342,8 +344,11 @@ def MQTT_UPDATE_DEVICES(gateway):
 								SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
                            
 							if error != "":
+								WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | " + str(error))
 								return error
+								
 							else:
+								WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Update Devices")
 								return ""
       
 		except Exception as e:
@@ -414,45 +419,28 @@ def MQTT_SAVE_SENSORDATA(job_id):
 """      set device     """
 """ ################### """
    
-def MQTT_SET_DEVICE_SETTING(ieeeAddr, command):
+def MQTT_SET_DEVICE_SETTING(ieeeAddr, command, msg, setting_key, setting_value):
 	
 	gateway = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).gateway
 	name    = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
 
-	# create channel
+	# send message
 	if gateway == "mqtt":
 		channel = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
+		MQTT_PUBLISH(channel, msg) 
+		
+		time.sleep(2)
+		check_setting = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value)
+		
 	else:
 		channel = "SmartHome/" + gateway + "/" + name + "/set"
-
-	# create message
-	if command == "POWER_ON":
-		msg           = '{"state": "ON"}'
-		setting_value = "ON"
-      
-	if command == "POWER_OFF":
-		msg           = '{"state": "OFF"}'
-		setting_value = "OFF"
-      
-	if command == "PUMP_ON":
-		msg           = '{"state": "PUMP_ON"}'
-		setting_value = "PUMP_ON"
-      
-	if command == "PUMP_OFF":
-		msg           = '{"state": "PUMP_OFF"}'
-		setting_value = "PUMP_OFF"      
-      
-	MQTT_PUBLISH(channel, msg)   
+		MQTT_PUBLISH(channel, msg)   
 	
-	time.sleep(2)
-	
-	# start check function
-	if gateway == "mqtt":
-		check_setting = MQTT_CHECK_SETTING(ieeeAddr, "state", setting_value)
-	else:
-		check_setting = MQTT_CHECK_SETTING(name, "state", setting_value)
+		time.sleep(2)
+		check_setting = MQTT_CHECK_SETTING(name, setting_key, setting_value)
    
-  
+   
+	# check device setting answer
 	if check_setting:
 		SET_MQTT_DEVICE_PREVIOUS_COMMAND_AND_STATUS(ieeeAddr, command, setting_value)
 		return ""
@@ -473,16 +461,21 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value):
 		gateway = GET_MQTT_DEVICE_BY_NAME(ieeeAddr).gateway
 	
 	         
-	input_messages = READ_LOGFILE_MQTT(gateway, "SmartHome/" + gateway + "/" + ieeeAddr, 5)
+	input_messages = READ_LOGFILE_MQTT(gateway, "SmartHome/" + gateway + "/" + ieeeAddr, 15)
 	
 	if input_messages != "Message nicht gefunden":
 		for input_message in input_messages:
 			input_message = str(input_message[2])
 
-			data = json.loads(input_message)
+			try:
+
+				data = json.loads(input_message)
+				
+				if data[setting_key] == setting_value:
+					return True
 			
-			if data[setting_key] == setting_value:
-				return True
+			except:
+				return False
      
 	return False
    

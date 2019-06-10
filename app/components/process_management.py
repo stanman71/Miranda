@@ -29,9 +29,9 @@ def PROCESS_MANAGEMENT_THREAD():
 			process = heapq.heappop(process_management_queue)[1]
 			
 			
-			""" ############### """
-			""" process threads """
-			""" ############### """
+			""" ############## """
+			""" process checks """
+			""" ############## """
 			
 			if process[0] == "time":
 				task = GET_SCHEDULER_TASK_BY_ID(process[1])
@@ -60,31 +60,31 @@ def PROCESS_MANAGEMENT_THREAD():
 			""" process tasks """
 			""" ############# """					
 				
-			if process[0]  == "led_scene":
+			if process[0] == "led_scene":
 				LED_START_SCENE(process[1], process[2], process[3])  
 				
-			if process[0]  == "led_brightness":
+			if process[0] == "led_brightness":
 				LED_SET_BRIGHTNESS(process[1], process[2])  
 		
-			if process[0]  == "led_brightness_dimmer":
+			if process[0] == "led_brightness_dimmer":
 				LED_SET_BRIGHTNESS_DIMMER(process[1], process[2])  		
 							
-			if process[0]  == "led_off_group":
+			if process[0] == "led_off_group":
 				LED_TURN_OFF_GROUP(process[1])  
 				
-			if process[0]  == "led_off_all":
+			if process[0] == "led_off_all":
 				LED_TURN_OFF_ALL()  	
 								
-			if process[0]  == "device":
-				MQTT_SET_DEVICE_SETTING(process[1], process[2])										
+			if process[0] == "device":
+				MQTT_SET_DEVICE_SETTING(process[1], process[2], process[3], process[4], process[5])										
 		
-			if process[0]  == "save_database":
+			if process[0] == "save_database":
 				SAVE_DATABASE()			
 	
-			if process[0]  == "mqtt_update_devices":
+			if process[0] == "mqtt_update_devices":
 				MQTT_UPDATE_DEVICES("mqtt")	
 	
-			if process[0]  == "request_sensordata":
+			if process[0] == "request_sensordata":
 				MQTT_REQUEST_SENSORDATA(process[1])  	
 	
 					
@@ -92,5 +92,5 @@ def PROCESS_MANAGEMENT_THREAD():
 			if "index out of range" not in str(e):
 				print(str(e))
       
-		time.sleep(0.25)
+		time.sleep(0.2)
    

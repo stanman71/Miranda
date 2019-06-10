@@ -269,7 +269,7 @@
                         <div class="col-sm-4">                       
                           <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                             <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
-                            <option value= "{{ entry.sensor_key }}" > -------------------- </option>
+                            <option value= "{{ entry.sensor_key }}" > ------------------------- </option>
                             {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
                               {% for each in entry.mqtt_device.inputs.split(',') %}
                                 <option value= "{{ each }}" > {{ each }} </option>

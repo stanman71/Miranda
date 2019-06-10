@@ -255,8 +255,12 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				command = task[2].upper()
 				
 				if command != device.previous_command:
-					heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command)))				
-				
+					
+					if command == "POWER_ON":
+						heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, command, '{"state": "ON"}', "state", "ON")))  
+					if command == "POWER_OFF":
+						heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, command, '{"state": "OFF"}', "state", "OFF")))  
+												
 			except:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
 						
