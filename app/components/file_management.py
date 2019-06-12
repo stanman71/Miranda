@@ -87,6 +87,7 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
         print(str(e))
 
 
+'''
 def READ_LOGFILE_MQTT(gateway, channel, time):   
     
     try:
@@ -142,6 +143,8 @@ def READ_LOGFILE_MQTT(gateway, channel, time):
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
         return ("ZigBee2MQTT >>> ERROR >>> " + str(e))
     
+'''
+
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
     

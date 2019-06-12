@@ -10,8 +10,11 @@ from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSIO
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
 from app.components.shared_resources import process_management_queue
+from app.components.control_led import *
+from app.components.mqtt import *
 
 import heapq
+import json
 
 
 class LoginForm(FlaskForm):
@@ -24,7 +27,7 @@ class LoginForm(FlaskForm):
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
 def dashboard():
-    error_message_led = ""
+    error_message_led = []
     error_message_device = ""
     error_message_log = ""
     checkbox = ""
@@ -41,36 +44,52 @@ def dashboard():
                 # set led group
                 if request.form.get("set_group_" + str(i)) != None:  
 
-                    setting      = request.form.get("set_group_" + str(i))    
+                    setting      = request.form.get("set_group_" + str(i)) 
                     setting_type = setting.split("_")[0]
+                    brightness   = request.form.get("set_brightness_" + str(i))   
                     
+
                     # start scene
                     if setting_type == "scene":
-                        brightness = request.form.get("set_brightness_" + str(i))
-                        heapq.heappush(process_management_queue, (1, ("led_scene", i, int(setting.split("_")[1]), int(brightness))))
-                        time.sleep(3)                    
-                        continue
-
-    
-                    else:
-
-                        # turn led group off
-                        if setting == "turn_off":  
-                            heapq.heappush(process_management_queue, (1, ("led_off_group", i)))
-                            time.sleep(3)                               
-                            continue                     
-
-                        # change brightness
-                        if request.form.get("set_brightness_" + str(i)) != None:
+                        scene_id   = int(setting.split("_")[1])
+                        scene_name = GET_LED_SCENE_BY_ID(scene_id).name
+                        
+                        LED_SET_SCENE(i, scene_id, int(brightness)) 
+                        
+                        error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
+                        continue     
+                        
+                        
+                    # change brightness only
+                    if GET_LED_GROUP_BY_ID(i).current_setting != "OFF":                 
+                        
+                        # brightness changed
+                        if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:  
+                            LED_SET_BRIGHTNESS(i, int(brightness))
+                                              
+                            scene_name = GET_LED_GROUP_BY_ID(i).current_setting
                             
-                            brightness = request.form.get("set_brightness_" + str(i))
-
-                            # brightness changed ?
-                            if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:                   
-                                heapq.heappush(process_management_queue, (1, ("led_brightness", i, int(brightness))))
-                                time.sleep(3)     
-                                continue              
+                            if scene_name != "OFF":
+                                scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+        
+                                error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10) 
+                                continue         
     
+    
+                    # turn led group off
+                    if setting == "turn_off":  
+                        LED_TURN_OFF_GROUP(i)
+                        
+                        scene_name = GET_LED_GROUP_BY_ID(i).current_setting
+                        
+                        if scene_name != "OFF":
+                            scene_id = GET_LED_SCENE_BY_NAME(scene_name).id
+                        else:
+                            scene_id = 0
+                        
+                        error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, "OFF", 0, 2, 10)                                  
+                        continue  
+                                
     
         if request.form.get("change_device_settings") != None:
             
@@ -100,7 +119,6 @@ def dashboard():
           
                             # check_option not changed
                             if GET_MQTT_DEVICE_BY_IEEEADDR(device.ieeeAddr).dashboard_check_option == dashboard_check_option:
-                                
                                 dashboard_check_sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
                             
  
@@ -279,13 +297,41 @@ def dashboard():
                                 error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                                 
                                 
-                            if change_state:                         
-                                if dashboard_command == "POWER_ON":
-                                    heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command, '{"state": "ON"}', "state", "ON")))  
-                                if dashboard_command == "POWER_OFF":
-                                    heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, dashboard_command, '{"state": "OFF"}', "state", "OFF")))  
+                            # state changing
+                            if change_state: 
                                 
-                                time.sleep(3)                            
+                                gateway = device.gateway
+                                
+                                # ####
+                                # mqtt
+                                # ####
+                                
+                                if gateway == "mqtt":
+                                    
+                                    ieeeAddr = device.ieeeAddr                      
+                                    channel  = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
+                                    msg      = '{"state": "' + dashboard_command + '"}'
+                                    
+                                    heapq.heappush(process_management_queue, (1, ("mqtt", channel, msg)))    
+                                                    
+                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(ieeeAddr, "state", dashboard_command, 5)                                     
+
+                                  
+                                # ###########
+                                # zigbee2mqtt
+                                # ###########    
+                                    
+                                if gateway == "zigbee2mqtt":
+                                    
+                                    name    = device.name
+                                    channel = "SmartHome/" + gateway + "/" + name + "/set"
+                                    msg     = '{"state": "' + dashboard_command + '"}'
+                                    
+                                    heapq.heappush(process_management_queue, (1, ("mqtt", channel, msg)))                                          
+                                    
+                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, "state", dashboard_command, 1, 5)      
+                                            
+                                continue                                                    
 
                 except Exception as e:
                     print(e)

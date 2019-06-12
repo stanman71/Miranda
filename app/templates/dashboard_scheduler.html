@@ -669,32 +669,27 @@
                             </font>                           
                           </div>
 
-                          {% if entry.option_sunrise == "checked" or entry.option_sunset == "checked" %}
-
-                            <div class="col-sm-1">
-                              <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
-                            </div>
-                            <div class="col-sm-1">
-                              <select class="btn btn-default dropdown-toggle" name="set_location_{{ entry.id }}">
-                                
-                                {% if entry.location != None %}
-                                  <option value= "{{ entry.location }}" > {{ entry.location }} </option>
-                                  <option value= "{{ entry.location }}" > ------------------------- </option>
-                                {% endif %}
-                                
-                                {% if error_message_locations_import == "" %}
-                                  {% for each in dropdown_list_locations %}
-                                    <option value= "{{ each }}" > {{ each }} </option>
-                                  {% endfor %}   
-                                  <option value= "" > ------------------------- </option>                                                         
-                                  <option value= "" > None </option>   
-                                {% endif %} 
-                                
-                              </select>
-                            </div>
-
-                          {% endif %}
-
+                          <div class="col-sm-1">
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
+                          </div>
+                          <div class="col-sm-1">
+                            <select class="btn btn-default dropdown-toggle" name="set_location_{{ entry.id }}">
+                              
+                              {% if entry.location != None %}
+                                <option value= "{{ entry.location }}" > {{ entry.location }} </option>
+                                <option value= "{{ entry.location }}" > ------------------------- </option>
+                              {% endif %}
+                              
+                              {% if error_message_locations_import == "" %}
+                                {% for each in dropdown_list_locations %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}   
+                                <option value= "" > ------------------------- </option>                                                         
+                                <option value= "" > None </option>   
+                              {% endif %} 
+                              
+                            </select>
+                          </div>
                         </div>
                       </td>                           
                     </tr>
@@ -1030,8 +1025,8 @@
                     <td>alle LEDs ausschalten</td>
                   </tr>    
                   <tr>
-                    <td>device:Steckdose TV:power_off</td>
-                    <td>Gerät Steckdose TV ausschalten (power_on ist einschalten)</td>
+                    <td>device:Steckdose TV:off</td>
+                    <td>Gerät Steckdose TV ausschalten (on ist einschalten)</td>
                   </tr>                                  
                   <tr>
                     <td>watering_plants</td>

@@ -173,10 +173,11 @@
           <div class="panel-body">  
             <div class="well well-sm">
 
-
-{% if error_message_led != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_led }}
+{% if error_message_led != [] %}
+  <div class="alert alert-warning" role="alert">
+    {% for entry in error_message_led %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %}
 
@@ -263,7 +264,7 @@
             <div class="well well-sm">
 
 {% if error_message_device != "" %}
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-warning" role="alert">
     {{ error_message_device }}
   </div>      
 {% endif %}
@@ -482,6 +483,7 @@
                     <td style="width:16%">{{ entry[0] }}</td> 
                     <td style="width:10%">
                       {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "STATUS" %} <font color="darkblue">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            

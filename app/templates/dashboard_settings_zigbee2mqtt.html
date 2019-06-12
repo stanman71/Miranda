@@ -185,6 +185,15 @@
         <div class="panel panel-default">
           <div class="panel-body">   
             <form method="POST">  
+              
+<!-- zigbee2mqtt error message pairing -->
+
+{% if error_message_zigbee2mqtt_pairing != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_zigbee2mqtt_pairing }}
+  </div>      
+{% endif %}                 
+              
               <div class="well well-sm">
                 <div class="pretty p-default p-round">
                     <input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">

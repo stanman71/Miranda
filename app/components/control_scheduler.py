@@ -11,7 +11,7 @@ from app.components.control_led import *
 from app.database.database import *
 from app.components.control_plants import START_WATERING_THREAD
 from app.components.mqtt import *
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT, GET_CONFIG_MQTT_BROKER
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER, GET_LOCATION_COORDINATES
 from app.components.shared_resources import process_management_queue
 
 
@@ -1176,17 +1176,37 @@ def START_SCHEDULER_TASK(task_object):
    # start scene
    try:
       if "scene" in task_object.task:
+         
+         group = GET_LED_GROUP_BY_NAME(task[1])
+         
          try:
-            task = task_object.task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
-            heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), int(task[3]))))  
-
+            
+            if group.current_setting != task[2] and int(group.current_brightness) != int(task[3]):
+    
+               task = task_object.task.split(":")
+               group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+               scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+               
+               LED_SET_SCENE(group_id, scene_id, int(task[3])) 
+               LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], int(task[3]), 5, 15)      
+               
+            else:
+               WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : " + task[3])             
+            
          except:
-            task = task_object.task.split(":")
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id  
-            heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), 100)))         
+            
+            if group.current_setting != task[2]:
+            
+               task = task_object.task.split(":")
+               group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+               scene_id = GET_LED_SCENE_BY_NAME(task[2]).id  
+               
+               LED_SET_SCENE(group_id, scene_id, 100) 
+               LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], 100, 5, 15)      
+               
+            else:
+               WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : 100")          
+
 
    except Exception as e:
       print(e)
@@ -1214,19 +1234,40 @@ def START_SCHEDULER_TASK(task_object):
                for group in GET_ALL_LED_GROUPS():
                
                   if input_group_name.lower() == group.name.lower():
-                               
-                     group_id      = group.id
-                     group_founded = True
+                          
+                     group_founded = True   
                      
-                     heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
-
+                     if group.current_setting != "OFF":
+                            
+                        LED_TURN_OFF_GROUP(group.id)
+                        LED_ERROR_CHECKING_THREAD(group_id, 0, "OFF", 0, 5, 20)   
+                        
+                     else:
+                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
+                        
+     
                if group_founded == False:
                   WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
                   
                
          if task[1] == "all":
-            heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
+            LED_TURN_OFF_ALL()
+            
+            led_groups = GET_ALL_LED_GROUPS()
+            
+            for group in led_groups:
                
+               if group.current_setting != "OFF":
+               
+                  scene_name = group.current_setting
+                  scene_id = GET_LED_SCENE_BY_NAME(scene_name).id
+
+                  LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 5, 20)       
+                  
+               else:
+                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
+          
+          
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -1240,16 +1281,40 @@ def START_SCHEDULER_TASK(task_object):
          try:
             device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
             command = task[2].upper()
+            
+            gateway = device.gateway
 
             if command != device.previous_command:
+               
+                 if gateway == "mqtt":
+                     
+                    channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
+                    msg     = '{"state": "' + command + '"}'
+                    
+                    MQTT_PUBLISH(channel, msg) 
+                    MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", command, 5, 20)
+                    
+                    
+                 if gateway == "zigbee2mqtt":
 
-               if command == "POWER_ON":                 
-                  heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command, '{"state": "ON"}', "state", "ON")))                  
-               if command == "POWER_OFF": 
-                  heapq.heappush(process_management_queue, (5, ("device", device.ieeeAddr, command, '{"state": "OFF"}', "state", "OFF")))                 		
+                    channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
+                    msg     = '{"state": "' + command + '"}'
+                    
+                    MQTT_PUBLISH(channel, msg) 
+                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", command, 5, 20)
+                    
+            else:
+               
+               if gateway == "mqtt":
+                  WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | State - " + str(command)) 
+                  
+               if gateway == "zigbee2mqtt":
+                  WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | State - " + str(command))  
+                  
 
-         except:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | not founded")
+         except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | " + str(e))
 
    except Exception as e:
       print(e)
@@ -1268,8 +1333,8 @@ def START_SCHEDULER_TASK(task_object):
    # save database 
    try:    
       if "save_database" in task_object.task:
-         heapq.heappush(process_management_queue, (20, ("save_database", 0)))
-  
+         SAVE_DATABASE()	
+
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
@@ -1278,7 +1343,7 @@ def START_SCHEDULER_TASK(task_object):
    # update mqtt devices
    try:
       if "mqtt_update_devices" in task_object.task:
-         heapq.heappush(process_management_queue, (20, ("mqtt_update_devices", 0)))
+         MQTT_UPDATE_DEVICES("mqtt")
 
    except Exception as e:
       print(e)
@@ -1289,8 +1354,8 @@ def START_SCHEDULER_TASK(task_object):
    try:
       if "request_sensordata" in task_object.task:
          task = task_object.task.split(":")
-         heapq.heappush(process_management_queue, (20, ("request_sensordata", task[1])))
-         
+         MQTT_REQUEST_SENSORDATA(task[1])  
+
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              

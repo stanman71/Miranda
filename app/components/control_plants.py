@@ -5,8 +5,8 @@ import heapq
 
 from app import app
 from app.database.database import *
-from app.components.file_management import WRITE_LOGFILE_SYSTEM, READ_LOGFILE_MQTT
-from app.components.mqtt import MQTT_PUBLISH, MQTT_SET_DEVICE_SETTING, MQTT_CHECK_SETTING
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.mqtt import MQTT_CHECK_SETTING
 from app.components.shared_resources import process_management_queue
 
 

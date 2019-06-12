@@ -6,7 +6,8 @@ import datetime
 from app import app
 from app.database.database import *
 from app.components.checks import *
-from app.components.file_management import GET_ALL_LOCATIONS
+from app.components.file_management import GET_ALL_LOCATIONS, GET_LOCATION_COORDINATES
+from app.components.control_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
 
 
 # access rights
@@ -245,7 +246,8 @@ def dashboard_scheduler():
                     # task setting
                     # ############
 
-                    ### set task
+
+                    # set task
                     if request.form.get("set_task_" + str(i)) != "":
                         task = request.form.get("set_task_" + str(i))
                     else:
@@ -256,31 +258,36 @@ def dashboard_scheduler():
                     # checkbox settings
                     # #################
 
-                    ### set checkbox time
+
+                    # set checkbox time
                     if request.form.get("checkbox_option_time_" + str(i)):
                         option_time = "checked"
                     else:
                         option_time = "None"  
 
-                    ### set checkbox sun
+
+                    # set checkbox sun
                     if request.form.get("checkbox_option_sun_" + str(i)):
                         option_sun = "checked"
                     else:
                         option_sun = "None" 
 
-                    ### set checkbox sensors
+
+                    # set checkbox sensors
                     if request.form.get("checkbox_option_sensors_" + str(i)):
                         option_sensors = "checked"
                     else:
                         option_sensors = "None"  
 
-                    ### set checkbox position
+
+                    # set checkbox position
                     if request.form.get("checkbox_option_position_" + str(i)):
                         option_position = "checked"
                     else:
                         option_position = "None"  
-
-                    ### set checkbox repeat
+                        
+                        
+                    # set checkbox repeat
                     if request.form.get("checkbox_option_repeat_" + str(i)):
                         option_repeat = "checked"
                     else:
@@ -291,19 +298,22 @@ def dashboard_scheduler():
                     # time settings
                     # #############
 
-                    ### set day
+
+                    # set day
                     if request.form.get("set_day_" + str(i)) != "":
                         day = request.form.get("set_day_" + str(i))
                     else:
                         day = GET_SCHEDULER_TASK_BY_ID(i).day
 
-                    ### set hour
+
+                    # set hour
                     if request.form.get("set_hour_" + str(i)) != "":
                         hour = request.form.get("set_hour_" + str(i))
                     else:
                         hour = GET_SCHEDULER_TASK_BY_ID(i).hour
 
-                    ### set minute
+
+                    # set minute
                     if request.form.get("set_minute_" + str(i)) != "":
                         minute = request.form.get("set_minute_" + str(i))
                     else:
@@ -314,36 +324,35 @@ def dashboard_scheduler():
                     # sun settings
                     # ############
 
-                    ### set option sunrise
+
+                    # set option sunrise
                     if request.form.get("checkbox_option_sunrise_" + str(i)):
                         option_sunrise = "checked"
                     else:
                         option_sunrise = "None"  
 
-                    ### set option sunset
+
+                    # set option sunset
                     if request.form.get("checkbox_option_sunset_" + str(i)):
                         option_sunset = "checked"
                     else:              
                         option_sunset = "None"  
 
-                    ### set location
-                    if option_sunrise != "None" or option_sunset != "None":
-                        location = request.form.get("set_location_" + str(i))
+
+                    # set location
+                    location = request.form.get("set_location_" + str(i))
+                    
+                    if location == "" or location == None:           
+                        location = "None"  
                         
-                        if location == "":           
-                            location = "None"  
-                            
-                    else:
-                        location = "None" 
-                               
+                                   
                     # update sunrise / sunset  
-                    if ((option_sunrise != "None" or option_sunset != "None") and location != "None"):
+                    if location != "None":
                         
                         # get coordinates
                         coordinates = GET_LOCATION_COORDINATES(location)
                          
                         try:
-                            
                             SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
                             SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
                                 
@@ -359,6 +368,8 @@ def dashboard_scheduler():
                     # sensor settings
                     # ###############              
 
+
+                    # set mqtt_device 1
                     mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))
 
                     if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_1):
@@ -368,6 +379,8 @@ def dashboard_scheduler():
                     else:
                         mqtt_device_ieeeAddr_1 = "None"
                          
+                         
+                    # set mqtt_device 2
                     mqtt_device_2 = request.form.get("set_mqtt_device_2_" + str(i))
 
                     if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_2):
@@ -377,6 +390,8 @@ def dashboard_scheduler():
                     else:
                         mqtt_device_ieeeAddr_2 = "None"
                         
+                        
+                    # set mqtt_device 3
                     mqtt_device_3 = request.form.get("set_mqtt_device_3_" + str(i)) 
 
                     if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_3):
@@ -386,6 +401,7 @@ def dashboard_scheduler():
                     else:
                         mqtt_device_ieeeAddr_3 = "None"
                         
+                        
                     operator_1       = request.form.get("set_operator_1_" + str(i))
                     operator_2       = request.form.get("set_operator_2_" + str(i))
                     operator_3       = request.form.get("set_operator_3_" + str(i))     
@@ -394,6 +410,7 @@ def dashboard_scheduler():
                     value_3          = request.form.get("set_value_3_" + str(i))                                    
                     operator_main_1  = request.form.get("set_operator_main_1_" + str(i))
                     operator_main_2  = request.form.get("set_operator_main_2_" + str(i))
+
 
                     if operator_1 == None:
                         operator_1 = "None"
@@ -411,6 +428,7 @@ def dashboard_scheduler():
                         operator_main_1 = "None"
                     if operator_main_2 == None:
                         operator_main_2 = "None"                   
+
 
                     # get mqtt device 1
                     try:
@@ -434,6 +452,7 @@ def dashboard_scheduler():
                         mqtt_device_name_1     = "None"
                         mqtt_device_inputs_1   = "None"  
 
+
                     # get mqtt device 2
                     try:
                         mqtt_device_name_2   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
@@ -455,6 +474,7 @@ def dashboard_scheduler():
                         mqtt_device_ieeeAddr_2 = "None"
                         mqtt_device_name_2     = "None"
                         mqtt_device_inputs_2   = "None"   
+
 
                     # get mqtt device 3
                     try:
@@ -483,13 +503,15 @@ def dashboard_scheduler():
                     # position settings
                     # #################   
 
-                    ### set option home
+
+                    # set option home
                     if request.form.get("checkbox_option_home_" + str(i)):
                         option_home = "checked"
                     else:
                         option_home = "None"  
 
-                    ### set option away
+
+                    # set option away
                     if request.form.get("checkbox_option_away_" + str(i)):
                         option_away = "checked"
                     else:
@@ -498,7 +520,7 @@ def dashboard_scheduler():
 
                     if option_home != "None" or option_away != "None":
 
-                        ### set ip_addresses
+                        # set ip_addresses
                         if request.form.get("set_ip_addresses_" + str(i)) != "":
                             ip_addresses = request.form.get("set_ip_addresses_" + str(i))
                         else:

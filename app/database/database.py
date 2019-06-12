@@ -112,11 +112,6 @@ class eMail(db.Model):
     mail_username       = db.Column(db.String(50))
     mail_password       = db.Column(db.String(50)) 
 
-class Error_List(db.Model):
-    __tablename__ = 'error_list'
-    id           = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    content      = db.Column(db.String(100))
-
 class Global_Settings(db.Model):
     __tablename__ = 'global_settings'
     id            = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -393,16 +388,6 @@ if eMail.query.filter_by().first() is None:
         id = 1,
     )
     db.session.add(email)
-    db.session.commit()
-
-
-# create error list
-if Error_List.query.filter_by().first() is None:      
-    error = Error_List(
-        id = 1,
-        content = "",
-    )        
-    db.session.add(error)
     db.session.commit()
 
 
@@ -736,24 +721,6 @@ def SET_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mai
     return ""
 
 
-""" ################## """
-""" ################## """
-"""     error list     """
-""" ################## """
-""" ################## """
-
-
-def SET_ERROR_LIST(content):
-    entry = Error_List.query.filter_by(id=1).first()
-    entry.content = content
-    db.session.commit()  
-
-
-def GET_ERROR_LIST():
-    entry = Error_List.query.filter_by(id=1).first()
-    return entry.content
-
-
 """ ################### """
 """ ################### """
 """   global settings   """
@@ -889,36 +856,36 @@ def SET_LED_SCENE(id, name, red_1, green_1, blue_1, color_temp_1, brightness_1,
 def ADD_LED_SCENE_SETTING(id):
     entry = LED_Scenes.query.filter_by(id=id).first()
 
-    if entry.active_setting_2 != "on":
-        entry.active_setting_2 = "on"
+    if entry.active_setting_2 != "True":
+        entry.active_setting_2 = "True"
         db.session.commit()
         return
-    if entry.active_setting_3 != "on":
-        entry.active_setting_3 = "on"
+    if entry.active_setting_3 != "True":
+        entry.active_setting_3 = "True"
         db.session.commit()
         return
-    if entry.active_setting_4 != "on":
-        entry.active_setting_4 = "on"
+    if entry.active_setting_4 != "True":
+        entry.active_setting_4 = "True"
         db.session.commit()
         return
-    if entry.active_setting_5 != "on":
-        entry.active_setting_5 = "on"
+    if entry.active_setting_5 != "True":
+        entry.active_setting_5 = "True"
         db.session.commit()
         return
-    if entry.active_setting_6 != "on":
-        entry.active_setting_6 = "on"
+    if entry.active_setting_6 != "True":
+        entry.active_setting_6 = "True"
         db.session.commit()
         return
-    if entry.active_setting_7 != "on":
-        entry.active_setting_7 = "on"
+    if entry.active_setting_7 != "True":
+        entry.active_setting_7 = "True"
         db.session.commit()
         return
-    if entry.active_setting_8 != "on":
-        entry.active_setting_8 = "on"
+    if entry.active_setting_8 != "True":
+        entry.active_setting_8 = "True"
         db.session.commit()
         return       
-    if entry.active_setting_9 != "on":
-        entry.active_setting_9 = "on"
+    if entry.active_setting_9 != "True":
+        entry.active_setting_9 = "True"
         db.session.commit()
         return  
 
@@ -1251,36 +1218,36 @@ def UPDATE_LED_GROUP_LED_NAMES():
 def ADD_LED_GROUP_LED(id):
     entry = LED_Groups.query.filter_by(id=id).first()
 
-    if entry.active_led_2 != "on":
-        entry.active_led_2 = "on"
+    if entry.active_led_2 != "True":
+        entry.active_led_2 = "True"
         db.session.commit()
         return
-    if entry.active_led_3 != "on":
-        entry.active_led_3 = "on"
+    if entry.active_led_3 != "True":
+        entry.active_led_3 = "True"
         db.session.commit()
         return
-    if entry.active_led_4 != "on":
-        entry.active_led_4 = "on"
+    if entry.active_led_4 != "True":
+        entry.active_led_4 = "True"
         db.session.commit()
         return
-    if entry.active_led_5 != "on":
-        entry.active_led_5 = "on"
+    if entry.active_led_5 != "True":
+        entry.active_led_5 = "True"
         db.session.commit()
         return
-    if entry.active_led_6 != "on":
-        entry.active_led_6 = "on"
+    if entry.active_led_6 != "True":
+        entry.active_led_6 = "True"
         db.session.commit()
         return
-    if entry.active_led_7 != "on":
-        entry.active_led_7 = "on"
+    if entry.active_led_7 != "True":
+        entry.active_led_7 = "True"
         db.session.commit()
         return
-    if entry.active_led_8 != "on":
-        entry.active_led_8 = "on"
+    if entry.active_led_8 != "True":
+        entry.active_led_8 = "True"
         db.session.commit()
         return       
-    if entry.active_led_9 != "on":
-        entry.active_led_9 = "on"
+    if entry.active_led_9 != "True":
+        entry.active_led_9 = "True"
         db.session.commit()
         return  
 
@@ -1604,13 +1571,19 @@ def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_
                              " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
 
                                                 
-def SET_MQTT_DEVICE_PREVIOUS_COMMAND_AND_STATUS(ieeeAddr, command, setting_value):
+def SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, command):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    entry.status           = setting_value
     entry.previous_command = command
     db.session.commit()  
     
+    
+def SET_MQTT_DEVICE_STATUS(ieeeAddr, status):
+    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
+    
+    entry.status = status
+    db.session.commit()     
+   
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
@@ -1747,11 +1720,7 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
             error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name                       
        
     if error_list != "":
-        
-        error_list = error_list[1:]
-        SET_ERROR_LIST(error_list)  
-        
-        return False  
+        return error_list[1:]   
                
     else:
         
@@ -1759,9 +1728,6 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
         
         MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).delete()
         db.session.commit() 
-        
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + device.name + " | deleted")
-        
         return True
 
 

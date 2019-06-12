@@ -6,7 +6,6 @@ from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
-from app.components.mqtt import MQTT_SET_DEVICE_SETTING
 from app.components.shared_resources import process_management_queue
 
 

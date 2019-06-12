@@ -13,7 +13,7 @@ from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
 from app.components.checks import *
-
+from app.components.shared_resources import GET_ERROR_DELETE_MQTT_DEVICE, SET_ERROR_DELETE_MQTT_DEVICE
 
 # create role "superuser"
 def superuser_required(f):
@@ -40,15 +40,18 @@ def dashboard_settings_mqtt():
     mqtt_device_name = ""   
     check_value_mqtt   = ["", ""]
 
-    if GET_ERROR_LIST() is not "":
-        error_message_change_settings = GET_ERROR_LIST()
-        SET_ERROR_LIST("")
-
+    # get mqtt device delete errors
+    if GET_ERROR_DELETE_MQTT_DEVICE() != "":
+        error_message_change_settings = GET_ERROR_DELETE_MQTT_DEVICE()
+        SET_ERROR_DELETE_MQTT_DEVICE("")
+        
+    
     if request.method == "POST":     
         # change mqtt settings   
-        if request.form.get("set_setting_mqtt") is not None:
+        if request.form.get("set_setting_mqtt") != None:
             setting_mqtt = str(request.form.get("radio_mqtt"))
             SET_GLOBAL_SETTING_VALUE("mqtt", setting_mqtt)
+
 
     # change radio check  
     mqtt_setting = GET_GLOBAL_SETTING_VALUE("mqtt")    
@@ -58,6 +61,7 @@ def dashboard_settings_mqtt():
     else:
         check_value_mqtt[0] = ""
         check_value_mqtt[1] = "checked = 'on'"
+
 
     if mqtt_setting == "True":
 
@@ -87,6 +91,8 @@ def dashboard_settings_mqtt():
         # update device list
         if request.form.get("mqtt_update_devices") != None:
             error_message_change_settings = MQTT_UPDATE_DEVICES("mqtt")
+            print("#######")
+            print(error_message_change_settings)
             
         # reset logfile
         if request.form.get("reset_logfile") != None: 
@@ -126,7 +132,14 @@ def change_mqtt_device_position(id, direction, device_type):
 @login_required
 @superuser_required
 def remove_mqtt_device(ieeeAddr):
-    DELETE_MQTT_DEVICE(ieeeAddr)
+    device_name = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
+    result      = DELETE_MQTT_DEVICE(ieeeAddr) 
+    
+    if result != True:
+        SET_ERROR_DELETE_MQTT_DEVICE(result)
+    else:
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device_name + " | deleted")
+        
     return redirect(url_for('dashboard_settings_mqtt'))
      
      
@@ -154,11 +167,18 @@ def dashboard_settings_zigbee2mqtt():
     error_message = ""
     error_message_zigbee2mqtt = ""
     error_message_change_settings = ""
+    error_message_zigbee2mqtt_pairing = ""
     check_value_zigbee2mqtt = ["", ""]
     check_value_pairing = ["", ""]
     zigbee_topology_show = False
 
-    if request.method == "POST":     
+    # get zigbee2mqtt device delete errors
+    if GET_ERROR_DELETE_MQTT_DEVICE() != "":
+        error_message_change_settings = GET_ERROR_DELETE_MQTT_DEVICE()
+        SET_ERROR_DELETE_MQTT_DEVICE("")
+
+    if request.method == "POST":  
+           
         # change mqtt settings   
         if request.form.get("set_setting_zigbee2mqtt") is not None:
             setting_zigbee2mqtt = str(request.form.get("radio_zigbee2mqtt"))
@@ -166,6 +186,7 @@ def dashboard_settings_zigbee2mqtt():
 
     # change radio check  
     zigbee2mqtt_setting = GET_GLOBAL_SETTING_VALUE("zigbee2mqtt")    
+    
     if zigbee2mqtt_setting == "True":
         check_value_zigbee2mqtt[0] = "checked = 'on'"
         check_value_zigbee2mqtt[1] = ""
@@ -175,10 +196,6 @@ def dashboard_settings_zigbee2mqtt():
 
 
     if zigbee2mqtt_setting == "True":
-
-        if GET_ERROR_LIST() is not "":
-            error_message_change_settings = GET_ERROR_LIST()
-            SET_ERROR_LIST("")
         
         error_message_zigbee2mqtt = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
         
@@ -235,24 +252,58 @@ def dashboard_settings_zigbee2mqtt():
                 setting_pairing = str(request.form.get("radio_pairing"))
                 SET_ZIGBEE2MQTT_PAIRING(setting_pairing)
 
+                if setting_pairing == "True":
+                        
+                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
+                     
+                    time.sleep(1)
+                    zigbee_check = False
+                    
+                    for message in MQTT_GET_INCOMMING_MESSAGES(5):
+                        
+                        if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
+                            zigbee_check = True
+                    
+                    if zigbee_check == True:             
+                        WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing enabled") 
+                    else:             
+                        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")   
+                        error_message_zigbee2mqtt_pairing = "Pairing Einstellung nicht bestätigt"   
+                                                
+                else:
+                    
+                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
+
+                    time.sleep(1)
+                    zigbee_check = False
+                    
+                    for message in MQTT_GET_INCOMMING_MESSAGES(5):
+                        
+                        if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":false}':
+                            zigbee_check = True
+                    
+                    if zigbee_check == True:             
+                        WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing disabled") 
+                    else:             
+                        WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing disabled | Setting not confirmed")  
+                        error_message_zigbee2mqtt_pairing = "Pairing Einstellung nicht bestätigt"  
+
+
             # reset logfile
             if request.form.get("reset_logfile") is not None: 
                 RESET_LOGFILE("log_zigbee2mqtt")
      
-        # set pairing checkbox  
-        pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
-        if pairing_setting == "True":
-            check_value_pairing[0] = "checked = 'on'"
-            check_value_pairing[1] = ""        
-            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")  
-        else:
-            check_value_pairing[0] = ""
-            check_value_pairing[1] = "checked = 'on'"        
-            MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
+    # set pairing checkbox  
+    pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
+    
+    if pairing_setting == "True":
+        check_value_pairing[0] = "checked = 'on'"
+        check_value_pairing[1] = ""        
 
-        if READ_LOGFILE_MQTT("zigbee2mqtt", "",5) != "Message nicht gefunden":
-            error_message_zigbee2mqtt = READ_LOGFILE_MQTT("zigbee2mqtt", "",5) 
-            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No connection")
+    else:
+        check_value_pairing[0] = ""
+        check_value_pairing[1] = "checked = 'on'"        
+
 
     zigbee2mqtt_device_list = GET_ALL_MQTT_DEVICES("zigbee2mqtt")
 
@@ -262,6 +313,7 @@ def dashboard_settings_zigbee2mqtt():
                             error_message=error_message,
                             error_message_zigbee2mqtt=error_message_zigbee2mqtt,
                             error_message_change_settings=error_message_change_settings,
+                            error_message_zigbee2mqtt_pairing=error_message_zigbee2mqtt_pairing,
                             check_value_zigbee2mqtt=check_value_zigbee2mqtt,  
                             check_value_pairing=check_value_pairing,
                             zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
@@ -288,12 +340,27 @@ def change_zigbee2mqtt_device_position(id, direction, device_type):
 @login_required
 @superuser_required
 def remove_zigbee2mqtt_device(ieeeAddr):
+    device_name = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
+    result      = DELETE_MQTT_DEVICE(ieeeAddr) 
     
-    device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-    result = DELETE_MQTT_DEVICE(ieeeAddr)
-    
-    if result == True:
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device.name) 
+    if result != True:
+        SET_ERROR_DELETE_MQTT_DEVICE(result)
+    else:
+        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device_name) 
+
+        time.sleep(10)
+        zigbee_check = False
+        
+        for message in MQTT_GET_INCOMMING_MESSAGES(5):
+            
+            if message[1] == "SmartHome/zigbee2mqtt/bridge/log" and message[2] == '{"type":"device_removed","message":"' + device_name + '"}':
+                zigbee_check = True
+        
+        if zigbee_check == True:             
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Zigbee2MQTT | Device - " + device_name + " | deleted")
+        else:             
+            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device_name + " | Deletion not confirmed")  
+            SET_ERROR_DELETE_MQTT_DEVICE("Löschung des Geräts " + device_name + " nicht bestätigt")   
 
     return redirect(url_for('dashboard_settings_zigbee2mqtt'))
 

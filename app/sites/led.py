@@ -105,7 +105,7 @@ def dashboard_led_scenes():
                 ## 2 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_2 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_2 == "True":
  
                     # check rgb
                     rgb_2 = request.form.get("set_rgb_2_" + str(i))
@@ -137,7 +137,7 @@ def dashboard_led_scenes():
                 ## 3 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_3 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_3 == "True":
  
                     # check rgb
                     rgb_3 = request.form.get("set_rgb_3_" + str(i))
@@ -169,7 +169,7 @@ def dashboard_led_scenes():
                 ## 4 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_4 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_4 == "True":
  
                     # check rgb
                     rgb_4 = request.form.get("set_rgb_4_" + str(i))
@@ -201,7 +201,7 @@ def dashboard_led_scenes():
                 ## 5 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_5 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_5 == "True":
  
                     # check rgb
                     rgb_5 = request.form.get("set_rgb_5_" + str(i))
@@ -233,7 +233,7 @@ def dashboard_led_scenes():
                 ## 6 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_6 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_6 == "True":
  
                     # check rgb
                     rgb_6 = request.form.get("set_rgb_6_" + str(i))
@@ -265,7 +265,7 @@ def dashboard_led_scenes():
                 ## 7 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_7 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_7 == "True":
  
                     # check rgb
                     rgb_7 = request.form.get("set_rgb_7_" + str(i))
@@ -297,7 +297,7 @@ def dashboard_led_scenes():
                 ## 8 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_8 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_8 == "True":
  
                     # check rgb
                     rgb_8 = request.form.get("set_rgb_8_" + str(i))
@@ -329,7 +329,7 @@ def dashboard_led_scenes():
                 ## 9 ##
                 #######
 
-                if GET_LED_SCENE_BY_ID(i).active_setting_9 == "on":
+                if GET_LED_SCENE_BY_ID(i).active_setting_9 == "True":
  
                     # check rgb
                     rgb_9 = request.form.get("set_rgb_9_" + str(i))

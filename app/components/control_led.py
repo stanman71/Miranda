@@ -1,15 +1,15 @@
-import paho.mqtt.client as mqtt
-
 import math
 import re
 import time
 import threading
 import json
+import heapq
 
 from app import app
 from app.database.database import *
-from app.components.file_management import READ_LOGFILE_MQTT
-from app.components.mqtt import MQTT_PUBLISH
+from app.components.shared_resources import process_management_queue
+from app.components.mqtt import ZIGBEE2MQTT_CHECK_SETTING
+
 
 """ ################### """
 """ led basic functions """
@@ -52,35 +52,235 @@ def SETTING_LED_RGB(led_name, red, green, blue, brightness):
     
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state":"ON","brightness":' + str(brightness) + ',"color": { "x":' + str(xy[0]) + ',"y":' + str(xy[1]) + '}}'
-    MQTT_PUBLISH(channel, msg) 
+    
+    heapq.heappush(process_management_queue, (1,  ("zigbee2mqtt", channel, msg)))
 
 
 def SETTING_LED_WHITE(led_name, color_temp, brightness):
 
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '"}'
-    MQTT_PUBLISH(channel, msg) 
+    
+    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
 
 
 def SETTING_LED_SIMPLE(led_name, brightness):
 
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
-    MQTT_PUBLISH(channel, msg) 
+    
+    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
 
 
 def SETTING_LED_BRIGHTNESS(led_name, brightness):
     
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
-    MQTT_PUBLISH(channel, msg) 
-
+    
+    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg)))    
+    
 
 def SETTING_LED_TURN_OFF(led_name):
 
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg = '{"state": "OFF"}'
-    MQTT_PUBLISH(channel, msg) 
+    
+    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
+    
+    
+    
+""" ################## """
+""" led error checking """
+""" ################## """
+
+
+def LED_ERROR_CHECKING_THREAD(group_id, scene_id, scene, brightness, delay, limit): 
+ 
+	Thread = threading.Thread(target=LED_ERROR_CHECKING_PROCESS, args=(group_id, scene_id, scene, brightness, delay, limit, ))
+	Thread.start()   
+
+ 
+def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
+                    
+    if scene == "OFF":
+        setting = "OFF"
+    else:
+        setting = "ON"
+                    
+    # check setting 1 try
+    time.sleep(delay)                             
+    result = LED_CHECK_SETTING(group_id, scene_id, setting, limit)
+    
+    # set current state
+    if result == []:
+        SET_LED_GROUP_CURRENT_SETTING(group_id, scene)
+        SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness)   
+        
+    else:
+        # check setting 2 try
+        time.sleep(delay)                             
+        result = LED_CHECK_SETTING(group_id, scene_id, setting, limit)
+        
+        # set current state 
+        if result == []:
+            SET_LED_GROUP_CURRENT_SETTING(group_id, scene)
+            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness)  
+        
+        else:
+            # check setting 3 try
+            time.sleep(delay)                             
+            result = LED_CHECK_SETTING(group_id, scene_id, setting, limit) 
+     
+              
+    # output
+    SET_LED_GROUP_CURRENT_SETTING(group_id, scene)
+    SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness)                
+                
+    group_name = GET_LED_GROUP_BY_ID(group_id).name
+                
+    if result == []:
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "LED | Group - " + group_name + " | Setting changed - " + str(scene) + " : "  + str(brightness)) 
+    else:
+        WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group_name + " | " + str(result)) 
+           
+    return result     
+                                                             
+    
+def LED_CHECK_SETTING(group_id, scene_id, setting, limit):
+    
+    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
+        
+        error_list = []
+
+        try:      
+            group = GET_LED_GROUP_BY_ID(group_id)
+            
+            # group isn't offline
+            if scene_id != 0:
+                
+                scene = GET_LED_SCENE_BY_ID(scene_id)
+
+                # led 1
+                led_1 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_1)
+
+                if ZIGBEE2MQTT_CHECK_SETTING(led_1.name, "state", setting, limit) == False:
+                    error_list.append(led_1.name + " >>> Setting not confirmed")
+
+                # led 2
+                led_2 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
+                
+                if group.active_led_2 == "True": 
+
+                    if scene.active_setting_2 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, "state", setting, limit) == False:
+                            error_list.append(led_2.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, "state", "OFF", limit) == False:
+                            error_list.append(led_2.name + " >>> Setting not confirmed")
+
+                # led 3
+                led_3 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)
+                
+                if group.active_led_3 == "True": 
+
+                    if scene.active_setting_3 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, "state", setting, limit) == False:
+                            error_list.append(led_3.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, "state", "OFF", limit) == False:
+                            error_list.append(led_3.name + " >>> Setting not confirmed")
+
+                # led 4
+                led_4 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)
+                
+                if group.active_led_4 == "True": 
+
+                    if scene.active_setting_4 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, "state", setting, limit) == False:
+                            error_list.append(led_4.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, "state", "OFF", limit) == False:
+                            error_list.append(led_4.name + " >>> Setting not confirmed")
+
+                # led 5
+                led_5 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)
+                
+                if group.active_led_5 == "True": 
+
+                    if scene.active_setting_5 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, "state", setting, limit) == False:
+                            error_list.append(led_5.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, "state", "OFF", limit) == False:
+                            error_list.append(led_5.name + " >>> Setting not confirmed")
+
+                # led 6
+                led_6 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)
+                
+                if group.active_led_6 == "True": 
+
+                    if scene.active_setting_6 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, "state", setting, limit) == False:
+                            error_list.append(led_6.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, "state", "OFF", limit) == False:
+                            error_list.append(led_6.name + " >>> Setting not confirmed")
+
+                # led 7
+                led_7 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)
+                
+                if group.active_led_7 == "True": 
+
+                    if scene.active_setting_7 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, "state", setting, limit) == False:
+                            error_list.append(led_7.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, "state", "OFF", limit) == False:
+                            error_list.append(led_7.name + " >>> Setting not confirmed")
+
+                # led 8
+                led_8 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)
+                
+                if group.active_led_8 == "True": 
+
+                    if scene.active_setting_8 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, "state", setting, limit) == False:
+                            error_list.append(led_8.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, "state", "OFF", limit) == False:
+                            error_list.append(led_8.name + " >>> Setting not confirmed")
+
+                # led 9
+                led_9 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)
+                
+                if group.active_led_9 == "True": 
+
+                    if scene.active_setting_9 == "True":
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, "state", setting, limit) == False:
+                            error_list.append(led_9.name + " >>> Setting not confirmed")
+                                    
+                    else:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, "state", "OFF", limit) == False:
+                            error_list.append(led_9.name + " >>> Setting not confirmed")
+
+            return error_list
+                
+
+        except Exception as e:
+            print(e)
+            WRITE_LOGFILE_SYSTEM("ERROR", "LED | start scene | " + str(e))
+            return [str(e)]
+
+    else:
+        return ["Keine LED-Steuerung aktiviert"]
+    
 
 
 """ ##################### """
@@ -88,7 +288,7 @@ def SETTING_LED_TURN_OFF(led_name):
 """ ##################### """
 
 
-def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
+def LED_SET_SCENE(group_id, scene_id, brightness_global = 100):
     
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
@@ -110,9 +310,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 2
             led_2 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
             
-            if group.active_led_2 == "on": 
+            if group.active_led_2 == "True": 
 
-                if scene.active_setting_2 == "on":
+                if scene.active_setting_2 == "True":
                 
                     brightness_2 = scene.brightness_2*(brightness_global/100)
                     
@@ -129,9 +329,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 3
             led_3 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)           
             
-            if group.active_led_3 == "on": 
+            if group.active_led_3 == "True": 
                 
-                if scene.active_setting_3 == "on":
+                if scene.active_setting_3 == "True":
 
                     brightness_3 = scene.brightness_3*(brightness_global/100)
                     
@@ -148,9 +348,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 4
             led_4 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)            
             
-            if group.active_led_4 == "on": 
+            if group.active_led_4 == "True": 
                 
-                if scene.active_setting_4 == "on":
+                if scene.active_setting_4 == "True":
 
                     brightness_4 = scene.brightness_4*(brightness_global/100)
                     
@@ -167,9 +367,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 5
             led_5 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)           
             
-            if group.active_led_5 == "on": 
+            if group.active_led_5 == "True": 
                 
-                if scene.active_setting_5 == "on":
+                if scene.active_setting_5 == "True":
 
                     brightness_5 = scene.brightness_5*(brightness_global/100)
                     
@@ -186,9 +386,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 6
             led_6 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)           
             
-            if group.active_led_6 == "on": 
+            if group.active_led_6 == "True": 
                 
-                if scene.active_setting_6 == "on":
+                if scene.active_setting_6 == "True":
 
                     brightness_6 = scene.brightness_6*(brightness_global/100)
                     
@@ -205,9 +405,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 7
             led_7 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)            
             
-            if group.active_led_7 == "on": 
+            if group.active_led_7 == "True": 
                 
-                if scene.active_setting_7 == "on":
+                if scene.active_setting_7 == "True":
 
                     brightness_7 = scene.brightness_7*(brightness_global/100)
                     
@@ -224,9 +424,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 8
             led_8 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)           
             
-            if group.active_led_8 == "on": 
+            if group.active_led_8 == "True": 
                 
-                if scene.active_setting_8 == "on":
+                if scene.active_setting_8 == "True":
 
                     brightness_8 = scene.brightness_8*(brightness_global/100)
                     
@@ -243,9 +443,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
             # led 9
             led_9 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)           
             
-            if group.active_led_9 == "on":  
+            if group.active_led_9 == "True":  
                 
-                if scene.active_setting_9 == "on":
+                if scene.active_setting_9 == "True":
 
                     brightness_9 = scene.brightness_9*(brightness_global/100)
                     
@@ -257,17 +457,9 @@ def LED_START_SCENE(group_id, scene_id, brightness_global = 100):
                         SETTING_LED_SIMPLE(led_9.name, int(brightness_9))                                           
         
                 else:
-                    SETTING_LED_TURN_OFF(led_9.name)                    
+                    SETTING_LED_TURN_OFF(led_9.name)                       
 
-            # set current state
-            scene_name = GET_LED_SCENE_BY_ID(scene_id).name
-            
-            SET_LED_GROUP_CURRENT_SETTING(group_id, scene_name)
-            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness_global)      
-
-            time.sleep(1)
-                
-            return LED_CHECK_SETTING() 
+            return ""
 
         
         except Exception as e:
@@ -296,9 +488,7 @@ def LED_SET_BRIGHTNESS_DIMMER(group_id, command):
         if target_brightness < 0:
             target_brightness = 0    
              
-    error_message = LED_SET_BRIGHTNESS(group.id, target_brightness)
-    
-    return error_message
+    LED_SET_BRIGHTNESS(group.id, target_brightness)
     
     
 
@@ -318,67 +508,62 @@ def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
             SETTING_LED_BRIGHTNESS(led_1.name, int(brightness_1))
                 
             # led 2
-            if group.active_led_2 == "on":       
+            if group.active_led_2 == "True":       
                 led_2        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_2)
                 brightness_2 = scene.brightness_2*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_2.name, int(brightness_2))
 
             # led 3
-            if group.active_led_3 == "on":      
+            if group.active_led_3 == "True":      
                 led_3        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_3)
                 brightness_3 = scene.brightness_3*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_3.name, int(brightness_3))
 
             # led 4
-            if group.active_led_4 == "on":      
+            if group.active_led_4 == "True":      
                 led_4        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_4)
                 brightness_4 = scene.brightness_4*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_4.name, int(brightness_4))
 
             # led 5
-            if group.active_led_5 == "on":      
+            if group.active_led_5 == "True":      
                 led_5        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_5)
                 brightness_5 = scene.brightness_5*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_5.name, int(brightness_5))
 
             # led 6
-            if group.active_led_6 == "on":       
+            if group.active_led_6 == "True":       
                 led_6        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_6)
                 brightness_6 = scene.brightness_6*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_6.name, int(brightness_6))
 
             # led 7
-            if group.active_led_7 == "on":      
+            if group.active_led_7 == "True":      
                 led_7        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_7)
                 brightness_7 = scene.brightness_7*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_7.name, int(brightness_7))
 
             # led 8
-            if group.active_led_8 == "on":      
+            if group.active_led_8 == "True":      
                 led_8        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_8)
                 brightness_8 = scene.brightness_8*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_8.name, int(brightness_8))
 
             # led 9
-            if group.active_led_9 == "on":      
+            if group.active_led_9 == "True":      
                 led_9        = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_9)
                 brightness_9 = scene.brightness_9*(brightness_global/100)
                 
                 SETTING_LED_BRIGHTNESS(led_9.name, int(brightness_9))
-              
-            time.sleep(1)
-            
-            # set current state
-            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, brightness_global)
                 
-            return LED_CHECK_SETTING() 
+            return ""
         
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | set brightness | " + str(e))
@@ -399,37 +584,31 @@ def LED_TURN_OFF_GROUP(group_id):
             SETTING_LED_TURN_OFF(group.led_name_1)
                 
             # led 2
-            if group.active_led_2 == "on": 
+            if group.active_led_2 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_2)
             # led 3
-            if group.active_led_3 == "on": 
+            if group.active_led_3 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_3)
             # led 4
-            if group.active_led_4 == "on": 
+            if group.active_led_4 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_4)
             # led 5
-            if group.active_led_5 == "on": 
+            if group.active_led_5 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_5)
             # led 6
-            if group.active_led_6 == "on": 
+            if group.active_led_6 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_6)
             # led 7
-            if group.active_led_7 == "on": 
+            if group.active_led_7 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_7)
             # led 8
-            if group.active_led_8 == "on": 
+            if group.active_led_8 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_8)
             # led 9
-            if group.active_led_9 == "on": 
+            if group.active_led_9 == "True": 
                 SETTING_LED_TURN_OFF(group.led_name_9)
-     
-            time.sleep(1)
             
-            # set current state
-            SET_LED_GROUP_CURRENT_SETTING(group_id, "OFF") 
-            SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, 0)           
-            
-            return LED_CHECK_SETTING() 
+            return ""
 
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | turn_off | " + str(e))
@@ -448,15 +627,6 @@ def LED_TURN_OFF_ALL():
 
             for led in leds:
                 SETTING_LED_TURN_OFF(led.name)
-                
-            time.sleep(1)
-            
-            # set current state
-            for group in GET_ALL_ACTIVE_LED_GROUPS():   
-                SET_LED_GROUP_CURRENT_SETTING(group.id, "OFF")
-                SET_LED_GROUP_CURRENT_BRIGHTNESS(group.id, 0)
-                
-            return LED_CHECK_SETTING() 
             
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | turn_off | " + str(e))
@@ -464,178 +634,5 @@ def LED_TURN_OFF_ALL():
 
     else:
         return ["Keine LED-Steuerung aktiviert"]  
-
-
-""" ################# """
-""" program functions """
-""" ################# """
-
-
-def LED_START_PROGRAM_THREAD(group_id, program_id):
-
-    try:
-        LED_TURN_OFF_GROUP(group_id)
         
-        # set current state
-        program_name = GET_LED_PROGRAM_BY_ID(program_id).name  
-        
-        
-        content = GET_LED_PROGRAM_BY_ID(program_id).content
 
-        for line in content.splitlines():
-            
-            if "rgb" in line or "color_temp" in line: 
-                brightness = line.split(":")[2]
-                break
-        
-        SET_LED_GROUP_CURRENT_SETTING(group_id, program_name)
-        SET_LED_GROUP_CURRENT_BRIGHTNESS(group_id, int(brightness))
-
-        # start thread
-        Thread = threading.Thread(target=LED_PROGRAM_THREAD, args=(group_id, program_id, ))
-        Thread.start()  
-        
-        return "" 
-     
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "LED | start program | " + str(e))
-        return str(e)
-    
-
-def LED_PROGRAM_THREAD(group_id, program_id):
-
-    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
-        
-        content = GET_LED_PROGRAM_BY_ID(program_id).content
-
-        # select each command line
-        for line in content.splitlines():
-
-            if "led_rgb" in line: 
-                led_id = line.split(":")[0]
-                
-                if led_id == "1":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_1
-                if led_id == "2":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_2                    
-                if led_id == "3":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_3                  
-                if led_id == "4":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_4  
-                if led_id == "5":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_5  
-                if led_id == "6":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_6                    
-                if led_id == "7":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_7                  
-                if led_id == "8":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_8  
-                if led_id == "9":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_9  
-
-                rgb        = re.findall(r'\d+', line.split(":")[1])
-                red        = rgb[0]
-                green      = rgb[1]           
-                blue       = rgb[2]
-                
-                brightness = line.split(":")[2]
-                
-                SETTING_LED_RGB(led_name, int(red), int(green), int(blue), int(brightness))
-
-            if "led_white" in line: 
-                led_id = line.split(":")[0]
-
-                if led_id == "1":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_1
-                if led_id == "2":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_2                    
-                if led_id == "3":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_3                  
-                if led_id == "4":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_4  
-                if led_id == "5":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_5  
-                if led_id == "6":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_6                    
-                if led_id == "7":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_7                  
-                if led_id == "8":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_8  
-                if led_id == "9":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_9   
-
-                color_temp = re.findall(r'\d+', line.split(":")[1])
-                color_temp = color_temp[0]
-                
-                brightness = line.split(":")[2]
-                
-                SETTING_LED_WHITE(led_name, int(color_temp), int(brightness))
-
-            if "led_simple" in line: 
-                led_id = line.split(":")[0]
-
-                if led_id == "1":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_1
-                if led_id == "2":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_2                    
-                if led_id == "3":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_3                  
-                if led_id == "4":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_4  
-                if led_id == "5":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_5  
-                if led_id == "6":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_6                    
-                if led_id == "7":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_7                  
-                if led_id == "8":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_8  
-                if led_id == "9":
-                    led_name = GET_LED_GROUP_BY_ID(group_id).led_name_9   
-
-                brightness = line.split(":")[1]
-                
-                SETTING_LED_SIMPLE(led_name, int(brightness))
-
-            if "pause" in line: 
-                break_value = line.split(":")
-                break_value = int(break_value[1])
-                time.sleep(break_value)
-                
-        time.sleep(1)
-        
-        return LED_CHECK_SETTING() 
-              
-    else:
-        return ["Keine LED-Steuerung aktiviert"]           
-
-        
-""" ################## """
-"""  check led setting """
-""" ################## """
- 
-def LED_CHECK_SETTING():
-            
-    input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
-            
-    list_errors = []
- 
-    if input_messages != "Message nicht gefunden":
-        for input_message in input_messages:
-            input_message = str(input_message[2])
-  
-            data = json.loads(input_message)
-            
-            if data["type"] == "zigbee_publish_error":
-                if (data["meta"]["entity"]["ID"]) not in list_errors:
-                    list_errors.append(data["meta"]["entity"]["ID"])
-                    list_errors.append(data["message"])
-                    
-    if list_errors != []:
-        WRITE_LOGFILE_SYSTEM("WARNING", "LED | >>> " + str(list_errors))
-        return list_errors
-        
-    else:
-        return ""
-        
-        

@@ -20,7 +20,7 @@ AB3257001NJ:
     device_type: device_switch
     description: OSRAM Smart+ Plug
     inputs: 
-    commands:    ["POWER_ON", "POWER_OFF"]
+    commands:    ["ON", "OFF"]
 
 WSDCGQ11LM:
     device_type: sensor_active
