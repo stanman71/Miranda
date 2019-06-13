@@ -65,7 +65,7 @@ def START_LED_TASK(answer):
                 # search scene
                 for scene in scenes:
                     if scene.name.lower() in answer:
-                        scene_id = scene.id   
+                        scene_name = scene.name  
 
                 # search brightness value
                 for element in answer.split():
@@ -75,14 +75,27 @@ def START_LED_TASK(answer):
                     if element.isdigit() and (1 <= int(element) <= 100):
                         brightness = int(element)
                      
-                if group_id != None and scene_id != None:   
-                    heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), brightness)))                   
+                if group_id != None and scene_name != None:   
+                    
+                    group = GET_LED_GROUP_BY_ID(group_id)
+                    
+                    # new led setting ?
+                    if group.current_setting != scene_name and int(group.current_brightness) != brightness:
+
+                        scene_id = GET_LED_SCENE_BY_NAME(scene_name).id      
+
+                        LED_SET_SCENE(group_id, scene_id, brightness) 
+                        LED_ERROR_CHECKING_THREAD(group_id, scene_id, scene_name, brightness, 2, 10)      
+
+                    else:
+                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness))     
+                                    
                     time.sleep(1)
                     break
        
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))  
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))  
                 break
                 
 
@@ -113,14 +126,32 @@ def START_LED_TASK(answer):
                                 brightness = element
                              
                         # check brightness value
-                        if 1 <= int(brightness) <= 100:      
-                            heapq.heappush(process_management_queue, (5, ("led_brightness", int(group.id), int(brightness))))    
+                        if 1 <= int(brightness) <= 100:
+                            
+                            # led_group off ?
+                            if group.current_setting != "OFF":
+                            
+                                # new led setting ?
+                                if group.current_brightness != int(brightness):
+
+                                    scene_name = group.current_setting
+                                    scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+                                    
+                                    LED_SET_BRIGHTNESS(group.id, brightness)
+                                    LED_ERROR_CHECKING_THREAD(group.id, scene_id, scene_name, brightness, 2, 10)       
+
+                                else:
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness)) 	
+                                    
+                            else:
+                                WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | State - OFF : 0") 	                                   
+                              
                             time.sleep(1)
                             break
 
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
                 break
 
 
@@ -151,17 +182,27 @@ def START_LED_TASK(answer):
                 if group_ids != []:
                     
                     for group_id in group_ids:
-                        heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
-                        time.sleep(1)
-                
-                else:
-                    heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
-                    time.sleep(1)
-                    break
+                        
+                        group = GET_LED_GROUP_BY_ID(group_id)
+
+                        # new led setting ?
+                        if group.current_setting != "OFF":
+
+                            scene_name = group.current_setting
+                            scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+                            
+                            LED_TURN_OFF_GROUP(group.id)
+                            LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 2, 10)       
+
+                        else:
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 	
+                        
+                time.sleep(1)
+                break
 
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
                 break
                     
 
@@ -180,13 +221,27 @@ def START_LED_TASK(answer):
         if keyword.lower() in answer:
 
             try:
-                heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
+                
+                for group in GET_ALL_LED_GROUPS():
+
+                    # new led setting ?
+                    if group.current_setting != "OFF":
+
+                        scene_name = group.current_setting
+                        scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+
+                        LED_TURN_OFF_GROUP(group.id)
+                        LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 2, 10)       
+
+                    else:
+                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
+                    
                 time.sleep(1)
                 break
 
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
                 break
                     
             
@@ -212,17 +267,40 @@ def START_DEVICE_TASK(answer):
                 try:      
                     device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
                     
+                    # new device setting ?
                     if task.command != device.previous_command:
-                        if task.command == "POWER_ON":
-                            heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, task.command, '{"state": "ON"}', "state", "ON")))  
-                        if task.command == "POWER_OFF":
-                            heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, task.command, '{"state": "OFF"}', "state", "OFF")))  
+
+                        if gateway == "mqtt":
+
+                            channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
+                            msg     = '{"state": "' + command + '"}'
+
+                            MQTT_PUBLISH(channel, msg) 
+                            MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", command, 5, 20)
+
+
+                        if gateway == "zigbee2mqtt":
+
+                            channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
+                            msg     = '{"state": "' + command + '"}'
+
+                            MQTT_PUBLISH(channel, msg) 
+                            ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", command, 5, 20)
+
+                    else:
+
+                        if gateway == "mqtt":
+                            WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | State - " + str(command)) 
+
+                        if gateway == "zigbee2mqtt":
+                            WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | State - " + str(command))  
+                            
                                 
-                        time.sleep(1)
-                        break
+                    time.sleep(1)
+                    break
                     
                 except Exception as e:
                     print(e)
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control Device Task | " + answer + " | " + str(e))      
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Device Task | " + answer + " | " + str(e))      
                     break                    
                     

@@ -10,8 +10,8 @@ from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSIO
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
 from app.components.shared_resources import process_management_queue
-from app.components.control_led import *
-from app.components.mqtt import *
+from app.components.control_led import LED_ERROR_CHECKING_PROCESS
+from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
 
 import heapq
 import json
@@ -44,6 +44,7 @@ def dashboard():
                 # set led group
                 if request.form.get("set_group_" + str(i)) != None:  
 
+                    group        = GET_LED_GROUP_BY_ID(i)
                     setting      = request.form.get("set_group_" + str(i)) 
                     setting_type = setting.split("_")[0]
                     brightness   = request.form.get("set_brightness_" + str(i))   
@@ -54,41 +55,59 @@ def dashboard():
                         scene_id   = int(setting.split("_")[1])
                         scene_name = GET_LED_SCENE_BY_ID(scene_id).name
                         
-                        LED_SET_SCENE(i, scene_id, int(brightness)) 
-                        
-                        error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
-                        continue     
+                        # new led setting ?
+                        if group.current_setting != scene_name:
+
+                            heapq.heappush(process_management_queue, (1,  ("dashboard", "led_scene", i, scene_id, int(brightness))))
+                             
+                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
+                            continue     
+                         
+                        else:
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness))                             
                         
                         
                     # change brightness only
                     if GET_LED_GROUP_BY_ID(i).current_setting != "OFF":                 
                         
-                        # brightness changed
-                        if int(brightness) != GET_LED_GROUP_BY_ID(i).current_brightness:  
-                            LED_SET_BRIGHTNESS(i, int(brightness))
-                                              
-                            scene_name = GET_LED_GROUP_BY_ID(i).current_setting
-                            
-                            if scene_name != "OFF":
-                                scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
-        
+                        scene_name = GET_LED_GROUP_BY_ID(i).current_setting
+                        
+                        # led_group off ?
+                        if scene_name != "OFF":
+                        
+                            # new led setting ?
+                            if int(brightness) != group.current_brightness and scene_name != "OFF": 
+                                 
+                                heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
+                    
+                                scene_id          = GET_LED_SCENE_BY_NAME(scene_name).id
                                 error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10) 
-                                continue         
+                                continue   
+                                
+                            else:
+                                WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness))                              
+                                                                
+                        else:
+                            WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | State - OFF : 0") 	                         
+                            error_message_led = (group.name + " >>> Gruppe ist nicht eingeschaltet")                 
     
     
                     # turn led group off
                     if setting == "turn_off":  
-                        LED_TURN_OFF_GROUP(i)
                         
                         scene_name = GET_LED_GROUP_BY_ID(i).current_setting
                         
+                        # new led setting ?
                         if scene_name != "OFF":
+                            
                             scene_id = GET_LED_SCENE_BY_NAME(scene_name).id
+                            
+                            heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
+                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, "OFF", 0, 2, 10)                                  
+                            continue  
+                            
                         else:
-                            scene_id = 0
-                        
-                        error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, "OFF", 0, 2, 10)                                  
-                        continue  
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0")                        
                                 
     
         if request.form.get("change_device_settings") != None:
@@ -244,7 +263,8 @@ def dashboard():
                         dashboard_command = request.form.get("set_dashboard_command_" + str(i))
                         dashboard_command = dashboard_command.replace(" ","")
 
-                        # setting changed ?
+
+                        # new device setting ?
                         if dashboard_command != device.previous_command and dashboard_command != "None":
                             
                             change_state = True
@@ -312,9 +332,9 @@ def dashboard():
                                     channel  = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
                                     msg      = '{"state": "' + dashboard_command + '"}'
                                     
-                                    heapq.heappush(process_management_queue, (1, ("mqtt", channel, msg)))    
+                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
                                                     
-                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(ieeeAddr, "state", dashboard_command, 5)                                     
+                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(ieeeAddr, "state", dashboard_command, 1, 5)                                     
 
                                   
                                 # ###########
@@ -327,7 +347,7 @@ def dashboard():
                                     channel = "SmartHome/" + gateway + "/" + name + "/set"
                                     msg     = '{"state": "' + dashboard_command + '"}'
                                     
-                                    heapq.heappush(process_management_queue, (1, ("mqtt", channel, msg)))                                          
+                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
                                     
                                     error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, "state", dashboard_command, 1, 5)      
                                             

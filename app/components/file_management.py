@@ -67,11 +67,11 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
     if os.path.isfile(PATH + "/logs/log_" + gateway + ".csv") is False:
         CREATE_LOGFILE("log_" + gateway)
         
-    # replace file if size > 1.5 mb
+    # replace file if size > 2,5 mb
     file_size = os.path.getsize(PATH + "/logs/log_" + gateway + ".csv")
     file_size = round(file_size / 1024 / 1024, 2)
     
-    if file_size > 1.5:
+    if file_size > 2.5:
         RESET_LOGFILE("log_" + gateway)
 
     try:
@@ -85,65 +85,6 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
 
     except Exception as e:
         print(str(e))
-
-
-'''
-def READ_LOGFILE_MQTT(gateway, channel, time):   
-    
-    try:
-        # open csv file
-        file = PATH + "/logs/log_" + gateway + ".csv"
-        
-        with open(file, 'r', newline='', encoding='utf-8') as csvfile:
-            rowReader = csv.reader(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            data = [row for row in rowReader] 
-            csvfile.close()
-
-            headers = data.pop(0)  
-
-            # reverse messages             
-            data_reversed = data[::-1]        
-
-            # get time value of the time setting
-            date_check = datetime.datetime.now() - datetime.timedelta(seconds=time)
-            date_check = date_check.strftime("%Y-%m-%d %H:%M:%S")
-            
-            # get all elements of the selected time
-            list_temp = []
-            list_result = []
-        
-            for element in data_reversed:
-                
-                try:
-                    date_entry   = datetime.datetime.strptime(element[0],"%Y-%m-%d %H:%M:%S")   
-                    date_control = datetime.datetime.strptime(date_check, "%Y-%m-%d %H:%M:%S")
-                    if date_entry > date_control:
-                        list_temp.append(element)
-                except:
-                    pass
-                    
-            if list_temp == []:
-                return "Message nicht gefunden"                    
-                
-            else:
-                # get the searched message
-                
-                for element in list_temp:
-                    if element[1] == channel:
-                        list_result.append(element)
-                    
-                if list_result != []:
-                    return list_result
-                if list_result == []:
-                    return "Message nicht gefunden" 
-
-    
-    except Exception as e:
-        print(e)
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_" + gateway + ".csv | " + str(e))   
-        return ("ZigBee2MQTT >>> ERROR >>> " + str(e))
-    
-'''
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):

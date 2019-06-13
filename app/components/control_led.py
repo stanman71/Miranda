@@ -3,12 +3,10 @@ import re
 import time
 import threading
 import json
-import heapq
 
 from app import app
 from app.database.database import *
-from app.components.shared_resources import process_management_queue
-from app.components.mqtt import ZIGBEE2MQTT_CHECK_SETTING
+from app.components.mqtt import MQTT_PUBLISH, ZIGBEE2MQTT_CHECK_SETTING
 
 
 """ ################### """
@@ -53,7 +51,7 @@ def SETTING_LED_RGB(led_name, red, green, blue, brightness):
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state":"ON","brightness":' + str(brightness) + ',"color": { "x":' + str(xy[0]) + ',"y":' + str(xy[1]) + '}}'
     
-    heapq.heappush(process_management_queue, (1,  ("zigbee2mqtt", channel, msg)))
+    MQTT_PUBLISH(channel, msg)
 
 
 def SETTING_LED_WHITE(led_name, color_temp, brightness):
@@ -61,7 +59,7 @@ def SETTING_LED_WHITE(led_name, color_temp, brightness):
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '"}'
     
-    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
+    MQTT_PUBLISH(channel, msg)
 
 
 def SETTING_LED_SIMPLE(led_name, brightness):
@@ -69,7 +67,7 @@ def SETTING_LED_SIMPLE(led_name, brightness):
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
-    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
+    MQTT_PUBLISH(channel, msg)
 
 
 def SETTING_LED_BRIGHTNESS(led_name, brightness):
@@ -77,7 +75,7 @@ def SETTING_LED_BRIGHTNESS(led_name, brightness):
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
-    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg)))    
+    MQTT_PUBLISH(channel, msg)   
     
 
 def SETTING_LED_TURN_OFF(led_name):
@@ -85,7 +83,7 @@ def SETTING_LED_TURN_OFF(led_name):
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg = '{"state": "OFF"}'
     
-    heapq.heappush(process_management_queue, (1, ("zigbee2mqtt", channel, msg))) 
+    MQTT_PUBLISH(channel, msg)
     
     
     
@@ -272,12 +270,13 @@ def LED_CHECK_SETTING(group_id, scene_id, setting, limit):
 
             return error_list
                 
-
+        
         except Exception as e:
             print(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "LED | start scene | " + str(e))
             return [str(e)]
-
+        
+        
     else:
         return ["Keine LED-Steuerung aktiviert"]
     
@@ -565,8 +564,9 @@ def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
                 
             return ""
         
+        
         except Exception as e:
-            WRITE_LOGFILE_SYSTEM("ERROR", "LED | set brightness | " + str(e))
+            WRITE_LOGFILE_SYSTEM("ERROR", "LED | Set brightness | " + str(e))
             return [str(e)]
 
     else:
@@ -617,22 +617,3 @@ def LED_TURN_OFF_GROUP(group_id):
     else:
         return ["Keine LED-Steuerung aktiviert"]  
         
-
-def LED_TURN_OFF_ALL():
-    
-    if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":   
-        
-        try: 
-            leds = GET_ALL_MQTT_DEVICES("led")
-
-            for led in leds:
-                SETTING_LED_TURN_OFF(led.name)
-            
-        except Exception as e:
-            WRITE_LOGFILE_SYSTEM("ERROR", "LED | turn_off | " + str(e))
-            return str(e)
-
-    else:
-        return ["Keine LED-Steuerung aktiviert"]  
-        
-

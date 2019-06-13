@@ -51,7 +51,7 @@ def scheduler_time():
    
 	for task in GET_ALL_SCHEDULER_TASKS():
 		if task.option_time == "checked" or task.option_sun == "checked":
-			heapq.heappush(process_management_queue, (10, ("time", task.id)))         
+			heapq.heappush(process_management_queue, (20, ("scheduler", "time", task.id)))         
 
 
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
@@ -59,7 +59,7 @@ def scheduler_ping():
    
 	for task in GET_ALL_SCHEDULER_TASKS():
 		if task.option_position == "checked":
-			heapq.heappush(process_management_queue, (10, ("ping", task.id)))
+			heapq.heappush(process_management_queue, (20, ("scheduler", "ping", task.id)))
 
 
 """ ################################ """
@@ -1175,39 +1175,28 @@ def START_SCHEDULER_TASK(task_object):
 
    # start scene
    try:
+      
       if "scene" in task_object.task:
-         
+         task  = task_object.task.split(":")
          group = GET_LED_GROUP_BY_NAME(task[1])
          
          try:
-            
-            if group.current_setting != task[2] and int(group.current_brightness) != int(task[3]):
-    
-               task = task_object.task.split(":")
-               group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-               scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
-               
-               LED_SET_SCENE(group_id, scene_id, int(task[3])) 
-               LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], int(task[3]), 5, 15)      
-               
-            else:
-               WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : " + task[3])             
-            
+            brightness = int(task[3])
          except:
+            brightness = 100
             
-            if group.current_setting != task[2]:
+         # new led setting ?
+         if group.current_setting != task[2] and int(group.current_brightness) != brightness:
+ 
+            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
+            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
             
-               task = task_object.task.split(":")
-               group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-               scene_id = GET_LED_SCENE_BY_NAME(task[2]).id  
-               
-               LED_SET_SCENE(group_id, scene_id, 100) 
-               LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], 100, 5, 15)      
-               
-            else:
-               WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : 100")          
-
-
+            LED_SET_SCENE(group_id, scene_id, brightness) 
+            LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], brightness, 5, 15)      
+            
+         else:
+            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : " + str(brightness))             
+            
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -1215,11 +1204,14 @@ def START_SCHEDULER_TASK(task_object):
 
    # led off
    try:
+      
       if "led_off" in task_object.task:
          task = task_object.task.split(":")
          
          if task[1] == "group":
+            
             # get input group names and lower the letters
+            
             try:
                   list_groups = task[2].split(",")
             except:
@@ -1237,31 +1229,30 @@ def START_SCHEDULER_TASK(task_object):
                           
                      group_founded = True   
                      
+                     # new led setting ?
                      if group.current_setting != "OFF":
                             
                         LED_TURN_OFF_GROUP(group.id)
-                        LED_ERROR_CHECKING_THREAD(group_id, 0, "OFF", 0, 5, 20)   
+                        LED_ERROR_CHECKING_THREAD(group.id, 0, "OFF", 0, 5, 20)   
                         
                      else:
                         WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
                         
      
                if group_founded == False:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")
-                  
+                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")     
                
          if task[1] == "all":
-            LED_TURN_OFF_ALL()
-            
-            led_groups = GET_ALL_LED_GROUPS()
-            
-            for group in led_groups:
+
+            for group in GET_ALL_LED_GROUPS():
                
+               # new led setting ?
                if group.current_setting != "OFF":
                
                   scene_name = group.current_setting
-                  scene_id = GET_LED_SCENE_BY_NAME(scene_name).id
-
+                  scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+                  
+                  LED_TURN_OFF_GROUP(group.id)
                   LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 5, 20)       
                   
                else:
@@ -1275,6 +1266,7 @@ def START_SCHEDULER_TASK(task_object):
 
    # device
    try:
+      
       if "device" in task_object.task and "mqtt_update" not in task_object.task:
          task = task_object.task.split(":")
 
@@ -1284,6 +1276,7 @@ def START_SCHEDULER_TASK(task_object):
             
             gateway = device.gateway
 
+            # new device setting ?
             if command != device.previous_command:
                
                  if gateway == "mqtt":
@@ -1323,15 +1316,18 @@ def START_SCHEDULER_TASK(task_object):
 
    # watering plants
    try:
+      
       if "watering_plants" in task_object.task:
          START_WATERING_THREAD()
+         
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
    # save database 
-   try:    
+   try:  
+        
       if "save_database" in task_object.task:
          SAVE_DATABASE()	
 
@@ -1342,6 +1338,7 @@ def START_SCHEDULER_TASK(task_object):
 
    # update mqtt devices
    try:
+      
       if "mqtt_update_devices" in task_object.task:
          MQTT_UPDATE_DEVICES("mqtt")
 
@@ -1352,6 +1349,7 @@ def START_SCHEDULER_TASK(task_object):
 
    # request sensordata
    try:
+      
       if "request_sensordata" in task_object.task:
          task = task_object.task.split(":")
          MQTT_REQUEST_SENSORDATA(task[1])  

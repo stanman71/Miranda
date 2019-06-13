@@ -163,7 +163,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 			# schedular
 			for task in GET_ALL_SCHEDULER_TASKS():
 				if task.option_sensors == "checked":
-					heapq.heappush(process_management_queue, (5, ("sensor", task.id, ieeeAddr)))
+					heapq.heappush(process_management_queue, (10, ("scheduler", "sensor", task.id, ieeeAddr)))
 
 			# save sensor data of passive devices
 			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":

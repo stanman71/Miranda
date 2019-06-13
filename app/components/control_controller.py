@@ -1,13 +1,12 @@
 import json
-import heapq
 
 from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.shared_resources import process_management_queue
+from app.components.mqtt import *
 
-      
+
 """ ###################### """
 """   controller process   """
 """ ###################### """     
@@ -175,17 +174,26 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 	# start scene
 	try:
 		if "scene" in task:
-			try:
-				task = task.split(":")
-				group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-				scene_id = GET_LED_SCENE_BY_NAME(task[2]).id    
-				heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), int(task[3]))))    
+			
+			task  = task.split(":")
+			group = GET_LED_GROUP_BY_NAME(task[1])
 
+			try:
+				brightness = int(task[3])
 			except:
-				task = task.split(":")
+				brightness = 100
+
+			# new led setting ?
+			if group.current_setting != task[2] and int(group.current_brightness) != brightness:
+
 				group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-				scene_id = GET_LED_SCENE_BY_NAME(task[2]).id          
-				heapq.heappush(process_management_queue, (5, ("led_scene", int(group_id), int(scene_id), 100)))  
+				scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+
+				LED_SET_SCENE(group_id, scene_id, brightness) 
+				LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], brightness, 2, 10)      
+
+			else:
+				WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : " + str(brightness))     			
             
 	except Exception as e:
 		print(e)
@@ -198,7 +206,33 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 			task = task.split(":")
 			group_id = GET_LED_GROUP_BY_NAME(task[1]).id
 			command  = task[2]
-			heapq.heappush(process_management_queue, (5, ("led_brightness_dimmer", int(group_id), command)))  
+			
+			scene_name = GET_LED_GROUP_BY_NAME(task[1]).current_setting
+			scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+			
+			# led_group off ?
+			if scene_name != "OFF":
+			
+				# get new brightness_value
+				current_brightness = GET_LED_GROUP_BY_NAME(task[1]).current_brightness
+
+				if command == "turn_up":
+					target_brightness = int(current_brightness) + 20
+
+					if target_brightness > 100:
+						target_brightness = 100
+
+				if command == "turn_down":
+					target_brightness = int(current_brightness) - 20
+
+					if target_brightness < 0:
+						target_brightness = 0   
+				
+				LED_SET_BRIGHTNESS_DIMMER(group_id, command) 
+				LED_ERROR_CHECKING_THREAD(group_id, scene_id, scene_name, target_brightness, 2, 10) 
+
+			else:
+				WRITE_LOGFILE_SYSTEM("WARNING", "Speech Control LED Task | Group - " + group.name + " | State - OFF : 0") 	
 
 	except Exception as e:
 		print(e)
@@ -211,7 +245,9 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 			task = task.split(":")
 	 
 			if task[1] == "group":
+				
 				# get input group names and lower the letters
+				
 				try:
 					list_groups = task[2].split(",")
 				except:
@@ -226,19 +262,41 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				for group in GET_ALL_LED_GROUPS():
                
 					if input_group_name.lower() == group.name.lower():
-                             
-						group_id      = group.id
+
 						group_founded = True
 		     
-						heapq.heappush(process_management_queue, (5, ("led_off_group", int(group_id))))
+						# new led setting ?
+						if group.current_setting != "OFF":
+
+							scene_name = group.current_setting
+							scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+							
+							LED_TURN_OFF_GROUP(group.id)
+							LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 2, 10)       
+
+						else:
+							WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 		     
+		     
 
 				if group_founded == False:
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
                         
                
 			if task[1] == "all":
-				heapq.heappush(process_management_queue, (5, ("led_off_all", 0)))
+				
+				for group in GET_ALL_LED_GROUPS():
 
+					# new led setting ?
+					if group.current_setting != "OFF":
+
+						scene_name = group.current_setting
+						scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+
+						LED_TURN_OFF_GROUP(group.id)
+						LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 2, 10)       
+					  
+					else:
+						WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
 	       
 	except Exception as e:
 		print(e)
@@ -254,12 +312,33 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
 				command = task[2].upper()
 				
+				# new device setting ?
 				if command != device.previous_command:
 					
-					if command == "POWER_ON":
-						heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, command, '{"state": "ON"}', "state", "ON")))  
-					if command == "POWER_OFF":
-						heapq.heappush(process_management_queue, (1, ("device", device.ieeeAddr, command, '{"state": "OFF"}', "state", "OFF")))  
+					if gateway == "mqtt":
+
+						channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
+						msg     = '{"state": "' + command + '"}'
+
+						MQTT_PUBLISH(channel, msg) 
+						MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", command, 5, 20)
+
+
+					if gateway == "zigbee2mqtt":
+
+						channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
+						msg     = '{"state": "' + command + '"}'
+
+						MQTT_PUBLISH(channel, msg) 
+						ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", command, 5, 20)
+
+				else:
+
+					if gateway == "mqtt":
+						WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | State - " + str(command)) 
+
+					if gateway == "zigbee2mqtt":
+						WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | State - " + str(command))  
 												
 			except:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")

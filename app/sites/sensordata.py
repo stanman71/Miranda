@@ -374,8 +374,6 @@ def dashboard_sensordata_statistics():
     error_message = ""
     devices = ""
     sensors = ""
-    time_min = ""
-    time_max = ""
     data_file_1 = ""
     data_file_2 = ""
     data_file_3 = ""
@@ -426,13 +424,10 @@ def dashboard_sensordata_statistics():
                 sensors  = sensors[1:]
                 sensors  = sensors[:-1]
                 sensors  = sensors.replace("'", "")
-
-                time_min = min(df['Timestamp'])
-                time_max = max(df['Timestamp'])
-
+                
             except:
                 error_message = "Datei konnte nicht geöffnet werden"
-
+                
 
         # create table
         if request.form.get("create_table") is not None: 
@@ -477,21 +472,16 @@ def dashboard_sensordata_statistics():
             
                 # complete list
                 df_devices = df.loc[df['Device'].isin(selected_devices)]
-                #print(df_devices)
-                
+
                 # selected divices
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
-                #print(df_sensors)
-
+                
                 
                 # set datetime as index and remove former row datetime
                 df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
                 
                 df_sensors = df_sensors.set_index('date')
                 df_sensors = df_sensors.drop(columns=['Timestamp'])
-
-
-                #print(df_sensors.index)
 
                 graph  = BUILD_GRAPH(df_sensors)
 
@@ -509,8 +499,6 @@ def dashboard_sensordata_statistics():
                             data_file_1=data_file_1,
                             data_file_2=data_file_2,
                             data_file_3=data_file_3,
-                            time_min=time_min,
-                            time_max=time_max,
                             graph=graph,
                             statistics="active",
                             role=current_user.role,                      

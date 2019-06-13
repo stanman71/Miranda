@@ -9,31 +9,9 @@
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
-{% endblock %}
-
-{% block scripts %}
-  {{ super() }}
-
-  <script>
-    var slider_1 = document.getElementById("min_input");
-    var output_1 = document.getElementById("min_output");
-    output_1.innerHTML = slider_1.value;
-    
-    slider_1.oninput = function() {
-      output_1.innerHTML = this.value;
-    }
-  </script>
-
-  <script>
-      var slider_2 = document.getElementById("max_input");
-      var output_2 = document.getElementById("max_output");
-      output_2.innerHTML = slider_2.value;
-      
-      slider_2.oninput = function() {
-        output_2.innerHTML = this.value;
-      }
-    </script>
-
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
+  
 {% endblock %}
 
 {% block content %}
@@ -189,8 +167,8 @@
                     <div class="form-group">    
                       <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" />                
                     </div>                    
-                  </div>                   
-                </div>
+                  </div>                                                      
+                </div>   
               </div>
               <div class="row justify-content-md-center">
                 <div class="col-sm-2">              
