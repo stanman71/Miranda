@@ -64,7 +64,7 @@ def dashboard():
                             continue     
                          
                         else:
-                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness))                             
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %")                             
                         
                         
                     # change brightness only
@@ -80,15 +80,15 @@ def dashboard():
                                  
                                 heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
                     
-                                scene_id          = GET_LED_SCENE_BY_NAME(scene_name).id
-                                error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10) 
+                                scene             = GET_LED_SCENE_BY_NAME(scene_name)
+                                error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
                                 continue   
                                 
                             else:
-                                WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + scene_name + " : " + str(brightness))                              
+                                WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %")                              
                                                                 
                         else:
-                            WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | State - OFF : 0") 	                         
+                            WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 	                         
                             error_message_led = (group.name + " >>> Gruppe ist nicht eingeschaltet")                 
     
     
@@ -100,14 +100,14 @@ def dashboard():
                         # new led setting ?
                         if scene_name != "OFF":
                             
-                            scene_id = GET_LED_SCENE_BY_NAME(scene_name).id
+                            scene = GET_LED_SCENE_BY_NAME(scene_name)
                             
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
-                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, "OFF", 0, 2, 10)                                  
+                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene.id, "OFF", 0, 2, 10)                                  
                             continue  
                             
                         else:
-                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0")                        
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")                        
                                 
     
         if request.form.get("change_device_settings") != None:
@@ -319,42 +319,48 @@ def dashboard():
                                 
                             # state changing
                             if change_state: 
-                                
-                                gateway = device.gateway
-                                
+
                                 # ####
                                 # mqtt
                                 # ####
                                 
-                                if gateway == "mqtt":
+                                if device.gateway == "mqtt":
                                     
-                                    ieeeAddr = device.ieeeAddr                      
-                                    channel  = "SmartHome/" + gateway + "/" + ieeeAddr + "/set"
+                                    channel  = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
                                     msg      = '{"state": "' + dashboard_command + '"}'
                                     
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
                                                     
-                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(ieeeAddr, "state", dashboard_command, 1, 5)                                     
+                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, "state", dashboard_command, 1, 5)                                     
 
                                   
                                 # ###########
                                 # zigbee2mqtt
                                 # ###########    
                                     
-                                if gateway == "zigbee2mqtt":
+                                if device.gateway == "zigbee2mqtt":
                                     
-                                    name    = device.name
-                                    channel = "SmartHome/" + gateway + "/" + name + "/set"
+                                    channel = "SmartHome/" + device.gateway + "/" + device.name + "/set"
                                     msg     = '{"state": "' + dashboard_command + '"}'
                                     
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
                                     
-                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, "state", dashboard_command, 1, 5)      
+                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, "state", dashboard_command, 1, 5)      
                                             
-                                continue                                                    
+                                continue  
+                              
+                                
+                            else:
+                                
+                                if device.gateway == "mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(command)) 
+
+                                if device.gateway == "zigbee2mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))                                 
 
                 except Exception as e:
-                    print(e)
+                    if "NoneType" not in str(e):
+                        print(e)
                               
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()

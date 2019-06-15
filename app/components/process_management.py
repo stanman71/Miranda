@@ -67,7 +67,10 @@ def PROCESS_MANAGEMENT_THREAD():
 				speech_recognition_answer = process[1]
 				SPEECH_RECOGNITION_PROVIDER_TASKS(speech_recognition_answer)  					
 				
-							
+				
+			if process[0] == "watering":
+				MQTT_PUBLISH(process[1], process[2])
+				
 				
 		except Exception as e:
 			if "index out of range" not in str(e):

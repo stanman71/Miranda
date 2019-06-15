@@ -905,24 +905,6 @@ def dashboard_settings_email():
                             )
 
 
-""" ################ """
-""" spotify settings """
-""" ################ """
-
-@app.route('/dashboard/settings/spotify', methods=['GET', 'POST'])
-@login_required
-@superuser_required
-def dashboard_settings_spotify():
-    error_message = ""
-
-
-    return render_template('dashboard_settings_spotify.html',
-                            error_message=error_message,                                              
-                            active07="active",
-                            role=current_user.role,
-                            )
-
-
 """ ############### """
 """ backup settings """
 """ ############### """
@@ -957,7 +939,7 @@ def dashboard_settings_backup():
                             error_message=error_message,
                             file_list=file_list,
                             cpu_temperature=cpu_temperature,                                                     
-                            active08="active",
+                            active07="active",
                             role=current_user.role,
                             )
 
@@ -1005,7 +987,7 @@ def dashboard_settings_system_log():
                             error_message=error_message,
                             timestamp=timestamp,
                             data_log_system=data_log_system,                                                       
-                            active09="active",
+                            active08="active",
                             role=current_user.role,
                             )
 

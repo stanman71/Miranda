@@ -20,33 +20,65 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 """ ################################ """
 
 
+def MQTT_GET_INCOMMING_MESSAGES(limit):
+
+	# get the time check value
+	time_check = datetime.datetime.now() - datetime.timedelta(seconds=limit)
+	time_check = time_check.strftime("%Y-%m-%d %H:%M:%S")	
+	
+	message_list = []
+	
+	for message in mqtt_incomming_messages_list:
+		
+		time_message = datetime.datetime.strptime(message[0],"%Y-%m-%d %H:%M:%S")   
+		time_limit   = datetime.datetime.strptime(time_check, "%Y-%m-%d %H:%M:%S")
+
+		# select messages in search_time 
+		if time_message > time_limit:
+			message_list.append(message)
+				
+	return message_list
+
+
 """ #################### """
 """ mqtt receive message """
 """ #################### """
 	
 def MQTT_THREAD():
 
-	def on_message(client, userdata, message): 
+	def on_message(client, userdata, new_message): 
       
-		msg = str(message.payload.decode("utf-8"))
+		channel = new_message.topic					
+		msg     = str(new_message.payload.decode("utf-8"))	      
       
-		print("message topic: ", message.topic)		
-		print("message received: ", msg)	
-		
-		# write data in logs
-		if "zigbee" not in message.topic:
-			WRITE_LOGFILE_MQTT("mqtt", message.topic, msg)
-		else:
-			WRITE_LOGFILE_MQTT("zigbee2mqtt", message.topic, msg)
+		new_message = True
+      
+		# message already arrived?
+		for existing_message in MQTT_GET_INCOMMING_MESSAGES(3):	
+			if existing_message[1] == channel:
+				new_message = False
+				break
+				
+		# message not arrived
+		if new_message:
+	
+			print("message topic: ", channel)		
+			print("message received: ", msg)	
 			
-
-		mqtt_incomming_messages_list.append((str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), message.topic, msg))	
-		
-		channel = message.topic
-		
-		if channel != "" and channel != None:		
-			Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ))
-			Thread.start()    
+			# write data in logs
+			if "mqtt" in channel:
+				WRITE_LOGFILE_MQTT("mqtt", channel, msg)
+				
+			if "zigbee2mqtt" in channel:
+				WRITE_LOGFILE_MQTT("zigbee2mqtt", channel, msg)
+				
+			# add message to the incoming message list
+			mqtt_incomming_messages_list.append((str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), channel, msg))	
+			
+			# start message thread for additional processes
+			if channel != "" and channel != None:		
+				Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ))
+				Thread.start()    
 		
 	
 	def on_connect(client, userdata, flags, rc):
@@ -183,26 +215,6 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 """           mqtt functions         """
 """ ################################ """
 """ ################################ """
-
-
-def MQTT_GET_INCOMMING_MESSAGES(limit):
-
-	# get the time check value
-	time_check = datetime.datetime.now() - datetime.timedelta(seconds=limit)
-	time_check = time_check.strftime("%Y-%m-%d %H:%M:%S")	
-	
-	message_list = []
-	
-	for message in mqtt_incomming_messages_list:
-		
-		time_message = datetime.datetime.strptime(message[0],"%Y-%m-%d %H:%M:%S")   
-		time_limit   = datetime.datetime.strptime(time_check, "%Y-%m-%d %H:%M:%S")
-
-		# select messages in search_time 
-		if time_message > time_limit:
-			message_list.append(message)
-				
-	return message_list
 
 
 """ ################### """

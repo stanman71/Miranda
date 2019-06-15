@@ -137,7 +137,7 @@ def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, lim
     group_name = GET_LED_GROUP_BY_ID(group_id).name
                 
     if result == []:
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "LED | Group - " + group_name + " | Setting changed - " + str(scene) + " : "  + str(brightness)) 
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "LED | Group - " + group_name + " | Setting changed | " + str(scene) + " : "  + str(brightness) + " %") 
     else:
         WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group_name + " | " + str(result)) 
            

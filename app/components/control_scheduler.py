@@ -381,8 +381,6 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
 
-      print(sensor_value_1)
-      print(value_1)
 
       
       ####################
@@ -440,10 +438,7 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
 
-      print(sensor_value_1)
-      print(value_1)
-      
-      
+
       ##################
       # get sensordata 2
       ##################     
@@ -453,10 +448,8 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
 
-      print(sensor_value_2)
-      print(value_2)
-      
-      
+
+
       ####################
       # compare conditions
       ####################
@@ -537,8 +530,6 @@ def CHECK_SCHEDULER_SENSORS(task):
          except:
             pass                    
                
-         print("Passing_1:" + str(passing_1))
-                 
          
          # get passing value two
          
@@ -625,9 +616,6 @@ def CHECK_SCHEDULER_SENSORS(task):
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
-
-      print(sensor_value_1)
-      print(value_1)
       
       
       ##################
@@ -639,9 +627,6 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
 
-      print(sensor_value_2)
-      print(value_2)
-
 
       ##################
       # get sensordata 3
@@ -652,10 +637,7 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_3   = sensor_key_3.replace(" ","")          
       sensor_value_3 = data_3[sensor_key_3]
 
-      print(sensor_value_3)
-      print(value_3)
 
-      
       ####################
       # compare conditions
       ####################
@@ -740,9 +722,7 @@ def CHECK_SCHEDULER_SENSORS(task):
          except:
             pass
             
-         print("Passing_1:" + str(passing_1)) 
-         print("Passing_2:" + str(passing_2))
-     
+
          # get result
         
          if task.operator_main_2 == "and":
@@ -833,8 +813,6 @@ def CHECK_SCHEDULER_SENSORS(task):
          except:
             pass
             
-         print("Passing_1:" + str(passing_1)) 
-         print("Passing_2:" + str(passing_2))
 
          # get result
          
@@ -1053,10 +1031,7 @@ def CHECK_SCHEDULER_SENSORS(task):
          except:
             pass
             
-         print("Passing_1:" + str(passing_1)) 
-         print("Passing_2:" + str(passing_2))
-         print("Passing_3:" + str(passing_3))         
-         
+
          # get result
 
          try:              
@@ -1173,9 +1148,11 @@ def START_SCHEDULER_TASK(task_object):
    WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started') 
 
 
+   # ###########
    # start scene
+   # ###########
+   
    try:
-      
       if "scene" in task_object.task:
          task  = task_object.task.split(":")
          group = GET_LED_GROUP_BY_NAME(task[1])
@@ -1188,23 +1165,25 @@ def START_SCHEDULER_TASK(task_object):
          # new led setting ?
          if group.current_setting != task[2] and int(group.current_brightness) != brightness:
  
-            group_id = GET_LED_GROUP_BY_NAME(task[1]).id
-            scene_id = GET_LED_SCENE_BY_NAME(task[2]).id      
+            group = GET_LED_GROUP_BY_NAME(task[1])
+            scene = GET_LED_SCENE_BY_NAME(task[2])     
             
-            LED_SET_SCENE(group_id, scene_id, brightness) 
-            LED_ERROR_CHECKING_THREAD(group_id, scene_id, task[2], brightness, 5, 15)      
+            LED_SET_SCENE(group.id, scene.id, brightness) 
+            LED_ERROR_CHECKING_THREAD(group.id, scene.id, task[2], brightness, 5, 15)      
             
          else:
-            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - " + task[2] + " : " + str(brightness))             
+            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + task[2] + " : " + str(brightness))             
             
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
+   # #######
    # led off
+   # #######
+   
    try:
-      
       if "led_off" in task_object.task:
          task = task_object.task.split(":")
          
@@ -1236,7 +1215,7 @@ def START_SCHEDULER_TASK(task_object):
                         LED_ERROR_CHECKING_THREAD(group.id, 0, "OFF", 0, 5, 20)   
                         
                      else:
-                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
+                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
                         
      
                if group_founded == False:
@@ -1250,13 +1229,13 @@ def START_SCHEDULER_TASK(task_object):
                if group.current_setting != "OFF":
                
                   scene_name = group.current_setting
-                  scene_id   = GET_LED_SCENE_BY_NAME(scene_name).id
+                  scene      = GET_LED_SCENE_BY_NAME(scene_name).id
                   
                   LED_TURN_OFF_GROUP(group.id)
-                  LED_ERROR_CHECKING_THREAD(group.id, scene_id, "OFF", 0, 5, 20)       
+                  LED_ERROR_CHECKING_THREAD(group.id, scene.id, "OFF", 0, 5, 20)       
                   
                else:
-                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | State - OFF : 0") 
+                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
           
           
    except Exception as e:
@@ -1264,9 +1243,11 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
+   # ######
    # device
+   # ######
+   
    try:
-      
       if "device" in task_object.task and "mqtt_update" not in task_object.task:
          task = task_object.task.split(":")
 
@@ -1274,12 +1255,10 @@ def START_SCHEDULER_TASK(task_object):
             device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
             command = task[2].upper()
             
-            gateway = device.gateway
-
             # new device setting ?
             if command != device.previous_command:
                
-                 if gateway == "mqtt":
+                 if device.gateway == "mqtt":
                      
                     channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
                     msg     = '{"state": "' + command + '"}'
@@ -1288,7 +1267,7 @@ def START_SCHEDULER_TASK(task_object):
                     MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", command, 5, 20)
                     
                     
-                 if gateway == "zigbee2mqtt":
+                 if device.gateway == "zigbee2mqtt":
 
                     channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
                     msg     = '{"state": "' + command + '"}'
@@ -1298,25 +1277,27 @@ def START_SCHEDULER_TASK(task_object):
                     
             else:
                
-               if gateway == "mqtt":
-                  WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | State - " + str(command)) 
+               if device.gateway == "mqtt":
+                  WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(command)) 
                   
-               if gateway == "zigbee2mqtt":
-                  WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | State - " + str(command))  
+               if device.gateway == "zigbee2mqtt":
+                  WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))  
                   
 
          except Exception as e:
             print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Gerät - " + task[1] + " | " + str(e))
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Device - " + task[1] + " | " + str(e))
 
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
 
 
+   # ###############
    # watering plants
+   # ###############
+   
    try:
-      
       if "watering_plants" in task_object.task:
          START_WATERING_THREAD()
          
@@ -1325,9 +1306,11 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
+   # #############
    # save database 
+   # #############
+   
    try:  
-        
       if "save_database" in task_object.task:
          SAVE_DATABASE()	
 
@@ -1336,9 +1319,11 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
 
 
+   # ###################
    # update mqtt devices
+   # ###################
+   
    try:
-      
       if "mqtt_update_devices" in task_object.task:
          MQTT_UPDATE_DEVICES("mqtt")
 
@@ -1347,9 +1332,11 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
 
 
+   # ##################
    # request sensordata
+   # ##################
+   
    try:
-      
       if "request_sensordata" in task_object.task:
          task = task_object.task.split(":")
          MQTT_REQUEST_SENSORDATA(task[1])  
@@ -1359,6 +1346,9 @@ def START_SCHEDULER_TASK(task_object):
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              
 
 
+   # ####################################
    # remove scheduler task without repeat
+   # ####################################
+   
    if task_object.option_repeat != "checked":
       DELETE_SCHEDULER_TASK(task_object.id)

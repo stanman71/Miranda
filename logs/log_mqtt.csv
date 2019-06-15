@@ -12833,3 +12833,331 @@ Timestamp,Channel,Message
 2019-06-13 18:00:03,SmartHome/mqtt/0x99999/get,
 2019-06-13 18:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":709,"sensor_watertank":1}|
 2019-06-13 18:20:55,SmartHome/mqtt/0x99999,connected
+2019-06-13 19:00:00,SmartHome/mqtt/devices,
+2019-06-13 19:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-13 19:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-13 19:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":715,"sensor_watertank":1}|
+2019-06-13 19:12:18,SmartHome/mqtt/0x99999,connected
+2019-06-13 19:19:45,SmartHome/mqtt/0x99999,connected
+2019-06-13 19:42:18,SmartHome/mqtt/0x99999,connected
+2019-06-13 20:00:00,SmartHome/mqtt/devices,
+2019-06-13 20:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-13 20:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-13 20:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":712,"sensor_watertank":1}|
+2019-06-13 20:30:56,SmartHome/mqtt/0x99999,connected
+2019-06-13 21:00:00,SmartHome/mqtt/devices,
+2019-06-13 21:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-13 21:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-13 21:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":714,"sensor_watertank":1}|
+2019-06-13 22:00:00,SmartHome/mqtt/devices,
+2019-06-13 22:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-13 22:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-13 22:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":694,"sensor_watertank":1}|
+2019-06-13 23:14:06,SmartHome/mqtt/test,
+2019-06-13 23:51:34,SmartHome/mqtt/test,
+2019-06-14 00:00:00,SmartHome/mqtt/devices,
+2019-06-14 00:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 00:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 00:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":684,"sensor_watertank":0}|
+2019-06-14 01:00:00,SmartHome/mqtt/devices,
+2019-06-14 01:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 01:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 01:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":685,"sensor_watertank":0}|
+2019-06-14 02:00:00,SmartHome/mqtt/devices,
+2019-06-14 02:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 02:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 02:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":687,"sensor_watertank":0}|
+2019-06-14 03:00:00,SmartHome/mqtt/devices,
+2019-06-14 03:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 03:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 03:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":684,"sensor_watertank":0}|
+2019-06-14 04:00:00,SmartHome/mqtt/devices,
+2019-06-14 04:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 04:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 04:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 05:00:00,SmartHome/mqtt/devices,
+2019-06-14 05:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 05:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 05:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 06:00:00,SmartHome/mqtt/devices,
+2019-06-14 06:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 06:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 06:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 07:00:00,SmartHome/mqtt/devices,
+2019-06-14 07:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 07:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 07:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":682,"sensor_watertank":0}|
+2019-06-14 07:14:50,SmartHome/mqtt/test,
+2019-06-14 08:00:00,SmartHome/mqtt/devices,
+2019-06-14 08:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 08:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 08:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 09:00:00,SmartHome/mqtt/devices,
+2019-06-14 09:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 09:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 09:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":682,"sensor_watertank":0}|
+2019-06-14 09:14:30,SmartHome/mqtt/0x99999,connected
+2019-06-14 09:33:37,SmartHome/mqtt/0x99999,connected
+2019-06-14 09:45:33,SmartHome/mqtt/0x99999,connected
+2019-06-14 10:00:00,SmartHome/mqtt/devices,
+2019-06-14 10:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 10:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 10:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":682,"sensor_watertank":0}|
+2019-06-14 10:14:22,SmartHome/mqtt/0x99999,connected
+2019-06-14 10:52:54,SmartHome/mqtt/0x99999,connected
+2019-06-14 11:00:00,SmartHome/mqtt/devices,
+2019-06-14 11:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 11:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 11:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 11:28:38,SmartHome/mqtt/0x99999,connected
+2019-06-14 12:00:00,SmartHome/mqtt/devices,
+2019-06-14 12:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 12:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 12:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 13:00:00,SmartHome/mqtt/devices,
+2019-06-14 13:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 13:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 13:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 13:28:11,SmartHome/mqtt/0x99999,connected
+2019-06-14 14:00:00,SmartHome/mqtt/devices,
+2019-06-14 14:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 14:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 14:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 15:00:00,SmartHome/mqtt/devices,
+2019-06-14 15:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 15:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 15:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":677,"sensor_watertank":0}|
+2019-06-14 16:00:00,SmartHome/mqtt/devices,
+2019-06-14 16:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 16:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 16:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":677,"sensor_watertank":0}|
+2019-06-14 16:28:44,SmartHome/mqtt/test,
+2019-06-14 17:00:00,SmartHome/mqtt/devices,
+2019-06-14 17:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 17:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 17:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-14 18:00:00,SmartHome/mqtt/devices,
+2019-06-14 18:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 18:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 18:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 19:00:00,SmartHome/mqtt/devices,
+2019-06-14 19:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 19:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 19:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 19:33:12,SmartHome/mqtt/test,
+2019-06-14 19:41:07,SmartHome/mqtt/test,
+2019-06-14 19:41:14,SmartHome/mqtt/test,
+2019-06-14 19:45:12,SmartHome/mqtt/0x88888,connected
+2019-06-14 19:45:57,SmartHome/mqtt/0x88888,connected
+2019-06-14 19:45:59,SmartHome/mqtt/test,
+2019-06-14 19:46:23,SmartHome/mqtt/test,
+2019-06-14 21:00:00,SmartHome/mqtt/devices,
+2019-06-14 21:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 21:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 21:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":676,"sensor_watertank":0}|
+2019-06-14 21:03:13,SmartHome/mqtt/test,
+2019-06-14 21:24:31,SmartHome/mqtt/test,
+2019-06-14 21:39:53,SmartHome/mqtt/0x99999,connected
+2019-06-14 21:59:23,SmartHome/mqtt/0x99999,connected
+2019-06-14 22:00:00,SmartHome/mqtt/devices,
+2019-06-14 22:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 22:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 22:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 22:05:49,SmartHome/mqtt/0x99999,connected
+2019-06-14 22:38:00,SmartHome/mqtt/0x99999,connected
+2019-06-14 22:50:33,SmartHome/mqtt/0x99999,connected
+2019-06-14 22:55:55,SmartHome/mqtt/test,
+2019-06-14 23:00:00,SmartHome/mqtt/devices,
+2019-06-14 23:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-14 23:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-14 23:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-14 23:34:51,SmartHome/mqtt/test,
+2019-06-15 00:00:00,SmartHome/mqtt/devices,
+2019-06-15 00:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 00:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 00:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":679,"sensor_watertank":0}|
+2019-06-15 01:00:00,SmartHome/mqtt/devices,
+2019-06-15 01:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 01:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 01:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-15 01:59:11,SmartHome/mqtt/0x99999,connected
+2019-06-15 02:00:00,SmartHome/mqtt/devices,
+2019-06-15 02:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 02:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 02:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-15 03:00:00,SmartHome/mqtt/devices,
+2019-06-15 03:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 03:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 03:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":681,"sensor_watertank":0}|
+2019-06-15 04:00:00,SmartHome/mqtt/devices,
+2019-06-15 04:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 04:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 04:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-15 04:18:04,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:30:15,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:32:25,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:35:34,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:36:03,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:37:06,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:38:42,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:41:30,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:45:05,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:45:44,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:55:30,SmartHome/mqtt/0x99999,connected
+2019-06-15 04:58:45,SmartHome/mqtt/0x99999,connected
+2019-06-15 05:00:00,SmartHome/mqtt/devices,
+2019-06-15 05:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 05:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 05:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-15 06:00:00,SmartHome/mqtt/devices,
+2019-06-15 06:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 06:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 06:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":680,"sensor_watertank":0}|
+2019-06-15 07:00:00,SmartHome/mqtt/devices,
+2019-06-15 07:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 07:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 07:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":678,"sensor_watertank":0}|
+2019-06-15 07:43:29,SmartHome/mqtt/0x99999,connected
+2019-06-15 08:00:00,SmartHome/mqtt/devices,
+2019-06-15 08:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 08:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 08:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":679,"sensor_watertank":0}|
+2019-06-15 08:16:17,SmartHome/mqtt/test,
+2019-06-15 08:21:28,SmartHome/mqtt/test,
+2019-06-15 08:25:44,SmartHome/mqtt/test,
+2019-06-15 08:27:03,SmartHome/mqtt/0x99999,connected
+2019-06-15 08:44:44,SmartHome/mqtt/0x99999,connected
+2019-06-15 08:45:25,SmartHome/mqtt/0x99999,connected
+2019-06-15 08:50:45,SmartHome/mqtt/0x99999,connected
+2019-06-15 09:00:00,SmartHome/mqtt/devices,
+2019-06-15 09:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 09:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 09:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":694,"sensor_watertank":0}|
+2019-06-15 09:05:38,SmartHome/mqtt/0x99999,connected
+2019-06-15 10:00:00,SmartHome/mqtt/devices,
+2019-06-15 10:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 10:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 10:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":694,"sensor_watertank":0}|
+2019-06-15 11:00:00,SmartHome/mqtt/devices,
+2019-06-15 11:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 11:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 11:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":694,"sensor_watertank":0}|
+2019-06-15 12:00:00,SmartHome/mqtt/devices,
+2019-06-15 12:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 12:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 12:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":691,"sensor_watertank":0}|
+2019-06-15 12:05:45,SmartHome/mqtt/test,
+2019-06-15 12:08:21,SmartHome/mqtt/test,
+2019-06-15 12:21:02,SmartHome/mqtt/0x88888,connected
+2019-06-15 12:22:53,SmartHome/mqtt/0x88888,connected
+2019-06-15 12:23:13,SmartHome/mqtt/test,
+2019-06-15 12:30:43,SmartHome/mqtt/test,
+2019-06-15 13:00:00,SmartHome/mqtt/devices,
+2019-06-15 13:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor_passiv","description":"MQTT Environment Sensor","inputs":["temperature","humidity","light"],"commands":[""]}|
+2019-06-15 13:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 13:00:03,SmartHome/mqtt/0x88888/get,
+2019-06-15 13:00:03,SmartHome/mqtt/0x88888,|{"temperature":25,"humidity":34,"light":278}|
+2019-06-15 13:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 13:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":696,"sensor_watertank":0}|
+2019-06-15 13:31:34,SmartHome/mqtt/0x99999,connected
+2019-06-15 14:00:00,SmartHome/mqtt/devices,
+2019-06-15 14:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor_passiv","description":"MQTT Environment Sensor","inputs":["temperature","humidity","light"],"commands":[""]}|
+2019-06-15 14:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 14:00:03,SmartHome/mqtt/0x88888/get,
+2019-06-15 14:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 14:00:03,SmartHome/mqtt/0x88888,|{"temperature":25,"humidity":34,"light":267}|
+2019-06-15 14:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":691,"sensor_watertank":0}|
+2019-06-15 14:35:47,SmartHome/mqtt/test,
+2019-06-15 14:37:08,SmartHome/mqtt/0x99999,connected
+2019-06-15 14:45:51,SmartHome/mqtt/0x88888,connected
+2019-06-15 14:47:38,SmartHome/mqtt/test,
+2019-06-15 15:00:00,SmartHome/mqtt/devices,
+2019-06-15 15:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x88888","model":"envi_sensor","device_type":"sensor_passiv","description":"MQTT Environment Sensor","inputs":["temperature","humidity","light"],"commands":[""]}|
+2019-06-15 15:00:00,SmartHome/mqtt/log,|{"ieeeAddr":"0x99999","model":"watering_array_v1","device_type":"watering_array","description":"MQTT Watering_Array","inputs":["sensor_moisture","sensor_watertank"],"commands":["PUMP_ON","PUMP_OFF"]}|
+2019-06-15 15:00:03,SmartHome/mqtt/0x88888/get,
+2019-06-15 15:00:03,SmartHome/mqtt/0x99999/get,
+2019-06-15 15:00:03,SmartHome/mqtt/0x88888,|{"temperature":25,"humidity":34,"light":258}|
+2019-06-15 15:00:03,SmartHome/mqtt/0x99999,|{"sensor_moisture":690,"sensor_watertank":0}|
+2019-06-15 15:36:12,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-15 15:36:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:36:15,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-15 15:36:15,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:36:19,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"132"}|
+2019-06-15 15:36:19,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"132"}|
+2019-06-15 15:36:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":132,"linkquality":85,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:36:20,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":111,"brightness":132,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:36:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-15 15:36:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:36:46,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-15 15:36:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:38:07,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-15 15:38:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:38:10,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-15 15:38:10,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:38:15,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"55"}|
+2019-06-15 15:38:15,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"55"}|
+2019-06-15 15:38:16,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":55,"linkquality":85,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:38:16,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":111,"brightness":55,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:38:17,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":109,"brightness":55,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:38:17,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":106,"brightness":55,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:38:22,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":55,"linkquality":88,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:38:22,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":55,"linkquality":85,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:38:36,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-15 15:38:36,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-15 15:38:37,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":55,"linkquality":85,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:38:37,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":106,"brightness":55,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:38:37,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":111,"brightness":55,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:39:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-15 15:39:15,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":13,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-15 15:39:15,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":20,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-15 15:39:16,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-15 15:39:16,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-15 15:39:16,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-15 15:39:16,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":88,"brightness":254}|
+2019-06-15 15:39:17,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":93,"brightness":254}|
+2019-06-15 15:39:17,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":88,"brightness":254}|
+2019-06-15 15:39:17,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":91,"brightness":254}|
+2019-06-15 15:39:18,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":91,"brightness":254}|
+2019-06-15 15:40:21,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-15 15:40:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:40:24,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-15 15:40:24,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-15 15:40:29,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":101,"color": { "x":0.191,"y":0.148}}|
+2019-06-15 15:40:29,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":101,"color": { "x":0.197,"y":0.222}}|
+2019-06-15 15:40:29,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":101,"linkquality":85,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-15 15:40:30,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":111,"brightness":101,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-15 15:40:31,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"0"}|
+2019-06-15 15:40:32,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"0"}|
+2019-06-15 15:40:32,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":91,"brightness":0}|
+2019-06-15 15:40:32,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":91,"brightness":0}|
+2019-06-15 15:40:38,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"175"}|
+2019-06-15 15:40:38,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"175"}|
+2019-06-15 15:40:39,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":175,"linkquality":85,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-15 15:40:45,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":13,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-15 15:40:46,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-15 15:40:46,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-15 15:40:46,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":46,"brightness":1}|
+2019-06-15 15:40:46,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":41,"brightness":1}|
+2019-06-15 15:40:54,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"215"}|
+2019-06-15 15:40:54,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"215"}|
+2019-06-15 15:40:55,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":215,"linkquality":85,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:08,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: Timed out after 30000 ms","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"Deckenlampe_02"},"message":"{\"state\": \"ON\",\"brightness\":\"175\"}"}}|
+2019-06-15 15:41:09,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":109,"brightness":175,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:15,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"73"}|
+2019-06-15 15:41:15,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"73"}|
+2019-06-15 15:41:16,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":73,"linkquality":85,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:16,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":111,"brightness":73,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:28,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-15 15:41:28,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-15 15:41:28,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":73,"linkquality":85,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:29,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":111,"brightness":73,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-15 15:41:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":20,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-15 15:41:48,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-15 15:41:48,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-15 15:41:49,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":41,"brightness":254}|
+2019-06-15 15:41:49,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":44,"brightness":254}|
+2019-06-15 15:43:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":20,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-15 15:43:18,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-15 15:43:18,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-15 15:43:19,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":91,"brightness":254}|
+2019-06-15 15:43:19,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":91,"brightness":254}|
