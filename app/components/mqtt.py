@@ -52,13 +52,46 @@ def MQTT_THREAD():
 		msg     = str(new_message.payload.decode("utf-8"))	      
       
 		new_message = True
-      
-		# message already arrived?
-		for existing_message in MQTT_GET_INCOMMING_MESSAGES(3):	
-			if existing_message[1] == channel:
-				new_message = False
-				break
+		
+		# log messages always passing
+		if (channel != "SmartHome/mqtt/log" and 
+		    channel != "SmartHome/zigbee2mqtt/bridge/log" and 
+		    channel != "SmartHome/zigbee2mqtt/bridge/config" and
+		    channel != "SmartHome/zigbee2mqtt/bridge/state"):
+						
+			# other message already arrived?
+			for existing_message in MQTT_GET_INCOMMING_MESSAGES(3):	
+							
+				if existing_message[1] == channel:
+					
+					if "zigbee2mqtt" in channel:
+						
+						try:
+							existing_data = json.loads(existing_message[2])
+							new_data      = json.loads(msg)
+
+							if existing_data["state"] != new_data["state"]:
+								new_message = True
+								break
+								
+						except:
+							pass
+							
+							
+						try:
+							existing_data = json.loads(existing_message[2])
+							new_data      = json.loads(msg)
+
+							if existing_data["occupancy"] != new_data["occupancy"]:
+								new_message = True
+								break
+								
+						except:
+							pass							
+					
+					new_message = False
 				
+					
 		# message not arrived
 		if new_message:
 	
@@ -115,8 +148,9 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
 		return ""
 
-	except:
-		return "Keine Verbindung zu MQTT"
+	except Exception as e:
+		print("ERROR MQTT: " + str(e))
+		return ("Fehler MQTT >>> " + str(e))
 
 
 """ ##################### """
@@ -502,10 +536,9 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, command, delay, limit):
 	time.sleep(delay)                             
 	result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
 	
-	# set current state
+	# set previous command 
 	if result == True:
 		SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-		SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 	
 	
 	else:
@@ -513,10 +546,9 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, command, delay, limit):
 		time.sleep(delay)                             
 		result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
 		
-		# set current state 
+		# set previous command 
 		if result == True:
 			SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-			SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 		
 			
 		else:
@@ -524,10 +556,9 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, command, delay, limit):
 			time.sleep(delay)                             
 			result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
 			 
-			# set current state 
+			# set previous command 
 			if result == True:
 				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 			
 				
 			# error message
@@ -577,10 +608,9 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, command, delay, limit):
 	time.sleep(delay)                             
 	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
 	
-	# set current state
+	# set previous command 
 	if result == True:
 		SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-		SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command))   
 		
 	else:
@@ -588,10 +618,9 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, command, delay, limit):
 		time.sleep(delay)                             
 		result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
 		
-		# set current state 
+		# set previous command 
 		if result == True:
 			SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-			SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command)) 			
 			
 		else:
@@ -599,10 +628,9 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, command, delay, limit):
 			time.sleep(delay)                             
 			result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
 			 
-			# set current state 
+			# set previous command 
 			if result == True:
 				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				SET_MQTT_DEVICE_STATUS(device.ieeeAddr, command)
 				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command))  				
 				
 			# error message

@@ -12,6 +12,10 @@ from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
 from app.components.shared_resources import process_management_queue
 from app.components.control_led import LED_ERROR_CHECKING_PROCESS
 from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
+from app.sites.spotify import authorization_header
+from app.components.control_spotify import *
+
+from ping3 import ping
 
 import heapq
 import json
@@ -34,6 +38,12 @@ def dashboard():
         
     # check sensor name changed ?
     UPDATE_DASHBOARD_CHECK_SENSOR_NAMES()
+    
+    
+    """ ########### """
+    """ led control """
+    """ ########### """   
+    
     
     if request.method == "POST":
         
@@ -68,7 +78,7 @@ def dashboard():
                         
                         
                     # change brightness only
-                    if GET_LED_GROUP_BY_ID(i).current_setting != "OFF":                 
+                    if GET_LED_GROUP_BY_ID(i).current_setting != "OFF" and setting != "turn_off":                 
                         
                         scene_name = GET_LED_GROUP_BY_ID(i).current_setting
                         
@@ -108,7 +118,14 @@ def dashboard():
                             
                         else:
                             WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")                        
+     
                                 
+    """ ############## """
+    """ device control """
+    """ ############## """       
+    
+    
+    if request.method == "POST":
     
         if request.form.get("change_device_settings") != None:
             
@@ -118,7 +135,7 @@ def dashboard():
                     
                     device = GET_MQTT_DEVICE_BY_ID(i)
                     
-                    if "device" in device.device_type:
+                    if device in GET_ALL_MQTT_DEVICES("device"):
                         
                         # set dashboard check option
                         dashboard_check_option = request.form.get("set_dashboard_check_option_" + str(i))
@@ -249,8 +266,8 @@ def dashboard():
                                     dashboard_check_value_1 = "None" 
                                     dashboard_check_value_2 = "None"  
                                     dashboard_check_value_3 = "None"  
-                                                                                            
-                                                                
+                         
+                                 
                         SET_MQTT_DEVICE_DASHBOARD_CHECK(device.ieeeAddr, dashboard_check_option, dashboard_check_command,
                                                         dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_inputs, dashboard_check_value_1, 
                                                         dashboard_check_value_2, dashboard_check_value_3)
@@ -269,14 +286,21 @@ def dashboard():
                             
                             change_state = True
                             
+                            # ################
                             # check ip_address 
-                            if device.dashboard_check_option == "IP-Address" and dashboard_command == device.dashboard_check_command:
+                            # ################
+                            
+                            if device.dashboard_check_option == "IP-Address" and dashboard_command == device.dashboard_check_command.replace(" ",""):
    
-                                if os.system("ping -c 1 " + dashboard_check_value_1) == 0:
+                                if ping(dashboard_check_value_1, timeout=1) != None:    
                                     error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
                                     change_state = False
+                                
 
+                            # ############
                             # check sensor
+                            # ############
+                            
                             if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_command == device.dashboard_check_command.replace(" ",""):
                                 
                                 sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
@@ -318,7 +342,7 @@ def dashboard():
                                 
                                 
                             # state changing
-                            if change_state: 
+                            if change_state == True: 
 
                                 # ####
                                 # mqtt
@@ -353,18 +377,100 @@ def dashboard():
                             else:
                                 
                                 if device.gateway == "mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(command)) 
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_command)) 
 
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))                                 
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_command))                                 
 
                 except Exception as e:
                     if "NoneType" not in str(e):
                         print(e)
                               
 
+    """ ############### """
+    """ spotify control """
+    """ ############### """   
+
+
+    global authorization_header
+    
+
+    # check spotify login 
+    try:
+        
+        sp              = spotipy.Spotify(auth=authorization_header)
+        sp.trace        = False
+        
+        if request.method == "POST": 
+            
+            
+            """ ####################### """
+            """ spotify general control """
+            """ ####################### """
+        
+            spotify_device_id = sp.current_playback(market=None)['device']['id']
+            spotify_volume    = request.form.get("get_spotify_volume")
+                
+            if "set_spotify_start" in request.form:    
+                sp.volume(int(spotify_volume), device_id=spotify_device_id)  
+                
+                try:
+                    context_uri = sp.current_playback(market=None)["context"]["uri"]
+                except:
+                    context_uri = None
+                    
+                try:
+                    track_uri   = sp.current_playback(market=None)['item']['uri']
+                except:
+                    track_uri   = None
+                    
+                try:
+                    position    = sp.current_playback(market=None)['progress_ms']
+                except:
+                    position    = None
+                
+                if context_uri != None:
+                    sp.start_playback(device_id=spotify_device_id, context_uri=context_uri, uris=None, offset = None, position_ms = None)  
+                    
+                elif track_uri != None:
+                    sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=[track_uri], offset = None, position_ms = position)    
+                    
+                else:
+                    sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=None, offset = None, position_ms = None)
+
+            if "set_spotify_previous" in request.form:    
+                sp.volume(int(spotify_volume), device_id=spotify_device_id)   
+                sp.previous_track(device_id=spotify_device_id)     
+
+            if "set_spotify_next" in request.form:     
+                sp.volume(int(spotify_volume), device_id=spotify_device_id)  
+                sp.next_track(device_id=spotify_device_id) 
+                
+            if "set_spotify_stop" in request.form:     
+                sp.pause_playback(device_id=spotify_device_id)  
+
+            if "set_spotify_shuffle" in request.form:     
+                sp.shuffle(True, device_id=spotify_device_id) 
+
+            if "set_spotify_volume" in request.form:        
+                sp.volume(int(spotify_volume), device_id=spotify_device_id)      
+
+
+    except Exception as e:
+        print(e)
+        tupel_current_playback = ""
+        spotify_user = "Nicht eingeloggt"
+        volume = 50       
+
+    tupel_current_playback = ""
+    spotify_user = "Nicht eingeloggt"
+    
+    
+    
+    
+
     data_led = GET_ALL_ACTIVE_LED_GROUPS()
-    dropdown_list_led_scenes   = GET_ALL_LED_SCENES()
+    dropdown_list_led_scenes = GET_ALL_LED_SCENES()
 
     list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
     
@@ -552,6 +658,8 @@ def dashboard():
                             mqtt_device_22_inputs=mqtt_device_22_inputs,  
                             mqtt_device_23_inputs=mqtt_device_23_inputs,
                             mqtt_device_24_inputs=mqtt_device_24_inputs,
-                            mqtt_device_25_inputs=mqtt_device_25_inputs,                               
+                            mqtt_device_25_inputs=mqtt_device_25_inputs,
+                            tupel_current_playback=tupel_current_playback,
+                            spotify_user=spotify_user,                               
                             role=current_user.role,
                             )

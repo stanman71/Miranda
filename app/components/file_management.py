@@ -238,6 +238,14 @@ def GET_CONFIG_VERSION():
         return str(config['config']['version'])
     except:
         return "DEFAULT SETTINGS"
+        
+        
+def GET_CONFIG_HOST_IP_ADDRESS():
+    try:
+        return str(config['config']['host_ip_address'])
+    except:
+        return ""
+                
 
 def GET_CONFIG_MQTT_BROKER():
     try:
@@ -246,11 +254,26 @@ def GET_CONFIG_MQTT_BROKER():
         
         return "localhost"
         
+        
 def GET_CONFIG_DATABASE():
     try:
         return str(config['config']['database'])
     except:
         return "sqlite:///database/smarthome.sqlite3"
+        
+        
+def GET_SPOTIFY_CLIENT_ID():
+    try:
+        return str(config['spotify']['client_id'])
+    except:
+        return ""        
+
+
+def GET_SPOTIFY_CLIENT_SECRET():
+    try:
+        return str(config['spotify']['client_secret'])
+    except:
+        return ""     
 
 
 """ ################ """

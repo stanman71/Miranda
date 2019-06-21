@@ -7,7 +7,9 @@ flask_login
 flask_mail
 wtforms 
 pyusb
+ping3
 paho-mqtt
+spotipy
 pyyaml
 pandas
 scipy

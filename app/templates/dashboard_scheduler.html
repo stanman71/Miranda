@@ -963,18 +963,12 @@
                               </div>
                             </font>
                           </div>
-
-                          {% if entry.option_home == "checked" or entry.option_away == "checked" %}
-
-                            <div class="col-sm-2">  
-                              <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
-                            </div>
-                            <div class="col-sm-6">
-                              <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}" value="{{ entry.ip_addresses }}" /> 
-                            </div>
-
-                          {% endif %}
-
+                          <div class="col-sm-2">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
+                          </div>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}" value="{{ entry.ip_addresses }}" /> 
+                          </div>
                         </div>
                       </td>
                     </tr>

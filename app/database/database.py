@@ -248,8 +248,7 @@ class MQTT_Devices(db.Model):
     dashboard_check_value_1         = db.Column(db.String(50))
     dashboard_check_value_2         = db.Column(db.String(50))
     dashboard_check_value_3         = db.Column(db.String(50))      
-    previous_command                = db.Column(db.String(50)) 
-    status                          = db.Column(db.String(50))                  
+    previous_command                = db.Column(db.String(50))                
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -303,7 +302,8 @@ class Scheduler_Tasks(db.Model):
     operator_3              = db.Column(db.String(50), server_default=("None")) 
     option_home             = db.Column(db.String(50), server_default=("None")) 
     option_away             = db.Column(db.String(50), server_default=("None")) 
-    ip_addresses            = db.Column(db.String(100), server_default=("None")) 
+    ip_addresses            = db.Column(db.String(100), server_default=("None"))
+    last_ping_result        = db.Column(db.String(50), server_default=("None")) 
     error_change_settings   = db.Column(db.String(500), server_default=("")) 
     error_general_settings  = db.Column(db.String(500), server_default=(""))  
     error_time_settings     = db.Column(db.String(500), server_default=(""))   
@@ -1405,7 +1405,9 @@ def GET_ALL_MQTT_DEVICES(selector):
  
     if selector == "device":
         for device in devices:
-            if device.device_type == "device_switch":
+            if (device.device_type == "device_switch" or 
+                device.device_type == "watering_array"):
+                
                 device_list.append(device)      
   
     if selector == "led":
@@ -1577,13 +1579,6 @@ def SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, command):
     entry.previous_command = command
     db.session.commit()  
     
-    
-def SET_MQTT_DEVICE_STATUS(ieeeAddr, status):
-    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
-    
-    entry.status = status
-    db.session.commit()     
-   
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
@@ -2160,6 +2155,10 @@ def SET_SCHEDULER_TASK(id, name, task,
         WRITE_LOGFILE_SYSTEM("EVENT", log_message) 
 
 
+def GET_SCHEDULER_TASK_SUNRISE(id):    
+    return (Scheduler_Tasks.query.filter_by(id=id).first().sunrise)
+    
+
 def SET_SCHEDULER_TASK_SUNRISE(id, sunrise):    
     entry = Scheduler_Tasks.query.filter_by(id=id).first()
 
@@ -2167,8 +2166,8 @@ def SET_SCHEDULER_TASK_SUNRISE(id, sunrise):
     db.session.commit()   
 
 
-def GET_SCHEDULER_TASK_SUNRISE(id):    
-    return (Scheduler_Tasks.query.filter_by(id=id).first().sunrise)
+def GET_SCHEDULER_TASK_SUNSET(id):    
+    return (Scheduler_Tasks.query.filter_by(id=id).first().sunset)
 
 
 def SET_SCHEDULER_TASK_SUNSET(id, sunset):    
@@ -2178,8 +2177,15 @@ def SET_SCHEDULER_TASK_SUNSET(id, sunset):
     db.session.commit()   
 
 
-def GET_SCHEDULER_TASK_SUNSET(id):    
-    return (Scheduler_Tasks.query.filter_by(id=id).first().sunset)
+def GET_SCHEDULER_LAST_PING_RESULT(id):    
+    return (Scheduler_Tasks.query.filter_by(id=id).first().last_ping_result)
+
+
+def SET_SCHEDULER_LAST_PING_RESULT(id, result):    
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+
+    entry.last_ping_result = result
+    db.session.commit()   
 
 
 def SET_SCHEDULER_TASK_CHANGE_ERRORS(id, error_change_settings):    

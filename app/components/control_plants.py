@@ -19,16 +19,16 @@ def START_PUMP(plant_id):
     plant    = GET_PLANT_BY_ID(plant_id)
     ieeeAddr = plant.mqtt_device.ieeeAddr 
     
-    heapq.heappush(process_management_queue, (5, ("device", ieeeAddr, 
-                                                  "PUMP_ON", '{"state": "PUMP_ON", "pumptime":' + str(plant.pumptime) + '}', 
-                                                  "state", "PUMP_ON")))	
+    channel  = "SmartHome/mqtt/" + ieeeAddr + "/set"
+    msg      = '{"state": "PUMP_ON", "pumptime":' + str(plant.pumptime) + '}'
     
-    time.sleep(2)
+    heapq.heappush(process_management_queue, (50, ("watering", channel, msg)))
+    time.sleep(3)
     
     # check pump started ?
-    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON"):
-        WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump started") 
-    
+    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 5):
+        WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump started")  
+
 
 """ ######### """
 """ threading """
@@ -94,28 +94,23 @@ def WATERING_THREAD(start):
     # overview watering process
     while pump_running != 0:
         
+        time.sleep(15)
+        
         for plant in GET_ALL_PLANTS():
-            if i == plant.pumptime:
+            
+            if i > plant.pumptime:
                 
                 # check pump stopped ?
-                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF"):  
+                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF", 30):  
                     WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump stopped")                              
                     pump_running = pump_running - 1 
-                
-                else:
-                    time.sleep(1)
                     
-                    if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF"): 
-                        WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump stopped")  
-                        pump_running = pump_running - 1    
-                        
-                    else:
-                        WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump stopping not confimed") 
-                        warnings = True
-                        pump_running = pump_running - 1 
+                else:
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump stopping not confimed") 
+                    warnings = True
+                    pump_running = pump_running - 1 
         
         i = i + 15
-        time.sleep(15)
         
 
     if warnings == True:

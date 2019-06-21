@@ -14,6 +14,7 @@ from app.components.mqtt import *
 from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER, GET_LOCATION_COORDINATES
 from app.components.shared_resources import process_management_queue
 
+from ping3 import ping
 
 
 """ ################################ """
@@ -74,19 +75,25 @@ def GET_SUNRISE_TIME(lat, long):
    
    try:
    
-      link = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
-      f = requests.get(link)
-      data = f.text
-      sunrise = data[34:42]
-      sunset = data[71:79]
-
-      sunrise = sunrise.split(":")
-      sunrise_hour   = int(sunrise[0]) + 1
-      sunrise_minute = int(sunrise[1])
+      link     = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
+      response = requests.get(link)
+      data     = response.text
       
-      sunrise = str(sunrise_hour) + ":" + str(sunrise_minute)
+      # get sunrise data
+      sunrise  = data[34:42]
+      sunrise  = sunrise.split(":")
+      
+      # add one hour for CEST
+      sunrise_hour   = str(int(sunrise[0]) + 1)
+      sunrise_minute = str(sunrise[1])
+      
+      if len(sunrise_minute) == 1:
+         sunrise_minute = str(0) + sunrise_minute
+      
+      sunrise = sunrise_hour + ":" + sunrise_minute
 
       return (sunrise)
+      
       
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
@@ -96,23 +103,28 @@ def GET_SUNSET_TIME(lat, long):
  
    try:
       
-      link = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
-      f = requests.get(link)
-      data = f.text
-      sunrise = data[34:42]
-      sunset = data[71:79]
+      link     = "http://api.sunrise-sunset.org/json?lat=%f&lng=%f&formatted=0" % (lat, long)
+      response = requests.get(link)
+      data     = response.text
+      
+      # get sunset data
+      sunset   = data[71:79]
+      sunset   = sunset.split(":")
+      
+      # add one hour for CEST
+      sunset_hour   = str(int(sunset[0]) + 1)
+      sunset_minute = str(sunset[1]) 
 
-      sunset = sunset.split(":")
-      sunset_hour   = int(sunset[0]) + 1
-      sunset_minute = int(sunset[1])    
+      if len(sunset_minute) == 1:
+         sunset_minute = str(0) + sunset_minute
 
-      sunset = str(sunset_hour) + ":" + str(sunset_minute)
+      sunset = sunset_hour + ":" + sunset_minute
 
       return (sunset)
 
+
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
-
 
 
 """ ################################ """
@@ -143,11 +155,11 @@ def SCHEDULER_TIME_PROCESS(task):
       if task.option_position == "checked":
          
          if task.option_home == "checked":
-            if not CHECK_SCHEDULER_PING(task):
+            if CHECK_SCHEDULER_PING(task) == "False":
                return               
          
          if task.option_away == "checked":
-            if CHECK_SCHEDULER_PING(task):
+            if CHECK_SCHEDULER_PING(task) == "True":
                return         
    
       START_SCHEDULER_TASK(task)
@@ -170,11 +182,11 @@ def SCHEDULER_TIME_PROCESS(task):
       if task.option_position == "checked":
 
          if task.option_home == "checked":
-            if not CHECK_SCHEDULER_PING(task):
+            if CHECK_SCHEDULER_PING(task) == "False":
                return               
          
          if task.option_away == "checked":
-            if CHECK_SCHEDULER_PING(task):
+            if CHECK_SCHEDULER_PING(task) == "True":
                return         
 
       # check sun
@@ -212,11 +224,11 @@ def SCHEDULER_SENSOR_PROCESS(task, ieeeAddr):
          if task.option_position == "checked":
 
             if task.option_home == "checked":
-               if not CHECK_SCHEDULER_PING(task):
+               if CHECK_SCHEDULER_PING(task) == "False":
                   return               
             
             if task.option_away == "checked":
-               if CHECK_SCHEDULER_PING(task):
+               if CHECK_SCHEDULER_PING(task) == "True":
                   return         
 
          # check sun
@@ -239,33 +251,47 @@ def SCHEDULER_SENSOR_PROCESS(task, ieeeAddr):
 def SCHEDULER_PING_PROCESS(task):
    
    # find ping jobs only (home / away)
-   if ((task.option_home == "checked" and CHECK_SCHEDULER_PING(task) == True) or
-       (task.option_away == "checked" and CHECK_SCHEDULER_PING(task) == False)):
-
-      print("Start Scheduler Ping")
-
-      # check time
-      if task.option_time == "checked":
-         if not CHECK_SCHEDULER_TIME(task):
-            return
-
-      # check sensors
-      if task.option_sensors == "checked":
-         if not CHECK_SCHEDULER_SENSORS(task):
-            return
-        
-      # check sun options
-      if task.option_sun == "checked":
+   if task.option_home == "checked" or task.option_away == "checked":
+           
+      ping_result = CHECK_SCHEDULER_PING(task)
+      
+      # update last ping, if nessanrry     
+      if task.option_home == "checked" and ping_result == "False":
+         SET_SCHEDULER_LAST_PING_RESULT(task.id, "False")
+         return
          
-         if task.option_sunrise == "checked":
-            if CHECK_SCHEDULER_SUNRISE(task):
-               START_SCHEDULER_TASK(task)
-            
-         if task.option_sunset == "checked":
-            if CHECK_SCHEDULER_SUNSET(task):
-               START_SCHEDULER_TASK(task)
+      if task.option_away == "checked" and ping_result == "True":
+         SET_SCHEDULER_LAST_PING_RESULT(task.id, "True")
+         return
+      
+      # start job, if ping result changed first
+      if GET_SCHEDULER_LAST_PING_RESULT(task.id) != ping_result:
 
-      START_SCHEDULER_TASK(task)      
+         print("Start Scheduler Ping")
+         
+         # check time
+         if task.option_time == "checked":
+            if not CHECK_SCHEDULER_TIME(task):
+               return
+
+         # check sensors
+         if task.option_sensors == "checked":
+            if not CHECK_SCHEDULER_SENSORS(task):
+               return
+           
+         # check sun options
+         if task.option_sun == "checked":
+            
+            if task.option_sunrise == "checked":
+               if CHECK_SCHEDULER_SUNRISE(task):
+                  START_SCHEDULER_TASK(task)
+               
+            if task.option_sunset == "checked":
+               if CHECK_SCHEDULER_SUNSET(task):
+                  START_SCHEDULER_TASK(task)
+
+         START_SCHEDULER_TASK(task)     
+         SET_SCHEDULER_LAST_PING_RESULT(task.id, ping_result)
 
 
 """ ################################ """
@@ -1080,14 +1106,18 @@ def CHECK_SCHEDULER_SENSORS(task):
 
 def CHECK_SCHEDULER_PING(task):
 
-      ip_addresses = task.ip_addresses.split(",")
+   ip_addresses = task.ip_addresses.split(",")
 
-      for ip_address in ip_addresses:
+   for ip_address in ip_addresses:
       
-         if os.system("ping -c 1 " + ip_address) == 0:
-             return True
-             
-      return False
+      if ping(ip_address, timeout=1) != None:
+          return "True"
+      if ping(ip_address, timeout=1) != None:
+          return "True"
+      if ping(ip_address, timeout=1) != None:
+          return "True"                
+          
+   return "False"
 
          
 def CHECK_SCHEDULER_SUNRISE(task):
@@ -1099,7 +1129,7 @@ def CHECK_SCHEDULER_SUNRISE(task):
 
    # get sunrise time
    sunrise_data = GET_SCHEDULER_TASK_SUNRISE(task.id)
-   
+         
    try:
       sunrise_data = sunrise_data.split(":")
       
@@ -1229,7 +1259,7 @@ def START_SCHEDULER_TASK(task_object):
                if group.current_setting != "OFF":
                
                   scene_name = group.current_setting
-                  scene      = GET_LED_SCENE_BY_NAME(scene_name).id
+                  scene      = GET_LED_SCENE_BY_NAME(scene_name)
                   
                   LED_TURN_OFF_GROUP(group.id)
                   LED_ERROR_CHECKING_THREAD(group.id, scene.id, "OFF", 0, 5, 20)       
@@ -1237,7 +1267,7 @@ def START_SCHEDULER_TASK(task_object):
                else:
                   WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
           
-          
+      
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      

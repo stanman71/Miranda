@@ -352,13 +352,9 @@ def dashboard_scheduler():
                         # get coordinates
                         coordinates = GET_LOCATION_COORDINATES(location)
                          
-                        try:
-                            SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
-                            SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+                        SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+                        SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
                                 
-                        except:
-                            pass
-                            
                     else:
                         SET_SCHEDULER_TASK_SUNRISE(i, "None")
                         SET_SCHEDULER_TASK_SUNSET(i, "None")                        
@@ -517,18 +513,12 @@ def dashboard_scheduler():
                     else:
                         option_away = "None"  
 
-
-                    if option_home != "None" or option_away != "None":
-
-                        # set ip_addresses
-                        if request.form.get("set_ip_addresses_" + str(i)) != "":
-                            ip_addresses = request.form.get("set_ip_addresses_" + str(i))
-                        else:
-                            ip_addresses = "None"
-                    
+                    # set ip_addresses
+                    if request.form.get("set_ip_addresses_" + str(i)) != "":
+                        ip_addresses = request.form.get("set_ip_addresses_" + str(i))
                     else:
                         ip_addresses = "None"
-
+                    
 
                     SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
 
