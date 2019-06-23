@@ -67,6 +67,7 @@ def MQTT_THREAD():
 					if "zigbee2mqtt" in channel:
 						
 						try:
+							# devices changes state ?
 							existing_data = json.loads(existing_message[2])
 							new_data      = json.loads(msg)
 
@@ -79,6 +80,7 @@ def MQTT_THREAD():
 							
 							
 						try:
+							# motion sensor changes occupancy state ?
 							existing_data = json.loads(existing_message[2])
 							new_data      = json.loads(msg)
 
@@ -215,18 +217,14 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 					
 	except:
 		
-		# save last values and last contact or last contact only
+		# save last values and last contact 
 		if ieeeAddr != "":	
-			if msg != "connected" and "state" not in msg:
-				SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
-			else:
-				SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)	
-		
-		
-		# sensor inputs
+			SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+
+
 		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array" :
 			
-			# schedular
+			# start schedular job 
 			for task in GET_ALL_SCHEDULER_TASKS():
 				if task.option_sensors == "checked":
 					heapq.heappush(process_management_queue, (10, ("scheduler", "sensor", task.id, ieeeAddr)))
@@ -239,7 +237,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 					MQTT_SAVE_SENSORDATA(job) 
 
 
-		# controller inputs
+		# start controller job
 		if device_type == "controller":
 			heapq.heappush(process_management_queue, (1, ("controller", ieeeAddr, msg)))		
 	
@@ -563,6 +561,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, command, delay, limit):
 				
 			# error message
 			else:
+				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
 				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed")  
 				return ("MQTT | Device - " + device.name + " | Setting not confirmed") 
 				
@@ -573,14 +572,13 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit):
 			
 	for message in MQTT_GET_INCOMMING_MESSAGES(limit):
 		
+		# search for fitting message in incomming_messages_list
 		if message[1] == "SmartHome/mqtt/" + ieeeAddr:
 				
 			try:
-
 				data = json.loads(message[2])
 				
 				if data[setting_key] == command:
-					
 					return True
 			
 			except:
@@ -635,6 +633,7 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, command, delay, limit):
 				
 			# error message
 			else:
+				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
 				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed")  
 				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed") 
 	
@@ -645,14 +644,13 @@ def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit):
 	
 	for message in MQTT_GET_INCOMMING_MESSAGES(limit):	
 		
+		# search for fitting message in incomming_messages_list
 		if message[1] == "SmartHome/zigbee2mqtt/" + name:
 				
 			try:
-
 				data = json.loads(message[2])
 				
 				if data[setting_key] == command:
-					
 					return True
 			
 			except:

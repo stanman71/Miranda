@@ -78,7 +78,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         payload_path.toCharArray( path, 100 );    
 
         // create msg as json
-        DynamicJsonDocument msg(1024);
+        DynamicJsonDocument msg(256);
         
         msg["ieeeAddr"]    = ieeeAddr;
         msg["model"]       = "envi_sensor";
@@ -94,7 +94,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         data_commands.add("");
 
         // convert msg to char
-        char msg_Char[512];
+        char msg_Char[256];
         serializeJson(msg, msg_Char);
        
         Serial.print("Channel: ");
@@ -112,20 +112,20 @@ void callback(char* topic, byte* payload, unsigned int length) {
         String payload_path = "SmartHome/mqtt/" + ieeeAddr;
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );      
+
+        // create msg as json
+        DynamicJsonDocument msg(128);
             
         float temperature = dht.readTemperature(); 
         float humidity    = dht.readHumidity();
         int light         = analogRead(LIGHTPIN);
-  
-        // create msg as json
-        DynamicJsonDocument msg(1024);
         
         msg["temperature"] = temperature;
         msg["humidity"]    = humidity;
         msg["light"]       = light;
         
         // convert msg to char
-        char msg_Char[100];
+        char msg_Char[128];
         serializeJson(msg, msg_Char);
         
         Serial.print("Channel: ");
@@ -152,7 +152,29 @@ void reconnect() {
             char attributes[100];
             payload_path.toCharArray( path, 100 );    
                  
-            client.publish(path, "connected");
+            // create msg as json
+            DynamicJsonDocument msg(128);
+                
+            float temperature = dht.readTemperature(); 
+            float humidity    = dht.readHumidity();
+            int light         = analogRead(LIGHTPIN);
+            
+            msg["temperature"] = temperature;
+            msg["humidity"]    = humidity;
+            msg["light"]       = light;
+            
+            // convert msg to char
+            char msg_Char[128];
+            serializeJson(msg, msg_Char);
+            
+            Serial.print("Channel: ");
+            Serial.println(path);
+            Serial.print("Publish message: ");
+            Serial.println(msg_Char);
+            Serial.println();
+            
+            client.publish(path, msg_Char);    
+
             client.subscribe("SmartHome/mqtt/#");
             Serial.println("MQTT Connected...");
 

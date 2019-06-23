@@ -31,7 +31,7 @@ WSDCGQ11LM:
 MFKZQ01LM:
     device_type: controller
     description: AQARA Cube Controller
-    inputs:      ["action=shake", "action=rotate_left", "action=rotate_right", "to_side=1", "to_side=2", "to_side=4", "to_side=5"]
+    inputs:      ["action=shake", "action=rotate_left", "action=rotate_right", "side=1", "side=2", "side=4", "side=5"]
     commands: 
 
 RTCGQ11LM:

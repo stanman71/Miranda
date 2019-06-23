@@ -36,7 +36,18 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
     
 def START_LED_TASK(answer):
     
-    
+    table_numbers = {'zehn'   : 10, 
+                     'zwanzig': 20,
+                     'dreizig': 30,
+                     'vierzig': 40,
+                     'fünfzig': 50,
+                     'sechzig': 60,
+                     'siebzig': 70,
+                     'achtzig': 80,
+                     'neunzig': 90,
+                     'hundert': 100                            
+                     }
+ 
     # ###########
     # start scene 
     # ###########
@@ -54,56 +65,78 @@ def START_LED_TASK(answer):
         
         # keyword founded
         if keyword.lower() in answer:
-
+            
             try:
                 groups = GET_ALL_LED_GROUPS()
                 scenes = GET_ALL_LED_SCENES() 
 
                 group_id   = None
-                scene_id   = None
+                scene_name = None
                 brightness = 100
 
                 # search group
                 for group in groups:
                     if group.name.lower() in answer:
                         group_id = group.id
+                        continue
 
                 # search scene
                 for scene in scenes:
                     if scene.name.lower() in answer:
                         scene_name = scene.name  
-
+                        continue
+                        
                 # search brightness value
                 for element in answer.split():
                     element = element.replace("%","")
                     
-                    # check value
+                    # check brightness as 'number' value
                     if element.isdigit() and (1 <= int(element) <= 100):
                         brightness = int(element)
-                     
-                # group and scene founded
-                if group_id != None and scene_name != None:   
+                        continue
                     
-                    group = GET_LED_GROUP_BY_ID(group_id)
-                    scene = GET_LED_SCENE_BY_NAME(scene_name)  
+                    # check brightness as 'word' value
+                    try:
+                        brightness = int(table_numbers[element])
+                        continue
+                    except:
+                        pass  
                     
-                    # new led setting ?
-                    if group.current_setting != scene_name and int(group.current_brightness) != brightness:
+                # group founded ?
+                if group_id != None:
+                
+                    # scene founded ?
+                    if scene_name != None:   
+                        
+                        group = GET_LED_GROUP_BY_ID(group_id)
+                        scene = GET_LED_SCENE_BY_NAME(scene_name) 
+                        
+                        # new led setting ?
+                        if group.current_setting != scene_name and int(group.current_brightness) != brightness:
 
-                        LED_SET_SCENE(group_id, scene.id, brightness)
-                        LED_ERROR_CHECKING_THREAD(group_id, scene.id, scene_name, brightness, 3, 15)      
+                            LED_SET_SCENE(group.id, scene.id, brightness)
+                            LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)      
 
+                        else:
+                            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %")     
+                                        
+                        time.sleep(1)
+                        break
+                
                     else:
-                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %")     
-                                    
-                    time.sleep(1)
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Scene not founded")
+                        break
+                                        
+                else:
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
                     break
-       
+                                       
+            
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))  
                 break
-         
+     
                 
     # ##############
     # set brightness
@@ -128,18 +161,29 @@ def START_LED_TASK(answer):
 
                 # search group
                 for group in groups:
+                    brightness = None
                     
-                    # group founded
+                    # group founded ?
                     if group.name.lower() in answer:
                         
                         # search brightness value
-                        for element in answer.split():
+                        for element in answer.split():   
                             element = element.replace("%","")
-                            if element.isdigit():
+
+                            # check brightness as 'number' value
+                            if element.isdigit() and (1 <= int(element) <= 100):
                                 brightness = int(element)
-                             
+                                continue
+                            
+                            # check brightness as 'word' value
+                            try:
+                                brightness = int(table_numbers[element])
+                                continue
+                            except:
+                                pass                            
+                    
                         # check brightness value
-                        if 1 <= brightness <= 100:
+                        if brightness != None:
                             
                             # led_group off ?
                             if group.current_setting != "OFF":
@@ -161,6 +205,11 @@ def START_LED_TASK(answer):
                               
                             time.sleep(1)
                             break
+                            
+                    else:
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
+                        break
+                                                  
 
             except Exception as e:
                 print(e)
@@ -213,9 +262,14 @@ def START_LED_TASK(answer):
                         else:
                             WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 	
                         
-                time.sleep(1)
-                break
-
+                    time.sleep(1)
+                    break                       
+                        
+                else:
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
+                    break                        
+                   
+                        
             except Exception as e:
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
@@ -264,15 +318,13 @@ def START_LED_TASK(answer):
                 print(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
                 break
+            
                     
-                
+# ############
+# Device Tasks
+# ############                   
                     
 def START_DEVICE_TASK(answer):
-    
-    
-    # ############
-    # Device Tasks
-    # ############       
     
     for task in GET_ALL_SPEECH_CONTROL_DEVICE_TASKS():
         
@@ -286,41 +338,49 @@ def START_DEVICE_TASK(answer):
             keyword = keyword.replace(" ", "")
                        
             if keyword.lower() in answer:
-                
-                try:      
+                 
+                try:
                     device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
                     
-                    # new device setting ?
-                    if task.command != device.previous_command:
+                        # device founded ?
+                        if device != None:
+                        
+                            # new device setting ?
+                            if task.command != device.previous_command:
 
-                        if device.gateway == "mqtt":
+                                if device.gateway == "mqtt":
 
-                            channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
-                            msg     = '{"state": "' + task.command + '"}'
+                                    channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
+                                    msg     = '{"state": "' + task.command + '"}'
 
-                            MQTT_PUBLISH(channel, msg) 
-                            MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", task.command, 5, 20)
+                                    MQTT_PUBLISH(channel, msg) 
+                                    MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", task.command, 5, 20)
 
 
-                        if device.gateway == "zigbee2mqtt":
+                                if device.gateway == "zigbee2mqtt":
 
-                            channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
-                            msg     = '{"state": "' + task.command + '"}'
+                                    channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
+                                    msg     = '{"state": "' + task.command + '"}'
 
-                            MQTT_PUBLISH(channel, msg) 
-                            ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", task.command, 5, 20)
+                                    MQTT_PUBLISH(channel, msg) 
+                                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", task.command, 5, 20)
 
-                    else:
+                            else:
 
-                        if device.gateway == "mqtt":
-                            WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + task.command) 
+                                if device.gateway == "mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + task.command) 
 
-                        if device.gateway == "zigbee2mqtt":
-                            WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + task.command)  
+                                if device.gateway == "zigbee2mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + task.command)  
+                                    
+                                        
+                            time.sleep(1)
+                            break
                             
-                                
-                    time.sleep(1)
-                    break
+                        else:
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Device Task | " + answer + " | Device not founded")
+                            break                             
+                        
                     
                 except Exception as e:
                     print(e)

@@ -9,66 +9,10 @@ import yaml
 import csv
 
 from app import app
-
-
-""" ###################### """
-""" ###################### """
-"""     file management    """
-""" ###################### """
-""" ###################### """
-
-
-""" ######## """
-""" get PATH """
-""" ######## """
-
-# windows
-if os.name == "nt":                 
-    PATH = os.path.abspath("") 
-# linux
-else:                               
-    PATH = os.path.abspath("") + "/SmartHome"
-
-
-""" ######### """
-""" Systemlog """
-""" ######### """
-
-def WRITE_LOGFILE_SYSTEM(log_type, description):
-    try:
-        # open csv file
-        file = PATH + "/logs/log_system.csv"
-
-        with open(file, 'a', newline='', encoding='utf-8') as csvfile:
-            filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
-            filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(log_type), str(description) ])
-            csvfile.close()
-       
-    except:
-        pass
-
-
-""" ############ """
-""" get database """
-""" ############ """
-
-try:
-    # open config file
-    with open(PATH + "/app/config/config.yaml", "r") as file_config:
-        config = yaml.load(file_config, Loader=yaml.SafeLoader)
-except:
-    pass
-
-        
-def GET_CONFIG_DATABASE():
-    try:
-        return str(config['config']['database'])
-    except:
-        return "sqlite:///database/smarthome.sqlite3"
+from app.components.file_management import WRITE_LOGFILE_SYSTEM, GET_CONFIG_DATABASE
 
 app.config['SQLALCHEMY_DATABASE_URI'] = GET_CONFIG_DATABASE()
 db = SQLAlchemy(app)
-
 
 
 """ ###################### """
@@ -452,13 +396,15 @@ if ZigBee2MQTT.query.filter_by().first() is None:
     )
     db.session.add(zigbee2mqtt)
     db.session.commit()
-
+'''
 
 """ ################################ """
 """ ################################ """
 """        database functions        """
 """ ################################ """
 """ ################################ """
+
+'''
 
 
 """ ################## """
@@ -2831,3 +2777,5 @@ def SET_ZIGBEE2MQTT_PAIRING(setting):
     entry = ZigBee2MQTT.query.filter_by().first()
     entry.pairing = setting
     db.session.commit()
+
+

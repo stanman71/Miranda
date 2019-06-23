@@ -21,14 +21,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 			
 			#command_1
 			try:
-				command_1_key   = controller.command_1.split("=")[0]
-				command_1_key   = command_1_key.replace(" ", "")
-				command_1_value = controller.command_1.split("=")[1]
-				command_1_value = command_1_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_1:
+					command_1_value = controller.command_1.split("=")[1]
+					command_1_value = command_1_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_1_value) or str(data["from_side"]) == str(command_1_value): 
+						START_CONTROLLER_TASK(controller.task_1, controller.mqtt_device.name, controller.command_1)
+						break		
+						
+				else:				
+					command_1_key   = controller.command_1.split("=")[0]
+					command_1_key   = command_1_key.replace(" ", "")
+					command_1_value = controller.command_1.split("=")[1]
+					command_1_value = command_1_value.replace(" ", "")
 
-				if str(data[command_1_key]) == str(command_1_value):
-					START_CONTROLLER_TASK(controller.task_1, controller.mqtt_device.name, controller.command_1)
-					break
+					if str(data[command_1_key]) == str(command_1_value):
+						START_CONTROLLER_TASK(controller.task_1, controller.mqtt_device.name, controller.command_1)
+						break
 		   
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_1_key not in str(e):
@@ -37,14 +47,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 				
 			#command_2
 			try:
-				command_2_key   = controller.command_2.split("=")[0]
-				command_2_key   = command_2_key.replace(" ", "")
-				command_2_value = controller.command_2.split("=")[1]
-				command_2_value = command_2_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_2:
+					command_2_value = controller.command_2.split("=")[1]
+					command_2_value = command_2_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_2_value) or str(data["from_side"]) == str(command_2_value): 
+						START_CONTROLLER_TASK(controller.task_2, controller.mqtt_device.name, controller.command_2)
+						break		
+						
+				else:				
+					command_2_key   = controller.command_2.split("=")[0]
+					command_2_key   = command_2_key.replace(" ", "")
+					command_2_value = controller.command_2.split("=")[1]
+					command_2_value = command_2_value.replace(" ", "")
 
-				if str(data[command_2_key]) == str(command_2_value):
-					START_CONTROLLER_TASK(controller.task_2, controller.mqtt_device.name, controller.command_2)
-					break
+					if str(data[command_2_key]) == str(command_2_value):
+						START_CONTROLLER_TASK(controller.task_2, controller.mqtt_device.name, controller.command_2)
+						break
 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_2_key not in str(e):
@@ -53,14 +73,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 
 			#command_3
 			try:
-				command_3_key   = controller.command_3.split("=")[0]
-				command_3_key   = command_3_key.replace(" ", "")
-				command_3_value = controller.command_3.split("=")[1]
-				command_3_value = command_3_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_3:
+					command_3_value = controller.command_3.split("=")[1]
+					command_3_value = command_3_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_3_value) or str(data["from_side"]) == str(command_3_value): 
+						START_CONTROLLER_TASK(controller.task_3, controller.mqtt_device.name, controller.command_3)
+						break		
+						
+				else:				
+					command_3_key   = controller.command_3.split("=")[0]
+					command_3_key   = command_3_key.replace(" ", "")
+					command_3_value = controller.command_3.split("=")[1]
+					command_3_value = command_3_value.replace(" ", "")
 
-				if str(data[command_3_key]) == str(command_3_value):
-					START_CONTROLLER_TASK(controller.task_3, controller.mqtt_device.name, controller.command_3)
-					break
+					if str(data[command_3_key]) == str(command_3_value):
+						START_CONTROLLER_TASK(controller.task_3, controller.mqtt_device.name, controller.command_3)
+						break
 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_3_key not in str(e):
@@ -69,14 +99,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 	
 			#command_4
 			try:
-				command_4_key   = controller.command_4.split("=")[0]
-				command_4_key   = command_4_key.replace(" ", "")
-				command_4_value = controller.command_4.split("=")[1]
-				command_4_value = command_4_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_4:
+					command_4_value = controller.command_4.split("=")[1]
+					command_4_value = command_4_value.replace(" ", "")
+							
+					if str(data["to_side"]) == str(command_4_value) or str(data["from_side"]) == str(command_4_value): 
+						START_CONTROLLER_TASK(controller.task_4, controller.mqtt_device.name, controller.command_4)
+						break		
+						
+				else:				
+					command_4_key   = controller.command_4.split("=")[0]
+					command_4_key   = command_4_key.replace(" ", "")
+					command_4_value = controller.command_4.split("=")[1]
+					command_4_value = command_4_value.replace(" ", "")
 
-				if str(data[command_4_key]) == str(command_4_value):
-					START_CONTROLLER_TASK(controller.task_4, controller.mqtt_device.name, controller.command_4)
-					break
+					if str(data[command_4_key]) == str(command_4_value):
+						START_CONTROLLER_TASK(controller.task_4, controller.mqtt_device.name, controller.command_4)
+						break
 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_4_key not in str(e):
@@ -85,14 +125,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 				
 			#command_5
 			try:
-				command_5_key   = controller.command_5.split("=")[0]
-				command_5_key   = command_5_key.replace(" ", "")
-				command_5_value = controller.command_5.split("=")[1]
-				command_5_value = command_5_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_5:
+					command_5_value = controller.command_5.split("=")[1]
+					command_5_value = command_5_value.replace(" ", "")					
+					
+					if str(data["to_side"]) == str(command_5_value) or str(data["from_side"]) == str(command_5_value): 
+						START_CONTROLLER_TASK(controller.task_5, controller.mqtt_device.name, controller.command_5)
+						break		
+						
+				else:				
+					command_5_key   = controller.command_5.split("=")[0]
+					command_5_key   = command_5_key.replace(" ", "")
+					command_5_value = controller.command_5.split("=")[1]
+					command_5_value = command_5_value.replace(" ", "")
 
-				if str(data[command_5_key]) == str(command_5_value):
-					START_CONTROLLER_TASK(controller.task_5, controller.mqtt_device.name, controller.command_5)
-					break
+					if str(data[command_5_key]) == str(command_5_value):
+						START_CONTROLLER_TASK(controller.task_5, controller.mqtt_device.name, controller.command_5)
+						break
 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_5_key not in str(e):
@@ -101,14 +151,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 	
 			#command_6
 			try:
-				command_6_key   = controller.command_6.split("=")[0]
-				command_6_key   = command_6_key.replace(" ", "")
-				command_6_value = controller.command_6.split("=")[1]
-				command_6_value = command_6_value.replace(" ", "")
-				
-				if str(data[command_6_key]) == str(command_6_value):
-					START_CONTROLLER_TASK(controller.task_6, controller.mqtt_device.name, controller.command_6)
-					break
+				# special case aqara cube
+				if "side" in controller.command_6:
+					command_6_value = controller.command_6.split("=")[1]
+					command_6_value = command_6_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_6_value) or str(data["from_side"]) == str(command_6_value): 
+						START_CONTROLLER_TASK(controller.task_6, controller.mqtt_device.name, controller.command_6)
+						break		
+						
+				else:				
+					command_6_key   = controller.command_6.split("=")[0]
+					command_6_key   = command_6_key.replace(" ", "")
+					command_6_value = controller.command_6.split("=")[1]
+					command_6_value = command_6_value.replace(" ", "")
+					
+					if str(data[command_6_key]) == str(command_6_value):
+						START_CONTROLLER_TASK(controller.task_6, controller.mqtt_device.name, controller.command_6)
+						break
 						
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_6_key not in str(e):
@@ -117,14 +177,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 
 			#command_7
 			try:	
-				command_7_key   = controller.command_7.split("=")[0]
-				command_7_key   = command_7_key.replace(" ", "")
-				command_7_value = controller.command_7.split("=")[1]
-				command_7_value = command_7_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_7:
+					command_7_value = controller.command_7.split("=")[1]
+					command_7_value = command_7_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_7_value) or str(data["from_side"]) == str(command_7_value): 
+						START_CONTROLLER_TASK(controller.task_7, controller.mqtt_device.name, controller.command_7)
+						break		
+						
+				else:				
+					command_7_key   = controller.command_7.split("=")[0]
+					command_7_key   = command_7_key.replace(" ", "")
+					command_7_value = controller.command_7.split("=")[1]
+					command_7_value = command_7_value.replace(" ", "")
 
-				if str(data[command_7_key]) == str(command_7_value):
-					START_CONTROLLER_TASK(controller.task_7, controller.mqtt_device.name, controller.command_7)
-					break
+					if str(data[command_7_key]) == str(command_7_value):
+						START_CONTROLLER_TASK(controller.task_7, controller.mqtt_device.name, controller.command_7)
+						break
 						 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_7_key not in str(e):
@@ -133,14 +203,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 				
 			#command_8
 			try:
-				command_8_key   = controller.command_8.split("=")[0]
-				command_8_key   = command_8_key.replace(" ", "")
-				command_8_value = controller.command_8.split("=")[1]
-				command_8_value = command_8_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_8:
+					command_8_value = controller.command_8.split("=")[1]
+					command_8_value = command_8_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_8_value) or str(data["from_side"]) == str(command_8_value): 
+						START_CONTROLLER_TASK(controller.task_8, controller.mqtt_device.name, controller.command_8)
+						break		
+						
+				else:				
+					command_8_key   = controller.command_8.split("=")[0]
+					command_8_key   = command_8_key.replace(" ", "")
+					command_8_value = controller.command_8.split("=")[1]
+					command_8_value = command_8_value.replace(" ", "")
 
-				if str(data[command_8_key]) == str(command_8_value):
-					START_CONTROLLER_TASK(controller.task_8, controller.mqtt_device.name, controller.command_8)
-					break
+					if str(data[command_8_key]) == str(command_8_value):
+						START_CONTROLLER_TASK(controller.task_8, controller.mqtt_device.name, controller.command_8)
+						break
 						
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_8_key not in str(e):
@@ -149,14 +229,24 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 	
 			#command_9
 			try:
-				command_9_key   = controller.command_9.split("=")[0]
-				command_9_key   = command_9_key.replace(" ", "")
-				command_9_value = controller.command_9.split("=")[1]
-				command_9_value = command_9_value.replace(" ", "")
+				# special case aqara cube
+				if "side" in controller.command_9:
+					command_9_value = controller.command_9.split("=")[1]
+					command_9_value = command_9_value.replace(" ", "")
+					
+					if str(data["to_side"]) == str(command_9_value) or str(data["from_side"]) == str(command_9_value): 
+						START_CONTROLLER_TASK(controller.task_9, controller.mqtt_device.name, controller.command_9)
+						break				
+				
+				else:
+					command_9_key   = controller.command_9.split("=")[0]
+					command_9_key   = command_9_key.replace(" ", "")
+					command_9_value = controller.command_9.split("=")[1]
+					command_9_value = command_9_value.replace(" ", "")
 
-				if str(data[command_9_key]) == str(command_9_value):
-					START_CONTROLLER_TASK(controller.task_9, controller.mqtt_device.name, controller.command_9)
-					break
+					if str(data[command_9_key]) == str(command_9_value):
+						START_CONTROLLER_TASK(controller.task_9, controller.mqtt_device.name, controller.command_9)
+						break
 
 			except Exception as e:
 				if "list index out of range" not in str(e) and command_9_key not in str(e):
@@ -171,82 +261,109 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 
 def START_CONTROLLER_TASK(task, controller_name, controller_command):
    
+   
     # ###########
 	# start scene
 	# ###########
+	
 	
 	if "scene" in task:
 		
 		task  = task.split(":")
 		group = GET_LED_GROUP_BY_NAME(task[1])
+		scene = GET_LED_SCENE_BY_NAME(task[2]) 
 
-		try:
-			brightness = int(task[3])
-		except:
-			brightness = 100
+		# group existing ?
+		if group != None:
 
-		# new led setting ?
-		if group.current_setting != task[2] and int(group.current_brightness) != brightness:
+			# scene existing ?
+			if scene != None:
+				
+				try:
+					brightness = int(task[3])
+				except:
+					brightness = 100
 
-			group = GET_LED_GROUP_BY_NAME(task[1])
-			scene = GET_LED_SCENE_BY_NAME(task[2])     
+				# new led setting ?
+				if group.current_setting != scene.name or int(group.current_brightness) != brightness:
 
-			LED_SET_SCENE(group.id, scene.id, brightness) 
-			LED_ERROR_CHECKING_THREAD(group.id, scene.id, task[2], brightness, 2, 10)      
+					LED_SET_SCENE(group.id, scene.id, brightness) 
+					LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)      
 
+				else:
+					WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness))  
+					
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Scene - " + task[2] + " | not founded")
+							  
 		else:
-			WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + task[2] + " : " + str(brightness))     			
+			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + task[1] + " | not founded")
+				          
            
 	# #################
 	# change brightness
 	# #################
+	
 	
 	if "brightness" in task:
 		task = task.split(":")
 		group   = GET_LED_GROUP_BY_NAME(task[1])
 		command = task[2]
 		
-		scene_name = GET_LED_GROUP_BY_NAME(task[1]).current_setting
-		
-		# led_group off ?
-		if scene_name != "OFF":
-		
-			scene = GET_LED_SCENE_BY_NAME(scene_name)
+		# group existing ?
+		if group != None:
 			
-			# get new brightness_value
-			current_brightness = GET_LED_GROUP_BY_NAME(task[1]).current_brightness
-
-			if command == "turn_up" and current_brightness != 100:
+			# command valid ?
+			if command == "turn_up" or command == "turn_down":
+			
+				scene_name = group.current_setting
 				
-				target_brightness = int(current_brightness) + 20
-
-				if target_brightness > 100:
-					target_brightness = 100
+				# led_group off ?
+				if scene_name != "OFF":
+				
+					scene = GET_LED_SCENE_BY_NAME(scene_name)
 					
-				LED_SET_BRIGHTNESS_DIMMER(group.id, "turn_up") 
-				LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10) 		
-				
-	
-			elif command == "turn_down" and current_brightness != 0:
-				
-				target_brightness = int(current_brightness) - 20
+					# get new brightness_value
+					current_brightness = group.current_brightness
 
-				if target_brightness < 0:
-					target_brightness = 0   
+					if command == "turn_up" and current_brightness != 100:
+						
+						target_brightness = int(current_brightness) + 20
+
+						if target_brightness > 100:
+							target_brightness = 100
+							
+						LED_SET_BRIGHTNESS_DIMMER(group.id, "turn_up") 
+						LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10) 		
+						
 			
-				LED_SET_BRIGHTNESS_DIMMER(group.id, "turn_down") 
-				LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10) 
-				
-			else:
-				WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(current_brightness) + " %")	
-				
+					elif command == "turn_down" and current_brightness != 0:
+						
+						target_brightness = int(current_brightness) - 20
 
+						if target_brightness < 0:
+							target_brightness = 0   
+					
+						LED_SET_BRIGHTNESS_DIMMER(group.id, "turn_down") 
+						LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10) 
+						
+					else:
+						WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(current_brightness) + " %")	
+						
+				else:
+					WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 	
+	
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Command - " + task[2] + " | not valid")
+								
 		else:
-			WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 	
+			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + task[1] + " | not founded")
+					
 
     # #######
 	# led off
 	# #######
+	
 	
 	if "led_off" in task:
 		task = task.split(":")
@@ -284,7 +401,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 					else:
 						WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 		     
 		 
-
+			# group not founded
 			if group_founded == False:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Group - " + input_group_name + " | not founded")
 					
@@ -305,15 +422,20 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				else:
 					WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
 
+
 	# ######
 	# device
 	# ######
 	
+	
 	if "device" in task:
 		task = task.split(":")
 	
-		try:
-			device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+		device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+		
+		# device founded ?
+		if device != None:
+		
 			command = task[2].upper()
 			
 			# new device setting ?
@@ -344,6 +466,6 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				if device.gateway == "zigbee2mqtt":
 					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))  
 										
-		except:
+		else:
 			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
 						

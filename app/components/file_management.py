@@ -10,7 +10,11 @@ from flask import send_from_directory
 from werkzeug.utils import secure_filename
 
 from app import app
-from app.database.database import *
+
+
+""" #### """
+""" path """
+""" #### """
 
 # windows
 if os.name == "nt":                 
@@ -488,3 +492,4 @@ def DELETE_HOTWORD_FILE(filename):
 def GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(settings):
     hotword_file = settings
     return (PATH + "/app/speechcontrol/snowboy/resources/" + hotword_file)
+

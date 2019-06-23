@@ -23,24 +23,45 @@ def START_PUMP(plant_id):
     msg      = '{"state": "PUMP_ON", "pumptime":' + str(plant.pumptime) + '}'
     
     heapq.heappush(process_management_queue, (50, ("watering", channel, msg)))
+    
     time.sleep(3)
     
-    # check pump started ?
-    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 5):
-        WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump started")  
+    # check pump started first try
+    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
+        return
 
+    time.sleep(1)
 
+    # check pump started second try 
+    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
+        return
+     
+    time.sleep(1)
+
+    # check pump started third try 
+    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
+        return     
+        
+    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump starting not confimed") 
+        
+        
 """ ######### """
 """ threading """
 """ ######### """
 
 def START_WATERING_THREAD():
 
-    Thread = threading.Thread(target=WATERING_THREAD, args=("start",))
+    Thread = threading.Thread(target=WATERING_THREAD)
     Thread.start()   
 
 
-def WATERING_THREAD(start):
+def WATERING_THREAD():
 
     i = 0
     pump_running = 0
@@ -51,6 +72,7 @@ def WATERING_THREAD(start):
     for plant in GET_ALL_PLANTS():
         
         watering = False
+        
         
         # check moisture sensor
         if plant.control_sensor_moisture == "checked":          
@@ -74,6 +96,7 @@ def WATERING_THREAD(start):
         else:
             watering = True
             
+            
         # check watertank sensor
         if plant.control_sensor_watertank == "checked":
             
@@ -85,8 +108,10 @@ def WATERING_THREAD(start):
                 WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Watertank Low") 
                 warnings = True
 
+
         # start watering
-        if watering:
+        if watering == True:
+            
             START_PUMP(plant.id)       
             pump_running = pump_running + 1
             
@@ -94,23 +119,25 @@ def WATERING_THREAD(start):
     # overview watering process
     while pump_running != 0:
         
-        time.sleep(15)
+        time.sleep(10)
         
         for plant in GET_ALL_PLANTS():
             
             if i > plant.pumptime:
                 
                 # check pump stopped ?
-                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF", 30):  
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Pump stopped")                              
+                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF", 60):  
+                    WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump stopped")                              
                     pump_running = pump_running - 1 
                     
                 else:
                     WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump stopping not confimed") 
                     warnings = True
                     pump_running = pump_running - 1 
+                    
+                SET_MQTT_DEVICE_PREVIOUS_COMMAND(plant.mqtt_device.ieeeAddr, "PUMP_OFF")
         
-        i = i + 15
+        i = i + 10
         
 
     if warnings == True:

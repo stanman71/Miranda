@@ -86,6 +86,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
         msg["description"] = "MQTT Watering_Array";
     
         JsonArray data_inputs = msg.createNestedArray("inputs");
+        data_inputs.add("state");
         data_inputs.add("sensor_moisture");
         data_inputs.add("sensor_watertank");
 
@@ -113,12 +114,23 @@ void callback(char* topic, byte* payload, unsigned int length) {
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );   
 
-        int sensor_moisture  = analogRead(PIN_ANALOG);
-        int sensor_watertank = digitalRead(PIN_DIGITAL);
-
         // create msg as json
         DynamicJsonDocument msg(128);
         
+        // get pump state
+        if (digitalRead(PIN_PUMP) == 1) { 
+          
+            msg["state"] = "PUMP_ON";
+            
+        } else { 
+          
+            msg["state"] = "PUMP_OFF";
+        }
+
+        // get sensor data
+        int sensor_moisture  = analogRead(PIN_ANALOG);
+        int sensor_watertank = digitalRead(PIN_DIGITAL);
+
         msg["sensor_moisture"]  = sensor_moisture;
         msg["sensor_watertank"] = sensor_watertank;
 
@@ -157,58 +169,77 @@ void callback(char* topic, byte* payload, unsigned int length) {
         deserializeJson(msg_json, msg);
         
         String pump_setting = msg_json["state"];
-
+        int pumptime        = msg_json["pumptime"];
+        pumptime            = pumptime * 1000; 
+        
+        
         if (pump_setting == "PUMP_ON") {
-
-            int pumptime = msg_json["pumptime"];
-            pumptime = pumptime * 1000; 
 
             // start pump
             digitalWrite(PIN_PUMP, HIGH);
 
             // create msg as json
-            DynamicJsonDocument msg(64);     
+            DynamicJsonDocument msg(128);     
+
+            // get pump state
             msg["state"] = "PUMP_ON";
 
+            // get sensor data
+            int sensor_moisture  = analogRead(PIN_ANALOG);
+            int sensor_watertank = digitalRead(PIN_DIGITAL);
+    
+            msg["sensor_moisture"]  = sensor_moisture;
+            msg["sensor_watertank"] = sensor_watertank;
+
             // convert msg to char
-            char msg_Char[64];
+            char msg_Char[128];
             serializeJson(msg, msg_Char);
             
             client.publish(path, msg_Char);
             Serial.println("PUMP_ON");
 
-            delay(pumptime);
+            // pump not manuelly started
+            if (pumptime != 0) {
+                delay(pumptime);
 
-            // stop pump
-            digitalWrite(PIN_PUMP, LOW);
-            
-            // create msg as json   
-            msg["state"] = "PUMP_OFF";
+                // stop pump
+                digitalWrite(PIN_PUMP, LOW);    
+                                 
+                // get pump state 
+                msg["state"] = "PUMP_OFF";
 
-            // convert msg to char
-            serializeJson(msg, msg_Char);
+                // convert msg to char
+                serializeJson(msg, msg_Char);
 
-            while (!client.connected()) {
-                reconnect();
+                client.publish(path, msg_Char);
+                Serial.println("PUMP_OFF");                         
             }
-            
-            client.publish(path, msg_Char);
-            Serial.println("PUMP_OFF");
                             
         }
         if (pump_setting == "PUMP_OFF") {
-            digitalWrite(PIN_PUMP, LOW); 
+
+            // stop pump
+            digitalWrite(PIN_PUMP, LOW);      
 
             // create msg as json
-            DynamicJsonDocument msg(64);     
+            DynamicJsonDocument msg(128);   
+
+            // get pump state
             msg["state"] = "PUMP_OFF";
 
+            // get sensor data
+            int sensor_moisture  = analogRead(PIN_ANALOG);
+            int sensor_watertank = digitalRead(PIN_DIGITAL);
+    
+            msg["sensor_moisture"]  = sensor_moisture;
+            msg["sensor_watertank"] = sensor_watertank;
+
             // convert msg to char
-            char msg_Char[64];
+            char msg_Char[128];
             serializeJson(msg, msg_Char);
-            
+
             client.publish(path, msg_Char);
-            Serial.println("PUMP_OFF");
+            Serial.println("PUMP_OFF");      
         }   
     }     
 }
@@ -221,14 +252,45 @@ void reconnect() {
 
         digitalWrite(BUILTIN_LED, HIGH);
         
-        if (client.connect(clientId.c_str())) {     
-          
+        if (client.connect(clientId.c_str())) { 
+  
             // create channel  
             String payload_path = "SmartHome/mqtt/" + ieeeAddr;      
             char attributes[100];
             payload_path.toCharArray( path, 100 );    
+
+            // create msg as json
+            DynamicJsonDocument msg(128);
                  
-            client.publish(path, "connected");
+            // get pump state
+            if (digitalRead(PIN_PUMP) == 1) { 
+              
+                msg["state"] = "PUMP_ON";
+                
+            } else { 
+              
+                msg["state"] = "PUMP_OFF";
+            }
+
+            // get sensor data
+            int sensor_moisture  = analogRead(PIN_ANALOG);
+            int sensor_watertank = digitalRead(PIN_DIGITAL);
+
+            msg["sensor_moisture"]  = sensor_moisture;
+            msg["sensor_watertank"] = sensor_watertank;
+
+            // convert msg to char
+            char msg_Char[128];
+            serializeJson(msg, msg_Char);
+
+            Serial.print("Channel: ");
+            Serial.println(path);
+            Serial.print("Publish message: ");
+            Serial.println(msg_Char);
+            Serial.println();
+            
+            client.publish(path, msg_Char);    
+            
             client.subscribe("SmartHome/mqtt/#");
             Serial.println("MQTT Connected...");
 
@@ -276,7 +338,8 @@ void loop() {
       digitalWrite(PIN_LED_RED, LOW);
       digitalWrite(PIN_LED_GREEN, HIGH);
     }
-    
+
     delay(100);
+
     client.loop();
 }

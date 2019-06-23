@@ -466,7 +466,9 @@ def dashboard():
     spotify_user = "Nicht eingeloggt"
     
     
-    
+    """ ############### """
+    """ general control """
+    """ ############### """       
     
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()

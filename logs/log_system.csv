@@ -4606,3 +4606,682 @@ Timestamp,Type,Description
 2019-06-21 14:52:16,EVENT,|ZigBee2MQTT || Connected|
 2019-06-21 14:52:17,EVENT,|ZigBee2MQTT || Pairing enabled|
 2019-06-21 14:52:17,EVENT,|Speech Control || started|
+2019-06-21 15:05:55,EVENT,|MQTT || started|
+2019-06-21 15:05:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-21 15:05:58,EVENT,|ZigBee2MQTT || Connected|
+2019-06-21 15:05:59,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-21 15:05:59,EVENT,|Speech Control || started|
+2019-06-21 15:29:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 15:29:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 15:38:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 15:38:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 16:24:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 16:24:36,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 16:33:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 16:33:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 17:19:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 17:19:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 17:28:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 17:28:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 18:04:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-21 18:05:38,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-21 18:05:39,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-21 18:14:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 18:14:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 18:23:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 18:23:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 19:09:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 19:09:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 19:18:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 19:18:05,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 19:56:25,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-21 19:56:35,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-21 19:57:20,EVENT,|Database || Speech Control Device Task - kjhkjh || added|
+2019-06-21 19:57:25,EVENT,|Database || Speech Control Device Task - kjhkjh || deleted|
+2019-06-21 19:57:31,EVENT,|Database || Speech Control Device Task - hgf || added|
+2019-06-21 19:57:36,EVENT,|Database || Speech Control Device Task - hgf || deleted|
+2019-06-21 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 20:04:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 20:04:37,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 20:13:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 20:13:08,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 20:37:13,EVENT,|Speech Control || Detection Task || gute|
+2019-06-21 20:46:15,EVENT,|Speech Control || Detection Task || wohnzimmer|
+2019-06-21 20:46:31,EVENT,|Speech Control || Detection Task || starte war weiss im wohnzimmer auf fünfzig prozent|
+2019-06-21 20:46:31,ERROR,|Speech Control || LED Task || starte war weiss im wohnzimmer auf fünfzig prozent || local variable 'scene_name' referenced before assignment|
+2019-06-21 20:46:31,WARNING,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-21 20:46:45,EVENT,|Speech Control || Detection Task || starte warm-weiss im wohnzimmer|
+2019-06-21 20:46:45,ERROR,|Speech Control || LED Task || starte warm-weiss im wohnzimmer || local variable 'scene_name' referenced before assignment|
+2019-06-21 20:47:19,EVENT,|Speech Control || Detection Task || starte|
+2019-06-21 20:47:40,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warmweiss : 49 %|
+2019-06-21 20:47:41,STATUS,|LED || Group - wohnzimmer || warmweiss : 49 %|
+2019-06-21 20:54:27,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warmweiss : 61 %|
+2019-06-21 20:59:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 20:59:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 21:08:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 21:08:09,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 21:54:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 21:54:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 22:03:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 22:03:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 22:49:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 22:49:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 22:58:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 22:58:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-21 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-21 23:44:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 23:44:41,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-21 23:53:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-21 23:53:14,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-22 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-06-22 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-22 00:30:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 00:30:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-22 00:39:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 00:39:45,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 00:48:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 00:48:16,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 01:34:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 01:34:44,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 01:43:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 01:43:17,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 02:29:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 02:29:47,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 02:38:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 02:38:16,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 03:24:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 03:24:49,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 03:33:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 03:33:17,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 03:34:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 03:34:48,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 03:35:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 03:35:46,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 03:37:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 03:37:21,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 04:18:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 04:18:36,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 04:28:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 04:28:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 05:13:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 05:13:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 05:23:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 05:23:17,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 06:08:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 06:08:39,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 06:18:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 06:18:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 07:03:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 07:03:40,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 07:13:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 07:13:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 07:58:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 07:58:41,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 08:08:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 08:08:19,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 08:47:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 08:47:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 08:47:13,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 08:47:14,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 08:47:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 08:47:32,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 08:48:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 08:48:37,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 08:48:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 08:48:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 09:05:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 09:05:20,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 09:41:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 09:41:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 10:00:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 10:00:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 10:36:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 10:36:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 10:55:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 10:55:24,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 11:31:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 11:31:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 11:50:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 11:50:24,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 11:55:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 11:55:06,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 11:56:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 11:56:01,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 11:57:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 11:57:37,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 12:23:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 12:23:27,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 12:45:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 12:45:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 13:01:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 13:01:36,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 13:03:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 13:03:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 13:13:21,EVENT,|Speech Control || Detection Task || ist der kategorie geilsten der welt|
+2019-06-22 13:13:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 13:13:34,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 13:20:36,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:23:27,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:23:33,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:24:09,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:24:14,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:24:29,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:24:43,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:24:49,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:25:44,ERROR,|MQTT || Device - 0x99999 || Setting not confirmed|
+2019-06-22 13:27:45,EVENT,|MQTT || started|
+2019-06-22 13:27:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 13:27:48,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 13:27:49,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 13:27:49,EVENT,|Speech Control || started|
+2019-06-22 13:27:54,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:28:01,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:31:35,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:31:40,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:36:48,EVENT,|MQTT || started|
+2019-06-22 13:36:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 13:36:51,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 13:36:52,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 13:36:52,EVENT,|Speech Control || started|
+2019-06-22 13:37:04,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-22 13:37:19,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 38 || Repeat - checked|
+2019-06-22 13:38:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:38:01,EVENT,|Watering || started|
+2019-06-22 13:38:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:38:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:38:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:40:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 13:40:27,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 13:42:43,EVENT,|MQTT || started|
+2019-06-22 13:42:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 13:42:46,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 13:42:47,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 13:42:47,EVENT,|Speech Control || started|
+2019-06-22 13:42:51,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-06-22 13:47:21,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 48 || Repeat - checked|
+2019-06-22 13:48:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:48:01,EVENT,|Watering || started|
+2019-06-22 13:48:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:48:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:48:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:49:31,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-06-22 13:50:13,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 13:50:19,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 13:50:35,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 51 || Repeat - checked|
+2019-06-22 13:51:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:51:01,EVENT,|Watering || started|
+2019-06-22 13:51:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:51:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:51:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:53:18,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 54 || Repeat - checked|
+2019-06-22 13:54:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:54:01,EVENT,|Watering || started|
+2019-06-22 13:54:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:54:41,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-06-22 13:54:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:54:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:55:53,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 56 || Repeat - checked|
+2019-06-22 13:56:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:56:01,EVENT,|Watering || started|
+2019-06-22 13:56:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:56:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:56:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:57:29,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 58 || Repeat - checked|
+2019-06-22 13:58:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 13:58:01,EVENT,|Watering || started|
+2019-06-22 13:58:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 13:58:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 13:58:54,WARNING,|Watering || finished with Warning|
+2019-06-22 13:59:24,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 0 || Repeat - checked|
+2019-06-22 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 14:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 14:00:05,EVENT,|Scheduler || Task - test || started|
+2019-06-22 14:00:05,EVENT,|Watering || started|
+2019-06-22 14:00:10,WARNING,|Watering || Plant - test || Pump starting not confimed|
+2019-06-22 14:01:00,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 14:01:00,WARNING,|Watering || finished with Warning|
+2019-06-22 14:01:08,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-22 14:08:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 14:08:34,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 14:09:58,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 14:10:08,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 14:35:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 14:35:17,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 14:35:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 14:35:27,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 14:36:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 14:36:19,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 14:37:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 14:37:21,STATUS,|LED || Group - bad || warmweiss : 100|
+2019-06-22 14:38:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 14:38:57,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 15:00:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 15:00:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 15:30:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 15:30:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 15:55:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 15:55:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 16:25:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 16:25:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 16:50:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 16:50:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 17:14:38,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 17:14:56,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 17:19:44,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 17:19:52,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 17:20:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 17:20:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 17:24:29,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 17:25:08,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 17:25:23,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-22 17:25:34,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 26 || Repeat - checked|
+2019-06-22 17:26:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 17:26:01,EVENT,|Watering || started|
+2019-06-22 17:26:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 17:26:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 17:26:54,WARNING,|Watering || finished with Warning|
+2019-06-22 17:28:08,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 29 || Repeat - checked|
+2019-06-22 17:29:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 17:29:01,EVENT,|Watering || started|
+2019-06-22 17:29:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 17:29:54,WARNING,|Watering || Plant - test || Pump stopping not confimed|
+2019-06-22 17:29:54,WARNING,|Watering || finished with Warning|
+2019-06-22 17:42:21,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - MQTT Watering_Array || inputs - state, sensor_moisture, sensor_watertank || commands - PUMP_ON, PUMP_OFF|
+2019-06-22 17:42:21,SUCCESS,|MQTT || Update Devices|
+2019-06-22 17:43:23,SUCCESS,|MQTT || Update Devices|
+2019-06-22 17:43:41,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 17:43:53,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 17:44:06,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 45 || Repeat - checked|
+2019-06-22 17:45:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 17:45:01,EVENT,|Watering || started|
+2019-06-22 17:45:04,EVENT,|Watering || Plant - test || Pump started|
+2019-06-22 17:45:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 17:45:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 17:45:54,EVENT,|Watering || Plant - test || Pump stopped|
+2019-06-22 17:45:54,SUCCESS,|Watering || finished|
+2019-06-22 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 18:04:07,SUCCESS,|MQTT || Update Devices|
+2019-06-22 18:06:04,EVENT,|MQTT || started|
+2019-06-22 18:06:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 18:06:07,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 18:06:08,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 18:06:08,EVENT,|Speech Control || started|
+2019-06-22 18:06:14,SUCCESS,|MQTT || Update Devices|
+2019-06-22 18:07:38,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 18:07:56,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 18:08:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 18:08:42,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 18:10:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 18:10:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 18:12:48,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-22 18:12:58,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-22 18:13:10,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - 14|
+2019-06-22 18:14:01,EVENT,|Scheduler || Task - test || started|
+2019-06-22 18:14:01,EVENT,|Watering || started|
+2019-06-22 18:14:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-22 18:14:04,SUCCESS,|Watering || Plant - test || Pump started|
+2019-06-22 18:14:54,SUCCESS,|Watering || Plant - test || Pump stopped|
+2019-06-22 18:14:54,SUCCESS,|Watering || finished|
+2019-06-22 18:15:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 18:15:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 18:37:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 18:37:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 18:44:22,EVENT,|Speech Control || Detection Task || kommt das gerne so glücklich|
+2019-06-22 18:45:14,EVENT,|Speech Control || Detection Task || |
+2019-06-22 18:57:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 18:57:06,SUCCESS,|LED || Group - bad || Setting changed || warmweiss : 100 %|
+2019-06-22 18:58:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 18:58:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 19:10:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 19:10:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 19:29:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 19:29:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 19:46:17,EVENT,|Speech Control || Detection Task || starte war weiss im wohnzimmer|
+2019-06-22 19:46:17,ERROR,|Speech Control || LED Task || starte war weiss im wohnzimmer || local variable 'scene_name' referenced before assignment|
+2019-06-22 19:46:45,EVENT,|Speech Control || Detection Task || starte weiss|
+2019-06-22 19:47:07,EVENT,|Speech Control || Detection Task || störte weiss im wohnzimmer|
+2019-06-22 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 20:05:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 20:05:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 20:14:44,EVENT,|Speech Control || Detection Task || starte waren weiss|
+2019-06-22 20:15:23,EVENT,|Speech Control || Detection Task || störte warum weiss im wohnzimmer|
+2019-06-22 20:24:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 20:24:39,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 20:46:37,EVENT,|MQTT || started|
+2019-06-22 20:46:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:46:40,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:46:41,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:46:41,EVENT,|Speech Control || started|
+2019-06-22 20:46:53,EVENT,|Speech Control || Detection Task || starten warm-weiss im wohnzimmer|
+2019-06-22 20:46:53,ERROR,|Speech Control || LED Task || starten warm-weiss im wohnzimmer || 'starten'|
+2019-06-22 20:47:53,EVENT,|Speech Control || Detection Task || starten war weiss im wohnzimmer|
+2019-06-22 20:47:54,ERROR,|Speech Control || LED Task || starten war weiss im wohnzimmer || 'starten'|
+2019-06-22 20:48:13,EVENT,|Speech Control || Detection Task || starte warm weiss im wohnzimmer|
+2019-06-22 20:48:13,ERROR,|Speech Control || LED Task || starte warm weiss im wohnzimmer || 'starte'|
+2019-06-22 20:49:38,EVENT,|Speech Control || Detection Task || starte war weiss im wohnzimmer|
+2019-06-22 20:49:38,ERROR,|Speech Control || LED Task || starte war weiss im wohnzimmer || 'starte'|
+2019-06-22 20:49:50,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 20:49:50,ERROR,|Speech Control || LED Task || starte relax im wohnzimmer || 'starte'|
+2019-06-22 20:50:47,EVENT,|MQTT || started|
+2019-06-22 20:50:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:50:50,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:50:51,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:50:51,EVENT,|Speech Control || started|
+2019-06-22 20:51:01,EVENT,|Speech Control || Detection Task || starte relax unserer|
+2019-06-22 20:51:01,ERROR,|Speech Control || LED Task || starte relax unserer || 'starte'|
+2019-06-22 20:51:17,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 20:51:17,ERROR,|Speech Control || LED Task || starte relax im wohnzimmer || 'starte'|
+2019-06-22 20:52:57,EVENT,|MQTT || started|
+2019-06-22 20:52:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:53:00,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:53:01,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:53:01,EVENT,|Speech Control || started|
+2019-06-22 20:53:12,EVENT,|Speech Control || Detection Task || starte relax in wohnzimmer|
+2019-06-22 20:53:12,ERROR,|Speech Control || LED Task || starte relax in wohnzimmer || 'starte'|
+2019-06-22 20:53:55,EVENT,|Speech Control || Detection Task || steckdose|
+2019-06-22 20:53:55,STATUS,|Zigbee2MQTT || Device - Steckdose TV || ON|
+2019-06-22 20:54:47,EVENT,|MQTT || started|
+2019-06-22 20:54:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:54:50,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:54:51,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:54:51,EVENT,|Speech Control || started|
+2019-06-22 20:55:01,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 20:55:01,ERROR,|Speech Control || LED Task || starte relax im wohnzimmer || 'starte'|
+2019-06-22 20:56:24,EVENT,|MQTT || started|
+2019-06-22 20:56:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:56:27,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:56:28,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:56:28,EVENT,|Speech Control || started|
+2019-06-22 20:56:40,EVENT,|Speech Control || Detection Task || starte|
+2019-06-22 20:56:40,ERROR,|Speech Control || LED Task || starte || 'starte'|
+2019-06-22 20:57:31,EVENT,|MQTT || started|
+2019-06-22 20:57:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 20:57:34,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 20:57:35,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 20:57:36,EVENT,|Speech Control || started|
+2019-06-22 20:58:26,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-22 20:58:38,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 21:00:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 21:00:33,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 21:01:25,EVENT,|MQTT || started|
+2019-06-22 21:01:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:01:28,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:01:29,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:01:30,EVENT,|Speech Control || started|
+2019-06-22 21:01:41,EVENT,|Speech Control || Detection Task || starten warum weiss im wohnzimmer|
+2019-06-22 21:01:41,ERROR,|Speech Control || LED Task || starten warum weiss im wohnzimmer || local variable 'scene_name' referenced before assignment|
+2019-06-22 21:03:36,EVENT,|MQTT || started|
+2019-06-22 21:03:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:03:39,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:03:40,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:03:40,EVENT,|Speech Control || started|
+2019-06-22 21:03:52,EVENT,|Speech Control || Detection Task || starte relax wohnzimmer|
+2019-06-22 21:03:52,ERROR,|Speech Control || LED Task || starte relax wohnzimmer || 'starte'|
+2019-06-22 21:04:34,EVENT,|MQTT || started|
+2019-06-22 21:04:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:04:37,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:04:38,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:04:38,EVENT,|Speech Control || started|
+2019-06-22 21:04:48,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 21:04:48,ERROR,|Speech Control || LED Task || starte relax im wohnzimmer || 'starte'|
+2019-06-22 21:05:41,EVENT,|MQTT || started|
+2019-06-22 21:05:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:05:44,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:05:45,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:05:46,EVENT,|Speech Control || started|
+2019-06-22 21:06:01,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer|
+2019-06-22 21:06:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-22 21:06:16,EVENT,|Speech Control || Detection Task || wohnzimmer auf fünfzig prozent|
+2019-06-22 21:06:16,ERROR,|Speech Control || LED Task || wohnzimmer auf fünfzig prozent || local variable 'brightness' referenced before assignment|
+2019-06-22 21:07:14,EVENT,|MQTT || started|
+2019-06-22 21:07:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:07:17,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:07:18,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:07:18,EVENT,|Speech Control || started|
+2019-06-22 21:07:35,EVENT,|Speech Control || Detection Task || wohnzimmer auch fünfzig prozent|
+2019-06-22 21:07:35,ERROR,|Speech Control || LED Task || wohnzimmer auch fünfzig prozent || local variable 'brightness' referenced before assignment|
+2019-06-22 21:08:13,EVENT,|Speech Control || Detection Task || starte relax im wohnzimmer auf fünfzig prozent|
+2019-06-22 21:08:13,STATUS,|LED || Group - wohnzimmer || relax : 50 %|
+2019-06-22 21:08:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-22 21:11:46,EVENT,|MQTT || started|
+2019-06-22 21:11:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:11:49,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:11:50,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:11:50,EVENT,|Speech Control || started|
+2019-06-22 21:11:59,EVENT,|Speech Control || Detection Task || wohnzimmer auf siebzig prozent|
+2019-06-22 21:12:02,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 70 %|
+2019-06-22 21:12:33,EVENT,|Speech Control || Detection Task || starte medithera in wohnzimmer auf achtzig prozent|
+2019-06-22 21:13:20,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 70 %|
+2019-06-22 21:19:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 21:19:39,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 21:20:24,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 50 %|
+2019-06-22 21:20:28,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 30 %|
+2019-06-22 21:20:32,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 50 %|
+2019-06-22 21:20:39,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 70 %|
+2019-06-22 21:20:45,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 90 %|
+2019-06-22 21:20:51,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 70 %|
+2019-06-22 21:22:22,EVENT,|MQTT || started|
+2019-06-22 21:22:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:22:25,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:22:26,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:22:26,EVENT,|Speech Control || started|
+2019-06-22 21:31:55,EVENT,|MQTT || started|
+2019-06-22 21:31:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:31:58,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:32:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:32:00,EVENT,|Speech Control || started|
+2019-06-22 21:36:28,EVENT,|MQTT || started|
+2019-06-22 21:36:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:36:31,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:36:32,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:36:32,EVENT,|Speech Control || started|
+2019-06-22 21:36:52,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - action=shake, action=rotate_left, action=rotate_right, side=1, side=2, side=4, side=5 || commands - None|
+2019-06-22 21:36:52,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-22 21:36:58,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-06-22 21:40:00,EVENT,|MQTT || started|
+2019-06-22 21:40:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:40:03,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:40:04,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:40:05,EVENT,|Speech Control || started|
+2019-06-22 21:40:13,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-22 21:40:44,STATUS,|LED || Group - wohnzimmer || relax : 50|
+2019-06-22 21:40:52,STATUS,|LED || Group - wohnzimmer || relax : 50|
+2019-06-22 21:42:09,EVENT,|MQTT || started|
+2019-06-22 21:42:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 21:42:12,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 21:42:13,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 21:42:13,EVENT,|Speech Control || started|
+2019-06-22 21:42:54,STATUS,|LED || Group - wohnzimmer || relax : 100|
+2019-06-22 21:43:00,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-22 21:43:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-22 21:43:14,STATUS,|LED || Group - wohnzimmer || relax : 100|
+2019-06-22 21:43:20,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-22 21:43:46,STATUS,|LED || Group - wohnzimmer || relax : 50|
+2019-06-22 21:43:53,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-22 21:44:33,EVENT,|Database || Controller - 0x00158d000275de23 || deleted|
+2019-06-22 21:45:24,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 54 %|
+2019-06-22 21:52:13,EVENT,|Speech Control || Detection Task || wohnzimmer auf hundert prozent|
+2019-06-22 21:52:16,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-06-22 21:52:25,EVENT,|Speech Control || Detection Task || wohnzimmer auf sechzig prozent|
+2019-06-22 21:52:28,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 60 %|
+2019-06-22 21:55:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 21:55:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 22:14:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 22:14:43,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 22:50:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 22:50:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-22 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-22 23:02:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 23:02:55,ERROR,|Scheduler || Task - bad_on || 'NoneType' object has no attribute 'id'|
+2019-06-22 23:03:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 23:03:58,ERROR,|Scheduler || Task - bad_on || 'NoneType' object has no attribute 'id'|
+2019-06-22 23:04:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 23:04:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 23:09:02,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene:bad:warm-weiss:100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - True || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - True || Repeat - checked|
+2019-06-22 23:11:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-22 23:11:33,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-22 23:12:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 23:13:03,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-22 23:27:56,EVENT,|MQTT || started|
+2019-06-22 23:27:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 23:27:59,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 23:28:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 23:28:00,EVENT,|Speech Control || started|
+2019-06-22 23:30:58,EVENT,|MQTT || started|
+2019-06-22 23:30:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 23:31:01,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 23:31:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 23:31:02,EVENT,|Speech Control || started|
+2019-06-22 23:31:18,EVENT,|Speech Control || Detection Task || wohnzimmer auf achtzig prozent|
+2019-06-22 23:31:51,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 85 %|
+2019-06-22 23:32:13,EVENT,|Speech Control || Detection Task || wohnzimmer auch fünfzig prozent|
+2019-06-22 23:32:16,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 50 %|
+2019-06-22 23:35:26,EVENT,|MQTT || started|
+2019-06-22 23:35:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 23:35:28,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 23:35:30,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 23:35:30,EVENT,|Speech Control || started|
+2019-06-22 23:35:43,EVENT,|MQTT || started|
+2019-06-22 23:35:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-22 23:35:46,EVENT,|ZigBee2MQTT || Connected|
+2019-06-22 23:35:47,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-22 23:35:47,EVENT,|Speech Control || started|
+2019-06-22 23:36:18,EVENT,|Speech Control || Detection Task || wohnzimmer auf achtzig konzept|
+2019-06-22 23:36:34,EVENT,|Speech Control || Detection Task || wohnzimmer auf achtzig prozent|
+2019-06-22 23:36:38,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-06-22 23:37:07,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 62 %|
+2019-06-22 23:45:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 23:45:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-22 23:58:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-22 23:58:01,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 00:00:03,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-23 00:00:03,SUCCESS,|Database_Backup || saved|
+2019-06-23 00:12:30,EVENT,|Speech Control || Detection Task || grüsse|
+2019-06-23 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-23 00:30:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 00:30:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-23 00:40:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 00:40:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 00:53:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 00:53:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 01:27:59,EVENT,|Speech Control || Detection Task || aber die scheint es ja so nicht mehr grossartig zu geben vielleicht nochmal ein oder andere dabei der kriegt|
+2019-06-23 01:35:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 01:35:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 01:48:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 01:48:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 02:30:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 02:30:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 02:43:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 02:43:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 03:25:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 03:25:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 03:38:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 03:38:07,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 04:20:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 04:20:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 04:33:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 04:33:08,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 05:15:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 05:15:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 05:28:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 05:28:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 06:10:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 06:10:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 06:23:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 06:23:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 07:05:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 07:05:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 07:14:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:14:14,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 07:14:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:14:34,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 07:15:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:15:12,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 07:16:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:16:20,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 07:16:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:16:52,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 07:17:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 07:17:50,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 07:18:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 07:18:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 07:27:19,EVENT,|MQTT || started|
+2019-06-23 07:27:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 07:27:22,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 07:27:24,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 07:27:24,EVENT,|Speech Control || started|
+2019-06-23 07:28:04,ERROR,|Controller - HUE_Switch || Command - action = on-press || Group - wohnzmmer || not founded|

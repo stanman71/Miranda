@@ -1184,30 +1184,41 @@ def START_SCHEDULER_TASK(task_object):
    
    try:
       if "scene" in task_object.task:
+         
          task  = task_object.task.split(":")
          group = GET_LED_GROUP_BY_NAME(task[1])
-         
-         try:
-            brightness = int(task[3])
-         except:
-            brightness = 100
-            
-         # new led setting ?
-         if group.current_setting != task[2] and int(group.current_brightness) != brightness:
- 
-            group = GET_LED_GROUP_BY_NAME(task[1])
-            scene = GET_LED_SCENE_BY_NAME(task[2])     
-            
-            LED_SET_SCENE(group.id, scene.id, brightness) 
-            LED_ERROR_CHECKING_THREAD(group.id, scene.id, task[2], brightness, 5, 15)      
-            
+         scene = GET_LED_SCENE_BY_NAME(task[2]) 
+
+         # group existing ?
+         if group != None:
+
+            # scene existing ?
+            if scene != None:
+               
+               try:
+                  brightness = int(task[3])
+               except:
+                  brightness = 100
+
+               # new led setting ?
+               if group.current_setting != scene.name or int(group.current_brightness) != brightness:
+
+                  LED_SET_SCENE(group.id, scene.id, brightness) 
+                  LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)      
+
+               else:
+                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness))  
+                  
+            else:
+               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Scene - " + task[2] + " | not founded")
+                          
          else:
-            WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + task[2] + " : " + str(brightness))             
-            
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + task[1] + " | not founded")
+    
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-
+               
 
    # #######
    # led off
@@ -1280,9 +1291,12 @@ def START_SCHEDULER_TASK(task_object):
    try:
       if "device" in task_object.task and "mqtt_update" not in task_object.task:
          task = task_object.task.split(":")
-
-         try:
-            device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+         
+         device = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+         
+         # device founded ?
+         if device != None:
+         
             command = task[2].upper()
             
             # new device setting ?
@@ -1312,12 +1326,11 @@ def START_SCHEDULER_TASK(task_object):
                   
                if device.gateway == "zigbee2mqtt":
                   WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))  
-                  
-
-         except Exception as e:
-            print(e)
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Device - " + task[1] + " | " + str(e))
-
+               
+         else:
+            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Device - " + task[1] + " | not founded")                  
+            
+               
    except Exception as e:
       print(e)
       WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
