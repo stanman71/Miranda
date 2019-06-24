@@ -186,13 +186,13 @@ class MQTT_Devices(db.Model):
     last_values                     = db.Column(db.String(200))  
     last_values_formated            = db.Column(db.String(200)) 
     dashboard_check_option          = db.Column(db.String(50)) 
-    dashboard_check_command         = db.Column(db.String(50))     
+    dashboard_check_setting_value   = db.Column(db.String(50))     
     dashboard_check_sensor_ieeeAddr = db.Column(db.String(50))   
     dashboard_check_sensor_inputs   = db.Column(db.String(50))     
     dashboard_check_value_1         = db.Column(db.String(50))
     dashboard_check_value_2         = db.Column(db.String(50))
     dashboard_check_value_3         = db.Column(db.String(50))      
-    previous_command                = db.Column(db.String(50))                
+    previous_setting_value          = db.Column(db.String(50))                
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -281,18 +281,18 @@ class Speech_Recognition_Provider_Settings(db.Model):
     speech_recognition_provider_username = db.Column(db.String(100))
     speech_recognition_provider_key      = db.Column(db.String(200))
    
-class Speech_Control_LED_Tasks(db.Model):
-    __tablename__ = 'speech_control_led_tasks'
+class Speechcontrol_LED_Tasks(db.Model):
+    __tablename__ = 'speechcontrol_led_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task                 = db.Column(db.String(50))
     parameters           = db.Column(db.String(50))    
     keywords             = db.Column(db.String(50))   
     
-class Speech_Control_Device_Tasks(db.Model):
-    __tablename__ = 'speech_control_device_tasks'
+class Speechcontrol_Device_Tasks(db.Model):
+    __tablename__ = 'speechcontrol_device_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task                 = db.Column(db.String(50))
-    command              = db.Column(db.String(50))    
+    setting_value        = db.Column(db.String(50))    
     keywords             = db.Column(db.String(50))
     mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr')) 
     mqtt_device          = db.relationship('MQTT_Devices') 
@@ -1487,20 +1487,20 @@ def UPDATE_DASHBOARD_CHECK_SENSOR_NAMES():
         pass
 
 
-def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_command,
+def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_setting_value,
                                     dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_inputs, dashboard_check_value_1, 
                                     dashboard_check_value_2, dashboard_check_value_3):
               
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
              
     # values changed ?
-    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_command != dashboard_check_command or
+    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_setting_value != dashboard_check_setting_value or
         entry.dashboard_check_sensor_ieeeAddr != dashboard_check_sensor_ieeeAddr or 
         entry.dashboard_check_sensor_inputs != dashboard_check_sensor_inputs or entry.dashboard_check_value_1 != dashboard_check_value_1 or 
         entry.dashboard_check_value_2 != dashboard_check_value_2 or entry.dashboard_check_value_3 != dashboard_check_value_3):              
                                          
         entry.dashboard_check_option          = dashboard_check_option
-        entry.dashboard_check_command         = dashboard_check_command          
+        entry.dashboard_check_setting_value   = dashboard_check_setting_value          
         entry.dashboard_check_sensor_ieeeAddr = dashboard_check_sensor_ieeeAddr
         entry.dashboard_check_sensor_inputs   = dashboard_check_sensor_inputs
         entry.dashboard_check_value_1         = dashboard_check_value_1
@@ -1512,17 +1512,17 @@ def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
                              " || Dashboard Check - " + entry.dashboard_check_option +
-                             " | Dashboard Check Command - " + entry.dashboard_check_command +                          
+                             " | Dashboard Check Setting Value - " + entry.dashboard_check_setting_value +                          
                              " | Dashboard Check ieeeAddr - " + entry.dashboard_check_sensor_ieeeAddr +
                              " | Dashboard Check Value 1 - " + entry.dashboard_check_value_1 +
                              " | Dashboard Check Value 2 - " + entry.dashboard_check_value_2 +      
                              " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
 
                                                 
-def SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, command):
+def SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(ieeeAddr, setting_value):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    entry.previous_command = command
+    entry.previous_setting_value = setting_value
     db.session.commit()  
     
     
@@ -2485,7 +2485,7 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
 
 """ ############################# """
 """ ############################# """
-"""      speech control tasks     """
+"""       speechcontrol tasks     """
 """ ############################# """
 """ ############################# """
 
@@ -2494,23 +2494,23 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
     # LED
     ######
 
-def GET_SPEECH_CONTROL_LED_TASK_BY_ID(id):
-    return Speech_Control_LED_Tasks.query.filter_by(id=id).first()
+def GET_SPEECHCONTROL_LED_TASK_BY_ID(id):
+    return Speechcontrol_LED_Tasks.query.filter_by(id=id).first()
     
     
-def GET_SPEECH_CONTROL_LED_TASK_BY_TASK(task):
-    for entry in Speech_Control_LED_Tasks.query.all():
+def GET_SPEECHCONTROL_LED_TASK_BY_TASK(task):
+    for entry in Speechcontrol_LED_Tasks.query.all():
         
         if entry.task.lower() == task.lower():
             return task          
  
     
-def GET_ALL_SPEECH_CONTROL_LED_TASKS():
-    return Speech_Control_LED_Tasks.query.all()
+def GET_ALL_SPEECHCONTROL_LED_TASKS():
+    return Speechcontrol_LED_Tasks.query.all()
 
 
-def UPDATE_SPEECH_CONTROL_LED_TASK(id, keywords):
-    entry = Speech_Control_LED_Tasks.query.filter_by(id=id).first()
+def UPDATE_SPEECHCONTROL_LED_TASK(id, keywords):
+    entry = Speechcontrol_LED_Tasks.query.filter_by(id=id).first()
 
     # values changed ?
     if (entry.keywords != keywords):
@@ -2518,68 +2518,69 @@ def UPDATE_SPEECH_CONTROL_LED_TASK(id, keywords):
         entry.keywords   = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control LED Task - " + entry.task + " | changed || Keywords - " + entry.keywords) 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | LED Task - " + entry.task + " | changed || Keywords - " + entry.keywords) 
 
 
     # #######
     # Devices
     # #######
 
-def GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(id):
-    return Speech_Control_Device_Tasks.query.filter_by(id=id).first()
+def GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(id):
+    return Speechcontrol_Device_Tasks.query.filter_by(id=id).first()
     
     
-def GET_SPEECH_CONTROL_DEVICE_TASK_BY_TASK(task):
-    for entry in Speech_Control_Device_Tasks.query.all():
+def GET_SPEECHCONTROL_DEVICE_TASK_BY_TASK(task):
+    for entry in Speechcontrol_Device_Tasks.query.all():
         
         if entry.task.lower() == task.lower():
             return task       
  
     
-def GET_ALL_SPEECH_CONTROL_DEVICE_TASKS():
-    return Speech_Control_Device_Tasks.query.all()
+def GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
+    return Speechcontrol_Device_Tasks.query.all()
     
 
-def ADD_SPEECH_CONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr):
+def ADD_SPEECHCONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr):
     # find a unused id
     for i in range(1,26):
-        if Speech_Control_Device_Tasks.query.filter_by(id=i).first():
+        if Speechcontrol_Device_Tasks.query.filter_by(id=i).first():
             pass
         else:
             # add the new task
-            speech_control_device_task = Speech_Control_Device_Tasks(
+            speechcontrol_device_task = Speechcontrol_Device_Tasks(
                     id                   = i,
                     task                 = task,
                     mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,         
                 )
                 
-            db.session.add(speech_control_device_task)
+            db.session.add(speechcontrol_device_task)
             db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Device Task - " + task + " | added")                    
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + task + " | added")                    
             return ""
 
     return "Task-Limit erreicht (25)"
 
 
-def UPDATE_SPEECH_CONTROL_DEVICE_TASK(id, command, keywords):
-    entry = Speech_Control_Device_Tasks.query.filter_by(id=id).first()
+def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting_value, keywords):
+    entry = Speechcontrol_Device_Tasks.query.filter_by(id=id).first()
 
     # values changed ?
-    if (entry.command != command or entry.keywords != keywords):
+    if (entry.setting_value != setting_value or entry.keywords != keywords):
         
-        entry.command    = command       
-        entry.keywords   = keywords        
+        entry.setting_value = setting_value       
+        entry.keywords      = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Task - " + entry.task + " | changed || Command - " + entry.command +
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Task - " + entry.task + 
+                             " | changed || Setting Value - " + entry.setting_value +
                              " | Keywords - " + str(entry.keywords))
   
        
-def CHANGE_SPEECH_CONTROL_DEVICE_TASK_POSITION(id, direction):
+def CHANGE_SPEECHCONTROL_DEVICE_TASK_POSITION(id, direction):
     
     if direction == "up":
-        task_list = GET_ALL_SPEECH_CONTROL_DEVICE_TASKS()
+        task_list = GET_ALL_SPEECHCONTROL_DEVICE_TASKS()
         task_list = task_list[::-1]
         
         for task in task_list:
@@ -2589,8 +2590,8 @@ def CHANGE_SPEECH_CONTROL_DEVICE_TASK_POSITION(id, direction):
                 new_id = task.id
                 
                 # change ids
-                task_1 = GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(id)
-                task_2 = GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(new_id)
+                task_1 = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(new_id)
                 
                 task_1.id = 99
                 db.session.commit()
@@ -2602,14 +2603,14 @@ def CHANGE_SPEECH_CONTROL_DEVICE_TASK_POSITION(id, direction):
                 return 
 
     if direction == "down":
-        for task in GET_ALL_SPEECH_CONTROL_DEVICE_TASKS():
+        for task in GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
             if task.id > id:
                 
                 new_id = task.id
                 
                 # change ids
-                task_1 = GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(id)
-                task_2 = GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(new_id)
+                task_1 = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(new_id)
                 
                 task_1.id = 99
                 db.session.commit()
@@ -2621,15 +2622,15 @@ def CHANGE_SPEECH_CONTROL_DEVICE_TASK_POSITION(id, direction):
                 return        
                               
     
-def DELETE_SPEECH_CONTROL_DEVICE_TASK(task_id):
-    entry = GET_SPEECH_CONTROL_DEVICE_TASK_BY_ID(task_id)
+def DELETE_SPEECHCONTROL_DEVICE_TASK(task_id):
+    entry = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speech Control Device Task - " + entry.task + " | deleted")    
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + entry.task + " | deleted")    
     except:
         pass
     
-    Speech_Control_Device_Tasks.query.filter_by(id=task_id).delete()
+    Speechcontrol_Device_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 

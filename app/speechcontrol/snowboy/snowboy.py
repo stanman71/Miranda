@@ -51,16 +51,16 @@ def SNOWBOY_THREAD():
 			if speech_recognition_answer != None:
 				
 				if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:	 
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + speech_recognition_answer) 
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | " + speech_recognition_answer) 
 				
 				else:	 
-					heapq.heappush(process_management_queue, (1, ("speech_control", speech_recognition_answer)))
+					heapq.heappush(process_management_queue, (1, ("speechcontrol", speech_recognition_answer)))
 
 			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
 
 			detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
-		WRITE_LOGFILE_SYSTEM("EVENT", "Speech Control | started") 
+		WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | started") 
 
 		# main loop
 		detector.start(detected_callback=detect_callback,
@@ -70,4 +70,4 @@ def SNOWBOY_THREAD():
 		detector.terminate()
 
 	else:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Snowboy Hotword - " + hotword_file + " | not founded")
+		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Snowboy Hotword - " + hotword_file + " | not founded")

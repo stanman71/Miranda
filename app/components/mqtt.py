@@ -520,55 +520,55 @@ def MQTT_SAVE_SENSORDATA(job_id):
 """ ################### """
  
  
-def MQTT_CHECK_SETTING_THREAD(ieeeAddr, setting_key, command, delay = 1, limit = 15): 
+def MQTT_CHECK_SETTING_THREAD(ieeeAddr, setting_key, setting_value, delay = 1, limit = 15): 
  
-	Thread = threading.Thread(target=MQTT_CHECK_SETTING_PROCESS, args=(ieeeAddr, setting_key, command, delay, limit, ))
+	Thread = threading.Thread(target=MQTT_CHECK_SETTING_PROCESS, args=(ieeeAddr, setting_key, setting_value, delay, limit, ))
 	Thread.start()   
 
  
-def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, command, delay, limit): 
+def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, setting_value, delay, limit): 
                       
 	device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
                     
 	# check setting 1 try
 	time.sleep(delay)                             
-	result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
+	result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
 	
-	# set previous command 
+	# set previous setting_value 
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 	
+		SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 	
 	
 	else:
 		# check setting 2 try
 		time.sleep(delay)                             
-		result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
+		result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
 		
-		# set previous command 
+		# set previous setting_value 
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 		
+			SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 		
 			
 		else:
 			# check setting 3 try
 			time.sleep(delay)                             
-			result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit)
+			result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
 			 
-			# set previous command 
+			# set previous setting_value 
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + str(command)) 			
+				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 			
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed")  
-				return ("MQTT | Device - " + device.name + " | Setting not confirmed") 
+				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value)  
+				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value) 
 				
 	return ""
 					
 
-def MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit):
+def MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit):
 			
 	for message in MQTT_GET_INCOMMING_MESSAGES(limit):
 		
@@ -578,7 +578,7 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit):
 			try:
 				data = json.loads(message[2])
 				
-				if data[setting_key] == command:
+				if data[setting_key] == setting_value:
 					return True
 			
 			except:
@@ -592,55 +592,55 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting_key, command, limit):
 """ ########################## """
  
  
-def ZIGBEE2MQTT_CHECK_SETTING_THREAD(name, setting_key, command, delay = 1, limit = 15): 
+def ZIGBEE2MQTT_CHECK_SETTING_THREAD(name, setting_key, setting_value, delay = 1, limit = 15): 
  
-	Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(name, setting_key, command, delay, limit, ))
+	Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(name, setting_key, setting_value, delay, limit, ))
 	Thread.start()   
 
  
-def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, command, delay, limit): 
+def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, setting_value, delay, limit): 
                       
 	device = GET_MQTT_DEVICE_BY_NAME(name)
 	                        
 	# check setting 1 try
 	time.sleep(delay)                             
-	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
+	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
 	
-	# set previous command 
+	# set previous setting_value 
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command))   
+		SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value)   
 		
 	else:
 		# check setting 2 try
 		time.sleep(delay)                             
-		result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
+		result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
 		
-		# set previous command 
+		# set previous setting_value 
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command)) 			
+			SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value) 			
 			
 		else:
 			# check setting 3 try
 			time.sleep(delay)                             
-			result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit)
+			result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
 			 
-			# set previous command 
+			# set previous setting_value 
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + str(command))  				
+				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value)  				
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_COMMAND(device.ieeeAddr, command)
-				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed")  
-				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed") 
+				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
+				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value)  
+				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value) 
 	
 	return ""
 		
  
-def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit):
+def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit):
 	
 	for message in MQTT_GET_INCOMMING_MESSAGES(limit):	
 		
@@ -650,7 +650,7 @@ def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, command, limit):
 			try:
 				data = json.loads(message[2])
 				
-				if data[setting_key] == command:
+				if data[setting_key] == setting_value:
 					return True
 			
 			except:

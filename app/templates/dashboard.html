@@ -313,41 +313,41 @@
                           {% if entry.dashboard_check_option != "None" %} 
       
                           <div class="col-sm-5"> 
-                            <select class="btn btn-default dropdown-toggle" name="set_dashboard_check_command_{{ entry.id }}">
-                              {% if entry.dashboard_check_command != "None" %}
-                                <option value = "{{ entry.dashboard_check_command }}" > {{ entry.dashboard_check_command }} </option>
+                            <select class="btn btn-default dropdown-toggle" name="set_dashboard_check_setting_value_{{ entry.id }}">
+                              {% if entry.dashboard_check_setting_value != "None" %}
+                                <option value = "{{ entry.dashboard_check_setting_value }}" > {{ entry.dashboard_check_setting_value }} </option>
                               {% else %}   
                                 <option value = "None" > None </option> 
                               {% endif %} 
                               <option value= "None" > ------------------------- </option>  
-                              {% if entry.commands != "None" %}
+                              {% if entry.commands != "None" %}  
                                 {% for each in entry.commands.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
+                                  <option value= "{{ each.split('=')[1] }}" > {{ each.split('=')[1] }} </option>
                                 {% endfor %}  
                               {% endif %} 
                                                
                             </select>   
-                          </div>       
-                          
+                          </div>      
+                                      
                           {% endif %} 
                             
                         </div>                                        
                       </td>
                       
                       <td style="width:17%">   
-                        <select class="btn btn-default dropdown-toggle" name="set_dashboard_command_{{ entry.id }}">
+                        <select class="btn btn-default dropdown-toggle" name="set_dashboard_setting_{{ entry.id }}">
                           
                           <option value= "None" > None </option> 
                           <option value= "None" > ----------------------- </option>
                           {% if entry.commands != "None" %}
                             {% for each in entry.commands.split(',') %}
-                              <option value= "{{ each }}" > {{ each }} </option>
+                              <option value= "{{ each }}" > {{ each.split('=')[1] }} </option>
                             {% endfor %}  
                           {% endif %} 
                                            
                         </select>                           
                       </td>
-                      <td style="width:17%"> {{entry.previous_command}} </td>    
+                      <td style="width:17%"> {{entry.previous_setting_value}} </td>    
                     
                     </tr>
                     <tr>
@@ -373,15 +373,16 @@
                               {% endif %} 
                               <option value= "None" > -------------------------------- </option>
                               
+                              {% for each in entry.dashboard_check_sensor_inputs.split(',') %}
+                                <option value= "{{ each }}" > {{ each }} </option>
+                              {% endfor %}   
+                                                                 
                               {% if entry.inputs != "None" %}
                                 {% for each in entry.inputs.split(',') %}
                                   <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}      
-                              {% else %}
-                                {% for each in entry.dashboard_check_sensor_inputs.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}     
+                                {% endfor %}   
                               {% endif %}    
+                              
                             </select> 
                           </div>   
         
@@ -414,8 +415,7 @@
                       <td></td>
                       <td></td>   
                       <td></td>
-                      <td></td>   
-                      <td></td>                                                             
+                      <td></td>                                                            
                     </tr>
                   
                   {% endfor %}  

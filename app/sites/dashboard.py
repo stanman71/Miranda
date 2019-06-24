@@ -137,255 +137,236 @@ def dashboard():
                     
                     if device in GET_ALL_MQTT_DEVICES("device"):
                         
-                        # set dashboard check option
+                        
+                        # #################
+                        #   Check Options
+                        # #################
+
                         dashboard_check_option = request.form.get("set_dashboard_check_option_" + str(i))
                         dashboard_check_option = dashboard_check_option.replace(" ","")
                         
-                        if dashboard_check_option == "" or dashboard_check_option == None:
-                            dashboard_check_option = "None"  
-
-                        if dashboard_check_option != "None":
-
-                            # set dashboard check command option
-                            dashboard_check_command = request.form.get("set_dashboard_check_command_" + str(i))
-                            
-                            if dashboard_check_command == "" or dashboard_check_command == None:
-                                dashboard_check_command = "None"  
-          
-          
-                            # check_option not changed
-                            if GET_MQTT_DEVICE_BY_IEEEADDR(device.ieeeAddr).dashboard_check_option == dashboard_check_option:
-                                dashboard_check_sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
-                            
- 
-                                # ###### #
-                                # SENSOR # 
-                                # ###### #                              
-                                 
-                                if dashboard_check_sensor_ieeeAddr != "None":
+                        dashboard_check_setting_value = request.form.get("set_dashboard_check_setting_value_" + str(i))
+                        
+                        if dashboard_check_setting_value == "" or dashboard_check_setting_value == None:
+                            dashboard_check_setting_value = "None"  
+                           
                                 
-                                    # set dashboard check value 1
-                                    dashboard_check_value_1 = request.form.get("set_dashboard_check_value_1_" + str(i))
+                        # ######
+                        # Sensor
+                        # ######
 
-                                    if dashboard_check_value_1 != None:                  
-                                        dashboard_check_value_1 = dashboard_check_value_1.replace(" ", "")
+                        if GET_MQTT_DEVICE_BY_NAME(dashboard_check_option) or dashboard_check_option.isdigit(): 
 
-                                        # replace array_position to sensor name 
-                                        if dashboard_check_value_1.isdigit():
-                                            
-                                            # first two array elements are no sensors
-                                            if dashboard_check_value_1 == "0" or dashboard_check_value_1 == "1":
-                                                dashboard_check_value_1 = "None"
-                                                
-                                            else:           
-                                                sensor_list             = GET_MQTT_DEVICE_BY_IEEEADDR(dashboard_check_sensor_ieeeAddr).inputs
-                                                sensor_list             = sensor_list.split(",")
-                                                dashboard_check_value_1 = sensor_list[int(dashboard_check_value_1)-2]
-
-
-                                    # set dashboard check value 2
-                                    dashboard_check_value_2 = request.form.get("set_dashboard_check_value_2_" + str(i))
-                                    
-                                    if dashboard_check_value_2 == ""  or dashboard_check_value_2 == None:
-                                        dashboard_check_value_2 = "None"       
-                                    
-                                    # set dashboard check value 3
-                                    dashboard_check_value_3 = request.form.get("set_dashboard_check_value_3_" + str(i))
-                                    
-                                    if dashboard_check_value_3 == ""  or dashboard_check_value_3 == None:
-                                        dashboard_check_value_3 = "None"        
-                
-
-                                # ########## #
-                                # IP ADDRESS # 
-                                # ########## #
-     
-                                if dashboard_check_option == "IP-Address":
-                                
-                                    # set dashboard check value 1
-                                    dashboard_check_value_1 = request.form.get("set_dashboard_check_value_1_" + str(i))
-                                   
-                                    if dashboard_check_value_1 == "" or dashboard_check_value_1 == None:
-                                        dashboard_check_value_1 = "None" 
-                                          
-                                    dashboard_check_sensor_ieeeAddr = "None"
-                                    dashboard_check_sensor_inputs   = "None"
-                                    dashboard_check_value_2         = "None"                        
-                                    dashboard_check_value_3         = "None"   
-                               
-
-                            # #################### #
-                            # CHECK OPTION CHANGED # 
-                            # #################### #
+                            if dashboard_check_option.isdigit():        
+                                dashboard_check_sensor_ieeeAddr = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).ieeeAddr
+                                dashboard_check_sensor_inputs   = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).inputs       
+                                dashboard_check_option          = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).name
                                 
                             else:
-                                    
-                                # sensor choosen ?
-                                if GET_MQTT_DEVICE_BY_NAME(dashboard_check_option) or dashboard_check_option.isdigit(): 
+                                dashboard_check_sensor_ieeeAddr = GET_MQTT_DEVICE_BY_NAME(dashboard_check_option).ieeeAddr
+                                dashboard_check_sensor_inputs   = GET_MQTT_DEVICE_BY_NAME(dashboard_check_option).inputs                                  
+                        
+                        
+                            # set dashboard check value 1
+                            if device.dashboard_check_option == "IP-Address":
+                                dashboard_check_value_1 = "None" 
+                        
+                            else:
+                                dashboard_check_value_1 = request.form.get("set_dashboard_check_value_1_" + str(i))
 
-                                    if dashboard_check_option.isdigit():        
-                                        dashboard_check_sensor_ieeeAddr = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).ieeeAddr
-                                        dashboard_check_sensor_inputs   = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).inputs       
-                                        dashboard_check_option          = GET_MQTT_DEVICE_BY_ID(dashboard_check_option).name
+                                if dashboard_check_value_1 != None:                  
+                                    dashboard_check_value_1 = dashboard_check_value_1.replace(" ", "")
+
+                                    # replace array_position to sensor name 
+                                    if dashboard_check_value_1.isdigit():
                                         
-                                    else:
-                                        dashboard_check_sensor_ieeeAddr = GET_MQTT_DEVICE_BY_NAME(dashboard_check_option).ieeeAddr
-                                        dashboard_check_sensor_inputs   = GET_MQTT_DEVICE_BY_NAME(dashboard_check_option).inputs                                  
-                                
-
-                                    # previous option was "IP-Address" ?
-                                    if device.dashboard_check_option != "IP-Address":
-
-                                        dashboard_check_value_1 = request.form.get("set_dashboard_check_value_1_" + str(i))
-                                        
-                                        if dashboard_check_value_1 != None:                  
-                                            dashboard_check_value_1 = dashboard_check_value_1.replace(" ", "")
-
-                                            # replace array_position to sensor name 
-                                            if dashboard_check_value_1.isdigit():
-                                                
-                                                # first two array elements are no sensors
-                                                if dashboard_check_value_1 == "0" or dashboard_check_value_1 == "1":
-                                                    dashboard_check_value_1 = "None"
-                                                    
-                                                else:           
-                                                    sensor_list             = GET_MQTT_DEVICE_BY_IEEEADDR(dashboard_check_sensor_ieeeAddr).inputs
-                                                    sensor_list             = sensor_list.split(",")
-                                                    dashboard_check_value_1 = sensor_list[int(dashboard_check_value_1)-2]   
-                                                    
-                                        dashboard_check_value_2 = request.form.get("set_dashboard_check_value_2_" + str(i))  
-                                        dashboard_check_value_3 = request.form.get("set_dashboard_check_value_3_" + str(i))  
-                                                    
-          
-                                    else:
-                                        dashboard_check_value_1 = "None" 
-                                        dashboard_check_value_2 = "None"  
-                                        dashboard_check_value_3 = "None"                                          
+                                        # first two array elements are no sensors
+                                        if dashboard_check_value_1 == "0" or dashboard_check_value_1 == "1":
+                                            dashboard_check_value_1 = "None"
+                                            
+                                        else:           
+                                            sensor_list             = GET_MQTT_DEVICE_BY_IEEEADDR(dashboard_check_sensor_ieeeAddr).inputs
+                                            sensor_list             = sensor_list.split(",")
+                                            dashboard_check_value_1 = sensor_list[int(dashboard_check_value_1)-2]
                                             
                                 else:
-                                    dashboard_check_value_1 = "None" 
-                                    dashboard_check_value_2 = "None"  
-                                    dashboard_check_value_3 = "None"  
-                         
-                                 
-                        SET_MQTT_DEVICE_DASHBOARD_CHECK(device.ieeeAddr, dashboard_check_option, dashboard_check_command,
+                                   dashboard_check_value_1 = "None" 
+
+
+                            # set dashboard check value 2
+                            dashboard_check_value_2 = request.form.get("set_dashboard_check_value_2_" + str(i))
+                            
+                            if dashboard_check_value_2 == "" or dashboard_check_value_2 == None:
+                                dashboard_check_value_2 = "None"       
+                            
+                            
+                            # set dashboard check value 3
+                            dashboard_check_value_3 = request.form.get("set_dashboard_check_value_3_" + str(i))
+                            
+                            if dashboard_check_value_3 == "" or dashboard_check_value_3 == None:
+                                dashboard_check_value_3 = "None"       
+
+
+                        # ##########
+                        # IP Address
+                        # ##########
+
+                        elif dashboard_check_option == "IP-Address":
+                            
+                            # set dashboard check value 1
+                            dashboard_check_value_1 = request.form.get("set_dashboard_check_value_1_" + str(i))
+                           
+                            if dashboard_check_value_1 == "" or dashboard_check_value_1 == None:
+                                dashboard_check_value_1 = "None" 
+                                  
+                            dashboard_check_sensor_ieeeAddr = "None"
+                            dashboard_check_sensor_inputs   = "None"
+                            dashboard_check_value_2         = "None"                        
+                            dashboard_check_value_3         = "None"   
+               
+                                                              
+                        else:
+                            
+                            dashboard_check_option          = "None" 
+                            dashboard_check_value_1         = "None" 
+                            dashboard_check_value_2         = "None"  
+                            dashboard_check_value_3         = "None"  
+                            dashboard_check_sensor_ieeeAddr = "None"
+                            dashboard_check_sensor_inputs   = "None"                                                            
+
+                        SET_MQTT_DEVICE_DASHBOARD_CHECK(device.ieeeAddr, dashboard_check_option, dashboard_check_setting_value,
                                                         dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_inputs, dashboard_check_value_1, 
                                                         dashboard_check_value_2, dashboard_check_value_3)
-                            
-                            
-                        # ##############
-                        #    Commands
-                        # ##############
+                    
+                
+                except Exception as e:
+                    if "NoneType" not in str(e):
+                        print(e)                        
                         
-                        dashboard_command = request.form.get("set_dashboard_command_" + str(i))
-                        dashboard_command = dashboard_command.replace(" ","")
+                            
+                # ###############
+                #  setting_value
+                # ###############
+                      
+                    
+                dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))    
+                
+                if dashboard_setting != "None" and dashboard_setting != None:
 
+                    dashboard_setting_key   = dashboard_setting.split("=")[0]
+                    dashboard_setting_key   = dashboard_setting_key.replace(" ","")                                         
+                    dashboard_setting_value = dashboard_setting.split("=")[1]
+                    dashboard_setting_value = dashboard_setting_value.replace(" ","")
+                
+                
+                    # new device setting ?
+                    if dashboard_setting_value != device.previous_setting_value:
+                        
+                        change_state = True
+                        
+                        # ################
+                        # check ip_address 
+                        # ################
+                        
+                        if device.dashboard_check_option == "IP-Address" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
 
-                        # new device setting ?
-                        if dashboard_command != device.previous_command and dashboard_command != "None":
+                            if ping(dashboard_check_value_1, timeout=1) != None:    
+                                error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
+                                change_state = False
                             
-                            change_state = True
+
+                        # ############
+                        # check sensor
+                        # ############
+                        
+                        if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
                             
-                            # ################
-                            # check ip_address 
-                            # ################
+                            sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
+                            sensor_key      = device.dashboard_check_value_1
                             
-                            if device.dashboard_check_option == "IP-Address" and dashboard_command == device.dashboard_check_command.replace(" ",""):
-   
-                                if ping(dashboard_check_value_1, timeout=1) != None:    
-                                    error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
+                            operator = device.dashboard_check_value_2
+                            value    = device.dashboard_check_value_3
+                            
+                            # get sensordata 
+                            data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
+                            sensor_value = data[sensor_key]
+                            
+                            
+                            # compare conditions
+                            if operator == "=" and not value.isdigit():
+                                if str(sensor_value) == str(value):
                                     change_state = False
+                                else:
+                                    change_state = True
                                 
-
-                            # ############
-                            # check sensor
-                            # ############
+                            if operator == "=" and value.isdigit():
+                                if int(sensor_value) == int(value):
+                                    change_state = False    
+                                else:
+                                    change_state = True
+                                    
+                            if operator == "<" and value.isdigit():
+                                if int(sensor_value) < int(value):
+                                    change_state = False
+                                else:
+                                    change_state = True
+                                    
+                            if operator == ">" and value.isdigit():
+                                if int(sensor_value) > int(value):
+                                    change_state = False 
+                                else:
+                                    change_state = True
+                                         
+                            error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
                             
-                            if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_command == device.dashboard_check_command.replace(" ",""):
-                                
-                                sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
-                                sensor_key      = device.dashboard_check_value_1
-                                
-                                operator = device.dashboard_check_value_2
-                                value    = device.dashboard_check_value_3
-                                
-                                # get sensordata 
-                                data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
-                                sensor_value = data[sensor_key]
+                            
+                        # state changing
+                        if change_state == True: 
 
-                                # compare conditions
-                                if operator == "=" and not value.isdigit():
-                                    if str(sensor_value) == str(value):
-                                        change_state = True
-                                    else:
-                                        change_state = False
-                                    
-                                if operator == "=" and value.isdigit():
-                                    if int(sensor_value) == int(value):
-                                        change_state = True    
-                                    else:
-                                        change_state = False
-                                        
-                                if operator == "<" and value.isdigit():
-                                    if int(sensor_value) < int(value):
-                                        change_state = True
-                                    else:
-                                        change_state = False
-                                        
-                                if operator == ">" and value.isdigit():
-                                    if int(sensor_value) > int(value):
-                                        change_state = True 
-                                    else:
-                                        change_state = False
-                                             
-                                error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
+                            # ####
+                            # mqtt
+                            # ####
+                            
+                            if device.gateway == "mqtt":
                                 
+                                channel  = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
+                                msg      = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
                                 
-                            # state changing
-                            if change_state == True: 
+                                heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
+                                                
+                                error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting_key, dashboard_setting_value, 1, 5)                                     
 
-                                # ####
-                                # mqtt
-                                # ####
-                                
-                                if device.gateway == "mqtt":
-                                    
-                                    channel  = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
-                                    msg      = '{"state": "' + dashboard_command + '"}'
-                                    
-                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
-                                                    
-                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, "state", dashboard_command, 1, 5)                                     
-
-                                  
-                                # ###########
-                                # zigbee2mqtt
-                                # ###########    
-                                    
-                                if device.gateway == "zigbee2mqtt":
-                                    
-                                    channel = "SmartHome/" + device.gateway + "/" + device.name + "/set"
-                                    msg     = '{"state": "' + dashboard_command + '"}'
-                                    
-                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
-                                    
-                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, "state", dashboard_command, 1, 5)      
-                                            
-                                continue  
                               
+                            # ###########
+                            # zigbee2mqtt
+                            # ###########    
                                 
-                            else:
+                            if device.gateway == "zigbee2mqtt":
                                 
-                                if device.gateway == "mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_command)) 
+                                channel = "SmartHome/" + device.gateway + "/" + device.name + "/set"
+                                msg     = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
+                                
+                                heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
+                                
+                                error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting_key, dashboard_setting_value, 1, 5)      
+                                        
+                            continue  
+                          
+                            
+                        else:
+                            
+                            if device.gateway == "mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_setting_value)) 
 
-                                if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_command))                                 
+                            if device.gateway == "zigbee2mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_setting_value))                                 
+               
 
+                """
                 except Exception as e:
                     if "NoneType" not in str(e):
                         print(e)
-                              
+                """             
 
     """ ############### """
     """ spotify control """

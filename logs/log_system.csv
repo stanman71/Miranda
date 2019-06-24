@@ -5285,3 +5285,1231 @@ Timestamp,Type,Description
 2019-06-23 07:27:24,EVENT,|ZigBee2MQTT || Pairing enabled|
 2019-06-23 07:27:24,EVENT,|Speech Control || started|
 2019-06-23 07:28:04,ERROR,|Controller - HUE_Switch || Command - action = on-press || Group - wohnzmmer || not founded|
+2019-06-23 07:58:02,EVENT,|MQTT || started|
+2019-06-23 07:58:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 07:58:05,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 07:58:06,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 07:58:06,EVENT,|Speech Control || started|
+2019-06-23 07:58:16,EVENT,|Speech Control || Detection Task || starte warm weiss im wohnzimmer|
+2019-06-23 07:58:17,ERROR,|Speech Control || LED Task || starte warm weiss im wohnzimmer || Scene not founded|
+2019-06-23 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 08:01:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 08:01:05,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 08:08:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 08:08:29,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 08:26:54,SUCCESS,|ZigBee2MQTT || Device - Steckdose Server || State changed - ON|
+2019-06-23 08:56:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 08:56:05,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 09:03:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 09:03:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 09:38:48,STATUS,|Zigbee2MQTT || Device - Steckdose Server || OFF|
+2019-06-23 09:39:14,SUCCESS,|ZigBee2MQTT || Device - Steckdose Server || State changed - OFF|
+2019-06-23 09:39:33,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-23 09:39:40,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-23 09:51:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 09:51:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 09:58:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 09:58:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 10:06:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:06:12,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 10:07:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 10:07:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 10:07:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:07:50,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 10:09:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 10:09:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 10:09:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:09:29,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 10:10:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:10:18,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 10:10:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:10:27,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 10:11:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 10:11:48,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 10:11:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 10:12:02,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 10:47:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 10:47:08,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 10:52:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 10:52:30,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 11:42:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 11:42:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 11:47:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 11:47:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 12:37:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 12:37:09,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 12:42:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 12:42:33,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 12:53:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 12:53:20,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 12:54:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 12:54:19,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 12:55:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 12:55:54,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 13:32:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 13:32:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 13:36:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 13:36:14,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 14:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 14:27:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 14:27:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 14:31:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 14:31:16,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 15:22:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 15:22:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 15:26:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 15:26:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 16:17:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 16:17:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 16:21:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 16:21:20,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 17:07:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 17:07:24,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 17:08:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 17:08:22,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 17:09:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 17:09:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 17:10:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 17:10:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 17:12:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 17:12:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 17:32:43,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-23 17:32:47,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 70 %|
+2019-06-23 17:32:50,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 90 %|
+2019-06-23 17:32:53,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-23 17:32:57,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 80 %|
+2019-06-23 17:33:05,WARNING,|LED || Group - wohnzimmer || ['Deckenlampe_02 >>> Setting not confirmed']|
+2019-06-23 17:33:09,WARNING,|LED || Group - wohnzimmer || ['Deckenlampe_02 >>> Setting not confirmed']|
+2019-06-23 17:33:13,WARNING,|LED || Group - wohnzimmer || ['Deckenlampe_02 >>> Setting not confirmed']|
+2019-06-23 17:33:32,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 20 %|
+2019-06-23 17:33:35,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-23 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 18:05:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 18:05:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 18:07:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 18:07:13,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 19:00:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 19:00:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 19:02:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 19:02:15,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 19:29:09,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-23 19:32:55,ERROR,|Speech Control || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-06-23 19:55:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 19:55:30,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 19:57:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 19:57:14,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 20:00:51,EVENT,|Speech Control || Detection Task || |
+2019-06-23 20:05:12,EVENT,|Speech Control || Detection Task || dahinter|
+2019-06-23 20:46:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:46:08,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 20:46:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:46:10,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:46:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:46:31,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:47:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:47:21,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:47:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:47:36,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:48:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:48:22,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:49:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:49:25,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:50:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:50:26,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:51:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:51:27,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:52:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:52:21,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:52:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:52:57,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:53:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:53:26,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:54:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:54:28,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:54:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:54:29,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:55:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:55:32,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:55:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 20:55:58,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 20:55:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 20:56:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 21:06:01,EVENT,|MQTT || started|
+2019-06-23 21:06:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:06:04,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:06:05,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:06:05,EVENT,|Speech Control || started|
+2019-06-23 21:06:18,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - {state: ON}, {state: OFF}|
+2019-06-23 21:06:19,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - {state: ON}, {state: OFF}|
+2019-06-23 21:06:19,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:07:26,EVENT,|MQTT || started|
+2019-06-23 21:07:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:07:29,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:07:30,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:07:30,EVENT,|Speech Control || started|
+2019-06-23 21:08:42,EVENT,|MQTT || started|
+2019-06-23 21:08:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:08:45,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:08:46,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:08:46,EVENT,|Speech Control || started|
+2019-06-23 21:11:30,EVENT,|MQTT || started|
+2019-06-23 21:11:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:11:33,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:11:34,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:11:34,EVENT,|Speech Control || started|
+2019-06-23 21:12:10,EVENT,|MQTT || started|
+2019-06-23 21:12:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:12:13,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:12:14,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:12:14,EVENT,|Speech Control || started|
+2019-06-23 21:12:18,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:16:22,EVENT,|MQTT || started|
+2019-06-23 21:16:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:16:25,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:16:26,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:16:26,EVENT,|Speech Control || started|
+2019-06-23 21:17:07,EVENT,|MQTT || started|
+2019-06-23 21:17:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:17:10,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:17:11,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:17:11,EVENT,|Speech Control || started|
+2019-06-23 21:17:53,EVENT,|MQTT || started|
+2019-06-23 21:17:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:17:56,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:17:57,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:17:57,EVENT,|Speech Control || started|
+2019-06-23 21:19:09,EVENT,|MQTT || started|
+2019-06-23 21:19:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:19:12,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:19:13,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:19:13,EVENT,|Speech Control || started|
+2019-06-23 21:21:48,EVENT,|MQTT || started|
+2019-06-23 21:21:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:21:51,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:21:52,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:21:53,EVENT,|Speech Control || started|
+2019-06-23 21:21:57,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:22:53,EVENT,|MQTT || started|
+2019-06-23 21:22:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:22:56,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:22:57,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:22:57,EVENT,|Speech Control || started|
+2019-06-23 21:23:10,EVENT,|MQTT || started|
+2019-06-23 21:23:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:23:13,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:23:14,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:23:14,EVENT,|Speech Control || started|
+2019-06-23 21:24:02,EVENT,|MQTT || started|
+2019-06-23 21:24:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:24:05,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:24:06,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:24:06,EVENT,|Speech Control || started|
+2019-06-23 21:24:32,EVENT,|MQTT || started|
+2019-06-23 21:24:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:24:35,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:24:36,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:24:36,EVENT,|Speech Control || started|
+2019-06-23 21:25:24,EVENT,|MQTT || started|
+2019-06-23 21:25:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:25:27,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:25:28,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:25:28,EVENT,|Speech Control || started|
+2019-06-23 21:25:58,EVENT,|MQTT || started|
+2019-06-23 21:25:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:26:01,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:26:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:26:02,EVENT,|Speech Control || started|
+2019-06-23 21:28:39,EVENT,|MQTT || started|
+2019-06-23 21:28:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:28:42,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:28:43,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:28:43,EVENT,|Speech Control || started|
+2019-06-23 21:30:47,ERROR,|File || config/zigbee_device_informations.ymal || while parsing a flow sequence
+  in "/home/pi/SmartHome/config/zigbee_device_informations.yaml", line 23, column 19
+expected ',' or ']', but got '['
+  in "/home/pi/SmartHome/config/zigbee_device_informations.yaml", line 23, column 29|
+2019-06-23 21:30:50,EVENT,|MQTT || started|
+2019-06-23 21:30:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:30:53,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:30:54,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:30:54,EVENT,|Speech Control || started|
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_01 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_01 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - Badlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_01 || ieeeAddr - 0x000b3cfffeff0aa8 || Model - LED1649C5 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:57,EVENT,|Database || MQTT Device - Badlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_02 || ieeeAddr - 0x000b3cfffef56003 || Model - LED1649C5 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,EVENT,|Database || MQTT Device - HUE_Switch || Gateway - zigbee2mqtt || changed |||| Name - HUE_Switch || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_02 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_02 || ieeeAddr - 0x00158d000302c8fe || Model - RTCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:30:58,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:31:29,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:33:21,EVENT,|MQTT || started|
+2019-06-23 21:33:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:33:24,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:33:25,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:33:26,EVENT,|Speech Control || started|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - stateON, stateOFF|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor_active || description - AQARA Environment Sensor || inputs - temperature, humidity, pressure, battery || commands - None|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - stateON, stateOFF|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_01 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_01 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - sensor_active || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || commands - None|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - Badlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_01 || ieeeAddr - 0x000b3cfffeff0aa8 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || inputs - None || commands - None|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - Badlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_02 || ieeeAddr - 0x000b3cfffef56003 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || inputs - None || commands - None|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - HUE_Switch || Gateway - zigbee2mqtt || changed |||| Name - HUE_Switch || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || inputs - action=on-press, action=up-press, action=down-press, action=off-press || commands - None|
+2019-06-23 21:33:29,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - action=shake, action=rotate_left, action=rotate_right, side=1, side=2, side=4, side=5 || commands - None|
+2019-06-23 21:33:30,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_02 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_02 || ieeeAddr - 0x00158d000302c8fe || Model - RTCGQ11LM || device_type - sensor_active || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || commands - None|
+2019-06-23 21:33:30,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || inputs - None || commands - None|
+2019-06-23 21:33:30,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || inputs - None || commands - None|
+2019-06-23 21:33:30,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:33:54,EVENT,|MQTT || started|
+2019-06-23 21:33:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:33:57,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:33:58,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:33:58,EVENT,|Speech Control || started|
+2019-06-23 21:34:40,EVENT,|MQTT || started|
+2019-06-23 21:34:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:34:43,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:34:44,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:34:44,EVENT,|Speech Control || started|
+2019-06-23 21:34:51,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:35:56,EVENT,|MQTT || started|
+2019-06-23 21:35:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:35:59,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:36:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:36:00,EVENT,|Speech Control || started|
+2019-06-23 21:36:00,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-06-23 21:36:03,ERROR,|ZigBee2MQTT || Update Devices || Message not founded|
+2019-06-23 21:36:28,ERROR,|ZigBee2MQTT || Update Devices || Message not founded|
+2019-06-23 21:36:48,EVENT,|MQTT || started|
+2019-06-23 21:36:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:36:51,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:36:52,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:36:52,EVENT,|Speech Control || started|
+2019-06-23 21:36:55,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - {state: ON}, {state: OFF}|
+2019-06-23 21:36:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - {state: ON}, {state: OFF}|
+2019-06-23 21:36:56,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:37:35,ERROR,|File || config/zigbee_device_informations.ymal || while parsing a flow sequence
+  in "/home/pi/SmartHome/config/zigbee_device_informations.yaml", line 23, column 18
+expected ',' or ']', but got '<scalar>'
+  in "/home/pi/SmartHome/config/zigbee_device_informations.yaml", line 23, column 26|
+2019-06-23 21:37:38,EVENT,|MQTT || started|
+2019-06-23 21:37:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:37:41,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:37:42,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:37:42,EVENT,|Speech Control || started|
+2019-06-23 21:37:49,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:49,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:49,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_01 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_01 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - Badlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_01 || ieeeAddr - 0x000b3cfffeff0aa8 || Model - LED1649C5 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - Badlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_02 || ieeeAddr - 0x000b3cfffef56003 || Model - LED1649C5 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - HUE_Switch || Gateway - zigbee2mqtt || changed |||| Name - HUE_Switch || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_02 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_02 || ieeeAddr - 0x00158d000302c8fe || Model - RTCGQ11LM || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type -  || description -  || inputs -  || commands - |
+2019-06-23 21:37:50,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:38:01,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:38:36,EVENT,|MQTT || started|
+2019-06-23 21:38:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:38:39,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:38:40,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:38:40,EVENT,|Speech Control || started|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || changed |||| Name - Steckdose Server || ieeeAddr - 0x8418260000105fa0 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - state=ON, state=OFF|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor_active || description - AQARA Environment Sensor || inputs - temperature, humidity, pressure, battery || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || changed |||| Name - Steckdose TV || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || inputs - None || commands - state=ON, state=OFF|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_01 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_01 || ieeeAddr - 0x00158d000313fbc5 || Model - RTCGQ11LM || device_type - sensor_active || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Badlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_01 || ieeeAddr - 0x000b3cfffeff0aa8 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || inputs - None || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Badlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Badlampe_02 || ieeeAddr - 0x000b3cfffef56003 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || inputs - None || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - HUE_Switch || Gateway - zigbee2mqtt || changed |||| Name - HUE_Switch || ieeeAddr - 0x00178801067147c7 || Model - 324131092621 || device_type - controller || description - PHILIPS HUE Dimmer Switch || inputs - action=on-press, action=up-press, action=down-press, action=off-press || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - 0x00158d000275de23 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000275de23 || ieeeAddr - 0x00158d000275de23 || Model - MFKZQ01LM || device_type - controller || description - AQARA Cube Controller || inputs - action=shake, action=rotate_left, action=rotate_right, side=1, side=2, side=4, side=5 || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Motion_Sensor_Bad_02 || Gateway - zigbee2mqtt || changed |||| Name - Motion_Sensor_Bad_02 || ieeeAddr - 0x00158d000302c8fe || Model - RTCGQ11LM || device_type - sensor_active || description - AQARA Human Detector Sensor || inputs - illuminance, occupancy, battery || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Deckenlampe_01 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_01 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || inputs - None || commands - None|
+2019-06-23 21:38:43,EVENT,|Database || MQTT Device - Deckenlampe_02 || Gateway - zigbee2mqtt || changed |||| Name - Deckenlampe_02 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || inputs - None || commands - None|
+2019-06-23 21:38:43,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-06-23 21:39:50,EVENT,|MQTT || started|
+2019-06-23 21:39:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:39:53,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:39:54,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:39:54,EVENT,|Speech Control || started|
+2019-06-23 21:49:00,EVENT,|MQTT || started|
+2019-06-23 21:49:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 21:49:03,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 21:49:04,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 21:49:04,EVENT,|Speech Control || started|
+2019-06-23 21:49:13,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 63 %|
+2019-06-23 21:49:23,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-23 21:49:48,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-23 21:50:15,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-23 21:50:15,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-23 21:50:29,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-23 21:50:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 21:50:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 21:50:36,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-23 21:51:27,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:51:27,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:51:38,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:51:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:51:56,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:52:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:52:02,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 21:57:50,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - MQTT Watering_Array || inputs - pump, sensor_moisture, sensor_watertank || commands - pump=PUMP_ON, pump=PUMP_OFF|
+2019-06-23 21:57:50,SUCCESS,|MQTT || Update Devices|
+2019-06-23 21:58:05,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-23 21:58:15,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-23 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 22:02:08,EVENT,|MQTT || started|
+2019-06-23 22:02:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-23 22:02:11,EVENT,|ZigBee2MQTT || Connected|
+2019-06-23 22:02:12,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-23 22:02:12,EVENT,|Speech Control || started|
+2019-06-23 22:02:25,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - MQTT Watering_Array || inputs - pump_state, sensor_moisture, sensor_watertank || commands - pump_state=PUMP_ON, pump_state=PUMP_OFF|
+2019-06-23 22:02:25,SUCCESS,|MQTT || Update Devices|
+2019-06-23 22:02:40,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-23 22:02:54,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-23 22:03:06,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-23 22:03:17,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - watering_plants || Day - * || Hour - * || Minute - *|
+2019-06-23 22:04:01,EVENT,|Scheduler || Task - test || started|
+2019-06-23 22:04:01,EVENT,|Watering || started|
+2019-06-23 22:04:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-23 22:04:04,SUCCESS,|Watering || Plant - test || Pump started|
+2019-06-23 22:04:54,SUCCESS,|Watering || Plant - test || Pump stopped|
+2019-06-23 22:04:54,SUCCESS,|Watering || finished|
+2019-06-23 22:05:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:32,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:40,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:40,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:45,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:54,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:05:58,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-23 22:06:03,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:06:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-23 22:08:25,EVENT,|Speech Control || Detection Task || |
+2019-06-23 22:08:34,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 83 %|
+2019-06-23 22:08:37,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-06-23 22:08:37,STATUS,|LED || Group - wohnzimmer || warm-weiss : 100 %|
+2019-06-23 22:08:43,STATUS,|LED || Group - wohnzimmer || warm-weiss : 100 %|
+2019-06-23 22:08:43,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-06-23 22:08:52,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-06-23 22:08:57,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-06-23 22:09:00,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-06-23 22:09:02,STATUS,|LED || Group - wohnzimmer || warm-weiss : 100 %|
+2019-06-23 22:09:08,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-06-23 22:09:14,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 60 %|
+2019-06-23 22:09:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 40 %|
+2019-06-23 22:09:20,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-06-23 22:09:26,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-06-23 22:09:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:09:38,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-23 22:10:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:10:37,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:11:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:11:38,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:11:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:11:54,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:12:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:12:39,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:13:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:13:24,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:13:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:13:58,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:14:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:14:09,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:14:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:14:09,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:15:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:15:05,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:15:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-23 22:15:39,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-23 22:16:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 22:16:41,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-23 22:25:48,EVENT,|Speech Control || Detection Task || |
+2019-06-23 22:30:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 22:30:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 22:46:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 22:46:45,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-23 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-23 23:25:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 23:25:53,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-23 23:41:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-23 23:41:46,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-24 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-06-24 00:06:33,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-24 00:06:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 00:06:55,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 00:07:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 00:07:59,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 00:09:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 00:09:34,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 00:15:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 00:15:37,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-24 00:30:00,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-24 00:30:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 00:36:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 00:36:48,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 01:10:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 01:10:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 01:31:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 01:31:46,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 02:05:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 02:05:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 02:26:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 02:26:48,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 03:00:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 03:00:40,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 03:21:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 03:21:50,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 03:55:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 03:55:41,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 04:16:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 04:16:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 04:50:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 04:50:45,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 05:11:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 05:11:53,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 05:45:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 05:45:46,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 06:06:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 06:06:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 06:40:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 06:40:51,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 06:41:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:41:19,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 06:42:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:42:39,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:44:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 06:44:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 06:44:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:44:31,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 06:44:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:44:32,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:45:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:45:30,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:46:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:46:02,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:46:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:46:05,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:46:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:46:30,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:47:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:47:35,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:47:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 06:47:49,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 06:49:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 06:49:24,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 06:53:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 06:53:52,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 06:54:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 06:54:42,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 07:03:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 07:03:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 07:35:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 07:35:42,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-06-24 07:50:00,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-24 07:50:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 07:58:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 07:58:51,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 08:03:16,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-06-24 08:03:19,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 70 %|
+2019-06-24 08:03:22,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-24 08:11:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 08:11:47,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 08:13:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 08:13:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 08:13:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 08:13:45,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 08:15:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 08:15:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 08:25:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 08:25:57,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 08:53:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 08:53:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 09:20:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 09:20:59,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 09:48:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 09:48:53,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 10:12:20,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:12:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:12:21,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:12:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_02 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000302c8fe || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:12:44,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000302c8fe || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:15:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 10:15:59,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 10:16:42,EVENT,|MQTT || started|
+2019-06-24 10:16:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:16:45,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:16:46,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:16:46,EVENT,|Speech Control || started|
+2019-06-24 10:26:50,EVENT,|MQTT || started|
+2019-06-24 10:26:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:26:53,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:26:54,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:26:54,EVENT,|Speech Control || started|
+2019-06-24 10:28:13,EVENT,|MQTT || started|
+2019-06-24 10:28:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:28:16,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:28:17,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:28:17,EVENT,|Speech Control || started|
+2019-06-24 10:28:21,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:28:21,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:28:30,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:28:30,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:28:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:28:54,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:31:24,EVENT,|MQTT || started|
+2019-06-24 10:31:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:31:27,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:31:28,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:31:28,EVENT,|Speech Control || started|
+2019-06-24 10:31:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_02 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000302c8fe || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:31:36,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:31:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_02 || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x00158d000302c8fe || Dashboard Check Value 1 - illuminance || Dashboard Check Value 2 - = || Dashboard Check Value 3 - None|
+2019-06-24 10:31:45,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:31:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:31:54,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:32:00,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:32:16,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.0.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:34:40,EVENT,|MQTT || started|
+2019-06-24 10:34:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:34:43,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:34:44,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:34:44,EVENT,|Speech Control || started|
+2019-06-24 10:36:50,EVENT,|MQTT || started|
+2019-06-24 10:36:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:36:53,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:36:54,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:36:54,EVENT,|Speech Control || started|
+2019-06-24 10:36:58,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:37:11,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:39:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:39:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_02 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000302c8fe || Dashboard Check Value 1 - illuminance || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:39:12,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:40:16,EVENT,|MQTT || started|
+2019-06-24 10:40:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:40:19,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:40:20,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:40:21,EVENT,|Speech Control || started|
+2019-06-24 10:40:34,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:41:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:42:40,EVENT,|MQTT || started|
+2019-06-24 10:42:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:42:43,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:42:44,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:42:44,EVENT,|Speech Control || started|
+2019-06-24 10:43:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:43:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 10:43:54,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 10:44:15,EVENT,|MQTT || started|
+2019-06-24 10:44:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:44:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:44:19,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:44:19,EVENT,|Speech Control || started|
+2019-06-24 10:44:26,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:45:18,EVENT,|MQTT || started|
+2019-06-24 10:45:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:45:21,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:45:22,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:45:22,EVENT,|Speech Control || started|
+2019-06-24 10:45:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:45:30,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:45:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:15,EVENT,|MQTT || started|
+2019-06-24 10:50:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:50:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:50:19,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:50:19,EVENT,|Speech Control || started|
+2019-06-24 10:50:28,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_01 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000313fbc5 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:40,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:50:56,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_01 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000313fbc5 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:51:01,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:55:46,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:55:51,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:57:39,EVENT,|MQTT || started|
+2019-06-24 10:57:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 10:57:42,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 10:57:43,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 10:57:44,EVENT,|Speech Control || started|
+2019-06-24 10:57:54,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:59:00,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 10:59:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 11:01:36,EVENT,|MQTT || started|
+2019-06-24 11:01:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:01:39,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:01:40,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:01:40,EVENT,|Speech Control || started|
+2019-06-24 11:02:34,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:02:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:02:58,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:04:13,EVENT,|MQTT || started|
+2019-06-24 11:04:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:04:16,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:04:17,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:04:17,EVENT,|Speech Control || started|
+2019-06-24 11:04:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:05:23,EVENT,|MQTT || started|
+2019-06-24 11:05:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:05:26,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:05:27,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:05:27,EVENT,|Speech Control || started|
+2019-06-24 11:05:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:07:22,EVENT,|MQTT || started|
+2019-06-24 11:07:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:07:25,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:07:26,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:07:26,EVENT,|Speech Control || started|
+2019-06-24 11:07:27,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:07:51,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command -  OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:09:19,EVENT,|MQTT || started|
+2019-06-24 11:09:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:09:22,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:09:23,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:09:24,EVENT,|Speech Control || started|
+2019-06-24 11:09:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:11:01,EVENT,|MQTT || started|
+2019-06-24 11:11:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:11:04,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:11:05,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:11:06,EVENT,|Speech Control || started|
+2019-06-24 11:11:08,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:12:13,EVENT,|MQTT || started|
+2019-06-24 11:12:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:12:16,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:12:17,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:12:17,EVENT,|Speech Control || started|
+2019-06-24 11:12:21,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:13:51,EVENT,|MQTT || started|
+2019-06-24 11:13:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:13:54,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:13:55,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:13:56,EVENT,|Speech Control || started|
+2019-06-24 11:13:57,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:16:36,EVENT,|MQTT || started|
+2019-06-24 11:16:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:16:39,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:16:40,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:16:40,EVENT,|Speech Control || started|
+2019-06-24 11:16:41,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:16:45,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:16:49,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:18:34,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:18:42,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 -  light || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:18:47,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_01 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000313fbc5 || Dashboard Check Value 1 -  occupancy || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:18:53,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:18:58,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:19:59,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.0.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:20:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - 192.168.0.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:22:40,EVENT,|MQTT || started|
+2019-06-24 11:22:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:22:43,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:22:44,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:22:44,EVENT,|Speech Control || started|
+2019-06-24 11:23:18,EVENT,|MQTT || started|
+2019-06-24 11:23:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:23:20,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:23:22,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:23:22,EVENT,|Speech Control || started|
+2019-06-24 11:23:24,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:23:32,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:23:36,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:24:06,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:24:10,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:24:15,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:25:13,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:28:41,EVENT,|MQTT || started|
+2019-06-24 11:28:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:28:44,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:28:45,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:28:45,EVENT,|Speech Control || started|
+2019-06-24 11:28:46,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:28:52,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:28:57,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:29:23,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:31:35,EVENT,|MQTT || started|
+2019-06-24 11:31:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:31:38,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:31:39,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:31:39,EVENT,|Speech Control || started|
+2019-06-24 11:31:40,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:31:45,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:32:16,EVENT,|MQTT || started|
+2019-06-24 11:32:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:32:19,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:32:20,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:32:20,EVENT,|Speech Control || started|
+2019-06-24 11:32:38,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:33:57,EVENT,|MQTT || started|
+2019-06-24 11:33:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:34:00,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:34:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:34:02,EVENT,|Speech Control || started|
+2019-06-24 11:34:05,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:02,EVENT,|MQTT || started|
+2019-06-24 11:36:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:36:05,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:36:06,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:36:06,EVENT,|Speech Control || started|
+2019-06-24 11:36:09,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:28,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:34,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:39,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x99999 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x99999 || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:52,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:36:57,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:37:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:38:51,EVENT,|MQTT || started|
+2019-06-24 11:38:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:38:54,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:38:55,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:38:55,EVENT,|Speech Control || started|
+2019-06-24 11:38:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 11:38:56,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 11:39:08,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:14,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:19,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_01 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000313fbc5 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:28,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:34,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:39,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:39:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:42:25,EVENT,|MQTT || started|
+2019-06-24 11:42:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:42:28,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:42:29,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:42:29,EVENT,|Speech Control || started|
+2019-06-24 11:42:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:42:48,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:43:22,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - Motion_Sensor_Bad_01 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000313fbc5 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:16,EVENT,|MQTT || started|
+2019-06-24 11:44:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:44:19,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:44:20,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:44:20,EVENT,|Speech Control || started|
+2019-06-24 11:44:31,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:35,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:39,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:43,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:48,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.10 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:44:52,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x00158d000349876a || Dashboard Check Command - None || Dashboard Check ieeeAddr - 0x00158d000349876a || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:45:37,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:45:50,EVENT,|MQTT || started|
+2019-06-24 11:45:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:45:53,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:45:54,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:45:54,EVENT,|Speech Control || started|
+2019-06-24 11:53:51,EVENT,|MQTT || started|
+2019-06-24 11:53:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:53:54,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:53:55,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:53:55,EVENT,|Speech Control || started|
+2019-06-24 11:55:50,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:56:03,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:56:08,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-24 11:56:16,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 11:56:25,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-24 11:56:31,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 11:56:40,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-24 11:58:05,EVENT,|MQTT || started|
+2019-06-24 11:58:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 11:58:08,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 11:58:09,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 11:58:09,EVENT,|Speech Control || started|
+2019-06-24 11:58:12,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 12:00:15,EVENT,|MQTT || started|
+2019-06-24 12:00:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:00:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:00:19,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:00:19,EVENT,|Speech Control || started|
+2019-06-24 12:00:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-24 12:00:26,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-24 12:00:36,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Command - OFF || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 12:00:59,EVENT,|MQTT || started|
+2019-06-24 12:00:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:01:02,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:01:03,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:01:03,EVENT,|Speech Control || started|
+2019-06-24 12:06:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 12:06:01,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 12:33:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 12:33:59,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 12:55:51,EVENT,|MQTT || started|
+2019-06-24 12:55:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:55:54,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:55:55,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:55:55,EVENT,|Speech Control || started|
+2019-06-24 12:57:03,EVENT,|MQTT || started|
+2019-06-24 12:57:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:57:06,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:57:07,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:57:07,EVENT,|Speech Control || started|
+2019-06-24 12:58:12,EVENT,|MQTT || started|
+2019-06-24 12:58:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:58:15,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:58:16,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:58:16,EVENT,|Speech Control || started|
+2019-06-24 12:59:10,EVENT,|MQTT || started|
+2019-06-24 12:59:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 12:59:13,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 12:59:14,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 12:59:14,EVENT,|Speech Control || started|
+2019-06-24 12:59:20,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting Value - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 12:59:22,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 12:59:34,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 13:00:32,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 13:01:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 13:01:02,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 13:01:46,EVENT,|MQTT || started|
+2019-06-24 13:01:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:01:49,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:01:50,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:01:50,EVENT,|Speech Control || started|
+2019-06-24 13:02:20,EVENT,|MQTT || started|
+2019-06-24 13:02:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:02:23,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:02:24,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:02:24,EVENT,|Speech Control || started|
+2019-06-24 13:02:39,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 13:02:45,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-24 13:03:16,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-24 13:03:35,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:04:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:04:01,ERROR,|Scheduler || Task - test || local variable 'setting_key' referenced before assignment|
+2019-06-24 13:04:38,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:of || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:05:08,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:ofjhg || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:08:58,EVENT,|MQTT || started|
+2019-06-24 13:08:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:09:01,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:09:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:09:02,EVENT,|Speech Control || started|
+2019-06-24 13:10:10,EVENT,|MQTT || started|
+2019-06-24 13:10:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:10:13,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:10:14,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:10:14,EVENT,|Speech Control || started|
+2019-06-24 13:10:33,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:11:26,EVENT,|MQTT || started|
+2019-06-24 13:11:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:11:29,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:11:30,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:11:30,EVENT,|Speech Control || started|
+2019-06-24 13:12:39,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:offh || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:13:06,EVENT,|MQTT || started|
+2019-06-24 13:13:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:13:09,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:13:10,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:13:10,EVENT,|Speech Control || started|
+2019-06-24 13:13:57,EVENT,|MQTT || started|
+2019-06-24 13:13:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:14:00,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:14:01,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:14:01,EVENT,|Speech Control || started|
+2019-06-24 13:15:33,EVENT,|MQTT || started|
+2019-06-24 13:15:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:15:36,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:15:37,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:15:37,EVENT,|Speech Control || started|
+2019-06-24 13:15:46,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:16:56,EVENT,|MQTT || started|
+2019-06-24 13:16:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:16:59,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:17:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:17:00,EVENT,|Speech Control || started|
+2019-06-24 13:20:05,EVENT,|MQTT || started|
+2019-06-24 13:20:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:20:08,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:20:09,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:20:09,EVENT,|Speech Control || started|
+2019-06-24 13:20:16,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:of || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:20:25,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:20:31,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:20:36,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:offz || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:20:40,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 4 || Repeat - checked|
+2019-06-24 13:22:21,EVENT,|MQTT || started|
+2019-06-24 13:22:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:22:24,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:22:25,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:22:25,EVENT,|Speech Control || started|
+2019-06-24 13:22:36,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 24 || Repeat - checked|
+2019-06-24 13:24:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:24:16,ERROR,|ZigBee2MQTT || Device - Steckdose TV || Setting not confirmed - OFF|
+2019-06-24 13:25:27,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:25:33,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 13:26:02,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 26 || Repeat - checked|
+2019-06-24 13:26:08,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 27 || Repeat - checked|
+2019-06-24 13:27:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:27:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:27:41,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-06-24 13:27:47,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 30|
+2019-06-24 13:27:50,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-06-24 13:28:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 13:28:57,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 13:30:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:30:16,ERROR,|ZigBee2MQTT || Device - Steckdose TV || Setting not confirmed - OFF|
+2019-06-24 13:30:22,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 30|
+2019-06-24 13:30:26,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 32|
+2019-06-24 13:31:17,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-06-24 13:32:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:32:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-24 13:32:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:32:41,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-24 13:32:55,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 33 || Repeat - checked|
+2019-06-24 13:32:59,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 33 || Repeat - checked|
+2019-06-24 13:33:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:33:01,STATUS,|Zigbee2MQTT || Device - Steckdose TV || ON|
+2019-06-24 13:33:14,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 34 || Repeat - checked|
+2019-06-24 13:33:37,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 34 || Repeat - checked|
+2019-06-24 13:34:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:34:16,ERROR,|ZigBee2MQTT || Device - Steckdose TV || Setting not confirmed - OFF|
+2019-06-24 13:34:33,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:34:39,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 13:35:35,EVENT,|MQTT || started|
+2019-06-24 13:35:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:35:38,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:35:39,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:35:39,EVENT,|Speech Control || started|
+2019-06-24 13:35:43,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:36:11,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 37 || Repeat - checked|
+2019-06-24 13:37:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:37:16,ERROR,|ZigBee2MQTT || Device - Steckdose TV || Setting not confirmed - OFF|
+2019-06-24 13:38:29,EVENT,|MQTT || started|
+2019-06-24 13:38:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 13:38:32,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 13:38:33,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 13:38:33,EVENT,|Speech Control || started|
+2019-06-24 13:38:35,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 39 || Repeat - checked|
+2019-06-24 13:39:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:39:16,ERROR,|ZigBee2MQTT || Device - Steckdose TV || Setting not confirmed - ON|
+2019-06-24 13:40:40,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 13:41:45,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 43 || Repeat - checked|
+2019-06-24 13:43:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:43:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:44:04,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:off || Day - * || Hour - * || Minute - 45 || Repeat - checked|
+2019-06-24 13:45:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:45:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 13:45:17,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:Steckdose TV:on || Day - * || Hour - * || Minute - 46|
+2019-06-24 13:45:23,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Setting Value - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:45:29,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Setting Value - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:45:33,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - IP-Address || Dashboard Check Setting Value - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - 192.168.1.1 || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:45:38,STATUS,|MQTT || Device - 0x99999 || PUMP_ON|
+2019-06-24 13:45:45,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Setting Value - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:45:53,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Setting Value - PUMP_ON || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - temperature || Dashboard Check Value 2 - > || Dashboard Check Value 3 - 10|
+2019-06-24 13:45:57,STATUS,|MQTT || Device - 0x99999 || PUMP_ON|
+2019-06-24 13:46:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:46:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-24 13:46:01,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting Value - PUMP_ON || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:46:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 13:47:16,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-24 13:47:53,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device0x99999:pump_on || Day - * || Hour - * || Minute - *|
+2019-06-24 13:48:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:48:01,ERROR,|Scheduler || Task - test || Device - pump_on || not founded|
+2019-06-24 13:48:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-24 13:48:16,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-24 13:48:25,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:0x99999:pump_on || Day - * || Hour - * || Minute - *|
+2019-06-24 13:48:29,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:0x99999:pump_onj || Day - * || Hour - * || Minute - *|
+2019-06-24 13:48:33,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - device:0x99999:pump_on || Day - * || Hour - * || Minute - *|
+2019-06-24 13:49:01,EVENT,|Scheduler || Task - test || started|
+2019-06-24 13:49:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-24 13:49:06,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 13:49:17,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting Value - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-06-24 13:49:19,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-24 13:49:59,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_ON|
+2019-06-24 13:50:06,SUCCESS,|MQTT || Device - 0x99999 || State changed - PUMP_OFF|
+2019-06-24 13:50:52,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 62 %|
+2019-06-24 13:51:00,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-24 13:56:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 13:56:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 14:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 14:23:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 14:23:59,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 14:31:58,EVENT,|MQTT || started|
+2019-06-24 14:31:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:32:01,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:32:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:32:03,EVENT,|Speech Control || started|
+2019-06-24 14:33:39,EVENT,|MQTT || started|
+2019-06-24 14:33:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:33:42,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:33:43,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:33:44,EVENT,|Speech Control || started|
+2019-06-24 14:38:15,EVENT,|MQTT || started|
+2019-06-24 14:38:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:38:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:38:19,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:38:19,EVENT,|Speechcontrol || started|
+2019-06-24 14:38:32,EVENT,|Database || Speechcontrol LED Task - alle LEDs ausschalten || changed |||| Keywords - None|
+2019-06-24 14:40:15,EVENT,|MQTT || started|
+2019-06-24 14:40:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:40:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:40:19,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:40:19,EVENT,|Speechcontrol || started|
+2019-06-24 14:40:26,EVENT,|Database || Speechcontrol LED Task - alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-24 14:40:30,EVENT,|Database || Speechcontrol LED Task - alle LEDs ausschalten || changed |||| Keywords - starte|
+2019-06-24 14:40:40,EVENT,|Database || Speechcontrol LED Task - alle LEDs ausschalten || changed |||| Keywords - schlafen|
+2019-06-24 14:40:46,EVENT,|Database || Speechcontrol Device Task - gfd || added|
+2019-06-24 14:44:33,EVENT,|MQTT || started|
+2019-06-24 14:44:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:44:35,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:44:37,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:44:37,EVENT,|Speechcontrol || started|
+2019-06-24 14:46:04,EVENT,|MQTT || started|
+2019-06-24 14:46:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:46:07,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:46:08,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:46:08,EVENT,|Speechcontrol || started|
+2019-06-24 14:52:01,EVENT,|MQTT || started|
+2019-06-24 14:52:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:52:04,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:52:05,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:52:05,EVENT,|Speechcontrol || started|
+2019-06-24 14:52:55,EVENT,|MQTT || started|
+2019-06-24 14:52:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:52:58,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:52:59,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:52:59,EVENT,|Speechcontrol || started|
+2019-06-24 14:54:11,EVENT,|MQTT || started|
+2019-06-24 14:54:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:54:14,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:54:15,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:54:16,EVENT,|Speechcontrol || started|
+2019-06-24 14:54:18,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value -  || Keywords - None|
+2019-06-24 14:54:25,EVENT,|Database || Speechcontrol Task - kjhkh || changed |||| Setting Value -  || Keywords - Steckdose|
+2019-06-24 14:54:25,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value - OFF || Keywords - None|
+2019-06-24 14:54:28,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value -  || Keywords - jhgg|
+2019-06-24 14:54:31,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value -  || Keywords - jhgglkj|
+2019-06-24 14:54:34,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value -  || Keywords - None|
+2019-06-24 14:56:08,EVENT,|MQTT || started|
+2019-06-24 14:56:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 14:56:11,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 14:56:12,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 14:56:12,EVENT,|Speechcontrol || started|
+2019-06-24 14:56:16,EVENT,|Database || Speechcontrol Task - kjhkh || changed |||| Setting Value - OFF || Keywords - Steckdose|
+2019-06-24 14:56:19,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value - ON || Keywords - None|
+2019-06-24 14:56:25,EVENT,|Database || Speechcontrol Task - gfd || changed |||| Setting Value - ON || Keywords - zut|
+2019-06-24 14:56:27,EVENT,|Database || Speechcontrol Device Task - gfd || deleted|
+2019-06-24 14:56:30,EVENT,|Database || Speechcontrol Device Task - hgfdd || added|
+2019-06-24 14:56:34,EVENT,|Database || Speechcontrol Task - hgfdd || changed |||| Setting Value - ON || Keywords - None|
+2019-06-24 14:56:39,EVENT,|Database || Speechcontrol Device Task - hgfdd || deleted|
+2019-06-24 14:56:44,EVENT,|Database || Speechcontrol Device Task - jhgjgh || added|
+2019-06-24 14:56:46,EVENT,|Database || Speechcontrol Task - jhgjgh || changed |||| Setting Value - PUMP_ON || Keywords - None|
+2019-06-24 14:56:48,EVENT,|Database || Speechcontrol Device Task - jhgjgh || deleted|
+2019-06-24 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 15:19:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 15:19:02,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 15:44:26,EVENT,|MQTT || started|
+2019-06-24 15:44:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 15:44:29,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 15:44:30,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 15:44:30,EVENT,|Speechcontrol || started|
+2019-06-24 15:46:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 15:46:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 16:14:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 16:14:04,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 16:41:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 16:41:06,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 17:09:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 17:09:05,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 17:36:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 17:36:07,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-24 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-24 18:04:03,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 18:04:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 18:31:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 18:31:09,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 18:43:46,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-24 18:46:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 18:46:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-24 18:46:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 18:46:56,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-24 18:47:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 18:47:18,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 18:47:46,EVENT,|Speechcontrol || Detection Task || starte warm-weiss in wohnzimmer|
+2019-06-24 18:47:46,ERROR,|Speechcontrol || LED Task || starte warm-weiss in wohnzimmer || Scene not founded|
+2019-06-24 18:48:12,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-24 18:48:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-24 18:48:24,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-24 18:48:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-24 18:48:54,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-24 18:49:11,EVENT,|MQTT || started|
+2019-06-24 18:49:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-24 18:49:14,EVENT,|ZigBee2MQTT || Connected|
+2019-06-24 18:49:15,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-06-24 18:49:15,EVENT,|Speechcontrol || started|
+2019-06-24 18:49:25,EVENT,|Speechcontrol || Detection Task || starte warum weiss im wohnzimmer|
+2019-06-24 18:49:25,ERROR,|Speechcontrol || LED Task || starte warum weiss im wohnzimmer || Scene not founded|
+2019-06-24 18:49:49,EVENT,|Speechcontrol || Detection Task || starte war alles in|
+2019-06-24 18:49:49,ERROR,|Speechcontrol || LED Task || starte war alles in || Group not founded|
+2019-06-24 18:50:03,EVENT,|Speechcontrol || Detection Task || starte war weiss im wohnzimmer|
+2019-06-24 18:50:03,ERROR,|Speechcontrol || LED Task || starte war weiss im wohnzimmer || Scene not founded|
+2019-06-24 18:50:18,EVENT,|Speechcontrol || Detection Task || starte war übrigens im wohnzimmer|
+2019-06-24 18:50:18,ERROR,|Speechcontrol || LED Task || starte war übrigens im wohnzimmer || Scene not founded|
+2019-06-24 18:50:37,EVENT,|Speechcontrol || Detection Task || starte mediterran im bus nummer|
+2019-06-24 18:50:37,ERROR,|Speechcontrol || LED Task || starte mediterran im bus nummer || Scene not founded|

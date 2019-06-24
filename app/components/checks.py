@@ -15,7 +15,7 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
 
       if device.dashboard_check_option != "None":
 
-         if device.dashboard_check_command == "None" or device.dashboard_check_command == None:
+         if device.dashboard_check_setting_value == "None" or device.dashboard_check_setting_value == None:
             list_settings_errors.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
          if device.dashboard_check_option == "IP-Address":
@@ -484,7 +484,7 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
       return list_errors   
 
 
-def CHECK_SPEECH_CONTROL_LED_TASKS(tasks):
+def CHECK_SPEECHCONTROL_LED_TASKS(tasks):
    list_errors = []
 
 
@@ -524,12 +524,12 @@ def CHECK_SPEECH_CONTROL_LED_TASKS(tasks):
       return list_errors
 
 
-def CHECK_SPEECH_CONTROL_DEVICE_TASKS(tasks):
+def CHECK_SPEECHCONTROL_DEVICE_TASKS(tasks):
    list_errors = []
 
    # search for missing commands 
    for task in tasks:
-      if task.command == None or task.command == "None":
+      if task.setting_value == None or task.setting_value == "None":
          list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
          
          
@@ -910,21 +910,31 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
             task = task.split(":") 
 
             try:
-               device         = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
-               device_command = task[2].upper()
+               device        = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+               setting_value = task[2].upper()
+            
+               # check command
+               command_valid = False
                
-               if device_command in GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands:
-                  return list_task_errors
+               commands = GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands.split(",")
                   
-               else:
+               for command in commands:
+                  
+                  if command.split("=")[1] == setting_value:
+                     command_valid = True
+                     continue
+                     
+               if command_valid == False:
+                  
                   if task_type == "controller":
                      list_task_errors.append(name + " >>> " + command + " >>> Befehl " + task[2] + " ungültig")
                   else:
-                     list_task_errors.append(name + " >>> " + task[2] + " ungültig")
-                     
-                  return list_task_errors                  
-                        
+                     list_task_errors.append(name + " >>> Befehl " + task[2] + " ungültig")
+                             
+               return list_task_errors                  
+              
             except:
+               
                if task_type == "controller":
                   list_task_errors.append(name + " >>> " + command + " >>> Gerät " + task[1] + " nicht gefunden")
                else:

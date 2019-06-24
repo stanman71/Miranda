@@ -20,31 +20,31 @@ def START_PUMP(plant_id):
     ieeeAddr = plant.mqtt_device.ieeeAddr 
     
     channel  = "SmartHome/mqtt/" + ieeeAddr + "/set"
-    msg      = '{"state": "PUMP_ON", "pumptime":' + str(plant.pumptime) + '}'
+    msg      = '{"pump_state": "PUMP_ON", "pump_time":' + str(plant.pumptime) + '}'
     
     heapq.heappush(process_management_queue, (50, ("watering", channel, msg)))
     
     time.sleep(3)
     
     # check pump started first try
-    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
-        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+    if MQTT_CHECK_SETTING(ieeeAddr, "pump_state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(ieeeAddr, "PUMP_ON")
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return
 
     time.sleep(1)
 
     # check pump started second try 
-    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
-        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+    if MQTT_CHECK_SETTING(ieeeAddr, "pump_state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(ieeeAddr, "PUMP_ON")
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return
      
     time.sleep(1)
 
     # check pump started third try 
-    if MQTT_CHECK_SETTING(ieeeAddr, "state", "PUMP_ON", 10):
-        SET_MQTT_DEVICE_PREVIOUS_COMMAND(ieeeAddr, "PUMP_ON")
+    if MQTT_CHECK_SETTING(ieeeAddr, "pump_state", "PUMP_ON", 10):
+        SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(ieeeAddr, "PUMP_ON")
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return     
         
@@ -126,7 +126,7 @@ def WATERING_THREAD():
             if i > plant.pumptime:
                 
                 # check pump stopped ?
-                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "state", "PUMP_OFF", 60):  
+                if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , "pump_state", "PUMP_OFF", 60):  
                     WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump stopped")                              
                     pump_running = pump_running - 1 
                     
@@ -135,7 +135,7 @@ def WATERING_THREAD():
                     warnings = True
                     pump_running = pump_running - 1 
                     
-                SET_MQTT_DEVICE_PREVIOUS_COMMAND(plant.mqtt_device.ieeeAddr, "PUMP_OFF")
+                SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(plant.mqtt_device.ieeeAddr, "PUMP_OFF")
         
         i = i + 10
         

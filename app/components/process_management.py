@@ -8,7 +8,7 @@ from app.components.control_controller import CONTROLLER_PROCESS
 from app.components.mqtt import *
 from app.components.control_led import *
 from app.components.shared_resources import process_management_queue
-from app.speechcontrol.speech_control_tasks import SPEECH_RECOGNITION_PROVIDER_TASKS
+from app.speechcontrol.speechcontrol_tasks import SPEECH_RECOGNITION_PROVIDER_TASKS
 
 
 """ ################ """
@@ -63,7 +63,7 @@ def PROCESS_MANAGEMENT_THREAD():
 					SCHEDULER_SENSOR_PROCESS(task, ieeeAddr)    	         
 
 
-			if process[0] == "speech_control":
+			if process[0] == "speechcontrol":
 				speech_recognition_answer = process[1]
 				SPEECH_RECOGNITION_PROVIDER_TASKS(speech_recognition_answer)  					
 				

@@ -86,13 +86,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
         msg["description"] = "MQTT Watering_Array";
     
         JsonArray data_inputs = msg.createNestedArray("inputs");
-        data_inputs.add("state");
+        data_inputs.add("pump_state");
         data_inputs.add("sensor_moisture");
         data_inputs.add("sensor_watertank");
 
         JsonArray data_commands = msg.createNestedArray("commands");
-        data_commands.add("PUMP_ON");
-        data_commands.add("PUMP_OFF");
+        data_commands.add("pump_state=PUMP_ON");
+        data_commands.add("pump_state=PUMP_OFF");
 
         // convert msg to char
         char msg_Char[512];
@@ -120,11 +120,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
         // get pump state
         if (digitalRead(PIN_PUMP) == 1) { 
           
-            msg["state"] = "PUMP_ON";
+            msg["pump_state"] = "PUMP_ON";
             
         } else { 
           
-            msg["state"] = "PUMP_OFF";
+            msg["pump_state"] = "PUMP_OFF";
         }
 
         // get sensor data
@@ -168,10 +168,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
         DynamicJsonDocument msg_json(64);
         deserializeJson(msg_json, msg);
         
-        String pump_setting = msg_json["state"];
-        int pumptime        = msg_json["pumptime"];
+        String pump_setting = msg_json["pump_state"];
+        int pumptime        = msg_json["pump_time"];
         pumptime            = pumptime * 1000; 
-        
         
         if (pump_setting == "PUMP_ON") {
 
@@ -182,7 +181,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
             DynamicJsonDocument msg(128);     
 
             // get pump state
-            msg["state"] = "PUMP_ON";
+            msg["pump_state"] = "PUMP_ON";
 
             // get sensor data
             int sensor_moisture  = analogRead(PIN_ANALOG);
@@ -206,7 +205,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
                 digitalWrite(PIN_PUMP, LOW);    
                                  
                 // get pump state 
-                msg["state"] = "PUMP_OFF";
+                msg["pump_state"] = "PUMP_OFF";
 
                 // convert msg to char
                 serializeJson(msg, msg_Char);
@@ -225,7 +224,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
             DynamicJsonDocument msg(128);   
 
             // get pump state
-            msg["state"] = "PUMP_OFF";
+            msg["pump_state"] = "PUMP_OFF";
 
             // get sensor data
             int sensor_moisture  = analogRead(PIN_ANALOG);
@@ -265,11 +264,11 @@ void reconnect() {
             // get pump state
             if (digitalRead(PIN_PUMP) == 1) { 
               
-                msg["state"] = "PUMP_ON";
+                msg["pump_state"] = "PUMP_ON";
                 
             } else { 
               
-                msg["state"] = "PUMP_OFF";
+                msg["pump_state"] = "PUMP_OFF";
             }
 
             // get sensor data

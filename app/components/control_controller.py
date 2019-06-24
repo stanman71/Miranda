@@ -427,44 +427,55 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 	# device
 	# ######
 	
-	
 	if "device" in task:
 		task = task.split(":")
 	
-		device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+		device = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
 		
 		# device founded ?
 		if device != None:
 		
-			command = task[2].upper()
-			
+			setting_value = task[2].upper()
+			setting_value = setting_value.replace(" ", "")		
+
 			# new device setting ?
-			if command != device.previous_command:
+			if setting_value != device.previous_setting_value:
+
+				commands = device.commands.split(",")
+
+				# setting key
+				for command in commands:
+
+					if command.split("=")[1] == setting_value:
+						setting_key = command.split("=")[0]
+						setting_key = setting_key.replace(" ", "")
+						continue    
+                           
 				
 				if device.gateway == "mqtt":
 
 					channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
-					msg     = '{"state": "' + command + '"}'
+					msg     = '{"' + setting_key + '":"' + setting_value + '"}'
 
 					MQTT_PUBLISH(channel, msg) 
-					MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", command, 5, 20)
+					MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, setting_key, setting_value, 5, 20)
 
 
 				if device.gateway == "zigbee2mqtt":
 
 					channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
-					msg     = '{"state": "' + command + '"}'
+					msg     = '{"' + setting_key + '":"' + setting_value + '"}'
 
 					MQTT_PUBLISH(channel, msg) 
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", command, 5, 20)
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, setting_key, setting_value, 5, 20)
 
 			else:
 
 				if device.gateway == "mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(command)) 
+					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + setting_value) 
 
 				if device.gateway == "zigbee2mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(command))  
+					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + setting_value)  
 										
 		else:
 			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")

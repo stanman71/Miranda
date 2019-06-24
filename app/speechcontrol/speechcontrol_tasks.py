@@ -1,4 +1,3 @@
-
 import heapq
 
 from app import app
@@ -9,6 +8,7 @@ from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.shared_resources import process_management_queue
 from app.components.mqtt import *
 
+from difflib import SequenceMatcher
 
 """ #################### """
 """ speech control tasks """
@@ -20,10 +20,10 @@ def SPEECH_RECOGNITION_PROVIDER_TASKS(answer):
     
     # exception
     if ("could not understand audio" in answer) or ("Could not request results" in answer):
-        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | " + answer)
+        WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | " + answer)
         
     else:
-        WRITE_LOGFILE_SYSTEM("EVENT", 'Speech Control | Detection Task | ' + answer)
+        WRITE_LOGFILE_SYSTEM("EVENT", 'Speechcontrol | Detection Task | ' + answer)
         
         START_LED_TASK(answer)
         START_DEVICE_TASK(answer)
@@ -52,7 +52,7 @@ def START_LED_TASK(answer):
     # start scene 
     # ###########
     
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(1).keywords
+    keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(1).keywords
         
     try:
         list_keywords = keywords.split(",")
@@ -74,18 +74,26 @@ def START_LED_TASK(answer):
                 scene_name = None
                 brightness = 100
 
+                answer_words = answer.split()
+
                 # search group
                 for group in groups:
-                    if group.name.lower() in answer:
-                        group_id = group.id
-                        continue
+                    for word in answer_words:
+                        
+                        # min 75% fitting
+                        if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > 0.75:
+                            group_id = group.id
+                            continue
 
                 # search scene
                 for scene in scenes:
-                    if scene.name.lower() in answer:
-                        scene_name = scene.name  
-                        continue
+                    for word in answer_words:
                         
+                        # min 75% fitting
+                        if SequenceMatcher(None, scene.name.lower(), word.lower()).ratio() > 0.75:
+                            group_id = group.id
+                            continue
+                                
                 # search brightness value
                 for element in answer.split():
                     element = element.replace("%","")
@@ -124,17 +132,17 @@ def START_LED_TASK(answer):
                         break
                 
                     else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Scene not founded")
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Scene not founded")
                         break
                                         
                 else:
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
                     break
                                        
             
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))  
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))  
                 break
      
                 
@@ -142,7 +150,7 @@ def START_LED_TASK(answer):
     # set brightness
     # ##############
     
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(2).keywords
+    keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(2).keywords
     
     try:
         list_keywords = keywords.split(",")
@@ -207,13 +215,13 @@ def START_LED_TASK(answer):
                             break
                             
                     else:
-                        WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
                         break
                                                   
 
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
                 break
     
     
@@ -221,7 +229,7 @@ def START_LED_TASK(answer):
     # turn off led group
     # ##################
     
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(3).keywords
+    keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(3).keywords
     
     try:
         list_keywords = keywords.split(",")
@@ -266,13 +274,13 @@ def START_LED_TASK(answer):
                     break                       
                         
                 else:
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | Group not founded")
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
                     break                        
                    
                         
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
                 break
                     
 
@@ -280,7 +288,7 @@ def START_LED_TASK(answer):
     # turn off all leds
     # #################
     
-    keywords = GET_SPEECH_CONTROL_LED_TASK_BY_ID(4).keywords
+    keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(4).keywords
     
     try:
         list_keywords = keywords.split(",")
@@ -316,7 +324,7 @@ def START_LED_TASK(answer):
 
             except Exception as e:
                 print(e)
-                WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | LED Task | " + answer + " | " + str(e))    
+                WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
                 break
             
                     
@@ -326,7 +334,7 @@ def START_LED_TASK(answer):
                     
 def START_DEVICE_TASK(answer):
     
-    for task in GET_ALL_SPEECH_CONTROL_DEVICE_TASKS():
+    for task in GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
         
         try:
             list_keywords = task.keywords.split(",")
@@ -342,48 +350,62 @@ def START_DEVICE_TASK(answer):
                 try:
                     device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
                     
-                        # device founded ?
-                        if device != None:
-                        
-                            # new device setting ?
-                            if task.command != device.previous_command:
+                    # device founded ?
+                    if device != None:
 
-                                if device.gateway == "mqtt":
+                        setting_value = task.command.upper()
+                        setting_value = setting_value.replace(" ", "")		
 
-                                    channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
-                                    msg     = '{"state": "' + task.command + '"}'
+                        # new device setting ?
+                        if setting_value != device.previous_setting_value:
 
-                                    MQTT_PUBLISH(channel, msg) 
-                                    MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, "state", task.command, 5, 20)
+                            commands = device.commands.split(",")
+
+                            # setting key
+                            for command in commands:
+
+                                if command.split("=")[1] == setting_value:
+                                    setting_key = command.split("=")[0]
+                                    setting_key = setting_key.replace(" ", "")
+                                    continue   
 
 
-                                if device.gateway == "zigbee2mqtt":
+                            if device.gateway == "mqtt":
 
-                                    channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
-                                    msg     = '{"state": "' + task.command + '"}'
+                                channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
+                                msg     = '{"' + setting_key + '":"' + setting_value + '"}'
 
-                                    MQTT_PUBLISH(channel, msg) 
-                                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, "state", task.command, 5, 20)
+                                MQTT_PUBLISH(channel, msg) 
+                                MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, setting_key, setting_value, 5, 20)
 
-                            else:
 
-                                if device.gateway == "mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + task.command) 
+                            if device.gateway == "zigbee2mqtt":
 
-                                if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + task.command)  
-                                    
-                                        
-                            time.sleep(1)
-                            break
-                            
+                                channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
+                                msg     = '{"' + setting_key + '":"' + setting_value + '"}'
+
+                                MQTT_PUBLISH(channel, msg) 
+                                ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, setting_key, setting_value, 5, 20)
+
                         else:
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Device Task | " + answer + " | Device not founded")
-                            break                             
+
+                            if device.gateway == "mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + setting_value) 
+
+                            if device.gateway == "zigbee2mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + setting_value)  
+                                
+                                    
+                        time.sleep(1)
+                        break
+                        
+                    else:
+                        WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")
+                        break                             
                         
                     
                 except Exception as e:
                     print(e)
-                    WRITE_LOGFILE_SYSTEM("ERROR", "Speech Control | Device Task | " + answer + " | " + str(e))      
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | " + str(e))      
                     break                    
                     
