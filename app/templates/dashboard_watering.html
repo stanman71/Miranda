@@ -30,17 +30,17 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>        
-        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li> 
+        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li>                
+        <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
         <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
-        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li> 
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
         <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
         {% if role == "superuser" %}
-          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System </a></li>
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -89,7 +89,7 @@
 <section id="table"></section> 
 
             <div class="col-sm-1">                                      
-              <input type="submit" onclick="window.location.href='/dashboard/plants#'" class="btn btn-default" name="add_plant" value="Pflanze erstellen" />
+              <input type="submit" onclick="window.location.href='/dashboard/watering#'" class="btn btn-default" name="add_plant" value="Pflanze erstellen" />
             </div>
           </div>
         </form>       
@@ -134,8 +134,8 @@
                   {% for entry in plants_list %}
                   <tr>
                     <td style="width:3%">
-                      <a href="/dashboard/plants/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
-                      <a href="/dashboard/plants/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                      <a href="/dashboard/watering/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/dashboard/watering/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                   
                     <td>
                       <form method="POST" class="verticalform">
@@ -216,13 +216,13 @@
                         
                       </div>
                     </td>                
-                    <td><a href="/dashboard/plants/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
+                    <td><a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-              <input type="submit" onclick="window.location.href='/dashboard/plants#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              <input type="submit" onclick="window.location.href='/dashboard/watering#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
             </form>  
           </div>  
         </div>  

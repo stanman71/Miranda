@@ -105,12 +105,6 @@ class LED_Groups(db.Model):
     current_brightness    = db.Column(db.Integer)
     error_change_settings = db.Column(db.String(500), server_default=(""))
 
-class LED_Programs(db.Model):
-    __tablename__ = 'led_programs'
-    id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name    = db.Column(db.String(50), unique = True)
-    content = db.Column(db.Text)
-
 class LED_Scenes(db.Model):
     __tablename__ = 'led_scenes'
     id                    = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -205,6 +199,12 @@ class Plants(db.Model):
     control_sensor_moisture  = db.Column(db.String(50))         
     moisture                 = db.Column(db.String(50)) 
     
+class Programs(db.Model):
+    __tablename__ = 'programs'
+    id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name    = db.Column(db.String(50), unique = True)
+    content = db.Column(db.Text)    
+    
 class Scheduler_Tasks(db.Model):
     __tablename__ = 'scheduler_tasks'
     id                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -297,6 +297,22 @@ class Speechcontrol_Device_Tasks(db.Model):
     mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr')) 
     mqtt_device          = db.relationship('MQTT_Devices') 
     mqtt_device_command  = db.Column(db.String(50))    
+
+class Speechcontrol_Program_Tasks(db.Model):
+    __tablename__ = 'speechcontrol_program_tasks'
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    task                 = db.Column(db.String(50))
+    command              = db.Column(db.String(50))    
+    keywords             = db.Column(db.String(50))
+    program_id           = db.Column(db.String(50), db.ForeignKey('programs.id')) 
+    program              = db.relationship('Programs') 
+
+class Speechcontrol_Spotify_Tasks(db.Model):
+    __tablename__ = 'speechcontrol_spotify_tasks'
+    id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    task                 = db.Column(db.String(50))
+    setting_value        = db.Column(db.String(50))    
+    keywords             = db.Column(db.String(50))
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -1811,32 +1827,32 @@ def DELETE_PLANT(plant_id):
 """ ################### """
 
 
-def GET_ALL_LED_PROGRAMS():
-    return LED_Programs.query.all()   
+def GET_ALL_PROGRAMS():
+    return Programs.query.all()   
 
 
-def GET_LED_PROGRAM_BY_NAME(name):
-    for program in LED_Programs.query.all():
+def GET_PROGRAM_BY_NAME(name):
+    for program in Programs.query.all():
         
         if program.name.lower() == name.lower():
             return program    
     
 
-def GET_LED_PROGRAM_BY_ID(id):
-    return LED_Programs.query.filter_by(id=id).first()
+def GET_PROGRAM_BY_ID(id):
+    return Programs.query.filter_by(id=id).first()
 
 
-def ADD_LED_PROGRAM(name):
+def ADD_PROGRAM(name):
     # name exist ?
-    if not GET_LED_PROGRAM_BY_NAME(name):
+    if not GET_PROGRAM_BY_NAME(name):
         
         # find a unused id
         for i in range(1,21):
-            if LED_Programs.query.filter_by(id=i).first():
+            if Programs.query.filter_by(id=i).first():
                 pass
             else:
                 # add the new program
-                program = LED_Programs(
+                program = Programs(
                         id = i,
                         name = name,
                         content = "",
@@ -1844,7 +1860,7 @@ def ADD_LED_PROGRAM(name):
                 db.session.add(program)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | added")  
+                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Program - " + name + " | added")  
 
                 return ""
 
@@ -1854,32 +1870,32 @@ def ADD_LED_PROGRAM(name):
         return "Name bereits vergeben"
 
 
-def SET_LED_PROGRAM_NAME(id, name):
-    check_entry = LED_Programs.query.filter_by(name=name).first()
+def SET_PROGRAM_NAME(id, name):
+    check_entry = Programs.query.filter_by(name=name).first()
+    
     if check_entry is None:
-        entry = LED_Programs.query.filter_by(id=id).first()
+        entry = Programs.query.filter_by(id=id).first()
         entry.name = name
         db.session.commit()    
 
 
-def SAVE_LED_PROGRAM(id, content):
-    entry = LED_Programs.query.filter_by(id=id).first()
+def SAVE_PROGRAM(id, content):
+    entry = Programs.query.filter_by(id=id).first()
     entry.content = content
     
     db.session.commit()
 
 
-def DELETE_LED_PROGRAM(id):
-    name = LED_Programs.query.filter_by(id=id).first().name
+def DELETE_PROGRAM(id):
+    name = Programs.query.filter_by(id=id).first().name
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Program - " + name + " | deleted")  
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Program - " + name + " | deleted")  
     except:
         pass 
 
-    LED_Programs.query.filter_by(id=id).delete()
+    Programs.query.filter_by(id=id).delete()
     db.session.commit() 
-
 
 
 """ ################## """
@@ -2490,9 +2506,9 @@ def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition
 """ ############################# """
 
 
-    ######
-    # LED
-    ######
+# ###
+# LED
+# ###
 
 def GET_SPEECHCONTROL_LED_TASK_BY_ID(id):
     return Speechcontrol_LED_Tasks.query.filter_by(id=id).first()
@@ -2521,9 +2537,9 @@ def UPDATE_SPEECHCONTROL_LED_TASK(id, keywords):
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | LED Task - " + entry.task + " | changed || Keywords - " + entry.keywords) 
 
 
-    # #######
-    # Devices
-    # #######
+# #######
+# Devices
+# #######
 
 def GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(id):
     return Speechcontrol_Device_Tasks.query.filter_by(id=id).first()
@@ -2572,7 +2588,7 @@ def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting_value, keywords):
         entry.keywords      = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Task - " + entry.task + 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + entry.task + 
                              " | changed || Setting Value - " + entry.setting_value +
                              " | Keywords - " + str(entry.keywords))
   
@@ -2631,6 +2647,232 @@ def DELETE_SPEECHCONTROL_DEVICE_TASK(task_id):
         pass
     
     Speechcontrol_Device_Tasks.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
+# ########
+# Programs
+# ########
+
+def GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(id):
+    return Speechcontrol_Program_Tasks.query.filter_by(id=id).first()
+    
+    
+def GET_SPEECHCONTROL_PROGRAM_TASK_BY_TASK(task):
+    for entry in Speechcontrol_Program_Tasks.query.all():
+        
+        if entry.task.lower() == task.lower():
+            return task       
+ 
+    
+def GET_ALL_SPEECHCONTROL_PROGRAM_TASKS():
+    return Speechcontrol_Program_Tasks.query.all()
+    
+
+def ADD_SPEECHCONTROL_PROGRAM_TASK(task, program_id):
+    # find a unused id
+    for i in range(1,26):
+        if Speechcontrol_Program_Tasks.query.filter_by(id=i).first():
+            pass
+        else:
+            # add the new task
+            speechcontrol_program_task = Speechcontrol_Program_Tasks(
+                                    id = i,
+                                  task = task,
+                            program_id = program_id,         
+                )
+                
+            db.session.add(speechcontrol_program_task)
+            db.session.commit()
+
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + task + " | added")                    
+            return ""
+
+    return "Task-Limit erreicht (25)"
+
+
+def UPDATE_SPEECHCONTROL_PROGRAM_TASK(id, command, keywords):
+    entry = Speechcontrol_Program_Tasks.query.filter_by(id=id).first()
+
+    # values changed ?
+    if (entry.command != command or entry.keywords != keywords):
+        
+        entry.command  = command       
+        entry.keywords = keywords        
+        db.session.commit()
+            
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + entry.task + 
+                             " | changed || Setting Value - " + entry.command +
+                             " | Keywords - " + str(entry.keywords))
+  
+       
+def CHANGE_SPEECHCONTROL_PROGRAM_TASK_POSITION(id, direction):
+    
+    if direction == "up":
+        task_list = GET_ALL_SPEECHCONTROL_PROGRAM_TASKS()
+        task_list = task_list[::-1]
+        
+        for task in task_list:
+            
+            if task.id < id:
+                
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for task in GET_ALL_SPEECHCONTROL_PROGRAM_TASKS():
+            if task.id > id:
+                
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return        
+                              
+    
+def DELETE_SPEECHCONTROL_PROGRAM_TASK(task_id):
+    entry = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(task_id)
+
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + entry.task + " | deleted")    
+    except:
+        pass
+    
+    Speechcontrol_Program_Tasks.query.filter_by(id=task_id).delete()
+    db.session.commit()
+
+
+# #######
+# Spotify
+# #######
+
+def GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(id):
+    return Speechcontrol_Spotify_Tasks.query.filter_by(id=id).first()
+    
+    
+def GET_SPEECHCONTROL_SPOTIFY_TASK_BY_TASK(task):
+    for entry in Speechcontrol_Spotify_Tasks.query.all():
+        
+        if entry.task.lower() == task.lower():
+            return task       
+ 
+    
+def GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS():
+    return Speechcontrol_Spotify_Tasks.query.all()
+    
+
+def ADD_SPEECHCONTROL_SPOTIFY_TASK(task, spotify_command):
+    # find a unused id
+    for i in range(1,26):
+        if Speechcontrol_Spotify_Tasks.query.filter_by(id=i).first():
+            pass
+        else:
+            # add the new task
+            speechcontrol_spotify_task = Speechcontrol_Spotify_Tasks(
+                                    id = i,
+                                  task = task,
+                       spotify_command = spotify_command,         
+                )
+                
+            db.session.add(speechcontrol_spotify_task)
+            db.session.commit()
+
+            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + task + " | added")                    
+            return ""
+
+    return "Task-Limit erreicht (25)"
+
+
+def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, setting_value, keywords):
+    entry = Speechcontrol_Spotify_Tasks.query.filter_by(id=id).first()
+
+    # values changed ?
+    if (entry.setting_value != setting_value or entry.keywords != keywords):
+        
+        entry.setting_value = setting_value       
+        entry.keywords      = keywords        
+        db.session.commit()
+            
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + entry.task + 
+                             " | changed || Setting Value - " + entry.setting_value +
+                             " | Keywords - " + str(entry.keywords))
+  
+       
+def CHANGE_SPEECHCONTROL_SPOTIFY_TASK_POSITION(id, direction):
+    
+    if direction == "up":
+        task_list = GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS()
+        task_list = task_list[::-1]
+        
+        for task in task_list:
+            
+            if task.id < id:
+                
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for task in GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS():
+            if task.id > id:
+                
+                new_id = task.id
+                
+                # change ids
+                task_1 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(id)
+                task_2 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(new_id)
+                
+                task_1.id = 99
+                db.session.commit()
+                
+                task_2.id = id
+                task_1.id = new_id
+                db.session.commit()
+                
+                return        
+                              
+    
+def DELETE_SPEECHCONTROL_SPOTIFY_TASK(task_id):
+    entry = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(task_id)
+
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + entry.task + " | deleted")    
+    except:
+        pass
+    
+    Speechcontrol_Spotify_Tasks.query.filter_by(id=task_id).delete()
     db.session.commit()
 
 

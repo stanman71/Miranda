@@ -10,8 +10,9 @@ from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSIO
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
 from app.components.shared_resources import process_management_queue
-from app.components.control_led import LED_ERROR_CHECKING_PROCESS
+from app.components.control_led import LED_GROUP_CHECK_SETTING_PROCESS
 from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
+from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
 from app.sites.spotify import authorization_header
 from app.components.control_spotify import *
 
@@ -34,6 +35,7 @@ def dashboard():
     error_message_led = []
     error_message_device = ""
     error_message_log = ""
+    error_message_start_program = ""
     checkbox = ""
         
     # check sensor name changed ?
@@ -70,7 +72,7 @@ def dashboard():
 
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_scene", i, scene_id, int(brightness))))
                              
-                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
+                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
                             continue     
                          
                         else:
@@ -91,7 +93,7 @@ def dashboard():
                                 heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
                     
                                 scene             = GET_LED_SCENE_BY_NAME(scene_name)
-                                error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
+                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
                                 continue   
                                 
                             else:
@@ -113,7 +115,7 @@ def dashboard():
                             scene = GET_LED_SCENE_BY_NAME(scene_name)
                             
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
-                            error_message_led = LED_ERROR_CHECKING_PROCESS(i, scene.id, "OFF", 0, 2, 10)                                  
+                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, "OFF", 0, 2, 10)                                  
                             continue  
                             
                         else:
@@ -248,125 +250,154 @@ def dashboard():
                 #  setting_value
                 # ###############
                       
+                try:  
+                      
+                    dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))    
                     
-                dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))    
-                
-                if dashboard_setting != "None" and dashboard_setting != None:
+                    if dashboard_setting != "None" and dashboard_setting != None:
 
-                    dashboard_setting_key   = dashboard_setting.split("=")[0]
-                    dashboard_setting_key   = dashboard_setting_key.replace(" ","")                                         
-                    dashboard_setting_value = dashboard_setting.split("=")[1]
-                    dashboard_setting_value = dashboard_setting_value.replace(" ","")
-                
-                
-                    # new device setting ?
-                    if dashboard_setting_value != device.previous_setting_value:
-                        
-                        change_state = True
-                        
-                        # ################
-                        # check ip_address 
-                        # ################
-                        
-                        if device.dashboard_check_option == "IP-Address" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
+                        dashboard_setting_key   = dashboard_setting.split("=")[0]
+                        dashboard_setting_key   = dashboard_setting_key.replace(" ","")                                         
+                        dashboard_setting_value = dashboard_setting.split("=")[1]
+                        dashboard_setting_value = dashboard_setting_value.replace(" ","")
+                    
+                    
+                        # new device setting ?
+                        if dashboard_setting_value != device.previous_setting_value:
+                            
+                            change_state = True
+                            
+                            
+                            # ################
+                            # check ip_address 
+                            # ################
+                            
+                            if device.dashboard_check_option == "IP-Address" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
 
-                            if ping(dashboard_check_value_1, timeout=1) != None:    
-                                error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
-                                change_state = False
-                            
-
-                        # ############
-                        # check sensor
-                        # ############
-                        
-                        if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
-                            
-                            sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
-                            sensor_key      = device.dashboard_check_value_1
-                            
-                            operator = device.dashboard_check_value_2
-                            value    = device.dashboard_check_value_3
-                            
-                            # get sensordata 
-                            data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
-                            sensor_value = data[sensor_key]
-                            
-                            
-                            # compare conditions
-                            if operator == "=" and not value.isdigit():
-                                if str(sensor_value) == str(value):
+                                if ping(dashboard_check_value_1, timeout=1) != None:    
+                                    error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
                                     change_state = False
-                                else:
-                                    change_state = True
                                 
-                            if operator == "=" and value.isdigit():
-                                if int(sensor_value) == int(value):
-                                    change_state = False    
-                                else:
-                                    change_state = True
-                                    
-                            if operator == "<" and value.isdigit():
-                                if int(sensor_value) < int(value):
-                                    change_state = False
-                                else:
-                                    change_state = True
-                                    
-                            if operator == ">" and value.isdigit():
-                                if int(sensor_value) > int(value):
-                                    change_state = False 
-                                else:
-                                    change_state = True
-                                         
-                            error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
-                            
-                            
-                        # state changing
-                        if change_state == True: 
 
-                            # ####
-                            # mqtt
-                            # ####
+                            # ############
+                            # check sensor
+                            # ############
                             
-                            if device.gateway == "mqtt":
+                            if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_setting_value == device.dashboard_check_setting_value.replace(" ",""):
                                 
-                                channel  = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
-                                msg      = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
+                                sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
+                                sensor_key      = device.dashboard_check_value_1
                                 
-                                heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
-                                                
-                                error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting_key, dashboard_setting_value, 1, 5)                                     
-
-                              
-                            # ###########
-                            # zigbee2mqtt
-                            # ###########    
+                                operator = device.dashboard_check_value_2
+                                value    = device.dashboard_check_value_3
                                 
-                            if device.gateway == "zigbee2mqtt":
+                                # get sensordata 
+                                data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
+                                sensor_value = data[sensor_key]
                                 
-                                channel = "SmartHome/" + device.gateway + "/" + device.name + "/set"
-                                msg     = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
                                 
-                                heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
-                                
-                                error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting_key, dashboard_setting_value, 1, 5)      
+                                # compare conditions
+                                if operator == "=" and not value.isdigit():
+                                    if str(sensor_value) == str(value):
+                                        change_state = False
+                                    else:
+                                        change_state = True
+                                    
+                                if operator == "=" and value.isdigit():
+                                    if int(sensor_value) == int(value):
+                                        change_state = False    
+                                    else:
+                                        change_state = True
                                         
-                            continue  
-                          
+                                if operator == "<" and value.isdigit():
+                                    if int(sensor_value) < int(value):
+                                        change_state = False
+                                    else:
+                                        change_state = True
+                                        
+                                if operator == ">" and value.isdigit():
+                                    if int(sensor_value) > int(value):
+                                        change_state = False 
+                                    else:
+                                        change_state = True
+                                             
+                                error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
+                                
+                                
+                            # ##############    
+                            # state changing
+                            # ##############
                             
-                        else:
-                            
-                            if device.gateway == "mqtt":
-                                WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_setting_value)) 
+                            if change_state == True: 
 
-                            if device.gateway == "zigbee2mqtt":
-                                WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_setting_value))                                 
-               
+                                # ####
+                                # mqtt
+                                # ####
+                                
+                                if device.gateway == "mqtt":
+                                    
+                                    channel  = "SmartHome/" + device.gateway + "/" + device.ieeeAddr + "/set"
+                                    msg      = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
+                                    
+                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))    
+                                                    
+                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting_key, dashboard_setting_value, 1, 5)                                     
 
-                """
+                                  
+                                # ###########
+                                # zigbee2mqtt
+                                # ###########    
+                                    
+                                if device.gateway == "zigbee2mqtt":
+                                    
+                                    channel = "SmartHome/" + device.gateway + "/" + device.name + "/set"
+                                    msg     = '{"' + dashboard_setting_key + '":"' + dashboard_setting_value + '"}'
+                                    
+                                    heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))                                          
+                                    
+                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting_key, dashboard_setting_value, 1, 5)      
+                                            
+                                continue  
+                              
+                                
+                            else:
+                                
+                                if device.gateway == "mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_setting_value)) 
+
+                                if device.gateway == "zigbee2mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_setting_value))                                 
+                   
+
+
                 except Exception as e:
                     if "NoneType" not in str(e):
                         print(e)
-                """             
+           
+           
+    """ ############### """
+    """ program control """
+    """ ############### """              
+           
+    program_running = GET_PROGRAM_RUNNING() 
+           
+    # start program
+    if request.form.get("start_program") != None:
+        program_id = request.form.get("get_program_id")
+        
+        if program_id != "None" and program_running == None:
+            START_PROGRAM_THREAD(program_id)  
+            
+        elif program_id != "None" and program_running != None:
+            error_message_start_program = "Anderes Programm läuft bereits >>> " + program_running 
+            
+        else:
+            error_message_start_program = "Kein Programm ausgewählt"
+
+    # stop program    
+    if request.form.get("stop_program") != None:
+        STOP_PROGRAM_THREAD()          
+         
 
     """ ############### """
     """ spotify control """
@@ -465,6 +496,9 @@ def dashboard():
     
     error_message_device_checks = CHECK_DASHBOARD_CHECK_SETTINGS(GET_ALL_MQTT_DEVICES("device"))
 
+    program_running        = GET_PROGRAM_RUNNING()   
+    dropdown_list_programs = GET_ALL_PROGRAMS() 
+               
 
     if GET_LOGFILE_SYSTEM(10) is not None:
         data_log_system = GET_LOGFILE_SYSTEM(10)
@@ -612,11 +646,14 @@ def dashboard():
                             checkbox=checkbox,
                             data_log_system=data_log_system, 
                             data_sensor=data_sensor,
+                            program_running=program_running,      
+                            dropdown_list_programs=dropdown_list_programs,
                             version=version,  
                             error_message_led=error_message_led,
                             error_message_log=error_message_log,  
                             error_message_device=error_message_device,   
                             error_message_device_checks=error_message_device_checks,
+                            error_message_start_program=error_message_start_program,
                             mqtt_device_1_inputs=mqtt_device_1_inputs,
                             mqtt_device_2_inputs=mqtt_device_2_inputs,
                             mqtt_device_3_inputs=mqtt_device_3_inputs,

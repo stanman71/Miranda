@@ -13,7 +13,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user_login, dashboard, camera, led, scheduler, programs, plants, sensordata, spotify, settings
+from app.sites import index, user_login, dashboard, camera, led, scheduler, programs, sensordata, spotify, settings, watering
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM

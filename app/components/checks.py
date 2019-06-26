@@ -18,6 +18,7 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
          if device.dashboard_check_setting_value == "None" or device.dashboard_check_setting_value == None:
             list_settings_errors.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
+         # check setting ip_address
          if device.dashboard_check_option == "IP-Address":
 
             # search for wrong chars
@@ -26,6 +27,7 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
                   list_settings_errors.append(device.name + " >>> Ungültige IP-Adresse")
                   break
                
+         # check setting sensor
          if device.dashboard_check_option != "IP-Address": 
             
             if device.dashboard_check_value_1 == "None" or device.dashboard_check_value_1 == None:
@@ -52,6 +54,7 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
 def CHECK_LED_GROUP_SETTINGS(settings):
    list_errors = []
 
+   # check setting open led_slots in groups
    for element in settings:
       if element.led_ieeeAddr_1 == None or element.led_ieeeAddr_1 == "None":
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 1")        
@@ -79,30 +82,182 @@ def CHECK_LED_GROUP_SETTINGS(settings):
 
 
 """ ############## """
-"""  check plants  """
+"""  check program """
 """ ############## """
 
-def CHECK_PLANTS_SETTINGS():
+def CHECK_PROGRAM(program_id):
    list_errors = []
 
-   plants  = GET_ALL_PLANTS()
-   entries = GET_ALL_PLANTS()
+   content     = GET_PROGRAM_BY_ID(program_id).content
+   line_number = 0
+   
+   for line in content.splitlines():
+      
+      line_number = line_number + 1
+      
+      # #######
+      #  break
+      # #######           
+              
+      if "pause" in line:   
+         
+         try: 
+            line_content = line.split(":")
+             
+            # check delay value            
+            if line_content[1].isdigit():
+                continue
+            else:
+               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> fehlende Einstellung >>> Sekunden")  
+               
+         except:
+            list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")
+            
+                   
+      # ########
+      #  device
+      # ########
 
-   # check mqtt_device multiple times ?
-   for plant in plants:
-      for entry in entries:
+      elif "device" in line:
+         
+         try:
+            line_content = line.split(":")
 
-         if entry.id != plant.id:
-            if entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr:
-               list_errors.append(entry.name + " >>> Gerät mehrmals zugeordnet")
+            device_name = line_content[1]    
+            device      = ""
+            device      = GET_MQTT_DEVICE_BY_NAME(device_name)
+                  
+            # check device
+            if device != None:
+               
+               if not "led" in device.device_type:
+                 
+                  setting_value   = line_content[2].upper()
+                  setting_value   = setting_value.replace(" ", "")
 
-   # moisture missing ?
-   for entry in entries:
-        if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):
-            list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
+                  device_commands = device.commands.split(",")
+                  setting_key     = None
+
+                  # check setting key
+                  for device_command in device_commands:
+
+                     if device_command.split("=")[1] == setting_value:
+                        setting_key = device_command.split("=")[0]
+                        setting_key = setting_key.replace(" ", "")
+                        continue 
+                       
+                  if setting_key == None:
+                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + setting_value)       
+
+               else:        
+                  list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist eine LED") 
+
+            else:
+               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Gerät nicht gefunden >>> " + device_name)  
+               
+         except:
+            list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")
+               
+        
+      # ######
+      #  led
+      # ######         
+        
+      elif "led" in line:
+         
+         try:        
+            line_content = line.split(":")
+
+            try:
+               # check led name
+               led_name = line_content[1]    
+               led_type = GET_MQTT_DEVICE_BY_NAME(led_name).device_type
+               
+               if "led" in led_type:
+
+                  # check setting led_rgb             
+                  if led_type == "led_rgb" and line_content[2] != "off": 
+                        
+                     try:
+                        
+                        try:
+                        
+                           rgb_values = re.findall(r'\d+', line_content[2])
+                        
+                           if not rgb_values[0].isdigit() or not (0 <= int(rgb_values[0]) <= 255):
+                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> ROT") 
+                           if not rgb_values[1].isdigit() or not (0 <= int(rgb_values[1]) <= 255):
+                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> GRÜN")                   
+                           if not rgb_values[2].isdigit() or not (0 <= int(rgb_values[2]) <= 255):
+                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> BLAU")    
+                              
+                        except:
+                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige RGB Einstellungen")    
+                                             
+                     
+                        if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
+                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
+                        
+                     except:
+                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
+
+    
+                  # check setting led_white             
+                  elif led_type == "led_white" and line_content[2] != "off": 
+                     
+                     try:
+                     
+                        if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 7000):
+                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Farbtemperatur") 
+                        if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
+                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
+                        
+                     except:
+                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
+
+
+                  # check setting led_simple             
+                  elif led_type == "led_simple" and line_content[2] != "off": 
+                     
+                     try: 
+                     
+                        if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 254):
+                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
+                        
+                     except:
+                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
+                   
+                   
+                  # check setting turn_off             
+                  elif line_content[2] == "off": 
+                     pass
+              
+                   
+                  # nothing founded
+                  else:
+                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
+                         
+               else:        
+                  list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist keine LED") 
+
+            except:
+               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> LED nicht gefunden >>> " + led_name) 
+               
+         except:
+            list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")               
+
+               
+      # #######
+      #  other
+      # ####### 
+ 
+      else:
+         list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Eingabetyp nicht gefunden") 
+                            
 
    if list_errors == []:
       return ""
+      
    else:
       return list_errors
 
@@ -249,7 +404,6 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
             list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
 
          # add errors for each device to database  
-
          if list_time_errors_device != []:
 
             list_time_errors_device = str(list_time_errors_device)
@@ -310,7 +464,6 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
          list_sensor_errors_device = []
 
          # check mqtt devices
-         
          if task.mqtt_device_ieeeAddr_1 == "None" or task.mqtt_device_ieeeAddr_1 == "" or task.mqtt_device_ieeeAddr_1 == None:
             list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
             list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1")
@@ -327,7 +480,6 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                   list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")           
 
          # check sensors
-         
          if task.sensor_key_1 == "None" or task.sensor_key_1 == None:
             list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
             list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Sensor 1")
@@ -343,7 +495,6 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Sensor 3")
 
          # check operators
-         
          if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
             if task.operator_1 == "" or task.operator_1 == "None" or task.operator_1 == None: 
                list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Operator 1")
@@ -360,7 +511,6 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
 
          # check values
-         
          if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
             if task.value_1 == "" or task.value_1 == "None" or task.value_1 == None: 
                list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1") 
@@ -392,7 +542,6 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")    
 
          # add errors for each device to database
-
          if list_sensor_errors_device != []:
 
             list_sensor_errors_device = str(list_sensor_errors_device)
@@ -524,15 +673,21 @@ def CHECK_SPEECHCONTROL_LED_TASKS(tasks):
       return list_errors
 
 
-def CHECK_SPEECHCONTROL_DEVICE_TASKS(tasks):
+def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
    list_errors = []
 
    # search for missing commands 
    for task in tasks:
-      if task.setting_value == None or task.setting_value == "None":
-         list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
-         
-         
+      
+      if task_typ == "devices":
+         if task.setting_value == None or task.setting_value == "None":
+            list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
+            
+      if task_typ == "programs":
+         if task.command == None or task.command == "None":
+            list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
+                        
+            
    # search for missing keywords 
    for task in tasks:
       if task.keywords == None or task.keywords == "None":
@@ -569,14 +724,15 @@ def CHECK_SPEECHCONTROL_DEVICE_TASKS(tasks):
                if num > 1:
                   list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)            
          
-         
+   
+   """      
    # search for double commands 
    for task_1 in tasks:
       for task_2 in tasks:
       
          if (task_1.id != task_2.id) and (task_1.mqtt_device_ieeeAddr == task_2.mqtt_device_ieeeAddr) and (task_1.command == task_2.command):
             list_errors.append(task.task + " >>> Gerät " + task_1.mqtt_device.name + " mit Befehlt " + task_1.command + " doppelt eingetragen") 
-                        
+   """                     
                         
    if list_errors == []:
       return ""
@@ -615,6 +771,7 @@ def CHECK_TASKS(tasks, task_type):
 
          name = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).name
 
+         # check controller command exist
          if controller.command_1 != None and controller.command_1 != "None": 
             list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type, controller.command_1)
          else:
@@ -900,7 +1057,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
             if task_type == "controller":
                list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
             else:                   
-               list_task_errors.append(name + " >>> Ungültige Formatierung")
+               list_task_errors.append(name + " >>> Ungültige Formatierung")     
             return list_task_errors
 
 
@@ -913,18 +1070,18 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
                device        = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
                setting_value = task[2].upper()
             
-               # check command
-               command_valid = False
+               # check device command
+               device_command_valid = False
                
-               commands = GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands.split(",")
+               device_commands = GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands.split(",")
                   
-               for command in commands:
+               for device_command in device_commands:
                   
-                  if command.split("=")[1] == setting_value:
-                     command_valid = True
+                  if device_command.split("=")[1] == setting_value:
+                     device_command_valid = True
                      continue
                      
-               if command_valid == False:
+               if device_command_valid == False:
                   
                   if task_type == "controller":
                      list_task_errors.append(name + " >>> " + command + " >>> Befehl " + task[2] + " ungültig")
@@ -942,6 +1099,55 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
                   
                return list_task_errors
 
+         else:
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung")
+            else:                
+               list_task_errors.append(name + " >>> Ungültige Formatierung")       
+            return list_task_errors
+            
+
+      # check programs
+      if "program" in task:
+         if ":" in task:
+            task = task.split(":") 
+
+            try:
+               program = GET_PROGRAM_BY_NAME(task[1].lower())
+               setting = task[2].lower()
+                  
+               if program == None:
+               
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> Programm " + task[1] + " nicht gefunden")
+                  else:
+                     list_task_errors.append(name + " >>> " + task[1] + " Programm nicht gefunden")                  
+                  
+               if setting != "start" and setting != "stop":
+                  
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> Befehl ungültig")
+                  else:
+                     list_task_errors.append(name + " >>> Befehl ungültig")
+               
+               return list_task_errors
+      
+      
+            except:
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung")
+               else:
+                  list_task_errors.append(name + " >>> Ungültige Formatierung")
+               return list_task_errors
+         
+         
+         else:
+            if task_type == "controller":
+               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung")
+            else:                
+               list_task_errors.append(name + " >>> Ungültige Formatierung")
+            return list_task_errors
+         
 
       # check watering_plants
       if task == "watering_plants" and task_type == "scheduler":
@@ -995,64 +1201,39 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
       return list_task_errors
 
 
+""" ################ """
+"""  check watering  """
+""" ################ """
+
+def CHECK_WATERING_SETTINGS():
+   list_errors = []
+
+   plants  = GET_ALL_PLANTS()
+   entries = GET_ALL_PLANTS()
+
+   # check mqtt_device multiple times ?
+   for plant in plants:
+      for entry in entries:
+
+         if entry.id != plant.id:
+            if entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr:
+               list_errors.append(entry.name + " >>> Gerät mehrmals zugeordnet")
+
+   # moisture missing ?
+   for entry in entries:
+        if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):
+            list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
+
+   if list_errors == []:
+      return ""
+   else:
+      return list_errors
+
+
 
 
 
 '''
-
-# ###################
-# check start_program
-# ###################
-
-
-if "program" in task:
-   if ":" in task:
-      task = task.split(":") 
-
-      # check group setting
-      try:
-         if GET_LED_GROUP_BY_NAME(task[1]):
-            pass
-            
-         else:
-            if task_type == "controller":
-               list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + task[1]) 
-            else:                     
-               list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + task[1])   
-                              
-      except:
-         if task_type == "controller":
-            list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe") 
-         else:                  
-            list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")      
-
-      # check program setting    
-      try:
-         if GET_LED_PROGRAM_BY_NAME(task[2]):
-            return list_task_errors
-            
-         else:
-            if task_type == "controller":
-               list_task_errors.append(name + " >>> " + command + " >>> LED Programm nicht vorhanden >>> " + task[2])
-            else:                       
-               list_task_errors.append(name + " >>> LED Programm nicht vorhanden >>> " + task[2])
-            return list_task_errors
-            
-      except:
-         if task_type == "controller":
-            list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Programm")
-         else:                    
-            list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Programm")    
-         return list_task_errors
-
-   else:
-      if task_type == "controller":
-         list_task_errors.append(name + " >>> " + command + " >>> Ungültige Formatierung") 
-      else:                 
-         list_task_errors.append(name + " >>> Ungültige Formatierung")
-      return list_task_errors
-
-
 
 """ ###################### """
 """  check timer settings  """

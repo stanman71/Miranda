@@ -7,14 +7,14 @@ import requests
 import heapq
 
 from app import app
-from app.components.control_led import *
 from app.database.database import *
-from app.components.control_plants import START_WATERING_THREAD
+from app.components.tasks import START_SCHEDULER_TASK
 from app.components.mqtt import *
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER, GET_LOCATION_COORDINATES
+from app.components.file_management import WRITE_LOGFILE_SYSTEM, GET_LOCATION_COORDINATES
 from app.components.shared_resources import process_management_queue
 
 from ping3 import ping
+
 
 
 """ ################################ """
@@ -63,11 +63,13 @@ def scheduler_ping():
 			heapq.heappush(process_management_queue, (20, ("scheduler", "ping", task.id)))
 
 
+
 """ ################################ """
 """ ################################ """
 """         sunrise / sunset         """
 """ ################################ """
 """ ################################ """
+   
    
 # https://stackoverflow.com/questions/41072147/python-retrieve-the-sunrise-and-sunset-times-from-google
 
@@ -125,6 +127,7 @@ def GET_SUNSET_TIME(lat, long):
 
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
+
 
 
 """ ################################ """
@@ -1165,245 +1168,3 @@ def CHECK_SCHEDULER_SUNSET(task):
    except:
       return False
 
-
-""" ################################ """
-""" ################################ """
-"""           scheduler tasks        """
-""" ################################ """
-""" ################################ """
-
-
-def START_SCHEDULER_TASK(task_object):
-   
-   WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started') 
-
-
-   # ###########
-   # start scene
-   # ###########
-   
-   try:
-      if "scene" in task_object.task:
-         
-         task  = task_object.task.split(":")
-         group = GET_LED_GROUP_BY_NAME(task[1])
-         scene = GET_LED_SCENE_BY_NAME(task[2]) 
-
-         # group existing ?
-         if group != None:
-
-            # scene existing ?
-            if scene != None:
-               
-               try:
-                  brightness = int(task[3])
-               except:
-                  brightness = 100
-
-               # new led setting ?
-               if group.current_setting != scene.name or int(group.current_brightness) != brightness:
-
-                  LED_SET_SCENE(group.id, scene.id, brightness) 
-                  LED_ERROR_CHECKING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)      
-
-               else:
-                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness))  
-                  
-            else:
-               WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Scene - " + task[2] + " | not founded")
-                          
-         else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + task[1] + " | not founded")
-    
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-               
-
-   # #######
-   # led off
-   # #######
-   
-   try:
-      if "led_off" in task_object.task:
-         task = task_object.task.split(":")
-         
-         if task[1] == "group":
-            
-            # get input group names and lower the letters
-            
-            try:
-                  list_groups = task[2].split(",")
-            except:
-                  list_groups = [task[2]]
-                  
-            for input_group_name in list_groups: 
-               input_group_name = input_group_name.replace(" ", "")
-               
-               group_founded = False
-               
-               # get exist group names 
-               for group in GET_ALL_LED_GROUPS():
-               
-                  if input_group_name.lower() == group.name.lower():
-                          
-                     group_founded = True   
-                     
-                     # new led setting ?
-                     if group.current_setting != "OFF":
-                            
-                        LED_TURN_OFF_GROUP(group.id)
-                        LED_ERROR_CHECKING_THREAD(group.id, 0, "OFF", 0, 5, 20)   
-                        
-                     else:
-                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
-                        
-     
-               if group_founded == False:
-                  WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + input_group_name + " | not founded")     
-               
-         if task[1] == "all":
-
-            for group in GET_ALL_LED_GROUPS():
-               
-               # new led setting ?
-               if group.current_setting != "OFF":
-               
-                  scene_name = group.current_setting
-                  scene      = GET_LED_SCENE_BY_NAME(scene_name)
-                  
-                  LED_TURN_OFF_GROUP(group.id)
-                  LED_ERROR_CHECKING_THREAD(group.id, scene.id, "OFF", 0, 5, 20)       
-                  
-               else:
-                  WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
-          
-      
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-
-
-   # ######
-   # device
-   # ######
-   
-   try:
-      if "device" in task_object.task and "mqtt_update" not in task_object.task:
-         task = task_object.task.split(":")
-         
-         device = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
-         
-         # device founded ?
-         if device != None:
-         
-            setting_value = task[2].upper()
-            setting_value = setting_value.replace(" ", "")
-            
-            # new device setting ?
-            if setting_value != device.previous_setting_value:
-               
-               commands = device.commands.split(",")
-                  
-               # setting key
-               for command in commands:
-                  
-                  if command.split("=")[1] == setting_value:
-                     setting_key = command.split("=")[0]
-                     setting_key = setting_key.replace(" ", "")
-                     continue     
-                     
-                     
-               if device.gateway == "mqtt":
-                  
-                  channel = "SmartHome/mqtt/" + device.ieeeAddr + "/set"
-                  msg     = '{"' + setting_key + '":"' + setting_value + '"}'
-
-                  MQTT_PUBLISH(channel, msg) 
-                  MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, setting_key, setting_value, 5, 20)
-                 
-                 
-               if device.gateway == "zigbee2mqtt":
-
-                  channel = "SmartHome/zigbee2mqtt/" + device.name + "/set"
-                  msg     = '{"' + setting_key + '":"' + setting_value + '"}'
-                 
-                  MQTT_PUBLISH(channel, msg) 
-                  ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, setting_key, setting_value, 5, 20)
-                    
-            else:
-               
-               if device.gateway == "mqtt":
-                  WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + setting_value) 
-                  
-               if device.gateway == "zigbee2mqtt":
-                  WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + setting_value)  
-               
-         else:
-            WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Device - " + task[1] + " | not founded")                  
-            
-               
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
-
-
-   # ###############
-   # watering plants
-   # ###############
-   
-   try:
-      if "watering_plants" in task_object.task:
-         START_WATERING_THREAD()
-         
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-
-
-   # #############
-   # save database 
-   # #############
-   
-   try:  
-      if "save_database" in task_object.task:
-         SAVE_DATABASE()	
-
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))     
-
-
-   # ###################
-   # update mqtt devices
-   # ###################
-   
-   try:
-      if "mqtt_update_devices" in task_object.task:
-         MQTT_UPDATE_DEVICES("mqtt")
-
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
-
-
-   # ##################
-   # request sensordata
-   # ##################
-   
-   try:
-      if "request_sensordata" in task_object.task:
-         task = task_object.task.split(":")
-         MQTT_REQUEST_SENSORDATA(task[1])  
-
-   except Exception as e:
-      print(e)
-      WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              
-
-
-   # ####################################
-   # remove scheduler task without repeat
-   # ####################################
-   
-   if task_object.option_repeat != "checked":
-      DELETE_SCHEDULER_TASK(task_object.id)

@@ -10580,3 +10580,1825 @@ node[shape=record];
 2019-06-24 18:49:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
 2019-06-24 18:49:14,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
 2019-06-24 18:49:14,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-24 18:51:57,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-24 18:51:57,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-24 18:52:00,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-24 18:52:00,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-24 18:59:44,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-24 18:59:44,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-24 18:59:47,SmartHome/zigbee2mqtt/bridge/config/permit_join,true
+2019-06-24 18:59:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":true}|
+2019-06-24 19:00:06,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106,"action":"off-press","duration":0,"counter":1}|
+2019-06-24 19:00:32,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"off-press","duration":0,"counter":1}|
+2019-06-24 19:00:36,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"off-press","duration":0,"counter":2}|
+2019-06-24 19:01:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":70,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 19:02:12,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"on-press","duration":0,"counter":1}|
+2019-06-24 19:02:12,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":127,"color": { "x":0.191,"y":0.148}}|
+2019-06-24 19:02:12,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":127,"color": { "x":0.197,"y":0.222}}|
+2019-06-24 19:02:13,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":127,"linkquality":114,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":248.5},"color_temp":278,"color_mode":1}|
+2019-06-24 19:02:13,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":75,"brightness":127,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-24 19:02:13,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\":\"ON\",\"brightness\":127,\"color\": { \"x\":0.191,\"y\":0.148}}"}}|
+2019-06-24 19:02:16,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":80,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-24 19:02:16,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"up-press","duration":0,"counter":1,"brightness":205}|
+2019-06-24 19:02:16,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"177"}|
+2019-06-24 19:02:16,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"177"}|
+2019-06-24 19:02:25,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"up-press","duration":0,"counter":1,"brightness":255}|
+2019-06-24 19:02:26,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"228"}|
+2019-06-24 19:02:26,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"228"}|
+2019-06-24 19:02:31,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106,"action":"up-press","duration":0,"counter":1,"brightness":255}|
+2019-06-24 19:02:31,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"228"}|
+2019-06-24 19:02:31,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"228"}|
+2019-06-24 19:02:45,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":80,"brightness":177,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 19:02:46,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: Timed out after 30000 ms","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\": \"ON\",\"brightness\":\"177\"}"}}|
+2019-06-24 19:02:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":177,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 19:02:48,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":80,"brightness":228,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 19:02:49,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":228,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:00,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106,"action":"down-press","duration":0,"counter":1,"brightness":155}|
+2019-06-24 19:03:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"177"}|
+2019-06-24 19:03:01,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"177"}|
+2019-06-24 19:03:01,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":177,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":80,"brightness":177,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:04,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"down-press","duration":0,"counter":1,"brightness":105}|
+2019-06-24 19:03:04,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"127"}|
+2019-06-24 19:03:04,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"127"}|
+2019-06-24 19:03:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":127,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":83,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:07,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"off-press","duration":0,"counter":1}|
+2019-06-24 19:03:08,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-24 19:03:08,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-24 19:03:08,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":127,"linkquality":114,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:08,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":83,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 19:03:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":104}|
+2019-06-24 19:04:04,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-24 19:04:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-24 19:06:20,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":49,"action":"wakeup"}|
+2019-06-24 19:06:23,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":49,"action":"flip90","from_side":1,"to_side":0}|
+2019-06-24 19:06:26,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":52,"action":"flip90","from_side":1,"to_side":0}|
+2019-06-24 19:06:26,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.65,"linkquality":65,"humidity":74.05,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 19:06:31,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":44,"action":"flip90","from_side":0,"to_side":2}|
+2019-06-24 19:06:47,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.03,"linkquality":54,"humidity":67.46,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 19:07:07,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.14,"linkquality":57,"humidity":61.12,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 19:08:07,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.12,"linkquality":57,"humidity":60.03,"pressure":1008.9,"battery":97,"voltage":2995}|
+2019-06-24 19:20:22,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-24 19:20:38,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-24 19:21:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":114}|
+2019-06-24 19:24:13,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":52,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-24 19:28:58,SmartHome/zigbee2mqtt/Steckdose Server/set,{"state":"ON"}
+2019-06-24 19:28:59,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":44}|
+2019-06-24 19:31:12,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":49}|
+2019-06-24 19:37:03,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109}|
+2019-06-24 19:38:08,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-24 19:45:32,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":49}|
+2019-06-24 19:53:44,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":104}|
+2019-06-24 19:54:47,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":109}|
+2019-06-24 19:56:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":65,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 19:58:28,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.31,"linkquality":67,"humidity":59.61,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 20:02:06,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":41}|
+2019-06-24 20:10:27,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":101}|
+2019-06-24 20:10:40,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.31,"linkquality":57,"humidity":59.05,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 20:11:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-24 20:18:41,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":49}|
+2019-06-24 20:19:14,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-24 20:25:44,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":49}|
+2019-06-24 20:27:10,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":101}|
+2019-06-24 20:28:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-24 20:35:15,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":49}|
+2019-06-24 20:43:52,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":101}|
+2019-06-24 20:44:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-24 20:51:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 20:51:49,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":41}|
+2019-06-24 20:58:29,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.75,"linkquality":62,"humidity":58.54,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 21:00:35,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":96}|
+2019-06-24 21:01:24,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-24 21:06:23,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":46,"action":"wakeup"}|
+2019-06-24 21:08:23,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":46}|
+2019-06-24 21:14:17,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-24 21:15:35,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":33}|
+2019-06-24 21:17:18,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109}|
+2019-06-24 21:18:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-24 21:19:44,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.75,"linkquality":62,"humidity":58.39,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-24 21:24:57,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":36}|
+2019-06-24 21:33:43,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":157,"color": { "x":0.402,"y":0.396}}|
+2019-06-24 21:33:43,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":157,"color": { "x":0.403,"y":0.388}}|
+2019-06-24 21:33:43,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":157,"linkquality":117,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-24 21:33:44,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":96,"brightness":157,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-24 21:33:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":157,"linkquality":106,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-24 21:33:47,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":72,"brightness":157,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":233.3},"color_temp":281,"color_mode":1}|
+2019-06-24 21:33:58,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-24 21:34:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-24 21:41:31,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":46}|
+2019-06-24 21:46:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":54,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 21:50:20,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.54,"linkquality":57,"humidity":58.79,"pressure":1009.1,"battery":97,"voltage":2995}|
+2019-06-24 21:50:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-24 21:51:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-24 21:52:55,SmartHome/zigbee2mqtt/Steckdose Server/set,{"state":"OFF"}
+2019-06-24 21:52:55,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-24 22:03:03,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.54,"linkquality":54,"humidity":59.13,"pressure":1009.1,"battery":97,"voltage":2995}|
+2019-06-24 22:07:19,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-24 22:08:00,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-24 22:09:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":49,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-24 22:09:29,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-24 22:14:26,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":46}|
+2019-06-24 22:16:00,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-24 22:16:13,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-24 22:16:13,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-24 22:16:13,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-24 22:24:03,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-24 22:24:40,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-24 22:26:03,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-24 22:34:49,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.39,"linkquality":57,"humidity":60.04,"pressure":1009.1,"battery":97,"voltage":2995}|
+2019-06-24 22:40:44,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-24 22:41:19,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-24 22:41:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 22:42:37,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-24 22:45:01,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.07,"linkquality":46,"humidity":60.37,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-24 22:57:26,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-24 22:57:58,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-24 22:59:11,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-24 23:04:20,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":49,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-24 23:07:17,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":46}|
+2019-06-24 23:08:06,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.07,"linkquality":54,"humidity":60.59,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-24 23:14:08,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-24 23:14:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-24 23:15:45,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-24 23:30:52,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-24 23:31:16,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-24 23:32:19,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-24 23:36:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":67,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-24 23:38:42,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.9,"linkquality":59,"humidity":60.95,"pressure":1009.5,"battery":97,"voltage":2995}|
+2019-06-24 23:47:35,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-24 23:47:55,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-24 23:48:53,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-24 23:58:58,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":46}|
+2019-06-24 23:59:20,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 00:04:18,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 00:04:34,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 00:05:27,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 00:17:09,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 00:17:22,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 00:21:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 00:21:14,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 00:22:02,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 00:30:01,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":157,"linkquality":106,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 00:30:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":78,"brightness":157,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 00:31:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 00:34:13,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.86,"linkquality":65,"humidity":61.38,"pressure":1009.5,"battery":97,"voltage":2995}|
+2019-06-25 00:35:33,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 00:35:33,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 00:35:33,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 00:35:34,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":106,"brightness":254}|
+2019-06-25 00:35:34,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":78,"brightness":254}|
+2019-06-25 00:36:33,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 00:37:10,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 00:37:42,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-25 00:37:53,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 00:38:03,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":89,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 00:38:04,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.86,"linkquality":59,"humidity":60.9,"pressure":1009.5,"battery":97,"voltage":2995}|
+2019-06-25 00:38:36,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 00:38:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":21,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 00:38:40,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 00:38:40,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 00:38:41,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":80,"brightness":254}|
+2019-06-25 00:38:41,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":111,"brightness":254}|
+2019-06-25 00:49:41,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 00:50:16,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":52}|
+2019-06-25 00:54:23,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":70}|
+2019-06-25 00:54:32,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 00:55:10,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 01:11:04,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":70}|
+2019-06-25 01:11:11,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 01:11:44,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 01:26:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 01:27:04,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.78,"linkquality":57,"humidity":61.78,"pressure":1009.5,"battery":97,"voltage":2995}|
+2019-06-25 01:27:47,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 01:27:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 01:28:18,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 01:42:39,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":52}|
+2019-06-25 01:44:29,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 01:44:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 01:44:41,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 01:44:52,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 02:01:08,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 02:01:11,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 02:01:26,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 02:17:48,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 02:17:54,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 02:18:01,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 02:21:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 02:26:25,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.76,"linkquality":62,"humidity":62.25,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-25 02:34:27,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 02:34:35,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 02:34:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 02:37:18,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":54}|
+2019-06-25 02:39:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 02:51:06,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 02:51:09,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 02:51:18,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 03:07:43,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 03:07:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 03:08:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 03:14:45,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.76,"linkquality":57,"humidity":62.87,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-25 03:16:39,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 03:21:57,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.73,"linkquality":59,"humidity":62.93,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 03:24:17,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-25 03:24:24,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 03:24:45,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 03:24:48,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.68,"linkquality":62,"humidity":62.93,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 03:27:42,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":46}|
+2019-06-25 03:34:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 03:40:51,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-25 03:41:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 03:41:26,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 03:57:25,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-25 03:57:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 03:58:07,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 04:08:56,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.68,"linkquality":59,"humidity":62.86,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 04:11:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 04:14:00,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-25 04:14:22,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 04:14:49,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-25 04:18:38,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.69,"linkquality":62,"humidity":62.79,"pressure":1008.6,"battery":97,"voltage":2995}|
+2019-06-25 04:20:03,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":49}|
+2019-06-25 04:29:46,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 04:30:34,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-25 04:31:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 04:31:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-25 04:47:08,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 04:47:40,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 04:48:14,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 05:03:42,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 05:04:19,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 05:04:58,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":70}|
+2019-06-25 05:06:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 05:13:19,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.66,"linkquality":59,"humidity":62.81,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 05:13:31,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":49}|
+2019-06-25 05:20:16,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 05:20:58,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 05:21:40,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 05:24:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 05:36:50,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 05:37:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 05:38:24,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 05:45:36,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.66,"linkquality":57,"humidity":62.77,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 05:53:24,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-25 05:54:16,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 05:55:05,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 06:01:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 06:06:15,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":49}|
+2019-06-25 06:06:20,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.68,"linkquality":62,"humidity":62.59,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 06:06:51,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.68,"linkquality":59,"humidity":62.6,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 06:09:59,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-25 06:10:56,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 06:11:45,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-25 06:19:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 06:26:33,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":57}|
+2019-06-25 06:27:35,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 06:28:29,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 06:43:07,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":52}|
+2019-06-25 06:44:14,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 06:45:10,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 06:56:38,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 06:57:00,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.69,"linkquality":62,"humidity":62.34,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-25 06:58:56,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":46}|
+2019-06-25 06:59:41,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-25 07:00:53,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 07:01:52,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 07:08:23,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.69,"linkquality":59,"humidity":62.25,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-25 07:14:49,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:16:15,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-25 07:17:32,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 07:18:40,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 07:24:58,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:24:58,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:24:58,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:24:59,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":75,"brightness":254}|
+2019-06-25 07:24:59,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":78,"brightness":254}|
+2019-06-25 07:26:17,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.7,"linkquality":57,"humidity":58.62,"pressure":1008,"battery":97,"voltage":2995}|
+2019-06-25 07:26:28,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:26:28,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 07:26:28,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 07:26:29,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":111,"brightness":254}|
+2019-06-25 07:26:29,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":65,"brightness":254}|
+2019-06-25 07:26:32,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:27:56,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:27:57,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:27:57,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:27:57,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":114,"brightness":254}|
+2019-06-25 07:27:57,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":114,"brightness":254}|
+2019-06-25 07:29:26,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:29:27,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 07:29:27,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 07:29:27,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:29:27,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:30:35,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:30:35,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:30:35,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:30:35,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:30:36,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:32:05,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:32:05,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 07:32:05,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 07:32:05,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:32:06,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":111,"brightness":254}|
+2019-06-25 07:32:49,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":54}|
+2019-06-25 07:33:13,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":54,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:33:13,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:33:13,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:33:14,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:33:15,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:34:11,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-25 07:34:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:35:24,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-25 07:35:30,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":86,"linkquality":59,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:37:00,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":80,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":111,"brightness":254}|
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":80,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:37:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":15,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:38:08,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":15,"linkquality":65,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:38:08,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:38:08,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 07:38:09,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:38:09,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-25 07:39:11,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":89,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:40:17,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":87,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 07:41:47,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":79,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 07:41:47,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 07:41:47,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 07:41:47,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:41:48,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 07:48:41,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.58,"linkquality":117,"humidity":57.46,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 07:49:23,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 07:50:51,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 07:51:39,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 07:52:05,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109}|
+2019-06-25 07:54:39,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":41}|
+2019-06-25 08:05:57,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 08:07:30,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 08:07:58,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 08:08:48,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":104}|
+2019-06-25 08:11:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":67,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 08:11:18,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 08:11:18,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 08:11:18,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":114,"brightness":254}|
+2019-06-25 08:11:19,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":114,"brightness":254}|
+2019-06-25 08:12:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":65,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 08:13:57,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":83,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 08:13:57,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 08:13:57,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 08:13:57,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 08:13:58,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 08:14:07,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":83,"linkquality":65,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 08:14:07,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 08:14:07,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 08:14:07,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 08:14:08,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 08:15:37,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 08:15:37,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 08:15:37,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 08:15:37,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 08:15:38,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 08:22:32,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 08:24:09,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 08:24:18,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":26.58,"linkquality":67,"humidity":57.64,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 08:25:31,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 08:39:06,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 08:40:48,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 08:42:15,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 08:45:52,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.05,"linkquality":65,"humidity":58.17,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 08:46:39,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":65,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 08:49:37,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":39}|
+2019-06-25 08:55:40,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 08:57:27,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 08:58:57,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 09:02:29,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 09:12:14,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 09:14:06,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 09:15:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-25 09:25:10,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.05,"linkquality":65,"humidity":58.95,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 09:28:48,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 09:30:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 09:32:22,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 09:41:42,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":67,"occupancy":false,"battery":100,"voltage":3005}|
+2019-06-25 09:43:44,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":72}|
+2019-06-25 09:45:14,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.07,"linkquality":65,"humidity":59.23,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-25 09:45:22,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 09:47:25,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 09:49:03,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 09:56:20,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 09:56:20,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 09:56:23,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 09:56:23,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 09:56:44,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 09:56:44,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":65}|
+2019-06-25 09:57:29,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":52,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 09:58:01,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 09:58:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 10:01:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:01:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:01:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:01:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:01:57,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 10:05:46,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 10:14:40,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 10:18:31,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 10:22:28,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 10:26:23,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.07,"linkquality":65,"humidity":59.64,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-25 10:31:19,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 10:35:05,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 10:36:42,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":65,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 10:39:12,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 10:39:25,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.16,"linkquality":67,"humidity":59.83,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 10:43:39,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":44}|
+2019-06-25 10:49:01,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:49:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:49:04,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:49:04,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:51:13,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:51:13,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:51:16,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:51:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:51:39,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 10:52:04,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:52:05,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:52:07,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:52:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:52:31,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 10:54:46,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:54:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:54:49,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:54:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:55:35,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 10:55:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:55:38,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 10:55:38,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 10:55:53,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 10:56:06,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 11:01:00,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.16,"linkquality":65,"humidity":59.89,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 11:04:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 11:08:13,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 11:12:37,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 11:21:16,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 11:27:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 11:27:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 11:27:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 11:27:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 11:27:57,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 11:29:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 11:31:42,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":67,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 11:34:21,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-25 11:37:56,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 11:38:07,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.34,"linkquality":65,"humidity":59.97,"pressure":1008.8,"battery":97,"voltage":2995}|
+2019-06-25 11:41:21,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 11:46:04,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 11:47:31,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 11:54:35,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 11:57:55,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 12:02:47,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 12:11:14,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 12:14:30,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 12:19:27,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 12:21:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:21:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:21:46,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:21:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:23:46,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:23:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:23:49,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:23:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:26:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":70,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 12:27:01,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:27:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:27:04,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:27:04,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:27:53,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 12:30:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:30:08,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:30:11,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:30:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:30:16,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:30:17,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-06-25 12:30:25,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":91,"voltage":2985,"linkquality":39}|
+2019-06-25 12:31:04,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 12:33:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:33:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:33:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:33:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:33:45,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":101,"color": { "x":0.191,"y":0.148}}|
+2019-06-25 12:33:45,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":101,"color": { "x":0.197,"y":0.222}}|
+2019-06-25 12:33:45,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":101,"linkquality":111,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 12:33:46,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":65,"brightness":101,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 12:33:48,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":101,"linkquality":114,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:33:49,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":67,"brightness":101,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 12:34:05,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":101,"color": { "x":0.525,"y":0.435}}|
+2019-06-25 12:34:05,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":101,"color": { "x":0.661,"y":0.315}}|
+2019-06-25 12:34:05,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":101,"linkquality":114,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:34:05,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":67,"brightness":101,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 12:34:12,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":101,"linkquality":114,"color":{"x":0.524,"y":0.434,"saturation":100,"hue":248.5},"color_temp":493,"color_mode":1}|
+2019-06-25 12:34:23,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:34:23,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 12:34:23,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":101,"linkquality":114,"color":{"x":0.524,"y":0.434,"saturation":100,"hue":248.5},"color_temp":493,"color_mode":1}|
+2019-06-25 12:34:23,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":67,"brightness":101,"color":{"x":0.661,"y":0.315,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 12:34:40,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 12:34:40,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:35:10,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: Timed out after 30000 ms","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\":\"ON\",\"brightness\":254,\"color\": { \"x\":0.735,\"y\":0.265}}"}}|
+2019-06-25 12:35:10,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\":\"ON\",\"brightness\":254,\"color\": { \"x\":0.735,\"y\":0.265}}"}}|
+2019-06-25 12:35:11,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.524,"y":0.434,"saturation":100,"hue":248.5},"color_temp":493,"color_mode":1}|
+2019-06-25 12:35:38,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 12:36:11,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 12:36:59,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.44,"linkquality":67,"humidity":60.4,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 12:42:31,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 12:42:35,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 12:42:35,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:42:36,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:42:38,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:42:38,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:42:49,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 12:42:49,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:42:50,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:42:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:42:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:43:40,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:43:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:43:43,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:43:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:43:47,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 12:43:47,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:43:52,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:43:52,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:44:32,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 12:46:04,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:46:04,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:46:07,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:46:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:47:10,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 12:47:11,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:47:15,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:47:16,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:47:38,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 12:47:45,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 12:48:46,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:48:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:48:59,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:48:59,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:49:18,SmartHome/zigbee2mqtt/bridge/config/,
+2019-06-25 12:49:38,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 12:49:39,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 12:50:01,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 12:50:01,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-25 12:50:26,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 12:50:27,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 12:51:48,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:51:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:51:51,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:51:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:52:00,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 12:52:01,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 12:52:52,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 12:55:44,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:55:44,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:55:47,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:55:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:55:54,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 12:55:55,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 12:56:45,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 12:56:45,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:56:48,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 12:56:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 12:56:51,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 12:56:52,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 12:56:56,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 12:56:58,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 12:56:58,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 12:56:59,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 13:01:11,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 13:01:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:01:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:01:36,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:01:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:04:12,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 13:08:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:08:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:08:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:08:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:08:22,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 13:08:22,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 13:08:27,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 13:08:27,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 13:08:41,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":114,"color": { "x":0.402,"y":0.396}}|
+2019-06-25 13:08:41,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":114,"color": { "x":0.403,"y":0.388}}|
+2019-06-25 13:08:41,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":114,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 13:08:42,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":67,"brightness":114,"color":{"x":0.661,"y":0.315,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 13:08:44,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":114,"linkquality":114,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 13:08:45,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":65,"brightness":114,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 13:08:51,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 13:08:51,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 13:08:51,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":114,"linkquality":114,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 13:08:51,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":65,"brightness":114,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 13:09:36,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 13:10:19,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 13:10:19,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 13:10:19,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 13:10:20,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x000b3cfffeff0aa8","type":"device","friendlyName":"Badlampe_01"},"message":"{\"state\": \"ON\",\"brightness\":\"254\"}"}}|
+2019-06-25 13:10:20,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":72,"brightness":254}|
+2019-06-25 13:10:23,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:10:24,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 13:10:24,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x000b3cfffeff0aa8","type":"device","friendlyName":"Badlampe_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-06-25 13:10:24,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 13:10:25,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:10:25,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:12:00,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:12:00,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:12:03,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:12:03,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:12:09,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 13:12:09,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":72,"brightness":254}|
+2019-06-25 13:12:10,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 13:12:10,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:12:17,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 13:12:17,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 13:12:18,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 13:12:18,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:12:56,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 13:12:56,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 13:12:57,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 13:12:57,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 13:12:58,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 13:12:58,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:12:59,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":254,"color": { "x":0.735,"y":0.265}}|
+2019-06-25 13:12:59,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 13:13:03,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":65,"brightness":254,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-25 13:13:06,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 13:13:06,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 13:13:07,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 13:13:08,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 13:13:08,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 13:13:09,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 13:13:10,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":65,"brightness":254,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-25 13:13:29,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:13:30,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:13:30,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":254,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 13:17:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 13:20:46,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 13:21:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":67,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 13:22:07,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.44,"linkquality":65,"humidity":60.45,"pressure":1008.7,"battery":97,"voltage":2995}|
+2019-06-25 13:26:17,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 13:27:20,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":39}|
+2019-06-25 13:34:30,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 13:36:10,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.51,"linkquality":65,"humidity":60.54,"pressure":1008.5,"battery":97,"voltage":2995}|
+2019-06-25 13:37:20,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 13:37:33,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 13:43:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 13:49:35,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:49:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:49:38,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:49:38,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:51:09,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 13:51:54,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:51:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:51:57,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:51:57,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:52:47,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:52:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:52:50,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:52:50,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:52:53,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 13:52:53,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":52}|
+2019-06-25 13:53:54,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 13:54:33,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 13:54:33,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-25 13:54:49,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 13:54:49,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":114}|
+2019-06-25 13:56:00,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 13:56:00,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":114}|
+2019-06-25 13:56:06,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 13:56:06,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":49}|
+2019-06-25 13:57:04,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 13:57:04,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:57:07,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 13:57:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 13:59:12,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 13:59:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 13:59:25,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 13:59:26,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"OFF\"}"}}|
+2019-06-25 13:59:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":49}|
+2019-06-25 13:59:43,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 14:01:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:01:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:01:36,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:01:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:01:54,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:01:54,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 14:02:36,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:02:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":70}|
+2019-06-25 14:04:32,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:04:32,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:04:35,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:04:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:04:56,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:04:56,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 14:05:34,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:05:34,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":54}|
+2019-06-25 14:07:05,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:07:05,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:07:08,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:07:08,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:07:29,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:07:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-25 14:07:45,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:07:46,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":70}|
+2019-06-25 14:09:13,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:09:14,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 14:09:57,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:09:57,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":70}|
+2019-06-25 14:10:29,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 14:14:52,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:14:52,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:14:55,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:14:55,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:15:25,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:15:25,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 14:16:06,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:16:06,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":52}|
+2019-06-25 14:16:27,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 14:16:44,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":49,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 14:19:34,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:19:34,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:19:37,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:19:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:20:36,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:20:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 14:21:19,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:21:20,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":52}|
+2019-06-25 14:23:12,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:23:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:23:15,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:23:15,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:23:32,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:23:33,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-25 14:24:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:24:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:24:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:24:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:24:21,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:24:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":52}|
+2019-06-25 14:24:53,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-25 14:27:03,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-25 14:32:36,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":52,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 14:33:10,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 14:36:22,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.53,"linkquality":52,"humidity":60.74,"pressure":1008.2,"battery":97,"voltage":2995}|
+2019-06-25 14:40:26,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:40:26,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:40:29,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:40:29,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:40:47,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:40:48,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-25 14:41:03,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:41:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":67}|
+2019-06-25 14:41:15,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:41:15,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 14:41:38,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:41:38,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":67}|
+2019-06-25 14:41:50,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:41:51,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 14:43:32,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:43:32,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:43:35,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:43:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:43:37,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 14:43:48,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:43:49,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":54}|
+2019-06-25 14:44:01,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:44:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-25 14:49:51,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-25 14:54:31,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 14:54:31,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:54:34,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 14:54:34,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 14:54:57,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 14:54:58,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":70}|
+2019-06-25 14:55:10,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 14:55:10,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"ON\"}"}}|
+2019-06-25 14:55:10,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 15:00:11,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 15:06:34,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-25 15:11:44,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":67,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 15:11:48,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 15:16:45,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 15:23:15,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":70}|
+2019-06-25 15:27:36,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":70,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 15:28:22,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.64,"linkquality":70,"humidity":60.95,"pressure":1008.1,"battery":97,"voltage":2995}|
+2019-06-25 15:28:28,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 15:41:45,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 15:41:45,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 15:41:48,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 15:41:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 15:45:07,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 15:49:53,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 16:00:50,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:00:50,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:00:53,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:00:53,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:01:46,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 16:01:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:01:58,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:02:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:02:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:06:28,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 16:06:45,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":70,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 16:13:40,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:13:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:13:43,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:13:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:15:36,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-25 16:15:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:15:58,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:16:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:16:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:16:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:16:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:16:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:16:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:17:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:17:58,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:18:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:18:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:18:25,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 16:18:49,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:18:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:18:52,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:18:52,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:21:11,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:21:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:21:13,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:21:14,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:22:15,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:22:15,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:22:18,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:22:18,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:22:38,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":70,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 16:23:02,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 16:23:23,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.61,"linkquality":70,"humidity":61.07,"pressure":1008.1,"battery":97,"voltage":2995}|
+2019-06-25 16:24:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:24:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:24:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:24:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:25:44,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-25 16:25:45,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:25:47,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-25 16:25:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-25 16:30:06,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-25 16:35:04,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 16:39:36,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-25 16:46:50,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 16:51:43,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 16:56:10,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 17:01:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":70,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 17:03:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 17:06:38,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-25 17:08:23,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-25 17:12:44,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 17:17:39,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 17:18:54,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.63,"linkquality":67,"humidity":60.86,"pressure":1008.1,"battery":97,"voltage":2995}|
+2019-06-25 17:20:17,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 17:25:02,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 17:25:03,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"on-press","duration":0,"counter":1}|
+2019-06-25 17:25:04,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":127,"color": { "x":0.191,"y":0.148}}|
+2019-06-25 17:25:04,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":127,"color": { "x":0.197,"y":0.222}}|
+2019-06-25 17:25:04,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":65,"brightness":127,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":48.2},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:04,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":127,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:05,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\":\"ON\",\"brightness\":127,\"color\": { \"x\":0.191,\"y\":0.148}}"}}|
+2019-06-25 17:25:07,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":91,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:11,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106,"action":"on-press","duration":0,"counter":1}|
+2019-06-25 17:25:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109,"action":"down-press","duration":0,"counter":1,"brightness":55}|
+2019-06-25 17:25:20,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"76"}|
+2019-06-25 17:25:20,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"76"}|
+2019-06-25 17:25:20,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":76,"linkquality":114,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:21,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":91,"brightness":76,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:24,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"down-press","duration":0,"counter":1,"brightness":5}|
+2019-06-25 17:25:24,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"25"}|
+2019-06-25 17:25:24,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"25"}|
+2019-06-25 17:25:24,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":25,"linkquality":111,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:25,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":91,"brightness":25,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:31,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"off-press","duration":0,"counter":1}|
+2019-06-25 17:25:31,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 17:25:31,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 17:25:32,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":25,"linkquality":111,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:32,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":80,"brightness":25,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:35,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"on-press","duration":0,"counter":1}|
+2019-06-25 17:25:35,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":127,"color": { "x":0.191,"y":0.148}}|
+2019-06-25 17:25:35,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":127,"color": { "x":0.197,"y":0.222}}|
+2019-06-25 17:25:35,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"Deckenlampe_01"},"message":"{\"state\":\"ON\",\"brightness\":127,\"color\": { \"x\":0.191,\"y\":0.148}}"}}|
+2019-06-25 17:25:36,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":93,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:37,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":127,"linkquality":111,"color":{"x":0.691,"y":0.308,"saturation":100,"hue":56.7},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:39,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":91,"brightness":127,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:42,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"down-press","duration":0,"counter":1,"brightness":0}|
+2019-06-25 17:25:42,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state": "ON","brightness":"76"}|
+2019-06-25 17:25:42,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state": "ON","brightness":"76"}|
+2019-06-25 17:25:42,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":76,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:43,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":91,"brightness":76,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:46,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"off-press","duration":0,"counter":1}|
+2019-06-25 17:25:46,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-25 17:25:46,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-25 17:25:46,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":76,"linkquality":114,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 17:25:46,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":93,"brightness":76,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 17:26:14,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"off-press","duration":0,"counter":1}|
+2019-06-25 17:26:15,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-25 17:26:15,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":49}|
+2019-06-25 17:26:31,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"off-press","duration":0,"counter":1}|
+2019-06-25 17:26:31,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-25 17:26:31,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 17:29:18,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":36}|
+2019-06-25 17:36:59,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-25 17:43:10,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 17:45:52,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-25 17:46:19,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.63,"linkquality":57,"humidity":60.71,"pressure":1008.1,"battery":97,"voltage":2995}|
+2019-06-25 17:53:40,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-25 17:56:49,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 17:59:44,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":39}|
+2019-06-25 17:59:49,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-25 18:02:26,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":39}|
+2019-06-25 18:10:23,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":98}|
+2019-06-25 18:12:42,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":46,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 18:16:25,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.3,"linkquality":49,"humidity":60.02,"pressure":1008.4,"battery":97,"voltage":2995}|
+2019-06-25 18:16:28,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-25 18:19:01,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-25 18:27:05,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 18:33:07,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-25 18:33:58,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":46,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 18:34:06,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":44,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 18:34:06,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 18:34:06,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 18:34:06,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 18:34:07,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 18:35:35,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":28}|
+2019-06-25 18:35:36,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":44,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 18:35:36,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 18:35:36,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 18:35:37,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 18:35:37,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 18:38:30,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.43,"linkquality":49,"humidity":60.02,"pressure":1008.4,"battery":97,"voltage":2995}|
+2019-06-25 18:43:49,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 18:44:38,SmartHome/zigbee2mqtt/Steckdose Server/set,{"state":"ON"}
+2019-06-25 18:44:38,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":28}|
+2019-06-25 18:44:41,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":111}|
+2019-06-25 18:49:46,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 18:53:47,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 18:54:21,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-25 19:00:30,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 19:01:12,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":44}|
+2019-06-25 19:05:00,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 19:06:25,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 19:07:35,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.46,"linkquality":62,"humidity":59.27,"pressure":1008.5,"battery":97,"voltage":2995}|
+2019-06-25 19:17:14,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 19:17:46,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":44}|
+2019-06-25 19:23:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 19:33:57,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":96}|
+2019-06-25 19:34:20,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":41}|
+2019-06-25 19:36:21,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.46,"linkquality":54,"humidity":58.78,"pressure":1008.5,"battery":97,"voltage":2995}|
+2019-06-25 19:39:44,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-25 19:48:46,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":54,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 19:49:22,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-25 19:50:37,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 19:50:54,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":39}|
+2019-06-25 19:56:23,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-25 19:59:06,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.79,"linkquality":54,"humidity":58.68,"pressure":1008.9,"battery":97,"voltage":2995}|
+2019-06-25 20:00:00,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":54,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 20:07:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 20:07:29,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":41}|
+2019-06-25 20:13:02,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":52}|
+2019-06-25 20:24:00,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 20:24:03,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":36}|
+2019-06-25 20:24:41,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.79,"linkquality":57,"humidity":58.68,"pressure":1008.9,"battery":97,"voltage":2995}|
+2019-06-25 20:29:41,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 20:38:13,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.86,"linkquality":62,"humidity":58.88,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 20:40:37,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":28}|
+2019-06-25 20:40:44,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-25 20:43:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":65,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 20:46:07,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":23}|
+2019-06-25 20:46:20,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 20:54:17,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.93,"linkquality":67,"humidity":59.32,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-25 20:55:00,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":67,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 20:57:11,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":26}|
+2019-06-25 20:57:24,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109}|
+2019-06-25 21:03:00,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-25 21:04:49,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.93,"linkquality":67,"humidity":59.06,"pressure":1009.4,"battery":97,"voltage":2995}|
+2019-06-25 21:13:45,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":46}|
+2019-06-25 21:14:08,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":104}|
+2019-06-25 21:19:39,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 21:30:20,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":39}|
+2019-06-25 21:30:50,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":101}|
+2019-06-25 21:36:18,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 21:38:50,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 21:41:29,SmartHome/zigbee2mqtt/Deckenlampe_01/set,|{"state":"ON","brightness":167,"color": { "x":0.402,"y":0.396}}|
+2019-06-25 21:41:29,SmartHome/zigbee2mqtt/Deckenlampe_02/set,|{"state":"ON","brightness":167,"color": { "x":0.403,"y":0.388}}|
+2019-06-25 21:41:29,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":167,"linkquality":111,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-06-25 21:41:30,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":80,"brightness":167,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-06-25 21:41:32,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"ON","brightness":167,"linkquality":111,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-25 21:41:33,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"ON","linkquality":104,"brightness":167,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-25 21:47:34,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 21:47:47,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.96,"linkquality":59,"humidity":59.36,"pressure":1009.7,"battery":97,"voltage":2995}|
+2019-06-25 21:50:03,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 21:52:57,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-25 21:54:29,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.96,"linkquality":59,"humidity":59.38,"pressure":1009.7,"battery":97,"voltage":2995}|
+2019-06-25 22:03:28,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":111}|
+2019-06-25 22:04:16,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 22:10:52,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.83,"linkquality":54,"humidity":60.1,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 22:20:02,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":33}|
+2019-06-25 22:20:59,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":80}|
+2019-06-25 22:26:15,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-25 22:26:45,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.54,"linkquality":67,"humidity":60.87,"pressure":1009,"battery":97,"voltage":2995}|
+2019-06-25 22:29:16,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 22:29:16,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 22:29:17,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 22:29:17,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 22:29:17,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-25 22:29:25,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":65,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:30:26,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":21,"linkquality":57,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:30:46,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 22:31:29,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":17,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:32:32,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":16,"linkquality":62,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:33:33,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":17,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:35:03,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":16,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 22:35:04,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 22:35:04,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 22:35:04,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":75,"brightness":254}|
+2019-06-25 22:35:05,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-25 22:35:13,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":16,"linkquality":62,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:35:13,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 22:35:13,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-25 22:35:14,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":85,"brightness":254}|
+2019-06-25 22:35:14,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":85,"brightness":254}|
+2019-06-25 22:35:52,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 22:36:18,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:36:36,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":41}|
+2019-06-25 22:36:43,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":20,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:37:19,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":85,"linkquality":59,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 22:37:42,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-25 22:37:48,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":20,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 22:38:10,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":20,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-25 22:38:24,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":79,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 22:39:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":82,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-25 22:39:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":19,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 22:39:54,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":82,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 22:39:54,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-25 22:39:54,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-25 22:39:55,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":78,"brightness":254}|
+2019-06-25 22:39:55,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":80,"brightness":254}|
+2019-06-25 22:40:13,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":57}|
+2019-06-25 22:42:54,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-25 22:45:29,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.42,"linkquality":62,"humidity":61.65,"pressure":1010.4,"battery":97,"voltage":2995}|
+2019-06-25 22:48:20,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.42,"linkquality":65,"humidity":61.77,"pressure":1010.4,"battery":97,"voltage":2995}|
+2019-06-25 22:53:10,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":57}|
+2019-06-25 22:54:23,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":109}|
+2019-06-25 22:59:34,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-25 23:09:44,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":28}|
+2019-06-25 23:10:14,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.46,"linkquality":44,"humidity":61.77,"pressure":1010,"battery":97,"voltage":2995}|
+2019-06-25 23:11:07,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-25 23:16:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":41}|
+2019-06-25 23:26:18,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"ON","linkquality":36}|
+2019-06-25 23:27:47,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":80}|
+2019-06-25 23:29:58,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.59,"linkquality":49,"humidity":62.8,"pressure":1010,"battery":97,"voltage":2995}|
+2019-06-25 23:30:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":39,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-25 23:31:20,SmartHome/zigbee2mqtt/Steckdose Server/set,{"state":"OFF"}
+2019-06-25 23:31:20,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-25 23:32:52,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":36}|
+2019-06-25 23:34:29,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":33,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-25 23:36:16,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-25 23:40:20,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.38,"linkquality":39,"humidity":63.17,"pressure":1011.1,"battery":97,"voltage":2995}|
+2019-06-25 23:44:31,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-25 23:47:53,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-25 23:49:31,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":46}|
+2019-06-26 00:01:12,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 00:04:28,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":26}|
+2019-06-26 00:06:10,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":33}|
+2019-06-26 00:11:36,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.38,"linkquality":49,"humidity":63.94,"pressure":1011.1,"battery":97,"voltage":2995}|
+2019-06-26 00:15:53,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 00:15:53,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 00:15:53,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 00:15:53,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":70,"brightness":254}|
+2019-06-26 00:15:54,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":111,"brightness":254}|
+2019-06-26 00:17:04,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 00:17:39,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":62,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-26 00:17:56,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 00:18:34,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":90,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 00:19:09,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":19,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 00:19:10,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 00:19:10,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 00:19:10,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":70,"brightness":254}|
+2019-06-26 00:19:11,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":114,"brightness":254}|
+2019-06-26 00:21:02,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 00:22:49,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-26 00:24:11,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 00:28:06,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 00:28:09,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":31}|
+2019-06-26 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_01/set,{"state": "OFF"}
+2019-06-26 00:30:00,SmartHome/zigbee2mqtt/Deckenlampe_02/set,{"state": "OFF"}
+2019-06-26 00:30:01,SmartHome/zigbee2mqtt/Deckenlampe_01,|{"state":"OFF","brightness":167,"linkquality":111,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-06-26 00:30:01,SmartHome/zigbee2mqtt/Deckenlampe_02,|{"state":"OFF","linkquality":104,"brightness":167,"color":{"x":0.403,"y":0.388,"saturation":16.9,"hue":48.2},"color_temp":281,"color_mode":1}|
+2019-06-26 00:34:11,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.11,"linkquality":49,"humidity":64.3,"pressure":1011.4,"battery":97,"voltage":2995}|
+2019-06-26 00:34:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 00:37:36,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 00:39:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 00:50:04,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.11,"linkquality":62,"humidity":64.43,"pressure":1011.4,"battery":97,"voltage":2995}|
+2019-06-26 00:51:18,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":80}|
+2019-06-26 00:54:10,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 00:56:08,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 01:08:00,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":80}|
+2019-06-26 01:10:44,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 01:12:47,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 01:16:39,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.09,"linkquality":62,"humidity":64.77,"pressure":1011,"battery":97,"voltage":2995}|
+2019-06-26 01:19:13,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 01:23:09,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 01:24:44,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 01:25:46,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":39}|
+2019-06-26 01:27:18,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 01:29:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 01:30:32,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.94,"linkquality":59,"humidity":64.97,"pressure":1011.8,"battery":97,"voltage":2995}|
+2019-06-26 01:41:25,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 01:43:52,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 01:46:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 01:58:05,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 02:00:27,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":36}|
+2019-06-26 02:02:44,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 02:14:16,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 02:14:49,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":70}|
+2019-06-26 02:14:50,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.94,"linkquality":57,"humidity":64.86,"pressure":1011.8,"battery":97,"voltage":2995}|
+2019-06-26 02:16:54,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":41}|
+2019-06-26 02:17:01,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-26 02:18:09,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 02:19:23,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 02:21:12,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.94,"linkquality":57,"humidity":64.92,"pressure":1012.1,"battery":97,"voltage":2995}|
+2019-06-26 02:31:29,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 02:33:35,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-26 02:36:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 02:42:57,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.94,"linkquality":57,"humidity":65.01,"pressure":1012.1,"battery":97,"voltage":2995}|
+2019-06-26 02:48:13,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 02:50:09,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":44}|
+2019-06-26 02:52:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 03:04:54,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 03:06:43,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-26 03:09:16,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 03:09:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 03:13:08,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 03:14:22,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.85,"linkquality":57,"humidity":65.32,"pressure":1012.5,"battery":97,"voltage":2995}|
+2019-06-26 03:14:27,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":39}|
+2019-06-26 03:21:38,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 03:23:17,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-26 03:26:00,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 03:38:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 03:39:51,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 03:42:08,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.85,"linkquality":57,"humidity":65.38,"pressure":1012.5,"battery":97,"voltage":2995}|
+2019-06-26 03:42:39,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 03:55:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 03:56:26,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":23}|
+2019-06-26 03:59:18,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 04:04:14,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 04:08:07,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 04:11:09,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":20}|
+2019-06-26 04:11:43,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 04:13:00,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":18}|
+2019-06-26 04:13:34,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.84,"linkquality":57,"humidity":65.33,"pressure":1012.6,"battery":97,"voltage":2995}|
+2019-06-26 04:15:57,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 04:28:27,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 04:29:34,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":18}|
+2019-06-26 04:32:37,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 04:33:38,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.84,"linkquality":57,"humidity":65.45,"pressure":1012.6,"battery":97,"voltage":2995}|
+2019-06-26 04:45:10,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 04:46:08,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":13}|
+2019-06-26 04:49:16,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 04:59:14,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 05:01:53,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 05:02:42,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":15}|
+2019-06-26 05:03:09,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":3,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 05:05:55,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 05:08:41,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":23}|
+2019-06-26 05:10:55,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.79,"linkquality":62,"humidity":65.66,"pressure":1012,"battery":97,"voltage":2995}|
+2019-06-26 05:11:56,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.78,"linkquality":62,"humidity":65.58,"pressure":1013.1,"battery":100,"voltage":3005}|
+2019-06-26 05:18:37,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 05:19:16,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":26}|
+2019-06-26 05:22:34,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 05:31:00,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.78,"linkquality":57,"humidity":65.66,"pressure":1013.1,"battery":100,"voltage":3005}|
+2019-06-26 05:35:17,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":117}|
+2019-06-26 05:35:50,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":111}|
+2019-06-26 05:39:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 05:51:57,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 05:52:25,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 05:54:15,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 05:55:52,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 05:58:09,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":6,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 06:00:36,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.78,"linkquality":57,"humidity":65.69,"pressure":1013,"battery":100,"voltage":3005}|
+2019-06-26 06:03:26,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.81,"linkquality":57,"humidity":65.69,"pressure":1013.6,"battery":100,"voltage":3005}|
+2019-06-26 06:04:48,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 06:08:39,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 06:08:59,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 06:12:31,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 06:25:22,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 06:25:33,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":26}|
+2019-06-26 06:27:21,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.81,"linkquality":59,"humidity":65.55,"pressure":1013.6,"battery":100,"voltage":3005}|
+2019-06-26 06:29:11,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 06:42:04,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 06:42:07,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":15}|
+2019-06-26 06:45:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 06:49:17,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 06:53:07,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 06:57:57,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.84,"linkquality":57,"humidity":65.62,"pressure":1014,"battery":97,"voltage":2995}|
+2019-06-26 06:58:41,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 06:58:46,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 07:02:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 07:03:59,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":26}|
+2019-06-26 07:06:04,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:06:05,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:06:05,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:06:05,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":88,"brightness":254}|
+2019-06-26 07:06:05,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":91,"brightness":254}|
+2019-06-26 07:07:05,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:07:10,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.84,"linkquality":57,"humidity":65.59,"pressure":1014,"battery":97,"voltage":2995}|
+2019-06-26 07:08:35,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":96,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 07:08:35,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 07:08:35,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 07:08:35,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-26 07:08:36,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-26 07:10:30,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":96,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:10:30,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:10:30,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:10:31,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-26 07:10:31,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-26 07:11:40,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:13:10,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":93,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 07:13:10,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 07:13:10,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 07:13:11,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-26 07:13:11,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":117,"brightness":254}|
+2019-06-26 07:13:22,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":93,"linkquality":54,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:13:22,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:13:22,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 07:13:23,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-26 07:13:23,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":117,"brightness":254}|
+2019-06-26 07:14:25,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":87,"linkquality":54,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 07:15:15,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-26 07:15:29,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 07:15:55,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":86,"linkquality":54,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 07:15:56,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 07:15:56,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 07:15:56,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":96,"brightness":254}|
+2019-06-26 07:15:56,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":96,"brightness":254}|
+2019-06-26 07:19:08,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-26 07:31:49,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":41}|
+2019-06-26 07:32:13,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-26 07:35:47,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":70}|
+2019-06-26 07:40:16,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":27.82,"linkquality":70,"humidity":64.6,"pressure":1014,"battery":97,"voltage":2995}|
+2019-06-26 07:41:45,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":70,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 07:48:06,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":70,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 07:48:24,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":46}|
+2019-06-26 07:48:56,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 07:51:28,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.32,"linkquality":70,"humidity":63.92,"pressure":1014.5,"battery":97,"voltage":2995}|
+2019-06-26 07:52:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-26 08:00:07,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":46}|
+2019-06-26 08:04:58,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":49}|
+2019-06-26 08:05:36,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 08:09:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-26 08:11:15,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 08:11:16,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 08:11:16,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"254"}|
+2019-06-26 08:11:16,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":104,"brightness":254}|
+2019-06-26 08:11:17,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":104,"brightness":254}|
+2019-06-26 08:12:29,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":57,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 08:12:33,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":59,"occupancy":true,"battery":100,"voltage":3015}|
+2019-06-26 08:13:59,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":96,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 08:14:03,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":20,"linkquality":59,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 08:14:03,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 08:14:03,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 08:14:04,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":93,"brightness":254}|
+2019-06-26 08:14:04,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":93,"brightness":254}|
+2019-06-26 08:14:06,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":96,"linkquality":59,"occupancy":true,"battery":100,"voltage":3025}|
+2019-06-26 08:15:36,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":0,"linkquality":59,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 08:21:32,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 08:22:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 08:25:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 08:26:45,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.32,"linkquality":59,"humidity":63.05,"pressure":1014.5,"battery":97,"voltage":2995}|
+2019-06-26 08:32:53,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 08:38:06,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 08:39:01,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":65}|
+2019-06-26 08:42:24,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 08:44:22,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 08:48:29,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.3,"linkquality":62,"humidity":63.44,"pressure":1014.8,"battery":100,"voltage":3005}|
+2019-06-26 08:53:01,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.3,"linkquality":57,"humidity":63.53,"pressure":1014.8,"battery":100,"voltage":3005}|
+2019-06-26 08:54:40,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 08:55:42,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":78}|
+2019-06-26 08:59:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 08:59:10,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":31}|
+2019-06-26 09:11:14,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 09:12:23,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 09:15:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 09:26:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:26:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:26:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:26:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:27:48,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 09:27:56,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":111,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 09:28:24,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:28:24,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:28:27,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:28:27,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:29:10,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:29:10,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:29:13,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:29:13,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:30:30,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:30:30,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:30:33,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:30:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:32:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 09:34:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:34:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:34:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:34:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:34:58,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.26,"linkquality":59,"humidity":63.81,"pressure":1014.8,"battery":100,"voltage":3005}|
+2019-06-26 09:37:21,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 09:37:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:37:24,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 09:37:24,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 09:39:23,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":62,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 09:42:35,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 09:42:35,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"OFF\"}"}}|
+2019-06-26 09:42:35,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":49}|
+2019-06-26 09:43:07,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 09:43:07,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 09:44:23,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 09:45:49,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 09:48:01,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.22,"linkquality":59,"humidity":63.88,"pressure":1015.3,"battery":100,"voltage":3005}|
+2019-06-26 09:54:41,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 09:59:46,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 10:00:57,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 10:02:32,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 10:03:04,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.22,"linkquality":59,"humidity":63.92,"pressure":1015.3,"battery":100,"voltage":3005}|
+2019-06-26 10:04:39,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:04:39,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:04:42,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:04:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:06:13,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:06:13,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:06:16,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:06:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:06:59,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:06:59,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:07:02,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:07:02,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:09:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:09:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:09:36,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:09:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:16:09,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:16:09,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:16:12,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:16:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:16:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 10:17:31,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 10:18:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:18:08,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:18:11,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:18:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:19:15,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 10:20:59,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:20:59,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:21:01,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:21:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:22:56,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 10:26:14,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:26:14,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:26:17,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:26:17,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:27:07,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:27:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:27:10,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:27:10,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:27:48,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:27:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:27:51,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:27:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:28:22,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:28:22,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:28:25,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:28:25,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:28:52,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:28:52,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:28:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:28:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:32:10,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:32:10,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:32:13,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:32:13,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:32:48,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 10:32:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:32:51,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 10:32:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 10:33:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 10:34:05,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 10:34:15,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 10:34:15,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":59}|
+2019-06-26 10:34:25,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":44,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 10:34:47,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 10:34:47,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 10:34:48,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 10:34:48,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":122}|
+2019-06-26 10:34:49,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 10:34:49,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":75,"brightness":122}|
+2019-06-26 10:34:49,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":75,"brightness":122}|
+2019-06-26 10:35:58,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 10:39:27,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 10:39:27,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":62}|
+2019-06-26 10:39:29,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 10:39:29,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":75,"brightness":122}|
+2019-06-26 10:39:30,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 10:39:30,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":75,"brightness":122}|
+2019-06-26 10:39:30,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":67,"brightness":122}|
+2019-06-26 10:40:06,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 10:40:06,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":46}|
+2019-06-26 10:45:52,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.39,"linkquality":59,"humidity":63.9,"pressure":1015.4,"battery":100,"voltage":3005}|
+2019-06-26 10:49:32,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":36}|
+2019-06-26 10:50:39,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 10:52:39,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 10:56:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 11:00:28,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:00:28,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:00:31,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:00:31,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:02:17,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:02:17,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:02:20,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:02:20,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:03:15,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:03:15,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:03:17,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:03:18,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:04:23,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:04:23,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:04:26,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:04:26,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:06:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:06:42,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:06:45,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:06:45,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:06:52,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 11:06:52,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 11:07:04,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 11:07:04,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-26 11:07:05,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 11:07:05,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":67,"brightness":122}|
+2019-06-26 11:07:06,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 11:07:06,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 11:07:07,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 11:07:13,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 11:08:07,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:08:07,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:08:10,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:08:10,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:09:19,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 11:10:09,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:10:09,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:10:12,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:10:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:11:28,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:11:28,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:11:31,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:11:31,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:11:56,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:11:56,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:11:59,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:11:59,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:13:49,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:13:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:13:52,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:13:52,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:13:58,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 11:13:58,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"OFF\"}"}}|
+2019-06-26 11:13:58,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 11:15:48,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:15:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:15:51,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:15:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:16:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 11:16:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:16:36,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 11:16:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 11:17:12,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 11:17:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":46}|
+2019-06-26 11:17:57,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 11:23:47,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 11:26:03,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 11:29:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 11:33:51,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 11:40:22,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":28}|
+2019-06-26 11:40:23,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.56,"linkquality":57,"humidity":63.7,"pressure":1015.4,"battery":100,"voltage":3005}|
+2019-06-26 11:42:44,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 11:48:44,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 11:50:30,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 11:56:56,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 11:59:25,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 12:04:12,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:04:12,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:04:15,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:04:15,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:05:47,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:05:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:05:50,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:05:50,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:06:01,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 12:06:01,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 233. MAC no ack.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"OFF\"}"}}|
+2019-06-26 12:06:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 12:06:13,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 12:06:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-26 12:06:14,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 12:06:14,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x000b3cfffeff0aa8","type":"device","friendlyName":"Badlampe_01"},"message":"{\"state\": \"ON\",\"brightness\":\"122\"}"}}|
+2019-06-26 12:06:14,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 12:06:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 12:06:35,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"73"}|
+2019-06-26 12:06:35,SmartHome/zigbee2mqtt/Badlampe_02/set,|{"state": "ON","brightness":"73"}|
+2019-06-26 12:06:35,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":73}|
+2019-06-26 12:06:36,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"ON","linkquality":111,"brightness":73}|
+2019-06-26 12:06:41,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 12:06:41,SmartHome/zigbee2mqtt/Badlampe_02/set,{"state": "OFF"}
+2019-06-26 12:06:41,SmartHome/zigbee2mqtt/Badlampe_02,|{"state":"OFF","linkquality":111,"brightness":73}|
+2019-06-26 12:06:42,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":73}|
+2019-06-26 12:08:57,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:08:57,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:08:59,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:08:59,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:10:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:10:08,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:10:11,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:10:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:12:36,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:12:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:12:39,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:12:39,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:12:49,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 12:12:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 12:12:58,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":46,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 12:13:02,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 12:13:02,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"ON\"}"}}|
+2019-06-26 12:13:02,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 12:13:03,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 12:13:03,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":75,"brightness":122}|
+2019-06-26 12:13:04,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 12:13:04,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 12:13:04,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 12:13:04,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 12:13:05,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 12:13:30,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 12:14:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:14:33,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:14:36,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:14:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:15:01,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 12:15:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":41}|
+2019-06-26 12:15:13,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 12:15:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":41}|
+2019-06-26 12:15:14,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 12:15:14,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":122}|
+2019-06-26 12:15:15,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 12:15:15,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 12:15:15,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 12:16:16,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:16:16,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:16:19,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:16:19,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:17:20,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 12:17:20,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 12:17:32,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 12:17:33,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-26 12:17:33,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 12:17:34,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":111,"brightness":122}|
+2019-06-26 12:17:34,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 12:17:34,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 12:17:35,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 12:19:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 12:19:51,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:19:54,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 12:19:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 12:20:12,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 12:20:12,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x7cb03eaa0a02fa78","type":"device","friendlyName":"Steckdose TV"},"message":"{\"state\":\"OFF\"}"}}|
+2019-06-26 12:20:12,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":44}|
+2019-06-26 12:20:24,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 12:20:24,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 12:20:25,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 12:20:25,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":114,"brightness":122}|
+2019-06-26 12:20:26,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 12:20:26,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":65,"brightness":122}|
+2019-06-26 12:20:27,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":72,"brightness":122}|
+2019-06-26 12:24:26,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 12:30:04,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 12:32:51,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 12:37:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 12:39:44,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.62,"linkquality":57,"humidity":63.65,"pressure":1015.4,"battery":100,"voltage":3005}|
+2019-06-26 12:41:43,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":31}|
+2019-06-26 12:46:38,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":28}|
+2019-06-26 12:49:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":75}|
+2019-06-26 12:53:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 13:03:12,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 13:03:53,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:03:53,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:03:56,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:03:56,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:06:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:06:08,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:06:11,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:06:11,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:06:16,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 13:07:01,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 13:07:01,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":57}|
+2019-06-26 13:07:13,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 13:07:13,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":44}|
+2019-06-26 13:07:14,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 13:07:14,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":72,"brightness":122}|
+2019-06-26 13:07:15,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 13:07:15,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":111,"brightness":122}|
+2019-06-26 13:07:16,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":114,"brightness":122}|
+2019-06-26 13:07:58,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 13:11:10,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.62,"linkquality":59,"humidity":63.48,"pressure":1015.4,"battery":100,"voltage":3005}|
+2019-06-26 13:17:01,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:17:01,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:17:04,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:17:04,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:19:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 13:19:46,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 13:22:59,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 13:23:52,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 13:29:20,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:29:20,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:29:23,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:29:23,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:35:45,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.7,"linkquality":57,"humidity":63.45,"pressure":1015.5,"battery":100,"voltage":3005}|
+2019-06-26 13:36:20,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 13:38:38,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:38:38,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:38:41,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:38:41,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:38:57,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 13:39:43,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 13:40:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:40:02,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:40:05,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:40:05,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:40:31,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 13:40:31,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:40:31,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 13:40:34,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 13:40:34,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 13:52:55,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 13:56:24,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 13:57:11,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 14:03:00,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 14:08:42,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.7,"linkquality":57,"humidity":63.48,"pressure":1015.5,"battery":100,"voltage":3005}|
+2019-06-26 14:09:29,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 14:13:04,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 14:13:50,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 14:14:30,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 14:26:03,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 14:29:52,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 14:30:29,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 14:31:21,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 14:31:46,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.74,"linkquality":57,"humidity":63.37,"pressure":1015.4,"battery":100,"voltage":3005}|
+2019-06-26 14:42:37,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":36}|
+2019-06-26 14:46:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":72}|
+2019-06-26 14:47:08,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 14:58:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":54,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 14:59:11,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 15:03:16,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 15:03:47,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 15:06:57,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:06:57,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:07:00,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:07:00,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:09:28,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":8,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 15:14:32,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:14:32,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:14:35,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:14:35,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:15:45,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 15:19:58,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 15:20:26,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 15:22:06,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:22:06,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:22:09,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:22:09,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:23:20,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:23:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:23:23,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:23:23,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:24:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:24:18,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:24:21,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:24:21,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:25:26,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.81,"linkquality":57,"humidity":63.25,"pressure":1015.2,"battery":100,"voltage":3005}|
+2019-06-26 15:27:36,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:27:36,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:27:39,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:27:39,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:30:05,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":36}|
+2019-06-26 15:30:31,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:30:31,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:30:34,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:30:34,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:32:19,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 15:32:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:32:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:32:40,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:32:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:33:46,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:33:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:33:49,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:33:49,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:36:42,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 15:37:05,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":62}|
+2019-06-26 15:43:44,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:43:44,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:43:47,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:43:47,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:44:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:44:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:44:46,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:44:46,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:48:54,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 15:53:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":57,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 15:53:22,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 15:53:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 15:54:54,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 15:54:54,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 15:54:57,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 15:54:57,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 16:04:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 16:05:28,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 16:10:06,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 16:10:24,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 16:22:02,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 16:24:47,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.76,"linkquality":54,"humidity":62.9,"pressure":1015.2,"battery":100,"voltage":3005}|
+2019-06-26 16:25:08,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.76,"linkquality":57,"humidity":62.84,"pressure":1015.2,"battery":100,"voltage":3005}|
+2019-06-26 16:26:35,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":36}|
+2019-06-26 16:26:49,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 16:27:03,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 16:38:36,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 16:43:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111}|
+2019-06-26 16:43:42,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":59}|
+2019-06-26 16:48:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":62,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 16:59:04,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.71,"linkquality":57,"humidity":62.74,"pressure":1015,"battery":100,"voltage":3005}|
+2019-06-26 16:59:27,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":57,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 17:00:15,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 17:00:21,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":54}|
+2019-06-26 17:11:44,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 17:16:55,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":114}|
+2019-06-26 17:17:00,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":57}|
+2019-06-26 17:17:20,SmartHome/zigbee2mqtt/0x00158d000275de23,|{"battery":97,"voltage":2995,"linkquality":33}|
+2019-06-26 17:19:48,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.76,"linkquality":57,"humidity":62.65,"pressure":1014.7,"battery":100,"voltage":3005}|
+2019-06-26 17:26:40,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.76,"linkquality":57,"humidity":62.72,"pressure":1014.7,"battery":100,"voltage":3005}|
+2019-06-26 17:28:18,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":31}|
+2019-06-26 17:29:01,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.7,"linkquality":59,"humidity":62.68,"pressure":1014,"battery":100,"voltage":3005}|
+2019-06-26 17:29:11,SmartHome/zigbee2mqtt/0x00158d000349876a,|{"temperature":28.73,"linkquality":57,"humidity":62.67,"pressure":1014,"battery":100,"voltage":3005}|
+2019-06-26 17:33:39,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-26 17:33:39,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":65}|
+2019-06-26 17:43:01,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_01,|{"illuminance":1,"linkquality":65,"occupancy":false,"battery":100,"voltage":3025}|
+2019-06-26 17:44:53,SmartHome/zigbee2mqtt/Steckdose Server,|{"state":"OFF","linkquality":33}|
+2019-06-26 17:49:34,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 17:49:34,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:49:37,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 17:49:37,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:50:19,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-26 17:50:20,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":106}|
+2019-06-26 17:50:45,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 17:50:45,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:50:48,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 17:50:48,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:51:02,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 17:51:02,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":65}|
+2019-06-26 17:52:41,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 17:52:41,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:52:44,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 17:52:44,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:54:26,SmartHome/zigbee2mqtt/Motion_Sensor_Bad_02,|{"illuminance":7,"linkquality":54,"occupancy":false,"battery":100,"voltage":3015}|
+2019-06-26 17:54:40,SmartHome/zigbee2mqtt/bridge/state,online
+2019-06-26 17:54:40,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:54:43,SmartHome/zigbee2mqtt/bridge/config/permit_join,false
+2019-06-26 17:54:43,SmartHome/zigbee2mqtt/bridge/config,|{"log_level":"info","permit_join":false}|
+2019-06-26 17:54:57,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 17:54:57,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":67}|
+2019-06-26 17:54:58,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 17:54:58,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":114,"brightness":122}|
+2019-06-26 17:54:59,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 17:54:59,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":109,"brightness":122}|
+2019-06-26 17:54:59,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":109,"brightness":122}|
+2019-06-26 17:55:33,SmartHome/zigbee2mqtt/HUE_Switch,|{"battery":100,"linkquality":111,"action":"off-press","duration":0,"counter":1}|
+2019-06-26 17:55:33,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"OFF"}
+2019-06-26 17:55:34,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"OFF","linkquality":65}|
+2019-06-26 17:55:45,SmartHome/zigbee2mqtt/Steckdose TV/set,{"state":"ON"}
+2019-06-26 17:55:45,SmartHome/zigbee2mqtt/Steckdose TV,|{"state":"ON","linkquality":49}|
+2019-06-26 17:55:46,SmartHome/zigbee2mqtt/Badlampe_01/set,|{"state": "ON","brightness":"122"}|
+2019-06-26 17:55:47,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"ON","linkquality":109,"brightness":122}|
+2019-06-26 17:55:47,SmartHome/zigbee2mqtt/Badlampe_01/set,{"state": "OFF"}
+2019-06-26 17:55:47,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":109,"brightness":122}|
+2019-06-26 17:55:48,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":106,"brightness":122}|
+2019-06-26 17:55:48,SmartHome/zigbee2mqtt/Badlampe_01,|{"state":"OFF","linkquality":104,"brightness":122}|

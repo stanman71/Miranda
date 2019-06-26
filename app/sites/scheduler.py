@@ -7,7 +7,7 @@ from app import app
 from app.database.database import *
 from app.components.checks import *
 from app.components.file_management import GET_ALL_LOCATIONS, GET_LOCATION_COORDINATES
-from app.components.control_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
+from app.components.process_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
 
 
 # access rights

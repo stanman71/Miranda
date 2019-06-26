@@ -47,17 +47,17 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>        
-        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li> 
+        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li>                
+        <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
         <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
-        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li> 
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
         <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
         {% if role == "superuser" %}
-          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System </a></li>
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -333,9 +333,12 @@
       </div>  
       
 
-<!-- add speech control device task -->        
+<!-- add speech control device task -->     
 
-    <div class="well well-sm">     
+      <div class="panel panel-default">     
+        <div class="panel-body">
+          <div class="well well-sm">     
+
 
 <!-- error message add speechcontrol device task -->
 
@@ -345,37 +348,35 @@
   </div>      
 {% endif %}              
 
-        <form method="POST"> 
-          <div class="row justify-content-md-center">
-            <div class="col-sm-2">                     
-              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Geräte-Aufgabe:</button>
-            </div>
-            <div class="col-sm-3"> 
-              <input type="text" class="form-control" name="set_speechcontrol_device_task" value="" />
-            </div>  
-            <div class="col-sm-1">                     
-              <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
-            </div>            
-            <div class="col-sm-2"> 
-              <select class="btn btn-default dropdown-toggle" name="set_speechcontrol_device_task_mqtt_device_ieeeAddr">
-                {% for each in dropdown_list_mqtt_devices %}
-                <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
-                {% endfor %}
-              </select>                         
-            </div>  
-            <div class="col-sm-1">                                      
-              <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#device_task_table'" class="btn btn-default" name="add_speechcontrol_device_task" value="Aufgabe erstellen" />
-            </div>
-          </div>
-        </form>       
-      </div>    
 
-<!-- speech control device task table -->
-
-      <div class="panel panel-default">     
-        <div class="panel-body">
-          <div class="well well-sm">  
-
+            <form method="POST"> 
+              <div class="row justify-content-md-center">
+                <div class="col-sm-2">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Geräte-Aufgabe:</button>
+                </div>
+                <div class="col-sm-3"> 
+                  <input type="text" class="form-control" name="set_speechcontrol_device_task" value="{{ device_task }}" />
+                </div>  
+                <div class="col-sm-1">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+                </div>            
+                <div class="col-sm-3"> 
+                  <select class="btn btn-default dropdown-toggle" name="set_speechcontrol_device_task_mqtt_device_ieeeAddr">
+                    <option value= "None" > None </option> 
+                    <option value= "None" > ------------------------------- </option>                       
+                    {% for each in dropdown_list_mqtt_devices %}
+                      <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
+                    {% endfor %}
+                  </select>                         
+                </div>  
+                <div class="col-sm-1">                                      
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#device_task_table'" class="btn btn-default" name="add_speechcontrol_device_task" value="Aufgabe erstellen" />
+                </div>
+              </div>
+            </form>       
+          </div>    
+        
+        
 <!-- error message speechcontrol device tasks  -->
 
 {% if error_message_speechcontrol_device_tasks != "" %}
@@ -387,6 +388,9 @@
 {% endif %} 
 
 
+<!-- speech control device task table -->
+
+        <div class="well well-sm">  
           <form method="POST"> 
             <table class="table">
               <thead>   
@@ -401,14 +405,14 @@
                 {% for entry in speechcontrol_device_task_list %}
                 <tr>
                   <td style="width:3%">
-                    <a href="/dashboard/settings/speechcontrol/device_task/position/up/{{ entry.id }}#task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
-                    <a href="/dashboard/settings/speechcontrol/device_task/position/down/{{ entry.id }}#task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    <a href="/dashboard/settings/speechcontrol/device_task/position/up/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/settings/speechcontrol/device_task/position/down/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                   </td>                     
                   <td style="width:17%">{{ entry.task }}</td> 
                   <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
                   <td style="width:20%">   
                     <select class="btn btn-default dropdown-toggle" name="set_speechcontrol_device_task_setting_value_{{ entry.id }}">
-                      {% if entry.speechcontrol_device_task_setting_value != "None" %}
+                      {% if entry.setting_value != "None" %}
                         <option value = "{{ entry.setting_value }}" > {{ entry.setting_value }} </option>
                       {% else %}   
                         <option value = "None" > None </option> 
@@ -428,10 +432,116 @@
               </tbody>
             </table>  
                      
-<section id="fileupload"></section>           
+<section id="program_task_table"></section>           
             
           </div>
           <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#device_task_table'" class="btn btn-default" name="change_speechcontrol_device_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+      
+<!-- add speech control program task -->     
+
+      <div class="panel panel-default">     
+        <div class="panel-body">
+          <div class="well well-sm">     
+
+
+<!-- error message add speechcontrol program task -->
+
+{% if error_message_add_speechcontrol_program_task != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_speechcontrol_program_task }}
+  </div>      
+{% endif %}              
+
+
+            <form method="POST"> 
+              <div class="row justify-content-md-center">
+                <div class="col-sm-2">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Programm-Aufgabe:</button>
+                </div>
+                <div class="col-sm-3"> 
+                  <input type="text" class="form-control" name="set_speechcontrol_program_task" value="{{ program_task }}" />
+                </div>  
+                <div class="col-sm-1">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Programm:</button>
+                </div>            
+                <div class="col-sm-3"> 
+                  <select class="btn btn-default dropdown-toggle" name="set_speechcontrol_program_task_program_id">
+                    <option value= "None" > None </option> 
+                    <option value= "None" > ------------------------------- </option>                                        
+                    {% for each in dropdown_list_programs %}
+                      <option value="{{each.id}}"> {{ each.name }} </option>
+                    {% endfor %}
+                  </select>                         
+                </div>  
+                <div class="col-sm-1">                                      
+                  <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#program_task_table'" class="btn btn-default" name="add_speechcontrol_program_task" value="Aufgabe erstellen" />
+                </div>
+              </div>
+            </form>       
+          </div>    
+        
+        
+<!-- error message speechcontrol program tasks  -->
+
+{% if error_message_speechcontrol_program_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speechcontrol_program_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+<!-- speech control program task table -->
+
+        <div class="well well-sm">  
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col"></th>                    
+                <th scope="col">Aufgabe</th> 
+                <th scope="col">Programm</th> 
+                <th scope="col">Befehl</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col"></th> 
+              </thead>
+              <tbody> 
+                {% for entry in speechcontrol_program_task_list %}
+                <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/settings/speechcontrol/program_task/position/up/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/settings/speechcontrol/program_task/position/down/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                     
+                  <td style="width:17%">{{ entry.task }}</td> 
+                  <td style="width:20%">{{ entry.program.name }}</td> 
+                  <td style="width:20%">   
+                    <select class="btn btn-default dropdown-toggle" name="set_speechcontrol_program_task_command_{{ entry.id }}">
+                      {% if entry.command != "None" %}
+                        <option value = "{{ entry.command }}" > {{ entry.command }} </option>
+                      {% else %}   
+                        <option value = "None" > None </option> 
+                      {% endif %} 
+                      <option value= "None" > ------------------------- </option>  
+                      <option value= "START" > START </option>
+                      <option value= "STOP" > STOP </option>  
+                    </select>                 
+                  </td> 
+                  <td style="width:37%">
+                    <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                  <td style="width:3%"><td><a href="/dashboard/settings/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="red" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+                     
+<section id="fileupload"></section>           
+            
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/settings/speechcontrol#program_task_table'" class="btn btn-default" name="change_speechcontrol_program_tasks" value="Änderungen speichern"/> 
           </form> 
         </div>  
       </div>  

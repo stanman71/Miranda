@@ -1,5 +1,4 @@
 import math
-import re
 import time
 import threading
 import json
@@ -46,7 +45,7 @@ def RGBtoXY(r, g, b):
 
 def SETTING_LED_RGB(led_name, red, green, blue, brightness):
     
-    xy = RGBtoXY(red, green, blue)
+    xy = RGBtoXY(int(red), int(green), int(blue))
     
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state":"ON","brightness":' + str(brightness) + ',"color": { "x":' + str(xy[0]) + ',"y":' + str(xy[1]) + '}}'
@@ -63,7 +62,6 @@ def SETTING_LED_WHITE(led_name, color_temp, brightness):
 
 
 def SETTING_LED_SIMPLE(led_name, brightness):
-
     channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
@@ -87,18 +85,18 @@ def SETTING_LED_TURN_OFF(led_name):
     
     
     
-""" ################## """
-""" led error checking """
-""" ################## """
+""" ####################### """
+""" led group check setting """
+""" ####################### """
 
 
-def LED_ERROR_CHECKING_THREAD(group_id, scene_id, scene, brightness, delay, limit): 
+def LED_GROUP_CHECK_SETTING_THREAD(group_id, scene_id, scene, brightness, delay, limit): 
  
-	Thread = threading.Thread(target=LED_ERROR_CHECKING_PROCESS, args=(group_id, scene_id, scene, brightness, delay, limit, ))
+	Thread = threading.Thread(target=LED_GROUP_CHECK_SETTING_PROCESS, args=(group_id, scene_id, scene, brightness, delay, limit, ))
 	Thread.start()   
 
  
-def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
+def LED_GROUP_CHECK_SETTING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
                     
     if scene == "OFF":
         setting = "OFF"
@@ -107,7 +105,7 @@ def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, lim
                     
     # check setting 1 try
     time.sleep(delay)                             
-    result = LED_CHECK_SETTING(group_id, scene_id, setting, limit)
+    result = LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit)
     
     # set current state
     if result == []:
@@ -117,7 +115,7 @@ def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, lim
     else:
         # check setting 2 try
         time.sleep(delay)                             
-        result = LED_CHECK_SETTING(group_id, scene_id, setting, limit)
+        result = LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit)
         
         # set current state 
         if result == []:
@@ -127,7 +125,7 @@ def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, lim
         else:
             # check setting 3 try
             time.sleep(delay)                             
-            result = LED_CHECK_SETTING(group_id, scene_id, setting, limit) 
+            result = LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit) 
      
               
     # output
@@ -144,7 +142,7 @@ def LED_ERROR_CHECKING_PROCESS(group_id, scene_id, scene, brightness, delay, lim
     return result     
                                                              
     
-def LED_CHECK_SETTING(group_id, scene_id, setting, limit):
+def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
     
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
         

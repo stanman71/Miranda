@@ -33,17 +33,17 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>        
-        <li><a href="{{ url_for('dashboard_plants') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
+        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li> 
+        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li>                
+        <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
         <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
         <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
-        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li> 
         <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
         <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
         {% if role == "superuser" %}
-          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System </a></li>
+          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout </font></a></li>
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -75,7 +75,7 @@
             <input type="text" class="form-control" name="set_program_name" value="" />                         
           </div>  
           <div class="col-sm-1">                                      
-            <input type="submit" onclick="window.location.href='/dashboard/led/programs#'" class="btn btn-default" name="add_program" value="Programm erstellen" />
+            <input type="submit" onclick="window.location.href='/dashboard/programs#'" class="btn btn-default" name="add_program" value="Programm erstellen" />
         </form>
         </div>
       </div>
@@ -101,13 +101,11 @@
                 </div> 
               </div>  
               <div class="col-sm-3"> 
-                <input type="submit" onclick="window.location.href='/dashboard/led/programs#'" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
+                <input type="submit" onclick="window.location.href='/dashboard/programs#'" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
               </div>  
             </form> 
             </div> 
-          </div> 
-          <br>
-          <br>          
+          </div>       
 
 {% if program != "" %}
     
@@ -129,17 +127,25 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>1:led_rgb(255, 0, 0):254</td>
-                  <td>LED Nummer 1, Farbe ändern auf rot, maximale Helligkeit</td>
+                  <td>device:Steckdose TV:off</td>
+                  <td>Gerät "Steckdose TV" ausschalten</td>
+                </tr>                  
+                <tr>
+                  <td>led:Deckenlampe_01:(255, 0, 0):254</td>
+                  <td>RGB-LED "Deckenlampe_01", Farbe auf rot, maximale Helligkeit</td>
                 </tr>
                 <tr>
-                  <td>3:led_white(255):120</td>
-                  <td>LED Nummer 3, Farbtemperatur, mittlere Helligkeit</td>
+                  <td>led:Deckenlampe_02:3000:120</td>
+                  <td>WHITE-LED "Deckenlampe_01", Farbtemperatur auf 3000, mittlere Helligkeit</td>
                 </tr>    
                 <tr>
-                  <td>3:led_simple:120</td>
-                  <td>LED Nummer 3, mittlere Helligkeit</td>
-                </tr>                                  
+                  <td>led:Badlampe_01:120</td>
+                  <td>SIMPLE-LED "Badlampe_01", mittlere Helligkeit</td>
+                </tr>      
+                <tr>
+                  <td>led:Badlampe_01:off</td>
+                  <td>LED "Badlampe_01" ausschalten</td>
+                </tr>                                              
                 <tr>
                   <td>pause:30</td>
                   <td>Pause für 30 Sekunden</td>
@@ -149,6 +155,7 @@
 <section id="rgb_color"></section>   
 <section id="save_program"></section>
 <section id="start_program"></section>
+<section id="stop_program"></section>
              
           </div>
           <br>
@@ -166,7 +173,7 @@
                 <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="{{ rgb }}"/>
               </div>
               <div class="col-sm-3">          
-                <input type="submit" onclick="window.location.href='/dashboard/led/programs#rgb_color'" class="btn btn-default" name="color_{{ program.id }}" value="RGB Werte anzeigen" />  
+                <input type="submit" onclick="window.location.href='/dashboard/programs#rgb_color'" class="btn btn-default" name="color_{{ program.id }}" value="RGB Werte anzeigen" />  
               </div>
               <div class="col-sm-3">               
                 <div class="form-group">
@@ -176,6 +183,16 @@
             </div>            
           </div>
         </div>
+    
+<!-- error message content -->
+
+{% if error_message_content != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_content %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}         
     
 <!-- program content -->
 
@@ -189,23 +206,27 @@
  
           <div class="row justify-content-md-center">
             <div class="col-sm-3">                         
-              <input type="submit" onclick="window.location.href='/dashboard/led/programs#save_program'" class="btn btn-default" name="save_{{ program.id }}" value="Programm speichern" />
+              <input type="submit" onclick="window.location.href='/dashboard/programs#save_program'" class="btn btn-default" name="save_{{ program.id }}" value="Programm speichern" />
             </div>
 
 <!-- start a program -->
 
-            <div class="col-sm-3">  
-              <select class="btn btn-default dropdown-toggle" name="get_group">
-                  <option value= "" > Gruppe wählen: </option>
-                  <option value= "" > ----------------------------------- </option>                                        
-                {% for each in dropdown_list_groups %}
-                  <option value="{{ each.id }}"> {{ each.name }} </option>
-                {% endfor %}
-              </select> 
-            </div>
-            <div class="col-sm-3">                                        
-              <input type="submit" onclick="window.location.href='/dashboard/led/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
+
+            <div class="col-sm-2">                                        
+              <input type="submit" onclick="window.location.href='/dashboard/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
             </div>   
+  
+<!-- stop a program -->
+
+            <div class="col-sm-2">                                        
+              <input type="submit" onclick="window.location.href='/dashboard/programs#stop_program'" class="btn btn-default" name="stop_{{ program.id }}" value="Programm stoppen" />
+            </div>        
+         
+<!-- running program -->         
+            
+            <div class="col-sm-2">    
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
+            </div>               
           </div>
         </div>     
       </div>

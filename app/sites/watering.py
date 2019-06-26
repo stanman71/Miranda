@@ -4,7 +4,7 @@ from functools import wraps
 
 from app import app
 from app.database.database import *
-from app.components.checks import CHECK_PLANTS_SETTINGS
+from app.components.checks import CHECK_WATERING_SETTINGS
 
 
 # access rights
@@ -18,14 +18,14 @@ def user_required(f):
     return wrap
 
 
-""" ############ """
-""" sites plants """
-""" ############ """
+""" ############# """
+""" site watering """
+""" ############# """
 
-@app.route('/dashboard/plants', methods=['GET', 'POST'])
+@app.route('/dashboard/watering', methods=['GET', 'POST'])
 @login_required
 @user_required
-def dashboard_plants():
+def dashboard_watering():
     error_message_add_plant = ""
     error_message_change_name = ""
     pumptime = ""
@@ -100,7 +100,7 @@ def dashboard_plants():
                     SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture)                       
 
 
-    error_message_settings = CHECK_PLANTS_SETTINGS()
+    error_message_settings = CHECK_WATERING_SETTINGS()
 
     if mqtt_device_ieeeAddr != "":
         mqtt_device_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name  
@@ -110,7 +110,7 @@ def dashboard_plants():
     dropdown_list_moisture = ["less", "normal", "much"]
     plants_list = GET_ALL_PLANTS()
 
-    return render_template('dashboard_plants.html',
+    return render_template('dashboard_watering.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_pumptime=dropdown_list_pumptime,
                             dropdown_list_moisture=dropdown_list_moisture,
@@ -127,18 +127,18 @@ def dashboard_plants():
 
 
 # change plants position 
-@app.route('/dashboard/plants/position/<string:direction>/<int:id>')
+@app.route('/dashboard/watering/position/<string:direction>/<int:id>')
 @login_required
 @user_required
 def change_plants_position(id, direction):
     CHANGE_PLANTS_POSITION(id, direction)
-    return redirect(url_for('dashboard_plants'))
+    return redirect(url_for('dashboard_watering'))
 
 
 # Delete plant
-@app.route('/dashboard/plants/delete/<int:id>')
+@app.route('/dashboard/watering/delete/<int:id>')
 @login_required
 @user_required
 def delete_plant(id):
     DELETE_PLANT(id)
-    return redirect(url_for('dashboard_plants'))
+    return redirect(url_for('dashboard_watering'))
