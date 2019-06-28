@@ -1062,7 +1062,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
 
       # check device
-      if "device" in task:
+      if "device" in task and "mqtt_update" not in task:
          if ":" in task:
             task = task.split(":") 
 

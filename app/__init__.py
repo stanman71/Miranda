@@ -17,7 +17,7 @@ from app.sites import index, user_login, dashboard, camera, led, scheduler, prog
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.mqtt import MQTT_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMMING_MESSAGES
+from app.components.mqtt import MQTT_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
 
@@ -88,7 +88,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
     zigbee_connected = False
     time.sleep(3)
     
-    for message in MQTT_GET_INCOMMING_MESSAGES(5):
+    for message in MQTT_GET_INCOMING_MESSAGES(5):
         
         if message[1] == "SmartHome/zigbee2mqtt/bridge/state" and message[2] == "online":
             
@@ -108,7 +108,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             time.sleep(1)
             zigbee_check = False
             
-            for message in MQTT_GET_INCOMMING_MESSAGES(5):
+            for message in MQTT_GET_INCOMING_MESSAGES(5):
                 
                 if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
                     zigbee_check = True
@@ -123,7 +123,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             time.sleep(1)
             zigbee_check = False
             
-            for message in MQTT_GET_INCOMMING_MESSAGES(5):
+            for message in MQTT_GET_INCOMING_MESSAGES(5):
                 
                 if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":false}':
                     zigbee_check = True

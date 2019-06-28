@@ -223,6 +223,21 @@ https://www.zigbee2mqtt.io/
 ------------
 </br>
 
+### Optional: Zigbee2MQTT Hardware
+
+https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
+</br>
+https://www.zigbee2mqtt.io/information/connecting_cc2530.html
+</br>
+https://github.com/Koenkk/zigbee2mqtt/issues/1437
+</br>
+https://github.com/Koenkk/zigbee2mqtt/issues/489
+
+
+</br>
+------------
+</br>
+
 ### Optional: Install Snowboy
 
 https://github.com/Kitt-AI/snowboy

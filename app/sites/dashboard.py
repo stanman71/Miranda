@@ -12,7 +12,7 @@ from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
 from app.components.shared_resources import process_management_queue
 from app.components.control_led import LED_GROUP_CHECK_SETTING_PROCESS
 from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
-from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
+from app.components.process_program import *
 from app.sites.spotify import authorization_header
 from app.components.control_spotify import *
 
@@ -36,6 +36,7 @@ def dashboard():
     error_message_device = ""
     error_message_log = ""
     error_message_start_program = ""
+    checkbox_repeat_program = ""
     checkbox = ""
         
     # check sensor name changed ?
@@ -386,7 +387,14 @@ def dashboard():
         program_id = request.form.get("get_program_id")
         
         if program_id != "None" and program_running == None:
-            START_PROGRAM_THREAD(program_id)  
+            START_PROGRAM_THREAD(program_id) 
+            
+            # repeat program ?
+            if GET_PROGRAM_RUNNING() != None:
+                if request.form.get("repeat_program"):
+                    REPEAT_PROGRAM_THREAD()
+                else:
+                    NOT_REPEAT_PROGRAM_THREAD()             
             
         elif program_id != "None" and program_running != None:
             error_message_start_program = "Anderes Programm läuft bereits >>> " + program_running 
@@ -396,8 +404,8 @@ def dashboard():
 
     # stop program    
     if request.form.get("stop_program") != None:
-        STOP_PROGRAM_THREAD()          
-         
+        STOP_PROGRAM_THREAD()   
+
 
     """ ############### """
     """ spotify control """
@@ -496,17 +504,19 @@ def dashboard():
     
     error_message_device_checks = CHECK_DASHBOARD_CHECK_SETTINGS(GET_ALL_MQTT_DEVICES("device"))
 
-    program_running        = GET_PROGRAM_RUNNING()   
-    dropdown_list_programs = GET_ALL_PROGRAMS() 
+    program_running         = GET_PROGRAM_RUNNING()   
+    dropdown_list_programs  = GET_ALL_PROGRAMS() 
+    
+    if GET_REPEAT_PROGRAM() == True:
+        checkbox_repeat_program = "checked"
                
-
     if GET_LOGFILE_SYSTEM(10) is not None:
         data_log_system = GET_LOGFILE_SYSTEM(10)
     else:
         data_log_system = ""
         error_message_log = "Keine Einträge gefunden"
 
-    version = GET_CONFIG_VERSION()        
+    version = GET_CONFIG_VERSION()       
 
     # get sensor list
     try:
@@ -648,6 +658,7 @@ def dashboard():
                             data_sensor=data_sensor,
                             program_running=program_running,      
                             dropdown_list_programs=dropdown_list_programs,
+                            checkbox_repeat_program=checkbox_repeat_program,
                             version=version,  
                             error_message_led=error_message_led,
                             error_message_log=error_message_log,  

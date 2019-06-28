@@ -447,7 +447,7 @@
                
               <form method="POST">
                 <div class="row justify-content-md-center">
-                  <div class="col-sm-3">  
+                  <div class="col-sm-2">  
                     <select class="btn btn-default dropdown-toggle" name="get_program_id">
                       <option value= "None" > None </option>                      
                       <option value= "None" > ----------------------- </option>  
@@ -455,16 +455,29 @@
                         <option value="{{ each_program.id }}"> {{ each_program.name }} </option>
                       {% endfor %}               
                     </select>                   
+                  </div>  
+                  <div class="col-sm-1">  
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Repeat</button>  
                   </div>
+                  <div class="col-sm-1">  
+                    <font size="+2">
+                      <div class="pretty p-default p-curve p-fill p-bigger">
+                        <input type="checkbox" {{ checkbox_repeat_program }} name="repeat_program" >
+                        <div class="state">
+                          <label></label>
+                        </div>
+                      </div>
+                    </font>                                    
+                  </div>                    
                   <div class="col-sm-2">                                        
                     <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="start_program" value="Programm starten" />
                   </div>   
                   <div class="col-sm-2">                                        
                     <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="stop_program" value="Programm stoppen" />
                   </div>        
-                  <div class="col-sm-2">    
+                  <div class="col-sm-3">    
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
-                  </div>                   
+                  </div>                                      
                 </div>   
               </form>
             </div>    

@@ -8,7 +8,7 @@ import time
 from app import app
 from app.database.database import *
 from app.components.file_management import *
-from app.components.shared_resources import process_management_queue, mqtt_incomming_messages_list
+from app.components.shared_resources import process_management_queue, mqtt_incoming_messages_list
 
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
@@ -20,7 +20,7 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 """ ################################ """
 
 
-def MQTT_GET_INCOMMING_MESSAGES(limit):
+def MQTT_GET_INCOMING_MESSAGES(limit):
 
 	# get the time check value
 	time_check = datetime.datetime.now() - datetime.timedelta(seconds=limit)
@@ -28,7 +28,7 @@ def MQTT_GET_INCOMMING_MESSAGES(limit):
 	
 	message_list = []
 	
-	for message in mqtt_incomming_messages_list:
+	for message in mqtt_incoming_messages_list:
 		
 		time_message = datetime.datetime.strptime(message[0],"%Y-%m-%d %H:%M:%S")   
 		time_limit   = datetime.datetime.strptime(time_check, "%Y-%m-%d %H:%M:%S")
@@ -60,7 +60,7 @@ def MQTT_THREAD():
 		    channel != "SmartHome/zigbee2mqtt/bridge/state"):
 						
 			# other message already arrived?
-			for existing_message in MQTT_GET_INCOMMING_MESSAGES(3):	
+			for existing_message in MQTT_GET_INCOMING_MESSAGES(3):	
 							
 				if existing_message[1] == channel:
 					
@@ -108,7 +108,7 @@ def MQTT_THREAD():
 				WRITE_LOGFILE_MQTT("zigbee2mqtt", channel, msg)
 				
 			# add message to the incoming message list
-			mqtt_incomming_messages_list.append((str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), channel, msg))	
+			mqtt_incoming_messages_list.append((str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), channel, msg))	
 			
 			# start message thread for additional processes
 			if channel != "" and channel != None:		
@@ -264,7 +264,7 @@ def MQTT_UPDATE_DEVICES(gateway):
 		time.sleep(3)
 
 		try:
-			for message in MQTT_GET_INCOMMING_MESSAGES(5):
+			for message in MQTT_GET_INCOMING_MESSAGES(5):
 				
 				if message[1] == "SmartHome/mqtt/log": 
 					
@@ -352,7 +352,7 @@ def MQTT_UPDATE_DEVICES(gateway):
       
 		try:
 
-			for message in MQTT_GET_INCOMMING_MESSAGES(5):
+			for message in MQTT_GET_INCOMING_MESSAGES(5):
 				
 				if message[1] == "SmartHome/zigbee2mqtt/bridge/log":  
 					
@@ -462,7 +462,7 @@ def MQTT_REQUEST_SENSORDATA(job_name):
 
 	time.sleep(2)
 	
-	for message in MQTT_GET_INCOMMING_MESSAGES(5):
+	for message in MQTT_GET_INCOMING_MESSAGES(5):
 		
 		if message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr:
 				
@@ -499,7 +499,7 @@ def MQTT_SAVE_SENSORDATA(job_id):
 	sensor_key = sensor_key.replace(" ", "")
 	
 		
-	for message in MQTT_GET_INCOMMING_MESSAGES(10):
+	for message in MQTT_GET_INCOMING_MESSAGES(10):
 		
 		if message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr:
 				
@@ -570,9 +570,9 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, setting_value, delay, limi
 
 def MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit):
 			
-	for message in MQTT_GET_INCOMMING_MESSAGES(limit):
+	for message in MQTT_GET_INCOMING_MESSAGES(limit):
 		
-		# search for fitting message in incomming_messages_list
+		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/mqtt/" + ieeeAddr:
 				
 			try:
@@ -642,9 +642,9 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, setting_value, delay, l
  
 def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit):
 	
-	for message in MQTT_GET_INCOMMING_MESSAGES(limit):	
+	for message in MQTT_GET_INCOMING_MESSAGES(limit):	
 		
-		# search for fitting message in incomming_messages_list
+		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/zigbee2mqtt/" + name:
 				
 			try:

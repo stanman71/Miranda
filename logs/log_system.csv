@@ -7804,3 +7804,641 @@ expected ',' or ']', but got '<scalar>'
 2019-06-26 17:55:52,EVENT,|File || /logs/log_mqtt.csv || deleted|
 2019-06-26 17:55:52,EVENT,|File || /logs/log_mqtt.csv || created|
 2019-06-26 17:55:53,SUCCESS,|Program - SUNRISE || finished|
+2019-06-26 17:57:34,EVENT,|MQTT || started|
+2019-06-26 17:57:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-26 17:57:37,EVENT,|ZigBee2MQTT || Connected|
+2019-06-26 17:57:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-26 17:57:38,EVENT,|Speechcontrol || started|
+2019-06-26 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 18:01:51,EVENT,|MQTT || started|
+2019-06-26 18:01:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-26 18:01:54,EVENT,|ZigBee2MQTT || Connected|
+2019-06-26 18:01:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-26 18:01:56,EVENT,|Speechcontrol || started|
+2019-06-26 18:37:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-26 18:37:55,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-26 18:38:18,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-26 18:38:18,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-26 18:39:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 18:39:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-26 18:47:48,EVENT,|Speechcontrol || Detection Task || einmal neu anzuschneiden und|
+2019-06-26 18:47:48,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-26 18:49:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 18:49:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 19:32:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 19:32:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 19:44:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 19:44:30,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 20:27:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 20:27:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 20:39:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 20:39:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 21:00:55,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 55 %|
+2019-06-26 21:22:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 21:22:14,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 21:33:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-26 21:33:16,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-26 21:34:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-26 21:34:36,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-26 21:34:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 21:34:49,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-26 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 22:04:09,EVENT,|Speechcontrol || Detection Task || drei drei stück man siehts hier von uns|
+2019-06-26 22:04:09,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-26 22:15:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 22:15:52,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 22:29:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 22:29:34,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 22:29:48,EVENT,|Speechcontrol || Detection Task || aber sie können eine mütze fahren deswegen will ich euch den abend|
+2019-06-26 22:29:48,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-26 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-26 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-26 23:10:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 23:10:53,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-26 23:24:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-26 23:24:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-27 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-06-27 00:05:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 00:05:55,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 00:19:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 00:19:36,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-27 00:30:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 00:30:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-27 00:39:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 00:39:58,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 00:41:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 00:41:03,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 00:42:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 00:42:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 00:56:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 00:56:36,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 01:14:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 01:14:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 01:51:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 01:51:37,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 02:09:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 02:09:34,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 02:46:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 02:46:39,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 03:04:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 03:04:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 03:41:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 03:41:40,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 03:59:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 03:59:33,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 04:36:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 04:36:41,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 04:54:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 04:54:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 05:31:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 05:31:44,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 05:49:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 05:49:37,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 06:26:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 06:26:46,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 06:44:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 06:44:38,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 07:13:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:13:50,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 07:14:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:14:52,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:15:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:15:55,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:16:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 07:16:27,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 07:16:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:16:49,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 07:17:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:17:50,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:18:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:18:06,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:19:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:19:11,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:19:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 07:19:20,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 07:20:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 07:20:47,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 07:39:08,EVENT,|Speechcontrol || Detection Task || starte waren preis im wohnzimmer|
+2019-06-27 07:39:08,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-27 07:41:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 07:41:22,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-06-27 07:50:00,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-27 07:50:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 08:10:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 08:10:50,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 08:11:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 08:11:32,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 08:13:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 08:13:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 08:13:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 08:13:38,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 08:15:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 08:15:11,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 08:16:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 08:16:32,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 08:17:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 08:18:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 08:36:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 08:36:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 09:05:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 09:05:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 09:31:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 09:31:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 09:43:23,EVENT,|MQTT || started|
+2019-06-27 09:43:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 09:43:26,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 09:43:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 09:43:28,EVENT,|Speechcontrol || started|
+2019-06-27 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 10:00:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 10:00:27,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 11:13:34,EVENT,|MQTT || started|
+2019-06-27 11:13:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:13:37,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:13:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:13:39,EVENT,|Speechcontrol || started|
+2019-06-27 11:14:50,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-27 11:15:02,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Day - * || Hour - * || Minute - *|
+2019-06-27 11:16:01,EVENT,|Scheduler || Task - test || started|
+2019-06-27 11:16:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-27 11:16:08,WARNING,|LED || Group - wohnzimmer || ['Deckenlampe_01 >>> Setting not confirmed', 'Deckenlampe_02 >>> Setting not confirmed']|
+2019-06-27 11:20:16,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-27 11:21:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 11:21:21,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 11:22:24,EVENT,|Database || Scheduler || Task - test || Task_Type - reduced || added|
+2019-06-27 11:22:38,EVENT,|Database || Scheduler || Task - test || changed |||| Name - test || Task - scene:wohnzimmer:relax:100 || Day - * || Hour - * || Minute - *|
+2019-06-27 11:23:01,EVENT,|Scheduler || Task - test || started|
+2019-06-27 11:23:01,EVENT,|Database || Scheduler || Task - test || deleted|
+2019-06-27 11:23:03,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-06-27 11:23:39,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-27 11:40:37,EVENT,|MQTT || started|
+2019-06-27 11:40:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:40:40,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:40:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:40:42,EVENT,|Speechcontrol || started|
+2019-06-27 11:41:55,EVENT,|MQTT || started|
+2019-06-27 11:41:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:41:58,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:41:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:41:59,EVENT,|Speechcontrol || started|
+2019-06-27 11:42:35,EVENT,|Program - SUNRISE || started|
+2019-06-27 11:42:38,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:42:50,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:42:51,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:42:52,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:42:56,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 11:44:45,EVENT,|Program - SUNRISE || started|
+2019-06-27 11:44:47,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:44:59,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:45:00,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:45:01,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:45:03,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:45:14,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:45:15,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:45:16,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:45:17,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:45:29,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:45:30,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:45:31,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:45:32,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:45:44,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:45:45,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:45:46,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:45:47,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:45:59,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:46:00,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:46:01,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:46:03,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:46:12,EVENT,|Program - SUNRISE || stopped|
+2019-06-27 11:46:12,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-27 11:46:26,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:46:27,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:46:28,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:46:30,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:46:41,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:46:43,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:46:44,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:46:44,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:46:57,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:46:58,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:46:59,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:47:00,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:47:12,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:47:13,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:47:14,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:47:15,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:47:27,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:47:28,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:47:29,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:47:30,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:47:43,EVENT,|MQTT || started|
+2019-06-27 11:47:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:47:46,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:47:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:47:47,EVENT,|Speechcontrol || started|
+2019-06-27 11:48:47,EVENT,|MQTT || started|
+2019-06-27 11:48:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:48:50,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:48:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:48:51,EVENT,|Speechcontrol || started|
+2019-06-27 11:50:18,EVENT,|Program - SUNRISE || started|
+2019-06-27 11:50:18,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-27 11:50:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 11:50:30,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 11:50:33,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:50:33,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:50:34,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:50:35,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:50:47,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:50:48,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:50:50,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:50:51,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:51:03,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:51:04,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:51:05,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:51:06,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:51:22,EVENT,|MQTT || started|
+2019-06-27 11:51:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:51:25,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:51:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:51:26,EVENT,|Speechcontrol || started|
+2019-06-27 11:51:36,EVENT,|Program - SUNRISE || started|
+2019-06-27 11:51:36,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-27 11:51:50,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:51:51,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:51:52,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:51:53,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 11:52:03,EVENT,|Program - SUNRISE || stopped|
+2019-06-27 11:52:08,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 11:53:19,EVENT,|MQTT || started|
+2019-06-27 11:53:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:53:22,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:53:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:53:23,EVENT,|Speechcontrol || started|
+2019-06-27 11:55:15,EVENT,|MQTT || started|
+2019-06-27 11:55:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:55:18,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:55:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:55:19,EVENT,|Speechcontrol || started|
+2019-06-27 11:56:47,EVENT,|MQTT || started|
+2019-06-27 11:56:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:56:50,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:56:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:56:51,EVENT,|Speechcontrol || started|
+2019-06-27 11:58:40,EVENT,|MQTT || started|
+2019-06-27 11:58:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 11:58:43,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 11:58:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 11:58:44,EVENT,|Speechcontrol || started|
+2019-06-27 11:58:58,EVENT,|Program - SUNRISE || started|
+2019-06-27 11:58:58,STATUS,|Zigbee2MQTT || Device - Steckdose TV || OFF|
+2019-06-27 11:59:13,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 11:59:14,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 11:59:15,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 11:59:18,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 12:00:20,EVENT,|Program - SUNRISE || started|
+2019-06-27 12:00:23,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:00:35,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:00:36,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 12:00:37,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:00:40,ERROR,|ZigBee2MQTT || Device - Badlampe_01 || Setting not confirmed - OFF|
+2019-06-27 12:00:50,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:00:51,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 12:00:52,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 12:00:55,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 12:03:04,EVENT,|MQTT || started|
+2019-06-27 12:03:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 12:03:07,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 12:03:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 12:03:08,EVENT,|Speechcontrol || started|
+2019-06-27 12:03:17,EVENT,|Program - SUNRISE || started|
+2019-06-27 12:03:20,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:03:32,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:03:33,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 12:03:34,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 12:03:37,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 12:08:04,EVENT,|MQTT || started|
+2019-06-27 12:08:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 12:08:07,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 12:08:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 12:08:08,EVENT,|Speechcontrol || started|
+2019-06-27 12:08:45,EVENT,|Program - SUNRISE || started|
+2019-06-27 12:08:47,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:08:59,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:09:00,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 12:09:01,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 12:09:05,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 12:11:19,EVENT,|MQTT || started|
+2019-06-27 12:11:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 12:11:22,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 12:11:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 12:11:24,EVENT,|Speechcontrol || started|
+2019-06-27 12:11:33,EVENT,|Program - SUNRISE || started|
+2019-06-27 12:11:35,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:11:47,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:11:48,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - ON|
+2019-06-27 12:11:49,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || State changed - OFF|
+2019-06-27 12:11:50,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 12:12:00,EVENT,|Program - SUNRISE || stopped|
+2019-06-27 12:12:05,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 12:12:26,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 12:16:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 12:16:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 12:45:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 12:45:31,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 13:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 13:11:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 13:11:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 13:19:05,EVENT,|MQTT || started|
+2019-06-27 13:19:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-06-27 13:19:08,EVENT,|ZigBee2MQTT || Connected|
+2019-06-27 13:19:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-06-27 13:19:09,EVENT,|Speechcontrol || started|
+2019-06-27 13:40:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 13:40:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 14:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 14:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 14:06:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 14:06:19,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 14:35:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 14:35:33,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 15:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 15:01:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 15:01:22,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 15:30:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 15:30:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 15:56:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 15:56:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 16:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 16:25:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 16:25:33,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 16:51:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 16:51:24,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 17:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 17:20:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 17:20:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 17:46:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 17:46:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 18:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 18:15:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 18:15:35,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 18:37:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 18:37:31,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 18:38:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 18:39:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 18:41:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 18:41:27,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 18:50:46,SUCCESS,|ZigBee2MQTT || Device - Steckdose Server || State changed - ON|
+2019-06-27 18:54:37,EVENT,|Speechcontrol || Detection Task || heute mal ganz|
+2019-06-27 18:54:37,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-27 19:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 19:04:50,EVENT,|Speechcontrol || Detection Task || also jetzt zwei parameter die wir genau das was ihr aussieht|
+2019-06-27 19:04:50,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-27 19:07:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 19:07:47,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 19:14:51,EVENT,|Program - SUNRISE || started|
+2019-06-27 19:14:53,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - OFF|
+2019-06-27 19:15:04,EVENT,|Program - SUNRISE || stopped|
+2019-06-27 19:15:05,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || State changed - ON|
+2019-06-27 19:15:09,SUCCESS,|Program - SUNRISE || finished|
+2019-06-27 19:36:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 19:36:26,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 19:45:38,EVENT,|Speechcontrol || Detection Task || weisst fünf sekunden|
+2019-06-27 19:45:38,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-27 19:56:57,EVENT,|Speechcontrol || Detection Task || zu erwarten euch|
+2019-06-27 19:56:57,ERROR,|Process Management || unorderable types: float() > tuple()|
+2019-06-27 20:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 20:02:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 20:02:47,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 20:31:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 20:31:27,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 20:57:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 20:57:48,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 21:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 21:18:57,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 60 %|
+2019-06-27 21:21:43,EVENT,|Speechcontrol || Detection Task || |
+2019-06-27 21:26:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 21:26:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 21:31:39,SUCCESS,|ZigBee2MQTT || Device - Steckdose Server || State changed - OFF|
+2019-06-27 21:52:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 21:52:49,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 21:57:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 21:57:40,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 21:59:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 21:59:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 22:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 22:00:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:00:58,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 22:01:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:01:56,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:03:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 22:03:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 22:21:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 22:21:32,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 22:46:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 22:46:58,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 22:51:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:51:56,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 22:52:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:52:04,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:53:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:53:05,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:53:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:53:24,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:54:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:54:09,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:55:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:55:24,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:56:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:56:29,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:56:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:56:49,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:57:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:57:59,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:58:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 22:58:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:58:21,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:58:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:58:22,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:58:25,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 22:58:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:58:36,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-27 22:59:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:59:41,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:59:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:59:52,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 22:59:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 22:59:55,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 23:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-27 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-27 23:01:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-27 23:01:11,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-27 23:01:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 23:01:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-27 23:18:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 23:18:16,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-27 23:40:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-27 23:40:46,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 00:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 00:00:04,EVENT,|Scheduler || Task - Datenbank sichern || started|
+2019-06-28 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-06-28 00:13:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 00:13:14,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-06-28 00:30:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 00:30:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-06-28 00:35:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 00:35:47,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 01:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 01:08:16,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 01:08:16,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 01:30:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 01:30:47,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 01:35:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 01:35:37,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-28 01:36:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 01:36:48,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-28 01:38:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 01:38:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-28 02:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 02:03:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 02:03:17,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 02:25:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 02:25:09,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 02:58:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 02:58:18,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 03:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 03:20:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 03:20:10,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 03:53:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 03:53:19,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 04:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 04:15:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 04:15:11,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 04:48:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 04:48:17,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 05:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 05:10:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 05:10:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 05:43:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 05:43:20,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 06:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 06:05:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 06:05:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 06:38:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 06:38:22,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 07:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 07:00:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 07:00:12,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 07:33:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 07:33:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 07:40:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:40:55,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-28 07:41:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:41:59,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-28 07:43:12,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:43:12,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-28 07:44:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 07:44:47,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-28 07:44:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:44:57,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-28 07:45:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:45:55,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-28 07:46:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 07:46:56,STATUS,|LED || Group - bad || warm-weiss : 100|
+2019-06-28 07:48:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 07:48:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-28 07:49:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 07:49:54,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-06-28 07:50:00,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-06-28 07:50:00,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 08:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 08:28:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 08:28:23,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 08:29:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 08:29:19,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-28 08:30:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 08:30:52,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-28 08:32:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-06-28 08:32:05,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-06-28 08:33:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 08:33:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-06-28 08:39:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 08:39:40,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 09:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 09:23:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 09:23:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 09:34:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 09:34:41,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 10:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 10:18:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 10:18:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 10:29:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 10:29:42,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 11:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 11:13:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 11:13:25,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 11:24:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 11:24:42,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 12:00:00,EVENT,|Scheduler || Task - MQTT aktualisieren || started|
+2019-06-28 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-06-28 12:08:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 12:08:28,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-06-28 12:19:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-06-28 12:19:44,STATUS,|LED || Group - bad || OFF : 0 %|
