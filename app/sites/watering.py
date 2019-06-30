@@ -96,8 +96,13 @@ def dashboard_watering():
                         moisture = request.form.get("set_moisture_" + str(i))  
                     else:
                         moisture = "None"
+                        
+                    if request.form.get("set_time_" + str(i)) != None:
+                        time = request.form.get("set_time_" + str(i))  
+                    else:
+                        time = "None"                        
 
-                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture)                       
+                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture, time)                       
 
 
     error_message_settings = CHECK_WATERING_SETTINGS()
@@ -108,12 +113,16 @@ def dashboard_watering():
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_array")  
     dropdown_list_pumptime = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
     dropdown_list_moisture = ["less", "normal", "much"]
+    dropdown_list_time     = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+    
+    
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_watering.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_pumptime=dropdown_list_pumptime,
                             dropdown_list_moisture=dropdown_list_moisture,
+                            dropdown_list_time=dropdown_list_time,
                             plants_list=plants_list,
                             moisture=moisture,
                             pumptime=pumptime,

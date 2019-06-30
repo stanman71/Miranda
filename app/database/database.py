@@ -198,6 +198,7 @@ class Plants(db.Model):
     control_sensor_watertank = db.Column(db.String(50))     
     control_sensor_moisture  = db.Column(db.String(50))         
     moisture                 = db.Column(db.String(50)) 
+    time                     = db.Column(db.Integer)   
     
 class Programs(db.Model):
     __tablename__ = 'programs'
@@ -1358,17 +1359,18 @@ def GET_ALL_MQTT_DEVICES(selector):
   
     if selector == "":
         for device in devices:
+            
             device_list.append(device)     
   
     if selector == "controller":
         for device in devices:
             if device.device_type == "controller":
+                
                 device_list.append(device)      
  
     if selector == "device":
         for device in devices:
-            if (device.device_type == "device_switch" or 
-                device.device_type == "watering_array"):
+            if (device.device_type == "device_switch"):
                 
                 device_list.append(device)      
   
@@ -1383,6 +1385,7 @@ def GET_ALL_MQTT_DEVICES(selector):
     if selector == "mqtt" or selector == "zigbee2mqtt":
         for device in devices:
             if device.gateway == selector:
+                
                 device_list.append(device)
                 
     if selector == "sensor":
@@ -1396,11 +1399,13 @@ def GET_ALL_MQTT_DEVICES(selector):
     if selector == "switch":
         for device in devices:
             if device.device_type == "switch" or device.device_type == "power_switch":
+                
                 device_list.append(device)       
                 
     if selector == "watering_array":
         for device in devices:
             if device.device_type == "watering_array":
+                
                 device_list.append(device)                                                
                 
     return device_list
@@ -1724,7 +1729,8 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
                         id                   = i,
                         name                 = name, 
                         pumptime             = 30,
-                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr                
+                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,
+                        time                 = "None"              
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1739,14 +1745,14 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture):         
+def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture, time):         
     entry = Plants.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
     if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.pumptime != pumptime or  
         entry.control_sensor_watertank != control_sensor_watertank or entry.control_sensor_moisture != control_sensor_moisture or 
-        entry.moisture != int(moisture)):
+        entry.moisture != int(moisture) or entry.time != int(time)):
 
         entry.name = name
         entry.mqtt_device_ieeeAddr = mqtt_device_ieeeAddr
@@ -1754,6 +1760,7 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pumptime, control_sensor_
         entry.control_sensor_watertank = control_sensor_watertank        
         entry.control_sensor_moisture = control_sensor_moisture
         entry.moisture = moisture
+        entry.time = time
         
         db.session.commit()  
         
@@ -1762,7 +1769,8 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pumptime, control_sensor_
                              " | Pumptime - " + str(entry.pumptime) + 
                              " | Control Sensor Watertank - " + entry.control_sensor_watertank +  
                              " | Control Sensor Moisture - " + entry.control_sensor_moisture + 
-                             " | moisture - " + entry.moisture)
+                             " | Moisture - " + entry.moisture +
+                             " | Time - " + str(entry.time))
                              
 
 def CHANGE_PLANTS_POSITION(id, direction):

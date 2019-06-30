@@ -8,18 +8,20 @@ const char* ssid        = "";
 const char* password    = ""; 
 const char* mqtt_server = "";
 
+// Time to sleep (in seconds):
+const int sleepTimeS = 3600;
+
 // mqtt connection
 WiFiClient espClient;
 PubSubClient client(espClient);
 char path[50];
-int value = 0;
 
 // INPUT
 int PIN_ANALOG = A0;
 int PIN_DIGITAL = 14;
 
 // OUTPUT 
-int PIN_PUMP = 0;
+int PIN_PUMP = 15;
 int PIN_LED_GREEN = 12;
 int PIN_LED_RED = 13;
 
@@ -70,6 +72,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     String check_ieeeAddr = getValue(topic,'/',2);
     String check_command  = getValue(topic,'/',3);
 
+    // ##########
+    // devices 
+    // ##########
+
     if(check_ieeeAddr == "devices"){
 
         // create path   
@@ -86,13 +92,14 @@ void callback(char* topic, byte* payload, unsigned int length) {
         msg["description"] = "MQTT Watering_Array";
     
         JsonArray data_inputs = msg.createNestedArray("inputs");
+        data_inputs.add("state");
         data_inputs.add("pump_state");
         data_inputs.add("sensor_moisture");
         data_inputs.add("sensor_watertank");
 
         JsonArray data_commands = msg.createNestedArray("commands");
+        data_commands.add("state=SLEEP");
         data_commands.add("pump_state=PUMP_ON");
-        data_commands.add("pump_state=PUMP_OFF");
 
         // convert msg to char
         char msg_Char[512];
@@ -107,6 +114,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
         client.publish(path, msg_Char);        
     }
 
+    // ##########
+    // get 
+    // ##########
+
     if(check_ieeeAddr == ieeeAddr and check_command == "get"){
 
         // create path   
@@ -116,6 +127,9 @@ void callback(char* topic, byte* payload, unsigned int length) {
 
         // create msg as json
         DynamicJsonDocument msg(128);
+
+        // get state
+        msg["state"] = "ONLINE";
         
         // get pump state
         if (digitalRead(PIN_PUMP) == 1) { 
@@ -147,6 +161,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
         client.publish(path, msg_Char);         
     }    
 
+    // ##########
+    // set 
+    // ##########
+
     if(check_ieeeAddr == ieeeAddr and check_command == "set"){
 
         // create path   
@@ -167,18 +185,31 @@ void callback(char* topic, byte* payload, unsigned int length) {
         // convert msg to json
         DynamicJsonDocument msg_json(64);
         deserializeJson(msg_json, msg);
-        
-        String pump_setting = msg_json["pump_state"];
-        int pumptime        = msg_json["pump_time"];
-        pumptime            = pumptime * 1000; 
-        
-        if (pump_setting == "PUMP_ON") {
 
+        String state_setting = msg_json["state"];
+        int sleep_timer      = msg_json["sleep_timer"];        
+        String pump_setting  = msg_json["pump_state"];
+        int pumptime         = msg_json["pump_time"];
+        pumptime             = pumptime * 1000; 
+
+
+        // ##########
+        // pump mode
+        // ##########
+        
+        if (pump_setting == "PUMP_ON" and pumptime != 0) {
+
+            // ##########
             // start pump
+            // ##########
+            
             digitalWrite(PIN_PUMP, HIGH);
 
             // create msg as json
             DynamicJsonDocument msg(128);     
+
+            // get state
+            msg["state"] = "ONLINE";
 
             // get pump state
             msg["pump_state"] = "PUMP_ON";
@@ -197,34 +228,47 @@ void callback(char* topic, byte* payload, unsigned int length) {
             client.publish(path, msg_Char);
             Serial.println("PUMP_ON");
 
-            // pump not manuelly started
-            if (pumptime != 0) {
-                delay(pumptime);
+            delay(pumptime);
 
-                // stop pump
-                digitalWrite(PIN_PUMP, LOW);    
-                                 
-                // get pump state 
-                msg["pump_state"] = "PUMP_OFF";
-
-                // convert msg to char
-                serializeJson(msg, msg_Char);
-
-                client.publish(path, msg_Char);
-                Serial.println("PUMP_OFF");                         
-            }
-                            
-        }
-        if (pump_setting == "PUMP_OFF") {
-
+            // #########
             // stop pump
-            digitalWrite(PIN_PUMP, LOW);      
+            // #########
+            
+            digitalWrite(PIN_PUMP, LOW);   
 
-            // create msg as json
-            DynamicJsonDocument msg(128);   
-
+            while (!client.connected()) {
+                reconnect();
+            }
+                     
             // get pump state
             msg["pump_state"] = "PUMP_OFF";
+
+            // convert msg to char
+            serializeJson(msg, msg_Char);
+            
+            client.publish(path, msg_Char);
+            Serial.println("PUMP_ON");                                
+        }
+
+
+        // ##########
+        // sleep mode
+        // ##########
+        
+        if (state_setting == "SLEEP") {  
+
+            // create msg as json
+            DynamicJsonDocument msg(128);     
+
+            // get state
+            msg["state"] = "SLEEP";
+
+            // get pump state
+            if (digitalRead(PIN_PUMP) == 1) {    
+                msg["pump_state"] = "PUMP_ON";       
+            } else {           
+                msg["pump_state"] = "PUMP_OFF";
+            }
 
             // get sensor data
             int sensor_moisture  = analogRead(PIN_ANALOG);
@@ -236,12 +280,16 @@ void callback(char* topic, byte* payload, unsigned int length) {
             // convert msg to char
             char msg_Char[128];
             serializeJson(msg, msg_Char);
-
+  
             client.publish(path, msg_Char);
-            Serial.println("PUMP_OFF");      
-        }   
+            Serial.println("SLEEP");
+
+            delay(3000);            
+            ESP.deepSleep(sleep_timer * 1000000, WAKE_RF_DEFAULT);     
+        }
     }     
 }
+
 
 void reconnect() {
     while (!client.connected()) {
@@ -260,14 +308,14 @@ void reconnect() {
 
             // create msg as json
             DynamicJsonDocument msg(128);
+
+            // get state
+            msg["state"] = "ONLINE";
                  
             // get pump state
             if (digitalRead(PIN_PUMP) == 1) { 
-              
                 msg["pump_state"] = "PUMP_ON";
-                
             } else { 
-              
                 msg["pump_state"] = "PUMP_OFF";
             }
 
@@ -305,12 +353,9 @@ void reconnect() {
 }
 
 void setup() {
-  
-    Serial.begin(115200);
-    setup_wifi();
-    client.setServer(mqtt_server, 1883);
-    client.setCallback(callback);
 
+    Serial.begin(115200);
+    
     pinMode(PIN_DIGITAL,INPUT);
     pinMode(PIN_PUMP,OUTPUT);
     pinMode(PIN_LED_RED,OUTPUT);
@@ -318,6 +363,10 @@ void setup() {
     pinMode(BUILTIN_LED, OUTPUT); 
 
     digitalWrite(PIN_PUMP, LOW); 
+
+    setup_wifi();
+    client.setServer(mqtt_server, 1883);
+    client.setCallback(callback); 
 }
 
 void loop() {

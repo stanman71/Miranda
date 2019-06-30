@@ -10,7 +10,7 @@ from app.components.mqtt import *
 from app.components.control_led import *
 from app.components.shared_resources import process_management_queue
 from app.components.tasks import START_SPEECHCONTROL_TASK
-
+from app.components.control_watering import START_WATERING_THREAD
 
 """ ################ """
 """ management queue """
@@ -169,7 +169,12 @@ def PROCESS_MANAGEMENT_THREAD():
 			#  watering
 			# ##########
 				
-			if process[0] == "watering":
+			if process[0] == "watering" and process[1] == "start":
+				ieeeAddr = process[2]
+				START_WATERING_THREAD(ieeeAddr)
+				
+				
+			if process[0] == "watering" and process[1] != "start":
 				channel = process[1]
 				msg     = process[2]
 				

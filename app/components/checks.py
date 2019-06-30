@@ -1224,6 +1224,11 @@ def CHECK_WATERING_SETTINGS():
         if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):
             list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
 
+   # time missing ?
+   for entry in entries:
+        if entry.time == "None":
+            list_errors.append(entry.name + " >>> keine Zeit eingestellt")
+
    if list_errors == []:
       return ""
    else:

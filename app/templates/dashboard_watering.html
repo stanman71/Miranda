@@ -127,8 +127,9 @@
                   <th scope="col">Pflanze</th>   
                   <th scope="col">Gerät</th> 
                   <th scope="col">Pumpdauer (s)</th>     
-                  <th scope="col">Sensor Wasserstand</th>                                   
-                  <th scope="col">Sensor Feuchtigkeit</th>                                   
+                  <th scope="col">Sensor Wasservorrat</th>                                   
+                  <th scope="col">Sensor Feuchtigkeit</th>     
+                  <th scope="col">Zeitpunkt (Stunde)</th>                                                   
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
@@ -161,9 +162,6 @@
                     </td>   
                     <td>
                       <div class="row justify-content-md-center">                      
-                        <div class="col-sm-5">   
-                          <button type="button" style="background-color:transparent" class="btn btn-secondary">Aktivieren:</button>   
-                        </div>
                         <div class="col-sm-2"> 
                           <font size="+2">
                             <div class="pretty p-default p-curve p-fill p-bigger">
@@ -178,9 +176,6 @@
                     </td>        
                     <td>
                       <div class="row justify-content-md-center">
-                        <div class="col-sm-3">  
-                          <button type="button" style="background-color:transparent" class="btn btn-secondary">Aktivieren:</button>     
-                        </div>
                         <div class="col-sm-2">  
                         <font size="+2">
                           <div class="pretty p-default p-curve p-fill p-bigger">
@@ -194,7 +189,7 @@
                         
                         {% if entry.control_sensor_moisture == "checked" %}
                         
-                        <div class="col-sm-5">              
+                        <div class="col-sm-1">              
                           <select class="btn btn-default dropdown-toggle" name="set_moisture_{{ entry.id }}">
                             <option value= "{{ entry.moisture }}" > {{ entry.moisture }} </option>
                             <option value= "{{ entry.moisture }}" > ---------- </option>
@@ -203,19 +198,20 @@
                             {% endfor %}
                           </select>                          
                         </div>
-                        
-                        {% else %}
-                        
-                        <div class="col-sm-5"> 
-                          <button type="button" style="background-color:transparent" class="btn btn-secondary"></button> 
-                          <button type="button" style="background-color:transparent" class="btn btn-secondary"></button> 
-                          <button type="button" style="background-color:transparent" class="btn btn-secondary"></button> 
-                        </div>    
-                        
+                         
                         {% endif %}
-                        
+            
                       </div>
-                    </td>                
+                    </td>    
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_time_{{ entry.id }}">
+                        <option value= "{{ entry.time }}" > {{ entry.time }} </option>
+                        <option value= "{{ entry.time }}" > --------- </option>                           
+                        {% for each in dropdown_list_time %}
+                          <option value="{{ each }}"> {{ each }} </option>
+                        {% endfor %}
+                      </select>                    
+                    </td>            
                     <td><a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}

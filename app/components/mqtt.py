@@ -217,12 +217,23 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 					
 	except:
 		
-		# save last values and last contact 
 		if ieeeAddr != "":	
+			
+			# save last values and last contact 
 			SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 
 
-		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array" :
+		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array":
+			
+			# save sensor data of passive devices
+			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
+				list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
+				
+				for job in list_jobs:
+					MQTT_SAVE_SENSORDATA(job) 
+
+
+		if device_type == "sensor_passiv" or device_type == "sensor_active":
 			
 			# start schedular job 
 			for task in GET_ALL_SCHEDULER_TASKS():
@@ -237,8 +248,15 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 					MQTT_SAVE_SENSORDATA(job) 
 
 
-		# start controller job
+		if device_type == "watering_array":
+			
+			# start watering thread
+			heapq.heappush(process_management_queue, (10, ("watering", "start", ieeeAddr)))
+
+
 		if device_type == "controller":
+			
+			# start controller job			
 			heapq.heappush(process_management_queue, (1, ("controller", ieeeAddr, msg)))		
 	
 
