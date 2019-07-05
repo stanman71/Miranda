@@ -399,7 +399,13 @@ def CHECK_SCHEDULER_SENSORS(task):
 
       device_ieeeAddr_1  = task.mqtt_device_ieeeAddr_1
       sensor_key_1       = task.sensor_key_1
-      value_1            = task.value_1
+      value_1            = task.value_1.lower()
+
+      try:
+         value_1 = str(value_1).lower()
+      except:
+         pass
+      
     
       ##################
       # get sensordata 1
@@ -408,9 +414,13 @@ def CHECK_SCHEDULER_SENSORS(task):
       data_1 = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device_ieeeAddr_1).last_values)
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
-      sensor_value_1 = data_1[sensor_key_1]
+      sensor_value_1 = data_1[sensor_key_1].lower()
 
-
+      try:
+         sensor_value_1 = str(sensor_value_1).lower()
+      except:
+         pass
+      
       
       ####################
       # compare conditions
@@ -457,6 +467,15 @@ def CHECK_SCHEDULER_SENSORS(task):
       value_1           = task.value_1
       value_2           = task.value_2
       
+      try:
+         value_1 = str(value_1).lower()
+      except:
+         pass
+         
+      try:
+         value_2 = str(value_2).lower()
+      except:
+         pass     
       
       ##################
       # get sensordata 1
@@ -466,7 +485,11 @@ def CHECK_SCHEDULER_SENSORS(task):
    
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
-
+      
+      try:
+         sensor_value_1 = str(sensor_value_1).lower()
+      except:
+         pass
 
       ##################
       # get sensordata 2
@@ -477,7 +500,11 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
 
-
+      try:
+         sensor_value_2 = str(sensor_value_2).lower()
+      except:
+         pass
+         
 
       ####################
       # compare conditions
@@ -635,8 +662,23 @@ def CHECK_SCHEDULER_SENSORS(task):
       value_1           = task.value_1
       value_2           = task.value_2
       value_3           = task.value_3
+ 
+      try:
+         value_1 = str(value_1).lower()
+      except:
+         pass
+         
+      try:
+         value_2 = str(value_2).lower()
+      except:
+         pass     
       
-      
+      try:
+         value_3 = str(value_3).lower()
+      except:
+         pass   
+                    
+              
       ##################
       # get sensordata 1
       ##################     
@@ -646,6 +688,10 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_1   = sensor_key_1.replace(" ","")          
       sensor_value_1 = data_1[sensor_key_1]
       
+      try:
+         sensor_value_1 = str(sensor_value_1).lower()
+      except:
+         pass
       
       ##################
       # get sensordata 2
@@ -656,6 +702,10 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_2   = sensor_key_2.replace(" ","")          
       sensor_value_2 = data_2[sensor_key_2]
 
+      try:
+         sensor_value_2 = str(sensor_value_2).lower()
+      except:
+         pass
 
       ##################
       # get sensordata 3
@@ -666,6 +716,10 @@ def CHECK_SCHEDULER_SENSORS(task):
       sensor_key_3   = sensor_key_3.replace(" ","")          
       sensor_value_3 = data_3[sensor_key_3]
 
+      try:
+         sensor_value_3 = str(sensor_value_3).lower()
+      except:
+         pass
 
       ####################
       # compare conditions
@@ -719,17 +773,16 @@ def CHECK_SCHEDULER_SENSORS(task):
          # passing value 2
          
          try:   
-            if task.operator_3 == "=" and not task.value_3.isdigit():
-               try:
-                  if int(sensor_value_3) == int(task.value_3):
-                     passing_2 = True    
-                  else:
-                     passing_2 = False      
-               except:
-                  if str(sensor_value_3) == str(task.value_3):
-                     passing_2 = True    
-                  else:
-                     passing_2 = False                  
+            if task.operator_3 == "=" and task.value_3.isdigit():
+               if int(sensor_value_3) == int(task.value_3):
+                  passing_2 = True    
+               else:
+                  passing_2 = False      
+            else:
+               if str(sensor_value_3) == str(task.value_3):
+                  passing_2 = True    
+               else:
+                  passing_2 = False                  
          except:
             pass
             
@@ -775,17 +828,16 @@ def CHECK_SCHEDULER_SENSORS(task):
          # passing value 1
             
          try:   
-            if task.operator_1 == "=" and not task.value_1.isdigit():
-               try:
-                  if int(sensor_value_1) == int(task.value_1):
-                     passing_1 = True    
-                  else:
-                     passing_1 = False      
-               except:
-                  if str(sensor_value_1) == str(task.value_1):
-                     passing_1 = True    
-                  else:
-                     passing_1 = False                 
+            if task.operator_1 == "=" and task.value_1.isdigit():
+               if int(sensor_value_1) == int(task.value_1):
+                  passing_1 = True    
+               else:
+                  passing_1 = False      
+            else:
+               if str(sensor_value_1) == str(task.value_1):
+                  passing_1 = True    
+               else:
+                  passing_1 = False                 
          except:
             pass
             
@@ -954,14 +1006,12 @@ def CHECK_SCHEDULER_SENSORS(task):
       # Options: and, or /// and, or
                
       if ((task.operator_main_1 == "and" or task.operator_main_1 == "or") and 
-          (task.operator_main_1 == "and" or task.operator_main_1 == "or") and
-          (sensor_value_1 != "Message nicht gefunden" or sensor_value_2 != "Message nicht gefunden" 
-           or sensor_value_3 != "Message nicht gefunden")):
+          (task.operator_main_1 == "and" or task.operator_main_1 == "or")):
               
          # passing value 1
 
          try:              
-            if task.operator_1 == "=" and not task.value_1.isdigit():
+            if task.operator_1 == "=" and task.value_1.isdigit():
                if int(sensor_value_1) == int(task.value_1):
                   passing_1 = True    
                else:
@@ -995,7 +1045,7 @@ def CHECK_SCHEDULER_SENSORS(task):
          # passing value 2
 
          try:              
-            if task.operator_2 == "=" and not task.value_2.isdigit():
+            if task.operator_2 == "=" and task.value_2.isdigit():
                if int(sensor_value_2) == int(task.value_2):
                   passing_2 = True    
                else:
@@ -1029,7 +1079,7 @@ def CHECK_SCHEDULER_SENSORS(task):
          # passing value 3
 
          try:              
-            if task.operator_3 == "=" and not task.value_3.isdigit():
+            if task.operator_3 == "=" and task.value_3.isdigit():
                if int(sensor_value_3) == int(task.value_3):
                   passing_3 = True    
                else:
@@ -1059,7 +1109,7 @@ def CHECK_SCHEDULER_SENSORS(task):
                   passing_3 = False       
          except:
             pass
-            
+     
 
          # get result
 

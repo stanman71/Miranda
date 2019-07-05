@@ -11,10 +11,10 @@ from app.components.process_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
 
 
 # access rights
-def user_required(f):
+def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "user" or current_user.role == "superuser":
+        if current_user.permission_scheduler == "checked":
             return f(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -27,7 +27,7 @@ def user_required(f):
 
 @app.route('/dashboard/scheduler', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_scheduler():
     error_message_add_reduced_scheduler_task = ""
     error_message_reduced_change_settings    = ""
@@ -147,36 +147,36 @@ def dashboard_scheduler():
                     else:
                         option_repeat = "None"  
 
-                    option_time             = "checked"
-                    option_sun              = "None"
-                    option_sensors          = "None"
-                    option_position         = "None"
-                    option_sunrise          = "None"
-                    option_sunset           = "None" 
-                    location                = "None" 
-                    mqtt_device_ieeeAddr_1  = "None"
-                    mqtt_device_name_1      = "None"
-                    mqtt_device_inputs_1    = "None"
-                    sensor_key_1            = "None"
-                    operator_1              = "None"
-                    value_1                 = "None"
-                    operator_main_1         = "None"
-                    mqtt_device_ieeeAddr_2  = "None"
-                    mqtt_device_name_2      = "None"
-                    mqtt_device_inputs_2    = "None"
-                    sensor_key_2            = "None"
-                    operator_2              = "None"
-                    value_2                 = "None"
-                    operator_main_2         = "None"
-                    mqtt_device_ieeeAddr_3  = "None"
-                    mqtt_device_name_3      = "None"
-                    mqtt_device_inputs_3    = "None"
-                    sensor_key_3            = "None"
-                    operator_3              = "None"
-                    value_3                 = "None"
-                    option_home             = "None"
-                    option_away             = "None"
-                    ip_addresses             = "None"   
+                    option_time                = "checked"
+                    option_sun                 = "None"
+                    option_sensors             = "None"
+                    option_position            = "None"
+                    option_sunrise             = "None"
+                    option_sunset              = "None" 
+                    location                   = "None" 
+                    mqtt_device_ieeeAddr_1     = "None"
+                    mqtt_device_name_1         = "None"
+                    mqtt_device_input_values_1 = "None"
+                    sensor_key_1               = "None"
+                    operator_1                 = "None"
+                    value_1                    = "None"
+                    operator_main_1            = "None"
+                    mqtt_device_ieeeAddr_2     = "None"
+                    mqtt_device_name_2         = "None"
+                    mqtt_device_input_values_2 = "None"
+                    sensor_key_2               = "None"
+                    operator_2                 = "None"
+                    value_2                    = "None"
+                    operator_main_2            = "None"
+                    mqtt_device_ieeeAddr_3     = "None"
+                    mqtt_device_name_3         = "None"
+                    mqtt_device_input_values_3 = "None"
+                    sensor_key_3               = "None"
+                    operator_3                 = "None"
+                    value_3                    = "None"
+                    option_home                = "None"
+                    option_away                = "None"
+                    ip_addresses               = "None"   
 
                     if error_message_reduced_change_settings != "":
                         error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
@@ -185,11 +185,11 @@ def dashboard_scheduler():
                                           option_time, option_sun, option_sensors, option_position, option_repeat, 
                                           day, hour, minute,
                                           option_sunrise, option_sunset, location,
-                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
+                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
                                           sensor_key_3, operator_3, value_3,
                                           option_home, option_away, ip_addresses)
 
@@ -428,8 +428,8 @@ def dashboard_scheduler():
 
                     # get mqtt device 1
                     try:
-                        mqtt_device_name_1   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).name
-                        mqtt_device_inputs_1 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).inputs
+                        mqtt_device_name_1         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).name
+                        mqtt_device_input_values_1 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
 
                         # get sensorkey value
                         sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
@@ -438,21 +438,21 @@ def dashboard_scheduler():
                             if sensor_key_1 == "0" or sensor_key_1 == "1":
                                 sensor_key_1 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
                                 sensor_list  = sensor_list.split(",")
                                 sensor_key_1 = sensor_list[int(sensor_key_1)-2]
                             
-                    except:
-                        sensor_key_1           = "None"
-                        mqtt_device_ieeeAddr_1 = "None"
-                        mqtt_device_name_1     = "None"
-                        mqtt_device_inputs_1   = "None"  
+                    except:  
+                        sensor_key_1               = "None"
+                        mqtt_device_ieeeAddr_1     = "None"
+                        mqtt_device_name_1         = "None"
+                        mqtt_device_input_values_1 = "None"  
 
 
                     # get mqtt device 2
                     try:
-                        mqtt_device_name_2   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
-                        mqtt_device_inputs_2 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).inputs
+                        mqtt_device_name_2         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
+                        mqtt_device_input_values_2 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
 
                         # get sensorkey value
                         sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
@@ -461,21 +461,21 @@ def dashboard_scheduler():
                             if sensor_key_2 == "0" or sensor_key_2 == "2":
                                 sensor_key_2 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
                                 sensor_list  = sensor_list.split(",")
                                 sensor_key_2 = sensor_list[int(sensor_key_2)-2]
                             
                     except:
-                        sensor_key_2           = "None"
-                        mqtt_device_ieeeAddr_2 = "None"
-                        mqtt_device_name_2     = "None"
-                        mqtt_device_inputs_2   = "None"   
+                        sensor_key_2               = "None"
+                        mqtt_device_ieeeAddr_2     = "None"
+                        mqtt_device_name_2         = "None"
+                        mqtt_device_input_values_2 = "None"   
 
 
                     # get mqtt device 3
                     try:
-                        mqtt_device_name_3   = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
-                        mqtt_device_inputs_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).inputs
+                        mqtt_device_name_3         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
+                        mqtt_device_input_values_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
 
                         # get sensorkey value
                         sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
@@ -484,15 +484,15 @@ def dashboard_scheduler():
                             if sensor_key_3 == "0" or sensor_key_3 == "3":
                                 sensor_key_3 = "None"
                             else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).inputs
+                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
                                 sensor_list  = sensor_list.split(",")
                                 sensor_key_3 = sensor_list[int(sensor_key_3)-2]
                             
-                    except:
-                        sensor_key_3           = "None"
-                        mqtt_device_ieeeAddr_3 = "None"
-                        mqtt_device_name_3     = "None"
-                        mqtt_device_inputs_3   = "None"   
+                    except: 
+                        sensor_key_3               = "None"
+                        mqtt_device_ieeeAddr_3     = "None"
+                        mqtt_device_name_3         = "None"
+                        mqtt_device_input_values_3 = "None"   
 
 
                     # #################
@@ -526,11 +526,11 @@ def dashboard_scheduler():
                                           option_time, option_sun, option_sensors, option_position, option_repeat, 
                                           day, hour, minute,
                                           option_sunrise, option_sunset, location,
-                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1, 
+                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
                                           sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
                                           sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
                                           sensor_key_3, operator_3, value_3,
                                           option_home, option_away, ip_addresses)
 
@@ -559,131 +559,131 @@ def dashboard_scheduler():
 
     # get sensor list
     try:
-        mqtt_device_1_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(1).inputs
-        mqtt_device_1_inputs = mqtt_device_1_inputs.replace(" ", "")
+        mqtt_device_1_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(1).input_values
+        mqtt_device_1_input_values = mqtt_device_1_input_values.replace(" ", "")
     except:
-        mqtt_device_1_inputs = ""
+        mqtt_device_1_input_values = ""
     try:
-        mqtt_device_2_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(2).inputs
-        mqtt_device_2_inputs = mqtt_device_2_inputs.replace(" ", "")
+        mqtt_device_2_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(2).input_values
+        mqtt_device_2_input_values = mqtt_device_2_input_values.replace(" ", "")
     except:
-        mqtt_device_2_inputs = ""
+        mqtt_device_2_input_values = ""
     try:        
-        mqtt_device_3_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(3).inputs
-        mqtt_device_3_inputs = mqtt_device_3_inputs.replace(" ", "")
+        mqtt_device_3_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(3).input_values
+        mqtt_device_3_input_values = mqtt_device_3_input_values.replace(" ", "")
     except:
-        mqtt_device_3_inputs = ""
+        mqtt_device_3_input_values = ""
     try:        
-        mqtt_device_4_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(4).inputs
-        mqtt_device_4_inputs = mqtt_device_4_inputs.replace(" ", "")
+        mqtt_device_4_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(4).input_values
+        mqtt_device_4_input_values = mqtt_device_4_input_values.replace(" ", "")
     except:
-        mqtt_device_4_inputs = ""
+        mqtt_device_4_input_values = ""
     try:        
-        mqtt_device_5_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(5).inputs
-        mqtt_device_5_inputs = mqtt_device_5_inputs.replace(" ", "")
+        mqtt_device_5_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(5).input_values
+        mqtt_device_5_input_values = mqtt_device_5_input_values.replace(" ", "")
     except:
-        mqtt_device_5_inputs = ""
+        mqtt_device_5_input_values = ""
     try:        
-        mqtt_device_6_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(6).inputs
-        mqtt_device_6_inputs = mqtt_device_6_inputs.replace(" ", "")
+        mqtt_device_6_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(6).input_values
+        mqtt_device_6_input_values = mqtt_device_6_input_values.replace(" ", "")
     except:
-        mqtt_device_6_inputs = ""
+        mqtt_device_6_input_values = ""
     try:        
-        mqtt_device_7_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(7).inputs
-        mqtt_device_7_inputs = mqtt_device_7_inputs.replace(" ", "")
+        mqtt_device_7_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(7).input_values
+        mqtt_device_7_input_values = mqtt_device_7_input_values.replace(" ", "")
     except:
-        mqtt_device_7_inputs = ""
+        mqtt_device_7_input_values = ""
     try:        
-        mqtt_device_8_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(8).inputs
-        mqtt_device_8_inputs = mqtt_device_8_inputs.replace(" ", "")
+        mqtt_device_8_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(8).input_values
+        mqtt_device_8_input_values = mqtt_device_8_input_values.replace(" ", "")
     except:
-        mqtt_device_8_inputs = ""
+        mqtt_device_8_input_values = ""
     try:        
-        mqtt_device_9_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(9).inputs
-        mqtt_device_9_inputs = mqtt_device_9_inputs.replace(" ", "")
+        mqtt_device_9_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(9).input_values
+        mqtt_device_9_input_values = mqtt_device_9_input_values.replace(" ", "")
     except:
-        mqtt_device_9_inputs = ""
+        mqtt_device_9_input_values = ""
     try:        
-        mqtt_device_10_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(10).inputs
-        mqtt_device_10_inputs = mqtt_device_10_inputs.replace(" ", "")
+        mqtt_device_10_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(10).input_values
+        mqtt_device_10_input_values = mqtt_device_10_input_values.replace(" ", "")
     except:
-        mqtt_device_10_inputs = ""
+        mqtt_device_10_input_values = ""
     try:        
-        mqtt_device_11_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(11).inputs
-        mqtt_device_11_inputs = mqtt_device_11_inputs.replace(" ", "")
+        mqtt_device_11_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(11).input_values
+        mqtt_device_11_input_values = mqtt_device_11_input_values.replace(" ", "")
     except:
-        mqtt_device_11_inputs = ""
+        mqtt_device_11_input_values = ""
     try:        
-        mqtt_device_12_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(12).inputs
-        mqtt_device_12_inputs = mqtt_device_12_inputs.replace(" ", "")
+        mqtt_device_12_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(12).input_values
+        mqtt_device_12_input_values = mqtt_device_12_input_values.replace(" ", "")
     except:
-        mqtt_device_12_inputs = ""
+        mqtt_device_12_input_values = ""
     try:        
-        mqtt_device_13_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(13).inputs
-        mqtt_device_13_inputs = mqtt_device_13_inputs.replace(" ", "")
+        mqtt_device_13_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(13).input_values
+        mqtt_device_13_input_values = mqtt_device_13_input_values.replace(" ", "")
     except:
-        mqtt_device_13_inputs = ""
+        mqtt_device_13_input_values = ""
     try:        
-        mqtt_device_14_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(14).inputs
-        mqtt_device_14_inputs = mqtt_device_14_inputs.replace(" ", "")
+        mqtt_device_14_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(14).input_values
+        mqtt_device_14_input_values = mqtt_device_14_input_values.replace(" ", "")
     except:
-        mqtt_device_14_inputs = ""
+        mqtt_device_14_input_values = ""
     try:        
-        mqtt_device_15_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(15).inputs
-        mqtt_device_15_inputs = mqtt_device_15_inputs.replace(" ", "")
+        mqtt_device_15_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(15).input_values
+        mqtt_device_15_input_values = mqtt_device_15_input_values.replace(" ", "")
     except:
-        mqtt_device_15_inputs = ""    
+        mqtt_device_15_input_values = ""    
     try:        
-        mqtt_device_16_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(16).inputs
-        mqtt_device_16_inputs = mqtt_device_16_inputs.replace(" ", "")
+        mqtt_device_16_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(16).input_values
+        mqtt_device_16_input_values = mqtt_device_16_input_values.replace(" ", "")
     except:
-        mqtt_device_16_inputs = ""
+        mqtt_device_16_input_values = ""
     try:        
-        mqtt_device_17_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(17).inputs
-        mqtt_device_17_inputs = mqtt_device_17_inputs.replace(" ", "")
+        mqtt_device_17_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(17).input_values
+        mqtt_device_17_input_values = mqtt_device_17_input_values.replace(" ", "")
     except:
-        mqtt_device_17_inputs = ""
+        mqtt_device_17_input_values = ""
     try:        
-        mqtt_device_18_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(18).inputs
-        mqtt_device_18_inputs = mqtt_device_18_inputs.replace(" ", "")
+        mqtt_device_18_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(18).input_values
+        mqtt_device_18_input_values = mqtt_device_18_input_values.replace(" ", "")
     except:
-        mqtt_device_18_inputs = ""
+        mqtt_device_18_input_values = ""
     try:        
-        mqtt_device_19_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(19).inputs
-        mqtt_device_19_inputs = mqtt_device_19_inputs.replace(" ", "")
+        mqtt_device_19_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(19).input_values
+        mqtt_device_19_input_values = mqtt_device_19_input_values.replace(" ", "")
     except:
-        mqtt_device_19_inputs = ""
+        mqtt_device_19_input_values = ""
     try:        
-        mqtt_device_20_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(20).inputs
-        mqtt_device_20_inputs = mqtt_device_20_inputs.replace(" ", "")
+        mqtt_device_20_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(20).input_values
+        mqtt_device_20_input_values = mqtt_device_20_input_values.replace(" ", "")
     except:
-        mqtt_device_20_inputs = ""   
+        mqtt_device_20_input_values = ""   
     try:        
-        mqtt_device_21_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(21).inputs
-        mqtt_device_21_inputs = mqtt_device_21_inputs.replace(" ", "")
+        mqtt_device_21_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(21).input_values
+        mqtt_device_21_input_values = mqtt_device_21_input_values.replace(" ", "")
     except:
-        mqtt_device_21_inputs = ""   
+        mqtt_device_21_input_values = ""   
     try:        
-        mqtt_device_22_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(22).inputs
-        mqtt_device_22_inputs = mqtt_device_22_inputs.replace(" ", "")
+        mqtt_device_22_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(22).input_values
+        mqtt_device_22_input_values = mqtt_device_22_input_values.replace(" ", "")
     except:
-        mqtt_device_22_inputs = ""   
+        mqtt_device_22_input_values = ""   
     try:        
-        mqtt_device_23_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(23).inputs
-        mqtt_device_23_inputs = mqtt_device_23_inputs.replace(" ", "")
+        mqtt_device_23_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(23).input_values
+        mqtt_device_23_input_values = mqtt_device_23_input_values.replace(" ", "")
     except:
-        mqtt_device_23_inputs = ""   
+        mqtt_device_23_input_values = ""   
     try:        
-        mqtt_device_24_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(24).inputs
-        mqtt_device_24_inputs = mqtt_device_24_inputs.replace(" ", "")
+        mqtt_device_24_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(24).input_values
+        mqtt_device_24_input_values = mqtt_device_24_input_values.replace(" ", "")
     except:
-        mqtt_device_24_inputs = ""   
+        mqtt_device_24_input_values = ""   
     try:        
-        mqtt_device_25_inputs = "None,-------------------------," + GET_MQTT_DEVICE_BY_ID(25).inputs
-        mqtt_device_25_inputs = mqtt_device_25_inputs.replace(" ", "")
+        mqtt_device_25_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(25).input_values
+        mqtt_device_25_input_values = mqtt_device_25_input_values.replace(" ", "")
     except:
-        mqtt_device_25_inputs = ""           
-
+        mqtt_device_25_input_values = ""      
+        
 
     return render_template('dashboard_scheduler.html',
                             scheduler_task_list=scheduler_task_list,
@@ -703,39 +703,47 @@ def dashboard_scheduler():
                             dropdown_list_operators=dropdown_list_operators,
                             dropdown_list_operator_main=dropdown_list_operator_main,
                             dropdown_list_locations=dropdown_list_locations,
-                            mqtt_device_1_inputs=mqtt_device_1_inputs,
-                            mqtt_device_2_inputs=mqtt_device_2_inputs,
-                            mqtt_device_3_inputs=mqtt_device_3_inputs,
-                            mqtt_device_4_inputs=mqtt_device_4_inputs,
-                            mqtt_device_5_inputs=mqtt_device_5_inputs,
-                            mqtt_device_6_inputs=mqtt_device_6_inputs,
-                            mqtt_device_7_inputs=mqtt_device_7_inputs,
-                            mqtt_device_8_inputs=mqtt_device_8_inputs,
-                            mqtt_device_9_inputs=mqtt_device_9_inputs,
-                            mqtt_device_10_inputs=mqtt_device_10_inputs,
-                            mqtt_device_11_inputs=mqtt_device_11_inputs,
-                            mqtt_device_12_inputs=mqtt_device_12_inputs,
-                            mqtt_device_13_inputs=mqtt_device_13_inputs,
-                            mqtt_device_14_inputs=mqtt_device_14_inputs,
-                            mqtt_device_15_inputs=mqtt_device_15_inputs,
-                            mqtt_device_16_inputs=mqtt_device_16_inputs,
-                            mqtt_device_17_inputs=mqtt_device_17_inputs,
-                            mqtt_device_18_inputs=mqtt_device_18_inputs,
-                            mqtt_device_19_inputs=mqtt_device_19_inputs,
-                            mqtt_device_20_inputs=mqtt_device_20_inputs,   
-                            mqtt_device_21_inputs=mqtt_device_21_inputs,    
-                            mqtt_device_22_inputs=mqtt_device_22_inputs,    
-                            mqtt_device_23_inputs=mqtt_device_23_inputs,    
-                            mqtt_device_24_inputs=mqtt_device_24_inputs,    
-                            mqtt_device_25_inputs=mqtt_device_25_inputs,
-                            role=current_user.role,                                 
+                            mqtt_device_1_input_values=mqtt_device_1_input_values,
+                            mqtt_device_2_input_values=mqtt_device_2_input_values,
+                            mqtt_device_3_input_values=mqtt_device_3_input_values,
+                            mqtt_device_4_input_values=mqtt_device_4_input_values,
+                            mqtt_device_5_input_values=mqtt_device_5_input_values,
+                            mqtt_device_6_input_values=mqtt_device_6_input_values,
+                            mqtt_device_7_input_values=mqtt_device_7_input_values,
+                            mqtt_device_8_input_values=mqtt_device_8_input_values,
+                            mqtt_device_9_input_values=mqtt_device_9_input_values,
+                            mqtt_device_10_input_values=mqtt_device_10_input_values,
+                            mqtt_device_11_input_values=mqtt_device_11_input_values,
+                            mqtt_device_12_input_values=mqtt_device_12_input_values,
+                            mqtt_device_13_input_values=mqtt_device_13_input_values,
+                            mqtt_device_14_input_values=mqtt_device_14_input_values,
+                            mqtt_device_15_input_values=mqtt_device_15_input_values,
+                            mqtt_device_16_input_values=mqtt_device_16_input_values,
+                            mqtt_device_17_input_values=mqtt_device_17_input_values,
+                            mqtt_device_18_input_values=mqtt_device_18_input_values,
+                            mqtt_device_19_input_values=mqtt_device_19_input_values,
+                            mqtt_device_20_input_values=mqtt_device_20_input_values,  
+                            mqtt_device_21_input_values=mqtt_device_21_input_values,
+                            mqtt_device_22_input_values=mqtt_device_22_input_values,  
+                            mqtt_device_23_input_values=mqtt_device_23_input_values,
+                            mqtt_device_24_input_values=mqtt_device_24_input_values,
+                            mqtt_device_25_input_values=mqtt_device_25_input_values,
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system,                                 
                             )
 
 
 # change scheduler task position 
 @app.route('/dashboard/scheduler/position/<string:direction>/<string:task_type>/<int:id>')
 @login_required
-@user_required
+@permission_required
 def change_scheduler_task_position(id, task_type, direction):
     CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction)
     return redirect(url_for('dashboard_scheduler'))
@@ -744,7 +752,7 @@ def change_scheduler_task_position(id, task_type, direction):
 # add scheduler sensor row
 @app.route('/dashboard/scheduler/sensor_row/add/<int:id>')
 @login_required
-@user_required
+@permission_required
 def add_scheduler_sensor_row(id):
     ADD_SCHEDULER_TASK_SENSOR_ROW(id)
     return redirect(url_for('dashboard_scheduler'))
@@ -753,7 +761,7 @@ def add_scheduler_sensor_row(id):
 # remove scheduler sensor row
 @app.route('/dashboard/scheduler/sensor_row/remove/<int:id>')
 @login_required
-@user_required
+@permission_required
 def remove_scheduler_sensor_row(id):
     REMOVE_SCHEDULER_TASK_SENSOR_ROW(id)
     return redirect(url_for('dashboard_scheduler'))
@@ -762,7 +770,7 @@ def remove_scheduler_sensor_row(id):
 # delete scheduler task
 @app.route('/dashboard/scheduler/delete/<int:id>')
 @login_required
-@user_required
+@permission_required
 def delete_scheduler_task(id):
     DELETE_SCHEDULER_TASK(id)
     return redirect(url_for('dashboard_scheduler'))

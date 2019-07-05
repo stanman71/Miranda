@@ -8,10 +8,10 @@ from app.components.checks import CHECK_WATERING_SETTINGS
 
 
 # access rights
-def user_required(f):
+def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "user" or current_user.role == "superuser":
+        if current_user.permission_watering == "checked":
             return f(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -24,7 +24,7 @@ def user_required(f):
 
 @app.route('/dashboard/watering', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_watering():
     error_message_add_plant = ""
     error_message_change_name = ""
@@ -69,8 +69,7 @@ def dashboard_watering():
                     else:
                         name = GET_PLANT_BY_ID(i).name 
                         error_message_change_name = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"                        
-
-                    # other values       
+    
                     mqtt_device = request.form.get("set_mqtt_device_" + str(i))
 
                     if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device):
@@ -79,7 +78,8 @@ def dashboard_watering():
                         mqtt_device_ieeeAddr = GET_MQTT_DEVICE_BY_ID(mqtt_device).ieeeAddr
                     else:
                         mqtt_device_ieeeAddr == ""
-                                                                          
+                    
+                    group    = request.form.get("set_group_" + str(i))                                                                       
                     pumptime = request.form.get("set_pumptime_" + str(i))
                 
                     if request.form.get("set_control_sensor_watertank_" + str(i)):
@@ -95,14 +95,9 @@ def dashboard_watering():
                     if request.form.get("set_moisture_" + str(i)) != None:
                         moisture = request.form.get("set_moisture_" + str(i))  
                     else:
-                        moisture = "None"
-                        
-                    if request.form.get("set_time_" + str(i)) != None:
-                        time = request.form.get("set_time_" + str(i))  
-                    else:
-                        time = "None"                        
+                        moisture = "None"                                   
 
-                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture, time)                       
+                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_watertank, control_sensor_moisture, moisture)                       
 
 
     error_message_settings = CHECK_WATERING_SETTINGS()
@@ -110,35 +105,41 @@ def dashboard_watering():
     if mqtt_device_ieeeAddr != "":
         mqtt_device_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name  
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_array")  
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_control")  
+    dropdown_list_groups   = [1, 2, 3, 4, 5]
     dropdown_list_pumptime = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
     dropdown_list_moisture = ["less", "normal", "much"]
-    dropdown_list_time     = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-    
     
     plants_list = GET_ALL_PLANTS()
 
     return render_template('dashboard_watering.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
+                            dropdown_list_groups=dropdown_list_groups,
                             dropdown_list_pumptime=dropdown_list_pumptime,
                             dropdown_list_moisture=dropdown_list_moisture,
-                            dropdown_list_time=dropdown_list_time,
                             plants_list=plants_list,
                             moisture=moisture,
-                            pumptime=pumptime,
                             mqtt_device_ieeeAddr=mqtt_device_ieeeAddr,
                             mqtt_device_name=mqtt_device_name,
                             error_message_add_plant=error_message_add_plant,   
                             error_message_change_name=error_message_change_name,   
                             error_message_settings=error_message_settings,                                                                                                                                                                                    
-                            role=current_user.role,                     
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system,                      
                             )
 
 
 # change plants position 
 @app.route('/dashboard/watering/position/<string:direction>/<int:id>')
 @login_required
-@user_required
+@permission_required
 def change_plants_position(id, direction):
     CHANGE_PLANTS_POSITION(id, direction)
     return redirect(url_for('dashboard_watering'))
@@ -147,7 +148,7 @@ def change_plants_position(id, direction):
 # Delete plant
 @app.route('/dashboard/watering/delete/<int:id>')
 @login_required
-@user_required
+@permission_required
 def delete_plant(id):
     DELETE_PLANT(id)
     return redirect(url_for('dashboard_watering'))

@@ -6,6 +6,7 @@ from app import app
 from app.database.database import *
 from app.components.file_management import *
 from app.components.shared_resources import process_management_queue
+from app.components.mqtt import MQTT_CHECK_SETTING_THREAD, ZIGBEE2MQTT_CHECK_SETTING_THREAD
 
 program_running = None
 stop_program    = False
@@ -84,7 +85,7 @@ def PROGRAM_THREAD(program_id):
                             
                     if "pause" in line:
                             
-                        line_content = line.split(":")
+                        line_content = line.split(" /// ")
                         time.sleep(int(line_content[1]))          
                         
                         
@@ -94,65 +95,65 @@ def PROGRAM_THREAD(program_id):
                              
                     if "device" in line:
                             
-                        line_content = line.split(":")
+                        line_content = line.split(" /// ")
                         
                         try:
-                        
+                              
                             device_name = line_content[1]    
                             device      = ""
-                            device      = GET_MQTT_DEVICE_BY_NAME(device_name)
+                            device      = GET_MQTT_DEVICE_BY_NAME(device_name)         
                             
-                            setting_value = line_content[2].upper()
-                            setting_value = setting_value.replace(" ", "")
+                            program_setting = line_content[2]
+                            program_setting = program_setting.replace(" ", "")
                     
                             # new device setting ?
-                            if setting_value != device.previous_setting_value:
-                               
-                                device_commands = device.commands.split(",")
-                                setting_key     = None
-                                                        
-                                # setting key
-                                for device_command in device_commands:
-                                  
-                                    if device_command.split("=")[1] == setting_value:
-                                        setting_key = device_command.split("=")[0]
-                                        setting_key = setting_key.replace(" ", "")
-                                        continue     
-                             
-                                # setting key founded ?
-                                if setting_key != None:
-                                        
-                                    if device.gateway == "mqtt":   
-                                        heapq.heappush(process_management_queue, (30,  ("program", "device", device.gateway, device.ieeeAddr, setting_key, setting_value)))
-                                            
-                                    if device.gateway == "zigbee2mqtt":
-                                        heapq.heappush(process_management_queue, (30,  ("program", "device", device.gateway, device.name, setting_key, setting_value)))
-                                        
-                                else:
-                                    WRITE_LOGFILE_SYSTEM("ERROR", "Program - " + program_name + " | Device - " + device_name + " | Command not valid")
-                                
-                                       
-                            else:
-                                    
-                                if device.gateway == "mqtt":   
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device_name + " | " + setting_value)
-                                    
+                            if program_setting != device.previous_setting:
+                                                     
+                                if "|" in program_setting:
+                                    program_setting = program_setting.replace("|", ",")
+
+
+                                # mqtt
+                                if device.gateway == "mqtt":
+
+                                    channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                                    msg      = program_setting
+
+                                    heapq.heappush(process_management_queue, (30,  ("program", "device", channel, msg))) 
+
+                                    MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, program_setting, 5, 20)
+
+
+                                # zigbee2mqtt
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device_name + " | " + setting_value)
 
+                                    channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                                    msg      = program_setting
 
-                        except Exception as e:
-                            print(e)    
-                            WRITE_LOGFILE_SYSTEM("ERROR", "Program - " + program_name + " | Device - " + device_name + " | not founded")               
-                        
-                        
+                                    heapq.heappush(process_management_queue, (30,  ("program", "device", channel, msg)))
+
+                                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, program_setting, 5, 20)       
+                                                                                                                        
+
+                            else:
+                                
+                                if device.gateway == "mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(program_setting)) 
+
+                                if device.gateway == "zigbee2mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(program_setting))  
+                               
+                        except:
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Program - " + program_name + " | Device - " +  device_name + " | not founded")
+                   
+   
                     # #####
                     #  led
                     # #####
                              
                     if "led" in line:
                             
-                        line_content = line.split(":")
+                        line_content = line.split(" /// ")
                         
                         try:
                             led_name = line_content[1]    
@@ -160,7 +161,7 @@ def PROGRAM_THREAD(program_id):
                             
                             
                             # setting led_rgb or led_white                      
-                            if (led_type == "led_rgb" or led_type == "led_white") and line_content[2] != "off": 
+                            if (led_type == "led_rgb" or led_type == "led_white") and line_content[2] != "off" and line_content[2] != "OFF": 
                                 
                                 led_color_setting = line_content[2]
                                 led_brightness    = line_content[3]                      
@@ -168,7 +169,7 @@ def PROGRAM_THREAD(program_id):
                          
                          
                             # setting led_simple                           
-                            elif led_type == "led_simple" and line_content[2] != "off":      
+                            elif led_type == "led_simple" and line_content[2] != "off" and line_content[2] != "OFF":       
                                         
                                 led_brightness = line_content[2]                         
                                 heapq.heappush(process_management_queue, (30,  ("program", led_type, led_name, led_brightness)))                        

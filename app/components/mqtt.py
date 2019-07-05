@@ -101,7 +101,7 @@ def MQTT_THREAD():
 			print("message received: ", msg)	
 			
 			# write data in logs
-			if "mqtt" in channel:
+			if "mqtt" in channel and not "zigbee" in channel:
 				WRITE_LOGFILE_MQTT("mqtt", channel, msg)
 				
 			if "zigbee2mqtt" in channel:
@@ -126,6 +126,7 @@ def MQTT_THREAD():
 	client.connect(BROKER_ADDRESS)
 	 
 	print("Connected to MQTT Broker: " + BROKER_ADDRESS)
+	
 	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | started") 
 	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | connected") 
 	 
@@ -199,7 +200,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 		pass
 
 
-	# filter sended messages
+	# filter incoming messages
 	try:
 		if incoming_topic[3] == "get":
 			pass
@@ -292,23 +293,12 @@ def MQTT_UPDATE_DEVICES(gateway):
 				   
 					data = json.loads(message)
 				   
-					inputs_temp = str(data['inputs'])
-					inputs_temp = inputs_temp[1:]
-					inputs_temp = inputs_temp[:-1]
-					inputs_temp = inputs_temp.replace("'", "")
-					inputs_temp = inputs_temp.replace('"', "")
+					name            = data['ieeeAddr']
+					gateway         = "mqtt"
+					ieeeAddr        = data['ieeeAddr']
+					model           = data['model']
 
-					commands_temp = str(data['commands'])
-					commands_temp = commands_temp[1:]
-					commands_temp = commands_temp[:-1]
-					commands_temp = commands_temp.replace("'", "")
-					commands_temp = commands_temp.replace('"', "")  
 
-					name        = data['ieeeAddr']
-					gateway     = "mqtt"
-					ieeeAddr    = data['ieeeAddr']
-					model       = data['model']
-               
 					try:
 						device_type = data['device_type']
 					except:
@@ -320,25 +310,37 @@ def MQTT_UPDATE_DEVICES(gateway):
 						description = ""
 
 					try:
-						inputs = inputs_temp
+						input_values = data['input_values']
+						input_values = ','.join(input_values)	
+						input_values = input_values.replace("'", '"')
 					except:
-						inputs = ""
+						input_values = ""
 					  
 					try:
-						commands = commands_temp
+						input_events = data['input_events']
+						input_events = ','.join(input_events)
+						input_events = input_events.replace("'", '"')                							
 					except:
-						commands = ""
-                  
+						input_events = ""
+						
+					try:
+						commands     = data['commands']	
+						commands     = ','.join(commands)
+						commands     = commands.replace("'", '"')                				
+					except:
+						commands     = ""
+
+
 					# add new device
 					if not GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
-						ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, commands)
+						ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, input_values, input_events, commands)
 					  
 					# update existing device
 					else:
 						id   = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
 						name = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
 										
-						UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, commands)
+						UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, input_values, input_events, commands)
 						SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
 					  
 					# update input values
@@ -403,12 +405,13 @@ def MQTT_UPDATE_DEVICES(gateway):
 								except:
 									new_device = ["", "", "", ""]
                            
-								device_type = new_device[0]
-								description = new_device[1]
-								inputs      = new_device[2]
-								commands    = new_device[3]  
+								device_type  = new_device[0]
+								description  = new_device[1]
+								input_values = new_device[2]
+								input_events = new_device[3]  
+								commands     = new_device[4]  								
 
-								ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, inputs, commands)
+								ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, input_values, input_events, commands)
 
 							# update device informations
                         
@@ -425,21 +428,23 @@ def MQTT_UPDATE_DEVICES(gateway):
 									        
 									existing_device = GET_MQTT_DEVICE_INFORMATIONS(model)
                               
-									device_type = existing_device[0]
-									description = existing_device[1]
-									inputs      = existing_device[2]
-									commands    = existing_device[3]  
+									device_type  = existing_device[0]
+									description  = existing_device[1]
+									input_values = existing_device[2]
+									input_events = existing_device[3]  
+									commands     = existing_device[4]  
 
 								except Exception as e:
-									device_type = device_data.device_type
-									description = device_data.description 
-									inputs      = device_data.inputs
-									commands    = device_data.commands	
+									device_type  = device_data.device_type
+									description  = device_data.description 
+									input_values = device_data.input_values
+									input_events = device_data.input_events
+									commands     = device_data.commands	
                              
 									error = "Error: >>> " + str(model) + " not founded >>> " + str(e)
                            
                                                                      
-								UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, inputs, commands)
+								UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, input_values, input_events, commands)
 								SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
                  
                            
@@ -538,69 +543,65 @@ def MQTT_SAVE_SENSORDATA(job_id):
 """ ################### """
  
  
-def MQTT_CHECK_SETTING_THREAD(ieeeAddr, setting_key, setting_value, delay = 1, limit = 15): 
+def MQTT_CHECK_SETTING_THREAD(ieeeAddr, setting, delay = 1, limit = 15): 
  
-	Thread = threading.Thread(target=MQTT_CHECK_SETTING_PROCESS, args=(ieeeAddr, setting_key, setting_value, delay, limit, ))
+	Thread = threading.Thread(target=MQTT_CHECK_SETTING_PROCESS, args=(ieeeAddr, setting, delay, limit, ))
 	Thread.start()   
 
  
-def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting_key, setting_value, delay, limit): 
+def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit): 
                       
 	device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
                     
 	# check setting 1 try
 	time.sleep(delay)                             
-	result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
+	result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
 	
-	# set previous setting_value 
+	# set previous setting
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 	
+		SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 	
 	
 	else:
 		# check setting 2 try
 		time.sleep(delay)                             
-		result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
+		result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
 		
-		# set previous setting_value 
+		# set previous setting
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 		
+			SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 		
 			
 		else:
 			# check setting 3 try
 			time.sleep(delay)                             
-			result = MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit)
+			result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
 			 
-			# set previous setting_value 
+			# set previous setting
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | State changed - " + setting_value) 			
+				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 			
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value)  
-				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value) 
+				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed - " + setting)  
+				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
 				
 	return ""
 					
 
-def MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit):
+def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
+			
+	setting = setting[1:-1]
 			
 	for message in MQTT_GET_INCOMING_MESSAGES(limit):
 		
 		# search for fitting message in incoming_messages_list
-		if message[1] == "SmartHome/mqtt/" + ieeeAddr:
-				
-			try:
-				data = json.loads(message[2])
-				
-				if data[setting_key] == setting_value:
-					return True
+		if message[1] == "SmartHome/mqtt/" + ieeeAddr:	
 			
-			except:
-				return False
+			if setting in message[2]:
+				return True
 		 
 	return False
    
@@ -610,69 +611,65 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting_key, setting_value, limit):
 """ ########################## """
  
  
-def ZIGBEE2MQTT_CHECK_SETTING_THREAD(name, setting_key, setting_value, delay = 1, limit = 15): 
+def ZIGBEE2MQTT_CHECK_SETTING_THREAD(name, setting, delay = 1, limit = 15): 
  
-	Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(name, setting_key, setting_value, delay, limit, ))
+	Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(name, setting, delay, limit, ))
 	Thread.start()   
 
  
-def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting_key, setting_value, delay, limit): 
+def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit): 
                       
 	device = GET_MQTT_DEVICE_BY_NAME(name)
 	                        
 	# check setting 1 try
 	time.sleep(delay)                             
-	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
+	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
 	
-	# set previous setting_value 
+	# set previous setting
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value)   
+		SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting)   
 		
 	else:
 		# check setting 2 try
 		time.sleep(delay)                             
-		result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
+		result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
 		
-		# set previous setting_value 
+		# set previous setting
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value) 			
+			SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting) 			
 			
 		else:
 			# check setting 3 try
 			time.sleep(delay)                             
-			result = ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit)
+			result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
 			 
-			# set previous setting_value 
+			# set previous setting
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | State changed - " + setting_value)  				
+				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting)  				
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(device.ieeeAddr, setting_value)
-				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value)  
-				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_value) 
+				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
+				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting)  
+				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
 	
 	return ""
 		
  
-def ZIGBEE2MQTT_CHECK_SETTING(name, setting_key, setting_value, limit):
-	
-	for message in MQTT_GET_INCOMING_MESSAGES(limit):	
+def ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit):
+		
+	setting = setting[1:-1]
+			
+	for message in MQTT_GET_INCOMING_MESSAGES(limit):
 		
 		# search for fitting message in incoming_messages_list
-		if message[1] == "SmartHome/zigbee2mqtt/" + name:
-				
-			try:
-				data = json.loads(message[2])
-				
-				if data[setting_key] == setting_value:
-					return True
+		if message[1] == "SmartHome/zigbee2mqtt/" + name:	
 			
-			except:
-				return False
+			if setting in message[2]:
+				return True
 		 
 	return False
    
@@ -687,17 +684,19 @@ def MQTT_CHECK():
 
 
 def MQTT_CHECK_NAME_CHANGED():
-            
-	input_messages = READ_LOGFILE_MQTT("zigbee2mqtt", "SmartHome/zigbee2mqtt/bridge/log", 5)
-	
-	if input_messages != "Message nicht gefunden":
-		for input_message in input_messages:
-			input_message = str(input_message[2])
-  
-			data = json.loads(input_message)
-            
-			if data["type"] == "device_renamed":
-				return True
+                      
+	for message in MQTT_GET_INCOMING_MESSAGES(10):
+		
+		if message[1] == "SmartHome/zigbee2mqtt/bridge/log":
+		
+			try:
+				data = json.loads(message[2])
+				
+				if data["type"] == "device_renamed":
+					return True
+
+			except:
+				return False
                     
 	else:
 		return False

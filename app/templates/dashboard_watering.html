@@ -26,19 +26,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
+      {% if permission_dashboard == "checked" %}
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
+      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li> 
-        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li>                
-        <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
-        <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
-        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
-        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
-        <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
-        {% if role == "superuser" %}
-          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+        {% endif %}
+        {% if permission_sensordata == "checked" %}                   
+          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
         {% endif %}    
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
@@ -76,12 +92,8 @@
             </div>            
             <div class="col-sm-2"> 
               <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_ieeeAddr">
-                {% if mqtt_device_ieeeAddr != "" %}
-                  <option value= "{{ mqtt_device_ieeeAddr }}" > {{ mqtt_device_name }} </option>
-                  <option value= "{{ mqtt_device_ieeeAddr }}" > -------------------- </option>                     
-                {% endif %}   
                 {% for each in dropdown_list_mqtt_devices %}
-                <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
+                  <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
                 {% endfor %}
               </select>                         
             </div>  
@@ -126,10 +138,10 @@
                   <th scope="col"></th> 
                   <th scope="col">Pflanze</th>   
                   <th scope="col">Gerät</th> 
+                  <th scope="col">Gruppe</th> 
                   <th scope="col">Pumpdauer (s)</th>     
                   <th scope="col">Sensor Wasservorrat</th>                                   
-                  <th scope="col">Sensor Feuchtigkeit</th>     
-                  <th scope="col">Zeitpunkt (Stunde)</th>                                                   
+                  <th scope="col">Sensor Feuchtigkeit</th>                                                      
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
@@ -145,12 +157,21 @@
                     <td>
                       <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
-                        <option value= "{{ entry.mqtt_device_ieeeAddr }}" > -------------------- </option>                                           
+                        <option value= "{{ entry.mqtt_device_ieeeAddr }}" > ------------------------------ </option>                                           
                         {% for each in dropdown_list_mqtt_devices %}
                           <option value="{{ each.id }}"> {{ each.name }} </option>
                         {% endfor %}
                       </select> 
-                    </td>                                        
+                    </td>  
+                    <td>
+                      <select class="btn btn-default dropdown-toggle" name="set_group_{{ entry.id }}">
+                        <option value= "{{ entry.group }}" > {{ entry.group }} </option>
+                        <option value= "{{ entry.group }}" > --------- </option>                           
+                        {% for each in dropdown_list_groups %}
+                          <option value="{{ each }}"> {{ each }} </option>
+                        {% endfor %}
+                      </select>                    
+                    </td>                                                           
                     <td>
                       <select class="btn btn-default dropdown-toggle" name="set_pumptime_{{ entry.id }}">
                         <option value= "{{ entry.pumptime }}" > {{ entry.pumptime }} </option>
@@ -202,16 +223,7 @@
                         {% endif %}
             
                       </div>
-                    </td>    
-                    <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_time_{{ entry.id }}">
-                        <option value= "{{ entry.time }}" > {{ entry.time }} </option>
-                        <option value= "{{ entry.time }}" > --------- </option>                           
-                        {% for each in dropdown_list_time %}
-                          <option value="{{ each }}"> {{ each }} </option>
-                        {% endfor %}
-                      </select>                    
-                    </td>            
+                    </td>               
                     <td><a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
                   </tr>
                   {% endfor %}

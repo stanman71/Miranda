@@ -159,7 +159,7 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 # led 1
                 led_1 = GET_MQTT_DEVICE_BY_IEEEADDR(group.led_ieeeAddr_1)
 
-                if ZIGBEE2MQTT_CHECK_SETTING(led_1.name, "state", setting, limit) == False:
+                if ZIGBEE2MQTT_CHECK_SETTING(led_1.name, setting, limit) == False:
                     error_list.append(led_1.name + " >>> Setting not confirmed")
 
                 # led 2
@@ -168,11 +168,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_2 == "True": 
 
                     if scene.active_setting_2 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, setting, limit) == False:
                             error_list.append(led_2.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, '"state":"OFF"', limit) == False:
                             error_list.append(led_2.name + " >>> Setting not confirmed")
 
                 # led 3
@@ -181,11 +181,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_3 == "True": 
 
                     if scene.active_setting_3 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, setting, limit) == False:
                             error_list.append(led_3.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, '"state":"OFF"', limit) == False:
                             error_list.append(led_3.name + " >>> Setting not confirmed")
 
                 # led 4

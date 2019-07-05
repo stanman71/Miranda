@@ -167,38 +167,39 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id                              = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name                            = db.Column(db.String(50), unique=True)
-    gateway                         = db.Column(db.String(50)) 
-    ieeeAddr                        = db.Column(db.String(50), unique=True)  
-    model                           = db.Column(db.String(50))
-    device_type                     = db.Column(db.String(50))
-    description                     = db.Column(db.String(200))
-    inputs                          = db.Column(db.String(200))
-    commands                        = db.Column(db.String(200))
-    last_contact                    = db.Column(db.String(50))
-    last_values                     = db.Column(db.String(200))  
-    last_values_formated            = db.Column(db.String(200)) 
-    dashboard_check_option          = db.Column(db.String(50)) 
-    dashboard_check_setting_value   = db.Column(db.String(50))     
-    dashboard_check_sensor_ieeeAddr = db.Column(db.String(50))   
-    dashboard_check_sensor_inputs   = db.Column(db.String(50))     
-    dashboard_check_value_1         = db.Column(db.String(50))
-    dashboard_check_value_2         = db.Column(db.String(50))
-    dashboard_check_value_3         = db.Column(db.String(50))      
-    previous_setting_value          = db.Column(db.String(50))                
+    id                                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                                = db.Column(db.String(50), unique=True)
+    gateway                             = db.Column(db.String(50)) 
+    ieeeAddr                            = db.Column(db.String(50), unique=True)  
+    model                               = db.Column(db.String(50))
+    device_type                         = db.Column(db.String(50))
+    description                         = db.Column(db.String(200))
+    input_values                        = db.Column(db.String(200))
+    input_events                        = db.Column(db.String(200))
+    commands                            = db.Column(db.String(200))    
+    last_contact                        = db.Column(db.String(50))
+    last_values                         = db.Column(db.String(200))  
+    last_values_formated                = db.Column(db.String(200)) 
+    dashboard_check_option              = db.Column(db.String(50)) 
+    dashboard_check_setting             = db.Column(db.String(50))     
+    dashboard_check_sensor_ieeeAddr     = db.Column(db.String(50))   
+    dashboard_check_sensor_input_values = db.Column(db.String(50))     
+    dashboard_check_value_1             = db.Column(db.String(50))
+    dashboard_check_value_2             = db.Column(db.String(50))
+    dashboard_check_value_3             = db.Column(db.String(50))      
+    previous_setting                    = db.Column(db.String(50))                
 
 class Plants(db.Model):
     __tablename__  = 'plants'
     id                       = db.Column(db.Integer, primary_key=True, autoincrement = True)   
     name                     = db.Column(db.String(50), unique=True)
     mqtt_device_ieeeAddr     = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr'))   
-    mqtt_device              = db.relationship('MQTT_Devices')      
+    mqtt_device              = db.relationship('MQTT_Devices')  
+    group                    = db.Column(db.Integer)        
     pumptime                 = db.Column(db.Integer)
     control_sensor_watertank = db.Column(db.String(50))     
     control_sensor_moisture  = db.Column(db.String(50))         
     moisture                 = db.Column(db.String(50)) 
-    time                     = db.Column(db.Integer)   
     
 class Programs(db.Model):
     __tablename__ = 'programs'
@@ -208,54 +209,54 @@ class Programs(db.Model):
     
 class Scheduler_Tasks(db.Model):
     __tablename__ = 'scheduler_tasks'
-    id                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name                    = db.Column(db.String(50), unique=True)
-    task                    = db.Column(db.String(50), server_default=("None"))
-    task_type               = db.Column(db.String(50))    
-    option_time             = db.Column(db.String(50), server_default=("None"))
-    option_sun              = db.Column(db.String(50), server_default=("None"))
-    option_sensors          = db.Column(db.String(50), server_default=("None"))
-    option_position         = db.Column(db.String(50), server_default=("None"))    
-    option_repeat           = db.Column(db.String(50), server_default=("None"))
-    day                     = db.Column(db.String(50), server_default=("None"))
-    hour                    = db.Column(db.String(50), server_default=("None"))
-    minute                  = db.Column(db.String(50), server_default=("None"))
-    option_sunrise          = db.Column(db.String(50), server_default=("None")) 
-    option_sunset           = db.Column(db.String(50), server_default=("None")) 
-    location                = db.Column(db.String(50), server_default=("None"))
-    sunrise                 = db.Column(db.String(50), server_default=("None")) 
-    sunset                  = db.Column(db.String(50), server_default=("None"))         
-    mqtt_device_ieeeAddr_1  = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_1      = db.Column(db.String(50), server_default=("None")) 
-    mqtt_device_inputs_1    = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_1            = db.Column(db.String(50), server_default=("None"))    
-    value_1                 = db.Column(db.String(100), server_default=("None"))
-    operator_1              = db.Column(db.String(50), server_default=("None"))
-    operator_main_1         = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_ieeeAddr_2  = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_2      = db.Column(db.String(50), server_default=("None"))        
-    mqtt_device_inputs_2    = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_2            = db.Column(db.String(50), server_default=("None"))    
-    value_2                 = db.Column(db.String(100), server_default=("None"))
-    operator_2              = db.Column(db.String(50), server_default=("None"))   
-    operator_main_2         = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_ieeeAddr_3  = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_3      = db.Column(db.String(50), server_default=("None"))        
-    mqtt_device_inputs_3    = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_3            = db.Column(db.String(50), server_default=("None"))    
-    value_3                 = db.Column(db.String(100), server_default=("None"))
-    operator_3              = db.Column(db.String(50), server_default=("None")) 
-    option_home             = db.Column(db.String(50), server_default=("None")) 
-    option_away             = db.Column(db.String(50), server_default=("None")) 
-    ip_addresses            = db.Column(db.String(100), server_default=("None"))
-    last_ping_result        = db.Column(db.String(50), server_default=("None")) 
-    error_change_settings   = db.Column(db.String(500), server_default=("")) 
-    error_general_settings  = db.Column(db.String(500), server_default=(""))  
-    error_time_settings     = db.Column(db.String(500), server_default=(""))   
-    error_sun_settings      = db.Column(db.String(500), server_default=(""))       
-    error_sensor_settings   = db.Column(db.String(500), server_default=(""))   
-    error_position_settings = db.Column(db.String(500), server_default=(""))        
-    error_task_settings     = db.Column(db.String(500), server_default=(""))  
+    id                         = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                       = db.Column(db.String(50), unique=True)
+    task                       = db.Column(db.String(50), server_default=("None"))
+    task_type                  = db.Column(db.String(50))    
+    option_time                = db.Column(db.String(50), server_default=("None"))
+    option_sun                 = db.Column(db.String(50), server_default=("None"))
+    option_sensors             = db.Column(db.String(50), server_default=("None"))
+    option_position            = db.Column(db.String(50), server_default=("None"))    
+    option_repeat              = db.Column(db.String(50), server_default=("None"))
+    day                        = db.Column(db.String(50), server_default=("None"))
+    hour                       = db.Column(db.String(50), server_default=("None"))
+    minute                     = db.Column(db.String(50), server_default=("None"))
+    option_sunrise             = db.Column(db.String(50), server_default=("None")) 
+    option_sunset              = db.Column(db.String(50), server_default=("None")) 
+    location                   = db.Column(db.String(50), server_default=("None"))
+    sunrise                    = db.Column(db.String(50), server_default=("None")) 
+    sunset                     = db.Column(db.String(50), server_default=("None"))         
+    mqtt_device_ieeeAddr_1     = db.Column(db.String(50), server_default=("None"))  
+    mqtt_device_name_1         = db.Column(db.String(50), server_default=("None")) 
+    mqtt_device_input_values_1 = db.Column(db.String(100), server_default=("None")) 
+    sensor_key_1               = db.Column(db.String(50), server_default=("None"))    
+    value_1                    = db.Column(db.String(100), server_default=("None"))
+    operator_1                 = db.Column(db.String(50), server_default=("None"))
+    operator_main_1            = db.Column(db.String(50), server_default=("None"))     
+    mqtt_device_ieeeAddr_2     = db.Column(db.String(50), server_default=("None"))  
+    mqtt_device_name_2         = db.Column(db.String(50), server_default=("None"))        
+    mqtt_device_input_values_2 = db.Column(db.String(100), server_default=("None")) 
+    sensor_key_2               = db.Column(db.String(50), server_default=("None"))    
+    value_2                    = db.Column(db.String(100), server_default=("None"))
+    operator_2                 = db.Column(db.String(50), server_default=("None"))   
+    operator_main_2            = db.Column(db.String(50), server_default=("None"))     
+    mqtt_device_ieeeAddr_3     = db.Column(db.String(50), server_default=("None"))  
+    mqtt_device_name_3         = db.Column(db.String(50), server_default=("None"))        
+    mqtt_device_input_values_3 = db.Column(db.String(100), server_default=("None")) 
+    sensor_key_3               = db.Column(db.String(50), server_default=("None"))    
+    value_3                    = db.Column(db.String(100), server_default=("None"))
+    operator_3                 = db.Column(db.String(50), server_default=("None")) 
+    option_home                = db.Column(db.String(50), server_default=("None")) 
+    option_away                = db.Column(db.String(50), server_default=("None")) 
+    ip_addresses               = db.Column(db.String(100), server_default=("None"))
+    last_ping_result           = db.Column(db.String(50), server_default=("None")) 
+    error_change_settings      = db.Column(db.String(500), server_default=("")) 
+    error_general_settings     = db.Column(db.String(500), server_default=(""))  
+    error_time_settings        = db.Column(db.String(500), server_default=(""))   
+    error_sun_settings         = db.Column(db.String(500), server_default=(""))       
+    error_sensor_settings      = db.Column(db.String(500), server_default=(""))   
+    error_position_settings    = db.Column(db.String(500), server_default=(""))        
+    error_task_settings        = db.Column(db.String(500), server_default=(""))  
 
 class Sensordata_Jobs(db.Model):
     __tablename__  = 'sensordata_jobs'
@@ -270,17 +271,18 @@ class Sensordata_Jobs(db.Model):
 class Snowboy_Settings(db.Model):
     __tablename__  = 'snowboy_settings'
     id          = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    sensitivity = db.Column(db.Integer)
-    timeout     = db.Column(db.Integer)
-    microphone  = db.Column(db.String(50))
+    snowboy_sensitivity = db.Column(db.Integer)
+    snowboy_timeout     = db.Column(db.Integer)
+    snowboy_microphone  = db.Column(db.String(50))
 
 class Speech_Recognition_Provider_Settings(db.Model):
     __tablename__ = 'speech_recognition_provider_settings'
-    id                                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    snowboy_hotword                      = db.Column(db.String(100))
-    speech_recognition_provider          = db.Column(db.String(100))
-    speech_recognition_provider_username = db.Column(db.String(100))
-    speech_recognition_provider_key      = db.Column(db.String(200))
+    id                                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    snowboy_hotword                         = db.Column(db.String(100))
+    speech_recognition_provider             = db.Column(db.String(100))
+    speech_recognition_provider_username    = db.Column(db.String(100))
+    speech_recognition_provider_key         = db.Column(db.String(200))
+    speech_recognition_provider_sensitivity = db.Column(db.String(10))
    
 class Speechcontrol_LED_Tasks(db.Model):
     __tablename__ = 'speechcontrol_led_tasks'
@@ -321,7 +323,15 @@ class User(UserMixin, db.Model):
     username                  = db.Column(db.String(50), unique=True)
     email                     = db.Column(db.String(50), unique=True)
     password                  = db.Column(db.String(100))
-    role                      = db.Column(db.String(20), server_default=("guest")) 
+    permission_dashboard      = db.Column(db.String(20), server_default=(""))   
+    permission_scheduler      = db.Column(db.String(20), server_default=(""))     
+    permission_programs       = db.Column(db.String(20), server_default=(""))    
+    permission_watering       = db.Column(db.String(20), server_default=(""))   
+    permission_camera         = db.Column(db.String(20), server_default=(""))   
+    permission_led            = db.Column(db.String(20), server_default=(""))    
+    permission_sensordata     = db.Column(db.String(20), server_default=(""))  
+    permission_spotify        = db.Column(db.String(20), server_default=(""))   
+    permission_system         = db.Column(db.String(20), server_default=(""))    
     email_notification_info   = db.Column(db.String(20), server_default=(""))
     email_notification_error  = db.Column(db.String(20), server_default=(""))
     email_notification_camera = db.Column(db.String(20), server_default=(""))
@@ -379,8 +389,8 @@ if Global_Settings.query.filter_by().first() is None:
 # create default snowboy settings
 if Snowboy_Settings.query.filter_by().first() is None:
     snowboy = Snowboy_Settings(
-        sensitivity  = 50,
-        timeout = 5,
+        snowboy_sensitivity = 50,
+        snowboy_timeout     = 5,
     )
     db.session.add(snowboy)
     db.session.commit()
@@ -389,6 +399,7 @@ if Snowboy_Settings.query.filter_by().first() is None:
 # create default speech control settings
 if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
     speech_recognition_provider = Speech_Recognition_Provider_Settings(
+        speech_recognition_provider_sensitivity = "75"   
     )
     db.session.add(speech_recognition_provider)
     db.session.commit()
@@ -397,10 +408,21 @@ if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
 # create default user
 if User.query.filter_by(username='default').first() is None:
     user = User(
-        username ='default',
-        email    = 'member@example.com',
-        password = generate_password_hash('qwer1234', method='sha256'),
-        role     = 'superuser'
+        username                  ='default',
+        email                     = 'member@example.com',
+        password                  = generate_password_hash('qwer1234', method='sha256'), 
+        permission_dashboard      = "checked",   
+        permission_scheduler      = "checked",        
+        permission_programs       = "checked",   
+        permission_watering       = "checked",     
+        permission_camera         = "checked",      
+        permission_led            = "checked",      
+        permission_sensordata     = "checked",    
+        permission_spotify        = "checked",     
+        permission_system         = "checked",     
+        email_notification_info   = "checked",   
+        email_notification_error  = "checked",   
+        email_notification_camera = "checked",       
     )
     db.session.add(user)
     db.session.commit()
@@ -464,7 +486,7 @@ def ADD_CONTROLLER(mqtt_device_ieeeAddr):
                     db.session.add(new_controller)
                     db.session.commit()
                     
-                    UPDATE_CONTROLLER_COMMANDS()
+                    UPDATE_CONTROLLER_EVENTS()
                     
                     controller_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
 
@@ -478,65 +500,56 @@ def ADD_CONTROLLER(mqtt_device_ieeeAddr):
         return "Controller bereits vorhanden"    
 
 
-def UPDATE_CONTROLLER_COMMANDS(): 
+def UPDATE_CONTROLLER_EVENTS(): 
     
     for controller in GET_ALL_CONTROLLER():
     
-        mqtt_device_inputs = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).inputs
-        mqtt_device_inputs = mqtt_device_inputs.split(",")
+        mqtt_device_input_events = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).input_events
+        mqtt_device_input_events = mqtt_device_input_events.split(",")
 
         try:
-            mqtt_device_input    = mqtt_device_inputs[0].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_1 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[0].replace(" ","")
+            controller.command_1 = mqtt_device_events
         except:
             controller.command_1 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[1].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_2 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[1].replace(" ","")
+            controller.command_2 = mqtt_device_events
         except:
             controller.command_2 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[2].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_3 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[2].replace(" ","")
+            controller.command_3 = mqtt_device_events
         except:
             controller.command_3 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[3].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_4 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[3].replace(" ","")
+            controller.command_4 = mqtt_device_events
         except:
             controller.command_4 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[4].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_5 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[4].replace(" ","")
+            controller.command_5 = mqtt_device_events
         except:
             controller.command_5 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[5].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_6 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[5].replace(" ","")
+            controller.command_6 = mqtt_device_events
         except:
             controller.command_6 = "None"            
         try:
-            mqtt_device_input    = mqtt_device_inputs[6].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_7 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[6].replace(" ","")
+            controller.command_7 = mqtt_device_events
         except:
             controller.command_7 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[7].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_8 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[7].replace(" ","")
+            controller.command_8 = mqtt_device_events
         except:
             controller.command_8 = "None"
         try:
-            mqtt_device_input    = mqtt_device_inputs[8].replace(" ","")
-            mqtt_device_input    = mqtt_device_input.replace("=", " = ")
-            controller.command_9 = mqtt_device_input
+            mqtt_device_events   = mqtt_device_input_events[8].replace(" ","")
+            controller.command_9 = mqtt_device_events
         except:
             controller.command_9 = "None"      
 
@@ -1392,7 +1405,7 @@ def GET_ALL_MQTT_DEVICES(selector):
         for device in devices:
             if (device.device_type == "sensor_passiv" or 
                 device.device_type == "sensor_active" or 
-                device.device_type == "watering_array"):
+                device.device_type == "watering_control"):
                 
                 device_list.append(device)   
      
@@ -1402,9 +1415,9 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
                 device_list.append(device)       
                 
-    if selector == "watering_array":
+    if selector == "watering_control":
         for device in devices:
-            if device.device_type == "watering_array":
+            if device.device_type == "watering_control":
                 
                 device_list.append(device)                                                
                 
@@ -1412,8 +1425,8 @@ def GET_ALL_MQTT_DEVICES(selector):
         
 
 def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", description = "", 
-                    inputs = "", commands = "", last_contact = ""):
-                        
+                    input_values = "", input_events = "", commands = "", last_contact = ""):
+        
     # path exist ?
     if not GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):   
             
@@ -1426,16 +1439,17 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
             else:
                 # add the new device            
                 device = MQTT_Devices(
-                        id           = i,
-                        name         = name,
-                        gateway      = gateway,                       
-                        ieeeAddr     = ieeeAddr,
-                        model        = model,
-                        device_type  = device_type,
-                        description  = description,
-                        inputs       = inputs,
-                        commands     = commands,
-                        last_contact = last_contact,
+                        id              = i,
+                        name            = name,
+                        gateway         = gateway,                    
+                        ieeeAddr        = ieeeAddr,
+                        model           = model,
+                        device_type     = device_type,
+                        description     = description,
+                        input_values    = str(input_values),
+                        input_events    = str(input_events),
+                        commands        = str(commands),                    
+                        last_contact    = last_contact,
                         )
                         
                 db.session.add(device)
@@ -1444,10 +1458,11 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + name + " | added || Gateway - " + gateway + 
                                      " | ieeeAddr - " + ieeeAddr + 
                                      " | Model - " + model + 
-                                     " | device_type - " + device_type + 
-                                     " | description - " + description + 
-                                     " | Inputs - " + inputs + 
-                                     " | Commands - " + commands)
+                                     " | Device_type - " + device_type + 
+                                     " | Description - " + description + 
+                                     " | Input_values - " + str(input_values) + 
+                                     " | Input_events - " + str(input_events) + 
+                                     " | Commands - " + str(commands))
 
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
                 
@@ -1508,56 +1523,57 @@ def UPDATE_DASHBOARD_CHECK_SENSOR_NAMES():
         pass
 
 
-def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_setting_value,
-                                    dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_inputs, dashboard_check_value_1, 
+def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_setting,
+                                    dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_input_values, dashboard_check_value_1, 
                                     dashboard_check_value_2, dashboard_check_value_3):
               
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
              
     # values changed ?
-    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_setting_value != dashboard_check_setting_value or
+    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_setting != dashboard_check_setting or
         entry.dashboard_check_sensor_ieeeAddr != dashboard_check_sensor_ieeeAddr or 
-        entry.dashboard_check_sensor_inputs != dashboard_check_sensor_inputs or entry.dashboard_check_value_1 != dashboard_check_value_1 or 
+        entry.dashboard_check_sensor_input_values != dashboard_check_sensor_input_values or entry.dashboard_check_value_1 != dashboard_check_value_1 or 
         entry.dashboard_check_value_2 != dashboard_check_value_2 or entry.dashboard_check_value_3 != dashboard_check_value_3):              
                                          
-        entry.dashboard_check_option          = dashboard_check_option
-        entry.dashboard_check_setting_value   = dashboard_check_setting_value          
-        entry.dashboard_check_sensor_ieeeAddr = dashboard_check_sensor_ieeeAddr
-        entry.dashboard_check_sensor_inputs   = dashboard_check_sensor_inputs
-        entry.dashboard_check_value_1         = dashboard_check_value_1
-        entry.dashboard_check_value_2         = dashboard_check_value_2 
-        entry.dashboard_check_value_3         = dashboard_check_value_3         
+        entry.dashboard_check_option              = dashboard_check_option
+        entry.dashboard_check_setting             = dashboard_check_setting          
+        entry.dashboard_check_sensor_ieeeAddr     = dashboard_check_sensor_ieeeAddr
+        entry.dashboard_check_sensor_input_values = dashboard_check_sensor_input_values
+        entry.dashboard_check_value_1             = dashboard_check_value_1
+        entry.dashboard_check_value_2             = dashboard_check_value_2 
+        entry.dashboard_check_value_3             = dashboard_check_value_3         
         
         db.session.commit()  
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
                              " || Dashboard Check - " + entry.dashboard_check_option +
-                             " | Dashboard Check Setting Value - " + entry.dashboard_check_setting_value +                          
+                             " | Dashboard Check Setting - " + entry.dashboard_check_setting +                          
                              " | Dashboard Check ieeeAddr - " + entry.dashboard_check_sensor_ieeeAddr +
                              " | Dashboard Check Value 1 - " + entry.dashboard_check_value_1 +
                              " | Dashboard Check Value 2 - " + entry.dashboard_check_value_2 +      
                              " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
 
                                                 
-def SET_MQTT_DEVICE_PREVIOUS_SETTING_VALUE(ieeeAddr, setting_value):
+def SET_MQTT_DEVICE_PREVIOUS_SETTING(ieeeAddr, setting):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    entry.previous_setting_value = setting_value
+    entry.previous_setting = setting
     db.session.commit()  
     
     
-def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", inputs = "", commands = ""):
+def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", input_values = "", input_events = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     
     # values changed ?
     if (entry.name != name or entry.device_type != device_type or entry.description != description 
-        or entry.inputs != inputs or entry.commands != commands):
+        or entry.input_values != input_values or entry.input_events != input_events or entry.commands != commands):
         
-        entry.device_type = device_type
-        entry.description = description
-        entry.inputs      = inputs
-        entry.commands    = commands
+        entry.device_type     = device_type
+        entry.description     = description
+        entry.input_values    = str(input_values)
+        entry.input_events    = str(input_events)
+        entry.commands        = str(commands)        
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
                              " | Gateway - " + entry.gateway +
@@ -1567,8 +1583,9 @@ def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", in
                              " | Model - " + entry.model +
                              " | device_type - " + entry.device_type +
                              " | description - " + entry.description +
-                             " | inputs - " + entry.inputs + 
-                             " | commands - " + entry.commands)
+                             " | Input_values - " + str(input_values) + 
+                             " | Input_events - " + str(input_events) + 
+                             " | Commands - " + str(commands))
 
         entry.name = name
         db.session.commit()    
@@ -1728,9 +1745,9 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
                 plant = Plants(
                         id                   = i,
                         name                 = name, 
+                        group                = 1,                        
                         pumptime             = 30,
-                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,
-                        time                 = "None"              
+                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,            
                     )
                 db.session.add(plant)
                 db.session.commit()
@@ -1745,32 +1762,32 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, pumptime, control_sensor_watertank, control_sensor_moisture, moisture, time):         
+def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_watertank, control_sensor_moisture, moisture):         
     entry = Plants.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.pumptime != pumptime or  
+    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.group != group or entry.pumptime != pumptime or  
         entry.control_sensor_watertank != control_sensor_watertank or entry.control_sensor_moisture != control_sensor_moisture or 
         entry.moisture != int(moisture) or entry.time != int(time)):
 
         entry.name = name
         entry.mqtt_device_ieeeAddr = mqtt_device_ieeeAddr
+        entry.group = group
         entry.pumptime = pumptime
         entry.control_sensor_watertank = control_sensor_watertank        
         entry.control_sensor_moisture = control_sensor_moisture
         entry.moisture = moisture
-        entry.time = time
         
         db.session.commit()  
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + old_name + " | changed || Name - " + entry.name + 
                              " | MQTT-Device - " + entry.mqtt_device.name + 
+                             " | Group - " + str(entry.group) +                              
                              " | Pumptime - " + str(entry.pumptime) + 
                              " | Control Sensor Watertank - " + entry.control_sensor_watertank +  
                              " | Control Sensor Moisture - " + entry.control_sensor_moisture + 
-                             " | Moisture - " + entry.moisture +
-                             " | Time - " + str(entry.time))
+                             " | Moisture - " + entry.moisture)
                              
 
 def CHANGE_PLANTS_POSITION(id, direction):
@@ -1980,11 +1997,11 @@ def SET_SCHEDULER_TASK(id, name, task,
                        option_time, option_sun, option_sensors, option_position, option_repeat, 
                        day, hour, minute,
                        option_sunrise, option_sunset, location,
-                       mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_inputs_1,  
+                       mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1,  
                        sensor_key_1, operator_1, value_1, operator_main_1,
-                       mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_inputs_2, 
+                       mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
                        sensor_key_2, operator_2, value_2, operator_main_2,
-                       mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_inputs_3, 
+                       mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
                        sensor_key_3, operator_3, value_3,
                        option_home, option_away, ip_addresses):
                           
@@ -2006,42 +2023,42 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
         entry.option_home != option_home or entry.option_away != option_away or entry.ip_addresses != ip_addresses):
 
-        entry.name                    = name
-        entry.task                    = task      
-        entry.option_time             = option_time    
-        entry.option_sun              = option_sun            
-        entry.option_sensors          = option_sensors
-        entry.option_position         = option_position        
-        entry.option_repeat           = option_repeat
-        entry.day                     = day
-        entry.hour                    = hour
-        entry.minute                  = minute
-        entry.option_sunrise          = option_sunrise
-        entry.option_sunset           = option_sunset
-        entry.location                = location        
-        entry.mqtt_device_ieeeAddr_1  = mqtt_device_ieeeAddr_1
-        entry.mqtt_device_name_1      = mqtt_device_name_1
-        entry.mqtt_device_inputs_1    = mqtt_device_inputs_1
-        entry.sensor_key_1            = sensor_key_1
-        entry.operator_1              = operator_1
-        entry.value_1                 = value_1
-        entry.operator_main_1         = operator_main_1
-        entry.mqtt_device_ieeeAddr_2  = mqtt_device_ieeeAddr_2
-        entry.mqtt_device_name_2      = mqtt_device_name_2
-        entry.mqtt_device_inputs_2    = mqtt_device_inputs_2
-        entry.sensor_key_2            = sensor_key_2
-        entry.operator_2              = operator_2
-        entry.value_2                 = value_2        
-        entry.operator_main_2         = operator_main_2
-        entry.mqtt_device_ieeeAddr_3  = mqtt_device_ieeeAddr_3
-        entry.mqtt_device_name_3      = mqtt_device_name_3
-        entry.mqtt_device_inputs_3    = mqtt_device_inputs_3
-        entry.sensor_key_3            = sensor_key_3
-        entry.operator_3              = operator_3
-        entry.value_3                 = value_3      
-        entry.option_home             = option_home
-        entry.option_away             = option_away
-        entry.ip_addresses            = ip_addresses
+        entry.name                       = name
+        entry.task                       = task      
+        entry.option_time                = option_time    
+        entry.option_sun                 = option_sun            
+        entry.option_sensors             = option_sensors
+        entry.option_position            = option_position        
+        entry.option_repeat              = option_repeat
+        entry.day                        = day
+        entry.hour                       = hour
+        entry.minute                     = minute
+        entry.option_sunrise             = option_sunrise
+        entry.option_sunset              = option_sunset
+        entry.location                   = location        
+        entry.mqtt_device_ieeeAddr_1     = mqtt_device_ieeeAddr_1
+        entry.mqtt_device_name_1         = mqtt_device_name_1
+        entry.mqtt_device_input_values_1 = mqtt_device_input_values_1
+        entry.sensor_key_1               = sensor_key_1
+        entry.operator_1                 = operator_1
+        entry.value_1                    = value_1
+        entry.operator_main_1            = operator_main_1
+        entry.mqtt_device_ieeeAddr_2     = mqtt_device_ieeeAddr_2
+        entry.mqtt_device_name_2         = mqtt_device_name_2
+        entry.mqtt_device_input_values_2 = mqtt_device_input_values_2
+        entry.sensor_key_2               = sensor_key_2
+        entry.operator_2                 = operator_2
+        entry.value_2                    = value_2        
+        entry.operator_main_2            = operator_main_2
+        entry.mqtt_device_ieeeAddr_3     = mqtt_device_ieeeAddr_3
+        entry.mqtt_device_name_3         = mqtt_device_name_3
+        entry.mqtt_device_input_values_3 = mqtt_device_input_values_3
+        entry.sensor_key_3               = sensor_key_3
+        entry.operator_3                 = operator_3
+        entry.value_3                    = value_3      
+        entry.option_home                = option_home
+        entry.option_away                = option_away
+        entry.ip_addresses               = ip_addresses
 
         db.session.commit()   
 
@@ -2300,18 +2317,18 @@ def UPDATE_MQTT_DEVICE_NAMES():
         entry = Scheduler_Tasks.query.filter_by(id=task.id).first()
         
         try:
-            entry.mqtt_device_name_1   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).name
-            entry.mqtt_device_inputs_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).inputs
+            entry.mqtt_device_name_1         = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).name
+            entry.mqtt_device_input_values_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_1).input_values
         except:
             pass
         try:
-            entry.mqtt_device_name_2   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).name
-            entry.mqtt_device_inputs_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).inputs
+            entry.mqtt_device_name_2         = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).name
+            entry.mqtt_device_input_values_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_2).input_values
         except:
             pass
         try:
-            entry.mqtt_device_name_3   = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).name
-            entry.mqtt_device_inputs_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).inputs
+            entry.mqtt_device_name_3         = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).name
+            entry.mqtt_device_input_values_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.mqtt_device_ieeeAddr_3).input_values
         except:
             pass       
         
@@ -2479,11 +2496,12 @@ def GET_SNOWBOY_SETTINGS():
     return Snowboy_Settings.query.filter_by().first()
     
 
-def SET_SNOWBOY_SETTINGS(sensitivity, timeout, microphone):
+def SET_SNOWBOY_SETTINGS(snowboy_sensitivity, snowboy_timeout, snowboy_microphone):
     entry = Snowboy_Settings.query.filter_by().first()
-    entry.sensitivity = sensitivity
-    entry.timeout     = timeout
-    entry.microphone  = microphone
+    
+    entry.snowboy_sensitivity = snowboy_sensitivity
+    entry.snowboy_timeout     = snowboy_timeout
+    entry.snowboy_microphone  = snowboy_microphone
     db.session.commit() 
 
 
@@ -2498,12 +2516,16 @@ def GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS():
     return Speech_Recognition_Provider_Settings.query.filter_by().first()
     
 
-def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, speech_recognition_provider_username, speech_recognition_provider_key):
+def SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, speech_recognition_provider, speech_recognition_provider_username, 
+                                             speech_recognition_provider_key, speech_recognition_provider_sensitivity):
+                                                 
     entry = Speech_Recognition_Provider_Settings.query.filter_by().first()
-    entry.snowboy_hotword                      = snowboy_hotword
-    entry.speech_recognition_provider          = speech_recognition_provider
-    entry.speech_recognition_provider_username = speech_recognition_provider_username
-    entry.speech_recognition_provider_key      = speech_recognition_provider_key
+    
+    entry.snowboy_hotword                         = snowboy_hotword
+    entry.speech_recognition_provider             = speech_recognition_provider
+    entry.speech_recognition_provider_username    = speech_recognition_provider_username
+    entry.speech_recognition_provider_key         = speech_recognition_provider_key
+    entry.speech_recognition_provider_sensitivity = speech_recognition_provider_sensitivity
     db.session.commit() 
 
 
@@ -2931,20 +2953,40 @@ def ADD_USER(name, email, password):
         return "Name bereits vorhanden"    
 
 
-def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_notification_error, email_notification_camera):
+def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_scheduler, permission_programs, 
+                      permission_watering, permission_camera, permission_led, permission_sensordata,   
+                      permission_spotify, permission_system, email_notification_info,   
+                      email_notification_error, email_notification_camera):    
     
     entry = User.query.filter_by(id=id).first()
     old_username = entry.username
 
     # values changed ?
-    if (entry.username != username or entry.email != email or entry.role != role or
+    if (entry.username != username or entry.email != email or 
+        entry.permission_dashboard      != permission_dashboard or
+        entry.permission_scheduler      != permission_scheduler or   
+        entry.permission_programs       != permission_programs or
+        entry.permission_watering       != permission_watering or
+        entry.permission_camera         != permission_camera or
+        entry.permission_led            != permission_led or
+        entry.permission_sensordata     != permission_sensordata or
+        entry.permission_spotify        != permission_spotify or
+        entry.permission_system         != permission_system or
         entry.email_notification_info   != email_notification_info or
         entry.email_notification_error  != email_notification_error or
         entry.email_notification_camera != email_notification_camera):
 
-        entry.username = username
-        entry.email = email
-        entry.role = role
+        entry.username                  = username
+        entry.email                     = email
+        entry.permission_dashboard      = permission_dashboard 
+        entry.permission_scheduler      = permission_scheduler   
+        entry.permission_programs       = permission_programs 
+        entry.permission_watering       = permission_watering 
+        entry.permission_camera         = permission_camera 
+        entry.permission_led            = permission_led 
+        entry.permission_sensordata     = permission_sensordata 
+        entry.permission_spotify        = permission_spotify 
+        entry.permission_system         = permission_system 
         entry.email_notification_info   = email_notification_info
         entry.email_notification_error  = email_notification_error
         entry.email_notification_camera = email_notification_camera
@@ -2952,12 +2994,29 @@ def SET_USER_SETTINGS(id, username, email, role, email_notification_info, email_
         
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + old_username + " | changed || Username - " + entry.username +
                              " | eMail - " + entry.email + 
-                             " | Role - " + role + 
+                             " | Permission-Dashboard - " + entry.permission_dashboard +
+                             " | Permission-Scheduler - " + entry.permission_scheduler +     
+                             " | Permission-Programs - " + entry.permission_programs +    
+                             " | Permission-Watering - " + entry.permission_watering +    
+                             " | Permission-Camera - " + entry.permission_camera +      
+                             " | Permission-LED - " + entry.permission_led +       
+                             " | Permission-Sensordata - " + entry.permission_sensordata +
+                             " | Permission-Spotify - " + entry.permission_spotify +       
+                             " | Permission-System - " + entry.permission_system +     
                              " | eMail-Info - " + email_notification_info +
                              " | eMail-Error - " + email_notification_error +
                              " | eMail-Camera - " + email_notification_camera)
 
 
+def RESET_USER_PASSWORD(id, hashed_password):
+    entry = User.query.filter_by(id=id).first()
+    
+    entry.password = hashed_password    
+    db.session.commit()
+    
+    WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + entry.username + " | Password changed")
+
+    
 def CHANGE_USER_POSITION(id, direction):
     
     if direction == "up":

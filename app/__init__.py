@@ -13,7 +13,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
 colorpicker(app)
 
-from app.sites import index, user_login, dashboard, camera, led, scheduler, programs, sensordata, spotify, settings, watering
+from app.sites import index, user_login, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
@@ -168,4 +168,4 @@ if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
 
     # deactivate pixel_ring
-    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
+    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")

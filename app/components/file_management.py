@@ -3,6 +3,7 @@ import os
 import shutil
 import csv
 import yaml
+import json
 
 import pandas as pd
 
@@ -23,11 +24,15 @@ if os.name == "nt":
 else:                               
     PATH = os.path.abspath("") + "/SmartHome"
 
+
 UPLOAD_FOLDER = PATH + "/app/speechcontrol/snowboy/resources/"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+
 def GET_PATH():
     return (PATH)
+
+backup_location_temp_path = ""
 
 
 """ #### """
@@ -119,7 +124,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
         return ("ERROR: " + str(e))
         
     
-def GET_LOGFILE_SYSTEM(rows):   
+def GET_LOGFILE_SYSTEM(selected_log_types, rows):   
     
     try:
         # open csv file
@@ -130,93 +135,23 @@ def GET_LOGFILE_SYSTEM(rows):
             data = [row for row in rowReader] 
             csvfile.close()
             
-            headers = data.pop(0)             # get headers and remove from data
-            data_reversed = data[::-1]        # reverse the data
+            headers = data.pop(0)                 # get headers and remove from data
+            data_reversed = data[::-1]            # reverse the data
 
-            return data_reversed[0:rows]
+            # get the selected log entries
+            data_reversed_filtered = []
+
+            for element in data_reversed:
+                if element[1] in selected_log_types:
+                    data_reversed_filtered.append(element)
+                
+            return data_reversed_filtered[0:rows]
+            
             
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e)) 
         return ("ERROR: " + str(e))         
-
-
-""" ############### """
-""" backup database """
-""" ############### """
-
-def GET_BACKUP_FILES():
-    file_list = []
-    for files in os.walk(PATH + "/backup/"):  
-        file_list.append(files)
-
-    if file_list == []:
-        return ""
-    else:
-        file_list = file_list[0][2]
-        file_list = sorted(file_list, reverse=True)
-        return file_list 
-
-
-def SAVE_DATABASE():  
-
-    try:
-        # save database
-        shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
-                        PATH + '/backup/' + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
-                
-        # if more then 10 backups saved, delete oldest backup file
-        list_of_files = os.listdir(PATH + '/backup/')    
-        full_path     = [PATH + '/backup/{0}'.format(x) for x in list_of_files]
-
-        if len([name for name in list_of_files]) > 10:
-            oldest_file = min(full_path, key=os.path.getctime)
-            os.remove(oldest_file)        
-        
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | saved")
-        return ""
-        
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e)) 
-        return str(e)
-
-
-def RESTORE_DATABASE(filename):
-    # check file
-    try:
-        if filename.split("_")[1] == "smarthome.sqlite3":
-            shutil.copyfile(PATH + '/backup/' + filename, PATH + '/app/database/smarthome.sqlite3')
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | " + filename + " | restored")
-            
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e))  
-        return ("ERROR: " + str(e))
-        
-        
-def DELETE_DATABASE_BACKUP(filename):
-    try:
-        os.remove (PATH + '/backup/' + filename)
-        WRITE_LOGFILE_SYSTEM("EVENT", "File | /backup/" + filename + " | deleted")
-        
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /backup/" + filename + " | " + str(e))  
-        return ("ERROR: " + str(e))
-
-
-""" ########### """
-""" colorpicker """
-""" ########### """
-
-# Host files for colorpicker_local
-@app.route('/get_media/<path:filename>', methods=['GET'])
-def get_media(filename):
-    if filename is None:
-        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | File not founded")
-    try:
-        PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
-        return send_from_directory(PATH_CSS, filename)
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))
 
 
 """ ############# """
@@ -266,6 +201,20 @@ def GET_CONFIG_DATABASE():
         return "sqlite:///database/smarthome.sqlite3"
         
         
+def GET_CONFIG_BACKUP_LOCATION():
+    global backup_location_temp_path
+    
+    if backup_location_temp_path == "": 
+    
+        try:
+            return str(config['config']['backup_location'])
+        except:
+            return ("/home/pi/SmartHome/backup/", False)        
+    
+    else:
+        return (backup_location_temp_path, True)
+        
+        
 def GET_SPOTIFY_CLIENT_ID():
     try:
         return str(config['spotify']['client_id'])
@@ -279,6 +228,107 @@ def GET_SPOTIFY_CLIENT_SECRET():
     except:
         return ""     
 
+
+def SET_CONFIG_BACKUP_LOCATION(backup_location_path):
+    global backup_location_temp_path
+    
+    try:
+        with open(PATH + "/config/config.yaml") as file_config:
+            upload_config = yaml.load(file_config)
+
+        upload_config['config']['backup_location'] = backup_location_path
+
+        with open(PATH + "/config/config.yaml", 'w') as file_config:
+            yaml.dump(upload_config, file_config)
+            
+        backup_location_temp_path = backup_location_path
+            
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /config/config/ | " + str(e))  
+        return ("ERROR: " + str(e))
+    
+
+""" ############### """
+""" backup database """
+""" ############### """
+
+# get backup path
+backup_location_path = GET_CONFIG_BACKUP_LOCATION()
+
+
+def GET_BACKUP_FILES():
+    file_list = []
+    for files in os.walk(backup_location_path):  
+        file_list.append(files)
+
+    if file_list == []:
+        return ""
+    else:
+        file_list = file_list[0][2]
+        file_list = sorted(file_list, reverse=True)
+        return file_list 
+
+
+def SAVE_DATABASE():  
+
+    try:
+        # save database
+        shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
+                        backup_location_path + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+                
+        # if more then 10 backups saved, delete oldest backup file
+        list_of_files = os.listdir(PATH + '/backup/')    
+        full_path     = [backup_location_path + '{0}'.format(x) for x in list_of_files]
+
+        if len([name for name in list_of_files]) > 10:
+            oldest_file = min(full_path, key=os.path.getctime)
+            os.remove(oldest_file)        
+        
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | saved")
+        return ""
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e)) 
+        return str(e)
+
+
+def RESTORE_DATABASE(filename):
+    # check file
+    try:
+        if filename.split("_")[1] == "smarthome.sqlite3":
+            shutil.copyfile(backup_location_path + filename, PATH + '/app/database/smarthome.sqlite3')
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | " + filename + " | restored")
+            
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Database_Backup | " + str(e))  
+        return ("ERROR: " + str(e))
+        
+        
+def DELETE_DATABASE_BACKUP(filename):
+    try:
+        os.remove (backup_location_path + filename)
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /backup/" + filename + " | deleted")
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /backup/" + filename + " | " + str(e))  
+        return ("ERROR: " + str(e))
+
+
+""" ########### """
+""" colorpicker """
+""" ########### """
+
+# Host files for colorpicker_local
+@app.route('/get_media/<path:filename>', methods=['GET'])
+def get_media(filename):
+    if filename is None:
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | File not founded")
+    try:
+        PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
+        return send_from_directory(PATH_CSS, filename)
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))
+        
 
 """ ################ """
 """  file locations  """
@@ -329,36 +379,45 @@ except Exception as e:
 
 def GET_MQTT_DEVICE_INFORMATIONS(model):
     
-    if model.isdigit():
-        model = int(model)
-    
-    try:
-        device_type = str(zigbee_devices[model]['device_type'])
-    except:
-        device_type = ""
-        
-    try:
-        description = str(zigbee_devices[model]['description'])
-    except:
-        description = ""
-        
-    try:        
-        inputs      = str(zigbee_devices[model]['inputs'])
-        inputs      = inputs.replace("[","")
-        inputs      = inputs.replace("]","")
-        inputs      = inputs.replace("'","")        
-    except:
-        inputs      = ""
-        
-    try:        
-        commands    = str(zigbee_devices[model]['commands'])
-        commands    = commands.replace("[","")
-        commands    = commands.replace("]","")
-        commands    = commands.replace("'","")    
-    except:
-        commands    = ""
-        
-    return (device_type, description, inputs, commands)
+    with open(PATH + "/config/zigbee_device_informations.json", 'r') as data_file:
+        data_loaded = json.load(data_file)
+
+    for device in data_loaded["data"]:
+
+        if str(device["model"]) == str(model):
+
+            try:
+                device_type  = device['device_type']
+            except:
+                device_type  = ""                 
+              
+            try:
+                description  = device['description']
+            except:
+                description  = ""
+
+            try:
+                input_values = device['input_values']
+                input_values = ','.join(input_values)	
+                input_values = input_values.replace("'", '"')
+            except:
+                input_values = ""
+              
+            try:
+                input_events = device['input_events']
+                input_events = ','.join(input_events)
+                input_events = input_events.replace("'", '"')                							
+            except:
+                input_events = ""
+                
+            try:
+                commands     = device['commands']	
+                commands     = ','.join(commands)
+                commands     = commands.replace("'", '"')                				
+            except:
+                commands     = ""
+            
+            return (device_type, description, input_values, input_events, commands)
 
 
 """ ########## """

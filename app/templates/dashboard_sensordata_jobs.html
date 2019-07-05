@@ -8,55 +8,55 @@
   {{super()}}
 
   <script>
-    var sensor_options_list_1  = '{{ mqtt_device_1_inputs }}';
+    var sensor_options_list_1  = '{{ mqtt_device_1_input_values }}';
     var sensor_options_list_1  = sensor_options_list_1.split(",");
-    var sensor_options_list_2  = '{{ mqtt_device_2_inputs }}';
+    var sensor_options_list_2  = '{{ mqtt_device_2_input_values }}';
     var sensor_options_list_2  = sensor_options_list_2.split(",");
-    var sensor_options_list_3  = '{{ mqtt_device_3_inputs }}';
+    var sensor_options_list_3  = '{{ mqtt_device_3_input_values }}';
     var sensor_options_list_3  = sensor_options_list_3.split(",");
-    var sensor_options_list_4  = '{{ mqtt_device_4_inputs }}';
+    var sensor_options_list_4  = '{{ mqtt_device_4_input_values }}';
     var sensor_options_list_4  = sensor_options_list_4.split(",");
-    var sensor_options_list_5  = '{{ mqtt_device_5_inputs }}';
+    var sensor_options_list_5  = '{{ mqtt_device_5_input_values }}';
     var sensor_options_list_5  = sensor_options_list_5.split(",");
-    var sensor_options_list_6  = '{{ mqtt_device_6_inputs }}';
+    var sensor_options_list_6  = '{{ mqtt_device_6_input_values }}';
     var sensor_options_list_6  = sensor_options_list_6.split(",");
-    var sensor_options_list_7  = '{{ mqtt_device_7_inputs }}';
+    var sensor_options_list_7  = '{{ mqtt_device_7_input_values }}';
     var sensor_options_list_7  = sensor_options_list_7.split(",");
-    var sensor_options_list_8  = '{{ mqtt_device_8_inputs }}';
+    var sensor_options_list_8  = '{{ mqtt_device_8_input_values }}';
     var sensor_options_list_8  = sensor_options_list_8.split(",");
-    var sensor_options_list_9  = '{{ mqtt_device_9_inputs }}';
+    var sensor_options_list_9  = '{{ mqtt_device_9_input_values }}';
     var sensor_options_list_9  = sensor_options_list_9.split(",");
-    var sensor_options_list_10 = '{{ mqtt_device_10_inputs }}';
+    var sensor_options_list_10 = '{{ mqtt_device_10_input_values }}';
     var sensor_options_list_10 = sensor_options_list_10.split(",");
-    var sensor_options_list_11 = '{{ mqtt_device_11_inputs }}';
+    var sensor_options_list_11 = '{{ mqtt_device_11_input_values }}';
     var sensor_options_list_11 = sensor_options_list_11.split(",");
-    var sensor_options_list_12 = '{{ mqtt_device_12_inputs }}';
+    var sensor_options_list_12 = '{{ mqtt_device_12_input_values }}';
     var sensor_options_list_12 = sensor_options_list_12.split(",");
-    var sensor_options_list_13 = '{{ mqtt_device_13_inputs }}';
+    var sensor_options_list_13 = '{{ mqtt_device_13_input_values }}';
     var sensor_options_list_13 = sensor_options_list_13.split(",");
-    var sensor_options_list_14 = '{{ mqtt_device_14_inputs }}';
+    var sensor_options_list_14 = '{{ mqtt_device_14_input_values }}';
     var sensor_options_list_14 = sensor_options_list_14.split(",");
-    var sensor_options_list_15 = '{{ mqtt_device_15_inputs }}';
+    var sensor_options_list_15 = '{{ mqtt_device_15_input_values }}';
     var sensor_options_list_15 = sensor_options_list_15.split(",");
-    var sensor_options_list_16 = '{{ mqtt_device_16_inputs }}';
+    var sensor_options_list_16 = '{{ mqtt_device_16_input_values }}';
     var sensor_options_list_16 = sensor_options_list_16.split(",");
-    var sensor_options_list_17 = '{{ mqtt_device_17_inputs }}';
+    var sensor_options_list_17 = '{{ mqtt_device_17_input_values }}';
     var sensor_options_list_17 = sensor_options_list_17.split(",");
-    var sensor_options_list_18 = '{{ mqtt_device_18_inputs }}';
+    var sensor_options_list_18 = '{{ mqtt_device_18_input_values }}';
     var sensor_options_list_18 = sensor_options_list_18.split(",");
-    var sensor_options_list_19 = '{{ mqtt_device_19_inputs }}';
+    var sensor_options_list_19 = '{{ mqtt_device_19_input_values }}';
     var sensor_options_list_19 = sensor_options_list_19.split(",");
-    var sensor_options_list_20 = '{{ mqtt_device_20_inputs }}';
+    var sensor_options_list_20 = '{{ mqtt_device_20_input_values }}';
     var sensor_options_list_20 = sensor_options_list_20.split(",");
-    var sensor_options_list_21 = '{{ mqtt_device_21_inputs }}';
+    var sensor_options_list_21 = '{{ mqtt_device_21_input_values }}';
     var sensor_options_list_21 = sensor_options_list_21.split(",");
-    var sensor_options_list_22 = '{{ mqtt_device_22_inputs }}';
+    var sensor_options_list_22 = '{{ mqtt_device_22_input_values }}';
     var sensor_options_list_22 = sensor_options_list_22.split(",");
-    var sensor_options_list_23 = '{{ mqtt_device_23_inputs }}';
+    var sensor_options_list_23 = '{{ mqtt_device_23_input_values }}';
     var sensor_options_list_23 = sensor_options_list_23.split(",");
-    var sensor_options_list_24 = '{{ mqtt_device_24_inputs }}';
+    var sensor_options_list_24 = '{{ mqtt_device_24_input_values }}';
     var sensor_options_list_24 = sensor_options_list_24.split(",");
-    var sensor_options_list_25 = '{{ mqtt_device_25_inputs }}';
+    var sensor_options_list_25 = '{{ mqtt_device_25_input_values }}';
     var sensor_options_list_25 = sensor_options_list_25.split(",");
 
     var sensor_options = {};
@@ -128,19 +128,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
+      {% if permission_dashboard == "checked" %}
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
+      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li> 
-        <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-tasks"></span> Programme</a></li>                
-        <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li>    
-        <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>             
-        <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li>      
-        <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li>                   
-        <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li>                    
-        {% if role == "superuser" %}
-          <li><a href="{{ url_for('dashboard_settings_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        {% endif %}
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+        {% endif %}
+        {% if permission_sensordata == "checked" %}                   
+          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
         {% endif %}    
         <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
       </ul>
@@ -269,9 +282,9 @@
                         <div class="col-sm-4">                       
                           <select id="selected_sensor_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_{{ entry.id }}">
                             <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
-                            <option value= "{{ entry.sensor_key }}" > ------------------------- </option>
+                            <option value= "{{ entry.sensor_key }}" > ----------------------------------- </option>
                             {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
-                              {% for each in entry.mqtt_device.inputs.split(',') %}
+                              {% for each in entry.mqtt_device.input_values.split(',') %}
                                 <option value= "{{ each }}" > {{ each }} </option>
                               {% endfor %}
                             {% endif %}

@@ -5,7 +5,6 @@ import threading
 process_management_queue    = []
 mqtt_incoming_messages_list = []
 
-
 error_list_delete_mqtt_device = ""
 
 
@@ -47,7 +46,6 @@ def REFRESH_MQTT_INPUT_MESSAGES():
 			# remove saved message after 60 seconnds
 			if time_message <= time_limit:
 				mqtt_incoming_messages_list.remove(message)
-
 
 	except Exception as e:
 		print(e)

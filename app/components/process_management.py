@@ -80,17 +80,7 @@ def PROCESS_MANAGEMENT_THREAD():
 				
 				
 				if process[1] == "device":
-					channel = "SmartHome/" + process[2] + "/" + process[3] + "/set"
-					msg     = '{"' + process[4] + '":"' + process[5] + '"}'
-
-					MQTT_PUBLISH(channel, msg)	
-
-					if process[2] == "mqtt":
-						MQTT_CHECK_SETTING_THREAD(process[3], process[4], process[5], 2, 10)
-						
-					if process[2] == "zigbee2mqtt":
-						ZIGBEE2MQTT_CHECK_SETTING_THREAD(process[3], process[4], process[5], 2, 10)								
-					
+					MQTT_PUBLISH(process[2], process[3])	
 					
 				if process[1] == "led_rgb": 
 					led_name      = process[2]
@@ -99,7 +89,7 @@ def PROCESS_MANAGEMENT_THREAD():
 					
 					SETTING_LED_RGB(led_name, rgb_values[0], rgb_values[1], rgb_values[2], led_brightnes)
 					
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, "state", "ON", 2, 10)
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightnes":' + str(led_brightnes) + '}', 2, 10)
 				
 				
 				if process[1] == "led_white":
@@ -107,18 +97,18 @@ def PROCESS_MANAGEMENT_THREAD():
 					color_temp    = process[3]
 					led_brightnes = process[4]		
 							
-					SETTING_LED_WHITE(led_name, color_temp, led_brightnes)
+					SETTING_LED_WHITE(led_name, color_temp, led_brightness)
 					
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, "state", "ON", 2, 10)
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 2, 10)
 					
 					
 				if process[1] == "led_simple":
-					led_name      = process[2]
-					led_brightnes = process[3]	
+					led_name       = process[2]
+					led_brightness = process[3]	
 									
-					SETTING_LED_SIMPLE(led_name, led_brightnes)
+					SETTING_LED_SIMPLE(led_name, led_brightness)
 					
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, "state", "ON", 2, 10)
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 2, 10)
 
 
 				if process[1] == "turn_off":
@@ -126,7 +116,7 @@ def PROCESS_MANAGEMENT_THREAD():
 					
 					SETTING_LED_TURN_OFF(led_name)
 					
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, "state", "OFF", 2, 10)			
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"state":"OFF"}', 2, 10)			
 				
 					
 			# ###########
@@ -184,7 +174,7 @@ def PROCESS_MANAGEMENT_THREAD():
 		except Exception as e:
 			if "index out of range" not in str(e):
 				print(str(e))
-				WRITE_LOGFILE_SYSTEM("ERROR", "Process Management | " + str(e))  
+				WRITE_LOGFILE_SYSTEM("ERROR", "Process Management | Process - " + process + " | " + str(e))  
       
       
 		time.sleep(0.2)

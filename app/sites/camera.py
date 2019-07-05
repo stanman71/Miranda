@@ -7,10 +7,10 @@ from app.database.database import *
 
 
 # access rights
-def user_required(f):
+def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "user" or current_user.role == "superuser":
+        if current_user.permission_camera == "checked":
             return f(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -23,9 +23,17 @@ def user_required(f):
 
 @app.route('/dashboard/camera', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_camera():
 
     return render_template('dashboard_camera.html',                                                                                                                                                                                
-                            role=current_user.role,                     
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system,                      
                             )

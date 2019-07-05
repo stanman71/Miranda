@@ -27,8 +27,6 @@ def SNOWBOY_THREAD():
 
 	signal.signal(signal.SIGINT, signal_handler)
 
-	sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
-
 	hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
 
 	# check hotword files exist
@@ -37,16 +35,16 @@ def SNOWBOY_THREAD():
 		# voice models here:
 		models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
       
-		sensitivity_value = GET_SNOWBOY_SETTINGS().sensitivity / 100
+		sensitivity_value = GET_SNOWBOY_SETTINGS().snowboy_sensitivity / 100
 
 		# modify sensitivity for better detection / accuracy
 		detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
       
 		def detect_callback():
 			detector.terminate()
-			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "on")
+			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "on")
 	 
-			speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().timeout)
+			speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().snowboy_timeout)
 	 
 			if speech_recognition_answer != None:
 				
@@ -56,7 +54,7 @@ def SNOWBOY_THREAD():
 				else:	 
 					heapq.heappush(process_management_queue, (1, ("speechcontrol", speech_recognition_answer)))
 
-			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().microphone, "off")
+			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")
 
 			detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 

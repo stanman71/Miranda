@@ -1,0 +1,343 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Benutzerverwaltung
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      {% if permission_dashboard == "checked" %}
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
+      {% endif %}
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+        {% endif %}        
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+        {% endif %}
+        {% if permission_sensordata == "checked" %}                   
+          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+    <div class="row">
+      <div class="col">
+  
+<!-- settings navs -->
+
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li class={{active01}}><a href="{{ url_for('dashboard_system_mqtt') }}">MQTT</a></li>
+            <li class={{active02}}><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
+            <li class={{active03}}><a href="{{ url_for('dashboard_system_controller') }}">Controller</a></li>             
+            <li class={{active04}}><a href="{{ url_for('dashboard_system_speechcontrol') }}">Sprachsteuerung</a></li>                
+            <li class={{active05}}><a href="{{ url_for('dashboard_system_user') }}">Benutzer</a></li>    
+            <li class={{active06}}><a href="{{ url_for('dashboard_system_email') }}">eMail</a></li>          
+            <li class={{active07}}><a href="{{ url_for('dashboard_system_backup') }}">Backup</a></li> 
+            <li class={{active08}}><a href="{{ url_for('dashboard_system_log') }}">Log</a></li> 
+          </ul>
+        </div>
+      </nav>
+
+<section id="table"></section>
+
+<!-- error message -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}  
+
+<!-- settings user -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="black"><b>Benutzer</b></font></div>
+        <div class="panel-body">
+          <div class="well well-sm">
+            
+<!-- error message form -->
+
+{% if error_message_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_settings }}
+  </div>      
+{% endif %}               
+            
+            <table class="table">
+              <thead>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Benutzer</th>
+                <th scope="col">eMail</th>
+                <th scope="col">Passwort zurücksetzen</th>
+                <th scope="col">Zugriffsrechte</th>                
+                <th scope="col">eMail Benachrichtigung</th>
+                <tr>
+              </thead>
+              <tbody>
+                {% for entry in user_list %}
+                <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/system/user/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/system/user/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                 
+                  <td style="width:17%">
+                  <form method="POST" class="verticalform">
+                    <input type="text" class="form-control" name="set_username_{{ entry.id }}" value="{{ entry.username }}" />                    
+                  </td> 
+                  <td style="width:25%">
+                    <input type="text" class="form-control" name="set_email_{{ entry.id }}" value="{{ entry.email }}" />                    
+                  </td> 
+                  <td style="width:20%">
+                    <input type="text" class="form-control" name="set_password_{{ entry.id }}" value="" /> 
+                    <br>
+                    <input type="text" class="form-control" name="set_password_check_{{ entry.id }}" value="" /> 
+                  </td> 
+                  <td style="width:15%">
+                    <div class="form-check">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Dashboard
+                        </div>
+                        <div class="col-sm-1">    
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_dashboard }} name="checkbox_permission_dashboard_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>              
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Aufgabenplanung
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_scheduler }} name="checkbox_permission_scheduler_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                                            
+                        </div>
+                      </div>  
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Programme
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_programs }} name="checkbox_permission_programs_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                 
+                        </div>
+                      </div>                             
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Bewässerung
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_watering }} name="checkbox_permission_watering_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                 
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Kameras
+                        </div>
+                        <div class="col-sm-1">    
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_camera }} name="checkbox_permission_camera_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>              
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          LED
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_led }} name="checkbox_permission_led_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                                            
+                        </div>
+                      </div>     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Sensordaten
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_sensordata }} name="checkbox_permission_sensordata_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                 
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          Spotify
+                        </div>
+                        <div class="col-sm-1">    
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_spotify }} name="checkbox_permission_spotify_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>              
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-8">                       
+                          System
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.permission_system }} name="checkbox_permission_system_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                                            
+                        </div>
+                      </div>                                                          
+                    </div>
+                  </td>                    
+                  <td style="width:15%">
+                    <div class="form-check">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-6">                       
+                          Information
+                        </div>
+                        <div class="col-sm-1">    
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_info }} name="checkbox_email_notification_info_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>              
+                        </div>
+                      </div>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-6">                       
+                          Fehler
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_error }} name="checkbox_email_notification_error_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                                            
+                        </div>
+                      </div>     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-6">                       
+                          Kamera
+                        </div>
+                        <div class="col-sm-1">  
+                          <font size="-2">
+                            <div class="pretty p-default p-curve p-fill p-bigger">
+                                <input type="checkbox" class="form-check-input" {{ entry.email_notification_camera }} name="checkbox_email_notification_camera_{{ entry.id }}">
+                              <div class="state">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                 
+                        </div>
+                      </div>                          
+                    </td>    
+                    <td style="width:5%">
+                      <a href="/dashboard/system/user/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a>
+                    </td>   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <input type="submit" onclick="window.location.href='/dashboard/system/user#table'" class="btn btn-default" name="change_user_settings" value="Änderungen speichern" />
+          </form> 
+        </div>  
+      </div>        
+    </div>
+  </div>       
+</div>
+
+{% endblock %}

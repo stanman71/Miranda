@@ -43,10 +43,10 @@ import socket
 
 
 # access rights
-def user_required(f):
+def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "user" or current_user.role == "superuser":
+        if current_user.permission_spotify == "checked":
             return f(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -92,7 +92,7 @@ authorization_header = ""
 
 @app.route('/dashboard/spotify', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_spotify():
     error_message_search_track = ""
     error_message_search_album = ""
@@ -344,13 +344,21 @@ def dashboard_spotify():
                             album_name=album_name,
                             album_artist=album_artist,   
                             volume=volume,                                                                                                                                                                                    
-                            role=current_user.role,                     
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system,                     
                             )
                             
                                                   
 @app.route("/dashboard/spotify/login")
 @login_required
-@user_required
+@permission_required
 def spotify_login():
     
     # start authorization
@@ -362,7 +370,7 @@ def spotify_login():
 
 @app.route("/dashboard/spotify/token")
 @login_required
-@user_required
+@permission_required
 def spotify_token():
 
     global authorization_header
@@ -393,7 +401,7 @@ def spotify_token():
 
 @app.route("/dashboard/spotify/logout")
 @login_required
-@user_required
+@permission_required
 def spotify_logout():
     global authorization_header
 

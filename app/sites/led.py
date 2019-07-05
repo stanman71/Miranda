@@ -9,11 +9,12 @@ from app.components.control_led import *
 from app.database.database import *
 from app.components.checks import CHECK_LED_GROUP_SETTINGS
 
+
 # access rights
-def user_required(f):
+def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
-        if current_user.role == "user" or current_user.role == "superuser":
+        if current_user.permission_led == "checked":
             return f(*args, **kwargs)
         else:
             return redirect(url_for('login'))
@@ -27,7 +28,7 @@ def user_required(f):
 # led scenes
 @app.route('/dashboard/led/scenes', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_led_scenes():
     error_message_add_scene = ""
     error_change_settings = ""
@@ -397,14 +398,22 @@ def dashboard_led_scenes():
                             error_message_add_scene=error_message_add_scene,
                             dropdown_list_groups=dropdown_list_groups,
                             scenes="active",
-                            role=current_user.role,
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system, 
                             )
 
 
 # change led scene position 
 @app.route('/dashboard/led/scenes/position/<string:direction>/<int:id>')
 @login_required
-@user_required
+@permission_required
 def change_scene_position(id, direction):
     CHANGE_LED_SCENE_POSITION(id, direction)
     return redirect(url_for('dashboard_led_scenes'))
@@ -413,7 +422,7 @@ def change_scene_position(id, direction):
 # add setting
 @app.route('/dashboard/led/scenes/setting/add/<int:scene_id>')
 @login_required
-@user_required
+@permission_required
 def add_scene_led(scene_id):
     ADD_LED_SCENE_SETTING(scene_id)
     return redirect(url_for('dashboard_led_scenes'))
@@ -422,7 +431,7 @@ def add_scene_led(scene_id):
 # remove setting
 @app.route('/dashboard/led/scenes/setting/remove/<int:scene_id>/<int:setting>')
 @login_required
-@user_required
+@permission_required
 def remove_scene_led(scene_id, setting):
     REMOVE_LED_SCENE_SETTING(scene_id, setting)
     return redirect(url_for('dashboard_led_scenes'))
@@ -431,7 +440,7 @@ def remove_scene_led(scene_id, setting):
 # delete scene
 @app.route('/dashboard/led/scenes/delete/<int:id>')
 @login_required
-@user_required
+@permission_required
 def delete_led_scene(id):
     DELETE_LED_SCENE(id)
     return redirect(url_for('dashboard_led_scenes'))
@@ -444,7 +453,7 @@ def delete_led_scene(id):
 # led groups
 @app.route('/dashboard/led/groups', methods=['GET', 'POST'])
 @login_required
-@user_required
+@permission_required
 def dashboard_led_groups():
     error_message_add_group = ""
 
@@ -708,14 +717,22 @@ def dashboard_led_groups():
                             list_groups=list_groups,
                             dropdown_list_leds=dropdown_list_leds,
                             groups="active",
-                            role=current_user.role,
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system, 
                             )
 
 
 # change led group position 
 @app.route('/dashboard/led/groups/position/<string:direction>/<int:id>')
 @login_required
-@user_required
+@permission_required
 def change_group_position(id, direction):
     CHANGE_LED_GROUP_POSITION(id, direction)
     return redirect(url_for('dashboard_led_groups'))
@@ -724,7 +741,7 @@ def change_group_position(id, direction):
 # add led
 @app.route('/dashboard/led/groups/led/add/<int:group_id>')
 @login_required
-@user_required
+@permission_required
 def add_group_led(group_id):
     ADD_LED_GROUP_LED(group_id)
     return redirect(url_for('dashboard_led_groups'))
@@ -733,7 +750,7 @@ def add_group_led(group_id):
 # remove led
 @app.route('/dashboard/led/groups/led/remove/<int:group_id>/<int:led>')
 @login_required
-@user_required
+@permission_required
 def remove_group_led(group_id, led):
     REMOVE_LED_GROUP_LED(group_id, led)
     return redirect(url_for('dashboard_led_groups'))
@@ -742,7 +759,7 @@ def remove_group_led(group_id, led):
 # delete group
 @app.route('/dashboard/led/groups/delete/<int:group_id>')
 @login_required
-@user_required
+@permission_required
 def delete_led_group(group_id):
     DELETE_LED_GROUP(group_id)
     return redirect(url_for('dashboard_led_groups'))

@@ -1,0 +1,67 @@
+{"data": [
+			{
+				"model"           : "9290012573A",
+				"device_type"     : "led_rgb",
+				"description"     : "PHILIPS HUE white and color ambiance E26/E27/E14",
+				"input_values"    : [],
+				"input_events"    : [],
+				"commands"        : []
+			},
+			{
+				"model"           : "324131092621",
+				"device_type"     : "controller",
+				"description"     : "PHILIPS HUE Dimmer Switch",
+				"input_values"    : [],
+				"input_events"    : ["{'action':'on-press'}", "{'action':'up-press'}", "{'action':'down-press'}", "{'action':'off-press'}"],
+				"commands"        : []
+			},
+			{
+				"model"           : "LED1649C5",
+				"device_type"     : "led_simple",
+				"description"     : "IKEA TRADFRI LED bulb E12/E14/E17 400 lumen",
+				"input_values"    : [],
+				"input_events"    : [],
+				"commands"        : []
+			},
+			{
+				"model"           : "AB3257001NJ",
+				"device_type"     : "device_switch",
+				"description"     : "OSRAM Smart+ Plug",
+				"input_values"    : [],
+				"input_events"    : [],
+				"commands"        : ["{'state':'ON'}", "{'state':'OFF'}"]
+			},				
+			{
+				"model"           : "WSDCGQ11LM",
+				"device_type"     : "sensor_active",
+				"description"     : "AQARA Environment Sensor",
+				"input_values"    : ["temperature", "humidity", "pressure", "battery"],
+				"input_events"    : [],
+				"commands"        : []
+			},
+			{
+				"model"           : "MFKZQ01LM",
+				"device_type"     : "controller",
+				"description"     : "AQARA Cube Controller",
+				"input_values"    : [],
+				"input_events"    : ["{'action':'shake'}", "{'action':'rotate_left'}", "{'action':'rotate_right'}", "{'side':1}", "{'side':2}", "{'side':4}", "{'side':5}"],
+				"commands"        : []
+			},
+			{
+				"model"           : "RTCGQ11LM",
+				"device_type"     : "sensor_active",
+				"description"     : "AQARA Human Detector Sensor",
+				"input_values"    : ["illuminance", "occupancy", "battery"] ,
+				"input_events"    : [],
+				"commands"        : []
+			},
+			{
+				"model"           : "AC01353010G",
+				"device_type"     : "sensor_active",
+				"description"     : "OSRAM Smart+ Human Detector Sensor",
+				"input_values"    : ["tamper", "occupancy", "battery_low"],
+				"input_events"    : [],
+				"commands"        : []
+			}			
+		]
+}

@@ -15,7 +15,7 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
 
       if device.dashboard_check_option != "None":
 
-         if device.dashboard_check_setting_value == "None" or device.dashboard_check_setting_value == None:
+         if device.dashboard_check_setting == "None" or device.dashboard_check_setting == None:
             list_settings_errors.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
          # check setting ip_address
@@ -102,7 +102,7 @@ def CHECK_PROGRAM(program_id):
       if "pause" in line:   
          
          try: 
-            line_content = line.split(":")
+            line_content = line.split(" /// ")
              
             # check delay value            
             if line_content[1].isdigit():
@@ -121,7 +121,7 @@ def CHECK_PROGRAM(program_id):
       elif "device" in line:
          
          try:
-            line_content = line.split(":")
+            line_content = line.split(" /// ")
 
             device_name = line_content[1]    
             device      = ""
@@ -131,23 +131,20 @@ def CHECK_PROGRAM(program_id):
             if device != None:
                
                if not "led" in device.device_type:
-                 
-                  setting_value   = line_content[2].upper()
-                  setting_value   = setting_value.replace(" ", "")
+    
+                  setting = line_content[2]
+                  setting = setting.replace(" ", "")
 
-                  device_commands = device.commands.split(",")
-                  setting_key     = None
+                  setting_valid = False
 
-                  # check setting key
-                  for device_command in device_commands:
+                  # check device command 
+                  for command in device.commands.split(","):   
+                     if command == setting:
+                        setting_valid = True
+                        break
 
-                     if device_command.split("=")[1] == setting_value:
-                        setting_key = device_command.split("=")[0]
-                        setting_key = setting_key.replace(" ", "")
-                        continue 
-                       
-                  if setting_key == None:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + setting_value)       
+                  if setting_valid == False:
+                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + setting)       
 
                else:        
                   list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist eine LED") 
@@ -166,7 +163,7 @@ def CHECK_PROGRAM(program_id):
       elif "led" in line:
          
          try:        
-            line_content = line.split(":")
+            line_content = line.split(" /// ")
 
             try:
                # check led name
@@ -176,7 +173,7 @@ def CHECK_PROGRAM(program_id):
                if "led" in led_type:
 
                   # check setting led_rgb             
-                  if led_type == "led_rgb" and line_content[2] != "off": 
+                  if led_type == "led_rgb" and (line_content[2] != "off" and line_content[2] != "OFF"): 
                         
                      try:
                         
@@ -203,7 +200,7 @@ def CHECK_PROGRAM(program_id):
 
     
                   # check setting led_white             
-                  elif led_type == "led_white" and line_content[2] != "off": 
+                  elif led_type == "led_white" and (line_content[2] != "off" and line_content[2] != "OFF"): 
                      
                      try:
                      
@@ -217,7 +214,7 @@ def CHECK_PROGRAM(program_id):
 
 
                   # check setting led_simple             
-                  elif led_type == "led_simple" and line_content[2] != "off": 
+                  elif led_type == "led_simple" and (line_content[2] != "off" and line_content[2] != "OFF"): 
                      
                      try: 
                      
@@ -229,7 +226,7 @@ def CHECK_PROGRAM(program_id):
                    
                    
                   # check setting turn_off             
-                  elif line_content[2] == "off": 
+                  elif line_content[2] == "off" or line_content[2] == "OFF": 
                      pass
               
                    
@@ -851,8 +848,8 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
       # check start_scene
       if "scene" in task:
-         if ":" in task:
-            task = task.split(":") 
+         if " /// " in task:
+            task = task.split(" /// ") 
 
             # check group setting 
             try:
@@ -955,8 +952,8 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
       # check brightness dimmer
       if "brightness" in task and task_type == "controller":
-         if ":" in task:
-            task = task.split(":") 
+         if " /// " in task:
+            task = task.split(" /// ") 
 
             # check group setting
             try:
@@ -971,7 +968,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
             # check brightness setting    
             try:
-               if task[2] == "turn_up" or task[2] == "turn_down":
+               if task[2] == "turn_up" or task[2] == "TURN_UP" or task[2] == "turn_down" or task[2] == "TURN_DOWN":
                   return list_task_errors
                   
                else:
@@ -989,8 +986,8 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
       # check led_off
       if "led_off" in task:
-         if ":" in task:
-            task = task.split(":")
+         if " /// " in task:
+            task = task.split(" /// ")
 
             # check group setting
             if task[1] == "group":
@@ -1063,26 +1060,23 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
       # check device
       if "device" in task and "mqtt_update" not in task:
-         if ":" in task:
-            task = task.split(":") 
+         if " /// " in task:
+            task = task.split(" /// ") 
 
             try:
-               device        = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
-               setting_value = task[2].upper()
-            
-               # check device command
-               device_command_valid = False
-               
-               device_commands = GET_MQTT_DEVICE_BY_NAME(task[1].lower()).commands.split(",")
-                  
-               for device_command in device_commands:
-                  
-                  if device_command.split("=")[1] == setting_value:
-                     device_command_valid = True
-                     continue
-                     
-               if device_command_valid == False:
-                  
+               device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
+               setting = task[2]
+
+               setting_valid = False
+
+               # check device command 
+               for command in device.commands.split(","):   
+                  if command == setting:
+                     setting_valid = True
+                     break
+
+               if setting_valid == False:
+
                   if task_type == "controller":
                      list_task_errors.append(name + " >>> " + command + " >>> Befehl " + task[2] + " ungültig")
                   else:
@@ -1109,8 +1103,8 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
       # check programs
       if "program" in task:
-         if ":" in task:
-            task = task.split(":") 
+         if " /// " in task:
+            task = task.split(" /// ") 
 
             try:
                program = GET_PROGRAM_BY_NAME(task[1].lower())
@@ -1150,9 +1144,20 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
          
 
       # check watering_plants
-      if task == "watering_plants" and task_type == "scheduler":
+      if "watering_plants" in task and task_type == "scheduler":
+         if " /// " in task:
+            task = task.split(" /// ") 
+            
+            try:
+               if task[1] not in ["1", "2", "3", "4", "5"] and task[1] != "all":
+                  list_task_errors.append(name + " >>> keine gültige Gruppe angegeben")
+            except:
+               list_task_errors.append(name + " >>> keine gültige Gruppe angegeben")
+            
+         else:                
+            list_task_errors.append(name + " >>> Ungültige Formatierung")
          return list_task_errors
-
+         
 
       # check save_database         
       if task == "save_database" and task_type == "scheduler":
@@ -1197,7 +1202,11 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
    
    
    except:
-      list_task_errors.append("MISSING NAME >>> Ungültige Aufgabe") 
+      if task_type == "controller":
+         list_task_errors.append(name + " >>> " + command + " >>> Ungültige Aufgabe")   
+      else:
+         list_task_errors.append("MISSING NAME >>> Ungültige Aufgabe") 
+         
       return list_task_errors
 
 
@@ -1223,11 +1232,6 @@ def CHECK_WATERING_SETTINGS():
    for entry in entries:
         if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):
             list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
-
-   # time missing ?
-   for entry in entries:
-        if entry.time == "None":
-            list_errors.append(entry.name + " >>> keine Zeit eingestellt")
 
    if list_errors == []:
       return ""
