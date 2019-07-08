@@ -367,57 +367,54 @@ def GET_LOCATION_COORDINATES(location):
 """  file zigbee device informations """
 """ ################################ """
 
-try:
-    # open mqtt file
-    with open(PATH + "/config/zigbee_device_informations.yaml", 'r') as file_zigbee:
-        zigbee_devices = yaml.load(file_zigbee, Loader=yaml.SafeLoader)
-        file_zigbee.close()
-        
-except Exception as e:
-    WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.ymal | " + str(e))
-
-
 def GET_MQTT_DEVICE_INFORMATIONS(model):
     
-    with open(PATH + "/config/zigbee_device_informations.json", 'r') as data_file:
-        data_loaded = json.load(data_file)
+    try:
+        with open(PATH + "/config/zigbee_device_informations.json", 'r') as data_file:
+            data_loaded = json.load(data_file)
 
-    for device in data_loaded["data"]:
+        for device in data_loaded["data"]:
 
-        if str(device["model"]) == str(model):
+            if str(device["model"]) == str(model):
 
-            try:
-                device_type  = device['device_type']
-            except:
-                device_type  = ""                 
-              
-            try:
-                description  = device['description']
-            except:
-                description  = ""
+                try:
+                    device_type  = device['device_type']
+                except:
+                    device_type  = ""                 
+                  
+                try:
+                    description  = device['description']
+                except:
+                    description  = ""
 
-            try:
-                input_values = device['input_values']
-                input_values = ','.join(input_values)	
-                input_values = input_values.replace("'", '"')
-            except:
-                input_values = ""
-              
-            try:
-                input_events = device['input_events']
-                input_events = ','.join(input_events)
-                input_events = input_events.replace("'", '"')                							
-            except:
-                input_events = ""
+                try:
+                    input_values = device['input_values']
+                    input_values = ','.join(input_values)	
+                    input_values = input_values.replace("'", '"')
+                except:
+                    input_values = ""
+                  
+                try:
+                    input_events = device['input_events']
+                    input_events = ','.join(input_events)
+                    input_events = input_events.replace("'", '"')
+                    input_events = input_events.replace("},{", '} {')     
+                except:
+                    input_events = ""
+                    
+                try:
+                    commands     = device['commands']	
+                    commands     = ','.join(commands)
+                    commands     = commands.replace("'", '"')  
+                    commands     = commands.replace("},{", '} {')                				
+                except:
+                    commands     = ""
                 
-            try:
-                commands     = device['commands']	
-                commands     = ','.join(commands)
-                commands     = commands.replace("'", '"')                				
-            except:
-                commands     = ""
-            
-            return (device_type, description, input_values, input_events, commands)
+                return (device_type, description, input_values, input_events, commands)
+                
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.json | " + str(e))   
 
 
 """ ########## """

@@ -85,12 +85,15 @@ void callback(char* topic, byte* payload, unsigned int length) {
         msg["device_type"] = "sensor_passiv";
         msg["description"] = "MQTT Environment Sensor";
     
-        JsonArray data_inputs = msg.createNestedArray("inputs");
+        JsonArray data_inputs = msg.createNestedArray("input_values");
         data_inputs.add("temperature");
         data_inputs.add("humidity");
         data_inputs.add("light");
 
+        JsonArray data_events = msg.createNestedArray("input_events");
+        
         JsonArray data_commands = msg.createNestedArray("commands");
+        
         data_commands.add("");
 
         // convert msg to char

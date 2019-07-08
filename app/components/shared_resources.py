@@ -23,7 +23,7 @@ def GET_ERROR_DELETE_MQTT_DEVICE():
 def REFRESH_MQTT_INPUT_MESSAGES_THREAD():
 
 	while True:
-
+		
 		Thread = threading.Thread(target=REFRESH_MQTT_INPUT_MESSAGES)
 		Thread.start()  
 		  

@@ -36,7 +36,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_1 + " | " + str(e))    
 				
@@ -59,7 +59,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_2 + " | " + str(e))    
 				
@@ -82,7 +82,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_2 + " | " + str(e))    
 				
@@ -105,7 +105,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_4 + " | " + str(e))    
 				
@@ -128,7 +128,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_5 + " | " + str(e))    
 				
@@ -151,7 +151,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_6 + " | " + str(e))    
 				
@@ -174,7 +174,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_7 + " | " + str(e))    
 				
@@ -197,7 +197,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_8 + " | " + str(e))    
 				
@@ -220,7 +220,7 @@ def CONTROLLER_PROCESS(ieeeAddr, msg):
 						break
 		   
 			except Exception as e:
-				if "list index out of range" not in str(e):
+				if "list index out of range" not in str(e) and "Expecting value: line 1 column 1 (char 0)" not in str(e):
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller.mqtt_device.name + " | Command - " + controller.command_9 + " | " + str(e))    
 				

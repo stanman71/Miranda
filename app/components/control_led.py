@@ -99,9 +99,9 @@ def LED_GROUP_CHECK_SETTING_THREAD(group_id, scene_id, scene, brightness, delay,
 def LED_GROUP_CHECK_SETTING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
                     
     if scene == "OFF":
-        setting = "OFF"
+        setting = '{"state":"OFF"}'
     else:
-        setting = "ON"
+        setting = '{"state":"ON"}'
                     
     # check setting 1 try
     time.sleep(delay)                             
@@ -172,7 +172,7 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                             error_list.append(led_2.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, '"state":"OFF"', limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_2.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_2.name + " >>> Setting not confirmed")
 
                 # led 3
@@ -185,7 +185,7 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                             error_list.append(led_3.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, '"state":"OFF"', limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_3.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_3.name + " >>> Setting not confirmed")
 
                 # led 4
@@ -194,11 +194,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_4 == "True": 
 
                     if scene.active_setting_4 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, setting, limit) == False:
                             error_list.append(led_4.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_4.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_4.name + " >>> Setting not confirmed")
 
                 # led 5
@@ -207,11 +207,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_5 == "True": 
 
                     if scene.active_setting_5 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, setting, limit) == False:
                             error_list.append(led_5.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_5.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_5.name + " >>> Setting not confirmed")
 
                 # led 6
@@ -220,11 +220,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_6 == "True": 
 
                     if scene.active_setting_6 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, setting, limit) == False:
                             error_list.append(led_6.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_6.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_6.name + " >>> Setting not confirmed")
 
                 # led 7
@@ -233,11 +233,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_7 == "True": 
 
                     if scene.active_setting_7 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, setting, limit) == False:
                             error_list.append(led_7.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_7.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_7.name + " >>> Setting not confirmed")
 
                 # led 8
@@ -246,11 +246,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_8 == "True": 
 
                     if scene.active_setting_8 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, setting, limit) == False:
                             error_list.append(led_8.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_8.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_8.name + " >>> Setting not confirmed")
 
                 # led 9
@@ -259,11 +259,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
                 if group.active_led_9 == "True": 
 
                     if scene.active_setting_9 == "True":
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, "state", setting, limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, setting, limit) == False:
                             error_list.append(led_9.name + " >>> Setting not confirmed")
                                     
                     else:
-                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, "state", "OFF", limit) == False:
+                        if ZIGBEE2MQTT_CHECK_SETTING(led_9.name, '{"state":"OFF"}', limit) == False:
                             error_list.append(led_9.name + " >>> Setting not confirmed")
 
             return error_list

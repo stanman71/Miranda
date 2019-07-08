@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  System
+  Backup
 {% endblock %}
 
 {% block styles %}
@@ -60,7 +60,7 @@
 </nav>
 <br>
 
-<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
   
@@ -92,7 +92,7 @@
 <!-- system settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>System</b></font></div>
+        <div class="panel-heading"><font color="black"><b>Backup</b></font></div>
         <div class="panel-body">   
           <div class="well well-sm">    
             <div class="well well-sm">CPU Temperatur = {{ cpu_temperature }}</div>
@@ -127,33 +127,41 @@
         Änderungen werden erst nach einem Neustart wirksam
       </div>      
     {% endif %}               
-                            
-            <div class="well well-sm">            
-              <form method="POST">
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-3">  
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Backup erstellen (Stunde):</button>  
-                  </div>                  
-                  <div class="col-sm-2">  
-                    <select class="btn btn-default dropdown-toggle" name="get_backup_hour">
-                      {% if backup_hour != None %}
-                        <option value= "{{ backup_hour }}" > {{ backup_hour }} </option>
-                      {% else %}  
-                        <option value= "None" > None </option> 
-                      {% endif %}                      
-                      <option value= "None" > ------------ </option>  
-                      {% for each in dropdown_list_hours %}
-                        <option value="{{ each }}"> {{ each }} </option>
-                      {% endfor %}  
-                      <option value= "None" > ------------ </option>  
-                      <option value= "None" > None </option>           
-                    </select>                   
-                  </div>                      
-                </div>   
-              </div> 
-              <div class="well well-sm"> 
-                <input type="text" class="form-control" name="get_backup_location_path" value="{{ backup_location_path }}" />
-              </div> 
+            <div class="well well-sm">                   
+              <div class="well well-sm">            
+                <form method="POST">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">  
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Backup erstellen (Stunde):</button>  
+                    </div>                  
+                    <div class="col-sm-2">  
+                      <select class="btn btn-default dropdown-toggle" name="get_backup_hour">
+                        {% if backup_hour != None %}
+                          <option value= "{{ backup_hour }}" > {{ backup_hour }} </option>
+                        {% else %}  
+                          <option value= "None" > None </option> 
+                        {% endif %}                      
+                        <option value= "None" > ------------ </option>  
+                        {% for each in dropdown_list_hours %}
+                          <option value="{{ each }}"> {{ each }} </option>
+                        {% endfor %}  
+                        <option value= "None" > ------------ </option>  
+                        <option value= "None" > None </option>           
+                      </select>                   
+                    </div>                      
+                  </div>   
+                </div> 
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Backup Pfad: </button>
+                    </div> 
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="get_backup_location_path" value="{{ backup_location_path }}" />
+                    </div>                            
+                  </div> 
+                </div> 
+              </div>   
               <input type="submit" onclick="window.location.href='/dashboard/system/backup#'" class="btn btn-default" name="save_backup_setting" value="Einstellung speichern" />                                  
             </form> 
           </div>  

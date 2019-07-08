@@ -60,7 +60,7 @@
 </nav>
 <br>
 
-<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
   
@@ -102,19 +102,29 @@
 {% endif %}   
   
               <form method="POST">
-                <div class="well well-sm">Server Adresse:            
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mail_server_address" value="{% if email_config.mail_server_address != None %}{{ email_config.mail_server_address }}{% endif %}" />
-                  </div>    
-                </div>                      
-                <div class="well well-sm">Server Port:            
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mail_server_port" value="{% if email_config.mail_server_port != None %}{{ email_config.mail_server_port }}{% endif %}" />
-                  </div>    
-                </div>           
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Adresse: </button>
+                    </div> 
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="set_mail_server_address" value="{% if email_config.mail_server_address != None %}{{ email_config.mail_server_address }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>   
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Port: </button>
+                    </div> 
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="set_mail_server_port" value="{% if email_config.mail_server_port != None %}{{ email_config.mail_server_port }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>                                    
                 <div class="well well-sm">
                   <div class="row justify-content-md-center">
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Verschlüsselung:</button>
                     </div>
                     <div class="col-sm-1">   
@@ -127,20 +137,30 @@
                       </select> 
                     </div>
                   </div> 
-                </div>                        
-                <div class="well well-sm">Benutzername (eMail Adresse):            
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mail_username" value="{% if email_config.mail_username != None %}{{ email_config.mail_username }}{% endif %}" />
-                  </div>    
-                </div>                      
-                <div class="well well-sm">Passwort:            
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="set_mail_password" value="{% if email_config.mail_password != None %}{{ email_config.mail_password }}{% endif %}" />
-                  </div>    
-                </div>           
-                <input type="submit" onclick="window.location.href='/dashboard/system/email#add_email'" class="btn btn-default" name="change_email_settings" value="Einstellungen speichern" />
-              </form>               
-            </div>
+                </div>      
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Benutzername (eMail Adresse): </button>
+                    </div> 
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="set_mail_username" value="{% if email_config.mail_username != None %}{{ email_config.mail_username }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>                    
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Passwort: </button>
+                    </div> 
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" name="set_mail_password" value="{% if email_config.mail_password != None %}{{ email_config.mail_password }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>    
+              </div>                
+              <input type="submit" onclick="window.location.href='/dashboard/system/email#add_email'" class="btn btn-default" name="change_email_settings" value="Einstellungen speichern" />
+            </form>               
           </div>
         </div> 
 

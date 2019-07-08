@@ -167,16 +167,8 @@ def dashboard():
                                                
                         if dashboard_check_setting == "" or dashboard_check_setting == None:
                             dashboard_check_setting = "None"  
-                            
-                        else:
-                            
-                            # format dashboard_check_setting
-                            if "|" in dashboard_check_setting:
-                                dashboard_check_setting = dashboard_check_setting.replace("|", ",")
-                                
-                            dashboard_check_setting = dashboard_check_setting.replace(" ", "")                            
-                           
-                                
+
+          
                         # ######
                         # Sensor
                         # ######

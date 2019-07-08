@@ -176,7 +176,7 @@
 <br>
 
 
-<div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
   <div class="row">
     <div class="col">
  
@@ -209,8 +209,8 @@
                 <tbody> 
                   {% for entry in data_led %}
                   <tr>
-                    <td style="width:16%"> {{entry.name}} </td> 
-                    <td style="width:28%"> 
+                    <td style="width:14%"> {{entry.name}} </td> 
+                    <td style="width:30%"> 
                       {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
                         {{entry.led_name_1}}
                       {% endif %} 
@@ -304,8 +304,8 @@
                 <tbody> 
                   {% for entry in data_device %}
                     <tr>
-                      <td style="width:16%"> {{entry.name}} </td>
-                      <td style="width:45%">      
+                      <td style="width:14%"> {{entry.name}} </td>
+                      <td style="width:47%">      
                         <div class="row justify-content-md-center">
                           <div class="col-sm-5">                                        
                             <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_dashboard_check_option_{{ entry.id }}">
@@ -335,7 +335,7 @@
                               {% endif %} 
                               <option value= "None" > ----------------------------------- </option>  
                               {% if entry.commands != None %}  
-                                {% for each in entry.commands.split(',') %}
+                                {% for each in entry.commands.split(' ') %}
                                   <option value= "{{ each }}" > {{ each }} </option>
                                 {% endfor %}  
                               {% endif %} 
@@ -349,7 +349,7 @@
                           <option value= "None" > None </option> 
                           <option value= "None" > ----------------------------------- </option>
                           {% if entry.commands != None %}
-                            {% for each in entry.commands.split(',') %}
+                            {% for each in entry.commands.split(' ') %}
                               <option value= "{{ each }}" > {{ each }} </option>
                             {% endfor %}  
                           {% endif %}                  
@@ -459,27 +459,29 @@
                   <th scope="col">Pflanze</th> 
                   <th scope="col">Gruppe</th> 
                   <th scope="col">Letzte Werte</th> 
+                  <th scope="col">Letzter Kontakt</th> 
                   <th scope="col">Befehl</th> 
                   <th scope="col">Status</th> 
                 </thead>
                 <tbody> 
                   {% for entry in data_watering_control %}
                     <tr>
-                      <td style="width:16%"> {{entry.name}} </td>
-                      <td style="width:10%"> {{entry.group}} </td>
+                      <td style="width:14%"> {{entry.name}} </td>
+                      <td style="width:8%"> {{entry.group}} </td>
                       <td style="width:25%"> {{entry.mqtt_device.last_values_formated}} </td>
-                      <td style="width:27%">   
+                      <td style="width:14%"> {{entry.mqtt_device.last_contact}} </td>
+                      <td style="width:22%">   
                         <select class="btn btn-default dropdown-toggle" name="set_watering_control_setting_{{ entry.id }}">             
                           <option value= "None" > None </option> 
                           <option value= "None" > ----------------------------------- </option>
                           {% if entry.commands != None %}
-                            {% for each in entry.mqtt_device.commands.split(',') %}
+                            {% for each in entry.mqtt_device.commands.split(' ') %}
                               <option value= "{{ each }}" > {{ each }} </option>
                             {% endfor %}  
                           {% endif %}                   
                         </select>                           
                       </td> 
-                      <td style="width:22%"> {{entry.mqtt_device.previous_setting}} </td>
+                      <td style="width:17%"> {{entry.mqtt_device.previous_setting}} </td>
                     </tr>
                   {% endfor %}  
                 </tbody>
@@ -563,8 +565,8 @@
                 <tbody> 
                   {% for entry in data_sensor %}
                   <tr>
-                    <td style="width:16%"> {{entry.name}} </td>
-                    <td style="width:25%"> {{entry.description}} </td> 
+                    <td style="width:14%"> {{entry.name}} </td>
+                    <td style="width:27%"> {{entry.description}} </td> 
                     <td style="width:42%"> {{entry.last_values_formated}} </td>
                     <td style="width:17%"> {{entry.last_contact}} </td>
                   </tr>

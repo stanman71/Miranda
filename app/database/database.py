@@ -505,7 +505,7 @@ def UPDATE_CONTROLLER_EVENTS():
     for controller in GET_ALL_CONTROLLER():
     
         mqtt_device_input_events = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).input_events
-        mqtt_device_input_events = mqtt_device_input_events.split(",")
+        mqtt_device_input_events = mqtt_device_input_events.split(" ")
 
         try:
             mqtt_device_events   = mqtt_device_input_events[0].replace(" ","")
@@ -1408,13 +1408,7 @@ def GET_ALL_MQTT_DEVICES(selector):
                 device.device_type == "watering_control"):
                 
                 device_list.append(device)   
-     
-    if selector == "switch":
-        for device in devices:
-            if device.device_type == "switch" or device.device_type == "power_switch":
-                
-                device_list.append(device)       
-                
+   
     if selector == "watering_control":
         for device in devices:
             if device.device_type == "watering_control":

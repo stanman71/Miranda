@@ -173,9 +173,9 @@ def PROCESS_MANAGEMENT_THREAD():
 				
 		except Exception as e:
 			if "index out of range" not in str(e):
-				print(str(e))
 				WRITE_LOGFILE_SYSTEM("ERROR", "Process Management | Process - " + process + " | " + str(e))  
-      
-      
+				print(str(e))
+				
+			  
 		time.sleep(0.2)
    

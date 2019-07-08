@@ -138,7 +138,7 @@ def CHECK_PROGRAM(program_id):
                   setting_valid = False
 
                   # check device command 
-                  for command in device.commands.split(","):   
+                  for command in device.commands.split(" "):   
                      if command == setting:
                         setting_valid = True
                         break
@@ -1038,7 +1038,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
             # check turn off all leds
             try:
-               if task[1] == "all": 
+               if task[1] == "all" or task[1] == "ALL": 
                   return list_task_errors
                   
             except:
@@ -1070,7 +1070,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
                setting_valid = False
 
                # check device command 
-               for command in device.commands.split(","):   
+               for command in device.commands.split(" "):   
                   if command == setting:
                      setting_valid = True
                      break
@@ -1149,7 +1149,7 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
             task = task.split(" /// ") 
             
             try:
-               if task[1] not in ["1", "2", "3", "4", "5"] and task[1] != "all":
+               if task[1] not in ["1", "2", "3", "4", "5"] and task[1] != "all" and task[1] != "ALL":
                   list_task_errors.append(name + " >>> keine gültige Gruppe angegeben")
             except:
                list_task_errors.append(name + " >>> keine gültige Gruppe angegeben")

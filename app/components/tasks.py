@@ -456,8 +456,8 @@ def START_SCHEDULER_TASK(task_object):
 	try:
 		if "watering_plants" in task_object.task:
 			task = task_object.task.split(" /// ")
-			group = task[1]
-			START_WATERING_THREAD(group)
+			group_number = task[1]
+			START_WATERING_THREAD(group_number)
 
 	except Exception as e:
 		print(e)
@@ -555,7 +555,8 @@ def SPEECHCONTROL_LED_TASK(answer):
 					 }
 
 	answer_words = answer.split()
-	ratio_value  = float(float(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity)/100)
+	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
+
 	
 	# ###########
 	# start scene 
@@ -669,7 +670,7 @@ def SPEECHCONTROL_LED_TASK(answer):
 			
 			# keyword founded ?
 			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-
+				
 				try:		
 					groups = GET_ALL_LED_GROUPS()
 
@@ -704,7 +705,8 @@ def SPEECHCONTROL_LED_TASK(answer):
 					if group_id != None: 
 
 						# brightness value founded ?
-						if brightness != None:
+						if brightness != None:	
+							group = GET_LED_GROUP_BY_ID(group_id)
 
 							# led_group off ?
 							if group.current_setting != "OFF":
@@ -850,7 +852,7 @@ def SPEECHCONTROL_LED_TASK(answer):
 def SPEECHCONTROL_DEVICE_TASK(answer):
 
 	answer_words = answer.split()
-	ratio_value  = float(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity/100)
+	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
 
 
 	for task in GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
@@ -938,7 +940,7 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 def SPEECHCONTROL_PROGRAM_TASK(answer):
 
 	answer_words = answer.split()
-	ratio_value  = float(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity/100)
+	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
 	
 
 	for task in GET_ALL_SPEECHCONTROL_PROGRAM_TASKS():

@@ -47,56 +47,68 @@ def MQTT_GET_INCOMING_MESSAGES(limit):
 def MQTT_THREAD():
 
 	def on_message(client, userdata, new_message): 
+		
+		global mqtt_incoming_messages_list
       
 		channel = new_message.topic					
 		msg     = str(new_message.payload.decode("utf-8"))	      
       
 		new_message = True
-		
-		# log messages always passing
-		if (channel != "SmartHome/mqtt/log" and 
-		    channel != "SmartHome/zigbee2mqtt/bridge/log" and 
-		    channel != "SmartHome/zigbee2mqtt/bridge/config" and
-		    channel != "SmartHome/zigbee2mqtt/bridge/state"):
-						
-			# other message already arrived?
-			for existing_message in MQTT_GET_INCOMING_MESSAGES(3):	
-							
+		ieeeAddr    = ""
+		device_type = ""
+
+
+		# get ieeeAddr and device_type
+		incoming_topic   = channel
+		incoming_topic   = incoming_topic.split("/")
+		mqtt_device_name = incoming_topic[2]
+	 
+		mqtt_devices = GET_ALL_MQTT_DEVICES("")
+	 
+		try:
+			for device in mqtt_devices:
+				if device.name == mqtt_device_name:				
+					ieeeAddr = device.ieeeAddr
+		except:
+			ieeeAddr = mqtt_device_name
+
+		try:
+			for device in mqtt_devices:
+				if device.name == mqtt_device_name:				
+					device_type = device.device_type			
+		except:
+			device_type = ""	
+			
+			
+		# message block ?
+		if (device_type == "led_rgb" or
+		    device_type == "led_white" or
+		    device_type == "led_simple" or
+		    device_type == "device"):
+	
+			for existing_message in MQTT_GET_INCOMING_MESSAGES(3):				
+				
 				if existing_message[1] == channel:
 					
-					if "zigbee2mqtt" in channel:
-						
-						try:
-							# devices changes state ?
-							existing_data = json.loads(existing_message[2])
-							new_data      = json.loads(msg)
+					try:
+						# devices changes state ?
+						existing_data = json.loads(existing_message[2])
+						new_data      = json.loads(msg)
 
-							if existing_data["state"] != new_data["state"]:
-								new_message = True
-								break
-								
-						except:
-							pass
+						if existing_data["state"] != new_data["state"]:
+							new_message = True
+							break
 							
+						else:
+							new_message = False
 							
-						try:
-							# motion sensor changes occupancy state ?
-							existing_data = json.loads(existing_message[2])
-							new_data      = json.loads(msg)
-
-							if existing_data["occupancy"] != new_data["occupancy"]:
-								new_message = True
-								break
-								
-						except:
-							pass							
+					except:
+						new_message = False					
 					
-					new_message = False
-				
 					
-		# message not arrived
+		# message passing
 		if new_message:
-	
+			
 			print("message topic: ", channel)		
 			print("message received: ", msg)	
 			
@@ -107,14 +119,16 @@ def MQTT_THREAD():
 			if "zigbee2mqtt" in channel:
 				WRITE_LOGFILE_MQTT("zigbee2mqtt", channel, msg)
 				
+				
 			# add message to the incoming message list
 			mqtt_incoming_messages_list.append((str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), channel, msg))	
 			
+
 			# start message thread for additional processes
 			if channel != "" and channel != None:		
-				Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ))
+				Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ieeeAddr, device_type,))
 				Thread.start()    
-		
+			
 	
 	def on_connect(client, userdata, flags, rc):
 		client.subscribe("SmartHome/#")
@@ -160,36 +174,13 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 """  mqtt message thread  """
 """ ##################### """
 
-def MQTT_MESSAGE_THREAD(channel, msg):
+def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 	
-	ieeeAddr = ""
-	device_type = ""
-
-	# get ieeeAddr and device_type
-	incoming_topic   = channel
-	incoming_topic   = incoming_topic.split("/")
-	mqtt_device_name = incoming_topic[2]
- 
-	mqtt_devices = GET_ALL_MQTT_DEVICES("")
- 
-	try:
-		for device in mqtt_devices:
-			if device.name == mqtt_device_name:				
-				ieeeAddr = device.ieeeAddr
-	except:
-		ieeeAddr = mqtt_device_name
-
-	try:
-		for device in mqtt_devices:
-			if device.name == mqtt_device_name:				
-				device_type = device.device_type			
-	except:
-		device_type = ""
-
-
+	channel = channel.split("/")
+	
 	# start function networkmap
 	try:        
-		if incoming_topic[3] == "networkmap" and incoming_topic[4] == "graphviz":
+		if channel[3] == "networkmap" and channel[4] == "graphviz":
 
 			# generate graphviz diagram
 			from graphviz import Source, render
@@ -202,11 +193,11 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 
 	# filter incoming messages
 	try:
-		if incoming_topic[3] == "get":
+		if channel[3] == "get":
 			pass
-		if incoming_topic[3] == "set":
+		if channel[3] == "set":
 			pass			
-		if incoming_topic[3] == "log":
+		if channel[3] == "log":
 			
 			data = json.loads(msg)
 			
@@ -224,7 +215,7 @@ def MQTT_MESSAGE_THREAD(channel, msg):
 			SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
 
 
-		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_array":
+		if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_control":
 			
 			# save sensor data of passive devices
 			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
@@ -319,14 +310,16 @@ def MQTT_UPDATE_DEVICES(gateway):
 					try:
 						input_events = data['input_events']
 						input_events = ','.join(input_events)
-						input_events = input_events.replace("'", '"')                							
+						input_events = input_events.replace("'", '"') 
+						input_events = input_events.replace("},{", '} {')                							
 					except:
 						input_events = ""
 						
 					try:
 						commands     = data['commands']	
 						commands     = ','.join(commands)
-						commands     = commands.replace("'", '"')                				
+						commands     = commands.replace("'", '"')
+						commands     = commands.replace("},{", '} {')                 				
 					except:
 						commands     = ""
 
@@ -521,22 +514,20 @@ def MQTT_SAVE_SENSORDATA(job_id):
 	sensor_key = sensordata_job.sensor_key
 	sensor_key = sensor_key.replace(" ", "")
 	
-		
 	for message in MQTT_GET_INCOMING_MESSAGES(10):
 		
-		if message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr:
-				
+		if (message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr):
+								
 			try:
-
 				data     = json.loads(message[2])
 				filename = sensordata_job.filename
 	
 				WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
-				return
-				
+				break
+
 			except:
 				pass
-
+				
 
 """ ################### """
 """  mqtt check setting """
@@ -593,15 +584,31 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
 
 def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
 			
-	setting = setting[1:-1]
-			
 	for message in MQTT_GET_INCOMING_MESSAGES(limit):
 		
 		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/mqtt/" + ieeeAddr:	
 			
-			if setting in message[2]:
+			
+			# only one setting value
+			if not "," in setting:
+			
+				if setting[1:-1] in message[2]:
+					return True
+					
+									
+			# more then one setting value:
+			else:
+				
+				list_settings = setting.split(",")
+				
+				for setting in list_settings:
+					
+					if not setting[1:-1] in message[2]:
+						return False	
+						
 				return True
+				
 		 
 	return False
    
@@ -660,17 +667,32 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
 		
  
 def ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit):
-		
-	setting = setting[1:-1]
-			
+	
 	for message in MQTT_GET_INCOMING_MESSAGES(limit):
 		
 		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/zigbee2mqtt/" + name:	
 			
-			if setting in message[2]:
-				return True
-		 
+			# only one setting value
+			if not "," in setting:
+			
+				if setting[1:-1] in message[2]:
+					return True
+					
+					
+			# more then one setting value:
+			else:
+				
+				list_settings = setting.split(",")
+				
+				for setting in list_settings:
+					
+					if not setting[1:-1] in message[2]:
+						return False	
+						
+				return True				
+			
+			
 	return False
    
 

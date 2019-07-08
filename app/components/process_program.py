@@ -109,9 +109,6 @@ def PROGRAM_THREAD(program_id):
                             # new device setting ?
                             if program_setting != device.previous_setting:
                                                      
-                                if "|" in program_setting:
-                                    program_setting = program_setting.replace("|", ",")
-
 
                                 # mqtt
                                 if device.gateway == "mqtt":
