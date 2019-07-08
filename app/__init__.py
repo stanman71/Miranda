@@ -3,6 +3,7 @@ import threading
 
 from flask import Flask
 from flask_bootstrap import Bootstrap
+from flask_mobility import Mobility
 
 from app.components.colorpicker_local import colorpicker
 
@@ -12,6 +13,7 @@ app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
 colorpicker(app)
+Mobility(app)
 
 from app.sites import index, user_login, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.database.database import *

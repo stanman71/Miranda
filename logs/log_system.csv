@@ -15151,3 +15151,82 @@ expected ',' or ']', but got '<scalar>'
 2019-07-08 14:22:49,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 51 %|
 2019-07-08 14:22:56,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 71 %|
 2019-07-08 14:23:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-08 15:04:47,EVENT,|MQTT || started|
+2019-07-08 15:04:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:04:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:04:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:04:52,EVENT,|Speechcontrol || started|
+2019-07-08 15:09:04,EVENT,|MQTT || started|
+2019-07-08 15:09:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:09:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:09:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:09:08,EVENT,|Speechcontrol || started|
+2019-07-08 15:11:03,EVENT,|MQTT || started|
+2019-07-08 15:11:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:11:06,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:11:07,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:11:08,EVENT,|Speechcontrol || started|
+2019-07-08 15:12:27,EVENT,|MQTT || started|
+2019-07-08 15:12:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:12:30,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:12:31,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:12:31,EVENT,|Speechcontrol || started|
+2019-07-08 15:18:07,EVENT,|MQTT || started|
+2019-07-08 15:18:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:18:10,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:18:11,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:18:11,EVENT,|Speechcontrol || started|
+2019-07-08 15:20:17,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 50 %|
+2019-07-08 15:20:26,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-08 15:22:33,EVENT,|MQTT || started|
+2019-07-08 15:22:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 15:22:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 15:22:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 15:22:38,EVENT,|Speechcontrol || started|
+2019-07-08 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-08 16:08:46,EVENT,|MQTT || started|
+2019-07-08 16:08:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:08:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:08:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:08:50,EVENT,|Speechcontrol || started|
+2019-07-08 16:10:00,EVENT,|MQTT || started|
+2019-07-08 16:10:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:10:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:10:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:10:04,EVENT,|Speechcontrol || started|
+2019-07-08 16:10:27,EVENT,|MQTT || started|
+2019-07-08 16:10:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:10:30,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:10:31,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:10:31,EVENT,|Speechcontrol || started|
+2019-07-08 16:12:45,EVENT,|MQTT || started|
+2019-07-08 16:12:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:12:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:12:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:12:49,EVENT,|Speechcontrol || started|
+2019-07-08 16:14:18,EVENT,|MQTT || started|
+2019-07-08 16:14:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:14:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:14:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:14:23,EVENT,|Speechcontrol || started|
+2019-07-08 16:14:23,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-07-08 16:16:32,EVENT,|MQTT || started|
+2019-07-08 16:16:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:16:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:16:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:16:36,EVENT,|Speechcontrol || started|
+2019-07-08 16:17:27,EVENT,|MQTT || started|
+2019-07-08 16:17:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:17:30,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:17:31,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:17:31,EVENT,|Speechcontrol || started|
+2019-07-08 16:18:03,EVENT,|MQTT || started|
+2019-07-08 16:18:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:18:06,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:18:07,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:18:07,EVENT,|Speechcontrol || started|
+2019-07-08 16:18:48,EVENT,|MQTT || started|
+2019-07-08 16:18:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-08 16:18:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-08 16:18:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-08 16:18:52,EVENT,|Speechcontrol || started|

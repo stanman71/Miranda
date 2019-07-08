@@ -930,3 +930,4 @@ Timestamp,Device,Sensor,Sensor_Value
 2019-07-08 13:44:47,0x99999,sensor_moisture,637
 2019-07-08 13:44:57,0x99999,sensor_moisture,636
 2019-07-08 14:00:04,0x99999,sensor_moisture,637
+2019-07-08 16:00:03,0x99999,sensor_moisture,644
