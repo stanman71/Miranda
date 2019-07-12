@@ -8,7 +8,16 @@
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">  
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+  
 {% endblock %}
 
 {% block content %}
@@ -22,39 +31,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -64,24 +97,7 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
-  
-<!-- settings navs -->
-
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class={{active01}}><a href="{{ url_for('dashboard_system_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
-            <li class={{active03}}><a href="{{ url_for('dashboard_system_controller') }}">Controller</a></li>             
-            <li class={{active04}}><a href="{{ url_for('dashboard_system_speechcontrol') }}">Sprachsteuerung</a></li>                
-            <li class={{active05}}><a href="{{ url_for('dashboard_system_user') }}">Benutzer</a></li>    
-            <li class={{active06}}><a href="{{ url_for('dashboard_system_email') }}">eMail</a></li>        
-            <li class={{active07}}><a href="{{ url_for('dashboard_system_backup') }}">Backup</a></li> 
-            <li class={{active08}}><a href="{{ url_for('dashboard_system_log') }}">Log</a></li> 
-          </ul>
-        </div>
-      </nav>
-
+        <font color="white">
 
 <!-- select log type -->      
       
@@ -89,66 +105,22 @@
      
     
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b>Log</b></font></div>       
+          <div class="panel-heading"><font color="white"><b>Log</b></font></div>       
             <div class="panel-body">  
               <div class="well well-sm"> 
-                
                 <form method="POST">
                   <div class="row justify-content-md-center">
-                    <div class="col-sm-1">  
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">EVENT</button>  
+                    <div class="col-sm-8">                    
+                      <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
+                        <option {{ selected_type_event }}> EVENT </option>
+                        <option {{ selected_type_status }}> STATUS </option>
+                        <option {{ selected_type_success }}> SUCCESS </option>   
+                        <option {{ selected_type_warning }}> WARNING </option>
+                        <option {{ selected_type_error }}> ERROR </option>                                              
+                      </select>   
                     </div>
-                    <div class="col-sm-1">  
-                      <font size="+2">
-                        <div class="pretty p-default p-curve p-fill p-bigger">
-                          <input type="checkbox" {{ checkbox_type_event }} name="type_event" >
-                          <div class="state">
-                            <label></label>
-                          </div>
-                        </div>
-                      </font>                                    
-                    </div>  
-                    <div class="col-sm-1">  
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">STATUS</button>  
-                    </div>
-                    <div class="col-sm-1">  
-                      <font size="+2">
-                        <div class="pretty p-default p-curve p-fill p-bigger">
-                          <input type="checkbox" {{ checkbox_type_status }} name="type_status" >
-                          <div class="state">
-                            <label></label>
-                          </div>
-                        </div>
-                      </font>                                    
-                    </div>  
-                    <div class="col-sm-1">  
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">SUCCESS</button>  
-                    </div>
-                    <div class="col-sm-1">  
-                      <font size="+2">
-                        <div class="pretty p-default p-curve p-fill p-bigger">
-                          <input type="checkbox" {{ checkbox_type_success }} name="type_success" >
-                          <div class="state">
-                            <label></label>
-                          </div>
-                        </div>
-                      </font>                                    
-                    </div>                                                           
-                    <div class="col-sm-1">  
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">ERROR</button>  
-                    </div>
-                    <div class="col-sm-2">  
-                      <font size="+2">
-                        <div class="pretty p-default p-curve p-fill p-bigger">
-                          <input type="checkbox" {{ checkbox_type_error }} name="type_error" >
-                          <div class="state">
-                            <label></label>
-                          </div>
-                        </div>
-                      </font>                                    
-                    </div>                                                                 
                     <div class="col-sm-3">    
-                       <input type="submit" onclick="window.location.href='/dashboard_system_log#'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
+                       <input type="submit" onclick="window.location.href='/dashboard/system/log#'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
                     </div>                                      
                   </div>   
                 </form>
@@ -178,11 +150,11 @@
                   <tr>
                     <td style="width:16%">{{ entry[0] }}</td> 
                     <td style="width:10%">
-                      {% if entry[1] == "EVENT" %} <font color="black">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "STATUS" %} <font color="darkblue">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "STATUS" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "ERROR" %} <font color="red">{{ entry[1] }} </font> {% endif %}            
+                      {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %}            
                     </td>                   
                     <td style="width:74%">{{ entry[2] }}</td>  
                   </tr>
@@ -199,14 +171,15 @@
 
         <div class="panel panel-default">
           <div class="panel-body">    
-            <a href="/dashboard/system/system_log/download/log_system.csv?time={{ timestamp }}"><b>System Log-Datei herunterladen</b></font></a>
+            <a href="/dashboard/system/system_log/download/log_system.csv?time={{ timestamp }}"><font color="lightblue"><b>System Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
               <input type="submit" onclick="window.location.href='/dashboard/system/log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
             </form>
           </div>        
         </div>  
-      </div>        
+      </div>     
+      </font>  
     </div>
   </div>       
 </div>

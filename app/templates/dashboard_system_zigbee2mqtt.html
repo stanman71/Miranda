@@ -22,39 +22,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -64,49 +88,33 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
-  
-<!-- settings navs -->
-
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class={{active01}}><a href="{{ url_for('dashboard_system_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
-            <li class={{active03}}><a href="{{ url_for('dashboard_system_controller') }}">Controller</a></li>             
-            <li class={{active04}}><a href="{{ url_for('dashboard_system_speechcontrol') }}">Sprachsteuerung</a></li>                
-            <li class={{active05}}><a href="{{ url_for('dashboard_system_user') }}">Benutzer</a></li>    
-            <li class={{active06}}><a href="{{ url_for('dashboard_system_email') }}">eMail</a></li>        
-            <li class={{active07}}><a href="{{ url_for('dashboard_system_backup') }}">Backup</a></li> 
-            <li class={{active08}}><a href="{{ url_for('dashboard_system_log') }}">Log</a></li> 
-          </ul>
-        </div>
-      </nav>
+        <font color="white">
 
 <!-- zigbee settings -->
   
     <div class="panel panel-default">
-      <div class="panel-heading"><font color="black"><b>ZigBee2MQTT</b></font></div>
+      <div class="panel-heading"><font color="white"><b>ZigBee2MQTT</b></font></div>
         <div class="panel-body">   
           <form method="POST">  
             <div class="well well-sm">
               <div class="pretty p-default p-round">
                   <input {{check_value_zigbee2mqtt[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
-                  <div class="state">
-                    <label>ZigBee2MQTT aktivieren</label>
+                  <div class="state p-success">
+                    <label><font color="white">ZigBee2MQTT aktivieren</font></label>
                   </div>
                 </div>
                 <br>
                 <div class="pretty p-default p-round">
                   <input {{check_value_zigbee2mqtt[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
-                <div class="state">
-                  <label>ZigBee2MQTT deaktivieren</label>
+                <div class="state p-danger">
+                  <label><font color="white">ZigBee2MQTT deaktivieren</font></label>
                 </div>
               </div>
             </div>
 
 <section id="table"></section>
 
-            <font color="red"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
+            <font color="salmon"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
             <br>     
             <br>                
             <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
@@ -148,7 +156,8 @@
                   <th scope="col">Modell</th>   
                   <th scope="col">Gerätetyp</th>                     
                   <th scope="col">Beschreibung</th> 
-                  <th scope="col">Letzter Kontakt</th>                                                 
+                  <th scope="col">Letzter Kontakt</th>   
+                  <th scope="col"></th>                                                                  
                 </thead>
                 <tbody> 
                   {% for entry in zigbee2mqtt_device_list %}
@@ -157,7 +166,7 @@
                       <a href="/dashboard/system/zigbee2mqtt/position/up/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/system/zigbee2mqtt/position/down/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     
-                    <td>                     
+                    <td style="width:20%">                     
                       <form method="POST" class="verticalform">                                                      
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                     </td>
@@ -166,13 +175,13 @@
                     <td>{{ entry.device_type }}</td> 
                     <td>{{ entry.description }}</td> 
                     <td>{{ entry.last_contact }}</td>                   
-                    <td><a href="/dashboard/system/zigbee2mqtt/delete/{{ entry.ieeeAddr }}#table"><font color="red" size="5"><b>X</b></font></a></td>                                   
+                    <td><a href="/dashboard/system/zigbee2mqtt/delete/{{ entry.ieeeAddr }}#table"><font color="salmon" size="5"><b>X</b></font></a></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>
               </table>  
             </div>
-            <font color="red"><b>ZigBee2MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
+            <font color="salmon"><b>ZigBee2MQTT Device kann nur gelöschen werden, wenn es nicht verwendet wird !!!</b></font>
             <br>
             <br>
             <div class="row justify-content-md-center">
@@ -212,15 +221,15 @@
               <div class="well well-sm">
                 <div class="pretty p-default p-round">
                     <input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">
-                  <div class="state">
-                    <label>Pairing aktivieren</label>
+                  <div class="state p-success">
+                    <label><font color="white">Pairing aktivieren</font></label>
                   </div>
                 </div>
                 <br>
                 <div class="pretty p-default p-round">
                     <input {{check_value_pairing[1]}} type="radio" value="False" name="radio_pairing">
-                  <div class="state">
-                    <label>Pairing deaktivieren</label>
+                  <div class="state p-danger">
+                    <label><font color="white">Pairing deaktivieren</font></label>
                   </div>
                 </div>
               </div>
@@ -262,7 +271,7 @@
 
         <div class="panel panel-default">
           <div class="panel-body">  
-              <a href="/dashboard/system/zigbee2mqtt/download/log_zigbee2mqtt.csv?time={{ timestamp }}"><b>ZigBee2MQTT Log-Datei herunterladen</b></font></a>
+              <a href="/dashboard/system/zigbee2mqtt/download/log_zigbee2mqtt.csv?time={{ timestamp }}"><font color="lightblue"><b>ZigBee2MQTT Log-Datei herunterladen</b></font></a>
             <div class="dropdown text-right">
             <form method="POST" enctype="multipart/form-data">
               <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="ZigBee2MQTT Log-Datei zurücksetzen">
@@ -273,6 +282,7 @@
 
 {% endif %}
 
+      </font>
     </div>
   </div>    
 </div>

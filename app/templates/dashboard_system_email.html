@@ -8,6 +8,15 @@
   {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+    
 {% endblock %}
 
 {% block content %}
@@ -21,39 +30,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -63,30 +96,14 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
-  
-<!-- settings navs -->
-
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li class={{active01}}><a href="{{ url_for('dashboard_system_mqtt') }}">MQTT</a></li>
-            <li class={{active02}}><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}">ZigBee2MQTT</a></li> 
-            <li class={{active03}}><a href="{{ url_for('dashboard_system_controller') }}">Controller</a></li>             
-            <li class={{active04}}><a href="{{ url_for('dashboard_system_speechcontrol') }}">Sprachsteuerung</a></li>                
-            <li class={{active05}}><a href="{{ url_for('dashboard_system_user') }}">Benutzer</a></li>    
-            <li class={{active06}}><a href="{{ url_for('dashboard_system_email') }}">eMail</a></li>         
-            <li class={{active07}}><a href="{{ url_for('dashboard_system_backup') }}">Backup</a></li> 
-            <li class={{active08}}><a href="{{ url_for('dashboard_system_log') }}">Log</a></li> 
-          </ul>
-        </div>
-      </nav>
+        <font color="white">
 
 <section id="add_email"></section>  
 
 <!-- eMail settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>eMail</b></font></div>
+        <div class="panel-heading"><font color="white"><b>eMail</b></font></div>
           <div class="panel-body">   
             <div class="well well-sm">
               <b>HINWEIS:</b> Daten beziehen sich auf den eMail-Versender (optimalerweise eine eigende eMail-Adresse für SmartHome)
@@ -107,7 +124,7 @@
                     <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Adresse: </button>
                     </div> 
-                    <div class="col-sm-7">
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_mail_server_address" value="{% if email_config.mail_server_address != None %}{{ email_config.mail_server_address }}{% endif %}" />
                     </div>                            
                   </div> 
@@ -117,7 +134,7 @@
                     <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Port: </button>
                     </div> 
-                    <div class="col-sm-7">
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_mail_server_port" value="{% if email_config.mail_server_port != None %}{{ email_config.mail_server_port }}{% endif %}" />
                     </div>                            
                   </div> 
@@ -127,14 +144,15 @@
                     <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Verschlüsselung:</button>
                     </div>
-                    <div class="col-sm-1">   
-                      <select class="btn btn-default dropdown-toggle" name="set_mail_encoding">
+                    <div class="col-sm-2">   
+                      <select class="selectpicker" data-width="100%" name="set_mail_encoding">
                         <option value= "{{ email_config.mail_encoding }}" > {{ email_config.mail_encoding }} </option>
-                        <option value= "{{ email_config.mail_encoding }}" > ----- </option>                        
-                        {% for each in mail_encoding_list %}
-                        <option value="{{ each }}"> {{ each }} </option>
-                        {% endfor %}
-                      </select> 
+                        <optgroup>
+                          {% for each in mail_encoding_list %}
+                          <option value="{{ each }}"> {{ each }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                           
                     </div>
                   </div> 
                 </div>      
@@ -143,7 +161,7 @@
                     <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Benutzername (eMail Adresse): </button>
                     </div> 
-                    <div class="col-sm-7">
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_mail_username" value="{% if email_config.mail_username != None %}{{ email_config.mail_username }}{% endif %}" />
                     </div>                            
                   </div> 
@@ -153,7 +171,7 @@
                     <div class="col-sm-3">
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">Passwort: </button>
                     </div> 
-                    <div class="col-sm-7">
+                    <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_mail_password" value="{% if email_config.mail_password != None %}{{ email_config.mail_password }}{% endif %}" />
                     </div>                            
                   </div> 
@@ -191,7 +209,8 @@
             </form> 
           </div>
         </div>
-      </div>         
+      </div>   
+      </font>      
     </div>
   </div>       
 </div>

@@ -36,7 +36,7 @@ def dashboard_programs():
     """ ### """
 
     program = ""
-    rgb = "(0, 0, 0)"
+    rgb = "0, 0, 0"
     led_update = ""
     error_message_add_program = ""
     error_message_content = ""
@@ -100,7 +100,9 @@ def dashboard_programs():
                 
                 if get_rgb != None:
                     rgb = get_rgb   
-                    rgb = rgb.replace("rgb", "")            
+                    rgb = rgb.replace("rgb", "") 
+                    rgb = rgb.replace("(", "") 
+                    rgb = rgb.replace(")", "")                                         
                     program = GET_PROGRAM_BY_ID(i) 
                     
                     

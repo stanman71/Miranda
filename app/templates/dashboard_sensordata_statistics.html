@@ -9,8 +9,14 @@
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
   
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
 
@@ -25,39 +31,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -69,23 +99,13 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
     <div class="row">
       <div class="col">
-
-<!-- sensordata navs -->
-
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <ul class="nav navbar-nav">
-          <li class={{jobs}}><a href="{{ url_for('dashboard_sensordata_jobs') }}">Sensordaten Jobs </a></li> 
-          <li class={{statistics}}><a href="{{ url_for('dashboard_sensordata_statistics') }}">Sensordaten Statistiken</a></li>   
-        </ul>
-      </div>
-    </nav>       
+        <font color="white">   
 
 <!-- sensordata table -->
 
-    <div class="panel panel-default">
-      <div class="panel-heading"><font color="black"><b>Sensordaten Statistiken</b></font></div>    
-        <div class="panel-body">   
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="white"><b>Sensordaten Statistiken</b></font></div>    
+          <div class="panel-body">   
 
 <!-- select data source -->
   
@@ -121,69 +141,91 @@
                       <div class="col-sm-3">
                         <button type="button" style="background-color:transparent" class="btn btn-secondary">Datenquellen auswählen:</button> 
                       </div>  
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="dropdown">
-                          <select class="btn btn-default dropdown-toggle" name="get_file_1">
+                          <select class="selectpicker" data-width="auto" data-live-search="true" name="get_file_1">
                             {% if data_file_1 != "" %}
-                              <option value= "{{ data_file_1 }}" > {{ data_file_1 }} </option>
-                              <option value= "{{ data_file_1 }}" > -------------------- </option>                                          
+                              <option value= "{{ data_file_1 }}" > {{ data_file_1 }} </option> 
+                            {% else %}                                                               
+                              <option value= "" > None </option>                                                                          
                             {% endif %}    
-                            <option value= "" > None </option>    
-                            <option value= "" > -------------------- </option>           
-                            {% for each in dropdown_list_files %}
-                              {% if each != None %}
-                              <option value="{{ each }}">{{ each }}</option>
-                              {% endif %}
-                            {% endfor %}
-                          </select>
+                            <optgroup>
+                              {% for each in dropdown_list_files %}
+                                {% if each != None %}
+                                <option value="{{ each }}">{{ each }}</option>
+                                {% endif %}
+                              {% endfor %}                 
+                            </optgroup>
+                            <optgroup> 
+                              <option value= "" > None </option> 
+                            </optgroup>                                                                                 
+                          </select>                           
                         </div> 
                       </div> 
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="dropdown">
-                          <select class="btn btn-default dropdown-toggle" name="get_file_2">
+                          <select class="selectpicker" data-width="auto" data-live-search="true" name="get_file_2">
                             {% if data_file_2 != "" %}
-                              <option value= "{{ data_file_2 }}" > {{ data_file_2 }} </option>
-                              <option value= "{{ data_file_2 }}" > -------------------- </option>                                                 
-                            {% endif %}   
-                            <option value= "" > None </option>  
-                            <option value= "" > -------------------- </option>                         
-                            {% for each in dropdown_list_files %}
-                              {% if each != None %}
-                              <option value="{{ each }}">{{ each }}</option>
-                              {% endif %}
-                            {% endfor %}
-                          </select>
+                              <option value= "{{ data_file_2 }}" > {{ data_file_2 }} </option>  
+                            {% else %}                                                               
+                              <option value= "" > None </option>                                                                         
+                            {% endif %}    
+                            <optgroup>
+                              {% for each in dropdown_list_files %}
+                                {% if each != None %}
+                                <option value="{{ each }}">{{ each }}</option>
+                                {% endif %}
+                              {% endfor %}                 
+                            </optgroup>
+                            <optgroup> 
+                              <option value= "" > None </option> 
+                            </optgroup>                                                                                 
+                          </select>   
                         </div> 
                       </div>    
-                      <div class="col-sm-2">
+                      <div class="col-sm-3">
                         <div class="dropdown">
-                          <select class="btn btn-default dropdown-toggle" name="get_file_3">
+                          <select class="selectpicker" data-width="auto" data-live-search="true" name="get_file_3">
                             {% if data_file_3 != "" %}
-                              <option value= "{{ data_file_3 }}" > {{ data_file_3 }} </option>
-                              <option value= "{{ data_file_3 }}" > -------------------- </option>                                          
-                            {% endif %}    
-                            <option value= "" > None </option>   
-                            <option value= "" > -------------------- </option>           
-                            {% for each in dropdown_list_files %}
-                              {% if each != None %}
-                              <option value="{{ each }}">{{ each }}</option>
-                              {% endif %}
-                            {% endfor %}
-                          </select>
+                              <option value= "{{ data_file_3 }}" > {{ data_file_3 }} </option>      
+                            {% else %}                                                               
+                              <option value= "" > None </option>                                                               
+                            {% endif %}  
+                            <optgroup>
+                              {% for each in dropdown_list_files %}
+                                {% if each != None %}
+                                <option value="{{ each }}">{{ each }}</option>
+                                {% endif %}
+                              {% endfor %}                 
+                            </optgroup>
+                            <optgroup> 
+                              <option value= "" > None </option> 
+                            </optgroup>                                                                                 
+                          </select>   
                         </div> 
                       </div>                     
                     </div> 
-                  </div>              
-                  <div class="well well-sm">Geräte:   
-                    <div class="form-group">  
-                      <input type="text" class="form-control" name="set_devices" value="{% if devices != None %}{{ devices }}{% endif %}" />  
-                    </div>
-                  </div>       
-                  <div class="well well-sm">Sensoren:   
-                    <div class="form-group">    
-                      <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" />                
-                    </div>                    
-                  </div>                                                      
+                  </div>   
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Geräte: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                       <input type="text" class="form-control" name="set_devices" value="{% if devices != None %}{{ devices }}{% endif %}" /> 
+                      </div>                            
+                    </div> 
+                  </div>                    
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensoren: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                       <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" /> 
+                      </div>                            
+                    </div> 
+                  </div>                                                     
                 </div>   
               </div>
               <div class="row justify-content-md-center">
@@ -215,7 +257,8 @@
                         
         {% endif %} 
         
-      </div>        
+      </div>  
+      </font>      
     </div>  
   </div>       
 </div>

@@ -6,6 +6,17 @@
 
 {% block styles %}
   {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
 
   <script>
     var sensor_options_list_1  = '{{ mqtt_device_1_input_values }}';
@@ -106,6 +117,7 @@
           sensor_list.options.add(sensor);
         }
       }
+      $('.selectpicker').selectpicker('refresh');      
     } 
 
     function Choose_Sensor_2(entry_id) {
@@ -127,6 +139,7 @@
           sensor_list.options.add(sensor);
         }
       }
+      $('.selectpicker').selectpicker('refresh');      
     } 
 
     function Choose_Sensor_3(entry_id) {
@@ -148,12 +161,10 @@
           sensor_list.options.add(sensor);
         }
       }
+      $('.selectpicker').selectpicker('refresh');      
     } 
   </script>
 
-  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
-  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -167,39 +178,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -209,6 +244,7 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
   <div class="row">
     <div class="col">
+      <font color="white">
 
 
 <!-- ------------------------ -->   
@@ -231,7 +267,7 @@
 
         <form method="POST"> 
           <div class="row justify-content-md-center">
-            <div class="col-sm-2">  
+            <div class="col-sm-3">  
               <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue einfache Aufgabe:</button>                   
             </div>
             <div class="col-sm-3"> 
@@ -246,7 +282,7 @@
 
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b> einfache Aufgaben </b></font></div>
+        <div class="panel-heading"><font color="white"><b> einfache Aufgaben </b></font></div>
           <div class="panel-body">  
 
 <!-- error message reduced change settings -->
@@ -282,6 +318,7 @@
 <!-- reduced scheduler table -->
 
               <div class="well well-sm"> 
+                <form method="POST" class="verticalform">                
                  <table class="table">          
                     <thead>   
                       <th scope="col"></th>                     
@@ -291,6 +328,7 @@
                       <th scope="col">Stunde</th> 
                       <th scope="col">Minute</th> 
                       <th scope="col">Wiederholen</th> 
+                      <th scope="col"></th>
                     </thead>
                     <tbody> 
                       {% for entry in scheduler_task_list %}
@@ -301,7 +339,6 @@
                               <a href="/dashboard/scheduler/position/down/reduced/{{ entry.id }}#"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                             </td> 
                             <td style="width:17%">
-                              <form method="POST" class="verticalform">
                               <input type="text" class="form-control" name="set_name_reduced_{{ entry.id }}" value="{{ entry.name }}" />                                     
                             </td> 
                             <td style="width:35%">        
@@ -318,15 +355,15 @@
                             </td>                         
                             <td>
                               <font size="+2">
-                                <div class="pretty p-default p-curve p-fill p-bigger">
+                                <div class="pretty p-default p-curve p-bigger">
                                   <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_reduced_{{ entry.id }}" >
-                                  <div class="state">
+                                  <div class="state p-success">
                                     <label></label>
                                   </div>
                                 </div>
                               </font>
                             </td>
-                            <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td>  
+                            <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
                           </tr>
                         {% endif %} 
                       {% endfor %}
@@ -361,7 +398,7 @@
 
         <form method="POST"> 
           <div class="row justify-content-md-center">
-            <div class="col-sm-2">  
+            <div class="col-sm-3">  
               <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue vollständige Aufgabe:</button>                   
             </div>
             <div class="col-sm-3"> 
@@ -450,85 +487,86 @@
   {% if entry.task_type == "complete" %}
 
 
-  <section id="table_{{ entry.id }}"></section> 
+<section id="table_{{ entry.id }}"></section> 
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="black"><b> {{ entry.name }} </b></font></div>
+          <div class="panel-heading"><font color="white"><b> {{ entry.name }} </b></font></div>
             <div class="panel-body">      
               <div class="well well-sm">
 
 
-  <!-- error change settings -->
+<!-- error change settings -->
 
-  {% if entry.error_change_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-        {{ entry.error_change_settings }}
-    </div>      
-  {% endif %}      
+{% if entry.error_change_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+      {{ entry.error_change_settings }}
+  </div>      
+{% endif %}      
 
-  <!-- error message task settings -->
+<!-- error message task settings -->
 
-  {% if entry.error_task_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_task_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_task_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_task_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
-  <!-- error message general settings -->
+<!-- error message general settings -->
 
-  {% if entry.error_general_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_general_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_general_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_general_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
-  <!-- error message time settings -->
+<!-- error message time settings -->
 
-  {% if entry.error_time_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_time_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_time_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_time_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
-  <!-- error message sun settings -->
+<!-- error message sun settings -->
 
-  {% if entry.error_sun_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_sun_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_sun_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_sun_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
-  <!-- error message sensor settings -->
+<!-- error message sensor settings -->
 
-  {% if entry.error_sensor_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_sensor_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_sensor_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_sensor_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
-  <!-- error message position settings -->
+<!-- error message position settings -->
 
-  {% if entry.error_position_settings != "" %}
-    <div class="alert alert-danger" role="alert">
-      {% for entry in entry.error_position_settings.split(',') %}
-        {{ entry }} <br>
-      {% endfor %}
-    </div>      
-  {% endif %} 
+{% if entry.error_position_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in entry.error_position_settings.split(',') %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
 
-  <!-- section main -->
+<!-- section main -->
 
+              <form method="POST" class="verticalform">
                 <table class="table">          
                   <thead>          
                     <th scope="col"></th>              
@@ -540,6 +578,7 @@
                     <th scope="col">Sensoren</th>
                     <th scope="col">Position</th>
                     <th scope="col">Wiederholen</th>
+                    <th scope="col"></th>
                   </thead>
                   <tbody> 
                     <tr>
@@ -548,7 +587,6 @@
                         <a href="/dashboard/scheduler/position/down/complete/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                       </td>                       
                       <td style="width:17%">
-                        <form method="POST" class="verticalform">
                         <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                       </td> 
                       <td style="width:35%">        
@@ -557,9 +595,9 @@
                       <td style="width:8%"></td>                         
                       <td style="width:8%">
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_time }} name="checkbox_option_time_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
@@ -567,9 +605,9 @@
                       </td>    
                       <td style="width:8%">
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_sun }} name="checkbox_option_sun_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
@@ -577,9 +615,9 @@
                       </td>                                         
                       <td style="width:8%">
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_sensors }} name="checkbox_option_sensors_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
@@ -587,9 +625,9 @@
                       </td>       
                       <td style="width:8%">
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_position }} name="checkbox_option_position_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
@@ -597,15 +635,15 @@
                       </td>                                 
                       <td style="width:8%">
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
                         </font>
                       </td>
-                      <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="red" size="5"><b>X</b></font></a></td>  
+                      <td><a href="/dashboard/scheduler/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
                     </tr>
 
   <!-- section time -->
@@ -661,9 +699,9 @@
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
+                              <div class="pretty p-default p-curve p-bigger">
                                 <input type="checkbox" {{ entry.option_sunrise }} name="checkbox_option_sunrise_{{ entry.id }}" >
-                                <div class="state">
+                                <div class="state p-success">
                                   <label></label>
                                 </div>
                               </div>
@@ -674,9 +712,9 @@
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
+                              <div class="pretty p-default p-curve p-bigger">
                                 <input type="checkbox" {{ entry.option_sunset }} name="checkbox_option_sunset_{{ entry.id }}" >
-                                <div class="state">
+                                <div class="state p-success">
                                   <label></label>
                                 </div>
                               </div>
@@ -687,22 +725,21 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
                           </div>
                           <div class="col-sm-1">
-                            <select class="btn btn-default dropdown-toggle" name="set_location_{{ entry.id }}">
-                              
+                            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_location_{{ entry.id }}">
                               {% if entry.location != None %}
                                 <option value= "{{ entry.location }}" > {{ entry.location }} </option>
-                                <option value= "{{ entry.location }}" > ------------------------- </option>
                               {% endif %}
-                              
+                              <optgroup>
                               {% if error_message_locations_import == "" %}
                                 {% for each in dropdown_list_locations %}
                                   <option value= "{{ each }}" > {{ each }} </option>
                                 {% endfor %}   
-                                <option value= "" > ------------------------- </option>                                                         
+                              {% endif %}                    
+                              </optgroup>
+                              <optgroup> 
                                 <option value= "" > None </option>   
-                              {% endif %} 
-                              
-                            </select>
+                              </optgroup>                                                                                 
+                            </select>                              
                           </div>
                         </div>
                       </td>                           
@@ -746,42 +783,42 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_1_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > ------------------------- </option>                                           
+                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_1_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>      
+                              <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
-                              {% endfor %}
-                            </select> 
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>                              
                           </div>
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="selected_sensor_1_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_1_{{ entry.id }}">
+                            <select id="selected_sensor_1_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_1_{{ entry.id }}">  
                               {% if entry.mqtt_device_id_1 != None %}
                                 <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_1 }} </option>
-                                <option value= "{{ entry.sensor_key_1 }}" > ----------------------------------- </option>
                                   {% for each in entry.mqtt_device_input_values_1.split(',') %}
                                     <option value= "{{ each }}" > {{ each }} </option>
                                   {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>
-                                <option value= "" > ----------------------------------- </option>                            
-                              {% endif %}
-                            </select>  
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>                                
 
                           {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" or entry.operator_main_1 == "None" or entry.operator_main_1 == None %}
                             
                             </div>                                                 
-                            <div class="col-sm-2">                          
-                              <select class="btn btn-default dropdown-toggle" name="set_operator_1_{{ entry.id }}">
+                            <div class="col-sm-2">     
+                              <select class="selectpicker" data-width="75%" name="set_operator_1_{{ entry.id }}">  
                                 <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
-                                <option value= "{{ entry.operator_1 }}" > -------- </option>
-                                {% for each in dropdown_list_operators %}
-                                <option value="{{each}}"> {{ each }} </option>
-                                {% endfor %}
-                              </select>  
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
+                              </select>        
                             </div>                                           
                             <div class="col-sm-2"> 
                             <input type="text" class="form-control" name="set_value_1_{{ entry.id }}" value="{{ entry.value_1 }}" /> 
@@ -799,14 +836,15 @@
                     <tr>
                       <td colspan="1"></td>
                       <td colspan="1">
-                        <div class="dropdown text-right">                    
-                          <select class="btn btn-default dropdown-toggle" name="set_operator_main_1_{{ entry.id }}">
+                        <div class="dropdown text-right">     
+                          <select class="selectpicker" data-width="60%" name="set_operator_main_1_{{ entry.id }}">
                             <option value= "{{ entry.operator_main_1 }}" > {{ entry.operator_main_1 }} </option>
-                            <option value= "{{ entry.operator_main_1 }}" > -------- </option>
-                            {% for each in dropdown_list_operator_main %}
-                            <option value="{{each}}"> {{ each }} </option>
-                            {% endfor %}
-                          </select>         
+                            <optgroup>                                    
+                              {% for each in dropdown_list_operator_main %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                                                    
+                          </select>                                    
                         </div>               
                       </td>
                       
@@ -816,41 +854,41 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_2_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > ------------------------- </option>                                           
+                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_2_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>      
+                              <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
-                              {% endfor %}
-                            </select> 
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>    
                           </div>
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="selected_sensor_2_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_2_{{ entry.id }}">
+                            <select id="selected_sensor_2_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_2_{{ entry.id }}">  
                               {% if entry.mqtt_device_id_2 != None %}
-                                <option value= "{{ entry.sensor_key_2 }}" > {{ entry.sensor_key_2 }} </option>
-                                <option value= "{{ entry.sensor_key_2 }}" > ----------------------------------- </option>
-                                {% for each in entry.mqtt_device_input_values_2.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}                            
+                                <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_2 }} </option>
+                                  {% for each in entry.mqtt_device_input_values_2.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>
-                                <option value= "" > ----------------------------------- </option>                            
-                              {% endif %}
-                              </select>  
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>    
 
                           {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" %}
 
                             </div>                                               
                             <div class="col-sm-2">  
-                              <select class="btn btn-default dropdown-toggle" name="set_operator_2_{{ entry.id }}">
+                              <select class="selectpicker" data-width="75%" name="set_operator_2_{{ entry.id }}">  
                                 <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
-                                <option value= "{{ entry.operator_2 }}" > -------- </option>
-                                {% for each in dropdown_list_operators %}
-                                <option value="{{each}}"> {{ each }} </option>
-                                {% endfor %}
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
                               </select>  
                             </div>                                           
                             <div class="col-sm-2">     
@@ -871,13 +909,14 @@
                       <td colspan="1"></td>
                       <td colspan="1">
                         <div class="dropdown text-right">
-                          <select class="btn btn-default dropdown-toggle" name="set_operator_main_2_{{ entry.id }}">
+                          <select class="selectpicker" data-width="60%" name="set_operator_main_2_{{ entry.id }}">
                             <option value= "{{ entry.operator_main_2 }}" > {{ entry.operator_main_2 }} </option>
-                            <option value= "{{ entry.operator_main_2 }}" > -------- </option>
-                            {% for each in dropdown_list_operator_main %}
-                            <option value="{{each}}"> {{ each }} </option>
-                            {% endfor %}
-                          </select>  
+                            <optgroup>                                    
+                              {% for each in dropdown_list_operator_main %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                                                    
+                          </select>   
                         </div>
                       </td>
                       
@@ -887,41 +926,41 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_3_{{ entry.id }}">
-                                <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
-                                <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > ------------------------- </option>                                        
+                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_3_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>      
+                              <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
-                              {% endfor %}
-                            </select> 
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>    
                           </div>  
                           <div class="col-sm-1">  
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="selected_sensor_3_{{ entry.id }}" class="btn btn-default dropdown-toggle" name="set_sensor_3_{{ entry.id }}">
-                              {% if entry.mqtt_device_id_3 != None %}  
+                            <select id="selected_sensor_3_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_3_{{ entry.id }}">  
+                              {% if entry.mqtt_device_id_3 != None %}
                                 <option value= "{{ entry.sensor_key_3 }}" > {{ entry.sensor_key_3 }} </option>
-                                <option value= "{{ entry.sensor_key_3 }}" > ----------------------------------- </option>
-                                {% for each in entry.mqtt_device_input_values_3.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}                           
+                                  {% for each in entry.mqtt_device_input_values_3.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>
-                                <option value= "" > ----------------------------------- </option>                            
-                              {% endif %}                            
-                            </select>  
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>    
 
                           {% if entry.operator_main_2 == "and" or entry.operator_main_2 == "or" %}
 
                             </div>                                                
                             <div class="col-sm-2">  
-                              <select class="btn btn-default dropdown-toggle" name="set_operator_3_{{ entry.id }}">
+                              <select class="selectpicker" data-width="75%" name="set_operator_3_{{ entry.id }}">  
                                 <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
-                                <option value= "{{ entry.operator_3 }}" > -------- </option>
-                                {% for each in dropdown_list_operators %}
-                                <option value="{{each}}"> {{ each }} </option>
-                                {% endfor %}
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
                               </select>  
                             </div>                                           
                             <div class="col-sm-2">        
@@ -956,9 +995,9 @@
                           </div>                                                   
                           <div class="col-sm-1"> 
                             <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
+                              <div class="pretty p-default p-curve p-bigger">
                                 <input type="checkbox" {{ entry.option_home }} name="checkbox_option_home_{{ entry.id }}" >
-                                <div class="state">
+                                <div class="state p-success">
                                   <label></label>
                                 </div>
                               </div>
@@ -969,9 +1008,9 @@
                           </div>                      
                           <div class="col-sm-1">                                       
                             <font size="+2">
-                              <div class="pretty p-default p-curve p-fill p-bigger">
+                              <div class="pretty p-default p-curve p-bigger">
                                 <input type="checkbox" {{ entry.option_away }} name="checkbox_option_away_{{ entry.id }}" >
-                                <div class="state">
+                                <div class="state p-success">
                                   <label></label>
                                 </div>
                               </div>
@@ -1053,6 +1092,7 @@
             </div>
           </div>
         </div>
+        </font>
       </div>
     </div>    
   </div>

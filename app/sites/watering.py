@@ -53,6 +53,8 @@ def dashboard_watering():
         
         # change settings
         if request.form.get("change_settings") != None: 
+            
+            print(request.form)
              
             for i in range (1,26):
 
@@ -69,6 +71,8 @@ def dashboard_watering():
                     else:
                         name = GET_PLANT_BY_ID(i).name 
                         error_message_change_name = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"                        
+    
+                    print(request.form.get("set_mqtt_device_" + str(i)))
     
                     mqtt_device = request.form.get("set_mqtt_device_" + str(i))
 

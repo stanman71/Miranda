@@ -8,7 +8,10 @@ from app import app
 from app.components.control_led import *
 from app.database.database import *
 from app.components.checks import CHECK_LED_GROUP_SETTINGS
+from app.components.shared_resources import process_management_queue
 
+
+import heapq
 
 # access rights
 def permission_required(f):
@@ -373,8 +376,13 @@ def dashboard_led_scenes():
             # start scene
             if request.form.get("start_scene_" + str(i)) != None: 
                 group = request.form.get("group_" + str(i))
-                if group != "" and group != None:
-                    error_start_scene = LED_START_SCENE(int(group), i)   
+                if group != "None" and group != None:
+                    
+                    scene = GET_LED_SCENE_BY_ID(i)
+
+                    heapq.heappush(process_management_queue, (1,  ("dashboard", "led_scene", int(group), scene.id, 100)))
+                    error_start_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group), scene.id, scene.name, 100, 2, 10)    
+                       
                 else:
                     error_led_control = "Keine LED Gruppe ausgewählt" 
                     SET_LED_SCENE_CONTROL_ERRORS(i, error_led_control)
@@ -383,8 +391,14 @@ def dashboard_led_scenes():
             # turn off group
             if request.form.get("turn_off_group_" + str(i)) != None:
                 group = request.form.get("group_" + str(i)) 
-                if group != "" and group != None:
-                    error_turn_off_scene = LED_TURN_OFF_GROUP(int(group)) 
+                if group != "None" and group != None:
+                    
+                    scene_name = GET_LED_GROUP_BY_ID(i).current_setting
+                    scene = GET_LED_SCENE_BY_NAME(scene_name)
+                    
+                    heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", int(group)))) 
+                    error_turn_off_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group), scene.id, "OFF", 0, 2, 10)                     
+
                 else:
                     error_led_control = "Keine LED Gruppe ausgewählt"  
                     SET_LED_SCENE_CONTROL_ERRORS(i, error_led_control)

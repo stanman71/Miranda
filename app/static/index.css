@@ -2,56 +2,62 @@
  * https://www.pexels.com/photo/abstract-art-background-blur-735812/
  */
 
-body {
-  padding-top: 50px;
-  background-image: url(images/background.jpg);
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
 }
-.starter-template {
-  padding: 40px 15px;
+
+.navbar .navbar-collapse {
   text-align: center;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-image: url(images/background.jpg);
 }
 
 /*
  * https://www.pexels.com/photo/black-and-white-photo-of-wall-978503/
  */
 
-.panel-body {
-  background-image: url(images/background-panal.jpg);
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
 }
-
-
-/*
- * https://www.w3schools.com/howto/howto_js_rangeslider.asp
- */
-
-.slidecontainer {
-  width: 100%; 
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
 }
-.slider {
-  -webkit-appearance: none;  
-  appearance: none;
-  width: 100%; 
-  height: 25px; 
-  background: #d3d3d3; 
-  outline: none; 
-  opacity: 0.7; 
-  -webkit-transition: .2s; 
-  transition: opacity .2s;
+.form-signin .checkbox {
+  font-weight: normal;
 }
-.slider:hover {
-  opacity: 1; 
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
 }
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none; 
-  appearance: none;
-  width: 25px; 
-  height: 25px; 
-  background: rgb(10, 15, 10); 
-  cursor: pointer; 
+.form-signin .form-control:focus {
+  z-index: 2;
 }
-.slider::-moz-range-thumb {
-  width: 25px; 
-  height: 25px; 
-  background: rgb(10, 15, 10); 
-  cursor: pointer; 
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }

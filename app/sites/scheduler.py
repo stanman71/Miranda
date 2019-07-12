@@ -364,6 +364,10 @@ def dashboard_scheduler():
                     # sensor settings
                     # ###############              
 
+                    print("############")
+                    print(request.form)
+                    print(request.form.get("set_mqtt_device_1_" + str(i)))
+                    print("############")                    
 
                     # set mqtt_device 1
                     mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))

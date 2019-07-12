@@ -2,19 +2,30 @@
  * https://www.pexels.com/photo/abstract-art-background-blur-735812/
  */
 
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-fixed-top {
+  border: 0;
+}
+
+
 body {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-image: url(images/background.jpg);
+  background-image: url(images/background-panal.jpg);
 }
 
 /*
  * https://www.pexels.com/photo/black-and-white-photo-of-wall-978503/
  */
-
- .panel-body {
-  background-image: url(images/background-panal.jpg);
-}
 
 .form-signin {
   max-width: 330px;

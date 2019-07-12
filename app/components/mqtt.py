@@ -84,7 +84,7 @@ def MQTT_THREAD():
 		if (device_type == "led_rgb" or
 		    device_type == "led_white" or
 		    device_type == "led_simple" or
-		    device_type == "device"):
+		    device_type == "device_switch"):
 	
 			for existing_message in MQTT_GET_INCOMING_MESSAGES(3):				
 				
@@ -345,14 +345,14 @@ def MQTT_UPDATE_DEVICES(gateway):
 				return ""
 				
 			else:	 
-				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Update Devices | Message not founded")
-				return "MQTT | Update | Message nicht gefunden"
+				WRITE_LOGFILE_SYSTEM("WARNING", "MQTT | Update Devices | No Message founded")
+				return "MQTT >>> Update Devices >>> Kein Message gefunden"
 			
 			
 		except Exception as e:
 			if str(e) == "string index out of range":
 				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | No connection") 
-				return ("Error: " + str(e))   
+				return ("MQTT >>> Update Devices >>> " + str(error))	 
 	
 
 	if gateway == "zigbee2mqtt":
@@ -445,14 +445,14 @@ def MQTT_UPDATE_DEVICES(gateway):
                            
 				if error != "":
 					WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | " + str(error))
-					return error	
+					return ("ZigBee2MQTT >>> Update Devices >>> " + str(error))	
 				else:
 					WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Update Devices")
 					return ""
 								
 			else:			
-				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | Message not founded")
-				return "ZigBee2MQTT | Update Devices | Message nicht gefunden"					
+				WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Update Devices | No Message founded")
+				return "ZigBee2MQTT >>> Update Devices >>> Keine Message gefunden"					
 			
     
 		except Exception as e:

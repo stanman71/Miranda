@@ -3,7 +3,7 @@ config:
   database: sqlite:///database/smarthome.sqlite3
   host_ip_address: 192.168.1.40:5000
   mqtt_broker: localhost
-  version: 0.7
+  version: 0.8
 spotify:
   client_id: 11a33d121d194cfebbc08d1ee6dbd0f6
   client_secret: af1b5460be774d8db58313bbf1a056b8

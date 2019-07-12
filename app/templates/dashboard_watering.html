@@ -6,11 +6,18 @@
 
 {% block styles %}
   {{super()}}
-
   <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
 
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+  
 {% endblock %}
 
 {% block content %}
@@ -24,39 +31,63 @@
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
       </button>
-      {% if permission_dashboard == "checked" %}
-        <a class="navbar-brand" href="{{ url_for('dashboard') }}">SmartControl</a>
-      {% endif %}
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><span class="glyphicon glyphicon-calendar"></span> Aufgabenplanung</a></li>
+          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><span class="glyphicon glyphicon-leaf"></span> Programme</a></li> 
+          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><span class="glyphicon glyphicon-leaf"></span> Bewässerung</a></li> 
+          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><span class="glyphicon glyphicon-facetime-video"></span> Kameras</a></li>
+          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
-          <li><a href="{{ url_for('dashboard_led_scenes') }}"><span class="glyphicon glyphicon-certificate"></span> LED</a></li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
         {% endif %}
-        {% if permission_sensordata == "checked" %}                   
-          <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><span class="glyphicon glyphicon-scale"></span> Sensordaten</a></li> 
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><span class="glyphicon glyphicon-music"></span> Spotify</a></li> 
+          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
-          <li><a href="{{ url_for('dashboard_system_mqtt') }}"><span class="glyphicon glyphicon-cog"></span> System</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
         {% endif %}    
-        <li><a href="{{ url_for('logout') }}"><span class="glyphicon glyphicon-log-out" style="color:red"></span><font color="red"> Logout</font></a></li>
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
       </ul>
     </div>
   </div>
@@ -66,6 +97,7 @@
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
   <div class="row">
     <div class="col">
+      <font color="white">
 
 <!-- add new plant -->        
 
@@ -90,12 +122,12 @@
             <div class="col-sm-1">                     
               <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
             </div>            
-            <div class="col-sm-2"> 
-              <select class="btn btn-default dropdown-toggle" name="set_mqtt_device_ieeeAddr">
+            <div class="col-sm-3"> 
+              <select class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_ieeeAddr">
                 {% for each in dropdown_list_mqtt_devices %}
                   <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
-                {% endfor %}
-              </select>                         
+                {% endfor %}                                                                              
+              </select>                                      
             </div>  
 
 <section id="table"></section> 
@@ -110,7 +142,7 @@
 <!-- plants table -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="black"><b>Bewässerung</b></font></div>      
+        <div class="panel-heading"><font color="white"><b>Bewässerung</b></font></div>      
           <div class="panel-body">                       
             <div class="well well-sm">  
  
@@ -132,7 +164,7 @@
   </div>      
 {% endif %}  
  
- 
+            <form method="POST" class="verticalform"> 
               <table class="table">
                 <thead>
                   <th scope="col"></th> 
@@ -141,7 +173,8 @@
                   <th scope="col">Gruppe</th> 
                   <th scope="col">Pumpdauer (s)</th>     
                   <th scope="col">Sensor Wasservorrat</th>                                   
-                  <th scope="col">Sensor Feuchtigkeit</th>                                                      
+                  <th scope="col">Sensor Feuchtigkeit</th>     
+                  <th scope="col"></th>                                                    
                 </thead>
                 <tbody> 
                   {% for entry in plants_list %}
@@ -150,44 +183,46 @@
                       <a href="/dashboard/watering/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/watering/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                   
-                    <td>
-                      <form method="POST" class="verticalform">
+                    <td style="width:14%">
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
                     </td> 
-                    <td>
-                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="btn btn-default dropdown-toggle" name="set_mqtt_device_{{ entry.id }}">
+                    <td style="width:22%">
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
-                        <option value= "{{ entry.mqtt_device_ieeeAddr }}" > ------------------------------ </option>                                           
-                        {% for each in dropdown_list_mqtt_devices %}
-                          <option value="{{ each.id }}"> {{ each.name }} </option>
-                        {% endfor %}
-                      </select> 
+                        <optgroup>
+                          {% for each in dropdown_list_mqtt_devices %}
+                            <option value="{{ each.id }}"> {{ each.name }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                        
                     </td>  
-                    <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_group_{{ entry.id }}">
+                    <td style="width:11%">
+                      <select class="selectpicker" data-width="90%" name="set_group_{{ entry.id }}">
                         <option value= "{{ entry.group }}" > {{ entry.group }} </option>
-                        <option value= "{{ entry.group }}" > --------- </option>                           
-                        {% for each in dropdown_list_groups %}
-                          <option value="{{ each }}"> {{ each }} </option>
-                        {% endfor %}
-                      </select>                    
+                        <optgroup>
+                          {% for each in dropdown_list_groups %}
+                            <option value="{{ each }}"> {{ each }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                                          
                     </td>                                                           
-                    <td>
-                      <select class="btn btn-default dropdown-toggle" name="set_pumptime_{{ entry.id }}">
+                    <td style="width:11%">
+                      <select class="selectpicker" data-width="90%" name="set_pumptime_{{ entry.id }}">
                         <option value= "{{ entry.pumptime }}" > {{ entry.pumptime }} </option>
-                        <option value= "{{ entry.pumptime }}" > ---------- </option>
-                        {% for each in dropdown_list_pumptime %}
-                          <option value="{{each}}"> {{ each }} </option>
-                        {% endfor %}
-                      </select>  
+                        <optgroup>
+                          {% for each in dropdown_list_pumptime %}
+                            <option value="{{each}}"> {{ each }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                       
                     </td>   
-                    <td>
+                    <td style="width:17%">
                       <div class="row justify-content-md-center">                      
                         <div class="col-sm-2"> 
                           <font size="+2">
-                            <div class="pretty p-default p-curve p-fill p-bigger">
+                            <div class="pretty p-default p-curve p-bigger">
                               <input type="checkbox" {{ entry.control_sensor_watertank }} name="set_control_sensor_watertank_{{ entry.id }}" >
-                              <div class="state">
+                              <div class="state p-success">
                                 <label></label>
                               </div>
                             </div>
@@ -195,13 +230,13 @@
                         </div>
                       </div>  
                     </td>        
-                    <td>
+                    <td style="width:17%">
                       <div class="row justify-content-md-center">
-                        <div class="col-sm-2">  
+                        <div class="col-sm-3">  
                         <font size="+2">
-                          <div class="pretty p-default p-curve p-fill p-bigger">
+                          <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.control_sensor_moisture }} name="set_control_sensor_moisture_{{ entry.id }}" >
-                            <div class="state">
+                            <div class="state p-success">
                               <label></label>
                             </div>
                           </div>
@@ -210,21 +245,24 @@
                         
                         {% if entry.control_sensor_moisture == "checked" %}
                         
-                        <div class="col-sm-1">              
-                          <select class="btn btn-default dropdown-toggle" name="set_moisture_{{ entry.id }}">
+                        <div class="col-sm-1">    
+                          <select class="selectpicker" data-width="auto" name="set_moisture_{{ entry.id }}">
                             <option value= "{{ entry.moisture }}" > {{ entry.moisture }} </option>
-                            <option value= "{{ entry.moisture }}" > ---------- </option>
-                            {% for each in dropdown_list_moisture %}
-                              <option value="{{each}}"> {{ each }} </option>
-                            {% endfor %}
-                          </select>                          
+                            <optgroup>
+                              {% for each in dropdown_list_moisture %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                 
+                          </select>                                                               
                         </div>
                          
                         {% endif %}
             
                       </div>
                     </td>               
-                    <td><a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="red" size="5"><b>X</b></font></a></td>   
+                    <td style="width:5%">
+                      <a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>
+                    </td>   
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -252,7 +290,8 @@
             </div>
           </div>
         </div>
-      </div>   
+      </div>  
+      </font> 
     </div>
   </div>    
 </div>

@@ -1284,59 +1284,65 @@ def delete_database_backup(filename):
 @permission_required
 def dashboard_system_log():
     error_message = ""
-    checkbox_type_event="checked"
-    checkbox_type_status="checked"
-    checkbox_type_success="checked"        
-    checkbox_type_error="checked"    
+    selected_type_event= "selected"
+    selected_type_status= "selected"
+    selected_type_success= "selected"   
+    selected_type_warning= "selected"                                                      
+    selected_type_error= "selected"
 
-    if request.method == 'POST':
-        
-        # request settings
-        if request.form.get("select_log_types") != None:
-                       
-            if request.form.get("type_event") == None:
-                checkbox_type_event = ""       
-            if request.form.get("type_status") == None:
-                checkbox_type_status = ""    
-            if request.form.get("type_success") == None:
-                checkbox_type_success = ""                    
-            if request.form.get("type_error") == None:
-                checkbox_type_error = ""    
-     
-        # reset system log
-        if request.form.get("reset_logfile") is not None: 
-            RESET_LOGFILE("log_system")   
-   
-   
     # create log types list
-    selected_log_types = []
-    
-    if checkbox_type_event != "":
-        selected_log_types.append("EVENT")
-    if checkbox_type_status != "":
-        selected_log_types.append("STATUS")
-    if checkbox_type_error != "":
-        selected_log_types.append("ERROR")
-    if checkbox_type_success != "":
-        selected_log_types.append("SUCCESS")                
+    selected_log_types = ["EVENT", "STATUS", "SUCCESS", "WARNING", "ERROR"]     
+   
+    # change log selection 
+    if request.form.get("select_log_types") != None:   
+   
+        selected_type_event   = ""
+        selected_type_status  = ""
+        selected_type_success = ""   
+        selected_type_warning = ""                                                     
+        selected_type_error   = ""      
+        
+        selected_log_types = [] 
+   
+        list_selection = request.form.getlist('get_log_settings[]')
+        
+        for element in list_selection:
+            
+            if element == "EVENT":
+                selected_type_event = "selected"
+                selected_log_types.append("EVENT")
+            if element == "STATUS":
+                selected_type_status = "selected"
+                selected_log_types.append("STATUS")                
+            if element == "SUCCESS":
+                selected_type_success = "selected"
+                selected_log_types.append("SUCCESS")                
+            if element == "WARNING":
+                selected_type_warning = "selected"
+                selected_log_types.append("WARNING")                
+            if element == "ERROR":
+                selected_type_error = "selected"
+                selected_log_types.append("ERROR")     
+
 
     # get log entries
-    if GET_LOGFILE_SYSTEM(selected_log_types, 30) is not None:
-        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 30)
+    if GET_LOGFILE_SYSTEM(selected_log_types, 50) is not None:
+        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 50)
         
     else:
         data_log_system = ""
-        error_message_log = "Keine Einträge gefunden"                        
+        error_message_log = "Keine Einträge gefunden"                      
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('dashboard_system_log.html',
                             error_message=error_message,
                             timestamp=timestamp,
-                            checkbox_type_event=checkbox_type_event,
-                            checkbox_type_status=checkbox_type_status,
-                            checkbox_type_error=checkbox_type_error,
-                            checkbox_type_success=checkbox_type_success,                            
+                            selected_type_event=selected_type_event,
+                            selected_type_status=selected_type_status,
+                            selected_type_success=selected_type_success,    
+                            selected_type_warning=selected_type_warning,                                                      
+                            selected_type_error=selected_type_error,                       
                             data_log_system=data_log_system,                                                       
                             active08="active",
                             permission_dashboard=current_user.permission_dashboard,

@@ -1,13 +1,94 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='index_mobile.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+{% endblock %}
 
 {% block content %}
-  <p>Template: <strong>mobile/index.html</strong></p>
-  <p>
-    
-    TESTTETS
-    
-    
-    
-    request.MOBILE:
-    <strong>{% if request.MOBILE %}True{% else %}False{% endif %}</strong>
-  </p>
+
+<!-- nav-bar --> 
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/"><span class="glyphicon glyphicon-home"></span> Login</a></li>
+        <li><a href="{{ url_for('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="col-sm-2 col-sm-offset-2 col-md-10 col-md-offset-1 main">
+    <div class="row">
+      <font color="black">
+      <div class="col">  
+        <br>
+        <br>
+
+<!-- error messages --> 
+
+        {% if login_check is defined %}
+          <div class="alert alert-danger" role="alert">
+            Falsche Benutzereingaben
+          </div>      
+        {% endif %}
+
+        {% if role_check is defined %}
+          <div class="alert alert-danger" role="alert">
+            Keine Zugriffsberechtigung
+          </div>      
+        {% endif %}
+
+
+<!-- login -->   
+            
+<!-- error message -->
+
+{% if error_message != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message }}
+  </div>      
+{% endif %}           
+       
+            
+        <form class="form-signin" method="POST" action="/">
+          <div class="well well-sm">
+            {{ form.hidden_tag() }}
+            {{ wtf.form_field(form.username) }}
+            {{ wtf.form_field(form.password) }}
+            {{ wtf.form_field(form.remember) }}
+          </div>
+          <button class="btn btn-lg btn-default btn-block" type="submit">einloggen</button>
+        </form>
+
+        <br>           
+        <br>
+        <br>           
+        
+        <div class="text-center">  
+          <button type="button" class="btn btn-secondary">Version: {{ version }}</button>
+        </div> 
+
+      </font>
+    </div>  
+  </div>     
+</div> 
+
 {% endblock %}

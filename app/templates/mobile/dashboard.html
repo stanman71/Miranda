@@ -6,7 +6,7 @@
 
 {% block styles %}
   {{super()}}
-  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard_mobile.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
   <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
@@ -124,7 +124,7 @@
           sensor_list.options.add(sensor);
         }
       }
-      $('.selectpicker').selectpicker('refresh');
+      $('.selectpicker').selectpicker('refresh');      
     } 
   </script>
 
@@ -204,16 +204,19 @@
 </nav>
 <br>
 
-
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
   <div class="row">
     <div class="col">
       <font color="white">
  
+ 
 <!-- table led -->      
       
+      
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>LED</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>LED</b></font></div>   
+        </div>  
           <div class="panel-body">  
             <div class="well well-sm">
 
@@ -227,47 +230,14 @@
 
             <form method="POST">
               <table class="table">
-                <thead>                      
-                  <th scope="col">Gruppe</th> 
-                  <th scope="col">LEDs</th> 
-                  <th scope="col">Szene</th> 
-                  <th scope="col">Helligkeit</th>
-                </thead>
                 <tbody> 
                   {% for entry in data_led %}
                   <tr>
-                    <td style="width:14%"> {{entry.name}} </td> 
-                    <td style="width:47%"> 
-                      {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
-                        {{entry.led_name_1}}
-                      {% endif %} 
-                      {% if entry.led_name_2 != "None" and entry.led_name_2 != None %}
-                      | {{entry.led_name_2}}
-                      {% endif %} 
-                      {% if entry.led_name_3 != "None" and entry.led_name_3 != None %}
-                      | {{entry.led_name_3}}
-                      {% endif %}                      
-                      {% if entry.led_name_4 != "None" and entry.led_name_4 != None %}
-                      | {{entry.led_name_4}}
-                      {% endif %} 
-                      {% if entry.led_name_5 != "None" and entry.led_name_5 != None %}
-                      | {{entry.led_name_5}}
-                      {% endif %} 
-                      {% if entry.led_name_6 != "None" and entry.led_name_6 != None %}
-                      | {{entry.led_name_6}}
-                      {% endif %}                          
-                      {% if entry.led_name_7 != "None" and entry.led_name_7 != None %}
-                      | {{entry.led_name_7}}
-                      {% endif %} 
-                      {% if entry.led_name_8 != "None" and entry.led_name_8 != None %}
-                      | {{entry.led_name_8}}
-                      {% endif %} 
-                      {% if entry.led_name_9 != "None" and entry.led_name_9 != None %}
-                      | {{entry.led_name_9}}
-                      {% endif %}                                         
+                    <td style="width:45%"> 
+                      <b>{{entry.name}}</b> 
                     </td> 
-                    <td style="width:22%"> 
-                      <select class="selectpicker" data-width="auto" data-live-search="true" name="set_group_{{ entry.id }}">
+                    <td style="width:55%"> 
+                      <select class="selectpicker" data-width="100%" name="set_group_{{ entry.id }}">
                         <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
                         <optgroup>
                           {% for each_scene in dropdown_list_led_scenes %}
@@ -277,11 +247,18 @@
                         <optgroup> 
                           <option value= "turn_off" > OFF </option> 
                         </optgroup>                                                                                 
-                      </select>                       
+                      </select>   
                     </td>
-                    <td style="width:17%">              
+                  </tr>
+                  <tr>
+                    <td style="width:45%"> </td>
+                    <td style="width:55%">                      
                       <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
-                    </td>                                    
+                    </td>                                      
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
                   </tr>
                   {% endfor %} 
                 </tbody>
@@ -301,7 +278,9 @@
       
       
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Geräte</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Geräte</b></font></div>   
+        </div>      
           <div class="panel-body">  
             <div class="well well-sm">
 
@@ -321,65 +300,14 @@
 
             <form method="POST">
               <table class="table">
-                <thead>                      
-                  <th scope="col">Gerät</th> 
-                  <th scope="col">Kontrolle</th> 
-                  <th scope="col">Befehl</th> 
-                  <th scope="col">Status</th> 
-                </thead>
                 <tbody> 
                   {% for entry in data_device %}
                     <tr>
-                      <td style="width:14%"> {{entry.name}} </td>
-                      <td style="width:47%">      
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-6">   
-                            <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_option_{{ entry.id }}">
-                              {% if entry.dashboard_check_option != "None" %}
-                                <option value = "{{ entry.dashboard_check_option }}" > {{ entry.dashboard_check_option }} </option>
-                              {% else %}   
-                                <option value = "None" > None </option> 
-                              {% endif %}                               
-                              <optgroup>
-                                {% for each in dropdown_list_check_options %}
-                                  <option value = {{each}} > {{each}} </option>
-                                {% endfor %}
-                              </optgroup>
-                              <optgroup>                                                              
-                                {% for each in list_mqtt_devices %}
-                                  <option value = {{ each.id }} > {{ each.name }} </option>
-                                {% endfor %}       
-                              </optgroup>                            
-                              <optgroup>                                                    
-                                <option value= "None" > None </option>      
-                              </optgroup>                                            
-                            </select>  
-                          </div>     
-                          {% if entry.dashboard_check_option != "None" %} 
-                          <div class="col-sm-4"> 
-                            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_dashboard_check_setting_{{ entry.id }}">
-                              {% if entry.dashboard_check_setting != "None" %}
-                                <option value = "{{ entry.dashboard_check_setting }}" > {{ entry.dashboard_check_setting }} </option>
-                              {% else %}   
-                                <option value = "None" > None </option> 
-                              {% endif %}                             
-                              <optgroup>
-                                {% if entry.commands != None %}  
-                                  {% for each in entry.commands.split(' ') %}
-                                    <option value= "{{ each }}" > {{ each }} </option>
-                                  {% endfor %}  
-                                {% endif %}      
-                              </optgroup>     
-                              <optgroup>                                                    
-                                <option value= "None" > None </option>      
-                              </optgroup>                                                                        
-                            </select>                              
-                          </div>      
-                          {% endif %}     
-                        </div>                                        
+                      <td style="width:45%"> 
+                        <b>{{entry.name}}</b> 
                       </td>
-                      <td style="width:22%">   
-                        <select class="selectpicker" data-width="auto" data-live-search="true" name="set_dashboard_setting_{{ entry.id }}">
+                      <td style="width:55%">    
+                        <select class="selectpicker" data-width="100%" name="set_dashboard_setting_{{ entry.id }}">
                           <option value = "None" > None </option>                          
                           <optgroup>
                             {% if entry.commands != None %}  
@@ -388,78 +316,43 @@
                               {% endfor %}  
                             {% endif %}      
                           </optgroup>                                                                       
-                        </select>                                                  
+                        </select>                             
                       </td>
-                      <td style="width:17%"> {{entry.previous_setting}} </td>    
                     </tr>
-                    <tr>
-                      <td></td> 
-                      <td>
-                        <div class="row justify-content-md-center">
-   
-                        {% if entry.dashboard_check_option == "IP-Address" %}         
-                          <div class="col-sm-5"> 
-                            <input type="text" class="form-control" name="set_dashboard_check_value_1_{{ entry.id }}" value="{{ entry.dashboard_check_value_1 }}" />
-                          </div> 
-                        {% endif %}      
-                       
-                        {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
-   
-                          <div class="col-sm-6"> 
-                            <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_value_1_{{ entry.id }}">
-                              {% if entry.dashboard_check_value_1 != "None" %}
-                                <option value = "{{ entry.dashboard_check_value_1 }}" > {{ entry.dashboard_check_value_1 }} </option>
-                              {% else %}   
-                                <option value = "None" > None </option>   
-                              {% endif %}                          
-                              <optgroup>
-                                {% for each in entry.dashboard_check_sensor_input_values.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}     
-                                {% if entry.input_values != "None" %}
-                                  {% for each in entry.input_values.split(',') %}
-                                    <option value= "{{ each }}" > {{ each }} </option>
-                                  {% endfor %}   
-                                {% endif %}                                      
-                              </optgroup>                                                                         
-                            </select>                                  
-                          </div>   
-        
-                          <div class="col-sm-3"> 
-                            <select class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_value_2_{{ entry.id }}">
-                              {% if entry.dashboard_check_value_2 != "None" %}
-                                <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
-                              {% else %}   
-                                <option value = "None" > None </option>   
-                              {% endif %}                            
-                              <optgroup>
-                                {% for each in dropdown_list_operators %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}      
-                              </optgroup>                                                                                 
-                            </select> 
-                          </div>           
-                                  
-                          <div class="col-sm-3"> 
-                            <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
-                          </div>                          
-                            
-                          {% endif %}                  
-                      
-                        </div> 
+                    <tr>   
+                      <td style="width:45%"> Kontrolle</td> 
+                      <td style="width:55%"> 
+                        <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" name="set_dashboard_check_option_{{ entry.id }}">
+                          {% if entry.dashboard_check_option != "None" %}
+                            <option value = "{{ entry.dashboard_check_option }}" > {{ entry.dashboard_check_option }} </option>
+                          {% else %}   
+                            <option value = "None" > None </option> 
+                          {% endif %}                               
+                          <optgroup>
+                            {% for each in dropdown_list_check_options %}
+                              <option value = {{each}} > {{each}} </option>
+                            {% endfor %}
+                          </optgroup>
+                          <optgroup>                                                              
+                            {% for each in list_mqtt_devices %}
+                              <option value = {{ each.id }} > {{ each.name }} </option>
+                            {% endfor %}       
+                          </optgroup>                            
+                          <optgroup>                                                    
+                            <option value= "None" > None </option>      
+                          </optgroup>                                            
+                        </select>                      
                       </td>
-                      <td></td>
-                      <td></td>
                     </tr>
+                    <tr> 
+                      <td style="width:45%"> </td>
+                      <td style="width:55%"> {{entry.previous_setting}} </td>    
+                    </tr>   
                     <tr>
                       <td></td>
-                      <td></td>   
                       <td></td>
-                      <td></td>                                                            
-                    </tr>
-                  
+                    </tr>                                                         
                   {% endfor %}  
-                  
                 </tbody>
               </table> 
               
@@ -477,7 +370,9 @@
       
       
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Bewässerung</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Bewässerung</b></font></div>   
+        </div>      
           <div class="panel-body">  
             <div class="well well-sm">
 
@@ -489,23 +384,12 @@
 
             <form method="POST">
               <table class="table">
-                <thead>                      
-                  <th scope="col">Pflanze</th> 
-                  <th scope="col">Gruppe</th> 
-                  <th scope="col">Letzte Werte</th> 
-                  <th scope="col">Letzter Kontakt</th> 
-                  <th scope="col">Befehl</th> 
-                  <th scope="col">Status</th> 
-                </thead>
                 <tbody> 
                   {% for entry in data_watering_control %}
                     <tr>
-                      <td style="width:14%"> {{entry.name}} </td>
-                      <td style="width:8%"> {{entry.group}} </td>
-                      <td style="width:25%"> {{entry.mqtt_device.last_values_formated}} </td>
-                      <td style="width:14%"> {{entry.mqtt_device.last_contact}} </td>
-                      <td style="width:22%">  
-                        <select class="selectpicker" data-live-search="true" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
+                      <td style="width:45%"> <b>{{entry.name}}</b> </td>
+                      <td style="width:55%">    
+                        <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
                           <option value= "None" > None </option>                      
                           <optgroup>
                           {% if entry.commands != None %}
@@ -514,10 +398,17 @@
                             {% endfor %}  
                           {% endif %}   
                           </optgroup>                            
-                        </select>                        
-                      </td> 
-                      <td style="width:17%"> {{entry.mqtt_device.previous_setting}} </td>
+                        </select>                          
+                      </td>                       
                     </tr>
+                    <tr>   
+                      <td style="width:45%"> {{entry.mqtt_device.last_contact}} </td>                      
+                      <td style="width:55%"> {{entry.mqtt_device.last_values_formated}} </td>                                       
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                    </tr>                    
                   {% endfor %}  
                 </tbody>
               </table> 
@@ -534,7 +425,9 @@
  <!-- program control -->      
       
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Programme</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Programme</b></font></div>   
+        </div>        
           <div class="panel-body">  
             <div class="well well-sm"> 
               
@@ -545,40 +438,32 @@
 {% endif %}              
                
               <form method="POST">
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-3">  
-                    <select class="selectpicker" data-live-search="true" data-width="100%" name="get_program_id">
-                      <option value= "None" > None </option>                      
-                      <optgroup>
-                      {% for each_program in dropdown_list_programs %}
-                        <option value="{{ each_program.id }}"> {{ each_program.name }} </option>
-                      {% endfor %}
-                      </optgroup>                            
-                    </select>
-                  </div>  
-                  <div class="col-sm-1">  
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Repeat</button>  
+                <select class="selectpicker" data-width="100%" name="get_program_id">
+                  <option value= "None" > None </option>                      
+                  <optgroup>
+                  {% for each_program in dropdown_list_programs %}
+                    <option value="{{ each_program.id }}"> {{ each_program.name }} </option>
+                  {% endfor %}
+                  </optgroup>                            
+                </select>   
+                <br>
+                <br>             
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Repeat</button>  
+                <font size="+2">
+                  <div class="pretty p-default p-curve p-fill p-bigger">
+                    <input type="checkbox" {{ checkbox_repeat_program }} name="repeat_program" >
+                    <div class="state p-success">
+                      <label></label>
+                    </div>
                   </div>
-                  <div class="col-sm-1">  
-                    <font size="+2">
-                      <div class="pretty p-default p-curve p-bigger">
-                        <input type="checkbox" {{ checkbox_repeat_program }} name="repeat_program" >
-                        <div class="state p-success">
-                          <label></label>
-                        </div>
-                      </div>
-                    </font>                                    
-                  </div>                    
-                  <div class="col-sm-2">                                        
-                    <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="start_program" value="Programm starten" />
-                  </div>   
-                  <div class="col-sm-2">                                        
-                    <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="stop_program" value="Programm stoppen" />
-                  </div>        
-                  <div class="col-sm-3">    
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
-                  </div>                                      
-                </div>   
+                </font>   
+                <br>     
+                <br>  
+                <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="start_program" value="Programm starten" />                                      
+                <input type="submit" onclick="window.location.href='/dashboard#programs'" class="btn btn-default" name="stop_program" value="Programm stoppen" />                       
+                <br>
+                <br>
+                <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
               </form>
             </div>    
           </div>  
@@ -588,23 +473,24 @@
       
       
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Sensoren</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Sensoren</b></font></div>   
+        </div>      
           <div class="panel-body">  
             <div class="well well-sm">
               <table class="table">
-                <thead>                      
-                  <th scope="col">Sensor</th> 
-                  <th scope="col">Beschreibung</th>
-                  <th scope="col">Werte</th> 
-                  <th scope="col">Letzter Kontakt</th>
-                </thead>
                 <tbody> 
                   {% for entry in data_sensor %}
                   <tr>
-                    <td style="width:14%"> {{entry.name}} </td>
-                    <td style="width:27%"> {{entry.description}} </td> 
-                    <td style="width:42%"> {{entry.last_values_formated}} </td>
-                    <td style="width:17%"> {{entry.last_contact}} </td>
+                    <td style="width:55%"> <b>{{entry.name}}</b> </td>
+                    <td style="width:45%"> {{entry.description}} </td> 
+                  </tr><tr>
+                    <td style="width:55%"> {{entry.last_contact}} </td>                    
+                    <td style="width:45%"> {{entry.last_values_formated}} </td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
                   </tr>
                   {% endfor %} 
                 </tbody>
@@ -618,7 +504,9 @@
 
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Spotify</b></font></div>      
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Spotify</b></font></div>   
+        </div>     
           <div class="panel-body">                            
             <div class="well well-sm">  
               <h3><span class="label label-default">Spotify-Account >>> {% if spotify_user == "Nicht eingeloggt" %}<font color="salmon">{{ spotify_user }}</font>{% else %}<font color="lightgreen">{{ spotify_user }}</font>{% endif %}</span></h3>
@@ -735,7 +623,9 @@
      
     
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="white"><b>Ereignisse</b></font></div>       
+        <div class="text-center">
+          <div class="panel-heading"><font color="white" size="5"><b>Ereignisse</b></font></div>   
+        </div>        
             <div class="panel-body">  
               <div class="well well-sm"> 
                 <form method="POST">
@@ -749,12 +639,13 @@
                         <option {{ selected_type_error }}> ERROR </option>                                              
                       </select>   
                     </div>
+                    <br>
                     <div class="col-sm-3">    
                        <input type="submit" onclick="window.location.href='/dashboard#system_log'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
                     </div>                                      
                   </div>   
                 </form>
-              </div>    
+              </div>      
 
 <!-- table logs -->               
             
@@ -767,23 +658,27 @@
 {% endif %}
 
               <table class="table">
-                <thead>                      
-                  <th scope="col">Zeitpunkt</th> 
-                  <th scope="col">Typ</th> 
-                  <th scope="col">Eintrag</th> 
-                </thead>
                 <tbody> 
                   {% for entry in data_log_system %}
                   <tr>
-                    <td style="width:16%">{{ entry[0] }}</td> 
-                    <td style="width:10%">
-                      {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "STATUS" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "SUCCESS" %} <font color="lawngreen">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %}            
-                    </td>                   
-                    <td style="width:74%">{{ entry[2] }}</td>  
+                    <td>
+                      <b>
+                        {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "STATUS" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "SUCCESS" %} <font color="lawngreen">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %} 
+                      </b>           
+                    </td>   
+                    <td>{{ entry[0] }}</td> 
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td>{{ entry[2] }}</td>  
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
                   </tr>
                   {% endfor %} 
                 </tbody>
@@ -794,11 +689,11 @@
 
             <div class="text-center">
               <b>Version {{ version }}</b>
-            </div>    
+            </div>     
           </div>  
         </div> 
-        </font>
-      </div>   
+      </div>  
+      </font> 
     </div>  
   </div> 
 </div>   
