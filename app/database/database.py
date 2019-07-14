@@ -295,7 +295,7 @@ class Speechcontrol_Device_Tasks(db.Model):
     __tablename__ = 'speechcontrol_device_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task                 = db.Column(db.String(50))
-    setting_value        = db.Column(db.String(50))    
+    setting              = db.Column(db.String(50))    
     keywords             = db.Column(db.String(50))
     mqtt_device_ieeeAddr = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr')) 
     mqtt_device          = db.relationship('MQTT_Devices') 
@@ -314,7 +314,7 @@ class Speechcontrol_Spotify_Tasks(db.Model):
     __tablename__ = 'speechcontrol_spotify_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task                 = db.Column(db.String(50))
-    setting_value        = db.Column(db.String(50))    
+    setting              = db.Column(db.String(50))    
     keywords             = db.Column(db.String(50))
 
 class User(UserMixin, db.Model):
@@ -1368,7 +1368,7 @@ def GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr):
 
 def GET_ALL_MQTT_DEVICES(selector):
     device_list = []
-    devices = MQTT_Devices.query.all()
+    devices     = MQTT_Devices.query.all()
   
     if selector == "":
         for device in devices:
@@ -1403,6 +1403,7 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
     if selector == "sensor":
         for device in devices:
+            
             if (device.device_type == "sensor_passiv" or 
                 device.device_type == "sensor_active" or 
                 device.device_type == "watering_control"):
@@ -1433,31 +1434,23 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
             else:
                 # add the new device            
                 device = MQTT_Devices(
-                        id              = i,
-                        name            = name,
-                        gateway         = gateway,                    
-                        ieeeAddr        = ieeeAddr,
-                        model           = model,
-                        device_type     = device_type,
-                        description     = description,
-                        input_values    = str(input_values),
-                        input_events    = str(input_events),
-                        commands        = str(commands),                    
-                        last_contact    = last_contact,
+                        id                     = i,
+                        name                   = name,
+                        gateway                = gateway,                    
+                        ieeeAddr               = ieeeAddr,
+                        model                  = model,
+                        device_type            = device_type,
+                        description            = description,
+                        input_values           = str(input_values),
+                        input_events           = str(input_events),
+                        commands               = str(commands),                    
+                        last_contact           = last_contact,
+                        dashboard_check_option = "None"
                         )
                         
                 db.session.add(device)
                 db.session.commit()
                 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + name + " | added || Gateway - " + gateway + 
-                                     " | ieeeAddr - " + ieeeAddr + 
-                                     " | Model - " + model + 
-                                     " | Device_type - " + device_type + 
-                                     " | Description - " + description + 
-                                     " | Input_values - " + str(input_values) + 
-                                     " | Input_events - " + str(input_events) + 
-                                     " | Commands - " + str(commands))
-
                 SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)   
                 
                 return ""
@@ -1556,13 +1549,14 @@ def SET_MQTT_DEVICE_PREVIOUS_SETTING(ieeeAddr, setting):
     db.session.commit()  
     
     
-def UPDATE_MQTT_DEVICE(id, name, gateway, device_type = "", description = "", input_values = "", input_events = "", commands = ""):
+def UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type = "", description = "", input_values = "", input_events = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
     
     # values changed ?
-    if (entry.name != name or entry.device_type != device_type or entry.description != description 
+    if (entry.name != name or entry.model != model or entry.device_type != device_type or entry.description != description 
         or entry.input_values != input_values or entry.input_events != input_events or entry.commands != commands):
         
+        entry.model           = model
         entry.device_type     = device_type
         entry.description     = description
         entry.input_values    = str(input_values)
@@ -1638,59 +1632,66 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
     for entry in entries:
         if entry.mqtt_device_ieeeAddr == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in Systemeinstellungen / Controller"     
+            error_list = error_list + "," + device.name + " eingetragen in System / Controller"     
 
     # check plants
     entries = GET_ALL_PLANTS()
     for entry in entries:
         if entry.mqtt_device_ieeeAddr == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in Bewässung >>> Pflanze - " + entry.name     
+            error_list = error_list + "," + device.name + " eingetragen in Bewässung"
     
     # check scheduler sensor
     entries = GET_ALL_SCHEDULER_TASKS()
     for entry in entries:
         if (entry.mqtt_device_ieeeAddr_1 == ieeeAddr) or (entry.mqtt_device_ieeeAddr_2 == ieeeAddr) or (entry.mqtt_device_ieeeAddr_3 == ieeeAddr):
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung >>> Sensor - " + entry.name      
+            error_list = error_list + "," + device.name + " eingetragen in Aufgabenplanung"
     
     # check sensordata
     entries = GET_ALL_SENSORDATA_JOBS()
     for entry in entries:
         if entry.mqtt_device_ieeeAddr == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in Sensordaten >>> Job - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in Sensordaten / Jobs"
+        
+    # check speechcontrol
+    entries = GET_ALL_SPEECHCONTROL_DEVICE_TASKS()
+    for entry in entries:
+        if entry.mqtt_device_ieeeAddr == ieeeAddr:
+            device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+            error_list = error_list + "," + device.name + " eingetragen in System / Sprachsteuerung"            
         
     # check led groups
     entries = GET_ALL_LED_GROUPS()
     for entry in entries:
         if entry.led_ieeeAddr_1 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_2 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name     
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_3 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen" 
         if entry.led_ieeeAddr_4 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_5 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_6 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name   
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_7 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name  
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_8 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name          
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"
         if entry.led_ieeeAddr_9 == ieeeAddr:
             device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-            error_list = error_list + "," + device.name + " eingetragen in LED / LED-Gruppen >>> Gruppe - " + entry.name                       
+            error_list = error_list + "," + device.name + " eingetragen in LED / Gruppen"            
        
     if error_list != "":
         return error_list[1:]   
@@ -2602,18 +2603,18 @@ def ADD_SPEECHCONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr):
     return "Task-Limit erreicht (25)"
 
 
-def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting_value, keywords):
+def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting, keywords):
     entry = Speechcontrol_Device_Tasks.query.filter_by(id=id).first()
 
     # values changed ?
-    if (entry.setting_value != setting_value or entry.keywords != keywords):
+    if (entry.setting != setting or entry.keywords != keywords):
         
-        entry.setting_value = setting_value       
-        entry.keywords      = keywords        
+        entry.setting  = setting      
+        entry.keywords = keywords        
         db.session.commit()
             
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + entry.task + 
-                             " | changed || Setting Value - " + entry.setting_value +
+                             " | changed || Setting - " + entry.setting +
                              " | Keywords - " + str(entry.keywords))
   
        
@@ -2828,18 +2829,18 @@ def ADD_SPEECHCONTROL_SPOTIFY_TASK(task, spotify_command):
     return "Task-Limit erreicht (25)"
 
 
-def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, setting_value, keywords):
+def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, setting, keywords):
     entry = Speechcontrol_Spotify_Tasks.query.filter_by(id=id).first()
 
     # values changed ?
-    if (entry.setting_value != setting_value or entry.keywords != keywords):
+    if (entry.setting != setting or entry.keywords != keywords):
         
-        entry.setting_value = setting_value       
-        entry.keywords      = keywords        
+        entry.setting   = setting      
+        entry.keywords  = keywords        
         db.session.commit()
             
         WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + entry.task + 
-                             " | changed || Setting Value - " + entry.setting_value +
+                             " | changed || Setting - " + entry.setting +
                              " | Keywords - " + str(entry.keywords))
   
        

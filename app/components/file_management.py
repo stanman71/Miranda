@@ -412,6 +412,7 @@ def GET_MQTT_DEVICE_INFORMATIONS(model):
                 
                 return (device_type, description, input_values, input_events, commands)
                 
+        return ("", "", "", "", "")   
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | config/zigbee_device_informations.json | " + str(e))   

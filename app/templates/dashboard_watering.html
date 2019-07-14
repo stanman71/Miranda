@@ -123,7 +123,7 @@
               <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
             </div>            
             <div class="col-sm-3"> 
-              <select class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_ieeeAddr">
+              <select class="selectpicker" data-width="80%" data-live-search="true" name="set_mqtt_device_ieeeAddr">
                 {% for each in dropdown_list_mqtt_devices %}
                   <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
                 {% endfor %}                                                                              
@@ -171,9 +171,9 @@
                   <th scope="col">Pflanze</th>   
                   <th scope="col">Gerät</th> 
                   <th scope="col">Gruppe</th> 
-                  <th scope="col">Pumpdauer (s)</th>     
-                  <th scope="col">Sensor Wasservorrat</th>                                   
-                  <th scope="col">Sensor Feuchtigkeit</th>     
+                  <th scope="col">Pumpdauer (s)</th>    
+                  <th scope="col">Sensor Feuchtigkeit</th>                      
+                  <th scope="col">Sensor Wasservorrat</th>                                     
                   <th scope="col"></th>                                                    
                 </thead>
                 <tbody> 
@@ -187,7 +187,7 @@
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
                     </td> 
                     <td style="width:22%">
-                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_{{ entry.id }}">
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="selectpicker" data-width="95%" data-live-search="true" name="set_mqtt_device_{{ entry.id }}">
                         <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
                         <optgroup>
                           {% for each in dropdown_list_mqtt_devices %}
@@ -215,21 +215,7 @@
                           {% endfor %}
                         </optgroup>                                                                                 
                       </select>                       
-                    </td>   
-                    <td style="width:17%">
-                      <div class="row justify-content-md-center">                      
-                        <div class="col-sm-2"> 
-                          <font size="+2">
-                            <div class="pretty p-default p-curve p-bigger">
-                              <input type="checkbox" {{ entry.control_sensor_watertank }} name="set_control_sensor_watertank_{{ entry.id }}" >
-                              <div class="state p-success">
-                                <label></label>
-                              </div>
-                            </div>
-                          </font>                      
-                        </div>
-                      </div>  
-                    </td>        
+                    </td>          
                     <td style="width:17%">
                       <div class="row justify-content-md-center">
                         <div class="col-sm-3">  
@@ -245,8 +231,8 @@
                         
                         {% if entry.control_sensor_moisture == "checked" %}
                         
-                        <div class="col-sm-1">    
-                          <select class="selectpicker" data-width="auto" name="set_moisture_{{ entry.id }}">
+                        <div class="col-sm-7">    
+                          <select class="selectpicker" data-width="100%" name="set_moisture_{{ entry.id }}">
                             <option value= "{{ entry.moisture }}" > {{ entry.moisture }} </option>
                             <optgroup>
                               {% for each in dropdown_list_moisture %}
@@ -259,7 +245,21 @@
                         {% endif %}
             
                       </div>
-                    </td>               
+                    </td>    
+                    <td style="width:17%">
+                      <div class="row justify-content-md-center">                      
+                        <div class="col-sm-2"> 
+                          <font size="+2">
+                            <div class="pretty p-default p-curve p-bigger">
+                              <input type="checkbox" {{ entry.control_sensor_watertank }} name="set_control_sensor_watertank_{{ entry.id }}" >
+                              <div class="state p-success">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                      
+                        </div>
+                      </div>  
+                    </td>                                
                     <td style="width:5%">
                       <a href="/dashboard/watering/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>
                     </td>   

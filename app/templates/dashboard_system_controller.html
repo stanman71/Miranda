@@ -114,8 +114,8 @@
           <div class="col-sm-2">                     
             <button type="button" style="background-color:transparent" class="btn btn-secondary">Neuer Controller:</button>
           </div>               
-          <div class="col-sm-3">
-            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_ieeeAddr">
+          <div class="col-sm-4">
+            <select class="selectpicker" data-width="80%" data-live-search="true" name="set_mqtt_device_ieeeAddr">
               {% for each in dropdown_list_controller %}
                 <option value="{{ each.ieeeAddr }}" > {{ each.name }} </option>
               {% endfor %}                                                                          
@@ -292,11 +292,17 @@
                 <tbody>
                   <tr>
                     <td>scene /// wohnzimmer /// relax /// 100</td>
-                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
+                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" 
+                      <br>
+                      <br> Optionale Einstellung >>> globale Helligkeit 100 %</td>
                   </tr>
                   <tr>
                     <td>brightness /// schlafzimmer /// TURN_UP</td>
-                    <td>Erhöhe Helligkeit der LEDs Gruppe "schlafzimmer" um 20% >>> TURN_UP = heller // TURN_DOWN = dunkler</td>
+                    <td>Erhöhe Helligkeit der LEDs Gruppe "schlafzimmer" um 20% 
+                      <br>
+                      <br> TURN_UP &nbsp; &nbsp; &nbsp; >>> heller 
+                      <br> TURN_DOWN                    >>> dunkler
+                    </td>
                   </tr>                  
                   <tr>
                     <td>led_off /// group /// flur, bad</td>
@@ -308,11 +314,19 @@
                   </tr>  
                   <tr>
                     <td>device /// Steckdose TV /// {"state":"OFF"}</td>
-                    <td>Gerät Steckdose TV ausschalten ({"state":"ON"} ist einschalten)</td>
+                    <td>Gerät Steckdose TV ausschalten 
+                      <br>
+                      <br> {"state":"ON"} &nbsp; >>> einschalten
+                      <br> {"state":"OFF"}       >>> ausschalten                    
+                    </td>
                   </tr>    
                   <tr>
                     <td>program /// SUNRISE /// START</td>
-                    <td>Programm "SUNRISE" starten >>> STOP für stoppen</td>
+                    <td>Programm "SUNRISE" starten 
+                      <br>
+                      <br> START       >>> starten
+                      <br> STOP &nbsp; >>> beenden                    
+                    </td>                    
                   </tr>                                                                
                 </tbody>
               </table>     

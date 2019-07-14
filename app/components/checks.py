@@ -677,7 +677,7 @@ def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
    for task in tasks:
       
       if task_typ == "devices":
-         if task.setting_value == None or task.setting_value == "None":
+         if task.setting == None or task.setting == "None":
             list_errors.append(task.task + " >>> Keinen Befehl ausgewählt") 
             
       if task_typ == "programs":

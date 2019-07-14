@@ -82,6 +82,7 @@ def PROCESS_MANAGEMENT_THREAD():
 				if process[1] == "device":
 					MQTT_PUBLISH(process[2], process[3])	
 					
+					
 				if process[1] == "led_rgb": 
 					led_name      = process[2]
 					rgb_values    = re.findall(r'\d+', process[3])

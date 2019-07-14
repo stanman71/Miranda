@@ -311,7 +311,7 @@ def dashboard_system_zigbee2mqtt():
                             zigbee_check = True
                     
                     if zigbee_check == True:             
-                        WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing enabled") 
+                        WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
                     else:             
                         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")   
                         error_message_zigbee2mqtt_pairing = "Pairing Einstellung nicht bestätigt"   
@@ -401,23 +401,6 @@ def remove_zigbee2mqtt_device(ieeeAddr):
         SET_ERROR_DELETE_MQTT_DEVICE(result)
     else:
         MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device_name) 
-
-
-    """
-        time.sleep(20)
-        zigbee_check = False
-        
-        for message in MQTT_GET_INCOMING_MESSAGES(5):
-            
-            if message[1] == "SmartHome/zigbee2mqtt/bridge/log" and message[2] == '{"type":"device_removed","message":"' + device_name + '"}':
-                zigbee_check = True
-        
-        if zigbee_check == True:             
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "Zigbee2MQTT | Device - " + device_name + " | deleted")
-        else:             
-            WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device_name + " | Deletion not confirmed")  
-            SET_ERROR_DELETE_MQTT_DEVICE("Löschung des Geräts " + device_name + " nicht bestätigt")   
-    """
     
     return redirect(url_for('dashboard_system_zigbee2mqtt'))
 
@@ -704,19 +687,19 @@ def dashboard_system_speechcontrol():
             if request.form.get("change_speechcontrol_device_tasks") != None: 
                 for i in range (1,26):
                     
-                    if request.form.get("set_speechcontrol_device_task_setting_value_" + str(i)) != None:  
+                    if request.form.get("set_speechcontrol_device_task_setting_" + str(i)) != None:  
                     
-                        if request.form.get("set_speechcontrol_device_task_setting_value_" + str(i)) != None:  
-                            setting_value = request.form.get("set_speechcontrol_device_task_setting_value_" + str(i))
+                        if request.form.get("set_speechcontrol_device_task_setting_" + str(i)) != None:  
+                            setting = request.form.get("set_speechcontrol_device_task_setting_" + str(i))
                         else:
-                            setting_value = "None"
+                            setting = "None"
                             
                         if request.form.get("set_speechcontrol_device_task_keyword_" + str(i)) != "":  
                             keywords = request.form.get("set_speechcontrol_device_task_keyword_" + str(i))               
                         else:
                             keywords = "None"         
                                   
-                        UPDATE_SPEECHCONTROL_DEVICE_TASK(i, setting_value, keywords)   
+                        UPDATE_SPEECHCONTROL_DEVICE_TASK(i, setting, keywords)   
                        
 
             #############################

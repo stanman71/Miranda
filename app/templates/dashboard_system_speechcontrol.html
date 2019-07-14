@@ -466,8 +466,8 @@
                   <td style="width:17%">{{ entry.task }}</td> 
                   <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
                   <td style="width:20%">   
-                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_device_task_setting_value_{{ entry.id }}">
-                      <option value = "{{ entry.setting_value }}" > {{ entry.setting_value }} </option>
+                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_device_task_setting_{{ entry.id }}">
+                      <option value = "{{ entry.setting }}" > {{ entry.setting }} </option>
                       <optgroup>
                         {% for each in entry.mqtt_device.commands.split(' ') %}
                           <option value= "{{ each }}" > {{ each }} </option>
@@ -619,7 +619,6 @@
             <div class="well well-sm">
               <a href="https://snowboy.kitt.ai"><font color="lightblue"><H4>Hotword erstellen (https://snowboy.kitt.ai/)</H4></font></a>
               <br>
-              <br>
               <form method=post enctype=multipart/form-data>
                 <input type=file name=file>
             </div>
@@ -638,7 +637,9 @@
           <div class="well well-sm">                     
             <table class="table">
               <thead> 
-                <th scope="col">Hotword Datein</th>   
+                <th scope="col">Hotword Datein</th> 
+                <th></th>  
+                <th></th> 
               </thead>             
               <tbody> 
                 {% for entry in hotword_file_list %}

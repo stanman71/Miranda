@@ -116,7 +116,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
                     zigbee_check = True
             
             if zigbee_check == True:             
-                WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Pairing enabled") 
+                WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
             else:             
                 WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")             
                      

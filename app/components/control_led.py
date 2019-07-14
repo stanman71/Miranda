@@ -97,7 +97,7 @@ def LED_GROUP_CHECK_SETTING_THREAD(group_id, scene_id, scene, brightness, delay,
 
  
 def LED_GROUP_CHECK_SETTING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
-                    
+               
     if scene == "OFF":
         setting = '{"state":"OFF"}'
     else:

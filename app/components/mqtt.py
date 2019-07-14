@@ -196,18 +196,25 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 		if channel[3] == "get":
 			pass
 		if channel[3] == "set":
-			pass			
+			pass	
+		if channel[3] == "config":
+			pass
 		if channel[3] == "log":
 			
 			data = json.loads(msg)
 			
-			# update zigbee device table
+			# add devices
 			if data["type"] == "device_connected":
-				time.sleep(1)
+				time.sleep(5)
 				MQTT_UPDATE_DEVICES("zigbee2mqtt")
+				WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Device added - " + data["message"]) 	
 	
-					
+			# remove devices
+			if data["type"] == "device_removed":
+				WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Device deleted - " + data["message"]) 		
+				
 	except:
+		
 		
 		if ieeeAddr != "":	
 			
@@ -223,8 +230,8 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 				
 				for job in list_jobs:
 					MQTT_SAVE_SENSORDATA(job) 
-
-
+			
+					
 		if device_type == "sensor_passiv" or device_type == "sensor_active":
 			
 			# start schedular job 
@@ -333,7 +340,7 @@ def MQTT_UPDATE_DEVICES(gateway):
 						id   = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).id
 						name = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name
 										
-						UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, input_values, input_events, commands)
+						UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type, description, input_values, input_events, commands)
 						SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
 					  
 					# update input values
@@ -375,41 +382,42 @@ def MQTT_UPDATE_DEVICES(gateway):
 					message = message.replace("'","")
 
 					data = json.loads(message)	
-                 
+				 
 					if (data['type']) == "devices":
 						
 						devices = (data['message'])
-                     
+					 
 						for i in range(0, len(devices)):
-                        
+						
 							device = devices[i]
-                        
+
 							# add new device
-                        
+						
 							if not GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr']):
-                           
+
 								name         = device['friendly_name']
 								gateway      = "zigbee2mqtt"              
 								ieeeAddr     = device['ieeeAddr']
 								
 								try:
-									model      = device['model']
+									new_model  = device['model']
 									new_device = GET_MQTT_DEVICE_INFORMATIONS(model)
 								except:
-									new_device = ["", "", "", ""]
-                           
+									new_model  = ""
+									new_device = ["", "", "", "", ""]
+									
 								device_type  = new_device[0]
 								description  = new_device[1]
 								input_values = new_device[2]
 								input_events = new_device[3]  
 								commands     = new_device[4]  								
 
-								ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model, device_type, description, input_values, input_events, commands)
+								ADD_MQTT_DEVICE(name, gateway, ieeeAddr, new_model, device_type, description, input_values, input_events, commands)
 
 							# update device informations
-                        
+						
 							else:
-                           
+						   
 								device_data = GET_MQTT_DEVICE_BY_IEEEADDR(device['ieeeAddr'])
 
 								id       = device_data.id	      
@@ -417,10 +425,10 @@ def MQTT_UPDATE_DEVICES(gateway):
 								gateway  = "zigbee2mqtt"
 
 								try:          
-									model = device_data.model  
-									        
+									model = device['model'] 
+											
 									existing_device = GET_MQTT_DEVICE_INFORMATIONS(model)
-                              
+									
 									device_type  = existing_device[0]
 									description  = existing_device[1]
 									input_values = existing_device[2]
@@ -433,16 +441,14 @@ def MQTT_UPDATE_DEVICES(gateway):
 									input_values = device_data.input_values
 									input_events = device_data.input_events
 									commands     = device_data.commands	
-                             
+							 
 									error = "Error: >>> " + str(model) + " not founded >>> " + str(e)
-                           
-                                                                     
-								UPDATE_MQTT_DEVICE(id, name, gateway, device_type, description, input_values, input_events, commands)
-								SET_MQTT_DEVICE_LAST_CONTACT(device['ieeeAddr'])
-                 
-                           
+						   									 
+								UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type, description, input_values, input_events, commands)
+
+
 			if message_founded == True:
-                           
+						   
 				if error != "":
 					WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | " + str(error))
 					return ("ZigBee2MQTT >>> Update Devices >>> " + str(error))	
@@ -453,12 +459,12 @@ def MQTT_UPDATE_DEVICES(gateway):
 			else:			
 				WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Update Devices | No Message founded")
 				return "ZigBee2MQTT >>> Update Devices >>> Keine Message gefunden"					
-			
-    
+		
+
 		except Exception as e:
 			WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | " + str(e))  
 			return ("Error: " + str(e))
-      
+
 
 """ ################### """
 """    get sensordata   """

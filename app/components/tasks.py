@@ -216,10 +216,10 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 			else:
 
 				if device.gateway == "mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + setting_value)
+					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + controller_setting)
 
 				if device.gateway == "zigbee2mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + setting_value)
+					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + controller_setting)
 
 		else:
 			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
@@ -526,14 +526,14 @@ def START_SPEECHCONTROL_TASK(answer):
 
 	# exception
 	if ("could not understand audio" in answer) or ("Could not request results" in answer):
-		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | " + answer)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Detection | " + answer)
 
 	else:
-		WRITE_LOGFILE_SYSTEM("EVENT", 'Speechcontrol | Detection Task | ' + answer)
+		WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | Detection | " + answer)
 
 		SPEECHCONTROL_LED_TASK(answer)
 		SPEECHCONTROL_DEVICE_TASK(answer)
-
+		SPEECHCONTROL_PROGRAM_TASK(answer)
 
 
 # #########
@@ -542,16 +542,26 @@ def START_SPEECHCONTROL_TASK(answer):
 
 def SPEECHCONTROL_LED_TASK(answer):
 
-	table_numbers = {'zehn'   : 10, 
-					 'zwanzig': 20,
-					 'dreizig': 30,
-				 	 'vierzig': 40,
-					 'fünfzig': 50,
-					 'sechzig': 60,
-				 	 'siebzig': 70,
-				 	 'achtzig': 80,
-					 'neunzig': 90,
-				  	 'hundert': 100                            
+	table_numbers = {'fünf'           : 5,
+					 'zehn'           : 10, 
+					 'fünfzehn'       : 15,
+					 'zwanzig'        : 20,
+					 'fünfundzwanzig' : 25,
+					 'dreizig'        : 30,
+					 'fünfunddreizig' : 35,
+				 	 'vierzig'        : 40,
+				 	 'fünfundvierzig' : 45,
+					 'fünfzig'        : 50,
+					 'fünfundfünfzig' : 55,
+					 'sechzig'        : 60,
+					 'fünfundsechzig' : 65, 
+				 	 'siebzig'        : 70,
+				 	 'fünfundsiebzig' : 75,
+				 	 'achtzig'        : 80,
+				 	 'fünfundachtzig' : 85,
+					 'neunzig'        : 90,
+					 'fünfundneunzig' : 95,
+				  	 'hundert'        : 100                            
 					 }
 
 	answer_words = answer.split()
@@ -715,6 +725,7 @@ def SPEECHCONTROL_LED_TASK(answer):
 
 								# new led brightness setting ?
 								if group.current_brightness != brightness:
+									
 									LED_SET_BRIGHTNESS(group.id, brightness)
 									LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
 									time.sleep(1)
@@ -875,16 +886,12 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 
 						# device founded ?
 						if device != None:
-							speechcontrol_setting = task.command
+							speechcontrol_setting = task.setting
 							speechcontrol_setting = speechcontrol_setting.replace(" ", "")		
 
 							# new device setting ?
 							if speechcontrol_setting != device.previous_setting:
 								
-								
-								if "|" in speechcontrol_setting:
-									speechcontrol_setting = speechcontrol_setting.replace("|", ",")
-									
 		
 								# mqtt
 								if device.gateway == "mqtt":
@@ -915,10 +922,10 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 							else:
 
 								if device.gateway == "mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + setting) 
+									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting) 
 
 								if device.gateway == "zigbee2mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + setting)  
+									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting)  
 
 
 						else:
@@ -957,7 +964,7 @@ def SPEECHCONTROL_PROGRAM_TASK(answer):
 				
 				# keyword founded ?
 				if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-
+					
 					try:
 						program = GET_PROGRAM_BY_ID(task.program_id)
 
@@ -971,12 +978,15 @@ def SPEECHCONTROL_PROGRAM_TASK(answer):
 							if command == "start" and program_running == None:
 								START_PROGRAM_THREAD(program.id)
 								break
+								
 							elif command == "start" and program_running != None:
 								WRITE_LOGFILE_SYSTEM("WARNING", "Speechcontrol | Program Task | " + answer + " | Other Program running")	
-								break				
+								break	
+											
 							elif command == "stop":
 								STOP_PROGRAM_THREAD() 
 								break
+								
 							else:
 								WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Command not valid")
 								break

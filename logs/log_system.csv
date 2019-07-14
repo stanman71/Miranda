@@ -18097,3 +18097,1002 @@ expected ',' or ']', but got '<scalar>'
 2019-07-12 17:41:13,EVENT,|ZigBee2MQTT || Pairing disabled|
 2019-07-12 17:41:13,EVENT,|Speechcontrol || started|
 2019-07-12 17:41:36,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 51 %|
+2019-07-12 17:43:09,EVENT,|MQTT || started|
+2019-07-12 17:43:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:43:12,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:43:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:43:13,EVENT,|Speechcontrol || started|
+2019-07-12 17:45:11,EVENT,|MQTT || started|
+2019-07-12 17:45:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:45:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:45:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:45:15,EVENT,|Speechcontrol || started|
+2019-07-12 17:45:43,EVENT,|MQTT || started|
+2019-07-12 17:45:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:45:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:45:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:45:47,EVENT,|Speechcontrol || started|
+2019-07-12 17:46:07,EVENT,|MQTT || started|
+2019-07-12 17:46:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:46:10,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:46:11,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:46:11,EVENT,|Speechcontrol || started|
+2019-07-12 17:46:42,EVENT,|MQTT || started|
+2019-07-12 17:46:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:46:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:46:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:46:46,EVENT,|Speechcontrol || started|
+2019-07-12 17:47:11,EVENT,|MQTT || started|
+2019-07-12 17:47:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:47:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:47:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:47:16,EVENT,|Speechcontrol || started|
+2019-07-12 17:47:36,EVENT,|MQTT || started|
+2019-07-12 17:47:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:47:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:47:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:47:40,EVENT,|Speechcontrol || started|
+2019-07-12 17:51:25,EVENT,|MQTT || started|
+2019-07-12 17:51:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:51:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:51:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:51:29,EVENT,|Speechcontrol || started|
+2019-07-12 17:53:35,EVENT,|MQTT || started|
+2019-07-12 17:53:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:53:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:53:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:53:39,EVENT,|Speechcontrol || started|
+2019-07-12 17:56:08,EVENT,|MQTT || started|
+2019-07-12 17:56:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:56:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:56:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:56:12,EVENT,|Speechcontrol || started|
+2019-07-12 17:56:37,EVENT,|MQTT || started|
+2019-07-12 17:56:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:56:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:56:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:56:41,EVENT,|Speechcontrol || started|
+2019-07-12 17:57:36,EVENT,|MQTT || started|
+2019-07-12 17:57:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:57:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:57:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:57:40,EVENT,|Speechcontrol || started|
+2019-07-12 17:58:21,EVENT,|File || /csv/temperature.csv || downloaded|
+2019-07-12 17:59:32,EVENT,|MQTT || started|
+2019-07-12 17:59:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 17:59:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 17:59:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 17:59:36,EVENT,|Speechcontrol || started|
+2019-07-12 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 19:16:42,EVENT,|MQTT || started|
+2019-07-12 19:16:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:16:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:16:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:16:46,EVENT,|Speechcontrol || started|
+2019-07-12 19:18:18,EVENT,|MQTT || started|
+2019-07-12 19:18:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:18:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:18:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:18:22,EVENT,|Speechcontrol || started|
+2019-07-12 19:18:32,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Setting - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-07-12 19:19:20,EVENT,|MQTT || started|
+2019-07-12 19:19:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:19:23,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:19:24,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:19:24,EVENT,|Speechcontrol || started|
+2019-07-12 19:19:44,EVENT,|Database || MQTT Device - Steckdose TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-07-12 19:21:04,EVENT,|MQTT || started|
+2019-07-12 19:21:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:21:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:21:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:21:08,EVENT,|Speechcontrol || started|
+2019-07-12 19:21:28,EVENT,|MQTT || started|
+2019-07-12 19:21:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:21:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:21:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:21:33,EVENT,|Speechcontrol || started|
+2019-07-12 19:22:35,EVENT,|MQTT || started|
+2019-07-12 19:22:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 19:22:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 19:22:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 19:22:39,EVENT,|Speechcontrol || started|
+2019-07-12 19:25:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 19:25:50,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 19:26:54,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 19:26:59,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 19:27:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 19:27:26,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 19:27:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 19:28:00,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 19:37:26,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 19:37:29,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 19:37:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 19:38:03,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 19:38:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 19:38:12,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 19:38:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 19:38:46,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 21:07:18,EVENT,|MQTT || started|
+2019-07-12 21:07:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:07:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:07:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:07:22,EVENT,|Speechcontrol || started|
+2019-07-12 21:08:31,EVENT,|MQTT || started|
+2019-07-12 21:08:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:08:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:08:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:08:35,EVENT,|Speechcontrol || started|
+2019-07-12 21:09:09,EVENT,|MQTT || started|
+2019-07-12 21:09:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:09:12,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:09:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:09:13,EVENT,|Speechcontrol || started|
+2019-07-12 21:10:45,EVENT,|MQTT || started|
+2019-07-12 21:10:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:10:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:10:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:10:49,EVENT,|Speechcontrol || started|
+2019-07-12 21:11:28,EVENT,|MQTT || started|
+2019-07-12 21:11:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:11:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:11:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:11:32,EVENT,|Speechcontrol || started|
+2019-07-12 21:12:01,EVENT,|MQTT || started|
+2019-07-12 21:12:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:12:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:12:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:12:06,EVENT,|Speechcontrol || started|
+2019-07-12 21:12:23,EVENT,|MQTT || started|
+2019-07-12 21:12:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:12:26,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:12:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:12:28,EVENT,|Speechcontrol || started|
+2019-07-12 21:13:26,EVENT,|MQTT || started|
+2019-07-12 21:13:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:13:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:13:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:13:30,EVENT,|Speechcontrol || started|
+2019-07-12 21:15:42,EVENT,|MQTT || started|
+2019-07-12 21:15:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:15:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:15:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:15:46,EVENT,|Speechcontrol || started|
+2019-07-12 21:16:02,EVENT,|MQTT || started|
+2019-07-12 21:16:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:16:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:16:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:16:06,EVENT,|Speechcontrol || started|
+2019-07-12 21:16:52,EVENT,|MQTT || started|
+2019-07-12 21:16:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:16:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:16:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:16:56,EVENT,|Speechcontrol || started|
+2019-07-12 21:17:26,EVENT,|MQTT || started|
+2019-07-12 21:17:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:17:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:17:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:17:30,EVENT,|Speechcontrol || started|
+2019-07-12 21:19:32,EVENT,|MQTT || started|
+2019-07-12 21:19:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:19:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:19:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:19:37,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1894045584|
+2019-07-12 21:21:12,EVENT,|MQTT || started|
+2019-07-12 21:21:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:21:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:21:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:21:17,EVENT,|Speechcontrol || started|
+2019-07-12 21:21:59,EVENT,|MQTT || started|
+2019-07-12 21:21:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:22:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:22:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:22:03,EVENT,|Speechcontrol || started|
+2019-07-12 21:22:21,EVENT,|MQTT || started|
+2019-07-12 21:22:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:22:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:22:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:22:25,EVENT,|Speechcontrol || started|
+2019-07-12 21:30:34,EVENT,|MQTT || started|
+2019-07-12 21:30:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:30:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:30:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:30:38,EVENT,|Speechcontrol || started|
+2019-07-12 21:31:43,EVENT,|MQTT || started|
+2019-07-12 21:31:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:31:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:31:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:31:47,EVENT,|Speechcontrol || started|
+2019-07-12 21:33:54,EVENT,|MQTT || started|
+2019-07-12 21:33:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:33:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:33:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:33:58,EVENT,|Speechcontrol || started|
+2019-07-12 21:34:34,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 31 %|
+2019-07-12 21:34:36,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 71 %|
+2019-07-12 21:34:38,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 51 %|
+2019-07-12 21:34:42,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 71 %|
+2019-07-12 21:34:45,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 91 %|
+2019-07-12 21:34:49,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 71 %|
+2019-07-12 21:36:02,EVENT,|MQTT || started|
+2019-07-12 21:36:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:36:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:36:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:36:06,EVENT,|Speechcontrol || started|
+2019-07-12 21:37:16,EVENT,|MQTT || started|
+2019-07-12 21:37:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:37:19,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:37:20,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:37:20,EVENT,|Speechcontrol || started|
+2019-07-12 21:39:38,EVENT,|MQTT || started|
+2019-07-12 21:39:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:39:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:39:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:39:42,EVENT,|Speechcontrol || started|
+2019-07-12 21:42:04,EVENT,|MQTT || started|
+2019-07-12 21:42:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:42:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:42:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:42:08,EVENT,|Speechcontrol || started|
+2019-07-12 21:43:37,EVENT,|MQTT || started|
+2019-07-12 21:43:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:43:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:43:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:43:42,EVENT,|Speechcontrol || started|
+2019-07-12 21:44:44,EVENT,|MQTT || started|
+2019-07-12 21:44:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:44:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:44:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:44:49,EVENT,|Speechcontrol || started|
+2019-07-12 21:45:38,EVENT,|MQTT || started|
+2019-07-12 21:45:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:45:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:45:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:45:43,EVENT,|Speechcontrol || started|
+2019-07-12 21:46:37,EVENT,|MQTT || started|
+2019-07-12 21:46:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:46:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:46:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:46:41,EVENT,|Speechcontrol || started|
+2019-07-12 21:47:06,EVENT,|MQTT || started|
+2019-07-12 21:47:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:47:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:47:10,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:47:10,EVENT,|Speechcontrol || started|
+2019-07-12 21:47:37,EVENT,|MQTT || started|
+2019-07-12 21:47:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:47:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:47:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:47:41,EVENT,|Speechcontrol || started|
+2019-07-12 21:47:52,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf hundert prozent|
+2019-07-12 21:47:56,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-07-12 21:47:57,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 100 %|
+2019-07-12 21:48:05,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf siebzig prozent|
+2019-07-12 21:48:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 70 %|
+2019-07-12 21:48:10,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 70 %|
+2019-07-12 21:50:43,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 33 %|
+2019-07-12 21:51:11,EVENT,|MQTT || started|
+2019-07-12 21:51:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:51:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:51:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:51:15,EVENT,|Speechcontrol || started|
+2019-07-12 21:51:24,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf sechzig prozent|
+2019-07-12 21:51:28,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 60 %|
+2019-07-12 21:51:29,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 60 %|
+2019-07-12 21:52:31,EVENT,|MQTT || started|
+2019-07-12 21:52:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:52:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:52:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:52:36,EVENT,|Speechcontrol || started|
+2019-07-12 21:52:44,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf achtzig prozent|
+2019-07-12 21:52:48,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-07-12 21:52:49,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 80 %|
+2019-07-12 21:53:18,EVENT,|Database || Speechcontrol || LED Task - LED Helligkeit ändern || changed |||| Keywords - prozent, %|
+2019-07-12 21:53:30,EVENT,|Speechcontrol || Detection Task || wohnzimmer auch fünfzig prozent|
+2019-07-12 21:53:33,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 50 %|
+2019-07-12 21:53:53,EVENT,|MQTT || started|
+2019-07-12 21:53:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:53:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:53:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:53:58,EVENT,|Speechcontrol || started|
+2019-07-12 21:54:11,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf fünfundsechzig prozent|
+2019-07-12 21:54:12,ERROR,|Speechcontrol || LED Task || wohnzimmer auf fünfundsechzig prozent || Brightness value not founded|
+2019-07-12 21:58:09,EVENT,|MQTT || started|
+2019-07-12 21:58:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 21:58:12,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 21:58:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-12 21:58:13,EVENT,|Speechcontrol || started|
+2019-07-12 21:58:23,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf fünfundzwanzig prozent|
+2019-07-12 21:58:27,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 25 %|
+2019-07-12 21:58:41,EVENT,|Speechcontrol || Detection Task || wohnzimmer auf fünfundsiebzig prozent|
+2019-07-12 21:58:44,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 75 %|
+2019-07-12 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 22:01:58,SUCCESS,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:02:34,ERROR,|ZigBee2MQTT || Update Devices || 'NoneType' object is not subscriptable|
+2019-07-12 22:02:45,SUCCESS,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:03:33,ERROR,|ZigBee2MQTT || Update Devices || 'NoneType' object is not subscriptable|
+2019-07-12 22:04:04,ERROR,|ZigBee2MQTT || Update Devices || 'NoneType' object is not subscriptable|
+2019-07-12 22:06:51,EVENT,|MQTT || started|
+2019-07-12 22:06:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:06:53,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:06:55,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:06:55,EVENT,|Speechcontrol || started|
+2019-07-12 22:07:22,EVENT,|MQTT || started|
+2019-07-12 22:07:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:07:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:07:26,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:07:26,EVENT,|Speechcontrol || started|
+2019-07-12 22:08:12,EVENT,|MQTT || started|
+2019-07-12 22:08:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:08:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:08:16,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:08:16,EVENT,|Speechcontrol || started|
+2019-07-12 22:09:07,EVENT,|MQTT || started|
+2019-07-12 22:09:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:09:10,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:09:11,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:09:11,EVENT,|Speechcontrol || started|
+2019-07-12 22:11:13,EVENT,|MQTT || started|
+2019-07-12 22:11:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:11:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:11:17,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:11:17,EVENT,|Speechcontrol || started|
+2019-07-12 22:13:10,EVENT,|MQTT || started|
+2019-07-12 22:13:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:13:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:13:14,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:13:14,EVENT,|Speechcontrol || started|
+2019-07-12 22:13:18,EVENT,|Database || MQTT Device - 0x00158d000321a5db || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000321a5db || Model - MCCGQ11LM || Device_type -  || Description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-12 22:13:18,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-12 22:16:37,EVENT,|MQTT || started|
+2019-07-12 22:16:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:16:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:16:41,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:16:41,EVENT,|Speechcontrol || started|
+2019-07-12 22:16:48,EVENT,|Database || MQTT Device - 0x00158d000321a5db || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000321a5db || ieeeAddr - 0x00158d000321a5db || Model - MCCGQ11LM || device_type - sensor_active || description - AQARA Contact Sensor || Input_values - contact || Input_events -  || Commands - |
+2019-07-12 22:16:48,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-12 22:20:29,EVENT,|Database || MQTT Device - 0x00158d0002337aa7 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d0002337aa7 || Model - WXKG11LM || Device_type -  || Description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-12 22:20:29,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-12 22:25:47,EVENT,|MQTT || started|
+2019-07-12 22:25:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-12 22:25:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-12 22:25:51,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-12 22:25:51,EVENT,|Speechcontrol || started|
+2019-07-12 22:26:00,EVENT,|Database || MQTT Device - 0x00158d0002337aa7 || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d0002337aa7 || ieeeAddr - 0x00158d0002337aa7 || Model - WXKG11LM || device_type - controller || description - AQARA Wireless Switch || Input_values -  || Input_events - {"click":"single"} {"click":"double"} || Commands - |
+2019-07-12 22:26:01,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-12 22:26:32,EVENT,|Database || Controller - 0x00158d000275de23 || added|
+2019-07-12 22:26:36,EVENT,|Database || Controller - 0x00158d000275de23 || deleted|
+2019-07-12 22:26:41,EVENT,|Database || Controller - 0x00158d0002337aa7 || added|
+2019-07-12 22:26:59,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-07-12 22:27:01,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-12 22:27:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-07-12 22:32:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || warm-weiss : 48 %|
+2019-07-12 22:32:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 22:32:23,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 22:33:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 22:33:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 22:55:28,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering -  || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-12 22:55:37,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering -  || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-12 22:55:37,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-12 22:55:45,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-12 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-12 23:06:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 23:06:22,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 23:09:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 23:09:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 23:11:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-12 23:11:39,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-12 23:12:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-12 23:12:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-12 23:49:44,EVENT,|Speechcontrol || Detection Task || |
+2019-07-13 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-07-13 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-13 00:30:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-13 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 05:42:07,EVENT,|Database || MQTT Device - 0x00158d00023e5ab3 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d00023e5ab3 || Model - WXKG11LM || Device_type - controller || Description - AQARA Wireless Switch || Input_values -  || Input_events - {"click":"single"} {"click":"double"} || Commands - |
+2019-07-13 05:42:07,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 07:54:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 07:54:56,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 07:59:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 07:59:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 09:55:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 09:55:19,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 09:55:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 09:55:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 09:57:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 09:57:07,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 09:57:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 09:57:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 11:05:58,EVENT,|Speechcontrol || Detection Task || fest|
+2019-07-13 11:06:47,EVENT,|Database || Speechcontrol || Program Task - uzt || changed |||| Setting Value - START || Keywords - fest|
+2019-07-13 11:08:01,EVENT,|Speechcontrol || Detection Task || heute ist ein fest|
+2019-07-13 11:08:33,EVENT,|Speechcontrol || Detection Task || heute ist ein fest|
+2019-07-13 11:08:52,EVENT,|Speechcontrol || Detection Task || steckdose|
+2019-07-13 11:08:52,ERROR,|Speechcontrol || Device Task || steckdose || 'Speechcontrol_Device_Tasks' object has no attribute 'command'|
+2019-07-13 11:13:29,SUCCESS,|ZigBee2MQTT || Device - Steckdose Server || Setting changed - {"state":"ON"}|
+2019-07-13 11:35:09,EVENT,|MQTT || started|
+2019-07-13 11:35:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:35:12,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:35:13,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:35:13,EVENT,|Speechcontrol || started|
+2019-07-13 11:35:53,EVENT,|MQTT || started|
+2019-07-13 11:35:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:35:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:35:57,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:35:58,EVENT,|Speechcontrol || started|
+2019-07-13 11:36:10,EVENT,|Speechcontrol || Detection Task || steckdose|
+2019-07-13 11:36:15,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 11:36:24,EVENT,|Speechcontrol || Detection Task || steckdose|
+2019-07-13 11:36:24,ERROR,|Speechcontrol || Device Task || steckdose || name 'setting' is not defined|
+2019-07-13 11:36:25,EVENT,|Database || Speechcontrol || Device Task - kjhkh || changed |||| Setting - {"state":"ON"} || Keywords - Steckdose|
+2019-07-13 11:36:34,EVENT,|Speechcontrol || Detection Task || steckdose|
+2019-07-13 11:36:39,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 11:38:53,EVENT,|MQTT || started|
+2019-07-13 11:38:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:38:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:38:57,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:38:57,EVENT,|Speechcontrol || started|
+2019-07-13 11:39:03,EVENT,|Speechcontrol || Detection Task || steckdose|
+2019-07-13 11:39:03,STATUS,|Zigbee2MQTT || Device - Steckdose TV || {"state":"ON"}|
+2019-07-13 11:39:54,EVENT,|Database || Speechcontrol || Program Task - uzt || changed |||| Setting Value - START || Keywords - testen|
+2019-07-13 11:40:01,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:40:36,EVENT,|MQTT || started|
+2019-07-13 11:40:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:40:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:40:40,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:40:40,EVENT,|Speechcontrol || started|
+2019-07-13 11:40:47,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:41:58,EVENT,|MQTT || started|
+2019-07-13 11:41:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:42:01,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:42:02,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:42:02,EVENT,|Speechcontrol || started|
+2019-07-13 11:42:08,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:42:08,EVENT,|Program - SUNRISE || started|
+2019-07-13 11:42:14,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 11:42:24,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"brightness":122}|
+2019-07-13 11:42:25,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"state":"OFF"}|
+2019-07-13 11:42:26,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 11:42:26,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:42:27,EVENT,|Program - SUNRISE || started|
+2019-07-13 11:42:29,SUCCESS,|Program - SUNRISE || finished|
+2019-07-13 11:42:32,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 11:42:42,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"brightness":122}|
+2019-07-13 11:42:43,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"state":"OFF"}|
+2019-07-13 11:42:44,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 11:42:47,SUCCESS,|Program - SUNRISE || finished|
+2019-07-13 11:43:48,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:43:48,EVENT,|Program - SUNRISE || started|
+2019-07-13 11:43:49,EVENT,|Database || Speechcontrol || Program Task - uzt || changed |||| Setting Value - STOP || Keywords - testen|
+2019-07-13 11:43:53,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 11:43:56,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:44:00,EVENT,|Program - SUNRISE || stopped|
+2019-07-13 11:44:05,SUCCESS,|Program - SUNRISE || finished|
+2019-07-13 11:44:24,EVENT,|Database || Speechcontrol || Program Task - uzt || changed |||| Setting Value - START || Keywords - testen|
+2019-07-13 11:44:30,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:44:31,EVENT,|Program - SUNRISE || started|
+2019-07-13 11:44:31,STATUS,|Zigbee2MQTT || Device - Steckdose TV || {"state":"OFF"}|
+2019-07-13 11:44:37,EVENT,|Speechcontrol || Detection Task || testen|
+2019-07-13 11:44:37,WARNING,|Speechcontrol || Program Task || testen || Other Program running|
+2019-07-13 11:44:46,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"brightness":122}|
+2019-07-13 11:44:47,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"state":"OFF"}|
+2019-07-13 11:44:48,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 11:44:51,SUCCESS,|Program - SUNRISE || finished|
+2019-07-13 11:45:56,EVENT,|MQTT || started|
+2019-07-13 11:45:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:45:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:46:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:46:00,EVENT,|Speechcontrol || started|
+2019-07-13 11:46:13,EVENT,|MQTT || started|
+2019-07-13 11:46:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 11:46:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 11:46:17,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 11:46:17,EVENT,|Speechcontrol || started|
+2019-07-13 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 12:00:04,SUCCESS,|Database_Backup || saved|
+2019-07-13 12:03:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 12:03:06,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 12:04:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 12:04:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 12:52:35,EVENT,|Database || MQTT Device - 0x00124b001d3be3c5 || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00124b001d3be3c5 || Model - CC2530.ROUTER || Device_type -  || Description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-13 12:52:35,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:53:41,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:53:57,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:54:07,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:54:17,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:54:30,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:54:48,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:55:22,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 12:59:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 12:59:45,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 13:00:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 13:00:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 13:00:45,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 13:01:56,EVENT,|MQTT || started|
+2019-07-13 13:01:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 13:01:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 13:02:00,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 13:02:00,EVENT,|Speechcontrol || started|
+2019-07-13 13:02:06,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 13:08:04,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 13:10:34,EVENT,|MQTT || started|
+2019-07-13 13:10:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 13:10:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 13:10:38,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 13:10:38,EVENT,|Speechcontrol || started|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|File || config/zigbee_device_informations.json || Expecting ',' delimiter: line 82 column 4 (char 2736)|
+2019-07-13 13:10:47,ERROR,|ZigBee2MQTT || Update Devices || Error: >>> CC2530.ROUTER not founded >>> 'NoneType' object is not subscriptable|
+2019-07-13 13:25:12,EVENT,|MQTT || started|
+2019-07-13 13:25:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 13:25:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 13:25:16,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 13:25:17,EVENT,|Speechcontrol || started|
+2019-07-13 13:25:22,EVENT,|Database || MQTT Device - 0x00124b001d3be3c5 || Gateway - zigbee2mqtt || changed |||| Name - 0x00124b001d3be3c5 || ieeeAddr - 0x00124b001d3be3c5 || Model - CC2530.ROUTER || device_type - router || description - CUSTOM CC2530 + CC2592 Router || Input_values -  || Input_events -  || Commands - |
+2019-07-13 13:25:22,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 13:26:03,EVENT,|MQTT || started|
+2019-07-13 13:26:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 13:26:06,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 13:26:07,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 13:26:07,EVENT,|Speechcontrol || started|
+2019-07-13 13:36:57,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-07-13 13:36:58,STATUS,|LED || Group - wohnzimmer || relax : 100|
+2019-07-13 13:37:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-07-13 13:37:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-13 13:43:59,EVENT,|Speechcontrol || Detection || und die maschine preis die kugel durch beseitigt alle kunden ebenheit und weiter|
+2019-07-13 14:00:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-07-13 14:10:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 14:11:01,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 14:11:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 14:11:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 14:14:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 14:14:36,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 14:15:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 14:15:11,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 14:19:16,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 14:19:22,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 14:25:02,EVENT,|Speechcontrol || Detection || platz|
+2019-07-13 14:52:25,EVENT,|Speechcontrol || Detection || teste|
+2019-07-13 14:52:25,EVENT,|Program - SUNRISE || started|
+2019-07-13 14:52:30,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"OFF"}|
+2019-07-13 14:52:40,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"brightness":122}|
+2019-07-13 14:52:41,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"state":"OFF"}|
+2019-07-13 14:52:42,SUCCESS,|ZigBee2MQTT || Device - Steckdose TV || Setting changed - {"state":"ON"}|
+2019-07-13 14:52:45,SUCCESS,|Program - SUNRISE || finished|
+2019-07-13 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 16:49:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 16:49:32,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 16:50:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 16:50:08,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 16:50:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 16:50:18,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 16:51:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 16:51:39,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 16:52:19,EVENT,|MQTT || started|
+2019-07-13 16:52:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 16:52:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 16:52:23,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 16:52:23,EVENT,|Speechcontrol || started|
+2019-07-13 16:52:54,EVENT,|MQTT || started|
+2019-07-13 16:52:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 16:52:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 16:52:59,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 16:52:59,EVENT,|Speechcontrol || started|
+2019-07-13 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 17:44:04,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank,firmware || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-13 17:44:04,SUCCESS,|MQTT || Update Devices|
+2019-07-13 17:44:14,STATUS,|MQTT || Device - jhg || {"pump":"ON"}|
+2019-07-13 17:44:19,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"OFF"}|
+2019-07-13 17:44:24,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"ON"}|
+2019-07-13 17:44:29,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"OFF"}|
+2019-07-13 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 18:30:56,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-13 18:30:56,SUCCESS,|MQTT || Update Devices|
+2019-07-13 18:31:06,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"ON"}|
+2019-07-13 18:31:10,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"OFF"}|
+2019-07-13 18:32:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 18:32:18,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 18:32:48,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 18:32:54,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 18:33:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 18:33:57,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 18:34:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 18:34:33,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 18:45:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 18:45:52,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 18:46:08,ERROR,|Speechcontrol || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-07-13 18:46:22,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 18:46:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 18:51:16,ERROR,|Speechcontrol || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-07-13 18:54:10,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 18:54:55,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 18:55:07,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 19:32:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-07-13 19:33:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 19:33:07,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 19:33:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 19:33:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 20:30:45,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-13 20:39:59,EVENT,|MQTT || started|
+2019-07-13 20:39:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 20:40:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 20:40:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 20:40:04,EVENT,|Speechcontrol || started|
+2019-07-13 20:40:16,EVENT,|Database || Sensordata Job - temperature || changed |||| Name - temperature || Filename - temperature || MQTT-Device - 0x88888 || Sensor - temperature || Always_Active - checked|
+2019-07-13 20:40:28,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 20:43:34,EVENT,|MQTT || started|
+2019-07-13 20:43:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 20:43:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 20:43:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 20:43:38,EVENT,|Speechcontrol || started|
+2019-07-13 20:43:45,SUCCESS,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 20:44:37,EVENT,|Database || MQTT Device - 0x00158d000349876a || added |||| Gateway - zigbee2mqtt || ieeeAddr - 0x00158d000349876a || Model - AC01353010G || Device_type -  || Description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-13 20:44:37,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:44:37,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 20:45:48,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - AC01353010G || device_type - sensor_active || description - OSRAM Smart+ Human Detector Sensor || Input_values - tamper,occupancy,battery_low || Input_events -  || Commands - |
+2019-07-13 20:45:48,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:46:22,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:47:25,EVENT,|MQTT || started|
+2019-07-13 20:47:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 20:47:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 20:47:29,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 20:47:29,EVENT,|Speechcontrol || started|
+2019-07-13 20:47:59,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:51:10,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:52:55,EVENT,|MQTT || started|
+2019-07-13 20:52:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 20:52:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 20:52:59,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 20:52:59,EVENT,|Speechcontrol || started|
+2019-07-13 20:53:03,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 20:57:12,EVENT,|MQTT || started|
+2019-07-13 20:57:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 20:57:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 20:57:16,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 20:57:16,EVENT,|Speechcontrol || started|
+2019-07-13 20:57:22,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_array || description - Watering with Sensors (4 Plants) || Input_values -  || Input_events -  || Commands - |
+2019-07-13 21:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-13 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 21:00:33,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:00:33,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 21:00:46,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:01:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-13 21:01:13,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:01:57,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:01:57,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 21:03:26,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - AC01353010G || device_type - sensor_active || description - OSRAM Smart+ Human Detector Sensor || Input_values - tamper,occupancy,battery_low || Input_events -  || Commands - |
+2019-07-13 21:03:26,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:03:47,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:03:47,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 21:04:38,EVENT,|MQTT || started|
+2019-07-13 21:04:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:04:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:04:42,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:04:42,EVENT,|Speechcontrol || started|
+2019-07-13 21:05:26,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:05:34,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:05:34,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 21:07:10,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - AC01353010G || device_type - sensor_active || description - OSRAM Smart+ Human Detector Sensor || Input_values - tamper,occupancy,battery_low || Input_events -  || Commands - |
+2019-07-13 21:07:10,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:07:55,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 21:08:22,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:08:22,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 21:08:56,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 21:09:21,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:09:21,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 21:12:02,EVENT,|MQTT || started|
+2019-07-13 21:12:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:12:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:12:06,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:12:06,EVENT,|Speechcontrol || started|
+2019-07-13 21:12:17,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-07-13 21:12:40,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:12:40,EVENT,|ZigBee2MQTT || Device added - 0x00158d000349876a|
+2019-07-13 21:13:07,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:16:06,EVENT,|MQTT || started|
+2019-07-13 21:16:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:16:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:16:10,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:16:10,EVENT,|Speechcontrol || started|
+2019-07-13 21:16:30,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model -  || device_type - sensor_active || description - AQARA Environment Sensor || Input_values - temperature,humidity,pressure,battery || Input_events -  || Commands - |
+2019-07-13 21:16:30,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:18:37,EVENT,|MQTT || started|
+2019-07-13 21:18:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:18:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:18:41,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:18:41,EVENT,|Speechcontrol || started|
+2019-07-13 21:18:46,EVENT,|Database || MQTT Device - 0x00158d000349876a || Gateway - zigbee2mqtt || changed |||| Name - 0x00158d000349876a || ieeeAddr - 0x00158d000349876a || Model - WSDCGQ11LM || device_type - sensor_active || description - AQARA Environment Sensor || Input_values - temperature,humidity,pressure,battery || Input_events -  || Commands - |
+2019-07-13 21:18:47,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:19:44,EVENT,|Database || Sensordata Job - temperature || changed |||| Name - temperature || Filename - temperature || MQTT-Device - 0x00158d000349876a || Sensor - temperature || Always_Active - checked|
+2019-07-13 21:23:55,EVENT,|ZigBee2MQTT || Device deleted - Steckdose TV|
+2019-07-13 21:24:15,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:24:15,EVENT,|ZigBee2MQTT || Device added - 0x7cb03eaa0a02fa78|
+2019-07-13 21:26:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 21:26:41,SUCCESS,|LED || Group - bad || Setting changed || warm-weiss : 100 %|
+2019-07-13 21:28:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 21:28:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 21:31:49,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || changed |||| Name - 0x7cb03eaa0a02fa78 || ieeeAddr - 0x7cb03eaa0a02fa78 || Model - AB3257001NJ || device_type - device_switch || description - OSRAM Smart+ Plug || Input_values -  || Input_events -  || Commands - {"state":"ON"} {"state":"OFF"}|
+2019-07-13 21:31:49,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-13 21:32:09,EVENT,|Database || MQTT Device - Steckdose Server || Gateway - zigbee2mqtt || Name changed |||| Name - Steckdose_Server|
+2019-07-13 21:32:12,EVENT,|Database || MQTT Device - 0x7cb03eaa0a02fa78 || Gateway - zigbee2mqtt || Name changed |||| Name - Steckdose_TV|
+2019-07-13 21:34:21,EVENT,|MQTT || started|
+2019-07-13 21:34:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:34:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:34:26,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:34:26,EVENT,|Speechcontrol || started|
+2019-07-13 21:34:40,EVENT,|Database || MQTT Device - Steckdose_TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-07-13 21:36:28,EVENT,|MQTT || started|
+2019-07-13 21:36:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 21:36:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 21:36:32,EVENT,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 21:36:32,EVENT,|Speechcontrol || started|
+2019-07-13 21:40:20,EVENT,|Speechcontrol || Detection || starte normal im wohnzimmer|
+2019-07-13 21:40:24,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 100 %|
+2019-07-13 21:41:16,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 55 %|
+2019-07-13 21:41:21,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 70 %|
+2019-07-13 21:41:57,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 21:52:33,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 21:53:21,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 21:58:09,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 22:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array || device_type - Watering with Sensors (4 Plants) || description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-13 22:00:03,EVENT,|Database || MQTT Device - 0x88888 || Gateway - mqtt || changed |||| Name - 0x88888 || ieeeAddr - 0x88888 || Model - sensor_passiv || device_type - MQTT Environment Sensor || description - temperature,humidity,light || Input_values -  || Input_events -  || Commands - |
+2019-07-13 22:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_control || device_type - MQTT Watering_Array || description - pump,sensor_moisture,sensor_watertank || Input_values -  || Input_events - {"pump":"ON"} {"pump":"OFF"} || Commands - |
+2019-07-13 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 22:03:18,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 22:10:48,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 22:11:39,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array || device_type - Watering with Sensors (4 Plants) || description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-13 22:11:39,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_control || device_type - MQTT Watering_Array || description - pump,sensor_moisture,sensor_watertank || Input_values -  || Input_events - {"pump":"ON"} {"pump":"OFF"} || Commands - |
+2019-07-13 22:11:39,SUCCESS,|MQTT || Update Devices|
+2019-07-13 22:14:00,EVENT,|MQTT || started|
+2019-07-13 22:14:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:14:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:14:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:14:04,EVENT,|Speechcontrol || started|
+2019-07-13 22:15:00,EVENT,|MQTT || started|
+2019-07-13 22:15:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:15:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:15:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:15:04,EVENT,|Speechcontrol || started|
+2019-07-13 22:17:37,EVENT,|MQTT || started|
+2019-07-13 22:17:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:17:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:17:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:17:41,EVENT,|Speechcontrol || started|
+2019-07-13 22:18:25,EVENT,|MQTT || started|
+2019-07-13 22:18:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:18:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:18:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:18:29,EVENT,|Speechcontrol || started|
+2019-07-13 22:19:54,EVENT,|MQTT || started|
+2019-07-13 22:19:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:19:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:19:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:19:59,EVENT,|Speechcontrol || started|
+2019-07-13 22:23:15,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array || device_type - Watering with Sensors (4 Plants) || description -  || Input_values -  || Input_events -  || Commands - |
+2019-07-13 22:23:15,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_control || device_type - MQTT Watering_Array || description - pump,sensor_moisture,sensor_watertank || Input_values -  || Input_events - {"pump":"ON"} {"pump":"OFF"} || Commands - |
+2019-07-13 22:23:15,SUCCESS,|MQTT || Update Devices|
+2019-07-13 22:26:33,EVENT,|MQTT || started|
+2019-07-13 22:26:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:26:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:26:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:26:37,EVENT,|Speechcontrol || started|
+2019-07-13 22:26:41,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering with Sensors (4 Plants) || Input_values -  || Input_events -  || Commands - |
+2019-07-13 22:26:41,EVENT,|Database || MQTT Device - 0x88888 || Gateway - mqtt || changed |||| Name - 0x88888 || ieeeAddr - 0x88888 || Model - envi_sensor || device_type - sensor_passiv || description - MQTT Environment Sensor || Input_values - temperature,humidity,light || Input_events -  || Commands - |
+2019-07-13 22:26:41,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-13 22:26:41,SUCCESS,|MQTT || Update Devices|
+2019-07-13 22:27:42,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-13 22:32:10,EVENT,|MQTT || started|
+2019-07-13 22:32:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-13 22:32:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-13 22:32:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:32:14,EVENT,|Speechcontrol || started|
+2019-07-13 22:33:39,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-07-13 22:33:49,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-13 22:40:25,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 22:42:10,ERROR,|Scheduler || Task - bad_on || Scene - warm-weiss || not founded|
+2019-07-13 23:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering with Sensors (4 Plants) || Input_values -  || Input_events -  || Commands - |
+2019-07-13 23:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-13 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-13 23:01:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-13 23:30:21,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-13 23:57:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-13 23:57:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-13 23:58:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-13 23:58:54,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-13 23:59:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 00:00:01,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 00:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering with Sensors (4 Plants) || Input_values -  || Input_events -  || Commands - |
+2019-07-14 00:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-14 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-07-14 00:00:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 00:01:02,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 00:01:03,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-14 00:02:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 00:02:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 00:03:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 00:03:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 00:03:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 00:03:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 00:04:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 00:04:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 00:04:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 00:04:41,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 00:05:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 00:05:25,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-14 00:30:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-14 01:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v4 || device_type - watering_array || description - Watering with Sensors (4 Plants) || Input_values -  || Input_events -  || Commands - |
+2019-07-14 01:00:03,EVENT,|Database || MQTT Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON"} {"pump":"OFF"}|
+2019-07-14 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 01:01:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-14 01:04:53,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 26 %|
+2019-07-14 01:05:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 01:05:36,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 01:08:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 01:08:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 01:08:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 01:08:42,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 01:11:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 01:11:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 01:33:09,SUCCESS,|MQTT || Update Devices|
+2019-07-14 01:47:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 01:48:02,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 01:49:32,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-14 01:49:37,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-14 01:49:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 01:50:00,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-14 01:52:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 01:52:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 09:28:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 09:28:43,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-14 09:30:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 09:30:49,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 10:59:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 10:59:19,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 11:00:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 11:00:09,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 12:11:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 12:11:23,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 12:13:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 12:13:21,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 12:15:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 12:15:42,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 12:16:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 12:16:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 12:32:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 12:32:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 12:33:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 12:34:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 12:52:26,EVENT,|Speechcontrol || Detection || durch die umweltverschmutzung soll für sechzigtausend vorzeitige todesfälle europa verantwortlich sein|
+2019-07-14 13:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 14:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 14:23:12,EVENT,|Speechcontrol || Detection || jeder hat das nicht|
+2019-07-14 14:37:24,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - None || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-14 14:37:30,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-14 14:41:13,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard -  || Permission-Scheduler -  || Permission-Programs -  || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-14 14:41:56,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-14 14:43:35,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-07-14 14:43:43,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-14 14:45:42,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed - {"state":"OFF"}|
+2019-07-14 14:45:56,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed - {"state":"ON"}|
+2019-07-14 15:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 16:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 16:35:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 16:35:43,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 16:37:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 16:37:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 16:47:07,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed - {"state":"OFF"}|
+2019-07-14 16:58:02,EVENT,|Speechcontrol || Detection || von diesem staates gehört ihr könnt ein später schriftlich auf diese vater ja aber ich weiss gar nicht wovon ich spreche ich verstehe diese frage|
+2019-07-14 17:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 17:17:04,EVENT,|Speechcontrol || Detection || paula aber auch zum schutz des traditionellen archäologische städten oder christlicher gebiet|
+2019-07-14 17:53:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 17:53:30,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 17:54:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 17:54:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 17:55:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 17:55:54,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 17:56:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 17:56:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 17:57:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 17:57:19,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 17:57:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 17:57:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 17:59:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 17:59:35,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 18:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 18:00:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 18:00:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 18:03:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 18:03:12,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 18:03:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 18:03:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 18:03:50,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 18:03:52,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 18:27:37,EVENT,|Speechcontrol || Detection || des mittelmeer weiterhin betrieben obwohl ihre schädlichen folgen|
+2019-07-14 18:29:19,EVENT,|Speechcontrol || Detection || hinter bessert sich alles verändert seit der staat neunzehnhundertzweiundsiebzig beschloss laufe der jahre weitere fabriken dazugekommen der industriestandort vergrössert und als die ersten verbieten oder sich gehört|
+2019-07-14 18:29:19,EVENT,|Program - SUNRISE || started|
+2019-07-14 18:29:19,ERROR,|Program - SUNRISE || Device - Steckdose TV || not founded|
+2019-07-14 18:29:31,ERROR,|Program - SUNRISE || Device - Steckdose TV || not founded|
+2019-07-14 18:29:35,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"brightness":122}|
+2019-07-14 18:29:36,SUCCESS,|ZigBee2MQTT || Device - Badlampe_01 || Setting changed - {"state":"OFF"}|
+2019-07-14 18:29:39,SUCCESS,|Program - SUNRISE || finished|
+2019-07-14 18:35:24,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 55 %|
+2019-07-14 18:43:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 18:44:00,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 18:45:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 18:45:32,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 18:46:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 18:46:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 18:47:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 18:47:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 19:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 19:52:12,EVENT,|MQTT || started|
+2019-07-14 19:52:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-14 19:52:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-14 19:52:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-14 19:52:17,EVENT,|Speechcontrol || started|
+2019-07-14 19:53:49,EVENT,|MQTT || started|
+2019-07-14 19:53:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-14 19:53:52,EVENT,|ZigBee2MQTT || Connected|
+2019-07-14 19:53:53,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-14 19:53:53,EVENT,|Speechcontrol || started|
+2019-07-14 19:55:45,EVENT,|MQTT || started|
+2019-07-14 19:55:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-14 19:55:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-14 19:55:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-14 19:55:49,EVENT,|Speechcontrol || started|
+2019-07-14 19:56:06,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Home - None || Away - None || IP-Addresses - None || Repeat - checked|
+2019-07-14 19:56:10,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Home - None || Away - checked || IP-Addresses - None || Repeat - checked|
+2019-07-14 19:58:11,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Home - None || Away - checked || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-07-14 19:59:07,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Home - checked || Away - None || IP-Addresses - 192.168.1.1 || Repeat - checked|
+2019-07-14 19:59:20,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-14 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 20:01:31,EVENT,|MQTT || started|
+2019-07-14 20:01:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-14 20:01:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-14 20:01:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-14 20:01:36,EVENT,|Speechcontrol || started|

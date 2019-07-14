@@ -165,7 +165,7 @@
                     <a href="/dashboard/led/groups/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                     <a href="/dashboard/led/groups/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                   </td>                    
-                  <td style="width:20%">
+                  <td style="width:25%">
                     <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                   </td>  
                   <th></th>
@@ -183,10 +183,10 @@
 
 <!-- section 1 -->
 
-                  <td>1</td>
-                  <td>{{ entry.led_device_type_1 }}</td> 
-                  <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_1_{{ entry.id }}">
+                  <td style="width:15%">1</td>
+                  <td style="width:15%">{{ entry.led_device_type_1 }}</td> 
+                  <td style="width:25%">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_1_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_1 }}" > {{ entry.led_name_1 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -195,7 +195,7 @@
                       </optgroup>                            
                     </select>                      
                   </td> 
-                  <td><a href="/dashboard/led/groups/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  <td style="width:7%"><a href="/dashboard/led/groups/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 <!-- section 2 -->
 
@@ -210,7 +210,7 @@
                   <td>2</td>
                   <td>{{ entry.led_device_type_2 }}</td>               
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_2_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_2_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_2 }}" > {{ entry.led_name_2 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -236,7 +236,7 @@
                   <td>3</td>
                   <td>{{ entry.led_device_type_3 }}</td>              
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_3_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_3_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_3 }}" > {{ entry.led_name_3 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -262,7 +262,7 @@
                   <td>4</td>
                   <td>{{ entry.led_device_type_4 }}</td>                
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_4_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_4_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_4 }}" > {{ entry.led_name_4 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -288,7 +288,7 @@
                   <td>5</td>
                   <td>{{ entry.led_device_type_5 }}</td>               
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_5_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_5_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_5 }}" > {{ entry.led_name_5 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -314,7 +314,7 @@
                   <td>6</td>
                   <td>{{ entry.led_device_type_6 }}</td>               
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_6_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_6_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_6 }}" > {{ entry.led_name_6 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -340,7 +340,7 @@
                   <td>7</td>
                   <td>{{ entry.led_device_type_7 }}</td>               
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_7_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_7_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_7 }}" > {{ entry.led_name_7 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -366,7 +366,7 @@
                   <td>8</td>
                   <td>{{ entry.led_device_type_8 }}</td>              
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_8_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_8_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_8 }}" > {{ entry.led_name_8 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}
@@ -392,7 +392,7 @@
                   <td>9</td>
                   <td>{{ entry.led_device_type_9 }}</td>                
                   <td>
-                    <select class="selectpicker" data-live-search="true" data-width="80%" name="set_led_ieeeAddr_9_{{ entry.id }}">
+                    <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_9_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_9 }}" > {{ entry.led_name_9 }} </option>                    
                       <optgroup>
                         {% for each in dropdown_list_leds %}

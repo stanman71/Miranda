@@ -117,14 +117,13 @@
             
             <table class="table">
               <thead>
-                <tr>
                 <th scope="col"></th>
                 <th scope="col">Benutzer</th>
                 <th scope="col">eMail</th>
                 <th scope="col">Passwort zurücksetzen</th>
                 <th scope="col">Zugriffsrechte</th>                
                 <th scope="col">eMail Benachrichtigung</th>
-                <tr>
+                <th scope="col"></th>
               </thead>
               <tbody>
                 {% for entry in user_list %}
@@ -345,9 +344,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>                                        
+                    <td></td>                                   
                   </tr>
                   {% endfor %}
                 </tbody>

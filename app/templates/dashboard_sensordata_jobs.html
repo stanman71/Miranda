@@ -289,7 +289,7 @@
                       <input type="text" class="form-control" name="set_filename_{{ entry.id }}" value="{{ entry.filename }}" />                    
                     </td> 
                     <td>
-                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-live-search="true" data-width="auto" name="set_mqtt_device_{{ entry.id }}">                                   
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-live-search="true" data-width="100%" name="set_mqtt_device_{{ entry.id }}">                                   
                         <optgroup>
                           {% if entry.mqtt_device_ieeeAddr == "None" or entry.mqtt_device_ieeeAddr == None %} 
                            <option value= "" > Sensor wählen </option>                        
@@ -304,21 +304,17 @@
                         </optgroup>                                                                           
                       </select>                           
                     </td>
-                    <td>                  
-                      <div class="row justify-content-md-center">
-                        <div class="col-sm-4">     
-                          <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-live-search="true" data-width="auto" name="set_sensor_{{ entry.id }}">               
-                            <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>                  
-                            <optgroup>
-                              {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
-                                {% for each in entry.mqtt_device.input_values.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}
-                              {% endif %}
-                            </optgroup>                                                                           
-                          </select>                             
-                        </div>
-                      </div>
+                    <td>                   
+                      <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_{{ entry.id }}">               
+                        <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>                  
+                        <optgroup>
+                          {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
+                            {% for each in entry.mqtt_device.input_values.split(',') %}
+                              <option value= "{{ each }}" > {{ each }} </option>
+                            {% endfor %}
+                          {% endif %}
+                        </optgroup>                                                                           
+                      </select>                             
                     </td> 
                     <td>
                       <font size="+2">

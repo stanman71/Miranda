@@ -267,7 +267,7 @@
                       {% endif %}                                         
                     </td> 
                     <td style="width:22%"> 
-                      <select class="selectpicker" data-width="auto" data-live-search="true" name="set_group_{{ entry.id }}">
+                      <select class="selectpicker" data-width="100%" data-live-search="true" name="set_group_{{ entry.id }}">
                         <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
                         <optgroup>
                           {% for each_scene in dropdown_list_led_scenes %}
@@ -356,8 +356,8 @@
                             </select>  
                           </div>     
                           {% if entry.dashboard_check_option != "None" %} 
-                          <div class="col-sm-4"> 
-                            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_dashboard_check_setting_{{ entry.id }}">
+                          <div class="col-sm-6"> 
+                            <select class="selectpicker" data-width="95%" name="set_dashboard_check_setting_{{ entry.id }}">
                               {% if entry.dashboard_check_setting != "None" %}
                                 <option value = "{{ entry.dashboard_check_setting }}" > {{ entry.dashboard_check_setting }} </option>
                               {% else %}   
@@ -379,7 +379,7 @@
                         </div>                                        
                       </td>
                       <td style="width:22%">   
-                        <select class="selectpicker" data-width="auto" data-live-search="true" name="set_dashboard_setting_{{ entry.id }}">
+                        <select class="selectpicker" data-width="100%" name="set_dashboard_setting_{{ entry.id }}">
                           <option value = "None" > None </option>                          
                           <optgroup>
                             {% if entry.commands != None %}  
@@ -406,16 +406,18 @@
                         {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
    
                           <div class="col-sm-6"> 
-                            <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_value_1_{{ entry.id }}">
+                            <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_dashboard_check_value_1_{{ entry.id }}">
                               {% if entry.dashboard_check_value_1 != "None" %}
                                 <option value = "{{ entry.dashboard_check_value_1 }}" > {{ entry.dashboard_check_value_1 }} </option>
                               {% else %}   
                                 <option value = "None" > None </option>   
                               {% endif %}                          
                               <optgroup>
-                                {% for each in entry.dashboard_check_sensor_input_values.split(',') %}
-                                  <option value= "{{ each }}" > {{ each }} </option>
-                                {% endfor %}     
+                                {% if entry.dashboard_check_sensor_input_values != None %}
+                                  {% for each in entry.dashboard_check_sensor_input_values.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}     
+                                {% endif %} 
                                 {% if entry.input_values != "None" %}
                                   {% for each in entry.input_values.split(',') %}
                                     <option value= "{{ each }}" > {{ each }} </option>
@@ -426,7 +428,7 @@
                           </div>   
         
                           <div class="col-sm-3"> 
-                            <select class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_value_2_{{ entry.id }}">
+                            <select class="selectpicker" data-width="100%" name="set_dashboard_check_value_2_{{ entry.id }}">
                               {% if entry.dashboard_check_value_2 != "None" %}
                                 <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
                               {% else %}   
@@ -505,7 +507,7 @@
                       <td style="width:25%"> {{entry.mqtt_device.last_values_formated}} </td>
                       <td style="width:14%"> {{entry.mqtt_device.last_contact}} </td>
                       <td style="width:22%">  
-                        <select class="selectpicker" data-live-search="true" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
+                        <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
                           <option value= "None" > None </option>                      
                           <optgroup>
                           {% if entry.commands != None %}
