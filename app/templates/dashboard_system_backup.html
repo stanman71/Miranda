@@ -99,6 +99,7 @@
       <div class="col">
         <font color="white">
 
+
 <!-- system error message -->
 
 {% if error_message != "" %}
@@ -106,6 +107,7 @@
   {{ error_message }}
 </div>      
 {% endif %}   
+
 
 <!-- system settings -->
 
@@ -128,15 +130,60 @@
                 </div>
               </div>
             </div>
+            
+<section id="database_backup"></section>               
+            
           </div>
         </div>
       </div>  
+   
+        
+<!-- database backup table -->
 
 
+      <div class="panel panel-default">
+        <div class="panel-body">   
+          <div class="well well-sm"> 
+            <table class="table">
+              <thead> 
+                <th scope="col">Datenbank Backups</th> 
+                <th scope="col"></th> 
+                <th scope="col"></th>   
+              </thead>               
+              <tbody> 
+                {% for entry in file_list %}
+                <tr>
+                  <td>{{ entry }}</td> 
+                  <td><a href="/dashboard/system/backup/restore/backup_database/{{ entry }}#database_backup"><font color="lawngreen"><b>wiederherstellen</b></font></a></td>  
+                  <td><a href="/dashboard/system/backup/delete/backup_database/{{ entry }}#database_backup"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+          </div>
+          <form method="POST">                     
+            <input type="submit" onclick="window.location.href='/dashboard/system/backup#database_backup'" class="btn btn-default" name="database_save" value="Datenbank sichern" />
+          </form>
+        </div>
+      </div> 
+    
+    
 <!-- database backup setting -->
+
+
+<section id="settings"></section>    
       
-      <div class="panel panel-default">  
-          <div class="panel-body">  
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_backup_settings"><font color="white"><b> Einstellungen </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_backup_settings" class="panel-collapse collapse {{collapse_backup_settings}} ">      
+          <div class="panel-body">      
+            <div class="well well-sm">    
+                
             
 <!-- message new_backup_location_path -->
 
@@ -144,8 +191,9 @@
       <div class="alert alert-warning" role="alert">
         Änderungen werden erst nach einem Neustart wirksam
       </div>      
-    {% endif %}               
-            <div class="well well-sm">                   
+    {% endif %}     
+    
+                              
               <div class="well well-sm">            
                 <form method="POST">
                   <div class="row justify-content-md-center">
@@ -178,41 +226,38 @@
                   </div> 
                 </div> 
               </div>   
-              <input type="submit" onclick="window.location.href='/dashboard/system/backup#'" class="btn btn-default" name="save_backup_setting" value="Einstellung speichern" />                                  
+              <input type="submit" onclick="window.location.href='/dashboard/system/backup#settings'" class="btn btn-default" name="save_backup_setting" value="Einstellung speichern" />                                  
             </form> 
           </div>  
         </div>  
-        
-<!-- database backup table -->
+      </div>      
+    
+    <br>
+    <br>     
+    <br> 
 
+<!-- informations -->
+
+    <div class="panel-group">
       <div class="panel panel-default">
-        <div class="panel-body">   
-          <div class="well well-sm">
-            <table class="table">
-              <thead> 
-                <th scope="col">Datenbank Backups</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>   
-              </thead>               
-              <tbody> 
-                {% for entry in file_list %}
-                <tr>
-                  <td>{{ entry }}</td> 
-                  <td><a href="/dashboard/system/backup/restore/backup_database/{{ entry }}#database_backup"><font color="lawngreen"><b>wiederherstellen</b></font></a></td>  
-                  <td><a href="/dashboard/system/backup/delete/backup_database/{{ entry }}#database_backup"><font color="salmon" size="5"><b>X</b></font></a></td>  
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
           </div>
-          <form method="POST">                     
-            <input type="submit" onclick="window.location.href='/dashboard/system/backup#database_backup'" class="btn btn-default" name="database_save" value="Datenbank sichern" />
-          </form>
         </div>
-      </div> 
-      </font> 
+      </font>
+      </div>
     </div>
-  </div>       
-</div>
+  </div>    
+</div> 
+
 
 {% endblock %}

@@ -47,7 +47,7 @@ def permission_required(f):
 @permission_required
 def dashboard(template):
     error_message_led = []
-    error_message_device = ""
+    error_message_devices = ""
     error_message_watering_control = ""
     error_message_log = ""
     error_message_start_program = ""
@@ -57,11 +57,18 @@ def dashboard(template):
     selected_type_success= "selected"   
     selected_type_warning= "selected"                                                      
     selected_type_error= "selected"
+    
+    collapse_dashboard_led      = ""
+    collapse_dashboard_devices  = ""         
+    collapse_dashboard_watering = ""
+    collapse_dashboard_programs = "" 
+    collapse_dashboard_spotify  = ""
+    collapse_dashboard_log      = ""        
+    
         
     # check sensor name changed ?
     UPDATE_DASHBOARD_CHECK_SENSOR_NAMES()
-    
-    
+   
     """ ########### """
     """ led control """
     """ ########### """   
@@ -70,6 +77,17 @@ def dashboard(template):
         
         if request.form.get("change_led_settings") != None:
             
+            collapse_dashboard_led = "in"
+            
+            # set collapse settings
+            if request.form.get("checkbox_collapse_led"): 
+                collapse_dashboard_led_setting = "checked"
+            else:
+                collapse_dashboard_led_setting = ""
+   
+            SET_USER_DASHBOARD_COLLAPSE_SETTING(current_user.id, "led", collapse_dashboard_led_setting)
+
+
             for i in range (1,21):
 
                 # set led group
@@ -149,6 +167,17 @@ def dashboard(template):
     if request.method == "POST":
     
         if request.form.get("change_device_settings") != None:
+            
+            collapse_dashboard_devices = "in"
+     
+            # set collapse settings
+            if request.form.get("checkbox_collapse_devices"): 
+                collapse_dashboard_devices_setting = "checked"
+            else:
+                collapse_dashboard_devices_setting = ""
+   
+            SET_USER_DASHBOARD_COLLAPSE_SETTING(current_user.id, "devices", collapse_dashboard_devices_setting)
+     
             
             for i in range (1,21):
                 
@@ -309,7 +338,7 @@ def dashboard(template):
                             if device.dashboard_check_option == "IP-Address" and dashboard_setting == device.dashboard_check_setting.replace(" ",""):
 
                                 if ping(dashboard_check_value_1, timeout=1) != None:    
-                                    error_message_device = device.name + " >>> Gerät ist noch eingeschaltet"
+                                    error_message_devices = device.name + " >>> Gerät ist noch eingeschaltet"
                                     change_state = False
 
                             # ############
@@ -365,7 +394,7 @@ def dashboard(template):
                                     else:
                                         change_state = True
                                              
-                                error_message_device = device.name + " >>> Sensor erteilt keine Freigabe"
+                                error_message_devices = device.name + " >>> Sensor erteilt keine Freigabe"
                                                               
                                 
                             # ##############    
@@ -382,7 +411,7 @@ def dashboard(template):
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_device = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting, 1, 5)                                     
+                                    error_message_devices = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting, 1, 5)                                     
                                   
 
                                 # zigbee2mqtt
@@ -393,7 +422,7 @@ def dashboard(template):
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_device = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)                                        
+                                    error_message_devices = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)                                        
                                 
                         else:
                             
@@ -409,13 +438,24 @@ def dashboard(template):
                         print(e)
            
            
-    """ ############## """
-    """ device control """
-    """ ############## """       
+    """ ################ """
+    """ watering control """
+    """ ################ """       
     
     if request.method == "POST":
     
         if request.form.get("change_watering_control_settings") != None:
+            
+            collapse_dashboard_watering = "in"
+            
+            # set collapse settings
+            if request.form.get("checkbox_collapse_watering"): 
+                collapse_dashboard_watering_setting = "checked"
+            else:
+                collapse_dashboard_watering_setting = ""
+   
+            SET_USER_DASHBOARD_COLLAPSE_SETTING(current_user.id, "watering", collapse_dashboard_watering_setting)
+                 
 
             for i in range (1,21):
                 
@@ -460,6 +500,9 @@ def dashboard(template):
            
     # start program
     if request.form.get("start_program") != None:
+        
+        collapse_dashboard_programs = "in" 
+        
         program_id = request.form.get("get_program_id")
         
         if program_id != "None" and program_running == None:
@@ -478,6 +521,9 @@ def dashboard(template):
 
     # stop program    
     if request.form.get("stop_program") != None:
+        
+        collapse_dashboard_programs = "in" 
+        
         STOP_PROGRAM_THREAD()   
 
     program_running         = GET_PROGRAM_RUNNING()   
@@ -575,12 +621,14 @@ def dashboard(template):
    
     # change log selection 
     if request.form.get("select_log_types") != None:   
-   
-        selected_type_event   = ""
-        selected_type_status  = ""
-        selected_type_success = ""   
-        selected_type_warning = ""                                                     
-        selected_type_error   = ""      
+        
+        collapse_dashboard_log = "in" 
+        
+        selected_type_event    = ""
+        selected_type_status   = ""
+        selected_type_success  = ""   
+        selected_type_warning  = ""                                                     
+        selected_type_error    = ""      
         
         selected_log_types = [] 
    
@@ -792,7 +840,7 @@ def dashboard(template):
                             version=version,  
                             error_message_led=error_message_led,
                             error_message_log=error_message_log,  
-                            error_message_device=error_message_device,   
+                            error_message_devices=error_message_devices,   
                             error_message_watering_control=error_message_watering_control,  
                             error_message_device_checks=error_message_device_checks,
                             error_message_start_program=error_message_start_program,
@@ -831,5 +879,14 @@ def dashboard(template):
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
                             permission_spotify=current_user.permission_spotify, 
-                            permission_system=current_user.permission_system,                                                           
+                            permission_system=current_user.permission_system, 
+                            collapse_dashboard_led_setting=current_user.collapse_dashboard_led_setting,
+                            collapse_dashboard_devices_setting=current_user.collapse_dashboard_devices_setting,          
+                            collapse_dashboard_watering_setting=current_user.collapse_dashboard_watering_setting,
+                            collapse_dashboard_led=collapse_dashboard_led,
+                            collapse_dashboard_devices=collapse_dashboard_devices,          
+                            collapse_dashboard_watering=collapse_dashboard_watering,                      
+                            collapse_dashboard_programs=collapse_dashboard_programs, 
+                            collapse_dashboard_spotify=collapse_dashboard_spotify,
+                            collapse_dashboard_log=collapse_dashboard_log,                                                
                             )

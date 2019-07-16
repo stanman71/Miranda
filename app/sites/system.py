@@ -24,7 +24,7 @@ def permission_required(f):
         if current_user.permission_system == "checked":
             return f(*args, **kwargs)
         else:
-            return redirect(url_for('login'))
+            return redirect(url_for('logout'))
     return wrap
     
 
@@ -39,8 +39,11 @@ def dashboard_system_mqtt():
     error_message = ""
     error_message_mqtt = ""
     error_message_change_settings = ""
-    mqtt_device_name = ""   
-    check_value_mqtt   = ["", ""]
+    
+    mqtt_device_name       = ""   
+    check_value_mqtt       = ["", ""]
+    collapse_mqtt_settings = ""
+    collapse_mqtt_log      = ""
 
     # get mqtt device delete errors
     if GET_ERROR_DELETE_MQTT_DEVICE() != "":
@@ -77,12 +80,15 @@ def dashboard_system_mqtt():
 
         # save mqtt update setting
         if request.form.get("save_mqtt_update_setting") is not None:
+                          
+            collapse_mqtt_settings = "in"
+            
             mqtt_update_minute = request.form.get("get_mqtt_update_minute")
 
             mqtt_update_task = GET_SCHEDULER_TASK_BY_NAME("mqtt_update")
             
             if mqtt_update_task == None:
-                ADD_SCHEDULER_TASK("mqtt_update", "", "None")
+                ADD_SCHEDULER_TASK("mqtt_update", "no_scheduler_task")
                 mqtt_update_task = GET_SCHEDULER_TASK_BY_NAME("mqtt_update")
                 
             i = mqtt_update_task.id
@@ -101,7 +107,8 @@ def dashboard_system_mqtt():
                  
     
         # change settings
-        if request.form.get("change_settings") != None:    
+        if request.form.get("change_settings") != None:  
+
             for i in range (1,26):
                 if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
                                 
@@ -150,6 +157,8 @@ def dashboard_system_mqtt():
                             mqtt_setting=mqtt_setting,
                             check_value_mqtt=check_value_mqtt,
                             mqtt_device_list=mqtt_device_list,
+                            collapse_mqtt_settings=collapse_mqtt_settings,
+                            collapse_mqtt_log=collapse_mqtt_log,
                             active01="active",
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
@@ -214,9 +223,14 @@ def dashboard_system_zigbee2mqtt():
     error_message_zigbee2mqtt = ""
     error_message_change_settings = ""
     error_message_zigbee2mqtt_pairing = ""
-    check_value_zigbee2mqtt = ["", ""]
-    check_value_pairing = ["", ""]
-    zigbee_topology_show = False
+    
+    check_value_zigbee2mqtt       = ["", ""]
+    check_value_pairing           = ["", ""]
+    zigbee_topology_show          = False
+    collapse_zigbee2mqtt_settings = ""
+    collapse_zigbee2mqtt_topology = ""    
+    collapse_zigbee2mqtt_log      = ""
+
 
     # get zigbee2mqtt device delete errors
     if GET_ERROR_DELETE_MQTT_DEVICE() != "":
@@ -284,17 +298,15 @@ def dashboard_system_zigbee2mqtt():
                                 error_message_change_settings = "Name bereits vergeben >>> " + new_name
 
             # update device list
-            if request.form.get("update_zigbee2mqtt_devices") is not None:
+            if request.form.get("update_zigbee2mqtt_devices") != None:
                 error_message_change_settings = MQTT_UPDATE_DEVICES("zigbee2mqtt")
 
-            # request zigbee topology
-            if request.form.get("request_zigbee_topology") is not None: 
-                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/networkmap", "graphviz")
-                zigbee_topology_show = True
-                time.sleep(1)
 
             # change pairing setting
-            if request.form.get("set_pairing") is not None: 
+            if request.form.get("set_pairing") != None: 
+                
+                collapse_zigbee2mqtt_settings = "in"
+                
                 setting_pairing = str(request.form.get("radio_pairing"))
                 SET_ZIGBEE2MQTT_PAIRING(setting_pairing)
 
@@ -335,9 +347,20 @@ def dashboard_system_zigbee2mqtt():
                         error_message_zigbee2mqtt_pairing = "Pairing Einstellung nicht bestätigt"  
 
 
+            # request zigbee topology
+            if request.form.get("request_zigbee_topology") != None: 
+                
+                collapse_zigbee2mqtt_topology = "in"
+                
+                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/networkmap", "graphviz")
+                zigbee_topology_show = True
+                time.sleep(1)
+
+
             # reset logfile
-            if request.form.get("reset_logfile") is not None: 
+            if request.form.get("reset_logfile") != None: 
                 RESET_LOGFILE("log_zigbee2mqtt")
+     
      
     # set pairing checkbox  
     pairing_setting = GET_ZIGBEE2MQTT_PAIRING()    
@@ -364,7 +387,10 @@ def dashboard_system_zigbee2mqtt():
                             check_value_pairing=check_value_pairing,
                             zigbee2mqtt_device_list=zigbee2mqtt_device_list, 
                             zigbee2mqtt_setting=zigbee2mqtt_setting, 
-                            zigbee_topology_show=zigbee_topology_show,                 
+                            zigbee_topology_show=zigbee_topology_show,        
+                            collapse_zigbee2mqtt_settings=collapse_zigbee2mqtt_settings,
+                            collapse_zigbee2mqtt_topology=collapse_zigbee2mqtt_topology,  
+                            collapse_zigbee2mqtt_log=collapse_zigbee2mqtt_log,                                   
                             active02="active",
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
@@ -428,14 +454,11 @@ def download_zigbee2mqtt_logfile(filepath):
 def dashboard_system_controller():
     error_message_add_controller = ""
     error_message_controller_tasks = ""
-
+    
+    RESET_CONTROLLER_TASK_ERRORS()
+    RESET_CONTROLLER_COLLAPSE()
     UPDATE_CONTROLLER_EVENTS()
 
-    for i in range (1,21):
-        try:
-            RESET_CONTROLLER_ERRORS(i)
-        except:
-            pass
 
     if request.method == "POST": 
 
@@ -453,6 +476,8 @@ def dashboard_system_controller():
             for i in range (1,21):
 
                 if request.form.get("set_task_1_" + str(i)) != None:
+                    
+                    SET_CONTROLLER_COLLAPSE(i)   
 
                     ### set tasks
                     if request.form.get("set_task_1_" + str(i)) != "":
@@ -491,7 +516,7 @@ def dashboard_system_controller():
                         task_9 = request.form.get("set_task_9_" + str(i))
                     else:
                         task_9 = "None"  
-
+                        
                     SET_CONTROLLER_TASKS(i, task_1, task_2, task_3, task_4, task_5, task_6, task_7, task_8, task_9)
 
                                                         
@@ -561,13 +586,18 @@ def dashboard_system_speechcontrol():
     snowboy_task = ""   
     device_task  = ""
     program_task = ""
+    collapse_tasks_led              = ""
+    collapse_tasks_devices          = ""
+    collapse_tasks_programs         = ""
+    collapse_speechcontrol_settings = ""
+    collapse_fileupload             = ""
     
 
     if request.method == "POST":     
-        # change speech_control settings   
+        # change speechcontrol global setting   
         if request.form.get("radio_speechcontrol") is not None:
-            setting_speechcontrol = str(request.form.get("radio_speechcontrol"))
-            SET_GLOBAL_SETTING_VALUE("speechcontrol", setting_speechcontrol) 
+            global_setting_speechcontrol = str(request.form.get("radio_speechcontrol"))
+            SET_GLOBAL_SETTING_VALUE("speechcontrol", global_setting_speechcontrol) 
 
     # change radio check    
     if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
@@ -579,7 +609,7 @@ def dashboard_system_speechcontrol():
 
 
     ##################
-    # snowboy settings
+    # general settings
     ##################
 
     if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
@@ -598,48 +628,6 @@ def dashboard_system_speechcontrol():
                 
         if request.method == 'POST':
 
-            # change snowboy settings
-            if request.form.get("change_snowboy_settings") is not None: 
-                
-                # check sensitivity
-                snowboy_sensitivity = request.form.get("set_snowboy_sensitivity")
-                if snowboy_sensitivity != "":     
-                    snowboy_sensitivity = request.form.get("set_snowboy_sensitivity") 
-                else:
-                    snowboy_sensitivity = GET_SNOWBOY_SETTINGS().snowboy_sensitivity
-                    
-                # check timeout
-                snowboy_timeout = request.form.get("set_snowboy_timeout")     
-                if snowboy_timeout != "":     
-                    snowboy_timeout = request.form.get("set_snowboy_timeout") 
-                else:
-                    snowboy_timeout = GET_SNOWBOY_SETTINGS().snowboy_timeout  
-
-                # set microphone
-                snowboy_microphone = request.form.get("set_snowboy_microphone")                                            
-             
-                SET_SNOWBOY_SETTINGS(snowboy_sensitivity, snowboy_timeout, snowboy_microphone)  
-
-
-            #############################
-            # speech recognition provider
-            #############################
-
-            # change speech_recognition_provider settings
-            if request.form.get("set_speech_recognition_provider_settings") != None: 
-                
-                snowboy_hotword                         = request.form.get("set_snowboy_hotword")        
-                speech_recognition_provider             = request.form.get("set_speech_recognition_provider")
-                speech_recognition_provider_username    = request.form.get("set_speech_recognition_provider_username")
-                speech_recognition_provider_key         = request.form.get("set_speech_recognition_provider_key")
-                speech_recognition_provider_sensitivity = request.form.get("set_speech_recognition_provider_sensitivity")
-
-                SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, 
-                                                         speech_recognition_provider, 
-                                                         speech_recognition_provider_username, 
-                                                         speech_recognition_provider_key,
-                                                         speech_recognition_provider_sensitivity)    
-
 
             #########################
             # speechcontrol led tasks
@@ -647,10 +635,13 @@ def dashboard_system_speechcontrol():
             
             # change speech control led tasks
             if request.form.get("change_speechcontrol_led_tasks") != None: 
+                
+                collapse_tasks_led = "in"
+               
                 for i in range (1,26):
                     
                     if request.form.get("set_speechcontrol_led_task_keyword_" + str(i)) != None:
-                         
+
                         if request.form.get("set_speechcontrol_led_task_keyword_" + str(i)) != "":   
                             keywords = request.form.get("set_speechcontrol_led_task_keyword_" + str(i))    
                             
@@ -666,6 +657,8 @@ def dashboard_system_speechcontrol():
 
             # add device task
             if request.form.get("add_speechcontrol_device_task") != None:
+
+                collapse_tasks_devices = "in"
 
                 # check name
                 if (request.form.get("set_speechcontrol_device_task") != "" and 
@@ -688,6 +681,8 @@ def dashboard_system_speechcontrol():
                 for i in range (1,26):
                     
                     if request.form.get("set_speechcontrol_device_task_setting_" + str(i)) != None:  
+
+                        collapse_tasks_devices = "in"
                     
                         if request.form.get("set_speechcontrol_device_task_setting_" + str(i)) != None:  
                             setting = request.form.get("set_speechcontrol_device_task_setting_" + str(i))
@@ -709,6 +704,8 @@ def dashboard_system_speechcontrol():
             # add program task
             if request.form.get("add_speechcontrol_program_task") != None:
 
+                collapse_tasks_programs = "in"
+
                 # check name
                 if (request.form.get("set_speechcontrol_program_task") != "" and 
                     GET_SPEECHCONTROL_PROGRAM_TASK_BY_TASK(request.form.get("set_speechcontrol_program_task")) == None):
@@ -729,7 +726,9 @@ def dashboard_system_speechcontrol():
             if request.form.get("change_speechcontrol_program_tasks") != None: 
                 for i in range (1,26):
                     
-                    if request.form.get("set_speechcontrol_program_task_command_" + str(i)) != None:  
+                    if request.form.get("set_speechcontrol_program_task_command_" + str(i)) != None: 
+                        
+                        collapse_tasks_programs = "in" 
                     
                         if request.form.get("set_speechcontrol_program_task_command_" + str(i)) != None:  
                             command = request.form.get("set_speechcontrol_program_task_command_" + str(i))
@@ -744,12 +743,53 @@ def dashboard_system_speechcontrol():
                         UPDATE_SPEECHCONTROL_PROGRAM_TASK(i, command, keywords)   
 
 
-            #########################################
-            # snowboy and speech recognition provider
-            #########################################
+            ########################
+            # speechcontrol settings
+            ########################
+
+            if request.form.get("save_speechcontrol_settings") != None: 
+                
+                collapse_speechcontrol_settings = "in"
+                
+                
+                print(request.form)
+                
+                # #################
+                #  snowboy settings
+                # #################
+                  
+                snowboy_sensitivity = request.form.get("set_snowboy_sensitivity")   
+                snowboy_timeout     = request.form.get("set_snowboy_timeout") 
+                snowboy_microphone  = request.form.get("set_snowboy_microphone")                                            
+             
+                SET_SNOWBOY_SETTINGS(snowboy_sensitivity, snowboy_timeout, snowboy_microphone)  
+
+
+                #############################
+                # speech recognition provider
+                #############################
+     
+                snowboy_hotword                         = request.form.get("set_snowboy_hotword")        
+                speech_recognition_provider             = request.form.get("set_speech_recognition_provider")
+                speech_recognition_provider_username    = request.form.get("set_speech_recognition_provider_username")
+                speech_recognition_provider_key         = request.form.get("set_speech_recognition_provider_key")
+                speech_recognition_provider_sensitivity = request.form.get("set_speech_recognition_provider_sensitivity")
+
+                SET_SPEECH_RECOGNITION_PROVIDER_SETTINGS(snowboy_hotword, 
+                                                         speech_recognition_provider, 
+                                                         speech_recognition_provider_username, 
+                                                         speech_recognition_provider_key,
+                                                         speech_recognition_provider_sensitivity)    
+
+
+            #############
+            # file upload
+            #############
                     
             if request.form.get("file_upload") is not None:
-                # file upload
+                
+                collapse_fileupload = "in"
+                
                 if 'file' not in request.files:
                     error_message_fileupload = "Keine Datei angegeben"
                 else:
@@ -758,7 +798,7 @@ def dashboard_system_speechcontrol():
 
 
     # snowboy settings
-    speechcontrol_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
+    speechcontrol_global_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
     
     snowboy_sensitivity = GET_SNOWBOY_SETTINGS().snowboy_sensitivity
     snowboy_timeout     = GET_SNOWBOY_SETTINGS().snowboy_timeout
@@ -806,7 +846,7 @@ def dashboard_system_speechcontrol():
                             error_message_add_speechcontrol_program_task=error_message_add_speechcontrol_program_task,
                             error_message_speechcontrol_program_tasks=error_message_speechcontrol_program_tasks,       
                            
-                            speechcontrol_setting=speechcontrol_setting,
+                            speechcontrol_global_setting=speechcontrol_global_setting,
                             check_value_speechcontrol=check_value_speechcontrol,
                             snowboy_sensitivity=snowboy_sensitivity,
                             snowboy_timeout=snowboy_timeout,
@@ -820,7 +860,13 @@ def dashboard_system_speechcontrol():
                             dropdown_list_programs=dropdown_list_programs,     
                             device_task=device_task,
                             program_task=program_task,
-                                                   
+                            
+                            collapse_tasks_led=collapse_tasks_led,
+                            collapse_tasks_devices=collapse_tasks_devices,
+                            collapse_tasks_programs=collapse_tasks_programs,
+                            collapse_speechcontrol_settings=collapse_speechcontrol_settings,
+                            collapse_fileupload=collapse_fileupload,
+                                                                           
                             speechcontrol_led_task_list=speechcontrol_led_task_list,
                             speechcontrol_device_task_list=speechcontrol_device_task_list,
                             speechcontrol_program_task_list=speechcontrol_program_task_list,
@@ -878,23 +924,23 @@ def delete_speechcontrol_program_task(id):
 
 
 # download hotword file
-@app.route('/dashboard/system/speechcontrol/snowboy/download/hotword/<path:filepath>')
+@app.route('/dashboard/system/speechcontrol/download/hotword/<path:filepath>')
 @login_required
 @permission_required
 def download_hotword_file(filepath):
     if filepath is None:
         print("Ungültiger Pfad angegeben")     
     try:
-        path = GET_PATH() + "/app/snowboy/resources/"     
-        WRITE_LOGFILE_SYSTEM("EVENT", "File | /app/snowboy/resources/" + filepath + " | downloaded")
+        path = GET_PATH() + "/app/speechcontrol/snowboy/resources/"     
+        WRITE_LOGFILE_SYSTEM("EVENT", "File | /app/speechcontrol/snowboy/resources/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /app/snowboy/resources/" + filepath + " | " + str(e)) 
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /app/speechcontrol/snowboy/resources/" + filepath + " | " + str(e)) 
 
 
 # delete snowboy hotwords
-@app.route('/dashboard/system/speechcontrol/snowboy/delete/hotword/<string:filename>')
+@app.route('/dashboard/system/speechcontrol/delete/hotword/<string:filename>')
 @login_required
 @permission_required
 def delete_snowboy_hotword(filename):
@@ -911,28 +957,45 @@ def delete_snowboy_hotword(filename):
 @login_required
 @permission_required
 def dashboard_system_user():
-    error_message = ""
-    error_message_settings = ""
+    error_change_settings = ""
+    
+    RESET_USER_TASK_ERRORS()        
+    RESET_USER_COLLAPSE()
+
 
     if request.method == "POST":     
         # change user settings
         if request.form.get("change_user_settings") != None:
             
-            check_permission_system = False
-            
-            # check one user has permission_system
             for i in range (1,26): 
                 
-                if request.form.get("checkbox_permission_system_" + str(i)):
-                    check_permission_system = True
-                    break
+                if request.form.get("set_username_" + str(i)) != None:
+                    
+                    SET_USER_COLLAPSE(i)  
+                         
+                    check_permission_system = False
             
-                    
-            if check_permission_system == True: 
-      
-                for i in range (1,26): 
-                    
-                    if request.form.get("set_username_" + str(i)) != None:
+                    # current user has permission_system ?
+                    if request.form.get("checkbox_permission_system_" + str(i)) == "on":
+                        check_permission_system = True
+                        
+                    else:
+                        
+                        # another user has permission_system ?
+                        for j in range (1,26): 
+                            
+                            try:
+                                if (i != j) and GET_USER_BY_ID(j).permission_system == "checked":      
+                                    check_permission_system = True
+                                    continue      
+                                    
+                            except:
+                                pass
+
+
+                    # one user has permission system
+                    if check_permission_system == True: 
+
 
                         # check name
                         if (request.form.get("set_username_" + str(i)) != "" and 
@@ -944,7 +1007,8 @@ def dashboard_system_user():
                             
                         else:
                             username = GET_USER_BY_ID(i).username 
-                            error_message_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                            error_change_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                        
                         
                         # check email
                         if (request.form.get("set_email_" + str(i)) != "" and 
@@ -956,7 +1020,8 @@ def dashboard_system_user():
                         
                         else:
                             email = GET_USER_BY_ID(i).email 
-                            error_message_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                            error_change_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+
 
                         # change user permissions
                         if request.form.get("checkbox_permission_dashboard_" + str(i)):
@@ -996,6 +1061,7 @@ def dashboard_system_user():
                         else:
                             permission_system = ""
 
+
                         # change email notification
                         if request.form.get("checkbox_email_notification_info_" + str(i)):
                             email_notification_info = "checked"
@@ -1009,7 +1075,8 @@ def dashboard_system_user():
                             email_notification_camera = "checked"
                         else:
                             email_notification_camera = ""
-               
+                            
+                            
                         SET_USER_SETTINGS(i, username, email, 
                                           permission_dashboard,   
                                           permission_scheduler,        
@@ -1029,28 +1096,36 @@ def dashboard_system_user():
                         if request.form.get("set_password_" + str(i)) != "":                        
                             password = request.form.get("set_password_" + str(i))
                             
-                            if 8 <= len(password) <= 80:
+                            try:
                                 
-                                if str(password) == str(request.form.get("set_password_check_" + str(i))):
+                                if 8 <= len(password) <= 80:
                                     
-                                    hashed_password = generate_password_hash(password, method='sha256')
-                                    RESET_USER_PASSWORD(i, hashed_password)
-                                     
-                                else:
-                                    error_message_settings = "Eingebene Passwörter sind nicht identisch"
+                                    if str(password) == str(request.form.get("set_password_check_" + str(i))):
+                                        
+                                        hashed_password = generate_password_hash(password, method='sha256')
+                            
+                                        RESET_USER_PASSWORD(i, hashed_password)
+                                         
+                                    else:
+                                        error_change_settings = "Eingebene Passwörter sind nicht identisch"
+                                    
+                                else:    
+                                    error_change_settings = "Passwort muss zwischen 8 und 80 Zeichen haben"
+                                    
+                            except:
+                                error_change_settings = "Passwort muss zwischen 8 und 80 Zeichen haben"
                                 
-                            else:    
-                                error_message_settings = "Passwort muss zwischen 8 und 80 Zeichen haben"
-         
-            else:    
-                error_message_settings = "Mindestens ein Nutzer muss Zugriffsrechte für 'System' haben"         
-                    
+             
+                    # no user has permission system
+                    else:    
+                        error_change_settings = "Mindestens ein Nutzer muss Zugriffsrechte für 'System' haben"   
+                        
+                    SET_USER_CHANGE_ERRORS(i, error_change_settings)
+                            
                        
     user_list = GET_ALL_USERS()
 
     return render_template('dashboard_system_user.html',
-                            error_message=error_message,
-                            error_message_settings=error_message_settings,
                             user_list=user_list,            
                             active05="active",
                             permission_dashboard=current_user.permission_dashboard,
@@ -1094,11 +1169,14 @@ def delete_user(id):
 def dashboard_system_email():
     error_message = ""
     error_message_test = ""
-    message_test = ""
+    
+    message_test                 = ""
+    collapse_test_email_settings = ""
+    
 
     if request.method == "POST":     
         # update email settings
-        if request.form.get("change_email_settings") is not None:      
+        if request.form.get("change_email_settings") != None:      
             set_mail_server_address = request.form.get("set_mail_server_address")
             set_mail_server_port    = request.form.get("set_mail_server_port")
             set_mail_encoding       = request.form.get("set_mail_encoding")
@@ -1112,7 +1190,10 @@ def dashboard_system_email():
                                                     set_mail_password)
 
         # test email settings
-        if request.form.get("test_email_config") is not None:
+        if request.form.get("test_email_config") != None:
+            
+            collapse_test_email_settings = "in"
+            
             error_message_test = SEND_EMAIL(GET_EMAIL_ADDRESS("test"), "TEST", "TEST")
 
     email_config = GET_EMAIL_CONFIG()[0]
@@ -1125,7 +1206,8 @@ def dashboard_system_email():
                             error_message=error_message,
                             error_message_test=error_message_test,
                             email_config=email_config,
-                            mail_encoding_list=mail_encoding_list,                          
+                            mail_encoding_list=mail_encoding_list,   
+                            collapse_test_email_settings=collapse_test_email_settings,                       
                             active06="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -1148,7 +1230,10 @@ def dashboard_system_email():
 @permission_required
 def dashboard_system_backup():
     error_message = ""
+    
     new_backup_location_path = False
+    collapse_backup_settings = ""
+    
 
     def GET_CPU_TEMPERATURE():
         res = os.popen('vcgencmd measure_temp').readline()
@@ -1169,13 +1254,15 @@ def dashboard_system_backup():
         # save backup setting
         if request.form.get("save_backup_setting") is not None:
             
+            collapse_backup_settings = "in"
+            
             # time
             backup_hour = request.form.get("get_backup_hour")
 
             backup_task = GET_SCHEDULER_TASK_BY_NAME("backup_database")
             
             if backup_task == None:
-                ADD_SCHEDULER_TASK("backup_database", "", "None")
+                ADD_SCHEDULER_TASK("backup_database", "no_scheduler_task")
                 backup_task = GET_SCHEDULER_TASK_BY_NAME("backup_database")
                 
             i = backup_task.id
@@ -1226,7 +1313,8 @@ def dashboard_system_backup():
                             backup_hour=backup_hour,
                             backup_location_path=backup_location_path,
                             new_backup_location_path=new_backup_location_path,
-                            dropdown_list_hours=dropdown_list_hours,                                                    
+                            dropdown_list_hours=dropdown_list_hours,         
+                            collapse_backup_settings=collapse_backup_settings,                                           
                             active07="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   

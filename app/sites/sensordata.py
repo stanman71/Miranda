@@ -21,7 +21,7 @@ def permission_required(f):
         if current_user.permission_sensordata == "checked":
             return f(*args, **kwargs)
         else:
-            return redirect(url_for('login'))
+            return redirect(url_for('logout'))
     return wrap
 
 

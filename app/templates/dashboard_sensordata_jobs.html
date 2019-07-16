@@ -216,17 +216,12 @@
 
       <form method="POST"> 
         <div class="row justify-content-md-center">
-          <div class="col-sm-2">  
-            <button type="button" style="background-color:transparent" class="btn btn-secondary">Neuer Job:</button>                   
-          </div>
           <div class="col-sm-3"> 
-            <input type="text" class="form-control" name="set_job_name" value="{% if job_name != None %}{{ job_name }}{% endif %}" />                         
+            <input type="text" class="form-control" name="set_job_name" placeholder="Neuer Job" value="{% if job_name != None %}{{ job_name }}{% endif %}" />                         
           </div>  
-          <div class="col-sm-1">
-            <button type="button" style="background-color:transparent" class="btn btn-secondary">Datei:</button>
-          </div>
+          <div class="col-sm-1"></div>
           <div class="col-sm-3"> 
-            <input type="text" class="form-control" name="set_job_filename" value="{% if job_filename != None %}{{ job_filename }}{% endif %}" />                         
+            <input type="text" class="form-control" name="set_job_filename" placeholder="Dateiname" value="{% if job_filename != None %}{{ job_filename }}{% endif %}" />                         
           </div>           
           <div class="col-sm-1">                                      
             <input type="submit" onclick="window.location.href='/dashboard/sensordata#'" class="btn btn-default" name="add_job" value="Job erstellen" />
@@ -350,64 +345,82 @@
 
 <!-- sensorfile table -->
 
+    <div class="panel-group">
       <div class="panel panel-default">
-        <div class="panel-body">  
-          <div class="well well-sm">
-            <table class="table">
-              <thead>                      
-                <th scope="col">Datein</th> 
-              </thead>              
-              <tbody> 
-                {% for entry in list_files %}
-                <tr>
-                  <td>{{ entry }}</td> 
-                  <td class="text-right"><a href="/dashboard/sensordata/jobs/download/file/{{ entry }}?time={{ timestamp }}"><font color="lightblue"><b>herunterladen</b></font></a></td>  
-                  <td class="text-right"><a href="/dashboard/sensordata/jobs/delete/file/{{ entry }}#table_files"><font color="salmon" size="5"><b>X</b></font></a></td>  
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_files"><font color="white"><b> Datein </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_files" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">      
+              <table class="table">
+                <thead>                      
+                  <th scope="col"></th> 
+                  <th scope="col"></th> 
+                  <th scope="col"></th> 
+                </thead>              
+                <tbody> 
+                  {% for entry in list_files %}
+                  <tr>
+                    <td>{{ entry }}</td> 
+                    <td class="text-right"><a href="/dashboard/sensordata/jobs/download/file/{{ entry }}?time={{ timestamp }}"><font color="lightblue"><b>herunterladen</b></font></a></td>  
+                    <td class="text-right"><a href="/dashboard/sensordata/jobs/delete/file/{{ entry }}#table_files"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  </tr>
+                  {% endfor %} 
+                </tbody>
+              </table>  
+            </div>  
           </div>
         </div>
       </div>  
+      <br>
+      <br>
+      <br>
       
       
 <!-- informations -->
 
-       <div class="panel panel-default">
-         <div class="panel-body"> 
-           <div class="well well-sm">     
-             <div class="form-group">
-               <div class="text-center">  
-                  <h3><span class="label label-default">Hinweise</span></h3>
-               </div>
-               <br>
-               Datein
-               <br>
-               <br>
-               - Die Sensordaten werden in den angegebenen Datein gespeichert
-               <br>
-               - Diese Datein werden automatisch angelegt und können können von beliebig vielen Jobs gemeinsam verwendet werden
-               <br>               
-               - Die Daten können innerhalb von SmartHome unter Sensordaten/Statistiken ausgewertet werden
-               <br>               
-               - In der Tablle "Datein" lassen sich auch die Datein herunterladen und mit einem anderen Programm verarbeiten
-               <br>
-               <br>
-               <br>               
-               Option Sensor-Inputs speichern
-               <br>
-               <br>               
-               - Mit dieser Option können Sensordaten von passiven Sensoren aufgezeichnet werden
-               <br>               
-               - Passive Sensoren senden Daten von sich aus und können nicht direkt abgefragt werden
-               <br>               
-               - Aktive Sensoren senden keine Daten von sich aus und müssen mit einem Auftrag in der Aufgabenplanung dazu aufgefordert werden
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_info" class="panel-collapse collapse ">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+                <div class="form-group">
+                   <br>
+                   Datein
+                   <br>
+                   <br>
+                   - Die Sensordaten werden in den angegebenen Datein gespeichert
+                   <br>
+                   - Diese Datein werden automatisch angelegt und können können von beliebig vielen Jobs gemeinsam verwendet werden
+                   <br>               
+                   - Die Daten können innerhalb von SmartHome unter Sensordaten/Statistiken ausgewertet werden
+                   <br>               
+                   - In der Tablle "Datein" lassen sich auch die Datein herunterladen und mit einem anderen Programm verarbeiten
+                   <br>
+                   <br>
+                   <br>               
+                   Option Sensor-Inputs speichern
+                   <br>
+                   <br>               
+                   - Mit dieser Option können Sensordaten von passiven Sensoren aufgezeichnet werden
+                   <br>               
+                   - Passive Sensoren senden Daten von sich aus und können nicht direkt abgefragt werden
+                   <br>               
+                   - Aktive Sensoren senden keine Daten von sich aus und müssen mit einem Auftrag in der Aufgabenplanung dazu aufgefordert werden
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>  
-      </font>      
+          </div>  
+        </font>  
+      </div>      
     </div>
   </div>       
 </div>

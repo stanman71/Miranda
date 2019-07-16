@@ -100,15 +100,15 @@
 
 <section id="add_email"></section>  
 
+
 <!-- eMail settings -->
+
 
       <div class="panel panel-default">
         <div class="panel-heading"><font color="white"><b>eMail</b></font></div>
           <div class="panel-body">   
             <div class="well well-sm">
-              <b>HINWEIS:</b> Daten beziehen sich auf den eMail-Versender (optimalerweise eine eigende eMail-Adresse für SmartHome)
-              <br>
-              <br>
+  
   
 <!-- error message  -->
 
@@ -117,6 +117,7 @@
     {{ error_message }}
 </div>      
 {% endif %}   
+  
   
               <form method="POST">
                 <div class="well well-sm"> 
@@ -184,11 +185,24 @@
 
 <section id="test_email"></section>   
 
-      <div class="panel panel-default">
-        <div class="panel-body">  
-          <div class="well well-sm">
     
-<!-- messages test -->            
+<!-- test email settings -->           
+
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_test_email_settings"><font color="white"><b> Einstellungen testen </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_test_email_settings" class="panel-collapse collapse {{collapse_test_email_settings}} ">      
+          <div class="panel-body"> 
+            <form method="POST">      
+              <div class="well well-sm"> 
+
+
+<!-- test email setting error message -->  
 
 {% if error_message_test != "" and error_message_test != "success" %}
   <div class="alert alert-danger" role="alert">
@@ -202,17 +216,39 @@
   </div>      
 {% endif %}   
 
-<!-- test email settings -->
+         
+                <input type="submit" onclick="window.location.href='/dashboard/system/email#test_email'" class="btn btn-default" name="test_email_config" value="Einstellungen testen" />
+              </form> 
+            </div>
+          </div>
+        </div>   
+      </div> 
+        
+    <br>
+    <br> 
+    <br>     
 
-            <form method="POST">            
-              <input type="submit" onclick="window.location.href='/dashboard/system/email#test_email'" class="btn btn-default" name="test_email_config" value="Einstellungen testen" />
-            </form> 
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
           </div>
         </div>
-      </div>   
-      </font>      
+      </font>
+      </div>
     </div>
-  </div>       
-</div>
+  </div>    
+</div> 
 
 {% endblock %}

@@ -114,11 +114,8 @@
 
       <form method="POST"> 
         <div class="row justify-content-md-center">
-          <div class="col-sm-2">  
-            <button type="button" style="background-color:transparent" class="btn btn-secondary">Neues Programm:</button>                   
-          </div>
           <div class="col-sm-3"> 
-            <input type="text" class="form-control" name="set_program_name" value="" />                         
+            <input type="text" class="form-control" name="set_program_name" placeholder="Neues Programm" value="" />                         
           </div>  
           <div class="col-sm-1">                                      
             <input type="submit" onclick="window.location.href='/dashboard/programs#'" class="btn btn-default" name="add_program" value="Programm erstellen" />
@@ -313,9 +310,30 @@
 
 {% endif %}
    
+    <br>
+    <br>      
+
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
       </font>
+      </div>
     </div>
   </div>    
-</div>
+</div> 
 
 {% endblock %}

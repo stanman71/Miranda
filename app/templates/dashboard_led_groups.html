@@ -112,11 +112,8 @@
 
           <form method="POST"> 
             <div class="row justify-content-md-center">
-              <div class="col-sm-2">  
-                <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Gruppe:</button>                   
-              </div>
               <div class="col-sm-3"> 
-                <input type="text" class="form-control" name="set_group_name" value="" />                         
+                <input type="text" class="form-control" name="set_group_name" placeholder="Neue Gruppe" value="" />                         
               </div>  
               <div class="col-sm-1">                                      
                 <input type="submit" onclick="window.location.href='/dashboard/led/groups#'" class="btn btn-default" name="add_group" value="Gruppe erstellen" />
@@ -125,16 +122,24 @@
           </div>
         </div>    
 
-<!-- start table -->   
+
+<!-- led groups table -->   
+
+      <div class="panel-group">
 
         {% for entry in list_groups %}
 
 <section id="table_{{ entry.id }}"></section>  
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="white"><b>{{ entry.name }}</b></font></div>    
-            <div class="panel-body">   
-            <div class="well well-sm">        
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
 
 
 <!-- error message change settings -->
@@ -146,6 +151,7 @@
     {% endfor %}   
   </div>      
 {% endif %} 
+
 
           <form method="POST" class="verticalform">
             <table class="table">
@@ -414,14 +420,38 @@
 <!-- end table -->
 
             <input type="submit" onclick="window.location.href='/dashboard/led/groups#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
-          </form>
+            </form>
+          </div>  
         </div>  
-      </div>  
+      </div>    
+      <br>
+         
       {% endfor %}
+ 
+    <br>
+    <br>      
 
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
       </font>
+      </div>
     </div>
   </div>    
-</div>
+</div>     
 
 {% endblock %}

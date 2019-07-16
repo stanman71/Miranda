@@ -144,7 +144,9 @@
 
 
 <!-- zigbee2mqtt device table -->
-  
+
+
+      <form method="POST"> 
         <div class="panel panel-default">
           <div class="panel-body">  
             <div class="well well-sm">   
@@ -187,28 +189,37 @@
             <div class="row justify-content-md-center">
               <div class="col-sm-3">                
                 <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
-              </form>
               
 <section id="pairing"></section>             
               
               </div>
               <div class="col-sm-3"> 
-                <form method="POST">
-                  <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#table'" class="btn btn-default" name="update_zigbee2mqtt_devices" value="Verbindungen aktuallisieren" />
-                </form>
-              </div>
+                <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#table'" class="btn btn-default" name="update_zigbee2mqtt_devices" value="Verbindungen aktuallisieren" />
+              </form>
             </div>
-          </div>  
+          </div>
         </div>  
+      </div>  
+    </div>   
 
 
 <!-- zigbee2mqtt settings -->
 
+
 <section id="pairing"></section>
 
-        <div class="panel panel-default">
-          <div class="panel-body">   
-            <form method="POST">  
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_settings"><font color="white"><b> Einstellungen </b></font></a>
+              </h4>
+            </div>   
+            <div id="collapse_zigbee2mqtt_settings" class="panel-collapse collapse {{collapse_zigbee2mqtt_settings}} ">      
+              <div class="panel-body">      
+              <form method="POST">         
+                <div class="well well-sm">   
+           
               
 <!-- zigbee2mqtt error message pairing -->
 
@@ -218,7 +229,7 @@
   </div>      
 {% endif %}                 
               
-              <div class="well well-sm">
+              
                 <div class="pretty p-default p-round">
                     <input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">
                   <div class="state p-success">
@@ -232,60 +243,105 @@
                     <label><font color="white">Pairing deaktivieren</font></label>
                   </div>
                 </div>
-              </div>
-              <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#pairing'" name="set_pairing" class="btn btn-default" value="Auswählen"/>
-            </form>  
+                <br>
+                <br>
+                <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#pairing'" name="set_pairing" class="btn btn-default" value="Auswählen"/>
+              </form>  
+            </div>
           </div>  
-        </div>   
+        </div> 
+      </div>   
+      <br>
+           
 
 <!-- network topology settings -->
 
+
 <section id="topology"></section>
+  
 
-        <div class="panel panel-default">
-          <div class="panel-body">     
-            <div class="well well-sm">
-              <form method="POST">
-                <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#topology'" name="request_zigbee_topology" class="btn btn-default" value="ZigBee Topologie anzeigen"/>
-              </form>                
-            </div>
-
-            {% if zigbee_topology_show == True %}
-
-            <div class="well well-sm">
-              <div class="img-container">
-                <div class="img">
-                  <img src="{{ url_for('static', filename='images/zigbee_topology.png') }}"></img>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_topology"><font color="white"><b> Netzwerk Topologie </b></font></a>
+              </h4>
+            </div>   
+            <div id="collapse_zigbee2mqtt_topology" class="panel-collapse collapse {{collapse_zigbee2mqtt_topology}} ">      
+              <div class="panel-body">   
+                <div class="well well-sm">                        
+                  <div class="img-container">
+                    <div class="img">
+                      <img src="{{ url_for('static', filename='images/zigbee_topology.png') }}"></img>
+                    </div>
+                  </div>
+                  <form method="POST">                     
+                    <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#topology'" name="request_zigbee_topology" class="btn btn-default" value="ZigBee Topologie aktualisieren"/>
+                  </form>                   
                 </div>
               </div>
-            </div>
+            </div>  
+          </div> 
+          <br>
 
-            {% endif %}
-
-          </div>  
-        </div> 
 
 <!-- zigbee2mqtt logs -->
 
+
 <section id="logfile"></section>
 
-        <div class="panel panel-default">
-          <div class="panel-body">  
-              <a href="/dashboard/system/zigbee2mqtt/download/log_zigbee2mqtt.csv?time={{ timestamp }}"><font color="lightblue"><b>ZigBee2MQTT Log-Datei herunterladen</b></font></a>
-            <div class="dropdown text-right">
-            <form method="POST" enctype="multipart/form-data">
-              <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="ZigBee2MQTT Log-Datei zurücksetzen">
-            </form>
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_log"><font color="white"><b> Log </b></font></a>
+              </h4>
+            </div>   
+            <div id="collapse_zigbee2mqtt_log" class="panel-collapse collapse {{collapse_zigbee2mqtt_log}} ">      
+              <div class="panel-body">   
+              <form method="POST">                   
+                <div class="well well-sm">   
+                  <a href="/dashboard/system/zigbee2mqtt/download/log_zigbee2mqtt.csv?time={{ timestamp }}"><font color="lightblue"><b>ZigBee2MQTT Log-Datei herunterladen</b></font></a>
+                <div class="dropdown text-right">
+                <form method="POST" enctype="multipart/form-data">
+                  <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="ZigBee2MQTT Log-Datei zurücksetzen">
+                </form>
+              </div>  
+            </div>   
           </div>        
         </div>  
       </div>  
 
 {% endif %}
 
+    <br>
+    <br>  
+    <br>    
+
+
+<!-- informations -->
+
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
       </font>
+      </div>
     </div>
   </div>    
-</div>
+</div> 
 
 {% endblock %}
 

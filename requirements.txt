@@ -6,6 +6,7 @@ flask_wtf
 flask_login 
 flask_mail
 flask_mobility (folder: /home/pi/.local/lib/python3.5/site-packages)
+speech_recognition
 wtforms 
 pyusb
 ping3

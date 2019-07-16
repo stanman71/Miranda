@@ -17,7 +17,7 @@ def permission_required(f):
         if current_user.permission_scheduler == "checked":
             return f(*args, **kwargs)
         else:
-            return redirect(url_for('login'))
+            return redirect(url_for('logout'))
     return wrap
 
 
@@ -29,11 +29,6 @@ def permission_required(f):
 @login_required
 @permission_required
 def dashboard_scheduler():
-    error_message_add_reduced_scheduler_task = ""
-    error_message_reduced_change_settings    = ""
-    error_message_reduced_time_settings      = ""
-    error_message_reduced_scheduler_tasks    = ""
-
     error_message_add_scheduler_task         = ""    
     error_change_settings                    = ""
     error_message_general_settings           = ""    
@@ -44,161 +39,13 @@ def dashboard_scheduler():
     error_message_scheduler_tasks            = ""
     error_message_locations_import           = ""
 
+    RESET_SCHEDULER_TASK_ERRORS()
+    RESET_SCHEDULER_TASK_COLLAPSE()
     UPDATE_MQTT_DEVICE_NAMES()
-
-    for i in range (1,26):
-        try:
-            RESET_SCHEDULER_TASK_ERRORS(i)
-        except:
-            pass
+        
 
     if request.method == "POST": 
 
-        # add reduced scheduler task
-        if request.form.get("add_reduced_scheduler_task") is not None:
-            scheduler_task_name = request.form.get("set_reduced_scheduler_task_name")
-
-            if scheduler_task_name == "":               
-                error_message_add_reduced_scheduler_task = "Keinen Namen angegeben"
-            else:         
-                error_message_add_reduced_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "reduced", "checked")          
-
-
-        # ################
-        # ################
-        #   reduced task
-        # ################
-        # ################
-
-
-        # change reduced settings
-        if request.form.get("change_reduced_settings") != None: 
-            for i in range (1,26):
-
-                if request.form.get("set_name_reduced_" + str(i)) != None:
-             
-                    # ############
-                    # name setting
-                    # ############
-
-                    scheduler_data = GET_SCHEDULER_TASK_BY_ID(i)
-                    new_name       = request.form.get("set_name_reduced_" + str(i))                    
-
-                    # add new name
-                    if ((new_name != "") and (GET_SCHEDULER_TASK_BY_NAME(new_name) == None)):
-                        name = request.form.get("set_name_reduced_" + str(i)) 
-                      
-                    # nothing changed 
-                    elif new_name == scheduler_data.name:
-                        name = scheduler_data.name                        
-                        
-                    # name already exist
-                    elif ((GET_SCHEDULER_TASK_BY_NAME(new_name) != None) and (scheduler_data.name != new_name)):
-                        name = scheduler_data.name 
-                        error_message_reduced_change_settings = error_message_reduced_change_settings + (new_name + " >>> Name schon vergeben,")
-
-                    # no input commited
-                    else:                          
-                        name = GET_SCHEDULER_TASK_BY_ID(i).name 
-                        error_message_reduced_change_settings = error_message_reduced_change_settings + (name + " >>> Keinen Namen angegeben,")
-
-
-                    # ############
-                    # task setting
-                    # ############
-
-                    ### set task
-                    if request.form.get("set_task_reduced_" + str(i)) != "":
-                        task = request.form.get("set_task_reduced_" + str(i))
-                    else:
-                        task = GET_SCHEDULER_TASK_BY_ID(i).task
-
-
-                    # #############
-                    # time settings
-                    # #############
-
-                    ### set day
-                    if request.form.get("set_day_reduced_" + str(i)) != "":
-                        day = request.form.get("set_day_reduced_" + str(i))
-                    else:
-                        day = GET_SCHEDULER_TASK_BY_ID(i).day
-
-                    ### set hour
-                    if request.form.get("set_hour_reduced_" + str(i)) != "":
-                        hour = request.form.get("set_hour_reduced_" + str(i))
-                    else:
-                        hour = GET_SCHEDULER_TASK_BY_ID(i).hour
-
-                    ### set minute
-                    if request.form.get("set_minute_reduced_" + str(i)) != "":
-                        minute = request.form.get("set_minute_reduced_" + str(i))
-                    else:
-                        minute = GET_SCHEDULER_TASK_BY_ID(i).minute 
-
-
-                    # #################
-                    # checkbox settings
-                    # #################
-
-                    ### set checkbox repeat
-                    if request.form.get("checkbox_option_repeat_reduced_" + str(i)):
-                        option_repeat = "checked"
-                    else:
-                        option_repeat = "None"  
-
-                    option_time                = "checked"
-                    option_sun                 = "None"
-                    option_sensors             = "None"
-                    option_position            = "None"
-                    option_sunrise             = "None"
-                    option_sunset              = "None" 
-                    location                   = "None" 
-                    mqtt_device_ieeeAddr_1     = "None"
-                    mqtt_device_name_1         = "None"
-                    mqtt_device_input_values_1 = "None"
-                    sensor_key_1               = "None"
-                    operator_1                 = "None"
-                    value_1                    = "None"
-                    operator_main_1            = "None"
-                    mqtt_device_ieeeAddr_2     = "None"
-                    mqtt_device_name_2         = "None"
-                    mqtt_device_input_values_2 = "None"
-                    sensor_key_2               = "None"
-                    operator_2                 = "None"
-                    value_2                    = "None"
-                    operator_main_2            = "None"
-                    mqtt_device_ieeeAddr_3     = "None"
-                    mqtt_device_name_3         = "None"
-                    mqtt_device_input_values_3 = "None"
-                    sensor_key_3               = "None"
-                    operator_3                 = "None"
-                    value_3                    = "None"
-                    option_home                = "None"
-                    option_away                = "None"
-                    ip_addresses               = "None"   
-
-                    if error_message_reduced_change_settings != "":
-                        error_message_reduced_change_settings = error_message_reduced_change_settings[:-1]
-
-                    SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_sun, option_sensors, option_position, option_repeat, 
-                                          day, hour, minute,
-                                          option_sunrise, option_sunset, location,
-                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
-                                          sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
-                                          sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
-                                          sensor_key_3, operator_3, value_3,
-                                          option_home, option_away, ip_addresses)
-
-
-        # #################
-        # #################
-        #   complete task
-        # #################
-        # #################
 
         # add scheduler task
         if request.form.get("add_scheduler_task") is not None:
@@ -207,14 +54,15 @@ def dashboard_scheduler():
             if scheduler_task_name == "":               
                 error_message_add_scheduler_task = "Keinen Namen angegeben"
             else:         
-                error_message_add_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "complete")          
+                error_message_add_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "")          
 
         # change settings
         if request.form.get("change_settings") != None: 
             for i in range (1,26):
 
                 if request.form.get("set_name_" + str(i)) != None:
-
+                    
+                    SET_SCHEDULER_TASK_COLLAPSE(i)    
 
                     # ############
                     # name setting
@@ -252,6 +100,7 @@ def dashboard_scheduler():
                         task = request.form.get("set_task_" + str(i))
                     else:
                         task = GET_SCHEDULER_TASK_BY_ID(i).task
+                        error_change_settings = "Keine Aufgabe angegeben"
 
 
                     # #################
@@ -363,11 +212,7 @@ def dashboard_scheduler():
                     # ###############
                     # sensor settings
                     # ###############              
-
-                    print("############")
-                    print(request.form)
-                    print(request.form.get("set_mqtt_device_1_" + str(i)))
-                    print("############")                    
+                                  
 
                     # set mqtt_device 1
                     mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))
@@ -462,7 +307,7 @@ def dashboard_scheduler():
                         sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
                         sensor_key_2 = sensor_key_2.replace(" ", "") 
                         if sensor_key_2.isdigit():
-                            if sensor_key_2 == "0" or sensor_key_2 == "2":
+                            if sensor_key_2 == "0" or sensor_key_2 == "1":
                                 sensor_key_2 = "None"
                             else:                                
                                 sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
@@ -481,11 +326,14 @@ def dashboard_scheduler():
                         mqtt_device_name_3         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
                         mqtt_device_input_values_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
 
+
+
                         # get sensorkey value
                         sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
                         sensor_key_3 = sensor_key_3.replace(" ", "") 
+                        
                         if sensor_key_3.isdigit():
-                            if sensor_key_3 == "0" or sensor_key_3 == "3":
+                            if sensor_key_3 == "0" or sensor_key_3 == "1":
                                 sensor_key_3 = "None"
                             else:                                
                                 sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
@@ -522,10 +370,9 @@ def dashboard_scheduler():
                         ip_addresses = request.form.get("set_ip_addresses_" + str(i))
                     else:
                         ip_addresses = "None"
-                    
-
+                        
                     SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
-
+                    
                     SET_SCHEDULER_TASK(i, name, task, 
                                           option_time, option_sun, option_sensors, option_position, option_repeat, 
                                           day, hour, minute,
@@ -539,15 +386,12 @@ def dashboard_scheduler():
                                           option_home, option_away, ip_addresses)
 
 
-    error_message_reduced_scheduler_tasks = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"), "scheduler")
-    error_message_reduced_time_settings   = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("reduced"))
-
-    error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"), "scheduler")
-    error_message_general_settings  = CHECK_SCHEDULER_GENERAL_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
-    error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
-    error_message_sun_settings      = CHECK_SCHEDULER_SUN_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
-    error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
-    error_message_position_settings = CHECK_SCHEDULER_POSITION_SETTINGS(GET_ALL_SCHEDULER_TASKS_BY_TYPE("complete"))
+    error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS(), "scheduler")
+    error_message_general_settings  = CHECK_SCHEDULER_GENERAL_SETTINGS(GET_ALL_SCHEDULER_TASKS())
+    error_message_time_settings     = CHECK_SCHEDULER_TIME_SETTINGS(GET_ALL_SCHEDULER_TASKS())
+    error_message_sun_settings      = CHECK_SCHEDULER_SUN_SETTINGS(GET_ALL_SCHEDULER_TASKS())
+    error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS())
+    error_message_position_settings = CHECK_SCHEDULER_POSITION_SETTINGS(GET_ALL_SCHEDULER_TASKS())
 
     scheduler_task_list = GET_ALL_SCHEDULER_TASKS()
 
@@ -691,10 +535,6 @@ def dashboard_scheduler():
 
     return render_template('dashboard_scheduler.html',
                             scheduler_task_list=scheduler_task_list,
-                            error_message_add_reduced_scheduler_task=error_message_add_reduced_scheduler_task,
-                            error_message_reduced_change_settings=error_message_reduced_change_settings,
-                            error_message_reduced_time_settings=error_message_reduced_time_settings,
-                            error_message_reduced_scheduler_tasks=error_message_reduced_scheduler_tasks,
                             error_message_add_scheduler_task=error_message_add_scheduler_task,
                             error_message_general_settings=error_message_general_settings,
                             error_message_time_settings=error_message_time_settings,
@@ -745,11 +585,11 @@ def dashboard_scheduler():
 
 
 # change scheduler task position 
-@app.route('/dashboard/scheduler/position/<string:direction>/<string:task_type>/<int:id>')
+@app.route('/dashboard/scheduler/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
-def change_scheduler_task_position(id, task_type, direction):
-    CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction)
+def change_scheduler_task_position(id, direction):
+    CHANGE_SCHEDULER_TASK_POSITION(id, direction)
     return redirect(url_for('dashboard_scheduler'))
 
 

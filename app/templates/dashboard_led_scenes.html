@@ -134,11 +134,8 @@
 
         <form method="POST"> 
           <div class="row justify-content-md-center">
-            <div class="col-sm-2">  
-              <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Szene:</button>                   
-            </div>
             <div class="col-sm-3"> 
-              <input type="text" class="form-control" name="set_scene_name" value="" />                         
+              <input type="text" class="form-control" name="set_scene_name" placeholder="Neue Szene" value="" />                         
             </div>  
             <div class="col-sm-1">                                      
               <input type="submit" onclick="window.location.href='/dashboard/led/scenes#'" class="btn btn-default" name="add_scene" value="Szene erstellen" />
@@ -147,16 +144,24 @@
         </div>
       </div>     
 
-<!-- start table -->
+
+<!-- led scenes table -->
+
+      <div class="panel-group">
 
         {% for entry in scenes_list %}
 
-<section id="table_{{ entry.id }}"></section>  
+<section id="table_{{ entry.id }}"></section> 
 
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="white"><b> {{ entry.name }} </b></font></div>    
-            <div class="panel-body">   
-            <div class="well well-sm">     
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
                 
 <!-- error message change settings -->
 
@@ -173,92 +178,94 @@
     {{ entry.error_led_control }} 
   </div>      
 {% endif %}
-          <form method="POST" class="verticalform">
-            <table class="table">
-              <thead>    
-                <th scope="col"></th>                      
-                <th scope="col">Szene</th> 
-                <th></th>
-                <th></th>
-                <th scope="col">LED Nummer</th>
-                <th scope="col">RGB</th>
-                <th scope="col">Farbtemperatur</th>
-                <th scope="col">Helligkeit</th>
-                <th scope="col"></th>
-              </thead>
-              <tbody> 
-                <tr>
-                  <td style="width:3%">
-                    <a href="/dashboard/led/scenes/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
-                    <a href="/dashboard/led/scenes/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
-                  </td>                 
-                  <td style="width:20%">
-                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
-                  </td> 
-                  <td></td> 
-                  <td style="width:10%">
-                  <font size="+2">
-                    <div class="row justify-content-md-center">
-                      <div class="col-sm-1">                       
-                        <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#table_{{ entry.id }}">
-                          <span class="glyphicon glyphicon-plus" style="color:white"></span>
-                        </a>                  
+
+
+            <form method="POST" class="verticalform">
+              <table class="table">
+                <thead>    
+                  <th scope="col"></th>                      
+                  <th scope="col">Szene</th> 
+                  <th></th>
+                  <th></th>
+                  <th scope="col">LED Nummer</th>
+                  <th scope="col">RGB</th>
+                  <th scope="col">Farbtemperatur</th>
+                  <th scope="col">Helligkeit</th>
+                  <th scope="col"></th>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td style="width:3%">
+                      <a href="/dashboard/led/scenes/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/dashboard/led/scenes/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    </td>                 
+                    <td style="width:20%">
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
+                    </td> 
+                    <td></td> 
+                    <td style="width:10%">
+                    <font size="+2">
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-1">                       
+                          <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#table_{{ entry.id }}">
+                            <span class="glyphicon glyphicon-plus" style="color:white"></span>
+                          </a>                  
+                        </div>
                       </div>
-                    </div>
-                  </font>
-                  </td>   
+                    </font>
+                    </td>   
 
 <!-- section 1 -->
 
-                  <td>1</td> 
-                  <td>
-                    <input type="text" name="set_rgb_1_{{ entry.id }}" class="form-control led_1_{{ entry.id }}" value="rgb({{ entry.red_1 }}, {{ entry.green_1 }}, {{ entry.blue_1 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_1_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_1 }}" />
+                    <td>1</td> 
+                    <td>
+                      <input type="text" name="set_rgb_1_{{ entry.id }}" class="form-control led_1_{{ entry.id }}" value="rgb({{ entry.red_1 }}, {{ entry.green_1 }}, {{ entry.blue_1 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_1_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_1 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_1_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_1 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_1_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_1 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 <!-- section 2 -->
 
 {% if entry.active_setting_2 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>2</td> 
-                  <td>
-                    <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_2_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_2 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>2</td> 
+                    <td>
+                      <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_2_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_2 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_2_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_2 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_2_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_2 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -266,31 +273,31 @@
 
 {% if entry.active_setting_3 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>3</td>  
-                  <td>
-                    <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_3_{{ entry.id }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_3_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_3 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>  
+                    <td>
+                      <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_3_{{ entry.id }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_3_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_3 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_3_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_3 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_3_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_3 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -298,31 +305,31 @@
 
 {% if entry.active_setting_4 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>4</td> 
-                  <td>
-                    <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_4_{{ entry.id }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_4_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_4 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td> 
+                    <td>
+                      <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_4_{{ entry.id }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_4_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_4 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_4_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_4 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_4_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_4 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -330,31 +337,31 @@
 
 {% if entry.active_setting_5 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>5</td>  
-                  <td>
-                    <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_5_{{ entry.id }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_5_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_5 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>5</td>  
+                    <td>
+                      <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_5_{{ entry.id }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_5_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_5 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_5_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_5 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_5_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_5 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -362,31 +369,31 @@
 
 {% if entry.active_setting_6 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>6</td>  
-                  <td>
-                    <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_6_{{ entry.id }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_6_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_6 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>  
+                    <td>
+                      <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_6_{{ entry.id }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_6_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_6 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_6_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_6 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_6_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_6 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -394,31 +401,31 @@
 
 {% if entry.active_setting_7 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>7</td> 
-                  <td>
-                    <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_7_{{ entry.id }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_7_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_7 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td> 
+                    <td>
+                      <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_7_{{ entry.id }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_7_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_7 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_7_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_7 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_7_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_7 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -426,31 +433,31 @@
 
 {% if entry.active_setting_8 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>8</td> 
-                  <td>
-                    <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_8_{{ entry.id }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_8_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_8 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>8</td> 
+                    <td>
+                      <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_8_{{ entry.id }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_8_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_8 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_8_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_8 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_8_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_8 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -458,75 +465,99 @@
 
 {% if entry.active_setting_9 == "True" %} 
 
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>9</td>  
-                  <td>
-                    <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_9_{{ entry.id }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_color_temp_9_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_9 }}" />
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>9</td>  
+                    <td>
+                      <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_9_{{ entry.id }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_color_temp_9_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_9 }}" />
+                        </div> 
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <div class="col-md-12"> 
+                          <input type="range" class="slider" name="set_brightness_9_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_9 }}" />
+                        </div> 
                       </div> 
-                    </div>   
-                  </td>
-                  <td>
-                    <div class="slidecontainer"> 
-                      <div class="col-md-12"> 
-                        <input type="range" class="slider" name="set_brightness_9_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_9 }}" />
-                      </div> 
-                    </div> 
-                  </td>
-                  <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>
+                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
 
-                </tr>     
-              </tbody>
-            </table> 
-          </div> 
+                  </tr>     
+                </tbody>
+              </table> 
+            </div> 
 
 <!-- end table -->
 
-          <div class="row justify-content-md-center">
-            <div class="col-sm-3">
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
-            </form>
-            </div> 
-            <div class="col-sm-1">    
-            </div>             
-            <div class="col-sm-3">
-            <form method="POST" class="verticalform">
-              <select class="selectpicker" data-live-search="true" data-width="100%" name="group_{{ entry.id }}">
-                <option value= "None" > None </option>                      
-                <optgroup>
-                  {% for each in dropdown_list_groups %}
-                    <option value="{{ each.id }}"> {{ each.name }} </option>
-                  {% endfor %}     
-                </optgroup>                            
-              </select>                                  
-            </div>          
-            <div class="col-sm-2">              
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
-            </div> 
-            <div class="col-sm-2">
-              <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              </form>
+              </div> 
+              <div class="col-sm-1">    
+              </div>             
+              <div class="col-sm-3">
+              <form method="POST" class="verticalform">
+                <select class="selectpicker" data-live-search="true" data-width="100%" name="group_{{ entry.id }}">
+                  <option value= "None" > None </option>                      
+                  <optgroup>
+                    {% for each in dropdown_list_groups %}
+                      <option value="{{ each.id }}"> {{ each.name }} </option>
+                    {% endfor %}     
+                  </optgroup>                            
+                </select>                                  
+              </div>          
+              <div class="col-sm-2">              
+                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
+              </div> 
+              <div class="col-sm-2">
+                <input type="submit" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
+              </div>
             </div>
-          </div>
-          </form>
-        </div>  
+            </form>
+          </div>  
+        </div> 
       </div>  
+      <br>
+      
       {% endfor %}
       
+    <br>
+    <br>      
+
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
       </font>
+      </div>
     </div>
   </div>    
-</div>
+</div> 
 
 {% endblock %}

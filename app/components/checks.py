@@ -620,8 +620,8 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
    # check hotword files exist
    hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
    
-   if hotword_file not in GET_ALL_HOTWORD_FILES():
-      list_errors.append("Snowboy Hotword " + hotword_file + " nicht vorhanden")
+   if hotword_file not in GET_ALL_HOTWORD_FILES() and hotword_file != "None":
+      list_errors.append("Snowboy Hotword " + str(hotword_file) + " nicht vorhanden")
 
 
    if list_errors == []:

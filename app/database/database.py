@@ -45,6 +45,7 @@ class Controller(db.Model):
     task_8               = db.Column(db.String(50))
     command_9            = db.Column(db.String(50))
     task_9               = db.Column(db.String(50))   
+    collapse             = db.Column(db.String(50))    
     error_task_settings  = db.Column(db.String(500), server_default=(""))      
     
 class eMail(db.Model):
@@ -101,6 +102,7 @@ class LED_Groups(db.Model):
     led_ieeeAddr_9        = db.Column(db.String(50))
     led_name_9            = db.Column(db.String(50)) 
     led_device_type_9     = db.Column(db.String(50))
+    collapse              = db.Column(db.String(50))    
     current_setting       = db.Column(db.String(50))
     current_brightness    = db.Column(db.Integer)
     error_change_settings = db.Column(db.String(500), server_default=(""))
@@ -162,6 +164,7 @@ class LED_Scenes(db.Model):
     blue_9                = db.Column(db.Integer, server_default=("0"))
     color_temp_9          = db.Column(db.Integer, server_default=("0"))
     brightness_9          = db.Column(db.Integer, server_default=("254"))   
+    collapse              = db.Column(db.String(50))        
     error_change_settings = db.Column(db.String(100), server_default=(""))
     error_led_control     = db.Column(db.String(100), server_default=(""))
 
@@ -250,6 +253,7 @@ class Scheduler_Tasks(db.Model):
     option_away                = db.Column(db.String(50), server_default=("None")) 
     ip_addresses               = db.Column(db.String(100), server_default=("None"))
     last_ping_result           = db.Column(db.String(50), server_default=("None")) 
+    collapse                   = db.Column(db.String(50))
     error_change_settings      = db.Column(db.String(500), server_default=("")) 
     error_general_settings     = db.Column(db.String(500), server_default=(""))  
     error_time_settings        = db.Column(db.String(500), server_default=(""))   
@@ -319,23 +323,28 @@ class Speechcontrol_Spotify_Tasks(db.Model):
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
-    id                        = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    username                  = db.Column(db.String(50), unique=True)
-    email                     = db.Column(db.String(50), unique=True)
-    password                  = db.Column(db.String(100))
-    permission_dashboard      = db.Column(db.String(20), server_default=(""))   
-    permission_scheduler      = db.Column(db.String(20), server_default=(""))     
-    permission_programs       = db.Column(db.String(20), server_default=(""))    
-    permission_watering       = db.Column(db.String(20), server_default=(""))   
-    permission_camera         = db.Column(db.String(20), server_default=(""))   
-    permission_led            = db.Column(db.String(20), server_default=(""))    
-    permission_sensordata     = db.Column(db.String(20), server_default=(""))  
-    permission_spotify        = db.Column(db.String(20), server_default=(""))   
-    permission_system         = db.Column(db.String(20), server_default=(""))    
-    email_notification_info   = db.Column(db.String(20), server_default=(""))
-    email_notification_error  = db.Column(db.String(20), server_default=(""))
-    email_notification_camera = db.Column(db.String(20), server_default=(""))
-
+    id                                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    username                            = db.Column(db.String(50), unique=True)
+    email                               = db.Column(db.String(50), unique=True)
+    password                            = db.Column(db.String(100))
+    permission_dashboard                = db.Column(db.String(20), server_default=(""))   
+    permission_scheduler                = db.Column(db.String(20), server_default=(""))     
+    permission_programs                 = db.Column(db.String(20), server_default=(""))    
+    permission_watering                 = db.Column(db.String(20), server_default=(""))   
+    permission_camera                   = db.Column(db.String(20), server_default=(""))   
+    permission_led                      = db.Column(db.String(20), server_default=(""))    
+    permission_sensordata               = db.Column(db.String(20), server_default=(""))  
+    permission_spotify                  = db.Column(db.String(20), server_default=(""))   
+    permission_system                   = db.Column(db.String(20), server_default=(""))    
+    email_notification_info             = db.Column(db.String(20), server_default=(""))
+    email_notification_error            = db.Column(db.String(20), server_default=(""))
+    email_notification_camera           = db.Column(db.String(20), server_default=(""))
+    collapse                            = db.Column(db.String(50))
+    collapse_dashboard_led_setting      = db.Column(db.String(50))
+    collapse_dashboard_devices_setting  = db.Column(db.String(50))     
+    collapse_dashboard_watering_setting = db.Column(db.String(50))            
+    error_change_settings               = db.Column(db.String(250))
+        
 class ZigBee2MQTT(db.Model):
     __tablename__ = 'zigbee2mqtt'
     id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -556,6 +565,27 @@ def UPDATE_CONTROLLER_EVENTS():
         db.session.commit()
 
 
+def SET_CONTROLLER_COLLAPSE(id):
+    list_controller = Controller.query.all()
+    
+    for controller in list_controller:
+        controller.collapse = ""
+        db.session.commit()   
+  
+    entry = Controller.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()   
+
+
+def RESET_CONTROLLER_COLLAPSE():
+    list_controller = Controller.query.all()
+    
+    for controller in list_controller:
+        controller.collapse = ""
+        db.session.commit()   
+
+
 def SET_CONTROLLER_TASKS(id, task_1 = "", task_2 = "", task_3 = "", task_4 = "", task_5 = "",
                              task_6 = "", task_7 = "", task_8 = "", task_9 = ""):  
 
@@ -579,11 +609,12 @@ def SET_CONTROLLER_TASK_ERRORS(id, error_task_settings):
     db.session.commit()   
 
 
-def RESET_CONTROLLER_ERRORS(id):    
-    entry = Controller.query.filter_by(id=id).first()
-
-    entry.error_task_settings     = ""
-    db.session.commit()   
+def RESET_CONTROLLER_TASK_ERRORS():    
+    list_controller = Controller.query.all()
+    
+    for controller in list_controller:
+        controller.error_task_settings = ""
+        db.session.commit()        
 
 
 def CHANGE_CONTROLLER_POSITION(id, direction):
@@ -713,6 +744,366 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
     entry.setting_value = value
     db.session.commit()    
     
+
+
+""" ################### """
+""" ################### """
+"""     led groups      """
+""" ################### """
+""" ################### """
+
+
+def GET_ALL_LED_GROUPS():
+    return LED_Groups.query.all()   
+  
+    
+def GET_ALL_ACTIVE_LED_GROUPS():
+    list_active_groups = []
+
+    for group in LED_Groups.query.all():
+        if group.led_ieeeAddr_1 != None and group.led_ieeeAddr_1 != "None":
+            list_active_groups.append(group)
+            
+    return list_active_groups
+          
+
+def GET_LED_GROUP_BY_ID(id):
+    return LED_Groups.query.filter_by(id=id).first()
+
+
+def GET_LED_GROUP_BY_NAME(name):
+    for group in LED_Groups.query.all():
+        
+        if group.name.lower() == name.lower():
+            return group
+        
+
+def ADD_LED_GROUP(name):
+    # name exist ?
+    if not GET_LED_GROUP_BY_NAME(name):
+        
+        if name == "":
+            return "Kein Name angegeben"
+            
+        else:
+            # find a unused id
+            for i in range(1,21):
+                if LED_Groups.query.filter_by(id=i).first():
+                    pass
+                else:
+                    # add the new program
+                    group = LED_Groups(
+                            id = i,
+                            name = name,
+                        )
+                    db.session.add(group)
+                    db.session.commit()
+
+                    RESET_LED_GROUP_ERRORS(i)
+
+                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | added")  
+
+                    return ""
+
+            return "Gruppenlimit erreicht (20)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_LED_GROUP(id, name, led_ieeeAddr_1, led_name_1, led_device_type_1, 
+                            led_ieeeAddr_2, led_name_2, led_device_type_2,
+                            led_ieeeAddr_3, led_name_3, led_device_type_3,
+                            led_ieeeAddr_4, led_name_4, led_device_type_4,
+                            led_ieeeAddr_5, led_name_5, led_device_type_5,
+                            led_ieeeAddr_6, led_name_6, led_device_type_6,
+                            led_ieeeAddr_7, led_name_7, led_device_type_7,
+                            led_ieeeAddr_8, led_name_8, led_device_type_8,
+                            led_ieeeAddr_9, led_name_9, led_device_type_9):
+
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.name = name
+    
+    entry.led_ieeeAddr_1    = led_ieeeAddr_1
+    entry.led_name_1        = led_name_1
+    entry.led_device_type_1 = led_device_type_1
+    entry.led_ieeeAddr_2    = led_ieeeAddr_2
+    entry.led_name_2        = led_name_2
+    entry.led_device_type_2 = led_device_type_2 
+    entry.led_ieeeAddr_3    = led_ieeeAddr_3
+    entry.led_name_3        = led_name_3
+    entry.led_device_type_3 = led_device_type_3
+    entry.led_ieeeAddr_4    = led_ieeeAddr_4
+    entry.led_name_4        = led_name_4
+    entry.led_device_type_4 = led_device_type_4
+    entry.led_ieeeAddr_5    = led_ieeeAddr_5
+    entry.led_name_5        = led_name_5
+    entry.led_device_type_5 = led_device_type_5
+    entry.led_ieeeAddr_6    = led_ieeeAddr_6
+    entry.led_name_6        = led_name_6
+    entry.led_device_type_6 = led_device_type_6 
+    entry.led_ieeeAddr_7    = led_ieeeAddr_7
+    entry.led_name_7        = led_name_7
+    entry.led_device_type_7 = led_device_type_7
+    entry.led_ieeeAddr_8    = led_ieeeAddr_8
+    entry.led_name_8        = led_name_8
+    entry.led_device_type_8 = led_device_type_8
+    entry.led_ieeeAddr_9    = led_ieeeAddr_9
+    entry.led_name_9        = led_name_9
+    entry.led_device_type_9 = led_device_type_9
+       
+    db.session.commit()  
+
+
+def SET_LED_GROUP_COLLAPSE(id):
+    list_led_groups = LED_Groups.query.all()
+    
+    for led_group in list_led_groups:
+        led_group.collapse = ""
+        db.session.commit()   
+  
+    entry = LED_Groups.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()   
+
+
+def RESET_LED_GROUP_COLLAPSE():
+    list_led_groups = LED_Groups.query.all()
+    
+    for led_group in list_led_groups:
+        led_group.collapse = ""
+        db.session.commit()   
+
+
+def SET_LED_GROUP_NAME(id, name):
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.name = name
+       
+    db.session.commit()  
+
+
+def SET_LED_GROUP_CURRENT_SETTING(id, current_setting):
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.current_setting = current_setting     
+    db.session.commit()  
+
+
+def SET_LED_GROUP_CURRENT_BRIGHTNESS(id, current_brightness):
+    entry = LED_Groups.query.filter_by(id=id).first()
+    entry.current_brightness = current_brightness     
+    db.session.commit()  
+
+
+def UPDATE_LED_GROUP_LED_NAMES():
+    groups = GET_ALL_LED_GROUPS()
+    
+    for group in groups:
+        
+        entry = LED_Groups.query.filter_by(id=group.id).first()
+        
+        try:
+            entry.led_name_1        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).name
+            entry.led_device_type_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).device_type
+        except:
+            pass
+        try:
+            entry.led_name_2        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).name
+            entry.led_device_type_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).device_type
+        except:
+            pass
+        try:
+            entry.led_name_3        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).name
+            entry.led_device_type_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).device_type
+        except:
+            pass
+        try:
+            entry.led_name_4        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).name
+            entry.led_device_type_4 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).device_type
+        except:
+            pass
+        try:
+            entry.led_name_5        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).name
+            entry.led_device_type_5 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).device_type
+        except:
+            pass
+        try:
+            entry.led_name_6        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).name
+            entry.led_device_type_6 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).device_type
+        except:
+            pass
+        try:
+            entry.led_name_7        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).name
+            entry.led_device_type_7 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).device_type
+        except:
+            pass
+        try:
+            entry.led_name_8        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).name
+            entry.led_device_type_8 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).device_type
+        except:
+            pass
+        try:
+            entry.led_name_9        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).name
+            entry.led_device_type_9 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).device_type
+        except:
+            pass            
+        
+    db.session.commit()
+
+
+def ADD_LED_GROUP_LED(id):
+    entry = LED_Groups.query.filter_by(id=id).first()
+
+    if entry.active_led_2 != "True":
+        entry.active_led_2 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_3 != "True":
+        entry.active_led_3 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_4 != "True":
+        entry.active_led_4 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_5 != "True":
+        entry.active_led_5 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_6 != "True":
+        entry.active_led_6 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_7 != "True":
+        entry.active_led_7 = "True"
+        db.session.commit()
+        return
+    if entry.active_led_8 != "True":
+        entry.active_led_8 = "True"
+        db.session.commit()
+        return       
+    if entry.active_led_9 != "True":
+        entry.active_led_9 = "True"
+        db.session.commit()
+        return  
+
+
+def SET_LED_GROUP_CHANGE_ERRORS(id, error_change_settings):
+    entry = LED_Groups.query.filter_by(id=id).first()
+
+    entry.error_change_settings = error_change_settings
+    db.session.commit()
+
+
+def RESET_LED_GROUP_ERRORS():
+    list_led_groups = LED_Groups.query.all()
+    
+    for led_group in list_led_groups:
+        led_group.error_change_settings = ""
+        db.session.commit()   
+
+
+def CHANGE_LED_GROUP_POSITION(id, direction):
+    
+    if direction == "up":
+        groups_list = GET_ALL_LED_GROUPS()
+        groups_list = groups_list[::-1]
+        
+        for group in groups_list:
+            
+            if group.id < id: 
+                new_id = group.id
+                
+                # change ids
+                group_1 = GET_LED_GROUP_BY_ID(id)
+                group_2 = GET_LED_GROUP_BY_ID(new_id)
+                
+                group_1.id = 99
+                db.session.commit()
+                
+                group_2.id = id
+                group_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for group in GET_ALL_LED_GROUPS():
+            if group.id > id:
+                new_id = group.id
+                
+                # change ids
+                group_1 = GET_LED_GROUP_BY_ID(id)
+                group_2 = GET_LED_GROUP_BY_ID(new_id)
+                
+                group_1.id = 99
+                db.session.commit()
+                
+                group_2.id = id
+                group_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
+def REMOVE_LED_GROUP_LED(id, led):
+    entry = LED_Groups.query.filter_by(id=id).first()
+
+    if led == 2:
+        entry.active_led_2      = "None"
+        entry.led_ieeeAddr_2    = "None"
+        entry.led_name_2        = "None"
+        entry.led_device_type_2 = "None"
+    if led == 3:
+        entry.active_led_3      = "None"     
+        entry.led_ieeeAddr_3    = "None"
+        entry.led_name_3        = "None" 
+        entry.led_device_type_3 = "None"
+    if led == 4:
+        entry.active_led_4      = "None"     
+        entry.led_ieeeAddr_4    = "None"
+        entry.led_name_4        = "None" 
+        entry.led_device_type_4 = "None"
+    if led == 5:
+        entry.active_led_5      = "None"     
+        entry.led_ieeeAddr_5    = "None"
+        entry.led_name_5        = "None" 
+        entry.led_device_type_5 = "None"
+    if led == 6:
+        entry.active_led_6      = "None"     
+        entry.led_ieeeAddr_6    = "None"
+        entry.led_name_6        = "None" 
+        entry.led_device_type_6 = "None"
+    if led == 7:
+        entry.active_led_7      = "None"     
+        entry.led_ieeeAddr_7    = "None"
+        entry.led_name_7        = "None" 
+        entry.led_device_type_7 = "None"
+    if led == 8:
+        entry.active_led_8      = "None"     
+        entry.led_ieeeAddr_8    = "None"
+        entry.led_name_8        = "None" 
+        entry.led_device_type_8 = "None"
+    if led == 9:
+        entry.active_led_9      = "None"     
+        entry.led_ieeeAddr_9    = "None"
+        entry.led_name_9        = "None" 
+        entry.led_device_type_9 = "None"
+
+    db.session.commit()
+
+
+def DELETE_LED_GROUP(id):
+    name = GET_LED_GROUP_BY_ID(id).name
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | deleted")   
+    except:
+        pass     
+    
+    LED_Groups.query.filter_by(id=id).delete()
+    db.session.commit() 
+
 
 """ ################### """
 """ ################### """
@@ -866,6 +1257,27 @@ def ADD_LED_SCENE_SETTING(id):
         return  
 
 
+def SET_LED_SCENE_COLLAPSE(id):
+    list_led_scenes = LED_Scenes.query.all()
+    
+    for led_scene in list_led_scenes:
+        led_scene.collapse = ""
+        db.session.commit()   
+  
+    entry = LED_Scenes.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()   
+
+
+def RESET_LED_SCENE_COLLAPSE():
+    list_led_scenes = LED_Scenes.query.all()
+    
+    for led_scene in list_led_scenes:
+        led_scene.collapse = ""
+        db.session.commit()   
+
+
 def SET_LED_SCENE_CHANGE_ERRORS(id, error_change_settings):
     entry = LED_Scenes.query.filter_by(id=id).first()
 
@@ -880,12 +1292,14 @@ def SET_LED_SCENE_CONTROL_ERRORS(id, error_led_control):
     db.session.commit()
 
 
-def RESET_LED_SCENE_ERRORS(id):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    entry.error_change_settings = ""
-    entry.error_led_control = ""
-    db.session.commit()
+def RESET_LED_SCENE_ERRORS():
+    list_led_scenes = LED_Scenes.query.all()
+    
+    for led_scene in list_led_scenes:
+        
+        led_scene.error_change_settings = ""
+        led_scene.error_led_control     = ""        
+        db.session.commit()   
 
 
 def CHANGE_LED_SCENE_POSITION(id, direction):
@@ -1004,343 +1418,6 @@ def DELETE_LED_SCENE(id):
         pass 
 
     LED_Scenes.query.filter_by(id=id).delete()
-    db.session.commit() 
-
-
-""" ################### """
-""" ################### """
-"""     led groups      """
-""" ################### """
-""" ################### """
-
-
-def GET_ALL_LED_GROUPS():
-    return LED_Groups.query.all()   
-  
-    
-def GET_ALL_ACTIVE_LED_GROUPS():
-    list_active_groups = []
-
-    for group in LED_Groups.query.all():
-        if group.led_ieeeAddr_1 != None and group.led_ieeeAddr_1 != "None":
-            list_active_groups.append(group)
-            
-    return list_active_groups
-          
-
-def GET_LED_GROUP_BY_ID(id):
-    return LED_Groups.query.filter_by(id=id).first()
-
-
-def GET_LED_GROUP_BY_NAME(name):
-    for group in LED_Groups.query.all():
-        
-        if group.name.lower() == name.lower():
-            return group
-        
-
-def ADD_LED_GROUP(name):
-    # name exist ?
-    if not GET_LED_GROUP_BY_NAME(name):
-        
-        if name == "":
-            return "Kein Name angegeben"
-            
-        else:
-            # find a unused id
-            for i in range(1,21):
-                if LED_Groups.query.filter_by(id=i).first():
-                    pass
-                else:
-                    # add the new program
-                    group = LED_Groups(
-                            id = i,
-                            name = name,
-                        )
-                    db.session.add(group)
-                    db.session.commit()
-
-                    RESET_LED_GROUP_ERRORS(i)
-
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | added")  
-
-                    return ""
-
-            return "Gruppenlimit erreicht (20)"
-
-    else:
-        return "Name bereits vergeben"
-
-
-def SET_LED_GROUP(id, name, led_ieeeAddr_1, led_name_1, led_device_type_1, 
-                            led_ieeeAddr_2, led_name_2, led_device_type_2,
-                            led_ieeeAddr_3, led_name_3, led_device_type_3,
-                            led_ieeeAddr_4, led_name_4, led_device_type_4,
-                            led_ieeeAddr_5, led_name_5, led_device_type_5,
-                            led_ieeeAddr_6, led_name_6, led_device_type_6,
-                            led_ieeeAddr_7, led_name_7, led_device_type_7,
-                            led_ieeeAddr_8, led_name_8, led_device_type_8,
-                            led_ieeeAddr_9, led_name_9, led_device_type_9):
-
-    entry = LED_Groups.query.filter_by(id=id).first()
-    entry.name = name
-    
-    entry.led_ieeeAddr_1    = led_ieeeAddr_1
-    entry.led_name_1        = led_name_1
-    entry.led_device_type_1 = led_device_type_1
-    entry.led_ieeeAddr_2    = led_ieeeAddr_2
-    entry.led_name_2        = led_name_2
-    entry.led_device_type_2 = led_device_type_2 
-    entry.led_ieeeAddr_3    = led_ieeeAddr_3
-    entry.led_name_3        = led_name_3
-    entry.led_device_type_3 = led_device_type_3
-    entry.led_ieeeAddr_4    = led_ieeeAddr_4
-    entry.led_name_4        = led_name_4
-    entry.led_device_type_4 = led_device_type_4
-    entry.led_ieeeAddr_5    = led_ieeeAddr_5
-    entry.led_name_5        = led_name_5
-    entry.led_device_type_5 = led_device_type_5
-    entry.led_ieeeAddr_6    = led_ieeeAddr_6
-    entry.led_name_6        = led_name_6
-    entry.led_device_type_6 = led_device_type_6 
-    entry.led_ieeeAddr_7    = led_ieeeAddr_7
-    entry.led_name_7        = led_name_7
-    entry.led_device_type_7 = led_device_type_7
-    entry.led_ieeeAddr_8    = led_ieeeAddr_8
-    entry.led_name_8        = led_name_8
-    entry.led_device_type_8 = led_device_type_8
-    entry.led_ieeeAddr_9    = led_ieeeAddr_9
-    entry.led_name_9        = led_name_9
-    entry.led_device_type_9 = led_device_type_9
-       
-    db.session.commit()  
-
-
-def SET_LED_GROUP_NAME(id, name):
-    entry = LED_Groups.query.filter_by(id=id).first()
-    entry.name = name
-       
-    db.session.commit()  
-
-
-def SET_LED_GROUP_CURRENT_SETTING(id, current_setting):
-    entry = LED_Groups.query.filter_by(id=id).first()
-    entry.current_setting = current_setting     
-    db.session.commit()  
-
-
-def SET_LED_GROUP_CURRENT_BRIGHTNESS(id, current_brightness):
-    entry = LED_Groups.query.filter_by(id=id).first()
-    entry.current_brightness = current_brightness     
-    db.session.commit()  
-
-
-def UPDATE_LED_GROUP_LED_NAMES():
-    groups = GET_ALL_LED_GROUPS()
-    
-    for group in groups:
-        
-        entry = LED_Groups.query.filter_by(id=group.id).first()
-        
-        try:
-            entry.led_name_1        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).name
-            entry.led_device_type_1 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_1).device_type
-        except:
-            pass
-        try:
-            entry.led_name_2        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).name
-            entry.led_device_type_2 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_2).device_type
-        except:
-            pass
-        try:
-            entry.led_name_3        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).name
-            entry.led_device_type_3 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_3).device_type
-        except:
-            pass
-        try:
-            entry.led_name_4        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).name
-            entry.led_device_type_4 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_4).device_type
-        except:
-            pass
-        try:
-            entry.led_name_5        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).name
-            entry.led_device_type_5 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_5).device_type
-        except:
-            pass
-        try:
-            entry.led_name_6        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).name
-            entry.led_device_type_6 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_6).device_type
-        except:
-            pass
-        try:
-            entry.led_name_7        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).name
-            entry.led_device_type_7 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_7).device_type
-        except:
-            pass
-        try:
-            entry.led_name_8        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).name
-            entry.led_device_type_8 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_8).device_type
-        except:
-            pass
-        try:
-            entry.led_name_9        = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).name
-            entry.led_device_type_9 = GET_MQTT_DEVICE_BY_IEEEADDR(entry.led_ieeeAddr_9).device_type
-        except:
-            pass            
-        
-    db.session.commit()
-
-
-def ADD_LED_GROUP_LED(id):
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    if entry.active_led_2 != "True":
-        entry.active_led_2 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_3 != "True":
-        entry.active_led_3 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_4 != "True":
-        entry.active_led_4 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_5 != "True":
-        entry.active_led_5 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_6 != "True":
-        entry.active_led_6 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_7 != "True":
-        entry.active_led_7 = "True"
-        db.session.commit()
-        return
-    if entry.active_led_8 != "True":
-        entry.active_led_8 = "True"
-        db.session.commit()
-        return       
-    if entry.active_led_9 != "True":
-        entry.active_led_9 = "True"
-        db.session.commit()
-        return  
-
-
-def SET_LED_GROUP_CHANGE_ERRORS(id, error_change_settings):
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    entry.error_change_settings = error_change_settings
-    db.session.commit()
-
-
-def RESET_LED_GROUP_ERRORS(id):
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    entry.error_change_settings = ""
-    db.session.commit()
-
-
-def CHANGE_LED_GROUP_POSITION(id, direction):
-    
-    if direction == "up":
-        groups_list = GET_ALL_LED_GROUPS()
-        groups_list = groups_list[::-1]
-        
-        for group in groups_list:
-            
-            if group.id < id: 
-                new_id = group.id
-                
-                # change ids
-                group_1 = GET_LED_GROUP_BY_ID(id)
-                group_2 = GET_LED_GROUP_BY_ID(new_id)
-                
-                group_1.id = 99
-                db.session.commit()
-                
-                group_2.id = id
-                group_1.id = new_id
-                db.session.commit()
-                
-                return 
-
-    if direction == "down":
-        for group in GET_ALL_LED_GROUPS():
-            if group.id > id:
-                new_id = group.id
-                
-                # change ids
-                group_1 = GET_LED_GROUP_BY_ID(id)
-                group_2 = GET_LED_GROUP_BY_ID(new_id)
-                
-                group_1.id = 99
-                db.session.commit()
-                
-                group_2.id = id
-                group_1.id = new_id
-                db.session.commit()
-                
-                return 
-
-
-def REMOVE_LED_GROUP_LED(id, led):
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    if led == 2:
-        entry.active_led_2      = "None"
-        entry.led_ieeeAddr_2    = "None"
-        entry.led_name_2        = "None"
-        entry.led_device_type_2 = "None"
-    if led == 3:
-        entry.active_led_3      = "None"     
-        entry.led_ieeeAddr_3    = "None"
-        entry.led_name_3        = "None" 
-        entry.led_device_type_3 = "None"
-    if led == 4:
-        entry.active_led_4      = "None"     
-        entry.led_ieeeAddr_4    = "None"
-        entry.led_name_4        = "None" 
-        entry.led_device_type_4 = "None"
-    if led == 5:
-        entry.active_led_5      = "None"     
-        entry.led_ieeeAddr_5    = "None"
-        entry.led_name_5        = "None" 
-        entry.led_device_type_5 = "None"
-    if led == 6:
-        entry.active_led_6      = "None"     
-        entry.led_ieeeAddr_6    = "None"
-        entry.led_name_6        = "None" 
-        entry.led_device_type_6 = "None"
-    if led == 7:
-        entry.active_led_7      = "None"     
-        entry.led_ieeeAddr_7    = "None"
-        entry.led_name_7        = "None" 
-        entry.led_device_type_7 = "None"
-    if led == 8:
-        entry.active_led_8      = "None"     
-        entry.led_ieeeAddr_8    = "None"
-        entry.led_name_8        = "None" 
-        entry.led_device_type_8 = "None"
-    if led == 9:
-        entry.active_led_9      = "None"     
-        entry.led_ieeeAddr_9    = "None"
-        entry.led_name_9        = "None" 
-        entry.led_device_type_9 = "None"
-
-    db.session.commit()
-
-
-def DELETE_LED_GROUP(id):
-    name = GET_LED_GROUP_BY_ID(id).name
-    
-    try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | deleted")   
-    except:
-        pass     
-    
-    LED_Groups.query.filter_by(id=id).delete()
     db.session.commit() 
 
 
@@ -1937,26 +2014,10 @@ def GET_SCHEDULER_TASK_BY_NAME(name):
     
 
 def GET_ALL_SCHEDULER_TASKS():
-    return Scheduler_Tasks.query.all()
+    return Scheduler_Tasks.query.all()    
 
 
-def GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type):
-    list_tasks = []
-
-    for task in Scheduler_Tasks.query.all():
-
-        if task_type == "reduced":
-            if task.task_type == "reduced":
-                list_tasks.append(task)
-
-        if task_type == "complete":
-            if task.task_type == "complete":
-                list_tasks.append(task)
-
-    return list_tasks       
-
-
-def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
+def ADD_SCHEDULER_TASK(name, task_type):
     # name exist ?
     if not GET_SCHEDULER_TASK_BY_NAME(name):
         
@@ -1970,13 +2031,14 @@ def ADD_SCHEDULER_TASK(name, task_type, option_time = "None"):
                         id            = i,
                         name          = name,
                         task_type     = task_type,
-                        option_time   = option_time,
                         option_repeat = "checked",
                     )
                 db.session.add(new_task)
                 db.session.commit()
 
                 SET_SCHEDULER_TASK_CHANGE_ERRORS(i, "")
+                
+                SET_SCHEDULER_TASK_COLLAPSE(i)
             
                 WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler | Task - " + name + " | Task_Type - " + task_type + " | added")            
                 
@@ -2017,7 +2079,7 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.mqtt_device_ieeeAddr_3 != mqtt_device_ieeeAddr_3 or entry.sensor_key_3 != sensor_key_3 or 
         entry.operator_3 != operator_3 or entry.value_3 != value_3 or entry.operator_main_2 != operator_main_2 or
         entry.option_home != option_home or entry.option_away != option_away or entry.ip_addresses != ip_addresses):
-
+            
         entry.name                       = name
         entry.task                       = task      
         entry.option_time                = option_time    
@@ -2137,6 +2199,27 @@ def SET_SCHEDULER_TASK(id, name, task,
         WRITE_LOGFILE_SYSTEM("EVENT", log_message) 
 
 
+def SET_SCHEDULER_TASK_COLLAPSE(id):
+    list_scheduler_tasks = Scheduler_Tasks.query.all()
+    
+    for scheduler_task in list_scheduler_tasks:
+        scheduler_task.collapse = ""
+        db.session.commit()   
+  
+    entry = Scheduler_Tasks.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()       
+ 
+ 
+def RESET_SCHEDULER_TASK_COLLAPSE():
+    list_scheduler_tasks = Scheduler_Tasks.query.all()
+    
+    for scheduler_task in list_scheduler_tasks:
+        scheduler_task.collapse = ""
+        db.session.commit()   
+  
+
 def GET_SCHEDULER_TASK_SUNRISE(id):    
     return (Scheduler_Tasks.query.filter_by(id=id).first().sunrise)
     
@@ -2219,17 +2302,19 @@ def SET_SCHEDULER_TASK_SETTING_TASK_ERRORS(id, error_task_settings):
     db.session.commit()   
 
 
-def RESET_SCHEDULER_TASK_ERRORS(id):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_change_settings   = ""
-    entry.error_general_settings  = ""
-    entry.error_time_settings     = ""
-    entry.error_sun_settings      = ""    
-    entry.error_sensor_settings   = ""
-    entry.error_position_settings = ""
-    entry.error_task_settings     = ""
-    db.session.commit()   
+def RESET_SCHEDULER_TASK_ERRORS(): 
+    list_scheduler_tasks = Scheduler_Tasks.query.all()
+    
+    for scheduler_task in list_scheduler_tasks:
+        
+        scheduler_task.error_change_settings   = ""
+        scheduler_task.error_general_settings  = ""
+        scheduler_task.error_time_settings     = ""
+        scheduler_task.error_sun_settings      = ""    
+        scheduler_task.error_sensor_settings   = ""
+        scheduler_task.error_position_settings = ""
+        scheduler_task.error_task_settings     = ""
+        db.session.commit()   
 
 
 def ADD_SCHEDULER_TASK_SENSOR_ROW(id):
@@ -2261,11 +2346,21 @@ def REMOVE_SCHEDULER_TASK_SENSOR_ROW(id):
     db.session.commit()
 
 
-def CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction):
+def CHANGE_SCHEDULER_TASK_POSITION(id, direction):
+    
+    list_scheduler_tasks = Scheduler_Tasks.query.all() 
+    
+    # filter non scheduler table tasks (e.g. mqtt_update or backup)
+    list_scheduler_tasks_filtered = []
+    
+    for scheduler_task in list_scheduler_tasks:
+        if scheduler_task.task_type == "":   
+            list_scheduler_tasks_filtered.append(scheduler_task)
     
     if direction == "up":
-        task_list = GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type)
-        task_list = task_list[::-1]
+        
+        # reverse task list
+        task_list = list_scheduler_tasks_filtered[::-1]
         
         for task in task_list:  
             if task.id < id:
@@ -2286,7 +2381,7 @@ def CHANGE_SCHEDULER_TASK_POSITION(id, task_type, direction):
                 return 
 
     if direction == "down":
-        for task in GET_ALL_SCHEDULER_TASKS_BY_TYPE(task_type):
+        for task in list_scheduler_tasks_filtered:
             if task.id > id:       
                 new_id = task.id
                 
@@ -3003,6 +3098,20 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
                              " | eMail-Camera - " + email_notification_camera)
 
 
+def SET_USER_DASHBOARD_COLLAPSE_SETTING(id, panel, setting):
+    
+    entry = User.query.filter_by(id=id).first()
+    
+    if panel == "led":
+        entry.collapse_dashboard_led_setting = setting   
+    if panel == "devices":        
+        entry.collapse_dashboard_devices_setting = setting 
+    if panel == "watering":                  
+        entry.collapse_dashboard_watering_setting = setting
+    
+    db.session.commit()    
+
+
 def RESET_USER_PASSWORD(id, hashed_password):
     entry = User.query.filter_by(id=id).first()
     
@@ -3010,6 +3119,42 @@ def RESET_USER_PASSWORD(id, hashed_password):
     db.session.commit()
     
     WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + entry.username + " | Password changed")
+
+
+def SET_USER_COLLAPSE(id):
+    list_users = User.query.all()
+    
+    for user in list_users:
+        user.collapse = ""
+        db.session.commit()   
+  
+    entry = User.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()      
+    
+    
+def RESET_USER_COLLAPSE():
+    list_users = User.query.all()
+    
+    for user in list_users:
+        user.collapse = ""
+        db.session.commit()     
+    
+    
+def SET_USER_CHANGE_ERRORS(id, error_change_settings):    
+    entry = User.query.filter_by(id=id).first()
+
+    entry.error_change_settings = error_change_settings
+    db.session.commit()       
+    
+    
+def RESET_USER_TASK_ERRORS():    
+    list_users = User.query.all()
+
+    for user in list_users:
+        user.error_change_settings = ""
+        db.session.commit()   
 
     
 def CHANGE_USER_POSITION(id, direction):

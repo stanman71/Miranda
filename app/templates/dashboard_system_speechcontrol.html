@@ -142,22 +142,318 @@
               </div>
             </div>
           <font color="salmon"><b>Flask neustarten, wenn Einstellungen der Sprachsteuerung geändert werden</b></font>
-          <br>     
+          <br>   
+          
+<section id="led_task_table"></section>           
+            
           <br>        
           <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#'" class="btn btn-default" value="Auswählen"/>
           </form>       
         </div>  
       </div>           
 
-<section id="snowboy_settings"></section> 
+
+{% if speechcontrol_global_setting != "False" %}
+
+<!-- -------------------- -->
+<!-- SPEECH CONTROL TASKS -->
+<!-- -------------------- -->
+
+<!-- speech control led task table -->
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_led"><font color="white"><b> Aufgaben - LED </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_led" class="panel-collapse collapse {{collapse_tasks_led}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
+                
+
+<!-- error message speech control led tasks  -->
+
+{% if error_message_speechcontrol_led_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speechcontrol_led_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
 
 
-<!-- ----------------- -->
-<!--  SNOWBOY SETTINGS -->
-<!-- ----------------- -->
+          <form method="POST"> 
+            <table class="table">
+              <thead>                    
+                <th scope="col">Aufgabe</th> 
+                <th scope="col">Parameter</th> 
+                <th scope="col">Schlüsselwörter</th> 
+              </thead>
+              <tbody> 
+                {% for entry in speechcontrol_led_task_list %}
+                <tr>                  
+                  <td style="width:20%">{{ entry.task }}</td> 
+                  <td style="width:40%">{{ entry.parameters }}</td> 
+                  <td style="width:40%">
+                    <input type="text" class="form-control" name="set_speechcontrol_led_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+                     
+<section id="device_task_table"></section>           
+            
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#led_task_table'" class="btn btn-default" name="change_speechcontrol_led_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+    </div> 
+    <br>
+      
+
+<!-- add speech control device task -->     
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_devices"><font color="white"><b> Aufgaben - Geräte </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_devices" class="panel-collapse collapse {{collapse_tasks_devices}} ">      
+          <div class="panel-body">      
+            <div class="well well-sm"> 
 
 
-{% if speechcontrol_setting != "False" %}
+<!-- error message add speechcontrol device task -->
+
+{% if error_message_add_speechcontrol_device_task != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_speechcontrol_device_task }}
+  </div>      
+{% endif %}              
+
+
+            <form method="POST"> 
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3"> 
+                  <input type="text" class="form-control" name="set_speechcontrol_device_task" placeholder="Neue Aufgabe" value="{{ device_task }}" />
+                </div>  
+                <div class="col-sm-1">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+                </div>            
+                <div class="col-sm-3"> 
+                  <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_device_task_mqtt_device_ieeeAddr">
+                    <option value= "None" > None </option> 
+                    <optgroup>
+                      {% for each in dropdown_list_mqtt_devices %}
+                        <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </optgroup>                                                                                
+                  </select>                                        
+                </div>  
+                <div class="col-sm-1">                                      
+                  <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#device_task_table'" class="btn btn-default" name="add_speechcontrol_device_task" value="Aufgabe erstellen" />
+                </div>
+              </div>
+            </form>       
+          </div>    
+               
+        
+<!-- error message speechcontrol device tasks  -->
+
+{% if error_message_speechcontrol_device_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speechcontrol_device_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+<!-- speech control device task table -->
+
+        <div class="well well-sm">  
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col"></th>                    
+                <th scope="col">Aufgabe</th> 
+                <th scope="col">Gerät</th> 
+                <th scope="col">Befehl</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col"></th> 
+                <th scope="col"></th>                 
+              </thead>
+              <tbody> 
+                {% for entry in speechcontrol_device_task_list %}
+                <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/system/speechcontrol/device_task/position/up/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/system/speechcontrol/device_task/position/down/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                     
+                  <td style="width:17%">{{ entry.task }}</td> 
+                  <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
+                  <td style="width:20%">   
+                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_device_task_setting_{{ entry.id }}">
+                      <option value = "{{ entry.setting }}" > {{ entry.setting }} </option>
+                      <optgroup>
+                        {% for each in entry.mqtt_device.commands.split(' ') %}
+                          <option value= "{{ each }}" > {{ each }} </option>
+                        {% endfor %}   
+                      </optgroup>                                                                                
+                    </select>                                    
+                  </td> 
+                  <td style="width:37%">
+                    <input type="text" class="form-control" name="set_speechcontrol_device_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>  
+                     
+<section id="program_task_table"></section>           
+            
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#device_task_table'" class="btn btn-default" name="change_speechcontrol_device_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+    </div> 
+    <br>  
+ 
+      
+<!-- add speech control program task -->     
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_programs"><font color="white"><b> Aufgaben - Programme </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_programs" class="panel-collapse collapse {{collapse_tasks_programs}} ">    
+          <div class="panel-body">   
+            <form method="POST">      
+              <div class="well well-sm">   
+
+
+<!-- error message add speechcontrol program task -->
+
+{% if error_message_add_speechcontrol_program_task != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_speechcontrol_program_task }}
+  </div>      
+{% endif %}              
+
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3"> 
+                  <input type="text" class="form-control" name="set_speechcontrol_program_task" placeholder="Neue Aufgabe" value="{{ program_task }}" />
+                </div>  
+                <div class="col-sm-1">                     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Programm:</button>
+                </div>            
+                <div class="col-sm-3"> 
+                  <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_program_task_program_id">
+                    <option value= "None" > None </option> 
+                    <optgroup>
+                      {% for each in dropdown_list_programs %}
+                        <option value="{{each.id}}"> {{ each.name }} </option>
+                      {% endfor %}
+                    </optgroup>                                                                                
+                  </select>                                              
+                </div>  
+                <div class="col-sm-1">                                      
+                  <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#program_task_table'" class="btn btn-default" name="add_speechcontrol_program_task" value="Aufgabe erstellen" />
+                </div>
+              </div>
+            </form>       
+          </div>    
+        
+        
+<!-- error message speechcontrol program tasks  -->
+
+{% if error_message_speechcontrol_program_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speechcontrol_program_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+<!-- speech control program task table -->
+
+        <div class="well well-sm">  
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col"></th>                    
+                <th scope="col">Aufgabe</th> 
+                <th scope="col">Programm</th> 
+                <th scope="col">Befehl</th> 
+                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col"></th> 
+                <th scope="col"></th>                 
+              </thead>
+              <tbody> 
+                {% for entry in speechcontrol_program_task_list %}
+                <tr>
+                  <td style="width:3%">
+                    <a href="/dashboard/system/speechcontrol/program_task/position/up/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/system/speechcontrol/program_task/position/down/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td>                     
+                  <td style="width:17%">{{ entry.task }}</td> 
+                  <td style="width:20%">{{ entry.program.name }}</td> 
+                  <td style="width:20%">   
+                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_program_task_command_{{ entry.id }}">
+                      <option value = "{{ entry.command }}" > {{ entry.command }} </option>
+                      <optgroup>
+                        <option value= "START" > START </option>
+                        <option value= "STOP" > STOP </option>  
+                      </optgroup>                                                                                
+                    </select>                                 
+                  </td> 
+                  <td style="width:37%">
+                    <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>     
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#program_task_table'" class="btn btn-default" name="change_speechcontrol_program_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div> 
+    </div>
+    <br>
+      
+
+<!-- ----------- -->
+<!--   SETTINGS  -->
+<!-- ----------- -->
+
+<section id="speechcontrol_settings"></section> 
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_speechcontrol_settings"><font color="white"><b> Einstellungen </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_speechcontrol_settings" class="panel-collapse collapse {{collapse_speechcontrol_settings}} ">      
+            <div class="panel-body"> 
+              <form method="POST">       
+                <div class="well well-sm">     
+                
 
 <!-- snowboy error message snowboy -->
 
@@ -167,16 +463,13 @@
       </div>      
     {% endif %}    
 
-<!-- snowboy settings -->
 
-      <div class="panel panel-default">
-        <div class="panel-body"> 
-          <div class="well well-sm">
+<!-- snowboy settings -->
+                  
             <div class="text-center">   
               <h3><span class="label label-default">SnowBoy Einstellungen</span></h3>
             </div>          
             <br>               
-            <form method="POST">
               <div class="well well-sm"> 
                 <div class="row justify-content-md-center">
                   <div class="col-sm-3">
@@ -219,30 +512,14 @@
               </div>    
             </div> 
             
-<section id="speech_recognition_provider_settings"></section> 
-
-            <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#snowboy_settings'" class="btn btn-default" name="change_snowboy_settings" value="Einstellungen speichern" />       
-          </form>  
-        </div>                    
-      </div> 
-
-
-<!-- --------------------------- -->
-<!-- SPEECH RECOGNITION PROVIDER -->
-<!-- --------------------------- -->
-
 
 <!-- speech_recognition_provider settings -->
 
-      <div class="panel panel-default">
-        <div class="panel-body"> 
-          <div class="well well-sm">     
-            <form method="POST">   
-              <div class="form-group">
-                <div class="text-center">  
-                  <h3><span class="label label-default">Onlinedienst Einstellungen</span></h3>
-                </div>
-                <br>
+            <div class="well well-sm">     
+              <div class="text-center">  
+                <h3><span class="label label-default">Onlinedienst Einstellungen</span></h3>
+              </div>
+              <br>
 
 <!-- error message speech_recognition_provider -->
 
@@ -324,289 +601,32 @@
                     </div>                            
                   </div> 
                 </div>                   
-              </div>               
-            </div>   
+              </div>                 
 
-<section id="led_task_table"></section>
+<section id="fileupload"></section>
 
-              <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#speech_recognition_provider_settings'" class="btn btn-default" name="set_speech_recognition_provider_settings" value="Einstellungen speichern" />
+              <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#speechcontrol_settings'" class="btn btn-default" name="save_speechcontrol_settings" value="Einstellungen speichern" />
             </form>   
           </div>  
         </div>
       </div>
-
-
-<!-- -------------------- -->
-<!-- SPEECH CONTROL TASKS -->
-<!-- -------------------- -->
-
-<!-- speech control led task table -->
-
-      <div class="panel panel-default">     
-        <div class="panel-body">
-          <div class="well well-sm">  
-
-<!-- error message speech control led tasks  -->
-
-{% if error_message_speechcontrol_led_tasks != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_speechcontrol_led_tasks %}
-      {{ entry }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
-
-          <form method="POST"> 
-            <table class="table">
-              <thead>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Parameter</th> 
-                <th scope="col">Schlüsselwörter</th> 
-              </thead>
-              <tbody> 
-                {% for entry in speechcontrol_led_task_list %}
-                <tr>                  
-                  <td style="width:20%">{{ entry.task }}</td> 
-                  <td style="width:40%">{{ entry.parameters }}</td> 
-                  <td style="width:40%">
-                    <input type="text" class="form-control" name="set_speechcontrol_led_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
-                  </td>  
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
-                     
-<section id="device_task_table"></section>           
-            
-          </div>
-          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#led_task_table'" class="btn btn-default" name="change_speechcontrol_led_tasks" value="Änderungen speichern"/> 
-          </form> 
-        </div>  
-      </div>  
+    </div>
       
+<!-- ------------ -->
+<!--  FILE UPLOAD -->
+<!-- ------------ -->
 
-<!-- add speech control device task -->     
-
-      <div class="panel panel-default">     
-        <div class="panel-body">
-          <div class="well well-sm">     
-
-
-<!-- error message add speechcontrol device task -->
-
-{% if error_message_add_speechcontrol_device_task != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_add_speechcontrol_device_task }}
-  </div>      
-{% endif %}              
-
-
-            <form method="POST"> 
-              <div class="row justify-content-md-center">
-                <div class="col-sm-3">                     
-                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Geräte-Aufgabe:</button>
-                </div>
-                <div class="col-sm-3"> 
-                  <input type="text" class="form-control" name="set_speechcontrol_device_task" value="{{ device_task }}" />
-                </div>  
-                <div class="col-sm-1">                     
-                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
-                </div>            
-                <div class="col-sm-3"> 
-                  <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_device_task_mqtt_device_ieeeAddr">
-                    <option value= "None" > None </option> 
-                    <optgroup>
-                      {% for each in dropdown_list_mqtt_devices %}
-                        <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </optgroup>                                                                                
-                  </select>                                        
-                </div>  
-                <div class="col-sm-1">                                      
-                  <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#device_task_table'" class="btn btn-default" name="add_speechcontrol_device_task" value="Aufgabe erstellen" />
-                </div>
-              </div>
-            </form>       
-          </div>    
-        
-        
-<!-- error message speechcontrol device tasks  -->
-
-{% if error_message_speechcontrol_device_tasks != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_speechcontrol_device_tasks %}
-      {{ entry }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
-
-<!-- speech control device task table -->
-
-        <div class="well well-sm">  
-          <form method="POST"> 
-            <table class="table">
-              <thead>   
-                <th scope="col"></th>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Gerät</th> 
-                <th scope="col">Befehl</th> 
-                <th scope="col">Schlüsselwörter</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>                 
-              </thead>
-              <tbody> 
-                {% for entry in speechcontrol_device_task_list %}
-                <tr>
-                  <td style="width:3%">
-                    <a href="/dashboard/system/speechcontrol/device_task/position/up/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
-                    <a href="/dashboard/system/speechcontrol/device_task/position/down/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
-                  </td>                     
-                  <td style="width:17%">{{ entry.task }}</td> 
-                  <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
-                  <td style="width:20%">   
-                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_device_task_setting_{{ entry.id }}">
-                      <option value = "{{ entry.setting }}" > {{ entry.setting }} </option>
-                      <optgroup>
-                        {% for each in entry.mqtt_device.commands.split(' ') %}
-                          <option value= "{{ each }}" > {{ each }} </option>
-                        {% endfor %}   
-                      </optgroup>                                                                                
-                    </select>                                    
-                  </td> 
-                  <td style="width:37%">
-                    <input type="text" class="form-control" name="set_speechcontrol_device_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
-                  </td>  
-                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
-                     
-<section id="program_task_table"></section>           
-            
-          </div>
-          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#device_task_table'" class="btn btn-default" name="change_speechcontrol_device_tasks" value="Änderungen speichern"/> 
-          </form> 
-        </div>  
-      </div>  
-      
-<!-- add speech control program task -->     
-
-      <div class="panel panel-default">     
-        <div class="panel-body">
-          <div class="well well-sm">     
-
-
-<!-- error message add speechcontrol program task -->
-
-{% if error_message_add_speechcontrol_program_task != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_add_speechcontrol_program_task }}
-  </div>      
-{% endif %}              
-
-
-            <form method="POST"> 
-              <div class="row justify-content-md-center">
-                <div class="col-sm-3">                     
-                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Neue Programm-Aufgabe:</button>
-                </div>
-                <div class="col-sm-3"> 
-                  <input type="text" class="form-control" name="set_speechcontrol_program_task" value="{{ program_task }}" />
-                </div>  
-                <div class="col-sm-1">                     
-                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Programm:</button>
-                </div>            
-                <div class="col-sm-3"> 
-                  <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_program_task_program_id">
-                    <option value= "None" > None </option> 
-                    <optgroup>
-                      {% for each in dropdown_list_programs %}
-                        <option value="{{each.id}}"> {{ each.name }} </option>
-                      {% endfor %}
-                    </optgroup>                                                                                
-                  </select>                                              
-                </div>  
-                <div class="col-sm-1">                                      
-                  <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#program_task_table'" class="btn btn-default" name="add_speechcontrol_program_task" value="Aufgabe erstellen" />
-                </div>
-              </div>
-            </form>       
-          </div>    
-        
-        
-<!-- error message speechcontrol program tasks  -->
-
-{% if error_message_speechcontrol_program_tasks != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_speechcontrol_program_tasks %}
-      {{ entry }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
-
-<!-- speech control program task table -->
-
-        <div class="well well-sm">  
-          <form method="POST"> 
-            <table class="table">
-              <thead>   
-                <th scope="col"></th>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Programm</th> 
-                <th scope="col">Befehl</th> 
-                <th scope="col">Schlüsselwörter</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>                 
-              </thead>
-              <tbody> 
-                {% for entry in speechcontrol_program_task_list %}
-                <tr>
-                  <td style="width:3%">
-                    <a href="/dashboard/system/speechcontrol/program_task/position/up/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
-                    <a href="/dashboard/system/speechcontrol/program_task/position/down/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
-                  </td>                     
-                  <td style="width:17%">{{ entry.task }}</td> 
-                  <td style="width:20%">{{ entry.program.name }}</td> 
-                  <td style="width:20%">   
-                    <select class="selectpicker" data-width="100%" name="set_speechcontrol_program_task_command_{{ entry.id }}">
-                      <option value = "{{ entry.command }}" > {{ entry.command }} </option>
-                      <optgroup>
-                        <option value= "START" > START </option>
-                        <option value= "STOP" > STOP </option>  
-                      </optgroup>                                                                                
-                    </select>                                 
-                  </td> 
-                  <td style="width:37%">
-                    <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
-                  </td>  
-                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
-                </tr>
-                {% endfor %} 
-              </tbody>
-            </table>  
-                     
-<section id="fileupload"></section>           
-            
-          </div>
-          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#program_task_table'" class="btn btn-default" name="change_speechcontrol_program_tasks" value="Änderungen speichern"/> 
-          </form> 
-        </div>  
-      </div>  
-      
-  
-<!-- fileupload --> 
-
-      <div class="panel panel-default">
-        <div class="panel-body">  
-          <div class="well well-sm">
-            <div class="text-center">     
-              <h3><span class="label label-default">Hotword hochladen</span></h3>    
-            </div>
-            <br>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_hotwords"><font color="white"><b> Hotwords </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_hotwords" class="panel-collapse collapse {{collapse_fileupload}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">        
+                
  
 <!-- error message fileupload --> 
 
@@ -615,6 +635,7 @@
     {{ error_message_fileupload }}
   </div>      
 {% endif %}   
+
 
             <div class="well well-sm">
               <a href="https://snowboy.kitt.ai"><font color="lightblue"><H4>Hotword erstellen (https://snowboy.kitt.ai/)</H4></font></a>
@@ -625,15 +646,12 @@
                 <input type=submit onclick="window.location.href='/dashboard/system/speechcontrol#fileupload'" class="btn btn-default" name="file_upload" value="Datei hochladen">
               </form>   
           </div> 
-        </div>                   
-      </div>  
+          
 
 <!-- snowboy table hotwords --> 
 
 <section id="table_hotwords"></section>
 
-      <div class="panel panel-default">
-        <div class="panel-body"> 
           <div class="well well-sm">                     
             <table class="table">
               <thead> 
@@ -645,21 +663,44 @@
                 {% for entry in hotword_file_list %}
                 <tr>
                   <td>{{ entry }}</td> 
-                  <td class="text-right"><a href="/dashboard/system/speechcontrol/snowboy/download/hotword/{{ entry }}#table_hotwords"><font color="lightblue"><b>herunterladen</b></font></a></td>
-                  <td class="text-right"><a href="/dashboard/system/speechcontrol/snowboy/delete/hotword/{{ entry }}#table_hotwords"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  <td class="text-right"><a href="/dashboard/system/speechcontrol/download/hotword/{{ entry }}#table_hotwords"><font color="lightblue"><b>herunterladen</b></font></a></td>
+                  <td class="text-right"><a href="/dashboard/system/speechcontrol/delete/hotword/{{ entry }}#table_hotwords"><font color="salmon" size="5"><b>X</b></font></a></td>  
                 </tr>
                 {% endfor %} 
               </tbody>
             </table>  
           </div>
         </div>  
-      </div>   
+      </div> 
+    </div>     
 
 {% endif %} 
 
+    <br>
+    <br>   
+    <br>   
+
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
       </font>
+      </div>
     </div>
   </div>    
-</div>
+</div> 
 
 {% endblock %}

@@ -185,7 +185,7 @@ border-color: white;
 
 .img-container {
   position:relative;
-  padding-top:76.5%;
+  padding-top:50%;
 }
 
 img {
@@ -247,4 +247,5 @@ table td {
 .pretty.p-default {
   color:black; 
 }
+
 

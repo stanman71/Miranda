@@ -169,19 +169,50 @@
 
 <section id="logfile"></section>
 
+      <div class="panel-group">
         <div class="panel panel-default">
-          <div class="panel-body">    
-            <a href="/dashboard/system/system_log/download/log_system.csv?time={{ timestamp }}"><font color="lightblue"><b>System Log-Datei herunterladen</b></font></a>
-            <div class="dropdown text-right">
-            <form method="POST" enctype="multipart/form-data">
-              <input type="submit" onclick="window.location.href='/dashboard/system/log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
-            </form>
-          </div>        
-        </div>  
-      </div>     
-      </font>  
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_mqtt_log"><font color="white"><b> Log </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_mqtt_log" class="panel-collapse collapse {{collapse_mqtt_log}} ">      
+            <div class="panel-body">     
+              <form method="POST"> 
+                <a href="/dashboard/system/log/download/log_system.csv?time={{ timestamp }}"><font color="lightblue"><b>System Log-Datei herunterladen</b></font></a>
+              <div class="dropdown text-right">
+                <input type="submit" onclick="window.location.href='/dashboard/system/log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
+              </form>
+              </div> 
+            </div>            
+          </div>  
+        </div>   
+        
+    <br>
+    <br>  
+    <br>    
+
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
+      </font>
+      </div>
     </div>
-  </div>       
-</div>
+  </div>    
+</div> 
 
 {% endblock %}

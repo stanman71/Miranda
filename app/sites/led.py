@@ -20,7 +20,7 @@ def permission_required(f):
         if current_user.permission_led == "checked":
             return f(*args, **kwargs)
         else:
-            return redirect(url_for('login'))
+            return redirect(url_for('logout'))
     return wrap
 
 
@@ -37,11 +37,9 @@ def dashboard_led_scenes():
     error_change_settings = ""
     error_led_control = ""
 
-    for i in range (1,21):
-        try:
-            RESET_LED_SCENE_ERRORS(i)
-        except:
-            pass
+    RESET_LED_SCENE_ERRORS()
+    RESET_LED_SCENE_COLLAPSE()
+
 
     if request.method == "POST":
 
@@ -53,8 +51,9 @@ def dashboard_led_scenes():
         for i in range (1,21):
 
             # change scene
-            if request.form.get("set_name_" + str(i)) != None:  
-
+            if request.form.get("set_name_" + str(i)) != None:
+                
+                SET_LED_SCENE_COLLAPSE(i)      
 
                 # ############
                 # name setting
@@ -359,8 +358,9 @@ def dashboard_led_scenes():
                     green_9 = 0
                     blue_9 = 0
                     color_temp_9 = 0
-                    brightness_9 = 254                                                                                                    
-
+                    brightness_9 = 254        
+                    
+                    
                 SET_LED_SCENE_CHANGE_ERRORS(i, error_change_settings)
 
                 SET_LED_SCENE(i, name, red_1, green_1, blue_1, color_temp_1, brightness_1,
@@ -375,7 +375,11 @@ def dashboard_led_scenes():
 
             # start scene
             if request.form.get("start_scene_" + str(i)) != None: 
+                
+                SET_LED_SCENE_COLLAPSE(i)    
+                
                 group = request.form.get("group_" + str(i))
+
                 if group != "None" and group != None:
                     
                     scene = GET_LED_SCENE_BY_ID(i)
@@ -390,14 +394,17 @@ def dashboard_led_scenes():
 
             # turn off group
             if request.form.get("turn_off_group_" + str(i)) != None:
-                group = request.form.get("group_" + str(i)) 
-                if group != "None" and group != None:
+                
+                SET_LED_SCENE_COLLAPSE(i)    
+                
+                group_id = request.form.get("group_" + str(i)) 
+
+                if group_id != "None" and group_id != None:
                     
-                    scene_name = GET_LED_GROUP_BY_ID(i).current_setting
-                    scene = GET_LED_SCENE_BY_NAME(scene_name)
-                    
-                    heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", int(group)))) 
-                    error_turn_off_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group), scene.id, "OFF", 0, 2, 10)                     
+                    scene_id = 0
+
+                    heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", int(group_id)))) 
+                    error_turn_off_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group_id), scene_id, "OFF", 0, 2, 10)                     
 
                 else:
                     error_led_control = "Keine LED Gruppe ausgewählt"  
@@ -471,13 +478,10 @@ def delete_led_scene(id):
 def dashboard_led_groups():
     error_message_add_group = ""
 
-    for i in range (1,21):
-        try:
-            RESET_LED_GROUP_ERRORS(i)
-        except:
-            pass
-
+    RESET_LED_GROUP_ERRORS()
+    RESET_LED_GROUP_COLLAPSE()
     UPDATE_LED_GROUP_LED_NAMES()
+    
 
     if request.method == "POST":
 
@@ -489,7 +493,9 @@ def dashboard_led_groups():
         for i in range (1,21):
 
             # change group
-            if request.form.get("set_name_" + str(i)) != None:  
+            if request.form.get("set_name_" + str(i)) != None:
+                
+                SET_LED_GROUP_COLLAPSE(i)     
 
                 error_change_settings = ""
 

@@ -19096,3 +19096,1642 @@ expected ',' or ']', but got '<scalar>'
 2019-07-14 20:01:34,EVENT,|ZigBee2MQTT || Connected|
 2019-07-14 20:01:35,EVENT,|ZigBee2MQTT || Pairing disabled|
 2019-07-14 20:01:36,EVENT,|Speechcontrol || started|
+2019-07-14 20:30:16,EVENT,|MQTT || started|
+2019-07-14 20:30:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-14 20:30:19,EVENT,|ZigBee2MQTT || Connected|
+2019-07-14 20:30:20,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-14 20:30:20,EVENT,|Speechcontrol || started|
+2019-07-14 20:31:00,EVENT,|Speechcontrol || Detection || starte normal im wohnzimmer|
+2019-07-14 20:31:04,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 100 %|
+2019-07-14 21:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 22:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 22:11:09,EVENT,|File || /csv/temperature.csv || downloaded|
+2019-07-14 22:11:17,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-07-14 22:11:43,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed - {"state":"ON"}|
+2019-07-14 22:15:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 22:15:31,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 22:16:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 22:16:10,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 22:16:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 22:16:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 22:38:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 22:38:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 22:39:01,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 22:39:04,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 22:40:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 22:40:35,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 22:42:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-14 22:42:32,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-14 22:43:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-14 22:43:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-14 23:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-14 23:16:23,EVENT,|Speechcontrol || Detection || und|
+2019-07-15 00:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 00:00:04,SUCCESS,|Database_Backup || saved|
+2019-07-15 00:25:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 00:26:01,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 00:28:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 00:28:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 00:30:00,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-15 00:30:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-15 01:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 02:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 03:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 04:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 05:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 06:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 07:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 07:18:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 07:18:09,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 07:25:36,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 07:25:41,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 07:31:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 07:31:06,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 07:31:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 07:31:44,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 07:33:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 07:33:23,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 07:34:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 07:34:25,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 07:56:14,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"OFF"}|
+2019-07-15 08:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 08:06:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 08:06:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 08:06:47,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 08:06:48,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 08:08:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 08:08:57,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 08:09:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 08:09:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 08:10:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 08:10:35,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 08:10:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 08:11:00,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 08:11:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 08:11:35,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 09:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 10:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 10:13:53,EVENT,|MQTT || started|
+2019-07-15 10:13:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:13:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:13:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:13:58,EVENT,|Speechcontrol || started|
+2019-07-15 10:16:58,EVENT,|MQTT || started|
+2019-07-15 10:16:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:17:01,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:17:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:17:02,EVENT,|Speechcontrol || started|
+2019-07-15 10:17:39,EVENT,|MQTT || started|
+2019-07-15 10:17:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:17:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:17:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:17:43,EVENT,|Speechcontrol || started|
+2019-07-15 10:18:58,EVENT,|MQTT || started|
+2019-07-15 10:18:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:19:01,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:19:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:19:02,EVENT,|Speechcontrol || started|
+2019-07-15 10:19:42,EVENT,|MQTT || started|
+2019-07-15 10:19:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:19:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:19:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:19:47,EVENT,|Speechcontrol || started|
+2019-07-15 10:21:18,EVENT,|MQTT || started|
+2019-07-15 10:21:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:21:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:21:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:21:22,EVENT,|Speechcontrol || started|
+2019-07-15 10:23:27,EVENT,|MQTT || started|
+2019-07-15 10:23:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:23:30,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:23:31,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:23:31,EVENT,|Speechcontrol || started|
+2019-07-15 10:24:25,EVENT,|MQTT || started|
+2019-07-15 10:24:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:24:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:24:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:24:29,EVENT,|Speechcontrol || started|
+2019-07-15 10:25:44,EVENT,|MQTT || started|
+2019-07-15 10:25:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:25:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:25:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:25:48,EVENT,|Speechcontrol || started|
+2019-07-15 10:26:41,EVENT,|MQTT || started|
+2019-07-15 10:26:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:26:44,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:26:45,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:26:46,EVENT,|Speechcontrol || started|
+2019-07-15 10:31:21,EVENT,|MQTT || started|
+2019-07-15 10:31:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:31:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:31:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:31:26,EVENT,|Speechcontrol || started|
+2019-07-15 10:31:57,EVENT,|MQTT || started|
+2019-07-15 10:31:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:32:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:32:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:32:01,EVENT,|Speechcontrol || started|
+2019-07-15 10:33:14,EVENT,|MQTT || started|
+2019-07-15 10:33:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:33:17,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:33:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:33:19,EVENT,|Speechcontrol || started|
+2019-07-15 10:34:35,EVENT,|MQTT || started|
+2019-07-15 10:34:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:34:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:34:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:34:40,EVENT,|Speechcontrol || started|
+2019-07-15 10:35:18,EVENT,|MQTT || started|
+2019-07-15 10:35:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:35:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:35:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:35:23,EVENT,|Speechcontrol || started|
+2019-07-15 10:37:34,EVENT,|MQTT || started|
+2019-07-15 10:37:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:37:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:37:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:37:38,EVENT,|Speechcontrol || started|
+2019-07-15 10:38:52,EVENT,|MQTT || started|
+2019-07-15 10:38:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:38:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:38:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:38:56,EVENT,|Speechcontrol || started|
+2019-07-15 10:40:34,EVENT,|MQTT || started|
+2019-07-15 10:40:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:40:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:40:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:40:38,EVENT,|Speechcontrol || started|
+2019-07-15 10:41:22,EVENT,|MQTT || started|
+2019-07-15 10:41:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:41:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:41:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:41:27,EVENT,|Speechcontrol || started|
+2019-07-15 10:42:00,EVENT,|MQTT || started|
+2019-07-15 10:42:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:42:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:42:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:42:04,EVENT,|Speechcontrol || started|
+2019-07-15 10:43:43,EVENT,|MQTT || started|
+2019-07-15 10:43:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:43:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:43:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:43:47,EVENT,|Speechcontrol || started|
+2019-07-15 10:45:52,EVENT,|MQTT || started|
+2019-07-15 10:45:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:45:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:45:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:45:56,EVENT,|Speechcontrol || started|
+2019-07-15 10:46:36,EVENT,|MQTT || started|
+2019-07-15 10:46:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:46:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:46:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:46:40,EVENT,|Speechcontrol || started|
+2019-07-15 10:52:37,EVENT,|MQTT || started|
+2019-07-15 10:52:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:52:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:52:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:52:41,EVENT,|Speechcontrol || started|
+2019-07-15 10:53:56,EVENT,|MQTT || started|
+2019-07-15 10:53:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:53:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:54:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:54:00,EVENT,|Speechcontrol || started|
+2019-07-15 10:54:47,EVENT,|MQTT || started|
+2019-07-15 10:54:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:54:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:54:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:54:51,EVENT,|Speechcontrol || started|
+2019-07-15 10:55:15,EVENT,|MQTT || started|
+2019-07-15 10:55:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:55:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:55:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:55:20,EVENT,|Speechcontrol || started|
+2019-07-15 10:58:08,EVENT,|MQTT || started|
+2019-07-15 10:58:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 10:58:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 10:58:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 10:58:13,EVENT,|Speechcontrol || started|
+2019-07-15 11:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 11:00:44,EVENT,|MQTT || started|
+2019-07-15 11:00:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:00:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:00:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:00:49,EVENT,|Speechcontrol || started|
+2019-07-15 11:01:30,EVENT,|MQTT || started|
+2019-07-15 11:01:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:01:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:01:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:01:34,EVENT,|Speechcontrol || started|
+2019-07-15 11:03:17,EVENT,|MQTT || started|
+2019-07-15 11:03:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:03:20,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:03:21,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:03:21,EVENT,|Speechcontrol || started|
+2019-07-15 11:04:05,EVENT,|MQTT || started|
+2019-07-15 11:04:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:04:08,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:04:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:04:09,EVENT,|Speechcontrol || started|
+2019-07-15 11:06:15,EVENT,|MQTT || started|
+2019-07-15 11:06:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:06:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:06:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:06:19,EVENT,|Speechcontrol || started|
+2019-07-15 11:08:00,EVENT,|MQTT || started|
+2019-07-15 11:08:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:08:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:08:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:08:04,EVENT,|Speechcontrol || started|
+2019-07-15 11:08:40,EVENT,|MQTT || started|
+2019-07-15 11:08:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:08:43,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:08:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:08:44,EVENT,|Speechcontrol || started|
+2019-07-15 11:08:57,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || Sunrise - None || Sunset - None || Location - None || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:09:08,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:10:12,EVENT,|MQTT || started|
+2019-07-15 11:10:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:10:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:10:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:10:16,EVENT,|Speechcontrol || started|
+2019-07-15 11:10:33,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:10:59,EVENT,|MQTT || started|
+2019-07-15 11:10:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:11:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:11:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:11:03,EVENT,|Speechcontrol || started|
+2019-07-15 11:11:42,EVENT,|MQTT || started|
+2019-07-15 11:11:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:11:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:11:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:11:46,EVENT,|Speechcontrol || started|
+2019-07-15 11:12:53,EVENT,|MQTT || started|
+2019-07-15 11:12:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:12:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:12:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:12:57,EVENT,|Speechcontrol || started|
+2019-07-15 11:13:35,EVENT,|MQTT || started|
+2019-07-15 11:13:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:13:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:13:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:13:40,EVENT,|Speechcontrol || started|
+2019-07-15 11:15:44,EVENT,|MQTT || started|
+2019-07-15 11:15:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:15:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:15:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:15:48,EVENT,|Speechcontrol || started|
+2019-07-15 11:34:48,EVENT,|MQTT || started|
+2019-07-15 11:34:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:34:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:34:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:34:52,EVENT,|Speechcontrol || started|
+2019-07-15 11:37:26,EVENT,|MQTT || started|
+2019-07-15 11:37:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:37:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:37:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:37:30,EVENT,|Speechcontrol || started|
+2019-07-15 11:40:38,EVENT,|MQTT || started|
+2019-07-15 11:40:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:40:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:40:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:40:42,EVENT,|Speechcontrol || started|
+2019-07-15 11:43:35,EVENT,|MQTT || started|
+2019-07-15 11:43:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:43:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:43:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:43:40,EVENT,|Speechcontrol || started|
+2019-07-15 11:45:21,EVENT,|MQTT || started|
+2019-07-15 11:45:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:45:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:45:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:45:26,EVENT,|Speechcontrol || started|
+2019-07-15 11:48:00,EVENT,|MQTT || started|
+2019-07-15 11:48:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:48:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:48:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:48:04,EVENT,|Speechcontrol || started|
+2019-07-15 11:49:35,EVENT,|MQTT || started|
+2019-07-15 11:49:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:49:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:49:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:49:39,EVENT,|Speechcontrol || started|
+2019-07-15 11:49:48,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100jh || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:49:55,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:50:01,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// baduz || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:50:12,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:53:38,EVENT,|MQTT || started|
+2019-07-15 11:53:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 11:53:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 11:53:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 11:53:42,EVENT,|Speechcontrol || started|
+2019-07-15 11:53:58,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100uz || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:54:04,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:54:17,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// badgf || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:54:23,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:54:32,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 11:54:38,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 11:54:51,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 12:00:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 12:03:45,EVENT,|MQTT || started|
+2019-07-15 12:03:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:03:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:03:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:03:49,EVENT,|Speechcontrol || started|
+2019-07-15 12:04:27,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off /// ALL || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-07-15 12:05:05,EVENT,|Database || Scheduler || Task - mqtt_update || Task_Type - no_scheduler_task || added|
+2019-07-15 12:06:12,EVENT,|MQTT || started|
+2019-07-15 12:06:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:06:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:06:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:06:16,EVENT,|Speechcontrol || started|
+2019-07-15 12:06:17,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-07-15 12:06:22,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 1 || Repeat - checked|
+2019-07-15 12:06:28,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-07-15 12:06:35,EVENT,|Database || Scheduler || Task - backup_database || Task_Type - no_scheduler_task || added|
+2019-07-15 12:06:35,EVENT,|Database || Scheduler || Task - backup_database || changed |||| Name - backup_database || Task - save_database || Day - * || Hour - 0 || Minute - 0 || Repeat - checked|
+2019-07-15 12:08:01,EVENT,|MQTT || started|
+2019-07-15 12:08:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:08:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:08:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:08:05,EVENT,|Speechcontrol || started|
+2019-07-15 12:10:33,EVENT,|MQTT || started|
+2019-07-15 12:10:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:10:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:10:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:10:37,EVENT,|Speechcontrol || started|
+2019-07-15 12:18:01,EVENT,|MQTT || started|
+2019-07-15 12:18:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:18:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:18:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:18:05,EVENT,|Speechcontrol || started|
+2019-07-15 12:20:53,EVENT,|MQTT || started|
+2019-07-15 12:20:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:20:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:20:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:20:58,EVENT,|Speechcontrol || started|
+2019-07-15 12:21:22,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// badoi || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:21:30,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// grop /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:21:37,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:21:43,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x88888 || Sensor_3 - None || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:21:49,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x00158d000349876a || Sensor_3 - temperature || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:21:58,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - None || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:22:08,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_01 || Sensor_3 - None || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:26:23,EVENT,|MQTT || started|
+2019-07-15 12:26:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:26:26,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:26:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:26:27,EVENT,|Speechcontrol || started|
+2019-07-15 12:26:35,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_02 || Sensor_3 - None || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:27:12,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_02 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:27:55,EVENT,|MQTT || started|
+2019-07-15 12:27:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:27:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:27:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:27:59,EVENT,|Speechcontrol || started|
+2019-07-15 12:28:01,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_02 || Sensor_3 - None || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:28:28,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_01 || Sensor_3 - illuminance || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:28:43,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:29:18,EVENT,|MQTT || started|
+2019-07-15 12:29:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:29:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:29:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:29:22,EVENT,|Speechcontrol || started|
+2019-07-15 12:29:31,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_02 || Sensor_1 - illuminance || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:29:38,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_03 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - illuminance || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:29:46,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - battery || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:29:51,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - battery || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:30:00,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - 0x99999 || Sensor_3 - sensor_watertank || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 12:30:07,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 12:30:39,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 12:31:09,EVENT,|Database || Scheduler || Task - jh || Task_Type -  || added|
+2019-07-15 12:32:24,EVENT,|MQTT || started|
+2019-07-15 12:32:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 12:32:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 12:32:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 12:32:29,EVENT,|Speechcontrol || started|
+2019-07-15 12:32:30,EVENT,|Database || Scheduler || Task - jh || deleted|
+2019-07-15 12:32:36,EVENT,|Database || Scheduler || Task - jhg || Task_Type -  || added|
+2019-07-15 12:33:19,EVENT,|Database || Scheduler || Task - jhg || deleted|
+2019-07-15 12:33:25,EVENT,|Database || Scheduler || Task - hfggfd || Task_Type -  || added|
+2019-07-15 12:33:41,EVENT,|Database || Scheduler || Task - hfggfd || changed |||| Name - hfggfd || Task - None || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-07-15 12:33:49,EVENT,|Database || Scheduler || Task - hfggfd || changed |||| Name - hfggfd || Task - None || MQTT-Device_1 - 0x00158d000349876a || Sensor_1 - temperature || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-07-15 12:33:52,EVENT,|Database || Scheduler || Task - hfggfd || deleted|
+2019-07-15 12:43:36,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 13:00:19,EVENT,|MQTT || started|
+2019-07-15 13:00:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:00:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:00:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:00:23,EVENT,|Speechcontrol || started|
+2019-07-15 13:02:19,EVENT,|MQTT || started|
+2019-07-15 13:02:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:02:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:02:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:02:23,EVENT,|Speechcontrol || started|
+2019-07-15 13:07:19,EVENT,|MQTT || started|
+2019-07-15 13:07:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:07:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:07:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:07:23,EVENT,|Speechcontrol || started|
+2019-07-15 13:09:34,EVENT,|MQTT || started|
+2019-07-15 13:09:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:09:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:09:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:09:39,EVENT,|Speechcontrol || started|
+2019-07-15 13:09:52,EVENT,|Database || Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - false || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - false || Repeat - checked|
+2019-07-15 13:10:24,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 13:19:10,EVENT,|MQTT || started|
+2019-07-15 13:19:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:19:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:19:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:19:14,EVENT,|Speechcontrol || started|
+2019-07-15 13:20:49,EVENT,|MQTT || started|
+2019-07-15 13:20:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:20:52,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:20:53,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:20:53,EVENT,|Speechcontrol || started|
+2019-07-15 13:21:21,EVENT,|Database || Scheduler || Task - schlafen || changed |||| Name - schlafen || Task - led_off /// ALL || Day - * || Hour - 0 || Minute - 30 || Repeat - checked|
+2019-07-15 13:21:33,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off /// ALLüpoi || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-07-15 13:21:41,EVENT,|Database || Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off /// ALL || Day - Mo,Tu,We,Th,Fr || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-07-15 13:27:26,EVENT,|MQTT || started|
+2019-07-15 13:27:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:27:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:27:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:27:30,EVENT,|Speechcontrol || started|
+2019-07-15 13:29:25,EVENT,|MQTT || started|
+2019-07-15 13:29:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:29:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:29:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:29:29,EVENT,|Speechcontrol || started|
+2019-07-15 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 13:31:50,ERROR,|Scheduler || Task - bad_off || (sqlite3.OperationalError) no such column: led_groups.collaps [SQL: 'SELECT led_groups.id AS led_groups_id, led_groups.name AS led_groups_name, led_groups."led_ieeeAddr_1" AS "led_groups_led_ieeeAddr_1", led_groups.led_name_1 AS led_groups_led_name_1, led_groups.led_device_type_1 AS led_groups_led_device_type_1, led_groups.active_led_2 AS led_groups_active_led_2, led_groups."led_ieeeAddr_2" AS "led_groups_led_ieeeAddr_2", led_groups.led_name_2 AS led_groups_led_name_2, led_groups.led_device_type_2 AS led_groups_led_device_type_2, led_groups.active_led_3 AS led_groups_active_led_3, led_groups."led_ieeeAddr_3" AS "led_groups_led_ieeeAddr_3", led_groups.led_name_3 AS led_groups_led_name_3, led_groups.led_device_type_3 AS led_groups_led_device_type_3, led_groups.active_led_4 AS led_groups_active_led_4, led_groups."led_ieeeAddr_4" AS "led_groups_led_ieeeAddr_4", led_groups.led_name_4 AS led_groups_led_name_4, led_groups.led_device_type_4 AS led_groups_led_device_type_4, led_groups.active_led_5 AS led_groups_active_led_5, led_groups."led_ieeeAddr_5" AS "led_groups_led_ieeeAddr_5", led_groups.led_name_5 AS led_groups_led_name_5, led_groups.led_device_type_5 AS led_groups_led_device_type_5, led_groups.active_led_6 AS led_groups_active_led_6, led_groups."led_ieeeAddr_6" AS "led_groups_led_ieeeAddr_6", led_groups.led_name_6 AS led_groups_led_name_6, led_groups.led_device_type_6 AS led_groups_led_device_type_6, led_groups.active_led_7 AS led_groups_active_led_7, led_groups."led_ieeeAddr_7" AS "led_groups_led_ieeeAddr_7", led_groups.led_name_7 AS led_groups_led_name_7, led_groups.led_device_type_7 AS led_groups_led_device_type_7, led_groups.active_led_8 AS led_groups_active_led_8, led_groups."led_ieeeAddr_8" AS "led_groups_led_ieeeAddr_8", led_groups.led_name_8 AS led_groups_led_name_8, led_groups.led_device_type_8 AS led_groups_led_device_type_8, led_groups.active_led_9 AS led_groups_active_led_9, led_groups."led_ieeeAddr_9" AS "led_groups_led_ieeeAddr_9", led_groups.led_name_9 AS led_groups_led_name_9, led_groups.led_device_type_9 AS led_groups_led_device_type_9, led_groups.collaps AS led_groups_collaps, led_groups.current_setting AS led_groups_current_setting, led_groups.current_brightness AS led_groups_current_brightness, led_groups.error_change_settings AS led_groups_error_change_settings \nFROM led_groups'] (Background on this error at: http://sqlalche.me/e/e3q8)|
+2019-07-15 13:33:13,EVENT,|MQTT || started|
+2019-07-15 13:33:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:33:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:33:17,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:33:17,EVENT,|Speechcontrol || started|
+2019-07-15 13:34:10,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100t || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 13:34:15,EVENT,|Database || Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || MQTT-Device_2 - Motion_Sensor_Bad_02 || Sensor_2 - occupancy || Operator_2 - = || Value_2 - true || MQTT-Device_3 - Motion_Sensor_Bad_03 || Sensor_3 - occupancy || Operator_3 - = || Value_3 - true || Repeat - checked|
+2019-07-15 13:38:15,EVENT,|MQTT || started|
+2019-07-15 13:38:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:38:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:38:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:38:19,EVENT,|Speechcontrol || started|
+2019-07-15 13:38:46,EVENT,|MQTT || started|
+2019-07-15 13:38:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:38:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:38:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:38:50,EVENT,|Speechcontrol || started|
+2019-07-15 13:41:34,EVENT,|MQTT || started|
+2019-07-15 13:41:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:41:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:41:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:41:38,EVENT,|Speechcontrol || started|
+2019-07-15 13:42:26,EVENT,|MQTT || started|
+2019-07-15 13:42:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:42:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:42:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:42:31,EVENT,|Speechcontrol || started|
+2019-07-15 13:44:21,EVENT,|MQTT || started|
+2019-07-15 13:44:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:44:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:44:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:44:25,EVENT,|Speechcontrol || started|
+2019-07-15 13:45:36,EVENT,|MQTT || started|
+2019-07-15 13:45:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:45:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:45:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:45:40,EVENT,|Speechcontrol || started|
+2019-07-15 13:46:39,EVENT,|MQTT || started|
+2019-07-15 13:46:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:46:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:46:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:46:44,EVENT,|Speechcontrol || started|
+2019-07-15 13:47:34,EVENT,|MQTT || started|
+2019-07-15 13:47:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:47:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:47:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:47:38,EVENT,|Speechcontrol || started|
+2019-07-15 13:48:13,EVENT,|MQTT || started|
+2019-07-15 13:48:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:48:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:48:17,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:48:17,EVENT,|Speechcontrol || started|
+2019-07-15 13:49:12,EVENT,|MQTT || started|
+2019-07-15 13:49:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:49:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:49:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:49:16,EVENT,|Speechcontrol || started|
+2019-07-15 13:50:10,EVENT,|MQTT || started|
+2019-07-15 13:50:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:50:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:50:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:50:14,EVENT,|Speechcontrol || started|
+2019-07-15 13:52:46,EVENT,|MQTT || started|
+2019-07-15 13:52:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:52:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:52:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:52:50,EVENT,|Speechcontrol || started|
+2019-07-15 13:53:22,EVENT,|MQTT || started|
+2019-07-15 13:53:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:53:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:53:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:53:26,EVENT,|Speechcontrol || started|
+2019-07-15 13:55:19,EVENT,|MQTT || started|
+2019-07-15 13:55:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:55:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:55:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:55:23,EVENT,|Speechcontrol || started|
+2019-07-15 13:56:23,EVENT,|MQTT || started|
+2019-07-15 13:56:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:56:26,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:56:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:56:27,EVENT,|Speechcontrol || started|
+2019-07-15 13:57:20,EVENT,|MQTT || started|
+2019-07-15 13:57:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:57:23,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:57:24,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:57:24,EVENT,|Speechcontrol || started|
+2019-07-15 13:58:28,EVENT,|MQTT || started|
+2019-07-15 13:58:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 13:58:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 13:58:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 13:58:33,EVENT,|Speechcontrol || started|
+2019-07-15 14:00:24,EVENT,|MQTT || started|
+2019-07-15 14:00:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:00:26,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:00:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:00:28,EVENT,|Speechcontrol || started|
+2019-07-15 14:01:34,EVENT,|MQTT || started|
+2019-07-15 14:01:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:01:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:01:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:01:38,EVENT,|Speechcontrol || started|
+2019-07-15 14:04:52,EVENT,|MQTT || started|
+2019-07-15 14:04:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:04:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:04:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:04:56,EVENT,|Speechcontrol || started|
+2019-07-15 14:12:39,EVENT,|MQTT || started|
+2019-07-15 14:12:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:12:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:12:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:12:43,EVENT,|Speechcontrol || started|
+2019-07-15 14:13:28,EVENT,|MQTT || started|
+2019-07-15 14:13:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:13:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:13:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:13:33,EVENT,|Speechcontrol || started|
+2019-07-15 14:14:10,EVENT,|MQTT || started|
+2019-07-15 14:14:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:14:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:14:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:14:14,EVENT,|Speechcontrol || started|
+2019-07-15 14:15:59,EVENT,|MQTT || started|
+2019-07-15 14:15:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:16:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:16:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:16:03,EVENT,|Speechcontrol || started|
+2019-07-15 14:16:31,EVENT,|MQTT || started|
+2019-07-15 14:16:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:16:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:16:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:16:35,EVENT,|Speechcontrol || started|
+2019-07-15 14:22:59,EVENT,|MQTT || started|
+2019-07-15 14:22:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:23:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:23:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:23:03,EVENT,|Speechcontrol || started|
+2019-07-15 14:23:31,EVENT,|MQTT || started|
+2019-07-15 14:23:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:23:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:23:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:23:35,EVENT,|Speechcontrol || started|
+2019-07-15 14:27:53,EVENT,|MQTT || started|
+2019-07-15 14:27:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:27:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:27:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:27:58,EVENT,|Speechcontrol || started|
+2019-07-15 14:28:16,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.comiu || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:28:21,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.neti || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:28:26,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:28:29,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 14:31:40,EVENT,|MQTT || started|
+2019-07-15 14:31:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:31:43,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:31:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:31:44,EVENT,|Speechcontrol || started|
+2019-07-15 14:32:02,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.netoi || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:32:06,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:34:19,EVENT,|MQTT || started|
+2019-07-15 14:34:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:34:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:34:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:34:23,EVENT,|Speechcontrol || started|
+2019-07-15 14:35:40,EVENT,|MQTT || started|
+2019-07-15 14:35:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:35:43,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:35:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:35:44,EVENT,|Speechcontrol || started|
+2019-07-15 14:36:46,EVENT,|MQTT || started|
+2019-07-15 14:36:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:36:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:36:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:36:50,EVENT,|Speechcontrol || started|
+2019-07-15 14:39:18,EVENT,|MQTT || started|
+2019-07-15 14:39:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:39:20,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:39:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:39:22,EVENT,|Speechcontrol || started|
+2019-07-15 14:39:22,EVENT,|Database || User - test || changed |||| Username - test || eMail - martin@gmx.deiu || Permission-Dashboard -  || Permission-Scheduler -  || Permission-Programs -  || Permission-Watering -  || Permission-Camera -  || Permission-LED -  || Permission-Sensordata -  || Permission-Spotify -  || Permission-System -  || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-07-15 14:39:28,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:39:33,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:47:57,EVENT,|MQTT || started|
+2019-07-15 14:47:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:48:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:48:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:48:01,EVENT,|Speechcontrol || started|
+2019-07-15 14:48:18,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:50:29,EVENT,|MQTT || started|
+2019-07-15 14:50:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:50:32,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:50:33,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:50:33,EVENT,|Speechcontrol || started|
+2019-07-15 14:51:54,EVENT,|MQTT || started|
+2019-07-15 14:51:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:51:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:51:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:51:58,EVENT,|Speechcontrol || started|
+2019-07-15 14:52:11,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:52:17,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:54:01,EVENT,|MQTT || started|
+2019-07-15 14:54:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 14:54:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 14:54:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 14:54:05,EVENT,|Speechcontrol || started|
+2019-07-15 14:54:21,EVENT,|Database || User - test || changed |||| Username - test || eMail - martin@gmx.de || Permission-Dashboard -  || Permission-Scheduler -  || Permission-Programs -  || Permission-Watering -  || Permission-Camera -  || Permission-LED -  || Permission-Sensordata -  || Permission-Spotify -  || Permission-System -  || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-07-15 14:54:25,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 14:54:28,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:01:40,EVENT,|MQTT || started|
+2019-07-15 15:01:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:01:43,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:01:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:01:45,EVENT,|Speechcontrol || started|
+2019-07-15 15:01:53,EVENT,|Database || User - test || changed |||| Username - test || eMail - martin@gmx.de || Permission-Dashboard -  || Permission-Scheduler -  || Permission-Programs -  || Permission-Watering -  || Permission-Camera -  || Permission-LED -  || Permission-Sensordata -  || Permission-Spotify -  || Permission-System -  || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-07-15 15:06:45,EVENT,|MQTT || started|
+2019-07-15 15:06:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:06:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:06:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:06:49,EVENT,|Speechcontrol || started|
+2019-07-15 15:08:17,EVENT,|MQTT || started|
+2019-07-15 15:08:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:08:20,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:08:21,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:08:21,EVENT,|Speechcontrol || started|
+2019-07-15 15:11:34,EVENT,|MQTT || started|
+2019-07-15 15:11:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:11:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:11:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:11:38,EVENT,|Speechcontrol || started|
+2019-07-15 15:11:38,EVENT,|Database || Scheduler || Task - kjh || Task_Type -  || added|
+2019-07-15 15:11:46,EVENT,|Database || Scheduler || Task - kjh || deleted|
+2019-07-15 15:22:12,EVENT,|MQTT || started|
+2019-07-15 15:22:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:22:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:22:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:22:16,EVENT,|Speechcontrol || started|
+2019-07-15 15:23:36,EVENT,|MQTT || started|
+2019-07-15 15:23:36,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:23:39,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:23:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:23:40,EVENT,|Speechcontrol || started|
+2019-07-15 15:24:38,EVENT,|MQTT || started|
+2019-07-15 15:24:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:24:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:24:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:24:43,EVENT,|Speechcontrol || started|
+2019-07-15 15:25:39,EVENT,|MQTT || started|
+2019-07-15 15:25:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:25:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:25:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:25:43,EVENT,|Speechcontrol || started|
+2019-07-15 15:27:00,EVENT,|MQTT || started|
+2019-07-15 15:27:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:27:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:27:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:27:04,EVENT,|Speechcontrol || started|
+2019-07-15 15:28:53,EVENT,|MQTT || started|
+2019-07-15 15:28:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:28:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:28:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:28:57,EVENT,|Speechcontrol || started|
+2019-07-15 15:30:07,EVENT,|MQTT || started|
+2019-07-15 15:30:07,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:30:10,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:30:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:30:12,EVENT,|Speechcontrol || started|
+2019-07-15 15:30:55,EVENT,|MQTT || started|
+2019-07-15 15:30:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:30:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:30:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:31:00,EVENT,|Speechcontrol || started|
+2019-07-15 15:31:42,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify -  || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:31:46,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:32:55,EVENT,|MQTT || started|
+2019-07-15 15:32:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:32:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:32:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:33:00,EVENT,|Speechcontrol || started|
+2019-07-15 15:34:04,EVENT,|MQTT || started|
+2019-07-15 15:34:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:34:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:34:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:34:08,EVENT,|Speechcontrol || started|
+2019-07-15 15:34:19,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard -  || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:34:55,EVENT,|MQTT || started|
+2019-07-15 15:34:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:34:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:34:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:34:59,EVENT,|Speechcontrol || started|
+2019-07-15 15:35:54,EVENT,|MQTT || started|
+2019-07-15 15:35:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:35:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:35:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:35:58,EVENT,|Speechcontrol || started|
+2019-07-15 15:35:59,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:36:47,EVENT,|MQTT || started|
+2019-07-15 15:36:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:36:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:36:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:36:51,EVENT,|Speechcontrol || started|
+2019-07-15 15:38:09,EVENT,|MQTT || started|
+2019-07-15 15:38:09,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:38:12,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:38:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:38:13,EVENT,|Speechcontrol || started|
+2019-07-15 15:39:11,EVENT,|MQTT || started|
+2019-07-15 15:39:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:39:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:39:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:39:15,EVENT,|Speechcontrol || started|
+2019-07-15 15:39:21,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:39:26,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System -  || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:39:38,EVENT,|Database || User - default || changed |||| Username - default || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-15 15:48:57,EVENT,|MQTT || started|
+2019-07-15 15:48:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:49:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:49:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:49:01,EVENT,|Speechcontrol || started|
+2019-07-15 15:52:24,EVENT,|MQTT || started|
+2019-07-15 15:52:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 15:52:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 15:52:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 15:52:28,EVENT,|Speechcontrol || started|
+2019-07-15 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 18:38:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 18:38:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 18:40:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 18:40:40,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 18:45:00,EVENT,|MQTT || started|
+2019-07-15 18:45:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 18:45:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 18:45:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 18:45:04,EVENT,|Speechcontrol || started|
+2019-07-15 18:45:37,EVENT,|MQTT || started|
+2019-07-15 18:45:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 18:45:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 18:45:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 18:45:41,EVENT,|Speechcontrol || started|
+2019-07-15 18:46:25,EVENT,|MQTT || started|
+2019-07-15 18:46:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 18:46:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 18:46:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 18:46:29,EVENT,|Speechcontrol || started|
+2019-07-15 18:47:39,EVENT,|MQTT || started|
+2019-07-15 18:47:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-15 18:47:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-15 18:47:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-15 18:47:43,EVENT,|Speechcontrol || started|
+2019-07-15 18:56:20,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed - {"state":"ON"}|
+2019-07-15 19:23:49,EVENT,|Speechcontrol || Detection || jetzt ist jetzt sehen wir ja dass ihr nichts bauen denn eigentlich stand da alle kreaturen unterstützt werden aber auch im weissen nicht der fall|
+2019-07-15 19:24:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 49 %|
+2019-07-15 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 21:43:14,EVENT,|Speechcontrol || Detection || |
+2019-07-15 21:58:06,EVENT,|Speechcontrol || Detection || macht bei uns|
+2019-07-15 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-15 22:35:42,EVENT,|Speechcontrol || Detection || verschiessen rekord|
+2019-07-15 22:37:26,EVENT,|Speechcontrol || Detection || |
+2019-07-15 22:56:11,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed - {"state":"OFF"}|
+2019-07-15 22:57:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 22:57:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 22:58:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 22:58:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 23:04:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 23:05:00,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 23:05:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 23:05:34,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 23:12:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 23:12:49,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 23:13:18,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 23:13:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 23:13:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-15 23:13:26,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-15 23:13:55,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-15 23:14:00,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-15 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-07-16 00:16:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 00:16:32,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 00:17:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 00:17:37,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 00:19:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 00:19:42,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 00:20:46,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 00:20:51,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 00:21:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 00:21:13,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 00:25:00,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 00:25:06,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-16 00:30:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-16 00:35:26,SUCCESS,|LED || Group - wohnzimmer || Setting changed || mediterran : 100 %|
+2019-07-16 00:35:53,WARNING,|LED || Group - wohnzimmer || ['Deckenlampe_01 >>> Setting not confirmed', 'Deckenlampe_02 >>> Setting not confirmed']|
+2019-07-16 00:41:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 00:41:20,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-16 00:44:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 00:44:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 07:08:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 07:08:11,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-16 07:08:39,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 07:08:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 07:08:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 07:08:51,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 07:15:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 07:15:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 07:15:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 07:16:03,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 07:16:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 07:16:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 07:16:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 07:16:11,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 07:16:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 07:16:46,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 08:01:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 08:01:23,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 08:03:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 08:03:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 08:03:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 08:03:52,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 08:05:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 08:05:14,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 08:05:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-16 08:05:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-16 08:06:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-16 08:06:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-16 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 09:19:02,EVENT,|MQTT || started|
+2019-07-16 09:19:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:19:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:19:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:19:06,EVENT,|Speechcontrol || started|
+2019-07-16 09:20:18,EVENT,|MQTT || started|
+2019-07-16 09:20:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:20:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:20:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:20:22,EVENT,|Speechcontrol || started|
+2019-07-16 09:21:40,EVENT,|MQTT || started|
+2019-07-16 09:21:40,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:21:43,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:21:45,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:21:45,EVENT,|Speechcontrol || started|
+2019-07-16 09:21:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-07-16 09:22:04,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-16 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 09:37:26,EVENT,|MQTT || started|
+2019-07-16 09:37:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:37:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:37:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:37:30,EVENT,|Speechcontrol || started|
+2019-07-16 09:38:28,EVENT,|MQTT || started|
+2019-07-16 09:38:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:38:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:38:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:38:32,EVENT,|Speechcontrol || started|
+2019-07-16 09:41:48,EVENT,|MQTT || started|
+2019-07-16 09:41:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:41:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:41:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:41:52,EVENT,|Speechcontrol || started|
+2019-07-16 09:45:01,EVENT,|MQTT || started|
+2019-07-16 09:45:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:45:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:45:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:45:05,EVENT,|Speechcontrol || started|
+2019-07-16 09:46:06,EVENT,|MQTT || started|
+2019-07-16 09:46:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:46:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:46:10,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:46:11,EVENT,|Speechcontrol || started|
+2019-07-16 09:47:57,EVENT,|MQTT || started|
+2019-07-16 09:47:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:48:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:48:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:48:02,EVENT,|Speechcontrol || started|
+2019-07-16 09:48:42,EVENT,|MQTT || started|
+2019-07-16 09:48:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:48:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:48:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:48:46,EVENT,|Speechcontrol || started|
+2019-07-16 09:49:53,EVENT,|MQTT || started|
+2019-07-16 09:49:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:49:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:49:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:49:57,EVENT,|Speechcontrol || started|
+2019-07-16 09:50:01,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 21 || Repeat - checked|
+2019-07-16 09:50:06,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-07-16 09:50:08,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-16 09:51:06,EVENT,|MQTT || started|
+2019-07-16 09:51:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:51:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:51:10,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:51:10,EVENT,|Speechcontrol || started|
+2019-07-16 09:53:43,EVENT,|MQTT || started|
+2019-07-16 09:53:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:53:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:53:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:53:47,EVENT,|Speechcontrol || started|
+2019-07-16 09:56:34,EVENT,|MQTT || started|
+2019-07-16 09:56:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:56:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:56:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:56:38,EVENT,|Speechcontrol || started|
+2019-07-16 09:57:39,EVENT,|MQTT || started|
+2019-07-16 09:57:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 09:57:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 09:57:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 09:57:43,EVENT,|Speechcontrol || started|
+2019-07-16 10:01:54,EVENT,|MQTT || started|
+2019-07-16 10:01:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:01:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:01:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:01:58,EVENT,|Speechcontrol || started|
+2019-07-16 10:03:19,EVENT,|MQTT || started|
+2019-07-16 10:03:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:03:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:03:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:03:23,EVENT,|Speechcontrol || started|
+2019-07-16 10:03:25,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:03:53,EVENT,|MQTT || started|
+2019-07-16 10:03:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:03:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:03:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:03:57,EVENT,|Speechcontrol || started|
+2019-07-16 10:03:59,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:04:20,EVENT,|MQTT || started|
+2019-07-16 10:04:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:04:23,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:04:24,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:04:24,EVENT,|Speechcontrol || started|
+2019-07-16 10:04:26,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:05:43,EVENT,|MQTT || started|
+2019-07-16 10:05:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:05:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:05:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:05:47,EVENT,|Speechcontrol || started|
+2019-07-16 10:06:18,EVENT,|MQTT || started|
+2019-07-16 10:06:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:06:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:06:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:06:22,EVENT,|Speechcontrol || started|
+2019-07-16 10:06:29,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:07:57,EVENT,|MQTT || started|
+2019-07-16 10:07:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:08:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:08:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:08:01,EVENT,|Speechcontrol || started|
+2019-07-16 10:08:02,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:10:31,EVENT,|MQTT || started|
+2019-07-16 10:10:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:10:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:10:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:10:35,EVENT,|Speechcontrol || started|
+2019-07-16 10:10:36,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-07-16 10:12:21,EVENT,|MQTT || started|
+2019-07-16 10:12:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:12:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:12:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:12:25,EVENT,|Speechcontrol || started|
+2019-07-16 10:12:32,EVENT,|Database || Scheduler || Task - backup_database || changed |||| Name - backup_database || Task - save_database || Day - * || Hour - 15 || Minute - 0 || Repeat - checked|
+2019-07-16 10:14:21,EVENT,|MQTT || started|
+2019-07-16 10:14:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:14:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:14:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:14:25,EVENT,|Speechcontrol || started|
+2019-07-16 10:14:32,SUCCESS,|Database_Backup || saved|
+2019-07-16 10:14:43,EVENT,|Database || Scheduler || Task - backup_database || changed |||| Name - backup_database || Task - save_database || Day - * || Hour - 0 || Minute - 0 || Repeat - checked|
+2019-07-16 10:15:44,EVENT,|MQTT || started|
+2019-07-16 10:15:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:15:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:15:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:15:49,EVENT,|Speechcontrol || started|
+2019-07-16 10:15:53,SUCCESS,|Database_Backup || saved|
+2019-07-16 10:17:20,EVENT,|MQTT || started|
+2019-07-16 10:17:20,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:17:23,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:17:24,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:17:24,EVENT,|Speechcontrol || started|
+2019-07-16 10:25:44,EVENT,|MQTT || started|
+2019-07-16 10:25:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:25:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:25:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:25:48,EVENT,|Speechcontrol || started|
+2019-07-16 10:27:24,EVENT,|MQTT || started|
+2019-07-16 10:27:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:27:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:27:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:27:29,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
+2019-07-16 10:29:45,EVENT,|MQTT || started|
+2019-07-16 10:29:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:29:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:29:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:29:50,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
+2019-07-16 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 10:30:35,EVENT,|MQTT || started|
+2019-07-16 10:30:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:30:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:30:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:30:39,EVENT,|Speechcontrol || started|
+2019-07-16 10:32:25,EVENT,|MQTT || started|
+2019-07-16 10:32:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:32:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:32:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:32:29,ERROR,|Speechcontrol || Snowboy Hotword - None || not founded|
+2019-07-16 10:33:15,EVENT,|MQTT || started|
+2019-07-16 10:33:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:33:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:33:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:33:19,EVENT,|Speechcontrol || started|
+2019-07-16 10:36:46,EVENT,|MQTT || started|
+2019-07-16 10:36:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:36:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:36:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:36:50,EVENT,|Speechcontrol || started|
+2019-07-16 10:39:50,EVENT,|MQTT || started|
+2019-07-16 10:39:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:39:53,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:39:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:39:54,EVENT,|Speechcontrol || started|
+2019-07-16 10:41:31,EVENT,|MQTT || started|
+2019-07-16 10:41:31,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:41:34,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:41:35,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:41:35,EVENT,|Speechcontrol || started|
+2019-07-16 10:45:18,EVENT,|MQTT || started|
+2019-07-16 10:45:18,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:45:21,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:45:22,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:45:22,EVENT,|Speechcontrol || started|
+2019-07-16 10:52:37,EVENT,|MQTT || started|
+2019-07-16 10:52:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:52:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:52:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:52:41,EVENT,|Speechcontrol || started|
+2019-07-16 10:53:45,EVENT,|MQTT || started|
+2019-07-16 10:53:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:53:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:53:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:53:49,EVENT,|Speechcontrol || started|
+2019-07-16 10:54:42,EVENT,|MQTT || started|
+2019-07-16 10:54:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:54:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:54:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:54:46,EVENT,|Speechcontrol || started|
+2019-07-16 10:55:30,EVENT,|Database || Speechcontrol || Program Task - uzt || deleted|
+2019-07-16 10:58:53,EVENT,|MQTT || started|
+2019-07-16 10:58:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 10:58:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 10:58:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 10:58:57,EVENT,|Speechcontrol || started|
+2019-07-16 11:01:19,EVENT,|MQTT || started|
+2019-07-16 11:01:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:01:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:01:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:01:23,EVENT,|Speechcontrol || started|
+2019-07-16 11:02:54,EVENT,|File || /app/snowboy/resources/smarthome.pmdl || downloaded|
+2019-07-16 11:02:54,ERROR,|File || /app/snowboy/resources/smarthome.pmdl || 404: Not Found|
+2019-07-16 11:04:54,EVENT,|MQTT || started|
+2019-07-16 11:04:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:04:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:04:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:04:58,EVENT,|Speechcontrol || started|
+2019-07-16 11:05:14,EVENT,|File || /app/snowboy/resources/smarthome.pmdl || downloaded|
+2019-07-16 11:05:14,ERROR,|File || /app/snowboy/resources/smarthome.pmdl || 404: Not Found|
+2019-07-16 11:06:41,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-16 11:08:43,EVENT,|MQTT || started|
+2019-07-16 11:08:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:08:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:08:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:08:47,EVENT,|Speechcontrol || started|
+2019-07-16 11:08:58,EVENT,|File || /logs/log_system.csv || downloaded|
+2019-07-16 11:09:51,EVENT,|File || /app/speechcontrol/snowboy/resources/file.pmdl || uploaded|
+2019-07-16 11:09:56,EVENT,|File || /app/speechcontrol/snowboy/resources/Neues_Textdokument.pmdl || deleted|
+2019-07-16 11:10:02,EVENT,|File || /app/snowboy/resources/smarthome.pmdl || downloaded|
+2019-07-16 11:10:02,ERROR,|File || /app/snowboy/resources/smarthome.pmdl || 404: Not Found|
+2019-07-16 11:11:54,EVENT,|MQTT || started|
+2019-07-16 11:11:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:11:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:11:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:11:58,EVENT,|Speechcontrol || started|
+2019-07-16 11:12:06,EVENT,|File || /app/speechcontrol/snowboy/resources/smarthome.pmdl || downloaded|
+2019-07-16 11:22:30,EVENT,|MQTT || started|
+2019-07-16 11:22:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:22:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:22:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:22:34,EVENT,|Speechcontrol || started|
+2019-07-16 11:24:45,EVENT,|MQTT || started|
+2019-07-16 11:24:45,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:24:48,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:24:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:24:49,EVENT,|Speechcontrol || started|
+2019-07-16 11:25:34,EVENT,|Database || Speechcontrol || Program Task - zut || added|
+2019-07-16 11:25:37,EVENT,|Database || Speechcontrol || Program Task - zut || deleted|
+2019-07-16 11:26:56,EVENT,|MQTT || started|
+2019-07-16 11:26:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:26:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:27:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:27:00,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 1903163664|
+2019-07-16 11:28:05,EVENT,|MQTT || started|
+2019-07-16 11:28:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:28:08,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:28:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:28:09,EVENT,|Speechcontrol || started|
+2019-07-16 11:29:32,EVENT,|MQTT || started|
+2019-07-16 11:29:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:29:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:29:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:29:36,EVENT,|Speechcontrol || started|
+2019-07-16 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 11:31:48,EVENT,|MQTT || started|
+2019-07-16 11:31:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:31:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:31:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:31:52,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
+2019-07-16 11:36:29,EVENT,|MQTT || started|
+2019-07-16 11:36:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:36:32,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:36:33,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:36:33,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
+2019-07-16 11:38:54,EVENT,|MQTT || started|
+2019-07-16 11:38:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:38:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:38:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:38:58,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
+2019-07-16 11:39:30,EVENT,|MQTT || started|
+2019-07-16 11:39:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 11:39:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 11:39:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 11:39:34,EVENT,|Speechcontrol || started|
+2019-07-16 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 13:02:31,EVENT,|File || /app/speechcontrol/snowboy/resources/smarthome.pmdl || downloaded|
+2019-07-16 13:07:57,EVENT,|MQTT || started|
+2019-07-16 13:07:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:08:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:08:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:08:01,EVENT,|Speechcontrol || started|
+2019-07-16 13:13:53,EVENT,|MQTT || started|
+2019-07-16 13:13:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:13:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:13:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:13:57,EVENT,|Speechcontrol || started|
+2019-07-16 13:14:12,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 22 || Repeat - checked|
+2019-07-16 13:15:08,EVENT,|MQTT || started|
+2019-07-16 13:15:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:15:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:15:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:15:13,EVENT,|Speechcontrol || started|
+2019-07-16 13:15:22,EVENT,|Database || Scheduler || Task - mqtt_update || changed |||| Name - mqtt_update || Task - mqtt_update_devices || Day - * || Hour - * || Minute - 30 || Repeat - checked|
+2019-07-16 13:15:28,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-16 13:27:06,EVENT,|MQTT || started|
+2019-07-16 13:27:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:27:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:27:10,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:27:10,EVENT,|Speechcontrol || started|
+2019-07-16 13:29:17,EVENT,|MQTT || started|
+2019-07-16 13:29:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:29:20,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:29:21,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:29:21,EVENT,|Speechcontrol || started|
+2019-07-16 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 13:30:58,EVENT,|MQTT || started|
+2019-07-16 13:30:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:31:01,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:31:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:31:02,EVENT,|Speechcontrol || started|
+2019-07-16 13:32:28,EVENT,|MQTT || started|
+2019-07-16 13:32:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:32:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:32:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:32:32,EVENT,|Speechcontrol || started|
+2019-07-16 13:33:15,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-16 13:33:24,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-16 13:35:11,EVENT,|MQTT || started|
+2019-07-16 13:35:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:35:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:35:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:35:15,EVENT,|Speechcontrol || started|
+2019-07-16 13:35:21,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-16 13:35:37,EVENT,|Database || MQTT Device - 0x00158d0002337aa7 || Gateway - zigbee2mqtt || Name changed |||| Name - Button|
+2019-07-16 13:40:04,EVENT,|MQTT || started|
+2019-07-16 13:40:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:40:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:40:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:40:08,EVENT,|Speechcontrol || started|
+2019-07-16 13:40:15,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:40:20,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:40:40,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:41:27,EVENT,|MQTT || started|
+2019-07-16 13:41:27,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:41:30,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:41:31,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:41:31,EVENT,|Speechcontrol || started|
+2019-07-16 13:41:34,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:41:42,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-07-16 13:41:52,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:41:58,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-07-16 13:44:43,EVENT,|MQTT || started|
+2019-07-16 13:44:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:44:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:44:47,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-07-16 13:44:48,EVENT,|Speechcontrol || started|
+2019-07-16 13:44:56,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:45:06,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-16 13:45:57,EVENT,|MQTT || started|
+2019-07-16 13:45:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:46:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:46:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:46:01,EVENT,|Speechcontrol || started|
+2019-07-16 13:47:51,EVENT,|MQTT || started|
+2019-07-16 13:47:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:47:54,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:47:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:47:55,EVENT,|Speechcontrol || started|
+2019-07-16 13:48:05,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:49:43,EVENT,|MQTT || started|
+2019-07-16 13:49:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:49:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:49:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:49:47,EVENT,|Speechcontrol || started|
+2019-07-16 13:49:50,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:58:00,EVENT,|MQTT || started|
+2019-07-16 13:58:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 13:58:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 13:58:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 13:58:05,EVENT,|Speechcontrol || started|
+2019-07-16 14:03:33,ERROR,eMail >>> The message does not specify a sender and a default sender has not been configured
+2019-07-16 14:05:51,EVENT,|MQTT || started|
+2019-07-16 14:05:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:05:54,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:05:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:05:55,EVENT,|Speechcontrol || started|
+2019-07-16 14:06:04,EVENT,|File || /logs/log_system.csv || downloaded|
+2019-07-16 14:06:37,EVENT,|MQTT || started|
+2019-07-16 14:06:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:06:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:06:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:06:41,EVENT,|Speechcontrol || started|
+2019-07-16 14:08:28,EVENT,|Database || Speechcontrol || Program Task - thgf || added|
+2019-07-16 14:08:31,EVENT,|Database || Speechcontrol || Program Task - thgf || changed |||| Setting Value - None || Keywords - None|
+2019-07-16 14:08:34,EVENT,|Database || Speechcontrol || Program Task - thgf || deleted|
+2019-07-16 14:12:48,EVENT,|MQTT || started|
+2019-07-16 14:12:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:12:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:12:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:12:52,EVENT,|Speechcontrol || started|
+2019-07-16 14:14:35,EVENT,|MQTT || started|
+2019-07-16 14:14:35,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:14:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:14:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:14:39,EVENT,|Speechcontrol || started|
+2019-07-16 14:18:10,EVENT,|MQTT || started|
+2019-07-16 14:18:10,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:18:13,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:18:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:18:14,EVENT,|Speechcontrol || started|
+2019-07-16 14:20:16,EVENT,|MQTT || started|
+2019-07-16 14:20:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:20:19,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:20:20,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:20:21,EVENT,|Speechcontrol || started|
+2019-07-16 14:21:17,EVENT,|MQTT || started|
+2019-07-16 14:21:17,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:21:20,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:21:21,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:21:21,EVENT,|Speechcontrol || started|
+2019-07-16 14:23:22,EVENT,|MQTT || started|
+2019-07-16 14:23:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:23:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:23:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:23:27,EVENT,|Speechcontrol || started|
+2019-07-16 14:27:39,EVENT,|MQTT || started|
+2019-07-16 14:27:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:27:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:27:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:27:43,EVENT,|Speechcontrol || started|
+2019-07-16 14:27:52,EVENT,|Database || Scheduler || Task - backup_database || changed |||| Name - backup_database || Task - save_database || Day - * || Hour - 18 || Minute - 0 || Repeat - checked|
+2019-07-16 14:27:58,EVENT,|Database || Scheduler || Task - backup_database || changed |||| Name - backup_database || Task - save_database || Day - * || Hour - 0 || Minute - 0 || Repeat - checked|
+2019-07-16 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 14:31:21,EVENT,|MQTT || started|
+2019-07-16 14:31:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:31:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:31:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:31:25,EVENT,|Speechcontrol || started|
+2019-07-16 14:37:04,EVENT,|MQTT || started|
+2019-07-16 14:37:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:37:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:37:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:37:08,EVENT,|Speechcontrol || started|
+2019-07-16 14:39:24,EVENT,|MQTT || started|
+2019-07-16 14:39:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:39:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:39:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:39:28,EVENT,|Speechcontrol || started|
+2019-07-16 14:40:37,EVENT,|MQTT || started|
+2019-07-16 14:40:37,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:40:40,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:40:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:40:41,EVENT,|Speechcontrol || started|
+2019-07-16 14:44:42,EVENT,|MQTT || started|
+2019-07-16 14:44:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:44:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:44:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:44:46,EVENT,|Speechcontrol || started|
+2019-07-16 14:46:13,EVENT,|MQTT || started|
+2019-07-16 14:46:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:46:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:46:17,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:46:17,EVENT,|Speechcontrol || started|
+2019-07-16 14:47:30,EVENT,|Database || User - test || changed |||| Username - test || eMail - martin@gmx.net || Permission-Dashboard -  || Permission-Scheduler -  || Permission-Programs -  || Permission-Watering -  || Permission-Camera -  || Permission-LED -  || Permission-Sensordata -  || Permission-Spotify -  || Permission-System -  || eMail-Info -  || eMail-Error -  || eMail-Camera - |
+2019-07-16 14:47:47,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.ne || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-16 14:48:09,EVENT,|Database || User - test || Password changed|
+2019-07-16 14:49:00,EVENT,|Database || User - test || Password changed|
+2019-07-16 14:49:10,EVENT,|Database || User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Info - checked || eMail-Error - checked || eMail-Camera - checked|
+2019-07-16 14:52:48,EVENT,|MQTT || started|
+2019-07-16 14:52:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:52:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:52:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:52:52,EVENT,|Speechcontrol || started|
+2019-07-16 14:55:14,EVENT,|MQTT || started|
+2019-07-16 14:55:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:55:17,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:55:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:55:18,EVENT,|Speechcontrol || started|
+2019-07-16 14:55:42,EVENT,|MQTT || started|
+2019-07-16 14:55:42,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:55:45,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:55:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:55:46,EVENT,|Speechcontrol || started|
+2019-07-16 14:57:22,EVENT,|MQTT || started|
+2019-07-16 14:57:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 14:57:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 14:57:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 14:57:26,EVENT,|Speechcontrol || started|
+2019-07-16 15:00:43,EVENT,|MQTT || started|
+2019-07-16 15:00:43,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:00:46,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:00:47,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:00:48,EVENT,|Speechcontrol || started|
+2019-07-16 15:27:01,EVENT,|MQTT || started|
+2019-07-16 15:27:01,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:27:04,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:27:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:27:05,EVENT,|Speechcontrol || started|
+2019-07-16 15:28:16,EVENT,|MQTT || started|
+2019-07-16 15:28:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:28:19,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:28:20,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:28:20,EVENT,|Speechcontrol || started|
+2019-07-16 15:29:41,EVENT,|MQTT || started|
+2019-07-16 15:29:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:29:44,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:29:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:29:46,EVENT,|Speechcontrol || started|
+2019-07-16 15:30:00,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 37 %|
+2019-07-16 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 15:30:27,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-16 15:31:44,EVENT,|MQTT || started|
+2019-07-16 15:31:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:31:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:31:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:31:48,EVENT,|Speechcontrol || started|
+2019-07-16 15:32:50,EVENT,|MQTT || started|
+2019-07-16 15:32:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:32:53,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:32:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:32:54,EVENT,|Speechcontrol || started|
+2019-07-16 15:36:51,EVENT,|MQTT || started|
+2019-07-16 15:36:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:36:54,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:36:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:36:55,EVENT,|Speechcontrol || started|
+2019-07-16 15:37:44,EVENT,|MQTT || started|
+2019-07-16 15:37:44,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:37:47,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:37:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:37:48,EVENT,|Speechcontrol || started|
+2019-07-16 15:41:26,EVENT,|MQTT || started|
+2019-07-16 15:41:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:41:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:41:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:41:31,EVENT,|Speechcontrol || started|
+2019-07-16 15:46:25,EVENT,|MQTT || started|
+2019-07-16 15:46:25,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:46:28,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:46:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:46:29,EVENT,|Speechcontrol || started|
+2019-07-16 15:47:57,EVENT,|MQTT || started|
+2019-07-16 15:47:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:48:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:48:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:48:02,EVENT,|Speechcontrol || started|
+2019-07-16 15:52:24,EVENT,|MQTT || started|
+2019-07-16 15:52:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:52:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:52:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:52:28,EVENT,|Speechcontrol || started|
+2019-07-16 15:54:50,EVENT,|MQTT || started|
+2019-07-16 15:54:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:54:53,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:54:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:54:54,EVENT,|Speechcontrol || started|
+2019-07-16 15:56:15,EVENT,|MQTT || started|
+2019-07-16 15:56:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 15:56:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 15:56:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 15:56:19,EVENT,|Speechcontrol || started|
+2019-07-16 16:00:46,EVENT,|MQTT || started|
+2019-07-16 16:00:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:00:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:00:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:00:51,EVENT,|Speechcontrol || started|
+2019-07-16 16:02:47,EVENT,|MQTT || started|
+2019-07-16 16:02:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:02:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:02:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:02:51,EVENT,|Speechcontrol || started|
+2019-07-16 16:03:57,EVENT,|MQTT || started|
+2019-07-16 16:03:57,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:04:00,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:04:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:04:01,EVENT,|Speechcontrol || started|
+2019-07-16 16:06:05,EVENT,|MQTT || started|
+2019-07-16 16:06:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:06:08,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:06:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:06:09,EVENT,|Speechcontrol || started|
+2019-07-16 16:06:52,EVENT,|MQTT || started|
+2019-07-16 16:06:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:06:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:06:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:06:56,EVENT,|Speechcontrol || started|
+2019-07-16 16:08:05,EVENT,|MQTT || started|
+2019-07-16 16:08:05,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:08:08,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:08:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:08:09,EVENT,|Speechcontrol || started|
+2019-07-16 16:21:28,EVENT,|MQTT || started|
+2019-07-16 16:21:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:21:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:21:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:21:32,EVENT,|Speechcontrol || started|
+2019-07-16 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 16:42:32,EVENT,|MQTT || started|
+2019-07-16 16:42:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 16:42:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 16:42:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 16:42:36,EVENT,|Speechcontrol || started|
+2019-07-16 17:27:56,EVENT,|MQTT || started|
+2019-07-16 17:27:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:27:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:28:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:28:00,EVENT,|Speechcontrol || started|
+2019-07-16 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-16 17:35:21,EVENT,|MQTT || started|
+2019-07-16 17:35:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:35:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:35:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:35:25,EVENT,|Speechcontrol || started|
+2019-07-16 17:36:15,EVENT,|MQTT || started|
+2019-07-16 17:36:15,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:36:18,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:36:19,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:36:19,EVENT,|Speechcontrol || started|
+2019-07-16 17:45:51,EVENT,|MQTT || started|
+2019-07-16 17:45:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:45:54,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:45:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:45:55,EVENT,|Speechcontrol || started|
+2019-07-16 17:47:02,EVENT,|MQTT || started|
+2019-07-16 17:47:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:47:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:47:07,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:47:07,EVENT,|Speechcontrol || started|
+2019-07-16 17:49:23,EVENT,|MQTT || started|
+2019-07-16 17:49:23,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:49:26,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:49:27,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:49:27,EVENT,|Speechcontrol || started|
+2019-07-16 17:50:26,EVENT,|MQTT || started|
+2019-07-16 17:50:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:50:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:50:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:50:30,EVENT,|Speechcontrol || started|
+2019-07-16 17:52:00,EVENT,|MQTT || started|
+2019-07-16 17:52:00,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:52:03,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:52:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:52:04,EVENT,|Speechcontrol || started|
+2019-07-16 17:52:56,EVENT,|MQTT || started|
+2019-07-16 17:52:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:52:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:53:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:53:00,EVENT,|Speechcontrol || started|
+2019-07-16 17:53:39,EVENT,|MQTT || started|
+2019-07-16 17:53:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 17:53:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 17:53:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 17:53:43,EVENT,|Speechcontrol || started|
+2019-07-16 17:53:58,EVENT,|Program - SUNRISE || started|
+2019-07-16 17:54:03,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed - {"state":"OFF"}|
+2019-07-16 17:54:10,EVENT,|Program - SUNRISE || stopped|
+2019-07-16 17:54:15,SUCCESS,|Program - SUNRISE || finished|
+2019-07-16 17:54:18,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed - {"state":"ON"}|
+2019-07-16 17:54:26,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"ON"}|
+2019-07-16 17:54:33,SUCCESS,|MQTT || Device - 0x99999 || Setting - {"pump":"OFF"}|
+2019-07-16 18:04:26,EVENT,|MQTT || started|
+2019-07-16 18:04:26,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:04:29,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:04:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:04:30,EVENT,|Speechcontrol || started|
+2019-07-16 18:05:28,EVENT,|MQTT || started|
+2019-07-16 18:05:28,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:05:31,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:05:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:05:32,EVENT,|Speechcontrol || started|
+2019-07-16 18:06:33,EVENT,|MQTT || started|
+2019-07-16 18:06:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:06:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:06:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:06:37,EVENT,|Speechcontrol || started|
+2019-07-16 18:11:16,EVENT,|MQTT || started|
+2019-07-16 18:11:16,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:11:19,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:11:20,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:11:20,EVENT,|Speechcontrol || started|
+2019-07-16 18:13:49,EVENT,|MQTT || started|
+2019-07-16 18:13:49,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:13:52,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:13:53,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:13:53,EVENT,|Speechcontrol || started|
+2019-07-16 18:14:52,EVENT,|MQTT || started|
+2019-07-16 18:14:52,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:14:55,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:14:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:14:56,EVENT,|Speechcontrol || started|
+2019-07-16 18:17:32,EVENT,|MQTT || started|
+2019-07-16 18:17:32,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:17:35,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:17:36,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:17:37,EVENT,|Speechcontrol || started|
+2019-07-16 18:18:19,EVENT,|MQTT || started|
+2019-07-16 18:18:19,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:18:22,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:18:23,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:18:23,EVENT,|Speechcontrol || started|
+2019-07-16 18:19:46,EVENT,|MQTT || started|
+2019-07-16 18:19:46,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:19:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:19:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:19:50,EVENT,|Speechcontrol || started|
+2019-07-16 18:22:58,EVENT,|MQTT || started|
+2019-07-16 18:22:58,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:23:01,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:23:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:23:02,EVENT,|Speechcontrol || started|
+2019-07-16 18:27:08,EVENT,|MQTT || started|
+2019-07-16 18:27:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-16 18:27:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-16 18:27:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-16 18:27:12,ERROR,|Snowboy || Can't convert 'NoneType' object to str implicitly|
