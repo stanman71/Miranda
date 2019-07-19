@@ -392,7 +392,7 @@ def dashboard_scheduler():
     error_message_sun_settings      = CHECK_SCHEDULER_SUN_SETTINGS(GET_ALL_SCHEDULER_TASKS())
     error_message_sensor_settings   = CHECK_SCHEDULER_SENSOR_SETTINGS(GET_ALL_SCHEDULER_TASKS())
     error_message_position_settings = CHECK_SCHEDULER_POSITION_SETTINGS(GET_ALL_SCHEDULER_TASKS())
-
+    
     scheduler_task_list = GET_ALL_SCHEDULER_TASKS()
 
     dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")

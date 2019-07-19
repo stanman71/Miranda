@@ -552,12 +552,18 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
                     
 	# check setting 1 try
 	time.sleep(delay)                             
+	
 	result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
+	
+	setting_formated = setting.replace('"', '')
+	setting_formated = setting_formated.replace('{', '')
+	setting_formated = setting_formated.replace('}', '')   	
+	setting_formated = setting_formated.replace(':', ': ')
+	setting_formated = setting_formated.replace(',', ', ')   	
 	
 	# set previous setting
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 	
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting changed | " + setting_formated) 	
 	
 	else:
 		# check setting 2 try
@@ -566,8 +572,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
 		
 		# set previous setting
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 		
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting changed | " + setting_formated) 		
 			
 		else:
 			# check setting 3 try
@@ -576,14 +581,12 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
 			 
 			# set previous setting
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting - " + setting) 			
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device.name + " | Setting changed | " + setting_formated) 			
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed - " + setting)  
-				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
+				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  
+				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_formated) 
 				
 	return ""
 					
@@ -595,14 +598,14 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
 		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/mqtt/" + ieeeAddr:	
 			
+			setting = setting[1:-1]
 			
 			# only one setting value
 			if not "," in setting:
 			
-				if setting[1:-1] in message[2]:
+				if setting in message[2]:
 					return True
-					
-									
+													
 			# more then one setting value:
 			else:
 				
@@ -610,7 +613,7 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
 				
 				for setting in list_settings:
 					
-					if not setting[1:-1] in message[2]:
+					if not setting in message[2]:
 						return False	
 						
 				return True
@@ -635,13 +638,19 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
 	device = GET_MQTT_DEVICE_BY_NAME(name)
 	                        
 	# check setting 1 try
-	time.sleep(delay)                             
+	time.sleep(delay)  
+	                           
 	result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
+	
+	setting_formated = setting.replace('"', '')
+	setting_formated = setting_formated.replace('{', '')
+	setting_formated = setting_formated.replace('}', '')   	
+	setting_formated = setting_formated.replace(':', ': ')
+	setting_formated = setting_formated.replace(',', ', ')   			
 	
 	# set previous setting
 	if result == True:
-		SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting)   
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated)   
 		
 	else:
 		# check setting 2 try
@@ -650,8 +659,7 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
 		
 		# set previous setting
 		if result == True:
-			SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting) 			
+			WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated) 			
 			
 		else:
 			# check setting 3 try
@@ -660,13 +668,11 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
 			 
 			# set previous setting
 			if result == True:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed - " + setting)  				
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated)  				
 				
 			# error message
 			else:
-				SET_MQTT_DEVICE_PREVIOUS_SETTING(device.ieeeAddr, setting)
-				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting)  
+				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  
 				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
 	
 	return ""
@@ -678,14 +684,15 @@ def ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit):
 		
 		# search for fitting message in incoming_messages_list
 		if message[1] == "SmartHome/zigbee2mqtt/" + name:	
+	
+			setting = setting[1:-1]	
 			
 			# only one setting value
 			if not "," in setting:
 			
-				if setting[1:-1] in message[2]:
+				if setting in message[2]:
 					return True
-					
-					
+								
 			# more then one setting value:
 			else:
 				
@@ -693,7 +700,7 @@ def ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit):
 				
 				for setting in list_settings:
 					
-					if not setting[1:-1] in message[2]:
+					if not setting in message[2]:
 						return False	
 						
 				return True				

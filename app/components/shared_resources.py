@@ -2,23 +2,12 @@ import datetime
 import time
 import threading
 
-process_management_queue    = []
+process_management_queue = []
+
+
+# mqtt_incoming_messages
+
 mqtt_incoming_messages_list = []
-
-error_list_delete_mqtt_device = ""
-
-
-def SET_ERROR_DELETE_MQTT_DEVICE(error_list):
-	global error_list_delete_mqtt_device
-	
-	error_list_delete_mqtt_device = error_list
-	
-	
-def GET_ERROR_DELETE_MQTT_DEVICE():
-	global error_list_delete_mqtt_device
-	
-	return error_list_delete_mqtt_device
-
 
 def REFRESH_MQTT_INPUT_MESSAGES_THREAD():
 
@@ -49,3 +38,37 @@ def REFRESH_MQTT_INPUT_MESSAGES():
 
 	except Exception as e:
 		print(e)
+
+
+# error_list_delete_mqtt_device
+
+error_list_delete_mqtt_device = ""
+
+def SET_ERROR_DELETE_MQTT_DEVICE(error_list):
+	global error_list_delete_mqtt_device
+	
+	error_list_delete_mqtt_device = error_list
+	
+	
+def GET_ERROR_DELETE_MQTT_DEVICE():
+	global error_list_delete_mqtt_device
+	
+	return error_list_delete_mqtt_device
+
+
+# spotify_authorization_header
+
+spotify_authorization_header  = ""
+
+def SET_SPOTIFY_AUTHORIZATION_HEADER(token):
+	global spotify_authorization_header
+	
+	spotify_authorization_header = token
+	
+	
+def GET_SPOTIFY_AUTHORIZATION_HEADER():
+	global spotify_authorization_header
+	
+	return spotify_authorization_header
+	
+	

@@ -324,7 +324,7 @@ def get_media(filename):
     if filename is None:
         WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | File not founded")
     try:
-        PATH_CSS = GET_PATH() + '/app/static/CDNJS/'
+        PATH_CSS = GET_PATH() + '/app/static/colorpicker'
         return send_from_directory(PATH_CSS, filename)
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))

@@ -35,6 +35,7 @@ from app import app
 from app.database.database import *
 from app.components.file_management import GET_CONFIG_HOST_IP_ADDRESS, GET_SPOTIFY_CLIENT_ID, GET_SPOTIFY_CLIENT_SECRET
 from app.components.control_spotify import *
+from app.components.shared_resources import GET_SPOTIFY_AUTHORIZATION_HEADER, SET_SPOTIFY_AUTHORIZATION_HEADER
 
 import requests
 import json
@@ -83,7 +84,8 @@ auth_query_parameters = {
     "client_id": CLIENT_ID
 }
 
-authorization_header = ""
+
+target_site = ""
 
 
 """ ############ """
@@ -102,15 +104,17 @@ def dashboard_spotify():
     track_artist = ""
     album_name = ""
     album_artist = ""   
+    collapse_dashboard_search_track = ""   
+    collapse_dashboard_search_album = ""        
     
-    global authorization_header
+    authorization_header = GET_SPOTIFY_AUTHORIZATION_HEADER()
     
 
     # check spotify login 
     try:
         
-        sp              = spotipy.Spotify(auth=authorization_header)
-        sp.trace        = False
+        sp       = spotipy.Spotify(auth=authorization_header)
+        sp.trace = False
         
         if request.method == "POST": 
             
@@ -172,9 +176,9 @@ def dashboard_spotify():
                 pass
                         
                         
-            """ ################# """
-            """ spotify playlists """
-            """ ################# """                        
+            """ ############## """
+            """ start playlist """
+            """ ############## """                        
                         
             if "spotify_start_playlist" in request.form:    
                 spotify_device_id = request.form.get("spotify_start_playlist")
@@ -185,12 +189,14 @@ def dashboard_spotify():
                 sp.start_playback(device_id=spotify_device_id, context_uri=playlist_uri, uris=None, offset = None, position_ms = None)      
                                         
            
-            """ ############## """
-            """ spotify tracks """
-            """ ############## """   
+            """ ############ """
+            """ search track """
+            """ ############ """   
        
             if "spotify_search_track" in request.form or "spotify_track_play" in request.form or "spotify_track_pause" in request.form:
-                
+       
+                collapse_dashboard_search_track = "in"   
+
                 try:
                     track_name = request.form.get("get_spotify_search_track")
 
@@ -243,12 +249,14 @@ def dashboard_spotify():
                     error_message_search_track = "ERROR: " + str(e)  
                          
        
-            """ ############## """
-            """ spotify albums """
-            """ ############## """   
+            """ ############ """
+            """ search album """
+            """ ############ """   
        
 
             if "spotify_search_album" in request.form or "spotify_album_play" in request.form or "spotify_album_pause" in request.form:
+                
+                collapse_dashboard_search_album = "in"  
                 
                 try:
                     album_name = request.form.get("get_spotify_search_album")
@@ -343,7 +351,9 @@ def dashboard_spotify():
                             track_artist=track_artist,     
                             album_name=album_name,
                             album_artist=album_artist,   
-                            volume=volume,                                                                                                                                                                                    
+                            volume=volume, 
+                            collapse_dashboard_search_track=collapse_dashboard_search_track,   
+                            collapse_dashboard_search_album=collapse_dashboard_search_album,                                                                                                                                                                                   
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -356,10 +366,14 @@ def dashboard_spotify():
                             )
                             
                                                   
-@app.route("/dashboard/spotify/login")
+@app.route("/dashboard/spotify/login/url/<string:target_site_url>")
 @login_required
 @permission_required
-def spotify_login():
+def spotify_login(target_site_url):
+    
+    global target_site 
+    
+    target_site = target_site_url
     
     # start authorization
     url_args = "&".join(["{}={}".format(key, quote(val)) for key, val in auth_query_parameters.items()])
@@ -373,7 +387,9 @@ def spotify_login():
 @permission_required
 def spotify_token():
 
-    global authorization_header
+    global target_site    
+    
+    target_site_url = target_site
     
     # requests refresh and access tokens
     auth_token = request.args['code']
@@ -396,16 +412,31 @@ def spotify_token():
     # use the access token to access Spotify API
     authorization_header = {"Authorization": "Bearer {}".format(access_token)}
 
-    return redirect(url_for('dashboard_spotify'))
+    SET_SPOTIFY_AUTHORIZATION_HEADER(authorization_header)
+
+
+    if target_site_url == "dashboard":
+        return redirect(url_for('dashboard'))
+        
+    if target_site_url == "spotify":
+        return redirect(url_for('dashboard_spotify'))      
     
 
-@app.route("/dashboard/spotify/logout")
+@app.route("/dashboard/spotify/logout/url/<string:target_site_url>")
 @login_required
 @permission_required
-def spotify_logout():
+def spotify_logout(target_site_url):
     global authorization_header
 
     # delete token
     authorization_header = ""    
-
-    return redirect(url_for('dashboard_spotify'))
+    
+    SET_SPOTIFY_AUTHORIZATION_HEADER(authorization_header)
+        
+    
+    if target_site_url == "dashboard":
+        return redirect(url_for('dashboard'))
+        
+    if target_site_url == "spotify":
+        return redirect(url_for('dashboard_spotify'))        
+        

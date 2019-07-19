@@ -182,15 +182,37 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 		# device founded ?
 		if device != None:
 			
-			controller_setting = task[2:]
-			controller_setting = controller_setting.replace(" ", "")
+			controller_setting_formated = str(task[2:])
+			controller_setting_formated = controller_setting_formated.replace("[", "")
+			controller_setting_formated = controller_setting_formated.replace("]", "")
+			controller_setting_formated = controller_setting_formated.replace("'", "")
 			
-			# new device setting ?
-			if controller_setting != device.previous_setting:
+			# convert string to json-format
+			controller_setting = controller_setting_formated.replace(' ', '')
+			controller_setting = controller_setting.replace(':', '":"')
+			controller_setting = controller_setting.replace(',', '","')
+			controller_setting = '{"' + str(controller_setting) + '"}'
+				
+			# new device setting ?	
+			new_setting = False
+
+			if not "," in controller_setting:
+				if not controller_setting[1:-1] in device.last_values:
+					new_setting = True
+															
+			# more then one setting value:
+			else:	
+				controller_setting_temp = controller_setting[1:-1]
+				list_controller_setting = controller_setting_temp.split(",")
+				
+				for setting in list_controller_setting:
 					
-				if "|" in controller_setting:
-					controller_setting = controller_setting.replace("|", ",")
-							
+					if not setting in device.last_values:
+						new_setting = True	
+
+
+			if new_setting == True:				
+				
 				# mqtt
 				if device.gateway == "mqtt":
 					
@@ -210,17 +232,17 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 
 					MQTT_PUBLISH(channel, msg)  
 					
-					ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, controller_setting, 5, 20)                                    
-                                
-		
+					ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, controller_setting, 5, 20)  
+					     
 			else:
 
 				if device.gateway == "mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + controller_setting)
+					WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + controller_setting_formated) 
 
 				if device.gateway == "zigbee2mqtt":
-					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + controller_setting)
-
+					WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + controller_setting_formated)  					
+			                             					
+							
 		else:
 			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
 
@@ -375,17 +397,36 @@ def START_SCHEDULER_TASK(task_object):
 
 			# device founded ?
 			if device != None:
-				scheduler_setting = task[2]
-				scheduler_setting = scheduler_setting.replace(" ", "")
+				scheduler_setting_formated = task[2]
+				
+				# convert string to json-format
+				scheduler_setting = scheduler_setting_formated.replace(' ', '')
+				scheduler_setting = scheduler_setting.replace(':', '":"')
+				scheduler_setting = scheduler_setting.replace(',', '","')
+				scheduler_setting = '{"' + str(scheduler_setting) + '"}'				
 
-				# new device setting ?
-				if scheduler_setting != device.previous_setting:
+				# new device setting ?	
+				new_setting = False
+				
+				if not "," in scheduler_setting:
+					if not scheduler_setting[1:-1] in device.last_values:
+						new_setting = True
+																
+				# more then one setting value:
+				else:	
+					scheduler_setting_temp = scheduler_setting[1:-1]
+					list_scheduler_setting = scheduler_setting_temp.split(",")
 					
+					for setting in list_scheduler_setting:
+						
+						if not setting in device.last_values:
+							new_setting = True	
+
+				
+				if new_setting == True:
+
 					WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')								
-												
-					if "|" in scheduler_setting:
-						scheduler_setting = scheduler_setting.replace("|", ",")
-								
+													
 					# mqtt
 					if device.gateway == "mqtt":
 						
@@ -886,13 +927,34 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 
 						# device founded ?
 						if device != None:
-							speechcontrol_setting = task.setting
-							speechcontrol_setting = speechcontrol_setting.replace(" ", "")		
-
-							# new device setting ?
-							if speechcontrol_setting != device.previous_setting:
+							speechcontrol_setting_formated = task.setting		
+							
+							# convert string to json-format
+							speechcontrol_setting = speechcontrol_setting_formated.replace(' ', '')
+							speechcontrol_setting = speechcontrol_setting.replace(':', '":"')
+							speechcontrol_setting = speechcontrol_setting.replace(',', '","')
+							speechcontrol_setting = '{"' + str(speechcontrol_setting) + '"}'		
+	
+							# new device setting ?	
+							new_setting = False
+							
+							if not "," in speechcontrol_setting:
+								if not speechcontrol_setting[1:-1] in device.last_values:
+									new_setting = True
+																			
+							# more then one setting value:
+							else:	
+								speechcontrol_setting_temp = speechcontrol_setting[1:-1]
+								list_speechcontrol_setting = speechcontrol_setting_temp.split(",")
 								
-		
+								for setting in list_speechcontrol_setting:
+									
+									if not setting in device.last_values:
+										new_setting = True	
+
+
+							if new_setting == True:
+
 								# mqtt
 								if device.gateway == "mqtt":
 									
@@ -912,21 +974,21 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 
 									MQTT_PUBLISH(channel, msg)  
 									
-									ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)            
+									ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
 
-
-								time.sleep(1)
-								break
-						
-						
+		
 							else:
-
+								
 								if device.gateway == "mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting) 
+									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
 
 								if device.gateway == "zigbee2mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting)  
+									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated)  								         
 
+
+							time.sleep(1)
+							break
+						
 
 						else:
 							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")

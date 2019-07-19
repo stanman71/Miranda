@@ -11,11 +11,10 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
-from app.components.shared_resources import process_management_queue
+from app.components.shared_resources import process_management_queue, GET_SPOTIFY_AUTHORIZATION_HEADER
 from app.components.control_led import LED_GROUP_CHECK_SETTING_PROCESS
 from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
 from app.components.process_program import *
-from app.sites.spotify import authorization_header
 from app.components.control_spotify import *
 
 from ping3 import ping
@@ -52,11 +51,13 @@ def dashboard(template):
     error_message_log = ""
     error_message_start_program = ""
     checkbox_repeat_program = ""
-    selected_type_event= "selected"
-    selected_type_status= "selected"
-    selected_type_success= "selected"   
-    selected_type_warning= "selected"                                                      
-    selected_type_error= "selected"
+    
+    selected_type_event    = "selected"
+    selected_type_status   = "selected"
+    selected_type_database = "selected"    
+    selected_type_success  = "selected"   
+    selected_type_warning  = "selected"                                                      
+    selected_type_error    = "selected"
     
     collapse_dashboard_led      = ""
     collapse_dashboard_devices  = ""         
@@ -316,92 +317,108 @@ def dashboard(template):
                       
                 try:  
                       
-                    dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))    
+                    dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))  
 
                     if dashboard_setting != "None" and dashboard_setting != None:
+                                
+                        change_state = True
                         
+                        # convert json-format to string
+                        dashboard_setting_formated = dashboard_setting.replace('"', '')
+                        dashboard_setting_formated = dashboard_setting_formated.replace('{', '')
+                        dashboard_setting_formated = dashboard_setting_formated.replace('}', '')                                                    
                         
-                        # format dashboard_setting
-                        if "|" in dashboard_setting:
-                            dashboard_setting = dashboard_setting.replace("|", ",")
+                        # ################
+                        # check ip_address 
+                        # ################
+                        
+                        if device.dashboard_check_option == "IP-Address" and device.dashboard_check_setting == dashboard_setting_formated:
 
-                                                    
-                        # new device setting ?
-                        if dashboard_setting != device.previous_setting:
-                            
-                            change_state = True
-                            
-                            # ################
-                            # check ip_address 
-                            # ################
-                            
-                            if device.dashboard_check_option == "IP-Address" and dashboard_setting == device.dashboard_check_setting.replace(" ",""):
+                            if ping(dashboard_check_value_1, timeout=1) != None:    
+                                error_message_devices = device.name + " >>> Gerät ist noch eingeschaltet"
+                                change_state = False
 
-                                if ping(dashboard_check_value_1, timeout=1) != None:    
-                                    error_message_devices = device.name + " >>> Gerät ist noch eingeschaltet"
+                        # ############
+                        # check sensor
+                        # ############
+                        
+                        if device.dashboard_check_sensor_ieeeAddr != "None" and device.dashboard_check_setting == dashboard_setting_formated:
+                            
+                            sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
+                            sensor_key      = device.dashboard_check_value_1
+                            
+                            operator = device.dashboard_check_value_2
+                            value    = device.dashboard_check_value_3
+
+                            try:
+                                 value = str(value).lower()
+                            except:
+                                 pass
+                                     
+                            
+                            # get sensordata 
+                            data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
+                            sensor_value = data[sensor_key]
+                            
+                            try:
+                                 sensor_value = str(sensor_value).lower()
+                            except:
+                                 pass
+                            
+                                  
+                            # compare conditions
+                            if operator == "=" and value.isdigit():
+                                if int(sensor_value) == int(value):
+                                    change_state = False    
+                                else:
+                                    change_state = True
+                                    
+                            if operator == "=" and not value.isdigit():
+                                if str(sensor_value) == str(value):
                                     change_state = False
-
-                            # ############
-                            # check sensor
-                            # ############
-                            
-                            if device.dashboard_check_sensor_ieeeAddr != "None" and dashboard_setting == device.dashboard_check_setting.replace(" ",""):
-                                
-                                sensor_ieeeAddr = device.dashboard_check_sensor_ieeeAddr
-                                sensor_key      = device.dashboard_check_value_1
-                                
-                                operator = device.dashboard_check_value_2
-                                value    = device.dashboard_check_value_3
-    
-                                try:
-                                     value = str(value).lower()
-                                except:
-                                     pass
+                                else:
+                                    change_state = True
+                                    
+                            if operator == "<" and value.isdigit():
+                                if int(sensor_value) < int(value):
+                                    change_state = False
+                                else:
+                                    change_state = True
+                                    
+                            if operator == ">" and value.isdigit():
+                                if int(sensor_value) > int(value):
+                                    change_state = False 
+                                else:
+                                    change_state = True
                                          
-                                
-                                # get sensordata 
-                                data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_check_sensor_ieeeAddr).last_values)
-                                sensor_value = data[sensor_key]
-                                
-                                try:
-                                     sensor_value = str(sensor_value).lower()
-                                except:
-                                     pass
-                                
-                                      
-                                # compare conditions
-                                if operator == "=" and value.isdigit():
-                                    if int(sensor_value) == int(value):
-                                        change_state = False    
-                                    else:
-                                        change_state = True
-                                        
-                                if operator == "=" and not value.isdigit():
-                                    if str(sensor_value) == str(value):
-                                        change_state = False
-                                    else:
-                                        change_state = True
-                                        
-                                if operator == "<" and value.isdigit():
-                                    if int(sensor_value) < int(value):
-                                        change_state = False
-                                    else:
-                                        change_state = True
-                                        
-                                if operator == ">" and value.isdigit():
-                                    if int(sensor_value) > int(value):
-                                        change_state = False 
-                                    else:
-                                        change_state = True
-                                             
-                                error_message_devices = device.name + " >>> Sensor erteilt keine Freigabe"
-                                                              
-                                
-                            # ##############    
-                            # state changing
-                            # ##############
+                            error_message_devices = device.name + " >>> Sensor erteilt keine Freigabe"
+                                                          
+                            
+                        # ##############    
+                        # state changing
+                        # ##############
 
-                            if change_state == True: 
+                        if change_state == True: 
+                            
+                            # new device setting ?	
+                            new_setting       = False
+                            dashboard_setting = dashboard_setting.replace(' ', '')
+                            
+                            if not "," in dashboard_setting:
+                                if not dashboard_setting[1:-1] in device.last_values:
+                                    new_setting = True
+                                                                            
+                            # more then one setting value:
+                            else:	
+                                dashboard_setting_temp = dashboard_setting[1:-1]
+                                list_dashboard_setting = dashboard_setting_temp.split(",")
+                                
+                                for setting in list_dashboard_setting:
+                                    
+                                    if not setting in device.last_values:
+                                        new_setting = True	 
+                            
+                            if new_setting == True:
 
                                 # mqtt
                                 if device.gateway == "mqtt":
@@ -422,17 +439,18 @@ def dashboard(template):
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_devices = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)                                        
-                                
-                        else:
-                            
-                            if device.gateway == "mqtt":
-                                WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(dashboard_setting)) 
+                                    error_message_devices = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)      
+                              
+                                    
+                            else:
 
-                            if device.gateway == "zigbee2mqtt":
-                                WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(dashboard_setting))                                 
-               
-                   
+                                if device.gateway == "mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + dashboard_setting_formated) 
+
+                                if device.gateway == "zigbee2mqtt":
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)  	
+                                    
+                 
                 except Exception as e:
                     if "NoneType" not in str(e):
                         print(e)
@@ -462,29 +480,45 @@ def dashboard(template):
                 try:      
                     plant = GET_PLANT_BY_ID(i)
                     
-                    watering_control_setting = request.form.get("set_watering_control_setting_" + str(i)) 
-                    
+                    watering_control_setting = request.form.get("set_watering_control_setting_" + str(i))                         
+                                                  
                     if watering_control_setting != "None" and watering_control_setting != None:
-       
-       
-                        # format watering_control_setting
-                        if "|" in watering_control_setting:
-                            watering_control_setting = watering_control_setting.replace("|", ",")
+                        
+                        # convert json-format to string
+                        watering_control_setting_formated = watering_control_setting.replace('"', '')
+                        watering_control_setting_formated = watering_control_setting_formated.replace('{', '')
+                        watering_control_setting_formated = watering_control_setting_formated.replace('}', '')   
+                        
+                        # new watering setting ?	
+                        new_setting              = False
+                        watering_control_setting = watering_control_setting.replace(' ', '')
+                        
+                        if not "," in watering_control_setting:
+                            if not watering_control_setting[1:-1] in plant.mqtt_device.last_values:
+                                new_setting = True
+                                                                        
+                        # more then one setting value:
+                        else:	
+                            watering_control_setting_temp = watering_control_setting[1:-1]
+                            list_watering_control_setting = watering_control_setting_temp.split(",")
                             
-                        watering_control_setting = watering_control_setting.replace(" ", "")
+                            for setting in list_watering_control_setting:
+                                
+                                if not setting in plant.mqtt_device.last_values:
+                                    new_setting = True	 
                         
-                        
-                        if watering_control_setting != plant.mqtt_device.previous_setting:
-
+                        if new_setting == True:                             
+       
                             channel  = "SmartHome/" + plant.mqtt_device.gateway + "/" + plant.mqtt_device.ieeeAddr + "/set"                        
-                            msg      = watering_control_setting.replace(" ", "")
+                            msg      = watering_control_setting
 
                             heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
                             error_message_watering_control = MQTT_CHECK_SETTING_PROCESS(plant.mqtt_device.ieeeAddr, watering_control_setting, 1, 5)                                     
 
                         else:
-                            WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + plant.name + " | " + str(watering_control_setting)) 
+								
+                            WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + plant.mqtt_device.name + " | " + watering_control_setting_formated) 
 
 
                 except Exception as e:
@@ -536,16 +570,15 @@ def dashboard(template):
     """ ############### """
     """ spotify control """
     """ ############### """   
-
-
-    global authorization_header
-    
-
-    # check spotify login 
-    try:
         
-        sp              = spotipy.Spotify(auth=authorization_header)
-        sp.trace        = False
+    authorization_header = GET_SPOTIFY_AUTHORIZATION_HEADER()
+    
+    
+    if authorization_header != "":
+        collapse_dashboard_spotify = "in" 
+
+        sp       = spotipy.Spotify(auth=authorization_header)
+        sp.trace = False
         
         if request.method == "POST": 
             
@@ -554,70 +587,106 @@ def dashboard(template):
             """ spotify general control """
             """ ####################### """
         
-            spotify_device_id = sp.current_playback(market=None)['device']['id']
-            spotify_volume    = request.form.get("get_spotify_volume")
-                
-            if "set_spotify_start" in request.form:    
-                sp.volume(int(spotify_volume), device_id=spotify_device_id)  
-                
-                try:
-                    context_uri = sp.current_playback(market=None)["context"]["uri"]
-                except:
-                    context_uri = None
+            try:
+        
+                spotify_device_id = sp.current_playback(market=None)['device']['id']
+                spotify_volume    = request.form.get("get_spotify_volume")
                     
-                try:
-                    track_uri   = sp.current_playback(market=None)['item']['uri']
-                except:
-                    track_uri   = None
-                    
-                try:
-                    position    = sp.current_playback(market=None)['progress_ms']
-                except:
-                    position    = None
+                if "set_spotify_start" in request.form:    
+                    sp.volume(int(spotify_volume), device_id=spotify_device_id)  
                 
-                if context_uri != None:
-                    sp.start_playback(device_id=spotify_device_id, context_uri=context_uri, uris=None, offset = None, position_ms = None)  
+                    try:
+                        context_uri = sp.current_playback(market=None)["context"]["uri"]
+                    except:
+                        context_uri = None
+                        
+                    try:
+                        track_uri   = sp.current_playback(market=None)['item']['uri']
+                    except:
+                        track_uri   = None
+                        
+                    try:
+                        position    = sp.current_playback(market=None)['progress_ms']
+                    except:
+                        position    = None
                     
-                elif track_uri != None:
-                    sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=[track_uri], offset = None, position_ms = position)    
+                    if context_uri != None:
+                        sp.start_playback(device_id=spotify_device_id, context_uri=context_uri, uris=None, offset = None, position_ms = None)  
+                        
+                    elif track_uri != None:
+                        sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=[track_uri], offset = None, position_ms = position)    
+                        
+                    else:
+                        sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=None, offset = None, position_ms = None)
+
+                if "set_spotify_previous" in request.form:    
+                    sp.volume(int(spotify_volume), device_id=spotify_device_id)   
+                    sp.previous_track(device_id=spotify_device_id)     
+
+                if "set_spotify_next" in request.form:     
+                    sp.volume(int(spotify_volume), device_id=spotify_device_id)  
+                    sp.next_track(device_id=spotify_device_id) 
                     
-                else:
-                    sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=None, offset = None, position_ms = None)
+                if "set_spotify_stop" in request.form:     
+                    sp.pause_playback(device_id=spotify_device_id)  
 
-            if "set_spotify_previous" in request.form:    
-                sp.volume(int(spotify_volume), device_id=spotify_device_id)   
-                sp.previous_track(device_id=spotify_device_id)     
+                if "set_spotify_shuffle" in request.form:     
+                    sp.shuffle(True, device_id=spotify_device_id) 
 
-            if "set_spotify_next" in request.form:     
-                sp.volume(int(spotify_volume), device_id=spotify_device_id)  
-                sp.next_track(device_id=spotify_device_id) 
+                if "set_spotify_volume" in request.form:        
+                    sp.volume(int(spotify_volume), device_id=spotify_device_id)    
                 
-            if "set_spotify_stop" in request.form:     
-                sp.pause_playback(device_id=spotify_device_id)  
+            except:
+                pass
+             
+                
+            """ ################# """
+            """ spotify playlists """
+            """ ################# """                        
+                        
+                        
+            if "spotify_start_playlist" in request.form:    
+                spotify_device_id = request.form.get("spotify_start_playlist")
+                playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
+                playlist_volume   = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
+                
+                sp.volume(int(playlist_volume), device_id=spotify_device_id)  
+                sp.start_playback(device_id=spotify_device_id, context_uri=playlist_uri, uris=None, offset = None, position_ms = None)     
 
-            if "set_spotify_shuffle" in request.form:     
-                sp.shuffle(True, device_id=spotify_device_id) 
 
-            if "set_spotify_volume" in request.form:        
-                sp.volume(int(spotify_volume), device_id=spotify_device_id)      
+        """ ############ """
+        """ account data """
+        """ ############ """   
+                       
+        spotify_user           = sp.current_user()["display_name"]   
+        spotify_devices        = sp.devices()["devices"]        
+        spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
+        tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(authorization_header)                            
+        
+        # set volume
+        try:
+            spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
+            volume = spotify_current_playback_volume    
+            
+        except:
+            volume = 50
+    
 
-
-    except Exception as e:
-        print(e)
+    else:
+        
         tupel_current_playback = ""
         spotify_user = "Nicht eingeloggt"
-        volume = 50       
-
-    tupel_current_playback = ""
-    spotify_user = "Nicht eingeloggt"
+        spotify_playlists = ""
+        spotify_devices = ""
+        volume = 50    
        
        
     """ ############### """
     """  log selection  """
-    """ ############### """       
+    """ ############### """  
     
     # create log types list
-    selected_log_types = ["EVENT", "STATUS", "SUCCESS", "WARNING", "ERROR"]     
+    selected_log_types = ["EVENT", "STATUS", "DATABASE", "SUCCESS", "WARNING", "ERROR"]     
    
     # change log selection 
     if request.form.get("select_log_types") != None:   
@@ -626,6 +695,7 @@ def dashboard(template):
         
         selected_type_event    = ""
         selected_type_status   = ""
+        selected_type_database = ""        
         selected_type_success  = ""   
         selected_type_warning  = ""                                                     
         selected_type_error    = ""      
@@ -641,7 +711,10 @@ def dashboard(template):
                 selected_log_types.append("EVENT")
             if element == "STATUS":
                 selected_type_status = "selected"
-                selected_log_types.append("STATUS")                
+                selected_log_types.append("STATUS")    
+            if element == "DATABASE":
+                selected_type_database = "selected"
+                selected_log_types.append("DATABASE")                               
             if element == "SUCCESS":
                 selected_type_success = "selected"
                 selected_log_types.append("SUCCESS")                
@@ -660,6 +733,7 @@ def dashboard(template):
     else:
         data_log_system = ""
         error_message_log = "Keine Einträge gefunden"    
+    
     
     """ ############### """
     """ general control """
@@ -832,8 +906,14 @@ def dashboard(template):
                             program_running=program_running,      
                             dropdown_list_programs=dropdown_list_programs,
                             checkbox_repeat_program=checkbox_repeat_program,
+                            spotify_user=spotify_user,  
+                            tupel_current_playback=tupel_current_playback,
+                            spotify_playlists=spotify_playlists,
+                            spotify_devices=spotify_devices,  
+                            volume=volume,                              
                             selected_type_event=selected_type_event,
                             selected_type_status=selected_type_status,
+                            selected_type_database=selected_type_database,                            
                             selected_type_success=selected_type_success,    
                             selected_type_warning=selected_type_warning,                                                      
                             selected_type_error=selected_type_error,
@@ -869,8 +949,6 @@ def dashboard(template):
                             mqtt_device_23_input_values=mqtt_device_23_input_values,
                             mqtt_device_24_input_values=mqtt_device_24_input_values,
                             mqtt_device_25_input_values=mqtt_device_25_input_values,
-                            tupel_current_playback=tupel_current_playback,
-                            spotify_user=spotify_user, 
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

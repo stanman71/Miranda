@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -98,10 +98,17 @@
   <div class="row">
     <div class="col">
       <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Bewässerung</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
 
-<!-- add new plant -->        
-
-      <div class="well well-sm">  
 
 <!-- error message add plant -->
 
@@ -109,8 +116,12 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_add_plant }}
   </div>      
-{% endif %}               
+{% endif %} 
 
+
+<!-- add new plant -->        
+
+      <div class="well well-sm">  
         <form method="POST"> 
           <div class="row justify-content-md-center">
             <div class="col-sm-3"> 
@@ -136,13 +147,7 @@
         </form>       
       </div>    
 
-<!-- plants table -->
 
-      <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Bewässerung</b></font></div>      
-          <div class="panel-body">                       
-            <div class="well well-sm">  
- 
 <!-- error message change name -->
 
 {% if error_message_change_name != "" %}
@@ -160,7 +165,14 @@
     {% endfor %}
   </div>      
 {% endif %}  
- 
+
+
+<!-- plants table -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="white"><b>Bewässerung</b></font></div>      
+          <div class="panel-body">                       
+            <div class="well well-sm">  
             <form method="POST" class="verticalform"> 
               <table class="table">
                 <thead>

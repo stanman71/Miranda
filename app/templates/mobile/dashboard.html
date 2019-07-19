@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
 
   <script>
@@ -209,16 +209,18 @@
     <div class="col">
       <font color="white">
  
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Dashboard</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>      
  
-<!-- table led -->      
-      
-      
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>LED</b></font></div>   
-        </div>  
-          <div class="panel-body">  
-            <div class="well well-sm">
+ 
+<!-- error message led -->   
 
 {% if error_message_led != [] %}
   <div class="alert alert-warning" role="alert">
@@ -228,7 +230,22 @@
   </div>      
 {% endif %}
 
-            <form method="POST">
+ 
+<!-- table led -->      
+ 
+ 
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_led"><font color="white"><b>LED</b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_led" class="panel-collapse collapse {% if collapse_dashboard_led_setting == 'checked' %} in {% else %} {{ collapse_dashboard_led }} {% endif %}" >      
+          <div class="panel-body">    
+            <form method="POST">             
+              <div class="well well-sm">    
+                
               <table class="table">
                 <tbody> 
                   {% for entry in data_led %}
@@ -266,27 +283,21 @@
               
 <section id="device_table"></section>             
               
-            </div> 
+            </div>  
               <input type="submit" onclick="window.location.href='/dashboard#'" class="btn btn-default" name="change_led_settings" value="Einstellungen ändern" />       
             </form>         
           </div>    
         </div>  
-      </div> 
+      </div>
+    </div>  
+    <br>
  
  
-<!-- table device -->      
-      
-      
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Geräte</b></font></div>   
-        </div>      
-          <div class="panel-body">  
-            <div class="well well-sm">
+ <!-- error message devices -->                    
 
-{% if error_message_device != "" %}
+{% if error_message_devices != "" %}
   <div class="alert alert-warning" role="alert">
-    {{ error_message_device }}
+    {{ error_message_devices }}
   </div>      
 {% endif %}
 
@@ -298,7 +309,22 @@
   </div>      
 {% endif %}
 
-            <form method="POST">
+ 
+<!-- table devices -->      
+      
+    
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_devices"><font color="white"><b>Geräte</b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_devices" class="panel-collapse collapse {% if collapse_dashboard_devices_setting == 'checked' %} in {% else %} {{ collapse_dashboard_devices }} {% endif %}" >      
+          <div class="panel-body">    
+            <form method="POST">             
+              <div class="well well-sm">    
+                
               <table class="table">
                 <tbody> 
                   {% for entry in data_device %}
@@ -357,24 +383,18 @@
               </table> 
               
 <section id="watering_table"></section>         
-                    
-            </div> 
-            <input type="submit" onclick="window.location.href='/dashboard#device_table'" class="btn btn-default" name="change_device_settings" value="Einstellungen ändern" />       
-          </form>         
-        </div>    
-      </div>  
+         
+            </div>            
+              <input type="submit" onclick="window.location.href='/dashboard#device_table'" class="btn btn-default" name="change_device_settings" value="Einstellungen ändern" />           
+            </form>         
+          </div>    
+        </div>  
+      </div>
+    </div>  
+    <br>
 
 
-
-<!-- table watering control -->      
-      
-      
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Bewässerung</b></font></div>   
-        </div>      
-          <div class="panel-body">  
-            <div class="well well-sm">
+<!-- error message watering -->      
 
 {% if error_message_watering_control != "" %}
   <div class="alert alert-warning" role="alert">
@@ -382,62 +402,88 @@
   </div>      
 {% endif %}
 
-            <form method="POST">
-              <table class="table">
-                <tbody> 
-                  {% for entry in data_watering_control %}
-                    <tr>
-                      <td style="width:45%"> <b>{{entry.name}}</b> </td>
-                      <td style="width:55%">    
-                        <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
-                          <option value= "None" > None </option>                      
-                          <optgroup>
-                          {% if entry.commands != None %}
-                            {% for each in entry.mqtt_device.commands.split(' ') %}
-                              <option value= "{{ each }}" > {{ each }} </option>
-                            {% endfor %}  
-                          {% endif %}   
-                          </optgroup>                            
-                        </select>                          
-                      </td>                       
-                    </tr>
-                    <tr>   
-                      <td style="width:45%"> {{entry.mqtt_device.last_contact}} </td>                      
-                      <td style="width:55%"> {{entry.mqtt_device.last_values_formated}} </td>                                       
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                    </tr>                    
-                  {% endfor %}  
-                </tbody>
-              </table> 
+
+<!-- table watering control -->      
+      
+      
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_watering"><font color="white"><b>Bewässerung</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_watering" class="panel-collapse collapse {% if collapse_dashboard_watering_setting == 'checked' %} in {% else %} {{ collapse_dashboard_watering }} {% endif %}" >     
+            <div class="panel-body">    
+              <form method="POST">             
+                <div class="well well-sm">    
+                  
+                <table class="table">
+                  <tbody> 
+                    {% for entry in data_watering_control %}
+                      <tr>
+                        <td style="width:45%"> <b>{{entry.name}}</b> </td>
+                        <td style="width:55%">    
+                          <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
+                            <option value= "None" > None </option>                      
+                            <optgroup>
+                            {% if entry.commands != None %}
+                              {% for each in entry.mqtt_device.commands.split(' ') %}
+                                <option value= "{{ each }}" > {{ each }} </option>
+                              {% endfor %}  
+                            {% endif %}   
+                            </optgroup>                            
+                          </select>                          
+                        </td>                       
+                      </tr>
+                      <tr>   
+                        <td style="width:45%"> {{entry.mqtt_device.last_contact}} </td>                      
+                        <td style="width:55%"> {{entry.mqtt_device.last_values_formated}} </td>                                       
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      </tr>                    
+                    {% endfor %}    
+                  </tbody>
+                </table> 
               
 <section id="programs"></section>         
                     
             </div> 
-            <input type="submit" onclick="window.location.href='/dashboard#watering_table'" class="btn btn-default" name="change_watering_control_settings" value="Einstellungen ändern" />       
-          </form>         
-        </div>    
-      </div>  
+              <input type="submit" onclick="window.location.href='/dashboard#watering_table'" class="btn btn-default" name="change_watering_control_settings" value="Einstellungen ändern" />                 
+            </form>         
+          </div>    
+        </div>  
+      </div>
+    </div>  
+    <br>
 
 
- <!-- program control -->      
-      
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Programme</b></font></div>   
-        </div>        
-          <div class="panel-body">  
-            <div class="well well-sm"> 
+<!-- error message programs -->      
               
 {% if error_message_start_program != "" %}
   <div class="alert alert-danger" role="alert">
     {{ error_message_start_program }}
   </div>      
-{% endif %}              
-               
-              <form method="POST">
+{% endif %}    
+
+
+ <!-- program control -->      
+     
+      
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_programs"><font color="white"><b>Programme</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_programs" class="panel-collapse collapse {{ collapse_dashboard_programs }}" >      
+            <div class="panel-body">    
+              <form method="POST">             
+                <div class="well well-sm">  
+                
                 <select class="selectpicker" data-width="100%" name="get_program_id">
                   <option value= "None" > None </option>                      
                   <optgroup>
@@ -467,17 +513,24 @@
               </form>
             </div>    
           </div>  
-        </div>  
+        </div>
+      </div>    
+      <br>
+
 
  <!-- table sensor values -->      
       
       
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Sensoren</b></font></div>   
-        </div>      
-          <div class="panel-body">  
-            <div class="well well-sm">
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_sensors"><font color="white"><b>Sensoren</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_sensors" class="panel-collapse collapse" >      
+            <div class="panel-body">                        
+              <div class="well well-sm">    
               <table class="table">
                 <tbody> 
                   {% for entry in data_sensor %}
@@ -498,142 +551,57 @@
             </div>        
           </div>    
         </div>  
+      </div>  
+      <br>
 
 
 <!-- table spotify -->    
 
 
-      <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Spotify</b></font></div>   
-        </div>     
-          <div class="panel-body">                            
-            <div class="well well-sm">  
-              <h3><span class="label label-default">Spotify-Account >>> {% if spotify_user == "Nicht eingeloggt" %}<font color="salmon">{{ spotify_user }}</font>{% else %}<font color="lightgreen">{{ spotify_user }}</font>{% endif %}</span></h3>
-              <br>
-              <div class="row justify-content-md-center">
-                <div class="col-sm-1">     
-                  <a href="/dashboard/spotify/login#" class="btn btn-default" role="button">Login</a>                                 
-                </div>
-                <div class="col-sm-1">                                      
-                  <a href="/dashboard/spotify/logout#" class="btn btn-default" role="button">Logout</a>  
-                </div>
-              </div>
-            </div>
-            
-            {% if tupel_current_playback != "" %}  
-            
-              <div class="well well-sm">     
-                <table class="table">
-                  <thead>
-                    <th scope="col">Gerät Name</th>   
-                    <th scope="col">Gerät Typ</th> 
-                    <th scope="col">Aktiv</th>                    
-                    <th scope="col">Lautstärke</th>                                     
-                    <th scope="col">Track</th>                                     
-                    <th scope="col">Interpreten</th>                    
-                    <th scope="col">Zeitpunkt</th>  
-                    <th scope="col">Playlist</th> 
-                    <th scope="col">Shuffle</th> 
-                  </thead>                                             
-                  <tbody> 
-                    <tr>
-                      <td style="width:11%">
-                        {{ tupel_current_playback[0] }}
-                      </td>   
-                      <td style="width:11%">
-                        {{ tupel_current_playback[1] }}
-                      </td>  
-                      <td style="width:11%">
-                        {{ tupel_current_playback[2] }}
-                      </td>  
-                      <td style="width:11%">
-                        {{ tupel_current_playback[3] }}
-                      </td>   
-                      <td style="width:11%">
-                        {{ tupel_current_playback[4] }} 
-                      </td>                          
-                      <td style="width:11%">
-                        {% for artist in tupel_current_playback[5] %}
-                           {{ artist }}
-                        {% endfor %} 
-                      </td>                      
-                      <td style="width:11%">
-                        {{ tupel_current_playback[6] }}  
-                      </td>      
-                      <td style="width:11%">
-                        {{ tupel_current_playback[7] }}
-                      </td>   
-                      <td style="width:11%">
-                        {{ tupel_current_playback[8] }}
-                      </td>                                                                                                                           
-                    </tr>             
-                  </tbody>
-                </table>                                 
-              </div>
-              <div class="well well-sm"> 
-                <br>
-                <form method="POST">          
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-1">     
-                      <button onclick="window.location.href='/dashboard/spotify#'" name="set_spotify_start" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-play"></span>
-                      </button>                               
-                    </div>
-                    <div class="col-sm-1">  
-                      <button onclick="window.location.href='/dashboard/spotify#'" name="set_spotify_previous" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-fast-backward"></span>
-                      </button>
-                    </div>                              
-                    <div class="col-sm-1">  
-                      <button onclick="window.location.href='/dashboard/spotify#'" name="set_spotify_next" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-fast-forward"></span>
-                      </button>
-                    </div>        
-                    <div class="col-sm-1">  
-                      <button onclick="window.location.href='/dashboard/spotify#'" name="set_spotify_stop" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-pause"></span>
-                      </button>
-                    </div>        
-                    <div class="col-sm-1">  
-                      <button onclick="window.location.href='/dashboard/spotify#'" name="set_spotify_volume" class="btn btn-default" type="submit">
-                        <span class="glyphicon glyphicon-bullhorn"></span>
-                      </button>
-                    </div>                      
-                    <div class="col-sm-7">
-                      <div class="slidecontainer"> 
-                        <div class="col-md-10 text-center">                       
-                          <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
-                        </div>                                                     
-                      </div>                          
-                    </div>                                                     
-                  </div>              
-                </form>
-              </div> 
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_spotify"><font color="white"><b>Spotify</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_spotify" class="panel-collapse collapse {{ collapse_dashboard_spotify }}" >      
+            <div class="panel-body">             
+              <form method="POST">             
+                <div class="well well-sm">    
                   
-            {% endif %} 
-
-            </div>
-          </div>    
+                                                   
+                </div>              
+              </form>
+            </div> 
+          </div>
+        </div>    
+      </div>
    
       
-<!-- select log type -->      
+<!-- select log type --> 
+     
       
 <section id="system_log"></section>      
      
     
+      <div class="panel-group">
         <div class="panel panel-default">
-        <div class="text-center">
-          <div class="panel-heading"><font color="white" size="5"><b>Ereignisse</b></font></div>   
-        </div>        
-            <div class="panel-body">  
-              <div class="well well-sm"> 
-                <form method="POST">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_log"><font color="white"><b>Ereignisse</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_log" class="panel-collapse collapse {{ collapse_dashboard_log }}" >      
+            <div class="panel-body">             
+              <form method="POST">             
+                <div class="well well-sm">  
                   <div class="row justify-content-md-center">
                     <div class="col-sm-8">                    
                       <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
                         <option {{ selected_type_event }}> EVENT </option>
                         <option {{ selected_type_status }}> STATUS </option>
+                        <option {{ selected_type_database }}> DATABASE </option>     
                         <option {{ selected_type_success }}> SUCCESS </option>   
                         <option {{ selected_type_warning }}> WARNING </option>
                         <option {{ selected_type_error }}> ERROR </option>                                              
@@ -647,7 +615,9 @@
                 </form>
               </div>      
 
+
 <!-- table logs -->               
+            
             
               <div class="well well-sm">
 
@@ -664,7 +634,8 @@
                     <td>
                       <b>
                         {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
-                        {% if entry[1] == "STATUS" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "STATUS" %} <font color="darkKhaki">{{ entry[1] }} </font> {% endif %}
+                        {% if entry[1] == "DATABASE" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
                         {% if entry[1] == "SUCCESS" %} <font color="lawngreen">{{ entry[1] }} </font> {% endif %}
                         {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                         {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %} 
@@ -683,19 +654,42 @@
                   {% endfor %} 
                 </tbody>
               </table> 
-            </div>
-            
-<!-- program version -->
-
-            <div class="text-center">
-              <b>Version {{ version }}</b>
-            </div>     
+            </div> 
           </div>  
         </div> 
-      </div>  
-      </font> 
-    </div>  
-  </div> 
-</div>   
+      </div> 
+      <br>
+      <br> 
+      <br>     
+
+
+<!-- informations -->
+
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+            </div>
+            
+            <div class="text-center">
+              <b>Version {{ version }}</b>
+            </div>              
+            
+          </div>
+        </font>
+      </div>
+    </div>
+  </div>    
+</div> 
 
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Controller
+  System / Controller
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -95,20 +95,33 @@
 <br>
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+          
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / Controller</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>             
 
-<!-- add new controller -->
 
-      <div class="well well-sm">
-       
+<!-- error message controller -->
+
 {% if error_message_add_controller != "" %}
   <div class="alert alert-danger" role="alert">
     {{ error_message_add_controller }}
   </div>      
-{% endif %}       
-              
+{% endif %}    
+
+
+<!-- add new controller -->
+
+      <div class="well well-sm">
         <form method="POST"> 
         <div class="row justify-content-md-center">             
           <div class="col-sm-3">
@@ -125,7 +138,8 @@
         </form> 
       </div>
 
-<!-- error message tasks -->
+
+<!-- error message controller tasks -->
 
 {% if error_message_controller_tasks != "" %}
   <div class="alert alert-danger" role="alert">
@@ -144,28 +158,15 @@
 
 <section id="table_{{entry.id}}"></section>  
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{entry.mqtt_device.name}} </b></font></a>
-          </h4>
-        </div>   
-        <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
-          <div class="panel-body">      
-            <div class="well well-sm">
-
-
-<!-- error message task settings -->
-
-{% if entry.error_task_settings != "" %}
-  <div class="alert alert-danger" role="alert">
-    {% for entry in entry.error_task_settings.split(',') %}
-      {{ entry }} <br>
-    {% endfor %}
-  </div>      
-{% endif %} 
-
-
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{entry.mqtt_device.name}} </b></font></a>
+        </h4>
+      </div>   
+      <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+        <div class="panel-body">      
+          <div class="well well-sm">
             <form method="POST"> 
               <table class="table">
                 <thead>  
@@ -181,8 +182,8 @@
                       <a href="/dashboard/system/controller/position/up/{{ entry.id }}#table_{{entry.id}}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/system/controller/position/down/{{ entry.id }}#table_{{entry.id}}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     
-                    <td style="width:17%"> {{entry.mqtt_device.name}} </td>                
-                    <td style="width:17%"> {{entry.command_1}} </td>
+                    <td style="width:17%"> {{ entry.mqtt_device.name }} </td>                
+                    <td style="width:17%"> {{ entry.command_1 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_1_{{entry.id}}" value="{{entry.task_1}}" />  
                     </td>
@@ -192,7 +193,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_2}} </td>
+                    <td style="width:17%"> {{ entry.command_2 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_2_{{entry.id}}" value="{{entry.task_2}}" />  
                     </td>
@@ -202,7 +203,7 @@
                     <tr>
                     <td></td>
                     <td></td> 
-                    <td style="width:17%"> {{entry.command_3}} </td>
+                    <td style="width:17%"> {{ entry.command_3 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_3_{{entry.id}}" value="{{entry.task_3}}" />  
                     </td>
@@ -212,7 +213,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_4}} </td>
+                    <td style="width:17%"> {{ entry.command_4 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_4_{{entry.id}}" value="{{entry.task_4}}" />  
                     </td>
@@ -222,7 +223,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_5}} </td>
+                    <td style="width:17%"> {{ entry.command_5 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_5_{{entry.id}}" value="{{entry.task_5}}" />  
                     </td>
@@ -232,7 +233,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_6}} </td>
+                    <td style="width:17%"> {{ entry.command_6 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_6_{{entry.id}}" value="{{entry.task_6}}" />  
                     </td>
@@ -242,7 +243,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_7}} </td>
+                    <td style="width:17%"> {{ entry.command_7 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_7_{{entry.id}}" value="{{entry.task_7}}" />  
                     </td>
@@ -252,7 +253,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_8}} </td>
+                    <td style="width:17%"> {{ entry.command_8 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_8_{{entry.id}}" value="{{entry.task_8}}" />  
                     </td>
@@ -262,7 +263,7 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{entry.command_9}} </td>
+                    <td style="width:17%"> {{ entry.command_9 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
                     <td style="width:66%"> 
                       <input type="text" class="form-control" name="set_task_9_{{entry.id}}" value="{{entry.task_9}}" />  
                     </td>
@@ -285,6 +286,7 @@
 
 
 <!-- informations -->
+
 
       <div class="panel-group">
         <div class="panel panel-default">

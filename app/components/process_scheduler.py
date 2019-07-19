@@ -255,7 +255,7 @@ def SCHEDULER_PING_PROCESS(task):
    
    # find ping jobs only (home / away)
    if task.option_home == "checked" or task.option_away == "checked":
-           
+
       ping_result = CHECK_SCHEDULER_PING(task)
       
       # update last ping, if nessanrry     
@@ -266,7 +266,7 @@ def SCHEDULER_PING_PROCESS(task):
       if task.option_away == "checked" and ping_result == "True":
          SET_SCHEDULER_LAST_PING_RESULT(task.id, "True")
          return
-      
+
       # start job, if ping result changed first
       if GET_SCHEDULER_LAST_PING_RESULT(task.id) != ping_result:
 
@@ -1169,7 +1169,7 @@ def CHECK_SCHEDULER_PING(task):
           return "True"
       if ping(ip_address, timeout=1) != None:
           return "True"                
-          
+   
    return "False"
 
          

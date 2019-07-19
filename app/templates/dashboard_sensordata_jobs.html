@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Sensordaten
+  Sensordaten / Jobs
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
 
   <script>
@@ -198,13 +198,20 @@
 <br>
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">     
+  <div class="row">
+    <div class="col">
+      <font color="white">     
 
-<!-- add sensordata job -->        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Sensordaten / Jobs</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
 
-    <div class="well well-sm">     
 
 <!-- error message add job -->
 
@@ -212,8 +219,12 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_add_sensordata_job }}
   </div>      
-{% endif %}              
+{% endif %}     
 
+
+<!-- add sensordata job -->        
+
+    <div class="well well-sm">     
       <form method="POST"> 
         <div class="row justify-content-md-center">
           <div class="col-sm-3"> 
@@ -232,12 +243,6 @@
 
 <section id="table"></section>
 
-<!-- sensordata table -->
-
-        <div class="panel panel-default">
-          <div class="panel-heading"><font color="white"><b>Sensordaten Jobs</b></font></div>    
-            <div class="panel-body"> 
-            <div class="well well-sm">
 
 <!-- error message settings -->
 
@@ -257,8 +262,14 @@
       {{ entry }} <br>
     {% endfor %}
   </div>      
-{% endif %}               
-   
+{% endif %}     
+
+
+<!-- sensordata table -->
+
+      <div class="panel panel-default">  
+        <div class="panel-body"> 
+          <div class="well well-sm">
             <form method="POST" class="verticalform">              
               <table class="table">
                 <thead>
@@ -335,6 +346,7 @@
           </div>  
         </div>  
 
+
 <!-- error message file -->
 
 {% if error_message_file != "" %}
@@ -343,7 +355,9 @@
 </div>      
 {% endif %}
 
+
 <!-- sensorfile table -->
+
 
     <div class="panel-group">
       <div class="panel panel-default">
@@ -381,6 +395,7 @@
       
       
 <!-- informations -->
+
 
       <div class="panel-group">
         <div class="panel panel-default">

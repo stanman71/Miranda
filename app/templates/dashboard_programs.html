@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  LED Programme
+  Programme
 {% endblock %}
 
 {% block styles %}
@@ -14,7 +14,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
 
   {{ colorpicker.loader() }}
@@ -100,9 +100,16 @@
     <div class="col">
       <font color="white">
 
-<!-- add program -->        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Programme</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
 
-    <div class="well well-sm">     
 
 <!-- error message add program -->
 
@@ -110,8 +117,12 @@
   <div class="alert alert-danger" role="alert">
     {{ error_message_add_program }}
   </div>      
-{% endif %}              
+{% endif %}   
 
+
+<!-- add program -->        
+
+    <div class="well well-sm">     
       <form method="POST"> 
         <div class="row justify-content-md-center">
           <div class="col-sm-3"> 
@@ -127,32 +138,33 @@
 <!-- select a program -->
 
     <div class="panel panel-default">
-      <div class="panel-heading"><font color="white"><b>Programme</b></font></div>
-        <div class="panel-body">
-          <div class="well well-sm">
-            <form method="POST" enctype="multipart/form-data">
-            <div class="row justify-content-md-center">
-              <div class="col-sm-3">
-                <div class="dropdown">
-                  <select class="selectpicker" data-live-search="true" data-width="80%" name="get_program_name">
-                    {% for each in dropdown_list_programs %}
-                      {% if each != None %}
-                      <option value="{{each.name}}">{{each.name}}</option>
-                      {% endif %}
-                    {% endfor %}                          
-                  </select>                    
-                </div> 
-              </div>  
-              <div class="col-sm-3"> 
-                <input type="submit" onclick="window.location.href='/dashboard/programs#'" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
-              </div>  
-            </form> 
-            </div> 
-          </div>       
+      <div class="panel-body">
+        <div class="well well-sm">
+          <form method="POST" enctype="multipart/form-data">
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3">
+              <div class="dropdown">
+                <select class="selectpicker" data-live-search="true" data-width="80%" name="get_program_name">
+                  {% for each in dropdown_list_programs %}
+                    {% if each != None %}
+                    <option value="{{each.name}}">{{each.name}}</option>
+                    {% endif %}
+                  {% endfor %}                          
+                </select>                    
+              </div> 
+            </div>  
+            <div class="col-sm-3"> 
+              <input type="submit" onclick="window.location.href='/dashboard/programs#'" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
+            </div>  
+          </form> 
+          </div> 
+        </div>       
 
 {% if program != "" %}
     
+    
 <!-- instructions -->
+
 
           <div class="text-center">  
             <h3><span class="label label-default">{{ program.name }} bearbeiten</span></h3> 
@@ -204,7 +216,9 @@
           <br>
           <br>
 
+
 <!-- get rgb value -->
+
 
         <div class="well well-sm">
           <div class="text-center"> 
@@ -226,6 +240,7 @@
             </div>            
           </div>
         </div>
+    
     
 <!-- error message content -->
 
@@ -253,7 +268,6 @@
             </div>
 
 <!-- start a program -->
-
 
             <div class="col-sm-2">                                        
               <input type="submit" onclick="window.location.href='/dashboard/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />

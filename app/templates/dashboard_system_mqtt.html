@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  HUE Einstellungen
+  System / MQTT
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -99,38 +99,48 @@
     <div class="col">
       <font color="white">
 
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / MQTT</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
+
 <!-- settings mqtt -->
 
 <section id="mqtt_settings"></section>
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>MQTT</b></font></div>
-          <div class="panel-body">   
-            <form method="POST">  
-              <div class="well well-sm">
-                <div class="pretty p-default p-round">
-                  <input {{check_value_mqtt[0]}} type="radio" value="True" name="radio_mqtt">
-                  <div class="state p-success">
-                    <label><font color="white">MQTT aktivieren</font></label>
-                  </div>
-                </div>
-                <br>
-                <div class="pretty p-default p-round">
-                    <input {{check_value_mqtt[1]}} type="radio" value="False" name="radio_mqtt">
-                  <div class="state p-danger">
-                    <label><font color="white">MQTT deaktivieren</font></label>
-                  </div>
+        <div class="panel-body">   
+          <form method="POST">  
+            <div class="well well-sm">
+              <div class="pretty p-default p-round">
+                <input {{check_value_mqtt[0]}} type="radio" value="True" name="radio_mqtt">
+                <div class="state p-success">
+                  <label><font color="white">MQTT aktivieren</font></label>
                 </div>
               </div>
-              <font color="salmon"><b>Flask neustarten, wenn MQTT Einstellungen geändert werden</b></font>
-              <br>     
-              <br>    
-              <input type="submit" onclick="window.location.href='/dashboard/system/mqtt#'" name="set_setting_mqtt" class="btn btn-default" value="Auswählen"/>
-            </form>  
-          </div>  
-        </div>           
+              <br>
+              <div class="pretty p-default p-round">
+                  <input {{check_value_mqtt[1]}} type="radio" value="False" name="radio_mqtt">
+                <div class="state p-danger">
+                  <label><font color="white">MQTT deaktivieren</font></label>
+                </div>
+              </div>
+            </div>
+            <font color="salmon"><b>Flask neustarten, wenn MQTT Einstellungen geändert werden</b></font>
+            <br>     
+            <br>    
+            <input type="submit" onclick="window.location.href='/dashboard/system/mqtt#'" name="set_setting_mqtt" class="btn btn-default" value="Auswählen"/>
+          </form>  
+        </div>  
+      </div>           
 
 <section id="mqtt_table"></section>
+
 
 <!-- MQTT -->
 
@@ -214,7 +224,9 @@
 
 <section id="logfile"></section>
 
+
 <!-- mqtt update setting -->
+
 
         <div class="panel-group">
           <div class="panel panel-default">
@@ -255,13 +267,15 @@
       </div>  
       <br> 
       
+      
 <!-- mqtt logs -->
+
 
         <div class="panel-group">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse_mqtt_log"><font color="white"><b> Log </b></font></a>
+                <a data-toggle="collapse" href="#collapse_mqtt_log"><font color="white"><b> Log-Datei </b></font></a>
               </h4>
             </div>   
             <div id="collapse_mqtt_log" class="panel-collapse collapse {{collapse_mqtt_log}} ">      
@@ -283,9 +297,11 @@
 
         
     <br>
-    <br>      
+    <br>    
+      
 
 <!-- informations -->
+
 
     <div class="panel-group">
       <div class="panel panel-default">

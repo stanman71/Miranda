@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Log
+  System / Log
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -95,36 +95,19 @@
 <br>
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">
+  <div class="row">
+    <div class="col">
+      <font color="white">
 
-<!-- select log type -->      
-      
-<section id="system_log"></section>      
-     
-    
+      <div class="panel-group">  
         <div class="panel panel-default">
-          <div class="panel-heading"><font color="white"><b>Log</b></font></div>       
-            <div class="panel-body">  
-              <div class="well well-sm"> 
-                <form method="POST">
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-8">                    
-                      <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
-                        <option {{ selected_type_event }}> EVENT </option>
-                        <option {{ selected_type_status }}> STATUS </option>
-                        <option {{ selected_type_success }}> SUCCESS </option>   
-                        <option {{ selected_type_warning }}> WARNING </option>
-                        <option {{ selected_type_error }}> ERROR </option>                                              
-                      </select>   
-                    </div>
-                    <div class="col-sm-3">    
-                       <input type="submit" onclick="window.location.href='/dashboard/system/log#'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
-                    </div>                                      
-                  </div>   
-                </form>
-              </div>    
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / Log</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
 
 
 <!-- error message -->
@@ -136,7 +119,36 @@
 {% endif %}
 
 
-<!-- table logs -->              
+<!-- select log type -->      
+      
+<section id="system_log"></section>      
+     
+    
+        <div class="panel panel-default">    
+          <div class="panel-body">  
+            <div class="well well-sm"> 
+              <form method="POST">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-8">                    
+                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
+                      <option {{ selected_type_event }}> EVENT </option>
+                      <option {{ selected_type_status }}> STATUS </option>
+                      <option {{ selected_type_database }}> DATABASE </option>                        
+                      <option {{ selected_type_success }}> SUCCESS </option>   
+                      <option {{ selected_type_warning }}> WARNING </option>
+                      <option {{ selected_type_error }}> ERROR </option>                                              
+                    </select>   
+                  </div>
+                  <div class="col-sm-3">    
+                     <input type="submit" onclick="window.location.href='/dashboard/system/log#'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
+                  </div>                                      
+                </div>   
+              </form>
+            </div>    
+
+
+<!-- table logs -->     
+         
             
             <div class="well well-sm">
               <table class="table">
@@ -151,7 +163,8 @@
                     <td style="width:16%">{{ entry[0] }}</td> 
                     <td style="width:10%">
                       {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
-                      {% if entry[1] == "STATUS" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "STATUS" %} <font color="darkKhaki">{{ entry[1] }} </font> {% endif %}
+                      {% if entry[1] == "DATABASE" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "SUCCESS" %} <font color="green">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %}            
@@ -165,7 +178,9 @@
           </div>  
         </div> 
 
+
 <!-- system logs -->
+
 
 <section id="logfile"></section>
 
@@ -173,16 +188,18 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse_mqtt_log"><font color="white"><b> Log </b></font></a>
+              <a data-toggle="collapse" href="#collapse_mqtt_log"><font color="white"><b> Log-Datei </b></font></a>
             </h4>
           </div>   
           <div id="collapse_mqtt_log" class="panel-collapse collapse {{collapse_mqtt_log}} ">      
-            <div class="panel-body">     
-              <form method="POST"> 
-                <a href="/dashboard/system/log/download/log_system.csv?time={{ timestamp }}"><font color="lightblue"><b>System Log-Datei herunterladen</b></font></a>
-              <div class="dropdown text-right">
-                <input type="submit" onclick="window.location.href='/dashboard/system/log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
-              </form>
+            <div class="panel-body"> 
+              <div class="well well-sm">     
+                <form method="POST"> 
+                  <a href="/dashboard/system/log/download/log_system.csv?time={{ timestamp }}"><font color="lightblue"><b>System Log-Datei herunterladen</b></font></a>
+                <div class="dropdown text-right">
+                  <input type="submit" onclick="window.location.href='/dashboard/system/log#logfile'" class="btn btn-danger text-right" name="reset_logfile" value="System Log-Datei zurücksetzen">
+                </form>
+                </div>
               </div> 
             </div>            
           </div>  
@@ -192,7 +209,9 @@
     <br>  
     <br>    
 
+
 <!-- informations -->
+
 
     <div class="panel-group">
       <div class="panel panel-default">

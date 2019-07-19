@@ -56,25 +56,26 @@ def CHECK_LED_GROUP_SETTINGS(settings):
 
    # check setting open led_slots in groups
    for element in settings:
+      
       if element.led_ieeeAddr_1 == None or element.led_ieeeAddr_1 == "None":
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 1")        
-      if element.active_led_2 == "on" and (element.led_ieeeAddr_2 == None or element.led_ieeeAddr_2 == "None"):
+      if element.active_led_2 == "True" and (element.led_ieeeAddr_2 == None or element.led_ieeeAddr_2 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 2") 
-      if element.active_led_3 == "on" and (element.led_ieeeAddr_3 == None or element.led_ieeeAddr_3 == "None"):
+      if element.active_led_3 == "True" and (element.led_ieeeAddr_3 == None or element.led_ieeeAddr_3 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 3") 
-      if element.active_led_4 == "on" and (element.led_ieeeAddr_4 == None or element.led_ieeeAddr_4 == "None"):
+      if element.active_led_4 == "True" and (element.led_ieeeAddr_4 == None or element.led_ieeeAddr_4 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 4") 
-      if element.active_led_5 == "on" and (element.led_ieeeAddr_5 == None or element.led_ieeeAddr_5 == "None"):
+      if element.active_led_5 == "True" and (element.led_ieeeAddr_5 == None or element.led_ieeeAddr_5 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 5") 
-      if element.active_led_6 == "on" and (element.led_ieeeAddr_6 == None or element.led_ieeeAddr_6 == "None"):
+      if element.active_led_6 == "True" and (element.led_ieeeAddr_6 == None or element.led_ieeeAddr_6 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 6") 
-      if element.active_led_7 == "on" and (element.led_ieeeAddr_7 == None or element.led_ieeeAddr_7 == "None"):
+      if element.active_led_7 == "True" and (element.led_ieeeAddr_7 == None or element.led_ieeeAddr_7 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 7") 
-      if element.active_led_8 == "on" and (element.led_ieeeAddr_8 == None or element.led_ieeeAddr_8 == "None"):
+      if element.active_led_8 == "True" and (element.led_ieeeAddr_8 == None or element.led_ieeeAddr_8 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 8") 
-      if element.active_led_9 == "on" and (element.led_ieeeAddr_9 == None or element.led_ieeeAddr_9 == "None"):
-          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")                     
-
+      if element.active_led_9 == "True" and (element.led_ieeeAddr_9 == None or element.led_ieeeAddr_9 == "None"):
+          list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")   
+          
    if list_errors == []:
       return ""
    else:
@@ -132,19 +133,24 @@ def CHECK_PROGRAM(program_id):
                
                if not "led" in device.device_type:
     
-                  setting = line_content[2]
-                  setting = setting.replace(" ", "")
+                  program_setting_formated = line_content[2]
+                  program_setting_formated = program_setting_formated.replace(" ", "")
+
+                  # convert string to json-format
+                  program_setting = program_setting_formated.replace(':', '":"')
+                  program_setting = program_setting.replace(',', '","')
+                  program_setting = '{"' + str(program_setting) + '"}'    
 
                   setting_valid = False
 
                   # check device command 
                   for command in device.commands.split(" "):   
-                     if command == setting:
+                     if command == program_setting:
                         setting_valid = True
                         break
 
                   if setting_valid == False:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + setting)       
+                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + program_setting)       
 
                else:        
                   list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist eine LED") 
@@ -284,47 +290,30 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
 """ ######################### """
 
 def CHECK_SCHEDULER_GENERAL_SETTINGS(scheduler_tasks): 
-   list_general_errors_general = []  
-   error_message_general_settings = ""
+   list_general_errors = []  
 
    for task in scheduler_tasks:
-      
-      list_general_errors_device = []
-      
+
       if task.option_time != "checked" and task.option_sun != "checked" and task.option_sensors != "checked" and task.option_position != "checked":    
-         list_general_errors_general.append(task.name + " >>> Keine Bedingungsoption ausgewählt")
-         list_general_errors_device.append(task.name + " >>> Keine Bedingungsoption ausgewählt")            
-
-      # add errors for each device to database  
-
-      if list_general_errors_device != []:
-
-         list_general_errors_device = str(list_general_errors_device)
-         list_general_errors_device = list_general_errors_device.replace("[", "")
-         list_general_errors_device = list_general_errors_device.replace("]", "")
-         SET_SCHEDULER_TASK_SETTING_GENERAL_ERRORS(task.id, list_general_errors_device)
+         list_general_errors.append(task.name + " >>> Keine Bedingungsoption ausgewählt")          
 
 
-   if list_general_errors_general != []:
-      error_message_general_settings = list_general_errors_general
-
-   return error_message_general_settings
+   if list_general_errors == []:
+      return ""
+   else:
+      return list_general_errors
 
 
 def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks): 
-   list_time_errors_general = []  
-   error_message_time_settings = ""
+   list_time_errors = []  
 
    for task in scheduler_tasks:
 
       if task.option_time == "checked":
 
-         list_time_errors_device = []
-
          # check settings sunrise / sunset option
          if task.option_sun == "checked":
-            list_time_errors_general.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonne nur getrennt verwenden")
-            list_time_errors_device.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonne nur getrennt verwenden")           
+            list_time_errors.append(task.name + " >>> Ungültige Kombination >>> Zeit und Sonne nur getrennt verwenden")         
 
          try:
             ### check day
@@ -332,16 +321,13 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
                   day = task.day.split(",")
                   for element in day:
                      if element.lower() not in ["mo", "tu", "we", "th", "fr", "sa", "su"]:
-                        list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
-                        list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag")  
                         break                                 
             else:
                   if task.day.lower() not in ["mo", "tu", "we", "th", "fr", "sa", "su", "*"] and task.day != "*":
-                     list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
-                     list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
          except:
-            list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Tag")
-            list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag")
 
          try:
             ### check hour
@@ -350,26 +336,21 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
                   for element in hour:
                      try:                                   
                         if not (0 <= int(element) <= 24):
-                              list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
-                              list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
                               break   
                      except:
-                        list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
-                        list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
                         break   
             else:
                   try:
                      if not (0 <= int(task.hour) <= 24) and task.hour != "*":
-                              list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
-                              list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
                   except:
                      if task.hour != "*":
-                        list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
-                        list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Stunde")   
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")    
 
          except:
-            list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
-            list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
 
 
          try:
@@ -379,112 +360,75 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
                   for element in minute:
                      try:                                   
                         if not (0 <= int(element) <= 60):
-                              list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-                              list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
                               break   
                      except:
-                        list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-                        list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
                         break   
             else:
                   try:
                      if not (0 <= int(task.minute) <= 60) and task.minute != "*":
-                              list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Minute")
-                              list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute")  
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
                   except:
                      if task.minute != "*":
-                        list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-                        list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
       
          except:
-            list_time_errors_general.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-            list_time_errors_device.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
-
-         # add errors for each device to database  
-         if list_time_errors_device != []:
-
-            list_time_errors_device = str(list_time_errors_device)
-            list_time_errors_device = list_time_errors_device.replace("[", "")
-            list_time_errors_device = list_time_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_TIME_ERRORS(task.id, list_time_errors_device)
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
 
 
-   if list_time_errors_general != []:
-      error_message_time_settings = list_time_errors_general
-
-   return error_message_time_settings
+   if list_time_errors == []:
+      return ""
+   else:
+      return list_time_errors
 
 
 def CHECK_SCHEDULER_SUN_SETTINGS(scheduler_tasks):
-   list_sun_errors_general = []  
-   error_message_sun_settings = ""
+   list_sun_errors = []  
 
    for task in scheduler_tasks:
 
       if task.option_sun == "checked":
 
-         list_sun_errors_device = []
-
          # check setting location
          if task.option_sunrise == "checked" or task.option_sunset == "checked":
             if task.location == "None":
-               list_sun_errors_device.append(task.name + " >>> Zone wurde noch nicht eingestellt")
-
-         # merge errors to general list
-         list_sun_errors_general = list_sun_errors_general + list_sun_errors_device 
-      
-
-         # add errors for each device to database
-         if list_sun_errors_device != []:
-            list_sun_errors_device = str(list_sun_errors_device)
-            list_sun_errors_device = list_sun_errors_device.replace("[", "")
-            list_sun_errors_device = list_sun_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_SUN_ERRORS(task.id, list_sun_errors_device)
+               list_sun_errors.append(task.name + " >>> Zone wurde noch nicht eingestellt")
 
 
-   if list_sun_errors_general == []:
-      error_message_sun_settings = ""
+   if list_sun_errors == []:
+      return ""
    else:
-      error_message_sun_settings = list_sun_errors_general
-
-   return error_message_sun_settings
+      return list_sun_errors
 
 
 def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks): 
-   list_sensor_errors_general = []  
-   error_message_sensor_settings = ""
+   list_sensor_errors = []  
 
    for task in scheduler_tasks:
 
       if task.option_sensors == "checked":
 
-         list_sensor_errors_device = []
-
          # check mqtt devices
          if task.mqtt_device_ieeeAddr_1 == "None" or task.mqtt_device_ieeeAddr_1 == "" or task.mqtt_device_ieeeAddr_1 == None:
-            list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
-            list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1")
+            list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 1") 
 
          if task.mqtt_device_ieeeAddr_2 == "None" or task.mqtt_device_ieeeAddr_2 == "" or task.mqtt_device_ieeeAddr_2 == None:
             if task.operator_main_1 != "None" and task.operator_main_1 != None:
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2")
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 2") 
 
          if task.mqtt_device_ieeeAddr_3 == "None" or task.mqtt_device_ieeeAddr_3 == "" or task.mqtt_device_ieeeAddr_3 == None:
             if task.operator_main_1 != "None" and task.operator_main_1 != None:
                if task.operator_main_2 != "None" and task.operator_main_2 != None:
-                  list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")  
-                  list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")           
-
+                  list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> MQTT-Gerät 3")  
+                  
          # check sensors
          if task.sensor_key_1 == "None" or task.sensor_key_1 == None:
-            list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
-            list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Sensor 1")
+            list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Sensor 1") 
             
          if task.operator_main_1 != "None" and task.operator_main_1 != None:
             if task.sensor_key_2 == "None" or task.sensor_key_2 == None:
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Sensor 2")  
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Sensor 2") 
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Sensor 2")  
                
          if task.operator_main_2 != "None" and task.operator_main_2 != None:
             if task.sensor_key_3 == "None" or task.sensor_key_3 == None:
@@ -494,80 +438,60 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
          # check operators
          if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
             if task.operator_1 == "" or task.operator_1 == "None" or task.operator_1 == None: 
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Operator 1")
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Operator 1") 
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Operator 1")
          
          if task.operator_main_1 == "and" or task.operator_main_1 == "or":
             if task.operator_2 == "None" or task.operator_2 == "" or task.operator_2 == None: 
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Operator 2") 
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Operator 2")  
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Operator 2")  
 
          if task.operator_main_2 == "and" or task.operator_main_2 == "or":
             if task.operator_3 == "None" or task.operator_3 == "" or task.operator_3 == None: 
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Operator 3")
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Operator 3")  
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Operator 3")
 
          # check values
-         if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
+         if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":   
             if task.value_1 == "" or task.value_1 == "None" or task.value_1 == None: 
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1") 
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")      
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")   
+                  
             elif (task.operator_1 == "<" or task.operator_1 == ">") and not task.value_1.isdigit():
-               list_sensor_errors_general.append(task.name + 
-               " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")
                list_sensor_errors_device.append(task.name + 
                " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden") 
 
          if task.operator_main_1 == "and" or task.operator_main_1 == "or":
             if task.value_2 == "" or task.value_2 == "None" or task.value_2 == None:
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 2")  
             elif (task.operator_2 == "<" or task.operator_2 == ">") and not task.value_2.isdigit():
-               list_sensor_errors_general.append(task.name + 
-               " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")   
-               list_sensor_errors_device.append(task.name + 
-               " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")                  
+               list_sensor_errors.append(task.name + 
+               " >>> ungültiger Eintrag >>> Vergleichswert 2 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")                 
 
          if task.operator_main_2 == "and" or task.operator_main_2 == "or":
             if task.value_3 == "" or task.value_3 == "None" or task.value_3 == None:
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 3")  
             elif (task.operator_3 == "<" or task.operator_3 == ">") and not task.value_3.isdigit():
-               list_sensor_errors_general.append(task.name + 
-               " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")     
-               list_sensor_errors_device.append(task.name + 
-               " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")    
+               list_sensor_errors.append(task.name + 
+               " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")        
+               
 
-         # add errors for each device to database
-         if list_sensor_errors_device != []:
-
-            list_sensor_errors_device = str(list_sensor_errors_device)
-            list_sensor_errors_device = list_sensor_errors_device.replace("[", "")
-            list_sensor_errors_device = list_sensor_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(task.id, list_sensor_errors_device)
-
-
-   if list_sensor_errors_general == []:
-      error_message_sensor_settings = ""
+   if list_sensor_errors == []:
+      return ""
    else:
-      error_message_sensor_settings = list_sensor_errors_general
-
-   return error_message_sensor_settings
+      return list_sensor_errors
 
 
 def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
-   list_position_errors_general = []  
-   error_message_position_settings = ""
+   list_position_errors = []  
 
    for task in scheduler_tasks:
 
       if task.option_position == "checked":
 
-         list_position_errors_device = []
+         # check setting choosed
+         if task.option_home != "checked" and task.option_away != "checked":
+            list_position_errors.append(task.name + " >>> fehlende Einstellung >>> HOME oder AWAY")
 
          # check setting home / away
          if task.option_home == "checked" and task.option_away == "checked":
-            list_position_errors_device.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
+            list_position_errors.append(task.name + " >>> Es kann nur HOME oder AWAY separat gewählt werden")
 
          # check setting ip-addresses
          if task.option_home == "checked" or task.option_away == "checked":
@@ -577,30 +501,13 @@ def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
                # search for wrong chars
                for element in task.ip_addresses:
                   if not element.isdigit() and element != "." and element != "," and element != " ":
-                     list_position_errors_device.append(task.name + " >>> Ungültige IP-Adressen")
+                     list_position_errors.append(task.name + " >>> Ungültige IP-Adressen")
                      break
-  
-            else:
-               list_position_errors_device.append(task.name + " >>> Keine IP-Adressen angegeben")
 
-         # merge errors to general list
-         list_position_errors_general = list_position_errors_general + list_position_errors_device 
-      
-
-         # add errors for each device to database
-         if list_position_errors_device != []:
-            list_position_errors_device = str(list_position_errors_device)
-            list_position_errors_device = list_position_errors_device.replace("[", "")
-            list_position_errors_device = list_position_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_POSITION_ERRORS(task.id, list_position_errors_device)
-
-
-   if list_position_errors_general == []:
-      error_message_position_settings = ""
+   if list_position_errors == []:
+      return ""
    else:
-      error_message_position_settings = list_position_errors_general
-
-   return error_message_position_settings
+      return list_position_errors
 
 
 """ ########################## """
@@ -721,16 +628,7 @@ def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
                if num > 1:
                   list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)            
          
-   
-   """      
-   # search for double commands 
-   for task_1 in tasks:
-      for task_2 in tasks:
-      
-         if (task_1.id != task_2.id) and (task_1.mqtt_device_ieeeAddr == task_2.mqtt_device_ieeeAddr) and (task_1.command == task_2.command):
-            list_errors.append(task.task + " >>> Gerät " + task_1.mqtt_device.name + " mit Befehlt " + task_1.command + " doppelt eingetragen") 
-   """                     
-                        
+                 
    if list_errors == []:
       return ""
    else:
@@ -742,24 +640,18 @@ def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
 """ ################### """
 
 def CHECK_TASKS(tasks, task_type):
-   list_task_errors_general = []
+   list_task_errors = []
 
    if task_type == "scheduler": 
 
       for element in tasks:
 
-         list_task_errors = CHECK_TASK_OPERATION(element.task, element.name, task_type)
-
-         if list_task_errors != []:
-
-            # merge errors to general list
-            list_task_errors_general = list_task_errors_general + list_task_errors
-
-            # save errors for each scheduler task 
-            list_task_errors = str(list_task_errors)
-            list_task_errors = list_task_errors.replace("[", "")
-            list_task_errors = list_task_errors.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_TASK_ERRORS(element.id, list_task_errors)    
+         result = CHECK_TASK_OPERATION(element.task, element.name, task_type)
+         
+         if result != []:
+            
+            for error in result:   
+               list_task_errors.append(error)
 
 
    if task_type == "controller": 
@@ -768,73 +660,65 @@ def CHECK_TASKS(tasks, task_type):
 
          name = GET_MQTT_DEVICE_BY_IEEEADDR(controller.mqtt_device_ieeeAddr).name
 
-         # check controller command exist
          if controller.command_1 != None and controller.command_1 != "None": 
-            list_task_errors_1 = CHECK_TASK_OPERATION(controller.task_1, name, task_type, controller.command_1)
-         else:
-            list_task_errors_1 = []
-
-         if controller.command_2 != None and controller.command_2 != "None":   
-            list_task_errors_2 = CHECK_TASK_OPERATION(controller.task_2, name, task_type, controller.command_2)
-         else:
-            list_task_errors_2 = []  
-
-         if controller.command_3 != None and controller.command_3 != "None":   
-            list_task_errors_3 = CHECK_TASK_OPERATION(controller.task_3, name, task_type, controller.command_3)
-         else:
-            list_task_errors_3 = [] 
-
-         if controller.command_4 != None and controller.command_4 != "None":   
-            list_task_errors_4 = CHECK_TASK_OPERATION(controller.task_4, name, task_type, controller.command_4)
-         else:
-            list_task_errors_4 = []  
-
-         if controller.command_5 != None and controller.command_5 != "None":   
-            list_task_errors_5 = CHECK_TASK_OPERATION(controller.task_5, name, task_type, controller.command_5)
-         else:
-            list_task_errors_5 = [] 
-
-         if controller.command_6 != None and controller.command_6 != "None":   
-            list_task_errors_6 = CHECK_TASK_OPERATION(controller.task_6, name, task_type, controller.command_6)
-         else:
-            list_task_errors_6 = []  
-
-         if controller.command_7 != None and controller.command_7 != "None":   
-            list_task_errors_7 = CHECK_TASK_OPERATION(controller.task_7, name, task_type, controller.command_7)
-         else:
-            list_task_errors_7 = []  
-
-         if controller.command_8 != None and controller.command_8 != "None":   
-            list_task_errors_8 = CHECK_TASK_OPERATION(controller.task_8, name, task_type, controller.command_8)
-         else:
-            list_task_errors_8 = [] 
-                       
-         if controller.command_9 != None and controller.command_9 != "None":   
-            list_task_errors_9 = CHECK_TASK_OPERATION(controller.task_9, name, task_type, controller.command_9)
-         else:
-            list_task_errors_9 = []            
-
-         list_task_errors = (list_task_errors_1 + list_task_errors_2 + list_task_errors_3 +
-                             list_task_errors_4 + list_task_errors_5 + list_task_errors_6 +
-                             list_task_errors_7 + list_task_errors_8 + list_task_errors_9)
-
-         if list_task_errors != []:
-
-            # merge errors to general list
-            list_task_errors_general = list_task_errors_general + list_task_errors    
-
-            # save errors for each controller task 
-            list_task_errors = str(list_task_errors)
-            list_task_errors = list_task_errors.replace("[", "")
-            list_task_errors = list_task_errors.replace("]", "")
-            SET_CONTROLLER_TASK_ERRORS(controller.id, list_task_errors)                
-
-
-   if list_task_errors_general == []:
+            result = CHECK_TASK_OPERATION(controller.task_1, name, task_type, controller.command_1)
+            
+            if result != []:
+               list_task_errors.append(result)
+               
+         if controller.command_2 != None and controller.command_2 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_2, name, task_type, controller.command_2)
+            
+            if result != []:
+               list_task_errors.append(result)     
+                         
+         if controller.command_3 != None and controller.command_3 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_3, name, task_type, controller.command_3)
+            
+            if result != []:
+               list_task_errors.append(result)               
+               
+         if controller.command_4 != None and controller.command_4 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_4, name, task_type, controller.command_4)
+            
+            if result != []:
+               list_task_errors.append(result)   
+               
+         if controller.command_5 != None and controller.command_5 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_5, name, task_type, controller.command_5)
+            
+            if result != []:
+               list_task_errors.append(result)                  
+               
+         if controller.command_6 != None and controller.command_6 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_6, name, task_type, controller.command_6)
+            
+            if result != []:
+               list_task_errors.append(result)   
+               
+         if controller.command_7 != None and controller.command_7 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_7, name, task_type, controller.command_7)
+            
+            if result != []:
+               list_task_errors.append(result)                  
+               
+         if controller.command_8 != None and controller.command_8 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_8, name, task_type, controller.command_8)
+            
+            if result != []:
+               list_task_errors.append(result)                  
+                                             
+         if controller.command_9 != None and controller.command_9 != "None": 
+            result = CHECK_TASK_OPERATION(controller.task_9, name, task_type, controller.command_9)
+            
+            if result != []:
+               list_task_errors.append(result)                  
+    
+    
+   if list_task_errors == []:
       return ""
    else:
-      return list_task_errors_general
-
+      return list_task_errors
 
 
 def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
@@ -972,11 +856,11 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
                   return list_task_errors
                   
                else:
-                  list_task_errors.append(name + " >>> " + command + " >>> turn_up oder turn_down ?")
+                  list_task_errors.append(name + " >>> " + command + " >>> TURN_UP oder TURN_DOWN ?")
                   return list_task_errors
                   
             except:
-               list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> turn_up oder turn_down")    
+               list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> TURN_UP oder TURN_DOWN")    
                return list_task_errors
 
          else:
@@ -988,67 +872,78 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
       if "led_off" in task:
          if " /// " in task:
             task = task.split(" /// ")
-
+            
             # check group setting
-            if task[1] == "group":
+            if "group" in task[1]:
 
-               # get input group names and lower the letters
                try:
-                     list_groups = task[2].split(",")
-               except:
-                     list_groups = [task[2]]
-
-               for input_group_name in list_groups:
-                     
-                  input_group_name = input_group_name.replace(" ", "")
-                  input_group_name = input_group_name.lower()
-
-                  # get exist group names and lower the letters
+                  
+                  # get input group names and lower the letters
                   try:
-                     all_exist_group = GET_ALL_LED_GROUPS()
-                     
-                     group_exist = False
-                     
-                     for exist_group in all_exist_group:
-                        
-                        exist_group_name = exist_group.name
-                        exist_group_name = exist_group_name.lower()
-                        
-                        # compare the formated names
-                        if input_group_name == exist_group_name: 
-                           group_exist = True
-                        
-                     if group_exist == True:
-                        pass
-                        
-                     else:
-                        if task_type == "controller":
-                           list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
-                        else:                               
-                           list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
-                     
+                        list_groups = task[2].split(",")
                   except:
-                     if task_type == "controller":
-                        list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")
-                     else:                            
-                        list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
-                     return list_task_errors
+                        list_groups = [task[2]]
 
+                  for input_group_name in list_groups:
+                        
+                     input_group_name = input_group_name.replace(" ", "")
+                     input_group_name = input_group_name.lower()
+
+                     # get exist group names and lower the letters
+                     try:
+                        all_exist_group = GET_ALL_LED_GROUPS()
+                        
+                        group_exist = False
+                        
+                        for exist_group in all_exist_group:
+                           
+                           exist_group_name = exist_group.name
+                           exist_group_name = exist_group_name.lower()
+                           
+                           # compare the formated names
+                           if input_group_name == exist_group_name: 
+                              group_exist = True
+                           
+                        if group_exist == True:
+                           pass
+                           
+                        else:
+                           if task_type == "controller":
+                              list_task_errors.append(name + " >>> " + command + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
+                           else:                               
+                              list_task_errors.append(name + " >>> LED Gruppe nicht vorhanden >>> " + input_group_name)  
+                        
+                        return list_task_errors
+                        
+                     except:
+                        if task_type == "controller":
+                           list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")
+                        else:                            
+                           list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                        
+                        return list_task_errors
+                        
+               except:
+                  if task_type == "controller":
+                     list_task_errors.append(name + " >>> " + command + " >>> fehlende Einstellung >>> LED Gruppe")
+                  else:                            
+                     list_task_errors.append(name + " >>> fehlende Einstellung >>> LED Gruppe")
+                  
+                  return list_task_errors 
+
+               
+            # check turn off all leds
+            elif task[1] == "all" or task[1] == "ALL": 
                return list_task_errors
 
-            # check turn off all leds
-            try:
-               if task[1] == "all" or task[1] == "ALL": 
-                  return list_task_errors
-                  
-            except:
-               pass
-               
-            if task_type == "controller":
-               list_task_errors.append(name + " >>> " + command + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
-            else:                   
-               list_task_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group' ?")
-            return list_task_errors  
+
+            else:
+               if task_type == "controller":
+                  list_task_errors.append(name + " >>> " + command + " >>> Ungültige Eingabe >>> 'all' oder 'group'")
+               else:                   
+                  list_task_errors.append(name + " >>> Ungültige Eingabe >>> 'all' oder 'group' ?")
+               return list_task_errors  
+
 
          else:
             if task_type == "controller":
@@ -1065,7 +960,14 @@ def CHECK_TASK_OPERATION(task, name, task_type, command = ""):
 
             try:
                device  = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
-               setting = task[2]
+               
+               setting_formated = task[2]
+               setting_formated = setting_formated.replace(" ", "")
+
+               # convert string to json-format
+               setting = setting_formated.replace(':', '":"')
+               setting = setting.replace(',', '","')
+               setting = '{"' + str(setting) + '"}'    
 
                setting_valid = False
 
@@ -1238,91 +1140,3 @@ def CHECK_WATERING_SETTINGS():
    else:
       return list_errors
 
-
-
-
-
-'''
-
-""" ###################### """
-"""  check timer settings  """
-""" ###################### """
-
-
-def CHECK_TIMER_SETTINGS(scheduler_tasks):
-   list_timer_errors_general = []  
-   error_message_timer_settings = ""
-
-   for task in scheduler_tasks:
-
-      if task.option_timer == "checked":
-
-         list_timer_errors_device = []
-
-         try:
-            ### check minutes
-            if not task.timer_minutes.isdigit():
-               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-
-            elif int(task.timer_minutes) > 99:
-               list_timer_errors_general.append(task.name + " >>> Wert über 99 Minuten")
-               list_timer_errors_device.append(task.name + " >>> Wert über 99 Minuten")
-
-            else:
-               pass
-
-         except:
-            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Minuten")
-
-         try:
-            ### check seconds
-            if not task.timer_seconds.isdigit():
-               list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-               list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-
-            elif int(task.timer_seconds) > 59:
-               list_timer_errors_general.append(task.name + " >>> Wert über 59 Sekunden")
-               list_timer_errors_device.append(task.name + " >>> Wert über 59 Sekunden")
-
-            else:
-               pass
-
-         except:
-            list_timer_errors_general.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-            list_timer_errors_device.append(task.name + " >>> Ungültige Timerangabe >>> Sekunden")
-
-         try:
-            ### check endtask
-            list_task_errors = CHECK_TASK_OPERATION(task.timer_endtask, task.name, "timer")
-
-            if list_task_errors != []:
-
-               # merge errors to device list
-               list_timer_errors_device = list_timer_errors_device + list_task_errors
-
-               # merge errors to general list
-               list_timer_errors_general = list_timer_errors_general + list_task_errors
-
-         except:
-            pass
-
-         # add errors for each device to database
-
-         if list_timer_errors_device != []:
-
-            list_timer_errors_device = str(list_timer_errors_device)
-            list_timer_errors_device = list_timer_errors_device.replace("[", "")
-            list_timer_errors_device = list_timer_errors_device.replace("]", "")
-            SET_SCHEDULER_TASK_SETTING_TIMER_ERRORS(task.id, list_timer_errors_device)
-
-
-   if list_timer_errors_general == []:
-      error_message_timer_settings = ""
-   else:
-      error_message_timer_settings = list_timer_errors_general
-
-   return error_message_timer_settings
-
-'''

@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Sensordaten
+  Sensordaten / Statistiken
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -97,29 +97,21 @@
 <section id="table"></section>  
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">   
+  <div class="row">
+    <div class="col">
+      <font color="white">   
 
-<!-- sensordata table -->
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Sensordaten / Statistiken</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
 
-      <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Sensordaten Statistiken</b></font></div>    
-          <div class="panel-body">   
 
-<!-- select data source -->
-  
-<section id="create_table"></section>  
-
-            <div class="well well-sm">
-              <form method="POST">   
-                <div class="form-group">
-                  <div class="text-center">   
-                    <h3><span class="label label-default">Tabelle erstellen</span></h3> 
-                  </div> 
-                  <br>
-                  <br>    
-                  
 <!-- error message -->
 
 {% if error_message != "" %}
@@ -134,8 +126,27 @@
   <div class="alert alert-danger" role="alert">
     {{ graph }}
   </div>      
-{% endif %}                 
+{% endif %}    
 
+
+<!-- sensordata table -->
+
+
+      <div class="panel panel-default">  
+        <div class="panel-body">   
+
+<!-- select data source -->
+  
+<section id="create_table"></section>  
+
+            <div class="well well-sm">
+              <form method="POST">   
+                <div class="form-group">
+                  <div class="text-center">   
+                    <h3><span class="label label-default">Tabelle erstellen</span></h3> 
+                  </div> 
+                  <br>
+                  <br>                
                   <div class="well well-sm">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-3">

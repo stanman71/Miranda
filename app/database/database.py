@@ -45,8 +45,7 @@ class Controller(db.Model):
     task_8               = db.Column(db.String(50))
     command_9            = db.Column(db.String(50))
     task_9               = db.Column(db.String(50))   
-    collapse             = db.Column(db.String(50))    
-    error_task_settings  = db.Column(db.String(500), server_default=(""))      
+    collapse             = db.Column(db.String(50))        
     
 class eMail(db.Model):
     __tablename__ = 'email'
@@ -189,8 +188,7 @@ class MQTT_Devices(db.Model):
     dashboard_check_sensor_input_values = db.Column(db.String(50))     
     dashboard_check_value_1             = db.Column(db.String(50))
     dashboard_check_value_2             = db.Column(db.String(50))
-    dashboard_check_value_3             = db.Column(db.String(50))      
-    previous_setting                    = db.Column(db.String(50))                
+    dashboard_check_value_3             = db.Column(db.String(50))                     
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -255,12 +253,6 @@ class Scheduler_Tasks(db.Model):
     last_ping_result           = db.Column(db.String(50), server_default=("None")) 
     collapse                   = db.Column(db.String(50))
     error_change_settings      = db.Column(db.String(500), server_default=("")) 
-    error_general_settings     = db.Column(db.String(500), server_default=(""))  
-    error_time_settings        = db.Column(db.String(500), server_default=(""))   
-    error_sun_settings         = db.Column(db.String(500), server_default=(""))       
-    error_sensor_settings      = db.Column(db.String(500), server_default=(""))   
-    error_position_settings    = db.Column(db.String(500), server_default=(""))        
-    error_task_settings        = db.Column(db.String(500), server_default=(""))  
 
 class Sensordata_Jobs(db.Model):
     __tablename__  = 'sensordata_jobs'
@@ -499,7 +491,7 @@ def ADD_CONTROLLER(mqtt_device_ieeeAddr):
                     
                     controller_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | added")  
+                    WRITE_LOGFILE_SYSTEM("DATABASE", "Controller - " + controller_name + " | added")  
 
                     return ""
 
@@ -599,22 +591,7 @@ def SET_CONTROLLER_TASKS(id, task_1 = "", task_2 = "", task_3 = "", task_4 = "",
     entry.task_7 = task_7
     entry.task_8 = task_8
     entry.task_9 = task_9               
-    db.session.commit()
-
-
-def SET_CONTROLLER_TASK_ERRORS(id, error_task_settings):    
-    entry = Controller.query.filter_by(id=id).first()
-
-    entry.error_task_settings = error_task_settings
-    db.session.commit()   
-
-
-def RESET_CONTROLLER_TASK_ERRORS():    
-    list_controller = Controller.query.all()
-    
-    for controller in list_controller:
-        controller.error_task_settings = ""
-        db.session.commit()        
+    db.session.commit() 
 
 
 def CHANGE_CONTROLLER_POSITION(id, direction):
@@ -665,7 +642,7 @@ def DELETE_CONTROLLER(id):
     controller_name      = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Controller - " + controller_name + " | deleted")   
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Controller - " + controller_name + " | deleted")   
     except:
         pass     
     
@@ -724,7 +701,7 @@ def SET_EMAIL_SETTINGS(mail_server_address, mail_server_port, mail_encoding, mai
     email.mail_password       = mail_password
     db.session.commit()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | eMail Server Settings | changed")
+    WRITE_LOGFILE_SYSTEM("DATABASE", "eMail | Server Settings | changed")
     return ""
 
 
@@ -799,9 +776,9 @@ def ADD_LED_GROUP(name):
                     db.session.add(group)
                     db.session.commit()
 
-                    RESET_LED_GROUP_ERRORS(i)
+                    RESET_LED_GROUP_ERRORS()
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | added")  
+                    WRITE_LOGFILE_SYSTEM("DATABASE", "LED | Group - " + name + " | added")  
 
                     return ""
 
@@ -1097,7 +1074,7 @@ def DELETE_LED_GROUP(id):
     name = GET_LED_GROUP_BY_ID(id).name
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Group - " + name + " | deleted")   
+        WRITE_LOGFILE_SYSTEM("DATABASE", "LED | Group - " + name + " | deleted")   
     except:
         pass     
     
@@ -1148,9 +1125,9 @@ def ADD_LED_SCENE(name):
                     db.session.add(scene)
                     db.session.commit()
 
-                    RESET_LED_SCENE_ERRORS(i)
+                    RESET_LED_SCENE_ERRORS()
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | added")  
+                    WRITE_LOGFILE_SYSTEM("DATABASE", "LED | Scene - " + name + " | added")  
 
                     return ""
 
@@ -1413,7 +1390,7 @@ def DELETE_LED_SCENE(id):
     name = GET_LED_SCENE_BY_ID(id).name
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | LED Scene - " + name + " | deleted") 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "LED | Scene - " + name + " | deleted") 
     except:
         pass 
 
@@ -1541,7 +1518,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
 def SET_MQTT_DEVICE_NAME(ieeeAddr, new_name):
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+    WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Device - " + entry.name + 
                          " | Gateway - " + entry.gateway +
                          " | Name changed" + 
                          " || Name - " + new_name)
@@ -1609,7 +1586,7 @@ def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_
         
         db.session.commit()  
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Device - " + entry.name + 
                              " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
                              " || Dashboard Check - " + entry.dashboard_check_option +
                              " | Dashboard Check Setting - " + entry.dashboard_check_setting +                          
@@ -1618,13 +1595,6 @@ def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_
                              " | Dashboard Check Value 2 - " + entry.dashboard_check_value_2 +      
                              " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
 
-                                                
-def SET_MQTT_DEVICE_PREVIOUS_SETTING(ieeeAddr, setting):
-    entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
-    
-    entry.previous_setting = setting
-    db.session.commit()  
-    
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type = "", description = "", input_values = "", input_events = "", commands = ""):
     entry = MQTT_Devices.query.filter_by(id=id).first()
@@ -1640,7 +1610,7 @@ def UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type = "", description =
         entry.input_events    = str(input_events)
         entry.commands        = str(commands)        
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | MQTT Device - " + entry.name + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Device - " + entry.name + 
                              " | Gateway - " + entry.gateway +
                              " | changed" + 
                              " || Name - " + name + 
@@ -1775,10 +1745,17 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
                
     else:
         
-        device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+        device  = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+        gateway = device.gateway
         
         MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).delete()
         db.session.commit() 
+        
+        if gateway == "mqtt":
+            WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Device - " + device_name + " | deleted")
+        if gateway == "zigbee2mqtt":
+            WRITE_LOGFILE_SYSTEM("DATABASE", "ZigBee2MQTT | Device - " + device_name + " | deleted")
+                    
         return True
 
 
@@ -1824,7 +1801,7 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
                 db.session.add(plant)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + name + " | added")    
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + name + " | added")    
                            
                 return ""
                 
@@ -1853,7 +1830,7 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, group, pumptime, control_
         
         db.session.commit()  
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + old_name + " | changed || Name - " + entry.name + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + old_name + " | changed || Name - " + entry.name + 
                              " | MQTT-Device - " + entry.mqtt_device.name + 
                              " | Group - " + str(entry.group) +                              
                              " | Pumptime - " + str(entry.pumptime) + 
@@ -1909,7 +1886,7 @@ def DELETE_PLANT(plant_id):
     entry = GET_PLANT_BY_ID(plant_id)
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Plant - " + entry.name + " | deleted")   
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + entry.name + " | deleted")   
     except:
         pass 
     
@@ -1957,7 +1934,7 @@ def ADD_PROGRAM(name):
                 db.session.add(program)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Program - " + name + " | added")  
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Program - " + name + " | added")  
 
                 return ""
 
@@ -1987,7 +1964,7 @@ def DELETE_PROGRAM(id):
     name = Programs.query.filter_by(id=id).first().name
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Program - " + name + " | deleted")  
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Program - " + name + " | deleted")  
     except:
         pass 
 
@@ -2040,7 +2017,7 @@ def ADD_SCHEDULER_TASK(name, task_type):
                 
                 SET_SCHEDULER_TASK_COLLAPSE(i)
             
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler | Task - " + name + " | Task_Type - " + task_type + " | added")            
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Scheduler | Task - " + name + " | Task_Type - " + task_type + " | added")            
                 
                 return ""
 
@@ -2119,7 +2096,7 @@ def SET_SCHEDULER_TASK(id, name, task,
 
         db.session.commit()   
 
-        log_message = "Database | Scheduler | Task - " + old_name + " | changed || Name - " + entry.name + " | Task - " + entry.task
+        log_message = "Scheduler | Task - " + old_name + " | changed || Name - " + entry.name + " | Task - " + entry.task
 
         # option time
         if entry.option_time == "checked":
@@ -2196,7 +2173,7 @@ def SET_SCHEDULER_TASK(id, name, task,
 
             log_message = log_message + (" | Repeat - " + entry.option_repeat)
 
-        WRITE_LOGFILE_SYSTEM("EVENT", log_message) 
+        WRITE_LOGFILE_SYSTEM("DATABASE", log_message) 
 
 
 def SET_SCHEDULER_TASK_COLLAPSE(id):
@@ -2260,60 +2237,12 @@ def SET_SCHEDULER_TASK_CHANGE_ERRORS(id, error_change_settings):
     db.session.commit()   
 
 
-def SET_SCHEDULER_TASK_SETTING_GENERAL_ERRORS(id, error_general_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_general_settings = error_general_settings
-    db.session.commit()   
-    
-
-def SET_SCHEDULER_TASK_SETTING_TIME_ERRORS(id, error_time_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_time_settings = error_time_settings
-    db.session.commit()   
-
-
-def SET_SCHEDULER_TASK_SETTING_SUN_ERRORS(id, error_sun_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_sun_settings = error_sun_settings
-    db.session.commit()   
-
-
-def SET_SCHEDULER_TASK_SETTING_SENSOR_ERRORS(id, error_sensor_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_sensor_settings = error_sensor_settings
-    db.session.commit()   
-
-
-def SET_SCHEDULER_TASK_SETTING_POSITION_ERRORS(id, error_position_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_position_settings = error_position_settings
-    db.session.commit()   
-
-
-def SET_SCHEDULER_TASK_SETTING_TASK_ERRORS(id, error_task_settings):    
-    entry = Scheduler_Tasks.query.filter_by(id=id).first()
-
-    entry.error_task_settings = error_task_settings
-    db.session.commit()   
-
-
 def RESET_SCHEDULER_TASK_ERRORS(): 
     list_scheduler_tasks = Scheduler_Tasks.query.all()
     
     for scheduler_task in list_scheduler_tasks:
         
         scheduler_task.error_change_settings   = ""
-        scheduler_task.error_general_settings  = ""
-        scheduler_task.error_time_settings     = ""
-        scheduler_task.error_sun_settings      = ""    
-        scheduler_task.error_sensor_settings   = ""
-        scheduler_task.error_position_settings = ""
-        scheduler_task.error_task_settings     = ""
         db.session.commit()   
 
 
@@ -2429,7 +2358,7 @@ def DELETE_SCHEDULER_TASK(task_id):
     entry = GET_SCHEDULER_TASK_BY_ID(task_id)
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Scheduler | Task - " + entry.name + " | deleted")   
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Scheduler | Task - " + entry.name + " | deleted")   
     except:
         pass         
     
@@ -2489,7 +2418,7 @@ def ADD_SENSORDATA_JOB(name, filename):
                 db.session.add(sensordata_job)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job - " + name + " | added")                    
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Sensordata Job - " + name + " | added")                    
                 return ""
 
         return "Job-Limit erreicht (25)"
@@ -2513,7 +2442,7 @@ def SET_SENSORDATA_JOB(id, name, filename, mqtt_device_ieeeAddr, sensor_key, alw
         entry.always_active = always_active
         db.session.commit()    
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job - " + entry.name + " | changed || Name - " + entry.name + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Sensordata Job - " + entry.name + " | changed || Name - " + entry.name + 
                              " | Filename - " +  entry.filename + 
                              " | MQTT-Device - " + entry.mqtt_device.name + 
                              " | Sensor - " + entry.sensor_key + 
@@ -2567,7 +2496,7 @@ def DELETE_SENSORDATA_JOB(id):
     entry = GET_SENSORDATA_JOB_BY_ID(id)
     
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Sensordata Job - " + entry.name + " | deleted")
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Sensordata Job - " + entry.name + " | deleted")
     except:
         pass     
  
@@ -2654,7 +2583,7 @@ def UPDATE_SPEECHCONTROL_LED_TASK(id, keywords):
         entry.keywords   = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | LED Task - " + entry.task + " | changed || Keywords - " + entry.keywords) 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | LED Task - " + entry.task + " | changed || Keywords - " + entry.keywords) 
 
 
 # #######
@@ -2692,7 +2621,7 @@ def ADD_SPEECHCONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr):
             db.session.add(speechcontrol_device_task)
             db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + task + " | added")                    
+            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Device Task - " + task + " | added")                    
             return ""
 
     return "Task-Limit erreicht (25)"
@@ -2708,7 +2637,7 @@ def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting, keywords):
         entry.keywords = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + entry.task + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Device Task - " + entry.task + 
                              " | changed || Setting - " + entry.setting +
                              " | Keywords - " + str(entry.keywords))
   
@@ -2762,7 +2691,7 @@ def DELETE_SPEECHCONTROL_DEVICE_TASK(task_id):
     entry = GET_SPEECHCONTROL_DEVICE_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Device Task - " + entry.task + " | deleted")    
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Device Task - " + entry.task + " | deleted")    
     except:
         pass
     
@@ -2805,7 +2734,7 @@ def ADD_SPEECHCONTROL_PROGRAM_TASK(task, program_id):
             db.session.add(speechcontrol_program_task)
             db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + task + " | added")                    
+            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Program Task - " + task + " | added")                    
             return ""
 
     return "Task-Limit erreicht (25)"
@@ -2821,7 +2750,7 @@ def UPDATE_SPEECHCONTROL_PROGRAM_TASK(id, command, keywords):
         entry.keywords = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + entry.task + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Program Task - " + entry.task + 
                              " | changed || Setting Value - " + entry.command +
                              " | Keywords - " + str(entry.keywords))
   
@@ -2875,7 +2804,7 @@ def DELETE_SPEECHCONTROL_PROGRAM_TASK(task_id):
     entry = GET_SPEECHCONTROL_PROGRAM_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Program Task - " + entry.task + " | deleted")    
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Program Task - " + entry.task + " | deleted")    
     except:
         pass
     
@@ -2918,7 +2847,7 @@ def ADD_SPEECHCONTROL_SPOTIFY_TASK(task, spotify_command):
             db.session.add(speechcontrol_spotify_task)
             db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + task + " | added")                    
+            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + task + " | added")                    
             return ""
 
     return "Task-Limit erreicht (25)"
@@ -2934,7 +2863,7 @@ def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, setting, keywords):
         entry.keywords  = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + entry.task + 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + entry.task + 
                              " | changed || Setting - " + entry.setting +
                              " | Keywords - " + str(entry.keywords))
   
@@ -2988,7 +2917,7 @@ def DELETE_SPEECHCONTROL_SPOTIFY_TASK(task_id):
     entry = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(task_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | Speechcontrol | Spotify Task - " + entry.task + " | deleted")    
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + entry.task + " | deleted")    
     except:
         pass
     
@@ -3035,7 +2964,7 @@ def ADD_USER(name, email, password):
         db.session.add(new_user)
         db.session.commit()
 
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + name + " | added") 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + name + " | added") 
 
         return ""
 
@@ -3082,7 +3011,7 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
         entry.email_notification_camera = email_notification_camera
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + old_username + " | changed || Username - " + entry.username +
+        WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + old_username + " | changed || Username - " + entry.username +
                              " | eMail - " + entry.email + 
                              " | Permission-Dashboard - " + entry.permission_dashboard +
                              " | Permission-Scheduler - " + entry.permission_scheduler +     
@@ -3118,7 +3047,7 @@ def RESET_USER_PASSWORD(id, hashed_password):
     entry.password = hashed_password    
     db.session.commit()
     
-    WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + entry.username + " | Password changed")
+    WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + entry.username + " | Password changed")
 
 
 def SET_USER_COLLAPSE(id):
@@ -3204,7 +3133,7 @@ def DELETE_USER(user_id):
     entry = GET_USER_BY_ID(user_id)
 
     try:
-        WRITE_LOGFILE_SYSTEM("EVENT", "Database | User - " + entry.username + " | deleted")    
+        WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + entry.username + " | deleted")    
     except:
         pass
     

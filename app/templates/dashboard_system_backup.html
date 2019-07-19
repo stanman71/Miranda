@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Backup
+  System / Backup
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
 {% endblock %}
@@ -95,9 +95,19 @@
 <br>
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / Backup</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
 
 
 <!-- system error message -->
@@ -112,7 +122,6 @@
 <!-- system settings -->
 
       <div class="panel panel-default">
-        <div class="panel-heading"><font color="white"><b>Backup</b></font></div>
         <div class="panel-body">   
           <div class="well well-sm">    
             <div class="well well-sm">CPU Temperatur = {{ cpu_temperature }}</div>

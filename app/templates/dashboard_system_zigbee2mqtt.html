@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  ZigBee2MQTT
+  System / ZigBee2MQTT
 {% endblock %}
 
 {% block styles %}
@@ -86,45 +86,56 @@
 <br>
 
 <div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
-    <div class="row">
-      <div class="col">
-        <font color="white">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+          
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / ZigBee2MQTT</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>             
 
 <!-- zigbee settings -->
   
     <div class="panel panel-default">
-      <div class="panel-heading"><font color="white"><b>ZigBee2MQTT</b></font></div>
-        <div class="panel-body">   
-          <form method="POST">  
-            <div class="well well-sm">
-              <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee2mqtt[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
-                  <div class="state p-success">
-                    <label><font color="white">ZigBee2MQTT aktivieren</font></label>
-                  </div>
-                </div>
-                <br>
-                <div class="pretty p-default p-round">
-                  <input {{check_value_zigbee2mqtt[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
-                <div class="state p-danger">
-                  <label><font color="white">ZigBee2MQTT deaktivieren</font></label>
+      <div class="panel-body">   
+        <form method="POST">  
+          <div class="well well-sm">
+            <div class="pretty p-default p-round">
+                <input {{check_value_zigbee2mqtt[0]}} type="radio" value="True" name="radio_zigbee2mqtt">
+                <div class="state p-success">
+                  <label><font color="white">ZigBee2MQTT aktivieren</font></label>
                 </div>
               </div>
+              <br>
+              <div class="pretty p-default p-round">
+                <input {{check_value_zigbee2mqtt[1]}} type="radio" value="False" name="radio_zigbee2mqtt">
+              <div class="state p-danger">
+                <label><font color="white">ZigBee2MQTT deaktivieren</font></label>
+              </div>
             </div>
+          </div>
 
 <section id="table"></section>
 
-            <font color="salmon"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
-            <br>     
-            <br>                
-            <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
-          </form>  
-        </div>  
-      </div>    
+          <font color="salmon"><b>Um ZigBee2MQTT nutzen zu können, muss MQTT aktiviert sein</b></font>       
+          <br>     
+          <br>                
+          <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#'" name="set_setting_zigbee2mqtt" class="btn btn-default" value="Auswählen"/>
+        </form>  
+      </div>  
+    </div>    
+
 
 <!-- zigbee2mqtt -->
 
 {% if zigbee2mqtt_setting != "False" %}
+
 
 <!-- zigbee2mqtt error messages -->
 
@@ -208,28 +219,27 @@
 
 <section id="pairing"></section>
 
-        <div class="panel-group">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_settings"><font color="white"><b> Einstellungen </b></font></a>
-              </h4>
-            </div>   
-            <div id="collapse_zigbee2mqtt_settings" class="panel-collapse collapse {{collapse_zigbee2mqtt_settings}} ">      
-              <div class="panel-body">      
-              <form method="POST">         
-                <div class="well well-sm">   
-           
-              
+
 <!-- zigbee2mqtt error message pairing -->
 
 {% if error_message_zigbee2mqtt_pairing != "" %}
   <div class="alert alert-danger" role="alert">
     {{ error_message_zigbee2mqtt_pairing }}
   </div>      
-{% endif %}                 
-              
-              
+{% endif %}     
+
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_zigbee2mqtt_settings"><font color="white"><b> Einstellungen </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_zigbee2mqtt_settings" class="panel-collapse collapse {{collapse_zigbee2mqtt_settings}} ">      
+            <div class="panel-body">      
+            <form method="POST">         
+              <div class="well well-sm">     
                 <div class="pretty p-default p-round">
                     <input {{check_value_pairing[0]}} type="radio" value="True" name="radio_pairing">
                   <div class="state p-success">
@@ -294,7 +304,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_log"><font color="white"><b> Log </b></font></a>
+                <a data-toggle="collapse" href="#collapse_zigbee2mqtt_log"><font color="white"><b> Log-Datei </b></font></a>
               </h4>
             </div>   
             <div id="collapse_zigbee2mqtt_log" class="panel-collapse collapse {{collapse_zigbee2mqtt_log}} ">      

@@ -455,7 +455,6 @@ def dashboard_system_controller():
     error_message_add_controller = ""
     error_message_controller_tasks = ""
     
-    RESET_CONTROLLER_TASK_ERRORS()
     RESET_CONTROLLER_COLLAPSE()
     UPDATE_CONTROLLER_EVENTS()
 
@@ -1355,23 +1354,26 @@ def delete_database_backup(filename):
 @permission_required
 def dashboard_system_log():
     error_message = ""
-    selected_type_event= "selected"
-    selected_type_status= "selected"
-    selected_type_success= "selected"   
-    selected_type_warning= "selected"                                                      
-    selected_type_error= "selected"
+    
+    selected_type_event    = "selected"
+    selected_type_status   = "selected"
+    selected_type_database = "selected"    
+    selected_type_success  = "selected"   
+    selected_type_warning  = "selected"                                                      
+    selected_type_error    = "selected"
 
     # create log types list
-    selected_log_types = ["EVENT", "STATUS", "SUCCESS", "WARNING", "ERROR"]     
+    selected_log_types = ["EVENT", "STATUS", "DATABASE", "SUCCESS", "WARNING", "ERROR"]     
    
     # change log selection 
     if request.form.get("select_log_types") != None:   
    
-        selected_type_event   = ""
-        selected_type_status  = ""
-        selected_type_success = ""   
-        selected_type_warning = ""                                                     
-        selected_type_error   = ""      
+        selected_type_event    = ""
+        selected_type_status   = ""
+        selected_type_database = ""        
+        selected_type_success  = ""   
+        selected_type_warning  = ""                                                     
+        selected_type_error    = ""      
         
         selected_log_types = [] 
    
@@ -1384,7 +1386,10 @@ def dashboard_system_log():
                 selected_log_types.append("EVENT")
             if element == "STATUS":
                 selected_type_status = "selected"
-                selected_log_types.append("STATUS")                
+                selected_log_types.append("STATUS")    
+            if element == "DATABASE":
+                selected_type_database = "selected"
+                selected_log_types.append("DATABASE")                               
             if element == "SUCCESS":
                 selected_type_success = "selected"
                 selected_log_types.append("SUCCESS")                
@@ -1411,9 +1416,10 @@ def dashboard_system_log():
                             timestamp=timestamp,
                             selected_type_event=selected_type_event,
                             selected_type_status=selected_type_status,
+                            selected_type_database=selected_type_database,                            
                             selected_type_success=selected_type_success,    
                             selected_type_warning=selected_type_warning,                                                      
-                            selected_type_error=selected_type_error,                       
+                            selected_type_error=selected_type_error,                    
                             data_log_system=data_log_system,                                                       
                             active08="active",
                             permission_dashboard=current_user.permission_dashboard,

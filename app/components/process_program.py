@@ -103,12 +103,32 @@ def PROGRAM_THREAD(program_id):
                             device      = ""
                             device      = GET_MQTT_DEVICE_BY_NAME(device_name)         
                             
-                            program_setting = line_content[2]
-                            program_setting = program_setting.replace(" ", "")
-                    
-                            # new device setting ?
-                            if program_setting != device.previous_setting:
-                                                     
+                            program_setting_formated = line_content[2]
+
+                            # convert string to json-format
+                            program_setting = program_setting_formated.replace(" ", "")
+                            program_setting = program_setting.replace(':', '":"')
+                            program_setting = program_setting.replace(',', '","')
+                            program_setting = '{"' + str(program_setting) + '"}'                        
+                                                         
+                            # new device setting ?	
+                            new_setting = False
+
+                            if not "," in program_setting:
+                                if not program_setting[1:-1] in device.last_values:
+                                    new_setting = True
+
+                            # more then one setting value:
+                            else:	
+                                program_setting_temp = program_setting[1:-1]
+                                list_program_setting = program_setting_temp.split(",")
+
+                                for setting in list_program_setting:
+
+                                    if not setting in device.last_values:
+                                        new_setting = True	
+
+                            if new_setting == True:	
 
                                 # mqtt
                                 if device.gateway == "mqtt":
@@ -129,16 +149,17 @@ def PROGRAM_THREAD(program_id):
 
                                     heapq.heappush(process_management_queue, (30,  ("program", "device", channel, msg)))
 
-                                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, program_setting, 5, 20)       
-                                                                                                                        
-
-                            else:
+                                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, program_setting, 5, 20)      
                                 
+                                    
+                            else:
+
                                 if device.gateway == "mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + str(program_setting)) 
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + program_setting_formated) 
 
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + str(program_setting))  
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + program_setting_formated)  		                           
+
                                
                         except:
                             WRITE_LOGFILE_SYSTEM("ERROR", "Program - " + program_name + " | Device - " +  device_name + " | not founded")

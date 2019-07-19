@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-  Sprachsteuerung
+  System / Sprachsteuerung
 {% endblock %}
 
 {% block styles %}
@@ -15,7 +15,7 @@
 {% block scripts %}
   {{ super() }}
   
-  <script src="{{ url_for('static', filename='js/bootstrap-select.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
   <script>$('.selectpicker').selectpicker();</script>
   
   <script>
@@ -119,11 +119,20 @@
   <div class="row">
     <div class="col">
       <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / Sprachsteuerung</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
 
 <!-- settings snowboy -->
 
       <div class="panel panel-default">
-      <div class="panel-heading"><font color="white"><b>Sprachsteuerung</b></font></div>
         <div class="panel-body">   
           <form method="POST">
             <div class="well well-sm">  
@@ -303,7 +312,7 @@
                       <option value = "{{ entry.setting }}" > {{ entry.setting }} </option>
                       <optgroup>
                         {% for each in entry.mqtt_device.commands.split(' ') %}
-                          <option value= "{{ each }}" > {{ each }} </option>
+                          <option value= "{{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
                         {% endfor %}   
                       </optgroup>                                                                                
                     </select>                                    
