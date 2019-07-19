@@ -220,6 +220,11 @@
       </div>      
  
  
+<!------------------>
+<!--      led     -->  
+<!------------------>  
+ 
+ 
 <!-- error message led -->   
 
 {% if error_message_led != [] %}
@@ -293,7 +298,12 @@
     <br>
  
  
- <!-- error message devices -->                    
+<!------------------>
+<!--    devices   -->  
+<!------------------>  
+
+ 
+<!-- error message devices -->                    
 
 {% if error_message_devices != "" %}
   <div class="alert alert-warning" role="alert">
@@ -308,10 +318,9 @@
     {% endfor %}
   </div>      
 {% endif %}
-
  
-<!-- table devices -->      
-      
+
+<!-- table devices -->    
     
     <div class="panel-group">
       <div class="panel panel-default">
@@ -338,7 +347,7 @@
                           <optgroup>
                             {% if entry.commands != None %}  
                               {% for each in entry.commands.split(' ') %}
-                                <option value= "{{ each }}" > {{ each }} </option>
+                                <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
                               {% endfor %}  
                             {% endif %}      
                           </optgroup>                                                                       
@@ -372,7 +381,7 @@
                     </tr>
                     <tr> 
                       <td style="width:45%"> </td>
-                      <td style="width:55%"> {{entry.previous_setting}} </td>    
+                      <td style="width:55%"> {{entry.last_values_formated}} </td>    
                     </tr>   
                     <tr>
                       <td></td>
@@ -392,6 +401,11 @@
       </div>
     </div>  
     <br>
+
+
+<!------------------>
+<!--   watering   -->
+<!------------------>
 
 
 <!-- error message watering -->      
@@ -429,7 +443,7 @@
                             <optgroup>
                             {% if entry.commands != None %}
                               {% for each in entry.mqtt_device.commands.split(' ') %}
-                                <option value= "{{ each }}" > {{ each }} </option>
+                                <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
                               {% endfor %}  
                             {% endif %}   
                             </optgroup>                            
@@ -460,6 +474,11 @@
     <br>
 
 
+<!------------------>
+<!--   programs   -->
+<!------------------>
+
+
 <!-- error message programs -->      
               
 {% if error_message_start_program != "" %}
@@ -469,7 +488,7 @@
 {% endif %}    
 
 
- <!-- program control -->      
+<!-- program control -->      
      
       
       <div class="panel-group">
@@ -518,8 +537,35 @@
       <br>
 
 
- <!-- table sensor values -->      
+<!------------------>
+<!--    spotify   -->    
+<!------------------>
+
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_spotify"><font color="white"><b>Spotify</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_spotify" class="panel-collapse collapse {{ collapse_dashboard_spotify }}" >      
+            <div class="panel-body">             
+              <form method="POST">             
+                <div class="well well-sm">    
+                  
+                                                   
+                </div>              
+              </form>
+            </div> 
+          </div>
+        </div>    
+      </div>
       
+
+<!------------------>
+<!--    sensors   -->      
+<!------------------>    
       
       <div class="panel-group">
         <div class="panel panel-default">
@@ -555,32 +601,10 @@
       <br>
 
 
-<!-- table spotify -->    
-
-
-      <div class="panel-group">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse_spotify"><font color="white"><b>Spotify</b></font></a>
-            </h4>
-          </div>   
-          <div id="collapse_spotify" class="panel-collapse collapse {{ collapse_dashboard_spotify }}" >      
-            <div class="panel-body">             
-              <form method="POST">             
-                <div class="well well-sm">    
-                  
-                                                   
-                </div>              
-              </form>
-            </div> 
-          </div>
-        </div>    
-      </div>
-   
+<!---------------->      
+<!-- system log --> 
+<!---------------->     
       
-<!-- select log type --> 
-     
       
 <section id="system_log"></section>      
      
@@ -663,7 +687,9 @@
       <br>     
 
 
+<!------------------>
 <!-- informations -->
+<!------------------>
 
 
     <div class="panel-group">
