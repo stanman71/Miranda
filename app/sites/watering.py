@@ -111,7 +111,7 @@ def dashboard_watering():
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_control")  
     dropdown_list_groups   = [1, 2, 3, 4, 5]
-    dropdown_list_pumptime = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
+    dropdown_list_pumptime = [15, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
     dropdown_list_moisture = ["less", "normal", "much"]
     
     plants_list = GET_ALL_PLANTS()

@@ -682,25 +682,25 @@ def SPEECHCONTROL_LED_TASK(answer):
 								LED_SET_SCENE(group.id, scene.id, brightness)
 								LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 3, 15)     
 								time.sleep(1)
-								break								 
+								return								 
 
 							else:
 								WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness) + " %")     
-								break
+								return
 
 						else:
 							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Scene not founded")
-							break
+							return
 
 					else:
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
-						break
+						return
 
 
 				except Exception as e:
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))  
-					break
+					return
 
 
 	# ##############
@@ -770,28 +770,28 @@ def SPEECHCONTROL_LED_TASK(answer):
 									LED_SET_BRIGHTNESS(group.id, brightness)
 									LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
 									time.sleep(1)
-									break									     
+									return									     
 
 								else:
 									WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %") 
-									break	
+									return	
 
 							else:
 								WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 
-								break	                                   
+								return	                                   
 
 						else:
 							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Brightness value not founded")
-							break
+							return
 							
 					else:
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
-						break
+						return
 
 				except Exception as e:
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
-					break
+					return
 
 
 	# ##################
@@ -838,21 +838,21 @@ def SPEECHCONTROL_LED_TASK(answer):
 								LED_TURN_OFF_GROUP(group.id)
 								LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)  
 								time.sleep(1)
-								break    								     
+								return    								     
 
 							else:
 								WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 	
-								break                       
+								return                       
 
 					else:
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | No Group founded")
-						break                        
+						return                        
 
 
 				except Exception as e:
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
-					break
+					return
 
 
 	# #################
@@ -885,16 +885,16 @@ def SPEECHCONTROL_LED_TASK(answer):
 							LED_TURN_OFF_GROUP(group.id)
 							LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)   
 							time.sleep(1)
-							break							    
+							return							    
 
 						else:
 							WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
-							break
+							return
 
 				except Exception as e:
 					print(e)
 					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
-					break
+					return
 
 
 # ############
@@ -962,8 +962,8 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 									msg      = speechcontrol_setting
 
 									MQTT_PUBLISH(channel, msg)  
-									
 									MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, speechcontrol_setting, 5, 20)
+									return
 									
 									
 								# zigbee2mqtt
@@ -973,32 +973,29 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 									msg      = speechcontrol_setting
 
 									MQTT_PUBLISH(channel, msg)  
-									
 									ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
-
+									return
 		
 							else:
 								
 								if device.gateway == "mqtt":
 									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+									return
 
 								if device.gateway == "zigbee2mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated)  								         
+									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+									return 								         
 
-
-							time.sleep(1)
-							break
-						
 
 						else:
 							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")
-							break                             
+							return                             
 
 
 					except Exception as e:
 						print(e)
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | " + str(e))      
-						break                    
+						return                    
 
 
 
@@ -1039,26 +1036,26 @@ def SPEECHCONTROL_PROGRAM_TASK(answer):
 
 							if command == "start" and program_running == None:
 								START_PROGRAM_THREAD(program.id)
-								break
+								return
 								
 							elif command == "start" and program_running != None:
 								WRITE_LOGFILE_SYSTEM("WARNING", "Speechcontrol | Program Task | " + answer + " | Other Program running")	
-								break	
+								return	
 											
 							elif command == "stop":
 								STOP_PROGRAM_THREAD() 
-								break
+								return
 								
 							else:
 								WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Command not valid")
-								break
+								return
 
 						else:
 							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Program not founded")	
-							break	     
+							return	     
 
 					except Exception as e:
 						print(e)
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | " + str(e))   
-						break 
+						return 
 

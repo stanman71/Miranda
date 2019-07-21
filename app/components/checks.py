@@ -1128,8 +1128,18 @@ def CHECK_WATERING_SETTINGS():
 
          if entry.id != plant.id:
             if entry.mqtt_device_ieeeAddr == plant.mqtt_device_ieeeAddr:
-               list_errors.append(entry.name + " >>> Gerät mehrmals zugeordnet")
+               list_errors.append(entry.name + " >>> Gerät mehrmals zugeordnet >>> " + entry.mqtt_device.name)
 
+   # group missing ?
+   for entry in entries:
+        if entry.group == "None" or entry.group == None:
+            list_errors.append(entry.name + " >>> keiner Gruppe zugeteilt")
+
+   # pumptime missing ?
+   for entry in entries:
+        if entry.pumptime == "None" or entry.pumptime == None:
+            list_errors.append(entry.name + " >>> keine Pumpdauer eingestellt")
+            
    # moisture missing ?
    for entry in entries:
         if entry.control_sensor_moisture == "checked" and (entry.moisture == "None" or entry.moisture == None or entry.moisture == ""):

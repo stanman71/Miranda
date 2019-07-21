@@ -183,7 +183,12 @@ border-color: white;
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
 }
 
-.img-container {
+.img-container-graph {
+  position:relative;
+  padding-top:75%;
+}
+
+.img-container-topology {
   position:relative;
   padding-top:50%;
 }

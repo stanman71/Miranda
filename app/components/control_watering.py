@@ -23,25 +23,21 @@ def START_PUMP(plant_id):
     ieeeAddr = plant.mqtt_device.ieeeAddr 
     
     channel  = "SmartHome/mqtt/" + ieeeAddr + "/set"
-    msg      = '{"pump_state":"ON","pump_time":' + str(plant.pumptime) + '}'
+    msg      = '{"pump":"ON","pump_time":' + str(plant.pumptime) + '}'
     
     heapq.heappush(process_management_queue, (50, ("watering", channel, msg)))
     
     time.sleep(5)
     
     # check pump started first try
-    if MQTT_CHECK_SETTING(ieeeAddr, '"pump_state":"ON"', 10):
-        
-        SET_MQTT_DEVICE_PREVIOUS_SETTING(ieeeAddr, '"pump_state":"ON"')
+    if MQTT_CHECK_SETTING(ieeeAddr, msg, 10):
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return True
 
     time.sleep(5)
 
     # check pump started second try 
-    if MQTT_CHECK_SETTING(ieeeAddr, '"pump_state":"ON"', 10):
-        
-        SET_MQTT_DEVICE_PREVIOUS_SETTING(ieeeAddr, '"pump_state":"ON"')
+    if MQTT_CHECK_SETTING(ieeeAddr, msg, 10):
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return True
         
@@ -85,7 +81,8 @@ def WATERING_THREAD(group_number):
         if group_number == "all" or group_number == "ALL":
             valid_group = True
                
-            
+        
+        # valid group founded
         if valid_group == True:
             
             watering = False
@@ -142,12 +139,12 @@ def WATERING_THREAD(group_number):
     seconds = 0
                     
     # check watering process
-    while pump_running != 0 or seconds < 60:
+    while pump_running != 0 or seconds == 180:
         
         time.sleep(10)
     
         # check pump stopped ?
-        if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , '"pump_state":"OFF"', 15):  
+        if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , '"pump":"OFF"', 15):  
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump stopped")                              
             pump_running = False
 
@@ -161,8 +158,6 @@ def WATERING_THREAD(group_number):
         warnings = True
 
 
-    SET_MQTT_DEVICE_PREVIOUS_SETTING(plant.mqtt_device.ieeeAddr, '"pump_state":"OFF"')
-        
     if warnings == True:
         WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Finished with Warning")               
     else:

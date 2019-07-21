@@ -2,8 +2,14 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+matplotlib.rc('axes',edgecolor='white')
+
 import io
 import base64
+
+from pandas.plotting import register_matplotlib_converters
+register_matplotlib_converters()
+
 
 from app.components.file_management import GET_PATH
 
@@ -86,13 +92,24 @@ def BUILD_GRAPH(df_sensors):
 		except:
 			pass	
 	
-	
-		plt.gcf().autofmt_xdate()
 
-		plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.185),
-				   ncol=2, fancybox=True, shadow=True)				
+		# change color
+		plt.grid(color='white', linestyle='-', linewidth=0.25, alpha=0.5)
+		plt.tick_params(colors='white')
+
+
+		# format legent
+		leg = plt.legend(loc='upper center', bbox_to_anchor=(0.5, 1.185),
+						 ncol=2, fancybox=True)
+		leg.get_frame().set_alpha(0.1)	
+						
+		for text in leg.get_texts():
+			plt.setp(text, color = 'white')
+		
+
+		plt.gcf().autofmt_xdate()
 				
-		plt.savefig(GET_PATH() + '/app/static/images/graph.png')
+		plt.savefig(GET_PATH() + '/app/static/images/graph.png', transparent=True)
 		plt.close()
 		
 		return True   

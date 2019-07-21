@@ -1794,8 +1794,6 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
                 plant = Plants(
                         id                   = i,
                         name                 = name, 
-                        group                = 1,                        
-                        pumptime             = 30,
                         mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,            
                     )
                 db.session.add(plant)

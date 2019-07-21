@@ -125,9 +125,14 @@ def MQTT_THREAD():
 			
 
 			# start message thread for additional processes
-			if channel != "" and channel != None:		
-				Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ieeeAddr, device_type,))
-				Thread.start()    
+			if channel != "" and channel != None:	
+				
+				try:	
+					Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ieeeAddr, device_type,))
+					Thread.start()   
+				except Exception as e:
+					 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Thread | " + str(e)) 
+					 print(e)
 			
 	
 	def on_connect(client, userdata, flags, rc):
@@ -177,28 +182,23 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 	
 	channel = channel.split("/")
-	
-	# start function networkmap
-	try:        
-		if channel[3] == "networkmap" and channel[4] == "graphviz":
-
-			# generate graphviz diagram
-			from graphviz import Source, render
-
-			src = Source(msg)
-			src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
-	except:
-		pass
-
 
 	# filter incoming messages
 	try:
+		if channel[2] == "devices":
+			return
+		if channel[2] == "test":	
+			return
+		if channel[2] == "log":	
+			return			
 		if channel[3] == "get":
-			pass
+			return
 		if channel[3] == "set":
-			pass	
+			return	
 		if channel[3] == "config":
-			pass
+			return
+					
+		# zigbee2mqtt log messages
 		if channel[3] == "log":
 			
 			data = json.loads(msg)
@@ -212,9 +212,17 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 			# remove devices
 			if data["type"] == "device_removed":
 				WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Device deleted - " + data["message"]) 		
+
+		# start function networkmap
+		if channel[3] == "networkmap" and channel[4] == "graphviz":
+
+			# generate graphviz diagram
+			from graphviz import Source, render
+
+			src = Source(msg)
+			src.render(filename = GET_PATH() + '/app/static/images/zigbee_topology', format='png', cleanup=True) 
 				
 	except:
-		
 		
 		if ieeeAddr != "":	
 			
@@ -227,10 +235,10 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 			# save sensor data of passive devices
 			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
 				list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
-				
-				for job in list_jobs:
+
+				for job in list_jobs:	
 					MQTT_SAVE_SENSORDATA(job) 
-			
+
 					
 		if device_type == "sensor_passiv" or device_type == "sensor_active":
 			
@@ -238,19 +246,6 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 			for task in GET_ALL_SCHEDULER_TASKS():
 				if task.option_sensors == "checked":
 					heapq.heappush(process_management_queue, (10, ("scheduler", "sensor", task.id, ieeeAddr)))
-
-			# save sensor data of passive devices
-			if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
-				list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
-				
-				for job in list_jobs:
-					MQTT_SAVE_SENSORDATA(job) 
-
-
-		if device_type == "watering_array":
-			
-			# start watering thread
-			heapq.heappush(process_management_queue, (10, ("watering", "start", ieeeAddr)))
 
 
 		if device_type == "controller":
@@ -512,7 +507,7 @@ def MQTT_REQUEST_SENSORDATA(job_name):
 
    
 def MQTT_SAVE_SENSORDATA(job_id):
-   
+	
 	sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
 	device_gateway  = sensordata_job.mqtt_device.gateway
 	device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr 
@@ -529,7 +524,7 @@ def MQTT_SAVE_SENSORDATA(job_id):
 				filename = sensordata_job.filename
 	
 				WRITE_SENSORDATA_FILE(filename, device_ieeeAddr, sensor_key, data[sensor_key])
-				break
+				return
 
 			except:
 				pass

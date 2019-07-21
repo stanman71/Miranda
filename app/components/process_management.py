@@ -160,11 +160,6 @@ def PROCESS_MANAGEMENT_THREAD():
 			#  watering
 			# ##########
 				
-			if process[0] == "watering" and process[1] == "start":
-				ieeeAddr = process[2]
-				START_WATERING_THREAD(ieeeAddr)
-				
-				
 			if process[0] == "watering" and process[1] != "start":
 				channel = process[1]
 				msg     = process[2]

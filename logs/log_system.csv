@@ -22267,3 +22267,1011 @@ expected ',' or ']', but got '<scalar>'
 2019-07-19 18:16:49,EVENT,|Speechcontrol || Detection || präsentationen und sowas von ausbaust|
 2019-07-19 18:30:03,SUCCESS,|MQTT || Update Devices|
 2019-07-19 18:45:01,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed || state: ON|
+2019-07-19 18:57:34,EVENT,|MQTT || started|
+2019-07-19 18:57:34,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-19 18:57:37,EVENT,|ZigBee2MQTT || Connected|
+2019-07-19 18:57:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-19 18:57:39,EVENT,|Speechcontrol || started|
+2019-07-19 18:58:10,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed || state: OFF|
+2019-07-19 18:58:19,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed || state: ON|
+2019-07-19 18:59:48,DATABASE,|Sensordata Job - environment_temperature || added|
+2019-07-19 18:59:48,EVENT,|File || /csv/environment.csv || created|
+2019-07-19 19:00:01,DATABASE,|Sensordata Job - environment_light || added|
+2019-07-19 19:00:07,DATABASE,|Sensordata Job - environment_temperature || changed |||| Name - environment_temperature || Filename - environment || MQTT-Device - 0x88888 || Sensor - temperature || Always_Active - |
+2019-07-19 19:00:07,DATABASE,|Sensordata Job - environment_light || changed |||| Name - environment_light || Filename - environment || MQTT-Device - 0x88888 || Sensor - None || Always_Active - |
+2019-07-19 19:00:13,DATABASE,|Sensordata Job - environment_light || changed |||| Name - environment_light || Filename - environment || MQTT-Device - 0x88888 || Sensor - humidity || Always_Active - |
+2019-07-19 19:00:19,DATABASE,|Sensordata Job - environment_light || changed |||| Name - environment_light || Filename - environment || MQTT-Device - 0x88888 || Sensor - light || Always_Active - |
+2019-07-19 19:00:32,DATABASE,|Sensordata Job - environment_humanity || added|
+2019-07-19 19:00:38,DATABASE,|Sensordata Job - environment_humanity || changed |||| Name - environment_humanity || Filename - environment || MQTT-Device - 0x88888 || Sensor - humidity || Always_Active - |
+2019-07-19 19:00:48,DATABASE,|Sensordata Job - environment_humidity || changed |||| Name - environment_humidity || Filename - environment || MQTT-Device - 0x88888 || Sensor - humidity || Always_Active - |
+2019-07-19 19:00:59,DATABASE,|Sensordata Job - environment_temperature || changed |||| Name - environment_temperature || Filename - environment || MQTT-Device - 0x88888 || Sensor - temperature || Always_Active - checked|
+2019-07-19 19:00:59,DATABASE,|Sensordata Job - environment_light || changed |||| Name - environment_light || Filename - environment || MQTT-Device - 0x88888 || Sensor - light || Always_Active - checked|
+2019-07-19 19:00:59,DATABASE,|Sensordata Job - environment_humidity || changed |||| Name - environment_humidity || Filename - environment || MQTT-Device - 0x88888 || Sensor - humidity || Always_Active - checked|
+2019-07-19 19:01:12,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-19 19:17:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 19:17:31,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 19:19:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 19:19:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 19:25:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 19:25:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 19:26:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 19:26:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-19 20:24:19,EVENT,|Speechcontrol || Detection || starte normal im wohnzimmer auf siebzig prozent|
+2019-07-19 20:24:21,WARNING,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-07-19 20:24:23,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 70 %|
+2019-07-19 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-19 20:39:23,EVENT,|Speechcontrol || Detection || starte relax im wohnzimmer|
+2019-07-19 20:39:26,SUCCESS,|LED || Group - wohnzimmer || Setting changed || relax : 100 %|
+2019-07-19 20:40:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 20:40:02,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 20:40:33,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 20:40:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 20:41:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 20:41:12,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 20:41:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 20:41:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 21:09:31,EVENT,|Speechcontrol || Detection || ausschalten|
+2019-07-19 21:09:31,ERROR,|Speechcontrol || LED Task || ausschalten || No Group founded|
+2019-07-19 21:09:43,EVENT,|Speechcontrol || Detection || wohnzimmer ausschalten|
+2019-07-19 21:09:46,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-19 21:09:57,EVENT,|Speechcontrol || Detection || starte normal im wohnzimmer auf siebzig prozent|
+2019-07-19 21:09:59,WARNING,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-07-19 21:10:01,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 70 %|
+2019-07-19 21:12:33,EVENT,|MQTT || started|
+2019-07-19 21:12:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-19 21:12:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-19 21:12:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-19 21:12:37,EVENT,|Speechcontrol || started|
+2019-07-19 21:12:38,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-19 21:12:53,EVENT,|Speechcontrol || Detection || starten normal im wohnzimmer auf siebzig prozent|
+2019-07-19 21:12:56,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 70 %|
+2019-07-19 21:14:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 21:14:32,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 21:15:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 21:15:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 21:20:13,EVENT,|MQTT || started|
+2019-07-19 21:20:13,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-19 21:20:16,EVENT,|ZigBee2MQTT || Connected|
+2019-07-19 21:20:17,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-19 21:20:17,EVENT,|Speechcontrol || started|
+2019-07-19 21:20:32,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-19 21:20:44,EVENT,|Speechcontrol || Detection || starte normal im wohnzimmer auf siebzig prozent|
+2019-07-19 21:20:48,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 70 %|
+2019-07-19 21:20:59,EVENT,|Speechcontrol || Detection || wohnzimmer auf achtzig prozent|
+2019-07-19 21:21:02,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 80 %|
+2019-07-19 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-19 21:33:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-19 21:33:31,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-19 21:34:34,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-19 21:34:40,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-19 21:39:53,EVENT,|Speechcontrol || Detection || steckdose|
+2019-07-19 21:39:53,STATUS,|Zigbee2MQTT || Device - Steckdose_TV || state: ON|
+2019-07-19 21:40:41,EVENT,|File || /csv/jh.csv || deleted|
+2019-07-19 21:40:45,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-19 21:41:37,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-07-19 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-19 22:33:00,DATABASE,|Controller - 0x00158d000275de23 || added|
+2019-07-19 22:33:15,DATABASE,|Controller - 0x00158d000275de23 || deleted|
+2019-07-19 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-07-20 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-20 00:30:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-20 00:49:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 00:49:55,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 00:52:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 00:52:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 08:57:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 08:57:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 08:58:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 08:58:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 08:58:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 08:58:25,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 08:59:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 08:59:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 09:10:02,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-20 09:10:21,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-07-20 09:10:50,EVENT,|File || /csv/temperature.csv || downloaded|
+2019-07-20 09:13:39,EVENT,|MQTT || started|
+2019-07-20 09:13:39,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:13:42,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:13:43,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:13:43,EVENT,|Speechcontrol || started|
+2019-07-20 09:13:53,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:14:04,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-20 09:14:18,EVENT,|File || /csv/watersensor.csv || downloaded|
+2019-07-20 09:14:56,EVENT,|MQTT || started|
+2019-07-20 09:14:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:14:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:15:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:15:00,EVENT,|Speechcontrol || started|
+2019-07-20 09:15:08,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:17:14,EVENT,|MQTT || started|
+2019-07-20 09:17:14,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:17:17,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:17:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:17:18,EVENT,|Speechcontrol || started|
+2019-07-20 09:17:24,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:18:24,EVENT,|MQTT || started|
+2019-07-20 09:18:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:18:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:18:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:18:28,EVENT,|Speechcontrol || started|
+2019-07-20 09:18:33,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:20:24,EVENT,|MQTT || started|
+2019-07-20 09:20:24,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:20:27,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:20:28,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:20:28,EVENT,|Speechcontrol || started|
+2019-07-20 09:20:33,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:22:55,EVENT,|MQTT || started|
+2019-07-20 09:22:55,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:22:58,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:22:59,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:22:59,EVENT,|Speechcontrol || started|
+2019-07-20 09:23:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:26:12,EVENT,|MQTT || started|
+2019-07-20 09:26:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:26:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:26:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:26:16,EVENT,|Speechcontrol || started|
+2019-07-20 09:27:15,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:30:33,EVENT,|MQTT || started|
+2019-07-20 09:30:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:30:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:30:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:30:37,EVENT,|Speechcontrol || started|
+2019-07-20 09:31:41,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:32:29,EVENT,|MQTT || started|
+2019-07-20 09:32:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:32:32,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:32:33,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:32:33,EVENT,|Speechcontrol || started|
+2019-07-20 09:32:42,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:33:11,EVENT,|MQTT || started|
+2019-07-20 09:33:11,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:33:14,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:33:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:33:15,EVENT,|Speechcontrol || started|
+2019-07-20 09:33:19,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:35:48,EVENT,|MQTT || started|
+2019-07-20 09:35:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 09:35:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 09:35:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 09:35:52,EVENT,|Speechcontrol || started|
+2019-07-20 09:36:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 09:36:11,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-20 09:36:31,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed || state: OFF|
+2019-07-20 09:36:37,SUCCESS,|ZigBee2MQTT || Device - Steckdose_TV || Setting changed || state: ON|
+2019-07-20 09:36:54,EVENT,|File || /csv/environment.csv || downloaded|
+2019-07-20 09:44:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 09:44:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 09:46:02,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 09:46:08,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 10:23:56,STATUS,|Zigbee2MQTT || Device - Steckdose_TV || state: ON|
+2019-07-20 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:32:09,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:32:31,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:32:53,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:32:59,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:34:22,EVENT,|MQTT || started|
+2019-07-20 10:34:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 10:34:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 10:34:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 10:34:26,EVENT,|Speechcontrol || started|
+2019-07-20 10:34:29,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:35:24,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:35:45,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:35:56,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:36:15,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:36:40,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:36:45,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:36:56,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:38:00,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:38:22,EVENT,|MQTT || started|
+2019-07-20 10:38:22,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 10:38:25,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 10:38:26,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 10:38:26,EVENT,|Speechcontrol || started|
+2019-07-20 10:38:31,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:39:03,EVENT,|MQTT || started|
+2019-07-20 10:39:03,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 10:39:06,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 10:39:07,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 10:39:08,EVENT,|Speechcontrol || started|
+2019-07-20 10:40:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:40:47,EVENT,|MQTT || started|
+2019-07-20 10:40:47,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 10:40:50,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 10:40:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 10:40:51,EVENT,|Speechcontrol || started|
+2019-07-20 10:40:57,DATABASE,|MQTT || Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,pump_time,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON","pump_time":15} {"pump":"ON","pump_time":30} {"pump":"ON","pump_time":45} {"pump":"ON","pump_time":60} {"pump":"OFF"}|
+2019-07-20 10:40:57,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:41:04,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:41:50,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:41:57,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:42:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:44:13,DATABASE,|MQTT || Device - 0x99999 || Gateway - mqtt || changed |||| Name - 0x99999 || ieeeAddr - 0x99999 || Model - watering_array_v1 || device_type - watering_control || description - MQTT Watering_Array || Input_values - pump,pump_time,sensor_moisture,sensor_watertank || Input_events -  || Commands - {"pump":"ON","pump_time":15} {"pump":"ON","pump_time":30} {"pump":"ON","pump_time":45} {"pump":"ON","pump_time":60} {"pump":"ON"} {"pump":"OFF"}|
+2019-07-20 10:44:13,SUCCESS,|MQTT || Update Devices|
+2019-07-20 10:44:22,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: ON|
+2019-07-20 10:44:27,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: OFF|
+2019-07-20 10:44:32,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: ON, pump_time: 15|
+2019-07-20 10:45:08,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:45:14,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:45:21,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:45:27,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:45:27,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 10:45:30,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 10:45:32,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:45:47,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 10:46:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 10:46:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 11:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:00:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:00:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:01:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:01:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:01:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:01:34,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:02:20,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:02:25,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:25:14,SUCCESS,|MQTT || Update Devices|
+2019-07-20 12:26:15,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:28:58,SUCCESS,|MQTT || Update Devices|
+2019-07-20 12:29:20,SUCCESS,|MQTT || Update Devices|
+2019-07-20 12:29:59,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 12:30:16,SUCCESS,|MQTT || Update Devices|
+2019-07-20 12:30:21,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:31:17,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 12:39:38,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:39:41,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:40:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:40:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:40:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:40:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:48:00,DATABASE,|Scheduler || Task - bad_on || changed |||| Name - bad_on || Task - scene /// bad /// normal /// 100 || MQTT-Device_1 - 0x77777 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - true || Repeat - checked|
+2019-07-20 12:48:01,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:48:06,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:48:15,DATABASE,|Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - 0x77777 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || Repeat - checked|
+2019-07-20 12:48:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:48:27,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:48:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:48:53,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:48:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:48:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:49:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:49:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:49:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:49:25,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:50:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:50:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:50:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:50:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:52:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:52:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:53:35,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:53:40,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:53:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:53:46,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:53:52,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:53:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:56:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:56:04,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:56:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:56:14,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:56:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:56:24,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:56:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:56:35,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:56:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:56:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:56:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:56:51,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:56:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:56:58,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:57:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:57:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:57:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:57:24,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:57:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:57:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:57:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:57:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 12:58:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 12:58:52,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 12:59:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 12:59:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:01:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:01:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:01:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:01:34,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:03:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:03:49,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:04:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:04:27,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:05:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:05:10,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:05:11,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:05:13,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:06:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:06:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:06:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:06:25,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:06:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:06:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:07:13,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:07:15,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:07:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:07:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:07:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:07:44,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:07:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:08:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:08:06,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:08:09,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:08:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:08:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:08:21,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:08:23,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:09:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:09:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:09:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:09:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:09:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:09:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:09:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:09:26,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:09:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:09:49,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:09:55,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:09:57,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:10:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:10:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:10:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:10:20,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:12:12,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: ON|
+2019-07-20 13:13:12,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 13:13:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:13:18,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: OFF|
+2019-07-20 13:13:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:13:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:13:43,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:13:53,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:13:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:14:03,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:14:05,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:14:18,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 13:18:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:18:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:19:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:19:18,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:19:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:19:35,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:20:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:20:44,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:20:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:21:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:23:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:23:03,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:24:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:24:16,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:24:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:24:34,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:24:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:24:47,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:25:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:25:25,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:26:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:26:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:26:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:27:01,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:27:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:27:09,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:27:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:27:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:27:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:27:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:27:44,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:27:46,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:27:59,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:28:05,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:29:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:29:37,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed']|
+2019-07-20 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 13:31:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 13:38:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:38:10,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:38:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:38:17,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:40:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:40:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:44:07,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:44:10,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:44:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:44:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:45:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:45:11,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:45:41,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:45:46,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:46:47,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:46:50,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:46:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:47:01,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:47:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:47:10,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:47:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:47:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:51:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:51:19,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:51:29,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:51:34,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:54:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:54:07,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:54:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:54:14,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:56:10,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:56:13,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 13:57:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 13:57:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 13:57:24,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 13:57:27,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:03:11,EVENT,|Speechcontrol || Detection || passt|
+2019-07-20 14:15:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:15:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:15:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:15:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:30:11,SUCCESS,|MQTT || Update Devices|
+2019-07-20 14:30:15,SUCCESS,|MQTT || Update Devices|
+2019-07-20 14:30:19,SUCCESS,|MQTT || Update Devices|
+2019-07-20 14:31:12,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 14:31:20,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 14:31:21,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 14:31:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:31:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:33:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:33:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:33:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:33:22,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:33:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:33:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:34:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:34:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:34:47,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:34:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:36:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:36:06,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:36:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:36:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:36:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:36:24,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:36:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:36:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:38:08,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:38:10,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:38:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:38:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:38:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:38:23,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:38:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:38:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:38:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:38:41,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:39:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:39:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:39:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:39:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:39:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:39:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:39:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:39:50,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:39:53,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:39:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:39:58,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:40:01,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:40:05,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:40:10,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:40:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:40:44,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:40:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:40:56,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:45:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:45:19,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:45:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:45:34,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:45:34,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:45:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:45:43,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:45:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:45:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:45:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:45:58,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:46:04,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:46:05,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:46:08,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:46:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:46:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:46:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:46:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:47:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:47:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:47:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:47:14,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:47:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:47:25,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:47:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:47:33,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:47:33,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:47:36,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:47:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:47:55,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:48:15,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:48:18,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:48:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:48:37,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 14:58:29,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 14:58:31,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 14:59:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 14:59:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 15:02:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 15:02:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 15:05:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 15:05:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 15:29:33,EVENT,|MQTT || started|
+2019-07-20 15:29:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-20 15:29:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-20 15:29:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-20 15:29:38,EVENT,|Speechcontrol || started|
+2019-07-20 15:29:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 15:30:01,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 15:30:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 15:30:14,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 15:31:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 15:38:08,EVENT,|Speechcontrol || Detection || |
+2019-07-20 15:50:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 15:50:27,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 15:51:26,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 15:51:31,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 15:51:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 15:51:37,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 15:52:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 15:52:11,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 15:54:52,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 15:54:55,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 15:56:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 15:56:21,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:10:41,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:10:43,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:17:27,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:17:33,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:24:28,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:24:30,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:26:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:26:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 16:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 16:35:00,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:35:02,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:36:08,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:36:13,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:45:39,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:45:42,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:47:14,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:47:19,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:47:20,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:47:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:49:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:49:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:49:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:49:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:51:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:51:18,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 16:51:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 16:51:28,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 16:53:16,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 16:53:18,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:04:40,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:04:45,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:05:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:05:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:06:13,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:06:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:08:53,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:08:55,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:09:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:09:17,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:09:35,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:09:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:10:21,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:10:26,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:11:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:11:35,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:12:56,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:13:01,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:20:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:20:19,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:20:30,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:20:36,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:20:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:20:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:22:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:22:56,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:23:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:23:50,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:26:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:26:17,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:26:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:26:48,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:27:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:27:17,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:27:32,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:27:34,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:27:38,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:27:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:27:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:27:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 17:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 17:31:25,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:31:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:32:02,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:32:05,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:32:06,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:32:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:33:57,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:33:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:34:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:34:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:34:54,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:34:57,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:35:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:35:30,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:36:50,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:36:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:37:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:37:09,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:40:25,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-20 17:41:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:41:16,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:41:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:41:56,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:41:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:41:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:42:29,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-20 17:43:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:43:17,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:43:19,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:43:22,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:43:28,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:43:34,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:43:38,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-20 17:43:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:43:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:44:43,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 49 %|
+2019-07-20 17:44:43,STATUS,|LED || Group - bad || normal : 100 %|
+2019-07-20 17:44:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:44:44,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:44:49,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 72 %|
+2019-07-20 17:44:49,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:44:50,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:47:51,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:47:53,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:49:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:49:45,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:49:50,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:49:50,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:53:21,STATUS,|LED || Group - wohnzimmer || normal : 72 %|
+2019-07-20 17:53:27,STATUS,|LED || Group - wohnzimmer || normal : 72 %|
+2019-07-20 17:53:32,SUCCESS,|LED || Group - bad || Setting changed || normal : 26 %|
+2019-07-20 17:53:35,STATUS,|LED || Group - wohnzimmer || normal : 72 %|
+2019-07-20 17:53:38,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:53:48,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:53:50,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:54:31,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:54:32,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:54:37,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:54:37,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:54:45,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:54:47,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:54:51,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:54:56,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:55:40,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:55:42,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:55:47,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:55:52,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 17:56:56,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 17:56:59,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 17:57:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 17:57:09,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 18:18:59,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed || state: ON|
+2019-07-20 18:21:25,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 18:21:28,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 18:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 18:35:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-20 18:35:18,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 18:35:20,WARNING,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-07-20 18:35:21,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 100 %|
+2019-07-20 18:35:29,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 80 %|
+2019-07-20 18:35:33,SUCCESS,|LED || Group - wohnzimmer || Setting changed || normal : 60 %|
+2019-07-20 18:43:17,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 18:43:20,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 19:03:17,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 19:03:23,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 19:03:23,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 19:03:26,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 19:23:24,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 19:23:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 19:26:14,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 19:26:17,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 19:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 19:46:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 19:46:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 19:49:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 19:49:12,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 20:07:54,EVENT,|Speechcontrol || Detection || direkt an der küste ist der ruhig das grad mal|
+2019-07-20 20:09:09,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 20:09:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 20:09:22,EVENT,|Speechcontrol || Detection || ja ja ich habe das wir heute interessant für|
+2019-07-20 20:09:42,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 20:09:45,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 20:20:16,EVENT,|Speechcontrol || Detection || kultur|
+2019-07-20 20:29:42,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 20:29:48,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 20:30:42,EVENT,|Speechcontrol || Detection || das wäre auch|
+2019-07-20 20:31:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 20:31:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 20:31:52,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 20:51:49,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 20:51:54,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 20:55:37,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 20:55:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:00:11,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:00:15,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:00:16,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:00:20,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:00:49,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:00:51,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:04:19,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:04:24,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:06:49,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-07-20 21:09:47,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 21:09:59,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:10:02,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:10:12,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:10:17,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:10:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:10:46,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:13:07,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:13:12,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:13:30,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:13:32,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:13:37,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:13:43,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:13:46,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:13:48,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:14:04,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:14:04,EVENT,|File || /logs/log_zigbee2mqtt.csv || deleted|
+2019-07-20 21:14:04,EVENT,|File || /logs/log_zigbee2mqtt.csv || created|
+2019-07-20 21:14:09,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:18:22,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:18:24,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:23:57,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:24:02,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:25:09,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:25:12,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:27:12,STATUS,|LED || Group - wohnzimmer || normal : 60 %|
+2019-07-20 21:27:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:27:31,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:27:33,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:27:36,STATUS,|LED || Group - wohnzimmer || normal : 60 %|
+2019-07-20 21:27:38,SUCCESS,|LED || Group - bad || Setting changed || normal : 0 %|
+2019-07-20 21:27:56,STATUS,|LED || Group - wohnzimmer || normal : 60 %|
+2019-07-20 21:27:58,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 21:30:04,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:30:06,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:31:05,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 21:45:10,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:45:15,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:45:36,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:45:39,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 21:47:23,EVENT,|Scheduler || Task - bad_off || started|
+2019-07-20 21:47:29,SUCCESS,|LED || Group - bad || Setting changed || OFF : 0 %|
+2019-07-20 21:48:43,EVENT,|Scheduler || Task - bad_on || started|
+2019-07-20 21:48:45,SUCCESS,|LED || Group - bad || Setting changed || normal : 100 %|
+2019-07-20 22:06:13,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 22:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-20 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-20 23:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-07-21 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-21 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-21 00:30:10,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-21 00:30:20,WARNING,|LED || Group - bad || ['Badlampe_01 >>> Setting not confirmed', 'Badlampe_02 >>> Setting not confirmed']|
+2019-07-21 00:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 01:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 02:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 03:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 04:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 05:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 06:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 07:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 08:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 09:31:04,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 10:16:53,EVENT,|MQTT || started|
+2019-07-21 10:16:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:16:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:16:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:16:58,EVENT,|Speechcontrol || started|
+2019-07-21 10:17:17,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: ON|
+2019-07-21 10:17:26,SUCCESS,|MQTT || Device - 0x99999 || Setting changed || pump: OFF|
+2019-07-21 10:17:43,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 90 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - much|
+2019-07-21 10:17:54,DATABASE,|Scheduler || Task - test || Task_Type -  || added|
+2019-07-21 10:18:18,DATABASE,|Scheduler || Task - test || changed |||| Name - test || Task - watering_plants /// 2 || Day - None || Hour - None || Minute - None || Repeat - checked|
+2019-07-21 10:18:27,DATABASE,|Scheduler || Task - test || changed |||| Name - test || Task - watering_plants /// 2 || Day - * || Hour - * || Minute - 20 || Repeat - checked|
+2019-07-21 10:20:01,WARNING,|Watering || Plant - jhg || Watertank Low|
+2019-07-21 10:21:01,WARNING,|Watering || Plant - jhg || Finished with Warning|
+2019-07-21 10:25:54,EVENT,|MQTT || started|
+2019-07-21 10:25:54,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:25:57,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:25:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:25:58,EVENT,|Speechcontrol || started|
+2019-07-21 10:26:06,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - much|
+2019-07-21 10:26:09,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture -  || Moisture - much|
+2019-07-21 10:26:29,DATABASE,|Scheduler || Task - test || changed |||| Name - test || Task - watering_plants /// 2 || Day - * || Hour - * || Minute - 28 || Repeat - checked|
+2019-07-21 10:28:01,WARNING,|Watering || Plant - jhg || Watertank Low|
+2019-07-21 10:28:01,EVENT,|Watering || Plant - jhg || Starting|
+2019-07-21 10:28:11,SUCCESS,|Watering || Plant - jhg || Pump started|
+2019-07-21 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-21 10:33:06,EVENT,|MQTT || started|
+2019-07-21 10:33:06,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:33:09,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:33:10,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:33:10,EVENT,|Speechcontrol || started|
+2019-07-21 10:33:40,DATABASE,|Scheduler || Task - test || changed |||| Name - test || Task - watering_plants /// 2 || Day - * || Hour - * || Minute - 35 || Repeat - checked|
+2019-07-21 10:35:01,EVENT,|Watering || Plant - jhg || Starting|
+2019-07-21 10:35:11,SUCCESS,|Watering || Plant - jhg || Pump started|
+2019-07-21 10:35:21,SUCCESS,|Watering || Plant - jhg || Pump stopped|
+2019-07-21 10:35:21,SUCCESS,|Watering || Plant - jhg || Finished|
+2019-07-21 10:36:04,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - None|
+2019-07-21 10:36:08,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - much|
+2019-07-21 10:36:16,DATABASE,|Plant - sd || added|
+2019-07-21 10:36:28,DATABASE,|Plant - sd || deleted|
+2019-07-21 10:37:29,EVENT,|MQTT || started|
+2019-07-21 10:37:29,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:37:32,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:37:33,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:37:33,EVENT,|Speechcontrol || started|
+2019-07-21 10:37:48,DATABASE,|Plant - ghf || added|
+2019-07-21 10:41:59,EVENT,|MQTT || started|
+2019-07-21 10:41:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:42:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:42:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:42:03,EVENT,|Speechcontrol || started|
+2019-07-21 10:42:33,EVENT,|MQTT || started|
+2019-07-21 10:42:33,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 10:42:36,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 10:42:37,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 10:42:37,EVENT,|Speechcontrol || started|
+2019-07-21 10:42:53,DATABASE,|Plant - jhg || changed |||| Name - jhg || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - much|
+2019-07-21 10:42:53,DATABASE,|Plant - ghf || changed |||| Name - ghf || MQTT-Device - 0x99999 || Group - 5 || Pumptime - None || Control Sensor Watertank -  || Control Sensor Moisture -  || Moisture - None|
+2019-07-21 10:43:11,DATABASE,|Plant - ghf || deleted|
+2019-07-21 10:43:24,DATABASE,|Plant - jhg || changed |||| Name - Pflanze_Fenster || MQTT-Device - 0x99999 || Group - 2 || Pumptime - 5 || Control Sensor Watertank - checked || Control Sensor Moisture - checked || Moisture - much|
+2019-07-21 10:49:17,EVENT,|Speechcontrol || Detection || |
+2019-07-21 11:00:56,EVENT,|MQTT || started|
+2019-07-21 11:00:56,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:00:59,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:01:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:01:00,EVENT,|Speechcontrol || started|
+2019-07-21 11:05:08,EVENT,|MQTT || started|
+2019-07-21 11:05:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:05:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:05:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:05:12,EVENT,|Speechcontrol || started|
+2019-07-21 11:07:38,EVENT,|MQTT || started|
+2019-07-21 11:07:38,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:07:41,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:07:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:07:42,EVENT,|Speechcontrol || started|
+2019-07-21 11:08:41,EVENT,|MQTT || started|
+2019-07-21 11:08:41,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:08:44,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:08:45,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:08:45,EVENT,|Speechcontrol || started|
+2019-07-21 11:08:46,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-07-21 11:11:02,EVENT,|MQTT || started|
+2019-07-21 11:11:02,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:11:05,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:11:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:11:07,EVENT,|Speechcontrol || started|
+2019-07-21 11:13:12,EVENT,|MQTT || started|
+2019-07-21 11:13:12,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:13:15,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:13:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:13:16,EVENT,|Speechcontrol || started|
+2019-07-21 11:14:48,EVENT,|MQTT || started|
+2019-07-21 11:14:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:14:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:14:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:14:52,EVENT,|Speechcontrol || started|
+2019-07-21 11:16:48,EVENT,|MQTT || started|
+2019-07-21 11:16:48,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:16:51,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:16:52,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:16:53,EVENT,|Speechcontrol || started|
+2019-07-21 11:17:30,EVENT,|MQTT || started|
+2019-07-21 11:17:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:17:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:17:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:17:34,EVENT,|Speechcontrol || started|
+2019-07-21 11:18:04,EVENT,|MQTT || started|
+2019-07-21 11:18:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:18:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:18:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:18:08,EVENT,|Speechcontrol || started|
+2019-07-21 11:20:04,EVENT,|MQTT || started|
+2019-07-21 11:20:04,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:20:07,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:20:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:20:08,EVENT,|Speechcontrol || started|
+2019-07-21 11:20:50,EVENT,|MQTT || started|
+2019-07-21 11:20:50,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:20:53,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:20:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:20:55,EVENT,|Speechcontrol || started|
+2019-07-21 11:22:08,EVENT,|MQTT || started|
+2019-07-21 11:22:08,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:22:11,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:22:12,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:22:12,EVENT,|Speechcontrol || started|
+2019-07-21 11:24:30,EVENT,|MQTT || started|
+2019-07-21 11:24:30,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:24:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:24:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:24:34,EVENT,|Speechcontrol || started|
+2019-07-21 11:24:59,EVENT,|MQTT || started|
+2019-07-21 11:24:59,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:25:02,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:25:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:25:04,EVENT,|Speechcontrol || started|
+2019-07-21 11:26:53,EVENT,|MQTT || started|
+2019-07-21 11:26:53,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:26:56,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:26:57,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:26:57,EVENT,|Speechcontrol || started|
+2019-07-21 11:28:21,EVENT,|MQTT || started|
+2019-07-21 11:28:21,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:28:24,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:28:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:28:26,EVENT,|Speechcontrol || started|
+2019-07-21 11:28:51,EVENT,|MQTT || started|
+2019-07-21 11:28:51,EVENT,|MQTT || Broker - localhost || connected|
+2019-07-21 11:28:54,EVENT,|ZigBee2MQTT || Connected|
+2019-07-21 11:28:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-21 11:28:55,EVENT,|Speechcontrol || started|
