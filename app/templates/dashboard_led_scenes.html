@@ -195,27 +195,27 @@
             <form method="POST" class="verticalform">
               <table class="table">
                 <thead>    
-                  <th scope="col"></th>                      
-                  <th scope="col">Szene</th> 
+                  <th scope="col" style="width:3%"></th>                      
+                  <th scope="col" style="width:20%">Szene</th> 
                   <th></th>
-                  <th></th>
+                  <th style="width:10%"></th>
                   <th scope="col">LED Nummer</th>
                   <th scope="col">RGB</th>
                   <th scope="col">Farbtemperatur</th>
                   <th scope="col">Helligkeit</th>
-                  <th scope="col"></th>
+                  <th scope="col" style="width:5%"></th>
                 </thead>
                 <tbody> 
                   <tr>
-                    <td style="width:3%">
+                    <td>
                       <a href="/dashboard/led/scenes/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/led/scenes/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                 
-                    <td style="width:20%">
+                    <td>
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                     </td> 
                     <td></td> 
-                    <td style="width:10%">
+                    <td>
                     <font size="+2">
                       <div class="row justify-content-md-center">
                         <div class="col-sm-1">                       

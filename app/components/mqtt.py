@@ -146,8 +146,8 @@ def MQTT_THREAD():
 	 
 	print("Connected to MQTT Broker: " + BROKER_ADDRESS)
 	
-	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | started") 
-	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | connected") 
+	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Started") 
+	WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | Connected") 
 	 
 	client.loop_forever()
 

@@ -1,13 +1,16 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from functools import wraps
-import datetime
 
 from app import app
 from app.database.database import *
 from app.components.checks import *
 from app.components.file_management import GET_ALL_LOCATIONS, GET_LOCATION_COORDINATES
 from app.components.process_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
+
+import datetime
+import spotipy
 
 
 # access rights
@@ -399,11 +402,39 @@ def dashboard_scheduler():
     dropdown_list_operators     = ["=", ">", "<"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
+
+    # list locations
     dropdown_list_locations = GET_ALL_LOCATIONS()
-    
+
     if "ERROR" in dropdown_list_locations:
         error_message_locations_import = dropdown_list_locations
         dropdown_list_locations = ""
+
+
+    # list device command option
+    list_device_command_options = []
+    
+    for device in GET_ALL_MQTT_DEVICES("device"):
+        list_device_command_options.append((device.name, device.commands))
+        
+    
+    # list spotify devices / playlists
+    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+        REFRESH_SPOTIFY_TOKEN()
+     
+    spotify_token = GET_SPOTIFY_TOKEN()    
+    
+    try:
+        sp       = spotipy.Spotify(auth=spotify_token)
+        sp.trace = False
+        
+        spotify_devices   = sp.devices()["devices"]        
+        spotify_playlists = sp.current_user_playlists(limit=20)["items"]   
+        
+    except:
+        spotify_devices   = ""       
+        spotify_playlists = ""   
+
 
     # get sensor list
     try:
@@ -547,6 +578,9 @@ def dashboard_scheduler():
                             dropdown_list_operators=dropdown_list_operators,
                             dropdown_list_operator_main=dropdown_list_operator_main,
                             dropdown_list_locations=dropdown_list_locations,
+                            spotify_devices=spotify_devices,
+                            spotify_playlists=spotify_playlists,   
+                            list_device_command_options=list_device_command_options,                            
                             mqtt_device_1_input_values=mqtt_device_1_input_values,
                             mqtt_device_2_input_values=mqtt_device_2_input_values,
                             mqtt_device_3_input_values=mqtt_device_3_input_values,

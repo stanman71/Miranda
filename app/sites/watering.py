@@ -27,9 +27,9 @@ def permission_required(f):
 @permission_required
 def dashboard_watering():
     error_message_add_plant = ""
-    error_message_change_name = ""
+    error_message_change_settings = ""
     pumptime = ""
-    moisture = ""
+    moisture_level = ""
     mqtt_device_ieeeAddr = ""
     mqtt_device_name = ""
     control_sensor_moisture = ""
@@ -54,8 +54,6 @@ def dashboard_watering():
         # change settings
         if request.form.get("change_settings") != None: 
             
-            print(request.form)
-             
             for i in range (1,26):
 
                 if request.form.get("set_name_" + str(i)) != None:
@@ -70,9 +68,8 @@ def dashboard_watering():
                         
                     else:
                         name = GET_PLANT_BY_ID(i).name 
-                        error_message_change_name = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"                        
+                        error_message_change_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"                        
     
-                    print(request.form.get("set_mqtt_device_" + str(i)))
     
                     mqtt_device = request.form.get("set_mqtt_device_" + str(i))
 
@@ -85,34 +82,59 @@ def dashboard_watering():
                     
                     group    = request.form.get("set_group_" + str(i))                                                                       
                     pumptime = request.form.get("set_pumptime_" + str(i))
-                
-                    if request.form.get("set_control_sensor_watertank_" + str(i)):
-                        control_sensor_watertank = "checked" 
-                    else:
-                        control_sensor_watertank = ""                
                     
                     if request.form.get("set_control_sensor_moisture_" + str(i)):
                         control_sensor_moisture = "checked" 
                     else:
                         control_sensor_moisture = ""
                         
-                    if request.form.get("set_moisture_" + str(i)) != None:
-                        moisture = request.form.get("set_moisture_" + str(i))  
+                    if request.form.get("set_moisture_level_" + str(i)) != None:
+                        moisture_level = request.form.get("set_moisture_level_" + str(i))  
                     else:
-                        moisture = "None"                                   
-
-                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_watertank, control_sensor_moisture, moisture)                       
-
-
+                        moisture_level = "None"    
+                            
+                    if request.form.get("set_control_sensor_watertank_" + str(i)):
+                        control_sensor_watertank = "checked" 
+                    else:
+                        control_sensor_watertank = ""       
+                      
+                        
+                    # set default pumptime_auto value
+                    if pumptime == "auto" and (GET_PLANT_PUMPTIME_AUTO(i) == None or GET_PLANT_PUMPTIME_AUTO(i) == "None"):
+                        
+                        if moisture_level == "less":
+                            SET_PLANT_PUMPTIME_AUTO(i, 15)   
+                                       
+                        elif moisture_level == "normal":
+                            SET_PLANT_PUMPTIME_AUTO(i, 30)  
+                              
+                        elif moisture_level == "much":
+                            SET_PLANT_PUMPTIME_AUTO(i, 45)    
+                            
+                        else:
+                            error_message_change_settings = "Auto-Mode nur in Verbindung mit einem Feuchtigkeitssensor"    
+                            pumptime = "None"         
+                       
+                    elif pumptime == "auto":
+                        pass
+                            
+                    else:
+                        SET_PLANT_PUMPTIME_AUTO(i, "None") 
+                        
+                        
+                    SET_PLANT_SETTINGS(i, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_moisture, moisture_level, control_sensor_watertank) 
+                    
+                    
+                    
     error_message_settings = CHECK_WATERING_SETTINGS()
 
     if mqtt_device_ieeeAddr != "":
         mqtt_device_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name  
 
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_control")  
-    dropdown_list_groups   = [1, 2, 3, 4, 5]
-    dropdown_list_pumptime = [15, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300]
-    dropdown_list_moisture = ["less", "normal", "much"]
+    dropdown_list_groups         = [1, 2, 3, 4, 5]
+    dropdown_list_pumptime       = ["15", "30", "60", "90", "120"]
+    dropdown_list_moisture_level = ["less", "normal", "much"]
     
     plants_list = GET_ALL_PLANTS()
 
@@ -120,13 +142,13 @@ def dashboard_watering():
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_groups=dropdown_list_groups,
                             dropdown_list_pumptime=dropdown_list_pumptime,
-                            dropdown_list_moisture=dropdown_list_moisture,
+                            dropdown_list_moisture_level=dropdown_list_moisture_level,
                             plants_list=plants_list,
-                            moisture=moisture,
+                            moisture_level=moisture_level,
                             mqtt_device_ieeeAddr=mqtt_device_ieeeAddr,
                             mqtt_device_name=mqtt_device_name,
                             error_message_add_plant=error_message_add_plant,   
-                            error_message_change_name=error_message_change_name,   
+                            error_message_change_settings=error_message_change_settings,   
                             error_message_settings=error_message_settings,                                                                                                                                                                                    
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   

@@ -252,16 +252,16 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col">Gruppe</th> 
-                  <th scope="col">LEDs</th> 
-                  <th scope="col">Szene</th> 
-                  <th scope="col">Helligkeit</th>
+                  <th scope="col" style="width:14%">Gruppe</th> 
+                  <th scope="col" style="width:46%">LEDs</th> 
+                  <th scope="col" style="width:20%">Szene</th> 
+                  <th scope="col" style="width:20%">Helligkeit</th>
                 </thead>
                 <tbody> 
                   {% for entry in data_led %}
                   <tr>
-                    <td style="width:14%"> {{entry.name}} </td> 
-                    <td style="width:46%"> 
+                    <td> {{entry.name}} </td> 
+                    <td> 
                       {% if entry.led_name_1 != "None" and entry.led_name_1 != None %}
                         {{entry.led_name_1}}
                       {% endif %} 
@@ -290,7 +290,7 @@
                       | {{entry.led_name_9}}
                       {% endif %}                                         
                     </td> 
-                    <td style="width:20%"> 
+                    <td> 
                       <select class="selectpicker" data-width="100%" data-live-search="true" name="set_group_{{ entry.id }}">
                         <option value= "{{ entry.current_setting }}" > {{ entry.current_setting }} </option>
                         <optgroup>
@@ -303,7 +303,7 @@
                         </optgroup>                                                                                 
                       </select>                       
                     </td>
-                    <td style="width:20%">              
+                    <td>              
                       <input id="input_brightness" type="range" class="slider" name="set_brightness_{{ entry.id }}" min="0" max="100" value="{{ entry.current_brightness }}" />
                     </td>                                    
                   </tr>
@@ -379,19 +379,18 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col">Gerät</th> 
-                  <th scope="col">Kontrolle</th> 
-                  <th scope="col">Befehl</th> 
-                  <th scope="col">Letzte Werte</th> 
+                  <th scope="col" style="width:14%">Gerät</th> 
+                  <th scope="col" style="width:46%">Kontrolle</th> 
+                  <th scope="col" style="width:20%">Befehl</th> 
+                  <th scope="col" style="width:20%">Letzte Werte</th> 
                 </thead>
                 <tbody> 
                           
                   {% for entry in data_device %}
                   
                     <tr>
-                      <td style="width:14%"> {{entry.name}} </td>
-                      
-                      <td style="width:46%">      
+                      <td> {{entry.name}} </td>  
+                      <td>      
                         <div class="row justify-content-md-center">
                           <div class="col-sm-6">   
                             <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_option_{{ entry.id }}">
@@ -414,10 +413,8 @@
                                 <option value= "None" > None </option>      
                               </optgroup>                                            
                             </select>  
-                          </div>     
-                          
-                          
-                          
+                          </div>         
+                                           
                           {% if entry.dashboard_check_option != "None" %} 
                         
                             <!-- check option ip_address --> 
@@ -459,8 +456,7 @@
                     {% endif %}    
                                     
                     </td>
-                    
-                    <td style="width:20%">   
+                    <td>   
                       <select class="selectpicker" data-width="100%" name="set_dashboard_setting_{{ entry.id }}">
                         <option value = "None" > None </option>                          
                         <optgroup>
@@ -472,14 +468,12 @@
                         </optgroup>                                                                       
                       </select>                                                  
                     </td>
-                    <td style="width:20%"> {{entry.last_values_formated}} </td>    
-                    
+                    <td> {{entry.last_values_formated}} </td>    
                   </tr>
                   
                   <!-- second row --> 
                   
                   <tr>                   
-                    
                     <td></td>
                     <td>
  
@@ -523,8 +517,7 @@
                                     {% endfor %}      
                                   </optgroup>                                                                                 
                                 </select> 
-                              </div>           
-                                      
+                              </div>                   
                               <div class="col-sm-3"> 
                                 <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
                               </div>                          
@@ -534,16 +527,13 @@
                           {% endif %}   
                           
                           <td></td>
-                          <td></td>               
-                          
+                          <td></td>                 
                         </tr>
                         <tr>
-     
                           <td></td>
                           <td></td>        
                           <td></td>
-                          <td></td>    
-                        
+                          <td></td>                    
                         </tr>
                           
                   {% endfor %}  
@@ -612,19 +602,19 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col">Pflanze</th> 
-                  <th scope="col">Gruppe</th> 
-                  <th scope="col">Letzte Werte</th> 
-                  <th scope="col">Befehl</th>                   
-                  <th scope="col">Letzter Kontakt</th>  
+                  <th scope="col" style="width:14%">Pflanze</th> 
+                  <th scope="col" style="width:8%">Gruppe</th> 
+                  <th scope="col" style="width:38%">Letzte Werte</th> 
+                  <th scope="col" style="width:20%">Befehl</th>                   
+                  <th scope="col" style="width:20%">Letzter Kontakt</th>  
                 </thead>
                 <tbody> 
                   {% for entry in data_watering_control %}
                     <tr>
-                      <td style="width:14%"> {{entry.name}} </td>
-                      <td style="width:8%"> {{entry.group}} </td>
-                      <td style="width:38%"> {{entry.mqtt_device.last_values_formated}} </td>
-                      <td style="width:20%">  
+                      <td> {{entry.name}} </td>
+                      <td> {{entry.group}} </td>
+                      <td> {{entry.mqtt_device.last_values_formated}} </td>
+                      <td>  
                         <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
                           <option value= "None" > None </option>                      
                           <optgroup>
@@ -636,7 +626,7 @@
                           </optgroup>                            
                         </select>                        
                       </td>                       
-                      <td style="width:20%"> {{entry.mqtt_device.last_contact}} </td>
+                      <td> {{entry.mqtt_device.last_contact}} </td>
                     </tr>
                   {% endfor %}  
                 </tbody>
@@ -747,6 +737,15 @@
 <!------------------>
 
 
+<!-- error message spotify -->   
+
+{% if error_message_spotify != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ error_message_spotify }}
+  </div>      
+{% endif %}
+
+
 <!-- table spotify -->    
 
 <section id="spotify"></section>  
@@ -778,95 +777,97 @@
                 </form>
               </div>
           
-          {% if tupel_current_playback != "" %}  
+          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') %}  
           
-            <div class="well well-sm">     
-              <table class="table">
-                <thead>
-                  <th scope="col">Gerät Name</th>   
-                  <th scope="col">Gerät Typ</th> 
-                  <th scope="col">Aktiv</th>                    
-                  <th scope="col">Lautstärke</th>                                     
-                  <th scope="col">Track</th>                                     
-                  <th scope="col">Interpreten</th>                    
-                  <th scope="col">Zeitpunkt</th>  
-                  <th scope="col">Playlist</th> 
-                  <th scope="col">Shuffle</th> 
-                </thead>                                             
-                <tbody> 
-                  <tr>
-                    <td style="width:11%">
-                      {{ tupel_current_playback[0] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[1] }}
-                    </td>  
-                    <td style="width:11%">
-                      {{ tupel_current_playback[2] }}
-                    </td>  
-                    <td style="width:11%">
-                      {{ tupel_current_playback[3] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[4] }} 
-                    </td>                          
-                    <td style="width:11%">
-                      {% for artist in tupel_current_playback[5] %}
-                         {{ artist }}
-                      {% endfor %} 
-                    </td>                      
-                    <td style="width:11%">
-                      {{ tupel_current_playback[6] }}  
-                    </td>      
-                    <td style="width:11%">
-                      {{ tupel_current_playback[7] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[8] }}
-                    </td>                                                                                                                           
-                  </tr>             
-                </tbody>
-              </table>                                 
-            </div>
             <div class="well well-sm"> 
-              <form method="POST">          
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-1">     
-                    <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_start">
-                      <span class="glyphicon glyphicon-play"></span>
-                    </button>                               
-                  </div>
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_previous">
-                      <span class="glyphicon glyphicon-fast-backward"></span>
-                    </button>
-                  </div>                              
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_next">
-                      <span class="glyphicon glyphicon-fast-forward"></span>
-                    </button>
-                  </div>        
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_stop">
-                      <span class="glyphicon glyphicon-pause"></span>
-                    </button>
-                  </div>        
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_volume">
-                      <span class="glyphicon glyphicon-bullhorn"></span>
-                    </button>
-                  </div>                      
-                  <div class="col-sm-7">
-                    <div class="slidecontainer"> 
-                      <div class="col-md-10 text-center">                       
-                        <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
-                      </div>                                                     
-                    </div>                          
-                  </div>                                                     
-                </div>              
-              </form>
+              <div class="well well-sm">     
+                <table class="table">
+                  <thead>
+                    <th scope="col" style="width:11%">Gerät Name</th>   
+                    <th scope="col" style="width:11%">Gerät Typ</th> 
+                    <th scope="col" style="width:11%">Aktiv</th>                    
+                    <th scope="col" style="width:11%">Lautstärke</th>                                     
+                    <th scope="col" style="width:11%">Track</th>                                     
+                    <th scope="col" style="width:11%">Interpreten</th>                    
+                    <th scope="col" style="width:11%">Zeitpunkt</th>  
+                    <th scope="col" style="width:11%">Playlist</th> 
+                    <th scope="col" style="width:11%">Shuffle</th> 
+                  </thead>                                             
+                  <tbody> 
+                    <tr>
+                      <td>
+                        {{ tupel_current_playback[0] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[1] }}
+                      </td>  
+                      <td>
+                        {{ tupel_current_playback[2] }}
+                      </td>  
+                      <td>
+                        {{ tupel_current_playback[3] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[4] }} 
+                      </td>                          
+                      <td>
+                        {% for artist in tupel_current_playback[5] %}
+                           {{ artist }}
+                        {% endfor %} 
+                      </td>                      
+                      <td>
+                        {{ tupel_current_playback[6] }}  
+                      </td>      
+                      <td>
+                        {{ tupel_current_playback[7] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[8] }}
+                      </td>                                                                                                                           
+                    </tr>             
+                  </tbody>
+                </table>                                 
+              </div>
+              <div class="well well-sm"> 
+                <form method="POST">          
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-1">     
+                      <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_play">
+                        <span class="glyphicon glyphicon-play"></span>
+                      </button>                               
+                    </div>
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_previous">
+                        <span class="glyphicon glyphicon-fast-backward"></span>
+                      </button>
+                    </div>                              
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_next">
+                        <span class="glyphicon glyphicon-fast-forward"></span>
+                      </button>
+                    </div>        
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_stop">
+                        <span class="glyphicon glyphicon-pause"></span>
+                      </button>
+                    </div>        
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_volume">
+                        <span class="glyphicon glyphicon-bullhorn"></span>
+                      </button>
+                    </div>                      
+                    <div class="col-sm-7">
+                      <div class="slidecontainer"> 
+                        <div class="col-md-10 text-center">                       
+                          <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
+                        </div>                                                     
+                      </div>                          
+                    </div>                                                     
+                  </div>              
+                </form>
+              </div> 
             </div> 
-                
+                  
           {% endif %} 
          
 <!-- spotify devices -->       
@@ -877,11 +878,11 @@
             <form method="POST"> 
               <table class="table">
                 <thead>
-                  <th scope="col">Gerät Name</th>   
-                  <th scope="col">Gerät Typ</th>                                  
-                  <th scope="col">Playlist</th>
-                  <th scope="col">Lautstärke</th>  
-                  <th scope="col">Abspielen</th>                                   
+                  <th scope="col" style="width:25%">Gerät Name</th>   
+                  <th scope="col" style="width:25%">Gerät Typ</th>                                  
+                  <th scope="col" style="width:20%">Playlist</th>
+                  <th scope="col" style="width:20%">Lautstärke</th>  
+                  <th scope="col" style="width:10%">Abspielen</th>                                  
                 </thead>
                 <tbody> 
                   
@@ -891,15 +892,13 @@
                       
                       {% if device['type'] != "Smartphone" %}
 
-                        <td style="width:20%">
+                        <td>
                           {{ device['name'] }}
-                        </td>
-                        
-                        <td style="width:20%">
+                        </td>              
+                        <td>
                           {{ device['type'] }}
                         </td>     
-
-                        <td style="width:20%">    
+                        <td>  
                           <select class="selectpicker" data-width="80%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
                             {% if spotify_playlists != "" %}
                               {% for playlist in spotify_playlists %}
@@ -911,17 +910,15 @@
                             <option value= "" > Keine Playlist gefunden </option>
                             {% endif %}
                           </select>  
-                        </td>   
-                        
-                        <td style="width:30%">
+                        </td>              
+                        <td>
                           <div class="slidecontainer"> 
                             <div class="col-md-10 text-center"> 
                               <input type="range" class="slider" name="set_spotify_playlist_volume:{{ device['id'] }}" min="0" max="100" value="{{ volume }}" />
                             </div> 
                           </div> 
                         </td>
-
-                        <td style="width:10">    
+                        <td>   
                           <div class="row justify-content-md-center">
                             <div class="col-sm-2">     
                               <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
@@ -972,18 +969,18 @@
               <div class="well well-sm">    
                 <table class="table">
                   <thead>                      
-                    <th scope="col">Sensor</th> 
-                    <th scope="col">Beschreibung</th>
-                    <th scope="col">Werte</th> 
-                    <th scope="col">Letzter Kontakt</th>
+                    <th scope="col" style="width:14%">Sensor</th> 
+                    <th scope="col" style="width:27%">Beschreibung</th>
+                    <th scope="col" style="width:39%">Werte</th> 
+                    <th scope="col" style="width:20%">Letzter Kontakt</th>
                   </thead>
                   <tbody> 
                     {% for entry in data_sensor %}
                     <tr>
-                      <td style="width:14%"> {{entry.name}} </td>
-                      <td style="width:27%"> {{entry.description}} </td> 
-                      <td style="width:39%"> {{entry.last_values_formated}} </td>
-                      <td style="width:20%"> {{entry.last_contact}} </td>
+                      <td> {{entry.name}} </td>
+                      <td> {{entry.description}} </td> 
+                      <td> {{entry.last_values_formated}} </td>
+                      <td> {{entry.last_contact}} </td>
                     </tr>
                     {% endfor %} 
                   </tbody>

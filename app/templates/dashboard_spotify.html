@@ -104,6 +104,16 @@
   <div class="row">
     <div class="col">
       <font color="white">
+     
+        
+<!-- error message spotify -->   
+
+{% if error_message_spotify != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ error_message_spotify }}
+  </div>      
+{% endif %}
+        
         
       <div class="panel-group">  
         <div class="panel panel-default">
@@ -134,95 +144,97 @@
             </div>
           </div>
           
-          {% if tupel_current_playback != "" %}  
+          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') %}  
           
-            <div class="well well-sm">     
-              <table class="table">
-                <thead>
-                  <th scope="col">Gerät Name</th>   
-                  <th scope="col">Gerät Typ</th> 
-                  <th scope="col">Aktiv</th>                    
-                  <th scope="col">Lautstärke</th>                                     
-                  <th scope="col">Track</th>                                     
-                  <th scope="col">Interpreten</th>                    
-                  <th scope="col">Zeitpunkt</th>  
-                  <th scope="col">Playlist</th> 
-                  <th scope="col">Shuffle</th> 
-                </thead>                                             
-                <tbody> 
-                  <tr>
-                    <td style="width:11%">
-                      {{ tupel_current_playback[0] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[1] }}
-                    </td>  
-                    <td style="width:11%">
-                      {{ tupel_current_playback[2] }}
-                    </td>  
-                    <td style="width:11%">
-                      {{ tupel_current_playback[3] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[4] }} 
-                    </td>                          
-                    <td style="width:11%">
-                      {% for artist in tupel_current_playback[5] %}
-                         {{ artist }}
-                      {% endfor %} 
-                    </td>                      
-                    <td style="width:11%">
-                      {{ tupel_current_playback[6] }}  
-                    </td>      
-                    <td style="width:11%">
-                      {{ tupel_current_playback[7] }}
-                    </td>   
-                    <td style="width:11%">
-                      {{ tupel_current_playback[8] }}
-                    </td>                                                                                                                           
-                  </tr>             
-                </tbody>
-              </table>                                 
-            </div>
             <div class="well well-sm"> 
-              <form method="POST">          
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-1">     
-                    <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_start">
-                      <span class="glyphicon glyphicon-play"></span>
-                    </button>                               
-                  </div>
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_previous">
-                      <span class="glyphicon glyphicon-fast-backward"></span>
-                    </button>
-                  </div>                              
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_next">
-                      <span class="glyphicon glyphicon-fast-forward"></span>
-                    </button>
-                  </div>        
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_stop">
-                      <span class="glyphicon glyphicon-pause"></span>
-                    </button>
-                  </div>        
-                  <div class="col-sm-1">  
-                    <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_volume">
-                      <span class="glyphicon glyphicon-bullhorn"></span>
-                    </button>
-                  </div>                      
-                  <div class="col-sm-7">
-                    <div class="slidecontainer"> 
-                      <div class="col-md-10 text-center">                       
-                        <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
-                      </div>                                                     
-                    </div>                          
-                  </div>                                                     
-                </div>              
-              </form>
-            </div> 
-                
+              <div class="well well-sm">     
+                <table class="table">
+                  <thead>
+                    <th scope="col" style="width:11%">Gerät Name</th>   
+                    <th scope="col" style="width:11%">Gerät Typ</th> 
+                    <th scope="col" style="width:11%">Aktiv</th>                    
+                    <th scope="col" style="width:11%">Lautstärke</th>                                     
+                    <th scope="col" style="width:11%">Track</th>                                     
+                    <th scope="col" style="width:11%">Interpreten</th>                    
+                    <th scope="col" style="width:11%">Zeitpunkt</th>  
+                    <th scope="col" style="width:11%">Playlist</th> 
+                    <th scope="col" style="width:11%">Shuffle</th> 
+                  </thead>                                             
+                  <tbody> 
+                    <tr>
+                      <td>
+                        {{ tupel_current_playback[0] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[1] }}
+                      </td>  
+                      <td>
+                        {{ tupel_current_playback[2] }}
+                      </td>  
+                      <td>
+                        {{ tupel_current_playback[3] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[4] }} 
+                      </td>                          
+                      <td>
+                        {% for artist in tupel_current_playback[5] %}
+                           {{ artist }}
+                        {% endfor %} 
+                      </td>                      
+                      <td>
+                        {{ tupel_current_playback[6] }}  
+                      </td>      
+                      <td>
+                        {{ tupel_current_playback[7] }}
+                      </td>   
+                      <td>
+                        {{ tupel_current_playback[8] }}
+                      </td>                                                                                                                           
+                    </tr>             
+                  </tbody>
+                </table>                                 
+              </div>
+              <div class="well well-sm"> 
+                <form method="POST">          
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-1">     
+                      <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_play">
+                        <span class="glyphicon glyphicon-play"></span>
+                      </button>                               
+                    </div>
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_previous">
+                        <span class="glyphicon glyphicon-fast-backward"></span>
+                      </button>
+                    </div>                              
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_next">
+                        <span class="glyphicon glyphicon-fast-forward"></span>
+                      </button>
+                    </div>        
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_stop">
+                        <span class="glyphicon glyphicon-pause"></span>
+                      </button>
+                    </div>        
+                    <div class="col-sm-1">  
+                      <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_volume">
+                        <span class="glyphicon glyphicon-bullhorn"></span>
+                      </button>
+                    </div>                      
+                    <div class="col-sm-7">
+                      <div class="slidecontainer"> 
+                        <div class="col-md-10 text-center">                       
+                          <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
+                        </div>                                                     
+                      </div>                          
+                    </div>                                                     
+                  </div>              
+                </form>
+              </div> 
+            </div>  
+                  
           {% endif %} 
 
 
@@ -230,21 +242,17 @@
 <!-- start playlist -->
 <!-------------------->
    
-            
           {% if spotify_devices != "" %}   
-         
       
             <div class="well well-sm">  
-            
               <form method="POST"> 
-              
                 <table class="table">
                   <thead>
-                    <th scope="col">Gerät Name</th>   
-                    <th scope="col">Gerät Typ</th>                                  
-                    <th scope="col">Playlist</th>
-                    <th scope="col">Lautstärke</th>  
-                    <th scope="col">Abspielen</th>                                   
+                    <th scope="col" style="width:25%">Gerät Name</th>   
+                    <th scope="col" style="width:25%">Gerät Typ</th>                                  
+                    <th scope="col" style="width:20%">Playlist</th>
+                    <th scope="col" style="width:20%">Lautstärke</th>  
+                    <th scope="col" style="width:10%">Abspielen</th>                                   
                   </thead>
                   <tbody> 
                     
@@ -254,15 +262,13 @@
                         
                         {% if device['type'] != "Smartphone" %}
 
-                          <td style="width:20%">
+                          <td>
                             {{ device['name'] }}
-                          </td>
-                          
-                          <td style="width:20%">
+                          </td>                     
+                          <td>
                             {{ device['type'] }}
                           </td>     
-
-                          <td style="width:20%">    
+                          <td>    
                             <select class="selectpicker" data-width="80%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
                               {% if spotify_playlists != "" %}
                                 {% for playlist in spotify_playlists %}
@@ -275,16 +281,14 @@
                               {% endif %}
                             </select>  
                           </td>   
-                          
-                          <td style="width:30%">
+                          <td>
                             <div class="slidecontainer"> 
                               <div class="col-md-10 text-center"> 
                                 <input type="range" class="slider" name="set_spotify_playlist_volume:{{ device['id'] }}" min="0" max="100" value="{{ volume }}" />
                               </div> 
                             </div> 
                           </td>
-
-                          <td style="width:10">    
+                          <td>   
                             <div class="row justify-content-md-center">
                               <div class="col-sm-2">     
                                 <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
@@ -313,6 +317,18 @@
 <!------------------>
 <!-- search track -->
 <!------------------>      
+   
+   
+<!-- error message search track -->
+
+{% if error_message_search_track != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_search_track }}
+  </div>      
+{% endif %}    
+           
+             
+<!-- search track table -->         
       
       <div class="panel-group">
         <div class="panel panel-default">
@@ -321,20 +337,9 @@
               <a data-toggle="collapse" href="#collapse_search_track"><font color="white"><b> Suche Track </b></font></a>
             </h4>
           </div>   
-          <div id="collapse_search_track" class="panel-collapse collapse {{ collapse_dashboard_search_track }}">      
+          <div id="collapse_search_track" class="panel-collapse collapse {{ collapse_search_track }}">      
             <div class="panel-body">      
-              <div class="well well-sm">        
-         
-  
-<!-- error message search track -->
-
-{% if error_message_search_track != "" %}
-  <div class="alert alert-danger" role="alert">
-    {{ error_message_search_track }}
-  </div>      
-{% endif %}    
-          
-                    
+              <div class="well well-sm">                      
                 <form method="POST"> 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3"> 
@@ -347,35 +352,37 @@
                     <div class="col-sm-1">                                      
                       <input type="submit" onclick="window.location.href='/dashboard/spotify#table_tracks'" class="btn btn-default" name="spotify_search_track" value="Suchen" />
                     </div>
-                  </div>      
-                </div>
+                  </div>
+                </form>      
+              </div>
               
               {% if list_search_track_results != [] %}
                 
+              <form method="POST"> 
                 <div class="well well-sm">   
                    <table class="table">
                       <thead>
-                        <th scope="col">Track</th>   
-                        <th scope="col">Interpreten</th> 
-                        <th scope="col">Gerät</th>   
-                        <th scope="col">Lautstärke</th>                                 
-                        <th scope="col">Abspielen</th>                                   
+                        <th scope="col" style="width:25%">Track</th>   
+                        <th scope="col" style="width:25%">Interpreten</th> 
+                        <th scope="col" style="width:20%">Gerät</th>   
+                        <th scope="col" style="width:20%">Lautstärke</th>                                 
+                        <th scope="col" style="width:10%">Abspielen</th>                                   
                       </thead>
                       <tbody> 
                         
                         {% for track in list_search_track_results %}
                         
                           <tr>
-                            <td style="width:20%">
+                            <td>
                               {{ track[0] }}
                             </td>
                             
-                            <td style="width:20%">
+                            <td>
                               {{ track[1] }}
                             </td>     
                             
-                            <td style="width:17%">    
-                              <select class="btn btn-default dropdown-toggle" name="get_spotify_track_device:{{ track[2] }}">
+                            <td>    
+                              <select class="selectpicker" data-width="90%" name="get_spotify_track_device:{{ track[2] }}">
                                 {% if spotify_devices != "" %}
                                   {% for device in spotify_devices %}
                                     {% if device['type'] != "Smartphone" %}
@@ -388,7 +395,7 @@
                               </select>  
                             </td>                             
                           
-                            <td style="width:15%">
+                            <td>
                               <div class="slidecontainer"> 
                                 <div class="col-md-10 text-center"> 
                                   <input type="range" class="slider" name="get_spotify_track_volume:{{ track[2] }}" min="0" max="100" value="{{ volume }}" />
@@ -396,7 +403,7 @@
                               </div> 
                             </td>
     
-                            <td style="width:28">    
+                            <td>    
                               <div class="row justify-content-md-center">
                                 <div class="col-sm-2">     
                                   <button onclick="window.location.href='/dashboard/spotify#table_tracks'" name="spotify_track_play" value="{{ track[2] }}" class="btn btn-default" type="submit">
@@ -427,29 +434,29 @@
 <!------------------>
 <!-- search album -->
 <!------------------>          
-          
- 
-          <div class="panel-group">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" href="#collapse_search_album"><font color="white"><b> Suche Album </b></font></a>
-                </h4>
-              </div>   
-              <div id="collapse_search_album" class="panel-collapse collapse {{ collapse_dashboard_search_album }}">      
-                <div class="panel-body">      
-                  <div class="well well-sm">   
     
-  
+    
 <!-- error message search album -->
 
 {% if error_message_search_album != "" %}
   <div class="alert alert-danger" role="alert">
     {{ error_message_search_album }}
   </div>      
-{% endif %}    
+{% endif %}      
+    
           
-                    
+<!-- search album table --> 
+ 
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_search_album"><font color="white"><b> Suche Album </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_search_album" class="panel-collapse collapse {{ collapse_search_album }}">      
+            <div class="panel-body">      
+              <div class="well well-sm">                   
                 <form method="POST"> 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3"> 
@@ -462,35 +469,37 @@
                     <div class="col-sm-1">                                      
                       <input type="submit" onclick="window.location.href='/dashboard/spotify#table_albums'" class="btn btn-default" name="spotify_search_album" value="Suchen" />
                     </div>
-                  </div>      
-                </div>
+                  </div> 
+                </form>      
+              </div>
               
               {% if list_search_album_results != [] %}
-                
+              
+              <form method="POST"> 
                 <div class="well well-sm">   
                    <table class="table">
                       <thead>
-                        <th scope="col">Album</th>   
-                        <th scope="col">Interpreten</th> 
-                        <th scope="col">Gerät</th>   
-                        <th scope="col">Lautstärke</th>                                 
-                        <th scope="col">Abspielen</th>                                   
+                        <th scope="col" style="width:25%">Album</th>   
+                        <th scope="col" style="width:25%">Interpreten</th> 
+                        <th scope="col" style="width:20%">Gerät</th>   
+                        <th scope="col" style="width:20%">Lautstärke</th>                                 
+                        <th scope="col" style="width:10%">Abspielen</th>                                  
                       </thead>
                       <tbody> 
                         
                         {% for album in list_search_album_results %}
                         
                           <tr>
-                            <td style="width:20%">
+                            <td>
                               {{ album[0] }}
                             </td>
                             
-                            <td style="width:20%">
+                            <td>
                               {{ album[1] }}
                             </td>     
                             
-                            <td style="width:17%">    
-                              <select class="btn btn-default dropdown-toggle" name="get_spotify_track_device:{{ album[2] }}">
+                            <td>    
+                              <select class="selectpicker" data-width="90%" name="get_spotify_album_device:{{ album[2] }}">
                                 {% if spotify_devices != "" %}
                                   {% for device in spotify_devices %}
                                     {% if device['type'] != "Smartphone" %}
@@ -500,10 +509,10 @@
                                 {% else %}
                                 <option value= "" > Keine Geräte gefunden </option>
                                 {% endif %}
-                              </select>  
+                              </select>                                
                             </td>                             
                           
-                            <td style="width:15%">
+                            <td>
                               <div class="slidecontainer"> 
                                 <div class="col-md-10 text-center"> 
                                   <input type="range" class="slider" name="get_spotify_album_volume:{{ album[2] }}" min="0" max="100" value="{{ volume }}" />
@@ -511,7 +520,7 @@
                               </div> 
                             </td>
     
-                            <td style="width:28">    
+                            <td>    
                               <div class="row justify-content-md-center">
                                 <div class="col-sm-2">     
                                   <button onclick="window.location.href='/dashboard/spotify#table_albums'" name="spotify_album_play" value="{{ album[2] }}" class="btn btn-default" type="submit">

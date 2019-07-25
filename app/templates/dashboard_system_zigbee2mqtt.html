@@ -163,23 +163,23 @@
             <div class="well well-sm">   
               <table class="table">
                 <thead>
-                  <th scope="col"></th>
-                  <th scope="col">Gerät</th>                        
+                  <th scope="col" style="width:3%"></th>
+                  <th scope="col" style="width:20%">Gerät</th>                        
                   <th scope="col">Adresse</th> 
                   <th scope="col">Modell</th>   
                   <th scope="col">Gerätetyp</th>                     
                   <th scope="col">Beschreibung</th> 
                   <th scope="col">Letzter Kontakt</th>   
-                  <th scope="col"></th>                                                                  
+                  <th scope="col" style="width:5%"></th>                                                                  
                 </thead>
                 <tbody> 
                   {% for entry in zigbee2mqtt_device_list %}
                   <tr>
-                    <td style="width:3%">
+                    <td>
                       <a href="/dashboard/system/zigbee2mqtt/position/up/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/system/zigbee2mqtt/position/down/zigbee2mqtt/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     
-                    <td style="width:20%">                     
+                    <td>                     
                       <form method="POST" class="verticalform">                                                      
                       <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{% if entry.name != None %}{{ entry.name }}{% endif %}" /> 
                     </td>

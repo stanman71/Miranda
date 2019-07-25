@@ -111,6 +111,11 @@
       </div>   
 
 
+<!----------------->
+<!-- add program -->
+<!----------------->
+
+
 <!-- error message add program -->
 
 {% if error_message_add_program != "" %}
@@ -135,7 +140,11 @@
       </div>
     </div>  
 
-<!-- select a program -->
+
+<!-------------------->
+<!-- select program -->
+<!-------------------->
+
 
     <div class="panel panel-default">
       <div class="panel-body">
@@ -161,85 +170,63 @@
         </div>       
 
 {% if program != "" %}
-    
-    
-<!-- instructions -->
+  
+  
+        <div class="text-center">  
+          <h3><span class="label label-default">{{ program.name }} bearbeiten</span></h3> 
+        </div>
+        <br>
 
-
-          <div class="text-center">  
-            <h3><span class="label label-default">{{ program.name }} bearbeiten</span></h3> 
-          </div>
-          <br>
-          <div class="well well-sm">
-            <br>
-            <table class="table">
-              <thead>
-                <tr></tr>
-                <tr>
-                  <th>Eingabe</th>
-                  <th>Erklärung</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>device /// Steckdose TV /// {"state":"OFF"}</td>
-                  <td>Gerät "Steckdose TV" ausschalten</td>
-                </tr>                  
-                <tr>
-                  <td>led /// Deckenlampe_01 /// 255, 0, 0 /// 254</td>
-                  <td>RGB-LED "Deckenlampe_01", Farbe auf rot, maximale Helligkeit</td>
-                </tr>
-                <tr>
-                  <td>led /// Deckenlampe_02 /// 3000 /// 120</td>
-                  <td>WHITE-LED "Deckenlampe_01", Farbtemperatur auf 3000, mittlere Helligkeit</td>
-                </tr>    
-                <tr>
-                  <td>led /// Badlampe_01 /// 120</td>
-                  <td>SIMPLE-LED "Badlampe_01", mittlere Helligkeit</td>
-                </tr>      
-                <tr>
-                  <td>led /// Badlampe_01 /// OFF</td>
-                  <td>LED "Badlampe_01" ausschalten</td>
-                </tr>                                              
-                <tr>
-                  <td>pause /// 30</td>
-                  <td>Pause für 30 Sekunden</td>
-                </tr>                  
-              </table>
-            
 <section id="rgb_color"></section>   
 <section id="save_program"></section>
 <section id="start_program"></section>
 <section id="stop_program"></section>
-             
-          </div>
-          <br>
-          <br>
+<section id="spotify"></section>
 
-
+ 
+<!------------------->
 <!-- get rgb value -->
+<!------------------->
 
 
-        <div class="well well-sm">
-          <div class="text-center"> 
-            
-          <form method="POST" class="verticalform">
-            
-            <div class="row justify-content-md-center">
-              <div class="col-sm-1">
-                <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="rgb({{ rgb }})"/>
-              </div>
-              <div class="col-sm-3">          
-                <input type="submit" onclick="window.location.href='/dashboard/programs#rgb_color'" class="btn btn-default" name="color_{{ program.id }}" value="RGB Werte anzeigen" />  
-              </div>
-              <div class="col-sm-3">               
-                <div class="form-group">
-                  <input type="text" class="form-control" value="{{ rgb }}" />
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_get_rgb"><font color="white"><b> RGB </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_get_rgb" class="panel-collapse collapse {{ collapse_get_rgb }}">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+                <div class="text-center">       
+                  <form method="POST" class="verticalform">  
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-1">
+                        <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="rgb({{ rgb }})"/>
+                      </div>
+                      <div class="col-sm-3">          
+                        <input type="submit" onclick="window.location.href='/dashboard/programs#rgb_color'" class="btn btn-default" name="color_{{ program.id }}" value="RGB Werte anzeigen" />  
+                      </div>
+                      <div class="col-sm-3">               
+                        <div class="form-group">
+                          <input type="text" class="form-control" value="{{ rgb }}" />
+                        </div>
+                      </div>
+                    </div>        
+                  </div>
                 </div>
               </div>
-            </div>            
-          </div>
-        </div>
+            </div>  
+          </div> 
+         </div>  
+        <br>
+
+
+    
+<!----------------------->
+<!-- program functions -->
+<!----------------------->   
     
     
 <!-- error message content -->
@@ -254,11 +241,11 @@
     
 <!-- program content -->
 
-      <div class="well well-sm">
-        <div class="text-center">                             
-            <textarea class="form-control" name="content" rows="20">{{ program.content }}</textarea>  
+        <div class="well well-sm">
+          <div class="text-center">                             
+              <textarea class="form-control" name="content" rows="20">{{ program.content }}</textarea>  
+            </div>
           </div>
-        </div>
           
 <!-- save program -->
  
@@ -283,11 +270,12 @@
             
             <div class="col-sm-2">    
               <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
-            </div>               
+            </div> 
+            </form>              
           </div>
         </div>     
       </div>
-
+    
 <!-- rename a program -->
 
       <div class="panel panel-default">
@@ -297,7 +285,7 @@
               <div class="row justify-content-md-center">
                 <div class="col-sm-3">
                   <div class="form-group">
-                    <input type="text" class="form-control" name="program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
+                    <input type="text" class="form-control" name="change_program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -316,18 +304,24 @@
           </div> 
         </div> 
       </div> 
-
+    </div>
+   
 {% else %}
-
+          
         </div> 
       </div> 
-
+    </div>
+  
 {% endif %}
-   
-    <br>
-    <br>      
 
+  <br>
+  <br>      
+
+
+<!------------------>
 <!-- informations -->
+<!------------------>
+
 
     <div class="panel-group">
       <div class="panel panel-default">
@@ -339,12 +333,164 @@
         <div id="collapse_info" class="panel-collapse collapse ">      
           <div class="panel-body">      
             <div class="well well-sm">   
-             <br>
-             Text
-             <br>
+              <table class="table">
+                <thead>
+                  <tr></tr>
+                  <tr>
+                    <th>Eingabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>   
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                   
+                  <tr>
+                    <td>led /// Deckenlampe_01 /// 255, 0, 0 /// 254</td>
+                    <td>RGB-LED "Deckenlampe_01", Farbe auf rot, maximale Helligkeit</td>
+                  </tr>
+                  <tr>
+                    <td>led /// Deckenlampe_02 /// 3000 /// 120</td>
+                    <td>WHITE-LED "Deckenlampe_01", Farbtemperatur auf 3000, mittlere Helligkeit</td>
+                  </tr>    
+                  <tr>
+                    <td>led /// Badlampe_01 /// 120</td>
+                    <td>SIMPLE-LED "Badlampe_01", mittlere Helligkeit</td>
+                  </tr>      
+                  <tr>
+                    <td>led /// Badlampe_01 /// OFF</td>
+                    <td>LED "Badlampe_01" ausschalten</td>
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>device /// Steckdose_TV /// state:OFF</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Gerät Steckdose_TV ausschalten
+                        </div>
+                      </div>  
+                      <br>
+                      {% for device in list_device_command_options %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">
+                            {{ device[0] }}
+                          </div>
+                          <div class="col-sm-9">          
+                            {{ device[1] | replace(' ', ' | ') | replace('{', '') | replace('}', '') | replace(',', ', ') | replace('"', '') }} 
+                          </div>
+                        </div> 
+                      {% endfor %}    
+                    </td>
+                  </tr>    
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>spotify /// playlist /// PC /// Gemischt /// 50</td>
+                    <td>Playlist "Gemischt" auf Gerät "PC" mit Lautstärke 50 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// track /// PC /// Go Time /// Young Mozart /// 25</td>
+                    <td>Track "Go Time" von "Young Mozart" auf Gerät "PC" mit Lautstärke 25 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// album /// PC /// Hold On /// Nano /// 60</td>
+                    <td>Album "Hold On" von "Nano" auf Gerät "PC" mit Lautstärke 60 % starten</td>
+                  </tr>                                                   
+                  <tr>
+                    <td>spotify /// PLAY</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Aktulles Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PLAY 
+                        </div>
+                        <div class="col-sm-9"> 
+                          letztes Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PREVIOUS 
+                        </div>
+                        <div class="col-sm-9"> 
+                          vorheriger Track 
+                        </div>                        
+                      </div>    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          NEXT 
+                        </div>
+                        <div class="col-sm-9"> 
+                          nächster Track 
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen stoppen
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          VOLUME /// 70 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Lautstärke auf 70%
+                        </div>                        
+                      </div> 
+                      <br>        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Geräte:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for device in spotify_devices %}
+                            {% if device['type'] != "Smartphone" %}
+                              {{ device['name'] }} |
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Playlists:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for playlist in spotify_playlists %}
+                            {% if playlist['name'] != "Discover Weekly" %}
+                              {{ playlist['name'] }} |
+                            {% endif %}
+                          {% endfor %}    
+                        </div>
+                      </div>                                                                                 
+                    </td>  
+                  </tr>     
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                  
+                  <tr>
+                    <td>pause /// 30</td>
+                    <td>Pause für 30 Sekunden</td>
+                  </tr>                  
+                </table>
+            </div>
           </div>
-        </div>
-      </font>
+        </font>
       </div>
     </div>
   </div>    

@@ -7,3 +7,4 @@ config:
 spotify:
   client_id: 11a33d121d194cfebbc08d1ee6dbd0f6
   client_secret: af1b5460be774d8db58313bbf1a056b8
+  refresh_token: AQACfdQtisk57K_RBxF092FOhGGOnZwvOjbKEhak4EHlabI5Dvkevo6K9lqySkdFkyNel34iRqtE7LiEzLFp6OdT-qTTHAZNPDcXUwKv5N6SZQzjBijnJ_2QrHCxoSjizIELlg

@@ -178,26 +178,26 @@
           <form method="POST" class="verticalform">
             <table class="table">
               <thead>     
-                <th scope="col"></th>                   
-                <th scope="col">Gruppe</th> 
+                <th scope="col" style="width:3%"></th>                   
+                <th scope="col" style="width:25%">Gruppe</th> 
                 <th></th>
-                <th></th>
-                <th scope="col">LED Nummer</th>
-                <th scope="col">LED Model</th>
-                <th scope="col">LED</th>
-                <th scope="col"></th>
+                <th style="width:10%"></th>
+                <th scope="col" style="width:15%">LED Nummer</th>
+                <th scope="col" style="width:15%">LED Model</th>
+                <th scope="col" style="width:25%">LED</th>
+                <th scope="col" style="width:5%"></th>
               </thead>
               <tbody> 
                 <tr>
-                  <td style="width:3%">
+                  <th>
                     <a href="/dashboard/led/groups/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                     <a href="/dashboard/led/groups/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                   </td>                    
-                  <td style="width:25%">
+                  <th>
                     <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                   </td>  
                   <th></th>
-                  <td style="width:10%">
+                  <th>
                   <font size="+2">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-1">                       
@@ -211,9 +211,9 @@
 
 <!-- section 1 -->
 
-                  <td style="width:15%">1</td>
-                  <td style="width:15%">{{ entry.led_device_type_1 }}</td> 
-                  <td style="width:25%">
+                  <th>1</td>
+                  <th>{{ entry.led_device_type_1 }}</td> 
+                  <th>
                     <select class="selectpicker" data-live-search="true" data-width="90%" name="set_led_ieeeAddr_1_{{ entry.id }}">
                       <option value= "{{ entry.led_ieeeAddr_1 }}" > {{ entry.led_name_1 }} </option>                    
                       <optgroup>
@@ -223,7 +223,7 @@
                       </optgroup>                            
                     </select>                      
                   </td> 
-                  <td style="width:7%"><a href="/dashboard/led/groups/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  <th><a href="/dashboard/led/groups/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 <!-- section 2 -->
 

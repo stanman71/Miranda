@@ -197,10 +197,11 @@ class Plants(db.Model):
     mqtt_device_ieeeAddr     = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr'))   
     mqtt_device              = db.relationship('MQTT_Devices')  
     group                    = db.Column(db.Integer)        
-    pumptime                 = db.Column(db.Integer)
+    pumptime                 = db.Column(db.String(50))
+    pumptime_auto            = db.Column(db.Integer)    
     control_sensor_watertank = db.Column(db.String(50))     
     control_sensor_moisture  = db.Column(db.String(50))         
-    moisture                 = db.Column(db.String(50)) 
+    moisture_level           = db.Column(db.String(50)) 
     
 class Programs(db.Model):
     __tablename__ = 'programs'
@@ -310,7 +311,7 @@ class Speechcontrol_Spotify_Tasks(db.Model):
     __tablename__ = 'speechcontrol_spotify_tasks'
     id                   = db.Column(db.Integer, primary_key=True, autoincrement = True)
     task                 = db.Column(db.String(50))
-    setting              = db.Column(db.String(50))    
+    parameters           = db.Column(db.String(50))    
     keywords             = db.Column(db.String(50))
 
 class User(UserMixin, db.Model):
@@ -1809,22 +1810,22 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
         return "Name bereits vergeben"
 
 
-def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_watertank, control_sensor_moisture, moisture):         
+def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, group, pumptime, control_sensor_moisture, moisture_level, control_sensor_watertank):         
     entry = Plants.query.filter_by(id=id).first()
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.group != group or entry.pumptime != pumptime or  
-        entry.control_sensor_watertank != control_sensor_watertank or entry.control_sensor_moisture != control_sensor_moisture or 
-        entry.moisture != int(moisture) or entry.time != int(time)):
+    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or entry.group != group or  
+        entry.pumptime != pumptime or entry.control_sensor_moisture != control_sensor_moisture or 
+        entry.moisture_level != moisture_level or entry.control_sensor_watertank != control_sensor_watertank):
 
         entry.name = name
         entry.mqtt_device_ieeeAddr = mqtt_device_ieeeAddr
-        entry.group = group
-        entry.pumptime = pumptime
-        entry.control_sensor_watertank = control_sensor_watertank        
+        entry.group = group     
+        entry.pumptime = pumptime           
         entry.control_sensor_moisture = control_sensor_moisture
-        entry.moisture = moisture
+        entry.moisture_level = moisture_level
+        entry.control_sensor_watertank = control_sensor_watertank         
         
         db.session.commit()  
         
@@ -1832,9 +1833,22 @@ def SET_PLANT_SETTINGS(id, name, mqtt_device_ieeeAddr, group, pumptime, control_
                              " | MQTT-Device - " + entry.mqtt_device.name + 
                              " | Group - " + str(entry.group) +                              
                              " | Pumptime - " + str(entry.pumptime) + 
-                             " | Control Sensor Watertank - " + entry.control_sensor_watertank +  
                              " | Control Sensor Moisture - " + entry.control_sensor_moisture + 
-                             " | Moisture - " + entry.moisture)
+                             " | Moisture Level - " + entry.moisture_level +
+                             " | Control Sensor Watertank - " + entry.control_sensor_watertank)
+    
+ 
+def GET_PLANT_PUMPTIME_AUTO(id):         
+    return Plants.query.filter_by(id=id).first().pumptime_auto
+ 
+    
+def SET_PLANT_PUMPTIME_AUTO(id, pumptime_auto):         
+    entry = Plants.query.filter_by(id=id).first()
+
+    entry.pumptime_auto = pumptime_auto
+    db.session.commit()  
+    
+    WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + entry.name + " | changed || Pumptime_Auto - " + str(entry.pumptime_auto))    
                              
 
 def CHANGE_PLANTS_POSITION(id, direction):
@@ -2829,99 +2843,17 @@ def GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS():
     return Speechcontrol_Spotify_Tasks.query.all()
     
 
-def ADD_SPEECHCONTROL_SPOTIFY_TASK(task, spotify_command):
-    # find a unused id
-    for i in range(1,26):
-        if Speechcontrol_Spotify_Tasks.query.filter_by(id=i).first():
-            pass
-        else:
-            # add the new task
-            speechcontrol_spotify_task = Speechcontrol_Spotify_Tasks(
-                                    id = i,
-                                  task = task,
-                       spotify_command = spotify_command,         
-                )
-                
-            db.session.add(speechcontrol_spotify_task)
-            db.session.commit()
-
-            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + task + " | added")                    
-            return ""
-
-    return "Task-Limit erreicht (25)"
-
-
-def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, setting, keywords):
+def UPDATE_SPEECHCONTROL_SPOTIFY_TASK(id, keywords):
     entry = Speechcontrol_Spotify_Tasks.query.filter_by(id=id).first()
 
     # values changed ?
-    if (entry.setting != setting or entry.keywords != keywords):
-        
-        entry.setting   = setting      
+    if (entry.keywords != keywords):
+         
         entry.keywords  = keywords        
         db.session.commit()
             
-        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + entry.task + 
-                             " | changed || Setting - " + entry.setting +
-                             " | Keywords - " + str(entry.keywords))
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + entry.task + " | changed || Keywords - " + entry.keywords)
   
-       
-def CHANGE_SPEECHCONTROL_SPOTIFY_TASK_POSITION(id, direction):
-    
-    if direction == "up":
-        task_list = GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS()
-        task_list = task_list[::-1]
-        
-        for task in task_list:
-            
-            if task.id < id:
-                
-                new_id = task.id
-                
-                # change ids
-                task_1 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(id)
-                task_2 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(new_id)
-                
-                task_1.id = 99
-                db.session.commit()
-                
-                task_2.id = id
-                task_1.id = new_id
-                db.session.commit()
-                
-                return 
-
-    if direction == "down":
-        for task in GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS():
-            if task.id > id:
-                
-                new_id = task.id
-                
-                # change ids
-                task_1 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(id)
-                task_2 = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(new_id)
-                
-                task_1.id = 99
-                db.session.commit()
-                
-                task_2.id = id
-                task_1.id = new_id
-                db.session.commit()
-                
-                return        
-                              
-    
-def DELETE_SPEECHCONTROL_SPOTIFY_TASK(task_id):
-    entry = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(task_id)
-
-    try:
-        WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Spotify Task - " + entry.task + " | deleted")    
-    except:
-        pass
-    
-    Speechcontrol_Spotify_Tasks.query.filter_by(id=task_id).delete()
-    db.session.commit()
-
 
 """ ################### """
 """ ################### """

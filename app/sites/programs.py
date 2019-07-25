@@ -1,13 +1,16 @@
 from flask import render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from functools import wraps
+
 import os
 import re
+import spotipy
 
 from app import app
 from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
 from app.database.database import *
 from app.components.checks import CHECK_PROGRAM
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
 
 
 # access rights
@@ -30,17 +33,15 @@ def permission_required(f):
 @login_required
 @permission_required
 def dashboard_programs():
+    error_message_add_program  = ""
+    error_message_content      = ""
 
-    """ ### """
-    """ led """
-    """ ### """
-
-    program = ""
-    rgb = "0, 0, 0"
-    led_update = ""
-    error_message_add_program = ""
-    error_message_content = ""
-    
+    program          = ""
+    rgb              = "0, 0, 0"
+    led_update       = ""
+    collapse_get_rgb = ""  
+        
+        
     if request.method == 'POST':
 
         if request.form.get("add_program") != None:  
@@ -70,23 +71,24 @@ def dashboard_programs():
         # i = program ID
         for i in range(1,21):  
             
-            if (request.form.get("save_" + str(i)) != None or
-                request.form.get("color_" + str(i)) != None or
+            if (request.form.get("get_rgb_" + str(i)) != None or
+                request.form.get("save_" + str(i)) != None or
                 request.form.get("start_" + str(i)) != None or
                 request.form.get("stop_" + str(i)) != None or
-                request.form.get("change_name_" + str(i)) != None):
-                    
-                    
+                request.form.get("change_program_name_" + str(i)) != None or
+                request.form.get("spotify_search_track_" + str(i)) != None or
+                request.form.get("spotify_track_play_" + str(i)) != None or
+                request.form.get("spotify_search_album_" + str(i)) != None or
+                request.form.get("spotify_album_play_" + str(i))):                    
+               
+               
                 # save content
                 content = request.form.get("content")
-                
                 SAVE_PROGRAM(i, content)                 
                        
                        
                 # start program
-                start_Program = request.form.get("start_" + str(i))
-                
-                if start_Program != None:  
+                if request.form.get("start_" + str(i)) != None: 
                     START_PROGRAM_THREAD(i)  
 
                  
@@ -96,24 +98,26 @@ def dashboard_programs():
                  
 
                 # get rgb values
-                get_rgb = request.form.get("get_rgb_" + str(i)) 
+                if request.form.get("get_rgb_" + str(i)) != "rgb(0, 0, 0)": 
+        
+                    collapse_get_rgb = "in"        
                 
-                if get_rgb != None:
+                    get_rgb = request.form.get("get_rgb_" + str(i))
+                     
                     rgb = get_rgb   
                     rgb = rgb.replace("rgb", "") 
                     rgb = rgb.replace("(", "") 
-                    rgb = rgb.replace(")", "")                                         
-                    program = GET_PROGRAM_BY_ID(i) 
-                    
-                    
-                # change program name                    
-                program_name = request.form.get("program_name_" + str(i)) 
-                
-                if program_name != None:
+                    rgb = rgb.replace(")", "")   
+                                                          
+                                                          
+                # change program name    
+                if request.form.get("change_program_name_" + str(i)) != None:  
+                    program_name = request.form.get("change_program_name_" + str(i))      
                     SET_PROGRAM_NAME(i, program_name)              
-                    program = GET_PROGRAM_BY_ID(i)  
+                  
+
+                program = GET_PROGRAM_BY_ID(i)  
                 
-                 
                 # check program settings
                 error_message_content = CHECK_PROGRAM(i)    
             
@@ -126,15 +130,45 @@ def dashboard_programs():
 
     dropdown_list_programs = GET_ALL_PROGRAMS()
     program_running        = GET_PROGRAM_RUNNING()
+    
+    
+    # list device command option    
+    list_device_command_options = []
+    
+    for device in GET_ALL_MQTT_DEVICES("device"):
+        list_device_command_options.append((device.name, device.commands))
+        
+    
+    # list spotify devices / playlists
+    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+        REFRESH_SPOTIFY_TOKEN()
+     
+    spotify_token = GET_SPOTIFY_TOKEN()    
+    
+    try:
+        sp       = spotipy.Spotify(auth=spotify_token)
+        sp.trace = False
+        
+        spotify_devices   = sp.devices()["devices"]        
+        spotify_playlists = sp.current_user_playlists(limit=20)["items"]   
+        
+    except:
+        spotify_devices   = ""       
+        spotify_playlists = ""   
+
 
     return render_template('dashboard_programs.html',
                             led_update=led_update,
                             dropdown_list_programs=dropdown_list_programs,
                             program=program,
                             rgb=rgb,
+                            collapse_get_rgb=collapse_get_rgb,
                             program_running=program_running,
                             error_message_add_program=error_message_add_program,
                             error_message_content=error_message_content,
+                            spotify_devices=spotify_devices,
+                            spotify_playlists=spotify_playlists,   
+                            list_device_command_options=list_device_command_options,                 
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

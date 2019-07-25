@@ -11,11 +11,11 @@ from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
 from app.components.checks import CHECK_DASHBOARD_CHECK_SETTINGS
-from app.components.shared_resources import process_management_queue, GET_SPOTIFY_AUTHORIZATION_HEADER
-from app.components.control_led import LED_GROUP_CHECK_SETTING_PROCESS
+from app.components.shared_resources import process_management_queue
+from app.components.backend_led import LED_GROUP_CHECK_SETTING_PROCESS
 from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
 from app.components.process_program import *
-from app.components.control_spotify import *
+from app.components.backend_spotify import *
 
 from ping3 import ping
 
@@ -50,6 +50,8 @@ def dashboard(template):
     error_message_watering_control = ""
     error_message_log = ""
     error_message_start_program = ""
+    error_message_spotify = ""
+    
     checkbox_repeat_program = ""
     
     selected_type_event    = "selected"
@@ -131,7 +133,7 @@ def dashboard(template):
                                 heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
                     
                                 scene             = GET_LED_SCENE_BY_NAME(scene_name)
-                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
+                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10) 
                                 continue   
                                 
                             else:
@@ -153,7 +155,7 @@ def dashboard(template):
                             scene = GET_LED_SCENE_BY_NAME(scene_name)
                             
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
-                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, "OFF", 0, 2, 10)                                  
+                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, 0, "OFF", 0, 2, 10)                                  
                             continue  
                             
                         else:
@@ -571,13 +573,16 @@ def dashboard(template):
     """ spotify control """
     """ ############### """   
         
-    authorization_header = GET_SPOTIFY_AUTHORIZATION_HEADER()
+    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+        REFRESH_SPOTIFY_TOKEN()
+     
+    spotify_token = GET_SPOTIFY_TOKEN()
     
     
-    if authorization_header != "":
+    if spotify_token != "":
         collapse_dashboard_spotify = "in" 
 
-        sp       = spotipy.Spotify(auth=authorization_header)
+        sp       = spotipy.Spotify(auth=spotify_token)
         sp.trace = False
         
         if request.method == "POST": 
@@ -592,49 +597,23 @@ def dashboard(template):
                 spotify_device_id = sp.current_playback(market=None)['device']['id']
                 spotify_volume    = request.form.get("get_spotify_volume")
                     
-                if "set_spotify_start" in request.form:    
-                    sp.volume(int(spotify_volume), device_id=spotify_device_id)  
-                
-                    try:
-                        context_uri = sp.current_playback(market=None)["context"]["uri"]
-                    except:
-                        context_uri = None
-                        
-                    try:
-                        track_uri   = sp.current_playback(market=None)['item']['uri']
-                    except:
-                        track_uri   = None
-                        
-                    try:
-                        position    = sp.current_playback(market=None)['progress_ms']
-                    except:
-                        position    = None
-                    
-                    if context_uri != None:
-                        sp.start_playback(device_id=spotify_device_id, context_uri=context_uri, uris=None, offset = None, position_ms = None)  
-                        
-                    elif track_uri != None:
-                        sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=[track_uri], offset = None, position_ms = position)    
-                        
-                    else:
-                        sp.start_playback(device_id=spotify_device_id, context_uri=None, uris=None, offset = None, position_ms = None)
+                if "set_spotify_play" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
+        
+                if "set_spotify_previous" in request.form: 
+                    SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
 
-                if "set_spotify_previous" in request.form:    
-                    sp.volume(int(spotify_volume), device_id=spotify_device_id)   
-                    sp.previous_track(device_id=spotify_device_id)     
+                if "set_spotify_next" in request.form:
+                    SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
 
-                if "set_spotify_next" in request.form:     
-                    sp.volume(int(spotify_volume), device_id=spotify_device_id)  
-                    sp.next_track(device_id=spotify_device_id) 
-                    
-                if "set_spotify_stop" in request.form:     
-                    sp.pause_playback(device_id=spotify_device_id)  
+                if "set_spotify_stop" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
 
-                if "set_spotify_shuffle" in request.form:     
-                    sp.shuffle(True, device_id=spotify_device_id) 
+                if "set_spotify_shuffle" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "shuffle", spotify_volume)   
 
-                if "set_spotify_volume" in request.form:        
-                    sp.volume(int(spotify_volume), device_id=spotify_device_id)    
+                if "set_spotify_volume" in request.form: 
+                    SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)    
                 
             except:
                 pass
@@ -648,21 +627,42 @@ def dashboard(template):
             if "spotify_start_playlist" in request.form:    
                 spotify_device_id = request.form.get("spotify_start_playlist")
                 playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
-                playlist_volume   = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
+                playlist_volume = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
                 
-                sp.volume(int(playlist_volume), device_id=spotify_device_id)  
-                sp.start_playback(device_id=spotify_device_id, context_uri=playlist_uri, uris=None, offset = None, position_ms = None)     
+                if playlist_volume == None:
+                    playlist_volume = 50
+
+                SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)     
 
 
         """ ############ """
         """ account data """
         """ ############ """   
-                       
-        spotify_user           = sp.current_user()["display_name"]   
-        spotify_devices        = sp.devices()["devices"]        
-        spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
-        tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(authorization_header)                            
+                  
+        try:
+            spotify_user           = sp.current_user()["display_name"]   
+            spotify_devices        = sp.devices()["devices"]        
+            spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
+            tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token) 
         
+        
+        # spotify token expired ?
+        except:
+            
+            REFRESH_SPOTIFY_TOKEN()
+            time.sleep(2)
+            
+            spotify_token = GET_SPOTIFY_TOKEN()
+            
+            sp       = spotipy.Spotify(auth=spotify_token)
+            sp.trace = False            
+            
+            spotify_user           = sp.current_user()["display_name"]   
+            spotify_devices        = sp.devices()["devices"]        
+            spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
+            tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token)               
+           
+            
         # set volume
         try:
             spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
@@ -924,6 +924,7 @@ def dashboard(template):
                             error_message_watering_control=error_message_watering_control,  
                             error_message_device_checks=error_message_device_checks,
                             error_message_start_program=error_message_start_program,
+                            error_message_spotify=error_message_spotify,
                             mqtt_device_1_input_values=mqtt_device_1_input_values,
                             mqtt_device_2_input_values=mqtt_device_2_input_values,
                             mqtt_device_3_input_values=mqtt_device_3_input_values,

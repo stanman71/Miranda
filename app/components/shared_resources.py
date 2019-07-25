@@ -55,20 +55,3 @@ def GET_ERROR_DELETE_MQTT_DEVICE():
 	
 	return error_list_delete_mqtt_device
 
-
-# spotify_authorization_header
-
-spotify_authorization_header  = ""
-
-def SET_SPOTIFY_AUTHORIZATION_HEADER(token):
-	global spotify_authorization_header
-	
-	spotify_authorization_header = token
-	
-	
-def GET_SPOTIFY_AUTHORIZATION_HEADER():
-	global spotify_authorization_header
-	
-	return spotify_authorization_header
-	
-	

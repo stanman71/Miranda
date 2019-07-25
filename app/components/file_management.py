@@ -229,6 +229,29 @@ def GET_SPOTIFY_CLIENT_SECRET():
         return ""     
 
 
+def GET_SPOTIFY_REFRESH_TOKEN():
+    try:
+        return str(config['spotify']['refresh_token'])
+    except:
+        return ""     
+
+
+def SET_SPOTIFY_REFRESH_TOKEN(REFRESH_TOKEN):
+    
+    try:
+        with open(PATH + "/config/config.yaml") as file_config:
+            upload_config = yaml.load(file_config)
+
+        upload_config['spotify']['refresh_token'] = REFRESH_TOKEN
+
+        with open(PATH + "/config/config.yaml", 'w') as file_config:
+            yaml.dump(upload_config, file_config)
+            
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /config/config/ | " + str(e))  
+        return ("ERROR: " + str(e))
+        
+
 def SET_CONFIG_BACKUP_LOCATION(backup_location_path):
     global backup_location_temp_path
     

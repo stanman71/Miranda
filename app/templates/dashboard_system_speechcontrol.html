@@ -151,10 +151,7 @@
               </div>
             </div>
           <font color="salmon"><b>Flask neustarten, wenn Einstellungen der Sprachsteuerung geändert werden</b></font>
-          <br>   
-          
-<section id="led_task_table"></section>           
-            
+          <br>        
           <br>        
           <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#'" class="btn btn-default" value="Auswählen"/>
           </form>       
@@ -169,6 +166,8 @@
 <!-- -------------------- -->
 
 <!-- speech control led task table -->
+
+<section id="led_task_table"></section> 
 
       <div class="panel-group">
         <div class="panel panel-default">
@@ -196,25 +195,22 @@
           <form method="POST"> 
             <table class="table">
               <thead>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Parameter</th> 
-                <th scope="col">Schlüsselwörter</th> 
+                <th scope="col" style="width:20%">Aufgabe</th> 
+                <th scope="col" style="width:40%">Parameter</th> 
+                <th scope="col" style="width:40%">Schlüsselwörter</th> 
               </thead>
               <tbody> 
                 {% for entry in speechcontrol_led_task_list %}
                 <tr>                  
-                  <td style="width:20%">{{ entry.task }}</td> 
-                  <td style="width:40%">{{ entry.parameters }}</td> 
-                  <td style="width:40%">
+                  <td>{{ entry.task }}</td> 
+                  <td>{{ entry.parameters }}</td> 
+                  <td>
                     <input type="text" class="form-control" name="set_speechcontrol_led_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
                   </td>  
                 </tr>
                 {% endfor %} 
               </tbody>
-            </table>  
-                     
-<section id="device_task_table"></section>           
-            
+            </table>      
           </div>
           <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#led_task_table'" class="btn btn-default" name="change_speechcontrol_led_tasks" value="Änderungen speichern"/> 
           </form> 
@@ -224,7 +220,9 @@
     <br>
       
 
-<!-- add speech control device task -->     
+<!-- add speech control device task -->  
+
+<section id="device_task_table"></section>     
 
     <div class="panel-group">
       <div class="panel panel-default">
@@ -290,24 +288,24 @@
           <form method="POST"> 
             <table class="table">
               <thead>   
-                <th scope="col"></th>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Gerät</th> 
-                <th scope="col">Befehl</th> 
-                <th scope="col">Schlüsselwörter</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>                 
+                <th scope="col" style="width:3%"></th>                    
+                <th scope="col" style="width:17%">Aufgabe</th> 
+                <th scope="col" style="width:20%">Gerät</th> 
+                <th scope="col" style="width:20%">Befehl</th> 
+                <th scope="col" style="width:37%">Schlüsselwörter</th>
+                <th scope="col"></th>  
+                <th scope="col" style="width:3%"></th>                  
               </thead>
               <tbody> 
                 {% for entry in speechcontrol_device_task_list %}
                 <tr>
-                  <td style="width:3%">
+                  <td>
                     <a href="/dashboard/system/speechcontrol/device_task/position/up/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                     <a href="/dashboard/system/speechcontrol/device_task/position/down/{{ entry.id }}#device_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                   </td>                     
-                  <td style="width:17%">{{ entry.task }}</td> 
-                  <td style="width:20%">{{ entry.mqtt_device.name }}</td> 
-                  <td style="width:20%">   
+                  <td>{{ entry.task }}</td> 
+                  <td>{{ entry.mqtt_device.name }}</td> 
+                  <td>   
                     <select class="selectpicker" data-width="100%" name="set_speechcontrol_device_task_setting_{{ entry.id }}">
                       <option value = "{{ entry.setting }}" > {{ entry.setting }} </option>
                       <optgroup>
@@ -317,17 +315,14 @@
                       </optgroup>                                                                                
                     </select>                                    
                   </td> 
-                  <td style="width:37%">
+                  <td>
                     <input type="text" class="form-control" name="set_speechcontrol_device_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
                   </td>  
-                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                  <td><td><a href="/dashboard/system/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
                 </tr>
                 {% endfor %} 
               </tbody>
-            </table>  
-                     
-<section id="program_task_table"></section>           
-            
+            </table>         
           </div>
           <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#device_task_table'" class="btn btn-default" name="change_speechcontrol_device_tasks" value="Änderungen speichern"/> 
           </form> 
@@ -338,6 +333,8 @@
  
       
 <!-- add speech control program task -->     
+
+<section id="program_task_table"></section> 
 
     <div class="panel-group">
       <div class="panel panel-default">
@@ -402,24 +399,24 @@
           <form method="POST"> 
             <table class="table">
               <thead>   
-                <th scope="col"></th>                    
-                <th scope="col">Aufgabe</th> 
-                <th scope="col">Programm</th> 
-                <th scope="col">Befehl</th> 
-                <th scope="col">Schlüsselwörter</th> 
-                <th scope="col"></th> 
-                <th scope="col"></th>                 
+                <th scope="col" style="width:3%"></th>                    
+                <th scope="col" style="width:17%">Aufgabe</th> 
+                <th scope="col" style="width:20%">Gerät</th> 
+                <th scope="col" style="width:20%">Befehl</th> 
+                <th scope="col" style="width:37%">Schlüsselwörter</th>
+                <th scope="col"></th>  
+                <th scope="col" style="width:3%"></th>                
               </thead>
               <tbody> 
                 {% for entry in speechcontrol_program_task_list %}
                 <tr>
-                  <td style="width:3%">
+                  <td>
                     <a href="/dashboard/system/speechcontrol/program_task/position/up/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                     <a href="/dashboard/system/speechcontrol/program_task/position/down/{{ entry.id }}#program_task_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                   </td>                     
-                  <td style="width:17%">{{ entry.task }}</td> 
-                  <td style="width:20%">{{ entry.program.name }}</td> 
-                  <td style="width:20%">   
+                  <td>{{ entry.task }}</td> 
+                  <td>{{ entry.program.name }}</td> 
+                  <td>   
                     <select class="selectpicker" data-width="100%" name="set_speechcontrol_program_task_command_{{ entry.id }}">
                       <option value = "{{ entry.command }}" > {{ entry.command }} </option>
                       <optgroup>
@@ -428,14 +425,14 @@
                       </optgroup>                                                                                
                     </select>                                 
                   </td> 
-                  <td style="width:37%">
+                  <td>
                     <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
                   </td>  
-                  <td style="width:3%"><td><a href="/dashboard/system/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                  <td><td><a href="/dashboard/system/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
                 </tr>
                 {% endfor %} 
               </tbody>
-            </table>     
+            </table>      
           </div>
           <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#program_task_table'" class="btn btn-default" name="change_speechcontrol_program_tasks" value="Änderungen speichern"/> 
           </form> 
@@ -444,6 +441,61 @@
     </div>
     <br>
       
+
+<!-- speech control spotify task table -->
+
+<section id="spotify_task_table"></section> 
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_spotify"><font color="white"><b> Aufgaben - Spotify </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_spotify" class="panel-collapse collapse {{collapse_tasks_spotify}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
+                
+
+<!-- error message speech control spotify tasks  -->
+
+{% if error_message_speechcontrol_spotify_tasks != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_speechcontrol_spotify_tasks %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+          <form method="POST"> 
+            <table class="table">
+              <thead>                    
+                <th scope="col" style="width:20%">Aufgabe</th> 
+                <th scope="col" style="width:40%">Parameter</th> 
+                <th scope="col" style="width:40%">Schlüsselwörter</th> 
+              </thead>
+              <tbody> 
+                {% for entry in speechcontrol_spotify_task_list %}
+                <tr>                  
+                  <td>{{ entry.task }}</td> 
+                  <td>{{ entry.parameters }}</td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_speechcontrol_spotify_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                  </td>  
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>      
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/system/speechcontrol#spotify_task_table'" class="btn btn-default" name="change_speechcontrol_spotify_tasks" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+    </div> 
+    <br>
+
 
 <!-- ----------- -->
 <!--   SETTINGS  -->

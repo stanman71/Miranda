@@ -132,33 +132,33 @@
               
               <table class="table">
                 <thead>
-                  <th scope="col"></th>
-                  <th scope="col">Benutzer</th>
-                  <th scope="col">eMail</th>
-                  <th scope="col">Passwort zurücksetzen</th>
-                  <th scope="col">Zugriffsrechte</th>                
-                  <th scope="col">eMail Benachrichtigung</th>
-                  <th scope="col"></th>
+                  <th scope="col" style="width:3%"></th>
+                  <th scope="col" style="width:17%">Benutzer</th>
+                  <th scope="col" style="width:25%">eMail</th>
+                  <th scope="col" style="width:20%">Passwort zurücksetzen</th>
+                  <th scope="col" style="width:17%">Zugriffsrechte</th>                
+                  <th scope="col" style="width:15%">eMail Benachrichtigung</th>
+                  <th scope="col" style="width:5%"></th>
                 </thead>
                 <tbody>
                   <tr>
-                    <td style="width:3%">
+                    <td>
                       <a href="/dashboard/system/user/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/system/user/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                 
-                    <td style="width:17%">
+                    <td>
                     <form method="POST" class="verticalform">
                       <input type="text" class="form-control" name="set_username_{{ entry.id }}" value="{{ entry.username }}" />                    
                     </td> 
-                    <td style="width:25%">
+                    <td>
                       <input type="text" class="form-control" name="set_email_{{ entry.id }}" value="{{ entry.email }}" />                    
                     </td> 
-                    <td style="width:20%">
+                    <td>
                       <input type="password" class="form-control" name="set_password_{{ entry.id }}" value="" /> 
                       <br>
                       <input type="password" class="form-control" name="set_password_check_{{ entry.id }}" value="" />  
                     </td> 
-                    <td style="width:17%">
+                    <td>
                       <div class="form-check">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-8">                       
@@ -299,7 +299,7 @@
                         </div>                                                          
                       </div>
                     </td>                    
-                    <td style="width:15%">
+                    <td>
                       <div class="form-check">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-6">                       
@@ -347,7 +347,7 @@
                           </div>
                         </div>                          
                       </td>    
-                      <td style="width:5%">
+                      <td>
                         <a href="/dashboard/system/user/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>
                       </td>   
                     </tr>

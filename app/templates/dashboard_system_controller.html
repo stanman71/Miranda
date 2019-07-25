@@ -170,31 +170,31 @@
             <form method="POST"> 
               <table class="table">
                 <thead>  
-                  <th scope="col"></th> 
-                  <th scope="col">Controller</th>                     
-                  <th scope="col">Ereignisse</th> 
-                  <th scope="col">Aufgabe</th> 
-                  <th scope="col"></th>                   
+                  <th scope="col" style="width:3%"></th> 
+                  <th scope="col" style="width:17%">Controller</th>                     
+                  <th scope="col" style="width:17%">Ereignisse</th> 
+                  <th scope="col" style="width:66%">Aufgabe</th> 
+                  <th scope="col" style="width:5%"></th>                   
                 </thead>
                 <tbody> 
                   <tr>
-                    <td style="width:3%">
+                    <td>
                       <a href="/dashboard/system/controller/position/up/{{ entry.id }}#table_{{entry.id}}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/system/controller/position/down/{{ entry.id }}#table_{{entry.id}}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     
-                    <td style="width:17%"> {{ entry.mqtt_device.name }} </td>                
-                    <td style="width:17%"> {{ entry.command_1 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.mqtt_device.name }} </td>                
+                    <td> {{ entry.command_1 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_1_{{entry.id}}" value="{{entry.task_1}}" />  
                     </td>
-                    <td style="width:5%"><a href="/dashboard/system/controller/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td> 
+                    <td><a href="/dashboard/system/controller/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td> 
                   </tr>
                   {% if entry.command_2 != "None" %}
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_2 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_2 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td>
                       <input type="text" class="form-control" name="set_task_2_{{entry.id}}" value="{{entry.task_2}}" />  
                     </td>
                     </tr>  
@@ -203,8 +203,8 @@
                     <tr>
                     <td></td>
                     <td></td> 
-                    <td style="width:17%"> {{ entry.command_3 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_3 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td>
                       <input type="text" class="form-control" name="set_task_3_{{entry.id}}" value="{{entry.task_3}}" />  
                     </td>
                     </tr>  
@@ -223,8 +223,8 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_5 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_5 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_5_{{entry.id}}" value="{{entry.task_5}}" />  
                     </td>
                     </tr>  
@@ -233,8 +233,8 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_6 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_6 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_6_{{entry.id}}" value="{{entry.task_6}}" />  
                     </td>
                     </tr>  
@@ -243,8 +243,8 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_7 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_7 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_7_{{entry.id}}" value="{{entry.task_7}}" />  
                     </td>
                     </tr>  
@@ -253,8 +253,8 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_8 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_8 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_8_{{entry.id}}" value="{{entry.task_8}}" />  
                     </td>
                     </tr>  
@@ -263,8 +263,8 @@
                     <tr>
                     <td></td> 
                     <td></td>
-                    <td style="width:17%"> {{ entry.command_9 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
-                    <td style="width:66%"> 
+                    <td> {{ entry.command_9 | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </td>
+                    <td> 
                       <input type="text" class="form-control" name="set_task_9_{{entry.id}}" value="{{entry.task_9}}" />  
                     </td>
                     </tr>  
@@ -308,43 +308,226 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                   
+                  <tr>
                     <td>scene /// wohnzimmer /// relax /// 100</td>
-                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" 
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" 
+                        </div>
+                      </div>  
                       <br>
-                      <br> Optionale Einstellung >>> globale Helligkeit 100 %</td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Optional
+                        </div>
+                        <div class="col-sm-9"> 
+                          globale Helligkeit 100 % 
+                        </div>                        
+                      </div>                                            
                   </tr>
                   <tr>
                     <td>brightness /// schlafzimmer /// TURN_UP</td>
-                    <td>Erhöhe Helligkeit der LEDs Gruppe "schlafzimmer" um 20% 
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Erhöhe Helligkeit der LEDs Gruppe "schlafzimmer" um 20% 
+                        </div>
+                      </div>  
                       <br>
-                      <br> TURN_UP &nbsp; &nbsp; &nbsp; >>> heller 
-                      <br> TURN_DOWN                    >>> dunkler
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          TURN_UP
+                        </div>
+                        <div class="col-sm-9"> 
+                          20 % heller 
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          TURN_DOWN 
+                        </div>
+                        <div class="col-sm-9"> 
+                          20 % dunkler 
+                        </div>                        
+                      </div>
                     </td>
-                  </tr>                  
+                  </tr>                                   
                   <tr>
                     <td>led_off /// group /// flur, bad</td>
                     <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
-                  </tr>
+                  </tr>               
                   <tr>
                     <td>led_off /// ALL</td>
                     <td>alle LEDs ausschalten</td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                   
+                  <tr>
+                    <td>device /// Steckdose_TV /// state:OFF</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Gerät Steckdose_TV ausschalten
+                        </div>
+                      </div>  
+                      <br>
+                      {% for device in list_device_command_options %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">
+                            {{ device[0] }}
+                          </div>
+                          <div class="col-sm-9">          
+                            {{ device[1] | replace(' ', ' | ') | replace('{', '') | replace('}', '') | replace(',', ', ') | replace('"', '') }} 
+                          </div>
+                        </div> 
+                      {% endfor %}                                            
+                    </td>
                   </tr>  
                   <tr>
-                    <td>device /// Steckdose TV /// {"state":"OFF"}</td>
-                    <td>Gerät Steckdose TV ausschalten 
-                      <br>
-                      <br> {"state":"ON"} &nbsp; >>> einschalten
-                      <br> {"state":"OFF"}       >>> ausschalten                    
-                    </td>
-                  </tr>    
+                    <td></td>
+                    <td></td>
+                  </tr>                   
                   <tr>
                     <td>program /// SUNRISE /// START</td>
-                    <td>Programm "SUNRISE" starten 
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Programm "SUNRISE" starten 
+                        </div>
+                      </div>  
                       <br>
-                      <br> START       >>> starten
-                      <br> STOP &nbsp; >>> beenden                    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          START 
+                        </div>
+                        <div class="col-sm-9"> 
+                          starten 
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          beenden 
+                        </div>                        
+                      </div>                                        
                     </td>                    
-                  </tr>                                                                
+                  </tr>     
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>   
+                  <tr>
+                    <td>spotify /// playlist /// PC /// Gemischt /// 50</td>
+                    <td>Playlist "Gemischt" auf Gerät "PC" mit Lautstärke 50 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// track /// PC /// Go Time /// Young Mozart /// 25</td>
+                    <td>Track "Go Time" von "Young Mozart" auf Gerät "PC" mit Lautstärke 25 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// album /// PC /// Hold On /// Nano /// 60</td>
+                    <td>Album "Hold On" von "Nano" auf Gerät "PC" mit Lautstärke 60 % starten</td>
+                  </tr>                                    
+                  <tr>
+                    <td>spotify /// PLAY</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          letztes Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PLAY 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen starten
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PREVIOUS 
+                        </div>
+                        <div class="col-sm-9"> 
+                          vorheriger Track 
+                        </div>                        
+                      </div>    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          NEXT 
+                        </div>
+                        <div class="col-sm-9"> 
+                          nächster Track 
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen stoppen
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          TURN_UP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          10 % lauter
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          TURN_DOWN 
+                        </div>
+                        <div class="col-sm-9"> 
+                          10 % leiser
+                        </div>                        
+                      </div> 
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          VOLUME /// 70 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Lautstärke auf 70%
+                        </div>
+                      </div>                        
+                      <br>        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Geräte:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for device in spotify_devices %}
+                            {% if device['type'] != "Smartphone" %}
+                              {{ device['name'] }} |
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Playlists:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for playlist in spotify_playlists %}
+                            {% if playlist['name'] != "Discover Weekly" %}
+                              {{ playlist['name'] }} |
+                            {% endif %}
+                          {% endfor %}    
+                        </div>
+                      </div>                                                                                    
+                    </td>                    
+                  </tr>                                                                               
                 </tbody>
               </table>   
             </div>

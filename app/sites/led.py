@@ -5,7 +5,7 @@ import os
 import re
 
 from app import app
-from app.components.control_led import *
+from app.components.backend_led import *
 from app.database.database import *
 from app.components.checks import CHECK_LED_GROUP_SETTINGS
 from app.components.shared_resources import process_management_queue

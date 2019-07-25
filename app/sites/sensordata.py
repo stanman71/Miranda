@@ -383,6 +383,7 @@ def dashboard_sensordata_statistics():
     error_message = ""
     devices = ""
     sensors = ""
+    date    = ""
     data_file_1 = ""
     data_file_2 = ""
     data_file_3 = ""
@@ -421,6 +422,8 @@ def dashboard_sensordata_statistics():
                 if data_file_1 == data_file_2 or data_file_1 == data_file_3:
                     error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"  
 
+            import datetime as dt
+
             # format data
             try:
                 devices  = df.Device.unique().tolist()
@@ -434,8 +437,30 @@ def dashboard_sensordata_statistics():
                 sensors  = sensors[:-1]
                 sensors  = sensors.replace("'", "")
                 
-            except:
-                error_message = "Datei konnte nicht geöffnet werden"
+                list_dates = []
+                
+                for date in pd.to_datetime(df['Timestamp']).dt.date.unique().tolist():
+                    
+                    date_temp = ""
+                    date_temp = date_temp + str(date.year) + "-" 
+                    
+                    if len(str(date.month)) == 1:
+                        date_temp = date_temp + "0" + str(date.month) + "-" 
+                    else:
+                        date_temp = date_temp + str(date.month) + "-" 
+                    
+                    if len(str(date.day)) == 1:
+                        date_temp = date_temp + "0" + str(date.day)
+                    else:
+                        date_temp = date_temp + str(date.day)
+                           
+                    list_dates.append(date_temp)        
+                
+                print(list_dates)
+                
+                
+            except Exception as e:
+                error_message = "Fehler beim Öffnen der Datein >>> " + str(e)
                 
 
         # create table
@@ -469,7 +494,8 @@ def dashboard_sensordata_statistics():
                 if data_file_1 == data_file_2 or data_file_1 == data_file_3:
                     error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"                
            
-            # create table           
+
+          
             try:
                 devices = request.form.get("set_devices")
                 sensors = request.form.get("set_sensors")  
@@ -486,12 +512,27 @@ def dashboard_sensordata_statistics():
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
                 
                 
+                """
+                
+                Select date
+                
+                
+                minimum_from_gui = "2019-07-07" + " 00:00:00"
+                maximum_from_gui = "2019-07-20" + " 00:00:00"
+                df_sensors_filtered_min = df_sensors[df_sensors['Timestamp']>=minimum_from_gui]
+                df_sensors_filtered_max = df_sensors[df_sensors['Timestamp']<=maximum_from_gui]
+
+                df_sensors = pd.merge(df_sensors_filtered_min, df_sensors_filtered_max, how='inner')
+
+                """
+        
+    
                 # set datetime as index and remove former row datetime
                 df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
                 
                 df_sensors = df_sensors.set_index('date')
                 df_sensors = df_sensors.drop(columns=['Timestamp'])
-
+                
                 graph  = BUILD_GRAPH(df_sensors)
 
             except:

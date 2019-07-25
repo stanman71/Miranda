@@ -395,31 +395,31 @@
               <form method="POST" class="verticalform">
                 <table class="table">          
                   <thead>          
-                    <th scope="col"></th>              
-                    <th scope="col">Name</th> 
-                    <th scope="col">Aufgabe</th>  
-                    <th scope="col"></th>            
-                    <th scope="col">Zeit</th>   
-                    <th scope="col">Sonne</th>              
-                    <th scope="col">Sensoren</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Wiederholen</th>
+                    <th scope="col" style="width:3%"></th>              
+                    <th scope="col" style="width:17%">Name</th> 
+                    <th scope="col" style="width:35%">Aufgabe</th>  
+                    <th scope="col" style="width:8%"></th>            
+                    <th scope="col" style="width:8%">Zeit</th>   
+                    <th scope="col" style="width:8%">Sonne</th>              
+                    <th scope="col" style="width:8%">Sensoren</th>
+                    <th scope="col" style="width:8%">Position</th>
+                    <th scope="col" style="width:8%">Wiederholen</th>
                     <th scope="col"></th>
                   </thead>
                   <tbody> 
                     <tr>
-                      <td style="width:3%">
+                      <td>
                         <a href="/dashboard/scheduler/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                         <a href="/dashboard/scheduler/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                       </td>                       
-                      <td style="width:17%">
+                      <td>
                         <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                       </td> 
-                      <td style="width:35%">        
+                      <td>        
                         <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
                       </td>        
-                      <td style="width:8%"></td>                         
-                      <td style="width:8%">
+                      <td></td>                         
+                      <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_time }} name="checkbox_option_time_{{ entry.id }}" >
@@ -429,7 +429,7 @@
                           </div>
                         </font>
                       </td>    
-                      <td style="width:8%">
+                      <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_sun }} name="checkbox_option_sun_{{ entry.id }}" >
@@ -439,7 +439,7 @@
                           </div>
                         </font>
                       </td>                                         
-                      <td style="width:8%">
+                      <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_sensors }} name="checkbox_option_sensors_{{ entry.id }}" >
@@ -449,7 +449,7 @@
                           </div>
                         </font>
                       </td>       
-                      <td style="width:8%">
+                      <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_position }} name="checkbox_option_position_{{ entry.id }}" >
@@ -459,7 +459,7 @@
                           </div>
                         </font>
                       </td>                                 
-                      <td style="width:8%">
+                      <td>
                         <font size="+2">
                           <div class="pretty p-default p-curve p-bigger">
                             <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_{{ entry.id }}" >
@@ -889,7 +889,6 @@
               <div class="well well-sm">   
                 <table class="table">
                 <thead>
-                  <tr><td></td><td></td></tr>
                   <tr>
                     <th>Aufgabe</th>
                     <th>Erklärung</th>
@@ -897,33 +896,223 @@
                 </thead>
                 <tbody>
                   <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                     
+                  <tr>
                     <td>scene /// wohnzimmer /// relax /// 100</td>
-                    <td>starte LEDs der Gruppe "wohnzimmer" mit Szene "relex" >>> Optionale Einstellung: globale Helligkeit 100 %</td>
-                  </tr>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" 
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Optional
+                        </div>
+                        <div class="col-sm-9"> 
+                          globale Helligkeit 100 % 
+                        </div>                        
+                      </div> 
+                    </td>
+                  </tr>                                
                   <tr>
                     <td>led_off /// group /// flur, bad</td>
                     <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
-                  </tr>
+                  </tr>                
                   <tr>
                     <td>led_off /// ALL</td>
                     <td>alle LEDs ausschalten</td>
-                  </tr>    
+                  </tr> 
                   <tr>
-                    <td>device /// Steckdose TV /// {"state":"OFF"}</td>
-                    <td>Gerät Steckdose TV ausschalten ({"state":"ON"} ist einschalten)</td>
-                  </tr>    
+                    <td></td>
+                    <td></td>
+                  </tr>                   
+                  <tr>
+                    <td>device /// Steckdose_TV /// state:OFF</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Gerät Steckdose_TV ausschalten
+                        </div>
+                      </div>  
+                      <br>
+                      {% for device in list_device_command_options %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">
+                            {{ device[0] }}
+                          </div>
+                          <div class="col-sm-9">          
+                            {{ device[1] | replace(' ', ' | ') | replace('{', '') | replace('}', '') | replace(',', ', ') | replace('"', '') }} 
+                          </div>
+                        </div> 
+                      {% endfor %}                                            
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                   
                   <tr>
                     <td>program /// SUNRISE /// START</td>
-                    <td>Programm "SUNRISE" starten >>> "STOP" für stoppen</td>
-                  </tr>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Programm "SUNRISE" starten 
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          START 
+                        </div>
+                        <div class="col-sm-9"> 
+                          starten 
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          beenden 
+                        </div>                        
+                      </div>                                        
+                    </td>                    
+                  </tr>     
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                                                                                 
                   <tr>
                     <td>watering_plants /// 1</td>
-                    <td>alle Pflanzen der Gruppe 1 gießen >>> "ALL" für alle Gruppen</td>
-                  </tr>                                                                   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          alle Pflanzen der Gruppe 1 gießen  
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          1 - 5 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Pflanzen der Gruppe 1 - 5 gießen 
+                        </div>                        
+                      </div>                         
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          ALL 
+                        </div>
+                        <div class="col-sm-9"> 
+                          alle Gruppen gießen 
+                        </div>                        
+                      </div>                                                                                 
+                    </td>                       
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                                                                     
                   <tr>
                     <td>request_sensordata /// Testdaten</td>
                     <td>Sensordaten abrufen, der dazugehörige Job ist "Testdaten"</td>
-                  </tr>               
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>   
+                  <tr>
+                    <td>spotify /// playlist /// PC /// Gemischt /// 50</td>
+                    <td>Playlist "Gemischt" auf Gerät "PC" mit Lautstärke 50 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// track /// PC /// Go Time /// Young Mozart /// 25</td>
+                    <td>Track "Go Time" von "Young Mozart" auf Gerät "PC" mit Lautstärke 25 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// album /// PC /// Hold On /// Nano /// 60</td>
+                    <td>Album "Hold On" von "Nano" auf Gerät "PC" mit Lautstärke 60 % starten</td>
+                  </tr>                                     
+                  <tr>
+                    <td>spotify /// PLAY</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          letztes Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PLAY 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen starten
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PREVIOUS 
+                        </div>
+                        <div class="col-sm-9"> 
+                          vorheriger Track 
+                        </div>                        
+                      </div>    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          NEXT 
+                        </div>
+                        <div class="col-sm-9"> 
+                          nächster Track 
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen stoppen
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          VOLUME /// 70 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Lautstärke auf 70%
+                        </div>                        
+                      </div> 
+                      <br>        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Geräte:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for device in spotify_devices %}
+                            {% if device['type'] != "Smartphone" %}
+                              {{ device['name'] }} |
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Playlists:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for playlist in spotify_playlists %}
+                            {% if playlist['name'] != "Discover Weekly" %}
+                              {{ playlist['name'] }} |
+                            {% endif %}
+                          {% endfor %}    
+                        </div>
+                      </div>                                                                                 
+                    </td>  
+                  </tr>                                   
                 </tbody>
               </table>     
             </div>

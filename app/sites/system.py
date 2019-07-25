@@ -2,19 +2,22 @@ from flask import render_template, redirect, url_for, request, send_from_directo
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from functools import wraps
+
 import os
 import datetime
 import json
 import sys
+import spotipy
 
 from app import app
-from app.components.control_led import *
+from app.components.backend_led import *
 from app.database.database import *
 from app.components.file_management import *
 from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
 from app.components.checks import *
 from app.components.shared_resources import GET_ERROR_DELETE_MQTT_DEVICE, SET_ERROR_DELETE_MQTT_DEVICE
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
 
 
 # access rights
@@ -523,12 +526,41 @@ def dashboard_system_controller():
 
     data_controller = GET_ALL_CONTROLLER()
     dropdown_list_controller = GET_ALL_MQTT_DEVICES("controller")
+  
+  
+    # list device command option    
+    list_device_command_options = []
+    
+    for device in GET_ALL_MQTT_DEVICES("device"):
+        list_device_command_options.append((device.name, device.commands))
+         
+          
+    # list spotify devices / playlists
+    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+        REFRESH_SPOTIFY_TOKEN()
+     
+    spotify_token = GET_SPOTIFY_TOKEN()    
+    
+    try:
+        sp       = spotipy.Spotify(auth=spotify_token)
+        sp.trace = False
+        
+        spotify_devices   = sp.devices()["devices"]        
+        spotify_playlists = sp.current_user_playlists(limit=20)["items"]   
+        
+    except:
+        spotify_devices   = ""       
+        spotify_playlists = ""             
+          
    
     return render_template('dashboard_system_controller.html',
                             error_message_add_controller=error_message_add_controller,
                             error_message_controller_tasks=error_message_controller_tasks, 
                             data_controller=data_controller,
-                            dropdown_list_controller=dropdown_list_controller,                                   
+                            dropdown_list_controller=dropdown_list_controller, 
+                            list_device_command_options=list_device_command_options,    
+                            spotify_devices=spotify_devices,
+                            spotify_playlists=spotify_playlists,                                                             
                             active03="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -579,15 +611,17 @@ def dashboard_system_speechcontrol():
     error_message_add_speechcontrol_device_task = ""
     error_message_speechcontrol_device_tasks = ""
     error_message_add_speechcontrol_program_task = ""
-    error_message_speechcontrol_program_tasks = ""    
+    error_message_speechcontrol_program_tasks = "" 
+    error_message_speechcontrol_spotify_tasks = ""       
     check_value_speechcontrol = ["", ""]
     snowboy_name = ""
     snowboy_task = ""   
     device_task  = ""
-    program_task = ""
+    program_task = ""    
     collapse_tasks_led              = ""
     collapse_tasks_devices          = ""
     collapse_tasks_programs         = ""
+    collapse_tasks_spotify          = ""    
     collapse_speechcontrol_settings = ""
     collapse_fileupload             = ""
     
@@ -632,7 +666,6 @@ def dashboard_system_speechcontrol():
             # speechcontrol led tasks
             #########################
             
-            # change speech control led tasks
             if request.form.get("change_speechcontrol_led_tasks") != None: 
                 
                 collapse_tasks_led = "in"
@@ -742,6 +775,27 @@ def dashboard_system_speechcontrol():
                         UPDATE_SPEECHCONTROL_PROGRAM_TASK(i, command, keywords)   
 
 
+            #############################
+            # speechcontrol spotify tasks
+            #############################
+            
+            if request.form.get("change_speechcontrol_spotify_tasks") != None: 
+                
+                collapse_tasks_spotify = "in"
+               
+                for i in range (1,26):
+                    
+                    if request.form.get("set_speechcontrol_spotify_task_keyword_" + str(i)) != None:
+
+                        if request.form.get("set_speechcontrol_spotify_task_keyword_" + str(i)) != "":   
+                            keywords = request.form.get("set_speechcontrol_spotify_task_keyword_" + str(i))    
+                            
+                        else:
+                            keywords = "None"                
+                                         
+                        UPDATE_SPEECHCONTROL_SPOTIFY_TASK(i, keywords)     
+
+
             ########################
             # speechcontrol settings
             ########################
@@ -750,8 +804,6 @@ def dashboard_system_speechcontrol():
                 
                 collapse_speechcontrol_settings = "in"
                 
-                
-                print(request.form)
                 
                 # #################
                 #  snowboy settings
@@ -817,11 +869,12 @@ def dashboard_system_speechcontrol():
     error_message_speechcontrol_led_tasks     = CHECK_SPEECHCONTROL_LED_TASKS(GET_ALL_SPEECHCONTROL_LED_TASKS())
     error_message_speechcontrol_device_tasks  = CHECK_SPEECHCONTROL_TASKS(GET_ALL_SPEECHCONTROL_DEVICE_TASKS(), "devices")
     error_message_speechcontrol_program_tasks = CHECK_SPEECHCONTROL_TASKS(GET_ALL_SPEECHCONTROL_PROGRAM_TASKS(), "programs")
+    error_message_speechcontrol_spotify_tasks = CHECK_SPEECHCONTROL_SPOTIFY_TASKS(GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS())
 
     speechcontrol_led_task_list     = GET_ALL_SPEECHCONTROL_LED_TASKS()
     speechcontrol_device_task_list  = GET_ALL_SPEECHCONTROL_DEVICE_TASKS()
     speechcontrol_program_task_list = GET_ALL_SPEECHCONTROL_PROGRAM_TASKS()
-
+    speechcontrol_spotify_task_list = GET_ALL_SPEECHCONTROL_SPOTIFY_TASKS()
 
     dropdown_list_speech_recognition_provider = ["Google Cloud Speech", "Google Speech Recognition",
                                                  "Houndify", "IBM Speech", "Microsoft Azure Speech", 
@@ -844,6 +897,7 @@ def dashboard_system_speechcontrol():
                             error_message_speechcontrol_device_tasks=error_message_speechcontrol_device_tasks,                    
                             error_message_add_speechcontrol_program_task=error_message_add_speechcontrol_program_task,
                             error_message_speechcontrol_program_tasks=error_message_speechcontrol_program_tasks,       
+                            error_message_speechcontrol_spotify_tasks=error_message_speechcontrol_spotify_tasks,   
                            
                             speechcontrol_global_setting=speechcontrol_global_setting,
                             check_value_speechcontrol=check_value_speechcontrol,
@@ -863,12 +917,14 @@ def dashboard_system_speechcontrol():
                             collapse_tasks_led=collapse_tasks_led,
                             collapse_tasks_devices=collapse_tasks_devices,
                             collapse_tasks_programs=collapse_tasks_programs,
+                            collapse_tasks_spotify=collapse_tasks_spotify,                            
                             collapse_speechcontrol_settings=collapse_speechcontrol_settings,
                             collapse_fileupload=collapse_fileupload,
                                                                            
                             speechcontrol_led_task_list=speechcontrol_led_task_list,
                             speechcontrol_device_task_list=speechcontrol_device_task_list,
                             speechcontrol_program_task_list=speechcontrol_program_task_list,
+                            speechcontrol_spotify_task_list=speechcontrol_spotify_task_list,                            
                             speech_recognition_provider=speech_recognition_provider,
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,

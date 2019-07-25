@@ -7,10 +7,10 @@ from app.components.file_management import *
 from app.components.process_scheduler import SCHEDULER_TIME_PROCESS, SCHEDULER_SENSOR_PROCESS, SCHEDULER_PING_PROCESS
 from app.components.process_controller import CONTROLLER_PROCESS
 from app.components.mqtt import *
-from app.components.control_led import *
+from app.components.backend_led import *
 from app.components.shared_resources import process_management_queue
 from app.components.tasks import START_SPEECHCONTROL_TASK
-from app.components.control_watering import START_WATERING_THREAD
+from app.components.backend_watering import START_WATERING_THREAD
 
 """ ################ """
 """ management queue """

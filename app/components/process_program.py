@@ -1,12 +1,15 @@
 import threading
 import heapq
 import time
+import spotipy
 
 from app import app
 from app.database.database import *
 from app.components.file_management import *
 from app.components.shared_resources import process_management_queue
 from app.components.mqtt import MQTT_CHECK_SETTING_THREAD, ZIGBEE2MQTT_CHECK_SETTING_THREAD
+from app.components.backend_spotify import *
+
 
 program_running = None
 stop_program    = False
@@ -203,9 +206,139 @@ def PROGRAM_THREAD(program_id):
                             WRITE_LOGFILE_SYSTEM("ERROR", "Program - " + program_name + " | LED - " + led_name + " | not founded")
                             
 
+                    # #########
+                    #  spotify
+                    # #########
+                             
+                    if "spotify" in line:
+                            
+                        line_content = line.split(" /// ")
+
+                        if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+                            REFRESH_SPOTIFY_TOKEN()
+
+                        spotify_token = GET_SPOTIFY_TOKEN()
+
+                        # check spotify login 
+                        if spotify_token != "":
+                            
+                            try:
+                                
+                                sp       = spotipy.Spotify(auth=spotify_token)
+                                sp.trace = False
+                                
+                                
+                                # basic control
+                                
+                                try:
+                                
+                                    spotify_device_id = sp.current_playback(market=None)['device']['id']
+                                    spotify_volume    = sp.current_playback(market=None)['device']['volume_percent']
+
+                                    if line_content[1].lower() == "play":
+                                        SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
+                            
+                                    if line_content[1].lower() == "previous":
+                                        SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
+
+                                    if line_content[1].lower() == "next":
+                                        SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
+
+                                    if line_content[1].lower() == "stop": 
+                                        SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
+
+                                    if line_content[1].lower() == "volume":
+                                        spotify_volume = int(line_content[2])
+                                        SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)       
+                                        
+                                except:
+                                    pass
+                                    
+                                    
+                                # start playlist
+                                        
+                                if line_content[1].lower() == "playlist": 
+
+                                    # get spotify_device_id
+                                    device_name          = line_content[2]                                    
+                                    list_spotify_devices = sp.devices()["devices"]  
+                                    
+                                    for device in list_spotify_devices:
+                                        if device['name'].lower() == device_name.lower():
+                                            spotify_device_id = device['id']  
+                                            continue                                
+                                    
+                                    # get playlist_uri
+                                    playlist_name          = line_content[3]
+                                    list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+                                    
+                                    for playlist in list_spotify_playlists:
+                                        if playlist['name'].lower() == playlist_name.lower():
+                                            playlist_uri = playlist['uri']
+                                            continue
+                                          
+                                    # get volume
+                                    playlist_volume = int(line_content[4])
+                                    
+                                    SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)
+                            
+                            
+                                # start track
+                                        
+                                if line_content[1].lower() == "track": 
+
+                                    # get spotify_device_id
+                                    device_name          = line_content[2]                                    
+                                    list_spotify_devices = sp.devices()["devices"]  
+                                    
+                                    for device in list_spotify_devices:
+                                        if device['name'].lower() == device_name.lower():
+                                            spotify_device_id = device['id']  
+                                            continue                                
+                                    
+                                    # get playlist_uri
+                                    track_uri = SPOTIFY_SEARCH_TRACK(spotify_token, line_content[3], line_content[4], 1) [0][2]
+                                          
+                                    # get volume
+                                    track_volume = int(line_content[5])
+                                    
+                                    SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume)
+
+
+                                # start album
+                                        
+                                if line_content[1].lower() == "album": 
+
+                                    # get spotify_device_id
+                                    device_name          = line_content[2]                                    
+                                    list_spotify_devices = sp.devices()["devices"]  
+                                    
+                                    for device in list_spotify_devices:
+                                        if device['name'].lower() == device_name.lower():
+                                            spotify_device_id = device['id']  
+                                            continue                                
+                                    
+                                    # get album_uri
+                                    album_uri = SPOTIFY_SEARCH_ALBUM(spotify_token, line_content[3], line_content[4], 1) [0][2]
+                                          
+                                    # get volume
+                                    album_volume = int(line_content[5])
+                                    
+                                    SPOTIFY_START_ALBUM(spotify_token, spotify_device_id, album_uri, album_volume)
+
+
+                            except Exception as e:
+                                WRITE_LOGFILE_SYSTEM("ERROR", "Programm - " + GET_PROGRAM_BY_ID(program_id).name + " | " + str(e))
+                                print(str(e))  
+        
+                                        
+                        else:
+                            WRITE_LOGFILE_SYSTEM("ERROR", "Programm - " + GET_PROGRAM_BY_ID(program_id).name + " | No Spotify Token founded")   
+
+                        
                     line_number = line_number + 1
                     time.sleep(1)
-                 
+                    
                  
             # repeat program ?
             if repeat_program == True:        

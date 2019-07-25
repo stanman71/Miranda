@@ -295,8 +295,7 @@
         </div>  
       </div>
     </div>  
-    <br>
- 
+
  
 <!------------------>
 <!--    devices   -->  
@@ -400,8 +399,6 @@
         </div>  
       </div>
     </div>  
-    <br>
-
 
 <!------------------>
 <!--   watering   -->
@@ -471,8 +468,6 @@
         </div>  
       </div>
     </div>  
-    <br>
-
 
 <!------------------>
 <!--   programs   -->
@@ -538,9 +533,22 @@
 
 
 <!------------------>
-<!--    spotify   -->    
+<!--    spotify   -->
 <!------------------>
 
+
+<!-- error message spotify -->   
+
+{% if error_message_spotify != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ error_message_spotify }}
+  </div>      
+{% endif %}
+
+
+<!-- table spotify -->    
+
+<section id="spotify"></section>  
 
       <div class="panel-group">
         <div class="panel panel-default">
@@ -552,17 +560,140 @@
           <div id="collapse_spotify" class="panel-collapse collapse {{ collapse_dashboard_spotify }}" >      
             <div class="panel-body">             
               <form method="POST">             
-                <div class="well well-sm">    
-                  
-                                                   
-                </div>              
+                <div class="well well-sm">     
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">
+                    Spotify-Account >>> {% if spotify_user == "Nicht eingeloggt" %}<font color="salmon">{{ spotify_user }}</font>{% else %}<font color="lightgreen">{{ spotify_user }}</font>{% endif %}</span>
+                  </button>                
+                  <br>
+                  <a href="/dashboard/spotify/login/url/dashboard#" class="btn btn-default" role="button">Login</a>                                                                    
+                  <a href="/dashboard/spotify/logout/url/dashboard#" class="btn btn-default" role="button">Logout</a>  
+                </div>
               </form>
-            </div> 
-          </div>
-        </div>    
-      </div>
-      
 
+          
+          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') %}  
+          
+            <div class="well well-sm"> 
+              <div class="well well-sm">     
+                <table class="table">
+                  <thead>                                   
+                    <th scope="col" style="width:33%">Track</th>                                     
+                    <th scope="col" style="width:33%">Interpreten</th>                      
+                    <th scope="col" style="width:33%">Playlist</th> 
+                  </thead>                                             
+                  <tbody> 
+                    <tr>
+                      <td>
+                        {{ tupel_current_playback[4] }} 
+                      </td>                          
+                      <td>
+                        {% for artist in tupel_current_playback[5] %}
+                           {{ artist }}
+                        {% endfor %} 
+                      </td>                          
+                      <td>
+                        {{ tupel_current_playback[7] }}
+                      </td>                                                                                                                             
+                    </tr>             
+                  </tbody>
+                </table>                                 
+              </div>
+              <div class="well well-sm"> 
+                <form method="POST">            
+                  <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_play">
+                    <span class="glyphicon glyphicon-play"></span>
+                  </button>                               
+                  <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_previous">
+                    <span class="glyphicon glyphicon-fast-backward"></span>
+                  </button>
+                  <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_next">
+                    <span class="glyphicon glyphicon-fast-forward"></span>
+                  </button>
+                  <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_stop">
+                    <span class="glyphicon glyphicon-pause"></span>
+                  </button>
+                  <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_volume">
+                    <span class="glyphicon glyphicon-bullhorn"></span>
+                  </button>
+                  <br>
+                  <br>
+                  <div class="slidecontainer"> 
+                    <div class="col-md-10 text-center">                       
+                      <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
+                    </div>                                                     
+                  </div>                                    
+                </form>
+              </div> 
+            </div>    
+               
+          {% endif %} 
+          
+         
+<!-- spotify devices -->       
+            
+        {% if spotify_devices != "" %}   
+                    
+          <div class="well well-sm">  
+            <form method="POST"> 
+              <table class="table">
+                <thead>
+                  <th scope="col" style="width:35%">Gerät Name</th>                                    
+                  <th scope="col" style="width:50%">Playlist</th> 
+                  <th scope="col" style="width:15%">Abspielen</th>                                  
+                </thead>
+                <tbody> 
+                  
+                  {% for device in spotify_devices %}
+                  
+                    <tr>
+                      
+                      {% if device['type'] != "Smartphone" %}
+
+                        <td>
+                          {{ device['name'] }}
+                        </td>                
+                        <td>  
+                          <select class="selectpicker" data-width="100%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
+                            {% if spotify_playlists != "" %}
+                              {% for playlist in spotify_playlists %}
+                                {% if playlist['name'] != "Discover Weekly" %}
+                                  <option value="{{ playlist['uri'] }}" > {{ playlist['name'] }} </option>
+                                {% endif %}
+                              {% endfor %}
+                            {% else %}
+                            <option value= "" > Keine Playlist gefunden </option>
+                            {% endif %}
+                          </select>  
+                        </td>              
+                        <td>   
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-2">     
+                              <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
+                                <span class="glyphicon glyphicon-play"></span>
+                              </button>                               
+                            </div>                                
+                          </div>                          
+                        </td>  
+                        
+                       {% endif %}   
+                        
+                    </tr>
+                    
+                  {% endfor %}    
+                            
+                </tbody>
+              </table>                                                                  
+            </form>
+          </div> 
+
+       {% endif %}   
+        
+        </div>    
+      </div>    
+    </div>
+    
+    <br>  
+      
 <!------------------>
 <!--    sensors   -->      
 <!------------------>    

@@ -273,18 +273,18 @@
             <form method="POST" class="verticalform">              
               <table class="table">
                 <thead>
-                  <th scope="col"></th>  
-                  <th scope="col">Job</th>  
-                  <th scope="col">Datei</th>   
-                  <th scope="col">Gerät</th>
-                  <th scope="col">Sensor</th>
-                  <th scope="col">Sensor-Inputs speichern</th>
-                  <th scope="col"></th>
+                  <th scope="col" style="width:3%"></th>  
+                  <th scope="col" style="width:20%">Job</th>  
+                  <th scope="col" style="width:20%">Datei</th>   
+                  <th scope="col" style="width:18%">Gerät</th>
+                  <th scope="col" style="width:18%">Sensor</th>
+                  <th scope="col" style="width:16%">Sensor-Inputs speichern</th>
+                  <th scope="col" style="width:5%"></th>
                 </thead>
                 <tbody> 
                   {% for entry in list_sensordata %}
                   <tr>
-                    <td style="width:3%">
+                    <td>
                       <a href="/dashboard/sensordata/jobs/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
                       <a href="/dashboard/sensordata/jobs/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
                     </td>                     

@@ -58,7 +58,7 @@ def SNOWBOY_THREAD():
 
 			detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
-		WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | started") 
+		WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | Started") 
 
 		# main loop
 		detector.start(detected_callback=detect_callback,
@@ -68,4 +68,4 @@ def SNOWBOY_THREAD():
 		detector.terminate()
 
 	else:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Snowboy Hotword - " + hotword_file + " | not founded")
+		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Snowboy Hotword - " + hotword_file + " | Not founded")

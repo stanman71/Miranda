@@ -1,13 +1,16 @@
 from app import app
-from app.components.control_led import *
+from app.components.backend_led import *
 from app.database.database import *
-from app.components.control_watering import START_WATERING_THREAD
+from app.components.backend_watering import START_WATERING_THREAD
 from app.components.mqtt import *
 from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER, GET_LOCATION_COORDINATES
 from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
+from app.components.backend_spotify import *
 
 from difflib import SequenceMatcher
+
+import spotipy
 
 
 """ ################################ """
@@ -19,13 +22,17 @@ from difflib import SequenceMatcher
 
 def START_CONTROLLER_TASK(task, controller_name, controller_command):
 
+	controller_command = controller_command[1:-1].replace('"','')
+
     # ###########
     # start scene
     # ###########
 
 	if "scene" in task:
 
+		task = task.lower()
 		task = task.split(" /// ")
+		
 		group = GET_LED_GROUP_BY_NAME(task[1])
 		scene = GET_LED_SCENE_BY_NAME(task[2])
 
@@ -42,6 +49,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 
 				# new led setting ?
 				if group.current_setting != scene.name or int(group.current_brightness) != brightness:
+					
 					LED_SET_SCENE(group.id, scene.id, brightness)
 					LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)
 
@@ -62,25 +70,30 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
     # #################
 
 	if "brightness" in task:
+		
+		task = task.lower()
 		task = task.split(" /// ")
-		group = GET_LED_GROUP_BY_NAME(task[1])
+		
+		group   = GET_LED_GROUP_BY_NAME(task[1])
 		command = task[2]
 
 		# group existing ?
 		if group != None:
 
 			# command valid ?
-			if command == "turn_up" or command == "TURN_UP" or command == "turn_down" or command == "TURN_DOWN":
+			if command == "turn_up" or command == "turn_down":
+				
 				scene_name = group.current_setting
 
 				# led_group off ?
-				if scene_name != "OFF":
+				if scene_name != "off":
+					
 					scene = GET_LED_SCENE_BY_NAME(scene_name)
 
 					# get new brightness_value
 					current_brightness = group.current_brightness
 
-					if (command == "turn_up" or command == "TURN_UP") and current_brightness != 100:
+					if (command == "turn_up") and current_brightness != 100:
 						target_brightness = int(current_brightness) + 20
 
 						if target_brightness > 100:
@@ -89,7 +102,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 						LED_SET_BRIGHTNESS_DIMMER(group.id, "turn_up")
 						LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10)
 
-					elif (command == "turn_down" or command == "TURN_DOWN") and current_brightness != 0:
+					elif (command == "turn_down") and current_brightness != 0:
 
 						target_brightness = int(current_brightness) - 20
 
@@ -120,6 +133,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
     # #######
 
 	if "led_off" in task:
+		
+		task = task.lower()
 		task = task.split(" /// ")
 
 		if task[1] == "group":
@@ -138,7 +153,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 			# get exist group names
 			for group in GET_ALL_LED_GROUPS():
 
-				if input_group_name.lower() == group.name.lower():
+				if input_group_name == group.name.lower():
 					group_founded = True
 
 				# new led setting ?
@@ -157,7 +172,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 				WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " +
 				                     controller_command + " | Group - " + input_group_name + " | not founded")
 
-		if task[1] == "all" or task[1] == "ALL":
+		if task[1] == "all":
 			for group in GET_ALL_LED_GROUPS():
 
 				# new led setting ?
@@ -252,7 +267,10 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
     # ########
 
 	if "program" in task:
+		
+		task = task.lower()
 		task = task.split(" /// ")
+		
 		program = GET_PROGRAM_BY_NAME(task[1].lower())
 
 		if program != None:
@@ -274,6 +292,125 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Program not founded")
 
 
+    # #######
+    # spotify
+    # #######
+
+	if "spotify" in task:
+		
+		if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+			REFRESH_SPOTIFY_TOKEN()
+		 
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":
+				
+			task = task.lower()			
+			task = task.split(" /// ")
+			
+			sp       = spotipy.Spotify(auth=spotify_token)
+			sp.trace = False
+			
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']
+
+			if task[1] == "play":
+				SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
+
+			if task[1] == "previous": 
+				SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
+
+			if task[1] == "next":
+				SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
+
+			if task[1] == "stop": 
+				SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)      
+
+			if task[1] == "turn_up":   
+				SPOTIFY_CONTROL(spotify_token, "turn_up", spotify_volume)
+
+			if task[1] == "turn_down":   
+				SPOTIFY_CONTROL(spotify_token, "turn_down", spotify_volume)                 
+
+			if task[1].lower() == "volume":
+				spotify_volume = int(task[2])
+				SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)   
+
+			# start playlist
+					
+			if task[1].lower() == "playlist": 
+
+				# get spotify_device_id
+				device_name          = task[2]                                    
+				list_spotify_devices = sp.devices()["devices"]  
+				
+				for device in list_spotify_devices:
+					if device['name'].lower() == device_name.lower():
+						spotify_device_id = device['id']  
+						continue                                
+				
+				# get playlist_uri
+				playlist_name          = task[3]
+				list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+				
+				for playlist in list_spotify_playlists:
+					if playlist['name'].lower() == playlist_name.lower():
+						playlist_uri = playlist['uri']
+						continue
+					  
+				# get volume
+				playlist_volume = int(task[4])
+				
+				SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)
+		
+		
+			# start track
+					
+			if task[1].lower() == "track": 
+
+				# get spotify_device_id
+				device_name          = task[2]                                    
+				list_spotify_devices = sp.devices()["devices"]  
+				
+				for device in list_spotify_devices:
+					if device['name'].lower() == device_name.lower():
+						spotify_device_id = device['id']  
+						continue                                
+				
+				# get playlist_uri
+				track_uri = SPOTIFY_SEARCH_TRACK(spotify_token, task[3], task[4], 1) [0][2]
+					  
+				# get volume
+				track_volume = int(task[5])
+				
+				SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume)
+
+
+			# start album
+					
+			if task[1].lower() == "album": 
+
+				# get spotify_device_id
+				device_name          = task[2]                                    
+				list_spotify_devices = sp.devices()["devices"]  
+				
+				for device in list_spotify_devices:
+					if device['name'].lower() == device_name.lower():
+						spotify_device_id = device['id']  
+						continue                                
+				
+				# get album_uri
+				album_uri = SPOTIFY_SEARCH_ALBUM(spotify_token, task[3], task[4], 1) [0][2]
+					  
+				# get volume
+				album_volume = int(task[5])
+				
+				SPOTIFY_START_ALBUM(spotify_token, spotify_device_id, album_uri, album_volume)
+
+                
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | No Spotify Token founded")
+			
+
 """ ################################ """
 """ ################################ """
 """           scheduler tasks        """
@@ -291,6 +428,7 @@ def START_SCHEDULER_TASK(task_object):
 		if "scene" in task_object.task:
 
 			task = task_object.task.split(" /// ")
+			
 			group = GET_LED_GROUP_BY_NAME(task[1])
 			scene = GET_LED_SCENE_BY_NAME(task[2])
 
@@ -320,6 +458,7 @@ def START_SCHEDULER_TASK(task_object):
 			else:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Group - " + task[1] + " | not founded")
 
+
 	except Exception as e:
 		print(e)
 		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))
@@ -331,6 +470,7 @@ def START_SCHEDULER_TASK(task_object):
 
 	try:
 		if "led_off" in task_object.task:
+			
 			task = task_object.task.split(" /// ")
 
 			if task[1] == "group":
@@ -391,6 +531,7 @@ def START_SCHEDULER_TASK(task_object):
 
 	try:
 		if "device" in task_object.task and "mqtt_update" not in task_object.task:
+			
 			task = task_object.task.split(" /// ")
 
 			device = GET_MQTT_DEVICE_BY_NAME(task[1].lower())
@@ -464,6 +605,7 @@ def START_SCHEDULER_TASK(task_object):
 
 	try:
 		if "program" in task_object.task:
+			
 			task    = task_object.task.split(" /// ")
 			program = GET_PROGRAM_BY_NAME(task[1].lower())
 
@@ -485,6 +627,7 @@ def START_SCHEDULER_TASK(task_object):
 			else:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Program not founded")		     
 
+
 	except Exception as e:
 		print(e)
 		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -500,6 +643,7 @@ def START_SCHEDULER_TASK(task_object):
 			group_number = task[1]
 			START_WATERING_THREAD(group_number)
 
+
 	except Exception as e:
 		print(e)
 		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -512,6 +656,7 @@ def START_SCHEDULER_TASK(task_object):
 	try:  
 		if "save_database" in task_object.task:
 			SAVE_DATABASE()	
+
 
 	except Exception as e:
 		print(e)
@@ -526,6 +671,7 @@ def START_SCHEDULER_TASK(task_object):
 		if "mqtt_update_devices" in task_object.task:
 			MQTT_UPDATE_DEVICES("mqtt")
 
+
 	except Exception as e:
 		print(e)
 		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))      
@@ -537,12 +683,141 @@ def START_SCHEDULER_TASK(task_object):
 
 	try:
 		if "request_sensordata" in task_object.task:
-			task = task_object.task.split(":")
+			task = task_object.task.split(" /// ")
 			MQTT_REQUEST_SENSORDATA(task[1])  
+
 
 	except Exception as e:
 		print(e)
 		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))              
+
+
+	# ##################
+	# request sensordata
+	# ##################
+
+	try:
+		if "spotify" in task_object.task:
+			task = task_object.task.split(" /// ")
+
+			if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+				REFRESH_SPOTIFY_TOKEN()
+
+			spotify_token = GET_SPOTIFY_TOKEN()
+
+			# check spotify login 
+			if spotify_token != "":
+				
+				sp       = spotipy.Spotify(auth=spotify_token)
+				sp.trace = False
+				
+				
+				# basic control
+				
+				try:
+				
+					spotify_device_id = sp.current_playback(market=None)['device']['id']
+					spotify_volume    = sp.current_playback(market=None)['device']['volume_percent']
+
+					if task[1].lower() == "play":
+						SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
+			
+					if task[1].lower() == "previous":
+						SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
+
+					if task[1].lower() == "next":
+						SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
+
+					if task[1].lower() == "stop": 
+						SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
+
+					if task[1].lower() == "volume":
+						spotify_volume = int(task[2])
+						SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)       
+						
+				except:
+					pass
+					
+					
+				# start playlist
+						
+				if task[1].lower() == "playlist": 
+
+					# get spotify_device_id
+					device_name          = task[2]                                    
+					list_spotify_devices = sp.devices()["devices"]  
+					
+					for device in list_spotify_devices:
+						if device['name'].lower() == device_name.lower():
+							spotify_device_id = device['id']  
+							continue                                
+					
+					# get playlist_uri
+					playlist_name          = task[3]
+					list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+					
+					for playlist in list_spotify_playlists:
+						if playlist['name'].lower() == playlist_name.lower():
+							playlist_uri = playlist['uri']
+							continue
+						  
+					# get volume
+					playlist_volume = int(task[4])
+					
+					SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)
+			
+			
+				# start track
+						
+				if task[1].lower() == "track": 
+
+					# get spotify_device_id
+					device_name          = task[2]                                    
+					list_spotify_devices = sp.devices()["devices"]  
+					
+					for device in list_spotify_devices:
+						if device['name'].lower() == device_name.lower():
+							spotify_device_id = device['id']  
+							continue                                
+					
+					# get playlist_uri
+					track_uri = SPOTIFY_SEARCH_TRACK(spotify_token, task[3], task[4], 1) [0][2]
+						  
+					# get volume
+					track_volume = int(task[5])
+					
+					SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume)
+
+
+				# start album
+						
+				if task[1].lower() == "album": 
+
+					# get spotify_device_id
+					device_name          = task[2]                                    
+					list_spotify_devices = sp.devices()["devices"]  
+					
+					for device in list_spotify_devices:
+						if device['name'].lower() == device_name.lower():
+							spotify_device_id = device['id']  
+							continue                                
+					
+					# get album_uri
+					album_uri = SPOTIFY_SEARCH_ALBUM(spotify_token, task[3], task[4], 1) [0][2]
+						  
+					# get volume
+					album_volume = int(task[5])
+					
+					SPOTIFY_START_ALBUM(spotify_token, spotify_device_id, album_uri, album_volume)
+
+		
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | No Spotify Token founded")   
+
+
+	except Exception as e:
+		print(e)
+		WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | " + str(e))    
 
 
 	# ####################################
@@ -575,7 +850,8 @@ def START_SPEECHCONTROL_TASK(answer):
 		SPEECHCONTROL_LED_TASK(answer)
 		SPEECHCONTROL_DEVICE_TASK(answer)
 		SPEECHCONTROL_PROGRAM_TASK(answer)
-
+		SPEECHCONTROL_SPOTIFY_TASK(answer)
+		
 
 # #########
 # LED Tasks
@@ -1058,4 +1334,383 @@ def SPEECHCONTROL_PROGRAM_TASK(answer):
 						print(e)
 						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | " + str(e))   
 						return 
+
+
+def SPEECHCONTROL_SPOTIFY_TASK(answer):
+	
+	table_numbers = {'fünf'           : 5,
+					 'zehn'           : 10, 
+					 'fünfzehn'       : 15,
+					 'zwanzig'        : 20,
+					 'fünfundzwanzig' : 25,
+					 'dreizig'        : 30,
+					 'fünfunddreizig' : 35,
+				 	 'vierzig'        : 40,
+				 	 'fünfundvierzig' : 45,
+					 'fünfzig'        : 50,
+					 'fünfundfünfzig' : 55,
+					 'sechzig'        : 60,
+					 'fünfundsechzig' : 65, 
+				 	 'siebzig'        : 70,
+				 	 'fünfundsiebzig' : 75,
+				 	 'achtzig'        : 80,
+				 	 'fünfundachtzig' : 85,
+					 'neunzig'        : 90,
+					 'fünfundneunzig' : 95,
+				  	 'hundert'        : 100                            
+					 }
+					 	
+
+	answer_words = answer.split()
+	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
+
+	
+	# ##############
+	# start playlist 
+	# ##############
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(1).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+						
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False				
+
+					try:
+						list_spotify_devices   = sp.devices()["devices"] 
+						list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+
+						spotify_device_id    = None
+						spotify_playlist_uri = None
+						playlist_volume      = 50
+
+						# search spotify device
+						for device in list_spotify_devices:
+							for word in answer_words:
+
+								if SequenceMatcher(None, device["name"].lower(), word.lower()).ratio() > ratio_value:
+									spotify_device_id = device["id"]
+									continue
+
+						# search playlist
+						for playlist in list_spotify_playlists:
+							for word in answer_words:
+								
+								if SequenceMatcher(None, playlist["name"].lower(), word.lower()).ratio() > ratio_value:
+									spotify_playlist_uri = playlist["uri"]
+									continue
+
+						# search volume value
+						for element in answer.split():
+							element = element.replace("%","")
+
+							# check brightness as 'number' value
+							if element.isdigit() and (1 <= int(element) <= 100):
+								volume = int(element)
+								continue
+
+							# check volume as 'word' value
+							try:
+								playlist_volume = int(table_numbers[element])
+								continue
+							except:
+								pass  
+			
+
+						# device founded ?
+						if spotify_device_id != None: 
+
+							# playlist founded ?
+							if spotify_playlist_uri != None:   
+																
+								SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, spotify_playlist_uri, playlist_volume)
+								
+							else:
+								WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Playlist not founded")
+								return
+
+						else:
+							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Device not founded")	
+							return	 
+								
+								
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 
+
+
+
+	# ####
+	# play  
+	# ####
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(2).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+				
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False		
+					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+
+					try:
+
+						SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)
+								
+															
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 
+					
+					
+	# ########
+	# previous  
+	# ########
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(3).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+				
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False		
+					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+
+					try:
+
+						SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)
+								
+															
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 
+					
+					
+	# ####
+	# next  
+	# ####
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(4).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+				
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False		
+					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+
+					try:
+
+						SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)
+								
+															
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 
+					
+					
+	# ####
+	# stop  
+	# ####
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(5).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+				
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False		
+					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+
+					try:
+
+						SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)
+								
+															
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 										
+
+
+
+	# ######
+	# volume  
+	# ######
+
+	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(6).keywords
+
+	try:
+		list_keywords = keywords.split(",")
+	except:
+		list_keywords = [keywords]
+
+	for keyword in list_keywords:
+		keyword = keyword.replace(" ", "")
+
+		for word in answer_words:
+			
+			# keyword founded ?
+			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+				
+				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
+					REFRESH_SPOTIFY_TOKEN()
+				 
+				spotify_token = GET_SPOTIFY_TOKEN()
+				
+				if spotify_token != "":	
+
+					sp             = spotipy.Spotify(auth=spotify_token)
+					sp.trace       = False		
+					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+
+					try:
+						
+						volume = 0
+						
+						# search volume value
+						for element in answer.split():
+							element = element.replace("%","")
+
+							# check brightness as 'number' value
+							if element.isdigit() and (1 <= int(element) <= 100):
+								volume = int(element)
+								continue
+
+							# check volume as 'word' value
+							try:
+								volume = int(table_numbers[element])
+								continue
+							except:
+								pass  	
+								
+						if spotify_volume != volume:						
+							SPOTIFY_CONTROL(spotify_token, "volume", volume)
+								
+															
+					except Exception as e:
+						print(e)
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+						return 						 
+
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					return	 
+
 
