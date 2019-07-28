@@ -477,67 +477,67 @@
                     <td></td>
                     <td>
  
-                          {% if entry.dashboard_check_option != "None" %} 
-                        
-                             <div class="row justify-content-md-center">
-                                <div class="col-sm-6"> 
-                                  <select class="selectpicker" data-width="100%" name="set_dashboard_check_setting_{{ entry.id }}">
-                                    {% if entry.dashboard_check_setting != "None" %}
-                                      <option value = "{{ entry.dashboard_check_setting }}" > {{ entry.dashboard_check_setting }} </option>
-                                    {% else %}   
-                                      <option value = "None" > None </option> 
-                                    {% endif %}                             
-                                    <optgroup>
-                                      {% if entry.commands != None %}  
-                                        {% for each in entry.commands.split(' ') %}
-                                          <option value= "{{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
-                                        {% endfor %}  
-                                      {% endif %}      
-                                    </optgroup>     
-                                    <optgroup>                                                    
-                                      <option value= "None" > None </option>      
-                                    </optgroup>                                                                        
-                                  </select>                              
-                                </div>                 
-
-                            <!-- check option sensor --> 
-
-                            {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
-                         
-                              <div class="col-sm-3"> 
-                                <select class="selectpicker" data-width="100%" name="set_dashboard_check_value_2_{{ entry.id }}">
-                                  {% if entry.dashboard_check_value_2 != "None" %}
-                                    <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
-                                  {% else %}   
-                                    <option value = "None" > None </option>   
-                                  {% endif %}                            
-                                  <optgroup>
-                                    {% for each in dropdown_list_operators %}
-                                      <option value= "{{ each }}" > {{ each }} </option>
-                                    {% endfor %}      
-                                  </optgroup>                                                                                 
-                                </select> 
-                              </div>                   
-                              <div class="col-sm-3"> 
-                                <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
-                              </div>                          
-                            
-                            {% endif %}
-                            
-                          {% endif %}   
-                          
-                          <td></td>
-                          <td></td>                 
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td></td>        
-                          <td></td>
-                          <td></td>                    
-                        </tr>
-                          
-                  {% endfor %}  
+                    {% if entry.dashboard_check_option != "None" %} 
                   
+                       <div class="row justify-content-md-center">
+                          <div class="col-sm-6"> 
+                            <select class="selectpicker" data-width="100%" name="set_dashboard_check_setting_{{ entry.id }}">
+                              {% if entry.dashboard_check_setting != "None" %}
+                                <option value = "{{ entry.dashboard_check_setting }}" > {{ entry.dashboard_check_setting }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option> 
+                              {% endif %}                             
+                              <optgroup>
+                                {% if entry.commands != None %}  
+                                  {% for each in entry.commands.split(' ') %}
+                                    <option value= "{{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
+                                  {% endfor %}  
+                                {% endif %}      
+                              </optgroup>     
+                              <optgroup>                                                    
+                                <option value= "None" > None </option>      
+                              </optgroup>                                                                        
+                            </select>                              
+                          </div>                 
+
+                      <!-- check option sensor --> 
+
+                      {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
+                   
+                        <div class="col-sm-3"> 
+                          <select class="selectpicker" data-width="100%" name="set_dashboard_check_value_2_{{ entry.id }}">
+                            {% if entry.dashboard_check_value_2 != "None" %}
+                              <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
+                            {% else %}   
+                              <option value = "None" > None </option>   
+                            {% endif %}                            
+                            <optgroup>
+                              {% for each in dropdown_list_operators %}
+                                <option value= "{{ each }}" > {{ each }} </option>
+                              {% endfor %}      
+                            </optgroup>                                                                                 
+                          </select> 
+                        </div>                   
+                        <div class="col-sm-3"> 
+                          <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
+                        </div>                          
+                      
+                      {% endif %}
+                      
+                    {% endif %}   
+                    
+                    <td></td>
+                    <td></td>                 
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>        
+                    <td></td>
+                    <td></td>                    
+                  </tr>
+                        
+                {% endfor %}  
+                
                   
                 </tbody>
               </table> 
@@ -599,66 +599,65 @@
             <div class="panel-body">    
               <form method="POST">             
                 <div class="well well-sm">    
-
-              <table class="table">
-                <thead>                      
-                  <th scope="col" style="width:14%">Pflanze</th> 
-                  <th scope="col" style="width:8%">Gruppe</th> 
-                  <th scope="col" style="width:38%">Letzte Werte</th> 
-                  <th scope="col" style="width:20%">Befehl</th>                   
-                  <th scope="col" style="width:20%">Letzter Kontakt</th>  
-                </thead>
-                <tbody> 
-                  {% for entry in data_watering_control %}
-                    <tr>
-                      <td> {{entry.name}} </td>
-                      <td> {{entry.group}} </td>
-                      <td> {{entry.mqtt_device.last_values_formated}} </td>
-                      <td>  
-                        <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
-                          <option value= "None" > None </option>                      
-                          <optgroup>
-                          {% if entry.commands != None %}
-                            {% for each in entry.mqtt_device.commands.split(' ') %}
-                              <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
-                            {% endfor %}  
-                          {% endif %}   
-                          </optgroup>                            
-                        </select>                        
-                      </td>                       
-                      <td> {{entry.mqtt_device.last_contact}} </td>
-                    </tr>
-                  {% endfor %}  
-                </tbody>
-              </table> 
-              
+                  <table class="table">
+                    <thead>                      
+                      <th scope="col" style="width:14%">Pflanze</th> 
+                      <th scope="col" style="width:8%">Gruppe</th> 
+                      <th scope="col" style="width:38%">Letzte Werte</th> 
+                      <th scope="col" style="width:20%">Befehl</th>                   
+                      <th scope="col" style="width:20%">Letzter Kontakt</th>  
+                    </thead>
+                    <tbody> 
+                      {% for entry in data_watering_control %}
+                        <tr>
+                          <td> {{entry.name}} </td>
+                          <td> {{entry.group}} </td>
+                          <td> {{entry.mqtt_device.last_values_formated}} </td>
+                          <td>  
+                            <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
+                              <option value= "None" > None </option>                      
+                              <optgroup>
+                              {% if entry.commands != None %}
+                                {% for each in entry.mqtt_device.commands.split(' ') %}
+                                  <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
+                                {% endfor %}  
+                              {% endif %}   
+                              </optgroup>                            
+                            </select>                        
+                          </td>                       
+                          <td> {{entry.mqtt_device.last_contact}} </td>
+                        </tr>
+                      {% endfor %}  
+                    </tbody>
+                  </table> 
+                  
 <section id="programs"></section>         
 
-            </div> 
-            <div class="row justify-content-md-center">
-              <div class="col-sm-3">     
-                <input type="submit" onclick="window.location.href='/dashboard#watering_table'" class="btn btn-default" name="change_watering_control_settings" value="Einstellungen ändern" />                 
-              </div>  
-              <div class="col-sm-7"></div>               
-              <div class="col-sm-1">  
-                <button type="button" style="background-color:transparent" class="btn btn-secondary">anzeigen</button>                   
-              </div>                
-              <div class="col-sm-1">   
-                <font size="+2">               
-                  <div class="pretty p-default p-curve p-bigger">
-                    <input type="checkbox" {{ collapse_dashboard_watering_setting }} class="form-check-input " name="checkbox_collapse_watering">
-                  <div class="state p-success">
-                    <label></label>
-                  </div>
-                </font>
-              </div>         
-            </div>
-            </form>         
-          </div>    
+                </div> 
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-3">     
+                    <input type="submit" onclick="window.location.href='/dashboard#watering_table'" class="btn btn-default" name="change_watering_control_settings" value="Einstellungen ändern" />                 
+                  </div>  
+                  <div class="col-sm-7"></div>               
+                  <div class="col-sm-1">  
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">anzeigen</button>                   
+                  </div>                
+                  <div class="col-sm-1">   
+                    <font size="+2">               
+                      <div class="pretty p-default p-curve p-bigger">
+                        <input type="checkbox" {{ collapse_dashboard_watering_setting }} class="form-check-input " name="checkbox_collapse_watering">
+                      <div class="state p-success">
+                        <label></label>
+                      </div>
+                    </font>
+                  </div>         
+                </div>
+                </form>         
+              </div>    
+            </div>  
+          </div>
         </div>  
-      </div>
-    </div>  
-    <br>
+        <br>
 
 
 <!------------------>
@@ -762,22 +761,25 @@
               <form method="POST">             
                 <div class="well well-sm">    
                   <div class="row justify-content-md-center">
-                    <div class="col-sm-4">     
+                    <div class="col-sm-9">     
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">
-                        Spotify-Account >>> {% if spotify_user == "Nicht eingeloggt" %}<font color="salmon">{{ spotify_user }}</font>{% else %}<font color="lightgreen">{{ spotify_user }}</font>{% endif %}</span>
+                        Spotify-Account >>> {% if spotify_user == "" %}<font color="salmon"> Nicht eingeloggt </font>{% else %}<font color="lightgreen"> {{ spotify_user }} </font>{% endif %}</span>
                       </button>                
                     </div>                                                                       
-                    <div class="col-sm-1">  
-                      <a href="/dashboard/spotify/login/url/dashboard#" class="btn btn-default" role="button">Login</a>                                 
-                    </div>
-                    <div class="col-sm-1">                                      
-                      <a href="/dashboard/spotify/logout/url/dashboard#" class="btn btn-default" role="button">Logout</a>  
+                    <div class="col-sm-3">  
+                      <div class="text-right">
+                        {% if spotify_user == "" %}
+                          <a href="/dashboard/spotify/login/url/dashboard#" class="btn btn-default" role="button">Login</a> 
+                        {% else %}    
+                          <a href="/dashboard/spotify/logout/url/dashboard#" class="btn btn-danger" role="button">Logout</a>  
+                        {% endif %}  
+                      </div>                                                 
                     </div>
                   </div>
                 </form>
               </div>
           
-          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') %}  
+          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') and tupel_current_playback != '' %}  
           
             <div class="well well-sm"> 
               <div class="well well-sm">     
@@ -853,14 +855,12 @@
                     </div>        
                     <div class="col-sm-1">  
                       <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="set_spotify_volume">
-                        <span class="glyphicon glyphicon-bullhorn"></span>
+                        <span class="glyphicon glyphicon-volume-up"></span>
                       </button>
                     </div>                      
                     <div class="col-sm-7">
-                      <div class="slidecontainer"> 
-                        <div class="col-md-10 text-center">                       
-                          <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
-                        </div>                                                     
+                      <div class="slidecontainer">                       
+                        <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />                                                    
                       </div>                          
                     </div>                                                     
                   </div>              
@@ -882,7 +882,7 @@
                   <th scope="col" style="width:25%">Gerät Typ</th>                                  
                   <th scope="col" style="width:20%">Playlist</th>
                   <th scope="col" style="width:20%">Lautstärke</th>  
-                  <th scope="col" style="width:10%">Abspielen</th>                                  
+                  <th scope="col" style="width:10%"><div class="text-center">Abspielen</div></th>                                  
                 </thead>
                 <tbody> 
                   
@@ -899,7 +899,7 @@
                           {{ device['type'] }}
                         </td>     
                         <td>  
-                          <select class="selectpicker" data-width="80%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
+                          <select class="selectpicker" data-width="90%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
                             {% if spotify_playlists != "" %}
                               {% for playlist in spotify_playlists %}
                                 {% if playlist['name'] != "Discover Weekly" %}
@@ -913,19 +913,17 @@
                         </td>              
                         <td>
                           <div class="slidecontainer"> 
-                            <div class="col-md-10 text-center"> 
+                            <div class="col-12"> 
                               <input type="range" class="slider" name="set_spotify_playlist_volume:{{ device['id'] }}" min="0" max="100" value="{{ volume }}" />
                             </div> 
                           </div> 
                         </td>
                         <td>   
-                          <div class="row justify-content-md-center">
-                            <div class="col-sm-2">     
-                              <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
-                                <span class="glyphicon glyphicon-play"></span>
-                              </button>                               
-                            </div>                                
-                          </div>                          
+                          <div class="text-center">
+                            <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
+                              <span class="glyphicon glyphicon-play"></span>
+                            </button>
+                           </div>                                                        
                         </td>  
                         
                        {% endif %}   

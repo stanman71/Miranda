@@ -11,6 +11,7 @@ from app.components.backend_spotify import *
 from difflib import SequenceMatcher
 
 import spotipy
+import re
 
 
 """ ################################ """
@@ -298,20 +299,21 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 
 	if "spotify" in task:
 		
-		if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-			REFRESH_SPOTIFY_TOKEN()
-		 
 		spotify_token = GET_SPOTIFY_TOKEN()
 		
 		if spotify_token != "":
-				
+			
 			task = task.lower()			
 			task = task.split(" /// ")
 			
 			sp       = spotipy.Spotify(auth=spotify_token)
 			sp.trace = False
 			
-			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']
+			try:
+				spotify_volume = sp.current_playback(market=None)['device']['volume_percent']
+			except:
+				spotify_volume = 50
+			
 
 			if task[1] == "play":
 				SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
@@ -333,12 +335,13 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 
 			if task[1].lower() == "volume":
 				spotify_volume = int(task[2])
-				SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)   
+				SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)  
+					
 
 			# start playlist
 					
 			if task[1].lower() == "playlist": 
-
+				
 				# get spotify_device_id
 				device_name          = task[2]                                    
 				list_spotify_devices = sp.devices()["devices"]  
@@ -356,7 +359,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
 					if playlist['name'].lower() == playlist_name.lower():
 						playlist_uri = playlist['uri']
 						continue
-					  
+						
 				# get volume
 				playlist_volume = int(task[4])
 				
@@ -700,9 +703,6 @@ def START_SCHEDULER_TASK(task_object):
 		if "spotify" in task_object.task:
 			task = task_object.task.split(" /// ")
 
-			if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-				REFRESH_SPOTIFY_TOKEN()
-
 			spotify_token = GET_SPOTIFY_TOKEN()
 
 			# check spotify login 
@@ -853,6 +853,58 @@ def START_SPEECHCONTROL_TASK(answer):
 		SPEECHCONTROL_SPOTIFY_TASK(answer)
 		
 
+# ############
+# Check answer
+# ############
+
+
+def CHECK_SPEECHCONTROL_ANSWER(answer, keywords):
+	answer_words = answer.split()
+
+	if "," in keywords:
+		list_keywords = keywords.split(",")
+	else:
+		list_keywords = [keywords]
+
+
+	for keyword in list_keywords:
+		keyword_lengh = len(re.findall(r'\w+', keyword))
+
+		# keyword group
+		if keyword_lengh > 1:
+			keyword_group = keyword.split()
+
+			result = []
+
+			for keyword in keyword_group:
+				keyword = keyword.strip()
+
+				keyword_founded = False
+
+				for word in answer_words:
+					word = word.strip()
+
+					# keyword founded ?
+					if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
+						keyword_founded = True
+
+				result.append(keyword_founded)
+
+			if not False in result:
+				return True
+
+		# only one keyword
+		else:
+			for word in answer_words:
+				
+				# keyword founded ?
+				if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
+					return True
+
+
+	return False
+
+
 # #########
 # LED Tasks
 # #########
@@ -891,92 +943,81 @@ def SPEECHCONTROL_LED_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(1).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+		try:
+			groups = GET_ALL_LED_GROUPS()
+			scenes = GET_ALL_LED_SCENES() 
 
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+			group_id   = None
+			scene_id   = None
+			brightness = 100
 
+			# search group
+			for group in groups:
+				for word in answer_words:
+
+					if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
+						group_id = group.id
+						continue
+
+			# search scene
+			for scene in scenes:
+				for word in answer_words:
+					
+					if SequenceMatcher(None, scene.name.lower(), word.lower()).ratio() > ratio_value:
+						scene_id = scene.id
+						continue
+
+			# search brightness value
+			for element in answer.split():
+				element = element.replace("%","")
+
+				# check brightness as 'number' value
+				if element.isdigit() and (1 <= int(element) <= 100):
+					brightness = int(element)
+					continue
+
+				# check brightness as 'word' value
 				try:
-					groups = GET_ALL_LED_GROUPS()
-					scenes = GET_ALL_LED_SCENES() 
+					brightness = int(table_numbers[element])
+					continue
+				except:
+					pass  
 
-					group_id   = None
-					scene_id   = None
-					brightness = 100
 
-					# search group
-					for group in groups:
-						for word in answer_words:
+			# group founded ?
+			if group_id != None: 
 
-							if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
-								group_id = group.id
-								continue
+				# scene founded ?
+				if scene_id != None:   
+					group = GET_LED_GROUP_BY_ID(group_id)
+					scene = GET_LED_SCENE_BY_ID(scene_id) 
 
-					# search scene
-					for scene in scenes:
-						for word in answer_words:
-							
-							if SequenceMatcher(None, scene.name.lower(), word.lower()).ratio() > ratio_value:
-								scene_id = scene.id
-								continue
-
-					# search brightness value
-					for element in answer.split():
-						element = element.replace("%","")
-
-						# check brightness as 'number' value
-						if element.isdigit() and (1 <= int(element) <= 100):
-							brightness = int(element)
-							continue
-
-						# check brightness as 'word' value
-						try:
-							brightness = int(table_numbers[element])
-							continue
-						except:
-							pass  
-		
-
-					# group founded ?
-					if group_id != None: 
-
-						# scene founded ?
-						if scene_id != None:   
-							group = GET_LED_GROUP_BY_ID(group_id)
-							scene = GET_LED_SCENE_BY_ID(scene_id) 
-
-							# new led setting ?
-							if group.current_setting != scene.name or int(group.current_brightness) != brightness:
-								LED_SET_SCENE(group.id, scene.id, brightness)
-								LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 3, 15)     
-								time.sleep(1)
-								return								 
-
-							else:
-								WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness) + " %")     
-								return
-
-						else:
-							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Scene not founded")
-							return
+					# new led setting ?
+					if group.current_setting != scene.name or int(group.current_brightness) != brightness:
+						LED_SET_SCENE(group.id, scene.id, brightness)
+						LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 3, 15)     
+						time.sleep(1)
+						return								 
 
 					else:
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
+						WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene.name + " : " + str(brightness) + " %")     
 						return
 
-
-				except Exception as e:
-					print(e)
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))  
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Scene not founded")
 					return
+
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
+				return
+
+
+		except Exception as e:
+			print(e)
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))  
+			return
 
 
 	# ##############
@@ -985,89 +1026,78 @@ def SPEECHCONTROL_LED_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(2).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
-
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
-
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
 				
-				try:		
-					groups = GET_ALL_LED_GROUPS()
+		try:		
+			groups = GET_ALL_LED_GROUPS()
 
-					group_id   = None
-					brightness = None
+			group_id   = None
+			brightness = None
 
-					# search group
-					for group in groups:
-						for word in answer_words:
+			# search group
+			for group in groups:
+				for word in answer_words:
 
-							if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
-								group_id = group.id
-								continue
+					if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
+						group_id = group.id
+						continue
 
-					# search brightness value
-					for element in answer.split():
-						element = element.replace("%","")
+			# search brightness value
+			for element in answer.split():
+				element = element.replace("%","")
 
-						# check brightness as 'number' value
-						if element.isdigit() and (1 <= int(element) <= 100):
-							brightness = int(element)
-							continue
+				# check brightness as 'number' value
+				if element.isdigit() and (1 <= int(element) <= 100):
+					brightness = int(element)
+					continue
 
-						# check brightness as 'word' value
-						try:
-							brightness = int(table_numbers[element])
-							continue
-						except:
-							pass  					
-					
-					# group founded ?
-					if group_id != None: 
+				# check brightness as 'word' value
+				try:
+					brightness = int(table_numbers[element])
+					continue
+				except:
+					pass  					
+			
+			# group founded ?
+			if group_id != None: 
 
-						# brightness value founded ?
-						if brightness != None:	
-							group = GET_LED_GROUP_BY_ID(group_id)
+				# brightness value founded ?
+				if brightness != None:	
+					group = GET_LED_GROUP_BY_ID(group_id)
 
-							# led_group off ?
-							if group.current_setting != "OFF":
-								scene_name = group.current_setting
-								scene      = GET_LED_SCENE_BY_NAME(scene_name)                            
+					# led_group off ?
+					if group.current_setting != "OFF":
+						scene_name = group.current_setting
+						scene      = GET_LED_SCENE_BY_NAME(scene_name)                            
 
-								# new led brightness setting ?
-								if group.current_brightness != brightness:
-									
-									LED_SET_BRIGHTNESS(group.id, brightness)
-									LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
-									time.sleep(1)
-									return									     
-
-								else:
-									WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %") 
-									return	
-
-							else:
-								WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 
-								return	                                   
+						# new led brightness setting ?
+						if group.current_brightness != brightness:
+							
+							LED_SET_BRIGHTNESS(group.id, brightness)
+							LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
+							time.sleep(1)
+							return									     
 
 						else:
-							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Brightness value not founded")
-							return
-							
-					else:
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
-						return
+							WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %") 
+							return	
 
-				except Exception as e:
-					print(e)
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
+					else:
+						WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 
+						return	                                   
+
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Brightness value not founded")
 					return
+					
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | Group not founded")
+				return
+
+		except Exception as e:
+			print(e)
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
+			return
 
 
 	# ##################
@@ -1076,59 +1106,48 @@ def SPEECHCONTROL_LED_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(3).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
-
-		for word in answer_words:
+		try:
+			groups = GET_ALL_LED_GROUPS()
 			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+			founded_groups = []
 
-				try:
-					groups = GET_ALL_LED_GROUPS()
-					
-					founded_groups = []
+			# search group
+			for group in groups:
+				for word in answer_words:
 
-					# search group
-					for group in groups:
-						for word in answer_words:
-
-							if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
-								founded_groups.append(group)        
+					if SequenceMatcher(None, group.name.lower(), word.lower()).ratio() > ratio_value:
+						founded_groups.append(group)        
 
 
-					# group founded
-					if founded_groups != []:
+			# group founded
+			if founded_groups != []:
 
-						for group in founded_groups:
-							scene_name = group.current_setting
-							scene      = GET_LED_SCENE_BY_NAME(scene_name)
+				for group in founded_groups:
+					scene_name = group.current_setting
+					scene      = GET_LED_SCENE_BY_NAME(scene_name)
 
-							# new led setting ?
-							if group.current_setting != "OFF":
-								LED_TURN_OFF_GROUP(group.id)
-								LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)  
-								time.sleep(1)
-								return    								     
-
-							else:
-								WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 	
-								return                       
+					# new led setting ?
+					if group.current_setting != "OFF":
+						LED_TURN_OFF_GROUP(group.id)
+						LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)  
+						time.sleep(1)
+						return    								     
 
 					else:
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | No Group founded")
-						return                        
+						WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 	
+						return                       
+
+			else:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | No Group founded")
+				return                        
 
 
-				except Exception as e:
-					print(e)
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
-					return
+		except Exception as e:
+			print(e)
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
+			return
 
 
 	# #################
@@ -1137,40 +1156,29 @@ def SPEECHCONTROL_LED_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_LED_TASK_BY_ID(4).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
+		
+		try:
+			# check all led groups
+			for group in GET_ALL_LED_GROUPS():
+				scene_name = group.current_setting
+				scene      = GET_LED_SCENE_BY_NAME(scene_name)
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+				# new led setting ?
+				if group.current_setting != "OFF":
+					LED_TURN_OFF_GROUP(group.id)
+					LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)   
+					time.sleep(1)
+					return							    
 
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-
-				try:
-					# check all led groups
-					for group in GET_ALL_LED_GROUPS():
-						scene_name = group.current_setting
-						scene      = GET_LED_SCENE_BY_NAME(scene_name)
-
-						# new led setting ?
-						if group.current_setting != "OFF":
-							LED_TURN_OFF_GROUP(group.id)
-							LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)   
-							time.sleep(1)
-							return							    
-
-						else:
-							WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
-							return
-
-				except Exception as e:
-					print(e)
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
+				else:
+					WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %") 
 					return
+
+		except Exception as e:
+			print(e)
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | LED Task | " + answer + " | " + str(e))    
+			return
 
 
 # ############
@@ -1182,96 +1190,84 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 	answer_words = answer.split()
 	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
 
-
 	for task in GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
 
-		try:
-			list_keywords = task.keywords.split(",")
-		except:
-			list_keywords = [keywords]
-
-		for keyword in list_keywords:
-			keyword = keyword.replace(" ", "")
-
-			for word in answer_words:
-				
-				# keyword founded ?
-				if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-					
-					try:
-						device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
-
-						# device founded ?
-						if device != None:
-							speechcontrol_setting_formated = task.setting		
-							
-							# convert string to json-format
-							speechcontrol_setting = speechcontrol_setting_formated.replace(' ', '')
-							speechcontrol_setting = speechcontrol_setting.replace(':', '":"')
-							speechcontrol_setting = speechcontrol_setting.replace(',', '","')
-							speechcontrol_setting = '{"' + str(speechcontrol_setting) + '"}'		
-	
-							# new device setting ?	
-							new_setting = False
-							
-							if not "," in speechcontrol_setting:
-								if not speechcontrol_setting[1:-1] in device.last_values:
-									new_setting = True
-																			
-							# more then one setting value:
-							else:	
-								speechcontrol_setting_temp = speechcontrol_setting[1:-1]
-								list_speechcontrol_setting = speechcontrol_setting_temp.split(",")
-								
-								for setting in list_speechcontrol_setting:
-									
-									if not setting in device.last_values:
-										new_setting = True	
-
-
-							if new_setting == True:
-
-								# mqtt
-								if device.gateway == "mqtt":
-									
-									channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
-									msg      = speechcontrol_setting
-
-									MQTT_PUBLISH(channel, msg)  
-									MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, speechcontrol_setting, 5, 20)
-									return
-									
-									
-								# zigbee2mqtt
-								if device.gateway == "zigbee2mqtt":
-									
-									channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
-									msg      = speechcontrol_setting
-
-									MQTT_PUBLISH(channel, msg)  
-									ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
-									return
+		if CHECK_SPEECHCONTROL_ANSWER(answer, task.keywords) == True:
 		
-							else:
-								
-								if device.gateway == "mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
-									return
+			try:
+				device = GET_MQTT_DEVICE_BY_IEEEADDR(task.mqtt_device_ieeeAddr)
 
-								if device.gateway == "zigbee2mqtt":
-									WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
-									return 								         
+				# device founded ?
+				if device != None:
+					speechcontrol_setting_formated = task.setting		
+					
+					# convert string to json-format
+					speechcontrol_setting = speechcontrol_setting_formated.replace(' ', '')
+					speechcontrol_setting = speechcontrol_setting.replace(':', '":"')
+					speechcontrol_setting = speechcontrol_setting.replace(',', '","')
+					speechcontrol_setting = '{"' + str(speechcontrol_setting) + '"}'		
+
+					# new device setting ?	
+					new_setting = False
+					
+					if not "," in speechcontrol_setting:
+						if not speechcontrol_setting[1:-1] in device.last_values:
+							new_setting = True
+																	
+					# more then one setting value:
+					else:	
+						speechcontrol_setting_temp = speechcontrol_setting[1:-1]
+						list_speechcontrol_setting = speechcontrol_setting_temp.split(",")
+						
+						for setting in list_speechcontrol_setting:
+							
+							if not setting in device.last_values:
+								new_setting = True	
 
 
-						else:
-							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")
-							return                             
+					if new_setting == True:
+
+						# mqtt
+						if device.gateway == "mqtt":
+							
+							channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+							msg      = speechcontrol_setting
+
+							MQTT_PUBLISH(channel, msg)  
+							MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, speechcontrol_setting, 5, 20)
+							return
+							
+							
+						# zigbee2mqtt
+						if device.gateway == "zigbee2mqtt":
+							
+							channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+							msg      = speechcontrol_setting
+
+							MQTT_PUBLISH(channel, msg)  
+							ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
+							return
+
+					else:
+						
+						if device.gateway == "mqtt":
+							WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+							return
+
+						if device.gateway == "zigbee2mqtt":
+							WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+							return 								         
 
 
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | " + str(e))      
-						return                    
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")
+					return                             
+
+
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | " + str(e))      
+				return                    
 
 
 
@@ -1284,56 +1280,44 @@ def SPEECHCONTROL_PROGRAM_TASK(answer):
 	answer_words = answer.split()
 	ratio_value  = int(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().speech_recognition_provider_sensitivity) / 100
 	
-
 	for task in GET_ALL_SPEECHCONTROL_PROGRAM_TASKS():
 
-		try:
-			list_keywords = task.keywords.split(",")
-		except:
-			list_keywords = [keywords]
-
-		for keyword in list_keywords:
-			keyword = keyword.replace(" ", "")
-
-			for word in answer_words:
-				
-				# keyword founded ?
-				if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+		if CHECK_SPEECHCONTROL_ANSWER(answer, task.keywords) == True:
 					
-					try:
-						program = GET_PROGRAM_BY_ID(task.program_id)
+			try:
+				program = GET_PROGRAM_BY_ID(task.program_id)
 
-						# program founded ?
-						if program != None:
-							command = task.command.lower()
-							command = command.replace(" ", "")
+				# program founded ?
+				if program != None:
+					command = task.command.lower()
+					command = command.replace(" ", "")
 
-							program_running = GET_PROGRAM_RUNNING() 
+					program_running = GET_PROGRAM_RUNNING() 
 
-							if command == "start" and program_running == None:
-								START_PROGRAM_THREAD(program.id)
-								return
-								
-							elif command == "start" and program_running != None:
-								WRITE_LOGFILE_SYSTEM("WARNING", "Speechcontrol | Program Task | " + answer + " | Other Program running")	
-								return	
-											
-							elif command == "stop":
-								STOP_PROGRAM_THREAD() 
-								return
-								
-							else:
-								WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Command not valid")
-								return
+					if command == "start" and program_running == None:
+						START_PROGRAM_THREAD(program.id)
+						return
+						
+					elif command == "start" and program_running != None:
+						WRITE_LOGFILE_SYSTEM("WARNING", "Speechcontrol | Program Task | " + answer + " | Other Program running")	
+						return	
+									
+					elif command == "stop":
+						STOP_PROGRAM_THREAD() 
+						return
+						
+					else:
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Command not valid")
+						return
 
-						else:
-							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Program not founded")	
-							return	     
+				else:
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | Program not founded")	
+					return	     
 
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | " + str(e))   
-						return 
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Program Task | " + answer + " | " + str(e))   
+				return 
 
 
 def SPEECHCONTROL_SPOTIFY_TASK(answer):
@@ -1371,96 +1355,81 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(1).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
-
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
-
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:	
+		spotify_token = GET_SPOTIFY_TOKEN()
 				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
+		if spotify_token != "":	
+
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False				
+
+			try:
+				list_spotify_devices   = sp.devices()["devices"] 
+				list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+
+				spotify_device_id    = None
+				spotify_playlist_uri = None
+				playlist_volume      = 50
+
+				# search spotify device
+				for device in list_spotify_devices:
+					for word in answer_words:
+
+						if SequenceMatcher(None, device["name"].lower(), word.lower()).ratio() > ratio_value:
+							spotify_device_id = device["id"]
+							continue
+
+				# search playlist
+				for playlist in list_spotify_playlists:
+					for word in answer_words:
 						
-				if spotify_token != "":	
+						if SequenceMatcher(None, playlist["name"].lower(), word.lower()).ratio() > ratio_value:
+							spotify_playlist_uri = playlist["uri"]
+							continue
 
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False				
+				# search volume value
+				for element in answer.split():
+					element = element.replace("%","")
 
+					# check brightness as 'number' value
+					if element.isdigit() and (1 <= int(element) <= 100):
+						volume = int(element)
+						continue
+
+					# check volume as 'word' value
 					try:
-						list_spotify_devices   = sp.devices()["devices"] 
-						list_spotify_playlists = sp.current_user_playlists(limit=20)["items"]
+						playlist_volume = int(table_numbers[element])
+						continue
+					except:
+						pass  
+	
 
-						spotify_device_id    = None
-						spotify_playlist_uri = None
-						playlist_volume      = 50
+				# device founded ?
+				if spotify_device_id != None: 
 
-						# search spotify device
-						for device in list_spotify_devices:
-							for word in answer_words:
-
-								if SequenceMatcher(None, device["name"].lower(), word.lower()).ratio() > ratio_value:
-									spotify_device_id = device["id"]
-									continue
-
-						# search playlist
-						for playlist in list_spotify_playlists:
-							for word in answer_words:
-								
-								if SequenceMatcher(None, playlist["name"].lower(), word.lower()).ratio() > ratio_value:
-									spotify_playlist_uri = playlist["uri"]
-									continue
-
-						# search volume value
-						for element in answer.split():
-							element = element.replace("%","")
-
-							# check brightness as 'number' value
-							if element.isdigit() and (1 <= int(element) <= 100):
-								volume = int(element)
-								continue
-
-							# check volume as 'word' value
-							try:
-								playlist_volume = int(table_numbers[element])
-								continue
-							except:
-								pass  
-			
-
-						# device founded ?
-						if spotify_device_id != None: 
-
-							# playlist founded ?
-							if spotify_playlist_uri != None:   
-																
-								SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, spotify_playlist_uri, playlist_volume)
-								
-							else:
-								WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Playlist not founded")
-								return
-
-						else:
-							WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Device not founded")	
-							return	 
-								
-								
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
-
+					# playlist founded ?
+					if spotify_playlist_uri != None:   
+														
+						SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, spotify_playlist_uri, playlist_volume)
+						
+					else:
+						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Playlist not founded")
+						return
 
 				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | Device not founded")	
 					return	 
+						
+						
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
+
+
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 
 
 
 
@@ -1470,44 +1439,29 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(2).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:	
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":	
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False		
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
 
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
-				
-				if spotify_token != "":	
+			try:
 
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False		
-					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
-
-					try:
-
-						SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)
-								
-															
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
+				SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)
+						
+													
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
 
 
-				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
-					return	 
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 
 					
 					
 	# ########
@@ -1516,45 +1470,30 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(3).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:	
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":	
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False		
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
 
-		for word in answer_words:
+			try:
+
+				SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)
+						
+													
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
+
+
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 
 			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
-				
-				if spotify_token != "":	
-
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False		
-					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
-
-					try:
-
-						SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)
-								
-															
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
-
-
-				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
-					return	 
-					
 					
 	# ####
 	# next  
@@ -1562,45 +1501,30 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(4).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:	
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":	
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False		
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
 
-		for word in answer_words:
+			try:
+
+				SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)
+						
+													
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
+
+
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 
 			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
-				
-				if spotify_token != "":	
-
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False		
-					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
-
-					try:
-
-						SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)
-								
-															
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
-
-
-				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
-					return	 
-					
 					
 	# ####
 	# stop  
@@ -1608,44 +1532,29 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(5).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":	
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False		
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
 
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
-				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
-				
-				if spotify_token != "":	
+			try:
 
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False		
-					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
-
-					try:
-
-						SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)
-								
-															
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
+				SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)
+						
+													
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
 
 
-				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
-					return	 										
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 										
 
 
 
@@ -1655,62 +1564,47 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
 
 	keywords = GET_SPEECHCONTROL_SPOTIFY_TASK_BY_ID(6).keywords
 
-	try:
-		list_keywords = keywords.split(",")
-	except:
-		list_keywords = [keywords]
+	if CHECK_SPEECHCONTROL_ANSWER(answer, keywords) == True:
+		spotify_token = GET_SPOTIFY_TOKEN()
+		
+		if spotify_token != "":	
 
-	for keyword in list_keywords:
-		keyword = keyword.replace(" ", "")
+			sp             = spotipy.Spotify(auth=spotify_token)
+			sp.trace       = False		
+			spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
 
-		for word in answer_words:
-			
-			# keyword founded ?
-			if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > ratio_value:
+			try:
 				
-				if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-					REFRESH_SPOTIFY_TOKEN()
-				 
-				spotify_token = GET_SPOTIFY_TOKEN()
+				volume = 0
 				
-				if spotify_token != "":	
+				# search volume value
+				for element in answer.split():
+					element = element.replace("%","")
 
-					sp             = spotipy.Spotify(auth=spotify_token)
-					sp.trace       = False		
-					spotify_volume = sp.current_playback(market=None)['device']['volume_percent']		
+					# check brightness as 'number' value
+					if element.isdigit() and (1 <= int(element) <= 100):
+						volume = int(element)
+						continue
 
+					# check volume as 'word' value
 					try:
+						volume = int(table_numbers[element])
+						continue
+					except:
+						pass  	
 						
-						volume = 0
+				if spotify_volume != volume:						
+					SPOTIFY_CONTROL(spotify_token, "volume", volume)
 						
-						# search volume value
-						for element in answer.split():
-							element = element.replace("%","")
-
-							# check brightness as 'number' value
-							if element.isdigit() and (1 <= int(element) <= 100):
-								volume = int(element)
-								continue
-
-							# check volume as 'word' value
-							try:
-								volume = int(table_numbers[element])
-								continue
-							except:
-								pass  	
-								
-						if spotify_volume != volume:						
-							SPOTIFY_CONTROL(spotify_token, "volume", volume)
-								
-															
-					except Exception as e:
-						print(e)
-						WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
-						return 						 
+													
+			except Exception as e:
+				print(e)
+				WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | " + str(e))   
+				return 						 
 
 
-				else:
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
-					return	 
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Spotify Task | " + answer + " | No Spotify Token founded")	
+			return	 
 
 

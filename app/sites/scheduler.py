@@ -7,7 +7,7 @@ from app.database.database import *
 from app.components.checks import *
 from app.components.file_management import GET_ALL_LOCATIONS, GET_LOCATION_COORDINATES
 from app.components.process_scheduler import GET_SUNRISE_TIME, GET_SUNSET_TIME
-from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN
 
 import datetime
 import spotipy
@@ -419,9 +419,6 @@ def dashboard_scheduler():
         
     
     # list spotify devices / playlists
-    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-        REFRESH_SPOTIFY_TOKEN()
-     
     spotify_token = GET_SPOTIFY_TOKEN()    
     
     try:

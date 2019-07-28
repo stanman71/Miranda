@@ -19,21 +19,19 @@ from app.sites import index, signup, dashboard, camera, led, scheduler, programs
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.mqtt import MQTT_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES
+from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
-
+from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
 
 
 """ ################## """
 """ background threads """
 """ ################## """
 
-Thread = threading.Thread(target=PROCESS_MANAGEMENT_THREAD)
-Thread.start() 
-
-Thread = threading.Thread(target=REFRESH_MQTT_INPUT_MESSAGES_THREAD)
-Thread.start() 
+PROCESS_MANAGEMENT_THREAD()
+REFRESH_MQTT_INPUT_MESSAGES_THREAD()
+REFRESH_SPOTIFY_TOKEN_THREAD(3000)
 
 
 """ ##### """
@@ -41,7 +39,7 @@ Thread.start()
 """ ##### """
 
 # start flask
-def START_FLASK_THREAD():
+def START_FLASK():
 
     try:
         print("###### Start FLASK ######")
@@ -60,9 +58,15 @@ def START_FLASK_THREAD():
     except:
         pass
      
-Thread = threading.Thread(target=START_FLASK_THREAD)
-Thread.start() 
-
+     
+try:
+    Thread = threading.Thread(target=START_FLASK)
+    Thread.start() 
+    
+except Exception as e:
+    print("ERROR: Start Flask | " + str(e))
+    WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Refresh MQTT Messages | " + str(e))      
+     
 
 """ #### """
 """ mqtt """
@@ -72,8 +76,7 @@ Thread.start()
 if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
     try:
         print("###### Start MQTT ######")
-        Thread = threading.Thread(target=MQTT_THREAD)	
-        Thread.start()
+        MQTT_RECEIVE_THREAD()
 
     except Exception as e:
         print("Fehler in MQTT: " + str(e))

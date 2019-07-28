@@ -18,6 +18,11 @@
 }
 
 
+.btn-primary-spacing 
+{
+margin-right: 10px;
+}
+
 body {
   padding-top: 50px;
   background-image: url(images/mobile_background.jpg);
@@ -25,6 +30,10 @@ body {
 
 .panel-body {
   background-image: url(images/background-panal.jpg);
+}
+
+.table > tbody > tr:first-child > td {
+    border: none;
 }
 
 .panel-heading{
@@ -45,6 +54,9 @@ body {
   border-bottom: 1px solid #eee;
 }
 
+span.glyphicon {
+    font-size: 1.1em;
+}
 
 /*
  * Sidebar

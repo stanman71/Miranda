@@ -19,6 +19,16 @@ from app.components.backend_watering import START_WATERING_THREAD
 # https://www.bogotobogo.com/python/python_PriorityQueue_heapq_Data_Structure.php
 
 def PROCESS_MANAGEMENT_THREAD():
+
+	try:
+		Thread = threading.Thread(target=PROCESS_MANAGEMENT)
+		Thread.start() 
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Process Management | " + str(e)) 
+		
+
+def PROCESS_MANAGEMENT():
 	
 	while True:
 		

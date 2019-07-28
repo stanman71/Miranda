@@ -573,109 +573,101 @@ def dashboard(template):
     """ spotify control """
     """ ############### """   
         
-    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-        REFRESH_SPOTIFY_TOKEN()
-     
     spotify_token = GET_SPOTIFY_TOKEN()
     
-    
     if spotify_token != "":
-        collapse_dashboard_spotify = "in" 
-
-        sp       = spotipy.Spotify(auth=spotify_token)
-        sp.trace = False
         
-        if request.method == "POST": 
-            
-            
-            """ ####################### """
-            """ spotify general control """
-            """ ####################### """
-        
-            try:
-        
-                spotify_device_id = sp.current_playback(market=None)['device']['id']
-                spotify_volume    = request.form.get("get_spotify_volume")
-                    
-                if "set_spotify_play" in request.form:  
-                    SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
-        
-                if "set_spotify_previous" in request.form: 
-                    SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
-
-                if "set_spotify_next" in request.form:
-                    SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
-
-                if "set_spotify_stop" in request.form:  
-                    SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
-
-                if "set_spotify_shuffle" in request.form:  
-                    SPOTIFY_CONTROL(spotify_token, "shuffle", spotify_volume)   
-
-                if "set_spotify_volume" in request.form: 
-                    SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)    
-                
-            except:
-                pass
-             
-                
-            """ ################# """
-            """ spotify playlists """
-            """ ################# """                        
-                        
-                        
-            if "spotify_start_playlist" in request.form:    
-                spotify_device_id = request.form.get("spotify_start_playlist")
-                playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
-                playlist_volume = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
-                
-                if playlist_volume == None:
-                    playlist_volume = 50
-
-                SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)     
-
-
-        """ ############ """
-        """ account data """
-        """ ############ """   
-                  
         try:
+            
+            collapse_dashboard_spotify = "in" 
+
+            sp       = spotipy.Spotify(auth=spotify_token)
+            sp.trace = False
+            
+            if request.method == "POST": 
+                
+                
+                """ ####################### """
+                """ spotify general control """
+                """ ####################### """
+            
+                try:
+            
+                    spotify_device_id = sp.current_playback(market=None)['device']['id']
+                    spotify_volume    = request.form.get("get_spotify_volume")
+                        
+                    if "set_spotify_play" in request.form:  
+                        SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
+            
+                    if "set_spotify_previous" in request.form: 
+                        SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
+
+                    if "set_spotify_next" in request.form:
+                        SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
+
+                    if "set_spotify_stop" in request.form:  
+                        SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
+
+                    if "set_spotify_shuffle" in request.form:  
+                        SPOTIFY_CONTROL(spotify_token, "shuffle", spotify_volume)   
+
+                    if "set_spotify_volume" in request.form: 
+                        SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)    
+                    
+                except:
+                    pass
+                 
+                    
+                """ ################# """
+                """ spotify playlists """
+                """ ################# """                        
+                            
+                            
+                if "spotify_start_playlist" in request.form:    
+                    spotify_device_id = request.form.get("spotify_start_playlist")
+                    playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
+                    playlist_volume = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
+                    
+                    if playlist_volume == None:
+                        playlist_volume = 50
+
+                    SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)     
+
+
+            """ ############ """
+            """ account data """
+            """ ############ """   
+                      
             spotify_user           = sp.current_user()["display_name"]   
             spotify_devices        = sp.devices()["devices"]        
             spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
             tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token) 
-        
-        
-        # spotify token expired ?
-        except:
             
-            REFRESH_SPOTIFY_TOKEN()
-            time.sleep(2)
             
-            spotify_token = GET_SPOTIFY_TOKEN()
-            
-            sp       = spotipy.Spotify(auth=spotify_token)
-            sp.trace = False            
-            
-            spotify_user           = sp.current_user()["display_name"]   
-            spotify_devices        = sp.devices()["devices"]        
-            spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
-            tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token)               
+            # set volume
+            try:
+                spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
+                volume = spotify_current_playback_volume    
+                
+            except:
+                volume = 50
            
+               
+        # login problems                
+        except Exception as e:
+            WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
             
-        # set volume
-        try:
-            spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
-            volume = spotify_current_playback_volume    
-            
-        except:
-            volume = 50
+            tupel_current_playback = ""
+            spotify_user = ""
+            spotify_playlists = ""
+            spotify_devices = ""
+            volume = 50                
     
 
     else:
         
         tupel_current_playback = ""
-        spotify_user = "Nicht eingeloggt"
+        spotify_user = ""
         spotify_playlists = ""
         spotify_devices = ""
         volume = 50    

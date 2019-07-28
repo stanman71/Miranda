@@ -44,7 +44,17 @@ def MQTT_GET_INCOMING_MESSAGES(limit):
 """ mqtt receive message """
 """ #################### """
 	
-def MQTT_THREAD():
+def MQTT_RECEIVE_THREAD():
+
+	try:
+		Thread = threading.Thread(target=MQTT_RECEIVE)
+		Thread.start()  
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | MQTT Receive | " + str(e)) 	
+	
+	
+def MQTT_RECEIVE():
 
 	def on_message(client, userdata, new_message): 
 		
@@ -128,10 +138,10 @@ def MQTT_THREAD():
 			if channel != "" and channel != None:	
 				
 				try:	
-					Thread = threading.Thread(target=MQTT_MESSAGE_THREAD, args=(channel, msg, ieeeAddr, device_type,))
+					Thread = threading.Thread(target=MQTT_MESSAGE, args=(channel, msg, ieeeAddr, device_type,))
 					Thread.start()   
 				except Exception as e:
-					 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Thread | " + str(e)) 
+					 WRITE_LOGFILE_SYSTEM("ERROR", "Thread | MQTT Message | " + str(e)) 
 					 print(e)
 			
 	
@@ -152,34 +162,11 @@ def MQTT_THREAD():
 	client.loop_forever()
 
 
-""" #################### """
-""" mqtt publish message """
-""" #################### """
+""" ############# """
+"""  mqtt message """
+""" ############# """
 
-def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
-
-	try:
-		def on_publish(client, userdata, mid):
-			print ('Message Published...')
-
-		client = mqtt.Client()
-		client.on_publish = on_publish
-		client.connect(BROKER_ADDRESS) 
-		client.publish(MQTT_TOPIC,MQTT_MSG)
-		client.disconnect()
-
-		return ""
-
-	except Exception as e:
-		print("ERROR MQTT: " + str(e))
-		return ("Fehler MQTT >>> " + str(e))
-
-
-""" ##################### """
-"""  mqtt message thread  """
-""" ##################### """
-
-def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
+def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
 	
 	channel = channel.split("/")
 
@@ -253,6 +240,29 @@ def MQTT_MESSAGE_THREAD(channel, msg, ieeeAddr, device_type):
 			# start controller job			
 			heapq.heappush(process_management_queue, (1, ("controller", ieeeAddr, msg)))		
 	
+
+""" #################### """
+""" mqtt publish message """
+""" #################### """
+
+def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
+
+	try:
+		def on_publish(client, userdata, mid):
+			print ('Message Published...')
+
+		client = mqtt.Client()
+		client.on_publish = on_publish
+		client.connect(BROKER_ADDRESS) 
+		client.publish(MQTT_TOPIC,MQTT_MSG)
+		client.disconnect()
+
+		return ""
+
+	except Exception as e:
+		print("ERROR MQTT: " + str(e))
+		return ("Fehler MQTT >>> " + str(e))
+
 
 """ ################################ """
 """ ################################ """

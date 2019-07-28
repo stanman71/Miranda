@@ -130,21 +130,24 @@
         <div class="panel-body">                            
           <div class="well well-sm">    
             <div class="row justify-content-md-center">
-              <div class="col-sm-4">     
+              <div class="col-sm-9">     
                 <button type="button" style="background-color:transparent" class="btn btn-secondary">
-                  Spotify-Account >>> {% if spotify_user == "Nicht eingeloggt" %}<font color="salmon">{{ spotify_user }}</font>{% else %}<font color="lightgreen">{{ spotify_user }}</font>{% endif %}</span>
+                  Spotify-Account >>> {% if spotify_user == "" %}<font color="salmon"> Nicht eingeloggt </font>{% else %}<font color="lightgreen"> {{ spotify_user }} </font>{% endif %}</span>
                 </button>                
               </div>                                                                       
-              <div class="col-sm-1">  
-                <a href="/dashboard/spotify/login/url/spotify#" class="btn btn-default" role="button">Login</a>                                 
-              </div>
-              <div class="col-sm-1">                                      
-                <a href="/dashboard/spotify/logout/url/spotify#" class="btn btn-default" role="button">Logout</a>  
+              <div class="col-sm-3">  
+                <div class="text-right">
+                  {% if spotify_user == "" %}
+                    <a href="/dashboard/spotify/login/url/dashboard#" class="btn btn-default" role="button">Login</a> 
+                  {% else %}    
+                    <a href="/dashboard/spotify/logout/url/dashboard#" class="btn btn-danger" role="button">Logout</a>  
+                  {% endif %}  
+                </div>                                                  
               </div>
             </div>
           </div>
           
-          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') %}  
+          {% if tupel_current_playback != ('', '', '', '', '', [], '', '', '') and tupel_current_playback != '' %}  
           
             <div class="well well-sm"> 
               <div class="well well-sm">     
@@ -220,15 +223,11 @@
                     </div>        
                     <div class="col-sm-1">  
                       <button type="submit" onclick="window.location.href='/dashboard/spotify#'" class="btn btn-default" name="set_spotify_volume">
-                        <span class="glyphicon glyphicon-bullhorn"></span>
+                        <span class="glyphicon glyphicon-volume-up"></span>
                       </button>
                     </div>                      
-                    <div class="col-sm-7">
-                      <div class="slidecontainer"> 
-                        <div class="col-md-10 text-center">                       
-                          <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />
-                        </div>                                                     
-                      </div>                          
+                    <div class="col-sm-7">      
+                      <input type="range" class="slider" name="get_spotify_volume" min="0" max="100" value="{{ volume }}" />                       
                     </div>                                                     
                   </div>              
                 </form>
@@ -252,7 +251,7 @@
                     <th scope="col" style="width:25%">Gerät Typ</th>                                  
                     <th scope="col" style="width:20%">Playlist</th>
                     <th scope="col" style="width:20%">Lautstärke</th>  
-                    <th scope="col" style="width:10%">Abspielen</th>                                   
+                    <th scope="col" style="width:10%"><div class="text-center">Abspielen</div></th>                                   
                   </thead>
                   <tbody> 
                     
@@ -269,7 +268,7 @@
                             {{ device['type'] }}
                           </td>     
                           <td>    
-                            <select class="selectpicker" data-width="80%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
+                            <select class="selectpicker" data-width="90%" data-live-search="true" name="set_spotify_playlist:{{ device['id'] }}">
                               {% if spotify_playlists != "" %}
                                 {% for playlist in spotify_playlists %}
                                   {% if playlist['name'] != "Discover Weekly" %}
@@ -283,18 +282,16 @@
                           </td>   
                           <td>
                             <div class="slidecontainer"> 
-                              <div class="col-md-10 text-center"> 
+                              <div class="col-12">                             
                                 <input type="range" class="slider" name="set_spotify_playlist_volume:{{ device['id'] }}" min="0" max="100" value="{{ volume }}" />
                               </div> 
                             </div> 
                           </td>
                           <td>   
-                            <div class="row justify-content-md-center">
-                              <div class="col-sm-2">     
-                                <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
-                                  <span class="glyphicon glyphicon-play"></span>
-                                </button>                               
-                              </div>                                
+                            <div class="text-center">   
+                              <button type="submit" onclick="window.location.href='/dashboard#spotify'" class="btn btn-default" name="spotify_start_playlist" value="{{ device['id'] }}">
+                                <span class="glyphicon glyphicon-play"></span>
+                              </button>                                                             
                             </div>                          
                           </td>  
                           

@@ -55,155 +55,145 @@ def dashboard_spotify():
     collapse_search_album = ""        
     
 
-    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-        REFRESH_SPOTIFY_TOKEN()
-     
     spotify_token = GET_SPOTIFY_TOKEN()
     
-    
+
     # check spotify login 
     if spotify_token != "":
         
-        sp       = spotipy.Spotify(auth=spotify_token)
-        sp.trace = False
+        try:
         
-        if request.method == "POST": 
+            sp       = spotipy.Spotify(auth=spotify_token)
+            sp.trace = False
             
-            spotify_volume = request.form.get("get_spotify_volume")
+            if request.method == "POST": 
+                
+                spotify_volume = request.form.get("get_spotify_volume")
+            
+                if "set_spotify_play" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
         
-            if "set_spotify_play" in request.form:  
-                SPOTIFY_CONTROL(spotify_token, "play", spotify_volume)       
-    
-            if "set_spotify_previous" in request.form: 
-                SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
+                if "set_spotify_previous" in request.form: 
+                    SPOTIFY_CONTROL(spotify_token, "previous", spotify_volume)   
 
-            if "set_spotify_next" in request.form:
-                SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
+                if "set_spotify_next" in request.form:
+                    SPOTIFY_CONTROL(spotify_token, "next", spotify_volume)     
 
-            if "set_spotify_stop" in request.form:  
-                SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
+                if "set_spotify_stop" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "stop", spotify_volume)   
 
-            if "set_spotify_shuffle" in request.form:  
-                SPOTIFY_CONTROL(spotify_token, "shuffle", spotify_volume)   
+                if "set_spotify_shuffle" in request.form:  
+                    SPOTIFY_CONTROL(spotify_token, "shuffle", spotify_volume)   
 
-            if "set_spotify_volume" in request.form: 
-                SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)          
+                if "set_spotify_volume" in request.form: 
+                    SPOTIFY_CONTROL(spotify_token, "volume", spotify_volume)          
+                            
+                if "spotify_start_playlist" in request.form:    
+                    spotify_device_id = request.form.get("spotify_start_playlist")
+                    playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
+                    playlist_volume   = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
+                    
+                    SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)
+
+
+                """ ##### """
+                """ track """
+                """ ##### """   
+           
+                if "spotify_search_track" in request.form:
+           
+                    collapse_search_track = "in"   
+
+                    track_name   = request.form.get("get_spotify_search_track")
+                    track_artist = request.form.get("get_spotify_search_track_artist")
+                    
+                    list_search_track_results = SPOTIFY_SEARCH_TRACK(spotify_token, track_name, track_artist, 5)
+                
+                    if isinstance(list_search_track_results, str):
+                        error_message_search_track = list_search_track_results
+                        list_search_track_results  = []  
                         
-            if "spotify_start_playlist" in request.form:    
-                spotify_device_id = request.form.get("spotify_start_playlist")
-                playlist_uri      = request.form.get("set_spotify_playlist:" + spotify_device_id)
-                playlist_volume   = request.form.get("set_spotify_playlist_volume:" + spotify_device_id)
                 
-                SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume)
-
-
-            """ ##### """
-            """ track """
-            """ ##### """   
-       
-            if "spotify_search_track" in request.form:
-       
-                collapse_search_track = "in"   
-
-                track_name   = request.form.get("get_spotify_search_track")
-                track_artist = request.form.get("get_spotify_search_track_artist")
-                
-                list_search_track_results = SPOTIFY_SEARCH_TRACK(spotify_token, track_name, track_artist, 5)
-            
-                if isinstance(list_search_track_results, str):
-                    error_message_search_track = list_search_track_results
-                    list_search_track_results  = []  
+                if "spotify_track_play" in request.form:
                     
-            
-            if "spotify_track_play" in request.form:
-                
-                collapse_search_track = "in"  
-                
-                track_uri         = request.form.get("spotify_track_play")
-                spotify_device_id = request.form.get("get_spotify_track_device:" + track_uri)
-                track_volume      = request.form.get("get_spotify_track_volume:" + track_uri)
-                
-                SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume)
-
-                         
-       
-            """ ##### """
-            """ album """
-            """ ##### """   
-       
-            if "spotify_search_album" in request.form:
-                
-                collapse_search_album = "in"  
-
-                album_name   = request.form.get("get_spotify_search_album")
-                album_artist = request.form.get("get_spotify_search_album_artist")
-
-                list_search_album_results = SPOTIFY_SEARCH_ALBUM(spotify_token, album_name, album_artist, 5)  
-   
-                if isinstance(list_search_album_results, str):
-                    error_message_search_album = list_search_album_results 
-                    list_search_album_results  = []  
-                      
+                    collapse_search_track = "in"  
                     
-            if "spotify_album_play" in request.form:
-                
-                collapse_search_album = "in" 
-                
-                album_uri         = request.form.get("spotify_album_play")
-                spotify_device_id = request.form.get("get_spotify_album_device:" + album_uri)
-                album_volume      = request.form.get("get_spotify_album_volume:" + album_uri)
-                
-                SPOTIFY_START_ALBUM(spotify_token, spotify_device_id, album_uri, album_volume)
+                    track_uri         = request.form.get("spotify_track_play")
+                    spotify_device_id = request.form.get("get_spotify_track_device:" + track_uri)
+                    track_volume      = request.form.get("get_spotify_track_volume:" + track_uri)
+                    
+                    SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume)
+
+                             
+           
+                """ ##### """
+                """ album """
+                """ ##### """   
+           
+                if "spotify_search_album" in request.form:
+                    
+                    collapse_search_album = "in"  
+
+                    album_name   = request.form.get("get_spotify_search_album")
+                    album_artist = request.form.get("get_spotify_search_album_artist")
+
+                    list_search_album_results = SPOTIFY_SEARCH_ALBUM(spotify_token, album_name, album_artist, 5)  
+       
+                    if isinstance(list_search_album_results, str):
+                        error_message_search_album = list_search_album_results 
+                        list_search_album_results  = []  
+                          
+                        
+                if "spotify_album_play" in request.form:
+                    
+                    collapse_search_album = "in" 
+                    
+                    album_uri         = request.form.get("spotify_album_play")
+                    spotify_device_id = request.form.get("get_spotify_album_device:" + album_uri)
+                    album_volume      = request.form.get("get_spotify_album_volume:" + album_uri)
+                    
+                    SPOTIFY_START_ALBUM(spotify_token, spotify_device_id, album_uri, album_volume)
      
             
-        """ ############ """
-        """ account data """
-        """ ############ """   
-                 
-        try:
+            """ ############ """
+            """ account data """
+            """ ############ """   
+                     
             spotify_user           = sp.current_user()["display_name"]   
             spotify_devices        = sp.devices()["devices"]        
             spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
             tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token) 
-        
-        
-        # spotify token expired ?
-        except:
             
-            REFRESH_SPOTIFY_TOKEN()
-            time.sleep(2)
+
+            # get volume
+            try:
+                spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
+                volume = spotify_current_playback_volume    
+                
+            except:
+                volume = 50
+    
+    
+        # login problems
+        except Exception as e:
+            WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
             
-            spotify_token = GET_SPOTIFY_TOKEN()
-            
-            sp       = spotipy.Spotify(auth=spotify_token)
-            sp.trace = False            
-            
-            spotify_user           = sp.current_user()["display_name"]   
-            spotify_devices        = sp.devices()["devices"]        
-            spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
-            tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token)             
-            
-        
-        # get volume
-        try:
-            spotify_current_playback_volume = sp.current_playback(market=None)['device']['volume_percent']
-            volume = spotify_current_playback_volume    
-            
-        except:
-            volume = 50
+            tupel_current_playback = ""
+            spotify_user = ""
+            spotify_playlists = ""
+            spotify_devices = ""
+            volume = 50         
     
     
     # not logged in
     else:     
         tupel_current_playback = ""
-        spotify_user           = "Nicht eingeloggt"
+        spotify_user           = ""
         spotify_playlists      = ""
         spotify_devices        = ""
         volume                 = 50         
         
-    print(tupel_current_playback)
-
-    
+        
     return render_template('dashboard_spotify.html',
                             error_message_search_track=error_message_search_track,
                             error_message_search_album=error_message_search_album,
@@ -256,9 +246,6 @@ def spotify_token():
     
     if forwarding_site_global == "dashboard":
         return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard#spotify")
- 
-    if forwarding_site_global == "programs":
-        return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard/programs#spotify") 
         
     if forwarding_site_global == "spotify":
         return redirect(url_for('dashboard_spotify'))     
@@ -273,9 +260,6 @@ def spotify_logout(forwarding_site):
         
     if forwarding_site == "dashboard":
         return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard#spotify")
- 
-    if forwarding_site == "programs":
-        return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard/programs#spotify") 
         
     if forwarding_site == "spotify":
         return redirect(url_for('dashboard_spotify'))      

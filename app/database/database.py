@@ -1848,7 +1848,8 @@ def SET_PLANT_PUMPTIME_AUTO(id, pumptime_auto):
     entry.pumptime_auto = pumptime_auto
     db.session.commit()  
     
-    WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + entry.name + " | changed || Pumptime_Auto - " + str(entry.pumptime_auto))    
+    if entry.pumptime_auto != "None":
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + entry.name + " | changed || Pumptime_Auto - " + str(entry.pumptime_auto))    
                              
 
 def CHANGE_PLANTS_POSITION(id, direction):

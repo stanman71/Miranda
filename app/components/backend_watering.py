@@ -56,8 +56,12 @@ def START_PUMP(plant_id):
 
 def START_WATERING_THREAD(group_number):
 
-    Thread = threading.Thread(target=WATERING_THREAD, args=(group_number, ))
-    Thread.start()   
+	try:
+		Thread = threading.Thread(target=WATERING_THREAD)
+		Thread.start()  
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Start Watering | " + str(e)) 
 
 
 def WATERING_THREAD(group_number):

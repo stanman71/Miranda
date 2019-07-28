@@ -28,7 +28,7 @@ https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-n
 
 from app import app
 from app.database.database import *
-from app.components.file_management import GET_CONFIG_HOST_IP_ADDRESS, GET_SPOTIFY_CLIENT_ID, GET_SPOTIFY_CLIENT_SECRET, GET_SPOTIFY_REFRESH_TOKEN, SET_SPOTIFY_REFRESH_TOKEN
+from app.components.file_management import *
 
 import requests
 import json
@@ -36,6 +36,7 @@ import spotipy
 import socket 
 import time
 import base64
+import threading
 
 
 """ ######################## """
@@ -86,59 +87,26 @@ def GENERATE_SPOTIFY_TOKEN(code):
 	
 	try:
 		SPOTIFY_TOKEN = answer["access_token"]
-	except:
-		pass
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New Token received") 
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not received | " + str(e)) 
 		
 	try:
 		SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
 		REFRESH_TOKEN_TEMP = answer["refresh_token"]		
-	except:
-		pass		
+		WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New refresh Token received") 
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Refresh Token not received | " + str(e)) 		
+		
+	REFRESH_SPOTIFY_TOKEN_THREAD(0)
 
-
-def REFRESH_SPOTIFY_TOKEN():
-
-	global SPOTIFY_TOKEN		
-	global REFRESH_TOKEN_TEMP	
-
-	body = {
-		"grant_type" : "refresh_token",
-		"refresh_token" : GET_SPOTIFY_REFRESH_TOKEN()
-	}
-
-	auth_str = '{}:{}'.format("11a33d121d194cfebbc08d1ee6dbd0f6", "af1b5460be774d8db58313bbf1a056b8")
-	b64_auth_str = base64.b64encode(auth_str.encode()).decode()
-
-	headers = {
-		'Content-Type': 'application/x-www-form-urlencoded',
-		'Authorization': 'Basic {}'.format(b64_auth_str)
-	}
-
-	post_refresh = requests.post(SPOTIFY_URL_TOKEN, data=body, headers=headers) 
-	answer       = json.loads(post_refresh.text)
-
-	try:
-		SPOTIFY_TOKEN = answer["access_token"]
-	except:
-		pass
-
-	try:
-		SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
-		REFRESH_TOKEN_TEMP = answer["refresh_token"]			
-	except:
-		pass		   
- 
 
 def GET_SPOTIFY_TOKEN():
 	global SPOTIFY_TOKEN
 
 	return SPOTIFY_TOKEN
-
-
-def GET_SPOTIFY_REFRESH_TOKEN_TEMP():
-	global REFRESH_TOKEN_TEMP
-
-	return REFRESH_TOKEN_TEMP
 
 
 def DELETE_SPOTIFY_TOKEN():
@@ -150,10 +118,76 @@ def DELETE_SPOTIFY_TOKEN():
 	SET_SPOTIFY_REFRESH_TOKEN("")
 
 
+""" #################### """
+""" token refresh thread """
+""" #################### """
+
+
+def REFRESH_SPOTIFY_TOKEN_THREAD(first_delay):
+	
+	try:
+		Thread = threading.Thread(target=REFRESH_SPOTIFY_TOKEN, args=(first_delay, ))
+		Thread.start()  
+		
+	except Exception as e:
+		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Refresh Spotify Token | " + str(e)) 
+
+
+def REFRESH_SPOTIFY_TOKEN(first_delay):   
+	
+	current_timer = first_delay
+	delay         = 3000
+	
+	global SPOTIFY_TOKEN		
+	global REFRESH_TOKEN_TEMP	
+	
+	while REFRESH_TOKEN_TEMP != "":
+		
+		if current_timer == 3000:
+		
+			body = {
+				"grant_type" : "refresh_token",
+				"refresh_token" : GET_SPOTIFY_REFRESH_TOKEN()
+			}
+
+			auth_str = '{}:{}'.format("11a33d121d194cfebbc08d1ee6dbd0f6", "af1b5460be774d8db58313bbf1a056b8")
+			b64_auth_str = base64.b64encode(auth_str.encode()).decode()
+
+			headers = {
+				'Content-Type': 'application/x-www-form-urlencoded',
+				'Authorization': 'Basic {}'.format(b64_auth_str)
+			}
+
+			post_refresh = requests.post(SPOTIFY_URL_TOKEN, data=body, headers=headers) 
+			answer       = json.loads(post_refresh.text)
+
+			try:
+				SPOTIFY_TOKEN = answer["access_token"]
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Token updated") 
+				
+			except Exception as e:
+				WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not updated | " + str(e)) 
+
+			try:
+				SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
+				REFRESH_TOKEN_TEMP = answer["refresh_token"]		
+				WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Refresh Token updated") 	
+				
+			except Exception as e:
+				pass
+				
+			current_timer = 0
+			
+				
+		else:
+			current_timer = current_timer + 1
+			time.sleep(1)
+
 
 """ ############### """
 """ spotify control """
 """ ############### """
+
 
 def SPOTIFY_CONTROL(spotify_token, command, spotify_volume):
 
@@ -226,7 +260,10 @@ def SPOTIFY_CONTROL(spotify_token, command, spotify_volume):
 		
 			
 	except Exception as e:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
+		if str(e) == "'NoneType' object is not subscriptable":
+			WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | No active Device founded") 		
+		else:
+			WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
 
 
 def SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playlist_volume):
@@ -236,7 +273,9 @@ def SPOTIFY_START_PLAYLIST(spotify_token, spotify_device_id, playlist_uri, playl
 	
 	sp.start_playback(device_id=spotify_device_id, context_uri=playlist_uri, uris=None, offset = None, position_ms = None)     
 	sp.volume(int(playlist_volume), device_id=spotify_device_id)  
-
+	sp.shuffle(True, device_id=spotify_device_id)
+	sp.next_track(device_id=spotify_device_id) 
+	
 
 def SPOTIFY_START_TRACK(spotify_token, spotify_device_id, track_uri, track_volume):
 

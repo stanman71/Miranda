@@ -17,7 +17,7 @@ from app.components.email import SEND_EMAIL
 from app.components.mqtt import *
 from app.components.checks import *
 from app.components.shared_resources import GET_ERROR_DELETE_MQTT_DEVICE, SET_ERROR_DELETE_MQTT_DEVICE
-from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN
 
 
 # access rights
@@ -536,9 +536,6 @@ def dashboard_system_controller():
          
           
     # list spotify devices / playlists
-    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-        REFRESH_SPOTIFY_TOKEN()
-     
     spotify_token = GET_SPOTIFY_TOKEN()    
     
     try:

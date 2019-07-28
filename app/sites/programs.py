@@ -10,7 +10,7 @@ from app import app
 from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
 from app.database.database import *
 from app.components.checks import CHECK_PROGRAM
-from app.components.backend_spotify import GET_SPOTIFY_TOKEN, GET_SPOTIFY_REFRESH_TOKEN_TEMP, REFRESH_SPOTIFY_TOKEN
+from app.components.backend_spotify import GET_SPOTIFY_TOKEN
 
 
 # access rights
@@ -140,9 +140,6 @@ def dashboard_programs():
         
     
     # list spotify devices / playlists
-    if GET_SPOTIFY_TOKEN() == "" and GET_SPOTIFY_REFRESH_TOKEN_TEMP() != "":
-        REFRESH_SPOTIFY_TOKEN()
-     
     spotify_token = GET_SPOTIFY_TOKEN()    
     
     try:
