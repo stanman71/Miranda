@@ -69,10 +69,8 @@ This project creates a smart home environment.
        >>> sudo systemctl stop SmartHome
 
 </br>
-------------
-</br>
 
-### 3. SmartHome Control
+#### 3. SmartHome Control
 
 - stop the program manually
 
