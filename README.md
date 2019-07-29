@@ -23,20 +23,56 @@ This project creates a smart home environment.
 ------------
 </br>
 
-### Install the program on Raspberry Pi and setup autostart
+### Install SmartHome
+
+#### 1. Installation 
 
 - copy all SmartHome files into the folder "/home/pi/SmartHome"
 - install the required modules by using sudo rights
-- open the autostart-file: 
 
-       >>> sudo nano /etc/rc.local
-       >>> insert "sudo python3 /home/pi/SmartHome/run.py &" before line "exit 0"
+</br>
+
+#### 2. Autostart
+
+- create an autostart-file
+
+       >>> sudo nano /etc/systemd/system/SmartHome.service
+
+       [Unit]
+       Description=SmartHome
+       After=network.target
+
+       [Install]
+       WantedBy=multi-user.target
+
+       [Service]
+       User=pi
+       ExecStart=/home/pi/SmartHome/run.py
+       WorkingDirectory=/home/pi/SmartHome/
+       Restart=always
+       RemainAfterExit=yes
+
+- enable autostart
+
+       >>> sudo systemctl enable SmartHome.service
+
+- start service
+
+       >>> sudo systemctl start SmartHome
+
+- show status
+
+       >>> systemctl status SmartHome.service
+
+- stop service
+
+       >>> sudo systemctl stop SmartHome
 
 </br>
 ------------
 </br>
 
-### Flask server control
+### 3. SmartHome Control
 
 - stop the program manually
 
@@ -98,6 +134,18 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 - enable autostart
 
        >>> sudo systemctl enable Mosquitto.service
+
+- start service
+
+       >>> sudo systemctl start Mosquitto
+
+- show status
+
+       >>> systemctl status Mosquitto.service
+
+- stop service
+
+       >>> sudo systemctl stop Mosquitto
 
 
 </br>
@@ -206,7 +254,7 @@ https://www.zigbee2mqtt.io/
 
        >>> sudo systemctl enable zigbee2mqtt.service
 
-- start zigbee2mqtt
+- start service
 
        >>> sudo systemctl start zigbee2mqtt
 
@@ -214,7 +262,7 @@ https://www.zigbee2mqtt.io/
 
        >>> systemctl status zigbee2mqtt.service
 
-- stopping zigbee2mqtt
+- stop service
 
        >>> sudo systemctl stop zigbee2mqtt
 
@@ -285,8 +333,8 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 3. Snowboy
 
-- activate snowboy in the system settings
-- restart the raspberry pi
+- activate snowboy in the SmartHome system settings
+- restart SmartHome
 
 </br>
 
@@ -329,3 +377,92 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - create a new hotword (try to find hotwords as different as possible)
 - copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in your system settings
+
+
+</br>
+------------
+</br>
+
+### Optional: piCorePlayer & LMS (Logitech Media Server)
+
+https://www.picoreplayer.org/
+</br>
+https://www.basecube.de/2018/03/17/download/
+</br>
+</br>
+
+#### 1. General Settings piCorePlayer
+
+change settings option to beta (options are at the bottom corner)
+</br>
+
+- main page
+
+       >>> expand filesystem to 200mb
+       >>> set a static ip-address
+
+- wifi settings
+
+       >>> activate wlan
+
+</br>
+
+#### 2. Settings piCorePlayer - Player
+
+- squeezelite settings
+
+       >>> IQaudIO DAC+ (X400)
+
+- tweaks
+
+       >>> activate squeezelite autostart
+
+
+</br>
+
+#### 3. Settings piCorePlayer - LMS 
+
+- LMS
+
+       >>> install LMS
+       >>> start LMS
+
+
+</br>
+
+#### 4. LMS 
+
+- LMS IP-address:
+
+       >>> same as piCorePlayer, defaultport = 9000
+
+- Logitech Account
+
+       >>> not necessary, just skip it
+
+- settings
+
+       >>> plugins >>> install Spotty
+
+- config spotty
+
+       >>> add premium account 
+       >>> activate player at spotify connect
+       >>> the new player is now selectable in spotify
+
+- synchronize player
+
+       >>> set the player-groups on the main page in the upper-right corner (Squeezelite must be installed on the clients)
+       >>> synchronized groups appears as selectable devices in spotify
+
+
+</br>
+
+#### 5. Squeezelite - Client
+
+- Windows 10
+
+       >>> microsoft store >>> Squeezelite-X
+
+
+

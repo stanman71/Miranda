@@ -26708,3 +26708,118 @@ expected ',' or ']', but got '<scalar>'
 2019-07-28 11:30:03,SUCCESS,|MQTT || Update Devices|
 2019-07-28 11:39:02,SUCCESS,|Spotify || Token updated|
 2019-07-28 12:04:44,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed || state: ON|
+2019-07-28 12:26:35,EVENT,|MQTT || Started|
+2019-07-28 12:26:35,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-28 12:26:36,SUCCESS,|Spotify || Token updated|
+2019-07-28 12:26:38,EVENT,|ZigBee2MQTT || Connected|
+2019-07-28 12:26:39,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-28 12:26:40,EVENT,|Speechcontrol || Started|
+2019-07-28 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 12:41:18,EVENT,|Speechcontrol || Detection || scheisse geht das krass muss ich euch losgeht okay|
+2019-07-28 13:16:43,SUCCESS,|Spotify || Token updated|
+2019-07-28 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 14:06:49,SUCCESS,|Spotify || Token updated|
+2019-07-28 14:09:03,EVENT,|Speechcontrol || Detection || mit der|
+2019-07-28 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 14:56:55,SUCCESS,|Spotify || Token updated|
+2019-07-28 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 15:47:06,SUCCESS,|Spotify || Token updated|
+2019-07-28 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 16:37:13,SUCCESS,|Spotify || Token updated|
+2019-07-28 17:27:19,SUCCESS,|Spotify || Token updated|
+2019-07-28 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 17:44:20,EVENT,|Speechcontrol || Detection || bei der verarbeitung des zwanzigsten jahrhunderts|
+2019-07-28 17:46:18,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed || state: OFF|
+2019-07-28 18:17:26,SUCCESS,|Spotify || Token updated|
+2019-07-28 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 19:07:36,SUCCESS,|Spotify || Token updated|
+2019-07-28 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 19:57:40,SUCCESS,|Spotify || Token updated|
+2019-07-28 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 20:47:45,SUCCESS,|Spotify || Token updated|
+2019-07-28 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 21:37:54,SUCCESS,|Spotify || Token updated|
+2019-07-28 22:28:03,SUCCESS,|Spotify || Token updated|
+2019-07-28 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-28 23:18:07,SUCCESS,|Spotify || Token updated|
+2019-07-28 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-07-29 00:08:14,SUCCESS,|Spotify || Token updated|
+2019-07-29 00:10:11,ERROR,|Speechcontrol || Could not request results from Wit.ai service; recognition request failed: Request Timeout|
+2019-07-29 00:10:51,EVENT,|Speechcontrol || Detection || licht ausschalten|
+2019-07-29 00:10:51,ERROR,|Speechcontrol || LED Task || licht ausschalten || Group not founded|
+2019-07-29 00:11:06,EVENT,|Speechcontrol || Detection || lässt|
+2019-07-29 00:11:16,EVENT,|Speechcontrol || Detection || licht im wohnzimmer ausschneiden|
+2019-07-29 00:11:17,ERROR,|Speechcontrol || LED Task || licht im wohnzimmer ausschneiden || Brightness value not founded|
+2019-07-29 00:11:39,ERROR,|Speechcontrol || Could not request results from Wit.ai service; recognition request failed: Service Unavailable|
+2019-07-29 00:11:49,EVENT,|Speechcontrol || Detection || schlafen|
+2019-07-29 00:11:49,ERROR,|Speechcontrol || LED Task || schlafen || 'NoneType' object has no attribute 'id'|
+2019-07-29 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-07-29 00:30:04,ERROR,|Scheduler || Task - schlafen || 'NoneType' object has no attribute 'id'|
+2019-07-29 00:58:18,SUCCESS,|Spotify || Token updated|
+2019-07-29 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 01:48:22,SUCCESS,|Spotify || Token updated|
+2019-07-29 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 02:38:25,SUCCESS,|Spotify || Token updated|
+2019-07-29 03:28:29,SUCCESS,|Spotify || Token updated|
+2019-07-29 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 04:18:32,SUCCESS,|Spotify || Token updated|
+2019-07-29 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 05:08:36,SUCCESS,|Spotify || Token updated|
+2019-07-29 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 05:58:40,SUCCESS,|Spotify || Token updated|
+2019-07-29 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 06:48:43,SUCCESS,|Spotify || Token updated|
+2019-07-29 07:07:58,EVENT,|Speechcontrol || Detection || starte|
+2019-07-29 07:08:58,EVENT,|Speechcontrol || Detection || starte szene standard im bei uns|
+2019-07-29 07:08:58,ERROR,|Speechcontrol || LED Task || starte szene standard im bei uns || Group not founded|
+2019-07-29 07:20:17,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 54 %|
+2019-07-29 07:20:39,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-29 07:20:52,EVENT,|Speechcontrol || Detection || starte szene standard im wohnzimmer|
+2019-07-29 07:20:56,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-07-29 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 07:35:10,EVENT,|Speechcontrol || Detection || spotify weiter|
+2019-07-29 07:38:47,SUCCESS,|Spotify || Token updated|
+2019-07-29 07:50:00,EVENT,|Scheduler || Task - zur Arbeit || started|
+2019-07-29 07:50:06,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-07-29 08:28:52,SUCCESS,|Spotify || Token updated|
+2019-07-29 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 09:18:56,SUCCESS,|Spotify || Token updated|
+2019-07-29 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-07-29 10:09:46,EVENT,|MQTT || Started|
+2019-07-29 10:09:46,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-29 10:09:46,SUCCESS,|Spotify || Token updated|
+2019-07-29 10:09:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-29 10:09:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-29 10:09:50,EVENT,|Speechcontrol || Started|
+2019-07-29 10:25:49,EVENT,|MQTT || Started|
+2019-07-29 10:25:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-29 10:25:49,SUCCESS,|Spotify || Token updated|
+2019-07-29 10:25:52,EVENT,|ZigBee2MQTT || Connected|
+2019-07-29 10:25:53,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-29 10:25:53,EVENT,|Speechcontrol || Started|
+2019-07-29 11:06:30,EVENT,|MQTT || Started|
+2019-07-29 11:06:30,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-29 11:06:30,SUCCESS,|Spotify || Token updated|
+2019-07-29 11:06:33,EVENT,|ZigBee2MQTT || Connected|
+2019-07-29 11:06:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-29 11:06:34,EVENT,|Speechcontrol || Started|
+2019-07-29 11:11:10,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-29 11:11:14,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-29 11:11:39,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-29 11:13:32,EVENT,|File || /logs/log_zigbee2mqtt.csv || created|
+2019-07-29 11:13:47,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-07-29 11:13:51,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-07-29 11:46:46,EVENT,|MQTT || Started|
+2019-07-29 11:46:46,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-29 11:46:47,SUCCESS,|Spotify || Token updated|
+2019-07-29 11:46:49,EVENT,|ZigBee2MQTT || Connected|
+2019-07-29 11:46:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-29 11:46:51,EVENT,|Speechcontrol || Started|
+2019-07-29 11:49:14,EVENT,|MQTT || Started|
+2019-07-29 11:49:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-07-29 11:49:14,SUCCESS,|Spotify || Token updated|
+2019-07-29 11:49:17,EVENT,|ZigBee2MQTT || Connected|
+2019-07-29 11:49:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-07-29 11:49:18,EVENT,|Speechcontrol || Started|
