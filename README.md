@@ -450,7 +450,8 @@ change settings option to beta (options are at the bottom corner)
 
 - synchronize player
 
-       >>> set the player-groups on the main page in the upper-right corner (Squeezelite must be installed on the clients)
+       >>> set the player-groups on the main page in the upper-right corner 
+           (Squeezelite must be installed on the clients)
        >>> synchronized groups appears as selectable devices in spotify
 
 
