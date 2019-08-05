@@ -12,6 +12,7 @@ from app.components.tasks import START_SCHEDULER_TASK
 from app.components.mqtt import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM, GET_LOCATION_COORDINATES
 from app.components.shared_resources import process_management_queue
+from app.components.email import SEND_EMAIL
 
 from ping3 import ping
 
@@ -99,7 +100,8 @@ def GET_SUNRISE_TIME(lat, long):
       
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
-           
+      SEND_EMAIL("ERROR", "Update Sunrise / Sunset | " + str(e))
+
 
 def GET_SUNSET_TIME(lat, long):
  
@@ -127,6 +129,7 @@ def GET_SUNSET_TIME(lat, long):
 
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
+      SEND_EMAIL("ERROR", "Update Sunrise / Sunset | " + str(e))
 
 
 

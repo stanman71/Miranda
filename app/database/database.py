@@ -62,6 +62,12 @@ class Global_Settings(db.Model):
     setting_name  = db.Column(db.String(50), unique=True)
     setting_value = db.Column(db.String(50))   
 
+class Host_Settings(db.Model):
+    __tablename__ = 'host_settings'
+    id         = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    ip_address = db.Column(db.String(50), unique=True)
+    gateway    = db.Column(db.String(50))   
+
 class LED_Groups(db.Model):
     __tablename__         = 'led_groups'
     id                    = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -329,9 +335,8 @@ class User(UserMixin, db.Model):
     permission_sensordata               = db.Column(db.String(20), server_default=(""))  
     permission_spotify                  = db.Column(db.String(20), server_default=(""))   
     permission_system                   = db.Column(db.String(20), server_default=(""))    
-    email_notification_info             = db.Column(db.String(20), server_default=(""))
+    email_notification_warning          = db.Column(db.String(20), server_default=(""))
     email_notification_error            = db.Column(db.String(20), server_default=(""))
-    email_notification_camera           = db.Column(db.String(20), server_default=(""))
     collapse                            = db.Column(db.String(50))
     collapse_dashboard_led_setting      = db.Column(db.String(50))
     collapse_dashboard_devices_setting  = db.Column(db.String(50))     
@@ -385,6 +390,16 @@ if Global_Settings.query.filter_by().first() is None:
         setting_value = "False",
     )
     db.session.add(setting_speech_control)    
+    db.session.commit()
+
+
+# create default host settings
+if Host_Settings.query.filter_by().first() is None:
+    host = Host_Settings(
+        ip_address = None,
+        gateway    = None,
+    )
+    db.session.add(host)
     db.session.commit()
 
 
@@ -663,32 +678,24 @@ def GET_EMAIL_CONFIG():
 
 
 def GET_EMAIL_ADDRESS(address_type): 
-    if address_type == "test":
+    if address_type == "TEST":
         mail_list = []
         mail_list.append(eMail.query.filter_by().first().mail_username)
         return mail_list
 
-    if address_type == "info":
+    if address_type == "WARNING":
         mail_list = []
         users = User.query.all()
         for user in users:
-            if user.email_notification_info == "checked":
+            if user.email_notification_warning == "checked":
                 mail_list.append(user.email)
         return mail_list
 
-    if address_type == "error":
+    if address_type == "ERROR":
         mail_list = []
         users = User.query.all()
         for user in users:
             if user.email_notification_error == "checked":
-                mail_list.append(user.email)
-        return mail_list
-
-    if address_type == "camera":
-        mail_list = []
-        users = User.query.all()
-        for user in users:
-            if user.email_notification_camera == "checked":
                 mail_list.append(user.email)
         return mail_list
 
@@ -722,6 +729,25 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
     entry.setting_value = value
     db.session.commit()    
     
+
+
+""" ################### """
+""" ################### """
+"""   host settings   """
+""" ################### """
+""" ################### """
+
+
+def GET_HOST_SETTINGS():
+    return Host_Settings.query.filter_by().first()
+
+
+def SET_HOST_SETTINGS(ip_address, gateway):
+    entry = Host_Settings.query.filter_by().first()
+    entry.ip_address = ip_address
+    entry.gateway    = gateway    
+    db.session.commit()    
+
 
 
 """ ################### """
@@ -1746,8 +1772,9 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
                
     else:
         
-        device  = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
-        gateway = device.gateway
+        device      = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
+        gateway     = device.gateway
+        device_name = device.name
         
         MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).delete()
         db.session.commit() 
@@ -2905,41 +2932,38 @@ def ADD_USER(name, email, password):
 
 def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_scheduler, permission_programs, 
                       permission_watering, permission_camera, permission_led, permission_sensordata,   
-                      permission_spotify, permission_system, email_notification_info,   
-                      email_notification_error, email_notification_camera):    
+                      permission_spotify, permission_system, email_notification_warning, email_notification_error):    
     
     entry = User.query.filter_by(id=id).first()
     old_username = entry.username
 
     # values changed ?
     if (entry.username != username or entry.email != email or 
-        entry.permission_dashboard      != permission_dashboard or
-        entry.permission_scheduler      != permission_scheduler or   
-        entry.permission_programs       != permission_programs or
-        entry.permission_watering       != permission_watering or
-        entry.permission_camera         != permission_camera or
-        entry.permission_led            != permission_led or
-        entry.permission_sensordata     != permission_sensordata or
-        entry.permission_spotify        != permission_spotify or
-        entry.permission_system         != permission_system or
-        entry.email_notification_info   != email_notification_info or
-        entry.email_notification_error  != email_notification_error or
-        entry.email_notification_camera != email_notification_camera):
+        entry.permission_dashboard       != permission_dashboard or
+        entry.permission_scheduler       != permission_scheduler or   
+        entry.permission_programs        != permission_programs or
+        entry.permission_watering        != permission_watering or
+        entry.permission_camera          != permission_camera or
+        entry.permission_led             != permission_led or
+        entry.permission_sensordata      != permission_sensordata or
+        entry.permission_spotify         != permission_spotify or
+        entry.permission_system          != permission_system or
+        entry.email_notification_warning != email_notification_warning or
+        entry.email_notification_error   != email_notification_error):
 
-        entry.username                  = username
-        entry.email                     = email
-        entry.permission_dashboard      = permission_dashboard 
-        entry.permission_scheduler      = permission_scheduler   
-        entry.permission_programs       = permission_programs 
-        entry.permission_watering       = permission_watering 
-        entry.permission_camera         = permission_camera 
-        entry.permission_led            = permission_led 
-        entry.permission_sensordata     = permission_sensordata 
-        entry.permission_spotify        = permission_spotify 
-        entry.permission_system         = permission_system 
-        entry.email_notification_info   = email_notification_info
-        entry.email_notification_error  = email_notification_error
-        entry.email_notification_camera = email_notification_camera
+        entry.username                   = username
+        entry.email                      = email
+        entry.permission_dashboard       = permission_dashboard 
+        entry.permission_scheduler       = permission_scheduler   
+        entry.permission_programs        = permission_programs 
+        entry.permission_watering        = permission_watering 
+        entry.permission_camera          = permission_camera 
+        entry.permission_led             = permission_led 
+        entry.permission_sensordata      = permission_sensordata 
+        entry.permission_spotify         = permission_spotify 
+        entry.permission_system          = permission_system 
+        entry.email_notification_warning = email_notification_warning
+        entry.email_notification_error   = email_notification_error
         db.session.commit()
         
         WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + old_username + " | changed || Username - " + entry.username +
@@ -2953,9 +2977,8 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
                              " | Permission-Sensordata - " + entry.permission_sensordata +
                              " | Permission-Spotify - " + entry.permission_spotify +       
                              " | Permission-System - " + entry.permission_system +     
-                             " | eMail-Info - " + email_notification_info +
-                             " | eMail-Error - " + email_notification_error +
-                             " | eMail-Camera - " + email_notification_camera)
+                             " | eMail-Warning - " + email_notification_warning +
+                             " | eMail-Error - " + email_notification_error)
 
 
 def SET_USER_DASHBOARD_COLLAPSE_SETTING(id, panel, setting):

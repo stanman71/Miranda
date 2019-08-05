@@ -97,7 +97,7 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
 
 
 def WRITE_LOGFILE_SYSTEM(log_type, description):
-    
+
     # create file if not exist
     if os.path.isfile(PATH + "/logs/log_system.csv") is False:
         CREATE_LOGFILE("log_system")

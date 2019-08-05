@@ -67,6 +67,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_host') }}"><font color="black">Host</font></a></li>              
               <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
               <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
               <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
@@ -303,12 +304,12 @@
                       <div class="form-check">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-6">                       
-                            Information
+                            Warnung
                           </div>
                           <div class="col-sm-1">    
                             <font size="-2">
                               <div class="pretty p-default p-curve p-bigger">
-                                  <input type="checkbox" class="form-check-input" {{ entry.email_notification_info }} name="checkbox_email_notification_info_{{ entry.id }}">
+                                  <input type="checkbox" class="form-check-input" {{ entry.email_notification_warning }} name="checkbox_email_notification_warning_{{ entry.id }}">
                                 <div class="state p-success">
                                   <label></label>
                                 </div>
@@ -330,22 +331,7 @@
                               </div>
                             </font>                                            
                           </div>
-                        </div>     
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-6">                       
-                            Kamera
-                          </div>
-                          <div class="col-sm-1">  
-                            <font size="-2">
-                              <div class="pretty p-default p-curve p-bigger">
-                                  <input type="checkbox" class="form-check-input" {{ entry.email_notification_camera }} name="checkbox_email_notification_camera_{{ entry.id }}">
-                                <div class="state p-success">
-                                  <label></label>
-                                </div>
-                              </div>
-                            </font>                 
-                          </div>
-                        </div>                          
+                        </div>                             
                       </td>    
                       <td>
                         <a href="/dashboard/system/user/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>

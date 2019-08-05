@@ -11,6 +11,7 @@ from app.components.backend_led import *
 from app.components.shared_resources import process_management_queue
 from app.components.tasks import START_SPEECHCONTROL_TASK
 from app.components.backend_watering import START_WATERING_THREAD
+from app.components.email import SEND_EMAIL
 
 """ ################ """
 """ management queue """
@@ -26,7 +27,8 @@ def PROCESS_MANAGEMENT_THREAD():
 		
 	except Exception as e:
 		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Process Management | " + str(e)) 
-		
+		SEND_EMAIL("ERROR", "Thread | Process Management | " + str(e)) 		
+
 
 def PROCESS_MANAGEMENT():
 	
@@ -180,6 +182,7 @@ def PROCESS_MANAGEMENT():
 		except Exception as e:
 			if "index out of range" not in str(e):
 				WRITE_LOGFILE_SYSTEM("ERROR", "Process Management | Process - " + process + " | " + str(e))  
+				SEND_EMAIL("ERROR", "Process Management | Process - " + process + " | " + str(e))  				
 				print(str(e))
 				
 			  

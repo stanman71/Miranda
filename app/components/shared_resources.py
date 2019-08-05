@@ -2,6 +2,10 @@ import datetime
 import time
 import threading
 
+from app import app
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.email import SEND_EMAIL
+
 process_management_queue = []
 
 
@@ -17,6 +21,7 @@ def REFRESH_MQTT_INPUT_MESSAGES_THREAD():
 		
 	except Exception as e:
 		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Refresh MQTT Messages | " + str(e)) 
+		SEND_EMAIL("ERROR", "Thread | Refresh MQTT Messages | " + str(e)) 
 
 
 def REFRESH_MQTT_INPUT_MESSAGES():   

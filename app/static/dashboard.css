@@ -188,6 +188,11 @@ border-color: white;
   padding-top:75%;
 }
 
+.img-container-video {
+  position:relative;
+  padding-top:75%;
+}
+
 .img-container-topology {
   position:relative;
   padding-top:50%;

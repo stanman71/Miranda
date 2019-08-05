@@ -26,7 +26,14 @@ def permission_required(f):
 @permission_required
 def dashboard_camera():
 
-    return render_template('dashboard_camera.html',                                                                                                                                                                                
+    url      = "192.168.1.107:8081"
+    username = "user"
+    password = "1234"
+
+    video_feed = "http://" + username + ":" + password + "@" + url
+
+    return render_template('dashboard_camera.html',        
+                            video_feed=video_feed,                                                                                                                                            
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

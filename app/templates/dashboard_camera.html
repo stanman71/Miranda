@@ -68,6 +68,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><a href="{{ url_for('dashboard_system_host') }}"><font color="black">Host</font></a></li>              
               <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
               <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
               <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
@@ -106,7 +107,11 @@
       <div class="panel panel-default">    
         <div class="panel-body">                       
           <div class="well well-sm">  
-
+            <div class="img-container-video">
+              <div class="img">
+               <img src="{{ video_feed }}" width="50%"></img>
+              </div>
+            </div>            
           </div>
         </div>
       </div>

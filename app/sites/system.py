@@ -31,6 +31,69 @@ def permission_required(f):
     return wrap
     
 
+""" ############### """
+""" host settings """
+""" ############### """
+
+@app.route('/dashboard/system/host', methods=['GET', 'POST'])
+@login_required
+@permission_required
+def dashboard_system_host():
+    error_message_ip_settings = ""
+
+    ip_address    = GET_HOST_SETTINGS().ip_address
+    gateway       = GET_HOST_SETTINGS().gateway
+
+    def GET_CPU_TEMPERATURE():
+        res = os.popen('vcgencmd measure_temp').readline()
+        return(res.replace("temp=","").replace("'C\n"," C"))
+
+    if request.method == "POST":   
+          
+        # restart raspi 
+        if request.form.get("restart") != None:
+            os.system("sudo shutdown -r now")
+            sys.exit()
+            
+        # shutdown raspi 
+        if request.form.get("shutdown") != None:
+            os.system("sudo shutdown -h now")
+            sys.exit()
+                   
+        if request.form.get("change_host_settings") != None:
+
+            if request.form.get("set_ip_address") != "":
+                ip_address = request.form.get("set_ip_address")
+            else:
+                error_message_ip_settings = "Ungültige Angaben"
+
+            if request.form.get("set_gateway") != "":
+                gateway = request.form.get("set_gateway")
+            else:
+                error_message_ip_settings = "Ungültige Angaben"
+
+            SET_HOST_SETTINGS(ip_address, gateway)
+
+
+    cpu_temperature = GET_CPU_TEMPERATURE()
+    
+    return render_template('dashboard_system_host.html',
+                            error_message_ip_settings=error_message_ip_settings,
+                            cpu_temperature=cpu_temperature, 
+                            ip_address=ip_address,
+                            gateway=gateway,
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system, 
+                            )
+
+
 """ ############# """
 """ mqtt settings """
 """ ############# """
@@ -79,6 +142,7 @@ def dashboard_system_mqtt():
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
+            SEND_EMAIL("ERROR", "MQTT | " + str(e)) 
 
 
         # save mqtt update setting
@@ -162,7 +226,6 @@ def dashboard_system_mqtt():
                             mqtt_device_list=mqtt_device_list,
                             collapse_mqtt_settings=collapse_mqtt_settings,
                             collapse_mqtt_log=collapse_mqtt_log,
-                            active01="active",
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -327,6 +390,7 @@ def dashboard_system_zigbee2mqtt():
                     
                     if zigbee_check == True:             
                         WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
+                        SEND_EMAIL("WARNING", "ZigBee2MQTT | Pairing enabled")
                     else:             
                         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")   
                         error_message_zigbee2mqtt_pairing = "Pairing Einstellung nicht bestätigt"   
@@ -394,7 +458,6 @@ def dashboard_system_zigbee2mqtt():
                             collapse_zigbee2mqtt_settings=collapse_zigbee2mqtt_settings,
                             collapse_zigbee2mqtt_topology=collapse_zigbee2mqtt_topology,  
                             collapse_zigbee2mqtt_log=collapse_zigbee2mqtt_log,                                   
-                            active02="active",
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -444,7 +507,7 @@ def download_zigbee2mqtt_logfile(filepath):
         WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filepath + " | downloaded")
         return send_from_directory(path, filepath)
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))             
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filepath + " | " + str(e))        
 
 
 """ ############ """
@@ -558,7 +621,6 @@ def dashboard_system_controller():
                             list_device_command_options=list_device_command_options,    
                             spotify_devices=spotify_devices,
                             spotify_playlists=spotify_playlists,                                                             
-                            active03="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -926,7 +988,6 @@ def dashboard_system_speechcontrol():
                             speech_recognition_provider_username=speech_recognition_provider_username,
                             speech_recognition_provider_key=speech_recognition_provider_key,
                             speech_recognition_provider_sensitivity=speech_recognition_provider_sensitivity,
-                            active04="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -1115,19 +1176,15 @@ def dashboard_system_user():
 
 
                         # change email notification
-                        if request.form.get("checkbox_email_notification_info_" + str(i)):
-                            email_notification_info = "checked"
+                        if request.form.get("checkbox_email_notification_warning_" + str(i)):
+                            email_notification_warning = "checked"
                         else:
-                            email_notification_info = ""
+                            email_notification_warning = ""
                         if request.form.get("checkbox_email_notification_error_" + str(i)):
                             email_notification_error = "checked"
                         else:
                             email_notification_error = ""
-                        if request.form.get("checkbox_email_notification_camera_" + str(i)):
-                            email_notification_camera = "checked"
-                        else:
-                            email_notification_camera = ""
-                            
+                      
                             
                         SET_USER_SETTINGS(i, username, email, 
                                           permission_dashboard,   
@@ -1139,9 +1196,8 @@ def dashboard_system_user():
                                           permission_sensordata,   
                                           permission_spotify,     
                                           permission_system,     
-                                          email_notification_info,   
-                                          email_notification_error,   
-                                          email_notification_camera)    
+                                          email_notification_warning,   
+                                          email_notification_error)    
         
         
                         # reset password
@@ -1242,11 +1298,9 @@ def dashboard_system_email():
                                                     set_mail_password)
 
         # test email settings
-        if request.form.get("test_email_config") != None:
-            
-            collapse_test_email_settings = "in"
-            
-            error_message_test = SEND_EMAIL(GET_EMAIL_ADDRESS("test"), "TEST", "TEST")
+        if request.form.get("test_email_config") != None:  
+            collapse_test_email_settings = "in" 
+            error_message_test = SEND_EMAIL("TEST", "TEST")
 
     email_config = GET_EMAIL_CONFIG()[0]
     mail_encoding_list = ["TLS", "SSL"]
@@ -1260,7 +1314,6 @@ def dashboard_system_email():
                             email_config=email_config,
                             mail_encoding_list=mail_encoding_list,   
                             collapse_test_email_settings=collapse_test_email_settings,                       
-                            active06="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -1286,23 +1339,8 @@ def dashboard_system_backup():
     new_backup_location_path = False
     collapse_backup_settings = ""
     
-
-    def GET_CPU_TEMPERATURE():
-        res = os.popen('vcgencmd measure_temp').readline()
-        return(res.replace("temp=","").replace("'C\n"," C"))
-
     if request.method == "POST":   
-          
-        # restart raspi 
-        if request.form.get("restart") is not None:
-            os.system("sudo shutdown -r now")
-            sys.exit()
-            
-        # shutdown raspi 
-        if request.form.get("shutdown") is not None:
-            os.system("sudo shutdown -h now")
-            sys.exit()
-            
+              
         # save backup setting
         if request.form.get("save_backup_setting") is not None:
             
@@ -1343,8 +1381,7 @@ def dashboard_system_backup():
             SAVE_DATABASE() 
  
     file_list = GET_BACKUP_FILES()
-    cpu_temperature = GET_CPU_TEMPERATURE()
-    
+
     if GET_SCHEDULER_TASK_BY_NAME("backup_database") != None:
         backup_hour = GET_SCHEDULER_TASK_BY_NAME("backup_database").hour
     else: 
@@ -1361,13 +1398,11 @@ def dashboard_system_backup():
     return render_template('dashboard_system_backup.html',
                             error_message=error_message,
                             file_list=file_list,
-                            cpu_temperature=cpu_temperature, 
                             backup_hour=backup_hour,
                             backup_location_path=backup_location_path,
                             new_backup_location_path=new_backup_location_path,
                             dropdown_list_hours=dropdown_list_hours,         
                             collapse_backup_settings=collapse_backup_settings,                                           
-                            active07="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -1474,7 +1509,6 @@ def dashboard_system_log():
                             selected_type_warning=selected_type_warning,                                                      
                             selected_type_error=selected_type_error,                    
                             data_log_system=data_log_system,                                                       
-                            active08="active",
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

@@ -3,8 +3,10 @@ import os
 
 from app import app
 from app.database.database import *
+from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
-def SEND_EMAIL(recipients, subject, body):
+
+def SEND_EMAIL(subject, body):
 
     def GET_MAIL_SETTINGS():     
         mail_config = GET_EMAIL_CONFIG()[0]
@@ -33,9 +35,11 @@ def SEND_EMAIL(recipients, subject, body):
     app.config.update(GET_MAIL_SETTINGS())
     mail = Mail(app)
 
+    recipients = GET_EMAIL_ADDRESS(subject)
+
     try:
         with app.app_context():
-            msg = Message(subject    = subject,
+            msg = Message(subject    = "MIRANDA - " + subject,
                           sender     = app.config.get("MAIL_USERNAME"),
                           recipients = recipients,
                           body       = body)
@@ -48,7 +52,7 @@ def SEND_EMAIL(recipients, subject, body):
                 msg.attach("background.jpg","image/jpg", fp.read())
             with app.open_resource("/home/pi/SmartHome/app/static/images/background-panal.jpg") as fp:
                 msg.attach("background-panal.jpg","image/jpg", fp.read())   
-              
+            
             # text
             with app.open_resource("C:/Users/mstan/Downloads/uzt.txt") as fp:
                 msg.attach("uzt.txt","text/plain", fp.read())   
@@ -59,5 +63,5 @@ def SEND_EMAIL(recipients, subject, body):
         return "success"   
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "eMail >>> " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "eMail | " + recipients + " | " + subject + " | " + body + " | " + str(e))  
         return ("Fehler in eMail: " + str(e))  

@@ -29,6 +29,7 @@ https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-n
 from app import app
 from app.database.database import *
 from app.components.file_management import *
+from app.components.email import SEND_EMAIL
 
 import requests
 import json
@@ -91,14 +92,16 @@ def GENERATE_SPOTIFY_TOKEN(code):
 		
 	except Exception as e:
 		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not received | " + str(e)) 
-		
+		SEND_EMAIL("ERROR", "Spotify | Token not received | " + str(e)) 
+
 	try:
 		SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
 		REFRESH_TOKEN_TEMP = answer["refresh_token"]		
 		WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New refresh Token received") 
 		
 	except Exception as e:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Refresh Token not received | " + str(e)) 		
+		WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Refresh Token not received | " + str(e)) 	
+		SEND_EMAIL("ERROR", "Spotify | Refresh Token not received | " + str(e)) 			
 		
 	REFRESH_SPOTIFY_TOKEN_THREAD(0)
 
@@ -131,6 +134,7 @@ def REFRESH_SPOTIFY_TOKEN_THREAD(first_delay):
 		
 	except Exception as e:
 		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Refresh Spotify Token | " + str(e)) 
+		SEND_EMAIL("ERROR", "Thread | Refresh Spotify Token | " + str(e)) 
 
 
 def REFRESH_SPOTIFY_TOKEN(first_delay):   
@@ -167,6 +171,7 @@ def REFRESH_SPOTIFY_TOKEN(first_delay):
 				
 			except Exception as e:
 				WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not updated | " + str(e)) 
+				SEND_EMAIL("ERROR", "Spotify | Token not updated | " + str(e)) 
 
 			try:
 				SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
@@ -261,7 +266,7 @@ def SPOTIFY_CONTROL(spotify_token, command, spotify_volume):
 			
 	except Exception as e:
 		if str(e) == "'NoneType' object is not subscriptable":
-			WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | No active Device founded") 		
+			WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | No active Device founded") 					
 		else:
 			WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
 

@@ -7,6 +7,7 @@ from app import app
 from app.database.database import *
 from app.components.file_management import GET_CONFIG_HOST_IP_ADDRESS
 from app.components.backend_spotify import *
+from app.components.email import SEND_EMAIL
 
 import requests
 import json
@@ -177,6 +178,7 @@ def dashboard_spotify():
         # login problems
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
+            SEND_EMAIL("ERROR", "Spotify | " + str(e)) 
             
             tupel_current_playback = ""
             spotify_user = ""

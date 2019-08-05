@@ -9,6 +9,7 @@ from app import app
 from app.database.database import *
 from app.components.file_management import *
 from app.components.shared_resources import process_management_queue, mqtt_incoming_messages_list
+from app.components.email import SEND_EMAIL
 
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
@@ -52,7 +53,8 @@ def MQTT_RECEIVE_THREAD():
 		
 	except Exception as e:
 		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | MQTT Receive | " + str(e)) 	
-	
+		SEND_EMAIL("ERROR", "Thread | MQTT Receive | " + str(e)) 	
+
 	
 def MQTT_RECEIVE():
 
@@ -142,6 +144,7 @@ def MQTT_RECEIVE():
 					Thread.start()   
 				except Exception as e:
 					 WRITE_LOGFILE_SYSTEM("ERROR", "Thread | MQTT Message | " + str(e)) 
+					 SEND_EMAIL("ERROR", "Thread | MQTT Message | " + str(e)) 					 
 					 print(e)
 			
 	
@@ -358,12 +361,14 @@ def MQTT_UPDATE_DEVICES(gateway):
 				
 			else:	 
 				WRITE_LOGFILE_SYSTEM("WARNING", "MQTT | Update Devices | No Message founded")
+				SEND_EMAIL("WARNING", "MQTT | Update Devices | No Message founded")				
 				return "MQTT >>> Update Devices >>> Kein Message gefunden"
 			
 			
 		except Exception as e:
 			if str(e) == "string index out of range":
 				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | No connection") 
+				SEND_EMAIL("ERROR", "MQTT | No connection") 				
 				return ("MQTT >>> Update Devices >>> " + str(error))	 
 	
 
@@ -456,6 +461,7 @@ def MQTT_UPDATE_DEVICES(gateway):
 						   
 				if error != "":
 					WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | " + str(error))
+					SEND_EMAIL("ERROR", "ZigBee2MQTT | Update Devices | " + str(error))					
 					return ("ZigBee2MQTT >>> Update Devices >>> " + str(error))	
 				else:
 					WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Update Devices")
@@ -463,11 +469,13 @@ def MQTT_UPDATE_DEVICES(gateway):
 								
 			else:			
 				WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Update Devices | No Message founded")
+				SEND_EMAIL("WARNING", "ZigBee2MQTT | Update Devices | No Message founded")				
 				return "ZigBee2MQTT >>> Update Devices >>> Keine Message gefunden"					
 		
 
 		except Exception as e:
 			WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Update Devices | " + str(e))  
+			SEND_EMAIL("ERROR", "ZigBee2MQTT | Update Devices | " + str(e))  			
 			return ("Error: " + str(e))
 
 
@@ -512,8 +520,10 @@ def MQTT_REQUEST_SENSORDATA(job_name):
 
 	if device_gateway == "mqtt":
 		WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Message not founded") 
+		SEND_EMAIL("ERROR", "MQTT | Message not founded") 		
 	if device_gateway == "zigbee2mqtt":
 		WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Message not founded") 
+		SEND_EMAIL("ERROR", "ZigBee2MQTT | Message not founded") 
 
    
 def MQTT_SAVE_SENSORDATA(job_id):
@@ -591,6 +601,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
 			# error message
 			else:
 				WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  
+				SEND_EMAIL("ERROR", "MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  				
 				return ("MQTT | Device - " + device.name + " | Setting not confirmed - " + setting_formated) 
 				
 	return ""
@@ -678,6 +689,7 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
 			# error message
 			else:
 				WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  
+				SEND_EMAIL("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  				
 				return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
 	
 	return ""

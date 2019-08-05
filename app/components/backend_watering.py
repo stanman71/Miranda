@@ -8,6 +8,7 @@ from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 from app.components.mqtt import MQTT_CHECK_SETTING, MQTT_UPDATE_DEVICES
 from app.components.shared_resources import process_management_queue
+from app.components.email import SEND_EMAIL
 
 
 """ ############ """
@@ -45,7 +46,7 @@ def START_PUMP(plant_id):
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return True
         
-    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump starting not confimed") 
+    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump starting not confimed")   
     return False
 
         
@@ -61,14 +62,15 @@ def START_WATERING_THREAD(group_number):
 		Thread.start()  
 		
 	except Exception as e:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Start Watering | " + str(e)) 
+		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
+		SEND_EMAIL("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
 
 
 def WATERING_THREAD(group_number):
     global pump_incoming_list    
   
     pump_running = 0
-    warnings     = False       
+    warnings     = []       
   
     # get current sensor values
     MQTT_UPDATE_DEVICES("mqtt")
@@ -107,8 +109,8 @@ def WATERING_THREAD(group_number):
                 current_watertank  = sensor_values_json["sensor_watertank"] 
                 
                 if current_watertank == 0:
-                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Watertank Low") 
-                    warnings = True    
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Watertank Low")                    
+                    warnings.append("Watertank Low")    
          
      
             # check moisture sensor
@@ -139,16 +141,22 @@ def WATERING_THREAD(group_number):
                 WRITE_LOGFILE_SYSTEM("EVENT", "Watering | Plant - " + plant.name + " | Starting") 
                 
                 if START_PUMP(plant.id) != True:  
-                    warnings = True
+                    warnings.append("Pump starting not confimed")
                       
                 pump_running = pump_running + 1
                 
                 
             # start control moisture for pumptime_auto
             if plant.pumptime == "auto":
-                Thread = threading.Thread(target=PUMPTIME_AUTO_UPDATE_TREAD, args=(plant.id, ))
-                Thread.start()                   
-                
+
+                try:
+                    Thread = threading.Thread(target=PUMPTIME_AUTO_UPDATE_TREAD, args=(plant.id, ))
+                    Thread.start()      
+                    
+                except Exception as e:
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Pumptime auto update | Plant - " +  plant.name + " | " + str(e)) 
+                    warnings.append("Thread | Pumptime auto update | " + str(e)) 
+
 
     # ####################
     # check pumps stopping
@@ -172,12 +180,13 @@ def WATERING_THREAD(group_number):
     # pump stopping not confirmed
     if pump_running > 0:
         
-        WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump stopping not confimed") 
-        warnings = True
+        WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Pump stopping not confimed")         
+        warnings.append("Pump stopping not confimed")
 
 
-    if warnings == True:
-        WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Finished with Warning")               
+    if warnings != []:
+        WRITE_LOGFILE_SYSTEM("WARNING", "Watering | Plant - " + plant.name + " | Finished with Warning | " + str(warnings))
+        SEND_EMAIL("WARNING", "Watering | Plant - " + plant.name + " | Finished with Warning | " + str(warnings))                      
     else:
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Finished")    
 

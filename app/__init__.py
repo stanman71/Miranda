@@ -23,6 +23,7 @@ from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCO
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
 from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
+from app.components.email import SEND_EMAIL
 
 
 """ ################## """
@@ -66,7 +67,8 @@ try:
 except Exception as e:
     print("ERROR: Start Flask | " + str(e))
     WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Refresh MQTT Messages | " + str(e))      
-     
+    SEND_EMAIL("ERROR", "Thread | Refresh MQTT Messages | " + str(e))  
+
 
 """ #### """
 """ mqtt """
@@ -81,7 +83,7 @@ if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
     except Exception as e:
         print("Fehler in MQTT: " + str(e))
         WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
-
+        SEND_EMAIL("ERROR", "MQTT | " + str(e)) 
 
 """ ###### """
 """ zigbee """
@@ -121,7 +123,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             if zigbee_check == True:             
                 WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
             else:             
-                WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")             
+                WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")                             
                      
         else:
             MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
@@ -141,7 +143,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
                 
     else:
         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No Connection")        
-        
+        SEND_EMAIL("ERROR", "ZigBee2MQTT | No Connection")          
 
 # always disable pairing when zigbee2mqtt running without activation
 if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
@@ -171,6 +173,7 @@ if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
         if "signal only works in main thread" not in str(e): 
             print("Fehler in SnowBoy: " + str(e))
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
+            SEND_EMAIL("ERROR", "Snowboy | " + str(e)) 
 
     # deactivate pixel_ring
     MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")
