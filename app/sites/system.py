@@ -1285,25 +1285,21 @@ def dashboard_system_email():
     if request.method == "POST":     
         # update email settings
         if request.form.get("change_email_settings") != None:      
-            set_mail_server_address = request.form.get("set_mail_server_address")
-            set_mail_server_port    = request.form.get("set_mail_server_port")
-            set_mail_encoding       = request.form.get("set_mail_encoding")
-            set_mail_username       = request.form.get("set_mail_username")               
-            set_mail_password       = request.form.get("set_mail_password")
+            set_server_address = request.form.get("set_server_address")
+            set_server_port    = request.form.get("set_server_port")
+            set_encoding       = request.form.get("set_encoding")
+            set_username       = request.form.get("set_username")               
+            set_password       = request.form.get("set_password")
 
-            error_message = SET_EMAIL_SETTINGS(set_mail_server_address, 
-                                                    set_mail_server_port, 
-                                                    set_mail_encoding, 
-                                                    set_mail_username, 
-                                                    set_mail_password)
+            error_message = SET_EMAIL_SETTINGS(set_server_address, set_server_port, set_encoding, set_username, set_password)
 
         # test email settings
         if request.form.get("test_email_config") != None:  
             collapse_test_email_settings = "in" 
             error_message_test = SEND_EMAIL("TEST", "TEST")
 
-    email_config = GET_EMAIL_CONFIG()[0]
-    mail_encoding_list = ["TLS", "SSL"]
+    settings         = GET_EMAIL_SETTINGS()
+    encoding_options = ["TLS", "SSL"]
     
     # eMail-Muster
     # SEND_EMAIL(GET_EMAIL_ADDRESS("info"), "TEST", "Das ist eine eMail mit Anhang")
@@ -1311,8 +1307,8 @@ def dashboard_system_email():
     return render_template('dashboard_system_email.html',
                             error_message=error_message,
                             error_message_test=error_message_test,
-                            email_config=email_config,
-                            mail_encoding_list=mail_encoding_list,   
+                            settings=settings,
+                            encoding_options=encoding_options,   
                             collapse_test_email_settings=collapse_test_email_settings,                       
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   

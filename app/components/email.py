@@ -8,34 +8,35 @@ from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
 def SEND_EMAIL(subject, body):
 
-    def GET_MAIL_SETTINGS():     
-        mail_config = GET_EMAIL_CONFIG()[0]
-        if mail_config.mail_encoding == "SSL":
+    def eMAIL_SETTINGS():     
+        settings = GET_EMAIL_SETTINGS()
+
+        if settings.encoding == "SSL":
             mail_settings = {
-                "MAIL_SERVER"  : mail_config.mail_server_address,
-                "MAIL_PORT"    : mail_config.mail_server_port,  
+                "MAIL_SERVER"  : settings.server_address,
+                "MAIL_PORT"    : settings.server_port,  
                 "MAIL_USE_TLS" : False,
                 "MAIL_USE_SSL" : True,
-                "MAIL_USERNAME": mail_config.mail_username,
-                "MAIL_PASSWORD": mail_config.mail_password,
+                "MAIL_USERNAME": settings.username,
+                "MAIL_PASSWORD": settings.password,
             }
 
         else:
             mail_settings = {
-                "MAIL_SERVER"  : mail_config.mail_server_address,
-                "MAIL_PORT"    : mail_config.mail_server_port,  
+                "MAIL_SERVER"  : settings.server_address,
+                "MAIL_PORT"    : settings.server_port,  
                 "MAIL_USE_TLS" : True,
                 "MAIL_USE_SSL" : False,
-                "MAIL_USERNAME": mail_config.mail_username,
-                "MAIL_PASSWORD": mail_config.mail_password,
+                "MAIL_USERNAME": settings.username,
+                "MAIL_PASSWORD": settings.password,
             }  
 
         return mail_settings 
 
-    app.config.update(GET_MAIL_SETTINGS())
+    app.config.update(eMAIL_SETTINGS())
     mail = Mail(app)
 
-    recipients = GET_EMAIL_ADDRESS(subject)
+    recipients = GET_EMAIL_ADDRESSES(subject)
 
     try:
         with app.app_context():
@@ -63,5 +64,5 @@ def SEND_EMAIL(subject, body):
         return "success"   
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "eMail | " + recipients + " | " + subject + " | " + body + " | " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "eMail | " + str(recipients) + " | " + subject + " | " + body + " | " + str(e))  
         return ("Fehler in eMail: " + str(e))  

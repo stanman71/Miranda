@@ -101,22 +101,230 @@
           </div>  
         </div>     
       </div>           
-        
-        
-      
+           
       <div class="panel panel-default">    
         <div class="panel-body">                       
           <div class="well well-sm">  
-            <div class="img-container-video">
-              <div class="img">
-               <img src="{{ video_feed }}" width="50%"></img>
+
+          {% if video_feed_01 != None or video_feed_02 != None or video_feed_03 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-4">           
+                {% if video_feed_01 != None %}
+                  {{ video_feed_01.id }} | {{ video_feed_01.name }}
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_01.user }}:{{ video_feed_01.password }}@{{ video_feed_01.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-4"> 
+                {% if video_feed_02 != None %}      
+                  {{ video_feed_02.id }} | {{ video_feed_02.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_02.user }}:{{ video_feed_02.password }}@{{ video_feed_02.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
               </div>
-            </div>            
+              <div class="col-sm-4"> 
+                {% if video_feed_03 != None %}      
+                  {{ video_feed_03.id }} | {{ video_feed_03.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_03.user }}:{{ video_feed_03.password }}@{{ video_feed_03.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}  
+
+          {% if video_feed_04 != None or video_feed_05 != None or video_feed_06 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-4">           
+                {% if video_feed_04 != None %}
+                  {{ video_feed_04.id }} | {{ video_feed_04.name }}
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_04.user }}:{{ video_feed_04.password }}@{{ video_feed_04.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-4"> 
+                {% if video_feed_05 != None %}      
+                  {{ video_feed_05.id }} | {{ video_feed_05.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_05.user }}:{{ video_feed_05.password }}@{{ video_feed_05.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+              <div class="col-sm-4"> 
+                {% if video_feed_06 != None %}      
+                  {{ video_feed_06.id }} | {{ video_feed_06.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_06.user }}:{{ video_feed_06.password }}@{{ video_feed_06.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}  
+
+          {% if video_feed_07 != None or video_feed_08 != None or video_feed_09 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-4">           
+                {% if video_feed_07 != None %}
+                  {{ video_feed_07.id }} | {{ video_feed_07.name }}
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_07.user }}:{{ video_feed_07.password }}@{{ video_feed_07.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-4"> 
+                {% if video_feed_08 != None %}      
+                  {{ video_feed_08.id }} | {{ video_feed_08.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_08.user }}:{{ video_feed_08.password }}@{{ video_feed_08.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+              <div class="col-sm-4"> 
+                {% if video_feed_09 != None %}      
+                  {{ video_feed_09.id }} | {{ video_feed_09.name }}   
+                  <div class="img-container-video">
+                    <div class="img">
+                      <img src="http://{{ video_feed_09.user }}:{{ video_feed_09.password }}@{{ video_feed_09.url }}" ></img>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}  
+
           </div>
         </div>
       </div>
     </div>  
-        
+
+<!-- error message camera settings  -->
+
+{% if error_message_camera_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_camera_settings %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}    
+
+<!-- add camera -->  
+
+<section id="camera_table"></section>     
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_camera_table"><font color="white"><b> Kameras verwalten </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_camera_table" class="panel-collapse collapse {{collapse_camera_table}} ">      
+          <div class="panel-body">  
+
+<!-- error message add camera -->
+
+{% if error_message_add_camera != "" %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_add_camera %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}           
+
+            <div class="well well-sm">              
+              <form method="POST"> 
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_name" placeholder="Kamera Name" value="{{ name }}" />
+                  </div>                
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_url" placeholder="Kamera URL" value="{{ url }}" />
+                  </div>  
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_user" placeholder="Benutzername" value="{{ user }}" />
+                  </div>  
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_password" placeholder="Passwort" value="{{ password }}" />
+                  </div>  
+                </div>    
+                <br>                                    
+                <div class="text-right">
+                  <input type="submit" onclick="window.location.href='/dashboard/camera#camera_table'" class="btn btn-default" name="add_camera" value="Kamera hinzufügen" />
+                </div>
+              </form>       
+            </div>    
+  
+<!-- camera table -->
+
+        <div class="well well-sm">  
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col" style="width:3%"></th>
+                <th scope="col" style="width:6%">ID</th>                   
+                <th scope="col" style="width:22%">Name</th>                                     
+                <th scope="col" style="width:22%">URL</th> 
+                <th scope="col" style="width:22%">Benutzer</th> 
+                <th scope="col" style="width:22%">Passwort</th> 
+                <th scope="col"></th>  
+                <th scope="col" style="width:3%"></th>                  
+              </thead>
+              <tbody> 
+                {% for entry in camera_list %}
+                <tr>
+                  <td>{{ entry.id }}</td>  
+                  <td>
+                    <a href="/dashboard/camera/position/down/{{ entry.id }}#camera_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/dashboard/camera/position/up/{{ entry.id }}#camera_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                  </td>                                        
+                  <td>
+                    <input type="text" class="form-control" name="set_url_{{ entry.id }}" value="{{ entry.url }}" />                    
+                  </td>  
+                  <td>
+                    <input type="text" class="form-control" name="set_user_{{ entry.id }}" value="{{ entry.user }}" />                    
+                  </td>  
+                  <td>
+                    <input type="text" class="form-control" name="set_password_{{ entry.id }}" value="{{ entry.password }}" />                    
+                  </td>    
+                  <td><td><a href="/dashboard/camera/delete/{{ entry.id }}#camera_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>         
+          </div>
+          <input type="submit" onclick="window.location.href='/dashboard/camera#camera_table'" class="btn btn-default" name="change_camera_settings" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+    </div> 
     <br>
     <br>      
 
@@ -133,7 +341,16 @@
           <div class="panel-body">      
             <div class="well well-sm">   
              <br>
-             Text
+             
+             <b>Kamera hinzufügen</b>
+             <br>
+             <br>
+             Stream-URL herausfinden und eintragen
+             <br>             
+             Optional: Authentifizierung mit Variante "simpel"
+             <br>
+             <br>             
+             <font color="lightblue">>>> <a href="https://github.com/ccrisan/motioneyeos/wiki">MotionEyeOS</font></a> 
              <br>
           </div>
         </div>

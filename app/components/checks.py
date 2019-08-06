@@ -4,6 +4,29 @@ from app.components.file_management import GET_ALL_HOTWORD_FILES
 
 
 """ ################### """
+"""     check camera    """
+""" ################### """
+
+def CHECK_CAMERA_SETTINGS(cameras):
+   list_settings_errors = []  
+   error_message_settings = ""
+
+   for camera in cameras:
+
+      if camera.name == "None" or camera.name == "":
+         list_settings_errors.append(str(camera.id) + " >>> Keinen Name eingetragen")         
+      if camera.url == "None" or camera.url == "":
+         list_settings_errors.append(camera.name + " >>> Keine URL eingetragen")  
+
+   if list_settings_errors == []:
+      error_message_settings = ""
+   else:
+      error_message_settings = list_settings_errors
+
+   return error_message_settings
+
+
+""" ################### """
 """   check dashboard   """
 """ ################### """
 

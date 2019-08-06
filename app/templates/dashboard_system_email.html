@@ -134,7 +134,7 @@
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Adresse: </button>
                   </div> 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_mail_server_address" value="{% if email_config.mail_server_address != None %}{{ email_config.mail_server_address }}{% endif %}" />
+                    <input type="text" class="form-control" name="set_server_address" value="{% if settings.server_address != None %}{{ settings.server_address }}{% endif %}" />
                   </div>                            
                 </div> 
               </div>   
@@ -144,7 +144,7 @@
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Server Port: </button>
                   </div> 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_mail_server_port" value="{% if email_config.mail_server_port != None %}{{ email_config.mail_server_port }}{% endif %}" />
+                    <input type="text" class="form-control" name="set_server_port" value="{% if settings.server_port != None %}{{ settings.server_port }}{% endif %}" />
                   </div>                            
                 </div> 
               </div>                                    
@@ -154,10 +154,10 @@
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Verschlüsselung:</button>
                   </div>
                   <div class="col-sm-2">   
-                    <select class="selectpicker" data-width="100%" name="set_mail_encoding">
-                      <option value= "{{ email_config.mail_encoding }}" > {{ email_config.mail_encoding }} </option>
+                    <select class="selectpicker" data-width="100%" name="set_encoding">
+                      <option value= "{{ settings.encoding }}" > {{ settings.encoding }} </option>
                       <optgroup>
-                        {% for each in mail_encoding_list %}
+                        {% for each in encoding_options %}
                         <option value="{{ each }}"> {{ each }} </option>
                         {% endfor %}
                       </optgroup>                                                                                 
@@ -171,7 +171,7 @@
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Benutzername (eMail Adresse): </button>
                   </div> 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_mail_username" value="{% if email_config.mail_username != None %}{{ email_config.mail_username }}{% endif %}" />
+                    <input type="text" class="form-control" name="set_username" value="{% if settings.username != None %}{{ settings.username }}{% endif %}" />
                   </div>                            
                 </div> 
               </div>                    
@@ -181,7 +181,7 @@
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Passwort: </button>
                   </div> 
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_mail_password" value="{% if email_config.mail_password != None %}{{ email_config.mail_password }}{% endif %}" />
+                    <input type="text" class="form-control" name="set_password" value="{% if settings.password != None %}{{ settings.password }}{% endif %}" />
                   </div>                            
                 </div> 
               </div>    
