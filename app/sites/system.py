@@ -39,16 +39,41 @@ def permission_required(f):
 @login_required
 @permission_required
 def dashboard_system_host():
-    error_message_ip_settings = ""
-
-    ip_address    = GET_HOST_SETTINGS().ip_address
-    gateway       = GET_HOST_SETTINGS().gateway
-
+    error_message_host_settings = []
+    message_restart = False
+    
+ 
     def GET_CPU_TEMPERATURE():
         res = os.popen('vcgencmd measure_temp').readline()
         return(res.replace("temp=","").replace("'C\n"," C"))
+ 
+ 
+    def CHECK_IP_ADDRESS(ip_address):
+        
+        try:
+            for element in ip_address:
+                if not element.isdigit() and element != ".":
+                    return False
+                  
+            if len(ip_address.split(".")) != 4:
+                return False
+            
+            for element in ip_address.split("."):
+                if not 0 <= int(element) <= 254:
+                    return False
+                
+            return True
+        
+        except:
+            return False
+            
+
 
     if request.method == "POST":   
+          
+        # ###############
+        # start / restart
+        # ###############             
           
         # restart raspi 
         if request.form.get("restart") != None:
@@ -60,28 +85,106 @@ def dashboard_system_host():
             os.system("sudo shutdown -h now")
             sys.exit()
                    
+ 
+        # ################
+        # network settings
+        # ################    
+                   
         if request.form.get("change_host_settings") != None:
 
-            if request.form.get("set_ip_address") != "":
-                ip_address = request.form.get("set_ip_address")
-            else:
-                error_message_ip_settings = "Ungültige Angaben"
 
-            if request.form.get("set_gateway") != "":
-                gateway = request.form.get("set_gateway")
-            else:
-                error_message_ip_settings = "Ungültige Angaben"
-
-            SET_HOST_SETTINGS(ip_address, gateway)
-
-
-    cpu_temperature = GET_CPU_TEMPERATURE()
-    
+            # ip-address + gateway
+            
+            eth0_ip_address  = request.form.get("set_eth0_ip_address")
+            wlan0_ip_address = request.form.get("set_wlan0_ip_address")
+            eth0_gateway     = request.form.get("set_eth0_gateway")
+            wlan0_gateway    = request.form.get("set_wlan0_gateway")            
+            
+            if eth0_ip_address == "" and wlan0_ip_address == "":
+                error_message_host_settings.append("Keine IP-Adresse angegeben")
+                
+            elif eth0_ip_address != "" and CHECK_IP_ADDRESS(eth0_ip_address) == False:
+                error_message_host_settings.append("Ungültige LAN IP-Adresse angegeben")
+                
+            elif wlan0_ip_address != "" and CHECK_IP_ADDRESS(wlan0_ip_address) == False:
+                error_message_host_settings.append("Ungültige WLAN IP-Adresse angegeben")                
+                
+            elif eth0_ip_address == wlan0_ip_address:
+                error_message_host_settings.append("Gleiche IP-Adressen (LAN + WLAN) angegeben")
+                
+            elif eth0_ip_address != "" and CHECK_IP_ADDRESS(eth0_gateway) == False:
+                error_message_host_settings.append("Ungültiges LAN Gateway angegeben")
+  
+            elif wlan0_ip_address != "" and CHECK_IP_ADDRESS(wlan0_gateway) == False:
+                error_message_host_settings.append("Ungültiges WLAN Gateway angegeben")               
+                
+            else:               
+                SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
+              
+              
+                # default interface
+                
+                default_interface = request.form.get("set_default_interface")
+                
+                if (default_interface == "LAN" and (eth0_ip_address == "" or eth0_gateway == "" or
+                    CHECK_IP_ADDRESS(eth0_ip_address) == False or CHECK_IP_ADDRESS(eth0_gateway) == False)):
+                    
+                    error_message_host_settings.append("Unvollständige Angeben LAN-Netzwerk")
+                    default_interface = GET_HOST_NETWORK().default_interface
+                
+                elif (default_interface == "WLAN" and (wlan0_ip_address == "" or wlan0_gateway == "" or
+                      CHECK_IP_ADDRESS(wlan0_ip_address) == False or CHECK_IP_ADDRESS(wlan0_gateway) == False)):
+                    
+                    error_message_host_settings.append("Unvollständige Angeben WLAN-Netzwerk")
+                    default_interface = GET_HOST_NETWORK().default_interface
+             
+                else:
+                    SET_HOST_DEFAULT_INTERFACE(default_interface)
+                
+                
+                # port
+                
+                port = request.form.get("set_port") 
+                
+                if port == "":
+                    error_message_host_settings.append("Keinen Port angegeben")
+                    
+                elif port.isdigit() == False:
+                    error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
+                
+                elif 0 <= int(port) <= 65535:
+                    SET_HOST_PORT(port)
+                    
+                    SAVE_NETWORK_SETTINGS(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
+                    message_restart = True
+                        
+                else:   
+                   error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
+                   
+                                
+    cpu_temperature           = GET_CPU_TEMPERATURE()
+    default_interface_options = ["LAN", "WLAN"]
+ 
+    eth0_ip_address   = GET_HOST_NETWORK().eth0_ip_address
+    eth0_gateway      = GET_HOST_NETWORK().eth0_gateway
+    wlan0_ip_address  = GET_HOST_NETWORK().wlan0_ip_address
+    wlan0_gateway     = GET_HOST_NETWORK().wlan0_gateway
+    default_interface = GET_HOST_NETWORK().default_interface
+    port              = GET_HOST_NETWORK().port       
+ 
+ 
     return render_template('dashboard_system_host.html',
-                            error_message_ip_settings=error_message_ip_settings,
+                            error_message_host_settings=error_message_host_settings,
+                            message_restart=message_restart,
                             cpu_temperature=cpu_temperature, 
-                            ip_address=ip_address,
-                            gateway=gateway,
+                            eth0_ip_address=eth0_ip_address,
+                            eth0_gateway=eth0_gateway,
+                            wlan0_ip_address=wlan0_ip_address,
+                            wlan0_gateway=wlan0_gateway,
+                            default_interface=default_interface,
+                            port=port,
+                            default_interface_options=default_interface_options,
+                           
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

@@ -232,7 +232,7 @@
     
 <!-- error message content -->
 
-{% if error_message_content != "" %}
+{% if error_message_content != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_content %}
       {{ message }} <br>
@@ -342,11 +342,7 @@
                     <th>Erklärung</th>
                   </tr>
                 </thead>
-                <tbody>   
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>                                   
+                <tbody>                                     
                   <tr>
                     <td>led /// Deckenlampe_01 /// 255, 0, 0 /// 254</td>
                     <td>RGB-LED "Deckenlampe_01", Farbe auf rot, maximale Helligkeit</td>

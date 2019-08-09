@@ -27332,3 +27332,1581 @@ expected ',' or ']', but got '<scalar>'
 2019-08-06 15:59:42,ERROR,|ZigBee2MQTT || No Connection|
 2019-08-06 15:59:45,ERROR,|Snowboy || No module named '_snowboydetect'|
 2019-08-06 15:59:48,ERROR,|Microphone LED Control || No backend available|
+2019-08-06 18:45:57,SUCCESS,|Spotify || Token updated|
+2019-08-06 18:45:59,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-06 18:46:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-06 18:46:06,ERROR,|Microphone LED Control || No backend available|
+2019-08-06 18:47:35,DATABASE,|Camera - gfd || added|
+2019-08-06 18:47:56,DATABASE,|Camera - gfd || deleted|
+2019-08-07 10:41:26,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:41:29,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:41:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:41:32,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:43:07,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 10:46:42,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:46:42,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:46:42,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:46:45,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:46:45,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:46:45,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:46:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:46:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:46:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:46:48,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:46:49,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:46:49,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:48:06,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:48:09,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:48:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:48:12,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:50:15,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 10:51:02,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:51:05,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:51:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:51:08,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:55:26,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 10:56:17,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:56:18,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:56:19,SUCCESS,|Spotify || Token updated|
+2019-08-07 10:56:20,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:56:20,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:56:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:56:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:56:22,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 10:56:23,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:56:23,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 10:56:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 10:56:25,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:00:06,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:00:09,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:00:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:00:12,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:00:12,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 11:01:01,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:01:01,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:01:03,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:01:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:01:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:01:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:01:05,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:01:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:01:07,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:01:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:01:08,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:01:09,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:07:22,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:07:25,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:07:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:07:28,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:09:19,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:09:19,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:09:21,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:09:22,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:09:22,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:09:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:09:23,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:09:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:09:24,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:09:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:09:26,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:09:26,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:19:46,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:19:49,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:19:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:19:52,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:21:29,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:21:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:21:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:21:34,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:25:16,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:25:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:25:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:25:21,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:27:33,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:27:36,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:27:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:27:38,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 11:30:49,EVENT,|MQTT || Started|
+2019-08-07 11:30:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:30:49,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:30:52,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:30:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:30:55,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:31:02,EVENT,|MQTT || Started|
+2019-08-07 11:31:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:31:02,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:31:02,EVENT,|MQTT || Started|
+2019-08-07 11:31:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:31:02,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:31:04,EVENT,|MQTT || Started|
+2019-08-07 11:31:04,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:31:04,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:31:05,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:31:05,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:31:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:31:07,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:31:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:31:19,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:31:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:31:20,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:31:21,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:33:53,EVENT,|MQTT || Started|
+2019-08-07 11:33:53,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:33:53,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:33:56,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:33:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:33:59,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:34:31,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:34:34,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:34:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:34:37,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:34:45,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 11:37:56,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-07 11:37:56,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:37:59,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:38:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:38:01,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:39:48,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 11:41:41,EVENT,|MQTT || Started|
+2019-08-07 11:41:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:41:41,SUCCESS,|Spotify || Token updated|
+2019-08-07 11:41:44,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:41:46,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:41:47,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:41:51,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 11:59:08,EVENT,|MQTT || Started|
+2019-08-07 11:59:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 11:59:11,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 11:59:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 11:59:14,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 11:59:54,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 12:00:54,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 12:01:14,EVENT,|MQTT || Started|
+2019-08-07 12:01:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:01:14,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:01:14,EVENT,|MQTT || Started|
+2019-08-07 12:01:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:01:14,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:01:16,EVENT,|MQTT || Started|
+2019-08-07 12:01:16,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:01:16,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:01:17,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:01:17,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:01:18,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:01:19,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:01:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:01:20,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:01:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:01:21,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:01:22,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:02:15,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 12:02:40,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 12:03:36,ERROR,|ZigBee2MQTT || Device - Steckdose_TV || Setting not confirmed || state: OFF|
+2019-08-07 12:04:57,EVENT,|MQTT || Started|
+2019-08-07 12:04:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:04:57,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:05:00,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:05:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:05:03,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:05:42,EVENT,|MQTT || Started|
+2019-08-07 12:05:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:05:42,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:05:43,EVENT,|MQTT || Started|
+2019-08-07 12:05:43,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:05:43,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:05:44,EVENT,|MQTT || Started|
+2019-08-07 12:05:44,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 12:05:44,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:05:45,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:05:46,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:05:46,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:05:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:05:47,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 12:05:48,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:05:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 12:05:49,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:05:50,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 12:55:11,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:55:46,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:55:46,SUCCESS,|Spotify || Token updated|
+2019-08-07 12:55:47,SUCCESS,|Spotify || Token updated|
+2019-08-07 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 13:45:14,SUCCESS,|Spotify || Token updated|
+2019-08-07 13:45:49,SUCCESS,|Spotify || Token updated|
+2019-08-07 13:45:49,SUCCESS,|Spotify || Token updated|
+2019-08-07 13:45:51,SUCCESS,|Spotify || Token updated|
+2019-08-07 13:51:48,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:16:01,EVENT,|MQTT || Started|
+2019-08-07 14:16:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:16:01,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:16:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:16:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:16:07,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:18:34,EVENT,|MQTT || Started|
+2019-08-07 14:18:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:18:34,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:18:37,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:18:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:18:40,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:20:02,EVENT,|MQTT || Started|
+2019-08-07 14:20:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:20:02,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:20:05,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:20:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:20:07,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:22:33,EVENT,|MQTT || Started|
+2019-08-07 14:22:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:22:34,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:22:36,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:22:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:22:39,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:22:42,DATABASE,|Camera - jhg || changed |||| Name - jhg || URL -  || User -  || Password - |
+2019-08-07 14:22:44,DATABASE,|Camera - jhg || changed |||| Name - jhg || URL - hgf || User -  || Password - |
+2019-08-07 14:22:55,DATABASE,|Camera - jhg || changed |||| Name - jhg || URL -  || User -  || Password - |
+2019-08-07 14:24:10,EVENT,|MQTT || Started|
+2019-08-07 14:24:10,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:24:10,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:24:13,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:24:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:24:15,DATABASE,|Camera - jhg || changed |||| Name - jhg || URL - uzt || User -  || Password - |
+2019-08-07 14:24:15,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:28:29,EVENT,|MQTT || Started|
+2019-08-07 14:28:29,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:28:29,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:28:32,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:28:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:28:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:28:36,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:28:37,DATABASE,|MQTT || Device - Steckdose_TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - 0x88888 || Dashboard Check Setting - None || Dashboard Check ieeeAddr - 0x88888 || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-08-07 14:28:37,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:28:41,DATABASE,|MQTT || Device - Steckdose_TV || Gateway - zigbee2mqtt || Dashboard Settings changed |||| Dashboard Check - None || Dashboard Check Setting - None || Dashboard Check ieeeAddr - None || Dashboard Check Value 1 - None || Dashboard Check Value 2 - None || Dashboard Check Value 3 - None|
+2019-08-07 14:28:42,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:28:50,DATABASE,|LED || Group - jtg || added|
+2019-08-07 14:28:54,DATABASE,|LED || Group - jtg || deleted|
+2019-08-07 14:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 14:33:17,EVENT,|MQTT || Started|
+2019-08-07 14:33:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:33:17,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:33:20,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:33:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:33:23,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:37:54,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:41:03,EVENT,|MQTT || Started|
+2019-08-07 14:41:03,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:41:03,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:41:06,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:41:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:41:08,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:41:24,DATABASE,|Sensordata Job - environment_humidity || changed |||| Name - environment_humidity || Filename - environment || MQTT-Device - Motion_Sensor_Bad_02 || Sensor - None || Always_Active - checked|
+2019-08-07 14:41:30,DATABASE,|Sensordata Job - environment_humidity || changed |||| Name - environment_humidity || Filename - environment || MQTT-Device - Motion_Sensor_Bad_02 || Sensor - illuminance || Always_Active - checked|
+2019-08-07 14:48:21,EVENT,|MQTT || Started|
+2019-08-07 14:48:21,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:48:21,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:48:24,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:48:25,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2952822768|
+2019-08-07 14:48:26,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:48:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:48:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:48:43,DATABASE,|Speechcontrol || Spotify Task - Playlist starten (Optional Lautstärke) || changed |||| Keywords - spotify playlist, spotify playlist|
+2019-08-07 14:49:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:49:03,DATABASE,|Speechcontrol || Spotify Task - Playlist starten (Optional Lautstärke) || changed |||| Keywords - spotify playlist|
+2019-08-07 14:54:19,EVENT,|MQTT || Started|
+2019-08-07 14:54:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:54:19,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:54:22,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:54:22,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:54:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:54:25,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:54:38,DATABASE,|Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// badu || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || Repeat - checked|
+2019-08-07 14:54:42,DATABASE,|Scheduler || Task - bad_off || changed |||| Name - bad_off || Task - led_off /// group /// bad || MQTT-Device_1 - Motion_Sensor_Bad_01 || Sensor_1 - occupancy || Operator_1 - = || Value_1 - false || Repeat - checked|
+2019-08-07 14:55:03,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 14:55:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:55:42,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:55:42,DATABASE,|Speechcontrol || Spotify Task - Playlist starten (Optional Lautstärke) || changed |||| Keywords - spotify playlist, spotify playlist|
+2019-08-07 14:56:42,EVENT,|MQTT || Started|
+2019-08-07 14:56:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:56:42,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:56:45,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:56:47,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2943536208|
+2019-08-07 14:56:48,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:56:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:56:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:57:36,EVENT,|MQTT || Started|
+2019-08-07 14:57:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 14:57:36,SUCCESS,|Spotify || Token updated|
+2019-08-07 14:57:39,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 14:57:40,ERROR,|Snowboy || deadlock detected by _ModuleLock('app.speechcontrol.snowboy.snowboy') at 2942885744|
+2019-08-07 14:57:42,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 14:57:42,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:57:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 14:57:51,DATABASE,|Speechcontrol || Spotify Task - Playlist starten (Optional Lautstärke) || changed |||| Keywords - spotify playlist|
+2019-08-07 14:58:47,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 15:37:04,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:38:07,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:38:22,EVENT,|MQTT || Started|
+2019-08-07 15:38:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 15:38:22,SUCCESS,|Spotify || Token updated|
+2019-08-07 15:38:25,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 15:38:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 15:38:27,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 15:41:47,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:43:03,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:44:24,EVENT,|MQTT || Started|
+2019-08-07 15:44:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 15:44:24,SUCCESS,|Spotify || Token updated|
+2019-08-07 15:44:26,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:44:26,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 15:44:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 15:44:29,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 15:44:32,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:45:34,EVENT,|MQTT || Started|
+2019-08-07 15:45:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 15:45:34,SUCCESS,|Spotify || Token updated|
+2019-08-07 15:45:37,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:45:37,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 15:45:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 15:45:40,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 15:45:45,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 15:46:47,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 16:05:01,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 16:07:35,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 16:10:31,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 16:15:33,EVENT,|MQTT || Started|
+2019-08-07 16:15:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 16:15:33,SUCCESS,|Spotify || Token updated|
+2019-08-07 16:15:36,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 16:15:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 16:15:38,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-08-07 16:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:05:36,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:17:17,EVENT,|MQTT || Started|
+2019-08-07 17:17:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:17:17,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:17:19,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 17:17:20,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:17:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:37:48,EVENT,|MQTT || Started|
+2019-08-07 17:37:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:37:48,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:37:48,EVENT,|MQTT || Started|
+2019-08-07 17:37:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:37:48,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:37:49,EVENT,|MQTT || Started|
+2019-08-07 17:37:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:37:49,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:37:51,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:37:51,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:37:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:37:52,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:37:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:37:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:39:41,EVENT,|MQTT || Started|
+2019-08-07 17:39:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:39:44,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:39:46,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:40:27,EVENT,|MQTT || Started|
+2019-08-07 17:40:27,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:40:27,EVENT,|MQTT || Started|
+2019-08-07 17:40:27,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:40:27,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:40:27,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:40:28,EVENT,|MQTT || Started|
+2019-08-07 17:40:28,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:40:29,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:40:30,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:40:30,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:40:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:40:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:40:31,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:40:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:42:45,EVENT,|MQTT || Started|
+2019-08-07 17:42:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:42:48,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:42:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:43:23,EVENT,|MQTT || Started|
+2019-08-07 17:43:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:43:23,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:43:24,EVENT,|MQTT || Started|
+2019-08-07 17:43:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:43:24,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:43:25,EVENT,|MQTT || Started|
+2019-08-07 17:43:25,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:43:25,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:43:26,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:43:27,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:43:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:43:28,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:43:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:43:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:44:08,ERROR,|ZigBee2MQTT || Device - Steckdose_TV || Setting not confirmed || state: OFF|
+2019-08-07 17:44:42,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 17:45:05,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 17:45:09,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 17:46:28,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 17:46:58,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:47:03,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-08-07 17:48:27,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:49:21,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-08-07 17:49:50,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:50:42,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-07 17:56:05,EVENT,|MQTT || Started|
+2019-08-07 17:56:05,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:56:08,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:56:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:56:15,EVENT,|MQTT || Started|
+2019-08-07 17:56:15,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:56:15,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:56:16,EVENT,|MQTT || Started|
+2019-08-07 17:56:16,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:56:16,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:56:17,EVENT,|MQTT || Started|
+2019-08-07 17:56:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 17:56:18,SUCCESS,|Spotify || Token updated|
+2019-08-07 17:56:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:56:19,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:56:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:56:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:56:20,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-07 17:56:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 17:56:46,SUCCESS,|MQTT || Update Devices|
+2019-08-07 17:57:03,ERROR,|ZigBee2MQTT || Device - Steckdose_TV || Setting not confirmed || state: OFF|
+2019-08-07 18:13:24,EVENT,|File || /logs/log_mqtt.csv || downloaded|
+2019-08-07 18:13:40,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 18:14:17,WARNING,|ZigBee2MQTT || Update Devices || No Message founded|
+2019-08-07 18:15:29,EVENT,|MQTT || Started|
+2019-08-07 18:15:29,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:15:32,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:15:33,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 18:15:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:16:13,ERROR,|ZigBee2MQTT || Device - Steckdose_TV || Setting not confirmed || state: OFF|
+2019-08-07 18:16:21,EVENT,|MQTT || Started|
+2019-08-07 18:16:21,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:16:22,SUCCESS,|Spotify || Token updated|
+2019-08-07 18:16:22,EVENT,|MQTT || Started|
+2019-08-07 18:16:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:16:22,SUCCESS,|Spotify || Token updated|
+2019-08-07 18:16:23,EVENT,|MQTT || Started|
+2019-08-07 18:16:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:16:23,SUCCESS,|Spotify || Token updated|
+2019-08-07 18:16:24,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:16:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:16:25,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 18:16:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:16:26,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 18:16:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:16:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:16:27,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 18:16:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:16:40,ERROR,|ZigBee2MQTT || Device - Steckdose_TV || Setting not confirmed || state: OFF|
+2019-08-07 18:17:01,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 18:17:20,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:17:52,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:35,EVENT,|ZigBee2MQTT || Device added - 0x0017880104878b88|
+2019-08-07 18:18:36,EVENT,|ZigBee2MQTT || Device added - 0x0017880104878b88|
+2019-08-07 18:18:36,EVENT,|ZigBee2MQTT || Device added - 0x0017880104878b88|
+2019-08-07 18:18:37,EVENT,|ZigBee2MQTT || Device added - 0x0017880104878b88|
+2019-08-07 18:18:54,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:55,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:55,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:55,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:18:56,EVENT,|ZigBee2MQTT || Device added - 0x00178801040c9476|
+2019-08-07 18:18:56,EVENT,|ZigBee2MQTT || Device added - 0x00178801040c9476|
+2019-08-07 18:18:56,EVENT,|ZigBee2MQTT || Device added - 0x00178801040c9476|
+2019-08-07 18:18:57,EVENT,|ZigBee2MQTT || Device added - 0x00178801040c9476|
+2019-08-07 18:19:26,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:20:16,DATABASE,|LED || Group - wohnzimmer || deleted|
+2019-08-07 18:20:19,DATABASE,|LED || Group - bad || deleted|
+2019-08-07 18:20:32,DATABASE,|Scheduler || Task - bad_on || deleted|
+2019-08-07 18:20:35,DATABASE,|Scheduler || Task - bad_off || deleted|
+2019-08-07 18:20:44,DATABASE,|Sensordata Job - temperature || deleted|
+2019-08-07 18:20:46,DATABASE,|Sensordata Job - environment_temperature || deleted|
+2019-08-07 18:20:47,DATABASE,|Sensordata Job - environment_light || deleted|
+2019-08-07 18:20:48,DATABASE,|Sensordata Job - environment_humidity || deleted|
+2019-08-07 18:20:53,DATABASE,|MQTT || Device - 0x88888 || deleted|
+2019-08-07 18:20:53,SUCCESS,|MQTT || Device - 0x88888 || deleted|
+2019-08-07 18:20:57,DATABASE,|ZigBee2MQTT || Device - Deckenlampe_01 || deleted|
+2019-08-07 18:20:57,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_01|
+2019-08-07 18:20:57,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_01|
+2019-08-07 18:20:57,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_01|
+2019-08-07 18:20:57,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_01|
+2019-08-07 18:20:59,DATABASE,|ZigBee2MQTT || Device - Steckdose_Server || deleted|
+2019-08-07 18:20:59,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_Server|
+2019-08-07 18:20:59,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_Server|
+2019-08-07 18:20:59,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_Server|
+2019-08-07 18:20:59,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_Server|
+2019-08-07 18:21:03,DATABASE,|ZigBee2MQTT || Device - Deckenlampe_02 || deleted|
+2019-08-07 18:21:03,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_02|
+2019-08-07 18:21:03,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_02|
+2019-08-07 18:21:03,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_02|
+2019-08-07 18:21:03,EVENT,|ZigBee2MQTT || Device deleted - Deckenlampe_02|
+2019-08-07 18:21:13,DATABASE,|Controller - HUE_Switch || deleted|
+2019-08-07 18:21:15,DATABASE,|Controller - Button || deleted|
+2019-08-07 18:21:18,DATABASE,|Controller - Magic_Cube || deleted|
+2019-08-07 18:21:22,DATABASE,|ZigBee2MQTT || Device - HUE_Switch || deleted|
+2019-08-07 18:21:22,EVENT,|ZigBee2MQTT || Device deleted - HUE_Switch|
+2019-08-07 18:21:22,EVENT,|ZigBee2MQTT || Device deleted - HUE_Switch|
+2019-08-07 18:21:22,EVENT,|ZigBee2MQTT || Device deleted - HUE_Switch|
+2019-08-07 18:21:22,EVENT,|ZigBee2MQTT || Device deleted - HUE_Switch|
+2019-08-07 18:21:24,DATABASE,|ZigBee2MQTT || Device - Badlampe_02 || deleted|
+2019-08-07 18:21:24,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_02|
+2019-08-07 18:21:24,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_02|
+2019-08-07 18:21:24,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_02|
+2019-08-07 18:21:24,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_02|
+2019-08-07 18:21:25,DATABASE,|ZigBee2MQTT || Device - Button || deleted|
+2019-08-07 18:21:25,EVENT,|ZigBee2MQTT || Device deleted - Button|
+2019-08-07 18:21:25,EVENT,|ZigBee2MQTT || Device deleted - Button|
+2019-08-07 18:21:25,EVENT,|ZigBee2MQTT || Device deleted - Button|
+2019-08-07 18:21:25,EVENT,|ZigBee2MQTT || Device deleted - Button|
+2019-08-07 18:21:26,DATABASE,|ZigBee2MQTT || Device - Magic_Cube || deleted|
+2019-08-07 18:21:26,EVENT,|ZigBee2MQTT || Device deleted - Magic_Cube|
+2019-08-07 18:21:26,EVENT,|ZigBee2MQTT || Device deleted - Magic_Cube|
+2019-08-07 18:21:26,EVENT,|ZigBee2MQTT || Device deleted - Magic_Cube|
+2019-08-07 18:21:26,EVENT,|ZigBee2MQTT || Device deleted - Magic_Cube|
+2019-08-07 18:21:27,DATABASE,|ZigBee2MQTT || Device - 0x00158d000349876a || deleted|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - 0x00158d000349876a|
+2019-08-07 18:21:27,DATABASE,|ZigBee2MQTT || Device - Motion_Sensor_Bad_01 || deleted|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_01|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_01|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_01|
+2019-08-07 18:21:27,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_01|
+2019-08-07 18:21:28,DATABASE,|ZigBee2MQTT || Device - Motion_Sensor_Bad_02 || deleted|
+2019-08-07 18:21:28,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_02|
+2019-08-07 18:21:28,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_02|
+2019-08-07 18:21:28,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_02|
+2019-08-07 18:21:28,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_02|
+2019-08-07 18:21:29,DATABASE,|ZigBee2MQTT || Device - Motion_Sensor_Bad_03 || deleted|
+2019-08-07 18:21:29,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_03|
+2019-08-07 18:21:29,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_03|
+2019-08-07 18:21:29,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_03|
+2019-08-07 18:21:29,EVENT,|ZigBee2MQTT || Device deleted - Motion_Sensor_Bad_03|
+2019-08-07 18:21:30,DATABASE,|ZigBee2MQTT || Device - Badlampe_01 || deleted|
+2019-08-07 18:21:30,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_01|
+2019-08-07 18:21:30,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_01|
+2019-08-07 18:21:30,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_01|
+2019-08-07 18:21:30,EVENT,|ZigBee2MQTT || Device deleted - Badlampe_01|
+2019-08-07 18:21:34,DATABASE,|ZigBee2MQTT || Device - 0x00124b001d3be3c5 || deleted|
+2019-08-07 18:21:34,EVENT,|ZigBee2MQTT || Device deleted - 0x00124b001d3be3c5|
+2019-08-07 18:21:34,EVENT,|ZigBee2MQTT || Device deleted - 0x00124b001d3be3c5|
+2019-08-07 18:21:34,EVENT,|ZigBee2MQTT || Device deleted - 0x00124b001d3be3c5|
+2019-08-07 18:21:34,EVENT,|ZigBee2MQTT || Device deleted - 0x00124b001d3be3c5|
+2019-08-07 18:21:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:21:43,DATABASE,|Speechcontrol || Device Task - kjhkh || deleted|
+2019-08-07 18:21:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:21:47,DATABASE,|ZigBee2MQTT || Device - Steckdose_TV || deleted|
+2019-08-07 18:21:47,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_TV|
+2019-08-07 18:21:47,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_TV|
+2019-08-07 18:21:47,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_TV|
+2019-08-07 18:21:47,EVENT,|ZigBee2MQTT || Device deleted - Steckdose_TV|
+2019-08-07 18:22:47,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:22:53,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:23:06,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 18:23:12,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 18:24:57,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 18:25:08,ERROR,|ZigBee2MQTT || Pairing enabled || Setting not confirmed|
+2019-08-07 18:25:11,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 18:25:13,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-07 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 18:30:14,SUCCESS,|Spotify || New Token received|
+2019-08-07 18:30:14,SUCCESS,|Spotify || New refresh Token received|
+2019-08-07 18:30:14,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:17,SUCCESS,|Spotify || New Token received|
+2019-08-07 18:30:17,SUCCESS,|Spotify || New refresh Token received|
+2019-08-07 18:30:17,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:22,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:26,SUCCESS,|Spotify || New Token received|
+2019-08-07 18:30:26,SUCCESS,|Spotify || New refresh Token received|
+2019-08-07 18:30:26,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:32,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:35,SUCCESS,|Spotify || New Token received|
+2019-08-07 18:30:35,SUCCESS,|Spotify || New refresh Token received|
+2019-08-07 18:30:35,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:30:39,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:40:14,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:40:41,SUCCESS,|Spotify || New Token received|
+2019-08-07 18:40:41,SUCCESS,|Spotify || New refresh Token received|
+2019-08-07 18:40:41,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:40:54,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-07 18:51:39,EVENT,|MQTT || Started|
+2019-08-07 18:51:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:51:39,SUCCESS,|Spotify || Token updated|
+2019-08-07 18:51:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:51:43,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 18:51:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 18:50:20,EVENT,|MQTT || Started|
+2019-08-07 18:50:20,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 18:50:23,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 18:50:24,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 18:50:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 19:48:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 19:48:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 19:53:47,EVENT,|MQTT || Started|
+2019-08-07 19:53:47,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 19:53:50,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 19:53:51,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 19:53:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 20:11:45,EVENT,|MQTT || Started|
+2019-08-07 20:11:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 20:11:45,EVENT,|MQTT || Started|
+2019-08-07 20:11:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 20:11:45,SUCCESS,|Spotify || Token updated|
+2019-08-07 20:11:45,SUCCESS,|Spotify || Token updated|
+2019-08-07 20:11:46,EVENT,|MQTT || Started|
+2019-08-07 20:11:46,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-07 20:11:47,SUCCESS,|Spotify || Token updated|
+2019-08-07 20:11:48,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 20:11:48,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 20:11:49,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 20:11:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 20:11:49,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 20:11:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 20:11:49,EVENT,|ZigBee2MQTT || Connected|
+2019-08-07 20:11:50,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-07 20:11:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-07 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 21:01:48,SUCCESS,|Spotify || Token updated|
+2019-08-07 21:01:49,SUCCESS,|Spotify || Token updated|
+2019-08-07 21:01:50,SUCCESS,|Spotify || Token updated|
+2019-08-07 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 21:51:52,SUCCESS,|Spotify || Token updated|
+2019-08-07 21:51:52,SUCCESS,|Spotify || Token updated|
+2019-08-07 21:51:53,SUCCESS,|Spotify || Token updated|
+2019-08-07 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 22:41:28,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:28,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:28,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:28,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:29,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffeff0aa8|
+2019-08-07 22:41:30,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffeff0aa8|
+2019-08-07 22:41:30,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffeff0aa8|
+2019-08-07 22:41:30,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffeff0aa8|
+2019-08-07 22:41:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:34,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-07 22:41:35,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffef56003|
+2019-08-07 22:41:35,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffef56003|
+2019-08-07 22:41:36,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffef56003|
+2019-08-07 22:41:36,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffef56003|
+2019-08-07 22:41:55,SUCCESS,|Spotify || Token updated|
+2019-08-07 22:41:55,SUCCESS,|Spotify || Token updated|
+2019-08-07 22:41:57,SUCCESS,|Spotify || Token updated|
+2019-08-07 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-07 23:31:59,SUCCESS,|Spotify || Token updated|
+2019-08-07 23:31:59,SUCCESS,|Spotify || Token updated|
+2019-08-07 23:32:00,SUCCESS,|Spotify || Token updated|
+2019-08-08 00:00:00,ERROR,|Database_Backup || [Errno 2] No such file or directory: '/home/pi/SmartHome/backup/2019-08-08_smarthome.sqlite3'|
+2019-08-08 00:00:00,ERROR,|Database_Backup || [Errno 2] No such file or directory: '/home/pi/SmartHome/backup/2019-08-08_smarthome.sqlite3'|
+2019-08-08 00:00:00,ERROR,|Database_Backup || [Errno 2] No such file or directory: '/home/pi/SmartHome/backup/2019-08-08_smarthome.sqlite3'|
+2019-08-08 00:00:00,ERROR,|Database_Backup || [Errno 2] No such file or directory: '/home/pi/SmartHome/backup/2019-08-08_smarthome.sqlite3'|
+2019-08-08 00:22:02,SUCCESS,|Spotify || Token updated|
+2019-08-08 00:22:02,SUCCESS,|Spotify || Token updated|
+2019-08-08 00:22:03,SUCCESS,|Spotify || Token updated|
+2019-08-08 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 01:12:05,SUCCESS,|Spotify || Token updated|
+2019-08-08 01:12:05,SUCCESS,|Spotify || Token updated|
+2019-08-08 01:12:07,SUCCESS,|Spotify || Token updated|
+2019-08-08 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 02:02:09,SUCCESS,|Spotify || Token updated|
+2019-08-08 02:02:09,SUCCESS,|Spotify || Token updated|
+2019-08-08 02:02:10,SUCCESS,|Spotify || Token updated|
+2019-08-08 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 02:52:12,SUCCESS,|Spotify || Token updated|
+2019-08-08 02:52:12,SUCCESS,|Spotify || Token updated|
+2019-08-08 02:52:14,SUCCESS,|Spotify || Token updated|
+2019-08-08 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 03:42:15,SUCCESS,|Spotify || Token updated|
+2019-08-08 03:42:16,SUCCESS,|Spotify || Token updated|
+2019-08-08 03:42:17,SUCCESS,|Spotify || Token updated|
+2019-08-08 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 04:32:19,SUCCESS,|Spotify || Token updated|
+2019-08-08 04:32:19,SUCCESS,|Spotify || Token updated|
+2019-08-08 04:32:20,SUCCESS,|Spotify || Token updated|
+2019-08-08 05:22:22,SUCCESS,|Spotify || Token updated|
+2019-08-08 05:22:22,SUCCESS,|Spotify || Token updated|
+2019-08-08 05:22:24,SUCCESS,|Spotify || Token updated|
+2019-08-08 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 06:12:26,SUCCESS,|Spotify || Token updated|
+2019-08-08 06:12:26,SUCCESS,|Spotify || Token updated|
+2019-08-08 06:12:27,SUCCESS,|Spotify || Token updated|
+2019-08-08 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 07:02:29,SUCCESS,|Spotify || Token updated|
+2019-08-08 07:02:29,SUCCESS,|Spotify || Token updated|
+2019-08-08 07:02:30,SUCCESS,|Spotify || Token updated|
+2019-08-08 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 07:52:32,SUCCESS,|Spotify || Token updated|
+2019-08-08 07:52:32,SUCCESS,|Spotify || Token updated|
+2019-08-08 07:52:34,SUCCESS,|Spotify || Token updated|
+2019-08-08 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 08:42:36,SUCCESS,|Spotify || Token updated|
+2019-08-08 08:42:36,SUCCESS,|Spotify || Token updated|
+2019-08-08 08:42:37,SUCCESS,|Spotify || Token updated|
+2019-08-08 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 09:32:39,SUCCESS,|Spotify || Token updated|
+2019-08-08 09:32:39,SUCCESS,|Spotify || Token updated|
+2019-08-08 09:32:41,SUCCESS,|Spotify || Token updated|
+2019-08-08 10:22:42,SUCCESS,|Spotify || Token updated|
+2019-08-08 10:22:43,SUCCESS,|Spotify || Token updated|
+2019-08-08 10:22:44,SUCCESS,|Spotify || Token updated|
+2019-08-08 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 11:25:33,EVENT,|MQTT || Started|
+2019-08-08 11:25:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:25:34,SUCCESS,|Spotify || Token updated|
+2019-08-08 11:25:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:25:37,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:25:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 11:33:00,EVENT,|MQTT || Started|
+2019-08-08 11:33:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:33:00,SUCCESS,|Spotify || Token updated|
+2019-08-08 11:33:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:33:04,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:33:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:34:51,EVENT,|MQTT || Started|
+2019-08-08 11:34:51,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:34:54,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:34:55,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:34:56,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:35:23,EVENT,|MQTT || Started|
+2019-08-08 11:35:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:35:23,EVENT,|MQTT || Started|
+2019-08-08 11:35:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:35:24,EVENT,|MQTT || Started|
+2019-08-08 11:35:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:35:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:35:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:35:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:35:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:35:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:35:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:35:27,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:35:28,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:35:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 11:36:36,EVENT,|MQTT || Started|
+2019-08-08 11:36:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 11:36:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 11:36:40,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 11:36:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:06:57,EVENT,|MQTT || Started|
+2019-08-08 12:06:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:07:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:07:01,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:07:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:08:25,EVENT,|MQTT || Started|
+2019-08-08 12:08:25,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:08:28,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:08:29,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:08:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:09:23,EVENT,|MQTT || Started|
+2019-08-08 12:09:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:09:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:09:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:09:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:10:48,EVENT,|MQTT || Started|
+2019-08-08 12:10:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:10:48,EVENT,|MQTT || Started|
+2019-08-08 12:10:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:10:48,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:10:48,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:10:49,EVENT,|MQTT || Started|
+2019-08-08 12:10:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:10:50,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:10:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:10:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:10:52,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:10:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:10:52,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:10:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:10:52,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:10:53,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:10:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:11:19,EVENT,|MQTT || Started|
+2019-08-08 12:11:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:11:22,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:11:23,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:11:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:12:06,EVENT,|MQTT || Started|
+2019-08-08 12:12:06,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:12:06,EVENT,|MQTT || Started|
+2019-08-08 12:12:06,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:12:06,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:12:06,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:12:08,EVENT,|MQTT || Started|
+2019-08-08 12:12:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:12:08,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:12:09,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:12:09,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:12:10,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:12:10,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:12:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:12:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:12:11,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:12:17,EVENT,|MQTT || Started|
+2019-08-08 12:12:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:12:17,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:12:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:12:21,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:12:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:13:33,EVENT,|MQTT || Started|
+2019-08-08 12:13:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:13:33,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:13:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:13:37,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:13:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:13:54,EVENT,|MQTT || Started|
+2019-08-08 12:13:54,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:13:55,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:13:57,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:13:58,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:13:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:14:22,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:18:33,EVENT,|MQTT || Started|
+2019-08-08 12:18:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:18:34,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:18:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:18:37,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:18:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:19:06,EVENT,|MQTT || Started|
+2019-08-08 12:19:06,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:19:06,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:19:09,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:19:10,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:19:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:26:56,EVENT,|MQTT || Started|
+2019-08-08 12:26:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:26:56,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:26:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:27:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:27:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:31:23,EVENT,|MQTT || Started|
+2019-08-08 12:31:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:31:23,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:31:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:31:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:31:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 12:57:36,EVENT,|MQTT || Started|
+2019-08-08 12:57:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 12:57:36,SUCCESS,|Spotify || Token updated|
+2019-08-08 12:57:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 12:57:40,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 12:57:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:12:56,EVENT,|MQTT || Started|
+2019-08-08 13:12:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:12:56,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:12:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:13:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:13:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:14:02,EVENT,|MQTT || Started|
+2019-08-08 13:14:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:14:02,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:14:05,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:14:06,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:14:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:14:31,EVENT,|MQTT || Started|
+2019-08-08 13:14:31,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:14:31,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:14:34,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:14:35,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:14:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:15:43,EVENT,|MQTT || Started|
+2019-08-08 13:15:43,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:15:43,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:15:46,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:15:47,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:15:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:18:17,EVENT,|MQTT || Started|
+2019-08-08 13:18:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:18:17,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:18:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:18:21,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:18:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:20:13,EVENT,|MQTT || Started|
+2019-08-08 13:20:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:20:13,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:20:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:20:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:20:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:21:02,EVENT,|MQTT || Started|
+2019-08-08 13:21:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:21:02,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:21:03,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:03,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:03,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:03,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:05,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:21:06,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:21:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:21:47,EVENT,|MQTT || Started|
+2019-08-08 13:21:47,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:21:47,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:21:50,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:21:51,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:51,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:51,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:51,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:21:51,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:21:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:22:44,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:23:57,EVENT,|MQTT || Started|
+2019-08-08 13:23:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:23:57,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:24:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:24:01,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:24:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:24:03,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:24:33,ERROR,|LED || Colorpicker || name 'GET_HOST_DEFAULT_NETWORK' is not defined|
+2019-08-08 13:25:18,EVENT,|MQTT || Started|
+2019-08-08 13:25:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:25:18,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:25:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:25:22,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:25:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:27:33,EVENT,|MQTT || Started|
+2019-08-08 13:27:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:27:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:27:37,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:27:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:28:26,EVENT,|MQTT || Started|
+2019-08-08 13:28:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:28:26,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:28:26,EVENT,|MQTT || Started|
+2019-08-08 13:28:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:28:26,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:28:28,EVENT,|MQTT || Started|
+2019-08-08 13:28:28,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:28:28,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:28:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:28:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:28:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:28:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:28:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:28:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:28:31,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:28:32,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:28:32,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:29:26,EVENT,|MQTT || Started|
+2019-08-08 13:29:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:29:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:29:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:29:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 13:31:12,EVENT,|MQTT || Started|
+2019-08-08 13:31:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:31:12,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:31:12,EVENT,|MQTT || Started|
+2019-08-08 13:31:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:31:12,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:31:13,EVENT,|MQTT || Started|
+2019-08-08 13:31:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:31:13,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:31:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:31:15,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:31:16,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:31:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:31:16,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:31:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:31:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:31:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:31:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:31:39,EVENT,|MQTT || Started|
+2019-08-08 13:31:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:31:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:31:43,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:31:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:32:36,EVENT,|MQTT || Started|
+2019-08-08 13:32:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:32:36,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:32:36,EVENT,|MQTT || Started|
+2019-08-08 13:32:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:32:36,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:32:37,EVENT,|MQTT || Started|
+2019-08-08 13:32:37,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:32:37,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:32:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:32:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:32:40,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:32:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:32:40,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:32:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:32:40,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:32:41,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:32:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:34:19,EVENT,|MQTT || Started|
+2019-08-08 13:34:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:34:19,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:34:33,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-08 13:34:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:34:48,EVENT,|MQTT || Started|
+2019-08-08 13:34:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:34:49,EVENT,|MQTT || Started|
+2019-08-08 13:34:49,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:34:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:34:49,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:34:49,EVENT,|MQTT || Started|
+2019-08-08 13:34:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:34:49,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:34:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:34:52,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:34:52,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:34:52,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:34:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:34:53,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:34:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:34:53,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:34:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:36:01,EVENT,|MQTT || Started|
+2019-08-08 13:36:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:36:01,SUCCESS,|Spotify || Token updated|
+2019-08-08 13:36:04,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:36:05,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:36:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:37:13,EVENT,|MQTT || Started|
+2019-08-08 13:37:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:37:13,EVENT,|MQTT || Started|
+2019-08-08 13:37:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:37:14,EVENT,|MQTT || Started|
+2019-08-08 13:37:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:37:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:37:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:37:17,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:37:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:37:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:37:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:37:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:37:18,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:37:18,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:39:02,EVENT,|MQTT || Started|
+2019-08-08 13:39:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:39:05,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:39:06,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:39:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:56:18,EVENT,|MQTT || Started|
+2019-08-08 13:56:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:56:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:56:22,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:56:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 13:58:00,EVENT,|MQTT || Started|
+2019-08-08 13:58:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 13:58:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 13:58:04,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 13:58:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:13:13,EVENT,|MQTT || Started|
+2019-08-08 14:13:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:13:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:13:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:13:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:15:11,EVENT,|MQTT || Started|
+2019-08-08 14:15:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:15:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:15:15,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:15:15,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:16:57,EVENT,|MQTT || Started|
+2019-08-08 14:16:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:17:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:17:01,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:17:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:21:26,EVENT,|MQTT || Started|
+2019-08-08 14:21:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:21:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:21:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:21:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:22:33,EVENT,|MQTT || Started|
+2019-08-08 14:22:33,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:22:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:22:37,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:22:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:27:13,EVENT,|MQTT || Started|
+2019-08-08 14:27:13,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:27:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:27:17,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:27:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:28:08,EVENT,|MQTT || Started|
+2019-08-08 14:28:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:28:11,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:28:12,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:28:12,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 14:34:50,EVENT,|MQTT || Started|
+2019-08-08 14:34:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:34:53,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:34:54,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:34:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 14:35:55,EVENT,|MQTT || Started|
+2019-08-08 14:35:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 14:35:58,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 14:35:59,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 14:35:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:08:48,EVENT,|MQTT || Started|
+2019-08-08 15:08:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:08:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:08:52,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:08:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:09:19,EVENT,|MQTT || Started|
+2019-08-08 15:09:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:09:19,EVENT,|MQTT || Started|
+2019-08-08 15:09:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:09:19,EVENT,|MQTT || Started|
+2019-08-08 15:09:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:09:22,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:09:22,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:09:22,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:09:23,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:09:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:09:23,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:09:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:09:23,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:09:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:17:31,EVENT,|MQTT || Started|
+2019-08-08 15:17:31,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:17:34,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:17:35,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:17:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:17:40,EVENT,|MQTT || Started|
+2019-08-08 15:17:40,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:17:41,EVENT,|MQTT || Started|
+2019-08-08 15:17:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:17:41,EVENT,|MQTT || Started|
+2019-08-08 15:17:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:17:43,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:17:44,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:17:44,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:17:44,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:17:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:17:45,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:17:45,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:17:45,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:17:45,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:18:04,EVENT,|MQTT || Started|
+2019-08-08 15:18:04,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:18:07,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:18:08,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:18:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:22:56,EVENT,|MQTT || Started|
+2019-08-08 15:22:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:22:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:23:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:23:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:24:30,EVENT,|MQTT || Started|
+2019-08-08 15:24:30,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:24:30,EVENT,|MQTT || Started|
+2019-08-08 15:24:30,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:24:31,EVENT,|MQTT || Started|
+2019-08-08 15:24:31,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:24:33,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:24:33,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:24:34,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:24:34,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:24:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:24:34,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:24:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:24:35,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:24:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:26:39,EVENT,|MQTT || Started|
+2019-08-08 15:26:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:26:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:26:43,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:26:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:26:58,EVENT,|MQTT || Started|
+2019-08-08 15:26:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:26:58,EVENT,|MQTT || Started|
+2019-08-08 15:26:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:26:58,EVENT,|MQTT || Started|
+2019-08-08 15:26:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:27:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:27:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:27:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:27:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:27:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:27:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:27:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:27:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:27:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:27:09,EVENT,|MQTT || Started|
+2019-08-08 15:27:09,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:27:12,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:27:13,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:27:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:27:48,EVENT,|MQTT || Started|
+2019-08-08 15:27:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:27:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:27:52,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:27:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:29:39,EVENT,|MQTT || Started|
+2019-08-08 15:29:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:29:39,EVENT,|MQTT || Started|
+2019-08-08 15:29:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:29:40,EVENT,|MQTT || Started|
+2019-08-08 15:29:40,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:29:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:29:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:29:43,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:29:43,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:29:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:29:43,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:29:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:29:44,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:29:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:29:52,EVENT,|MQTT || Started|
+2019-08-08 15:29:52,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:29:55,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:29:56,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:29:56,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 15:39:12,EVENT,|MQTT || Started|
+2019-08-08 15:39:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:39:15,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:39:16,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:39:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:39:26,EVENT,|MQTT || Started|
+2019-08-08 15:39:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:39:26,EVENT,|MQTT || Started|
+2019-08-08 15:39:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:39:27,EVENT,|MQTT || Started|
+2019-08-08 15:39:27,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 15:39:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:39:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:39:30,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 15:39:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:39:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:39:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:39:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 15:39:31,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 15:39:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:11:14,EVENT,|MQTT || Started|
+2019-08-08 16:11:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:11:17,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:11:18,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:11:18,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:12:59,EVENT,|MQTT || Started|
+2019-08-08 16:12:59,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:12:59,EVENT,|MQTT || Started|
+2019-08-08 16:12:59,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:13:00,EVENT,|MQTT || Started|
+2019-08-08 16:13:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:13:02,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:13:02,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:13:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:13:03,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:13:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:13:03,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:13:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:13:04,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:13:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:18:34,EVENT,|MQTT || Started|
+2019-08-08 16:18:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:18:37,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:18:38,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:18:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:19:01,EVENT,|MQTT || Started|
+2019-08-08 16:19:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:19:01,EVENT,|MQTT || Started|
+2019-08-08 16:19:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:19:01,EVENT,|MQTT || Started|
+2019-08-08 16:19:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:19:04,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:19:04,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:19:04,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:19:05,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:19:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:19:05,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:19:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:19:05,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:19:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:21:38,EVENT,|MQTT || Started|
+2019-08-08 16:21:38,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:21:41,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:21:42,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:21:42,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:22:11,EVENT,|MQTT || Started|
+2019-08-08 16:22:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:22:11,EVENT,|MQTT || Started|
+2019-08-08 16:22:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:22:12,EVENT,|MQTT || Started|
+2019-08-08 16:22:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:22:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:22:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:22:15,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:22:15,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:22:15,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:22:15,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:22:15,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:22:16,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:22:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:23:36,EVENT,|MQTT || Started|
+2019-08-08 16:23:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:23:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:23:40,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:23:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:23:55,EVENT,|MQTT || Started|
+2019-08-08 16:23:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:23:55,EVENT,|MQTT || Started|
+2019-08-08 16:23:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:23:55,EVENT,|MQTT || Started|
+2019-08-08 16:23:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:23:58,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:23:58,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:23:58,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:23:59,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:23:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:23:59,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:23:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:23:59,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:23:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:30:30,EVENT,|MQTT || Started|
+2019-08-08 16:30:30,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:30:33,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:30:34,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:30:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:31:56,EVENT,|MQTT || Started|
+2019-08-08 16:31:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:31:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:32:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:32:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:32:56,EVENT,|MQTT || Started|
+2019-08-08 16:32:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:32:56,EVENT,|MQTT || Started|
+2019-08-08 16:32:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:32:56,EVENT,|MQTT || Started|
+2019-08-08 16:32:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 16:32:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:32:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:32:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 16:33:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:33:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:33:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:33:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 16:33:00,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 16:33:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 18:16:53,EVENT,|MQTT || Started|
+2019-08-08 18:16:53,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 18:16:56,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 18:16:57,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 18:16:57,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 22:26:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 22:27:22,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-08 22:27:22,EVENT,|MQTT || Started|
+2019-08-08 22:27:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:27:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 22:27:26,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 22:27:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-08 22:31:03,DATABASE,|Host || Network settings changed || LAN - 192.168.1.155 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-08 22:31:03,EVENT,|MQTT || Started|
+2019-08-08 22:31:03,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:31:03,EVENT,|MQTT || Started|
+2019-08-08 22:31:03,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:31:04,EVENT,|MQTT || Started|
+2019-08-08 22:31:04,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:31:06,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 22:31:10,EVENT,|MQTT || Started|
+2019-08-08 22:31:10,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:31:13,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 22:31:14,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 22:31:15,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 22:31:46,SUCCESS,|Database_Backup || saved|
+2019-08-08 22:32:50,EVENT,|MQTT || Started|
+2019-08-08 22:32:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-08 22:32:53,EVENT,|ZigBee2MQTT || Connected|
+2019-08-08 22:32:54,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-08 22:32:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-08 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-08-09 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-09 09:35:21,EVENT,|MQTT || Started|
+2019-08-09 09:35:21,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 09:35:21,EVENT,|MQTT || Started|
+2019-08-09 09:35:21,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 09:35:22,EVENT,|MQTT || Started|
+2019-08-09 09:35:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 09:35:24,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 09:35:24,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 09:35:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 09:35:25,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 09:35:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 09:35:25,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 09:35:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 09:35:26,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 09:35:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 10:13:26,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-09 10:13:26,EVENT,|MQTT || Started|
+2019-08-09 10:13:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 10:13:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 10:13:30,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 10:13:30,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 10:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 11:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 14:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 15:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 16:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 17:17:15,EVENT,|MQTT || Started|
+2019-08-09 17:17:15,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:17:18,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:17:19,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:17:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:17:17,EVENT,|MQTT || Started|
+2019-08-09 17:17:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:17:17,EVENT,|MQTT || Started|
+2019-08-09 17:17:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:17:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:17:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:17:21,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:17:21,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:17:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:17:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:19:22,EVENT,|MQTT || Started|
+2019-08-09 17:19:22,EVENT,|MQTT || Started|
+2019-08-09 17:19:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:19:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:19:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:19:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:19:26,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:19:26,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:19:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:19:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:21:51,EVENT,|MQTT || Started|
+2019-08-09 17:21:51,EVENT,|MQTT || Started|
+2019-08-09 17:21:51,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:21:51,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:21:54,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:21:54,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:21:55,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:21:55,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:21:55,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:21:55,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:26:23,EVENT,|MQTT || Started|
+2019-08-09 17:26:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:26:23,EVENT,|MQTT || Started|
+2019-08-09 17:26:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:26:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:26:26,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:26:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:26:27,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:26:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:26:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-09 17:32:00,EVENT,|MQTT || Started|
+2019-08-09 17:32:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:32:00,EVENT,|MQTT || Started|
+2019-08-09 17:32:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:32:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:32:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:32:04,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:32:04,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:32:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:32:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:35:24,EVENT,|MQTT || Started|
+2019-08-09 17:35:24,EVENT,|MQTT || Started|
+2019-08-09 17:35:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:35:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 17:35:27,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:35:27,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 17:35:28,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:35:28,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 17:35:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 17:35:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:12:25,EVENT,|MQTT || Started|
+2019-08-09 18:12:25,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 18:12:25,EVENT,|MQTT || Started|
+2019-08-09 18:12:25,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 18:12:28,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 18:12:28,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 18:12:29,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 18:12:29,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 18:12:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:12:29,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:13:58,EVENT,|MQTT || Started|
+2019-08-09 18:13:58,EVENT,|MQTT || Started|
+2019-08-09 18:13:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 18:13:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-09 18:14:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 18:14:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-09 18:14:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 18:14:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
+2019-08-09 18:14:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:14:02,ERROR,|Snowboy || No module named '_snowboydetect'|

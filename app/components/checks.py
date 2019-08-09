@@ -8,20 +8,14 @@ from app.components.file_management import GET_ALL_HOTWORD_FILES
 """ ################### """
 
 def CHECK_CAMERA_SETTINGS(cameras):
-   list_settings_errors = []  
-   error_message_settings = ""
+   error_message_settings = []
 
    for camera in cameras:
 
       if camera.name == "None" or camera.name == "":
-         list_settings_errors.append(str(camera.id) + " >>> Keinen Name eingetragen")         
+         error_message_settings.append(str(camera.id) + " >>> Keinen Name eingetragen")         
       if camera.url == "None" or camera.url == "":
-         list_settings_errors.append(camera.name + " >>> Keine URL eingetragen")  
-
-   if list_settings_errors == []:
-      error_message_settings = ""
-   else:
-      error_message_settings = list_settings_errors
+         error_message_settings.append(camera.name + " >>> Keine URL eingetragen")  
 
    return error_message_settings
 
@@ -30,16 +24,15 @@ def CHECK_CAMERA_SETTINGS(cameras):
 """   check dashboard   """
 """ ################### """
 
-def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
-   list_settings_errors = []  
-   error_message_settings = ""
+def CHECK_DASHBOARD_CHECK_SETTINGS(devices): 
+   error_message_settings = []
 
    for device in devices:
 
       if device.dashboard_check_option != "None":
 
          if device.dashboard_check_setting == "None" or device.dashboard_check_setting == None:
-            list_settings_errors.append(device.name + " >>> Keine Aufgabe ausgewählt")         
+            error_message_settings.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
          # check setting ip_address
          if device.dashboard_check_option == "IP-Address":
@@ -47,26 +40,21 @@ def CHECK_DASHBOARD_CHECK_SETTINGS(devices):
             # search for wrong chars
             for element in device.dashboard_check_value_1:
                if not element.isdigit() and element != "." and element != "," and element != " ":
-                  list_settings_errors.append(device.name + " >>> Ungültige IP-Adresse")
+                  error_message_settings.append(device.name + " >>> Ungültige IP-Adresse")
                   break
                
          # check setting sensor
          if device.dashboard_check_option != "IP-Address": 
             
             if device.dashboard_check_value_1 == "None" or device.dashboard_check_value_1 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Sensor ausgewählt")
+               error_message_settings.append(device.name + " >>> Keinen Sensor ausgewählt")
 
             if device.dashboard_check_value_2 == "None" or device.dashboard_check_value_2 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")
+               error_message_settings.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")
 
             if device.dashboard_check_value_3 == "None" or device.dashboard_check_value_3 == None:
-               list_settings_errors.append(device.name + " >>> Keinen Vergleichswert eingetragen")
+               error_message_settings.append(device.name + " >>> Keinen Vergleichswert eingetragen")
                   
-   if list_settings_errors == []:
-      error_message_settings = ""
-   else:
-      error_message_settings = list_settings_errors
-
    return error_message_settings
 
 
@@ -99,10 +87,7 @@ def CHECK_LED_GROUP_SETTINGS(settings):
       if element.active_led_9 == "True" and (element.led_ieeeAddr_9 == None or element.led_ieeeAddr_9 == "None"):
           list_errors.append(element.name + " >>> fehlende Einstellung >>> LED 9")   
           
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   return list_errors
 
 
 """ ############## """
@@ -390,11 +375,7 @@ def CHECK_PROGRAM(program_id):
       list_errors.append("Keinen Inhalt gefunden") 
 
 
-   if list_errors == []:
-      return ""
-      
-   else:
-      return list_errors
+   return list_errors
 
 
 """ ####################### """
@@ -411,10 +392,7 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
         if entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "":
             list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
 
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   return list_errors
 
 
 """ ######################### """
@@ -429,11 +407,7 @@ def CHECK_SCHEDULER_GENERAL_SETTINGS(scheduler_tasks):
       if task.option_time != "checked" and task.option_sun != "checked" and task.option_sensors != "checked" and task.option_position != "checked":    
          list_general_errors.append(task.name + " >>> Keine Bedingungsoption ausgewählt")          
 
-
-   if list_general_errors == []:
-      return ""
-   else:
-      return list_general_errors
+   return list_general_errors
 
 
 def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks): 
@@ -510,11 +484,7 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
          except:
             list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
 
-
-   if list_time_errors == []:
-      return ""
-   else:
-      return list_time_errors
+   return list_time_errors
 
 
 def CHECK_SCHEDULER_SUN_SETTINGS(scheduler_tasks):
@@ -529,11 +499,7 @@ def CHECK_SCHEDULER_SUN_SETTINGS(scheduler_tasks):
             if task.location == "None":
                list_sun_errors.append(task.name + " >>> Zone wurde noch nicht eingestellt")
 
-
-   if list_sun_errors == []:
-      return ""
-   else:
-      return list_sun_errors
+   return list_sun_errors
 
 
 def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks): 
@@ -605,11 +571,7 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                list_sensor_errors.append(task.name + 
                " >>> ungültiger Eintrag >>> Vergleichswert 3 >>> nur Zahlen können mit dem gewählten Operator verwendet werden")        
                
-
-   if list_sensor_errors == []:
-      return ""
-   else:
-      return list_sensor_errors
+   return list_sensor_errors
 
 
 def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
@@ -638,10 +600,7 @@ def CHECK_SCHEDULER_POSITION_SETTINGS(scheduler_tasks):
                      list_position_errors.append(task.name + " >>> Ungültige IP-Adressen")
                      break
 
-   if list_position_errors == []:
-      return ""
-   else:
-      return list_position_errors
+   return list_position_errors
 
 
 """ ########################## """
@@ -664,11 +623,7 @@ def CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(settings):
    if hotword_file not in GET_ALL_HOTWORD_FILES() and hotword_file != "None":
       list_errors.append("Snowboy Hotword " + str(hotword_file) + " nicht vorhanden")
 
-
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors   
+   return list_errors   
 
 
 def CHECK_SPEECHCONTROL_LED_TASKS(tasks):
@@ -703,12 +658,10 @@ def CHECK_SPEECHCONTROL_LED_TASKS(tasks):
                num = list_all_keywords.count(keyword)
             
                if num > 1:
-                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)          
+                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)
+                  break
          
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   return list_errors
 
 
 def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
@@ -760,13 +713,10 @@ def CHECK_SPEECHCONTROL_TASKS(tasks, task_typ):
                num = list_all_keywords.count(keyword)
             
                if num > 1:
-                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)            
+                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)
+                  break
          
-                 
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   return list_errors
 
 
 def CHECK_SPEECHCONTROL_SPOTIFY_TASKS(tasks):
@@ -801,13 +751,10 @@ def CHECK_SPEECHCONTROL_SPOTIFY_TASKS(tasks):
                num = list_all_keywords.count(keyword)
             
                if num > 1:
-                  list_errors.append(task.task + " >>> Schlüsselwort doppelt verwendet >>> " + keyword)          
+                  list_errors.append(task.task + " >>> Schlüsselwörter doppelt verwendet >>> " + task.keywords)
+                  break                   
        
-         
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   return list_errors
 
 
 """ ################### """
@@ -908,11 +855,7 @@ def CHECK_TASKS(tasks, task_type):
                for error in result:   
                   list_task_errors.append(error)             
     
-    
-   if list_task_errors == []:
-      return ""
-   else:
-      return list_task_errors
+   return list_task_errors
 
 
 def CHECK_TASK_OPERATION(task, name, task_type, controller_command = ""):
@@ -1484,8 +1427,6 @@ def CHECK_TASK_OPERATION(task, name, task_type, controller_command = ""):
    
    except Exception as e:
       
-      print(e)
-      
       if task_type == "controller":
          list_task_errors.append(name + " >>> " + controller_command + " >>> Ungültige Aufgabe")   
       else:
@@ -1526,9 +1467,6 @@ def CHECK_WATERING_SETTINGS():
    for entry in entries:
         if entry.control_sensor_moisture == "checked" and (entry.moisture_level == "None" or entry.moisture_level == None or entry.moisture_level == ""):
             list_errors.append(entry.name + " >>> keine Feuchtigkeit eingestellt")
-
-   if list_errors == []:
-      return ""
-   else:
-      return list_errors
+   
+   return list_errors
 

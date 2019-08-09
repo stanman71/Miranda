@@ -102,11 +102,13 @@ def dashboard_camera():
                     else:
                         password = ""
 
-                    SET_CAMERA_SETTINGS(i, name, url, user, password)  
+                    SET_CAMERA_SETTINGS(i, name, url, user, password)
+                    
+                    name     = ""
+                    url      = ""
+                    user     = ""
+                    password = ""                        
 
-
-    if error_message_add_camera == []:
-        error_message_add_camera = ""
 
     error_message_camera_settings = CHECK_CAMERA_SETTINGS(GET_ALL_CAMERAS())
 

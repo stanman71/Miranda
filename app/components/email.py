@@ -6,7 +6,7 @@ from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
 
 
-def SEND_EMAIL(subject, body):
+def SEND_EMAIL(subject, message):
 
     def eMAIL_SETTINGS():     
         settings = GET_EMAIL_SETTINGS()
@@ -40,10 +40,10 @@ def SEND_EMAIL(subject, body):
 
     try:
         with app.app_context():
-            msg = Message(subject    = "MIRANDA - " + subject,
+            msg = Message(subject    = "MIRANDA | " + subject + " | " + message,
                           sender     = app.config.get("MAIL_USERNAME"),
                           recipients = recipients,
-                          body       = body)
+                          body       = "")
             
             # attachment
 

@@ -14,9 +14,14 @@ https://github.com/mrf345/flask_colorpicker/
 
 from flask import Markup
 
+
 class colorpicker(object):
-    def __init__(self, app=None):
-        self.app = app
+
+    def __init__(self, host, app=None):
+       
+        self.host = host
+        
+        self.app  = app
         if self.app is not None:
             self.init_app(app)
         else:
@@ -46,10 +51,10 @@ class colorpicker(object):
 
             # IMPORTANT: Update the links 
             # Windows: 127.0.0.1
-            # RasPi: IP of the RasPi 
-
-            links = ['http://192.168.1.40:5000/get_media/spectrum.css',
-                     'http://192.168.1.40:5000/get_media/spectrum.js'] 
+            # RasPi: IP of the RasPi
+            
+            links = ['http://' + self.host + '/get_media/spectrum.css',
+                     'http://' + self.host + '/get_media/spectrum.js'] 
             tags = [
             '<script src="%s"></script>\n',
             '<link href="%s" rel="stylesheet">\n'

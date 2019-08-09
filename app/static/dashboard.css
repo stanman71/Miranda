@@ -185,7 +185,7 @@ border-color: white;
 
 .img-container-graph {
   position:relative;
-  padding-top:80%;
+  padding-top:75%;
 }
 
 .img-container-video {
@@ -196,7 +196,7 @@ border-color: white;
 
 .img-container-topology {
   position:relative;
-  padding-top:50%;
+  padding-top:35%;
 }
 
 img {

@@ -293,7 +293,7 @@
 
 <!-- error message tasks -->
 
-{% if error_message_scheduler_tasks != "" %}
+{% if error_message_scheduler_tasks != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_scheduler_tasks %}
       {{ message }} <br>
@@ -303,7 +303,7 @@
 
 <!-- error message general settings -->
 
-{% if error_message_general_settings != "" %}
+{% if error_message_general_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_general_settings %}
       {{ message }} <br>
@@ -313,7 +313,7 @@
 
 <!-- error message time settings -->
 
-{% if error_message_time_settings != "" %}
+{% if error_message_time_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_time_settings %}
       {{ message }} <br>
@@ -323,7 +323,7 @@
 
 <!-- error message sun settings -->
 
-{% if error_message_sun_settings != "" %}
+{% if error_message_sun_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_sun_settings %}
       {{ message }} <br>
@@ -333,7 +333,7 @@
 
 <!-- error message sensor settings -->
 
-{% if error_message_sensor_settings != "" %}
+{% if error_message_sensor_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_sensor_settings %}
       {{ message }} <br>
@@ -343,7 +343,7 @@
 
 <!-- error message position settings -->
 
-{% if error_message_position_settings != "" %}
+{% if error_message_position_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_position_settings %}
       {{ message }} <br>
@@ -895,11 +895,7 @@
                     <th>Erklärung</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>                     
+                <tbody>                    
                   <tr>
                     <td>scene /// wohnzimmer /// relax /// 100</td>
                     <td>

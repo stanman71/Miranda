@@ -1,6 +1,6 @@
-##  SmartHome
+##  Miranda
 
-This project creates a smart home environment.
+This project creates a smarthome environment.
 
 !!! WORK IN PROGRESS !!!
 
@@ -23,62 +23,45 @@ This project creates a smart home environment.
 ------------
 </br>
 
-### Install SmartHome
+### Install Miranda
 
 #### 1. Installation 
 
-- copy all SmartHome files into the folder "/home/pi/SmartHome"
+- copy all Miranda files into the folder "/home/pi/miranda"
 - install the required modules by using sudo rights
 
 </br>
 
 #### 2. Autostart
 
-- create an autostart-file
+https://www.raspberrypi-spy.co.uk/2015/02/how-to-autorun-a-python-script-on-raspberry-pi-boot/
+</br>
+</br>
 
-       >>> sudo nano /etc/systemd/system/SmartHome.service
+- open file profile
 
-       [Unit]
-       Description=SmartHome
-       After=network.target
+       >>> sudo nano /etc/profile
 
-       [Install]
-       WantedBy=multi-user.target
+- scroll to the bottom and add the following line :
 
-       [Service]
-       User=pi
-       ExecStart=/home/pi/SmartHome/run.py
-       WorkingDirectory=/home/pi/SmartHome/
-       Restart=always
-       RemainAfterExit=yes
+       >>> sudo python3 /home/pi/miranda/run.py &
+	  
+- enable the Pi to login automatically without requiring any user intervention
 
-- enable autostart
-
-       >>> sudo systemctl enable SmartHome.service
-
-- start service
-
-       >>> sudo systemctl start SmartHome
-
-- show status
-
-       >>> systemctl status SmartHome.service
-
-- stop service
-
-       >>> sudo systemctl stop SmartHome
+       >>> sudo raspi-config
+       >>> Select “Boot Options” then “Desktop/CLI” then “Console Autologin”	   
 
 </br>
 
-#### 3. SmartHome Control
+#### 3. Manually Control 
 
-- stop the program manually
+- stop the program 
 
        >>> sudo killall python3
 
-- restart the program manually
+- restart the program 
 
-       >>> sudo python3 /home/pi/SmartHome/run.py
+       >>> sudo python3 /home/pi/miranda/run.py
 
 
 </br>
@@ -161,13 +144,13 @@ https://www.zigbee2mqtt.io/
 
 - install Node.js
 
-       >>> sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+       >>> sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
        >>> sudo apt-get install -y nodejs git make g++ gcc
 
 - verify that the correct nodejs and npm (automatically installed with nodejs)
 
-       >>> node --version  # Should output v8.X.X (at time of writing v8.12.0)
-       >>> npm  --version  # Should output > 6.X.X (at time of writing 6.4.1)
+       >>> node --version  # Should output v10.X
+       >>> npm  --version  # Should output 6.X
 
 - clone zigbee2mqtt repository
 
@@ -178,6 +161,8 @@ https://www.zigbee2mqtt.io/
 
        >>> cd /opt/zigbee2mqtt
        >>> npm install
+	   
+	   >>> Note that the npm install produces some warning which can be ignored.
 
 </br>
 
@@ -376,6 +361,24 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in your system settings
 
+
+</br>
+------------
+</br>
+
+### Optional: Spotipy
+
+https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-no-attribute-current-user-saved-tracks
+</br>
+</br>
+
+- Error:    AttributeError: 'Spotify' object has no attribute 'devices'
+</br>
+- Solution: Replace the old client.py file 
+
+       >>> new client.py file is in /miranda/support
+       >>> destination linux_path: /usr/local/lib/python3.7/dist-packages/spotipy
+       >>> sudo cp /home/pi/miranda/support/Spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
 
 </br>
 ------------

@@ -5,7 +5,6 @@ from urllib.parse import quote
 
 from app import app
 from app.database.database import *
-from app.components.file_management import GET_CONFIG_HOST_IP_ADDRESS
 from app.components.backend_spotify import *
 from app.components.email import SEND_EMAIL
 
@@ -247,7 +246,7 @@ def spotify_token():
     GENERATE_SPOTIFY_TOKEN(request.args['code'])
     
     if forwarding_site_global == "dashboard":
-        return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard#spotify")
+        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + GET_HOST_PORT() + "/dashboard#spotify")
         
     if forwarding_site_global == "spotify":
         return redirect(url_for('dashboard_spotify'))     
@@ -261,7 +260,7 @@ def spotify_logout(forwarding_site):
     DELETE_SPOTIFY_TOKEN()
         
     if forwarding_site == "dashboard":
-        return redirect("http://" + GET_CONFIG_HOST_IP_ADDRESS() + "/dashboard#spotify")
+        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + GET_HOST_PORT() + "/dashboard#spotify")
         
     if forwarding_site == "spotify":
         return redirect(url_for('dashboard_spotify'))      

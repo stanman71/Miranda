@@ -142,7 +142,7 @@
 
 <!-- error message controller tasks -->
 
-{% if error_message_controller_tasks != "" %}
+{% if error_message_controller_tasks != [] %}
   <div class="alert alert-danger" role="alert">
     {% for message in error_message_controller_tasks %}
       {{ message }} <br>
@@ -307,11 +307,7 @@
                     <th>Erklärung</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                  </tr>                   
+                <tbody>                  
                   <tr>
                     <td>scene /// wohnzimmer /// relax /// 100</td>
                     <td>

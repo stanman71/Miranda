@@ -354,7 +354,7 @@
   </div>      
 {% endif %}
 
-{% if error_message_device_checks != "" %}
+{% if error_message_device_checks != [] %}
   <div class="alert alert-danger" role="alert">
     {% for entry in error_message_device_checks %}
       {{ entry }} <br>
@@ -945,7 +945,7 @@
       </div>    
     </div>
     
-    {% if collapse_dashboard_spotify == "" %} <br> {% endif %}   
+    {% if spotify_user == "" %} <br> {% endif %}   
     
 
 <!------------------>

@@ -22,7 +22,7 @@ if os.name == "nt":
     PATH = os.path.abspath("") 
 # linux
 else:                               
-    PATH = os.path.abspath("") + "/SmartHome"
+    PATH = os.path.abspath("") + "/miranda"
 
 
 UPLOAD_FOLDER = PATH + "/app/speechcontrol/snowboy/resources/"
@@ -178,13 +178,6 @@ def GET_CONFIG_VERSION():
     except:
         return "DEFAULT SETTINGS"
         
-        
-def GET_CONFIG_HOST_IP_ADDRESS():
-    try:
-        return str(config['config']['host_ip_address'])
-    except:
-        return ""
-                
 
 def GET_CONFIG_MQTT_BROKER():
     try:
@@ -271,6 +264,60 @@ def SET_CONFIG_BACKUP_LOCATION(backup_location_path):
         return ("ERROR: " + str(e))
     
 
+""" ############## """
+""" network config """
+""" ############## """
+
+def SAVE_NETWORK_SETTINGS(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway):
+    
+    try:
+        file = "/etc/dhcpcd.conf"
+        with open(file, 'w', encoding='utf-8') as conf_file:
+            conf_file.write("# A sample configuration for dhcpcd.\n")
+            conf_file.write("# See dhcpcd.conf(5) for details.\n")
+            conf_file.write("\n")
+            conf_file.write("# Inform the DHCP server of our hostname for DDNS.\n")
+            conf_file.write("hostname\n")
+            conf_file.write("\n")
+            conf_file.write("# Use the hardware address of the interface for the Client ID.\n")
+            conf_file.write("clientid\n")
+            conf_file.write("\n")
+            conf_file.write("# Persist interface configuration when dhcpcd exits.\n")
+            conf_file.write("persistent\n")
+            conf_file.write("\n")
+            conf_file.write("# on the server to actually work.\n")
+            conf_file.write("option rapid_commit\n")
+            conf_file.write("\n")
+            conf_file.write("# A list of options to request from the DHCP server.\n")
+            conf_file.write("option domain_name_servers, domain_name, domain_search, host_name\n")
+            conf_file.write("option classless_static_routes\n")
+            conf_file.write("\n")
+            conf_file.write("# Respect the network MTU. This is applied to DHCP routes.\n")
+            conf_file.write("option interface_mtu\n")
+            conf_file.write("\n")
+            conf_file.write("# A ServerID is required by RFC2131.\n")
+            conf_file.write("require dhcp_server_identifier\n")
+            conf_file.write("\n")
+            conf_file.write("# Generate SLAAC address using the Hardware Address of the interface\n")
+            conf_file.write("#slaac hwaddr\n")
+            conf_file.write("# OR generate Stable Private IPv6 Addresses based from the DUID\n")
+            conf_file.write("slaac private\n")
+            conf_file.write("\n")
+            conf_file.write("interface wlan0\n")
+            conf_file.write("inform " + str(wlan0_ip_address) + "/24\n")
+            conf_file.write("static routers=" + str(wlan0_gateway) + "\n")
+            conf_file.write("\n")
+            conf_file.write("interface eth0\n")
+            conf_file.write("static routers=" + str(eth0_gateway) + "\n")
+            conf_file.write("inform " + str(eth0_ip_address) + "/24\n")
+              
+            conf_file.close()
+
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/dhcpcd.conf | " + str(e))  
+        return ("ERROR: " + str(e))
+
+
 """ ############### """
 """ backup database """
 """ ############### """
@@ -347,7 +394,7 @@ def get_media(filename):
     if filename is None:
         WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | File not founded")
     try:
-        PATH_CSS = GET_PATH() + '/app/static/colorpicker'
+        PATH_CSS = PATH + '/app/static/colorpicker'
         return send_from_directory(PATH_CSS, filename)
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "LED | Colorpicker | " + str(e))
@@ -412,7 +459,7 @@ def GET_MQTT_DEVICE_INFORMATIONS(model):
 
                 try:
                     input_values = device['input_values']
-                    input_values = ','.join(input_values)	
+                    input_values = ','.join(input_values)   
                     input_values = input_values.replace("'", '"')
                 except:
                     input_values = ""
@@ -426,10 +473,10 @@ def GET_MQTT_DEVICE_INFORMATIONS(model):
                     input_events = ""
                     
                 try:
-                    commands     = device['commands']	
+                    commands     = device['commands']   
                     commands     = ','.join(commands)
                     commands     = commands.replace("'", '"')  
-                    commands     = commands.replace("},{", '} {')                				
+                    commands     = commands.replace("},{", '} {')                               
                 except:
                     commands     = ""
                 

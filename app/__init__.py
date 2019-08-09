@@ -1,5 +1,6 @@
 import os
 import threading
+import netifaces
 
 from flask import Flask
 from flask_bootstrap import Bootstrap
@@ -12,7 +13,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
-colorpicker(app)
 Mobility(app)
 
 from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
@@ -24,6 +24,46 @@ from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
 from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
 from app.components.email import SEND_EMAIL
+
+
+""" ################## """
+""" update ip settings """
+""" ################## """
+
+# lan
+try:
+    eth0_ip_address = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]["addr"]
+except:
+    eth0_ip_address = ""
+try:
+    for element in netifaces.gateways()[2]: 
+        if element[1] == "eth0":
+            eth0_gateway = element[0]
+except:
+    eth0_gateway = ""
+    
+# wlan
+try:
+    wlan0_ip_address = netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]["addr"]
+except:
+    wlan0_ip_address = ""
+try:
+    for element in netifaces.gateways()[2]: 
+        if element[1] == "wlan0":
+            wlan0_gateway = element[0]
+except:
+    wlan0_gateway = ""       
+
+SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
+
+
+""" ################## """
+"""     colorpicker    """
+""" ################## """
+
+host = GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT())
+
+colorpicker(host, app)
 
 
 """ ################## """
@@ -54,7 +94,7 @@ def START_FLASK():
             app.run()
         # linux
         else:                               
-            app.run(host='0.0.0.0', port=5000)
+            app.run(host = GET_HOST_DEFAULT_NETWORK(), port = GET_HOST_PORT())
 
     except:
         pass
@@ -102,7 +142,8 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             zigbee_connected = True 
             break
          
-    if zigbee_connected == True: 
+    if zigbee_connected == True:
+        print("ZigBee2MQTT | Connected") 
         
         WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Connected")
         
@@ -142,6 +183,8 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
                 
                 
     else:
+        print("ZigBee2MQTT | No Connection") 
+        
         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No Connection")        
         SEND_EMAIL("ERROR", "ZigBee2MQTT | No Connection")          
 

@@ -375,14 +375,21 @@ def delete_sensordata_file(filename):
 """ sensordata statistics """
 """ ##################### """
 
+dropdown_list_dates_temp = ""
+
 @app.route('/dashboard/sensordata/statistics', methods=['GET', 'POST'])
 @login_required
 @permission_required
 def dashboard_sensordata_statistics():
+    global dropdown_list_dates_temp
+
     error_message = ""
     devices = ""
     sensors = ""
     date    = ""
+    date_min = ""
+    date_max = ""
+    dropdown_list_dates = dropdown_list_dates_temp
     data_file_1 = ""
     data_file_2 = ""
     data_file_3 = ""
@@ -391,7 +398,7 @@ def dashboard_sensordata_statistics():
     if request.method == 'POST':
 
         # get data
-        if request.form.get("get_data") is not None: 
+        if request.form.get("load_data") is not None: 
             data_file_1 = request.form.get("get_file_1")
             data_file_2 = request.form.get("get_file_2")
             data_file_3 = request.form.get("get_file_3")
@@ -436,6 +443,7 @@ def dashboard_sensordata_statistics():
                 sensors  = sensors[:-1]
                 sensors  = sensors.replace("'", "")
                 
+                # get all dates
                 list_dates = []
                 
                 for date in pd.to_datetime(df['Timestamp']).dt.date.unique().tolist():
@@ -453,11 +461,13 @@ def dashboard_sensordata_statistics():
                     else:
                         date_temp = date_temp + str(date.day)
                            
-                    list_dates.append(date_temp)        
-                
-                print(list_dates)
-                
-                
+                    list_dates.append(date_temp)     
+                    
+                dropdown_list_dates      = list_dates
+                date_min                 = list_dates[0]
+                date_max                 = list_dates[-1]
+                dropdown_list_dates_temp = list_dates   
+
             except Exception as e:
                 error_message = "Fehler beim Öffnen der Datein >>> " + str(e)
                 
@@ -493,8 +503,7 @@ def dashboard_sensordata_statistics():
                 if data_file_1 == data_file_2 or data_file_1 == data_file_3:
                     error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"                
            
-
-          
+                    
             try:
                 devices = request.form.get("set_devices")
                 sensors = request.form.get("set_sensors")  
@@ -509,26 +518,28 @@ def dashboard_sensordata_statistics():
 
                 # selected divices
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
-                
-                
-                """
-                
-                Select date
-                
-                
-                minimum_from_gui = "2019-07-07" + " 00:00:00"
-                maximum_from_gui = "2019-07-20" + " 00:00:00"
-                df_sensors_filtered_min = df_sensors[df_sensors['Timestamp']>=minimum_from_gui]
-                df_sensors_filtered_max = df_sensors[df_sensors['Timestamp']<=maximum_from_gui]
 
-                df_sensors = pd.merge(df_sensors_filtered_min, df_sensors_filtered_max, how='inner')
+                # selected date
+                date_min = request.form.get("set_date_min")
+                date_max = request.form.get("set_date_max")
 
-                """
-        
-    
+                if date_min != None and date_min != "" and date_max != None and date_max != "":
+
+                    if dropdown_list_dates_temp.index(date_min) >= dropdown_list_dates_temp.index(date_max):
+                        error_message = ("Ungültiger Zeitraum")
+
+                    else:
+                        minimum_from_gui = date_min + " 00:00:00"
+                        maximum_from_gui = date_max + " 00:00:00"
+                        df_sensors_filtered_min = df_sensors[df_sensors['Timestamp']>=minimum_from_gui]
+                        df_sensors_filtered_max = df_sensors[df_sensors['Timestamp']<=maximum_from_gui]
+
+                        df_sensors = pd.merge(df_sensors_filtered_min, df_sensors_filtered_max, how='inner')
+
+
                 # set datetime as index and remove former row datetime
                 df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
-                
+                    
                 df_sensors = df_sensors.set_index('date')
                 df_sensors = df_sensors.drop(columns=['Timestamp'])
                 
@@ -545,6 +556,9 @@ def dashboard_sensordata_statistics():
                             dropdown_list_files=dropdown_list_files,
                             devices=devices,
                             sensors=sensors,
+                            date_min=date_min,
+                            date_max=date_max,
+                            dropdown_list_dates=dropdown_list_dates,                        
                             data_file_1=data_file_1,
                             data_file_2=data_file_2,
                             data_file_3=data_file_3,

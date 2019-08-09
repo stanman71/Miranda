@@ -69,11 +69,15 @@ class Global_Settings(db.Model):
     setting_name  = db.Column(db.String(50), unique=True)
     setting_value = db.Column(db.String(50))   
 
-class Host_Settings(db.Model):
-    __tablename__ = 'host_settings'
-    id         = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    ip_address = db.Column(db.String(50), unique=True)
-    gateway    = db.Column(db.String(50))   
+class Host(db.Model):
+    __tablename__ = 'host'
+    id                = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    eth0_ip_address   = db.Column(db.String(50), unique=True)
+    eth0_gateway      = db.Column(db.String(50))      
+    wlan0_ip_address  = db.Column(db.String(50), unique=True)    
+    wlan0_gateway     = db.Column(db.String(50))
+    default_interface = db.Column(db.String(50))
+    port              = db.Column(db.Integer)   
 
 class LED_Groups(db.Model):
     __tablename__         = 'led_groups'
@@ -401,8 +405,8 @@ if Global_Settings.query.filter_by().first() is None:
 
 
 # create default host settings
-if Host_Settings.query.filter_by().first() is None:
-    host = Host_Settings(
+if Host.query.filter_by().first() is None:
+    host = Host(
         ip_address = None,
         gateway    = None,
     )
@@ -882,22 +886,84 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
 
 """ ################### """
 """ ################### """
-"""   host settings   """
+"""         host        """
 """ ################### """
 """ ################### """
 
 
-def GET_HOST_SETTINGS():
-    return Host_Settings.query.filter_by().first()
+def GET_HOST_NETWORK():
+    return Host.query.filter_by().first()
 
 
-def SET_HOST_SETTINGS(ip_address, gateway):
-    entry = Host_Settings.query.filter_by().first()
-    entry.ip_address = ip_address
-    entry.gateway    = gateway    
-    db.session.commit()    
+def GET_HOST_DEFAULT_NETWORK():
+    entry = Host.query.filter_by().first()
+    
+    if entry.default_interface == "LAN":
+        return entry.eth0_ip_address
+    
+    elif entry.default_interface == "WLAN":
+        return entry.wlan0_ip_address
+    
+    elif entry.eth0_ip_address != "":
+        return entry.eth0_ip_address    
 
+    else:
+        return entry.wlan0_ip_address
+   
+   
+def GET_HOST_PORT():
+    port = Host.query.filter_by().first().port
+    
+    try:
+        if 0 <= int(port) <= 65535:
+            return port
+        else:
+            return 5000
+        
+    except:
+        return 5000   
+    
 
+def SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway):
+    entry = Host.query.filter_by().first()
+    
+    # values changed ?
+    if (entry.eth0_ip_address != eth0_ip_address or entry.eth0_gateway != eth0_gateway or
+        entry.wlan0_ip_address != wlan0_ip_address or entry.wlan0_gateway != wlan0_gateway):   
+    
+        entry.eth0_ip_address   = eth0_ip_address
+        entry.eth0_gateway      = eth0_gateway    
+        entry.wlan0_ip_address  = wlan0_ip_address
+        entry.wlan0_gateway     = wlan0_gateway         
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Network settings changed |" +
+                             " LAN - " + str(eth0_ip_address) + " : " + str(eth0_gateway) + 
+                             " | WLAN - " + str(wlan0_ip_address) + " : " + str(wlan0_gateway)) 
+
+def SET_HOST_DEFAULT_INTERFACE(default_interface):
+    entry = Host.query.filter_by().first()
+    
+    # values changed ?
+    if (entry.default_interface != default_interface):   
+    
+        entry.default_interface = default_interface     
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Default Interface - " + default_interface + " | changed")  
+        
+        
+def SET_HOST_PORT(port):
+    entry = Host.query.filter_by().first()
+    
+    # values changed ?
+    if (entry.port != port):   
+    
+        entry.port = port     
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Port - " + port + " | changed") 
+    
 
 """ ################### """
 """ ################### """

@@ -1,0 +1,11 @@
+BUGFIX SPOTIPY:
+
+Error:    AttributeError: 'Spotify' object has no attribute 'devices'
+Solution: Replace the old client.py file 
+
+          > new client.py file is in /miranda/support
+          > destination linux_path: /usr/local/lib/python3.7/dist-packages/spotipy
+          > sudo cp /home/pi/miranda/support/Spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
+
+https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-no-attribute-current-user-saved-tracks
+

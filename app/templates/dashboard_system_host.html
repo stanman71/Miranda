@@ -127,7 +127,10 @@
                 <div class="col-sm-2">         
                   <form method="POST">                     
                     <input type="submit" class="btn btn-default" name="shutdown" value="RASPI herunterfahren" />
-                  </form>  
+                  </form>
+                  
+<section id="network_settings"></section>                    
+                  
                 </div>
               </div>
             </div>  
@@ -136,12 +139,23 @@
       </div>  
 
 
-<!-- system error message ip settings -->
+<!-- system error message host settings -->
 
-{% if error_message_ip_settings != "" %}
-<div class="alert alert-danger" role="alert">
-  {{ error_message_ip_settings }}
-</div>      
+{% if error_message_host_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_host_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+
+<!-- restart message -->
+
+{% if message_restart == True %}
+  <div class="alert alert-success" role="alert">
+    Änderungen werden nach dem Neustart wirksam
+  </div>      
 {% endif %} 
 
 
@@ -150,28 +164,84 @@
       <div class="panel panel-default">
         <div class="panel-body">   
           <div class="well well-sm">  
-            <form method="POST">  
+            <form method="POST">
               <div class="well well-sm"> 
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-3">
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adresse: </button>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN IP-Adresse: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_eth0_ip_address" value="{% if eth0_ip_address != None %}{{ eth0_ip_address }}{% endif %}" />
+                    </div>                            
                   </div> 
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_ip_address" value="{% if ip_address != None %}{{ ip_address }}{% endif %}" />
-                  </div>                            
-                </div> 
-              </div>  
+                </div>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN Gateway: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_eth0_gateway" value="{% if eth0_gateway != None %}{{ eth0_gateway }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>
+              </div>
+              
               <div class="well well-sm"> 
-                <div class="row justify-content-md-center">
-                  <div class="col-sm-3">
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Gateway: </button>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN IP-Adresse: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_wlan0_ip_address" value="{% if wlan0_ip_address != None %}{{ wlan0_ip_address }}{% endif %}" />
+                    </div>                            
                   </div> 
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="set_gateway" value="{% if gateway != None %}{{ gateway }}{% endif %}" />
-                  </div>                            
-                </div> 
+                </div>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN Gateway: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_wlan0_gateway" value="{% if wlan0_gateway != None %}{{ wlan0_gateway }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>
+              </div>
+              
+              <div class="well well-sm"> 
+                <div class="well well-sm">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Default Interface:</button>
+                      </div>
+                      <div class="col-sm-2">   
+                      <select class="selectpicker" data-width="100%" name="set_default_interface">
+                        <option value= "{{ default_interface }}" > {{ default_interface }} </option>
+                        <optgroup>
+                          {% for each in default_interface_options %}
+                            <option value="{{ each }}"> {{ each }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                           
+                    </div>
+                  </div> 
+                </div>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Port: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_port" value="{% if port != None %}{{ port }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>
               </div>  
-              <input type="submit" onclick="window.location.href='/dashboard/system/host#'" class="btn btn-default" name="change_host_settings" value="Einstellungen speichern" />
+
+              <input type="submit" onclick="window.location.href='/dashboard/system/host#network_settings'" class="btn btn-default" name="change_host_settings" value="Einstellungen speichern" />
             </form>  
           </div>  
         </div>

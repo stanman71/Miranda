@@ -283,13 +283,17 @@
                 <div class="well well-sm">                        
                   <div class="img-container-topology">
                     <div class="img">
-                      <img src="{{ url_for('static', filename='images/zigbee_topology.png') }}"></img>
+                      <a href="{{ url_for('static', filename='images/zigbee_topology.png') }}" target="new">
+                        <img src="{{ url_for('static', filename='images/zigbee_topology.png') }}"></img>
+                      </a>
                     </div>
-                  </div>
-                  <form method="POST">                     
-                    <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#topology'" name="request_zigbee_topology" class="btn btn-default" value="ZigBee Topologie aktualisieren"/>
-                  </form>                   
+                  </div>               
                 </div>
+                
+                <form method="POST">                     
+                  <input type="submit" onclick="window.location.href='/dashboard/system/zigbee2mqtt#topology'" name="request_zigbee_topology" class="btn btn-default" value="ZigBee Topologie aktualisieren"/>
+                </form>                    
+                
               </div>
             </div>  
           </div> 

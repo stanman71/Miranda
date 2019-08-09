@@ -159,7 +159,7 @@
 
 <!-- error message settings -->
 
-{% if error_message_settings != "" %}
+{% if error_message_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for entry in error_message_settings %}
       {{ entry }} <br>
