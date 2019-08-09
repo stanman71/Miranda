@@ -31,6 +31,8 @@ from app.components.email import SEND_EMAIL
 """ ################## """
 
 # lan
+eth0_gateway = ""
+
 try:
     eth0_ip_address = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]["addr"]
 except:
@@ -40,9 +42,11 @@ try:
         if element[1] == "eth0":
             eth0_gateway = element[0]
 except:
-    eth0_gateway = ""
+    pass
     
 # wlan
+wlan0_gateway = ""
+
 try:
     wlan0_ip_address = netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]["addr"]
 except:
@@ -52,7 +56,7 @@ try:
         if element[1] == "wlan0":
             wlan0_gateway = element[0]
 except:
-    wlan0_gateway = ""       
+    pass     
 
 SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
 

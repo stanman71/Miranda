@@ -28910,3 +28910,7 @@ expected ',' or ']', but got '<scalar>'
 2019-08-09 18:14:02,ERROR,|ZigBee2MQTT || Pairing disabled || Setting not confirmed|
 2019-08-09 18:14:02,ERROR,|Snowboy || No module named '_snowboydetect'|
 2019-08-09 18:14:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:30:58,ERROR,|MQTT || Broker - localhost || [WinError 10061] Es konnte keine Verbindung hergestellt werden, da der Zielcomputer die Verbindung verweigerte|
+2019-08-09 18:30:59,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-09 18:31:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-09 18:31:05,ERROR,|Microphone LED Control || No backend available|
