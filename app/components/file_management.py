@@ -318,6 +318,33 @@ def UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, w
         return ("ERROR: " + str(e))
 
 
+def READ_WLAN_CREDENTIALS_FILE():
+    
+    try:
+        file = "/etc/wpa_supplicant/wpa_supplicant.conf"
+        with open(file, 'r', encoding='utf-8') as conf_file:
+            
+            for line in conf_file:
+                
+                if "ssid" in line and "scan_ssid" not in line:
+                    line = line.split("=")
+                    wlan_ssid = line[1]
+                    wlan_ssid = wlan_ssid.replace('\n', '')
+                    
+                if "psk" in line:
+                    line = line.split("=")
+                    wlan_password = line[1]
+                    wlan_password = wlan_password.replace('\n', '')
+ 
+            conf_file.close()
+            
+            return(wlan_ssid, wlan_password)
+
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/wpa_supplicant/wpa_supplicant.conf | " + str(e))  
+        return ("ERROR: " + str(e))
+
+
 def UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password):
     
     try:

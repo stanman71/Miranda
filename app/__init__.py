@@ -18,7 +18,7 @@ Mobility(app)
 from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.database.database import *
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
-from app.components.file_management import WRITE_LOGFILE_SYSTEM
+from app.components.file_management import *
 from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
@@ -64,13 +64,20 @@ except:
 
 SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
 
+try:
+    wlan_ssid     = READ_WLAN_CREDENTIALS_FILE()[0]
+    wlan_password = READ_WLAN_CREDENTIALS_FILE()[1]
+
+    SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password)
+except:
+    pass
+
 
 """ ################## """
 """     colorpicker    """
 """ ################## """
 
 host = GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT())
-
 colorpicker(host, app)
 
 
@@ -104,8 +111,8 @@ def START_FLASK():
         else:                               
             app.run(host = GET_HOST_DEFAULT_NETWORK(), port = GET_HOST_PORT())
 
-    except:
-        pass
+    except Exception as e:
+        print("ERROR FLASK: " + str(e))
      
      
 try:
