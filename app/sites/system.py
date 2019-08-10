@@ -2,6 +2,7 @@ from flask import render_template, redirect, url_for, request, send_from_directo
 from flask_login import login_required, current_user
 from werkzeug.security import generate_password_hash
 from functools import wraps
+from ping3 import ping
 
 import os
 import datetime
@@ -35,39 +36,46 @@ def permission_required(f):
 """ host settings """
 """ ############### """
 
+def GET_CPU_TEMPERATURE():
+    res = os.popen('vcgencmd measure_temp').readline()
+    return(res.replace("temp=","").replace("'C\n"," C"))
+
+
+def CHECK_IP_ADDRESS(ip_address):
+    try:
+        for element in ip_address:
+            if not element.isdigit() and element != ".":
+                return False
+              
+        if len(ip_address.split(".")) != 4:
+            return False
+        
+        for element in ip_address.split("."):
+            if not 0 <= int(element) <= 254:
+                return False
+            
+        return True
+    
+    except:
+        return False
+  
+  
+def PING_IP_ADDRESS(ip_address):   
+    if ping(ip_address, timeout=1) != None:
+        return True
+    if ping(ip_address, timeout=1) != None:
+        return True
+
+    return False
+
+
 @app.route('/dashboard/system/host', methods=['GET', 'POST'])
 @login_required
 @permission_required
 def dashboard_system_host():
     error_message_host_settings = []
-    message_restart = False
     
- 
-    def GET_CPU_TEMPERATURE():
-        res = os.popen('vcgencmd measure_temp').readline()
-        return(res.replace("temp=","").replace("'C\n"," C"))
- 
- 
-    def CHECK_IP_ADDRESS(ip_address):
-        
-        try:
-            for element in ip_address:
-                if not element.isdigit() and element != ".":
-                    return False
-                  
-            if len(ip_address.split(".")) != 4:
-                return False
-            
-            for element in ip_address.split("."):
-                if not 0 <= int(element) <= 254:
-                    return False
-                
-            return True
-        
-        except:
-            return False
-            
-
+    message_restart = False
 
     if request.method == "POST":   
           
@@ -91,84 +99,126 @@ def dashboard_system_host():
         # ################    
                    
         if request.form.get("change_host_settings") != None:
-
+            
+            save_input = True
 
             # ip-address + gateway
             
-            eth0_ip_address  = request.form.get("set_eth0_ip_address")
-            wlan0_ip_address = request.form.get("set_wlan0_ip_address")
-            eth0_gateway     = request.form.get("set_eth0_gateway")
-            wlan0_gateway    = request.form.get("set_wlan0_gateway")            
+            lan_ip_address  = request.form.get("set_lan_ip_address")
+            lan_gateway     = request.form.get("set_lan_gateway")            
+            wlan_ip_address = request.form.get("set_wlan_ip_address")
+            wlan_gateway    = request.form.get("set_wlan_gateway")
+            wlan_ssid       = request.form.get("set_wlan_ssid")
+            wlan_password   = request.form.get("set_wlan_password")            
             
-            if eth0_ip_address == "" and wlan0_ip_address == "":
+            if lan_ip_address == "" and wlan_ip_address == "":
                 error_message_host_settings.append("Keine IP-Adresse angegeben")
+                save_input = False
                 
-            elif eth0_ip_address != "" and CHECK_IP_ADDRESS(eth0_ip_address) == False:
-                error_message_host_settings.append("Ungültige LAN IP-Adresse angegeben")
-                
-            elif wlan0_ip_address != "" and CHECK_IP_ADDRESS(wlan0_ip_address) == False:
-                error_message_host_settings.append("Ungültige WLAN IP-Adresse angegeben")                
-                
-            elif eth0_ip_address == wlan0_ip_address:
+            elif lan_ip_address == wlan_ip_address:
                 error_message_host_settings.append("Gleiche IP-Adressen (LAN + WLAN) angegeben")
+                save_input = False
                 
-            elif eth0_ip_address != "" and CHECK_IP_ADDRESS(eth0_gateway) == False:
-                error_message_host_settings.append("Ungültiges LAN Gateway angegeben")
-  
-            elif wlan0_ip_address != "" and CHECK_IP_ADDRESS(wlan0_gateway) == False:
-                error_message_host_settings.append("Ungültiges WLAN Gateway angegeben")               
+            else:
                 
-            else:               
-                SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
-              
-              
-                # default interface
-                
-                default_interface = request.form.get("set_default_interface")
-                
-                if (default_interface == "LAN" and (eth0_ip_address == "" or eth0_gateway == "" or
-                    CHECK_IP_ADDRESS(eth0_ip_address) == False or CHECK_IP_ADDRESS(eth0_gateway) == False)):
+                if lan_ip_address != wlan_ip_address and lan_ip_address != "":
                     
-                    error_message_host_settings.append("Unvollständige Angeben LAN-Netzwerk")
-                    default_interface = GET_HOST_NETWORK().default_interface
-                
-                elif (default_interface == "WLAN" and (wlan0_ip_address == "" or wlan0_gateway == "" or
-                      CHECK_IP_ADDRESS(wlan0_ip_address) == False or CHECK_IP_ADDRESS(wlan0_gateway) == False)):
+                    if CHECK_IP_ADDRESS(lan_ip_address) == False:
+                        error_message_host_settings.append("Ungültige LAN IP-Adresse angegeben")
+                        save_input = False
                     
-                    error_message_host_settings.append("Unvollständige Angeben WLAN-Netzwerk")
-                    default_interface = GET_HOST_NETWORK().default_interface
-             
-                else:
-                    SET_HOST_DEFAULT_INTERFACE(default_interface)
-                
-                
-                # port
-                
-                port = request.form.get("set_port") 
-                
-                if port == "":
-                    error_message_host_settings.append("Keinen Port angegeben")
+                    if PING_IP_ADDRESS(lan_ip_address) == True and lan_ip_address != GET_HOST_NETWORK().lan_ip_address:
+                        error_message_host_settings.append("LAN IP-Adresse bereits vergeben")
+                        save_input = False
                     
-                elif port.isdigit() == False:
-                    error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
-                
-                elif 0 <= int(port) <= 65535:
-                    SET_HOST_PORT(port)
-                    
-                    SAVE_NETWORK_SETTINGS(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
-                    message_restart = True
+                    if CHECK_IP_ADDRESS(lan_gateway) == False:
+                        error_message_host_settings.append("Ungültiges LAN Gateway angegeben")
+                        save_input = False
                         
-                else:   
-                   error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
-                   
-                                
-    cpu_temperature           = GET_CPU_TEMPERATURE()
-    default_interface_options = ["LAN", "WLAN"]
+                    if CHECK_IP_ADDRESS(lan_gateway) == True and PING_IP_ADDRESS(lan_gateway) == False:
+                        error_message_host_settings.append("LAN Gateway nicht gefunden")
+                        save_input = False
+      
+                if lan_ip_address != wlan_ip_address and wlan_ip_address != "":
+                    
+                    if CHECK_IP_ADDRESS(wlan_ip_address) == False:
+                        error_message_host_settings.append("Ungültige WLAN IP-Adresse angegeben")
+                        save_input = False
+                    
+                    if PING_IP_ADDRESS(wlan_ip_address) == True and wlan_ip_address != GET_HOST_NETWORK().wlan_ip_address:
+                        error_message_host_settings.append("WLAN IP-Adresse bereits vergeben")
+                        save_input = False
+                    
+                    if CHECK_IP_ADDRESS(wlan_gateway) == False:
+                        error_message_host_settings.append("Ungültiges WLAN Gateway angegeben")
+                        save_input = False
+
+                    if CHECK_IP_ADDRESS(wlan_gateway) == True and PING_IP_ADDRESS(wlan_gateway) == False:
+                        error_message_host_settings.append("WLAN Gateway nicht gefunden")
+                        save_input = False
+                    
+                    if wlan_ssid == "" or wlan_password == "":
+                        error_message_host_settings.append("WLAN Zugangsdaten unvollständig")
+                        save_input = False                    
+                
+            # default interface
+            
+            default_interface = request.form.get("set_default_interface")
+            
+            if (default_interface == "LAN" and (lan_ip_address == "" or lan_gateway == "" or
+                CHECK_IP_ADDRESS(lan_ip_address) == False or CHECK_IP_ADDRESS(lan_gateway) == False)):
+                
+                error_message_host_settings.append("Unvollständige Angeben LAN-Netzwerk")
+                default_interface = GET_HOST_NETWORK().default_interface
+                save_input = False
+            
+            if (default_interface == "WLAN" and (wlan_ip_address == "" or wlan_gateway == "" or
+                CHECK_IP_ADDRESS(wlan_ip_address) == False or CHECK_IP_ADDRESS(wlan_gateway) == False)):
+                
+                error_message_host_settings.append("Unvollständige Angeben WLAN-Netzwerk")
+                default_interface = GET_HOST_NETWORK().default_interface
+                save_input = False
+
+            # port
+            
+            port = request.form.get("set_port") 
+            
+            if port == "":
+                error_message_host_settings.append("Keinen Port angegeben")
+                save_input = False
+                
+            if port.isdigit() == False:
+                error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
+                save_input = False
+                
+            if not 0 <= int(port) <= 65535:
+                error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
+                save_input = False           
+              
+            # save settings  
+              
+            if save_input == True:
+                SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
+                UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
+                
+                SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password)
+                UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password)
+                
+                SET_HOST_DEFAULT_INTERFACE(default_interface)  
+                SET_HOST_PORT(port)        
+        
+                message_restart = True
+               
+        
+    cpu_temperature             = GET_CPU_TEMPERATURE()
+    dropdown_default_interfaces = ["LAN", "WLAN"]
  
-    eth0_ip_address   = GET_HOST_NETWORK().eth0_ip_address
-    eth0_gateway      = GET_HOST_NETWORK().eth0_gateway
-    wlan0_ip_address  = GET_HOST_NETWORK().wlan0_ip_address
-    wlan0_gateway     = GET_HOST_NETWORK().wlan0_gateway
+    lan_ip_address    = GET_HOST_NETWORK().lan_ip_address
+    lan_gateway       = GET_HOST_NETWORK().lan_gateway
+    wlan_ip_address   = GET_HOST_NETWORK().wlan_ip_address
+    wlan_gateway      = GET_HOST_NETWORK().wlan_gateway
+    wlan_ssid         = GET_HOST_NETWORK().wlan_ssid
+    wlan_password     = GET_HOST_NETWORK().wlan_password    
     default_interface = GET_HOST_NETWORK().default_interface
     port              = GET_HOST_NETWORK().port       
  
@@ -177,13 +227,15 @@ def dashboard_system_host():
                             error_message_host_settings=error_message_host_settings,
                             message_restart=message_restart,
                             cpu_temperature=cpu_temperature, 
-                            eth0_ip_address=eth0_ip_address,
-                            eth0_gateway=eth0_gateway,
-                            wlan0_ip_address=wlan0_ip_address,
-                            wlan0_gateway=wlan0_gateway,
+                            lan_ip_address=lan_ip_address,
+                            lan_gateway=lan_gateway,
+                            wlan_ip_address=wlan_ip_address,
+                            wlan_gateway=wlan_gateway,
+                            wlan_ssid=wlan_ssid,
+                            wlan_password=wlan_password,                           
                             default_interface=default_interface,
                             port=port,
-                            default_interface_options=default_interface_options,
+                            dropdown_default_interfaces=dropdown_default_interfaces,
                            
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   

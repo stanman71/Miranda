@@ -268,7 +268,7 @@ def SET_CONFIG_BACKUP_LOCATION(backup_location_path):
 """ network config """
 """ ############## """
 
-def SAVE_NETWORK_SETTINGS(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway):
+def UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway):
     
     try:
         file = "/etc/dhcpcd.conf"
@@ -303,18 +303,41 @@ def SAVE_NETWORK_SETTINGS(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0
             conf_file.write("# OR generate Stable Private IPv6 Addresses based from the DUID\n")
             conf_file.write("slaac private\n")
             conf_file.write("\n")
-            conf_file.write("interface wlan0\n")
-            conf_file.write("inform " + str(wlan0_ip_address) + "/24\n")
-            conf_file.write("static routers=" + str(wlan0_gateway) + "\n")
-            conf_file.write("\n")
             conf_file.write("interface eth0\n")
-            conf_file.write("static routers=" + str(eth0_gateway) + "\n")
-            conf_file.write("inform " + str(eth0_ip_address) + "/24\n")
-              
+            conf_file.write("static routers=" + str(lan_gateway) + "\n")
+            conf_file.write("inform " + str(lan_ip_address) + "/24\n")     
+            conf_file.write("\n")
+            conf_file.write("interface wlan0\n")
+            conf_file.write("inform " + str(wlan_ip_address) + "/24\n")
+            conf_file.write("static routers=" + str(wlan_gateway) + "\n")
+
             conf_file.close()
 
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/dhcpcd.conf | " + str(e))  
+        return ("ERROR: " + str(e))
+
+
+def UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password):
+    
+    try:
+        file = "/etc/wpa_supplicant/wpa_supplicant.conf"
+        with open(file, 'w', encoding='utf-8') as conf_file:
+            conf_file.write("ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\n")
+            conf_file.write("update_config=1\n")
+            conf_file.write("country=DE\n")
+            conf_file.write("\n")
+            conf_file.write("network={\n")
+            conf_file.write("    scan_ssid=1\n")
+            conf_file.write("    ssid=" + wlan_ssid + "\n")
+            conf_file.write("    psk=" + wlan_password + "\n")
+            conf_file.write("    key_mgmt=WPA-PSK\n")
+            conf_file.write("}\n")
+ 
+            conf_file.close()
+
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/wpa_supplicant/wpa_supplicant.conf | " + str(e))  
         return ("ERROR: " + str(e))
 
 

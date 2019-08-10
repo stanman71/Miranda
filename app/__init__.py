@@ -31,34 +31,38 @@ from app.components.email import SEND_EMAIL
 """ ################## """
 
 # lan
-eth0_gateway = ""
-
 try:
-    eth0_ip_address = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]["addr"]
+    lan_ip_address = netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]["addr"]  
 except:
-    eth0_ip_address = ""
+    lan_ip_address = ""
+    
 try:
+    lan_gateway = ""
+    
     for element in netifaces.gateways()[2]: 
         if element[1] == "eth0":
-            eth0_gateway = element[0]
+            lan_gateway = element[0]
+        
 except:
-    pass
+    lan_gateway = ""
     
 # wlan
-wlan0_gateway = ""
-
 try:
-    wlan0_ip_address = netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]["addr"]
+    wlan_ip_address = netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]["addr"]
 except:
-    wlan0_ip_address = ""
+    wlan_ip_address = ""
+    
 try:
+    wlan_gateway = ""   
+    
     for element in netifaces.gateways()[2]: 
         if element[1] == "wlan0":
             wlan0_gateway = element[0]
+                     
 except:
-    pass     
+    wlan_gateway = ""       
 
-SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway)
+SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
 
 
 """ ################## """

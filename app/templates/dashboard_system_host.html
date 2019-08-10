@@ -172,7 +172,7 @@
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN IP-Adresse: </button>
                     </div> 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_eth0_ip_address" value="{% if eth0_ip_address != None %}{{ eth0_ip_address }}{% endif %}" />
+                      <input type="text" class="form-control" name="set_lan_ip_address" value="{% if lan_ip_address != None %}{{ lan_ip_address }}{% endif %}" />
                     </div>                            
                   </div> 
                 </div>
@@ -182,7 +182,7 @@
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN Gateway: </button>
                     </div> 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_eth0_gateway" value="{% if eth0_gateway != None %}{{ eth0_gateway }}{% endif %}" />
+                      <input type="text" class="form-control" name="set_lan_gateway" value="{% if lan_gateway != None %}{{ lan_gateway }}{% endif %}" />
                     </div>                            
                   </div> 
                 </div>
@@ -195,7 +195,7 @@
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN IP-Adresse: </button>
                     </div> 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_wlan0_ip_address" value="{% if wlan0_ip_address != None %}{{ wlan0_ip_address }}{% endif %}" />
+                      <input type="text" class="form-control" name="set_wlan_ip_address" value="{% if wlan_ip_address != None %}{{ wlan_ip_address }}{% endif %}" />
                     </div>                            
                   </div> 
                 </div>
@@ -205,10 +205,30 @@
                       <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN Gateway: </button>
                     </div> 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_wlan0_gateway" value="{% if wlan0_gateway != None %}{{ wlan0_gateway }}{% endif %}" />
+                      <input type="text" class="form-control" name="set_wlan_gateway" value="{% if wlan_gateway != None %}{{ wlan_gateway }}{% endif %}" />
                     </div>                            
                   </div> 
                 </div>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN SSID: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_wlan_ssid" value="{% if wlan_ssid != None %}{{ wlan_ssid }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>
+                <div class="well well-sm"> 
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-3">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN Passwort: </button>
+                    </div> 
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" name="set_wlan_password" value="{% if wlan_password != None %}{{ wlan_password }}{% endif %}" />
+                    </div>                            
+                  </div> 
+                </div>                
               </div>
               
               <div class="well well-sm"> 
@@ -221,7 +241,7 @@
                       <select class="selectpicker" data-width="100%" name="set_default_interface">
                         <option value= "{{ default_interface }}" > {{ default_interface }} </option>
                         <optgroup>
-                          {% for each in default_interface_options %}
+                          {% for each in dropdown_default_interfaces %}
                             <option value="{{ each }}"> {{ each }} </option>
                           {% endfor %}
                         </optgroup>                                                                                 

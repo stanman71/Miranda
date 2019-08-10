@@ -72,10 +72,12 @@ class Global_Settings(db.Model):
 class Host(db.Model):
     __tablename__ = 'host'
     id                = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    eth0_ip_address   = db.Column(db.String(50), unique=True)
-    eth0_gateway      = db.Column(db.String(50))      
-    wlan0_ip_address  = db.Column(db.String(50), unique=True)    
-    wlan0_gateway     = db.Column(db.String(50))
+    lan_ip_address    = db.Column(db.String(50), unique=True)
+    lan_gateway       = db.Column(db.String(50))      
+    wlan_ip_address   = db.Column(db.String(50), unique=True)    
+    wlan_gateway      = db.Column(db.String(50))
+    wlan_ssid         = db.Column(db.String(50))    
+    wlan_password     = db.Column(db.String(50))    
     default_interface = db.Column(db.String(50))
     port              = db.Column(db.Integer)   
 
@@ -898,18 +900,20 @@ def GET_HOST_NETWORK():
 def GET_HOST_DEFAULT_NETWORK():
     entry = Host.query.filter_by().first()
     
-    if entry.default_interface == "LAN":
-        return entry.eth0_ip_address
+    if entry.default_interface == "LAN" and entry.lan_ip_address != "" and entry.lan_ip_address != "None":
+        return entry.lan_ip_address
     
-    elif entry.default_interface == "WLAN":
-        return entry.wlan0_ip_address
+    elif entry.default_interface == "WLAN" and entry.wlan_ip_address != "" and entry.wlan_ip_address != "None":
+        return entry.wlan_ip_address
     
-    elif entry.eth0_ip_address != "":
-        return entry.eth0_ip_address    
-
     else:
-        return entry.wlan0_ip_address
-   
+        
+        if entry.lan_ip_address != "" and entry.lan_ip_address != "None":
+            return entry.lan_ip_address    
+
+        else:
+            return entry.wlan_ip_address
+        
    
 def GET_HOST_PORT():
     port = Host.query.filter_by().first().port
@@ -924,22 +928,36 @@ def GET_HOST_PORT():
         return 5000   
     
 
-def SET_HOST_NETWORK(eth0_ip_address, eth0_gateway, wlan0_ip_address, wlan0_gateway):
+def SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway):
     entry = Host.query.filter_by().first()
     
     # values changed ?
-    if (entry.eth0_ip_address != eth0_ip_address or entry.eth0_gateway != eth0_gateway or
-        entry.wlan0_ip_address != wlan0_ip_address or entry.wlan0_gateway != wlan0_gateway):   
+    if (entry.lan_ip_address != lan_ip_address or entry.lan_gateway != lan_gateway or
+        entry.wlan_ip_address != wlan_ip_address or entry.wlan_gateway != wlan_gateway):   
     
-        entry.eth0_ip_address   = eth0_ip_address
-        entry.eth0_gateway      = eth0_gateway    
-        entry.wlan0_ip_address  = wlan0_ip_address
-        entry.wlan0_gateway     = wlan0_gateway         
+        entry.lan_ip_address  = lan_ip_address
+        entry.lan_gateway     = lan_gateway    
+        entry.wlan_ip_address = wlan_ip_address
+        entry.wlan_gateway    = wlan_gateway         
         db.session.commit()
         
         WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Network settings changed |" +
-                             " LAN - " + str(eth0_ip_address) + " : " + str(eth0_gateway) + 
-                             " | WLAN - " + str(wlan0_ip_address) + " : " + str(wlan0_gateway)) 
+                             " LAN - " + str(lan_ip_address) + " : " + str(lan_gateway) + 
+                             " | WLAN - " + str(wlan_ip_address) + " : " + str(wlan_gateway)) 
+
+
+def SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password):
+    entry = Host.query.filter_by().first()
+    
+    # values changed ?
+    if (entry.wlan_ssid != wlan_ssid or entry.wlan_password != wlan_password):   
+    
+        entry.wlan_ssid     = wlan_ssid
+        entry.wlan_password = wlan_password
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | WLAN credentials changed") 
+
 
 def SET_HOST_DEFAULT_INTERFACE(default_interface):
     entry = Host.query.filter_by().first()
