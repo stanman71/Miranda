@@ -116,15 +116,31 @@
       <div class="panel panel-default">
         <div class="panel-body">   
           <div class="well well-sm">    
-            <div class="well well-sm">CPU Temperatur = {{ cpu_temperature }}</div>
+            <div class="well well-sm">
+            
+              CPU Temperatur = {{ cpu_temperature }}
+              <br>
+              <br>
+              LAN-Verbindung
+              <br>
+              {{ lan_ip_address }} | 
+              {{ lan_gateway }}
+              <br>
+              <br>
+              WLAN-Verbindung
+              <br>
+              {{ wlan_ip_address }} | 
+              {{ wlan_gateway }}
+              
+            </div>
             <div class="well well-sm">
               <div class="row justify-content-md-center">
-                <div class="col-sm-2">              
+                <div class="col-sm-3">              
                   <form method="POST">                     
                     <input type="submit" class="btn btn-default" name="restart" value="RASPI neustarten" />
                   </form>   
                 </div>  
-                <div class="col-sm-2">         
+                <div class="col-sm-3">         
                   <form method="POST">                     
                     <input type="submit" class="btn btn-default" name="shutdown" value="RASPI herunterfahren" />
                   </form>
@@ -166,49 +182,101 @@
           <div class="well well-sm">  
             <form method="POST">
               <div class="well well-sm"> 
-                <div class="well well-sm"> 
+                <div class="well well-sm">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN IP-Adresse: </button>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN-Verbindung</button>
                     </div> 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_lan_ip_address" value="{% if lan_ip_address != None %}{{ lan_ip_address }}{% endif %}" />
-                    </div>                            
+                    <div class="col-sm-1">
+                      <font size="+2">
+                        <div class="pretty p-default p-curve p-bigger">
+                          <input type="checkbox" {{ lan_dhcp }} name="set_lan_dhcp" >
+                          <div class="state p-success">
+                            <label></label>
+                          </div>
+                        </div>
+                      </font>
+                    </div>
+                    <div class="col-sm-8">
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">DHCP aktivieren</button>
+                    </div>                      
                   </div> 
                 </div>
-                <div class="well well-sm"> 
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN Gateway: </button>
+                
+                {% if lan_dhcp != "checked" %}
+                
+                  <div class="well well-sm">                 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN IP-Adresse: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="set_lan_ip_address" value="{% if lan_ip_address != None %}{{ lan_ip_address }}{% endif %}" />
+                      </div>                            
                     </div> 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_lan_gateway" value="{% if lan_gateway != None %}{{ lan_gateway }}{% endif %}" />
-                    </div>                            
-                  </div> 
-                </div>
-              </div>
-              
-              <div class="well well-sm"> 
-                <div class="well well-sm"> 
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN IP-Adresse: </button>
+                  </div>
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">LAN Gateway: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="set_lan_gateway" value="{% if lan_gateway != None %}{{ lan_gateway }}{% endif %}" />
+                      </div>                            
                     </div> 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_wlan_ip_address" value="{% if wlan_ip_address != None %}{{ wlan_ip_address }}{% endif %}" />
-                    </div>                            
-                  </div> 
-                </div>
-                <div class="well well-sm"> 
-                  <div class="row justify-content-md-center">
-                    <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN Gateway: </button>
+                  </div>
+
+                {% endif %}
+                
+                </div> 
+
+                <div class="well well-sm">
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN-Verbindung</button>
+                      </div> 
+                      <div class="col-sm-1">
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ wlan_dhcp }} name="set_wlan_dhcp" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </div>
+                      <div class="col-sm-8">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">DHCP aktivieren</button>
+                      </div>                       
                     </div> 
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" name="set_wlan_gateway" value="{% if wlan_gateway != None %}{{ wlan_gateway }}{% endif %}" />
-                    </div>                            
-                  </div> 
-                </div>
+                  </div>              
+
+                {% if wlan_dhcp != "checked" %}
+                
+                  <div class="well well-sm">                 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN IP-Adresse: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="set_wlan_ip_address" value="{% if wlan_ip_address != None %}{{ wlan_ip_address }}{% endif %}" />
+                      </div>                            
+                    </div> 
+                  </div>
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">WLAN Gateway: </button>
+                      </div> 
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" name="set_wlan_gateway" value="{% if wlan_gateway != None %}{{ wlan_gateway }}{% endif %}" />
+                      </div>                            
+                    </div> 
+                  </div>
+
+                {% endif %}
+
                 <div class="well well-sm"> 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
@@ -268,8 +336,6 @@
       </div>
     </div>  
 
-
-    <br>
     <br>     
     <br> 
 

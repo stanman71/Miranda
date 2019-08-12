@@ -43,6 +43,7 @@ def CREATE_LOGFILE(filename):
     try:
         # create csv file
         file = PATH + "/logs/" + filename + ".csv"
+        
         with open(file, 'w', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)    
 
@@ -56,7 +57,7 @@ def CREATE_LOGFILE(filename):
             csvfile.close()
 
         WRITE_LOGFILE_SYSTEM("EVENT", "File | /logs/" + filename + ".csv | created")      
-
+           
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/" + filename + ".csv | " + str(e))  
 
@@ -87,11 +88,12 @@ def WRITE_LOGFILE_MQTT(gateway, channel, msg):
         
         # open csv file
         file = PATH + "/logs/log_" + gateway + ".csv"
+        
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)                                        
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), str(channel), msg ])
             csvfile.close()
-
+       
     except Exception as e:
         print(str(e))
 
@@ -112,12 +114,12 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
     try:
         # open csv file
         file = PATH + "/logs/log_system.csv"
-
+        
         with open(file, 'a', newline='', encoding='utf-8') as csvfile:
             filewriter = csv.writer(csvfile, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)   
             filewriter.writerow( [str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), log_type, description])
             csvfile.close()
-       
+        
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e))
@@ -268,7 +270,7 @@ def SET_CONFIG_BACKUP_LOCATION(backup_location_path):
 """ network config """
 """ ############## """
 
-def UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway):
+def UPDATE_NETWORK_SETTINGS_FILE(lan_dhcp, lan_ip_address, lan_gateway, wlan_dhcp, wlan_ip_address, wlan_gateway):
     
     try:
         file = "/etc/dhcpcd.conf"
@@ -302,18 +304,25 @@ def UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, w
             conf_file.write("#slaac hwaddr\n")
             conf_file.write("# OR generate Stable Private IPv6 Addresses based from the DUID\n")
             conf_file.write("slaac private\n")
-            conf_file.write("\n")
-            conf_file.write("interface eth0\n")
-            conf_file.write("static routers=" + str(lan_gateway) + "\n")
-            conf_file.write("inform " + str(lan_ip_address) + "/24\n")     
-            conf_file.write("\n")
-            conf_file.write("interface wlan0\n")
-            conf_file.write("inform " + str(wlan_ip_address) + "/24\n")
-            conf_file.write("static routers=" + str(wlan_gateway) + "\n")
+        
+            if lan_dhcp != "checked":
+
+                conf_file.write("\n")
+                conf_file.write("interface eth0\n")
+                conf_file.write("inform " + str(lan_ip_address) + "/24\n")             
+                conf_file.write("static routers=" + str(lan_gateway) + "\n")    
+            
+            if wlan_dhcp != "checked":
+    
+                conf_file.write("\n")
+                conf_file.write("interface wlan0\n")
+                conf_file.write("inform " + str(wlan_ip_address) + "/24\n")
+                conf_file.write("static routers=" + str(wlan_gateway) + "\n")
 
             conf_file.close()
 
     except Exception as e:
+        print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/dhcpcd.conf | " + str(e))  
         return ("ERROR: " + str(e))
 
@@ -330,19 +339,20 @@ def READ_WLAN_CREDENTIALS_FILE():
                     line = line.split("=")
                     wlan_ssid = line[1]
                     wlan_ssid = wlan_ssid.replace('\n', '')
+                    wlan_ssid = wlan_ssid.replace('"', '')
                     
                 if "psk" in line:
                     line = line.split("=")
                     wlan_password = line[1]
                     wlan_password = wlan_password.replace('\n', '')
+                    wlan_password = wlan_password.replace('"', '')
  
             conf_file.close()
             
             return(wlan_ssid, wlan_password)
 
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "File | /etc/wpa_supplicant/wpa_supplicant.conf | " + str(e))  
-        return ("ERROR: " + str(e))
+    except:
+        return("", "")
 
 
 def UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password):
@@ -350,16 +360,14 @@ def UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password):
     try:
         file = "/etc/wpa_supplicant/wpa_supplicant.conf"
         with open(file, 'w', encoding='utf-8') as conf_file:
-            conf_file.write("ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\n")
-            conf_file.write("update_config=1\n")
-            conf_file.write("country=DE\n")
-            conf_file.write("\n")
-            conf_file.write("network={\n")
-            conf_file.write("    scan_ssid=1\n")
-            conf_file.write("    ssid=" + wlan_ssid + "\n")
-            conf_file.write("    psk=" + wlan_password + "\n")
-            conf_file.write("    key_mgmt=WPA-PSK\n")
-            conf_file.write("}\n")
+            conf_file.write('ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev\n')
+            conf_file.write('update_config=1\n')
+            conf_file.write('country=DE\n')
+            conf_file.write('network={\n')
+            conf_file.write('    ssid="' + wlan_ssid + '"\n')
+            conf_file.write('    psk="' + wlan_password + '"\n')
+            conf_file.write('    key_mgmt=WPA-PSK\n')
+            conf_file.write('}\n')
  
             conf_file.close()
 

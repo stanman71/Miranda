@@ -29130,3 +29130,672 @@ expected ',' or ']', but got '<scalar>'
 2019-08-10 12:24:37,DATABASE,|Host || Network settings changed || LAN - 192.168.1.112 : 192.168.1.1 || WLAN - 192.168.1.116 : 192.168.1.1|
 2019-08-10 12:24:37,DATABASE,|Host || WLAN credentials changed|
 2019-08-10 12:24:37,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 15:57:00,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-10 15:57:00,ERROR,|File || /etc/wpa_supplicant/wpa_supplicant.conf || local variable 'wlan_ssid' referenced before assignment|
+2019-08-10 15:57:00,ERROR,|File || /etc/wpa_supplicant/wpa_supplicant.conf || local variable 'wlan_ssid' referenced before assignment|
+2019-08-10 15:57:00,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 15:57:00,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 15:57:03,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 15:57:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:00:06,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:00:06,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:00:09,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:00:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:01:41,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:01:41,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:02:48,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:02:51,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:02:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:07:04,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:07:07,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:07:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:11:35,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-10 16:11:35,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:15:05,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-10 16:15:05,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:15:08,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:15:10,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:15:40,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-10 16:15:40,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:19:56,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-10 16:19:56,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:19:59,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:20:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:20:53,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:20:56,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:20:57,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:21:00,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:21:04,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:21:04,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:21:07,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:21:07,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:41:18,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:41:21,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:41:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:41:34,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:43:53,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : |
+2019-08-10 16:43:53,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:43:56,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:43:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:44:43,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-10 16:44:43,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:45:44,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : |
+2019-08-10 16:45:44,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:45:47,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:45:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:49:40,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-10 16:49:40,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:49:43,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:49:45,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:50:12,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:50:12,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:51:14,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-10 16:51:14,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:51:17,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:51:18,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 16:51:52,DATABASE,|Host || WLAN credentials changed|
+2019-08-10 16:51:52,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 16:55:05,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 16:55:08,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 16:55:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:06:50,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:06:52,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:06:55,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:06:56,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:09:05,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : |
+2019-08-10 17:09:05,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:09:06,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:09:09,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:09:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:11:53,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:11:54,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:11:57,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:11:58,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:12:34,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:12:35,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:12:38,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:12:39,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:12:51,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:12:52,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:12:55,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:12:57,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:14:31,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:14:32,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:14:35,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:14:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:14:57,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-08-10 17:14:57,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 17:16:00,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 17:16:01,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 17:16:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 17:16:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 18:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 19:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 20:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 21:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 22:20:28,ERROR,|WLAN || Wrong Credentials|
+2019-08-10 22:20:29,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:20:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:20:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:22:15,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:22:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:22:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:23:59,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-10 22:23:59,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 22:25:04,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-08-10 22:25:04,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:25:07,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:25:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:26:34,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:26:37,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:26:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:27:07,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-10 22:27:07,DATABASE,|Host || Port - 5000 || changed|
+2019-08-10 22:27:57,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:28:00,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:28:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-10 22:30:37,ERROR,|MQTT || [Errno 5] Input/output error|
+2019-08-10 22:32:15,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:32:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:32:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-10 22:33:37,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-10 22:33:40,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-10 22:33:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 09:46:05,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 09:46:08,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 09:46:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 10:12:22,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 10:12:25,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 10:12:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:10:32,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:10:35,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:10:37,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:11:10,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:11:13,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:11:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:13:45,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-11 19:13:45,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-11 19:13:45,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:13:48,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:13:49,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:15:01,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-11 19:15:01,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:15:15,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:15:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:15:43,DATABASE,|Host || WLAN credentials changed|
+2019-08-11 19:15:43,DATABASE,|Host || Port - 5000 || changed|
+2019-08-11 19:16:42,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-11 19:16:42,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-11 19:16:42,ERROR,|WLAN || Wrong Credentials|
+2019-08-11 19:16:43,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:16:46,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:16:47,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:18:46,ERROR,|WLAN || Wrong Credentials|
+2019-08-11 19:18:47,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:18:50,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:18:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:18:53,DATABASE,|Host || WLAN credentials changed|
+2019-08-11 19:18:53,DATABASE,|Host || Port - 5000 || changed|
+2019-08-11 19:19:57,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-08-11 19:19:57,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:20:00,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:20:01,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-11 19:20:13,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-11 19:20:13,DATABASE,|Host || Port - 5000 || changed|
+2019-08-11 19:21:15,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-11 19:21:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-11 19:21:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 10:43:07,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 10:43:10,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 10:43:24,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 10:43:27,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 10:43:28,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:10:29,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:10:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:10:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:11:20,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:11:23,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:11:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:11:25,DATABASE,|Host || Network settings changed || LAN -  || WLAN - |
+2019-08-12 11:11:25,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:11:29,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:11:38,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:13:29,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:13:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:13:33,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:13:37,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 11:13:37,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:13:56,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:14:39,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:14:42,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:14:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:14:46,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - checked|
+2019-08-12 11:14:46,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:14:52,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:14:55,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:15:01,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:17:13,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:17:16,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:17:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:17:22,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:17:22,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 11:17:22,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:17:30,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.48 : 192.168.1.1|
+2019-08-12 11:17:30,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:17:30,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:18:30,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:18:30,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:18:58,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:18:58,DATABASE,|Host || Network settings changed || LAN -  || WLAN - |
+2019-08-12 11:18:58,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:19:34,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:19:34,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:19:37,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:19:38,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:19:43,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.48 : 192.168.1.1|
+2019-08-12 11:19:43,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:19:43,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:21:31,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:21:31,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:21:34,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:21:35,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:21:35,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.48 : 192.168.1.1|
+2019-08-12 11:21:35,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:21:35,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:22:00,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:22:00,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:22:03,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:22:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:22:07,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.48 : 192.168.1.1|
+2019-08-12 11:22:07,ERROR,|File || /etc/dhcpcd.conf || name 'GET_HOST_NETWORK' is not defined|
+2019-08-12 11:22:07,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:24:01,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:24:01,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:24:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:24:05,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.48 : 192.168.1.1|
+2019-08-12 11:24:05,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:24:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:24:19,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 11:24:19,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:34:20,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:34:23,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:34:24,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:36:15,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:36:18,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:36:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:37:37,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:37:40,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:37:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:38:12,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:38:15,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:38:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:39:36,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:39:39,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:39:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:42:00,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:42:03,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:42:04,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:42:10,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - checked|
+2019-08-12 11:42:10,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:46:04,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-08-12 11:46:04,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:46:07,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:46:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:46:34,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 11:46:34,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 11:46:34,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:47:56,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-12 11:47:56,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 11:47:57,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 11:47:57,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:48:00,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:48:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:48:31,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 11:48:31,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:48:39,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:49:32,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-08-12 11:49:32,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:49:35,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:49:36,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:51:22,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:51:25,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:51:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:53:39,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:53:42,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:53:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:53:47,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 11:53:47,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:53:55,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - checked|
+2019-08-12 11:53:55,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:53:57,DATABASE,|Host || Network settings changed || LAN -  || WLAN - checked|
+2019-08-12 11:53:57,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:54:01,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - checked|
+2019-08-12 11:54:01,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:54:04,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 11:54:04,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:54:25,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:54:25,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:54:41,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 11:54:41,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:56:19,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:56:22,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:56:23,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:56:42,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 11:56:42,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 11:58:28,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-12 11:58:28,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 11:58:30,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 11:58:30,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 11:58:33,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 11:58:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 11:59:34,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 11:59:34,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 11:59:34,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 12:01:22,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 12:01:25,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:01:27,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:01:44,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 12:01:44,DATABASE,|Host || Port - 5000 || changed|
+2019-08-12 12:03:48,ERROR,|MQTT || Broker - localhost || [Errno 111] Connection refused|
+2019-08-12 12:03:51,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:03:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:05:59,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - checked|
+2019-08-12 12:06:19,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 12:06:35,DATABASE,|Host || WLAN credentials changed|
+2019-08-12 12:06:51,DATABASE,|Host || Network settings changed || LAN - checked || WLAN - |
+2019-08-12 12:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 12:55:49,EVENT,|MQTT || Started|
+2019-08-12 12:55:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:55:52,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:55:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:56:35,EVENT,|MQTT || Started|
+2019-08-12 12:56:35,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:56:35,EVENT,|MQTT || Started|
+2019-08-12 12:56:35,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:56:36,EVENT,|MQTT || Started|
+2019-08-12 12:56:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:56:38,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:56:38,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:56:39,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:56:39,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:56:40,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:56:41,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:58:01,EVENT,|MQTT || Started|
+2019-08-12 12:58:01,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:58:04,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:58:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:59:07,EVENT,|MQTT || Started|
+2019-08-12 12:59:07,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:59:07,EVENT,|MQTT || Started|
+2019-08-12 12:59:07,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:59:08,EVENT,|MQTT || Started|
+2019-08-12 12:59:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 12:59:10,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:59:10,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:59:11,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 12:59:11,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:59:12,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 12:59:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:00:45,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-12 13:00:45,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 13:00:46,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 13:00:46,EVENT,|MQTT || Started|
+2019-08-12 13:00:46,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:00:49,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:00:51,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:01:26,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 13:01:26,EVENT,|MQTT || Started|
+2019-08-12 13:01:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:01:26,EVENT,|MQTT || Started|
+2019-08-12 13:01:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:01:28,EVENT,|MQTT || Started|
+2019-08-12 13:01:28,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:01:29,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:01:29,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:01:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:01:31,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:01:31,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:01:32,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:03:51,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 13:04:11,EVENT,|MQTT || Started|
+2019-08-12 13:04:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:04:14,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:04:16,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:05:29,EVENT,|MQTT || Started|
+2019-08-12 13:05:29,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:05:30,EVENT,|MQTT || Started|
+2019-08-12 13:05:30,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:05:31,EVENT,|MQTT || Started|
+2019-08-12 13:05:31,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:05:32,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:05:33,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:05:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:05:34,ERROR,|ZigBee2MQTT || No Connection|
+2019-08-12 13:05:34,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:05:36,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:22:44,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 13:22:44,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 13:22:57,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 13:22:57,EVENT,|MQTT || Started|
+2019-08-12 13:22:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:22:57,EVENT,|MQTT || Started|
+2019-08-12 13:22:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:22:58,EVENT,|MQTT || Started|
+2019-08-12 13:22:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:23:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:23:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:23:01,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:23:02,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:23:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:23:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:23:02,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:23:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:23:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:23:03,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:23:03,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:23:03,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:23:45,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:23:45,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-08-12 13:23:53,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:23:53,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:23:56,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 13:26:04,EVENT,|MQTT || Started|
+2019-08-12 13:26:04,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:26:07,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:26:09,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:26:09,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:26:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:26:25,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:26:25,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:26:31,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 13:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 13:31:14,EVENT,|MQTT || Started|
+2019-08-12 13:31:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:31:15,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:31:15,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:31:17,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:31:17,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:31:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:34:41,EVENT,|MQTT || Started|
+2019-08-12 13:34:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:34:42,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:34:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:34:43,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:34:43,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:35:03,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:35:03,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:35:07,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:35:07,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-08-12 13:35:15,EVENT,|MQTT || Started|
+2019-08-12 13:35:15,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:35:16,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:35:16,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:35:17,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:35:17,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:36:52,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 13:36:52,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 13:38:23,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 13:38:23,EVENT,|MQTT || Started|
+2019-08-12 13:38:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:38:23,EVENT,|MQTT || Started|
+2019-08-12 13:38:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:38:24,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:38:24,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:38:24,EVENT,|MQTT || Started|
+2019-08-12 13:38:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:38:24,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:38:24,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:38:25,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:38:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:38:25,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:38:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:38:25,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:38:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:38:26,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 13:38:26,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:39:07,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:39:07,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:39:10,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 13:40:52,EVENT,|MQTT || Started|
+2019-08-12 13:40:52,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:40:53,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:40:53,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:40:54,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:40:54,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:41:11,EVENT,|MQTT || Started|
+2019-08-12 13:41:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:41:12,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:41:12,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:41:13,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:41:13,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:49:53,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-12 13:49:53,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 13:49:55,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 13:49:55,EVENT,|MQTT || Started|
+2019-08-12 13:49:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 13:49:56,SUCCESS,|ZigBee2MQTT || Device - bridge/state || Setting changed || online|
+2019-08-12 13:49:56,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 13:49:59,ERROR,|ZigBee2MQTT || Device - bridge/config || Setting not confirmed || permit_join: false|
+2019-08-12 13:50:02,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 13:50:02,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 13:50:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 13:50:03,ERROR,|Microphone LED Control || [Errno 13] Access denied (insufficient permissions)|
+2019-08-12 14:00:45,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 14:00:45,EVENT,|MQTT || Started|
+2019-08-12 14:00:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 14:00:48,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 14:00:48,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 14:02:10,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 14:02:10,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-08-12 14:02:46,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 14:02:46,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 14:03:11,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 14:03:27,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 14:03:27,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 14:11:49,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 14:11:49,EVENT,|MQTT || Started|
+2019-08-12 14:11:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 14:11:52,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 14:11:52,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 14:29:32,EVENT,|MQTT || Started|
+2019-08-12 14:29:32,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 14:29:36,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 14:29:36,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:04:23,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 15:04:23,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 15:06:36,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 15:06:36,EVENT,|MQTT || Started|
+2019-08-12 15:06:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:06:39,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:06:39,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:07:39,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 15:08:04,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 15:08:04,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-08-12 15:08:15,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 15:08:40,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 15:08:40,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 15:08:46,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 15:09:29,EVENT,|MQTT || Started|
+2019-08-12 15:09:29,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:09:32,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:09:32,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:10:08,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 15:10:08,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 15:11:57,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 15:11:57,EVENT,|MQTT || Started|
+2019-08-12 15:11:57,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:12:00,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:12:00,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:12:12,EVENT,|MQTT || Started|
+2019-08-12 15:12:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:12:15,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:12:15,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:13:14,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 15:13:14,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 15:14:40,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 15:14:40,EVENT,|MQTT || Started|
+2019-08-12 15:14:40,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:15:36,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 15:15:36,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 15:17:05,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 15:17:05,EVENT,|MQTT || Started|
+2019-08-12 15:17:05,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:17:05,EVENT,|MQTT || Started|
+2019-08-12 15:17:05,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:17:06,EVENT,|MQTT || Started|
+2019-08-12 15:17:06,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:17:08,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:17:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:17:08,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:17:08,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:17:09,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:17:09,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:35:29,EVENT,|MQTT || Started|
+2019-08-12 15:35:29,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:35:32,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:35:32,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:36:16,EVENT,|MQTT || Started|
+2019-08-12 15:36:16,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:36:19,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:36:19,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:42:42,EVENT,|MQTT || Started|
+2019-08-12 15:42:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:54:18,EVENT,|MQTT || Started|
+2019-08-12 15:54:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:54:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:54:21,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:55:07,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 15:55:07,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 15:55:11,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 15:55:11,EVENT,|MQTT || Started|
+2019-08-12 15:55:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 15:55:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 15:55:14,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 15:56:37,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 15:56:55,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: true|
+2019-08-12 15:56:55,WARNING,|ZigBee2MQTT || Pairing enabled|
+2019-08-12 15:56:59,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 15:57:30,SUCCESS,|ZigBee2MQTT || Device - bridge/config || Setting changed || permit_join: false|
+2019-08-12 15:57:30,SUCCESS,|ZigBee2MQTT || Pairing disabled|
+2019-08-12 15:57:32,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-12 16:17:22,EVENT,|MQTT || Started|
+2019-08-12 16:17:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:17:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:17:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:18:59,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 16:18:59,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 16:19:03,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 16:19:03,EVENT,|MQTT || Started|
+2019-08-12 16:19:03,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:19:06,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:19:06,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:20:43,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 16:20:43,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 16:20:47,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 16:20:47,EVENT,|MQTT || Started|
+2019-08-12 16:20:47,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:20:50,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:20:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:23:19,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 16:23:55,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 16:25:10,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-08-12 16:25:10,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 16:25:17,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 16:25:17,EVENT,|MQTT || Started|
+2019-08-12 16:25:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:25:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:25:20,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:29:22,EVENT,|MQTT || Started|
+2019-08-12 16:29:22,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:29:25,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:29:25,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:30:03,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN -  : |
+2019-08-12 16:30:03,ERROR,|WLAN || Wrong Credentials|
+2019-08-12 16:30:04,DATABASE,|Host || Default Interface - LAN || changed|
+2019-08-12 16:30:04,EVENT,|MQTT || Started|
+2019-08-12 16:30:04,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:30:07,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:30:07,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 16:30:07,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:32:39,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-08-12 16:32:39,EVENT,|MQTT || Started|
+2019-08-12 16:32:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:32:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:32:42,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:33:26,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-08-12 16:33:47,EVENT,|MQTT || Started|
+2019-08-12 16:33:47,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:33:50,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:33:50,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:36:59,EVENT,|MQTT || Started|
+2019-08-12 16:36:59,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:37:02,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:37:02,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 16:40:50,EVENT,|MQTT || Started|
+2019-08-12 16:40:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 16:40:53,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 16:40:53,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 18:30:03,WARNING,|MQTT || Update Devices || No Message founded|

@@ -166,7 +166,7 @@ def MQTT_RECEIVE():
         client.loop_forever()
         
     except Exception as e:
-        print("Error MQTT Broker connection: " + BROKER_ADDRESS + " | " + str(e))
+        print("ERROR: MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
         
         WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
         SEND_EMAIL("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
@@ -577,6 +577,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
     
     result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
     
+    # format for gui
     setting_formated = setting.replace('"', '')
     setting_formated = setting_formated.replace('{', '')
     setting_formated = setting_formated.replace('}', '')    
@@ -650,21 +651,22 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
 """ ########################## """
  
  
-def ZIGBEE2MQTT_CHECK_SETTING_THREAD(name, setting, delay = 1, limit = 15): 
+def ZIGBEE2MQTT_CHECK_SETTING_THREAD(device_name, setting, delay = 1, limit = 15): 
  
-    Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(name, setting, delay, limit, ))
+    Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(device_name, setting, delay, limit, ))
     Thread.start()   
 
  
-def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit): 
+def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device_name, setting, delay, limit): 
                       
-    device = GET_MQTT_DEVICE_BY_NAME(name)
+    device = GET_MQTT_DEVICE_BY_NAME(device_name)
                             
     # check setting 1 try
     time.sleep(delay)  
                                
-    result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
+    result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
     
+    # format for gui
     setting_formated = setting.replace('"', '')
     setting_formated = setting_formated.replace('{', '')
     setting_formated = setting_formated.replace('}', '')    
@@ -673,41 +675,41 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(name, setting, delay, limit):
     
     # set previous setting
     if result == True:
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated)   
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device_name + " | Setting changed | " + setting_formated)   
         
     else:
         # check setting 2 try
         time.sleep(delay)                             
-        result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
+        result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
         
         # set previous setting
         if result == True:
-            WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated)           
+            WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device_name + " | Setting changed | " + setting_formated)           
             
         else:
             # check setting 3 try
             time.sleep(delay)                             
-            result = ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit)
+            result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
              
             # set previous setting
             if result == True:
-                WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device.name + " | Setting changed | " + setting_formated)               
+                WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Device - " + device_name + " | Setting changed | " + setting_formated)               
                 
             # error message
             else:
-                WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)  
-                SEND_EMAIL("ERROR", "ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed | " + setting_formated)                 
-                return ("ZigBee2MQTT | Device - " + device.name + " | Setting not confirmed - " + setting) 
+                WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Device - " + device_name + " | Setting not confirmed | " + setting_formated)  
+                SEND_EMAIL("ERROR", "ZigBee2MQTT | Device - " + device_name + " | Setting not confirmed | " + setting_formated)                 
+                return ("ZigBee2MQTT | Device - " + device_name + " | Setting not confirmed - " + setting) 
     
     return ""
         
  
-def ZIGBEE2MQTT_CHECK_SETTING(name, setting, limit):
+def ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit):
     
     for message in MQTT_GET_INCOMING_MESSAGES(limit):
         
         # search for fitting message in incoming_messages_list
-        if message[1] == "SmartHome/zigbee2mqtt/" + name:   
+        if message[1] == "SmartHome/zigbee2mqtt/" + device_name:   
     
             setting = setting[1:-1] 
             

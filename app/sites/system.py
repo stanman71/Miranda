@@ -60,13 +60,18 @@ def CHECK_IP_ADDRESS(ip_address):
         return False
   
   
-def PING_IP_ADDRESS(ip_address):   
-    if ping(ip_address, timeout=1) != None:
-        return True
-    if ping(ip_address, timeout=1) != None:
-        return True
+def PING_IP_ADDRESS(ip_address):
+    try:
+    
+        if ping(ip_address, timeout=1) != None:
+            return True
+        if ping(ip_address, timeout=1) != None:
+            return True
 
-    return False
+        return False
+    
+    except:
+        return False
 
 
 @app.route('/dashboard/system/host', methods=['GET', 'POST'])
@@ -102,27 +107,38 @@ def dashboard_system_host():
             
             save_input = True
 
-            # ip-address + gateway
+            # check dhcp
             
-            lan_ip_address  = request.form.get("set_lan_ip_address")
-            lan_gateway     = request.form.get("set_lan_gateway")            
-            wlan_ip_address = request.form.get("set_wlan_ip_address")
-            wlan_gateway    = request.form.get("set_wlan_gateway")
-            wlan_ssid       = request.form.get("set_wlan_ssid")
-            wlan_password   = request.form.get("set_wlan_password")            
-            
-            if lan_ip_address == "" and wlan_ip_address == "":
-                error_message_host_settings.append("Keine IP-Adresse angegeben")
-                save_input = False
-                
-            elif lan_ip_address == wlan_ip_address:
-                error_message_host_settings.append("Gleiche IP-Adressen (LAN + WLAN) angegeben")
-                save_input = False
-                
+            if request.form.get("set_lan_dhcp"):
+                lan_dhcp = "checked" 
             else:
-                
-                if lan_ip_address != wlan_ip_address and lan_ip_address != "":
+                lan_dhcp = ""            
+            
+            if request.form.get("set_wlan_dhcp"):
+                wlan_dhcp = "checked" 
+            else:
+                wlan_dhcp = ""               
+
+            lan_ip_address    = GET_HOST_NETWORK().lan_ip_address
+            lan_gateway       = GET_HOST_NETWORK().lan_gateway  
+            wlan_ip_address   = GET_HOST_NETWORK().wlan_ip_address
+            wlan_gateway      = GET_HOST_NETWORK().wlan_gateway 
+
+
+            # no dhcp ?
+            
+            if lan_dhcp != "checked" or wlan_dhcp != "checked":
+
+                # lan
+            
+                if lan_dhcp != "checked":
                     
+                    if request.form.get("set_lan_ip_address") != None:
+                        lan_ip_address  = request.form.get("set_lan_ip_address")
+                        
+                    if request.form.get("set_lan_gateway") != None:
+                        lan_gateway     = request.form.get("set_lan_gateway")            
+
                     if CHECK_IP_ADDRESS(lan_ip_address) == False:
                         error_message_host_settings.append("Ungültige LAN IP-Adresse angegeben")
                         save_input = False
@@ -138,9 +154,17 @@ def dashboard_system_host():
                     if CHECK_IP_ADDRESS(lan_gateway) == True and PING_IP_ADDRESS(lan_gateway) == False:
                         error_message_host_settings.append("LAN Gateway nicht gefunden")
                         save_input = False
-      
-                if lan_ip_address != wlan_ip_address and wlan_ip_address != "":
-                    
+
+                # wlan
+                
+                if wlan_dhcp != "checked":                    
+                        
+                    if request.form.get("set_wlan_ip_address") != None:
+                        wlan_ip_address  = request.form.get("set_wlan_ip_address")
+                        
+                    if request.form.get("set_wlan_gateway") != None:
+                        wlan_gateway     = request.form.get("set_wlan_gateway")   
+                                                
                     if CHECK_IP_ADDRESS(wlan_ip_address) == False:
                         error_message_host_settings.append("Ungültige WLAN IP-Adresse angegeben")
                         save_input = False
@@ -156,11 +180,31 @@ def dashboard_system_host():
                     if CHECK_IP_ADDRESS(wlan_gateway) == True and PING_IP_ADDRESS(wlan_gateway) == False:
                         error_message_host_settings.append("WLAN Gateway nicht gefunden")
                         save_input = False
-                    
-                    if wlan_ssid == "" or wlan_password == "":
-                        error_message_host_settings.append("WLAN Zugangsdaten unvollständig")
-                        save_input = False                    
+
                 
+                # lan + wlan
+                
+                if lan_dhcp != "checked" and wlan_dhcp != "checked":                     
+                    
+                    if lan_ip_address == "" and wlan_ip_address == "":
+                        error_message_host_settings.append("Keine IP-Adresse angegeben")
+                        save_input = False
+                        
+                    if lan_ip_address == wlan_ip_address:
+                        error_message_host_settings.append("Gleiche IP-Adressen (LAN + WLAN) angegeben")
+                        save_input = False
+
+
+            # wlan credentials              
+                
+            wlan_ssid       = request.form.get("set_wlan_ssid")
+            wlan_password   = request.form.get("set_wlan_password")    
+                
+            if wlan_ssid == "" or wlan_password == "":
+                error_message_host_settings.append("WLAN Zugangsdaten unvollständig")
+                save_input = False                    
+            
+            
             # default interface
             
             default_interface = request.form.get("set_default_interface")
@@ -179,6 +223,7 @@ def dashboard_system_host():
                 default_interface = GET_HOST_NETWORK().default_interface
                 save_input = False
 
+
             # port
             
             port = request.form.get("set_port") 
@@ -195,15 +240,17 @@ def dashboard_system_host():
                 error_message_host_settings.append("Ungültigen Port angegeben (Zahl von 0 bis 65535)")
                 save_input = False           
               
+              
             # save settings  
               
             if save_input == True:
                 SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
-                UPDATE_NETWORK_SETTINGS_FILE(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
+                UPDATE_NETWORK_SETTINGS_FILE(lan_dhcp, lan_ip_address, lan_gateway, wlan_dhcp, wlan_ip_address, wlan_gateway)
                 
                 SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password)
                 UPDATE_WLAN_CREDENTIALS_FILE(wlan_ssid, wlan_password)
                 
+                SET_HOST_DHCP(lan_dhcp, wlan_dhcp)
                 SET_HOST_DEFAULT_INTERFACE(default_interface)  
                 SET_HOST_PORT(port)        
         
@@ -213,8 +260,10 @@ def dashboard_system_host():
     cpu_temperature             = GET_CPU_TEMPERATURE()
     dropdown_default_interfaces = ["LAN", "WLAN"]
  
+    lan_dhcp          = GET_HOST_NETWORK().lan_dhcp
     lan_ip_address    = GET_HOST_NETWORK().lan_ip_address
     lan_gateway       = GET_HOST_NETWORK().lan_gateway
+    wlan_dhcp         = GET_HOST_NETWORK().wlan_dhcp  
     wlan_ip_address   = GET_HOST_NETWORK().wlan_ip_address
     wlan_gateway      = GET_HOST_NETWORK().wlan_gateway
     wlan_ssid         = GET_HOST_NETWORK().wlan_ssid
@@ -222,13 +271,19 @@ def dashboard_system_host():
     default_interface = GET_HOST_NETWORK().default_interface
     port              = GET_HOST_NETWORK().port       
  
+     
+    if (wlan_ssid != "" or wlan_password != "") and wlan_ip_address == "":
+        error_message_host_settings.append("Falsche WLAN Zugangsdaten eingegeben")
+        
  
     return render_template('dashboard_system_host.html',
                             error_message_host_settings=error_message_host_settings,
                             message_restart=message_restart,
-                            cpu_temperature=cpu_temperature, 
+                            cpu_temperature=cpu_temperature,
+                            lan_dhcp=lan_dhcp,
                             lan_ip_address=lan_ip_address,
                             lan_gateway=lan_gateway,
+                            wlan_dhcp=wlan_dhcp,
                             wlan_ip_address=wlan_ip_address,
                             wlan_gateway=wlan_gateway,
                             wlan_ssid=wlan_ssid,
@@ -533,17 +588,12 @@ def dashboard_system_zigbee2mqtt():
 
                 if setting_pairing == "True":
                         
-                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")
-                     
+                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")                   
                     time.sleep(1)
-                    zigbee_check = False
+
+                    zigbee_check = ZIGBEE2MQTT_CHECK_SETTING_PROCESS("bridge/config", '"permit_join":true', 1, 5)
                     
-                    for message in MQTT_GET_INCOMING_MESSAGES(5):
-                        
-                        if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
-                            zigbee_check = True
-                    
-                    if zigbee_check == True:             
+                    if zigbee_check == "":             
                         WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
                         SEND_EMAIL("WARNING", "ZigBee2MQTT | Pairing enabled")
                     else:             
@@ -553,16 +603,11 @@ def dashboard_system_zigbee2mqtt():
                 else:
                     
                     MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
-
                     time.sleep(1)
-                    zigbee_check = False
+
+                    zigbee_check = ZIGBEE2MQTT_CHECK_SETTING_PROCESS("bridge/config", '"permit_join":false', 1, 5)
                     
-                    for message in MQTT_GET_INCOMING_MESSAGES(5):
-                        
-                        if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":false}':
-                            zigbee_check = True
-                    
-                    if zigbee_check == True:             
+                    if zigbee_check == "":                
                         WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing disabled") 
                     else:             
                         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing disabled | Setting not confirmed")  

@@ -72,8 +72,10 @@ class Global_Settings(db.Model):
 class Host(db.Model):
     __tablename__ = 'host'
     id                = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    lan_dhcp          = db.Column(db.String(50), server_default=("checked"))    
     lan_ip_address    = db.Column(db.String(50), unique=True)
-    lan_gateway       = db.Column(db.String(50))      
+    lan_gateway       = db.Column(db.String(50))
+    wlan_dhcp         = db.Column(db.String(50), server_default=("checked"))     
     wlan_ip_address   = db.Column(db.String(50), unique=True)    
     wlan_gateway      = db.Column(db.String(50))
     wlan_ssid         = db.Column(db.String(50))    
@@ -936,7 +938,7 @@ def SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
         entry.wlan_ip_address != wlan_ip_address or entry.wlan_gateway != wlan_gateway):   
     
         entry.lan_ip_address  = lan_ip_address
-        entry.lan_gateway     = lan_gateway    
+        entry.lan_gateway     = lan_gateway
         entry.wlan_ip_address = wlan_ip_address
         entry.wlan_gateway    = wlan_gateway         
         db.session.commit()
@@ -956,8 +958,23 @@ def SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password):
         entry.wlan_password = wlan_password
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | WLAN credentials changed") 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | WLAN credentials | changed") 
 
+
+def SET_HOST_DHCP(lan_dhcp, wlan_dhcp):
+    entry = Host.query.filter_by().first()
+    
+    # values changed ?
+    if (entry.lan_dhcp != lan_dhcp or entry.wlan_dhcp != wlan_dhcp):   
+    
+        entry.lan_dhcp  = lan_dhcp
+        entry.wlan_dhcp = wlan_dhcp    
+        db.session.commit()
+        
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Network settings changed |" +
+                             " DHCP LAN - " + str(lan_dhcp) + 
+                             " | DHCP WLAN - " + str(wlan_dhcp))
+        
 
 def SET_HOST_DEFAULT_INTERFACE(default_interface):
     entry = Host.query.filter_by().first()
@@ -975,12 +992,12 @@ def SET_HOST_PORT(port):
     entry = Host.query.filter_by().first()
     
     # values changed ?
-    if (entry.port != port):   
+    if (int(entry.port) != int(port)):   
     
         entry.port = port     
         db.session.commit()
         
-        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Port - " + port + " | changed") 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Port - " + str(port) + " | changed") 
     
 
 """ ################### """

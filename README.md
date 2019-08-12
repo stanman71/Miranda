@@ -27,8 +27,29 @@ This project creates a smarthome environment.
 
 #### 1. Installation 
 
-- copy all Miranda files into the folder "/home/pi/miranda"
-- install the required modules by using sudo rights
+- update raspian
+
+       >>> sudo apt-get update
+       >>> sudo apt-get upgrade -y
+
+- create the new folder "/home/pi/miranda" and copy all Miranda files into it
+
+       FileZilla
+
+       Protocol:   SFTP
+       Server:     Raspberry IP
+       Port:       ---
+       Connection: normal
+       user:       pi
+       password:   raspberry
+
+- install BLAS and LAPACK
+
+       >>> sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
+
+- install all python modules by using sudo rights
+
+       >>> sudo pip3 install -r /home/pi/miranda/requirements.txt --upgrade
 
 </br>
 
@@ -38,18 +59,36 @@ https://www.raspberrypi-spy.co.uk/2015/02/how-to-autorun-a-python-script-on-rasp
 </br>
 </br>
 
-- open file profile
+- create an autostart-file
 
-       >>> sudo nano /etc/profile
+       >>> sudo nano /etc/systemd/system/miranda.service
 
-- scroll to the bottom and add the following line :
+       [Unit]
+       Description=Miranda
+       After=network.target
 
-       >>> sudo python3 /home/pi/miranda/run.py &
-	  
-- enable the Pi to login automatically without requiring any user intervention
+       [Service]
+       ExecStart=/home/pi/miranda/run.py
+       WorkingDirectory=/home/pi
+       Restart=always
+       user=pi
 
-       >>> sudo raspi-config
-       >>> Select “Boot Options” then “Desktop/CLI” then “Console Autologin”	   
+       [Install]
+       WantedBy=multi-user.target
+
+- enable autostart
+
+       >>> sudo systemctl enable miranda.service
+
+- start / stop service
+
+       >>> sudo systemctl start miranda
+       >>> sudo systemctl stop miranda
+
+- show status / log
+
+       >>> systemctl status miranda.service
+       >>> journalctl -u miranda
 
 </br>
 
@@ -77,8 +116,6 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 #### 1. Installation
 
-       >>> sudo apt-get update
-       >>> sudo apt-get upgrade -y
        >>> sudo apt-get install mosquitto mosquitto-clients -y
 
 </br>
@@ -99,7 +136,7 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 - create an autostart-file
 
-       >>> sudo nano /etc/systemd/system/Mosquitto.service
+       >>> sudo nano /etc/systemd/system/mosquitto.service
 
        [Unit]
        Description=MQTT Broker
@@ -114,19 +151,17 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 - enable autostart
 
-       >>> sudo systemctl enable Mosquitto.service
+       >>> sudo systemctl enable mosquitto.service
 
-- start service
+- start / stop service
 
-       >>> sudo systemctl start Mosquitto
+       >>> sudo systemctl start mosquitto
+       >>> sudo systemctl stop mosquitto
 
-- show status
+- show status / log
 
-       >>> systemctl status Mosquitto.service
-
-- stop service
-
-       >>> sudo systemctl stop Mosquitto
+       >>> systemctl status mosquitto.service
+       >>> journalctl -u mosquitto
 
 
 </br>
@@ -162,7 +197,14 @@ https://www.zigbee2mqtt.io/
        >>> cd /opt/zigbee2mqtt
        >>> npm install
 	   
-	   >>> Note that the npm install produces some warning which can be ignored.
+	   >>> Note that the npm install produces some warning which can be ignored
+
+</br>
+
+##### ERROR: npm not founded
+
+       install the newest version of Node.js 
+       >>> https://www.zigbee2mqtt.io/getting_started/running_zigbee2mqtt.html
 
 </br>
 
@@ -175,7 +217,7 @@ https://www.zigbee2mqtt.io/
        # MQTT settings
        mqtt:
        # MQTT base topic for zigbee2mqtt MQTT messages
-       base_topic: /SmartHome/zigbee2mqtt
+       base_topic: SmartHome/zigbee2mqtt
        # MQTT server URL
        server: 'mqtt://localhost'
        # MQTT server authentication, uncomment if required:
@@ -237,18 +279,15 @@ https://www.zigbee2mqtt.io/
 
        >>> sudo systemctl enable zigbee2mqtt.service
 
-- start service
+- start / stop service
 
        >>> sudo systemctl start zigbee2mqtt
-
-- show status
-
-       >>> systemctl status zigbee2mqtt.service
-
-- stop service
-
        >>> sudo systemctl stop zigbee2mqtt
 
+- show status / log
+
+       >>> systemctl status zigbee2mqtt.service
+       >>> journalctl -u zigbee2mqtt
 
 </br>
 ------------
@@ -263,8 +302,66 @@ https://www.zigbee2mqtt.io/information/connecting_cc2530.html
 https://github.com/Koenkk/zigbee2mqtt/issues/1437
 </br>
 https://github.com/Koenkk/zigbee2mqtt/issues/489
+</br>
+</br>
 
+#### 1. Flashing
 
+- uploading the new coordinator firmware
+
+</br>
+
+#### 2. CC2531 USB-Stick
+
+- no configuration nessessary
+
+</br>
+
+#### 3. CC2530
+
+- Wiring CC2530 to the Raspberry
+
+       CC2530 -> Raspberry
+	   
+       >>> VCC -> 3,3V (Pin1)
+       >>> GND -> GND  (Pin6)
+       >>> P02 -> TXD  (Pin8 / BCM 14)
+       >>> P03 -> RXD  (Pin10 / BCM 15)
+
+</br>
+
+- add following lines
+
+	   >>> sudo nano /boot/config.txt 
+	   
+	   enable_uart=1
+	   dtoverlay=pi3-disable-bt
+
+- disable the modem system service 
+
+       >>> sudo systemctl disable hciuart
+
+- remove any of those entries, if present
+
+       >>> sudo nano /boot/cmdline.txt
+
+       console=serial0,115200 console=ttyAMA0,11520
+
+</br>
+
+- change the zigbee2mqtt configuration
+
+       >>> sudo nano data/configuration.yaml
+	   
+	   serial:
+		 port: /dev/ttyAMA0
+	   advanced:
+		 baudrate: 115200
+		 rtscts: false
+
+- reboot your raspberry	
+
+   
 </br>
 ------------
 </br>
