@@ -23,7 +23,7 @@ This project creates a smarthome environment.
 ------------
 </br>
 
-### Install Miranda
+### Miranda
 
 #### 1. Installation 
 
@@ -37,7 +37,7 @@ This project creates a smarthome environment.
        FileZilla
 
        Protocol:   SFTP
-       Server:     Raspberry IP
+       Server:     Raspberry PI IP-Address
        Port:       ---
        Connection: normal
        user:       pi
@@ -47,17 +47,22 @@ This project creates a smarthome environment.
 
        >>> sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
 
-- install all python modules by using sudo rights
+- install graphviz
+
+       >>> sudo apt-get install graphviz libgraphviz-dev pkg-config
+       >>> sudo apt-get install python-pip python-virtualenv
+
+- install all nessessary python modules
 
        >>> sudo pip3 install -r /home/pi/miranda/requirements.txt --upgrade
+
+- replace wrong spotipy file
+ 
+       >>> sudo cp /home/pi/miranda/support/Spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
 
 </br>
 
 #### 2. Autostart
-
-https://www.raspberrypi-spy.co.uk/2015/02/how-to-autorun-a-python-script-on-raspberry-pi-boot/
-</br>
-</br>
 
 - create an autostart-file
 
@@ -107,11 +112,13 @@ https://www.raspberrypi-spy.co.uk/2015/02/how-to-autorun-a-python-script-on-rasp
 ------------
 </br>
 
-### Optional: Install Mosquitto (MQTT)
+### Optional: Mosquitto (MQTT)
 
-https://smarthome-blogger.de/tutorial/mqtt-raspberry-pi-einfuehrung/
+https://mosquitto.org/
 </br>
 https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
+</br>
+https://github.com/eclipse/mosquitto
 </br>
 
 #### 1. Installation
@@ -120,15 +127,15 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 
 </br>
 
-#### 2. Test
+#### 2. Test Mosquitto
 
 - subscribe a channel
 
-       >>> mosquitto_sub -d -h localhost -p 1883 -t "/SmartHome/data"
+       >>> mosquitto_sub -d -h localhost -p 1883 -t "test"
 
 - send a message
 
-       >>> mosquitto_pub -d -h localhost -p 1883 -t "/SmartHome/data" -m "Hello"
+       >>> mosquitto_pub -d -h localhost -p 1883 -t "test" -m "Hello World"
 
 </br>
 
@@ -168,11 +175,13 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 ------------
 </br>
 
-### Optional: Install ZigBee2MQTT
+### Optional: ZigBee2MQTT
 
 https://gadget-freakz.com/diy-zigbee-gateway/
 </br>
 https://www.zigbee2mqtt.io/
+</br>
+https://github.com/Koenkk/zigbee2mqtt
 </br>
 
 #### 1. Installation
@@ -189,7 +198,7 @@ https://www.zigbee2mqtt.io/
 
 - clone zigbee2mqtt repository
 
-       >>> sudo git clone https://github.com/Koenkk/zigbee2mqtt.git /opt/zigbee2mqtt
+       >>> sudo unzip /home/pi/miranda/support/Files/zigbee2mqtt_1.5.1.zip -d /opt/zigbee2mqtt
        >>> sudo chown -R pi:pi /opt/zigbee2mqtt
 
 - install zigbee2mqtt 
@@ -199,11 +208,11 @@ https://www.zigbee2mqtt.io/
 	   
 	   >>> Note that the npm install produces some warning which can be ignored
 
-</br>
 
 ##### ERROR: npm not founded
 
-       install the newest version of Node.js 
+- install the newest version of Node.js 
+
        >>> https://www.zigbee2mqtt.io/getting_started/running_zigbee2mqtt.html
 
 </br>
@@ -256,7 +265,7 @@ https://www.zigbee2mqtt.io/
 
 #### 5. Autostart
 
-- run zigbee2mqtt as daemon in the background automaticly when booting
+- create an autostart-file
 
        >>> sudo nano /etc/systemd/system/zigbee2mqtt.service
 
@@ -299,6 +308,8 @@ https://www.zigbee2mqtt.io/getting_started/flashing_the_cc2531.html
 </br>
 https://www.zigbee2mqtt.io/information/connecting_cc2530.html
 </br>
+https://github.com/Koenkk/Z-Stack-firmware
+</br>
 https://github.com/Koenkk/zigbee2mqtt/issues/1437
 </br>
 https://github.com/Koenkk/zigbee2mqtt/issues/489
@@ -308,18 +319,22 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 #### 1. Flashing
 
 - uploading the new coordinator firmware
+- instructions and files
+
+       >>> /home/pi/miranda/support/Files/Z-Stack-firmware.zip
+       >>> /home/pi/miranda/support/Files/zigbee_firmware.zip
 
 </br>
 
 #### 2. CC2531 USB-Stick
 
-- no configuration nessessary
+- no configuration nessessary, use the default settings
 
 </br>
 
 #### 3. CC2530
 
-- Wiring CC2530 to the Raspberry
+- Connect the CC2530 to the Raspberry
 
        CC2530 -> Raspberry
 	   
@@ -330,7 +345,7 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 
 </br>
 
-- add following lines
+- add following at the end of the config file
 
 	   >>> sudo nano /boot/config.txt 
 	   
@@ -341,13 +356,11 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 
        >>> sudo systemctl disable hciuart
 
-- remove any of those entries, if present
+- remove any of those entries in the cmdline file, if present
 
        >>> sudo nano /boot/cmdline.txt
 
        console=serial0,115200 console=ttyAMA0,11520
-
-</br>
 
 - change the zigbee2mqtt configuration
 
@@ -366,7 +379,7 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 ------------
 </br>
 
-### Optional: Install Snowboy
+### Optional: Snowboy
 
 https://github.com/Kitt-AI/snowboy
 </br>
@@ -381,10 +394,6 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 </br>
 
 #### 1. Installation
-
-- update raspbian 
-
-       >>> sudo apt update && sudo apt -y upgrade && sudo apt-get -y auto-remove && sudo reboot
 
 - install dependencies
 
@@ -402,47 +411,95 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 2. Sound settings
 
-- create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi or /snowboy/support)
+- create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi or /support/Snowboy)
 
-       >>> "aplay -l" & "arecord -l" to find out hw cards (e.g "card 0, device 0" is "hw:0,0")
-       >>> "speaker-test -c 2" to test audio out
-       >>> "arecord -d 3 test.wav" to record a 3 second test clip 
-       >>> "aplay test.wav" to verify
+       sudo nano /home/pi/.asoundrc
+
+       pcm.!default {
+         type asym
+          playback.pcm {
+            type plug
+            slave.pcm "hw:0,0"
+          }
+          capture.pcm {
+            type plug
+            slave.pcm "hw:1,0"
+          }
+       }
+
+- find out hw cards (e.g "card 0, device 0" is "hw:0,0")
+
+       >>> aplay -l
+       >>> arecord -l
 
 </br>
 
-#### 3. Snowboy
+#### 3. Test Sound settings
 
-- activate snowboy in the SmartHome system settings
-- restart SmartHome
+- audio out
+
+       >>> speaker-test -c 2
+
+- record a 3 second clip 
+
+       >>> arecord -d 3 test.wav
+
+- verify
+
+       >>> aplay test.wav
+
+</br>
+
+#### 4. Replace alsa.conf
+
+       https://www.raspberrypi.org/forums/viewtopic.php?t=136974
+
+       >>> sudo cp /home/pi/miranda/support/Snowboy/alsa.conf /usr/share/alsa/alsa.conf
+
+</br>
+
+#### 5. Snowboy in Miranda
+
+- activate snowboy in system/speechcontrol
+- restart Miranda
 
 </br>
 
 ##### ERROR: ImportError: dynamic module does not define module export function (PyInit__snowboydetect)
+##### ERROR: No module named '_snowboydetect'
 
 - create snowboydetect again (https://github.com/Kitt-AI/snowboy)
-- install swig (https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI)
 
+- install swig 
+
+       https://github.com/Yadoms/yadoms/wiki/Build-on-RaspberryPI
+       http://weegreenblobbie.com/?p=263
+
+       >>> sudo apt-get install libpcre3-dev
        >>> wget http://prdownloads.sourceforge.net/swig/swig-3.0.12.tar.gz
-       >>> tar xzf swig-3.0.12.tar.gz
+       >>> tar xf swig-3.0.12.tar.gz
        >>> cd swig-3.0.12
-       >>> ./configure
-       >>> make
+       >>> ./configure --prefix=/usr
+       >>> make -j 4
        >>> sudo make install
+ 
+- check installed swig version
 
-- copy the python3 swig files into "snowboy/swig"
-- go into the "swig" folder and start "make" in console 
-- replace the old files of the parent dictionary
+       >>> swig -version
 
-</br>
+- extract snowboy git archiv
 
-##### ERROR: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.<blah blah>
+       >>> unzip /home/pi/miranda/support/Files/snowboy_1.3.0.zip -d /home/pi/snowboy
 
-- edit alsa.conf: "sudo nano /usr/share/alsa/alsa.conf" (https://www.raspberrypi.org/forums/viewtopic.php?t=136974)
-       
-       >>> replace "pcm.front cards.pcm.front" with "pcm.front cards.pcm.default" (app. 15 times)
-       >>> fixed "alsa.conf" file in folder support
-       
+- create new detection files
+
+       >>> cd /home/pi/snowboy/swig/Python3 
+       >>> make
+
+- replace "_snowboydetect.so" and "snowboydetect.py" in "/home/pi/miranda/app/speechcontrol/snowboy"
+
+- delete the folder "/home/pi/snowboy"
+
 </br>
 
 ##### ERROR: ALSA lib confmisc.c:1281:(snd_func_refer) Unable to find definition 'cards.bcm2835_alsa.pcm.front.0:CARD=0'
@@ -451,7 +508,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 </br>
 
-#### 4. Create new Snowboy hotwords
+#### 6. Create new Snowboy hotwords
 
 - log into https://snowboy.kitt.ai
 - create a new hotword (try to find hotwords as different as possible)

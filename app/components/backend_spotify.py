@@ -52,7 +52,7 @@ SCOPE         = "playlist-read-private user-read-recently-played user-read-curre
 
 SPOTIFY_URL_AUTH  = 'https://accounts.spotify.com/authorize/?'
 SPOTIFY_URL_TOKEN = 'https://accounts.spotify.com/api/token/'
-REDIRECT_URI      = "http://" + GET_HOST_DEFAULT_NETWORK() + "/dashboard/spotify/token"
+REDIRECT_URI      = "http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard/spotify/token"
 
 RESPONSE_TYPE = 'code'   
 HEADER        = 'application/x-www-form-urlencoded'

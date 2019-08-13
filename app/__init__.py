@@ -6,7 +6,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_mobility import Mobility
 
-from app.components.colorpicker_local import colorpicker
+from app.components.colorpicker import colorpicker
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -71,8 +71,6 @@ except:
 if wlan_ip_address != "" and wlan_gateway == "":
     wlan_gateway = lan_gateway
     
-
-print("###################################")
 
 SET_HOST_NETWORK(lan_ip_address, lan_gateway, wlan_ip_address, wlan_gateway)
 
@@ -168,6 +166,7 @@ if GET_GLOBAL_SETTING_VALUE("mqtt") == "True":
         print("ERROR: MQTT | " + str(e))
         WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
         SEND_EMAIL("ERROR", "MQTT | " + str(e)) 
+
 
 """ ###### """
 """ zigbee """
@@ -277,6 +276,9 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
 
 if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
     
+    # deactivate pixel_ring
+    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off") 
+    
     try:
         from app.speechcontrol.snowboy.snowboy import SNOWBOY_THREAD
 
@@ -288,6 +290,3 @@ if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":
             print("ERROR: SnowBoy | " + str(e))
             WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
             SEND_EMAIL("ERROR", "Snowboy | " + str(e)) 
-
-    # deactivate pixel_ring
-    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")

@@ -2031,3 +2031,492 @@ Timestamp,Channel,Message
 2019-08-12 16:36:59,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
 2019-08-12 16:40:50,SmartHome/zigbee2mqtt/bridge/state,online
 2019-08-12 16:40:50,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-12 20:04:19,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-12 20:04:19,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-12 20:05:09,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-12 20:05:09,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-12 20:05:19,SmartHome/zigbee2mqtt/bridge/state,offline
+2019-08-12 20:05:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-12 20:05:43,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-12 20:49:14,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x00178801040c9476","meta":{"modelID":"LCT015"}}|
+2019-08-12 20:49:14,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","linkquality":109}|
+2019-08-12 20:49:14,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","linkquality":104,"brightness":254}|
+2019-08-12 20:49:15,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","linkquality":109,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1}}|
+2019-08-12 20:49:15,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","linkquality":109,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1},"color_temp":366,"color_mode":2}|
+2019-08-12 20:49:15,SmartHome/zigbee2mqtt/0x00178801040c9476,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-12 20:49:19,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-12 20:49:19,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"}]}|
+2019-08-12 20:49:33,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-12 20:49:34,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x0017880104878b88","meta":{"modelID":"LCT015"}}|
+2019-08-12 20:49:35,SmartHome/zigbee2mqtt/0x0017880104878b88,|{"state":"ON","linkquality":106}|
+2019-08-12 20:49:35,SmartHome/zigbee2mqtt/0x0017880104878b88,|{"state":"ON","linkquality":106,"brightness":254}|
+2019-08-12 20:49:35,SmartHome/zigbee2mqtt/0x0017880104878b88,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1}}|
+2019-08-12 20:49:35,SmartHome/zigbee2mqtt/0x0017880104878b88,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1},"color_temp":366,"color_mode":2}|
+2019-08-12 20:49:35,SmartHome/zigbee2mqtt/0x0017880104878b88,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-12 20:49:39,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-12 20:49:39,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"}]}|
+2019-08-12 20:49:54,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-12 20:49:55,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x000b3cfffef56003","meta":{"modelID":"TRADFRI bulb E14 W op/ch 400lm"}}|
+2019-08-12 20:49:57,SmartHome/zigbee2mqtt/0x000b3cfffef56003,|{"state":"ON","linkquality":80}|
+2019-08-12 20:49:57,SmartHome/zigbee2mqtt/0x000b3cfffef56003,|{"state":"ON","linkquality":80,"brightness":254}|
+2019-08-12 20:49:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-12 20:49:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x000b3cfffeff0aa8","meta":{"modelID":"TRADFRI bulb E14 W op/ch 400lm"}}|
+2019-08-12 20:50:00,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-12 20:50:00,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-12 20:50:01,SmartHome/zigbee2mqtt/0x000b3cfffeff0aa8,|{"state":"ON","linkquality":80}|
+2019-08-12 20:50:02,SmartHome/zigbee2mqtt/0x000b3cfffeff0aa8,|{"state":"ON","linkquality":80,"brightness":254}|
+2019-08-12 20:50:03,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-12 20:50:04,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-12 20:50:04,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 10:19:09,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 10:19:09,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 10:19:56,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 10:19:56,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 10:21:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 10:21:02,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 11:20:39,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 11:20:39,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 11:30:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 11:30:42,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 11:39:34,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 11:39:34,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 11:40:20,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 11:40:20,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 11:52:02,SmartHome/zigbee2mqtt/bridge/state,offline
+2019-08-13 11:52:26,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 11:52:26,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 12:42:38,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:42:40,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:42:40,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:42:40,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 12:45:27,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 12:45:27,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 12:45:34,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 12:46:14,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 12:46:14,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 12:46:15,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:46:17,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:46:17,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:46:17,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 12:53:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 12:53:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 12:54:03,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:54:04,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:54:04,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:54:04,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 12:59:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 12:59:37,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 12:59:39,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:59:41,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 12:59:41,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 12:59:41,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 13:00:04,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:00:04,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 13:00:04,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 13:00:09,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:00:09,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 13:00:09,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 13:04:12,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:04:12,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 13:04:12,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"0x00178801040c9476","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"0x0017880104878b88","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 13:04:34,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:04:34,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:04:40,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:04:40+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:04:40,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:04:40,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:04:45,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:04:45+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:04:50,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:04:50,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:04:55,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:04:55+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:05:13,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:05:13,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:05:18,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:05:18+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:05:18,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:05:18,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:05:23,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:05:23+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:06:01,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:06:01,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:06:04,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:06:04,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:06:06,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:06:06+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:06:09,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:06:09+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:06:49,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:06:49,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:06:52,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:06:52,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:06:55,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:06:54+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:06:57,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:06:57+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:07:28,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:07:28,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:07:33,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:07:33+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:07:37,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:07:37,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:07:42,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:07:42+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:07:46,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:07:46,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:07:48,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:07:48,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:07:51,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:07:51+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:07:53,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:07:53+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:08:42,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:08:42,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:08:47,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:08:47+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:09:20,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:09:20,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:09:25,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:09:25+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:10:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:10:42,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:11:21,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:11:21,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:11:23,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:11:23,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:11:26,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:11:26+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="170"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:11:29,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:11:28+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="170"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:12:17,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:12:17,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:12:22,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:12:22+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:12:23,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:12:23,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:12:28,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:12:28+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:14:10,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:14:10,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:14:15,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:14:15+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:14:54,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:14:54,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:14:59,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:14:59+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:17:25,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:17:25,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:17:31,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:17:30+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:20:12,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:20:12,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:20:17,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:20:17+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:20:19,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:20:19,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:20:24,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:20:24+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:20:27,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:20:27,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:20:32,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:20:32+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:20:47,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:20:47,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:20:52,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:20:52+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:20:55,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:20:55,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:21:00,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:21:00+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:24:24,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:24:24,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:24:29,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:24:29+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:26:18,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:26:22,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:26:22,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 13:26:27,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T13:26:27+02:00)}"];
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x00178801040c9476||0xb291  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x0017880104878b88||0x41d1  no lqi||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffef56003||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{0x000b3cfffeff0aa8||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+}|
+2019-08-13 13:37:39,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:37:39,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:39:54,SmartHome/zigbee2mqtt/bridge/state,offline
+2019-08-13 13:40:17,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:40:17,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:45:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:45:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:47:28,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:47:28,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:52:04,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 13:52:04,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 13:57:10,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:57:25,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:57:25,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "0x00178801040c9476", "new": "wohnzimmer_01"}|
+2019-08-13 13:57:25,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"0x00178801040c9476","to":"wohnzimmer_01"}}|
+2019-08-13 13:57:28,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "0x0017880104878b88", "new": "wohnzimmer_02"}|
+2019-08-13 13:57:28,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"0x0017880104878b88","to":"wohnzimmer_02"}}|
+2019-08-13 13:57:34,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:57:34,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 13:57:34,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"wohnzimmer_01","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"wohnzimmer_02","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffef56003","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"0x000b3cfffeff0aa8","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 13:57:56,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:57:56,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "wohnzimmer_01", "new": "led_wohnzimmer_01"}|
+2019-08-13 13:57:56,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"wohnzimmer_01","to":"led_wohnzimmer_01"}}|
+2019-08-13 13:57:59,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "wohnzimmer_02", "new": "led_wohnzimmer_02"}|
+2019-08-13 13:57:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"wohnzimmer_02","to":"led_wohnzimmer_02"}}|
+2019-08-13 13:58:02,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "0x000b3cfffef56003", "new": "led_bad_01"}|
+2019-08-13 13:58:02,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"0x000b3cfffef56003","to":"led_bad_01"}}|
+2019-08-13 13:58:05,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "0x000b3cfffeff0aa8", "new": "led_bad_02"}|
+2019-08-13 13:58:05,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"0x000b3cfffeff0aa8","to":"led_bad_02"}}|
+2019-08-13 13:58:12,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 13:58:12,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 13:58:12,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_01","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_02","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"led_bad_01","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"led_bad_02","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"}]}|
+2019-08-13 14:05:54,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:05:54,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:06:35,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,{"state": "OFF"}
+2019-08-13 14:06:35,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,{"state": "OFF"}
+2019-08-13 14:06:36,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 233. MAC no ack.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"led_wohnzimmer_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-08-13 14:06:36,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"led_wohnzimmer_02"},"message":"{\"state\": \"OFF\"}"}}|
+2019-08-13 14:14:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:14:08,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:15:08,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":45,"color": { "x":0.402,"y":0.396}}|
+2019-08-13 14:15:08,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":45,"color": { "x":0.403,"y":0.388}}|
+2019-08-13 14:15:08,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 233. MAC no ack.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"led_wohnzimmer_01"},"message":"{\"state\":\"ON\",\"brightness\":45,\"color\": { \"x\":0.402,\"y\":0.396}}"}}|
+2019-08-13 14:15:09,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"led_wohnzimmer_02"},"message":"{\"state\":\"ON\",\"brightness\":45,\"color\": { \"x\":0.403,\"y\":0.388}}"}}|
+2019-08-13 14:15:09,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 233. MAC no ack.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"led_wohnzimmer_01"},"message":"{\"state\":\"ON\",\"brightness\":45,\"color\": { \"x\":0.402,\"y\":0.396}}"}}|
+2019-08-13 14:15:10,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"led_wohnzimmer_02"},"message":"{\"state\":\"ON\",\"brightness\":45,\"color\": { \"x\":0.403,\"y\":0.388}}"}}|
+2019-08-13 14:15:39,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,{"state": "OFF"}
+2019-08-13 14:15:39,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,{"state": "OFF"}
+2019-08-13 14:15:39,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 233. MAC no ack.","meta":{"entity":{"ID":"0x00178801040c9476","type":"device","friendlyName":"led_wohnzimmer_01"},"message":"{\"state\": \"OFF\"}"}}|
+2019-08-13 14:15:40,SmartHome/zigbee2mqtt/bridge/log,|{"type":"zigbee_publish_error","message":"Error: AF data request fails, status code: 205. No network route. Please confirm that the device has (re)joined the network.","meta":{"entity":{"ID":"0x0017880104878b88","type":"device","friendlyName":"led_wohnzimmer_02"},"message":"{\"state\": \"OFF\"}"}}|
+2019-08-13 14:17:11,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:17:11,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:26:37,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:26:37,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:30:49,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:30:49,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:37:41,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:37:41,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 14:39:00,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 14:39:00,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:20:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:20:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:21:47,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:21:47,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:23:59,SmartHome/zigbee2mqtt/bridge/state,offline
+2019-08-13 17:23:59,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":106,"brightness":254,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/led_bad_01,|{"state":"ON","linkquality":80,"brightness":254}|
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/led_bad_02,|{"state":"ON","linkquality":80,"brightness":254}|
+2019-08-13 17:25:17,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:33:06,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:33:06,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|

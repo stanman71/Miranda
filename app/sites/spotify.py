@@ -233,6 +233,7 @@ def spotify_login(forwarding_site):
     forwarding_site_global = forwarding_site
     
     response = GET_SPOTIFY_USER()
+    WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Login") 
 
     return redirect(response)
     
@@ -246,7 +247,7 @@ def spotify_token():
     GENERATE_SPOTIFY_TOKEN(request.args['code'])
     
     if forwarding_site_global == "dashboard":
-        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + GET_HOST_PORT() + "/dashboard#spotify")
+        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard#spotify")
         
     if forwarding_site_global == "spotify":
         return redirect(url_for('dashboard_spotify'))     
@@ -258,9 +259,10 @@ def spotify_token():
 def spotify_logout(forwarding_site):
 
     DELETE_SPOTIFY_TOKEN()
+    WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Logout") 
         
     if forwarding_site == "dashboard":
-        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + GET_HOST_PORT() + "/dashboard#spotify")
+        return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard#spotify")
         
     if forwarding_site == "spotify":
         return redirect(url_for('dashboard_spotify'))      

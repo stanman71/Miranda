@@ -9,6 +9,7 @@ import datetime
 import json
 import sys
 import spotipy
+import threading
 
 from app import app
 from app.components.backend_led import *
@@ -74,13 +75,24 @@ def PING_IP_ADDRESS(ip_address):
         return False
 
 
+def HOST_REBOOT():
+    time.sleep(10)
+    os.system("sudo shutdown -r now")
+
+
+def HOST_SHUTDOWN():
+    time.sleep(10)
+    os.system("sudo shutdown -h now")
+
+
 @app.route('/dashboard/system/host', methods=['GET', 'POST'])
 @login_required
 @permission_required
 def dashboard_system_host():
     error_message_host_settings = []
     
-    message_restart = False
+    message_shutdown         = "" 
+    message_ip_config_change = False
 
     if request.method == "POST":   
           
@@ -90,13 +102,15 @@ def dashboard_system_host():
           
         # restart raspi 
         if request.form.get("restart") != None:
-            os.system("sudo shutdown -r now")
-            sys.exit()
+            Thread = threading.Thread(target=HOST_REBOOT)
+            Thread.start()    
+            message_shutdown = "System wird in 10 Sekunden neugestartet"
             
         # shutdown raspi 
         if request.form.get("shutdown") != None:
-            os.system("sudo shutdown -h now")
-            sys.exit()
+            Thread = threading.Thread(target=HOST_SHUTDOWN)
+            Thread.start()    
+            message_shutdown = "System wird in 10 Sekunden heruntergefahren"
                    
  
         # ################
@@ -254,7 +268,7 @@ def dashboard_system_host():
                 SET_HOST_DEFAULT_INTERFACE(default_interface)  
                 SET_HOST_PORT(port)        
         
-                message_restart = True
+                message_ip_config_change = True
                
         
     cpu_temperature             = GET_CPU_TEMPERATURE()
@@ -278,7 +292,8 @@ def dashboard_system_host():
  
     return render_template('dashboard_system_host.html',
                             error_message_host_settings=error_message_host_settings,
-                            message_restart=message_restart,
+                            message_shutdown=message_shutdown,
+                            message_ip_config_change=message_ip_config_change,
                             cpu_temperature=cpu_temperature,
                             lan_dhcp=lan_dhcp,
                             lan_ip_address=lan_ip_address,
@@ -468,8 +483,6 @@ def remove_mqtt_device(ieeeAddr):
     
     if result != True:
         SET_ERROR_DELETE_MQTT_DEVICE(result)
-    else:
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "MQTT | Device - " + device_name + " | deleted")
         
     return redirect(url_for('dashboard_system_mqtt'))
      

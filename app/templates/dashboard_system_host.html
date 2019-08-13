@@ -111,11 +111,20 @@
       </div>   
 
 
+<!-- message shutdown -->
+
+{% if message_shutdown != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ message_shutdown }}
+  </div>      
+{% endif %}
+
+
 <!-- general settings -->
 
       <div class="panel panel-default">
         <div class="panel-body">   
-          <div class="well well-sm">    
+          <div class="well well-sm">
             <div class="well well-sm">
             
               CPU Temperatur = {{ cpu_temperature }}
@@ -163,12 +172,12 @@
       {{ message }} <br>
     {% endfor %}
   </div>      
-{% endif %} 
+{% endif %}
 
 
-<!-- restart message -->
+<!-- message ip config change -->
 
-{% if message_restart == True %}
+{% if message_ip_config_change == True %}
   <div class="alert alert-success" role="alert">
     Änderungen werden nach dem Neustart wirksam
   </div>      

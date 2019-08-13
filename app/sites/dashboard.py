@@ -140,7 +140,7 @@ def dashboard(template):
                                 WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | " + scene_name + " : " + str(brightness) + " %")                              
                                                                 
                         else:
-                            WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %") 	                         
+                            WRITE_LOGFILE_SYSTEM("WARNING", "LED | Group - " + group.name + " | OFF : 0 %")                              
                             error_message_led = (group.name + " >>> Gruppe ist nicht eingeschaltet")                 
     
     
@@ -151,9 +151,7 @@ def dashboard(template):
                         
                         # new led setting ?
                         if scene_name != "OFF":
-                            
-                            scene = GET_LED_SCENE_BY_NAME(scene_name)
-                            
+
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
                             error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, 0, "OFF", 0, 2, 10)                                  
                             continue  
@@ -402,7 +400,7 @@ def dashboard(template):
 
                         if change_state == True: 
                             
-                            # new device setting ?	
+                            # new device setting ?  
                             new_setting       = False
                             dashboard_setting = dashboard_setting.replace(' ', '')
                             
@@ -411,14 +409,14 @@ def dashboard(template):
                                     new_setting = True
                                                                             
                             # more then one setting value:
-                            else:	
+                            else:   
                                 dashboard_setting_temp = dashboard_setting[1:-1]
                                 list_dashboard_setting = dashboard_setting_temp.split(",")
                                 
                                 for setting in list_dashboard_setting:
                                     
                                     if not setting in device.last_values:
-                                        new_setting = True	 
+                                        new_setting = True   
                             
                             if new_setting == True:
 
@@ -450,7 +448,7 @@ def dashboard(template):
                                     WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + dashboard_setting_formated) 
 
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)  	
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)    
                                     
                  
                 except Exception as e:
@@ -491,7 +489,7 @@ def dashboard(template):
                         watering_control_setting_formated = watering_control_setting_formated.replace('{', '')
                         watering_control_setting_formated = watering_control_setting_formated.replace('}', '')   
                         
-                        # new watering setting ?	
+                        # new watering setting ?    
                         new_setting              = False
                         watering_control_setting = watering_control_setting.replace(' ', '')
                         
@@ -500,14 +498,14 @@ def dashboard(template):
                                 new_setting = True
                                                                         
                         # more then one setting value:
-                        else:	
+                        else:   
                             watering_control_setting_temp = watering_control_setting[1:-1]
                             list_watering_control_setting = watering_control_setting_temp.split(",")
                             
                             for setting in list_watering_control_setting:
                                 
                                 if not setting in plant.mqtt_device.last_values:
-                                    new_setting = True	 
+                                    new_setting = True   
                         
                         if new_setting == True:                             
        
@@ -519,7 +517,7 @@ def dashboard(template):
                             error_message_watering_control = MQTT_CHECK_SETTING_PROCESS(plant.mqtt_device.ieeeAddr, watering_control_setting, 1, 5)                                     
 
                         else:
-								
+                                
                             WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + plant.mqtt_device.name + " | " + watering_control_setting_formated) 
 
 

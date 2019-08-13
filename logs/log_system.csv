@@ -29799,3 +29799,218 @@ expected ',' or ']', but got '<scalar>'
 2019-08-12 16:40:53,ERROR,|Snowboy || No module named '_snowboydetect'|
 2019-08-12 17:30:03,WARNING,|MQTT || Update Devices || No Message founded|
 2019-08-12 18:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 19:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 20:04:19,EVENT,|MQTT || Started|
+2019-08-12 20:04:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 20:04:22,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 20:04:22,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 20:05:09,EVENT,|MQTT || Started|
+2019-08-12 20:05:09,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 20:05:12,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 20:05:12,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 20:05:43,EVENT,|MQTT || Started|
+2019-08-12 20:05:43,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-12 20:05:46,EVENT,|ZigBee2MQTT || Connected|
+2019-08-12 20:05:46,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-12 20:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 20:49:21,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-12 20:49:22,EVENT,|ZigBee2MQTT || Device added - 0x00178801040c9476|
+2019-08-12 20:49:41,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-12 20:49:42,EVENT,|ZigBee2MQTT || Device added - 0x0017880104878b88|
+2019-08-12 20:50:02,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-12 20:50:03,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffef56003|
+2019-08-12 20:50:06,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-12 20:50:07,EVENT,|ZigBee2MQTT || Device added - 0x000b3cfffeff0aa8|
+2019-08-12 21:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 22:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-12 23:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 00:00:00,SUCCESS,|Database_Backup || saved|
+2019-08-13 00:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 01:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 02:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 03:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 04:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 05:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 06:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 07:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-08-13 07:56:09,DATABASE,|MQTT || Device - 0x433375 || deleted|
+2019-08-13 07:56:09,SUCCESS,|MQTT || Device - 0x433375 || deleted|
+2019-08-13 07:56:13,SUCCESS,|MQTT || Update Devices|
+2019-08-13 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 10:19:09,EVENT,|MQTT || Started|
+2019-08-13 10:19:09,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 10:19:12,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 10:19:12,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-13 10:19:56,EVENT,|MQTT || Started|
+2019-08-13 10:19:56,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 10:19:59,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 10:19:59,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-13 10:21:02,EVENT,|MQTT || Started|
+2019-08-13 10:21:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 10:21:05,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 10:21:05,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-13 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 10:51:44,ERROR,|Snowboy || No module named '_snowboydetect'|
+2019-08-13 11:20:39,EVENT,|MQTT || Started|
+2019-08-13 11:20:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 11:20:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 11:20:42,EVENT,|Speechcontrol || Started|
+2019-08-13 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 11:30:42,EVENT,|MQTT || Started|
+2019-08-13 11:30:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 11:30:45,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 11:30:45,EVENT,|Speechcontrol || Started|
+2019-08-13 11:39:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 11:39:37,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 11:39:37,EVENT,|Speechcontrol || Started|
+2019-08-13 11:39:37,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-08-13 11:40:20,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 11:40:23,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 11:40:23,EVENT,|Speechcontrol || Started|
+2019-08-13 11:52:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 11:52:29,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 11:52:29,EVENT,|Speechcontrol || Started|
+2019-08-13 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 12:42:42,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-13 12:45:27,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 12:45:30,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 12:45:30,EVENT,|Speechcontrol || Started|
+2019-08-13 12:45:30,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-08-13 12:45:36,ERROR,|ZigBee2MQTT || Update Devices || 'friendly_name'|
+2019-08-13 12:46:14,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 12:46:17,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 12:46:17,EVENT,|Speechcontrol || Started|
+2019-08-13 12:53:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 12:53:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 12:53:22,EVENT,|Speechcontrol || Started|
+2019-08-13 12:59:37,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 12:59:40,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 12:59:40,EVENT,|Speechcontrol || Started|
+2019-08-13 12:59:43,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:00:06,DATABASE,|MQTT || Device - 0x00178801040c9476 || Gateway - zigbee2mqtt || changed |||| Name - 0x00178801040c9476 || ieeeAddr - 0x00178801040c9476 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || Input_values -  || Input_events -  || Commands - |
+2019-08-13 13:00:06,DATABASE,|MQTT || Device - 0x0017880104878b88 || Gateway - zigbee2mqtt || changed |||| Name - 0x0017880104878b88 || ieeeAddr - 0x0017880104878b88 || Model - 9290012573A || device_type - led_rgb || description - PHILIPS HUE white and color ambiance E26/E27/E14 || Input_values -  || Input_events -  || Commands - |
+2019-08-13 13:00:06,DATABASE,|MQTT || Device - 0x000b3cfffef56003 || Gateway - zigbee2mqtt || changed |||| Name - 0x000b3cfffef56003 || ieeeAddr - 0x000b3cfffef56003 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || Input_values -  || Input_events -  || Commands - |
+2019-08-13 13:00:06,DATABASE,|MQTT || Device - 0x000b3cfffeff0aa8 || Gateway - zigbee2mqtt || changed |||| Name - 0x000b3cfffeff0aa8 || ieeeAddr - 0x000b3cfffeff0aa8 || Model - LED1649C5 || device_type - led_simple || description - IKEA TRADFRI LED bulb E12/E14/E17 400 lumen || Input_values -  || Input_events -  || Commands - |
+2019-08-13 13:00:06,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:00:11,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:04:14,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:04:57,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-13 13:10:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:10:45,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:10:45,EVENT,|Speechcontrol || Started|
+2019-08-13 13:12:30,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-13 13:26:50,EVENT,|File || /logs/log_system.csv || downloaded|
+2019-08-13 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 13:37:39,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:37:42,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:37:42,EVENT,|Speechcontrol || Started|
+2019-08-13 13:38:22,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:38:22,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:40:17,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:40:17,SUCCESS,|Spotify || Token updated|
+2019-08-13 13:40:20,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:40:20,EVENT,|Speechcontrol || Started|
+2019-08-13 13:40:53,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-13 13:40:58,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:40:58,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:40:58,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-13 13:41:02,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:41:02,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:41:02,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-13 13:44:22,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:44:22,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:44:22,ERROR,|Spotify || 'Spotify' object has no attribute 'devices'|
+2019-08-13 13:45:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:45:18,SUCCESS,|Spotify || Token updated|
+2019-08-13 13:45:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:45:21,EVENT,|Speechcontrol || Started|
+2019-08-13 13:47:28,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:47:31,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:47:31,EVENT,|Speechcontrol || Started|
+2019-08-13 13:48:07,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:48:07,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:48:21,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:48:21,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:52:03,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 13:52:06,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 13:52:07,EVENT,|Speechcontrol || Started|
+2019-08-13 13:52:39,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:52:39,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:56:26,SUCCESS,|Spotify || New Token received|
+2019-08-13 13:56:26,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 13:57:02,DATABASE,|LED || Group - wohnzimmer || added|
+2019-08-13 13:57:28,DATABASE,|MQTT || Device - 0x00178801040c9476 || Gateway - zigbee2mqtt || Name changed |||| Name - wohnzimmer_01|
+2019-08-13 13:57:31,DATABASE,|MQTT || Device - 0x0017880104878b88 || Gateway - zigbee2mqtt || Name changed |||| Name - wohnzimmer_02|
+2019-08-13 13:57:36,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:57:59,DATABASE,|MQTT || Device - wohnzimmer_01 || Gateway - zigbee2mqtt || Name changed |||| Name - led_wohnzimmer_01|
+2019-08-13 13:58:02,DATABASE,|MQTT || Device - wohnzimmer_02 || Gateway - zigbee2mqtt || Name changed |||| Name - led_wohnzimmer_02|
+2019-08-13 13:58:05,DATABASE,|MQTT || Device - 0x000b3cfffef56003 || Gateway - zigbee2mqtt || Name changed |||| Name - led_bad_01|
+2019-08-13 13:58:08,DATABASE,|MQTT || Device - 0x000b3cfffeff0aa8 || Gateway - zigbee2mqtt || Name changed |||| Name - led_bad_02|
+2019-08-13 13:58:14,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-08-13 13:58:16,EVENT,|File || /logs/log_zigbee2mqtt.csv || downloaded|
+2019-08-13 13:58:59,DATABASE,|LED || Group - bad || added|
+2019-08-13 14:00:02,DATABASE,|Plant - Schreibtisch || added|
+2019-08-13 14:00:12,DATABASE,|Plant - Schreibtisch || changed |||| Name - Schreibtisch || MQTT-Device - 0x433375 || Group - 1 || Pumptime - None || Control Sensor Moisture -  || Moisture Level - None || Control Sensor Watertank - |
+2019-08-13 14:00:19,DATABASE,|Plant - Schreibtisch || changed |||| Name - Schreibtisch || MQTT-Device - 0x433375 || Group - 1 || Pumptime - None || Control Sensor Moisture - checked || Moisture Level - None || Control Sensor Watertank - |
+2019-08-13 14:00:34,DATABASE,|Plant - Schreibtisch || changed |||| Pumptime_Auto - 30|
+2019-08-13 14:00:34,DATABASE,|Plant - Schreibtisch || changed |||| Name - Schreibtisch || MQTT-Device - 0x433375 || Group - 1 || Pumptime - auto || Control Sensor Moisture - checked || Moisture Level - normal || Control Sensor Watertank - |
+2019-08-13 14:00:46,DATABASE,|Plant - Schreibtisch || changed |||| Name - Schreibtisch || MQTT-Device - 0x433375 || Group - 1 || Pumptime - auto || Control Sensor Moisture - checked || Moisture Level - much || Control Sensor Watertank - |
+2019-08-13 14:00:52,DATABASE,|Plant - Schreibtisch || changed |||| Name - Schreibtisch || MQTT-Device - 0x433375 || Group - 1 || Pumptime - auto || Control Sensor Moisture - checked || Moisture Level - much || Control Sensor Watertank - checked|
+2019-08-13 14:05:54,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:05:57,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:05:57,EVENT,|Speechcontrol || Started|
+2019-08-13 14:06:37,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-08-13 14:06:37,ERROR,|LED || Set Brightness || 'NoneType' object has no attribute 'lower'|
+2019-08-13 14:14:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:14:11,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:14:12,EVENT,|Speechcontrol || Started|
+2019-08-13 14:14:50,DATABASE,|LED || Group - wohnzimmer || added|
+2019-08-13 14:15:14,WARNING,|LED || Group - wohnzimmer || standard : 18 || ['led_wohnzimmer_01 >>> Setting not confirmed', 'led_wohnzimmer_02 >>> Setting not confirmed']|
+2019-08-13 14:15:23,DATABASE,|LED || Group - bad || added|
+2019-08-13 14:15:41,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-08-13 14:16:37,SUCCESS,|Spotify || Login|
+2019-08-13 14:16:38,SUCCESS,|Spotify || New Token received|
+2019-08-13 14:16:38,SUCCESS,|Spotify || New refresh Token received|
+2019-08-13 14:17:11,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:17:11,SUCCESS,|Spotify || Token updated|
+2019-08-13 14:17:14,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:17:14,EVENT,|Speechcontrol || Started|
+2019-08-13 14:26:37,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:26:37,SUCCESS,|Spotify || Token updated|
+2019-08-13 14:26:40,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:26:40,EVENT,|Speechcontrol || Started|
+2019-08-13 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 14:30:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:30:49,SUCCESS,|Spotify || Token updated|
+2019-08-13 14:30:51,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:30:52,EVENT,|Speechcontrol || Started|
+2019-08-13 14:37:41,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:37:41,SUCCESS,|Spotify || Token updated|
+2019-08-13 14:37:44,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:37:44,EVENT,|Speechcontrol || Started|
+2019-08-13 14:39:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 14:39:00,SUCCESS,|Spotify || Token updated|
+2019-08-13 14:39:03,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 14:39:03,EVENT,|Speechcontrol || Started|
+2019-08-13 17:14:22,EVENT,|Speechcontrol || Detection || das ist ein test|
+2019-08-13 17:14:44,ERROR,|Speechcontrol || Could not request results from Wit.ai service; recognition request failed: Service Unavailable|
+2019-08-13 17:14:59,EVENT,|Speechcontrol || Detection || das ist ein test|
+2019-08-13 17:20:18,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 17:20:18,SUCCESS,|Spotify || Token updated|
+2019-08-13 17:20:21,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 17:20:21,EVENT,|Speechcontrol || Started|
+2019-08-13 17:21:00,EVENT,|Speechcontrol || Detection || das ist ein test|
+2019-08-13 17:21:46,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 17:21:47,SUCCESS,|Spotify || Token updated|
+2019-08-13 17:21:49,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 17:21:50,EVENT,|Speechcontrol || Started|
+2019-08-13 17:23:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 17:23:59,SUCCESS,|Spotify || Token updated|
+2019-08-13 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-08-13 17:33:06,EVENT,|MQTT || Broker - localhost || Connected|
+2019-08-13 17:33:06,SUCCESS,|Spotify || Token updated|
+2019-08-13 17:33:09,EVENT,|ZigBee2MQTT || Connected|
+2019-08-13 17:33:09,EVENT,|Speechcontrol || Started|
+2019-08-13 17:33:41,EVENT,|Speechcontrol || Detection || das ist ein test|

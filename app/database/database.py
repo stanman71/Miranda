@@ -123,8 +123,8 @@ class LED_Groups(db.Model):
     led_name_9            = db.Column(db.String(50)) 
     led_device_type_9     = db.Column(db.String(50))
     collapse              = db.Column(db.String(50))    
-    current_setting       = db.Column(db.String(50))
-    current_brightness    = db.Column(db.Integer)
+    current_setting       = db.Column(db.String(50), server_default=("OFF"))
+    current_brightness    = db.Column(db.Integer, server_default=("0"))
     error_change_settings = db.Column(db.String(500), server_default=(""))
 
 class LED_Scenes(db.Model):
