@@ -474,12 +474,11 @@
                   
                   <!-- second row --> 
                   
+                  {% if entry.dashboard_check_option != "None" %}
+                  
                   <tr>                   
                     <td></td>
                     <td>
- 
-                    {% if entry.dashboard_check_option != "None" %} 
-                  
                        <div class="row justify-content-md-center">
                           <div class="col-sm-6"> 
                             <select class="selectpicker" data-width="100%" name="set_dashboard_check_setting_{{ entry.id }}">
@@ -524,12 +523,13 @@
                         </div>                          
                       
                       {% endif %}
-                      
-                    {% endif %}   
-                    
+
                     <td></td>
                     <td></td>                 
                   </tr>
+                  
+                  {% endif %}  
+                  
                   <tr>
                     <td></td>
                     <td></td>        

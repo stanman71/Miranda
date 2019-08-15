@@ -60,333 +60,340 @@ def dashboard_scheduler():
                 error_message_add_scheduler_task = ADD_SCHEDULER_TASK(scheduler_task_name, "")          
 
         # change settings
-        if request.form.get("change_settings") != None: 
-            for i in range (1,26):
+        for i in range (1,26):
+            
+            if request.form.get("set_name_" + str(i)) != None:
+                
+                SET_SCHEDULER_TASK_COLLAPSE(i)    
 
-                if request.form.get("set_name_" + str(i)) != None:
+                # ############
+                # name setting
+                # ############
+
+                scheduler_data = GET_SCHEDULER_TASK_BY_ID(i)
+                new_name       = request.form.get("set_name_" + str(i))                    
+
+                # add new name
+                if ((new_name != "") and (GET_SCHEDULER_TASK_BY_NAME(new_name) == None)):
+                    name = request.form.get("set_name_" + str(i)) 
+                  
+                # nothing changed 
+                elif new_name == scheduler_data.name:
+                    name = scheduler_data.name                        
                     
-                    SET_SCHEDULER_TASK_COLLAPSE(i)    
+                # name already exist
+                elif ((GET_SCHEDULER_TASK_BY_NAME(new_name) != None) and (scheduler_data.name != new_name)):
+                    name = scheduler_data.name 
+                    error_change_settings = "Name schon vergeben"
 
-                    # ############
-                    # name setting
-                    # ############
-
-                    scheduler_data = GET_SCHEDULER_TASK_BY_ID(i)
-                    new_name       = request.form.get("set_name_" + str(i))                    
-
-                    # add new name
-                    if ((new_name != "") and (GET_SCHEDULER_TASK_BY_NAME(new_name) == None)):
-                        name = request.form.get("set_name_" + str(i)) 
-                      
-                    # nothing changed 
-                    elif new_name == scheduler_data.name:
-                        name = scheduler_data.name                        
-                        
-                    # name already exist
-                    elif ((GET_SCHEDULER_TASK_BY_NAME(new_name) != None) and (scheduler_data.name != new_name)):
-                        name = scheduler_data.name 
-                        error_change_settings = "Name schon vergeben"
-
-                    # no input commited
-                    else:                          
-                        name = GET_SCHEDULER_TASK_BY_ID(i).name 
-                        error_change_settings = "Keinen Namen angegeben"
+                # no input commited
+                else:                          
+                    name = GET_SCHEDULER_TASK_BY_ID(i).name 
+                    error_change_settings = "Keinen Namen angegeben"
 
 
-                    # ############
-                    # task setting
-                    # ############
+                # ############
+                # task setting
+                # ############
 
 
-                    # set task
-                    if request.form.get("set_task_" + str(i)) != "":
-                        task = request.form.get("set_task_" + str(i))
-                    else:
-                        task = GET_SCHEDULER_TASK_BY_ID(i).task
-                        error_change_settings = "Keine Aufgabe angegeben"
+                # set task
+                if request.form.get("set_task_" + str(i)) != "":
+                    task = request.form.get("set_task_" + str(i))
+                else:
+                    task = GET_SCHEDULER_TASK_BY_ID(i).task
+                    error_change_settings = "Keine Aufgabe angegeben"
 
 
-                    # #################
-                    # checkbox settings
-                    # #################
+                # #################
+                # checkbox settings
+                # #################
 
 
-                    # set checkbox time
-                    if request.form.get("checkbox_option_time_" + str(i)):
-                        option_time = "checked"
-                    else:
-                        option_time = "None"  
+                # set checkbox time
+                if request.form.get("checkbox_option_time_" + str(i)):
+                    option_time = "checked"
+                else:
+                    option_time = "None"  
 
 
-                    # set checkbox sun
-                    if request.form.get("checkbox_option_sun_" + str(i)):
-                        option_sun = "checked"
-                    else:
-                        option_sun = "None" 
+                # set checkbox sun
+                if request.form.get("checkbox_option_sun_" + str(i)):
+                    option_sun = "checked"
+                else:
+                    option_sun = "None" 
 
 
-                    # set checkbox sensors
-                    if request.form.get("checkbox_option_sensors_" + str(i)):
-                        option_sensors = "checked"
-                    else:
-                        option_sensors = "None"  
+                # set checkbox sensors
+                if request.form.get("checkbox_option_sensors_" + str(i)):
+                    option_sensors = "checked"
+                else:
+                    option_sensors = "None"  
 
 
-                    # set checkbox position
-                    if request.form.get("checkbox_option_position_" + str(i)):
-                        option_position = "checked"
-                    else:
-                        option_position = "None"  
-                        
-                        
-                    # set checkbox repeat
-                    if request.form.get("checkbox_option_repeat_" + str(i)):
-                        option_repeat = "checked"
-                    else:
-                        option_repeat = "None"  
-
-
-                    # #############
-                    # time settings
-                    # #############
-
-
-                    # set day
-                    if request.form.get("set_day_" + str(i)) != "":
-                        day = request.form.get("set_day_" + str(i))
-                    else:
-                        day = GET_SCHEDULER_TASK_BY_ID(i).day
-
-
-                    # set hour
-                    if request.form.get("set_hour_" + str(i)) != "":
-                        hour = request.form.get("set_hour_" + str(i))
-                    else:
-                        hour = GET_SCHEDULER_TASK_BY_ID(i).hour
-
-
-                    # set minute
-                    if request.form.get("set_minute_" + str(i)) != "":
-                        minute = request.form.get("set_minute_" + str(i))
-                    else:
-                        minute = GET_SCHEDULER_TASK_BY_ID(i).minute 
-
-
-                    # ############
-                    # sun settings
-                    # ############
-
-
-                    # set option sunrise
-                    if request.form.get("checkbox_option_sunrise_" + str(i)):
-                        option_sunrise = "checked"
-                    else:
-                        option_sunrise = "None"  
-
-
-                    # set option sunset
-                    if request.form.get("checkbox_option_sunset_" + str(i)):
-                        option_sunset = "checked"
-                    else:              
-                        option_sunset = "None"  
-
-
-                    # set location
-                    location = request.form.get("set_location_" + str(i))
+                # set checkbox position
+                if request.form.get("checkbox_option_position_" + str(i)):
+                    option_position = "checked"
+                else:
+                    option_position = "None"  
                     
-                    if location == "" or location == None:           
-                        location = "None"  
-                        
-                                   
-                    # update sunrise / sunset  
-                    if location != "None":
-                        
-                        # get coordinates
-                        coordinates = GET_LOCATION_COORDINATES(location)
-                         
-                        SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
-                        SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
-                                
-                    else:
-                        SET_SCHEDULER_TASK_SUNRISE(i, "None")
-                        SET_SCHEDULER_TASK_SUNSET(i, "None")                        
-
-
-                    # ###############
-                    # sensor settings
-                    # ###############              
-                                  
-
-                    # set mqtt_device 1
-                    mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))
-
-                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_1):
-                        mqtt_device_ieeeAddr_1 = mqtt_device_1
-                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_1):
-                        mqtt_device_ieeeAddr_1 = GET_MQTT_DEVICE_BY_ID(mqtt_device_1).ieeeAddr
-                    else:
-                        mqtt_device_ieeeAddr_1 = "None"
-                         
-                         
-                    # set mqtt_device 2
-                    mqtt_device_2 = request.form.get("set_mqtt_device_2_" + str(i))
-
-                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_2):
-                        mqtt_device_ieeeAddr_2 = mqtt_device_2
-                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_2):
-                        mqtt_device_ieeeAddr_2 = GET_MQTT_DEVICE_BY_ID(mqtt_device_2).ieeeAddr
-                    else:
-                        mqtt_device_ieeeAddr_2 = "None"
-                        
-                        
-                    # set mqtt_device 3
-                    mqtt_device_3 = request.form.get("set_mqtt_device_3_" + str(i)) 
-
-                    if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_3):
-                        mqtt_device_ieeeAddr_3 = mqtt_device_3
-                    elif GET_MQTT_DEVICE_BY_ID(mqtt_device_3):
-                        mqtt_device_ieeeAddr_3 = GET_MQTT_DEVICE_BY_ID(mqtt_device_3).ieeeAddr
-                    else:
-                        mqtt_device_ieeeAddr_3 = "None"
-                        
-                        
-                    operator_1       = request.form.get("set_operator_1_" + str(i))
-                    operator_2       = request.form.get("set_operator_2_" + str(i))
-                    operator_3       = request.form.get("set_operator_3_" + str(i))     
-                    value_1          = request.form.get("set_value_1_" + str(i))
-                    value_2          = request.form.get("set_value_2_" + str(i))
-                    value_3          = request.form.get("set_value_3_" + str(i))                                    
-                    operator_main_1  = request.form.get("set_operator_main_1_" + str(i))
-                    operator_main_2  = request.form.get("set_operator_main_2_" + str(i))
-
-
-                    if operator_1 == None:
-                        operator_1 = "None"
-                    if operator_2 == None:
-                        operator_2 = "None"    
-                    if operator_3 == None:
-                        operator_3 = "None"  
-                    if value_1 == None or value_1 == "":
-                        value_1 = "None"
-                    if value_2 == None or value_2 == "":
-                        value_2 = "None"
-                    if value_3 == None or value_3 == "":
-                        value_3 = "None"                       
-                    if operator_main_1 == None:
-                        operator_main_1 = "None"
-                    if operator_main_2 == None:
-                        operator_main_2 = "None"                   
-
-
-                    # get mqtt device 1
-                    try:
-                        mqtt_device_name_1         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).name
-                        mqtt_device_input_values_1 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
-
-                        # get sensorkey value
-                        sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
-                        sensor_key_1 = sensor_key_1.replace(" ", "") 
-                        if sensor_key_1.isdigit():
-                            if sensor_key_1 == "0" or sensor_key_1 == "1":
-                                sensor_key_1 = "None"
-                            else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
-                                sensor_list  = sensor_list.split(",")
-                                sensor_key_1 = sensor_list[int(sensor_key_1)-2]
-                            
-                    except:  
-                        sensor_key_1               = "None"
-                        mqtt_device_ieeeAddr_1     = "None"
-                        mqtt_device_name_1         = "None"
-                        mqtt_device_input_values_1 = "None"  
-
-
-                    # get mqtt device 2
-                    try:
-                        mqtt_device_name_2         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
-                        mqtt_device_input_values_2 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
-
-                        # get sensorkey value
-                        sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
-                        sensor_key_2 = sensor_key_2.replace(" ", "") 
-                        if sensor_key_2.isdigit():
-                            if sensor_key_2 == "0" or sensor_key_2 == "1":
-                                sensor_key_2 = "None"
-                            else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
-                                sensor_list  = sensor_list.split(",")
-                                sensor_key_2 = sensor_list[int(sensor_key_2)-2]
-                            
-                    except:
-                        sensor_key_2               = "None"
-                        mqtt_device_ieeeAddr_2     = "None"
-                        mqtt_device_name_2         = "None"
-                        mqtt_device_input_values_2 = "None"   
-
-
-                    # get mqtt device 3
-                    try:
-                        mqtt_device_name_3         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
-                        mqtt_device_input_values_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
-
-
-
-                        # get sensorkey value
-                        sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
-                        sensor_key_3 = sensor_key_3.replace(" ", "") 
-                        
-                        if sensor_key_3.isdigit():
-                            if sensor_key_3 == "0" or sensor_key_3 == "1":
-                                sensor_key_3 = "None"
-                            else:                                
-                                sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
-                                sensor_list  = sensor_list.split(",")
-                                sensor_key_3 = sensor_list[int(sensor_key_3)-2]
-                            
-                    except: 
-                        sensor_key_3               = "None"
-                        mqtt_device_ieeeAddr_3     = "None"
-                        mqtt_device_name_3         = "None"
-                        mqtt_device_input_values_3 = "None"   
-
-
-                    # #################
-                    # position settings
-                    # #################   
-
-
-                    # set option home
-                    if request.form.get("checkbox_option_home_" + str(i)):
-                        option_home = "checked"
-                    else:
-                        option_home = "None"  
-
-
-                    # set option away
-                    if request.form.get("checkbox_option_away_" + str(i)):
-                        option_away = "checked"
-                    else:
-                        option_away = "None"  
-
-                    # set ip_addresses
-                    if request.form.get("set_ip_addresses_" + str(i)) != "":
-                        ip_addresses = request.form.get("set_ip_addresses_" + str(i))
-                    else:
-                        ip_addresses = "None"
-                        
-                    SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
                     
-                    SET_SCHEDULER_TASK(i, name, task, 
-                                          option_time, option_sun, option_sensors, option_position, option_repeat, 
-                                          day, hour, minute,
-                                          option_sunrise, option_sunset, location,
-                                          mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
-                                          sensor_key_1, operator_1, value_1, operator_main_1,
-                                          mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
-                                          sensor_key_2, operator_2, value_2, operator_main_2,
-                                          mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
-                                          sensor_key_3, operator_3, value_3,
-                                          option_home, option_away, ip_addresses)
+                # set checkbox repeat
+                if request.form.get("checkbox_option_repeat_" + str(i)):
+                    option_repeat = "checked"
+                else:
+                    option_repeat = "None"  
+
+
+                # #############
+                # time settings
+                # #############
+
+
+                # set day
+                if request.form.get("set_day_" + str(i)) != "":
+                    day = request.form.get("set_day_" + str(i))
+                else:
+                    day = GET_SCHEDULER_TASK_BY_ID(i).day
+
+
+                # set hour
+                if request.form.get("set_hour_" + str(i)) != "":
+                    hour = request.form.get("set_hour_" + str(i))
+                else:
+                    hour = GET_SCHEDULER_TASK_BY_ID(i).hour
+
+
+                # set minute
+                if request.form.get("set_minute_" + str(i)) != "":
+                    minute = request.form.get("set_minute_" + str(i))
+                else:
+                    minute = GET_SCHEDULER_TASK_BY_ID(i).minute 
+
+
+                # ############
+                # sun settings
+                # ############
+
+
+                # set option sunrise
+                if request.form.get("checkbox_option_sunrise_" + str(i)):
+                    option_sunrise = "checked"
+                else:
+                    option_sunrise = "None"  
+
+
+                # set option sunset
+                if request.form.get("checkbox_option_sunset_" + str(i)):
+                    option_sunset = "checked"
+                else:              
+                    option_sunset = "None"  
+
+
+                # set location
+                location = request.form.get("set_location_" + str(i))
+                
+                if location == "" or location == None:           
+                    location = "None"  
+                    
+                               
+                # update sunrise / sunset  
+                if location != "None":
+                    
+                    # get coordinates
+                    coordinates = GET_LOCATION_COORDINATES(location)
+                     
+                    SET_SCHEDULER_TASK_SUNRISE(i, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+                    SET_SCHEDULER_TASK_SUNSET(i, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+                            
+                else:
+                    SET_SCHEDULER_TASK_SUNRISE(i, "None")
+                    SET_SCHEDULER_TASK_SUNSET(i, "None")                        
+
+
+                # ###############
+                # sensor settings
+                # ###############              
+
+                # set mqtt_device 1
+                mqtt_device_1 = request.form.get("set_mqtt_device_1_" + str(i))
+
+                if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_1):
+                    mqtt_device_ieeeAddr_1 = mqtt_device_1
+                elif GET_MQTT_DEVICE_BY_ID(mqtt_device_1):
+                    mqtt_device_ieeeAddr_1 = GET_MQTT_DEVICE_BY_ID(mqtt_device_1).ieeeAddr
+                else:
+                    mqtt_device_ieeeAddr_1 = "None"
+                     
+                     
+                # set mqtt_device 2
+                mqtt_device_2 = request.form.get("set_mqtt_device_2_" + str(i))
+
+                if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_2):
+                    mqtt_device_ieeeAddr_2 = mqtt_device_2
+                elif GET_MQTT_DEVICE_BY_ID(mqtt_device_2):
+                    mqtt_device_ieeeAddr_2 = GET_MQTT_DEVICE_BY_ID(mqtt_device_2).ieeeAddr
+                else:
+                    mqtt_device_ieeeAddr_2 = "None"
+                    
+                    
+                # set mqtt_device 3
+                mqtt_device_3 = request.form.get("set_mqtt_device_3_" + str(i)) 
+
+                if GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_3):
+                    mqtt_device_ieeeAddr_3 = mqtt_device_3
+                elif GET_MQTT_DEVICE_BY_ID(mqtt_device_3):
+                    mqtt_device_ieeeAddr_3 = GET_MQTT_DEVICE_BY_ID(mqtt_device_3).ieeeAddr
+                else:
+                    mqtt_device_ieeeAddr_3 = "None"
+                    
+                    
+                operator_1       = request.form.get("set_operator_1_" + str(i))
+                operator_2       = request.form.get("set_operator_2_" + str(i))
+                operator_3       = request.form.get("set_operator_3_" + str(i))     
+                value_1          = request.form.get("set_value_1_" + str(i))
+                value_2          = request.form.get("set_value_2_" + str(i))
+                value_3          = request.form.get("set_value_3_" + str(i))                                    
+                operator_main_1  = request.form.get("set_operator_main_1_" + str(i))
+                operator_main_2  = request.form.get("set_operator_main_2_" + str(i))
+
+
+                if operator_1 == None:
+                    operator_1 = "None"
+                if operator_2 == None:
+                    operator_2 = "None"    
+                if operator_3 == None:
+                    operator_3 = "None"  
+                if value_1 == None or value_1 == "":
+                    value_1 = "None"
+                if value_2 == None or value_2 == "":
+                    value_2 = "None"
+                if value_3 == None or value_3 == "":
+                    value_3 = "None"                       
+                if operator_main_1 == None:
+                    operator_main_1 = "None"
+                if operator_main_2 == None:
+                    operator_main_2 = "None"                   
+
+
+                # get mqtt device 1
+                try:
+                    mqtt_device_name_1         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).name
+                    mqtt_device_input_values_1 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
+
+                    # get sensorkey value
+                    sensor_key_1 = request.form.get("set_sensor_1_" + str(i))
+                    sensor_key_1 = sensor_key_1.replace(" ", "") 
+                    if sensor_key_1.isdigit():
+                        if sensor_key_1 == "0" or sensor_key_1 == "1":
+                            sensor_key_1 = "None"
+                        else:                                
+                            sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_1).input_values
+                            sensor_list  = sensor_list.split(",")
+                            sensor_key_1 = sensor_list[int(sensor_key_1)-2]
+                        
+                except:  
+                    sensor_key_1               = "None"
+                    mqtt_device_ieeeAddr_1     = "None"
+                    mqtt_device_name_1         = "None"
+                    mqtt_device_input_values_1 = "None"  
+
+
+                # get mqtt device 2
+                try:
+                    mqtt_device_name_2         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).name
+                    mqtt_device_input_values_2 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
+
+                    # get sensorkey value
+                    sensor_key_2 = request.form.get("set_sensor_2_" + str(i))
+                    sensor_key_2 = sensor_key_2.replace(" ", "") 
+                    if sensor_key_2.isdigit():
+                        if sensor_key_2 == "0" or sensor_key_2 == "1":
+                            sensor_key_2 = "None"
+                        else:                                
+                            sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_2).input_values
+                            sensor_list  = sensor_list.split(",")
+                            sensor_key_2 = sensor_list[int(sensor_key_2)-2]
+                        
+                except:
+                    sensor_key_2               = "None"
+                    mqtt_device_ieeeAddr_2     = "None"
+                    mqtt_device_name_2         = "None"
+                    mqtt_device_input_values_2 = "None"   
+
+
+                # get mqtt device 3
+                try:
+                    mqtt_device_name_3         = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).name
+                    mqtt_device_input_values_3 = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
+
+
+
+                    # get sensorkey value
+                    sensor_key_3 = request.form.get("set_sensor_3_" + str(i))
+                    sensor_key_3 = sensor_key_3.replace(" ", "") 
+                    
+                    if sensor_key_3.isdigit():
+                        if sensor_key_3 == "0" or sensor_key_3 == "1":
+                            sensor_key_3 = "None"
+                        else:                                
+                            sensor_list  = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr_3).input_values
+                            sensor_list  = sensor_list.split(",")
+                            sensor_key_3 = sensor_list[int(sensor_key_3)-2]
+                        
+                except: 
+                    sensor_key_3               = "None"
+                    mqtt_device_ieeeAddr_3     = "None"
+                    mqtt_device_name_3         = "None"
+                    mqtt_device_input_values_3 = "None"   
+
+
+                # #################
+                # position settings
+                # #################   
+
+
+                # set option home
+                if request.form.get("checkbox_option_home_" + str(i)):
+                    option_home = "checked"
+                else:
+                    option_home = "None"  
+
+
+                # set option away
+                if request.form.get("checkbox_option_away_" + str(i)):
+                    option_away = "checked"
+                else:
+                    option_away = "None"  
+
+                # set ip_addresses
+                if request.form.get("set_ip_addresses_" + str(i)) != "":
+                    ip_addresses = request.form.get("set_ip_addresses_" + str(i))
+                else:
+                    ip_addresses = "None"
+                    
+                SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
+                
+                SET_SCHEDULER_TASK(i, name, task, 
+                                      option_time, option_sun, option_sensors, option_position, option_repeat, 
+                                      day, hour, minute,
+                                      option_sunrise, option_sunset, location,
+                                      mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
+                                      sensor_key_1, operator_1, value_1, operator_main_1,
+                                      mqtt_device_ieeeAddr_2, mqtt_device_name_2, mqtt_device_input_values_2, 
+                                      sensor_key_2, operator_2, value_2, operator_main_2,
+                                      mqtt_device_ieeeAddr_3, mqtt_device_name_3, mqtt_device_input_values_3, 
+                                      sensor_key_3, operator_3, value_3,
+                                      option_home, option_away, ip_addresses)
+
+
+            # add sensor row
+            if request.form.get("add_sensor_row_" + str(i)) != None:
+                ADD_SCHEDULER_TASK_SENSOR_ROW(i)
+                
+            # remove sensor
+            if request.form.get("remove_sensor_row_" + str(i)) != None:
+                REMOVE_SCHEDULER_TASK_SENSOR_ROW(i)
 
 
     error_message_scheduler_tasks   = CHECK_TASKS(GET_ALL_SCHEDULER_TASKS(), "scheduler")
@@ -621,24 +628,6 @@ def dashboard_scheduler():
 @permission_required
 def change_scheduler_task_position(id, direction):
     CHANGE_SCHEDULER_TASK_POSITION(id, direction)
-    return redirect(url_for('dashboard_scheduler'))
-
-
-# add scheduler sensor row
-@app.route('/dashboard/scheduler/sensor_row/add/<int:id>')
-@login_required
-@permission_required
-def add_scheduler_sensor_row(id):
-    ADD_SCHEDULER_TASK_SENSOR_ROW(id)
-    return redirect(url_for('dashboard_scheduler'))
-
-
-# remove scheduler sensor row
-@app.route('/dashboard/scheduler/sensor_row/remove/<int:id>')
-@login_required
-@permission_required
-def remove_scheduler_sensor_row(id):
-    REMOVE_SCHEDULER_TASK_SENSOR_ROW(id)
     return redirect(url_for('dashboard_scheduler'))
 
 

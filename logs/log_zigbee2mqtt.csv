@@ -2520,3 +2520,513 @@ node[shape=record];
 2019-08-13 17:25:17,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
 2019-08-13 17:33:06,SmartHome/zigbee2mqtt/bridge/state,online
 2019-08-13 17:33:06,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:36:03,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:36:03,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 17:55:44,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":76,"color": { "x":0.191,"y":0.148}}|
+2019-08-13 17:55:44,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":76,"color": { "x":0.197,"y":0.222}}|
+2019-08-13 17:55:44,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":106,"brightness":76,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-13 17:55:45,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":106,"brightness":76,"color":{"x":0.457,"y":0.41,"saturation":55.1,"hue":46.2},"color_temp":366,"color_mode":2}|
+2019-08-13 17:55:47,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":76,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 17:55:48,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":76,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 17:55:55,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":149,"color": { "x":0.402,"y":0.396}}|
+2019-08-13 17:55:56,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":149,"color": { "x":0.403,"y":0.388}}|
+2019-08-13 17:55:56,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":149,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 17:55:56,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":149,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 17:56:03,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"203"}|
+2019-08-13 17:56:03,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"203"}|
+2019-08-13 17:56:03,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":203,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 17:56:03,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":203,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 17:56:23,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"203"}|
+2019-08-13 17:56:23,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"203"}|
+2019-08-13 17:56:23,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":203,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 17:56:24,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":203,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 17:59:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 17:59:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 18:00:11,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"208"}|
+2019-08-13 18:00:11,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"208"}|
+2019-08-13 18:00:11,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":208,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 18:00:11,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":208,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 18:00:17,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"124"}|
+2019-08-13 18:00:17,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"124"}|
+2019-08-13 18:00:17,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":124,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 18:00:17,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":124,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 18:00:24,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"215"}|
+2019-08-13 18:00:24,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"215"}|
+2019-08-13 18:00:24,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":215,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 18:00:24,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":215,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 18:18:34,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 18:18:34,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 18:21:25,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 18:21:25,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 21:37:23,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 21:37:23,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 21:56:40,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 21:56:45,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 21:56:45,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 21:56:50,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 21:56:50,SmartHome/zigbee2mqtt/bridge/networkmap,graphviz
+2019-08-13 21:56:50,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T21:56:50+02:00)}"];
+  "0x00124b001d41aa97" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x00124b001d41aa97" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="236"]
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_wohnzimmer_01||0xb291 ||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="101"]
+  "0x00178801040c9476" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_wohnzimmer_02||0x41d1 ||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x0017880104878b88" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x0017880104878b88" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="79"]
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_bad_01||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffef56003" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffef56003" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_bad_02||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffeff0aa8" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="0"]
+}|
+2019-08-13 21:56:55,SmartHome/zigbee2mqtt/bridge/networkmap/graphviz,|digraph G {
+node[shape=record];
+  "0x00124b001d41aa97" [style="bold, filled", fillcolor="#e04e5d", fontcolor="#ffffff", label="{0x00124b001d41aa97||0x0 ||No model information available||online (2019-08-13T21:56:55+02:00)}"];
+  "0x00124b001d41aa97" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x00124b001d41aa97" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="236"]
+  "0x00178801040c9476" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_wohnzimmer_01||0xb291 ||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x00178801040c9476" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="101"]
+  "0x00178801040c9476" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x0017880104878b88" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_wohnzimmer_02||0x41d1 ||Philips Hue white and color ambiance E26/E27/E14 (9290012573A)||offline (unknown)}"];
+  "0x0017880104878b88" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="255"]
+  "0x0017880104878b88" -> "0x00124b001d41aa97" [penwidth=0.5, weight=0, color="#994444", label="79"]
+  "0x000b3cfffef56003" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_bad_01||0x63e9  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffef56003" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffef56003" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffeff0aa8" [style="rounded, filled", fillcolor="#4ea3e0", fontcolor="#ffffff", label="{led_bad_02||0x989a  no lqi||IKEA TRADFRI LED bulb E12/E14/E17 400 lumen, dimmable warm white, chandelier opal (LED1649C5)||offline (unknown)}"];
+  "0x000b3cfffeff0aa8" -> "0x00178801040c9476" [penwidth=0.5, weight=0, color="#994444", label="0"]
+  "0x000b3cfffeff0aa8" -> "0x0017880104878b88" [penwidth=0.5, weight=0, color="#994444", label="0"]
+}|
+2019-08-13 22:43:04,SmartHome/zigbee2mqtt/led_bad_01,|{"state":"ON","linkquality":104,"brightness":254}|
+2019-08-13 22:43:06,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-13 22:43:09,SmartHome/zigbee2mqtt/led_bad_02,|{"state":"ON","linkquality":85,"brightness":254}|
+2019-08-13 22:43:10,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-13 22:48:44,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x7cb03eaa0a02fa78","meta":{"modelID":"Plug 01"}}|
+2019-08-13 22:48:44,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"OFF","linkquality":80}|
+2019-08-13 22:48:44,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"OFF","linkquality":80}|
+2019-08-13 22:48:46,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"OFF","linkquality":78}|
+2019-08-13 22:48:47,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-13 22:48:49,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 22:48:49,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_01","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_02","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"led_bad_01","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"led_bad_02","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x7cb03eaa0a02fa78","type":"Router","model":"AB3257001NJ","friendly_name":"0x7cb03eaa0a02fa78","nwkAddr":39768,"manufId":48042,"manufName":"OSRAM","powerSource":"Mains (single phase)","modelId":"Plug 01","hwVersion":1,"swBuildId":"V1.04.12","dateCode":"20140331DEOS****"}]}|
+2019-08-13 22:48:54,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_connected","message":"0x8418260000105fa0","meta":{"modelID":"Plug 01"}}|
+2019-08-13 22:48:55,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"OFF","linkquality":80}|
+2019-08-13 22:48:56,SmartHome/zigbee2mqtt/0x8418260000105fa0,|{"state":"OFF","linkquality":104}|
+2019-08-13 22:48:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-13 22:48:59,SmartHome/zigbee2mqtt/bridge/config/devices,
+2019-08-13 22:48:59,SmartHome/zigbee2mqtt/bridge/log,|{"type":"devices","message":[{"ieeeAddr":"0x00124b001d41aa97","type":"Coordinator"},{"ieeeAddr":"0x00178801040c9476","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_01","nwkAddr":45713,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x0017880104878b88","type":"Router","model":"9290012573A","friendly_name":"led_wohnzimmer_02","nwkAddr":16849,"manufId":4107,"manufName":"Philips","powerSource":"Mains (single phase)","modelId":"LCT015","hwVersion":1,"swBuildId":"1.29.0_r21169","dateCode":"20170908"},{"ieeeAddr":"0x000b3cfffef56003","type":"Router","model":"LED1649C5","friendly_name":"led_bad_01","nwkAddr":25577,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x000b3cfffeff0aa8","type":"Router","model":"LED1649C5","friendly_name":"led_bad_02","nwkAddr":39066,"manufId":4476,"manufName":"IKEA of Sweden","powerSource":"Mains (single phase)","modelId":"TRADFRI bulb E14 W op/ch 400lm","hwVersion":1,"swBuildId":"1.2.214","dateCode":"20170302"},{"ieeeAddr":"0x7cb03eaa0a02fa78","type":"Router","model":"AB3257001NJ","friendly_name":"0x7cb03eaa0a02fa78","nwkAddr":39768,"manufId":48042,"manufName":"OSRAM","powerSource":"Mains (single phase)","modelId":"Plug 01","hwVersion":1,"swBuildId":"V1.04.12","dateCode":"20140331DEOS****"},{"ieeeAddr":"0x8418260000105fa0","type":"Router","model":"AB3257001NJ","friendly_name":"0x8418260000105fa0","nwkAddr":54337,"manufId":48042,"manufName":"OSRAM","powerSource":"Mains (single phase)","modelId":"Plug 01","hwVersion":1,"swBuildId":"V1.04.12","dateCode":"20140331DEOS****"}]}|
+2019-08-13 22:49:02,SmartHome/zigbee2mqtt/0x8418260000105fa0,|{"state":"OFF","linkquality":104}|
+2019-08-13 22:56:00,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 22:56:17,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 22:56:36,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78/set,{"state":"ON"}
+2019-08-13 22:56:36,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":78}|
+2019-08-13 22:56:42,SmartHome/zigbee2mqtt/0x8418260000105fa0/set,{"state":"ON"}
+2019-08-13 22:56:43,SmartHome/zigbee2mqtt/0x8418260000105fa0,|{"state":"ON","linkquality":104}|
+2019-08-13 22:57:19,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 22:57:33,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-13 22:57:33,SmartHome/zigbee2mqtt/bridge/config/rename,|{"old": "0x8418260000105fa0", "new": "Steckdose_Server"}|
+2019-08-13 22:57:33,SmartHome/zigbee2mqtt/bridge/log,|{"type":"device_renamed","message":{"from":"0x8418260000105fa0","to":"Steckdose_Server"}}|
+2019-08-13 22:59:01,SmartHome/zigbee2mqtt/Steckdose_Server/set,{"state":"OFF"}
+2019-08-13 22:59:01,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-13 23:04:03,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":254,"color": { "x":0.191,"y":0.148}}|
+2019-08-13 23:04:03,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":254,"color": { "x":0.197,"y":0.222}}|
+2019-08-13 23:04:03,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":254,"color":{"x":0.402,"y":0.396,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 23:04:04,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":80,"brightness":254,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 23:04:06,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":104,"brightness":254,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-13 23:04:07,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":78,"brightness":254,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-13 23:13:15,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":46}|
+2019-08-13 23:15:34,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-13 23:29:54,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-13 23:31:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 23:31:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 23:36:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-13 23:36:42,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-13 23:53:25,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-13 23:53:25,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 00:09:59,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 00:10:04,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 00:13:11,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 00:13:11,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 00:15:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 00:15:02,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 00:17:36,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,{"state": "OFF"}
+2019-08-14 00:17:36,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,{"state": "OFF"}
+2019-08-14 00:17:37,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"OFF","linkquality":104,"brightness":254,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-14 00:17:37,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"OFF","linkquality":78,"brightness":254,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-14 00:31:44,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 00:31:46,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 00:48:20,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 00:48:23,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 01:04:54,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 01:05:02,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 01:21:28,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 01:21:41,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 01:38:02,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 01:38:20,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":33}|
+2019-08-14 01:54:36,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 01:55:00,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":44}|
+2019-08-14 02:11:10,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 02:11:39,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 02:27:44,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 02:28:18,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 02:44:19,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 02:44:57,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":41}|
+2019-08-14 03:00:53,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 03:01:36,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":41}|
+2019-08-14 03:17:27,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 03:18:15,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":39}|
+2019-08-14 03:34:01,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 03:34:54,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":39}|
+2019-08-14 03:50:35,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 03:51:33,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 04:07:09,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 04:08:12,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 04:23:43,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 04:24:52,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":46}|
+2019-08-14 04:40:17,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 04:41:31,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 04:56:51,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 04:58:10,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 05:13:26,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 05:14:49,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":85}|
+2019-08-14 05:30:00,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 05:31:28,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 05:46:34,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 05:48:07,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 06:03:08,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 06:04:46,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 06:19:42,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 06:21:26,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":46}|
+2019-08-14 06:36:16,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 06:38:05,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 06:52:50,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 06:54:44,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":78}|
+2019-08-14 07:09:25,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 07:11:23,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":83}|
+2019-08-14 07:21:03,SmartHome/zigbee2mqtt/led_bad_01,|{"state":"ON","linkquality":104,"brightness":254}|
+2019-08-14 07:21:06,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-14 07:21:11,SmartHome/zigbee2mqtt/led_bad_02,|{"state":"ON","linkquality":72,"brightness":254}|
+2019-08-14 07:21:13,SmartHome/zigbee2mqtt/bridge/log,|{"type":"pairing","message":"device incoming"}|
+2019-08-14 07:25:59,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 07:28:02,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 07:42:33,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 07:44:41,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 07:59:07,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 08:01:20,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 08:15:41,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":88}|
+2019-08-14 08:18:00,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 08:32:15,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 08:34:39,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-14 08:48:49,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 08:51:18,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 09:05:24,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 09:07:57,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 09:21:58,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 09:24:36,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 09:38:32,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 09:41:15,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 09:46:13,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:46:13,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 09:50:53,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:50:53,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 09:54:07,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:54:07,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 09:55:06,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 09:55:34,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:55:34,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 09:57:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:57:58,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 09:58:59,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 09:58:59,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:00:44,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:00:44,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:04:50,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:04:50,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:06:42,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:06:42,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:07:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:07:43,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:08:50,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:08:50,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:10:48,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:10:48,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:11:40,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 10:14:34,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 10:29:27,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:29:27,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:31:13,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 10:35:33,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:35:33,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:44:48,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 10:45:17,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:45:17,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:47:52,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 10:48:14,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:48:14,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:50:32,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:50:32,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:56:19,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:56:19,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 10:58:55,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 10:58:55,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:02:17,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:02:17,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:04:31,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 11:06:30,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:06:30,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:11:52,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:11:52,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:14:38,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:14:38,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:18:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:18:08,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:21:19,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:21:19,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:24:23,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:24:23,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:26:58,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:26:58,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:31:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:31:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:34:31,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 11:35:40,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:35:40,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:37:49,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 11:38:26,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:38:26,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:42:15,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:42:15,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:47:18,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:47:18,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:50:30,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:50:30,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:51:05,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 11:53:06,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:53:06,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:54:29,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 11:54:49,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:54:49,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:58:08,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:58:08,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 11:59:06,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 11:59:06,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":true}|
+2019-08-14 12:38:30,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 12:38:30,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 12:40:03,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-14 12:40:07,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-14 12:40:47,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 12:41:43,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 12:41:43,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 12:41:51,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-14 12:41:53,SmartHome/zigbee2mqtt/bridge/config/,
+2019-08-14 12:44:26,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 12:57:22,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 13:01:05,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 13:13:56,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 13:17:44,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 13:30:30,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 13:34:23,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 13:47:04,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 13:51:03,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 14:03:38,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 14:07:42,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 14:20:12,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 14:24:21,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 14:36:46,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 14:41:00,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 14:53:21,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 14:57:39,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 15:09:55,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 15:14:18,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 15:26:29,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 15:30:57,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 15:43:03,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 15:47:37,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 15:59:36,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 15:59:36,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 15:59:37,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 16:00:46,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:00:46,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:01:54,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:01:54,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:04:25,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:04:25,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:05:55,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:05:55,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:09:10,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:09:10,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:10:41,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:10:41,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:15:15,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:15:15,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:16:24,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:16:24,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:18:51,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:18:51,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:20:22,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:20:22,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:20:55,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 16:22:02,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:22:02,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:23:40,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:23:40,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:24:47,SmartHome/zigbee2mqtt/bridge/state,online
+2019-08-14 16:24:47,SmartHome/zigbee2mqtt/bridge/config,|{"version":"1.5.1","commit":"ac3b924","coordinator":20190515,"log_level":"info","permit_join":false}|
+2019-08-14 16:32:45,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 16:37:34,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 16:49:19,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 16:54:13,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 17:05:54,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 17:10:52,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 17:22:28,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 17:27:31,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 17:39:02,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 17:44:11,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 17:55:36,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 18:00:50,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-14 18:12:10,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 18:17:29,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 18:28:44,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 18:34:08,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 18:45:18,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 18:50:47,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 19:01:53,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 19:07:26,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 19:18:27,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 19:24:05,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 19:35:01,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 19:40:45,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":46}|
+2019-08-14 19:51:35,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 19:57:24,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-14 20:08:09,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 20:14:03,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 20:24:43,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 20:30:42,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 20:41:17,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 20:47:21,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-14 20:54:44,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":142,"color": { "x":0.402,"y":0.396}}|
+2019-08-14 20:54:44,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":106,"brightness":142,"color":{"x":0.191,"y":0.148,"saturation":83.9,"hue":248.5},"color_temp":153,"color_mode":1}|
+2019-08-14 20:54:47,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":142,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-14 20:54:49,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"200"}|
+2019-08-14 20:54:50,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":200,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-14 20:55:10,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state": "ON","brightness":"175"}|
+2019-08-14 20:55:10,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state": "ON","brightness":"175"}|
+2019-08-14 20:55:11,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":175,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-14 20:55:11,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":85,"brightness":175,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-14 20:55:19,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":149,"color": { "x":0.191,"y":0.148}}|
+2019-08-14 20:55:19,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":149,"color": { "x":0.197,"y":0.222}}|
+2019-08-14 20:55:19,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":149,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-14 20:55:20,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":88,"brightness":149,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-14 20:55:26,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":182,"color": { "x":0.402,"y":0.396}}|
+2019-08-14 20:55:26,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":182,"color": { "x":0.403,"y":0.388}}|
+2019-08-14 20:55:26,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":182,"color":{"x":0.191,"y":0.148,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-14 20:55:27,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":88,"brightness":182,"color":{"x":0.197,"y":0.222,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-14 20:57:52,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 21:04:00,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 21:14:26,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 21:20:39,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 21:31:00,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 21:37:19,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":104}|
+2019-08-14 21:47:34,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-14 21:53:58,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-14 22:04:08,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 22:10:37,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-14 22:20:42,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 22:27:16,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 22:37:16,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 22:43:55,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-14 22:53:51,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 23:00:34,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-14 23:10:25,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 23:17:13,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-14 23:26:59,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-14 23:33:53,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-14 23:43:33,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-14 23:50:32,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 00:00:07,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 00:07:11,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":65}|
+2019-08-15 00:16:41,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 00:23:50,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 00:30:03,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,{"state": "OFF"}
+2019-08-15 00:30:03,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,{"state": "OFF"}
+2019-08-15 00:30:04,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"OFF","linkquality":101,"brightness":182,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-15 00:30:04,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"OFF","linkquality":88,"brightness":182,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-15 00:33:15,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 00:40:29,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 00:49:50,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 00:57:08,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":65}|
+2019-08-15 01:06:24,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 01:13:48,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":65}|
+2019-08-15 01:22:58,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 01:30:27,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 01:39:32,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 01:47:06,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 01:56:06,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 02:03:45,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-15 02:12:40,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 02:20:24,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 02:29:14,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 02:37:03,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 02:45:49,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 02:53:42,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-15 03:02:23,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 03:10:22,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-15 03:18:57,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 03:27:01,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 03:35:31,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-15 03:43:40,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 03:52:05,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 04:00:19,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 04:08:39,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 04:16:58,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 04:25:13,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 04:33:37,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 04:41:48,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 04:50:16,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 04:58:22,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 05:06:56,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 05:14:56,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 05:23:35,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":52}|
+2019-08-15 05:31:30,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-15 05:40:14,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":49}|
+2019-08-15 05:48:04,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 05:56:53,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":67}|
+2019-08-15 06:04:38,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 06:13:32,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":67}|
+2019-08-15 06:21:12,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 06:37:47,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 06:46:50,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 06:54:21,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":117}|
+2019-08-15 07:03:30,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":54}|
+2019-08-15 07:07:47,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,|{"state":"ON","brightness":254,"color": { "x":0.402,"y":0.396}}|
+2019-08-15 07:07:47,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,|{"state":"ON","brightness":254,"color": { "x":0.403,"y":0.388}}|
+2019-08-15 07:07:48,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"ON","linkquality":101,"brightness":254,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-15 07:07:48,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"ON","linkquality":88,"brightness":254,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-15 07:10:55,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 07:20:09,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":65}|
+2019-08-15 07:27:29,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":109}|
+2019-08-15 07:36:48,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 07:44:03,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 07:50:00,SmartHome/zigbee2mqtt/led_wohnzimmer_01/set,{"state": "OFF"}
+2019-08-15 07:50:00,SmartHome/zigbee2mqtt/led_wohnzimmer_02/set,{"state": "OFF"}
+2019-08-15 07:50:01,SmartHome/zigbee2mqtt/led_wohnzimmer_01,|{"state":"OFF","linkquality":101,"brightness":254,"color":{"x":0.402,"y":0.396,"saturation":21.7,"hue":56.7},"color_temp":278,"color_mode":1}|
+2019-08-15 07:50:01,SmartHome/zigbee2mqtt/led_wohnzimmer_02,|{"state":"OFF","linkquality":88,"brightness":254,"color":{"x":0.403,"y":0.388,"saturation":81.9,"hue":233.3},"color_temp":153,"color_mode":1}|
+2019-08-15 07:53:27,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":65}|
+2019-08-15 08:00:37,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 08:10:06,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":62}|
+2019-08-15 08:17:11,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 08:26:45,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 08:33:46,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":114}|
+2019-08-15 08:43:24,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 08:50:20,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 09:00:04,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 09:06:54,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 09:16:43,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 09:23:28,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 09:33:22,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":57}|
+2019-08-15 09:40:02,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|
+2019-08-15 09:50:01,SmartHome/zigbee2mqtt/0x7cb03eaa0a02fa78,|{"state":"ON","linkquality":59}|
+2019-08-15 09:56:36,SmartHome/zigbee2mqtt/Steckdose_Server,|{"state":"OFF","linkquality":111}|

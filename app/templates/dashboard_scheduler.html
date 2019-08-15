@@ -586,22 +586,18 @@
                     <tr>
                       <td colspan="1"></td>
                       <td colspan="1">
-                        <font size="+2">
-                          <div class="row justify-content-md-center">
-                            <div class="col-sm-6">   
-                            </div>   
-                            <div class="col-sm-2">                
-                              <a href="/dashboard/scheduler/sensor_row/add/{{ entry.id }}#table_{{ entry.id }}">
-                                <span class="glyphicon glyphicon-plus" style="color:white"></span>
-                              </a>                  
-                            </div>
-                            <div class="col-sm-1">          
-                              <a href="/dashboard/scheduler/sensor_row/remove/{{ entry.id }}#table_{{ entry.id }}">
-                                <span class="glyphicon glyphicon-minus" style="color:white"></span>
-                              </a>   
-                            </div>
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-5">  
+                            <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/scheduler#table_{{ entry.id }}'" name="add_sensor_row_{{ entry.id }}">
+                              <span class="glyphicon glyphicon-plus"></span>
+                            </button>    
                           </div>
-                        </font>                  
+                          <div class="col-sm-5">
+                            <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/scheduler#table_{{ entry.id }}'" name="remove_sensor_row_{{ entry.id }}">
+                              <span class="glyphicon glyphicon-minus"></span>
+                            </button>                          
+                          </div>
+                        </div>                                   
                       </td>
                       
                       <td colspan="9">    
@@ -610,7 +606,7 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_1_{{ entry.id }}">
+                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_1_{{ entry.id }}">
                               <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>      
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
@@ -681,7 +677,7 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_2_{{ entry.id }}">
+                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_2_{{ entry.id }}">
                               <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>      
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
@@ -753,7 +749,7 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
                           </div>                                                   
                           <div class="col-sm-3"> 
-                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="selectpicker" data-width="auto" data-live-search="true" name="set_mqtt_device_3_{{ entry.id }}">
+                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_3_{{ entry.id }}">
                               <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>      
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}

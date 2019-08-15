@@ -585,7 +585,7 @@
 
 <!-- error message speech_recognition_provider -->
 
-{% if error_message_speech_recognition_provider_settings != "" %}
+{% if error_message_speech_recognition_provider_settings != [] %}
   <div class="alert alert-danger" role="alert">
     {% for entry in error_message_speech_recognition_provider_settings %}
       {{ entry }} <br>

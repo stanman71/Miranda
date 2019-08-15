@@ -878,13 +878,8 @@ def dashboard_system_speechcontrol():
     error_message_fileupload = ""
     error_message_hotword = ""
     error_message_speech_recognition_provider_keywords = ""
-    error_message_speech_recognition_provider_settings = ""
-    error_message_speechcontrol_led_tasks = ""    
     error_message_add_speechcontrol_device_task = ""
-    error_message_speechcontrol_device_tasks = ""
-    error_message_add_speechcontrol_program_task = ""
-    error_message_speechcontrol_program_tasks = "" 
-    error_message_speechcontrol_spotify_tasks = ""       
+    error_message_add_speechcontrol_program_task = ""  
     check_value_speechcontrol = ["", ""]
     snowboy_name = ""
     snowboy_task = ""   
@@ -1155,7 +1150,6 @@ def dashboard_system_speechcontrol():
     dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("device")
     dropdown_list_programs     = GET_ALL_PROGRAMS()   
     
-    error_message_speech_recognition_provider_tasks = ""
     error_message_speech_recognition_provider_settings = CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS())
 
     return render_template('dashboard_system_speechcontrol.html',

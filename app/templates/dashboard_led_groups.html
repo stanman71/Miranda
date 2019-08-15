@@ -182,10 +182,10 @@
                 <th scope="col" style="width:3%"></th>                   
                 <th scope="col" style="width:25%">Gruppe</th> 
                 <th></th>
-                <th style="width:10%"></th>
-                <th scope="col" style="width:15%">LED Nummer</th>
-                <th scope="col" style="width:15%">LED Model</th>
-                <th scope="col" style="width:25%">LED</th>
+                <th style="width:13%"></th>
+                <th scope="col" style="width:12%">LED Nummer</th>
+                <th scope="col" style="width:12%">LED Model</th>
+                <th scope="col" style="width:30%">LED</th>
                 <th scope="col" style="width:5%"></th>
               </thead>
               <tbody> 
@@ -199,15 +199,18 @@
                   </td>  
                   <th></th>
                   <th>
-                  <font size="+2">
                     <div class="row justify-content-md-center">
-                      <div class="col-sm-1">                       
-                        <a href="/dashboard/led/groups/led/add/{{ entry.id }}#table_{{ entry.id }}">
-                          <span class="glyphicon glyphicon-plus" style="color:white"></span>
-                        </a>                  
+                      <div class="col-sm-5">  
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/led/groups#table_{{ entry.id }}'" name="add_led_{{ entry.id }}">
+                          <span class="glyphicon glyphicon-plus"></span>
+                        </button>    
+                      </div>
+                      <div class="col-sm-5">
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/led/groups#table_{{ entry.id }}'" name="remove_led_{{ entry.id }}">
+                          <span class="glyphicon glyphicon-minus"></span>
+                        </button>                          
                       </div>
                     </div>
-                  </font>
                   </td>   
 
 <!-- section 1 -->
@@ -248,7 +251,6 @@
                       </optgroup>                            
                     </select>     
                   </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/2#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -274,8 +276,7 @@
                       </optgroup>                            
                     </select>     
                   </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/3#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
-
+                  
 {% endif %}
 
 <!-- section 4 -->
@@ -300,7 +301,6 @@
                       </optgroup>                            
                     </select>     
                   </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/4#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -326,7 +326,6 @@
                       </optgroup>                            
                     </select>     
                   </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/5#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -351,8 +350,7 @@
                         {% endfor %}  
                       </optgroup>                            
                     </select>     
-                  </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/6#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  </td>   
 
 {% endif %}
 
@@ -377,8 +375,7 @@
                         {% endfor %}  
                       </optgroup>                            
                     </select>     
-                  </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/7#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  </td>  
 
 {% endif %}
 
@@ -403,8 +400,7 @@
                         {% endfor %}  
                       </optgroup>                            
                     </select>     
-                  </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/8#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  </td>  
 
 {% endif %}
 
@@ -429,8 +425,7 @@
                         {% endfor %}  
                       </optgroup>                            
                     </select>     
-                  </td> 
-                  <td><a href="/dashboard/led/groups/led/remove/{{ entry.id }}/9#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                  </td>   
 
 {% endif %}
 

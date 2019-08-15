@@ -532,8 +532,7 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                
          if task.operator_main_2 != "None" and task.operator_main_2 != None:
             if task.sensor_key_3 == "None" or task.sensor_key_3 == None:
-               list_sensor_errors_general.append(task.name + " >>> fehlende Einstellung >>> Sensor 3") 
-               list_sensor_errors_device.append(task.name + " >>> fehlende Einstellung >>> Sensor 3")
+               list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Sensor 3")
 
          # check operators
          if task.operator_main_1 != "<" and task.operator_main_1 != ">" and task.operator_main_1 != "=":
@@ -554,7 +553,7 @@ def CHECK_SCHEDULER_SENSOR_SETTINGS(scheduler_tasks):
                list_sensor_errors.append(task.name + " >>> fehlende Einstellung >>> Vergleichswert 1")   
                   
             elif (task.operator_1 == "<" or task.operator_1 == ">") and not task.value_1.isdigit():
-               list_sensor_errors_device.append(task.name + 
+               list_sensor_errors.append(task.name + 
                " >>> ungültiger Eintrag >>> Vergleichswert 1 >>> nur Zahlen können mit dem gewählten Operator verwendet werden") 
 
          if task.operator_main_1 == "and" or task.operator_main_1 == "or":

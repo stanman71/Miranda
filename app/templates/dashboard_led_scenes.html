@@ -197,13 +197,13 @@
               <table class="table">
                 <thead>    
                   <th scope="col" style="width:3%"></th>                      
-                  <th scope="col" style="width:20%">Szene</th> 
+                  <th scope="col" style="width:25%">Szene</th> 
                   <th></th>
-                  <th style="width:10%"></th>
-                  <th scope="col">LED Nummer</th>
-                  <th scope="col">RGB</th>
-                  <th scope="col">Farbtemperatur</th>
-                  <th scope="col">Helligkeit</th>
+                  <th style="width:13%"></th>
+                  <th scope="col" style="width:10%">LED Nummer</th>
+                  <th scope="col" style="width:10%">RGB</th>
+                  <th scope="col" style="width:17%">Farbtemperatur</th>
+                  <th scope="col" style="width:17%">Helligkeit</th>
                   <th scope="col" style="width:5%"></th>
                 </thead>
                 <tbody> 
@@ -217,15 +217,18 @@
                     </td> 
                     <td></td> 
                     <td>
-                    <font size="+2">
                       <div class="row justify-content-md-center">
-                        <div class="col-sm-1">                       
-                          <a href="/dashboard/led/scenes/setting/add/{{ entry.id }}#table_{{ entry.id }}">
-                            <span class="glyphicon glyphicon-plus" style="color:white"></span>
-                          </a>                  
+                        <div class="col-sm-5">  
+                          <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" name="add_setting_{{ entry.id }}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                          </button>    
+                        </div>
+                        <div class="col-sm-5">
+                          <button type="submit" class="btn btn-default" onclick="window.location.href='/dashboard/led/scenes#table_{{ entry.id }}'" name="remove_setting_{{ entry.id }}">
+                            <span class="glyphicon glyphicon-minus"></span>
+                          </button>                          
                         </div>
                       </div>
-                    </font>
                     </td>   
 
 <!-- section 1 -->
@@ -270,7 +273,6 @@
                         <input type="range" class="slider" name="set_brightness_2_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_2 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/2#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -298,7 +300,6 @@
                         <input type="range" class="slider" name="set_brightness_3_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_3 }}" />
                       </div>  
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/3#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -326,7 +327,6 @@
                         <input type="range" class="slider" name="set_brightness_4_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_4 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/4#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -354,7 +354,6 @@
                         <input type="range" class="slider" name="set_brightness_5_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_5 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/5#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -382,7 +381,6 @@
                         <input type="range" class="slider" name="set_brightness_6_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_6 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/6#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -410,7 +408,6 @@
                         <input type="range" class="slider" name="set_brightness_7_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_7 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/7#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
 
 {% endif %}
 
@@ -437,8 +434,7 @@
                       <div class="slidecontainer"> 
                         <input type="range" class="slider" name="set_brightness_8_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_8 }}" />
                       </div> 
-                    </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/8#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </td>  
 
 {% endif %}
 
@@ -466,8 +462,7 @@
                         <input type="range" class="slider" name="set_brightness_9_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_9 }}" />
                       </div> 
                     </td>
-                    <td><a href="/dashboard/led/scenes/setting/remove/{{ entry.id }}/9#table_{{ entry.id }}"><font color="salmon" size="5"><b>X</b></font></a></td>  
-
+                
 {% endif %}
 
 

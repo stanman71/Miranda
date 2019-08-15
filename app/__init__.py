@@ -15,15 +15,8 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 Bootstrap(app)
 Mobility(app)
 
-from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.database.database import *
-from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.file_management import *
-from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
-from app.components.process_management import PROCESS_MANAGEMENT_THREAD
-from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
-from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
-from app.components.email import SEND_EMAIL
 
 
 """ ################## """
@@ -81,6 +74,7 @@ try:
     wlan_password = READ_WLAN_CREDENTIALS_FILE()[1]
 
     SET_WLAN_CREDENTIALS(wlan_ssid, wlan_password)
+    
 except:
     pass
 
@@ -92,6 +86,11 @@ if (GET_HOST_NETWORK().wlan_ssid != "" or GET_HOST_NETWORK().wlan_password != ""
     SEND_EMAIL("ERROR", "WLAN | Wrong Credentials")       
 
 
+# set default interface
+if GET_HOST_NETWORK().default_interface != "LAN" and GET_HOST_NETWORK().default_interface != "WLAN":
+    SET_HOST_DEFAULT_INTERFACE("LAN")
+        
+        
 # check default interface
 if wlan_ip_address == "" and lan_ip_address != "" and GET_HOST_NETWORK().default_interface == "WLAN":
     SET_HOST_DEFAULT_INTERFACE("LAN") 
@@ -100,9 +99,23 @@ if lan_ip_address == "" and wlan_ip_address != "" and GET_HOST_NETWORK().default
     SET_HOST_DEFAULT_INTERFACE("WLAN") 
 
 
+# check port
+if GET_HOST_PORT() == 5000:
+    SET_HOST_PORT(5000)
+
+
 """ ################## """
-"""     colorpicker    """
+""" loading components """
 """ ################## """
+
+from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
+from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
+from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
+from app.components.process_management import PROCESS_MANAGEMENT_THREAD
+from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
+from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
+from app.components.email import SEND_EMAIL
+
 
 host = GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT())
 colorpicker(host, app)

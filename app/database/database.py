@@ -134,55 +134,55 @@ class LED_Scenes(db.Model):
     red_1                 = db.Column(db.Integer, server_default=("0"))
     green_1               = db.Column(db.Integer, server_default=("0"))
     blue_1                = db.Column(db.Integer, server_default=("0"))
-    color_temp_1          = db.Column(db.Integer, server_default=("0"))
+    color_temp_1          = db.Column(db.Integer, server_default=("100"))
     brightness_1          = db.Column(db.Integer, server_default=("254"))
     active_setting_2      = db.Column(db.String(50))
     red_2                 = db.Column(db.Integer, server_default=("0"))
     green_2               = db.Column(db.Integer, server_default=("0"))
     blue_2                = db.Column(db.Integer, server_default=("0"))
-    color_temp_2          = db.Column(db.Integer, server_default=("0"))
+    color_temp_2          = db.Column(db.Integer, server_default=("100"))
     brightness_2          = db.Column(db.Integer, server_default=("254"))
     active_setting_3      = db.Column(db.String(50))
     red_3                 = db.Column(db.Integer, server_default=("0"))
     green_3               = db.Column(db.Integer, server_default=("0"))
     blue_3                = db.Column(db.Integer, server_default=("0"))
-    color_temp_3          = db.Column(db.Integer, server_default=("0"))
+    color_temp_3          = db.Column(db.Integer, server_default=("100"))
     brightness_3          = db.Column(db.Integer, server_default=("254"))
     active_setting_4      = db.Column(db.String(50))
     red_4                 = db.Column(db.Integer, server_default=("0"))
     green_4               = db.Column(db.Integer, server_default=("0"))
     blue_4                = db.Column(db.Integer, server_default=("0"))
-    color_temp_4          = db.Column(db.Integer, server_default=("0"))
+    color_temp_4          = db.Column(db.Integer, server_default=("100"))
     brightness_4          = db.Column(db.Integer, server_default=("254"))
     active_setting_5      = db.Column(db.String(50))
     red_5                 = db.Column(db.Integer, server_default=("0"))
     green_5               = db.Column(db.Integer, server_default=("0"))
     blue_5                = db.Column(db.Integer, server_default=("0"))
-    color_temp_5          = db.Column(db.Integer, server_default=("0"))
+    color_temp_5          = db.Column(db.Integer, server_default=("100"))
     brightness_5          = db.Column(db.Integer, server_default=("254"))        
     active_setting_6      = db.Column(db.String(50))
     red_6                 = db.Column(db.Integer, server_default=("0"))
     green_6               = db.Column(db.Integer, server_default=("0"))
     blue_6                = db.Column(db.Integer, server_default=("0"))
-    color_temp_6          = db.Column(db.Integer, server_default=("0"))
+    color_temp_6          = db.Column(db.Integer, server_default=("100"))
     brightness_6          = db.Column(db.Integer, server_default=("254"))
     active_setting_7      = db.Column(db.String(50))
     red_7                 = db.Column(db.Integer, server_default=("0"))
     green_7               = db.Column(db.Integer, server_default=("0"))
     blue_7                = db.Column(db.Integer, server_default=("0"))
-    color_temp_7          = db.Column(db.Integer, server_default=("0"))
+    color_temp_7          = db.Column(db.Integer, server_default=("100"))
     brightness_7          = db.Column(db.Integer, server_default=("254"))
     active_setting_8      = db.Column(db.String(50))
     red_8                 = db.Column(db.Integer, server_default=("0"))
     green_8               = db.Column(db.Integer, server_default=("0"))
     blue_8                = db.Column(db.Integer, server_default=("0"))
-    color_temp_8          = db.Column(db.Integer, server_default=("0"))
+    color_temp_8          = db.Column(db.Integer, server_default=("100"))
     brightness_8          = db.Column(db.Integer, server_default=("254"))
     active_setting_9      = db.Column(db.String(50))
     red_9                 = db.Column(db.Integer, server_default=("0"))
     green_9               = db.Column(db.Integer, server_default=("0"))
     blue_9                = db.Column(db.Integer, server_default=("0"))
-    color_temp_9          = db.Column(db.Integer, server_default=("0"))
+    color_temp_9          = db.Column(db.Integer, server_default=("100"))
     brightness_9          = db.Column(db.Integer, server_default=("254"))   
     collapse              = db.Column(db.String(50))        
     error_change_settings = db.Column(db.String(100), server_default=(""))
@@ -400,19 +400,17 @@ if Global_Settings.query.filter_by().first() is None:
     db.session.add(setting_zigbee2mqtt)    
     db.session.commit()
 
-    setting_speech_control = Global_Settings(
-        setting_name  = "speech_control",
+    setting_speechcontrol = Global_Settings(
+        setting_name  = "speechcontrol",
         setting_value = "False",
     )
-    db.session.add(setting_speech_control)    
+    db.session.add(setting_speechcontrol)    
     db.session.commit()
 
 
 # create default host settings
 if Host.query.filter_by().first() is None:
     host = Host(
-        ip_address = None,
-        gateway    = None,
     )
     db.session.add(host)
     db.session.commit()
@@ -440,21 +438,20 @@ if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
 # create default user
 if User.query.filter_by(username='default').first() is None:
     user = User(
-        username                  ='default',
-        email                     = 'member@example.com',
-        password                  = generate_password_hash('qwer1234', method='sha256'), 
-        permission_dashboard      = "checked",   
-        permission_scheduler      = "checked",        
-        permission_programs       = "checked",   
-        permission_watering       = "checked",     
-        permission_camera         = "checked",      
-        permission_led            = "checked",      
-        permission_sensordata     = "checked",    
-        permission_spotify        = "checked",     
-        permission_system         = "checked",     
-        email_notification_info   = "checked",   
-        email_notification_error  = "checked",   
-        email_notification_camera = "checked",       
+        username                   ='default',
+        email                      = 'member@example.com',
+        password                   = generate_password_hash('qwer1234', method='sha256'), 
+        permission_dashboard       = "checked",   
+        permission_scheduler       = "checked",        
+        permission_programs        = "checked",   
+        permission_watering        = "checked",     
+        permission_camera          = "checked",      
+        permission_led             = "checked",      
+        permission_sensordata      = "checked",    
+        permission_spotify         = "checked",     
+        permission_system          = "checked",     
+        email_notification_warning = "checked",   
+        email_notification_error   = "checked",        
     )
     db.session.add(user)
     db.session.commit()
@@ -991,10 +988,16 @@ def SET_HOST_DEFAULT_INTERFACE(default_interface):
 def SET_HOST_PORT(port):
     entry = Host.query.filter_by().first()
     
-    # values changed ?
-    if (int(entry.port) != int(port)):   
-    
-        entry.port = port     
+    try:
+        # values changed ?
+        if (int(entry.port) != int(port)):   
+            entry.port = port
+            db.session.commit()
+            
+            WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Port - " + str(port) + " | changed")             
+            
+    except:       
+        entry.port = port    
         db.session.commit()
         
         WRITE_LOGFILE_SYSTEM("DATABASE", "Host | Port - " + str(port) + " | changed") 
@@ -1242,6 +1245,74 @@ def ADD_LED_GROUP_LED(id):
         return  
 
 
+def REMOVE_LED_GROUP_LED(id):
+    entry = LED_Groups.query.filter_by(id=id).first()
+
+    if entry.active_led_9 == "True":
+        entry.active_led_9      = "None"
+        entry.led_ieeeAddr_9    = "None"
+        entry.led_name_9        = "None"
+        entry.led_device_type_9 = "None"
+        db.session.commit()
+        return 
+
+    if entry.active_led_8 == "True":
+        entry.active_led_8      = "None"
+        entry.led_ieeeAddr_8    = "None"
+        entry.led_name_8        = "None"
+        entry.led_device_type_8 = "None"
+        db.session.commit()  
+        return 
+    
+    if entry.active_led_7 == "True":
+        entry.active_led_7      = "None"
+        entry.led_ieeeAddr_7    = "None"
+        entry.led_name_7        = "None"
+        entry.led_device_type_7 = "None"
+        db.session.commit()
+        return 
+
+    if entry.active_led_6 == "True":
+        entry.active_led_6      = "None"
+        entry.led_ieeeAddr_6    = "None"
+        entry.led_name_6        = "None"
+        entry.led_device_type_6 = "None"
+        db.session.commit()
+        return
+    
+    if entry.active_led_5 == "True":
+        entry.active_led_5      = "None"
+        entry.led_ieeeAddr_5    = "None"
+        entry.led_name_5        = "None"
+        entry.led_device_type_5 = "None"
+        db.session.commit()
+        return     
+
+    if entry.active_led_4 == "True":
+        entry.active_led_4      = "None"
+        entry.led_ieeeAddr_4    = "None"
+        entry.led_name_4        = "None"
+        entry.led_device_type_4 = "None"
+        db.session.commit()
+        return 
+
+    if entry.active_led_3 == "True":
+        entry.active_led_3      = "None"
+        entry.led_ieeeAddr_3    = "None"
+        entry.led_name_3        = "None"
+        entry.led_device_type_3 = "None"
+        db.session.commit()
+        return     
+
+    if entry.active_led_2 == "True":
+        entry.active_led_2      = "None"
+        entry.led_ieeeAddr_2    = "None"
+        entry.led_name_2        = "None"
+        entry.led_device_type_2 = "None"
+        db.session.commit()
+        return 
+
+
 def SET_LED_GROUP_CHANGE_ERRORS(id, error_change_settings):
     entry = LED_Groups.query.filter_by(id=id).first()
 
@@ -1298,53 +1369,6 @@ def CHANGE_LED_GROUP_POSITION(id, direction):
                 db.session.commit()
                 
                 return 
-
-
-def REMOVE_LED_GROUP_LED(id, led):
-    entry = LED_Groups.query.filter_by(id=id).first()
-
-    if led == 2:
-        entry.active_led_2      = "None"
-        entry.led_ieeeAddr_2    = "None"
-        entry.led_name_2        = "None"
-        entry.led_device_type_2 = "None"
-    if led == 3:
-        entry.active_led_3      = "None"     
-        entry.led_ieeeAddr_3    = "None"
-        entry.led_name_3        = "None" 
-        entry.led_device_type_3 = "None"
-    if led == 4:
-        entry.active_led_4      = "None"     
-        entry.led_ieeeAddr_4    = "None"
-        entry.led_name_4        = "None" 
-        entry.led_device_type_4 = "None"
-    if led == 5:
-        entry.active_led_5      = "None"     
-        entry.led_ieeeAddr_5    = "None"
-        entry.led_name_5        = "None" 
-        entry.led_device_type_5 = "None"
-    if led == 6:
-        entry.active_led_6      = "None"     
-        entry.led_ieeeAddr_6    = "None"
-        entry.led_name_6        = "None" 
-        entry.led_device_type_6 = "None"
-    if led == 7:
-        entry.active_led_7      = "None"     
-        entry.led_ieeeAddr_7    = "None"
-        entry.led_name_7        = "None" 
-        entry.led_device_type_7 = "None"
-    if led == 8:
-        entry.active_led_8      = "None"     
-        entry.led_ieeeAddr_8    = "None"
-        entry.led_name_8        = "None" 
-        entry.led_device_type_8 = "None"
-    if led == 9:
-        entry.active_led_9      = "None"     
-        entry.led_ieeeAddr_9    = "None"
-        entry.led_name_9        = "None" 
-        entry.led_device_type_9 = "None"
-
-    db.session.commit()
 
 
 def DELETE_LED_GROUP(id):
@@ -1511,6 +1535,90 @@ def ADD_LED_SCENE_SETTING(id):
         return  
 
 
+def REMOVE_LED_SCENE_SETTING(id):
+    entry = LED_Scenes.query.filter_by(id=id).first()
+
+    if entry.active_setting_9 == "True":
+        entry.active_setting_9 = "None"
+        entry.red_9            = 0
+        entry.green_9          = 0
+        entry.blue_9           = 0
+        entry.color_temp_9     = 0
+        entry.brightness_9     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_8 == "True":
+        entry.active_setting_8 = "None"
+        entry.red_8            = 0
+        entry.green_8          = 0
+        entry.blue_8           = 0
+        entry.color_temp_8     = 0
+        entry.brightness_8     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_7 == "True":
+        entry.active_setting_7 = "None"
+        entry.red_7            = 0
+        entry.green_7          = 0
+        entry.blue_7           = 0
+        entry.color_temp_7     = 0
+        entry.brightness_7     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_6 == "True":
+        entry.active_setting_6 = "None"
+        entry.red_6            = 0
+        entry.green_6          = 0
+        entry.blue_6           = 0
+        entry.color_temp_6     = 0
+        entry.brightness_6     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_5 == "True":
+        entry.active_setting_5 = "None"
+        entry.red_5            = 0
+        entry.green_5          = 0
+        entry.blue_5           = 0
+        entry.color_temp_5     = 0
+        entry.brightness_5     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_4 == "True":
+        entry.active_setting_4 = "None"
+        entry.red_4            = 0
+        entry.green_4          = 0
+        entry.blue_4           = 0
+        entry.color_temp_4     = 0
+        entry.brightness_4     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_3 == "True":
+        entry.active_setting_3 = "None"
+        entry.red_3            = 0
+        entry.green_3          = 0
+        entry.blue_3           = 0
+        entry.color_temp_3     = 0
+        entry.brightness_3     = 254
+        db.session.commit()
+        return
+
+    if entry.active_setting_2 == "True":
+        entry.active_setting_2 = "None"
+        entry.red_2            = 0
+        entry.green_2          = 0
+        entry.blue_2           = 0
+        entry.color_temp_2     = 0
+        entry.brightness_2     = 254
+        db.session.commit()
+        return
+
+
 def SET_LED_SCENE_COLLAPSE(id):
     list_led_scenes = LED_Scenes.query.all()
     
@@ -1597,70 +1705,6 @@ def CHANGE_LED_SCENE_POSITION(id, direction):
                 db.session.commit()
                 
                 return 
-
-
-def REMOVE_LED_SCENE_SETTING(id, setting):
-    entry = LED_Scenes.query.filter_by(id=id).first()
-
-    if setting == 2:
-        entry.active_setting_2 = "None"
-        entry.red_2            = 0
-        entry.green_2          = 0
-        entry.blue_2           = 0
-        entry.color_temp_2     = 0
-        entry.brightness_2     = 254
-    if setting == 3:
-        entry.active_setting_3 = "None"
-        entry.red_3            = 0
-        entry.green_3          = 0
-        entry.blue_3           = 0
-        entry.color_temp_3     = 0
-        entry.brightness_3     = 254        
-    if setting == 4:
-        entry.active_setting_4 = "None"
-        entry.red_4            = 0
-        entry.green_4          = 0
-        entry.blue_4           = 0
-        entry.color_temp_4     = 0
-        entry.brightness_4     = 254
-    if setting == 5:
-        entry.active_setting_5 = "None"
-        entry.red_5            = 0
-        entry.green_5          = 0
-        entry.blue_5           = 0
-        entry.color_temp_5     = 0
-        entry.brightness_5     = 254
-    if setting == 6:
-        entry.active_setting_6 = "None"
-        entry.red_6            = 0
-        entry.green_6          = 0
-        entry.blue_6           = 0
-        entry.color_temp_6     = 0
-        entry.brightness_6     = 254
-    if setting == 7:
-        entry.active_setting_7 = "None"
-        entry.red_7            = 0
-        entry.green_7          = 0
-        entry.blue_7           = 0
-        entry.color_temp_7     = 0
-        entry.brightness_7     = 254
-    if setting == 8:
-        entry.active_setting_8 = "None"
-        entry.red_8            = 0
-        entry.green_8          = 0
-        entry.blue_8           = 0
-        entry.color_temp_8     = 0
-        entry.brightness_8     = 254
-    if setting == 9:
-        entry.active_setting_9 = "None"
-        entry.red_9            = 0
-        entry.green_9          = 0
-        entry.blue_9           = 0
-        entry.color_temp_9     = 0
-        entry.brightness_9     = 254
-
-    db.session.commit()
-    return
 
 
 def DELETE_LED_SCENE(id):

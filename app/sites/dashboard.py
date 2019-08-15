@@ -128,12 +128,12 @@ def dashboard(template):
                         if scene_name != "OFF":
                         
                             # new led setting ?
-                            if int(brightness) != group.current_brightness and scene_name != "OFF": 
-                                 
+                            if int(brightness) != group.current_brightness and scene_name != "OFF":
+                                
                                 heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
                     
                                 scene             = GET_LED_SCENE_BY_NAME(scene_name)
-                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10) 
+                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
                                 continue   
                                 
                             else:

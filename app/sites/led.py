@@ -39,7 +39,7 @@ def dashboard_led_groups():
     RESET_LED_GROUP_ERRORS()
     RESET_LED_GROUP_COLLAPSE()
     UPDATE_LED_GROUP_LED_NAMES()
-    
+
 
     if request.method == "POST":
 
@@ -49,7 +49,17 @@ def dashboard_led_groups():
             error_message_add_group = ADD_LED_GROUP(name)    
 
         for i in range (1,21):
-
+            
+            # add led
+            if request.form.get("add_led_" + str(i)) != None:
+                ADD_LED_GROUP_LED(i)
+                SET_LED_GROUP_COLLAPSE(i)
+                
+            # remove led
+            if request.form.get("remove_led_" + str(i)) != None:
+                REMOVE_LED_GROUP_LED(i)
+                SET_LED_GROUP_COLLAPSE(i)
+            
             # change group
             if request.form.get("set_name_" + str(i)) != None:
                 
@@ -316,24 +326,6 @@ def change_group_position(id, direction):
     return redirect(url_for('dashboard_led_groups'))
 
 
-# add led
-@app.route('/dashboard/led/groups/led/add/<int:group_id>')
-@login_required
-@permission_required
-def add_group_led(group_id):
-    ADD_LED_GROUP_LED(group_id)
-    return redirect(url_for('dashboard_led_groups'))
-
-
-# remove led
-@app.route('/dashboard/led/groups/led/remove/<int:group_id>/<int:led>')
-@login_required
-@permission_required
-def remove_group_led(group_id, led):
-    REMOVE_LED_GROUP_LED(group_id, led)
-    return redirect(url_for('dashboard_led_groups'))
-
-
 # delete group
 @app.route('/dashboard/led/groups/delete/<int:group_id>')
 @login_required
@@ -369,6 +361,16 @@ def dashboard_led_scenes():
             error_message_add_scene = ADD_LED_SCENE(name)     
 
         for i in range (1,21):
+
+            # add led
+            if request.form.get("add_setting_" + str(i)) != None:
+                ADD_LED_SCENE_SETTING(i)
+                SET_LED_SCENE_COLLAPSE(i)
+                
+            # remove led
+            if request.form.get("remove_setting_" + str(i)) != None:
+                REMOVE_LED_SCENE_SETTING(i)
+                SET_LED_SCENE_COLLAPSE(i)
 
             # change scene
             if request.form.get("set_name_" + str(i)) != None:
@@ -756,24 +758,6 @@ def dashboard_led_scenes():
 @permission_required
 def change_scene_position(id, direction):
     CHANGE_LED_SCENE_POSITION(id, direction)
-    return redirect(url_for('dashboard_led_scenes'))
-
-
-# add setting
-@app.route('/dashboard/led/scenes/setting/add/<int:scene_id>')
-@login_required
-@permission_required
-def add_scene_led(scene_id):
-    ADD_LED_SCENE_SETTING(scene_id)
-    return redirect(url_for('dashboard_led_scenes'))
-
-
-# remove setting
-@app.route('/dashboard/led/scenes/setting/remove/<int:scene_id>/<int:setting>')
-@login_required
-@permission_required
-def remove_scene_led(scene_id, setting):
-    REMOVE_LED_SCENE_SETTING(scene_id, setting)
     return redirect(url_for('dashboard_led_scenes'))
 
 

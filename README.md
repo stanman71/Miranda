@@ -58,7 +58,7 @@ This project creates a smarthome environment.
 
 - replace wrong spotipy file
  
-       >>> sudo cp /home/pi/miranda/support/Spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
+       >>> sudo cp /home/pi/miranda/support/spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
 
 </br>
 
@@ -94,19 +94,6 @@ This project creates a smarthome environment.
 
        >>> systemctl status miranda.service
        >>> journalctl -u miranda
-
-</br>
-
-#### 3. Manually Control 
-
-- stop the program 
-
-       >>> sudo killall python3
-
-- restart the program 
-
-       >>> sudo python3 /home/pi/miranda/run.py
-
 
 </br>
 ------------
@@ -198,7 +185,7 @@ https://github.com/Koenkk/zigbee2mqtt
 
 - clone zigbee2mqtt repository
 
-       >>> sudo unzip /home/pi/miranda/support/Files/zigbee2mqtt_1.5.1.zip -d /opt/zigbee2mqtt
+       >>> sudo unzip /home/pi/miranda/support/files/zigbee2mqtt_1.5.1.zip -d /opt/zigbee2mqtt
        >>> sudo chown -R pi:pi /opt/zigbee2mqtt
 
 - install zigbee2mqtt 
@@ -321,8 +308,8 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 - uploading the new coordinator firmware
 - instructions and files
 
-       >>> /home/pi/miranda/support/Files/Z-Stack-firmware.zip
-       >>> /home/pi/miranda/support/Files/zigbee_firmware.zip
+       >>> /home/pi/miranda/support/files/z-stack_firmware.zip
+       >>> /home/pi/miranda/support/files/zigbee_firmware.zip
 
 </br>
 
@@ -454,7 +441,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
        https://www.raspberrypi.org/forums/viewtopic.php?t=136974
 
-       >>> sudo cp /home/pi/miranda/support/Snowboy/alsa.conf /usr/share/alsa/alsa.conf
+       >>> sudo cp /home/pi/miranda/support/snowboy/alsa.conf /usr/share/alsa/alsa.conf
 
 </br>
 
@@ -489,7 +476,7 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - extract snowboy git archiv
 
-       >>> unzip /home/pi/miranda/support/Files/snowboy_1.3.0.zip -d /home/pi/snowboy
+       >>> unzip /home/pi/miranda/support/files/snowboy_1.3.0.zip -d /home/pi/snowboy
 
 - create new detection files
 
@@ -515,24 +502,6 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 - copy the downloaded file into the folder ~/resources/ on your raspberry pi
 - add the new hotword and action in your system settings
 
-
-</br>
-------------
-</br>
-
-### Optional: Spotipy
-
-https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-no-attribute-current-user-saved-tracks
-</br>
-</br>
-
-- Error:    AttributeError: 'Spotify' object has no attribute 'devices'
-</br>
-- Solution: Replace the old client.py file 
-
-       >>> new client.py file is in /miranda/support
-       >>> destination linux_path: /usr/local/lib/python3.7/dist-packages/spotipy
-       >>> sudo cp /home/pi/miranda/support/Spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
 
 </br>
 ------------
