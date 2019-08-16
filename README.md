@@ -43,6 +43,10 @@ This project creates a smarthome environment.
        user:       pi
        password:   raspberry
 
+- change folder permissions
+
+       >>> sudo chmod -v -R 777 /home/pi/miranda
+
 - install BLAS and LAPACK
 
        >>> sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
@@ -94,6 +98,23 @@ This project creates a smarthome environment.
 
        >>> systemctl status miranda.service
        >>> journalctl -u miranda
+
+</br>
+
+#### 3. Manually Control 
+
+- deactivate the miranda service first
+
+       >>> sudo systemctl stop miranda
+
+- start the program 
+
+       >>> sudo python3 /home/pi/miranda/run.py
+
+- stop the program 
+
+       >>> sudo killall python3
+
 
 </br>
 ------------

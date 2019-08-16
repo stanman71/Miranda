@@ -190,26 +190,26 @@ class LED_Scenes(db.Model):
 
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
-    id                                  = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name                                = db.Column(db.String(50), unique=True)
-    gateway                             = db.Column(db.String(50)) 
-    ieeeAddr                            = db.Column(db.String(50), unique=True)  
-    model                               = db.Column(db.String(50))
-    device_type                         = db.Column(db.String(50))
-    description                         = db.Column(db.String(200))
-    input_values                        = db.Column(db.String(200))
-    input_events                        = db.Column(db.String(200))
-    commands                            = db.Column(db.String(200))    
-    last_contact                        = db.Column(db.String(50))
-    last_values                         = db.Column(db.String(200))  
-    last_values_formated                = db.Column(db.String(200)) 
-    dashboard_check_option              = db.Column(db.String(50)) 
-    dashboard_check_setting             = db.Column(db.String(50))     
-    dashboard_check_sensor_ieeeAddr     = db.Column(db.String(50))   
-    dashboard_check_sensor_input_values = db.Column(db.String(50))     
-    dashboard_check_value_1             = db.Column(db.String(50))
-    dashboard_check_value_2             = db.Column(db.String(50))
-    dashboard_check_value_3             = db.Column(db.String(50))                     
+    id                                      = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name                                    = db.Column(db.String(50), unique=True)
+    gateway                                 = db.Column(db.String(50)) 
+    ieeeAddr                                = db.Column(db.String(50), unique=True)  
+    model                                   = db.Column(db.String(50))
+    device_type                             = db.Column(db.String(50))
+    description                             = db.Column(db.String(200))
+    input_values                            = db.Column(db.String(200))
+    input_events                            = db.Column(db.String(200))
+    commands                                = db.Column(db.String(200))    
+    last_contact                            = db.Column(db.String(50))
+    last_values                             = db.Column(db.String(200))  
+    last_values_formated                    = db.Column(db.String(200)) 
+    dashboard_exception_option              = db.Column(db.String(50)) 
+    dashboard_exception_setting             = db.Column(db.String(50))     
+    dashboard_exception_sensor_ieeeAddr     = db.Column(db.String(50))   
+    dashboard_exception_sensor_input_values = db.Column(db.String(50))     
+    dashboard_exception_value_1             = db.Column(db.String(50))
+    dashboard_exception_value_2             = db.Column(db.String(50))
+    dashboard_exception_value_3             = db.Column(db.String(50))                     
 
 class Plants(db.Model):
     __tablename__  = 'plants'
@@ -226,10 +226,39 @@ class Plants(db.Model):
     
 class Programs(db.Model):
     __tablename__ = 'programs'
-    id      = db.Column(db.Integer, primary_key=True, autoincrement = True)
-    name    = db.Column(db.String(50), unique = True)
-    content = db.Column(db.Text)    
-    
+    id                = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    name              = db.Column(db.String(50), unique = True)
+    line_active_1     = db.Column(db.String(50), server_default=("True"))
+    line_content_1    = db.Column(db.String(50), server_default=(""))
+    line_exception_1  = db.Column(db.String(50), server_default=(""))
+    line_active_2     = db.Column(db.String(50), server_default=(""))
+    line_content_2    = db.Column(db.String(50), server_default=(""))
+    line_exception_2  = db.Column(db.String(50), server_default=(""))
+    line_active_3     = db.Column(db.String(50), server_default=(""))
+    line_content_3    = db.Column(db.String(50), server_default=(""))
+    line_exception_3  = db.Column(db.String(50), server_default=(""))
+    line_active_4     = db.Column(db.String(50), server_default=(""))
+    line_content_4    = db.Column(db.String(50), server_default=(""))
+    line_exception_4  = db.Column(db.String(50), server_default=(""))
+    line_active_5     = db.Column(db.String(50), server_default=(""))
+    line_content_5    = db.Column(db.String(50), server_default=(""))
+    line_exception_5  = db.Column(db.String(50), server_default=(""))
+    line_active_6     = db.Column(db.String(50), server_default=(""))
+    line_content_6    = db.Column(db.String(50), server_default=(""))
+    line_exception_6  = db.Column(db.String(50), server_default=(""))
+    line_active_7     = db.Column(db.String(50), server_default=(""))
+    line_content_7    = db.Column(db.String(50), server_default=(""))
+    line_exception_7  = db.Column(db.String(50), server_default=(""))
+    line_active_8     = db.Column(db.String(50), server_default=(""))
+    line_content_8    = db.Column(db.String(50), server_default=(""))
+    line_exception_8  = db.Column(db.String(50), server_default=(""))
+    line_active_9     = db.Column(db.String(50), server_default=(""))
+    line_content_9    = db.Column(db.String(50), server_default=(""))
+    line_exception_9  = db.Column(db.String(50), server_default=(""))
+    line_active_10    = db.Column(db.String(50), server_default=(""))
+    line_content_10   = db.Column(db.String(50), server_default=(""))
+    line_exception_10 = db.Column(db.String(50), server_default=(""))
+
 class Scheduler_Tasks(db.Model):
     __tablename__ = 'scheduler_tasks'
     id                         = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -1820,7 +1849,7 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
                         input_events           = str(input_events),
                         commands               = str(commands),                    
                         last_contact           = last_contact,
-                        dashboard_check_option = "None"
+                        dashboard_exception_option = "None"
                         )
                         
                 db.session.add(device)
@@ -1871,13 +1900,13 @@ def SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, last_values):
     db.session.commit()   
 
 
-def UPDATE_DASHBOARD_CHECK_SENSOR_NAMES():
+def UPDATE_DASHBOARD_EXCEPTION_SENSOR_NAMES():
 
     try:
         for device in GET_ALL_MQTT_DEVICES("device"):
             
-            if device.option_check_ieeeAddr != "None":
-                device.option_check = GET_MQTT_DEVICE_BY_IEEEADDR(device.option_check_ieeeAddr).name
+            if device.option_exception_ieeeAddr != "None":
+                device.option_exception = GET_MQTT_DEVICE_BY_IEEEADDR(device.option_exception_ieeeAddr).name
             
         db.session.commit()
         
@@ -1885,36 +1914,37 @@ def UPDATE_DASHBOARD_CHECK_SENSOR_NAMES():
         pass
 
 
-def SET_MQTT_DEVICE_DASHBOARD_CHECK(ieeeAddr, dashboard_check_option, dashboard_check_setting,
-                                    dashboard_check_sensor_ieeeAddr, dashboard_check_sensor_input_values, dashboard_check_value_1, 
-                                    dashboard_check_value_2, dashboard_check_value_3):
+def SET_MQTT_DEVICE_DASHBOARD_EXCEPTION(ieeeAddr, dashboard_exception_option, dashboard_exception_setting,
+                                        dashboard_exception_sensor_ieeeAddr, dashboard_exception_sensor_input_values, 
+                                        dashboard_exception_value_1, dashboard_exception_value_2, dashboard_exception_value_3):
               
     entry = MQTT_Devices.query.filter_by(ieeeAddr=ieeeAddr).first()
              
     # values changed ?
-    if (entry.dashboard_check_option != dashboard_check_option or entry.dashboard_check_setting != dashboard_check_setting or
-        entry.dashboard_check_sensor_ieeeAddr != dashboard_check_sensor_ieeeAddr or 
-        entry.dashboard_check_sensor_input_values != dashboard_check_sensor_input_values or entry.dashboard_check_value_1 != dashboard_check_value_1 or 
-        entry.dashboard_check_value_2 != dashboard_check_value_2 or entry.dashboard_check_value_3 != dashboard_check_value_3):              
+    if (entry.dashboard_exception_option != dashboard_exception_option or entry.dashboard_exception_setting != dashboard_exception_setting or
+        entry.dashboard_exception_sensor_ieeeAddr != dashboard_exception_sensor_ieeeAddr or 
+        entry.dashboard_exception_sensor_input_values != dashboard_exception_sensor_input_values or 
+        entry.dashboard_exception_value_1 != dashboard_exception_value_1 or entry.dashboard_exception_value_2 != dashboard_exception_value_2 or 
+        entry.dashboard_exception_value_3 != dashboard_exception_value_3):              
                                          
-        entry.dashboard_check_option              = dashboard_check_option
-        entry.dashboard_check_setting             = dashboard_check_setting          
-        entry.dashboard_check_sensor_ieeeAddr     = dashboard_check_sensor_ieeeAddr
-        entry.dashboard_check_sensor_input_values = dashboard_check_sensor_input_values
-        entry.dashboard_check_value_1             = dashboard_check_value_1
-        entry.dashboard_check_value_2             = dashboard_check_value_2 
-        entry.dashboard_check_value_3             = dashboard_check_value_3         
+        entry.dashboard_exception_option              = dashboard_exception_option
+        entry.dashboard_exception_setting             = dashboard_exception_setting          
+        entry.dashboard_exception_sensor_ieeeAddr     = dashboard_exception_sensor_ieeeAddr
+        entry.dashboard_exception_sensor_input_values = dashboard_exception_sensor_input_values
+        entry.dashboard_exception_value_1             = dashboard_exception_value_1
+        entry.dashboard_exception_value_2             = dashboard_exception_value_2 
+        entry.dashboard_exception_value_3             = dashboard_exception_value_3         
         
         db.session.commit()  
         
         WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Device - " + entry.name + 
                              " | Gateway - " + entry.gateway + " | Dashboard Settings changed" +
-                             " || Dashboard Check - " + entry.dashboard_check_option +
-                             " | Dashboard Check Setting - " + entry.dashboard_check_setting +                          
-                             " | Dashboard Check ieeeAddr - " + entry.dashboard_check_sensor_ieeeAddr +
-                             " | Dashboard Check Value 1 - " + entry.dashboard_check_value_1 +
-                             " | Dashboard Check Value 2 - " + entry.dashboard_check_value_2 +      
-                             " | Dashboard Check Value 3 - " + entry.dashboard_check_value_3) 
+                             " || Dashboard Exception - " + entry.dashboard_exception_option +
+                             " | Dashboard Exception Setting - " + entry.dashboard_exception_setting +                          
+                             " | Dashboard Exception ieeeAddr - " + entry.dashboard_exception_sensor_ieeeAddr +
+                             " | Dashboard Exception Value 1 - " + entry.dashboard_exception_value_1 +
+                             " | Dashboard Exception Value 2 - " + entry.dashboard_exception_value_2 +      
+                             " | Dashboard Exception Value 3 - " + entry.dashboard_exception_value_3) 
 
     
 def UPDATE_MQTT_DEVICE(id, name, gateway, model, device_type = "", description = "", input_values = "", input_events = "", commands = ""):
@@ -2263,7 +2293,6 @@ def ADD_PROGRAM(name):
                 program = Programs(
                         id = i,
                         name = name,
-                        content = "",
                     )
                 db.session.add(program)
                 db.session.commit()
@@ -2287,11 +2316,366 @@ def SET_PROGRAM_NAME(id, name):
         db.session.commit()    
 
 
-def SAVE_PROGRAM(id, content):
+def SET_PROGRAM_SETTINGS(id, line_content_1, line_exception_1, line_content_2, line_exception_2, line_content_3, line_exception_3,
+                         line_content_4, line_exception_4, line_content_5, line_exception_5, line_content_6, line_exception_6,
+                         line_content_7, line_exception_7, line_content_8, line_exception_8, line_content_9, line_exception_9,
+                         line_content_10, line_exception_10):  
+
     entry = Programs.query.filter_by(id=id).first()
-    entry.content = content
-    
-    db.session.commit()
+
+    if (entry.line_content_1  != line_content_1  or entry.line_exception_1  != line_exception_1 or 
+        entry.line_content_2  != line_content_2  or entry.line_exception_2  != line_exception_2 or 
+        entry.line_content_3  != line_content_3  or entry.line_exception_3  != line_exception_3 or
+        entry.line_content_4  != line_content_4  or entry.line_exception_4  != line_exception_4 or
+        entry.line_content_5  != line_content_5  or entry.line_exception_5  != line_exception_5 or
+        entry.line_content_6  != line_content_6  or entry.line_exception_6  != line_exception_6 or  
+        entry.line_content_7  != line_content_7  or entry.line_exception_7  != line_exception_7 or
+        entry.line_content_8  != line_content_8  or entry.line_exception_8  != line_exception_8 or
+        entry.line_content_9  != line_content_9  or entry.line_exception_9  != line_exception_9 or
+        entry.line_content_10 != line_content_10 or entry.line_exception_10 != line_exception_10): 
+
+        entry.line_content_1    = line_content_1 
+        entry.line_exception_1  = line_exception_1 
+        entry.line_content_2    = line_content_2 
+        entry.line_exception_2  = line_exception_2 
+        entry.line_content_3    = line_content_3 
+        entry.line_exception_3  = line_exception_3 
+        entry.line_content_4    = line_content_4 
+        entry.line_exception_4  = line_exception_4 
+        entry.line_content_5    = line_content_5 
+        entry.line_exception_5  = line_exception_5 
+        entry.line_content_6    = line_content_6 
+        entry.line_exception_6  = line_exception_6  
+        entry.line_content_7    = line_content_7 
+        entry.line_exception_7  = line_exception_7 
+        entry.line_content_8    = line_content_8 
+        entry.line_exception_8  = line_exception_8 
+        entry.line_content_9    = line_content_9 
+        entry.line_exception_9  = line_exception_9 
+        entry.line_content_10   = line_content_10 
+        entry.line_exception_10 = line_exception_10 
+
+        db.session.commit()
+
+
+def ADD_PROGRAM_LINE(id):
+    entry = Programs.query.filter_by(id=id).first()
+
+    if entry.line_active_2 != "True":
+        entry.line_active_2 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_3 != "True":
+        entry.line_active_3 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_4 != "True":
+        entry.line_active_4 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_5 != "True":
+        entry.line_active_5 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_6 != "True":
+        entry.line_active_6 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_7 != "True":
+        entry.line_active_7 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_8 != "True":
+        entry.line_active_8 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_9 != "True":
+        entry.line_active_9 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_10 != "True":
+        entry.line_active_10 = "True"
+        db.session.commit()
+        return
+
+
+def REMOVE_PROGRAM_LINE(id):
+    entry = Programs.query.filter_by(id=id).first()
+
+    if entry.line_active_10 == "True":
+        entry.line_active_10    = ""
+        entry.line_content_10   = ""
+        entry.line_exception_10 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_9 == "True":
+        entry.line_active_9    = ""
+        entry.line_content_9   = ""
+        entry.line_exception_9 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_8 == "True":
+        entry.line_active_8    = ""
+        entry.line_content_8   = ""
+        entry.line_exception_8 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_7 == "True":
+        entry.line_active_7    = ""
+        entry.line_content_7   = ""
+        entry.line_exception_7 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_6 == "True":
+        entry.line_active_6    = ""
+        entry.line_content_6   = ""
+        entry.line_exception_6 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_5 == "True":
+        entry.line_active_5    = ""
+        entry.line_content_5   = ""
+        entry.line_exception_5 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_4 == "True":
+        entry.line_active_4    = ""
+        entry.line_content_4   = ""
+        entry.line_exception_4 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_3 == "True":
+        entry.line_active_3    = ""
+        entry.line_content_3   = ""
+        entry.line_exception_3 = ""
+        db.session.commit()
+        return 
+
+    if entry.line_active_2 == "True":
+        entry.line_active_2    = ""
+        entry.line_content_2   = ""
+        entry.line_exception_2 = ""
+        db.session.commit()
+        return 
+
+
+def CHANGE_PROGRAMS_LINE_POSITION(id, line, direction):
+    entry = Programs.query.filter_by(id=id).first()
+
+    print(id)
+    print(line)
+    print(direction)
+
+    if direction == "up":
+
+        if line == 2:
+            line_content_temp      = entry.line_content_1
+            entry.line_content_1   = entry.line_content_2
+            entry.line_content_2   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_1
+            entry.line_exception_1 = entry.line_exception_2
+            entry.line_exception_2 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 3:
+            line_content_temp      = entry.line_content_2
+            entry.line_content_2   = entry.line_content_3
+            entry.line_content_3   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_2
+            entry.line_exception_2 = entry.line_exception_3
+            entry.line_exception_3 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 4:
+            line_content_temp      = entry.line_content_3
+            entry.line_content_3   = entry.line_content_4
+            entry.line_content_4   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_3
+            entry.line_exception_3 = entry.line_exception_4
+            entry.line_exception_4 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 5:
+            line_content_temp      = entry.line_content_4
+            entry.line_content_4   = entry.line_content_5
+            entry.line_content_5   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_4
+            entry.line_exception_4 = entry.line_exception_5
+            entry.line_exception_5 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 6:
+            line_content_temp      = entry.line_content_5
+            entry.line_content_5   = entry.line_content_6
+            entry.line_content_6   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_5
+            entry.line_exception_5 = entry.line_exception_6
+            entry.line_exception_6 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 7:
+            line_content_temp      = entry.line_content_6
+            entry.line_content_6   = entry.line_content_7
+            entry.line_content_7   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_6
+            entry.line_exception_6 = entry.line_exception_7
+            entry.line_exception_7 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 8:
+            line_content_temp      = entry.line_content_7
+            entry.line_content_7   = entry.line_content_8
+            entry.line_content_8   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_7
+            entry.line_exception_7 = entry.line_exception_8
+            entry.line_exception_8 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 9:
+            line_content_temp      = entry.line_content_8
+            entry.line_content_8   = entry.line_content_9
+            entry.line_content_9   = line_content_temp
+
+            line_exception_temp    = entry.line_exception_8
+            entry.line_exception_8 = entry.line_exception_9
+            entry.line_exception_9 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 10:
+            line_content_temp       = entry.line_content_9
+            entry.line_content_9    = entry.line_content_10
+            entry.line_content_10   = line_content_temp
+
+            line_exception_temp     = entry.line_exception_9
+            entry.line_exception_9  = entry.line_exception_10
+            entry.line_exception_10 = line_exception_temp 
+
+            db.session.commit()
+
+
+    if direction == "down":
+
+        if line == 1 and entry.line_active_2 == "True":
+
+            line_content_temp      = entry.line_content_2
+            entry.line_content_2   = entry.line_content_1
+            entry.line_content_1   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_2
+            entry.line_exception_2 = entry.line_exception_1
+            entry.line_exception_1 = line_exception_temp 
+ 
+            db.session.commit()
+
+        if line == 2 and entry.line_active_3 == "True":
+            line_content_temp      = entry.line_content_3
+            entry.line_content_3   = entry.line_content_2
+            entry.line_content_2   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_3
+            entry.line_exception_3 = entry.line_exception_2
+            entry.line_exception_2 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 3 and entry.line_active_4 == "True":
+            line_content_temp      = entry.line_content_4
+            entry.line_content_4   = entry.line_content_3
+            entry.line_content_3   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_4
+            entry.line_exception_4 = entry.line_exception_3
+            entry.line_exception_3 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 4 and entry.line_active_5 == "True":
+            line_content_temp      = entry.line_content_5
+            entry.line_content_5   = entry.line_content_4
+            entry.line_content_4   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_5
+            entry.line_exception_5 = entry.line_exception_4
+            entry.line_exception_4 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 5 and entry.line_active_6 == "True":
+            line_content_temp      = entry.line_content_6
+            entry.line_content_6   = entry.line_content_5
+            entry.line_content_5   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_6
+            entry.line_exception_6 = entry.line_exception_5
+            entry.line_exception_5 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 6 and entry.line_active_7 == "True":
+            line_content_temp      = entry.line_content_7
+            entry.line_content_7   = entry.line_content_6
+            entry.line_content_6   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_7
+            entry.line_exception_7 = entry.line_exception_6
+            entry.line_exception_6 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 7 and entry.line_active_8 == "True":
+            line_content_temp      = entry.line_content_8
+            entry.line_content_8   = entry.line_content_7
+            entry.line_content_7   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_8
+            entry.line_exception_8 = entry.line_exception_7
+            entry.line_exception_7 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 8 and entry.line_active_9 == "True":
+            line_content_temp      = entry.line_content_9
+            entry.line_content_9   = entry.line_content_8
+            entry.line_content_8   = line_content_temp 
+
+            line_exception_temp    = entry.line_exception_9
+            entry.line_exception_9 = entry.line_exception_8
+            entry.line_exception_8 = line_exception_temp 
+
+            db.session.commit()
+
+        if line == 9 and entry.line_active_10 == "True":
+            line_content_temp      = entry.line_content_10
+            entry.line_content_10  = entry.line_content_9
+            entry.line_content_9   = line_content_temp 
+
+            line_exception_temp     = entry.line_exception_10
+            entry.line_exception_10 = entry.line_exception_9
+            entry.line_exception_9  = line_exception_temp 
+
+            db.session.commit()
 
 
 def DELETE_PROGRAM(id):

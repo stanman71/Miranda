@@ -34,7 +34,7 @@ def permission_required(f):
 @permission_required
 def dashboard_programs():
     error_message_add_program  = ""
-    error_message_content      = ""
+    error_message_content      = []
 
     program          = ""
     rgb              = "0, 0, 0"
@@ -75,18 +75,106 @@ def dashboard_programs():
                 request.form.get("save_" + str(i)) != None or
                 request.form.get("start_" + str(i)) != None or
                 request.form.get("stop_" + str(i)) != None or
-                request.form.get("change_program_name_" + str(i)) != None or
-                request.form.get("spotify_search_track_" + str(i)) != None or
-                request.form.get("spotify_track_play_" + str(i)) != None or
-                request.form.get("spotify_search_album_" + str(i)) != None or
-                request.form.get("spotify_album_play_" + str(i))):                    
+                request.form.get("add_line_" + str(i)) != None or
+                request.form.get("remove_line_" + str(i)) != None or
+                request.form.get("line_1_down_" + str(i)) != None or
+                request.form.get("line_2_up_" + str(i)) != None or
+                request.form.get("line_2_down_" + str(i)) != None or
+                request.form.get("line_3_up_" + str(i)) != None or 
+                request.form.get("line_3_down_" + str(i)) != None or
+                request.form.get("line_4_up_" + str(i)) != None or
+                request.form.get("line_4_down_" + str(i)) != None or
+                request.form.get("line_5_up_" + str(i)) != None or 
+                request.form.get("line_5_down_" + str(i)) != None or
+                request.form.get("line_6_up_" + str(i)) != None or 
+                request.form.get("line_6_down_" + str(i)) != None or                    
+                request.form.get("line_7_up_" + str(i)) != None or 
+                request.form.get("line_7_down_" + str(i)) != None or                    
+                request.form.get("line_8_up_" + str(i)) != None or 
+                request.form.get("line_8_down_" + str(i)) != None or                    
+                request.form.get("line_9_up_" + str(i)) != None or 
+                request.form.get("line_9_down_" + str(i)) != None or                    
+                request.form.get("line_10_up_" + str(i)) != None or                 
+                request.form.get("change_program_name_" + str(i))):                    
                
                
-                # save content
-                content = request.form.get("content")
-                SAVE_PROGRAM(i, content)                 
-                       
-                       
+                # add line
+                if request.form.get("add_line_" + str(i)) != None:
+                    ADD_PROGRAM_LINE(i)
+                   
+                   
+                # remove line
+                if request.form.get("remove_line_" + str(i)) != None:
+                    REMOVE_PROGRAM_LINE(i)
+                    
+                    
+                # save settings
+                line_content_1    = request.form.get("set_line_content_1_" + str(i))
+                line_exception_1  = request.form.get("set_line_exception_1_" + str(i))
+                line_content_2    = request.form.get("set_line_content_2_" + str(i))
+                line_exception_2  = request.form.get("set_line_exception_2_" + str(i))
+                line_content_3    = request.form.get("set_line_content_3_" + str(i))
+                line_exception_3  = request.form.get("set_line_exception_3_" + str(i))                
+                line_content_4    = request.form.get("set_line_content_4_" + str(i))
+                line_exception_4  = request.form.get("set_line_exception_4_" + str(i))                
+                line_content_5    = request.form.get("set_line_content_5_" + str(i))
+                line_exception_5  = request.form.get("set_line_exception_5_" + str(i))
+                line_content_6    = request.form.get("set_line_content_6_" + str(i))
+                line_exception_6  = request.form.get("set_line_exception_6_" + str(i))              
+                line_content_7    = request.form.get("set_line_content_7_" + str(i))
+                line_exception_7  = request.form.get("set_line_exception_7_" + str(i))              
+                line_content_8    = request.form.get("set_line_content_8_" + str(i))
+                line_exception_8  = request.form.get("set_line_exception_8_" + str(i))              
+                line_content_9    = request.form.get("set_line_content_9_" + str(i))
+                line_exception_9  = request.form.get("set_line_exception_9_" + str(i))              
+                line_content_10   = request.form.get("set_line_content_10_" + str(i))
+                line_exception_10 = request.form.get("set_line_exception_10_" + str(i))              
+              
+                SET_PROGRAM_SETTINGS(i, line_content_1, line_exception_1, line_content_2, line_exception_2, line_content_3, line_exception_3,
+                                     line_content_4, line_exception_4, line_content_5, line_exception_5, line_content_6, line_exception_6,
+                                     line_content_7, line_exception_7, line_content_8, line_exception_8, line_content_9, line_exception_9,
+                                     line_content_10, line_exception_10)
+    
+    
+                # change line position  
+                if request.form.get("line_1_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 1, "down")
+                if request.form.get("line_2_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 2, "up")
+                if request.form.get("line_2_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 2, "down")
+                if request.form.get("line_3_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 3, "up")
+                if request.form.get("line_3_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 3, "down")        
+                if request.form.get("line_4_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 4, "up")
+                if request.form.get("line_4_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 4, "down")
+                if request.form.get("line_5_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 5, "up")
+                if request.form.get("line_5_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 5, "down")
+                if request.form.get("line_6_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 6, "up")
+                if request.form.get("line_6_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 6, "down")                    
+                if request.form.get("line_7_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 7, "up")
+                if request.form.get("line_7_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 7, "down")  
+                if request.form.get("line_8_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 8, "up")
+                if request.form.get("line_8_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 8, "down")   
+                if request.form.get("line_9_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 9, "up")
+                if request.form.get("line_9_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 9, "down")   
+                if request.form.get("line_10_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 10, "up")
+                    
+   
                 # start program
                 if request.form.get("start_" + str(i)) != None: 
                     START_PROGRAM_THREAD(i)  
@@ -98,7 +186,7 @@ def dashboard_programs():
                  
 
                 # get rgb values
-                if request.form.get("get_rgb_" + str(i)) != "rgb(0, 0, 0)": 
+                if request.form.get("get_rgb_" + str(i)) != "rgb(0, 0, 0)" and request.form.get("get_rgb_" + str(i)) != None: 
         
                     collapse_get_rgb = "in"        
                 
@@ -132,13 +220,20 @@ def dashboard_programs():
     program_running        = GET_PROGRAM_RUNNING()
     
     
-    # list device command option    
+    # list device command options   
     list_device_command_options = []
     
     for device in GET_ALL_MQTT_DEVICES("device"):
         list_device_command_options.append((device.name, device.commands))
         
+        
+    # list sensor options
+    list_sensor_options = []
     
+    for sensor in GET_ALL_MQTT_DEVICES("sensor"):
+        list_sensor_options.append((sensor.name, sensor.input_values))
+        
+
     # list spotify devices / playlists
     spotify_token = GET_SPOTIFY_TOKEN()    
     
@@ -165,7 +260,8 @@ def dashboard_programs():
                             error_message_content=error_message_content,
                             spotify_devices=spotify_devices,
                             spotify_playlists=spotify_playlists,   
-                            list_device_command_options=list_device_command_options,                 
+                            list_device_command_options=list_device_command_options,
+                            list_sensor_options=list_sensor_options,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

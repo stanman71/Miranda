@@ -24,35 +24,35 @@ def CHECK_CAMERA_SETTINGS(cameras):
 """   check dashboard   """
 """ ################### """
 
-def CHECK_DASHBOARD_CHECK_SETTINGS(devices): 
+def CHECK_DASHBOARD_EXCEPTION_SETTINGS(devices): 
    error_message_settings = []
 
    for device in devices:
 
-      if device.dashboard_check_option != "None":
+      if device.dashboard_exception_option != "None":
 
-         if device.dashboard_check_setting == "None" or device.dashboard_check_setting == None:
+         if device.dashboard_exception_setting == "None" or device.dashboard_exception_setting == None:
             error_message_settings.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
-         # check setting ip_address
-         if device.dashboard_check_option == "IP-Address":
+         # exception setting ip_address
+         if device.dashboard_exception_option == "IP-Address":
 
             # search for wrong chars
-            for element in device.dashboard_check_value_1:
+            for element in device.dashboard_exception_value_1:
                if not element.isdigit() and element != "." and element != "," and element != " ":
                   error_message_settings.append(device.name + " >>> Ungültige IP-Adresse")
                   break
                
-         # check setting sensor
-         if device.dashboard_check_option != "IP-Address": 
+         # exception setting sensor
+         if device.dashboard_exception_option != "IP-Address": 
             
-            if device.dashboard_check_value_1 == "None" or device.dashboard_check_value_1 == None:
+            if device.dashboard_exception_value_1 == "None" or device.dashboard_exception_value_1 == None:
                error_message_settings.append(device.name + " >>> Keinen Sensor ausgewählt")
 
-            if device.dashboard_check_value_2 == "None" or device.dashboard_check_value_2 == None:
+            if device.dashboard_exception_value_2 == "None" or device.dashboard_exception_value_2 == None:
                error_message_settings.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")
 
-            if device.dashboard_check_value_3 == "None" or device.dashboard_check_value_3 == None:
+            if device.dashboard_exception_value_3 == "None" or device.dashboard_exception_value_3 == None:
                error_message_settings.append(device.name + " >>> Keinen Vergleichswert eingetragen")
                   
    return error_message_settings
@@ -97,282 +97,388 @@ def CHECK_LED_GROUP_SETTINGS(settings):
 def CHECK_PROGRAM(program_id):
    list_errors = []
 
-   content     = GET_PROGRAM_BY_ID(program_id).content
+   lines = [[GET_PROGRAM_BY_ID(program_id).line_active_1, GET_PROGRAM_BY_ID(program_id).line_content_1, GET_PROGRAM_BY_ID(program_id).line_exception_1],
+            [GET_PROGRAM_BY_ID(program_id).line_active_2, GET_PROGRAM_BY_ID(program_id).line_content_2, GET_PROGRAM_BY_ID(program_id).line_exception_2],
+            [GET_PROGRAM_BY_ID(program_id).line_active_3, GET_PROGRAM_BY_ID(program_id).line_content_3, GET_PROGRAM_BY_ID(program_id).line_exception_3],
+            [GET_PROGRAM_BY_ID(program_id).line_active_4, GET_PROGRAM_BY_ID(program_id).line_content_4, GET_PROGRAM_BY_ID(program_id).line_exception_4],
+            [GET_PROGRAM_BY_ID(program_id).line_active_5, GET_PROGRAM_BY_ID(program_id).line_content_5, GET_PROGRAM_BY_ID(program_id).line_exception_5]] 
+   
    line_number = 0
+            
    
    try:
    
-      for line in content.splitlines():
-         
-         line_number = line_number + 1
-         
-         # #######
-         #  break
-         # #######           
-                 
-         if "pause" in line:   
-            
-            try: 
-               line_content = line.split(" /// ")
-                
-               # check delay value            
-               if line_content[1].isdigit():
-                   continue
-               else:
-                  list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> fehlende Einstellung >>> Sekunden")  
-                  
-            except:
-               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")
-            
-                   
-         # ########
-         #  device
-         # ########
-
-         elif "device" in line:
-            
-            try:
-               line_content = line.split(" /// ")
-
-               device_name = line_content[1]    
-               device      = ""
-               device      = GET_MQTT_DEVICE_BY_NAME(device_name)
-                     
-               # check device
-               if device != None:
-                  
-                  if not "led" in device.device_type:
-       
-                     program_setting_formated = line_content[2]
-                     program_setting_formated = program_setting_formated.replace(" ", "")
-
-                     # convert string to json-format
-                     program_setting = program_setting_formated.replace(':', '":"')
-                     program_setting = program_setting.replace(',', '","')
-                     program_setting = '{"' + str(program_setting) + '"}'    
-
-                     setting_valid = False
-
-                     # check device command 
-                     for command in device.commands.split(" "):   
-                        if command == program_setting:
-                           setting_valid = True
-                           break
-
-                     if setting_valid == False:
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Befehl ungültig >>> " + program_setting)       
-
-                  else:        
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist eine LED") 
-
-               else:
-                  list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Gerät nicht gefunden >>> " + device_name)  
-                  
-            except:
-               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")
-                  
-           
-         # ######
-         #  led
-         # ######         
-           
-         elif "led" in line:
-            
-            try:        
-               line_content = line.split(" /// ")
-
-               try:
-                  # check led name
-                  led_name = line_content[1]    
-                  led_type = GET_MQTT_DEVICE_BY_NAME(led_name).device_type
-                  
-                  if "led" in led_type:
-
-                     # check setting led_rgb             
-                     if led_type == "led_rgb" and (line_content[2] != "off" and line_content[2] != "OFF"): 
-                           
-                        try:
-                           
-                           try:
-                           
-                              rgb_values = re.findall(r'\d+', line_content[2])
-                           
-                              if not rgb_values[0].isdigit() or not (0 <= int(rgb_values[0]) <= 255):
-                                 list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> ROT") 
-                              if not rgb_values[1].isdigit() or not (0 <= int(rgb_values[1]) <= 255):
-                                 list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> GRÜN")                   
-                              if not rgb_values[2].isdigit() or not (0 <= int(rgb_values[2]) <= 255):
-                                 list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger RGB Wert >>> BLAU")    
-                                 
-                           except:
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige RGB Einstellungen")    
-                                                
-                        
-                           if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
-                           
-                        except:
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
-
-       
-                     # check setting led_white             
-                     elif led_type == "led_white" and (line_content[2] != "off" and line_content[2] != "OFF"): 
-                        
-                        try:
-                        
-                           if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 7000):
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Farbtemperatur") 
-                           if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
-                           
-                        except:
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
-
-
-                     # check setting led_simple             
-                     elif led_type == "led_simple" and (line_content[2] != "off" and line_content[2] != "OFF"): 
-                        
-                        try: 
-                        
-                           if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 254):
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Helligkeitswert") 
-                           
-                        except:
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
-                      
-                      
-                     # check setting turn_off             
-                     elif line_content[2] == "off" or line_content[2] == "OFF": 
-                        pass
-                 
-                      
-                     # nothing founded
-                     else:
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung") 
-                            
-                  else:        
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Gerät ist keine LED") 
-
-               except:
-                  list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> LED nicht gefunden >>> " + led_name) 
-                  
-            except:
-               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")               
-
+      for line in lines:
           
-         # #########
-         #  spotify
-         # #########   
-         
-         elif "spotify" in line:
-            
-            try:        
-               line_content = line.split(" /// ")       
+         line_number = line_number + 1
+
+         # line active ?
+         if line[0] == "True":
+             
+
+             # ##################
+             #  content function
+             # ##################
+             
+             # break
+                     
+             if "pause" in line[1]:   
+                
+                try: 
+                   line_content = line[1].split(" /// ")
+                    
+                   # check delay value            
+                   if line_content[1].isdigit():
+                       continue
+                   else:
+                      list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> fehlende Einstellung >>> Sekunden")
+                      
+                except:
+                   list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
+             #  device
+
+             elif "device" in line[1]:
+                
+                try:
+                   line_content = line[1].split(" /// ")
+
+                   device_name = line_content[1]    
+                   device      = ""
+                   device      = GET_MQTT_DEVICE_BY_NAME(device_name)
+                         
+                   # check device
+                   if device != None:
+                      
+                      if not "led" in device.device_type:
+           
+                         program_setting_formated = line_content[2]
+                         program_setting_formated = program_setting_formated.replace(" ", "")
+
+                         # convert string to json-format
+                         program_setting = program_setting_formated.replace(':', '":"')
+                         program_setting = program_setting.replace(',', '","')
+                         program_setting = '{"' + str(program_setting) + '"}'    
+
+                         setting_valid = False
+
+                         # check device command 
+                         for command in device.commands.split(" "):   
+                            if command == program_setting:
+                               setting_valid = True
+
+                         if setting_valid == False:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> falsche Einstellung >>> Befehl ungültig >>> " + program_setting)
+
+                      else:        
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Gerät ist eine LED")
+
+                   else:
+                      list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> falsche Einstellung >>> Gerät nicht gefunden >>> " + device_name)
+                      
+                except:
+                   list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
                
-               if (line_content[1].lower() != "play" and
-                   line_content[1].lower() != "previous" and
-                   line_content[1].lower() != "next" and
-                   line_content[1].lower() != "stop" and
-                   line_content[1].lower() != "volume" and
-                   line_content[1].lower() != "playlist" and
-                   line_content[1].lower() != "track" and
-                   line_content[1].lower() != "album"):
-
-                   list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Befehl")        
-       
-               # volume
-
-               if line_content[1].lower() == "volume":
-                  
-                  try:
-                     if not line_content[2].isdigit():
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                     else:
-                        if not 0 <= int(line_content[2]) <= 100:
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
-                           
-                  except:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-   
-               # playlist
-   
-               if line_content[1].lower() == "playlist": 
-                  
-                  try:
-                     device_name   = line_content[2]                                    
-                     playlist_name = line_content[3]
-                     
-                     try:
-                        if not line_content[4].isdigit():
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        else:
-                           if not 0 <= int(line_content[4]) <= 100:
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
-                                 
-                     except:
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        
-                  except:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Unvollständige Angaben")                  
-                     
-               # track
-                     
-               if line_content[1].lower() == "track": 
-                  
-                  try:
-                     device_name  = line_content[2]                                    
-                     track_title  = line_content[3]
-                     track_artist = line_content[4]
-                     
-                     try:
-                        if not line_content[5].isdigit():
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        else:
-                           if not 0 <= int(line_content[5]) <= 100:
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
-                                 
-                     except:
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        
-                  except:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Unvollständige Angaben")   
-
-               # album
-
-               if line_content[1].lower() == "album": 
-                  
-                  try:
-                     device_name  = line_content[2]                                    
-                     album_title  = line_content[3]
-                     album_artist = line_content[4]
-                     
-                     try:
-                        if not line_content[5].isdigit():
-                           list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        else:
-                           if not 0 <= int(line_content[5]) <= 100:
-                              list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
-                                 
-                     except:
-                        list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültiger Lautstärkewert") 
-                        
-                  except:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Unvollständige Angaben")                    
-                  
-            except:
-               list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> Ungültige Formatierung")      
+             #  led       
                
-                  
-         # #######
-         #  other
-         # ####### 
-    
-         else:
-            list_errors.append("Zeile " + str(line_number) + " >>> " + line + " >>> falsche Einstellung >>> Eingabetyp nicht gefunden") 
+             elif "led" in line[1] and "led_group" not in line[1]:
+                
+                try:        
+                   line_content = line[1].split(" /// ")
+
+                   try:
+                      # check led name
+                      led_name = line_content[1]    
+                      led_type = GET_MQTT_DEVICE_BY_NAME(led_name).device_type
+                      
+                      if "led" in led_type:
+
+                         # check setting led_rgb             
+                         if led_type == "led_rgb" and (line_content[2] != "off" and line_content[2] != "OFF"): 
+                               
+                            try:
+                               
+                               try:
+                               
+                                  rgb_values = re.findall(r'\d+', line_content[2])
+                               
+                                  if not rgb_values[0].isdigit() or not (0 <= int(rgb_values[0]) <= 255):
+                                     list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger RGB Wert >>> ROT") 
+                                  if not rgb_values[1].isdigit() or not (0 <= int(rgb_values[1]) <= 255):
+                                     list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger RGB Wert >>> GRÜN")                   
+                                  if not rgb_values[2].isdigit() or not (0 <= int(rgb_values[2]) <= 255):
+                                     list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger RGB Wert >>> BLAU")
+                                     
+                               except:
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige RGB Einstellungen")
+                                                   
                             
+                               if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Helligkeitswert")
+                               
+                            except:
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
+           
+                         # check setting led_white             
+                         elif led_type == "led_white" and (line_content[2] != "off" and line_content[2] != "OFF"): 
+                            
+                            try:
+                            
+                               if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 7000):
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Farbtemperatur")
+                                
+                               if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Helligkeitswert")
+                               
+                            except:
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+                               
+
+
+                         # check setting led_simple             
+                         elif led_type == "led_simple" and (line_content[2] != "off" and line_content[2] != "OFF"): 
+                            
+                            try: 
+                            
+                               if not line_content[2].isdigit() or not (0 <= int(line_content[2]) <= 254):
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Helligkeitswert")
+                               
+                            except:
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
+                          
+                         # check setting turn_off             
+                         elif line_content[2] == "off" or line_content[2] == "OFF": 
+                            pass
+                     
+                          
+                         # nothing founded
+                         else:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+                                
+                      else:        
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Gerät ist keine LED")
+
+                   except:
+                      list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> LED nicht gefunden >>> " + led_name)
+
+                except:
+                   list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+                   
+
+             #  led group        
+               
+             elif "led_group" in line[1]:
+                
+                try:        
+                   line_content = line[1].split(" /// ")
+
+                   try:
+                      # check led name
+                      led_group_name = line_content[1]    
+                      
+                      if GET_LED_GROUP_BY_NAME(led_group_name) != None:
+                         
+                         try:
+                         
+                             if line_content[2] != "off" and line_content[2] != "OFF":
+                                
+                                 if GET_LED_SCENE_BY_NAME(line_content[2]) == None: 
+                                    list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Szene nicht gefunden >>> " + line_content[2])
+
+                                 if not line_content[3].isdigit() or not (0 <= int(line_content[3]) <= 254):
+                                    list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Helligkeitswert")
+                                    
+                             elif line_content[2] == "off" or line_content[2] == "OFF":
+                                 pass
+                                
+                             else:
+                                 list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")                            
+        
+                         except:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+                          
+                      else:        
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> LED Gruppe nicht gefunden >>> " + led_group_name)
+
+                   except:
+                      list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> LED Gruppe nicht gefunden >>> " + led_group_name)
+                      
+                except:
+                   list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
+
+             #  spotify 
+             
+             elif "spotify" in line[1]:
+                
+                try:        
+                   line_content = line[1].split(" /// ")       
+                   
+                   if (line_content[1].lower() != "play" and
+                       line_content[1].lower() != "previous" and
+                       line_content[1].lower() != "next" and
+                       line_content[1].lower() != "stop" and
+                       line_content[1].lower() != "volume" and
+                       line_content[1].lower() != "playlist" and
+                       line_content[1].lower() != "track" and
+                       line_content[1].lower() != "album"):
+
+                       list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Befehl")
+
+                   # volume
+
+                   if line_content[1].lower() == "volume":
+                      
+                      try:
+                         if not line_content[2].isdigit():
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+                        
+                         else:
+                            if not 0 <= int(line_content[2]) <= 100:
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
+                               
+                      except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                   # playlist
+       
+                   if line_content[1].lower() == "playlist": 
+                      
+                      try:
+                         device_name   = line_content[2]                                    
+                         playlist_name = line_content[3]
+                         
+                         try:
+                            if not line_content[4].isdigit():
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+                            
+                            else:
+                               if not 0 <= int(line_content[4]) <= 100:
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
+
+                         except:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                      except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Unvollständige Angaben")
+
+                   # track
+                         
+                   if line_content[1].lower() == "track": 
+                      
+                      try:
+                         device_name  = line_content[2]                                    
+                         track_title  = line_content[3]
+                         track_artist = line_content[4]
+                         
+                         try:
+                            if not line_content[5].isdigit():
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                            else:
+                               if not 0 <= int(line_content[5]) <= 100:
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
+
+                         except:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                      except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Unvollständige Angaben")
+
+                   # album
+
+                   if line_content[1].lower() == "album": 
+                      
+                      try:
+                         device_name  = line_content[2]                                    
+                         album_title  = line_content[3]
+                         album_artist = line_content[4]
+                         
+                         try:
+                            if not line_content[5].isdigit():
+                               list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                            else:
+                               if not 0 <= int(line_content[5]) <= 100:
+                                  list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Zulässige Lautstärke liegt zwischen 0 % und 100 %")
+
+                         except:
+                            list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültiger Lautstärkewert")
+
+                      except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Unvollständige Angaben")
+
+                except:
+                   list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> Ungültige Formatierung")
+
+
+            # None
+
+             elif line[1] == "None":
+                 pass
+
+
+             #  other
+
+             elif line[1] != "":
+                list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> falsche Einstellung >>> Eingabetyp nicht gefunden")
+             
+             
+             # ####################
+             #  exception function
+             # ####################             
+            
+             if line[2] == "None" or line[2] == "":
+                 pass
+                
+             else:
+            
+                 line_exception = line[2].split(" /// ")
+
+                 device_name = line_exception[0]
+
+                 if GET_MQTT_DEVICE_BY_NAME(device_name) == None:
+                     list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Gerät nicht gefunden >>> " + device_name)
+                 
+                 else:
+                     
+                     try:
+                 
+                         sensor = line_exception[1]
+                         
+                         if sensor not in GET_MQTT_DEVICE_BY_NAME(device_name).input_values:
+                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Sensor nicht gefunden >>> " + sensor)
+                             
+                     except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Sensor nicht gefunden >>> " + sensor)
+                         
+                     try:
+                 
+                         operator = line_exception[2]
+                         
+                         if operator not in ["=", "<", ">"]:
+                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Operator >>> " + operator)
+                             
+                     except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Operator >>> " + operator)                    
+                 
+                     try:
+                 
+                         sensor_value = line_exception[3]
+                         
+                         if sensor_value == "":
+                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Sensor-Wert >>> " + sensor_value)
+                             
+                     except:
+                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Sensor-Wert >>> " + sensor_value)                
+
+
 
    except:
-      list_errors.append("Keinen Inhalt gefunden") 
+      pass
 
 
    return list_errors

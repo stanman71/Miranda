@@ -354,9 +354,9 @@
   </div>      
 {% endif %}
 
-{% if error_message_device_checks != [] %}
+{% if error_message_device_exceptions != [] %}
   <div class="alert alert-danger" role="alert">
-    {% for entry in error_message_device_checks %}
+    {% for entry in error_message_device_exceptions %}
       {{ entry }} <br>
     {% endfor %}
   </div>      
@@ -381,7 +381,7 @@
               <table class="table">
                 <thead>                      
                   <th scope="col" style="width:14%">Gerät</th> 
-                  <th scope="col" style="width:46%">Kontrolle</th> 
+                  <th scope="col" style="width:46%">Ausnahme</th> 
                   <th scope="col" style="width:20%">Befehl</th> 
                   <th scope="col" style="width:20%">Letzte Werte</th> 
                 </thead>
@@ -394,14 +394,14 @@
                       <td>      
                         <div class="row justify-content-md-center">
                           <div class="col-sm-6">   
-                            <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_check_option_{{ entry.id }}">
-                              {% if entry.dashboard_check_option != "None" %}
-                                <option value = "{{ entry.dashboard_check_option }}" > {{ entry.dashboard_check_option }} </option>
+                            <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_dashboard_exception_option_{{ entry.id }}">
+                              {% if entry.dashboard_exception_option != "None" %}
+                                <option value = "{{ entry.dashboard_exception_option }}" > {{ entry.dashboard_exception_option }} </option>
                               {% else %}   
                                 <option value = "None" > None </option> 
                               {% endif %}                               
                               <optgroup>
-                                {% for each in dropdown_list_check_options %}
+                                {% for each in dropdown_list_exception_options %}
                                   <option value = {{each}} > {{each}} </option>
                                 {% endfor %}
                               </optgroup>
@@ -416,30 +416,30 @@
                             </select>  
                           </div>         
                                            
-                          {% if entry.dashboard_check_option != "None" %} 
+                          {% if entry.dashboard_exception_option != "None" %} 
                         
-                            <!-- check option ip_address --> 
+                            <!-- exception option ip_address --> 
                         
-                            {% if entry.dashboard_check_option == "IP-Address" %}         
+                            {% if entry.dashboard_exception_option == "IP-Address" %}         
                               <div class="col-sm-6"> 
-                                <input type="text" class="form-control" name="set_dashboard_check_value_1_{{ entry.id }}" value="{{ entry.dashboard_check_value_1 }}" />
+                                <input type="text" class="form-control" name="set_dashboard_exception_value_1_{{ entry.id }}" value="{{ entry.dashboard_exception_value_1 }}" />
                               </div> 
                             {% endif %}      
                         
-                            <!-- check option sensor --> 
+                            <!-- exception option sensor --> 
                            
-                            {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
+                            {% if entry.dashboard_exception_sensor_ieeeAddr != "None" %} 
                             
                               <div class="col-sm-6"> 
-                                <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_dashboard_check_value_1_{{ entry.id }}">
-                                  {% if entry.dashboard_check_value_1 != "None" %}
-                                    <option value = "{{ entry.dashboard_check_value_1 }}" > {{ entry.dashboard_check_value_1 }} </option>
+                                <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_dashboard_exception_value_1_{{ entry.id }}">
+                                  {% if entry.dashboard_exception_value_1 != "None" %}
+                                    <option value = "{{ entry.dashboard_exception_value_1 }}" > {{ entry.dashboard_exception_value_1 }} </option>
                                   {% else %}   
                                     <option value = "None" > None </option>   
                                   {% endif %}                          
                                   <optgroup>
-                                    {% if entry.dashboard_check_sensor_input_values != None %}
-                                      {% for each in entry.dashboard_check_sensor_input_values.split(',') %}
+                                    {% if entry.dashboard_exception_sensor_input_values != None %}
+                                      {% for each in entry.dashboard_exception_sensor_input_values.split(',') %}
                                         <option value= "{{ each }}" > {{ each }} </option>
                                       {% endfor %}     
                                     {% endif %} 
@@ -474,16 +474,16 @@
                   
                   <!-- second row --> 
                   
-                  {% if entry.dashboard_check_option != "None" %}
+                  {% if entry.dashboard_exception_option != "None" %}
                   
                   <tr>                   
                     <td></td>
                     <td>
                        <div class="row justify-content-md-center">
                           <div class="col-sm-6"> 
-                            <select class="selectpicker" data-width="100%" name="set_dashboard_check_setting_{{ entry.id }}">
-                              {% if entry.dashboard_check_setting != "None" %}
-                                <option value = "{{ entry.dashboard_check_setting }}" > {{ entry.dashboard_check_setting }} </option>
+                            <select class="selectpicker" data-width="100%" name="set_dashboard_exception_setting_{{ entry.id }}">
+                              {% if entry.dashboard_exception_setting != "None" %}
+                                <option value = "{{ entry.dashboard_exception_setting }}" > {{ entry.dashboard_exception_setting }} </option>
                               {% else %}   
                                 <option value = "None" > None </option> 
                               {% endif %}                             
@@ -500,14 +500,14 @@
                             </select>                              
                           </div>                 
 
-                      <!-- check option sensor --> 
+                      <!-- exception option sensor --> 
 
-                      {% if entry.dashboard_check_sensor_ieeeAddr != "None" %} 
+                      {% if entry.dashboard_exception_sensor_ieeeAddr != "None" %} 
                    
                         <div class="col-sm-3"> 
-                          <select class="selectpicker" data-width="100%" name="set_dashboard_check_value_2_{{ entry.id }}">
-                            {% if entry.dashboard_check_value_2 != "None" %}
-                              <option value = "{{ entry.dashboard_check_value_2 }}" > {{ entry.dashboard_check_value_2 }} </option>
+                          <select class="selectpicker" data-width="100%" name="set_dashboard_exception_value_2_{{ entry.id }}">
+                            {% if entry.dashboard_exception_value_2 != "None" %}
+                              <option value = "{{ entry.dashboard_exception_value_2 }}" > {{ entry.dashboard_exception_value_2 }} </option>
                             {% else %}   
                               <option value = "None" > None </option>   
                             {% endif %}                            
@@ -519,7 +519,7 @@
                           </select> 
                         </div>                   
                         <div class="col-sm-3"> 
-                          <input type="text" class="form-control" name="set_dashboard_check_value_3_{{ entry.id }}" value="{{ entry.dashboard_check_value_3 }}" />
+                          <input type="text" class="form-control" name="set_dashboard_exception_value_3_{{ entry.id }}" value="{{ entry.dashboard_exception_value_3 }}" />
                         </div>                          
                       
                       {% endif %}

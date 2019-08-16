@@ -93,8 +93,8 @@ def SETTING_LED_TURN_OFF(led_name):
 
 def LED_GROUP_CHECK_SETTING_THREAD(group_id, scene_id, scene, brightness, delay, limit): 
  
-	Thread = threading.Thread(target=LED_GROUP_CHECK_SETTING_PROCESS, args=(group_id, scene_id, scene, brightness, delay, limit, ))
-	Thread.start()   
+    Thread = threading.Thread(target=LED_GROUP_CHECK_SETTING_PROCESS, args=(group_id, scene_id, scene, brightness, delay, limit, ))
+    Thread.start()   
 
  
 def LED_GROUP_CHECK_SETTING_PROCESS(group_id, scene_id, scene, brightness, delay, limit): 
@@ -284,11 +284,11 @@ def LED_GROUP_CHECK_SETTING(group_id, scene_id, setting, limit):
 
 
 """ ##################### """
-""" led control functions """
+"""  led group functions """
 """ ##################### """
 
 
-def LED_SET_SCENE(group_id, scene_id, brightness_global = 100):
+def LED_GROUP_SET_SCENE(group_id, scene_id, brightness_global = 100):
     
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
@@ -472,7 +472,7 @@ def LED_SET_SCENE(group_id, scene_id, brightness_global = 100):
                 
 
 
-def LED_SET_BRIGHTNESS_DIMMER(group_id, command):
+def LED_GROUP_SET_BRIGHTNESS_DIMMER(group_id, command):
     
     group              = GET_LED_GROUP_BY_ID(group_id)
     current_brightness = group.current_brightness
@@ -493,7 +493,7 @@ def LED_SET_BRIGHTNESS_DIMMER(group_id, command):
     
     
 
-def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
+def LED_GROUP_SET_BRIGHTNESS(group_id, brightness_global = 100):
     
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
@@ -576,7 +576,7 @@ def LED_SET_BRIGHTNESS(group_id, brightness_global = 100):
         return ["Keine LED-Steuerung aktiviert"]  
 
 
-def LED_TURN_OFF_GROUP(group_id):
+def LED_GROUP_TURN_OFF(group_id):
 
     if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 
