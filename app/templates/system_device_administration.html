@@ -1,0 +1,433 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  System / Geräteverwaltung
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+
+  <script>
+    var slider_sensitivity = document.getElementById("input_brightness");
+    var output_sensitivity = document.getElementById("output_brightness");
+    output_sensitivity.innerHTML = slider_sensitivity.value; 
+    slider_sensitivity.oninput = function() { output_sensitivity.innerHTML = this.value }
+  </script>
+
+  <script>
+    var sensor_options_list_1  = '{{ mqtt_device_1_input_values }}';
+    var sensor_options_list_1  = sensor_options_list_1.split(",");
+    var sensor_options_list_2  = '{{ mqtt_device_2_input_values }}';
+    var sensor_options_list_2  = sensor_options_list_2.split(",");
+    var sensor_options_list_3  = '{{ mqtt_device_3_input_values }}';
+    var sensor_options_list_3  = sensor_options_list_3.split(",");
+    var sensor_options_list_4  = '{{ mqtt_device_4_input_values }}';
+    var sensor_options_list_4  = sensor_options_list_4.split(",");
+    var sensor_options_list_5  = '{{ mqtt_device_5_input_values }}';
+    var sensor_options_list_5  = sensor_options_list_5.split(",");
+    var sensor_options_list_6  = '{{ mqtt_device_6_input_values }}';
+    var sensor_options_list_6  = sensor_options_list_6.split(",");
+    var sensor_options_list_7  = '{{ mqtt_device_7_input_values }}';
+    var sensor_options_list_7  = sensor_options_list_7.split(",");
+    var sensor_options_list_8  = '{{ mqtt_device_8_input_values }}';
+    var sensor_options_list_8  = sensor_options_list_8.split(",");
+    var sensor_options_list_9  = '{{ mqtt_device_9_input_values }}';
+    var sensor_options_list_9  = sensor_options_list_9.split(",");
+    var sensor_options_list_10 = '{{ mqtt_device_10_input_values }}';
+    var sensor_options_list_10 = sensor_options_list_10.split(",");
+    var sensor_options_list_11 = '{{ mqtt_device_11_input_values }}';
+    var sensor_options_list_11 = sensor_options_list_11.split(",");
+    var sensor_options_list_12 = '{{ mqtt_device_12_input_values }}';
+    var sensor_options_list_12 = sensor_options_list_12.split(",");
+    var sensor_options_list_13 = '{{ mqtt_device_13_input_values }}';
+    var sensor_options_list_13 = sensor_options_list_13.split(",");
+    var sensor_options_list_14 = '{{ mqtt_device_14_input_values }}';
+    var sensor_options_list_14 = sensor_options_list_14.split(",");
+    var sensor_options_list_15 = '{{ mqtt_device_15_input_values }}';
+    var sensor_options_list_15 = sensor_options_list_15.split(",");
+    var sensor_options_list_16 = '{{ mqtt_device_16_input_values }}';
+    var sensor_options_list_16 = sensor_options_list_16.split(",");
+    var sensor_options_list_17 = '{{ mqtt_device_17_input_values }}';
+    var sensor_options_list_17 = sensor_options_list_17.split(",");
+    var sensor_options_list_18 = '{{ mqtt_device_18_input_values }}';
+    var sensor_options_list_18 = sensor_options_list_18.split(",");
+    var sensor_options_list_19 = '{{ mqtt_device_19_input_values }}';
+    var sensor_options_list_19 = sensor_options_list_19.split(",");
+    var sensor_options_list_20 = '{{ mqtt_device_20_input_values }}';
+    var sensor_options_list_20 = sensor_options_list_20.split(",");
+    var sensor_options_list_21 = '{{ mqtt_device_21_input_values }}';
+    var sensor_options_list_21 = sensor_options_list_21.split(",");
+    var sensor_options_list_22 = '{{ mqtt_device_22_input_values }}';
+    var sensor_options_list_22 = sensor_options_list_22.split(",");
+    var sensor_options_list_23 = '{{ mqtt_device_23_input_values }}';
+    var sensor_options_list_23 = sensor_options_list_23.split(",");
+    var sensor_options_list_24 = '{{ mqtt_device_24_input_values }}';
+    var sensor_options_list_24 = sensor_options_list_24.split(",");
+    var sensor_options_list_25 = '{{ mqtt_device_25_input_values }}';
+    var sensor_options_list_25 = sensor_options_list_25.split(",");
+
+    var sensor_options = {};
+
+    sensor_options['1']  = sensor_options_list_1;
+    sensor_options['2']  = sensor_options_list_2;
+    sensor_options['3']  = sensor_options_list_3;
+    sensor_options['4']  = sensor_options_list_4;
+    sensor_options['5']  = sensor_options_list_5;
+    sensor_options['6']  = sensor_options_list_6;
+    sensor_options['7']  = sensor_options_list_7;
+    sensor_options['8']  = sensor_options_list_8;
+    sensor_options['9']  = sensor_options_list_9;
+    sensor_options['10'] = sensor_options_list_10;
+    sensor_options['11'] = sensor_options_list_11;
+    sensor_options['12'] = sensor_options_list_12;
+    sensor_options['13'] = sensor_options_list_13;
+    sensor_options['14'] = sensor_options_list_14;
+    sensor_options['15'] = sensor_options_list_15;
+    sensor_options['16'] = sensor_options_list_16;
+    sensor_options['17'] = sensor_options_list_17;
+    sensor_options['18'] = sensor_options_list_18;
+    sensor_options['19'] = sensor_options_list_19;
+    sensor_options['20'] = sensor_options_list_20;
+    sensor_options['21'] = sensor_options_list_21;
+    sensor_options['22'] = sensor_options_list_22;
+    sensor_options['23'] = sensor_options_list_23;
+    sensor_options['24'] = sensor_options_list_24;
+    sensor_options['25'] = sensor_options_list_25;
+
+    function Choose_Sensor(entry_id) {
+
+      var device_name = "device_" + entry_id
+      var sensor_list_name = "selected_sensor_" + entry_id
+
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+      $('.selectpicker').selectpicker('refresh');
+    } 
+  </script>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>System / Geräteverwaltung</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>  
+ 
+<!-- error message device exceptions -->                    
+
+{% if error_message_exceptions != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_exceptions %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}
+
+ 
+<!-- table devices -->      
+      
+      <div class="panel-group">
+        <div class="panel panel-default">     
+          <div class="panel-body">    
+            <form method="POST">             
+              <div class="well well-sm">    
+
+              <table class="table">
+                <thead>                      
+                  <th scope="col" style="width:20%">Gerät</th> 
+                  <th scope="col" style="width:60%">Ausnahme</th> 
+                  <th scope="col" style="width:20%">Letzte Werte</th> 
+                </thead>
+                <tbody> 
+                          
+                  {% for entry in list_devices %}
+                  
+                    <tr>
+                      <td> {{entry.name}} </td>  
+                      <td>      
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-6">   
+                            <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_exception_option_{{ entry.id }}">
+                              {% if entry.exception_option != "None" %}
+                                <option value = "{{ entry.exception_option }}" > {{ entry.exception_option }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option> 
+                              {% endif %}                               
+                              <optgroup>
+                                {% for each in dropdown_list_exception_options %}
+                                  <option value = {{each}} > {{each}} </option>
+                                {% endfor %}
+                              </optgroup>
+                              <optgroup>                                                              
+                                {% for each in list_sensors %}
+                                  <option value = {{ each.id }} > {{ each.name }} </option>
+                                {% endfor %}       
+                              </optgroup>                            
+                              <optgroup>                                                    
+                                <option value= "None" > None </option>      
+                              </optgroup>                                            
+                            </select>  
+                          </div>         
+                                           
+                          {% if entry.exception_option != "None" %} 
+                        
+                            <!-- exception option ip_address --> 
+                        
+                            {% if entry.exception_option == "IP-Address" %}         
+                              <div class="col-sm-6"> 
+                                <input type="text" class="form-control" name="set_exception_value_1_{{ entry.id }}" value="{{ entry.exception_value_1 }}" />
+                              </div> 
+                            {% endif %}      
+                        
+                            <!-- exception option sensor --> 
+                           
+                            {% if entry.exception_sensor_ieeeAddr != "None" %} 
+                            
+                              <div class="col-sm-6"> 
+                                <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_exception_value_1_{{ entry.id }}">
+                                  {% if entry.exception_value_1 != "None" %}
+                                    <option value = "{{ entry.exception_value_1 }}" > {{ entry.exception_value_1 }} </option>
+                                  {% else %}   
+                                    <option value = "None" > None </option>   
+                                  {% endif %}                          
+                                  <optgroup>
+                                    {% if entry.exception_sensor_input_values != None %}
+                                      {% for each in entry.exception_sensor_input_values.split(',') %}
+                                        <option value= "{{ each }}" > {{ each }} </option>
+                                      {% endfor %}     
+                                    {% endif %} 
+                                    {% if entry.input_values != "None" %}
+                                      {% for each in entry.input_values.split(',') %}
+                                        <option value= "{{ each }}" > {{ each }} </option>
+                                      {% endfor %}   
+                                    {% endif %}                                      
+                                  </optgroup>                                                                         
+                                </select>                                  
+                              </div>        
+                             
+                            {% endif %} 
+                          
+                    {% endif %}    
+                                    
+                    </td>
+                    <td> {{entry.last_values_formated}} </td>    
+                  </tr>
+                  
+                  <!-- second row --> 
+                  
+                  {% if entry.exception_option != "None" %}
+                  
+                  <tr>                   
+                    <td></td>
+                    <td>
+                       <div class="row justify-content-md-center">
+                          <div class="col-sm-6"> 
+                            <select class="selectpicker" data-width="100%" name="set_exception_setting_{{ entry.id }}">
+                              {% if entry.exception_setting != "None" %}
+                                <option value = "{{ entry.exception_setting }}" > {{ entry.exception_setting }} </option>
+                              {% else %}   
+                                <option value = "None" > None </option> 
+                              {% endif %}                             
+                              <optgroup>
+                                {% if entry.commands != None %}  
+                                  {% for each in entry.commands.split(' ') %}
+                                    <option value= "{{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
+                                  {% endfor %}  
+                                {% endif %}      
+                              </optgroup>     
+                              <optgroup>                                                    
+                                <option value= "None" > None </option>      
+                              </optgroup>                                                                        
+                            </select>                              
+                          </div>                 
+
+                      <!-- exception option sensor --> 
+
+                      {% if entry.exception_sensor_ieeeAddr != "None" %} 
+                   
+                        <div class="col-sm-3"> 
+                          <select class="selectpicker" data-width="100%" name="set_exception_value_2_{{ entry.id }}">
+                            {% if entry.exception_value_2 != "None" %}
+                              <option value = "{{ entry.exception_value_2 }}" > {{ entry.exception_value_2 }} </option>
+                            {% else %}   
+                              <option value = "None" > None </option>   
+                            {% endif %}                            
+                            <optgroup>
+                              {% for each in dropdown_list_operators %}
+                                <option value= "{{ each }}" > {{ each }} </option>
+                              {% endfor %}      
+                            </optgroup>                                                                                 
+                          </select> 
+                        </div>                   
+                        <div class="col-sm-3"> 
+                          <input type="text" class="form-control" name="set_exception_value_3_{{ entry.id }}" value="{{ entry.exception_value_3 }}" />
+                        </div>                          
+                      
+                      {% endif %}
+
+                    <td></td>                 
+                  </tr>
+                  
+                  {% endif %}  
+                  
+                  <tr>
+                    <td></td>
+                    <td></td>        
+                    <td></td>                    
+                  </tr>
+                        
+                {% endfor %}  
+                           
+                </tbody>
+              </table> 
+                
+            </div> 
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">     
+                <input type="submit" onclick="window.location.href='/system_device_administration#'" class="btn btn-default" name="change_device_settings" value="Einstellungen ändern" />           
+              </div>                    
+            </div>
+            </form>         
+          </div>     
+        </div>
+      </div>  
+      <br> 
+ 
+      <br>
+      <br>
+
+
+<!------------------>
+<!-- instructions -->
+<!------------------>
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_info" class="panel-collapse collapse ">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+              
+              Text
+              
+            </div>
+          </div>
+        </font>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+{% endblock %}

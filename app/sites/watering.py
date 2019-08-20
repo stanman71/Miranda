@@ -22,10 +22,10 @@ def permission_required(f):
 """ site watering """
 """ ############# """
 
-@app.route('/dashboard/watering', methods=['GET', 'POST'])
+@app.route('/watering', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_watering():
+def watering():
     error_message_add_plant = ""
     error_message_change_settings = ""
     pumptime = ""
@@ -138,7 +138,7 @@ def dashboard_watering():
     
     plants_list = GET_ALL_PLANTS()
 
-    return render_template('dashboard_watering.html',
+    return render_template('watering.html',
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_groups=dropdown_list_groups,
                             dropdown_list_pumptime=dropdown_list_pumptime,
@@ -163,18 +163,18 @@ def dashboard_watering():
 
 
 # change plants position 
-@app.route('/dashboard/watering/position/<string:direction>/<int:id>')
+@app.route('/watering/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_plants_position(id, direction):
     CHANGE_PLANTS_POSITION(id, direction)
-    return redirect(url_for('dashboard_watering'))
+    return redirect(url_for('watering'))
 
 
 # Delete plant
-@app.route('/dashboard/watering/delete/<int:id>')
+@app.route('/watering/delete/<int:id>')
 @login_required
 @permission_required
 def delete_plant(id):
     DELETE_PLANT(id)
-    return redirect(url_for('dashboard_watering'))
+    return redirect(url_for('watering'))

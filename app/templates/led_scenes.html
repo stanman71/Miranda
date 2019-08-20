@@ -1,0 +1,556 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  LED / Szenen 
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+  
+  {{ colorpicker.loader() }}
+  {{ colorpicker.picker(ids=[".led_1_1", ".led_2_1", ".led_3_1", ".led_4_1", ".led_5_1", ".led_6_1", ".led_7_1", ".led_8_1", ".led_9_1",
+                             ".led_1_2", ".led_2_2", ".led_3_2", ".led_4_2", ".led_5_2", ".led_6_2", ".led_7_2", ".led_8_2", ".led_9_2",
+                             ".led_1_3", ".led_2_3", ".led_3_3", ".led_4_3", ".led_5_3", ".led_6_3", ".led_7_3", ".led_8_3", ".led_9_3",
+                             ".led_1_4", ".led_2_4", ".led_3_4", ".led_4_4", ".led_5_4", ".led_6_4", ".led_7_4", ".led_8_4", ".led_9_4",
+                             ".led_1_5", ".led_2_5", ".led_3_5", ".led_4_5", ".led_5_5", ".led_6_5", ".led_7_5", ".led_8_5", ".led_9_5",
+                             ".led_1_6", ".led_2_6", ".led_3_6", ".led_4_6", ".led_5_6", ".led_6_6", ".led_7_6", ".led_8_6", ".led_9_6",
+                             ".led_1_7", ".led_2_7", ".led_3_7", ".led_4_7", ".led_5_7", ".led_6_7", ".led_7_7", ".led_8_7", ".led_9_7",
+                             ".led_1_8", ".led_2_8", ".led_3_8", ".led_4_8", ".led_5_8", ".led_6_8", ".led_7_8", ".led_8_8", ".led_9_8",
+                             ".led_1_9", ".led_2_9", ".led_3_9", ".led_4_9", ".led_5_9", ".led_6_9", ".led_7_9", ".led_8_9", ".led_9_9",
+                             ".led_1_10", ".led_2_10", ".led_3_10", ".led_4_10", ".led_5_10", ".led_6_10", ".led_7_10", ".led_8_10", ".led_9_10",
+                             ".led_1_11", ".led_2_11", ".led_3_11", ".led_4_11", ".led_5_11", ".led_6_11", ".led_7_11", ".led_8_11", ".led_9_11",
+                             ".led_1_12", ".led_2_12", ".led_3_12", ".led_4_12", ".led_5_12", ".led_6_12", ".led_7_12", ".led_8_12", ".led_9_12",
+                             ".led_1_13", ".led_2_13", ".led_3_13", ".led_4_13", ".led_5_13", ".led_6_13", ".led_7_13", ".led_8_13", ".led_9_13",
+                             ".led_1_14", ".led_2_14", ".led_3_14", ".led_4_14", ".led_5_14", ".led_6_14", ".led_7_14", ".led_8_14", ".led_9_14",
+                             ".led_1_15", ".led_2_15", ".led_3_15", ".led_4_15", ".led_5_15", ".led_6_15", ".led_7_15", ".led_8_15", ".led_9_15",
+                             ".led_1_16", ".led_2_16", ".led_3_16", ".led_4_16", ".led_5_16", ".led_6_16", ".led_7_16", ".led_8_16", ".led_9_16",
+                             ".led_1_17", ".led_2_17", ".led_3_17", ".led_4_17", ".led_5_17", ".led_6_17", ".led_7_17", ".led_8_17", ".led_9_17",
+                             ".led_1_18", ".led_2_18", ".led_3_18", ".led_4_18", ".led_5_18", ".led_6_18", ".led_7_18", ".led_8_18", ".led_9_18",
+                             ".led_1_19", ".led_2_19", ".led_3_19", ".led_4_19", ".led_5_19", ".led_6_19", ".led_7_19", ".led_8_19", ".led_9_19",
+                             ".led_1_20", ".led_2_20", ".led_3_20", ".led_4_20", ".led_5_20", ".led_6_20", ".led_7_20", ".led_8_20", ".led_9_20"]) }}        
+
+{% endblock scripts %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>LED / Szenen</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
+
+
+<!-- error message add scene -->
+
+{% if error_message_add_scene != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_scene }}
+  </div>      
+{% endif %}   
+
+
+<!-- add scene -->        
+
+     <div class="well well-sm">     
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_scene_name" placeholder="Neue Szene" value="" />                         
+            </div>  
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/led/scenes#'" class="btn btn-default" name="add_scene" value="Szene erstellen" />
+          </form>
+          </div>
+        </div>
+      </div>     
+
+
+<!-- led scenes table -->
+
+      <div class="panel-group">
+
+        {% for entry in scenes_list %}
+
+<section id="table_{{ entry.id }}"></section> 
+
+
+<!-- error message change settings -->
+
+{% if entry.error_change_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ entry.error_change_settings }} 
+  </div>      
+{% endif %} 
+
+<!-- error message led control -->
+
+{% if entry.error_led_control != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ entry.error_led_control }} 
+  </div>      
+{% endif %}
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
+                
+            <form method="POST" class="verticalform">
+              <table class="table">
+                <thead>    
+                  <th scope="col" style="width:3%"></th>                      
+                  <th scope="col" style="width:25%">Szene</th> 
+                  <th></th>
+                  <th style="width:13%"></th>
+                  <th scope="col" style="width:10%">Nummer</th>
+                  <th scope="col" style="width:10%">RGB</th>
+                  <th scope="col" style="width:17%">Farbtemperatur</th>
+                  <th scope="col" style="width:17%">Helligkeit</th>
+                  <th scope="col" style="width:5%"></th>
+                </thead>
+                <tbody> 
+                  <tr>
+                    <td>
+                      <a href="/led/scenes/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/led/scenes/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    </td>                 
+                    <td>
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
+                    </td> 
+                    <td></td> 
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-5">  
+                          <button type="submit" class="btn btn-default" onclick="window.location.href='/led/scenes#table_{{ entry.id }}'" name="add_setting_{{ entry.id }}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                          </button>    
+                        </div>
+                        <div class="col-sm-5">
+                          <button type="submit" class="btn btn-default" onclick="window.location.href='/led/scenes#table_{{ entry.id }}'" name="remove_setting_{{ entry.id }}">
+                            <span class="glyphicon glyphicon-minus"></span>
+                          </button>                          
+                        </div>
+                      </div>
+                    </td>   
+
+<!-- section 1 -->
+
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">1</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_1_{{ entry.id }}" class="form-control led_1_{{ entry.id }}" value="rgb({{ entry.red_1 }}, {{ entry.green_1 }}, {{ entry.blue_1 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_1_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_1 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_1_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_1 }}" />
+                      </div> 
+                    </td>
+                    <td><a href="/led/scenes/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
+
+<!-- section 2 -->
+
+{% if entry.active_setting_2 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">2</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_2_{{ entry.id }}" class="form-control led_2_{{ entry.id }}" value="rgb({{ entry.red_2 }}, {{ entry.green_2 }}, {{ entry.blue_2 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_2_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_2 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_2_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_2 }}" />
+                      </div> 
+                    </td>
+
+{% endif %}
+
+<!-- section 3 -->
+
+{% if entry.active_setting_3 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">3</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_3_{{ entry.id }}" class="form-control led_3_{{ entry.id }}" value="rgb({{ entry.red_3 }}, {{ entry.green_3 }}, {{ entry.blue_3 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_3_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_3 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_3_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_3 }}" />
+                      </div>  
+                    </td>
+
+{% endif %}
+
+<!-- section 4 -->
+
+{% if entry.active_setting_4 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">4</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_4_{{ entry.id }}" class="form-control led_4_{{ entry.id }}" value="rgb({{ entry.red_4 }}, {{ entry.green_4 }}, {{ entry.blue_4 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_4_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_4 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_4_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_4 }}" />
+                      </div> 
+                    </td>
+
+{% endif %}
+
+<!-- section 5 -->
+
+{% if entry.active_setting_5 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">5</button>
+                    </td>  
+                    <td>
+                      <input type="text" name="set_rgb_5_{{ entry.id }}" class="form-control led_5_{{ entry.id }}" value="rgb({{ entry.red_5 }}, {{ entry.green_5 }}, {{ entry.blue_5 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_5_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_5 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_5_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_5 }}" />
+                      </div> 
+                    </td>
+
+{% endif %}
+
+<!-- section 6 -->
+
+{% if entry.active_setting_6 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">6</button>
+                    </td>  
+                    <td>
+                      <input type="text" name="set_rgb_6_{{ entry.id }}" class="form-control led_6_{{ entry.id }}" value="rgb({{ entry.red_6 }}, {{ entry.green_6 }}, {{ entry.blue_6 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_6_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_6 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_6_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_6 }}" />
+                      </div> 
+                    </td>
+
+{% endif %}
+
+<!-- section 7 -->
+
+{% if entry.active_setting_7 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">7</button>
+                    </td>  
+                    <td>
+                      <input type="text" name="set_rgb_7_{{ entry.id }}" class="form-control led_7_{{ entry.id }}" value="rgb({{ entry.red_7 }}, {{ entry.green_7 }}, {{ entry.blue_7 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_7_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_7 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_7_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_7 }}" />
+                      </div> 
+                    </td>
+
+{% endif %}
+
+<!-- section 8 -->
+
+{% if entry.active_setting_8 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">8</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_8_{{ entry.id }}" class="form-control led_8_{{ entry.id }}" value="rgb({{ entry.red_8 }}, {{ entry.green_8 }}, {{ entry.blue_8 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_8_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_8 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_8_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_8 }}" />
+                      </div> 
+                    </td>  
+
+{% endif %}
+
+<!-- section 9 -->
+
+{% if entry.active_setting_9 == "True" %} 
+
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">9</button>
+                    </td> 
+                    <td>
+                      <input type="text" name="set_rgb_9_{{ entry.id }}" class="form-control led_9_{{ entry.id }}" value="rgb({{ entry.red_9 }}, {{ entry.green_9 }}, {{ entry.blue_9 }}) "/>
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_color_temp_9_{{ entry.id }}" min="0" max="100" value="{{ entry.color_temp_9 }}" />
+                      </div>   
+                    </td>
+                    <td>
+                      <div class="slidecontainer"> 
+                        <input type="range" class="slider" name="set_brightness_9_{{ entry.id }}" min="0" max="254" value="{{ entry.brightness_9 }}" />
+                      </div> 
+                    </td>
+                
+{% endif %}
+
+
+                  </tr>     
+                </tbody>
+              </table> 
+            </div> 
+
+<!-- end table -->
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <input type="submit" onclick="window.location.href='/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+              </form>
+              </div> 
+              <div class="col-sm-1">    
+              </div>             
+              <div class="col-sm-3">
+              <form method="POST" class="verticalform">
+                <select class="selectpicker" data-live-search="true" data-width="100%" name="group_{{ entry.id }}">
+                  <option value= "None" > None </option>                      
+                  <optgroup>
+                    {% for each in dropdown_list_groups %}
+                      <option value="{{ each.id }}"> {{ each.name }} </option>
+                    {% endfor %}     
+                  </optgroup>                            
+                </select>                                  
+              </div>          
+              <div class="col-sm-2">              
+                <input type="submit" onclick="window.location.href='/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="start_scene_{{ entry.id }}" value="Szene starten" />
+              </div> 
+              <div class="col-sm-2">
+                <input type="submit" onclick="window.location.href='/led/scenes#table_{{ entry.id }}'" class="btn btn-default" name="turn_off_group_{{ entry.id }}" value="Gruppe ausschalten" />
+              </div>
+            </div>
+            </form>
+          </div>  
+        </div> 
+      </div>  
+      <br>
+      
+      {% endfor %}
+      
+    <br>
+    <br>      
+
+
+<!-- informations -->
+
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             Text
+             <br>
+          </div>
+        </div>
+      </font>
+      </div>
+    </div>
+  </div>    
+</div> 
+
+{% endblock %}

@@ -30,10 +30,10 @@ def permission_required(f):
 
 
 # led groups
-@app.route('/dashboard/led/groups', methods=['GET', 'POST'])
+@app.route('/led/groups', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_led_groups():
+def led_groups():
     error_message_add_group = ""
 
     RESET_LED_GROUP_ERRORS()
@@ -300,7 +300,7 @@ def dashboard_led_groups():
     dropdown_list_leds = GET_ALL_MQTT_DEVICES("led")
     list_groups        = GET_ALL_LED_GROUPS()
 
-    return render_template('dashboard_led_groups.html', 
+    return render_template('led_groups.html', 
                             error_message_add_group=error_message_add_group,
                             error_message_settings=error_message_settings,
                             list_groups=list_groups,
@@ -318,21 +318,21 @@ def dashboard_led_groups():
 
 
 # change led group position 
-@app.route('/dashboard/led/groups/position/<string:direction>/<int:id>')
+@app.route('/led/groups/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_group_position(id, direction):
     CHANGE_LED_GROUP_POSITION(id, direction)
-    return redirect(url_for('dashboard_led_groups'))
+    return redirect(url_for('led_groups'))
 
 
 # delete group
-@app.route('/dashboard/led/groups/delete/<int:group_id>')
+@app.route('/led/groups/delete/<int:group_id>')
 @login_required
 @permission_required
 def delete_led_group(group_id):
     DELETE_LED_GROUP(group_id)
-    return redirect(url_for('dashboard_led_groups'))
+    return redirect(url_for('led_groups'))
 
 
 """ ########## """
@@ -341,10 +341,10 @@ def delete_led_group(group_id):
 
 
 # led scenes
-@app.route('/dashboard/led/scenes', methods=['GET', 'POST'])
+@app.route('/led/scenes', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_led_scenes():
+def led_scenes():
     error_message_add_scene = ""
     error_change_settings = ""
     error_led_control = ""
@@ -736,7 +736,7 @@ def dashboard_led_scenes():
     scenes_list          = GET_ALL_LED_SCENES()
     dropdown_list_groups = GET_ALL_LED_GROUPS()
 
-    return render_template('dashboard_led_scenes.html', 
+    return render_template('led_scenes.html', 
                             scenes_list=scenes_list,
                             error_message_add_scene=error_message_add_scene,
                             dropdown_list_groups=dropdown_list_groups,
@@ -753,18 +753,18 @@ def dashboard_led_scenes():
 
 
 # change led scene position 
-@app.route('/dashboard/led/scenes/position/<string:direction>/<int:id>')
+@app.route('/led/scenes/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_scene_position(id, direction):
     CHANGE_LED_SCENE_POSITION(id, direction)
-    return redirect(url_for('dashboard_led_scenes'))
+    return redirect(url_for('led_scenes'))
 
 
 # delete scene
-@app.route('/dashboard/led/scenes/delete/<int:id>')
+@app.route('/led/scenes/delete/<int:id>')
 @login_required
 @permission_required
 def delete_led_scene(id):
     DELETE_LED_SCENE(id)
-    return redirect(url_for('dashboard_led_scenes'))
+    return redirect(url_for('led_scenes'))

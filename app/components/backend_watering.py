@@ -6,7 +6,7 @@ import heapq
 from app import app
 from app.database.database import *
 from app.components.file_management import WRITE_LOGFILE_SYSTEM
-from app.components.mqtt import MQTT_CHECK_SETTING, MQTT_UPDATE_DEVICES
+from app.components.mqtt import CHECK_MQTT_SETTING, UPDATE_MQTT_DEVICES
 from app.components.shared_resources import process_management_queue
 from app.components.email import SEND_EMAIL
 
@@ -35,14 +35,14 @@ def START_PUMP(plant_id):
     time.sleep(5)
     
     # check pump started first try
-    if MQTT_CHECK_SETTING(ieeeAddr, msg, 10):
+    if CHECK_MQTT_SETTING(ieeeAddr, msg, 10):
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return True
 
     time.sleep(5)
 
     # check pump started second try 
-    if MQTT_CHECK_SETTING(ieeeAddr, msg, 10):
+    if CHECK_MQTT_SETTING(ieeeAddr, msg, 10):
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump started")  
         return True
         
@@ -57,13 +57,13 @@ def START_PUMP(plant_id):
 
 def START_WATERING_THREAD(group_number):
 
-	try:
-		Thread = threading.Thread(target=WATERING_THREAD)
-		Thread.start()  
-		
-	except Exception as e:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
-		SEND_EMAIL("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
+    try:
+        Thread = threading.Thread(target=WATERING_THREAD, args=(group_number, ))
+        Thread.start()  
+        
+    except Exception as e:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
+        SEND_EMAIL("ERROR", "Thread | Start Watering | Group - " + group_number + " | " + str(e)) 
 
 
 def WATERING_THREAD(group_number):
@@ -73,7 +73,7 @@ def WATERING_THREAD(group_number):
     warnings     = []       
   
     # get current sensor values
-    MQTT_UPDATE_DEVICES("mqtt")
+    UPDATE_MQTT_DEVICES("mqtt")
     time.sleep(30)
       
   
@@ -170,7 +170,7 @@ def WATERING_THREAD(group_number):
         time.sleep(10)
     
         # check pump stopped ?
-        if MQTT_CHECK_SETTING(plant.mqtt_device.ieeeAddr , '"pump":"OFF"', 15):  
+        if CHECK_MQTT_SETTING(plant.mqtt_device.ieeeAddr , '"pump":"OFF"', 15):  
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Pump stopped")                              
             pump_running = False
 

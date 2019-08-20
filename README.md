@@ -27,12 +27,22 @@ This project creates a smarthome environment.
 
 #### 1. Installation 
 
+- activate ssh
+
+       >>> sudo raspi-config
+       >>> Interfacing Options > SSH > Yes
+
 - update raspian
 
-       >>> sudo apt-get update
-       >>> sudo apt-get upgrade -y
+       >>> sudo apt-get update && sudo apt-get upgrade
+
+- upgrade pip
+
+       >>> pip install --upgrade pip
 
 - create the new folder "/home/pi/miranda" and copy all Miranda files into it
+
+       >>> mkdir miranda
 
        FileZilla
 
@@ -59,6 +69,11 @@ This project creates a smarthome environment.
 - install all nessessary python modules
 
        >>> sudo pip3 install -r /home/pi/miranda/requirements.txt --upgrade
+
+- install openCV
+
+       >>> sudo apt install python3-opencv
+           (https://raspberrypi.stackexchange.com/questions/100253/how-can-i-install-opencv-on-raspberry-pi-4-raspbian-buster)
 
 - replace wrong spotipy file
  
@@ -103,7 +118,7 @@ This project creates a smarthome environment.
 
 #### 3. Manually Control 
 
-- deactivate the miranda service first
+- deactivate the miranda service
 
        >>> sudo systemctl stop miranda
 
@@ -538,7 +553,8 @@ https://www.basecube.de/2018/03/17/download/
 
 #### 1. General Settings piCorePlayer
 
-change settings option to beta (options are at the bottom corner)
+- change settings option to beta (options are at the bottom corner on the main site)
+
 </br>
 
 - main page
@@ -556,7 +572,7 @@ change settings option to beta (options are at the bottom corner)
 
 - squeezelite settings
 
-       >>> IQaudIO DAC+ (X400)
+       >>> set output device (e.g. HifiBerry DAC+)
 
 - tweaks
 

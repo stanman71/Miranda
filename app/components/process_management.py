@@ -61,20 +61,20 @@ def PROCESS_MANAGEMENT():
                     scene_id          = process[3] 
                     brightness_global = process[4]
                     
-                    LED_GROUP_SET_SCENE(group_id, scene_id, brightness_global)
+                    SET_LED_GROUP_SCENE(group_id, scene_id, brightness_global)
                 
                 
                 if process[1] == "led_brightness":
                     group_id          = process[2]
                     brightness_global = process[3]  
                                     
-                    LED_GROUP_SET_BRIGHTNESS(group_id, brightness_global)
+                    SET_LED_GROUP_BRIGHTNESS(group_id, brightness_global)
                     
                     
                 if process[1] == "led_off_group":
                     group_id          = process[2]
                                         
-                    LED_GROUP_TURN_OFF(group_id)
+                    SET_LED_GROUP_TURN_OFF(group_id)
                 
                 
                 if process[1] == "device":
@@ -100,9 +100,9 @@ def PROCESS_MANAGEMENT():
                     rgb_values    = re.findall(r'\d+', process[3])
                     led_brightnes = process[4]
                     
-                    SETTING_LED_RGB(led_name, rgb_values[0], rgb_values[1], rgb_values[2], led_brightnes)
+                    SET_LED_BULB_RGB(led_name, rgb_values[0], rgb_values[1], rgb_values[2], led_brightnes)
                     
-                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightnes":' + str(led_brightnes) + '}', 2, 10)
+                    CHECK_ZIGBEE2MQTT_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightnes) + '}', 3, 10)
                 
                 
                 if process[1] == "led_white":
@@ -110,26 +110,26 @@ def PROCESS_MANAGEMENT():
                     color_temp    = process[3]
                     led_brightnes = process[4]      
                             
-                    SETTING_LED_WHITE(led_name, color_temp, led_brightness)
+                    SET_LED_BULB_WHITE(led_name, color_temp, led_brightness)
                     
-                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 2, 10)
+                    CHECK_ZIGBEE2MQTT_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 3, 10)
                     
                     
                 if process[1] == "led_simple":
                     led_name       = process[2]
                     led_brightness = process[3] 
                                     
-                    SETTING_LED_SIMPLE(led_name, led_brightness)
+                    SET_LED_BULB_SIMPLE(led_name, led_brightness)
                     
-                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 2, 10)
+                    CHECK_ZIGBEE2MQTT_SETTING_THREAD(led_name, '{"brightness":' + str(led_brightness) + '}', 3, 10)
 
 
                 if process[1] == "turn_off":
                     led_name      = process[2]
                     
-                    SETTING_LED_TURN_OFF(led_name)
+                    SET_LED_BULB_TURN_OFF(led_name)
                     
-                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(led_name, '{"state":"OFF"}', 2, 10)
+                    CHECK_ZIGBEE2MQTT_SETTING_THREAD(led_name, '{"state":"OFF"}', 3, 10)
                     
                     
                 if process[1] == "led_group":
@@ -139,17 +139,17 @@ def PROCESS_MANAGEMENT():
                     group_id = GET_LED_GROUP_BY_NAME(led_group_name).id
                     
                     if scene_name == "turn_off":
-                        LED_GROUP_TURN_OFF(int(group_id))
+                        SET_LED_GROUP_TURN_OFF(int(group_id))
                         
-                        LED_GROUP_CHECK_SETTING_PROCESS(int(group_id), 0, "OFF", 0, 2, 10) 
+                        CHECK_LED_GROUP_SETTING_PROCESS(int(group_id), 0, "OFF", 0, 3, 10) 
                         
                     else:
                         scene_id          = GET_LED_SCENE_BY_NAME(scene_name).id
                         brightness_global = process[4]
                         
-                        LED_GROUP_SET_SCENE(int(group_id), int(scene_id), int(brightness_global))
+                        SET_LED_GROUP_SCENE(int(group_id), int(scene_id), int(brightness_global))
                         
-                        LED_GROUP_CHECK_SETTING_PROCESS(int(group_id), int(scene_id), scene_name, int(brightness_global), 2, 10)
+                        CHECK_LED_GROUP_SETTING_PROCESS(int(group_id), int(scene_id), scene_name, int(brightness_global), 3, 10)
                     
                     
             # ###########
@@ -199,8 +199,17 @@ def PROCESS_MANAGEMENT():
                 MQTT_PUBLISH(channel, msg)  
                 
                 
-        except:
-            pass
+        except Exception as e:
+            
+            try:
+            
+                if "index out of range" not in str(e):
+                    WRITE_LOGFILE_SYSTEM("ERROR", "Process Management | Process - " + process + " | " + str(e))  
+                    SEND_EMAIL("ERROR", "Process Management | Process - " + process + " | " + str(e))               
+                    print(str(e))
+                    
+            except:
+                pass
                 
               
         time.sleep(0.2)

@@ -1,0 +1,800 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Programme
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+
+  {{ colorpicker.loader() }}
+  {{ colorpicker.picker(ids=[ ".rgb" ]) }}
+{% endblock scripts %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Programme</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>   
+
+
+<!----------------->
+<!-- add program -->
+<!----------------->
+
+
+<!-- error message add program -->
+
+{% if error_message_add_program != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_program }}
+  </div>      
+{% endif %}   
+
+
+<!-- add program -->        
+
+    <div class="well well-sm">     
+      <form method="POST"> 
+        <div class="row justify-content-md-center">
+          <div class="col-sm-3"> 
+            <input type="text" class="form-control" name="set_program_name" placeholder="Neues Programm" value="" />                         
+          </div>  
+          <div class="col-sm-1">                                      
+            <input type="submit" onclick="window.location.href='/programs#'" class="btn btn-default" name="add_program" value="Programm erstellen" />
+        </form>
+        </div>
+      </div>
+    </div>  
+
+
+<!-------------------->
+<!-- select program -->
+<!-------------------->
+
+
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="well well-sm">
+          <form method="POST" enctype="multipart/form-data">
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3">
+              <div class="dropdown">
+                <select class="selectpicker" data-live-search="true" data-width="80%" name="get_program_name">
+                  {% for each in dropdown_list_programs %}
+                    {% if each != None %}
+                    <option value="{{each.name}}">{{each.name}}</option>
+                    {% endif %}
+                  {% endfor %}                          
+                </select>                    
+              </div> 
+            </div>  
+            <div class="col-sm-3"> 
+              <input type="submit" onclick="window.location.href='/programs#'" class="btn btn-default" name="get_program_name" value="Programm anzeigen">
+            </div>  
+          </form> 
+          </div> 
+        </div>       
+
+{% if program != "" %}
+  
+      <div class="well well-sm">
+        <div class="text-center">  
+          <h3><span class="label label-default">{{ program.name }} bearbeiten</span></h3> 
+        </div>
+        <br>
+
+<section id="rgb_color"></section>
+<section id="program_table"></section>
+<section id="save_program"></section>
+<section id="start_program"></section>
+<section id="stop_program"></section>
+<section id="change_name"></section>
+<section id="spotify"></section>
+
+ 
+<!------------------->
+<!-- get rgb value -->
+<!------------------->
+
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_get_rgb"><font color="white"><b> RGB Werte ermitteln</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_get_rgb" class="panel-collapse collapse {{ collapse_get_rgb }}">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+                <div class="text-center">       
+                  <form method="POST" class="verticalform">  
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-1">
+                        <input type="text" name="get_rgb_{{ program.id }}" class="form-control rgb" value="rgb({{ rgb }})"/>
+                      </div>
+                      <div class="col-sm-3">          
+                        <input type="submit" onclick="window.location.href='/programs#rgb_color'" class="btn btn-default" name="color_{{ program.id }}" value="RGB Werte anzeigen" />  
+                      </div>
+                      <div class="col-sm-3">               
+                        <div class="form-group">
+                          <input type="text" class="form-control" value="{{ rgb }}" />
+                        </div>
+                      </div>
+                    </div>        
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div> 
+        </div>  
+
+
+<!----------------------->
+<!-- program functions -->
+<!----------------------->   
+    
+    
+<!-- error message content -->
+
+{% if error_message_content != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_content %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}         
+    
+<!-- program add / remove lines -->
+
+          <div class="well well-sm">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-3">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-6">
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Zeile hinzufügen</button>
+                  </div>
+                  <div class="col-sm-6">  
+                    <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="add_line_{{ program.id }}">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </button>    
+                  </div>
+                </div> 
+              </div>   
+              <div class="col-sm-3">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-6">
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Zeile entfernen</button>
+                  </div>
+                  <div class="col-sm-6">  
+                    <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="remove_line_{{ program.id }}">
+                      <span class="glyphicon glyphicon-minus"></span>
+                    </button>    
+                  </div>
+                </div> 
+              </div>   
+            </div>
+          </div>
+          
+<!-- program content -->         
+          
+          <div class="well well-sm">
+            <div class="row justify-content-md-center">
+              <div class="col-sm-2">
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">
+                    <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_1_down_{{ program.id }}">
+                      <span class="glyphicon glyphicon-arrow-down"></span>
+                    </button>                      
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-10"> 
+                <input type="text" class="form-control" name="set_line_content_1_{{ program.id }}"
+                 value = {% if program.line_content_1 != None %}"{{ program.line_content_1 }}"{% endif %} />
+              </div>           
+              
+              {% if program.line_active_2 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4"> 
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_2_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-3">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_2_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_2_{{ program.id }}"
+                   value = {% if program.line_content_2 != None %}"{{ program.line_content_2 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+              
+              {% if program.line_active_3 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4"> 
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_3_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_3_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_3_{{ program.id }}"
+                   value = {% if program.line_content_3 != None %}"{{ program.line_content_3 }}"{% endif %} >
+                </div>
+              
+              {% endif %}
+              
+              {% if program.line_active_4 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4"> 
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_4_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_4_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_4_{{ program.id }}"
+                   value = {% if program.line_content_4 != None %}"{{ program.line_content_4 }}"{% endif %} >
+                </div>
+              
+              {% endif %}
+              
+              {% if program.line_active_5 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4"> 
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_5_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_5_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_5_{{ program.id }}"
+                   value = {% if program.line_content_5 != None %}"{{ program.line_content_5 }}"{% endif %} >
+                </div>
+              
+              {% endif %}               
+
+              {% if program.line_active_6 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_6_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_6_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_6_{{ program.id }}"
+                   value = {% if program.line_content_6 != None %}"{{ program.line_content_6 }}"{% endif %} >
+                </div>
+              
+              {% endif %}  
+
+              {% if program.line_active_7 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_7_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_7_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_7_{{ program.id }}"
+                   value = {% if program.line_content_7 != None %}"{{ program.line_content_7 }}"{% endif %} >
+                </div>
+              
+              {% endif %}  
+
+              {% if program.line_active_8 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_8_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_8_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_8_{{ program.id }}"
+                   value = {% if program.line_content_8 != None %}"{{ program.line_content_8 }}"{% endif %} >
+                </div>
+              
+              {% endif %}
+              
+              {% if program.line_active_9 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_9_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">             
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_9_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_9_{{ program.id }}"
+                   value = {% if program.line_content_9 != None %}"{{ program.line_content_9 }}"{% endif %} >
+                </div>
+              
+              {% endif %}                
+
+              {% if program.line_active_10 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4"> 
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_10_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4"></div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_10_{{ program.id }}"
+                   value = {% if program.line_content_10 != None %}"{{ program.line_content_10 }}"{% endif %} >
+                </div>
+              
+              {% endif %}  
+
+            </div>
+          </div>
+          
+<!-- save program -->
+     
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3">                         
+              <input type="submit" onclick="window.location.href='/programs#save_program'" class="btn btn-default" name="save_{{ program.id }}" value="Programm speichern" />
+            </div>
+
+<!-- start a program -->
+
+            <div class="col-sm-2">                                        
+              <input type="submit" onclick="window.location.href='/programs#start_program'" class="btn btn-default" name="start_{{ program.id }}" value="Programm starten" />
+            </div>   
+  
+<!-- stop a program -->
+
+            <div class="col-sm-2">                                        
+              <input type="submit" onclick="window.location.href='/programs#stop_program'" class="btn btn-default" name="stop_{{ program.id }}" value="Programm stoppen" />
+            </div>        
+         
+<!-- running program -->         
+            
+            <div class="col-sm-2">    
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Laufendes Programm: {{ program_running }}</button>                                    
+            </div> 
+            </form>              
+          </div>
+        </div>     
+      </div>
+    </div>
+    
+<!-- rename a program -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="well well-sm">                 
+            <form method="POST">
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="change_program_name_{{ program.id }}" value="{% if program.name != None %}{{ program.name }}{% endif %}" />
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <input type="submit" onclick="window.location.href='/led/programs#change_name'" class="btn btn-default" name="change_name_{{ program.id }}" value="Name ändern" />
+                </div>            
+              </div>                
+            </form>  
+          </div>
+
+<!-- delete a program -->
+
+          <div class="dropdown text-right">
+            <form method="POST" enctype="multipart/form-data">
+              <input type="submit" onclick="window.location.href='/led/programs#'" class="btn btn-danger text-right" name="delete_program_{{ program.id }}" value="{{ program.name }} löschen">
+            </form>
+          </div> 
+        </div> 
+      </div> 
+    </div>
+   
+{% else %}
+          
+        </div> 
+      </div> 
+    </div>
+  
+{% endif %}
+
+  <br>
+  <br>      
+
+
+<!------------------>
+<!-- informations -->
+<!------------------>
+
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+              <table class="table">
+                <thead>
+                  <tr></tr>
+                  <tr>
+                    <th>Eingabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>             
+                  <tr>
+                    <td>led /// Deckenlampe_01 /// 255, 0, 0 /// 100</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          RGB-LED "Deckenlampe_01", Farbe auf rot, maximale Helligkeit (100%)
+                        </div>
+                      </div>  
+                      <br>
+                      {% for led in list_led_names %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-12">
+                            {{ led }}
+                          </div>
+                        </div> 
+                      {% endfor %}    
+                    </td>                    
+                  </tr>
+                  <tr>
+                    <td>led /// Deckenlampe_02 /// 3000 /// 50</td>
+                    <td>WHITE-LED "Deckenlampe_01", Farbtemperatur auf 3000, mittlere Helligkeit (50%)</td>
+                  </tr>    
+                  <tr>
+                    <td>led /// Badlampe_01 /// 50</td>
+                    <td>SIMPLE-LED "Badlampe_01", mittlere Helligkeit (50%)</td>
+                  </tr>      
+                  <tr>
+                    <td>led /// Badlampe_01 /// OFF</td>
+                    <td>LED "Badlampe_01" ausschalten</td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>led_group /// wohnzimmer /// standard /// 100</td>
+                    <td>LED-Gruppe "wohnzimmer" mit Szene "standard" auf maximaler Helligkeit (100%) starten</td>
+                  </tr>
+                  <tr>
+                    <td>led_group /// wohnzimmer /// OFF</td>
+                    <td>LED-Gruppe "Wohnzimmer" ausschalten</td>
+                  </tr>               
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>device /// Steckdose_TV /// state:OFF</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Gerät Steckdose_TV ausschalten
+                        </div>
+                      </div>  
+                      <br>
+                      {% for device in list_device_command_options %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">
+                            {{ device[0] }}
+                          </div>
+                          <div class="col-sm-9">          
+                            {{ device[1] | replace(' ', ' | ') | replace('{', '') | replace('}', '') | replace(',', ', ') | replace('"', '') }} 
+                          </div>
+                        </div> 
+                      {% endfor %}    
+                    </td>
+                  </tr>                 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>spotify /// playlist /// PC /// Gemischt /// 50</td>
+                    <td>Playlist "Gemischt" auf Gerät "PC" mit Lautstärke 50 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// track /// PC /// Go Time /// Young Mozart /// 25</td>
+                    <td>Track "Go Time" von "Young Mozart" auf Gerät "PC" mit Lautstärke 25 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// album /// PC /// Hold On /// Nano /// 60</td>
+                    <td>Album "Hold On" von "Nano" auf Gerät "PC" mit Lautstärke 60 % starten</td>
+                  </tr>                                                   
+                  <tr>
+                    <td>spotify /// PLAY</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Aktulles Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PLAY 
+                        </div>
+                        <div class="col-sm-9"> 
+                          letztes Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PREVIOUS 
+                        </div>
+                        <div class="col-sm-9"> 
+                          vorheriger Track 
+                        </div>                        
+                      </div>    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          NEXT 
+                        </div>
+                        <div class="col-sm-9"> 
+                          nächster Track 
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen stoppen
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          VOLUME /// 70 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Lautstärke auf 70%
+                        </div>                        
+                      </div> 
+                      <br>        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Geräte:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for device in spotify_devices %}
+                            {% if device['type'] != "Smartphone" %}
+                              {{ device['name'] }} |
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Playlists:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for playlist in spotify_playlists %}
+                            {% if playlist['name'] != "Discover Weekly" %}
+                              {{ playlist['name'] }} |
+                            {% endif %}
+                          {% endfor %}    
+                        </div>
+                      </div>                                                                                 
+                    </td>  
+                  </tr>     
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                  
+                  <tr>
+                    <td>pause /// 30</td>
+                    <td>Pause für 30 Sekunden</td>
+                  </tr>                     
+                </table>
+            </div>
+          </div>
+        </font>
+      </div>
+    </div>
+  </div>    
+</div> 
+
+{% endblock %}

@@ -1,0 +1,1120 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Aufgabenplanung 
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+
+  <script>
+    var sensor_options_list_1  = '{{ mqtt_device_1_input_values }}';
+    var sensor_options_list_1  = sensor_options_list_1.split(",");
+    var sensor_options_list_2  = '{{ mqtt_device_2_input_values }}';
+    var sensor_options_list_2  = sensor_options_list_2.split(",");
+    var sensor_options_list_3  = '{{ mqtt_device_3_input_values }}';
+    var sensor_options_list_3  = sensor_options_list_3.split(",");
+    var sensor_options_list_4  = '{{ mqtt_device_4_input_values }}';
+    var sensor_options_list_4  = sensor_options_list_4.split(",");
+    var sensor_options_list_5  = '{{ mqtt_device_5_input_values }}';
+    var sensor_options_list_5  = sensor_options_list_5.split(",");
+    var sensor_options_list_6  = '{{ mqtt_device_6_input_values }}';
+    var sensor_options_list_6  = sensor_options_list_6.split(",");
+    var sensor_options_list_7  = '{{ mqtt_device_7_input_values }}';
+    var sensor_options_list_7  = sensor_options_list_7.split(",");
+    var sensor_options_list_8  = '{{ mqtt_device_8_input_values }}';
+    var sensor_options_list_8  = sensor_options_list_8.split(",");
+    var sensor_options_list_9  = '{{ mqtt_device_9_input_values }}';
+    var sensor_options_list_9  = sensor_options_list_9.split(",");
+    var sensor_options_list_10 = '{{ mqtt_device_10_input_values }}';
+    var sensor_options_list_10 = sensor_options_list_10.split(",");
+    var sensor_options_list_11 = '{{ mqtt_device_11_input_values }}';
+    var sensor_options_list_11 = sensor_options_list_11.split(",");
+    var sensor_options_list_12 = '{{ mqtt_device_12_input_values }}';
+    var sensor_options_list_12 = sensor_options_list_12.split(",");
+    var sensor_options_list_13 = '{{ mqtt_device_13_input_values }}';
+    var sensor_options_list_13 = sensor_options_list_13.split(",");
+    var sensor_options_list_14 = '{{ mqtt_device_14_input_values }}';
+    var sensor_options_list_14 = sensor_options_list_14.split(",");
+    var sensor_options_list_15 = '{{ mqtt_device_15_input_values }}';
+    var sensor_options_list_15 = sensor_options_list_15.split(",");
+    var sensor_options_list_16 = '{{ mqtt_device_16_input_values }}';
+    var sensor_options_list_16 = sensor_options_list_16.split(",");
+    var sensor_options_list_17 = '{{ mqtt_device_17_input_values }}';
+    var sensor_options_list_17 = sensor_options_list_17.split(",");
+    var sensor_options_list_18 = '{{ mqtt_device_18_input_values }}';
+    var sensor_options_list_18 = sensor_options_list_18.split(",");
+    var sensor_options_list_19 = '{{ mqtt_device_19_input_values }}';
+    var sensor_options_list_19 = sensor_options_list_19.split(",");
+    var sensor_options_list_20 = '{{ mqtt_device_20_input_values }}';
+    var sensor_options_list_20 = sensor_options_list_20.split(",");
+    var sensor_options_list_21 = '{{ mqtt_device_21_input_values }}';
+    var sensor_options_list_21 = sensor_options_list_21.split(",");
+    var sensor_options_list_22 = '{{ mqtt_device_22_input_values }}';
+    var sensor_options_list_22 = sensor_options_list_22.split(",");
+    var sensor_options_list_23 = '{{ mqtt_device_23_input_values }}';
+    var sensor_options_list_23 = sensor_options_list_23.split(",");
+    var sensor_options_list_24 = '{{ mqtt_device_24_input_values }}';
+    var sensor_options_list_24 = sensor_options_list_24.split(",");
+    var sensor_options_list_25 = '{{ mqtt_device_25_input_values }}';
+    var sensor_options_list_25 = sensor_options_list_25.split(",");
+    
+    var sensor_options = {};
+
+    sensor_options['1']  = sensor_options_list_1;
+    sensor_options['2']  = sensor_options_list_2;
+    sensor_options['3']  = sensor_options_list_3;
+    sensor_options['4']  = sensor_options_list_4;
+    sensor_options['5']  = sensor_options_list_5;
+    sensor_options['6']  = sensor_options_list_6;
+    sensor_options['7']  = sensor_options_list_7;
+    sensor_options['8']  = sensor_options_list_8;
+    sensor_options['9']  = sensor_options_list_9;
+    sensor_options['10'] = sensor_options_list_10;
+    sensor_options['11'] = sensor_options_list_11;
+    sensor_options['12'] = sensor_options_list_12;
+    sensor_options['13'] = sensor_options_list_13;
+    sensor_options['14'] = sensor_options_list_14;
+    sensor_options['15'] = sensor_options_list_15;
+    sensor_options['16'] = sensor_options_list_16;
+    sensor_options['17'] = sensor_options_list_17;
+    sensor_options['18'] = sensor_options_list_18;
+    sensor_options['19'] = sensor_options_list_19;
+    sensor_options['20'] = sensor_options_list_20;
+    sensor_options['21'] = sensor_options_list_21;
+    sensor_options['22'] = sensor_options_list_22;
+    sensor_options['23'] = sensor_options_list_23;
+    sensor_options['24'] = sensor_options_list_24;
+    sensor_options['25'] = sensor_options_list_25;
+
+    function Choose_Sensor_1(entry_id) {
+
+      var device_name = "device_1_" + entry_id
+      var sensor_list_name = "selected_sensor_1_" + entry_id
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+      $('.selectpicker').selectpicker('refresh');      
+    } 
+
+    function Choose_Sensor_2(entry_id) {
+
+      var device_name = "device_2_" + entry_id
+      var sensor_list_name = "selected_sensor_2_" + entry_id
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+      $('.selectpicker').selectpicker('refresh');      
+    } 
+
+    function Choose_Sensor_3(entry_id) {
+
+      var device_name = "device_3_" + entry_id
+      var sensor_list_name = "selected_sensor_3_" + entry_id
+      var device = document.getElementById(device_name);
+      var sensor_list = document.getElementById(sensor_list_name);
+      var selected_sensor = device.options[device.selectedIndex].value;
+
+      while (sensor_list.options.length) {
+        sensor_list.remove(0);
+      }
+      var sensors = sensor_options[selected_sensor];
+      if (sensors) {
+        var i;
+        for (i = 0; i < sensors.length; i++) {
+          var sensor = new Option(sensors[i], i);
+          sensor_list.options.add(sensor);
+        }
+      }
+      $('.selectpicker').selectpicker('refresh');      
+    } 
+  </script>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Aufgabenplanung</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
+
+
+<!------------------------>
+<!-- add scheduler task -->   
+<!------------------------>   
+
+
+<!-- error message add scheduler task -->
+
+{% if error_message_add_scheduler_task != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_scheduler_task }}
+  </div>      
+{% endif %}    
+
+
+     <div class="well well-sm">               
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_scheduler_task_name" placeholder="Neue Aufgabe" value="" />                         
+            </div>  
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/scheduler#tasks'" class="btn btn-default" name="add_scheduler_task" value="Aufgabe erstellen" />
+          </form>
+          </div>
+        </div>
+      </div> 
+
+
+<!--------------------->
+<!-- scheduler table -->   
+<!--------------------->   
+
+
+<!-- error message tasks -->
+
+{% if error_message_scheduler_tasks != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_scheduler_tasks %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}  
+
+<!-- error message general settings -->
+
+{% if error_message_general_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_general_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+<!-- error message time settings -->
+
+{% if error_message_time_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_time_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+<!-- error message sun settings -->
+
+{% if error_message_sun_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_sun_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+<!-- error message sensor settings -->
+
+{% if error_message_sensor_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_sensor_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+<!-- error message position settings -->
+
+{% if error_message_position_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for message in error_message_position_settings %}
+      {{ message }} <br>
+    {% endfor %}
+  </div>      
+{% endif %} 
+
+<!-- error message location imports -->
+
+{% if error_message_locations_import != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_locations_import }} 
+  </div>      
+{% endif %}  
+
+
+
+<!-- scheduler table -->
+
+      <div class="panel-group">
+
+{% for entry in scheduler_task_list %}
+
+  {% if entry.task_type == "" %}
+
+<section id="table_{{ entry.id }}"></section> 
+
+
+<!-- error change settings -->
+
+{% if entry.error_change_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+      {{ entry.error_change_settings }}
+  </div>      
+{% endif %}      
+
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">
+
+<!-- section main -->
+
+              <form method="POST" class="verticalform">
+                <table class="table">          
+                  <thead>          
+                    <th scope="col" style="width:3%"></th>              
+                    <th scope="col" style="width:17%">Name</th> 
+                    <th scope="col" style="width:35%">Aufgabe</th>  
+                    <th scope="col" style="width:8%"></th>            
+                    <th scope="col" style="width:8%">Zeit</th>   
+                    <th scope="col" style="width:8%">Sonne</th>              
+                    <th scope="col" style="width:8%">Sensoren</th>
+                    <th scope="col" style="width:8%">Position</th>
+                    <th scope="col" style="width:8%">Wiederholen</th>
+                    <th scope="col"></th>
+                  </thead>
+                  <tbody> 
+                    <tr>
+                      <td>
+                        <a href="/scheduler/position/up/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                        <a href="/scheduler/position/down/{{ entry.id }}#table_{{ entry.id }}"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                      </td>                       
+                      <td>
+                        <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
+                      </td> 
+                      <td>        
+                        <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
+                      </td>        
+                      <td></td>                         
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_time }} name="checkbox_option_time_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>    
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_sun }} name="checkbox_option_sun_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>                                         
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_sensors }} name="checkbox_option_sensors_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>       
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_position }} name="checkbox_option_position_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>                                 
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_repeat }} name="checkbox_option_repeat_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>
+                      <td><a href="/scheduler/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
+                    </tr>
+
+  <!-- section time -->
+
+  {% if entry.option_time == "checked" %}
+
+                    <tr>
+                      <td colspan="11"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1"></td>
+                      <td colspan="9">
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Tag:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <input type="text" class="form-control" name="set_day_{{ entry.id }}" value="{{ entry.day }}" /> 
+                          </div>
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Stunde:</button>
+                          </div>                      
+                          <div class="col-sm-3">                                       
+                            <input type="text" class="form-control" name="set_hour_{{ entry.id }}" value="{{ entry.hour }}" /> 
+                          </div>
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Minute:</button>
+                          </div>   
+                          <div class="col-sm-3">   
+                            <input type="text" class="form-control" name="set_minute_{{ entry.id }}" value="{{ entry.minute }}" /> 
+                          </div>
+                        </div>
+                      </td>                           
+                    </tr>
+
+  {% endif %}
+
+  <!-- section sun -->
+
+  {% if entry.option_sun == "checked" %}
+
+                    <tr>
+                      <td colspan="11"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1"></td>
+                      <td colspan="9">
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.sunrise }}):</button>
+                          </div>   
+                          <div class="col-sm-1">   
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-bigger">
+                                <input type="checkbox" {{ entry.option_sunrise }} name="checkbox_option_sunrise_{{ entry.id }}" >
+                                <div class="state p-success">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>
+                          </div>  
+                          <div class="col-sm-3">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.sunset }}):</button>
+                          </div>   
+                          <div class="col-sm-1">   
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-bigger">
+                                <input type="checkbox" {{ entry.option_sunset }} name="checkbox_option_sunset_{{ entry.id }}" >
+                                <div class="state p-success">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>                           
+                          </div>
+
+                          <div class="col-sm-1">
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
+                          </div>
+                          <div class="col-sm-1">
+                            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_location_{{ entry.id }}">
+                              {% if entry.location != None %}
+                                <option value= "{{ entry.location }}" > {{ entry.location }} </option>
+                              {% endif %}
+                              <optgroup>
+                              {% if error_message_locations_import == "" %}
+                                {% for each in dropdown_list_locations %}
+                                  <option value= "{{ each }}" > {{ each }} </option>
+                                {% endfor %}   
+                              {% endif %}                    
+                              </optgroup>
+                              <optgroup> 
+                                <option value= "" > None </option>   
+                              </optgroup>                                                                                 
+                            </select>                              
+                          </div>
+                        </div>
+                      </td>                           
+                    </tr>
+
+  {% endif %}
+
+  <!-- section sensors -->
+
+  {% if entry.option_sensors == "checked" %}
+
+  <!-- section 1 -->
+
+                    <tr>
+                      <td colspan="11"></td>
+                    </tr>            
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1">
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-5">  
+                            <button type="submit" class="btn btn-default" onclick="window.location.href='/scheduler#table_{{ entry.id }}'" name="add_sensor_row_{{ entry.id }}">
+                              <span class="glyphicon glyphicon-plus"></span>
+                            </button>    
+                          </div>
+                          <div class="col-sm-5">
+                            <button type="submit" class="btn btn-default" onclick="window.location.href='/scheduler#table_{{ entry.id }}'" name="remove_sensor_row_{{ entry.id }}">
+                              <span class="glyphicon glyphicon-minus"></span>
+                            </button>                          
+                          </div>
+                        </div>                                   
+                      </td>
+                      
+                      <td colspan="9">    
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_1_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>      
+                              <optgroup>
+                              {% for each in dropdown_list_mqtt_devices %}
+                                <option value="{{ each.id }}"> {{ each.name }} </option>
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>                              
+                          </div>
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="selected_sensor_1_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_1_{{ entry.id }}">  
+                              {% if entry.mqtt_device_id_1 != None %}
+                                <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_1 }} </option>
+                                  {% for each in entry.mqtt_device_input_values_1.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}                             
+                                {% else %}
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>                                
+
+                          {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" or entry.operator_main_1 == "None" or entry.operator_main_1 == None %}
+                            
+                            </div>                                                 
+                            <div class="col-sm-2">     
+                              <select class="selectpicker" data-width="75%" name="set_operator_1_{{ entry.id }}">  
+                                <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
+                              </select>        
+                            </div>                                           
+                            <div class="col-sm-2"> 
+                            <input type="text" class="form-control" name="set_value_1_{{ entry.id }}" value="{{ entry.value_1 }}" /> 
+                          {% else %}                 
+                        {% endif %}
+
+                          </div>
+                        </div>
+                        </td>
+                      </tr>  
+
+  <!-- section 2 -->
+
+                    {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None %}            
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1">
+                        <div class="dropdown text-right">     
+                          <select class="selectpicker" data-width="60%" name="set_operator_main_1_{{ entry.id }}">
+                            <option value= "{{ entry.operator_main_1 }}" > {{ entry.operator_main_1 }} </option>
+                            <optgroup>                                    
+                              {% for each in dropdown_list_operator_main %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                                                    
+                          </select>                                    
+                        </div>               
+                      </td>
+                      
+                      <td colspan="9">    
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_2_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>      
+                              <optgroup>
+                              {% for each in dropdown_list_mqtt_devices %}
+                                <option value="{{ each.id }}"> {{ each.name }} </option>
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>    
+                          </div>
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="selected_sensor_2_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_2_{{ entry.id }}">  
+                              {% if entry.mqtt_device_id_2 != None %}
+                                <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_2 }} </option>
+                                  {% for each in entry.mqtt_device_input_values_2.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}                             
+                                {% else %}
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>    
+
+                          {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" %}
+
+                            </div>                                               
+                            <div class="col-sm-2">  
+                              <select class="selectpicker" data-width="75%" name="set_operator_2_{{ entry.id }}">  
+                                <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
+                              </select>  
+                            </div>                                           
+                            <div class="col-sm-2">     
+                              <input type="text" class="form-control" name="set_value_2_{{ entry.id }}" value="{{ entry.value_2 }}" /> 
+                          {% endif %} 
+
+                          </div>
+                        </div>
+                        </td>
+                      </tr> 
+
+                    {% endif %} 
+
+  <!-- section 3 -->
+
+                    {% if entry.operator_main_2 != "None" and entry.operator_main_2 != None %}                    
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1">
+                        <div class="dropdown text-right">
+                          <select class="selectpicker" data-width="60%" name="set_operator_main_2_{{ entry.id }}">
+                            <option value= "{{ entry.operator_main_2 }}" > {{ entry.operator_main_2 }} </option>
+                            <optgroup>                                    
+                              {% for each in dropdown_list_operator_main %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                                                    
+                          </select>   
+                        </div>
+                      </td>
+                      
+                      <td colspan="9">    
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_3_{{ entry.id }}">
+                              <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>      
+                              <optgroup>
+                              {% for each in dropdown_list_mqtt_devices %}
+                                <option value="{{ each.id }}"> {{ each.name }} </option>
+                              {% endfor %}                  
+                              </optgroup>                                                                            
+                            </select>    
+                          </div>  
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
+                          </div>                                                   
+                          <div class="col-sm-3"> 
+                            <select id="selected_sensor_3_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_3_{{ entry.id }}">  
+                              {% if entry.mqtt_device_id_3 != None %}
+                                <option value= "{{ entry.sensor_key_3 }}" > {{ entry.sensor_key_3 }} </option>
+                                  {% for each in entry.mqtt_device_input_values_3.split(',') %}
+                                    <option value= "{{ each }}" > {{ each }} </option>
+                                  {% endfor %}                             
+                                {% else %}
+                                <option value= "" > None </option>                         
+                              {% endif %}                                                                                      
+                            </select>    
+
+                          {% if entry.operator_main_2 == "and" or entry.operator_main_2 == "or" %}
+
+                            </div>                                                
+                            <div class="col-sm-2">  
+                              <select class="selectpicker" data-width="75%" name="set_operator_3_{{ entry.id }}">  
+                                <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
+                                <optgroup>                                    
+                                  {% for each in dropdown_list_operators %}
+                                  <option value="{{each}}"> {{ each }} </option>
+                                  {% endfor %}
+                                </optgroup>                                                                                                                    
+                              </select>  
+                            </div>                                           
+                            <div class="col-sm-2">        
+                              <input type="text" class="form-control" name="set_value_3_{{ entry.id }}" value="{{ entry.value_3 }}" /> 
+
+                          {% endif %}
+
+                          </div>
+                        </div>
+                        </td>
+                      </tr> 
+
+                    {% endif %}
+
+  {% endif %}
+
+  <!-- section position -->
+
+  {% if entry.option_position == "checked" %}
+
+
+                    <tr>
+                      <td colspan="11"></td>
+                    </tr>
+                    <tr>
+                      <td colspan="1"></td>
+                      <td colspan="1"></td>
+                      <td colspan="9">
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">HOME:</button>
+                          </div>                                                   
+                          <div class="col-sm-1"> 
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-bigger">
+                                <input type="checkbox" {{ entry.option_home }} name="checkbox_option_home_{{ entry.id }}" >
+                                <div class="state p-success">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>
+                          </div>
+                          <div class="col-sm-1">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">AWAY:</button>
+                          </div>                      
+                          <div class="col-sm-1">                                       
+                            <font size="+2">
+                              <div class="pretty p-default p-curve p-bigger">
+                                <input type="checkbox" {{ entry.option_away }} name="checkbox_option_away_{{ entry.id }}" >
+                                <div class="state p-success">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>
+                          </div>
+                          <div class="col-sm-2">  
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
+                          </div>
+                          <div class="col-sm-6">
+                            <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}" value="{{ entry.ip_addresses }}" /> 
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+  {% endif %}
+
+                  </tbody>
+                </table>  
+              </div>
+                <input type="submit" onclick="window.location.href='/scheduler#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>             
+              </form> 
+            </div>  
+          </div>  
+        </div>     
+        
+        <br>
+        
+  {% endif %}
+  
+{% endfor %}
+
+     </div> 
+     <br>
+
+
+<!------------------>
+<!-- instructions -->
+<!------------------>
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_info" class="panel-collapse collapse ">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+                <table class="table">
+                <thead>
+                  <tr>
+                    <th>Aufgabe</th>
+                    <th>Erklärung</th>
+                  </tr>
+                </thead>
+                <tbody>                    
+                  <tr>
+                    <td>scene /// wohnzimmer /// relax /// 100</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Starte LEDs der Gruppe "wohnzimmer" mit Szene "relax" 
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Optional
+                        </div>
+                        <div class="col-sm-9"> 
+                          globale Helligkeit 100 % 
+                        </div>                        
+                      </div> 
+                    </td>
+                  </tr>                                
+                  <tr>
+                    <td>led_off /// group /// flur, bad</td>
+                    <td>LEDs der Gruppe "flur" und "bad" ausschalten</td>
+                  </tr>                
+                  <tr>
+                    <td>led_off /// ALL</td>
+                    <td>alle LEDs ausschalten</td>
+                  </tr> 
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                   
+                  <tr>
+                    <td>device /// Steckdose_TV /// state:OFF</td>   
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Gerät Steckdose_TV ausschalten
+                        </div>
+                      </div>  
+                      <br>
+                      {% for device in list_device_command_options %}
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-3">
+                            {{ device[0] }}
+                          </div>
+                          <div class="col-sm-9">          
+                            {{ device[1] | replace(' ', ' | ') | replace('{', '') | replace('}', '') | replace(',', ', ') | replace('"', '') }} 
+                          </div>
+                        </div> 
+                      {% endfor %}                                            
+                    </td>
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                   
+                  <tr>
+                    <td>program /// SUNRISE /// START</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          Programm "SUNRISE" starten 
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          START 
+                        </div>
+                        <div class="col-sm-9"> 
+                          starten 
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          beenden 
+                        </div>                        
+                      </div>                                        
+                    </td>                    
+                  </tr>     
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                                                                                 
+                  <tr>
+                    <td>watering_plants /// 1</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          alle Pflanzen der Gruppe 1 gießen  
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          1 - 5 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Pflanzen der Gruppe 1 - 5 gießen 
+                        </div>                        
+                      </div>                         
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          ALL 
+                        </div>
+                        <div class="col-sm-9"> 
+                          alle Gruppen gießen 
+                        </div>                        
+                      </div>                                                                                 
+                    </td>                       
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>                                                                                     
+                  <tr>
+                    <td>request_sensordata /// Testdaten</td>
+                    <td>Sensordaten abrufen, der dazugehörige Job ist "Testdaten"</td>
+                  </tr>  
+                  <tr>
+                    <td></td>
+                    <td></td>
+                  </tr>   
+                  <tr>
+                    <td>spotify /// playlist /// PC /// Gemischt /// 50</td>
+                    <td>Playlist "Gemischt" auf Gerät "PC" mit Lautstärke 50 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// track /// PC /// Go Time /// Young Mozart /// 25</td>
+                    <td>Track "Go Time" von "Young Mozart" auf Gerät "PC" mit Lautstärke 25 % starten</td>
+                  </tr>     
+                  <tr>
+                    <td>spotify /// album /// PC /// Hold On /// Nano /// 60</td>
+                    <td>Album "Hold On" von "Nano" auf Gerät "PC" mit Lautstärke 60 % starten</td>
+                  </tr>                                     
+                  <tr>
+                    <td>spotify /// PLAY</td>
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-12"> 
+                          letztes Lied / Album / Playlist auf aktiven Spotify-Gerät starten
+                        </div>
+                      </div>  
+                      <br>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PLAY 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen starten
+                        </div>                        
+                      </div>                                            
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          PREVIOUS 
+                        </div>
+                        <div class="col-sm-9"> 
+                          vorheriger Track 
+                        </div>                        
+                      </div>    
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          NEXT 
+                        </div>
+                        <div class="col-sm-9"> 
+                          nächster Track 
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          STOP 
+                        </div>
+                        <div class="col-sm-9"> 
+                          abspielen stoppen
+                        </div>                        
+                      </div>                        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          VOLUME /// 70 
+                        </div>
+                        <div class="col-sm-9"> 
+                          Lautstärke auf 70%
+                        </div>                        
+                      </div> 
+                      <br>        
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Geräte:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for device in spotify_devices %}
+                            {% if device['type'] != "Smartphone" %}
+                              {{ device['name'] }} |
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>                     
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3"> 
+                          Spotify - Playlists:
+                        </div>
+                        <div class="col-sm-9">   
+                          {% for playlist in spotify_playlists %}
+                            {% if playlist['name'] != "Discover Weekly" %}
+                              {{ playlist['name'] }} |
+                            {% endif %}
+                          {% endfor %}    
+                        </div>
+                      </div>                                                                                 
+                    </td>  
+                  </tr>                                   
+                </tbody>
+              </table>     
+            </div>
+          </div>
+        </font>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+{% endblock %}

@@ -179,7 +179,7 @@ def REFRESH_SPOTIFY_TOKEN(first_delay):
                 REFRESH_TOKEN_TEMP = answer["refresh_token"]        
                 WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Refresh Token updated")  
                 
-            except Exception as e:
+            except:
                 pass
                 
             current_timer = 0
@@ -267,7 +267,8 @@ def SPOTIFY_CONTROL(spotify_token, command, spotify_volume):
             
     except Exception as e:
         if str(e) == "'NoneType' object is not subscriptable":
-            WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | No active Device founded")                     
+            pass
+            #WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | No active Device founded")                     
         else:
             WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | " + str(e)) 
 

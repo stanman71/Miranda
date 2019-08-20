@@ -1,10 +1,13 @@
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, Response
 from flask_login import login_required, current_user
 from functools import wraps
 
 from app import app
 from app.database.database import *
 from app.components.checks import CHECK_CAMERA_SETTINGS
+
+import cv2
+
 
 # access rights
 def permission_required(f):
@@ -20,25 +23,79 @@ def permission_required(f):
 global_collapse_camera_table = ""
 
 
+try:
+    camera_1_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(1).user + ":" + GET_CAMERA_BY_ID(1).password + "@" + GET_CAMERA_BY_ID(1).url) 
+except:
+    camera_1_url = None
+ 
+try:
+    camera_2_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(2).user + ":" + GET_CAMERA_BY_ID(2).password + "@" + GET_CAMERA_BY_ID(2).url)
+except:
+    camera_2_url = None
+    
+try:
+    camera_3_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(3).user + ":" + GET_CAMERA_BY_ID(3).password + "@" + GET_CAMERA_BY_ID(3).url)              
+except:
+    camera_3_url = None
+
+try:
+    camera_4_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(4).user + ":" + GET_CAMERA_BY_ID(4).password + "@" + GET_CAMERA_BY_ID(4).url)              
+except:
+    camera_4_url = None
+
+try:
+    camera_5_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(5).user + ":" + GET_CAMERA_BY_ID(5).password + "@" + GET_CAMERA_BY_ID(5).url)             
+except:
+    camera_5_url = None
+    
+try:
+    camera_6_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(6).user + ":" + GET_CAMERA_BY_ID(6).password + "@" + GET_CAMERA_BY_ID(6).url)               
+except:
+    camera_6_url = None
+    
+
+# generate frame by frame from camera
+def GENERATE_FRAMES(camera):  
+    while True:
+
+        # Capture frame-by-frame
+        success, frame = camera.read()  
+
+        if not success:
+            break
+        else:
+            ret, buffer = cv2.imencode('.jpg', frame)
+            frame = buffer.tobytes()
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+            
+
 """ ########### """
 """ site camera """
 """ ########### """
 
-@app.route('/dashboard/camera', methods=['GET', 'POST'])
+@app.route('/camera', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_camera():
+def camera():
     global global_collapse_camera_table
 
+    # get current collapse setting and reset global collapse setting
     collapse_camera_table        = global_collapse_camera_table
     global_collapse_camera_table = ""
 
     error_message_add_camera = []
+    
+    message_camera_config_change = False
 
     name     = ""
     url      = ""
     user     = ""
     password = ""
+    
+    # ##########
+    # add camera
+    # ########## 
 
     if request.method == "POST":     
 
@@ -104,6 +161,8 @@ def dashboard_camera():
 
                     SET_CAMERA_SETTINGS(i, name, url, user, password)
                     
+                    message_camera_config_change = True
+                    
                     name     = ""
                     url      = ""
                     user     = ""
@@ -113,58 +172,50 @@ def dashboard_camera():
     error_message_camera_settings = CHECK_CAMERA_SETTINGS(GET_ALL_CAMERAS())
 
     camera_list = GET_ALL_CAMERAS()
+    
+    
+    # ############
+    # read cameras
+    # ############
+    
+    try:
+        camera_1 = GET_CAMERA_BY_ID(1)
+    except:
+        camera_1 = None      
+    try:
+        camera_2 = GET_CAMERA_BY_ID(2)
+    except:
+        camera_2 = None       
+    try:
+        camera_3 = GET_CAMERA_BY_ID(3)
+    except:
+        camera_3 = None
+    try:
+        camera_4 = GET_CAMERA_BY_ID(4)
+    except:
+        camera_4 = None
+    try:
+        camera_5 = GET_CAMERA_BY_ID(5)
+    except:
+        camera_5 = None
+    try:
+        camera_6 = GET_CAMERA_BY_ID(6)
+    except:
+        camera_6 = None        
 
-    try:
-        video_feed_01 = GET_CAMERA_BY_ID(1)
-    except:
-        video_feed_01 = None
-    try:
-        video_feed_02 = GET_CAMERA_BY_ID(2)
-    except:
-        video_feed_02 = None
-    try:
-        video_feed_03 = GET_CAMERA_BY_ID(3)
-    except:
-        video_feed_03 = None
-    try:
-        video_feed_04 = GET_CAMERA_BY_ID(4)
-    except:
-        video_feed_04 = None
-    try:
-        video_feed_05 = GET_CAMERA_BY_ID(5)
-    except:
-        video_feed_05 = None
-    try:
-        video_feed_06 = GET_CAMERA_BY_ID(6)
-    except:
-        video_feed_06 = None
-    try:
-        video_feed_07 = GET_CAMERA_BY_ID(7)
-    except:
-        video_feed_07 = None
-    try:
-        video_feed_08 = GET_CAMERA_BY_ID(8)
-    except:
-        video_feed_08 = None
-    try:
-        video_feed_09 = GET_CAMERA_BY_ID(9)
-    except:
-        video_feed_09 = None
 
-    return render_template('dashboard_camera.html',        
-                            video_feed_01=video_feed_01,    
-                            video_feed_02=video_feed_02, 
-                            video_feed_03=video_feed_03,       
-                            video_feed_04=video_feed_04,    
-                            video_feed_05=video_feed_05, 
-                            video_feed_06=video_feed_06,   
-                            video_feed_07=video_feed_07,    
-                            video_feed_08=video_feed_08, 
-                            video_feed_09=video_feed_09,   
+    return render_template('camera.html',        
                             error_message_add_camera=error_message_add_camera,
                             error_message_camera_settings=error_message_camera_settings,
+                            message_camera_config_change=message_camera_config_change,
                             collapse_camera_table=collapse_camera_table,
                             camera_list=camera_list,
+                            camera_1=camera_1,    
+                            camera_2=camera_2, 
+                            camera_3=camera_3,
+                            camera_4=camera_4,    
+                            camera_5=camera_5, 
+                            camera_6=camera_6,                             
                             name=name,
                             url=url,
                             user=user,
@@ -182,7 +233,7 @@ def dashboard_camera():
 
 
 # change cameras position 
-@app.route('/dashboard/camera/position/<string:direction>/<int:id>')
+@app.route('/camera/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_cameras_position(id, direction):
@@ -195,7 +246,7 @@ def change_cameras_position(id, direction):
 
 
 # Delete camera
-@app.route('/dashboard/camera/delete/<int:id>')
+@app.route('/camera/delete/<int:id>')
 @login_required
 @permission_required
 def delete_camera(id):
@@ -204,4 +255,36 @@ def delete_camera(id):
     global_collapse_camera_table = "in"
 
     DELETE_CAMERA(id)
-    return redirect(url_for('dashboard_camera'))
+    return redirect(url_for('camera'))
+
+
+@app.route('/camera/video_feed_1')
+def video_feed_1():
+    return Response(GENERATE_FRAMES(camera_1_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera/video_feed_2')
+def video_feed_2():
+    return Response(GENERATE_FRAMES(camera_2_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera/video_feed_3')
+def video_feed_3():
+    return Response(GENERATE_FRAMES(camera_3_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+                    
+@app.route('/camera/video_feed_4')
+def video_feed_4():
+    return Response(GENERATE_FRAMES(camera_4_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame') 
+ 
+@app.route('/camera/video_feed_5')
+def video_feed_5():
+    return Response(GENERATE_FRAMES(camera_5_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/camera/video_feed_6')
+def video_feed_6():
+    return Response(GENERATE_FRAMES(camera_6_url),
+                    mimetype='multipart/x-mixed-replace; boundary=frame')
+                   

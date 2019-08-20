@@ -35,10 +35,10 @@ list_search_album_results = ""
 """ site spotify """
 """ ############ """
 
-@app.route('/dashboard/spotify', methods=['GET', 'POST'])
+@app.route('/spotify', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_spotify():   
+def spotify():   
     
     global list_search_track_results
     global list_search_album_results
@@ -195,7 +195,7 @@ def dashboard_spotify():
         volume                 = 50         
         
         
-    return render_template('dashboard_spotify.html',
+    return render_template('spotify.html',
                             error_message_search_track=error_message_search_track,
                             error_message_search_album=error_message_search_album,
                             error_message_spotify=error_message_spotify,
@@ -224,7 +224,7 @@ def dashboard_spotify():
                             )
                             
                                                   
-@app.route("/dashboard/spotify/login/url/<string:forwarding_site>")
+@app.route("/spotify/login/url/<string:forwarding_site>")
 @login_required
 @permission_required
 def spotify_login(forwarding_site):
@@ -238,7 +238,7 @@ def spotify_login(forwarding_site):
     return redirect(response)
     
     
-@app.route("/dashboard/spotify/token")
+@app.route("/spotify/token")
 @login_required
 @permission_required
 def spotify_token():
@@ -250,10 +250,10 @@ def spotify_token():
         return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard#spotify")
         
     if forwarding_site_global == "spotify":
-        return redirect(url_for('dashboard_spotify'))     
+        return redirect(url_for('spotify'))     
 
 
-@app.route("/dashboard/spotify/logout/url/<string:forwarding_site>")
+@app.route("/spotify/logout/url/<string:forwarding_site>")
 @login_required
 @permission_required
 def spotify_logout(forwarding_site):
@@ -265,5 +265,5 @@ def spotify_logout(forwarding_site):
         return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard#spotify")
         
     if forwarding_site == "spotify":
-        return redirect(url_for('dashboard_spotify'))      
+        return redirect(url_for('spotify'))      
         

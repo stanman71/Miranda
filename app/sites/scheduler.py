@@ -28,10 +28,10 @@ def permission_required(f):
 """ scheduler """
 """ ######### """
 
-@app.route('/dashboard/scheduler', methods=['GET', 'POST'])
+@app.route('/scheduler', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_scheduler():
+def scheduler():
     error_message_add_scheduler_task         = ""    
     error_change_settings                    = ""
     error_message_general_settings           = ""    
@@ -568,7 +568,7 @@ def dashboard_scheduler():
         mqtt_device_25_input_values = ""      
         
 
-    return render_template('dashboard_scheduler.html',
+    return render_template('scheduler.html',
                             scheduler_task_list=scheduler_task_list,
                             error_message_add_scheduler_task=error_message_add_scheduler_task,
                             error_message_general_settings=error_message_general_settings,
@@ -623,18 +623,18 @@ def dashboard_scheduler():
 
 
 # change scheduler task position 
-@app.route('/dashboard/scheduler/position/<string:direction>/<int:id>')
+@app.route('/scheduler/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_scheduler_task_position(id, direction):
     CHANGE_SCHEDULER_TASK_POSITION(id, direction)
-    return redirect(url_for('dashboard_scheduler'))
+    return redirect(url_for('scheduler'))
 
 
 # delete scheduler task
-@app.route('/dashboard/scheduler/delete/<int:id>')
+@app.route('/scheduler/delete/<int:id>')
 @login_required
 @permission_required
 def delete_scheduler_task(id):
     DELETE_SCHEDULER_TASK(id)
-    return redirect(url_for('dashboard_scheduler'))
+    return redirect(url_for('scheduler'))

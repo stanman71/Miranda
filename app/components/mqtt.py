@@ -11,6 +11,9 @@ from app.components.file_management import *
 from app.components.shared_resources import process_management_queue, mqtt_incoming_messages_list
 from app.components.email import SEND_EMAIL
 
+from ping3 import ping
+
+
 BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 
 
@@ -21,7 +24,7 @@ BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
 """ ################################ """
 
 
-def MQTT_GET_INCOMING_MESSAGES(limit):
+def GET_MQTT_INCOMING_MESSAGES(limit):
 
     # get the time check value
     time_check = datetime.datetime.now() - datetime.timedelta(seconds=limit)
@@ -98,7 +101,7 @@ def MQTT_RECEIVE():
             device_type == "led_simple" or
             device_type == "device_switch"):
     
-            for existing_message in MQTT_GET_INCOMING_MESSAGES(3):              
+            for existing_message in GET_MQTT_INCOMING_MESSAGES(3):              
                 
                 if existing_message[1] == channel:
                     
@@ -202,7 +205,7 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
             # add devices
             if data["type"] == "device_connected":
                 time.sleep(5)
-                MQTT_UPDATE_DEVICES("zigbee2mqtt")
+                UPDATE_MQTT_DEVICES("zigbee2mqtt")
                 WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Device added - " + data["message"])    
     
             # remove devices
@@ -233,7 +236,7 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
                 list_jobs = FIND_SENSORDATA_JOB_INPUT(ieeeAddr)
 
                 for job in list_jobs:   
-                    MQTT_SAVE_SENSORDATA(job) 
+                    SAVE_MQTT_SENSORDATA(job) 
 
                     
         if device_type == "sensor_passiv" or device_type == "sensor_active":
@@ -280,12 +283,93 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 """ ################################ """
 
 
+""" ######################## """
+"""  check device exceptions """
+""" ######################## """
+
+
+def CHECK_DEVICE_EXCEPTIONS(id, setting):
+    
+    device = GET_MQTT_DEVICE_BY_ID(id)
+                        
+    # ####################
+    # exception ip_address 
+    # ####################
+    
+    setting           = setting.replace(" ", "")
+    exception_setting = device.exception_setting.replace(" ", "")
+    
+    if device.exception_option == "IP-Address" and exception_setting == setting:
+
+        if ping(device.exception_value_1, timeout=1) != None:    
+            return (device.name + " | Device running")
+        
+        else:
+            return True
+
+
+    # ################
+    # exception sensor
+    # ################
+    
+    if device.exception_sensor_ieeeAddr != "None" and exception_setting == setting:
+        
+        sensor_ieeeAddr = device.exception_sensor_ieeeAddr
+        sensor_key      = device.exception_value_1
+        
+        operator = device.exception_value_2
+        value    = device.exception_value_3
+
+        try:
+             value = str(value).lower()
+        except:
+             pass
+                 
+        
+        # get sensordata 
+        data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.exception_sensor_ieeeAddr).last_values)
+        sensor_value = data[sensor_key]
+        
+        try:
+             sensor_value = str(sensor_value).lower()
+        except:
+             pass
+        
+              
+        # compare conditions
+        if operator == "=" and value.isdigit():
+            if int(sensor_value) == int(value):
+                return (device.name + " | Sensor passing failed")   
+            else:
+                return True
+                
+        if operator == "=" and not value.isdigit():
+            if str(sensor_value) == str(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+                
+        if operator == "<" and value.isdigit():
+            if int(sensor_value) < int(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+                
+        if operator == ">" and value.isdigit():
+            if int(sensor_value) > int(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+            
+    return True
+
+
 """ ################### """
 """    update devices   """
 """ ################### """
 
 
-def MQTT_UPDATE_DEVICES(gateway):
+def UPDATE_MQTT_DEVICES(gateway):
    
     if gateway == "mqtt":
         
@@ -295,7 +379,7 @@ def MQTT_UPDATE_DEVICES(gateway):
         time.sleep(3)
 
         try:
-            for message in MQTT_GET_INCOMING_MESSAGES(5):
+            for message in GET_MQTT_INCOMING_MESSAGES(5):
                 
                 if message[1] == "SmartHome/mqtt/log": 
                     
@@ -388,7 +472,7 @@ def MQTT_UPDATE_DEVICES(gateway):
       
         try:
 
-            for message in MQTT_GET_INCOMING_MESSAGES(5):
+            for message in GET_MQTT_INCOMING_MESSAGES(5):
                     
                 if message[1] == "SmartHome/zigbee2mqtt/bridge/log":
 
@@ -407,6 +491,7 @@ def MQTT_UPDATE_DEVICES(gateway):
                         
                             device = devices[i]
                             
+                            # skip coordinator
                             if device['type'] != "Coordinator":
                                 
                                 # add new device
@@ -416,10 +501,10 @@ def MQTT_UPDATE_DEVICES(gateway):
                                     name         = device['friendly_name']
                                     gateway      = "zigbee2mqtt"              
                                     ieeeAddr     = device['ieeeAddr']
-                                    
+
                                     try:
                                         new_model  = device['model']
-                                        new_device = GET_MQTT_DEVICE_INFORMATIONS(model)
+                                        new_device = GET_MQTT_DEVICE_INFORMATIONS(new_model)
                                     except:
                                         new_model  = ""
                                         new_device = ["", "", "", "", ""]
@@ -492,7 +577,7 @@ def MQTT_UPDATE_DEVICES(gateway):
 """ ################### """
 
 
-def MQTT_REQUEST_SENSORDATA(job_name):
+def REQUEST_MQTT_SENSORDATA(job_name):
     sensordata_job  = GET_SENSORDATA_JOB_BY_NAME(job_name)
     device_gateway  = sensordata_job.mqtt_device.gateway
     device_ieeeAddr = sensordata_job.mqtt_device.ieeeAddr  
@@ -505,7 +590,7 @@ def MQTT_REQUEST_SENSORDATA(job_name):
 
     time.sleep(2)
     
-    for message in MQTT_GET_INCOMING_MESSAGES(5):
+    for message in GET_MQTT_INCOMING_MESSAGES(5):
         
         if message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr:
                 
@@ -534,7 +619,7 @@ def MQTT_REQUEST_SENSORDATA(job_name):
         SEND_EMAIL("ERROR", "ZigBee2MQTT | Message not founded") 
 
    
-def MQTT_SAVE_SENSORDATA(job_id):
+def SAVE_MQTT_SENSORDATA(job_id):
     
     sensordata_job  = GET_SENSORDATA_JOB_BY_ID(job_id)
     device_gateway  = sensordata_job.mqtt_device.gateway
@@ -543,7 +628,7 @@ def MQTT_SAVE_SENSORDATA(job_id):
     sensor_key = sensordata_job.sensor_key
     sensor_key = sensor_key.replace(" ", "")
     
-    for message in MQTT_GET_INCOMING_MESSAGES(10):
+    for message in GET_MQTT_INCOMING_MESSAGES(10):
         
         if (message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr):
                                 
@@ -563,20 +648,20 @@ def MQTT_SAVE_SENSORDATA(job_id):
 """ ################### """
  
  
-def MQTT_CHECK_SETTING_THREAD(ieeeAddr, setting, delay = 1, limit = 15): 
+def CHECK_MQTT_SETTING_THREAD(ieeeAddr, setting, delay = 1, limit = 15): 
  
-    Thread = threading.Thread(target=MQTT_CHECK_SETTING_PROCESS, args=(ieeeAddr, setting, delay, limit, ))
+    Thread = threading.Thread(target=CHECK_MQTT_SETTING_PROCESS, args=(ieeeAddr, setting, delay, limit, ))
     Thread.start()   
 
  
-def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit): 
+def CHECK_MQTT_SETTING_PROCESS(ieeeAddr, setting, delay, limit): 
                       
     device = GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr)
                     
     # check setting 1 try
     time.sleep(delay)                             
     
-    result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
+    result = CHECK_MQTT_SETTING(ieeeAddr, setting, limit)
     
     # format for gui
     setting_formated = setting.replace('"', '')
@@ -592,7 +677,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
     else:
         # check setting 2 try
         time.sleep(delay)                             
-        result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
+        result = CHECK_MQTT_SETTING(ieeeAddr, setting, limit)
         
         # set previous setting
         if result == True:
@@ -601,7 +686,7 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
         else:
             # check setting 3 try
             time.sleep(delay)                             
-            result = MQTT_CHECK_SETTING(ieeeAddr, setting, limit)
+            result = CHECK_MQTT_SETTING(ieeeAddr, setting, limit)
              
             # set previous setting
             if result == True:
@@ -616,9 +701,9 @@ def MQTT_CHECK_SETTING_PROCESS(ieeeAddr, setting, delay, limit):
     return ""
                     
 
-def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
+def CHECK_MQTT_SETTING(ieeeAddr, setting, limit):
             
-    for message in MQTT_GET_INCOMING_MESSAGES(limit):
+    for message in GET_MQTT_INCOMING_MESSAGES(limit):
         
         # search for fitting message in incoming_messages_list
         if message[1] == "SmartHome/mqtt/" + ieeeAddr:  
@@ -652,20 +737,20 @@ def MQTT_CHECK_SETTING(ieeeAddr, setting, limit):
 """ ########################## """
  
  
-def ZIGBEE2MQTT_CHECK_SETTING_THREAD(device_name, setting, delay = 1, limit = 15): 
+def CHECK_ZIGBEE2MQTT_SETTING_THREAD(device_name, setting, delay = 1, limit = 15): 
  
-    Thread = threading.Thread(target=ZIGBEE2MQTT_CHECK_SETTING_PROCESS, args=(device_name, setting, delay, limit, ))
+    Thread = threading.Thread(target=CHECK_ZIGBEE2MQTT_SETTING_PROCESS, args=(device_name, setting, delay, limit, ))
     Thread.start()   
 
  
-def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device_name, setting, delay, limit): 
+def CHECK_ZIGBEE2MQTT_SETTING_PROCESS(device_name, setting, delay, limit): 
                       
     device = GET_MQTT_DEVICE_BY_NAME(device_name)
                             
     # check setting 1 try
     time.sleep(delay)  
                                
-    result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
+    result = CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit)
     
     # format for gui
     setting_formated = setting.replace('"', '')
@@ -681,7 +766,7 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device_name, setting, delay, limit):
     else:
         # check setting 2 try
         time.sleep(delay)                             
-        result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
+        result = CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit)
         
         # set previous setting
         if result == True:
@@ -690,7 +775,7 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device_name, setting, delay, limit):
         else:
             # check setting 3 try
             time.sleep(delay)                             
-            result = ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit)
+            result = CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit)
              
             # set previous setting
             if result == True:
@@ -705,10 +790,10 @@ def ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device_name, setting, delay, limit):
     return ""
         
  
-def ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit):
-    
-    for message in MQTT_GET_INCOMING_MESSAGES(limit):
-        
+def CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit):
+
+    for message in GET_MQTT_INCOMING_MESSAGES(limit):
+
         # search for fitting message in incoming_messages_list
         if message[1] == "SmartHome/zigbee2mqtt/" + device_name:   
     
@@ -741,13 +826,13 @@ def ZIGBEE2MQTT_CHECK_SETTING(device_name, setting, limit):
 """ ################### """
  
  
-def MQTT_CHECK():
+def CHECK_MQTT():
     MQTT_PUBLISH("SmartHome/mqtt/test", "") 
 
 
-def MQTT_CHECK_NAME_CHANGED():
+def CHECK_MQTT_NAME_CHANGED():
                       
-    for message in MQTT_GET_INCOMING_MESSAGES(10):
+    for message in GET_MQTT_INCOMING_MESSAGES(10):
         
         if message[1] == "SmartHome/zigbee2mqtt/bridge/log":
         

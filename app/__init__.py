@@ -110,7 +110,7 @@ if GET_HOST_PORT() == 5000:
 
 from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
-from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, MQTT_GET_INCOMING_MESSAGES, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
+from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, GET_MQTT_INCOMING_MESSAGES, CHECK_ZIGBEE2MQTT_SETTING_PROCESS
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
 from app.components.shared_resources import REFRESH_MQTT_INPUT_MESSAGES_THREAD
 from app.components.backend_spotify import REFRESH_SPOTIFY_TOKEN_THREAD
@@ -191,7 +191,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
     zigbee_connected = False
     time.sleep(3)
     
-    for message in MQTT_GET_INCOMING_MESSAGES(5):
+    for message in GET_MQTT_INCOMING_MESSAGES(5):
         
         if message[1] == "SmartHome/zigbee2mqtt/bridge/state" and message[2] == "online":     
             zigbee_connected = True 
@@ -210,7 +210,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             # check current pairing setting
             zigbee_check = False
             
-            for message in MQTT_GET_INCOMING_MESSAGES(5):
+            for message in GET_MQTT_INCOMING_MESSAGES(5):
                 
                 if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
                     zigbee_check = True
@@ -224,7 +224,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
                 # check current pairing setting
                 zigbee_check = False
                 
-                for message in MQTT_GET_INCOMING_MESSAGES(5):
+                for message in GET_MQTT_INCOMING_MESSAGES(5):
                     
                     if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
                         zigbee_check = True
@@ -239,7 +239,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
             # check current pairing setting
             zigbee_check = False
             
-            for message in MQTT_GET_INCOMING_MESSAGES(5):
+            for message in GET_MQTT_INCOMING_MESSAGES(5):
                 
                 if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":false}':
                     zigbee_check = True
@@ -253,7 +253,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
                 # check current pairing setting
                 zigbee_check = False
                 
-                for message in MQTT_GET_INCOMING_MESSAGES(5):
+                for message in GET_MQTT_INCOMING_MESSAGES(5):
                     
                     if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
                         zigbee_check = True

@@ -29,10 +29,10 @@ def permission_required(f):
 """ ######## """
 
 # programs
-@app.route('/dashboard/programs', methods=['GET', 'POST'])
+@app.route('/programs', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_programs():
+def programs():
     error_message_add_program  = ""
     error_message_content      = []
 
@@ -110,30 +110,18 @@ def dashboard_programs():
                     
                 # save settings
                 line_content_1    = request.form.get("set_line_content_1_" + str(i))
-                line_exception_1  = request.form.get("set_line_exception_1_" + str(i))
                 line_content_2    = request.form.get("set_line_content_2_" + str(i))
-                line_exception_2  = request.form.get("set_line_exception_2_" + str(i))
-                line_content_3    = request.form.get("set_line_content_3_" + str(i))
-                line_exception_3  = request.form.get("set_line_exception_3_" + str(i))                
-                line_content_4    = request.form.get("set_line_content_4_" + str(i))
-                line_exception_4  = request.form.get("set_line_exception_4_" + str(i))                
+                line_content_3    = request.form.get("set_line_content_3_" + str(i))             
+                line_content_4    = request.form.get("set_line_content_4_" + str(i))            
                 line_content_5    = request.form.get("set_line_content_5_" + str(i))
-                line_exception_5  = request.form.get("set_line_exception_5_" + str(i))
-                line_content_6    = request.form.get("set_line_content_6_" + str(i))
-                line_exception_6  = request.form.get("set_line_exception_6_" + str(i))              
-                line_content_7    = request.form.get("set_line_content_7_" + str(i))
-                line_exception_7  = request.form.get("set_line_exception_7_" + str(i))              
-                line_content_8    = request.form.get("set_line_content_8_" + str(i))
-                line_exception_8  = request.form.get("set_line_exception_8_" + str(i))              
-                line_content_9    = request.form.get("set_line_content_9_" + str(i))
-                line_exception_9  = request.form.get("set_line_exception_9_" + str(i))              
-                line_content_10   = request.form.get("set_line_content_10_" + str(i))
-                line_exception_10 = request.form.get("set_line_exception_10_" + str(i))              
+                line_content_6    = request.form.get("set_line_content_6_" + str(i))           
+                line_content_7    = request.form.get("set_line_content_7_" + str(i))            
+                line_content_8    = request.form.get("set_line_content_8_" + str(i))            
+                line_content_9    = request.form.get("set_line_content_9_" + str(i))             
+                line_content_10   = request.form.get("set_line_content_10_" + str(i))            
               
-                SET_PROGRAM_SETTINGS(i, line_content_1, line_exception_1, line_content_2, line_exception_2, line_content_3, line_exception_3,
-                                     line_content_4, line_exception_4, line_content_5, line_exception_5, line_content_6, line_exception_6,
-                                     line_content_7, line_exception_7, line_content_8, line_exception_8, line_content_9, line_exception_9,
-                                     line_content_10, line_exception_10)
+                SET_PROGRAM_SETTINGS(i, line_content_1, line_content_2, line_content_3, line_content_4, line_content_5,
+                                     line_content_6, line_content_7, line_content_8, line_content_9, line_content_10)
     
     
                 # change line position  
@@ -220,18 +208,18 @@ def dashboard_programs():
     program_running        = GET_PROGRAM_RUNNING()
     
     
+    # list led names  
+    list_led_names = []
+    
+    for led in GET_ALL_MQTT_DEVICES("led"):
+        list_led_names.append(led.name)
+ 
+ 
     # list device command options   
     list_device_command_options = []
     
     for device in GET_ALL_MQTT_DEVICES("device"):
         list_device_command_options.append((device.name, device.commands))
-        
-        
-    # list sensor options
-    list_sensor_options = []
-    
-    for sensor in GET_ALL_MQTT_DEVICES("sensor"):
-        list_sensor_options.append((sensor.name, sensor.input_values))
         
 
     # list spotify devices / playlists
@@ -249,7 +237,7 @@ def dashboard_programs():
         spotify_playlists = ""   
 
 
-    return render_template('dashboard_programs.html',
+    return render_template('programs.html',
                             led_update=led_update,
                             dropdown_list_programs=dropdown_list_programs,
                             program=program,
@@ -259,9 +247,9 @@ def dashboard_programs():
                             error_message_add_program=error_message_add_program,
                             error_message_content=error_message_content,
                             spotify_devices=spotify_devices,
-                            spotify_playlists=spotify_playlists,   
+                            spotify_playlists=spotify_playlists,
+                            list_led_names=list_led_names,
                             list_device_command_options=list_device_command_options,
-                            list_sensor_options=list_sensor_options,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,

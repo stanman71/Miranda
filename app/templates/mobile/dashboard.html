@@ -150,23 +150,23 @@
           <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
         {% endif %}        
         {% if permission_scheduler == "checked" %}
-          <li><a href="{{ url_for('dashboard_scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
         {% endif %}
         {% if permission_programs == "checked" %}            
-          <li><a href="{{ url_for('dashboard_programs') }}"><font color="white">Programme</font></a></li> 
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
         {% endif %}          
         {% if permission_watering == "checked" %}            
-          <li><a href="{{ url_for('dashboard_watering') }}"><font color="white">Bewässerung</font></a></li> 
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
         {% if permission_camera == "checked" %}               
-          <li><a href="{{ url_for('dashboard_camera') }}"><font color="white">Kameras</font></a></li>
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
         {% if permission_led == "checked" %}                           
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ url_for('dashboard_led_scenes') }}"><font color="black">Szenen</font></a></li> 
-              <li><a href="{{ url_for('dashboard_led_groups') }}"><font color="black">Gruppen</font></a></li> 
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
             </ul>
           </li>    
         {% endif %}
@@ -174,26 +174,28 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ url_for('dashboard_sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
-              <li><a href="{{ url_for('dashboard_sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
             </ul>
           </li>                             
         {% endif %}
         {% if permission_spotify == "checked" %}                                
-          <li><a href="{{ url_for('dashboard_spotify') }}"><font color="white">Spotify</font></a></li> 
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
         {% endif %}                      
         {% if permission_system == "checked" %} 
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="{{ url_for('dashboard_system_mqtt') }}"><font color="black">MQTT</font></a></li>
-              <li><a href="{{ url_for('dashboard_system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
-              <li><a href="{{ url_for('dashboard_system_controller') }}"><font color="black">Controller</font></a></li>             
-              <li><a href="{{ url_for('dashboard_system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
-              <li><a href="{{ url_for('dashboard_system_user') }}"><font color="black">Benutzer</font></a></li>    
-              <li><a href="{{ url_for('dashboard_system_email') }}"><font color="black">eMail</font></a></li>        
-              <li><a href="{{ url_for('dashboard_system_backup') }}"><font color="black">Backup</font></a></li> 
-              <li><a href="{{ url_for('dashboard_system_log') }}"><font color="black">Log</font></a></li>    
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
             </ul>
           </li>          
         {% endif %}    
@@ -307,7 +309,7 @@
   </div>      
 {% endif %}
 
-{% if error_message_device_checks != "" %}
+{% if error_message_device_checks != [] %}
   <div class="alert alert-danger" role="alert">
     {% for entry in error_message_device_checks %}
       {{ entry }} <br>

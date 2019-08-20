@@ -51,8 +51,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                 # new led setting ?
                 if group.current_setting != scene.name or int(group.current_brightness) != brightness:
                     
-                    LED_GROUP_SET_SCENE(group.id, scene.id, brightness)
-                    LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)
+                    SET_LED_GROUP_SCENE(group.id, scene.id, brightness)
+                    CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)
 
                 else:
                     WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name +
@@ -100,8 +100,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                         if target_brightness > 100:
                             target_brightness = 100
 
-                        LED_GROUP_SET_BRIGHTNESS_DIMMER(group.id, "turn_up")
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10)
+                        SET_LED_GROUP_BRIGHTNESS_DIMMER(group.id, "turn_up")
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10)
 
                     elif (command == "turn_down") and current_brightness != 0:
 
@@ -110,8 +110,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                         if target_brightness < 0:
                             target_brightness = 0
 
-                        LED_GROUP_SET_BRIGHTNESS_DIMMER(group.id, "turn_down")
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10)
+                        SET_LED_GROUP_BRIGHTNESS_DIMMER(group.id, "turn_down")
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene_name, target_brightness, 2, 10)
 
                     else:
                         WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name +
@@ -162,8 +162,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                     scene_name = group.current_setting
                     scene = GET_LED_SCENE_BY_NAME(scene_name)
 
-                    LED_GROUP_TURN_OFF(group.id)
-                    LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
+                    SET_LED_GROUP_TURN_OFF(group.id)
+                    CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
 
                 else:
                     WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")
@@ -181,8 +181,8 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                     scene_name = group.current_setting
                     scene      = GET_LED_SCENE_BY_NAME(scene_name)
 
-                    LED_GROUP_TURN_OFF(group.id)
-                    LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
+                    SET_LED_GROUP_TURN_OFF(group.id)
+                    CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
 
             else:
                 WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")
@@ -203,62 +203,73 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
             controller_setting_formated = controller_setting_formated.replace("]", "")
             controller_setting_formated = controller_setting_formated.replace("'", "")
             
-            # convert string to json-format
-            controller_setting = controller_setting_formated.replace(' ', '')
-            controller_setting = controller_setting.replace(':', '":"')
-            controller_setting = controller_setting.replace(',', '","')
-            controller_setting = '{"' + str(controller_setting) + '"}'
-                
-            # new device setting ?  
-            new_setting = False
-
-            if not "," in controller_setting:
-                if not controller_setting[1:-1] in device.last_values:
-                    new_setting = True
-                                                            
-            # more then one setting value:
-            else:   
-                controller_setting_temp = controller_setting[1:-1]
-                list_controller_setting = controller_setting_temp.split(",")
-                
-                for setting in list_controller_setting:
+            
+            # check device exception
+            check_result = CHECK_DEVICE_EXCEPTIONS(device.id, controller_setting_formated)
+            
+           
+            if check_result == True:               
+              
+                # convert string to json-format
+                controller_setting = controller_setting_formated.replace(' ', '')
+                controller_setting = controller_setting.replace(':', '":"')
+                controller_setting = controller_setting.replace(',', '","')
+                controller_setting = '{"' + str(controller_setting) + '"}'
                     
-                    if not setting in device.last_values:
-                        new_setting = True  
+                # new device setting ?  
+                new_setting = False
 
-
-            if new_setting == True:             
-                
-                # mqtt
-                if device.gateway == "mqtt":
+                if not "," in controller_setting:
+                    if not controller_setting[1:-1] in device.last_values:
+                        new_setting = True
+                                                                
+                # more then one setting value:
+                else:   
+                    controller_setting_temp = controller_setting[1:-1]
+                    list_controller_setting = controller_setting_temp.split(",")
                     
-                    channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
-                    msg      = controller_setting
+                    for setting in list_controller_setting:
+                        
+                        if not setting in device.last_values:
+                            new_setting = True  
 
-                    MQTT_PUBLISH(channel, msg)  
+
+                if new_setting == True:             
                     
-                    MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, controller_setting, 5, 20)
+                    # mqtt
+                    if device.gateway == "mqtt":
+                        
+                        channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                        msg      = controller_setting
+
+                        MQTT_PUBLISH(channel, msg)  
+                        
+                        CHECK_MQTT_SETTING_THREAD(device.ieeeAddr, controller_setting, 5, 20)
 
 
-                # zigbee2mqtt
-                if device.gateway == "zigbee2mqtt":
-                    
-                    channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
-                    msg      = controller_setting
+                    # zigbee2mqtt
+                    if device.gateway == "zigbee2mqtt":
+                        
+                        channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                        msg      = controller_setting
 
-                    MQTT_PUBLISH(channel, msg)  
-                    
-                    ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, controller_setting, 5, 20)  
-                         
+                        MQTT_PUBLISH(channel, msg)  
+                        
+                        CHECK_ZIGBEE2MQTT_SETTING_THREAD(device.name, controller_setting, 5, 20)  
+                             
+                else:
+
+                    if device.gateway == "mqtt":
+                        WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + controller_setting_formated) 
+
+                    if device.gateway == "zigbee2mqtt":
+                        WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + controller_setting_formated)                   
+                                                                
+
             else:
+                WRITE_LOGFILE_SYSTEM("WARNING", "Controller - " + controller_name + " | " + check_result)
+                                
 
-                if device.gateway == "mqtt":
-                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + controller_setting_formated) 
-
-                if device.gateway == "zigbee2mqtt":
-                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + controller_setting_formated)                   
-                                                            
-                            
         else:
             WRITE_LOGFILE_SYSTEM("ERROR", "Controller - " + controller_name + " | Command - " + controller_command + " | Gerät - " + task[1] + " | not founded")
 
@@ -451,8 +462,8 @@ def START_SCHEDULER_TASK(task_object):
                         
                         WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')                      
                         
-                        LED_GROUP_SET_SCENE(group.id, scene.id, brightness)
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)
+                        SET_LED_GROUP_SCENE(group.id, scene.id, brightness)
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 2, 10)
 
 
                 else:
@@ -500,8 +511,8 @@ def START_SCHEDULER_TASK(task_object):
                                 
                                 WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')                              
                                 
-                                LED_GROUP_TURN_OFF(group.id)
-                                LED_GROUP_CHECK_SETTING_THREAD(group.id, 0, "OFF", 0, 5, 20)   
+                                SET_LED_GROUP_TURN_OFF(group.id)
+                                CHECK_LED_GROUP_SETTING_THREAD(group.id, 0, "OFF", 0, 5, 20)   
 
 
                     if group_founded == False:
@@ -519,8 +530,8 @@ def START_SCHEDULER_TASK(task_object):
 
                         WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')
 
-                        LED_GROUP_TURN_OFF(group.id)
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 5, 20)    
+                        SET_LED_GROUP_TURN_OFF(group.id)
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 5, 20)    
                            
 
     except Exception as e:
@@ -543,55 +554,63 @@ def START_SCHEDULER_TASK(task_object):
             if device != None:
                 scheduler_setting_formated = task[2]
                 
-                # convert string to json-format
-                scheduler_setting = scheduler_setting_formated.replace(' ', '')
-                scheduler_setting = scheduler_setting.replace(':', '":"')
-                scheduler_setting = scheduler_setting.replace(',', '","')
-                scheduler_setting = '{"' + str(scheduler_setting) + '"}'                
-
-                # new device setting ?  
-                new_setting = False
+                # check device exception
+                check_result = CHECK_DEVICE_EXCEPTIONS(device.id, scheduler_setting_formated)
                 
-                if not "," in scheduler_setting:
-                    if not scheduler_setting[1:-1] in device.last_values:
-                        new_setting = True
-                                                                
-                # more then one setting value:
-                else:   
-                    scheduler_setting_temp = scheduler_setting[1:-1]
-                    list_scheduler_setting = scheduler_setting_temp.split(",")
+               
+                if check_result == True:                         
+                
+                    # convert string to json-format
+                    scheduler_setting = scheduler_setting_formated.replace(' ', '')
+                    scheduler_setting = scheduler_setting.replace(':', '":"')
+                    scheduler_setting = scheduler_setting.replace(',', '","')
+                    scheduler_setting = '{"' + str(scheduler_setting) + '"}'                
+
+                    # new device setting ?  
+                    new_setting = False
                     
-                    for setting in list_scheduler_setting:
+                    if not "," in scheduler_setting:
+                        if not scheduler_setting[1:-1] in device.last_values:
+                            new_setting = True
+                                                                    
+                    # more then one setting value:
+                    else:   
+                        scheduler_setting_temp = scheduler_setting[1:-1]
+                        list_scheduler_setting = scheduler_setting_temp.split(",")
                         
-                        if not setting in device.last_values:
-                            new_setting = True  
+                        for setting in list_scheduler_setting:
+                            
+                            if not setting in device.last_values:
+                                new_setting = True  
 
-                
-                if new_setting == True:
+                    
+                    if new_setting == True:
 
-                    WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')                              
-                                                    
-                    # mqtt
-                    if device.gateway == "mqtt":
-                        
-                        channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
-                        msg      = scheduler_setting
+                        WRITE_LOGFILE_SYSTEM("EVENT", 'Scheduler | Task - ' + task_object.name + ' | started')                              
+                                                        
+                        # mqtt
+                        if device.gateway == "mqtt":
+                            
+                            channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                            msg      = scheduler_setting
 
-                        MQTT_PUBLISH(channel, msg)  
-                        
-                        MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, scheduler_setting, 5, 20)
+                            MQTT_PUBLISH(channel, msg)  
+                            
+                            CHECK_MQTT_SETTING_THREAD(device.ieeeAddr, scheduler_setting, 5, 20)
 
 
-                    # zigbee2mqtt
-                    if device.gateway == "zigbee2mqtt":
-                        
-                        channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
-                        msg      = scheduler_setting
+                        # zigbee2mqtt
+                        if device.gateway == "zigbee2mqtt":
+                            
+                            channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                            msg      = scheduler_setting
 
-                        MQTT_PUBLISH(channel, msg)  
-                        
-                        ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, scheduler_setting, 5, 20)            
-
+                            MQTT_PUBLISH(channel, msg)  
+                            
+                            CHECK_ZIGBEE2MQTT_SETTING_THREAD(device.name, scheduler_setting, 5, 20)
+                            
+                else:
+                    WRITE_LOGFILE_SYSTEM("WARNING", "Scheduler | Task - " + task_object.name + " | " + check_result)
 
             else:
                 WRITE_LOGFILE_SYSTEM("ERROR", "Scheduler | Task - " + task_object.name + " | Device - " + task[1] + " | not founded")                  
@@ -672,7 +691,7 @@ def START_SCHEDULER_TASK(task_object):
 
     try:
         if "mqtt_update_devices" in task_object.task:
-            MQTT_UPDATE_DEVICES("mqtt")
+            UPDATE_MQTT_DEVICES("mqtt")
 
 
     except Exception as e:
@@ -687,7 +706,7 @@ def START_SCHEDULER_TASK(task_object):
     try:
         if "request_sensordata" in task_object.task:
             task = task_object.task.split(" /// ")
-            MQTT_REQUEST_SENSORDATA(task[1])  
+            REQUEST_MQTT_SENSORDATA(task[1])  
 
 
     except Exception as e:
@@ -696,7 +715,7 @@ def START_SCHEDULER_TASK(task_object):
 
 
     # ##################
-    # request sensordata
+    #      spotify
     # ##################
 
     try:
@@ -996,8 +1015,8 @@ def SPEECHCONTROL_LED_TASK(answer):
 
                     # new led setting ?
                     if group.current_setting != scene.name or int(group.current_brightness) != brightness:
-                        LED_GROUP_SET_SCENE(group.id, scene.id, brightness)
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 3, 15)     
+                        SET_LED_GROUP_SCENE(group.id, scene.id, brightness)
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene.name, brightness, 3, 15)     
                         time.sleep(1)
                         return                               
 
@@ -1073,8 +1092,8 @@ def SPEECHCONTROL_LED_TASK(answer):
                         # new led brightness setting ?
                         if group.current_brightness != brightness:
                             
-                            LED_GROUP_SET_BRIGHTNESS(group.id, brightness)
-                            LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
+                            SET_LED_GROUP_BRIGHTNESS(group.id, brightness)
+                            CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, scene_name, brightness, 3, 15)  
                             time.sleep(1)
                             return                                       
 
@@ -1130,8 +1149,8 @@ def SPEECHCONTROL_LED_TASK(answer):
 
                     # new led setting ?
                     if group.current_setting != "OFF":
-                        LED_GROUP_TURN_OFF(group.id)
-                        LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)  
+                        SET_LED_GROUP_TURN_OFF(group.id)
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)  
                         time.sleep(1)
                         return                                       
 
@@ -1166,8 +1185,8 @@ def SPEECHCONTROL_LED_TASK(answer):
 
                 # new led setting ?
                 if group.current_setting != "OFF":
-                    LED_GROUP_TURN_OFF(group.id)
-                    LED_GROUP_CHECK_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)   
+                    SET_LED_GROUP_TURN_OFF(group.id)
+                    CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 3, 15)   
                     time.sleep(1)
                     return                              
 
@@ -1199,65 +1218,74 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
 
                 # device founded ?
                 if device != None:
-                    speechcontrol_setting_formated = task.setting       
+                    speechcontrol_setting_formated = task.setting
                     
-                    # convert string to json-format
-                    speechcontrol_setting = speechcontrol_setting_formated.replace(' ', '')
-                    speechcontrol_setting = speechcontrol_setting.replace(':', '":"')
-                    speechcontrol_setting = speechcontrol_setting.replace(',', '","')
-                    speechcontrol_setting = '{"' + str(speechcontrol_setting) + '"}'        
+                    # check device exception
+                    check_result = CHECK_DEVICE_EXCEPTIONS(device.id, speechcontrol_setting_formated)
+                    
+                   
+                    if check_result == True:    
+                    
+                        # convert string to json-format
+                        speechcontrol_setting = speechcontrol_setting_formated.replace(' ', '')
+                        speechcontrol_setting = speechcontrol_setting.replace(':', '":"')
+                        speechcontrol_setting = speechcontrol_setting.replace(',', '","')
+                        speechcontrol_setting = '{"' + str(speechcontrol_setting) + '"}'        
 
-                    # new device setting ?  
-                    new_setting = False
-                    
-                    if not "," in speechcontrol_setting:
-                        if not speechcontrol_setting[1:-1] in device.last_values:
-                            new_setting = True
-                                                                    
-                    # more then one setting value:
-                    else:   
-                        speechcontrol_setting_temp = speechcontrol_setting[1:-1]
-                        list_speechcontrol_setting = speechcontrol_setting_temp.split(",")
+                        # new device setting ?  
+                        new_setting = False
                         
-                        for setting in list_speechcontrol_setting:
+                        if not "," in speechcontrol_setting:
+                            if not speechcontrol_setting[1:-1] in device.last_values:
+                                new_setting = True
+                                                                        
+                        # more then one setting value:
+                        else:   
+                            speechcontrol_setting_temp = speechcontrol_setting[1:-1]
+                            list_speechcontrol_setting = speechcontrol_setting_temp.split(",")
                             
-                            if not setting in device.last_values:
-                                new_setting = True  
+                            for setting in list_speechcontrol_setting:
+                                
+                                if not setting in device.last_values:
+                                    new_setting = True  
 
 
-                    if new_setting == True:
+                        if new_setting == True:
 
-                        # mqtt
-                        if device.gateway == "mqtt":
-                            
-                            channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
-                            msg      = speechcontrol_setting
+                            # mqtt
+                            if device.gateway == "mqtt":
+                                
+                                channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                                msg      = speechcontrol_setting
 
-                            MQTT_PUBLISH(channel, msg)  
-                            MQTT_CHECK_SETTING_THREAD(device.ieeeAddr, speechcontrol_setting, 5, 20)
-                            return
-                            
-                            
-                        # zigbee2mqtt
-                        if device.gateway == "zigbee2mqtt":
-                            
-                            channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
-                            msg      = speechcontrol_setting
+                                MQTT_PUBLISH(channel, msg)  
+                                CHECK_MQTT_SETTING_THREAD(device.ieeeAddr, speechcontrol_setting, 5, 20)
+                                return
+                                
+                                
+                            # zigbee2mqtt
+                            if device.gateway == "zigbee2mqtt":
+                                
+                                channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                                msg      = speechcontrol_setting
 
-                            MQTT_PUBLISH(channel, msg)  
-                            ZIGBEE2MQTT_CHECK_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
-                            return
+                                MQTT_PUBLISH(channel, msg)  
+                                CHECK_ZIGBEE2MQTT_SETTING_THREAD(device.name, speechcontrol_setting, 5, 20)   
+                                return
+
+                        else:
+                            
+                            if device.gateway == "mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+                                return
+
+                            if device.gateway == "zigbee2mqtt":
+                                WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
+                                return                                       
+
 
                     else:
-                        
-                        if device.gateway == "mqtt":
-                            WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
-                            return
-
-                        if device.gateway == "zigbee2mqtt":
-                            WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + speechcontrol_setting_formated) 
-                            return                                       
-
+                        WRITE_LOGFILE_SYSTEM("WARNING", "Speechcontrol | Device Task | " + answer + " | " + check_result)                     
 
                 else:
                     WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Device Task | " + answer + " | Device not founded")

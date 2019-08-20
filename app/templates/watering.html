@@ -1,0 +1,337 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Bewässerung
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap-select.min.css')}}">  
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="{{ url_for('static', filename='bootstrap-select.min.js') }}"></script>
+  <script>$('.selectpicker').selectpicker();</script>
+  
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Bewässerung</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
+
+
+<!-- error message add plant -->
+
+{% if error_message_add_plant != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_add_plant }}
+  </div>      
+{% endif %} 
+
+
+<!-- add new plant -->        
+
+      <div class="well well-sm">  
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_name" placeholder="Neue Pflanze" value="" />
+            </div>  
+            <div class="col-sm-1">                     
+              <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
+            </div>            
+            <div class="col-sm-3"> 
+              <select class="selectpicker" data-width="80%" data-live-search="true" name="set_mqtt_device_ieeeAddr">
+                {% for each in dropdown_list_mqtt_devices %}
+                  <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
+                {% endfor %}                                                                              
+              </select>                                      
+            </div>  
+
+<section id="table"></section> 
+
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/watering#'" class="btn btn-default" name="add_plant" value="Pflanze erstellen" />
+            </div>
+          </div>
+        </form>       
+      </div>    
+
+
+<!-- error message change settings -->
+
+{% if error_message_change_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_change_settings }}
+  </div>      
+{% endif %}  
+
+<!-- error message settings -->
+
+{% if error_message_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_settings %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}  
+
+<!-- plants table -->
+
+      <div class="panel panel-default">
+        <div class="panel-heading"><font color="white"><b>Bewässerung</b></font></div>      
+          <div class="panel-body">                       
+            <div class="well well-sm">  
+            <form method="POST" class="verticalform"> 
+              <table class="table">
+                <thead>
+                  <th scope="col" style="width:3%"></th> 
+                  <th scope="col" style="width:14%">Pflanze</th>   
+                  <th scope="col" style="width:20%">Gerät</th> 
+                  <th scope="col" style="width:8%">Gruppe</th> 
+                  <th scope="col" style="width:17%">Pumpdauer (s)</th>    
+                  <th scope="col" style="width:17%">Sensor Feuchtigkeit</th>                      
+                  <th scope="col" style="width:17%">Sensor Wasservorrat</th>                                     
+                  <th scope="col" style="width:4%"></th>                                                    
+                </thead>
+                <tbody> 
+                  {% for entry in plants_list %}
+                  <tr>
+                    <td>
+                      <a href="/watering/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                      <a href="/watering/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                    </td>                   
+                    <td>
+                      <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                    </td> 
+                    <td>
+                      <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}'), Choose_Pump('{{ entry.id }}')" class="selectpicker" data-width="95%" data-live-search="true" name="set_mqtt_device_{{ entry.id }}">
+                        <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
+                        <optgroup>
+                          {% for each in dropdown_list_mqtt_devices %}
+                            <option value="{{ each.id }}"> {{ each.name }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                        
+                    </td>  
+                    <td>                      
+                      <select class="selectpicker" data-width="90%" name="set_group_{{ entry.id }}">
+                        <option value= "{{ entry.group }}" > {{ entry.group }} </option>
+                        <optgroup>
+                          {% for each in dropdown_list_groups %}
+                            <option value="{{ each }}"> {{ each }} </option>
+                          {% endfor %}
+                        </optgroup>                                                                                 
+                      </select>                                
+                    </td>                                                           
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-7">                          
+                          <select class="selectpicker" data-width="100%" name="set_pumptime_{{ entry.id }}">
+                            <option value= "{{ entry.pumptime }}" > {{ entry.pumptime }} </option>
+                            <optgroup>
+                              <option value="auto"> auto </option>
+                            </optgroup> 
+                            <optgroup>
+                              {% for each in dropdown_list_pumptime %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                 
+                          </select> 
+                        </div>
+                        
+                        {% if entry.pumptime == "auto" %}
+                        
+                        <div class="col-sm-5"> 
+                           <button type="button" style="background-color:transparent" class="btn btn-secondary"> {{ entry.pumptime_auto }} </button>                                    
+                        </div>
+                        
+                        {% else %}
+                        
+                          <div class="col-sm-5"></div>                        
+                         
+                        {% endif %}  
+                                          
+                      </div>                      
+                    </td>          
+                    <td>
+                      <div class="row justify-content-md-center">
+                        <div class="col-sm-3">  
+                          <font size="+2">
+                            <div class="pretty p-default p-curve p-bigger">
+                              <input type="checkbox" {{ entry.control_sensor_moisture }} name="set_control_sensor_moisture_{{ entry.id }}" >
+                              <div class="state p-success">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>
+                        </div>
+                        
+                        {% if entry.control_sensor_moisture == "checked" %}
+                        
+                        <div class="col-sm-8">    
+                          <select class="selectpicker" data-width="100%" name="set_moisture_level_{{ entry.id }}">
+                            <option value= "{{ entry.moisture_level }}" > {{ entry.moisture_level }} </option>
+                            <optgroup>
+                              {% for each in dropdown_list_moisture_level %}
+                                <option value="{{each}}"> {{ each }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                                 
+                          </select>                                                               
+                        </div>
+                        
+                        {% else %}
+                        
+                        <div class="col-sm-8"></div>                        
+                         
+                        {% endif %}
+            
+                      </div>
+                    </td>    
+                    <td>
+                      <div class="row justify-content-md-center">                      
+                        <div class="col-sm-2"> 
+                          <font size="+2">
+                            <div class="pretty p-default p-curve p-bigger">
+                              <input type="checkbox" {{ entry.control_sensor_watertank }} name="set_control_sensor_watertank_{{ entry.id }}" >
+                              <div class="state p-success">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>                      
+                        </div>
+                      </div>  
+                    </td>                                
+                    <td>
+                      <a href="/watering/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>
+                    </td>   
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>  
+            </div>
+              <input type="submit" onclick="window.location.href='/watering#table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+            </form>  
+          </div>  
+        </div>  
+        <br>
+        <br>
+
+<!-- informations -->
+
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_info" class="panel-collapse collapse ">      
+            <div class="panel-body">      
+              <div class="well well-sm">   
+               <br>
+               Die Pflanzenbewässerung kann in der Aufgabenplanung als Aufgabe zu einem beliebigen Zeitpunkt gestartet werden.
+               <br>
+               <br>
+               Alle hier eingerichteten Pflanzen werden dann versorgt.  
+            </div>
+          </div>
+        </font>
+        </div>
+      </div>
+    </div>    
+  </div>
+
+{% endblock %}

@@ -29,10 +29,10 @@ def permission_required(f):
 """ sensordata jobs"""
 """ ############## """
 
-@app.route('/dashboard/sensordata/jobs', methods=['GET', 'POST'])
+@app.route('/sensordata/jobs', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_sensordata_jobs():
+def sensordata_jobs():
     error_message_add_sensordata_job = ""
     error_message_settings = ""
     error_message_change_settings = []
@@ -280,7 +280,7 @@ def dashboard_sensordata_jobs():
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
-    return render_template('dashboard_sensordata_jobs.html',
+    return render_template('sensordata_jobs.html',
                             job_name=job_name,
                             job_filename=job_filename,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
@@ -329,25 +329,25 @@ def dashboard_sensordata_jobs():
 
 
 # change sensordata job position 
-@app.route('/dashboard/sensordata/jobs/position/<string:direction>/<int:id>')
+@app.route('/sensordata/jobs/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_sensordata_jobs_position(id, direction):
     CHANGE_SENSORDATA_JOBS_POSITION(id, direction)
-    return redirect(url_for('dashboard_sensordata_jobs'))
+    return redirect(url_for('sensordata_jobs'))
 
 
 # remove sensordata job
-@app.route('/dashboard/sensordata/jobs/delete/job/<int:id>')
+@app.route('/sensordata/jobs/delete/job/<int:id>')
 @login_required
 @permission_required
 def remove_sensordata_job(id):
     DELETE_SENSORDATA_JOB(id)  
-    return redirect(url_for('dashboard_sensordata_jobs'))
+    return redirect(url_for('sensordata_jobs'))
 
 
 # download sensordata file
-@app.route('/dashboard/sensordata/jobs/download/file/<path:filepath>')
+@app.route('/sensordata/jobs/download/file/<path:filepath>')
 @login_required
 @permission_required
 def download_sensordata_file(filepath):
@@ -363,22 +363,22 @@ def download_sensordata_file(filepath):
 
 
 # delete sensordata file
-@app.route('/dashboard/sensordata/jobs/delete/file/<string:filename>')
+@app.route('/sensordata/jobs/delete/file/<string:filename>')
 @login_required
 @permission_required
 def delete_sensordata_file(filename):
     DELETE_SENSORDATA_FILE(filename)
-    return redirect(url_for('dashboard_sensordata_jobs'))
+    return redirect(url_for('sensordata_jobs'))
 
 
 """ ##################### """
 """ sensordata statistics """
 """ ##################### """
 
-@app.route('/dashboard/sensordata/statistics', methods=['GET', 'POST'])
+@app.route('/sensordata/statistics', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_sensordata_statistics():
+def sensordata_statistics():
     error_message = ""
     devices = ""
     sensors = ""
@@ -540,7 +540,7 @@ def dashboard_sensordata_statistics():
 
     dropdown_list_files = GET_SENSORDATA_FILES()
 
-    return render_template('dashboard_sensordata_statistics.html', 
+    return render_template('sensordata_statistics.html', 
                             error_message=error_message,
                             dropdown_list_files=dropdown_list_files,
                             devices=devices,

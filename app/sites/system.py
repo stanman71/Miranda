@@ -85,10 +85,10 @@ def HOST_SHUTDOWN():
     os.system("sudo shutdown -h now")
 
 
-@app.route('/dashboard/system/host', methods=['GET', 'POST'])
+@app.route('/system/host', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_host():
+def system_host():
     error_message_host_settings = []
     
     message_shutdown         = "" 
@@ -285,12 +285,12 @@ def dashboard_system_host():
     default_interface = GET_HOST_NETWORK().default_interface
     port              = GET_HOST_NETWORK().port       
  
-     
+
     if (wlan_ssid != "" or wlan_password != "") and wlan_ip_address == "":
         error_message_host_settings.append("Falsche WLAN Zugangsdaten eingegeben")
         
  
-    return render_template('dashboard_system_host.html',
+    return render_template('system_host.html',
                             error_message_host_settings=error_message_host_settings,
                             message_shutdown=message_shutdown,
                             message_ip_config_change=message_ip_config_change,
@@ -319,14 +319,342 @@ def dashboard_system_host():
                             )
 
 
+
+""" ##################### """
+""" device administration """
+""" ##################### """
+
+# dashboard email settings
+@app.route('/system/device_administration', methods=['GET', 'POST'])
+@login_required
+@permission_required
+def system_device_administration():
+    error_message = ""
+
+    # exception sensor name changed ?
+    UPDATE_DEVICE_EXCEPTION_SENSOR_NAMES()
+
+    
+    if request.method == "POST":
+    
+        if request.form.get("change_device_settings") != None:  
+            
+            for i in range (1,21):
+                
+                try:
+                        
+                    device = GET_MQTT_DEVICE_BY_ID(i)
+                    
+                    if device in GET_ALL_MQTT_DEVICES("device"):
+                        
+                        
+                        # ####################
+                        #   Exception Options
+                        # ####################
+
+                        exception_option  = request.form.get("set_exception_option_" + str(i))
+                        exception_option  = exception_option.replace(" ","")
+                        exception_setting = request.form.get("set_exception_setting_" + str(i))
+                                               
+                        if exception_setting == "" or exception_setting == None:
+                            exception_setting = "None"  
+          
+                        # ######
+                        # Sensor
+                        # ######
+
+                        if GET_MQTT_DEVICE_BY_NAME(exception_option) or exception_option.isdigit(): 
+
+                            if exception_option.isdigit():        
+                                exception_sensor_ieeeAddr     = GET_MQTT_DEVICE_BY_ID(exception_option).ieeeAddr
+                                exception_sensor_input_values = GET_MQTT_DEVICE_BY_ID(exception_option).input_values       
+                                exception_option              = GET_MQTT_DEVICE_BY_ID(exception_option).name
+                                
+                            else:
+                                exception_sensor_ieeeAddr     = GET_MQTT_DEVICE_BY_NAME(exception_option).ieeeAddr
+                                exception_sensor_input_values = GET_MQTT_DEVICE_BY_NAME(exception_option).input_values                                  
+                        
+                            # set device exception value 1
+                            if device.exception_option == "IP-Address":
+                                exception_value_1 = "None" 
+                        
+                            else:
+                                exception_value_1 = request.form.get("set_exception_value_1_" + str(i))
+
+                                if exception_value_1 != None:                  
+                                    exception_value_1 = exception_value_1.replace(" ", "")
+
+                                    # replace array_position to sensor name 
+                                    if exception_value_1.isdigit():
+                                        
+                                        # first two array elements are no sensors
+                                        if exception_value_1 == "0" or exception_value_1 == "1":
+                                            exception_value_1 = "None"
+                                            
+                                        else:           
+                                            sensor_list       = GET_MQTT_DEVICE_BY_IEEEADDR(exception_sensor_ieeeAddr).input_values
+                                            sensor_list       = sensor_list.split(",")
+                                            exception_value_1 = sensor_list[int(exception_value_1)-2]
+                                            
+                                else:
+                                   exception_value_1 = "None" 
+
+
+                            # set device exception value 2
+                            exception_value_2 = request.form.get("set_exception_value_2_" + str(i))
+                            
+                            if exception_value_2 == "" or exception_value_2 == None:
+                                exception_value_2 = "None"       
+                            
+                            
+                            # set device exception value 3
+                            exception_value_3 = request.form.get("set_exception_value_3_" + str(i))
+                            
+                            if exception_value_3 == "" or exception_value_3 == None:
+                                exception_value_3 = "None"       
+
+
+                        # ##########
+                        # IP Address
+                        # ##########
+
+                        elif exception_option == "IP-Address":
+                            
+                            # set device exception value 1
+                            exception_value_1 = request.form.get("set_exception_value_1_" + str(i))
+                           
+                            if exception_value_1 == "" or exception_value_1 == None:
+                                exception_value_1 = "None" 
+                                  
+                            exception_sensor_ieeeAddr     = "None"
+                            exception_sensor_input_values = "None"
+                            exception_value_2             = "None"                        
+                            exception_value_3             = "None"   
+               
+                                                              
+                        else:
+                            
+                            exception_option              = "None" 
+                            exception_value_1             = "None" 
+                            exception_value_2             = "None"  
+                            exception_value_3             = "None"  
+                            exception_sensor_ieeeAddr     = "None"
+                            exception_sensor_input_values = "None"                                                            
+
+                        SET_MQTT_DEVICE_EXCEPTION(device.ieeeAddr, exception_option, exception_setting,
+                                                            exception_sensor_ieeeAddr, exception_sensor_input_values,
+                                                            exception_value_1, exception_value_2, exception_value_3)
+                    
+                    
+                    else:
+                        
+                        if exception_option == "None":
+                        
+                            exception_setting             = "None" 
+                            exception_value_1             = "None" 
+                            exception_value_2             = "None"  
+                            exception_value_3             = "None"  
+                            exception_sensor_ieeeAddr     = "None"
+                            exception_sensor_input_values = "None"                                                            
+
+                            SET_MQTT_DEVICE_EXCEPTION(device.ieeeAddr, exception_option, exception_setting, exception_sensor_ieeeAddr,
+                                                      exception_sensor_input_values, exception_value_1, exception_value_2, exception_value_3)                   
+                
+                except Exception as e:
+                    if "NoneType" not in str(e):
+                        print(e)                        
+ 
+
+    dropdown_list_exception_options = ["IP-Address"] 
+    dropdown_list_operators         = ["=", ">", "<"]
+    
+    list_devices = GET_ALL_MQTT_DEVICES("device")
+    list_sensors = GET_ALL_MQTT_DEVICES("sensor")    
+
+    error_message_exceptions = CHECK_DEVICE_EXCEPTION_SETTINGS(GET_ALL_MQTT_DEVICES("device")) 
+ 
+    # get sensor list
+    try:
+        mqtt_device_1_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(1).input_values
+        mqtt_device_1_input_values = mqtt_device_1_input_values.replace(" ", "")
+    except:
+        mqtt_device_1_input_values = ""
+    try:
+        mqtt_device_2_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(2).input_values
+        mqtt_device_2_input_values = mqtt_device_2_input_values.replace(" ", "")
+    except:
+        mqtt_device_2_input_values = ""
+    try:        
+        mqtt_device_3_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(3).input_values
+        mqtt_device_3_input_values = mqtt_device_3_input_values.replace(" ", "")
+    except:
+        mqtt_device_3_input_values = ""
+    try:        
+        mqtt_device_4_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(4).input_values
+        mqtt_device_4_input_values = mqtt_device_4_input_values.replace(" ", "")
+    except:
+        mqtt_device_4_input_values = ""
+    try:        
+        mqtt_device_5_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(5).input_values
+        mqtt_device_5_input_values = mqtt_device_5_input_values.replace(" ", "")
+    except:
+        mqtt_device_5_input_values = ""
+    try:        
+        mqtt_device_6_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(6).input_values
+        mqtt_device_6_input_values = mqtt_device_6_input_values.replace(" ", "")
+    except:
+        mqtt_device_6_input_values = ""
+    try:        
+        mqtt_device_7_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(7).input_values
+        mqtt_device_7_input_values = mqtt_device_7_input_values.replace(" ", "")
+    except:
+        mqtt_device_7_input_values = ""
+    try:        
+        mqtt_device_8_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(8).input_values
+        mqtt_device_8_input_values = mqtt_device_8_input_values.replace(" ", "")
+    except:
+        mqtt_device_8_input_values = ""
+    try:        
+        mqtt_device_9_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(9).input_values
+        mqtt_device_9_input_values = mqtt_device_9_input_values.replace(" ", "")
+    except:
+        mqtt_device_9_input_values = ""
+    try:        
+        mqtt_device_10_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(10).input_values
+        mqtt_device_10_input_values = mqtt_device_10_input_values.replace(" ", "")
+    except:
+        mqtt_device_10_input_values = ""
+    try:        
+        mqtt_device_11_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(11).input_values
+        mqtt_device_11_input_values = mqtt_device_11_input_values.replace(" ", "")
+    except:
+        mqtt_device_11_input_values = ""
+    try:        
+        mqtt_device_12_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(12).input_values
+        mqtt_device_12_input_values = mqtt_device_12_input_values.replace(" ", "")
+    except:
+        mqtt_device_12_input_values = ""
+    try:        
+        mqtt_device_13_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(13).input_values
+        mqtt_device_13_input_values = mqtt_device_13_input_values.replace(" ", "")
+    except:
+        mqtt_device_13_input_values = ""
+    try:        
+        mqtt_device_14_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(14).input_values
+        mqtt_device_14_input_values = mqtt_device_14_input_values.replace(" ", "")
+    except:
+        mqtt_device_14_input_values = ""
+    try:        
+        mqtt_device_15_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(15).input_values
+        mqtt_device_15_input_values = mqtt_device_15_input_values.replace(" ", "")
+    except:
+        mqtt_device_15_input_values = ""    
+    try:        
+        mqtt_device_16_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(16).input_values
+        mqtt_device_16_input_values = mqtt_device_16_input_values.replace(" ", "")
+    except:
+        mqtt_device_16_input_values = ""
+    try:        
+        mqtt_device_17_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(17).input_values
+        mqtt_device_17_input_values = mqtt_device_17_input_values.replace(" ", "")
+    except:
+        mqtt_device_17_input_values = ""
+    try:        
+        mqtt_device_18_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(18).input_values
+        mqtt_device_18_input_values = mqtt_device_18_input_values.replace(" ", "")
+    except:
+        mqtt_device_18_input_values = ""
+    try:        
+        mqtt_device_19_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(19).input_values
+        mqtt_device_19_input_values = mqtt_device_19_input_values.replace(" ", "")
+    except:
+        mqtt_device_19_input_values = ""
+    try:        
+        mqtt_device_20_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(20).input_values
+        mqtt_device_20_input_values = mqtt_device_20_input_values.replace(" ", "")
+    except:
+        mqtt_device_20_input_values = ""   
+    try:        
+        mqtt_device_21_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(21).input_values
+        mqtt_device_21_input_values = mqtt_device_21_input_values.replace(" ", "")
+    except:
+        mqtt_device_21_input_values = ""   
+    try:        
+        mqtt_device_22_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(22).input_values
+        mqtt_device_22_input_values = mqtt_device_22_input_values.replace(" ", "")
+    except:
+        mqtt_device_22_input_values = ""   
+    try:        
+        mqtt_device_23_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(23).input_values
+        mqtt_device_23_input_values = mqtt_device_23_input_values.replace(" ", "")
+    except:
+        mqtt_device_23_input_values = ""   
+    try:        
+        mqtt_device_24_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(24).input_values
+        mqtt_device_24_input_values = mqtt_device_24_input_values.replace(" ", "")
+    except:
+        mqtt_device_24_input_values = ""   
+    try:        
+        mqtt_device_25_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(25).input_values
+        mqtt_device_25_input_values = mqtt_device_25_input_values.replace(" ", "")
+    except:
+        mqtt_device_25_input_values = ""
+        
+
+    return render_template('system_device_administration.html',
+                            error_message=error_message,
+                            error_message_exceptions=error_message_exceptions,                           
+                            dropdown_list_exception_options=dropdown_list_exception_options,
+                            dropdown_list_operators=dropdown_list_operators,
+                            list_devices=list_devices,
+                            list_sensors=list_sensors,
+                           
+                            mqtt_device_1_input_values=mqtt_device_1_input_values,
+                            mqtt_device_2_input_values=mqtt_device_2_input_values,
+                            mqtt_device_3_input_values=mqtt_device_3_input_values,
+                            mqtt_device_4_input_values=mqtt_device_4_input_values,
+                            mqtt_device_5_input_values=mqtt_device_5_input_values,
+                            mqtt_device_6_input_values=mqtt_device_6_input_values,
+                            mqtt_device_7_input_values=mqtt_device_7_input_values,
+                            mqtt_device_8_input_values=mqtt_device_8_input_values,
+                            mqtt_device_9_input_values=mqtt_device_9_input_values,
+                            mqtt_device_10_input_values=mqtt_device_10_input_values,
+                            mqtt_device_11_input_values=mqtt_device_11_input_values,
+                            mqtt_device_12_input_values=mqtt_device_12_input_values,
+                            mqtt_device_13_input_values=mqtt_device_13_input_values,
+                            mqtt_device_14_input_values=mqtt_device_14_input_values,
+                            mqtt_device_15_input_values=mqtt_device_15_input_values,
+                            mqtt_device_16_input_values=mqtt_device_16_input_values,
+                            mqtt_device_17_input_values=mqtt_device_17_input_values,
+                            mqtt_device_18_input_values=mqtt_device_18_input_values,
+                            mqtt_device_19_input_values=mqtt_device_19_input_values,
+                            mqtt_device_20_input_values=mqtt_device_20_input_values,  
+                            mqtt_device_21_input_values=mqtt_device_21_input_values,
+                            mqtt_device_22_input_values=mqtt_device_22_input_values,  
+                            mqtt_device_23_input_values=mqtt_device_23_input_values,
+                            mqtt_device_24_input_values=mqtt_device_24_input_values,
+                            mqtt_device_25_input_values=mqtt_device_25_input_values,
+                           
+                            permission_dashboard=current_user.permission_dashboard,
+                            permission_scheduler=current_user.permission_scheduler,   
+                            permission_programs=current_user.permission_programs,
+                            permission_watering=current_user.permission_watering,  
+                            permission_camera=current_user.permission_camera,  
+                            permission_led=current_user.permission_led,
+                            permission_sensordata=current_user.permission_sensordata,
+                            permission_spotify=current_user.permission_spotify, 
+                            permission_system=current_user.permission_system,                            
+                            )
+
+
 """ ############# """
 """ mqtt settings """
 """ ############# """
 
-@app.route('/dashboard/system/mqtt', methods=['GET', 'POST'])
+@app.route('/system/mqtt', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_mqtt():   
+def system_mqtt():   
     error_message = ""
     error_message_mqtt = ""
     error_message_change_settings = ""
@@ -363,7 +691,7 @@ def dashboard_system_mqtt():
 
         # check mqtt
         try:
-            MQTT_CHECK()
+            CHECK_MQTT()
         except Exception as e:
             error_message_mqtt = "Fehler in MQTT: " + str(e)
             WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | " + str(e)) 
@@ -417,8 +745,8 @@ def dashboard_system_mqtt():
 
 
         # update device list
-        if request.form.get("mqtt_update_devices") != None:
-            error_message_change_settings = MQTT_UPDATE_DEVICES("mqtt")
+        if request.form.get("update_mqtt_devices") != None:
+            error_message_change_settings = UPDATE_MQTT_DEVICES("mqtt")
             
             
         # reset logfile
@@ -439,7 +767,7 @@ def dashboard_system_mqtt():
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
-    return render_template('dashboard_system_mqtt.html',                    
+    return render_template('system_mqtt.html',                    
                             error_message=error_message,
                             error_message_mqtt=error_message_mqtt,
                             error_message_change_settings=error_message_change_settings,
@@ -465,16 +793,16 @@ def dashboard_system_mqtt():
      
 
 # change mqtt device position 
-@app.route('/dashboard/system/mqtt/position/<string:direction>/<string:device_type>/<int:id>')
+@app.route('/system/mqtt/position/<string:direction>/<string:device_type>/<int:id>')
 @login_required
 @permission_required
 def change_mqtt_device_position(id, direction, device_type):
     CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction)
-    return redirect(url_for('dashboard_system_mqtt'))
+    return redirect(url_for('system_mqtt'))
 
 
 # remove mqtt device
-@app.route('/dashboard/system/mqtt/delete/<string:ieeeAddr>')
+@app.route('/system/mqtt/delete/<string:ieeeAddr>')
 @login_required
 @permission_required
 def remove_mqtt_device(ieeeAddr):
@@ -484,11 +812,11 @@ def remove_mqtt_device(ieeeAddr):
     if result != True:
         SET_ERROR_DELETE_MQTT_DEVICE(result)
         
-    return redirect(url_for('dashboard_system_mqtt'))
+    return redirect(url_for('system_mqtt'))
      
      
 # download mqtt logfile
-@app.route('/dashboard/system/mqtt/download/<path:filepath>')
+@app.route('/system/mqtt/download/<path:filepath>')
 @login_required
 @permission_required
 def download_mqtt_logfile(filepath): 
@@ -504,10 +832,10 @@ def download_mqtt_logfile(filepath):
 """ zigbee2mqtt settings """
 """ #################### """
 
-@app.route('/dashboard/system/zigbee2mqtt', methods=['GET', 'POST'])
+@app.route('/system/zigbee2mqtt', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_zigbee2mqtt():
+def system_zigbee2mqtt():
     error_message = ""
     error_message_zigbee2mqtt = ""
     error_message_change_settings = ""
@@ -572,13 +900,13 @@ def dashboard_system_zigbee2mqtt():
                                     time.sleep(3)
 
                                     # error in zigbee2mqtt
-                                    if MQTT_CHECK_NAME_CHANGED():       
+                                    if CHECK_MQTT_NAME_CHANGED():       
                                         ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
                                         SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)  
 
                                     else:
                                         error_message_change_settings = "Name konnte in ZigBee2MQTT nicht verändert werden"
-                                        MQTT_UPDATE_DEVICES("zigbee2mqtt")
+                                        UPDATE_MQTT_DEVICES("zigbee2mqtt")
 
                                 else:
                                     error_message_change_settings = "Ohne eine Verbindung zu MQTT können die Namen der Geräte nicht verändert werden !"
@@ -588,7 +916,7 @@ def dashboard_system_zigbee2mqtt():
 
             # update device list
             if request.form.get("update_zigbee2mqtt_devices") != None:
-                error_message_change_settings = MQTT_UPDATE_DEVICES("zigbee2mqtt")
+                error_message_change_settings = UPDATE_MQTT_DEVICES("zigbee2mqtt")
 
 
             # change pairing setting
@@ -604,7 +932,7 @@ def dashboard_system_zigbee2mqtt():
                     MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")                   
                     time.sleep(1)
 
-                    zigbee_check = ZIGBEE2MQTT_CHECK_SETTING_PROCESS("bridge/config", '"permit_join":true', 1, 5)
+                    zigbee_check = CHECK_ZIGBEE2MQTT_SETTING_PROCESS("bridge/config", '"permit_join":true', 1, 5)
                     
                     if zigbee_check == "":             
                         WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
@@ -618,7 +946,7 @@ def dashboard_system_zigbee2mqtt():
                     MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
                     time.sleep(1)
 
-                    zigbee_check = ZIGBEE2MQTT_CHECK_SETTING_PROCESS("bridge/config", '"permit_join":false', 1, 5)
+                    zigbee_check = CHECK_ZIGBEE2MQTT_SETTING_PROCESS("bridge/config", '"permit_join":false', 1, 5)
                     
                     if zigbee_check == "":                
                         WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing disabled") 
@@ -658,7 +986,7 @@ def dashboard_system_zigbee2mqtt():
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-    return render_template('dashboard_system_zigbee2mqtt.html',
+    return render_template('system_zigbee2mqtt.html',
                             error_message=error_message,
                             error_message_zigbee2mqtt=error_message_zigbee2mqtt,
                             error_message_change_settings=error_message_change_settings,
@@ -685,17 +1013,17 @@ def dashboard_system_zigbee2mqtt():
 
 
 # change zigbee2mqtt device position 
-@app.route('/dashboard/system/zigbee2mqtt/position/<string:direction>/<string:device_type>/<int:id>')
+@app.route('/system/zigbee2mqtt/position/<string:direction>/<string:device_type>/<int:id>')
 @login_required
 @permission_required
 def change_zigbee2mqtt_device_position(id, direction, device_type):
     CHANGE_MQTT_DEVICE_POSITION(id, device_type, direction)
 
-    return redirect(url_for('dashboard_system_zigbee2mqtt'))
+    return redirect(url_for('system_zigbee2mqtt'))
 
 
 # remove zigbee2mqtt device
-@app.route('/dashboard/system/zigbee2mqtt/delete/<string:ieeeAddr>')
+@app.route('/system/zigbee2mqtt/delete/<string:ieeeAddr>')
 @login_required
 @permission_required
 def remove_zigbee2mqtt_device(ieeeAddr):
@@ -707,11 +1035,11 @@ def remove_zigbee2mqtt_device(ieeeAddr):
     else:
         MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device_name) 
     
-    return redirect(url_for('dashboard_system_zigbee2mqtt'))
+    return redirect(url_for('system_zigbee2mqtt'))
 
 
 # download zigbee2mqtt logfile
-@app.route('/dashboard/system/zigbee2mqtt/download/<path:filepath>')
+@app.route('/system/zigbee2mqtt/download/<path:filepath>')
 @login_required
 @permission_required
 def download_zigbee2mqtt_logfile(filepath): 
@@ -727,10 +1055,10 @@ def download_zigbee2mqtt_logfile(filepath):
 """  controller  """
 """ ############ """
 
-@app.route('/dashboard/system/controller', methods=['GET', 'POST'])
+@app.route('/system/controller', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_controller():
+def system_controller():
     error_message_add_controller = ""
     error_message_controller_tasks = ""
     
@@ -826,7 +1154,7 @@ def dashboard_system_controller():
         spotify_playlists = ""             
           
    
-    return render_template('dashboard_system_controller.html',
+    return render_template('system_controller.html',
                             error_message_add_controller=error_message_add_controller,
                             error_message_controller_tasks=error_message_controller_tasks, 
                             data_controller=data_controller,
@@ -847,21 +1175,21 @@ def dashboard_system_controller():
 
 
 # change controller position 
-@app.route('/dashboard/system/controller/position/<string:direction>/<int:id>')
+@app.route('/system/controller/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_controller_position(id, direction):
     CHANGE_CONTROLLER_POSITION(id, direction)
-    return redirect(url_for('dashboard_system_controller'))
+    return redirect(url_for('system_controller'))
 
 
 # delete controller
-@app.route('/dashboard/system/controller/delete/<int:id>')
+@app.route('/system/controller/delete/<int:id>')
 @login_required
 @permission_required
 def delete_controller(id):
     DELETE_CONTROLLER(id)
-    return redirect(url_for('dashboard_system_controller'))
+    return redirect(url_for('system_controller'))
 
 
 
@@ -869,10 +1197,10 @@ def delete_controller(id):
 """  speechcontrol  """
 """ ############### """
 
-@app.route('/dashboard/system/speechcontrol', methods=['GET', 'POST'])
+@app.route('/system/speechcontrol', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_speechcontrol():
+def system_speechcontrol():
     error_message_snowboy = ""
     error_message_change_snowboy_settings = ""
     error_message_fileupload = ""
@@ -1152,7 +1480,7 @@ def dashboard_system_speechcontrol():
     
     error_message_speech_recognition_provider_settings = CHECK_SPEECH_RECOGNITION_PROVIDER_SETTINGS(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS())
 
-    return render_template('dashboard_system_speechcontrol.html',
+    return render_template('system_speechcontrol.html',
                             error_message_snowboy=error_message_snowboy,   
                             error_message_change_snowboy_settings=error_message_change_snowboy_settings,                                   
                             error_message_fileupload=error_message_fileupload,
@@ -1208,43 +1536,43 @@ def dashboard_system_speechcontrol():
 
 
 # change device task position 
-@app.route('/dashboard/system/speechcontrol/device_task/position/<string:direction>/<int:id>')
+@app.route('/system/speechcontrol/device_task/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_speechcontrol_device_task_position(id, direction):
     CHANGE_SPEECHCONTROL_DEVICE_TASK_POSITION(id, direction)
-    return redirect(url_for('dashboard_system_speechcontrol'))
+    return redirect(url_for('system_speechcontrol'))
     
 
 # delete device task  
-@app.route('/dashboard/system/speechcontrol/device_task/delete/<int:id>')
+@app.route('/system/speechcontrol/device_task/delete/<int:id>')
 @login_required
 @permission_required
 def delete_speechcontrol_device_task(id):
     DELETE_SPEECHCONTROL_DEVICE_TASK(id)
-    return redirect(url_for('dashboard_system_speechcontrol'))
+    return redirect(url_for('system_speechcontrol'))
 
 
 # change program task position 
-@app.route('/dashboard/system/speechcontrol/program_task/position/<string:direction>/<int:id>')
+@app.route('/system/speechcontrol/program_task/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_speechcontrol_program_task_position(id, direction):
     CHANGE_SPEECHCONTROL_PROGRAM_TASK_POSITION(id, direction)
-    return redirect(url_for('dashboard_system_speechcontrol'))
+    return redirect(url_for('system_speechcontrol'))
     
 
 # delete program task  
-@app.route('/dashboard/system/speechcontrol/program_task/delete/<int:id>')
+@app.route('/system/speechcontrol/program_task/delete/<int:id>')
 @login_required
 @permission_required
 def delete_speechcontrol_program_task(id):
     DELETE_SPEECHCONTROL_PROGRAM_TASK(id)
-    return redirect(url_for('dashboard_system_speechcontrol'))
+    return redirect(url_for('system_speechcontrol'))
 
 
 # download hotword file
-@app.route('/dashboard/system/speechcontrol/download/hotword/<path:filepath>')
+@app.route('/system/speechcontrol/download/hotword/<path:filepath>')
 @login_required
 @permission_required
 def download_hotword_file(filepath):
@@ -1260,12 +1588,12 @@ def download_hotword_file(filepath):
 
 
 # delete snowboy hotwords
-@app.route('/dashboard/system/speechcontrol/delete/hotword/<string:filename>')
+@app.route('/system/speechcontrol/delete/hotword/<string:filename>')
 @login_required
 @permission_required
 def delete_snowboy_hotword(filename):
     DELETE_HOTWORD_FILE(filename)
-    return redirect(url_for('dashboard_system_speechcontrol'))
+    return redirect(url_for('system_speechcontrol'))
 
 
 """ ############# """
@@ -1273,10 +1601,10 @@ def delete_snowboy_hotword(filename):
 """ ############# """
 
 # dashboard user management
-@app.route('/dashboard/system/user', methods=['GET', 'POST'])
+@app.route('/system/user', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_user():
+def system_user():
     error_change_settings = ""
     
     RESET_USER_TASK_ERRORS()        
@@ -1440,7 +1768,7 @@ def dashboard_system_user():
                        
     user_list = GET_ALL_USERS()
 
-    return render_template('dashboard_system_user.html',
+    return render_template('system_user.html',
                             user_list=user_list,            
                             active05="active",
                             permission_dashboard=current_user.permission_dashboard,
@@ -1456,32 +1784,32 @@ def dashboard_system_user():
 
 
 # change users position 
-@app.route('/dashboard/system/user/position/<string:direction>/<int:id>')
+@app.route('/system/user/position/<string:direction>/<int:id>')
 @login_required
 @permission_required
 def change_user_position(id, direction):
     CHANGE_USER_POSITION(id, direction)
-    return redirect(url_for('dashboard_system_user'))
+    return redirect(url_for('system_user'))
 
 
 # delete user
-@app.route('/dashboard/system/user/delete/<int:id>')
+@app.route('/system/user/delete/<int:id>')
 @login_required
 @permission_required
 def delete_user(id):
     DELETE_USER(id)
-    return redirect(url_for('dashboard_system_user'))
+    return redirect(url_for('system_user'))
 
 
-""" ############# """
+""" ############## """
 """ email settings """
-""" ############# """
+""" ############## """
 
 # dashboard email settings
-@app.route('/dashboard/system/email', methods=['GET', 'POST'])
+@app.route('/system/email', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_email():
+def system_email():
     error_message = ""
     error_message_test = ""
     
@@ -1511,7 +1839,7 @@ def dashboard_system_email():
     # eMail-Muster
     # SEND_EMAIL(GET_EMAIL_ADDRESS("info"), "TEST", "Das ist eine eMail mit Anhang")
 
-    return render_template('dashboard_system_email.html',
+    return render_template('system_email.html',
                             error_message=error_message,
                             error_message_test=error_message_test,
                             settings=settings,
@@ -1533,10 +1861,10 @@ def dashboard_system_email():
 """ backup settings """
 """ ############### """
 
-@app.route('/dashboard/system/backup', methods=['GET', 'POST'])
+@app.route('/system/backup', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_backup():
+def system_backup():
     error_message = ""
     
     new_backup_location_path = False
@@ -1598,7 +1926,7 @@ def dashboard_system_backup():
         
     dropdown_list_hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
 
-    return render_template('dashboard_system_backup.html',
+    return render_template('system_backup.html',
                             error_message=error_message,
                             file_list=file_list,
                             backup_hour=backup_hour,
@@ -1619,31 +1947,31 @@ def dashboard_system_backup():
 
 
 # restore database backup
-@app.route('/dashboard/system/backup/restore/backup_database/<string:filename>')
+@app.route('/system/backup/restore/backup_database/<string:filename>')
 @login_required
 @permission_required
 def restore_database_backup(filename):
     RESTORE_DATABASE(filename)
-    return redirect(url_for('dashboard_system_backup'))
+    return redirect(url_for('system_backup'))
 
 
 # delete database backup
-@app.route('/dashboard/system/backup/delete/backup_database/<string:filename>')
+@app.route('/system/backup/delete/backup_database/<string:filename>')
 @login_required
 @permission_required
 def delete_database_backup(filename):
     DELETE_DATABASE_BACKUP(filename)
-    return redirect(url_for('dashboard_system_backup'))
+    return redirect(url_for('system_backup'))
 
 
 """ ########### """
 """ system logs """
 """ ########### """
 
-@app.route('/dashboard/system/log', methods=['GET', 'POST'])
+@app.route('/system/log', methods=['GET', 'POST'])
 @login_required
 @permission_required
-def dashboard_system_log():
+def system_log():
     error_message = ""
     
     selected_type_event    = "selected"
@@ -1702,7 +2030,7 @@ def dashboard_system_log():
 
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
-    return render_template('dashboard_system_log.html',
+    return render_template('system_log.html',
                             error_message=error_message,
                             timestamp=timestamp,
                             selected_type_event=selected_type_event,
@@ -1725,7 +2053,7 @@ def dashboard_system_log():
 
 
 # download system logfile
-@app.route('/dashboard/system/log/download/<path:filepath>')
+@app.route('/system/log/download/<path:filepath>')
 @login_required
 @permission_required
 def download_system_logfile(filepath): 

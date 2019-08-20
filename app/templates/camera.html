@@ -1,0 +1,357 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+  Kameras
+{% endblock %}
+
+{% block styles %}
+  {{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url_for('.static', filename='pretty-checkbox.min.css')}}">
+
+{% endblock %}
+
+{% block content %}
+
+<!-- nav-bar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>      
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {% if permission_dashboard == "checked" %}
+          <li><a class="navbar-brand" href="{{ url_for('dashboard') }}"><font color="white">Dashboard</font></a></li>
+        {% endif %}        
+        {% if permission_scheduler == "checked" %}
+          <li><a href="{{ url_for('scheduler') }}"><font color="white">Aufgabenplanung</font></a></li>
+        {% endif %}
+        {% if permission_programs == "checked" %}            
+          <li><a href="{{ url_for('programs') }}"><font color="white">Programme</font></a></li> 
+        {% endif %}          
+        {% if permission_watering == "checked" %}            
+          <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
+        {% endif %}
+        {% if permission_camera == "checked" %}               
+          <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
+        {% endif %}
+        {% if permission_led == "checked" %}                           
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">LED</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('led_scenes') }}"><font color="black">Szenen</font></a></li> 
+              <li><a href="{{ url_for('led_groups') }}"><font color="black">Gruppen</font></a></li> 
+            </ul>
+          </li>    
+        {% endif %}
+        {% if permission_sensordata == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">Sensordaten</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('sensordata_jobs') }}"><font color="black">Jobs</font></a></li> 
+              <li><a href="{{ url_for('sensordata_statistics') }}"><font color="black">Statistiken</font></a></li>   
+            </ul>
+          </li>                             
+        {% endif %}
+        {% if permission_spotify == "checked" %}                                
+          <li><a href="{{ url_for('spotify') }}"><font color="white">Spotify</font></a></li> 
+        {% endif %}                      
+        {% if permission_system == "checked" %} 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><font color="white">System</font> <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ url_for('system_host') }}"><font color="black">Host</font></a></li>
+              <li><a href="{{ url_for('system_device_administration') }}"><font color="black">Geräteverwaltung</font></a></li>              
+              <li><a href="{{ url_for('system_mqtt') }}"><font color="black">MQTT</font></a></li>
+              <li><a href="{{ url_for('system_zigbee2mqtt') }}"><font color="black">ZigBee2MQTT</font></a></li> 
+              <li><a href="{{ url_for('system_controller') }}"><font color="black">Controller</font></a></li>             
+              <li><a href="{{ url_for('system_speechcontrol') }}"><font color="black">Sprachsteuerung</font></a></li>                
+              <li><a href="{{ url_for('system_user') }}"><font color="black">Benutzer</font></a></li>    
+              <li><a href="{{ url_for('system_email') }}"><font color="black">eMail</font></a></li>        
+              <li><a href="{{ url_for('system_backup') }}"><font color="black">Backup</font></a></li> 
+              <li><a href="{{ url_for('system_log') }}"><font color="black">Log</font></a></li>    
+            </ul>
+          </li>          
+        {% endif %}    
+        <li><a href="{{ url_for('logout') }}"><font color="salmon" size="4">Logout</font></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+
+<div class="col-sm-1 col-sm-offset-1 col-md-8 col-md-offset-2 main">
+  <div class="row">
+    <div class="col">
+      <font color="white">
+        
+      <div class="panel-group">  
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="text-center">   
+              <font color="white" size="5"><b>Kameras</b></font>
+            </div>              
+          </div>  
+        </div>     
+      </div>           
+           
+      <div class="panel panel-default">    
+        <div class="panel-body">                       
+          <div class="well well-sm">  
+
+          {% if camera_1 != None or camera_2 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-6">           
+                {% if camera_1 != None %}
+                  <b> {{ camera_1.id }} | {{ camera_1.name }} </b>
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_1.url.split(":")[0] }}" target="_blank">                    
+                        <img src="{{ url_for('video_feed_1') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-6"> 
+                {% if camera_2 != None %}      
+                  <b> {{ camera_2.id }} | {{ camera_2.name }} </b>  
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_2.url.split(":")[0] }}" target="_blank">                   
+                        <img src="{{ url_for('video_feed_2') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}  
+
+          {% if camera_3 != None or camera_4 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-6">           
+                {% if camera_3 != None %}
+                  <b> {{ camera_3.id }} | {{ camera_3.name }} </b>
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_3.url.split(":")[0] }}" target="_blank">                    
+                        <img src="{{ url_for('video_feed_3') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-6"> 
+                {% if camera_4 != None %}      
+                  <b> {{ camera_4.id }} | {{ camera_4.name }} </b>  
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_4.url.split(":")[0] }}" target="_blank">                   
+                        <img src="{{ url_for('video_feed_4') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}  
+
+          {% if camera_5 != None or camera_6 != None %}
+
+            <div class="row justify-content-md-center">
+              <div class="col-sm-6">           
+                {% if camera_5 != None %}
+                  <b> {{ camera_5.id }} | {{ camera_5.name }} </b>
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_5.url.split(":")[0] }}" target="_blank">                    
+                        <img src="{{ url_for('video_feed_5') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %} 
+              </div>    
+              <div class="col-sm-6"> 
+                {% if camera_6 != None %}      
+                  <b> {{ camera_6.id }} | {{ camera_6.name }} </b>  
+                  <div class="img-container-video">
+                    <div class="img">
+                      <a href= "http://{{ camera_6.url.split(":")[0] }}" target="_blank">                   
+                        <img src="{{ url_for('video_feed_6') }}" width="100%">
+                      </a>
+                    </div>
+                  </div>   
+                {% endif %}     
+              </div>
+            </div> 
+
+          {% endif %}
+          
+          </div>
+        </div>
+      </div>
+    </div>  
+
+
+<!-- error message camera settings  -->
+
+{% if error_message_camera_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_camera_settings %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}    
+
+
+<!-- message camera config change -->
+
+{% if message_camera_config_change == True %}
+  <div class="alert alert-success" role="alert">
+    Änderungen werden nach dem Neustart wirksam
+  </div>      
+{% endif %}
+
+
+<!-- add camera -->  
+
+<section id="camera_table"></section>     
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_camera_table"><font color="white"><b> Kameras verwalten </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_camera_table" class="panel-collapse collapse {{collapse_camera_table}} ">      
+          <div class="panel-body">  
+
+<!-- error message add camera -->
+
+{% if error_message_add_camera != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_add_camera %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}           
+
+            <div class="well well-sm">              
+              <form method="POST"> 
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_name" placeholder="Kamera Name" value="{{ name }}" />
+                  </div>                
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_url" placeholder="Kamera URL" value="{{ url }}" />
+                  </div>  
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_user" placeholder="Benutzername" value="{{ user }}" />
+                  </div>  
+                  <div class="col-sm-3"> 
+                    <input type="text" class="form-control" name="set_password" placeholder="Passwort" value="{{ password }}" />
+                  </div>  
+                </div>    
+                <br>                                    
+                <div class="text-right">
+                  <input type="submit" onclick="window.location.href='/camera#camera_table'" class="btn btn-default" name="add_camera" value="Kamera hinzufügen" />
+                </div>
+              </form>       
+            </div>    
+  
+<!-- camera table -->
+
+        <div class="well well-sm">  
+          <form method="POST"> 
+            <table class="table">
+              <thead>   
+                <th scope="col" style="width:3%"></th>
+                <th scope="col" style="width:6%">ID</th>                   
+                <th scope="col" style="width:22%">Name</th>                                     
+                <th scope="col" style="width:22%">URL</th> 
+                <th scope="col" style="width:22%">Benutzer</th> 
+                <th scope="col" style="width:22%">Passwort</th> 
+                <th scope="col"></th>  
+                <th scope="col" style="width:3%"></th>                  
+              </thead>
+              <tbody> 
+                {% for entry in camera_list %}
+                <tr>
+                  <td>{{ entry.id }}</td>  
+                  <td>
+                    <a href="/camera/position/down/{{ entry.id }}#camera_table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                    <a href="/camera/position/up/{{ entry.id }}#camera_table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                  </td> 
+                  <td>
+                    <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                  </td>                                        
+                  <td>
+                    <input type="text" class="form-control" name="set_url_{{ entry.id }}" value="{{ entry.url }}" />                    
+                  </td>  
+                  <td>
+                    <input type="text" class="form-control" name="set_user_{{ entry.id }}" value="{{ entry.user }}" />                    
+                  </td>  
+                  <td>
+                    <input type="text" class="form-control" name="set_password_{{ entry.id }}" value="{{ entry.password }}" />                    
+                  </td>    
+                  <td><td><a href="/camera/delete/{{ entry.id }}#camera_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
+                </tr>
+                {% endfor %} 
+              </tbody>
+            </table>         
+          </div>
+          <input type="submit" onclick="window.location.href='/camera#camera_table'" class="btn btn-default" name="change_camera_settings" value="Änderungen speichern"/> 
+          </form> 
+        </div>  
+      </div>  
+    </div> 
+    <br>
+    <br>      
+
+<!-- informations -->
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" href="#collapse_info"><font color="CadetBlue"><b> Hilfe </b></font></a>
+          </h4>
+        </div>   
+        <div id="collapse_info" class="panel-collapse collapse ">      
+          <div class="panel-body">      
+            <div class="well well-sm">   
+             <br>
+             
+             <b>Kamera hinzufügen</b>
+             <br>
+             <br>
+             - IP-Kamera ins Netzwerk einbinden
+             <br>
+             - Stream-URL (RTSP) der IP-Kamera herausfinden und eintragen (IP-Adresse + Port)
+             <br>             
+             - Optional: Authentifizierung mit Benutzername + Passwort (empfohlen)
+             <br>
+             
+          </div>
+        </div>
+      </font>
+      </div>
+    </div>
+  </div>    
+</div> 
+
+{% endblock %}

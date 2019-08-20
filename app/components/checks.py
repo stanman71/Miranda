@@ -24,35 +24,35 @@ def CHECK_CAMERA_SETTINGS(cameras):
 """   check dashboard   """
 """ ################### """
 
-def CHECK_DASHBOARD_EXCEPTION_SETTINGS(devices): 
+def CHECK_DEVICE_EXCEPTION_SETTINGS(devices): 
    error_message_settings = []
 
    for device in devices:
 
-      if device.dashboard_exception_option != "None":
+      if device.exception_option != "None":
 
-         if device.dashboard_exception_setting == "None" or device.dashboard_exception_setting == None:
+         if device.exception_setting == "None" or device.exception_setting == None:
             error_message_settings.append(device.name + " >>> Keine Aufgabe ausgewählt")         
 
          # exception setting ip_address
-         if device.dashboard_exception_option == "IP-Address":
+         if device.exception_option == "IP-Address":
 
             # search for wrong chars
-            for element in device.dashboard_exception_value_1:
+            for element in device.exception_value_1:
                if not element.isdigit() and element != "." and element != "," and element != " ":
                   error_message_settings.append(device.name + " >>> Ungültige IP-Adresse")
                   break
                
          # exception setting sensor
-         if device.dashboard_exception_option != "IP-Address": 
+         if device.exception_option != "IP-Address": 
             
-            if device.dashboard_exception_value_1 == "None" or device.dashboard_exception_value_1 == None:
+            if device.exception_value_1 == "None" or device.exception_value_1 == None:
                error_message_settings.append(device.name + " >>> Keinen Sensor ausgewählt")
 
-            if device.dashboard_exception_value_2 == "None" or device.dashboard_exception_value_2 == None:
+            if device.exception_value_2 == "None" or device.exception_value_2 == None:
                error_message_settings.append(device.name + " >>> Keinen Operator (<, >, =) eingetragen")
 
-            if device.dashboard_exception_value_3 == "None" or device.dashboard_exception_value_3 == None:
+            if device.exception_value_3 == "None" or device.exception_value_3 == None:
                error_message_settings.append(device.name + " >>> Keinen Vergleichswert eingetragen")
                   
    return error_message_settings
@@ -96,12 +96,17 @@ def CHECK_LED_GROUP_SETTINGS(settings):
 
 def CHECK_PROGRAM(program_id):
    list_errors = []
-
-   lines = [[GET_PROGRAM_BY_ID(program_id).line_active_1, GET_PROGRAM_BY_ID(program_id).line_content_1, GET_PROGRAM_BY_ID(program_id).line_exception_1],
-            [GET_PROGRAM_BY_ID(program_id).line_active_2, GET_PROGRAM_BY_ID(program_id).line_content_2, GET_PROGRAM_BY_ID(program_id).line_exception_2],
-            [GET_PROGRAM_BY_ID(program_id).line_active_3, GET_PROGRAM_BY_ID(program_id).line_content_3, GET_PROGRAM_BY_ID(program_id).line_exception_3],
-            [GET_PROGRAM_BY_ID(program_id).line_active_4, GET_PROGRAM_BY_ID(program_id).line_content_4, GET_PROGRAM_BY_ID(program_id).line_exception_4],
-            [GET_PROGRAM_BY_ID(program_id).line_active_5, GET_PROGRAM_BY_ID(program_id).line_content_5, GET_PROGRAM_BY_ID(program_id).line_exception_5]] 
+   
+   lines = [[GET_PROGRAM_BY_ID(program_id).line_active_1,  GET_PROGRAM_BY_ID(program_id).line_content_1],
+            [GET_PROGRAM_BY_ID(program_id).line_active_2,  GET_PROGRAM_BY_ID(program_id).line_content_2],
+            [GET_PROGRAM_BY_ID(program_id).line_active_3,  GET_PROGRAM_BY_ID(program_id).line_content_3],
+            [GET_PROGRAM_BY_ID(program_id).line_active_4,  GET_PROGRAM_BY_ID(program_id).line_content_4],
+            [GET_PROGRAM_BY_ID(program_id).line_active_5,  GET_PROGRAM_BY_ID(program_id).line_content_5],
+            [GET_PROGRAM_BY_ID(program_id).line_active_6,  GET_PROGRAM_BY_ID(program_id).line_content_6],                 
+            [GET_PROGRAM_BY_ID(program_id).line_active_7,  GET_PROGRAM_BY_ID(program_id).line_content_7],                 
+            [GET_PROGRAM_BY_ID(program_id).line_active_8,  GET_PROGRAM_BY_ID(program_id).line_content_8],                 
+            [GET_PROGRAM_BY_ID(program_id).line_active_9,  GET_PROGRAM_BY_ID(program_id).line_content_9],                 
+            [GET_PROGRAM_BY_ID(program_id).line_active_10, GET_PROGRAM_BY_ID(program_id).line_content_10]]    
    
    line_number = 0
             
@@ -427,56 +432,6 @@ def CHECK_PROGRAM(program_id):
                 list_errors.append("Zeile " + str(line_number) + " >>> " + line[1] + " >>> falsche Einstellung >>> Eingabetyp nicht gefunden")
              
              
-             # ####################
-             #  exception function
-             # ####################             
-            
-             if line[2] == "None" or line[2] == "":
-                 pass
-                
-             else:
-            
-                 line_exception = line[2].split(" /// ")
-
-                 device_name = line_exception[0]
-
-                 if GET_MQTT_DEVICE_BY_NAME(device_name) == None:
-                     list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Gerät nicht gefunden >>> " + device_name)
-                 
-                 else:
-                     
-                     try:
-                 
-                         sensor = line_exception[1]
-                         
-                         if sensor not in GET_MQTT_DEVICE_BY_NAME(device_name).input_values:
-                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Sensor nicht gefunden >>> " + sensor)
-                             
-                     except:
-                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Sensor nicht gefunden >>> " + sensor)
-                         
-                     try:
-                 
-                         operator = line_exception[2]
-                         
-                         if operator not in ["=", "<", ">"]:
-                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Operator >>> " + operator)
-                             
-                     except:
-                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Operator >>> " + operator)                    
-                 
-                     try:
-                 
-                         sensor_value = line_exception[3]
-                         
-                         if sensor_value == "":
-                             list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Sensor-Wert >>> " + sensor_value)
-                             
-                     except:
-                         list_errors.append("Zeile " + str(line_number) + " >>> " + line[2] + " >>> Ungültiger Sensor-Wert >>> " + sensor_value)                
-
-
-
    except:
       pass
 

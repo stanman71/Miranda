@@ -10,14 +10,11 @@ from functools import wraps
 from app import app
 from app.components.file_management import GET_LOGFILE_SYSTEM, GET_CONFIG_VERSION
 from app.database.database import *
-from app.components.checks import CHECK_DASHBOARD_EXCEPTION_SETTINGS
 from app.components.shared_resources import process_management_queue
-from app.components.backend_led import LED_GROUP_CHECK_SETTING_PROCESS
-from app.components.mqtt import MQTT_CHECK_SETTING_PROCESS, ZIGBEE2MQTT_CHECK_SETTING_PROCESS
+from app.components.backend_led import CHECK_LED_GROUP_SETTING_PROCESS
+from app.components.mqtt import CHECK_DEVICE_EXCEPTIONS, CHECK_MQTT_SETTING_PROCESS, CHECK_ZIGBEE2MQTT_SETTING_PROCESS
 from app.components.process_program import *
 from app.components.backend_spotify import *
-
-from ping3 import ping
 
 import heapq
 import json
@@ -67,10 +64,7 @@ def dashboard(template):
     collapse_dashboard_programs = "" 
     collapse_dashboard_spotify  = ""
     collapse_dashboard_log      = ""        
-    
-        
-    # exception sensor name changed ?
-    UPDATE_DASHBOARD_EXCEPTION_SENSOR_NAMES()
+
    
     """ ########### """
     """ led control """
@@ -112,7 +106,7 @@ def dashboard(template):
 
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_scene", i, scene_id, int(brightness))))
                              
-                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
+                            error_message_led = CHECK_LED_GROUP_SETTING_PROCESS(i, scene_id, scene_name, int(brightness), 2, 10)          
                             continue     
                          
                         else:
@@ -133,7 +127,7 @@ def dashboard(template):
                                 heapq.heappush(process_management_queue, (1,  ("dashboard", "led_brightness", i, int(brightness))))
                     
                                 scene             = GET_LED_SCENE_BY_NAME(scene_name)
-                                error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
+                                error_message_led = CHECK_LED_GROUP_SETTING_PROCESS(i, scene.id, scene_name, int(brightness), 2, 10) 
                                 continue   
                                 
                             else:
@@ -153,7 +147,7 @@ def dashboard(template):
                         if scene_name != "OFF":
 
                             heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", i))) 
-                            error_message_led = LED_GROUP_CHECK_SETTING_PROCESS(i, 0, "OFF", 0, 2, 10)                                  
+                            error_message_led = CHECK_LED_GROUP_SETTING_PROCESS(i, 0, "OFF", 0, 2, 10)                                  
                             continue  
                             
                         else:
@@ -181,142 +175,9 @@ def dashboard(template):
      
             
             for i in range (1,21):
-                
+                                
                 try:
-                        
-                    device = GET_MQTT_DEVICE_BY_ID(i)
-                    
-                    if device in GET_ALL_MQTT_DEVICES("device"):
-                        
-                        
-                        # ####################
-                        #   Exception Options
-                        # ####################
-
-                        dashboard_exception_option = request.form.get("set_dashboard_exception_option_" + str(i))
-                        dashboard_exception_option = dashboard_exception_option.replace(" ","")
-
-                        
-                        if request.MOBILE == False:
-
-                            dashboard_exception_setting = request.form.get("set_dashboard_exception_setting_" + str(i))
-                                                   
-                            if dashboard_exception_setting == "" or dashboard_exception_setting == None:
-                                dashboard_exception_setting = "None"  
-              
-                            # ######
-                            # Sensor
-                            # ######
-
-                            if GET_MQTT_DEVICE_BY_NAME(dashboard_exception_option) or dashboard_exception_option.isdigit(): 
-
-                                if dashboard_exception_option.isdigit():        
-                                    dashboard_exception_sensor_ieeeAddr     = GET_MQTT_DEVICE_BY_ID(dashboard_exception_option).ieeeAddr
-                                    dashboard_exception_sensor_input_values = GET_MQTT_DEVICE_BY_ID(dashboard_exception_option).input_values       
-                                    dashboard_exception_option              = GET_MQTT_DEVICE_BY_ID(dashboard_exception_option).name
-                                    
-                                else:
-                                    dashboard_exception_sensor_ieeeAddr     = GET_MQTT_DEVICE_BY_NAME(dashboard_exception_option).ieeeAddr
-                                    dashboard_exception_sensor_input_values = GET_MQTT_DEVICE_BY_NAME(dashboard_exception_option).input_values                                  
-                            
-                                # set dashboard exception value 1
-                                if device.dashboard_exception_option == "IP-Address":
-                                    dashboard_exception_value_1 = "None" 
-                            
-                                else:
-                                    dashboard_exception_value_1 = request.form.get("set_dashboard_exception_value_1_" + str(i))
-
-                                    if dashboard_exception_value_1 != None:                  
-                                        dashboard_exception_value_1 = dashboard_exception_value_1.replace(" ", "")
-
-                                        # replace array_position to sensor name 
-                                        if dashboard_exception_value_1.isdigit():
-                                            
-                                            # first two array elements are no sensors
-                                            if dashboard_exception_value_1 == "0" or dashboard_exception_value_1 == "1":
-                                                dashboard_exception_value_1 = "None"
-                                                
-                                            else:           
-                                                sensor_list                 = GET_MQTT_DEVICE_BY_IEEEADDR(dashboard_exception_sensor_ieeeAddr).input_values
-                                                sensor_list                 = sensor_list.split(",")
-                                                dashboard_exception_value_1 = sensor_list[int(dashboard_exception_value_1)-2]
-                                                
-                                    else:
-                                       dashboard_exception_value_1 = "None" 
-
-
-                                # set dashboard exception value 2
-                                dashboard_exception_value_2 = request.form.get("set_dashboard_exception_value_2_" + str(i))
-                                
-                                if dashboard_exception_value_2 == "" or dashboard_exception_value_2 == None:
-                                    dashboard_exception_value_2 = "None"       
-                                
-                                
-                                # set dashboard exception value 3
-                                dashboard_exception_value_3 = request.form.get("set_dashboard_exception_value_3_" + str(i))
-                                
-                                if dashboard_exception_value_3 == "" or dashboard_exception_value_3 == None:
-                                    dashboard_exception_value_3 = "None"       
-
-
-                            # ##########
-                            # IP Address
-                            # ##########
-
-                            elif dashboard_exception_option == "IP-Address":
-                                
-                                # set dashboard exception value 1
-                                dashboard_exception_value_1 = request.form.get("set_dashboard_exception_value_1_" + str(i))
-                               
-                                if dashboard_exception_value_1 == "" or dashboard_exception_value_1 == None:
-                                    dashboard_exception_value_1 = "None" 
-                                      
-                                dashboard_exception_sensor_ieeeAddr     = "None"
-                                dashboard_exception_sensor_input_values = "None"
-                                dashboard_exception_value_2             = "None"                        
-                                dashboard_exception_value_3             = "None"   
-                   
-                                                                  
-                            else:
-                                
-                                dashboard_exception_option              = "None" 
-                                dashboard_exception_value_1             = "None" 
-                                dashboard_exception_value_2             = "None"  
-                                dashboard_exception_value_3             = "None"  
-                                dashboard_exception_sensor_ieeeAddr     = "None"
-                                dashboard_exception_sensor_input_values = "None"                                                            
-
-                            SET_MQTT_DEVICE_DASHBOARD_EXCEPTION(device.ieeeAddr, dashboard_exception_option, dashboard_exception_setting,
-                                                                dashboard_exception_sensor_ieeeAddr, dashboard_exception_sensor_input_values,
-                                                                dashboard_exception_value_1, dashboard_exception_value_2, dashboard_exception_value_3)
-                        
-                        
-                        else:
-                            
-                            if dashboard_exception_option == "None":
-                            
-                                dashboard_exception_setting             = "None" 
-                                dashboard_exception_value_1             = "None" 
-                                dashboard_exception_value_2             = "None"  
-                                dashboard_exception_value_3             = "None"  
-                                dashboard_exception_sensor_ieeeAddr     = "None"
-                                dashboard_exception_sensor_input_values = "None"                                                            
-
-                                SET_MQTT_DEVICE_DASHBOARD_EXCEPTION(device.ieeeAddr, dashboard_exception_option, dashboard_exception_setting,
-                                                                    dashboard_exception_sensor_ieeeAddr, dashboard_exception_sensor_input_values,
-                                                                    dashboard_exception_value_1, dashboard_exception_value_2, dashboard_exception_value_3)                        
-                
-                except Exception as e:
-                    if "NoneType" not in str(e):
-                        print(e)                        
-               
-                            
-                # ###############
-                #  setting_value
-                # ###############
-                      
-                try:  
-                      
+                    device            = GET_MQTT_DEVICE_BY_ID(i)  
                     dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))  
 
                     if dashboard_setting != "None" and dashboard_setting != None:
@@ -326,79 +187,16 @@ def dashboard(template):
                         # convert json-format to string
                         dashboard_setting_formated = dashboard_setting.replace('"', '')
                         dashboard_setting_formated = dashboard_setting_formated.replace('{', '')
-                        dashboard_setting_formated = dashboard_setting_formated.replace('}', '')                                                    
+                        dashboard_setting_formated = dashboard_setting_formated.replace('}', '')
                         
-                        # ####################
-                        # exception ip_address 
-                        # ####################
+                        check_result = CHECK_DEVICE_EXCEPTIONS(i, dashboard_setting_formated)
                         
-                        if device.dashboard_exception_option == "IP-Address" and device.dashboard_exception_setting == dashboard_setting_formated:
 
-                            if ping(dashboard_exception_value_1, timeout=1) != None:    
-                                error_message_devices = device.name + " >>> Gerät ist noch eingeschaltet"
-                                change_state = False
-
-                        # ################
-                        # exception sensor
-                        # ################
-                        
-                        if device.dashboard_exception_sensor_ieeeAddr != "None" and device.dashboard_exception_setting == dashboard_setting_formated:
-                            
-                            sensor_ieeeAddr = device.dashboard_exception_sensor_ieeeAddr
-                            sensor_key      = device.dashboard_exception_value_1
-                            
-                            operator = device.dashboard_exception_value_2
-                            value    = device.dashboard_exception_value_3
-
-                            try:
-                                 value = str(value).lower()
-                            except:
-                                 pass
-                                     
-                            
-                            # get sensordata 
-                            data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.dashboard_exception_sensor_ieeeAddr).last_values)
-                            sensor_value = data[sensor_key]
-                            
-                            try:
-                                 sensor_value = str(sensor_value).lower()
-                            except:
-                                 pass
-                            
-                                  
-                            # compare conditions
-                            if operator == "=" and value.isdigit():
-                                if int(sensor_value) == int(value):
-                                    change_state = False    
-                                else:
-                                    change_state = True
-                                    
-                            if operator == "=" and not value.isdigit():
-                                if str(sensor_value) == str(value):
-                                    change_state = False
-                                else:
-                                    change_state = True
-                                    
-                            if operator == "<" and value.isdigit():
-                                if int(sensor_value) < int(value):
-                                    change_state = False
-                                else:
-                                    change_state = True
-                                    
-                            if operator == ">" and value.isdigit():
-                                if int(sensor_value) > int(value):
-                                    change_state = False 
-                                else:
-                                    change_state = True
-                                         
-                            error_message_devices = device.name + " >>> Sensor erteilt keine Freigabe"
-                                                          
-                            
                         # ##############    
                         # state changing
                         # ##############
 
-                        if change_state == True: 
+                        if check_result == True: 
                             
                             # new device setting ?  
                             new_setting       = False
@@ -428,7 +226,7 @@ def dashboard(template):
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_devices = MQTT_CHECK_SETTING_PROCESS(device.ieeeAddr, dashboard_setting, 1, 5)                                     
+                                    error_message_devices = CHECK_MQTT_SETTING_PROCESS(device.ieeeAddr, dashboard_setting, 1, 5)                                     
                                   
 
                                 # zigbee2mqtt
@@ -439,7 +237,7 @@ def dashboard(template):
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_devices = ZIGBEE2MQTT_CHECK_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)      
+                                    error_message_devices = CHECK_ZIGBEE2MQTT_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)      
                               
                                     
                             else:
@@ -448,9 +246,13 @@ def dashboard(template):
                                     WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + dashboard_setting_formated) 
 
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)    
-                                    
-                 
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)
+              
+                        
+                        else:
+                            error_message_devices = check_result
+                            
+                               
                 except Exception as e:
                     if "NoneType" not in str(e):
                         print(e)
@@ -514,7 +316,7 @@ def dashboard(template):
 
                             heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                            error_message_watering_control = MQTT_CHECK_SETTING_PROCESS(plant.mqtt_device.ieeeAddr, watering_control_setting, 1, 5)                                     
+                            error_message_watering_control = CHECK_MQTT_SETTING_PROCESS(plant.mqtt_device.ieeeAddr, watering_control_setting, 1, 5)                                     
 
                         else:
                                 
@@ -733,11 +535,6 @@ def dashboard(template):
     data_led = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes = GET_ALL_LED_SCENES()
 
-    list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
-    
-    dropdown_list_exception_options = ["IP-Address"] 
-    dropdown_list_operators         = ["=", ">", "<"]
-    
     data_device           = GET_ALL_MQTT_DEVICES("device")
     data_watering_control = GET_ALL_PLANTS()   
     data_sensor           = GET_ALL_MQTT_DEVICES("sensor")
@@ -751,144 +548,12 @@ def dashboard(template):
             
     data_sensor = list_data_sensor
 
-    error_message_device_exceptions = CHECK_DASHBOARD_EXCEPTION_SETTINGS(GET_ALL_MQTT_DEVICES("device"))
-
     version = GET_CONFIG_VERSION()       
-
-    # get sensor list
-    try:
-        mqtt_device_1_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(1).input_values
-        mqtt_device_1_input_values = mqtt_device_1_input_values.replace(" ", "")
-    except:
-        mqtt_device_1_input_values = ""
-    try:
-        mqtt_device_2_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(2).input_values
-        mqtt_device_2_input_values = mqtt_device_2_input_values.replace(" ", "")
-    except:
-        mqtt_device_2_input_values = ""
-    try:        
-        mqtt_device_3_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(3).input_values
-        mqtt_device_3_input_values = mqtt_device_3_input_values.replace(" ", "")
-    except:
-        mqtt_device_3_input_values = ""
-    try:        
-        mqtt_device_4_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(4).input_values
-        mqtt_device_4_input_values = mqtt_device_4_input_values.replace(" ", "")
-    except:
-        mqtt_device_4_input_values = ""
-    try:        
-        mqtt_device_5_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(5).input_values
-        mqtt_device_5_input_values = mqtt_device_5_input_values.replace(" ", "")
-    except:
-        mqtt_device_5_input_values = ""
-    try:        
-        mqtt_device_6_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(6).input_values
-        mqtt_device_6_input_values = mqtt_device_6_input_values.replace(" ", "")
-    except:
-        mqtt_device_6_input_values = ""
-    try:        
-        mqtt_device_7_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(7).input_values
-        mqtt_device_7_input_values = mqtt_device_7_input_values.replace(" ", "")
-    except:
-        mqtt_device_7_input_values = ""
-    try:        
-        mqtt_device_8_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(8).input_values
-        mqtt_device_8_input_values = mqtt_device_8_input_values.replace(" ", "")
-    except:
-        mqtt_device_8_input_values = ""
-    try:        
-        mqtt_device_9_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(9).input_values
-        mqtt_device_9_input_values = mqtt_device_9_input_values.replace(" ", "")
-    except:
-        mqtt_device_9_input_values = ""
-    try:        
-        mqtt_device_10_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(10).input_values
-        mqtt_device_10_input_values = mqtt_device_10_input_values.replace(" ", "")
-    except:
-        mqtt_device_10_input_values = ""
-    try:        
-        mqtt_device_11_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(11).input_values
-        mqtt_device_11_input_values = mqtt_device_11_input_values.replace(" ", "")
-    except:
-        mqtt_device_11_input_values = ""
-    try:        
-        mqtt_device_12_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(12).input_values
-        mqtt_device_12_input_values = mqtt_device_12_input_values.replace(" ", "")
-    except:
-        mqtt_device_12_input_values = ""
-    try:        
-        mqtt_device_13_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(13).input_values
-        mqtt_device_13_input_values = mqtt_device_13_input_values.replace(" ", "")
-    except:
-        mqtt_device_13_input_values = ""
-    try:        
-        mqtt_device_14_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(14).input_values
-        mqtt_device_14_input_values = mqtt_device_14_input_values.replace(" ", "")
-    except:
-        mqtt_device_14_input_values = ""
-    try:        
-        mqtt_device_15_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(15).input_values
-        mqtt_device_15_input_values = mqtt_device_15_input_values.replace(" ", "")
-    except:
-        mqtt_device_15_input_values = ""    
-    try:        
-        mqtt_device_16_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(16).input_values
-        mqtt_device_16_input_values = mqtt_device_16_input_values.replace(" ", "")
-    except:
-        mqtt_device_16_input_values = ""
-    try:        
-        mqtt_device_17_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(17).input_values
-        mqtt_device_17_input_values = mqtt_device_17_input_values.replace(" ", "")
-    except:
-        mqtt_device_17_input_values = ""
-    try:        
-        mqtt_device_18_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(18).input_values
-        mqtt_device_18_input_values = mqtt_device_18_input_values.replace(" ", "")
-    except:
-        mqtt_device_18_input_values = ""
-    try:        
-        mqtt_device_19_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(19).input_values
-        mqtt_device_19_input_values = mqtt_device_19_input_values.replace(" ", "")
-    except:
-        mqtt_device_19_input_values = ""
-    try:        
-        mqtt_device_20_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(20).input_values
-        mqtt_device_20_input_values = mqtt_device_20_input_values.replace(" ", "")
-    except:
-        mqtt_device_20_input_values = ""   
-    try:        
-        mqtt_device_21_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(21).input_values
-        mqtt_device_21_input_values = mqtt_device_21_input_values.replace(" ", "")
-    except:
-        mqtt_device_21_input_values = ""   
-    try:        
-        mqtt_device_22_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(22).input_values
-        mqtt_device_22_input_values = mqtt_device_22_input_values.replace(" ", "")
-    except:
-        mqtt_device_22_input_values = ""   
-    try:        
-        mqtt_device_23_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(23).input_values
-        mqtt_device_23_input_values = mqtt_device_23_input_values.replace(" ", "")
-    except:
-        mqtt_device_23_input_values = ""   
-    try:        
-        mqtt_device_24_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(24).input_values
-        mqtt_device_24_input_values = mqtt_device_24_input_values.replace(" ", "")
-    except:
-        mqtt_device_24_input_values = ""   
-    try:        
-        mqtt_device_25_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(25).input_values
-        mqtt_device_25_input_values = mqtt_device_25_input_values.replace(" ", "")
-    except:
-        mqtt_device_25_input_values = ""           
 
 
     return render_template(template,
                             data_led=data_led,
                             dropdown_list_led_scenes=dropdown_list_led_scenes,
-                            dropdown_list_exception_options=dropdown_list_exception_options,
-                            dropdown_list_operators=dropdown_list_operators,
-                            list_mqtt_devices=list_mqtt_devices,
                             data_device=data_device,
                             data_watering_control=data_watering_control,
                             data_log_system=data_log_system, 
@@ -912,34 +577,8 @@ def dashboard(template):
                             error_message_log=error_message_log,  
                             error_message_devices=error_message_devices,   
                             error_message_watering_control=error_message_watering_control,  
-                            error_message_device_exceptions=error_message_device_exceptions,
                             error_message_start_program=error_message_start_program,
                             error_message_spotify=error_message_spotify,
-                            mqtt_device_1_input_values=mqtt_device_1_input_values,
-                            mqtt_device_2_input_values=mqtt_device_2_input_values,
-                            mqtt_device_3_input_values=mqtt_device_3_input_values,
-                            mqtt_device_4_input_values=mqtt_device_4_input_values,
-                            mqtt_device_5_input_values=mqtt_device_5_input_values,
-                            mqtt_device_6_input_values=mqtt_device_6_input_values,
-                            mqtt_device_7_input_values=mqtt_device_7_input_values,
-                            mqtt_device_8_input_values=mqtt_device_8_input_values,
-                            mqtt_device_9_input_values=mqtt_device_9_input_values,
-                            mqtt_device_10_input_values=mqtt_device_10_input_values,
-                            mqtt_device_11_input_values=mqtt_device_11_input_values,
-                            mqtt_device_12_input_values=mqtt_device_12_input_values,
-                            mqtt_device_13_input_values=mqtt_device_13_input_values,
-                            mqtt_device_14_input_values=mqtt_device_14_input_values,
-                            mqtt_device_15_input_values=mqtt_device_15_input_values,
-                            mqtt_device_16_input_values=mqtt_device_16_input_values,
-                            mqtt_device_17_input_values=mqtt_device_17_input_values,
-                            mqtt_device_18_input_values=mqtt_device_18_input_values,
-                            mqtt_device_19_input_values=mqtt_device_19_input_values,
-                            mqtt_device_20_input_values=mqtt_device_20_input_values,  
-                            mqtt_device_21_input_values=mqtt_device_21_input_values,
-                            mqtt_device_22_input_values=mqtt_device_22_input_values,  
-                            mqtt_device_23_input_values=mqtt_device_23_input_values,
-                            mqtt_device_24_input_values=mqtt_device_24_input_values,
-                            mqtt_device_25_input_values=mqtt_device_25_input_values,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
