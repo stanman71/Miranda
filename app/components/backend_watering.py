@@ -190,19 +190,19 @@ def WATERING_THREAD(group_number):
     else:
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Watering | Plant - " + plant.name + " | Finished")    
 
-                                          
+
 """ ############################ """
 """ pumptime auto control thread """
 """ ############################ """
 
 def PUMPTIME_AUTO_UPDATE_TREAD(plant_id):
     
-    # wait 1 hour
-    time.sleep(3600)
+    # wait 30 minutes
+    time.sleep(1800)
     
     
     # get current sensor values
-    MQTT_UPDATE_DEVICES("mqtt")
+    UPDATE_MQTT_DEVICES("mqtt")
     time.sleep(30)
     
     
@@ -210,22 +210,21 @@ def PUMPTIME_AUTO_UPDATE_TREAD(plant_id):
     plant = GET_PLANT_BY_ID(plant_id)
     
     if plant.moisture_level == "much":
-        moisture_target = 600
+        moisture_target = 550
     if plant.moisture_level == "normal":
-        moisture_target = 500               
+        moisture_target = 450               
     if plant.moisture_level == "less":
         moisture_target = 350   
         
     sensor_values      = plant.mqtt_device.last_values
     sensor_values_json = json.loads(sensor_values) 
-    moisture_current   = sensor_values_json["sensor_moisture"] 
+    moisture_current   = sensor_values_json["sensor_moisture"]
     
     
     # compare moisture values and set new pumptime_auto value
     pumptime_auto_current = plant.pumptime_auto
 
-
-    # 30 % lower
+    # more than 30 % lower
     if moisture_current < int(moisture_target * 0.7):
         SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 1.3))    
     
@@ -246,10 +245,7 @@ def PUMPTIME_AUTO_UPDATE_TREAD(plant_id):
     if moisture_current > int(moisture_target * 1.2):
         SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 0.8))
         
-    # 30 % higher    
+    # more than 30 % higher    
     if moisture_current > int(moisture_target * 1.3):
         SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 0.7))            
         
-        
-        
-    

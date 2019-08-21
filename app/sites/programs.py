@@ -94,7 +94,27 @@ def programs():
                 request.form.get("line_8_down_" + str(i)) != None or                    
                 request.form.get("line_9_up_" + str(i)) != None or 
                 request.form.get("line_9_down_" + str(i)) != None or                    
-                request.form.get("line_10_up_" + str(i)) != None or                 
+                request.form.get("line_10_up_" + str(i)) != None or
+                request.form.get("line_10_down_" + str(i)) != None or
+                request.form.get("line_11_up_" + str(i)) != None or
+                request.form.get("line_11_down_" + str(i)) != None or                   
+                request.form.get("line_12_up_" + str(i)) != None or
+                request.form.get("line_12_down_" + str(i)) != None or                   
+                request.form.get("line_13_up_" + str(i)) != None or
+                request.form.get("line_13_down_" + str(i)) != None or                   
+                request.form.get("line_14_up_" + str(i)) != None or
+                request.form.get("line_14_down_" + str(i)) != None or                   
+                request.form.get("line_15_up_" + str(i)) != None or
+                request.form.get("line_15_down_" + str(i)) != None or
+                request.form.get("line_16_up_" + str(i)) != None or
+                request.form.get("line_16_down_" + str(i)) != None or                   
+                request.form.get("line_17_up_" + str(i)) != None or
+                request.form.get("line_17_down_" + str(i)) != None or                   
+                request.form.get("line_18_up_" + str(i)) != None or
+                request.form.get("line_18_down_" + str(i)) != None or                   
+                request.form.get("line_19_up_" + str(i)) != None or
+                request.form.get("line_19_down_" + str(i)) != None or                   
+                request.form.get("line_20_up_" + str(i)) != None or
                 request.form.get("change_program_name_" + str(i))):                    
                
                
@@ -109,19 +129,31 @@ def programs():
                     
                     
                 # save settings
-                line_content_1    = request.form.get("set_line_content_1_" + str(i))
-                line_content_2    = request.form.get("set_line_content_2_" + str(i))
-                line_content_3    = request.form.get("set_line_content_3_" + str(i))             
-                line_content_4    = request.form.get("set_line_content_4_" + str(i))            
-                line_content_5    = request.form.get("set_line_content_5_" + str(i))
-                line_content_6    = request.form.get("set_line_content_6_" + str(i))           
-                line_content_7    = request.form.get("set_line_content_7_" + str(i))            
-                line_content_8    = request.form.get("set_line_content_8_" + str(i))            
-                line_content_9    = request.form.get("set_line_content_9_" + str(i))             
-                line_content_10   = request.form.get("set_line_content_10_" + str(i))            
+                line_content_1  = request.form.get("set_line_content_1_" + str(i))
+                line_content_2  = request.form.get("set_line_content_2_" + str(i))
+                line_content_3  = request.form.get("set_line_content_3_" + str(i))             
+                line_content_4  = request.form.get("set_line_content_4_" + str(i))            
+                line_content_5  = request.form.get("set_line_content_5_" + str(i))
+                line_content_6  = request.form.get("set_line_content_6_" + str(i))           
+                line_content_7  = request.form.get("set_line_content_7_" + str(i))            
+                line_content_8  = request.form.get("set_line_content_8_" + str(i))            
+                line_content_9  = request.form.get("set_line_content_9_" + str(i))             
+                line_content_10 = request.form.get("set_line_content_10_" + str(i))
+                line_content_11 = request.form.get("set_line_content_11_" + str(i))                                                     
+                line_content_12 = request.form.get("set_line_content_12_" + str(i))                                                     
+                line_content_13 = request.form.get("set_line_content_13_" + str(i))                                                     
+                line_content_14 = request.form.get("set_line_content_14_" + str(i))
+                line_content_15 = request.form.get("set_line_content_15_" + str(i))
+                line_content_16 = request.form.get("set_line_content_16_" + str(i))                                                     
+                line_content_17 = request.form.get("set_line_content_17_" + str(i))                                                     
+                line_content_18 = request.form.get("set_line_content_18_" + str(i))                                                     
+                line_content_19 = request.form.get("set_line_content_19_" + str(i))                
+                line_content_20 = request.form.get("set_line_content_20_" + str(i))                  
               
-                SET_PROGRAM_SETTINGS(i, line_content_1, line_content_2, line_content_3, line_content_4, line_content_5,
-                                     line_content_6, line_content_7, line_content_8, line_content_9, line_content_10)
+                SET_PROGRAM_SETTINGS(i, line_content_1,line_content_2, line_content_3, line_content_4, line_content_5, 
+                                        line_content_6, line_content_7, line_content_8, line_content_9, line_content_10,
+                                        line_content_11, line_content_12, line_content_13, line_content_14, line_content_15, 
+                                        line_content_16, line_content_17, line_content_18, line_content_19, line_content_20) 
     
     
                 # change line position  
@@ -161,6 +193,46 @@ def programs():
                     CHANGE_PROGRAMS_LINE_POSITION(i, 9, "down")   
                 if request.form.get("line_10_up_" + str(i)) != None:
                     CHANGE_PROGRAMS_LINE_POSITION(i, 10, "up")
+                if request.form.get("line_10_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 10, "down")                    
+                if request.form.get("line_11_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 11, "up")
+                if request.form.get("line_11_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 11, "down")      
+                if request.form.get("line_12_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 12, "up")
+                if request.form.get("line_12_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 12, "down")      
+                if request.form.get("line_13_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 13, "up")
+                if request.form.get("line_13_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 13, "down")      
+                if request.form.get("line_14_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 14, "up")
+                if request.form.get("line_14_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 14, "down")      
+                if request.form.get("line_15_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 15, "up")
+                if request.form.get("line_15_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 15, "down")
+                if request.form.get("line_16_up_" + str(i)) != None:                    
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 16, "up")
+                if request.form.get("line_16_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 16, "down")                       
+                if request.form.get("line_17_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 17, "up")
+                if request.form.get("line_17_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 17, "down")      
+                if request.form.get("line_18_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 18, "up")
+                if request.form.get("line_18_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 18, "down")     
+                if request.form.get("line_19_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 19, "up")
+                if request.form.get("line_19_down_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 19, "down")      
+                if request.form.get("line_20_up_" + str(i)) != None:
+                    CHANGE_PROGRAMS_LINE_POSITION(i, 20, "up")
                     
    
                 # start program

@@ -238,16 +238,49 @@
                        <input type="text" class="form-control" name="set_sensors" value="{% if sensors != None %}{{ sensors }}{% endif %}" /> 
                       </div>                            
                     </div> 
-                  </div>                                                     
+                  </div>
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Zeitraum: </button>
+                      </div> 
+                      <div class="col-sm-3">
+                        <select class="selectpicker" data-width="90%" name="set_date_start">
+                          <option value= "{{ date_start }}" > {{ date_start }} </option>
+                          <optgroup>
+                            {% for each in dropdown_list_dates %}
+                              <option value="{{ each }}"> {{ each }} </option>
+                            {% endfor %}
+                          </optgroup>                                                                                 
+                        </select>                        
+                      </div> 
+                      <div class="col-sm-3">
+                        <select class="selectpicker" data-width="90%" name="set_date_stop">
+                          <option value= "{{ date_stop }}" > {{ date_stop }} </option>
+                          <optgroup>
+                            {% for each in dropdown_list_dates %}
+                              <option value="{{ each }}"> {{ each }} </option>
+                            {% endfor %}
+                          </optgroup>                                                                                 
+                        </select>                        
+                      </div>                            
+                    </div> 
+                  </div>                        
                 </div>   
               </div>
               <div class="row justify-content-md-center">
                 <div class="col-sm-2">              
                   <input type="submit" onclick="window.location.href='/sensordata/statistics#create_table'" class="btn btn-default" name="get_data" value="Daten laden" />
                 </div>
+                
+                {% if devices != "" %}
+                
                 <div class="col-sm-2">
                   <input type="submit" onclick="window.location.href='/sensordata/statistics#create_table'" class="btn btn-default" name="create_table" value="Tabelle erstellen" />
                 </div>
+                
+                {% endif %}
+                
               </div>
               </form> 
             </div>

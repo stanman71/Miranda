@@ -151,8 +151,8 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col" style="width:14%">Gruppe</th> 
-                  <th scope="col" style="width:46%">LEDs</th> 
+                  <th scope="col" style="width:17%">Gruppe</th> 
+                  <th scope="col" style="width:43%">LEDs</th> 
                   <th scope="col" style="width:20%">Szene</th> 
                   <th scope="col" style="width:20%">Helligkeit</th>
                 </thead>
@@ -270,16 +270,18 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col" style="width:14%">Gerät</th> 
-                  <th scope="col" style="width:20%">Befehl</th> 
-                  <th scope="col" style="width:20%">Letzte Werte</th> 
+                  <th scope="col" style="width:17%">Gerät</th>
+                  <th scope="col" style="width:43%">Letzte Werte</th>                   
+                  <th scope="col" style="width:20%">Befehl</th>
+                  <th scope="col" style="width:20%">Letzter Kontakt</th>                  
                 </thead>
                 <tbody> 
                           
                   {% for entry in data_device %}
                   
                     <tr>
-                      <td> {{entry.name}} </td>  
+                      <td> {{entry.name}} </td>
+                      <td> {{entry.last_values_formated}} </td> 
                       <td>   
                         <select class="selectpicker" data-width="100%" name="set_dashboard_setting_{{ entry.id }}">
                           <option value = "None" > None </option>                          
@@ -292,7 +294,7 @@
                           </optgroup>                                                                       
                         </select>                                                  
                       </td>
-                      <td> {{entry.last_values_formated}} </td>    
+                      <td> {{entry.last_contact}} </td>    
                     </tr>
                         
                   {% endfor %}   
@@ -359,9 +361,9 @@
                 <div class="well well-sm">    
                   <table class="table">
                     <thead>                      
-                      <th scope="col" style="width:14%">Pflanze</th> 
-                      <th scope="col" style="width:8%">Gruppe</th> 
-                      <th scope="col" style="width:38%">Letzte Werte</th> 
+                      <th scope="col" style="width:17%">Pflanze</th> 
+                      <th scope="col" style="width:35%">Letzte Werte</th>
+                      <th scope="col" style="width:8%">Gruppe</th>                       
                       <th scope="col" style="width:20%">Befehl</th>                   
                       <th scope="col" style="width:20%">Letzter Kontakt</th>  
                     </thead>
@@ -369,8 +371,8 @@
                       {% for entry in data_watering_control %}
                         <tr>
                           <td> {{entry.name}} </td>
-                          <td> {{entry.group}} </td>
                           <td> {{entry.mqtt_device.last_values_formated}} </td>
+                          <td> {{entry.group}} </td>                         
                           <td>  
                             <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
                               <option value= "None" > None </option>                      
@@ -725,9 +727,9 @@
               <div class="well well-sm">    
                 <table class="table">
                   <thead>                      
-                    <th scope="col" style="width:14%">Sensor</th> 
-                    <th scope="col" style="width:27%">Beschreibung</th>
-                    <th scope="col" style="width:39%">Werte</th> 
+                    <th scope="col" style="width:17%">Sensor</th> 
+                    <th scope="col" style="width:25%">Beschreibung</th>
+                    <th scope="col" style="width:38%">Werte</th> 
                     <th scope="col" style="width:20%">Letzter Kontakt</th>
                   </thead>
                   <tbody> 
@@ -802,15 +804,15 @@
 
               <table class="table">
                 <thead>                      
-                  <th scope="col">Zeitpunkt</th> 
-                  <th scope="col">Typ</th> 
-                  <th scope="col">Eintrag</th> 
+                  <th scope="col" style="width:17%">Zeitpunkt</th> 
+                  <th scope="col" style="width:13%">Typ</th> 
+                  <th scope="col" style="width:70%">Eintrag</th> 
                 </thead>
                 <tbody> 
                   {% for entry in data_log_system %}
                   <tr>
-                    <td style="width:16%">{{ entry[0] }}</td> 
-                    <td style="width:10%">
+                    <td>{{ entry[0] }}</td> 
+                    <td>
                       {% if entry[1] == "EVENT" %} <font color="white">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "STATUS" %} <font color="darkKhaki">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "DATABASE" %} <font color="lightblue">{{ entry[1] }} </font> {% endif %}
@@ -818,7 +820,7 @@
                       {% if entry[1] == "WARNING" %} <font color="orange">{{ entry[1] }} </font> {% endif %}
                       {% if entry[1] == "ERROR" %} <font color="salmon">{{ entry[1] }} </font> {% endif %}            
                     </td>                   
-                    <td style="width:74%">{{ entry[2] }}</td>  
+                    <td>{{ entry[2] }}</td>  
                   </tr>
                   {% endfor %} 
                 </tbody>

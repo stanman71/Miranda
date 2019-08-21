@@ -893,8 +893,6 @@ def CHECK_SPEECHCONTROL_ANSWER(answer, keywords):
         if keyword_lengh > 1:
             keyword_group = keyword.split()
 
-            result = []
-
             for keyword in keyword_group:
                 keyword = keyword.strip()
 
@@ -907,10 +905,10 @@ def CHECK_SPEECHCONTROL_ANSWER(answer, keywords):
                     if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
                         keyword_founded = True
 
-                result.append(keyword_founded)
-
-            if not False in result:
-                return True
+                if keyword_founded == False:
+                    return False
+                
+            return True
 
         # only one keyword
         else:

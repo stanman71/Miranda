@@ -418,7 +418,7 @@
                         <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                                     
                       </td> 
                       <td>        
-                        <input type="text" class="form-control" name="set_task_{{ entry.id }}" value="{{ entry.task }}" />  
+                        <input type="text" class="form-control" name="set_task_{{ entry.id }}" value = {% if entry.task != None %}"{{ entry.task }}"{% endif %} />  
                       </td>        
                       <td></td>                         
                       <td>

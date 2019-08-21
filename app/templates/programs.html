@@ -245,7 +245,7 @@
 
           <div class="well well-sm">
             <div class="row justify-content-md-center">
-              <div class="col-sm-3">
+              <div class="col-sm-4">
                 <div class="row justify-content-md-center">
                   <div class="col-sm-6">
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Zeile hinzufügen</button>
@@ -257,7 +257,7 @@
                   </div>
                 </div> 
               </div>   
-              <div class="col-sm-3">
+              <div class="col-sm-4">
                 <div class="row justify-content-md-center">
                   <div class="col-sm-6">
                     <button type="button" style="background-color:transparent" class="btn btn-secondary">Zeile entfernen</button>
@@ -281,9 +281,15 @@
                   <div class="col-sm-2"></div>
                   <div class="col-sm-4"></div>
                   <div class="col-sm-4">
-                    <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_1_down_{{ program.id }}">
-                      <span class="glyphicon glyphicon-arrow-down"></span>
-                    </button>                      
+                  
+                    {% if program.line_active_2 == "True" %}
+                    
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_1_down_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-down"></span>
+                      </button>
+                    
+                    {% endif %} 
+                    
                   </div>
                 </div>
               </div>
@@ -304,10 +310,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-3">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_2_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_3 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_2_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %} 
+                      
                     </div>
                   </div>
                 </div>
@@ -330,10 +342,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_3_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_4 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_3_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
                     </div>
                   </div>
                 </div>
@@ -356,10 +374,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_4_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_5 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_4_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
                     </div>
                   </div>
                 </div>
@@ -382,10 +406,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_5_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_6 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_5_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}  
+                      
                     </div>
                   </div>
                 </div>
@@ -408,10 +438,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_6_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_7 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_6_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}  
+                      
                     </div>
                   </div>
                 </div>
@@ -434,10 +470,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_7_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_8 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_7_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %} 
+                      
                     </div>
                   </div>
                 </div>
@@ -460,10 +502,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_8_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_9 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_8_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %} 
+                      
                     </div>
                   </div>
                 </div>
@@ -486,10 +534,16 @@
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4">             
-                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_9_down_{{ program.id }}">
-                        <span class="glyphicon glyphicon-arrow-down"></span>
-                      </button>  
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_10 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_9_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
                     </div>
                   </div>
                 </div>
@@ -499,7 +553,7 @@
                 </div>
               
               {% endif %}                
-
+              
               {% if program.line_active_10 == "True" %}
               
                 <br>
@@ -507,12 +561,22 @@
                 <div class="col-sm-2">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-2"></div>
-                    <div class="col-sm-4"> 
+                    <div class="col-sm-4">  
                       <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_10_up_{{ program.id }}">
                         <span class="glyphicon glyphicon-arrow-up"></span>
                       </button>   
                     </div>
-                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_11 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_10_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
                   </div>
                 </div>
                 <div class="col-sm-10"> 
@@ -520,7 +584,316 @@
                    value = {% if program.line_content_10 != None %}"{{ program.line_content_10 }}"{% endif %} >
                 </div>
               
-              {% endif %}  
+              {% endif %} 
+
+              {% if program.line_active_11 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_11_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_12 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_11_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_11_{{ program.id }}"
+                   value = {% if program.line_content_11 != None %}"{{ program.line_content_11 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+
+              {% if program.line_active_12 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_12_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_13 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_12_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_12_{{ program.id }}"
+                   value = {% if program.line_content_12 != None %}"{{ program.line_content_12 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+
+              {% if program.line_active_13 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_13_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_14 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_13_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_13_{{ program.id }}"
+                   value = {% if program.line_content_13 != None %}"{{ program.line_content_13 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+
+              {% if program.line_active_14 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_14_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_15 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_14_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_14_{{ program.id }}"
+                   value = {% if program.line_content_14 != None %}"{{ program.line_content_14 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+
+              {% if program.line_active_15 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_15_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_16 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_15_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_15_{{ program.id }}"
+                   value = {% if program.line_content_15 != None %}"{{ program.line_content_15 }}"{% endif %} >
+                </div>
+              
+              {% endif %}
+              
+              {% if program.line_active_16 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_16_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_17 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_16_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_16_{{ program.id }}"
+                   value = {% if program.line_content_16 != None %}"{{ program.line_content_16 }}"{% endif %} >
+                </div>
+              
+              {% endif %}               
+              
+              {% if program.line_active_17 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_17_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_18 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_17_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_17_{{ program.id }}"
+                   value = {% if program.line_content_17 != None %}"{{ program.line_content_17 }}"{% endif %} >
+                </div>
+              
+              {% endif %}               
+              
+              {% if program.line_active_18 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_18_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_19 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_18_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_18_{{ program.id }}"
+                   value = {% if program.line_content_18 != None %}"{{ program.line_content_18 }}"{% endif %} >
+                </div>
+              
+              {% endif %}               
+
+              {% if program.line_active_19 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_19_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                    <div class="col-sm-4">
+                    
+                      {% if program.line_active_20 == "True" %}
+                    
+                        <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_19_down_{{ program.id }}">
+                          <span class="glyphicon glyphicon-arrow-down"></span>
+                        </button>
+                      
+                      {% endif %}
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_19_{{ program.id }}"
+                   value = {% if program.line_content_19 != None %}"{{ program.line_content_19 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
+
+              {% if program.line_active_20 == "True" %}
+              
+                <br>
+                <br>
+                <div class="col-sm-2">
+                  <div class="row justify-content-md-center">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">  
+                      <button type="submit" class="btn btn-default" onclick="window.location.href='/programs#program_table'" name="line_20_up_{{ program.id }}">
+                        <span class="glyphicon glyphicon-arrow-up"></span>
+                      </button>   
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-10"> 
+                  <input type="text" class="form-control" name="set_line_content_20_{{ program.id }}"
+                   value = {% if program.line_content_20 != None %}"{{ program.line_content_20 }}"{% endif %} >
+                </div>
+              
+              {% endif %} 
 
             </div>
           </div>

@@ -25,9 +25,9 @@ def permission_required(f):
     return wrap
 
 
-""" ############## """
-""" sensordata jobs"""
-""" ############## """
+""" ############### """
+""" sensordata jobs """
+""" ############### """
 
 @app.route('/sensordata/jobs', methods=['GET', 'POST'])
 @login_required
@@ -375,17 +375,26 @@ def delete_sensordata_file(filename):
 """ sensordata statistics """
 """ ##################### """
 
+dropdown_list_dates_temp = []
+
+
 @app.route('/sensordata/statistics', methods=['GET', 'POST'])
 @login_required
 @permission_required
 def sensordata_statistics():
+    global dropdown_list_dates_temp
+    
     error_message = ""
-    devices = ""
-    sensors = ""
-    date    = ""
-    data_file_1 = ""
-    data_file_2 = ""
-    data_file_3 = ""
+    devices       = ""
+    sensors       = ""
+    data_file_1   = ""
+    data_file_2   = ""
+    data_file_3   = ""
+    
+    dropdown_list_dates = []
+    date_start          = ""
+    date_stop           = ""
+    
     graph = False
 
     if request.method == 'POST':
@@ -436,8 +445,6 @@ def sensordata_statistics():
                 sensors  = sensors[:-1]
                 sensors  = sensors.replace("'", "")
                 
-                list_dates = []
-                
                 for date in pd.to_datetime(df['Timestamp']).dt.date.unique().tolist():
                     
                     date_temp = ""
@@ -453,14 +460,20 @@ def sensordata_statistics():
                     else:
                         date_temp = date_temp + str(date.day)
                            
-                    list_dates.append(date_temp)        
-                
-                print(list_dates)
-                
+                    dropdown_list_dates.append(date_temp)        
                 
             except Exception as e:
                 error_message = "Fehler beim Öffnen der Datein >>> " + str(e)
-                
+        
+        
+        # update dropdown_list_dates_temp or get former dropdown_list_dates
+        if dropdown_list_dates != []:
+            dropdown_list_dates_temp = dropdown_list_dates             
+            date_start               = dropdown_list_dates[0]
+            date_stop                = dropdown_list_dates[-1]   
+        else:
+            dropdown_list_dates      = dropdown_list_dates_temp
+
 
         # create table
         if request.form.get("create_table") is not None: 
@@ -494,10 +507,11 @@ def sensordata_statistics():
                     error_message = "Datei " + data_file_1 + " mehrmals ausgewählt"                
            
 
-          
             try:
-                devices = request.form.get("set_devices")
-                sensors = request.form.get("set_sensors")  
+                devices    = request.form.get("set_devices")
+                sensors    = request.form.get("set_sensors")
+                date_start = request.form.get("set_date_start")
+                date_stop  = request.form.get("set_date_stop") 
 
                 selected_devices = devices.replace(" ", "")
                 selected_devices = selected_devices.split(",")
@@ -510,29 +524,27 @@ def sensordata_statistics():
                 # selected divices
                 df_sensors = df_devices.loc[df['Sensor'].isin(selected_sensors)]
                 
-                
-                """
-                
-                Select date
-                
-                
-                minimum_from_gui = "2019-07-07" + " 00:00:00"
-                maximum_from_gui = "2019-07-20" + " 00:00:00"
-                df_sensors_filtered_min = df_sensors[df_sensors['Timestamp']>=minimum_from_gui]
-                df_sensors_filtered_max = df_sensors[df_sensors['Timestamp']<=maximum_from_gui]
+                # date_start value < date_stop value ?
+                if dropdown_list_dates.index(date_start) < dropdown_list_dates.index(date_stop):
+            
+                    minimum_from_gui = date_start + " 00:00:00"
+                    maximum_from_gui = date_stop  + " 00:00:00"
+                    df_sensors_filtered_min = df_sensors[df_sensors['Timestamp']>=minimum_from_gui]
+                    df_sensors_filtered_max = df_sensors[df_sensors['Timestamp']<=maximum_from_gui]
 
-                df_sensors = pd.merge(df_sensors_filtered_min, df_sensors_filtered_max, how='inner')
+                    df_sensors = pd.merge(df_sensors_filtered_min, df_sensors_filtered_max, how='inner')
 
-                """
-        
-    
-                # set datetime as index and remove former row datetime
-                df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
-                
-                df_sensors = df_sensors.set_index('date')
-                df_sensors = df_sensors.drop(columns=['Timestamp'])
-                
-                graph  = BUILD_GRAPH(df_sensors)
+
+                    # set datetime as index and remove former row datetime
+                    df_sensors['date'] = pd.to_datetime(df_sensors['Timestamp'], format='%Y-%m-%d %H:%M:%S', utc=True).values
+                    
+                    df_sensors = df_sensors.set_index('date')
+                    df_sensors = df_sensors.drop(columns=['Timestamp'])
+                    
+                    graph  = BUILD_GRAPH(df_sensors)
+                    
+                else:
+                    error_message = "Zeitraum >>> 1. Datum muss kleiner als das 2. Datum sein"
 
             except:
                 error_message = "Daten konnten nicht verarbeitet werden"
@@ -543,6 +555,9 @@ def sensordata_statistics():
     return render_template('sensordata_statistics.html', 
                             error_message=error_message,
                             dropdown_list_files=dropdown_list_files,
+                            dropdown_list_dates=dropdown_list_dates,                           
+                            date_start=date_start,
+                            date_stop=date_stop,
                             devices=devices,
                             sensors=sensors,
                             data_file_1=data_file_1,

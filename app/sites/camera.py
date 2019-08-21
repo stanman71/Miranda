@@ -24,51 +24,52 @@ global_collapse_camera_table = ""
 
 
 try:
-    camera_1_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(1).user + ":" + GET_CAMERA_BY_ID(1).password + "@" + GET_CAMERA_BY_ID(1).url) 
+    camera_1_url = "rtsp://" + GET_CAMERA_BY_ID(1).user + ":" + GET_CAMERA_BY_ID(1).password + "@" + GET_CAMERA_BY_ID(1).url 
 except:
     camera_1_url = None
  
 try:
-    camera_2_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(2).user + ":" + GET_CAMERA_BY_ID(2).password + "@" + GET_CAMERA_BY_ID(2).url)
+    camera_2_url = "rtsp://" + GET_CAMERA_BY_ID(2).user + ":" + GET_CAMERA_BY_ID(2).password + "@" + GET_CAMERA_BY_ID(2).url
 except:
     camera_2_url = None
     
 try:
-    camera_3_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(3).user + ":" + GET_CAMERA_BY_ID(3).password + "@" + GET_CAMERA_BY_ID(3).url)              
+    camera_3_url = "rtsp://" + GET_CAMERA_BY_ID(3).user + ":" + GET_CAMERA_BY_ID(3).password + "@" + GET_CAMERA_BY_ID(3).url            
 except:
     camera_3_url = None
 
 try:
-    camera_4_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(4).user + ":" + GET_CAMERA_BY_ID(4).password + "@" + GET_CAMERA_BY_ID(4).url)              
+    camera_4_url = "rtsp://" + GET_CAMERA_BY_ID(4).user + ":" + GET_CAMERA_BY_ID(4).password + "@" + GET_CAMERA_BY_ID(4).url              
 except:
     camera_4_url = None
 
 try:
-    camera_5_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(5).user + ":" + GET_CAMERA_BY_ID(5).password + "@" + GET_CAMERA_BY_ID(5).url)             
+    camera_5_url = "rtsp://" + GET_CAMERA_BY_ID(5).user + ":" + GET_CAMERA_BY_ID(5).password + "@" + GET_CAMERA_BY_ID(5).url             
 except:
     camera_5_url = None
     
 try:
-    camera_6_url = cv2.VideoCapture("rtsp://" + GET_CAMERA_BY_ID(6).user + ":" + GET_CAMERA_BY_ID(6).password + "@" + GET_CAMERA_BY_ID(6).url)               
+    camera_6_url = "rtsp://" + GET_CAMERA_BY_ID(6).user + ":" + GET_CAMERA_BY_ID(6).password + "@" + GET_CAMERA_BY_ID(6).url               
 except:
     camera_6_url = None
     
 
 # generate frame by frame from camera
-def GENERATE_FRAMES(camera):  
-    while True:
-
+def GENERATE_FRAME(camera_url):
+    
+    try:
         # Capture frame-by-frame
-        success, frame = camera.read()  
+        success, frame = cv2.VideoCapture(camera_url).read()  
 
-        if not success:
-            break
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
-            
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
+
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+
+    except:
+        pass
+    
 
 """ ########### """
 """ site camera """
@@ -260,31 +261,31 @@ def delete_camera(id):
 
 @app.route('/camera/video_feed_1')
 def video_feed_1():
-    return Response(GENERATE_FRAMES(camera_1_url),
+    return Response(GENERATE_FRAME(camera_1_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera/video_feed_2')
 def video_feed_2():
-    return Response(GENERATE_FRAMES(camera_2_url),
+    return Response(GENERATE_FRAME(camera_2_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera/video_feed_3')
 def video_feed_3():
-    return Response(GENERATE_FRAMES(camera_3_url),
+    return Response(GENERATE_FRAME(camera_3_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
                     
 @app.route('/camera/video_feed_4')
 def video_feed_4():
-    return Response(GENERATE_FRAMES(camera_4_url),
+    return Response(GENERATE_FRAME(camera_4_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame') 
  
 @app.route('/camera/video_feed_5')
 def video_feed_5():
-    return Response(GENERATE_FRAMES(camera_5_url),
+    return Response(GENERATE_FRAME(camera_5_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/camera/video_feed_6')
 def video_feed_6():
-    return Response(GENERATE_FRAMES(camera_6_url),
+    return Response(GENERATE_FRAME(camera_6_url),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
                    

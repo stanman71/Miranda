@@ -248,51 +248,71 @@ class Programs(db.Model):
     line_content_9    = db.Column(db.String(50), server_default=(""))
     line_active_10    = db.Column(db.String(50), server_default=(""))
     line_content_10   = db.Column(db.String(50), server_default=(""))
+    line_active_11    = db.Column(db.String(50), server_default=(""))
+    line_content_11   = db.Column(db.String(50), server_default=(""))
+    line_active_12    = db.Column(db.String(50), server_default=(""))
+    line_content_12   = db.Column(db.String(50), server_default=(""))
+    line_active_13    = db.Column(db.String(50), server_default=(""))
+    line_content_13   = db.Column(db.String(50), server_default=(""))
+    line_active_14    = db.Column(db.String(50), server_default=(""))
+    line_content_14   = db.Column(db.String(50), server_default=(""))
+    line_active_15    = db.Column(db.String(50), server_default=(""))
+    line_content_15   = db.Column(db.String(50), server_default=(""))
+    line_active_16    = db.Column(db.String(50), server_default=(""))
+    line_content_16   = db.Column(db.String(50), server_default=(""))
+    line_active_17    = db.Column(db.String(50), server_default=(""))
+    line_content_17   = db.Column(db.String(50), server_default=(""))
+    line_active_18    = db.Column(db.String(50), server_default=(""))
+    line_content_18   = db.Column(db.String(50), server_default=(""))
+    line_active_19    = db.Column(db.String(50), server_default=(""))
+    line_content_19   = db.Column(db.String(50), server_default=(""))
+    line_active_20    = db.Column(db.String(50), server_default=(""))
+    line_content_20   = db.Column(db.String(50), server_default=(""))
 
 class Scheduler_Tasks(db.Model):
     __tablename__ = 'scheduler_tasks'
     id                         = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name                       = db.Column(db.String(50), unique=True)
-    task                       = db.Column(db.String(50), server_default=("None"))
-    task_type                  = db.Column(db.String(50))    
-    option_time                = db.Column(db.String(50), server_default=("None"))
-    option_sun                 = db.Column(db.String(50), server_default=("None"))
-    option_sensors             = db.Column(db.String(50), server_default=("None"))
-    option_position            = db.Column(db.String(50), server_default=("None"))    
-    option_repeat              = db.Column(db.String(50), server_default=("None"))
-    day                        = db.Column(db.String(50), server_default=("None"))
-    hour                       = db.Column(db.String(50), server_default=("None"))
-    minute                     = db.Column(db.String(50), server_default=("None"))
-    option_sunrise             = db.Column(db.String(50), server_default=("None")) 
-    option_sunset              = db.Column(db.String(50), server_default=("None")) 
-    location                   = db.Column(db.String(50), server_default=("None"))
-    sunrise                    = db.Column(db.String(50), server_default=("None")) 
-    sunset                     = db.Column(db.String(50), server_default=("None"))         
-    mqtt_device_ieeeAddr_1     = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_1         = db.Column(db.String(50), server_default=("None")) 
-    mqtt_device_input_values_1 = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_1               = db.Column(db.String(50), server_default=("None"))    
-    value_1                    = db.Column(db.String(100), server_default=("None"))
-    operator_1                 = db.Column(db.String(50), server_default=("None"))
-    operator_main_1            = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_ieeeAddr_2     = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_2         = db.Column(db.String(50), server_default=("None"))        
-    mqtt_device_input_values_2 = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_2               = db.Column(db.String(50), server_default=("None"))    
-    value_2                    = db.Column(db.String(100), server_default=("None"))
-    operator_2                 = db.Column(db.String(50), server_default=("None"))   
-    operator_main_2            = db.Column(db.String(50), server_default=("None"))     
-    mqtt_device_ieeeAddr_3     = db.Column(db.String(50), server_default=("None"))  
-    mqtt_device_name_3         = db.Column(db.String(50), server_default=("None"))        
-    mqtt_device_input_values_3 = db.Column(db.String(100), server_default=("None")) 
-    sensor_key_3               = db.Column(db.String(50), server_default=("None"))    
-    value_3                    = db.Column(db.String(100), server_default=("None"))
-    operator_3                 = db.Column(db.String(50), server_default=("None")) 
-    option_home                = db.Column(db.String(50), server_default=("None")) 
-    option_away                = db.Column(db.String(50), server_default=("None")) 
-    ip_addresses               = db.Column(db.String(100), server_default=("None"))
-    last_ping_result           = db.Column(db.String(50), server_default=("None")) 
-    collapse                   = db.Column(db.String(50))
+    task                       = db.Column(db.String(50), server_default=(""))
+    task_type                  = db.Column(db.String(50), server_default=(""))   
+    option_time                = db.Column(db.String(50), server_default=("")) 
+    option_sun                 = db.Column(db.String(50), server_default=("")) 
+    option_sensors             = db.Column(db.String(50), server_default=("")) 
+    option_position            = db.Column(db.String(50), server_default=(""))  
+    option_repeat              = db.Column(db.String(50), server_default=(""))
+    day                        = db.Column(db.String(50), server_default=(""))
+    hour                       = db.Column(db.String(50), server_default=("")) 
+    minute                     = db.Column(db.String(50), server_default=(""))
+    option_sunrise             = db.Column(db.String(50), server_default=(""))
+    option_sunset              = db.Column(db.String(50), server_default=(""))
+    location                   = db.Column(db.String(50), server_default=(""))
+    sunrise                    = db.Column(db.String(50), server_default=(""))
+    sunset                     = db.Column(db.String(50), server_default=(""))        
+    mqtt_device_ieeeAddr_1     = db.Column(db.String(50), server_default=(""))
+    mqtt_device_name_1         = db.Column(db.String(50), server_default=(""))
+    mqtt_device_input_values_1 = db.Column(db.String(50), server_default=("")) 
+    sensor_key_1               = db.Column(db.String(50), server_default=(""))
+    value_1                    = db.Column(db.String(50), server_default=("")) 
+    operator_1                 = db.Column(db.String(50), server_default=(""))
+    operator_main_1            = db.Column(db.String(50), server_default=(""))
+    mqtt_device_ieeeAddr_2     = db.Column(db.String(50), server_default=(""))
+    mqtt_device_name_2         = db.Column(db.String(50), server_default=(""))    
+    mqtt_device_input_values_2 = db.Column(db.String(50), server_default=(""))
+    sensor_key_2               = db.Column(db.String(50), server_default=(""))
+    value_2                    = db.Column(db.String(50), server_default=(""))
+    operator_2                 = db.Column(db.String(50), server_default=(""))
+    operator_main_2            = db.Column(db.String(50), server_default=(""))
+    mqtt_device_ieeeAddr_3     = db.Column(db.String(50), server_default=(""))
+    mqtt_device_name_3         = db.Column(db.String(50), server_default=(""))
+    mqtt_device_input_values_3 = db.Column(db.String(50), server_default=(""))
+    sensor_key_3               = db.Column(db.String(50), server_default=(""))
+    value_3                    = db.Column(db.String(50), server_default=(""))
+    operator_3                 = db.Column(db.String(50), server_default=(""))
+    option_home                = db.Column(db.String(50), server_default=(""))
+    option_away                = db.Column(db.String(50), server_default=(""))
+    ip_addresses               = db.Column(db.String(50), server_default=(""))
+    last_ping_result           = db.Column(db.String(50), server_default=(""))
+    collapse                   = db.Column(db.String(50), server_default=(""))
     error_change_settings      = db.Column(db.String(500), server_default=("")) 
 
 class Sensordata_Jobs(db.Model):
@@ -2306,7 +2326,9 @@ def SET_PROGRAM_NAME(id, name):
 
 
 def SET_PROGRAM_SETTINGS(id, line_content_1,line_content_2, line_content_3, line_content_4, line_content_5, 
-                         line_content_6, line_content_7, line_content_8, line_content_9, line_content_10):  
+                         line_content_6, line_content_7, line_content_8, line_content_9, line_content_10,
+                         line_content_11, line_content_12, line_content_13, line_content_14, line_content_15, 
+                         line_content_16, line_content_17, line_content_18, line_content_19, line_content_20): 
 
     entry = Programs.query.filter_by(id=id).first()
 
@@ -2314,7 +2336,12 @@ def SET_PROGRAM_SETTINGS(id, line_content_1,line_content_2, line_content_3, line
         entry.line_content_3  != line_content_3  or entry.line_content_4  != line_content_4  or 
         entry.line_content_5  != line_content_5  or entry.line_content_6  != line_content_6  or 
         entry.line_content_7  != line_content_7  or entry.line_content_8  != line_content_8  or 
-        entry.line_content_9  != line_content_9  or entry.line_content_10 != line_content_10): 
+        entry.line_content_9  != line_content_9  or entry.line_content_10 != line_content_10 or 
+        entry.line_content_11 != line_content_11 or entry.line_content_12 != line_content_12 or
+        entry.line_content_13 != line_content_13 or entry.line_content_14 != line_content_14 or
+        entry.line_content_15 != line_content_15 or entry.line_content_16 != line_content_16 or
+        entry.line_content_17 != line_content_17 or entry.line_content_18 != line_content_18 or 
+        entry.line_content_19 != line_content_19 or entry.line_content_20 != line_content_20):
 
         entry.line_content_1    = line_content_1 
         entry.line_content_2    = line_content_2 
@@ -2326,7 +2353,16 @@ def SET_PROGRAM_SETTINGS(id, line_content_1,line_content_2, line_content_3, line
         entry.line_content_8    = line_content_8 
         entry.line_content_9    = line_content_9 
         entry.line_content_10   = line_content_10 
-
+        entry.line_content_11   = line_content_11 
+        entry.line_content_12   = line_content_12 
+        entry.line_content_13   = line_content_13 
+        entry.line_content_14   = line_content_14 
+        entry.line_content_15   = line_content_15 
+        entry.line_content_16   = line_content_16 
+        entry.line_content_17   = line_content_17 
+        entry.line_content_18   = line_content_18 
+        entry.line_content_19   = line_content_19 
+        entry.line_content_20   = line_content_20 
         db.session.commit()
 
 
@@ -2369,60 +2405,142 @@ def ADD_PROGRAM_LINE(id):
         entry.line_active_10 = "True"
         db.session.commit()
         return
+    if entry.line_active_11 != "True":
+        entry.line_active_11 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_12 != "True":
+        entry.line_active_12 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_13 != "True":
+        entry.line_active_13 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_14 != "True":
+        entry.line_active_14 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_15 != "True":
+        entry.line_active_15 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_16 != "True":
+        entry.line_active_16 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_17 != "True":
+        entry.line_active_17 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_18 != "True":
+        entry.line_active_18 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_19 != "True":
+        entry.line_active_19 = "True"
+        db.session.commit()
+        return
+    if entry.line_active_20 != "True":
+        entry.line_active_20 = "True"
+        db.session.commit()
+        return
 
 
 def REMOVE_PROGRAM_LINE(id):
     entry = Programs.query.filter_by(id=id).first()
 
+    if entry.line_active_20 == "True":
+        entry.line_active_20    = ""
+        entry.line_content_20   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_19 == "True":
+        entry.line_active_19    = ""
+        entry.line_content_19   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_18 == "True":
+        entry.line_active_18    = ""
+        entry.line_content_18   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_17 == "True":
+        entry.line_active_17    = ""
+        entry.line_content_17   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_16 == "True":
+        entry.line_active_16    = ""
+        entry.line_content_16   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_15 == "True":
+        entry.line_active_15    = ""
+        entry.line_content_15   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_14 == "True":
+        entry.line_active_14    = ""
+        entry.line_content_14   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_13 == "True":
+        entry.line_active_13    = ""
+        entry.line_content_13   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_12 == "True":
+        entry.line_active_12    = ""
+        entry.line_content_12   = ""
+        db.session.commit()
+        return 
+    if entry.line_active_11 == "True":
+        entry.line_active_11    = ""
+        entry.line_content_11   = ""
+        db.session.commit()
+        return 
     if entry.line_active_10 == "True":
         entry.line_active_10    = ""
         entry.line_content_10   = ""
         db.session.commit()
         return 
-
     if entry.line_active_9 == "True":
         entry.line_active_9    = ""
         entry.line_content_9   = ""
         db.session.commit()
         return 
-
     if entry.line_active_8 == "True":
         entry.line_active_8    = ""
         entry.line_content_8   = ""
         db.session.commit()
         return 
-
     if entry.line_active_7 == "True":
         entry.line_active_7    = ""
         entry.line_content_7   = ""
         entry.line_exception_7 = ""
         db.session.commit()
         return 
-
     if entry.line_active_6 == "True":
         entry.line_active_6    = ""
         entry.line_content_6   = ""
         db.session.commit()
-        return 
-
+        return
     if entry.line_active_5 == "True":
         entry.line_active_5    = ""
         entry.line_content_5   = ""
         db.session.commit()
         return 
-
     if entry.line_active_4 == "True":
         entry.line_active_4    = ""
         entry.line_content_4   = ""
         db.session.commit()
         return 
-
     if entry.line_active_3 == "True":
         entry.line_active_3    = ""
         entry.line_content_3   = ""
         db.session.commit()
         return 
-
     if entry.line_active_2 == "True":
         entry.line_active_2    = ""
         entry.line_content_2   = ""
@@ -2433,10 +2551,6 @@ def REMOVE_PROGRAM_LINE(id):
 def CHANGE_PROGRAMS_LINE_POSITION(id, line, direction):
     entry = Programs.query.filter_by(id=id).first()
 
-    print(id)
-    print(line)
-    print(direction)
-
     if direction == "up":
 
         if line == 2:
@@ -2444,111 +2558,193 @@ def CHANGE_PROGRAMS_LINE_POSITION(id, line, direction):
             entry.line_content_1   = entry.line_content_2
             entry.line_content_2   = line_content_temp
             db.session.commit()
-
         if line == 3:
             line_content_temp      = entry.line_content_2
             entry.line_content_2   = entry.line_content_3
             entry.line_content_3   = line_content_temp
             db.session.commit()
-
         if line == 4:
             line_content_temp      = entry.line_content_3
             entry.line_content_3   = entry.line_content_4
             entry.line_content_4   = line_content_temp
             db.session.commit()
-
         if line == 5:
             line_content_temp      = entry.line_content_4
             entry.line_content_4   = entry.line_content_5
             entry.line_content_5   = line_content_temp
             db.session.commit()
-
         if line == 6:
             line_content_temp      = entry.line_content_5
             entry.line_content_5   = entry.line_content_6
             entry.line_content_6   = line_content_temp
             db.session.commit()
-
         if line == 7:
             line_content_temp      = entry.line_content_6
             entry.line_content_6   = entry.line_content_7
             entry.line_content_7   = line_content_temp
             db.session.commit()
-
         if line == 8:
             line_content_temp      = entry.line_content_7
             entry.line_content_7   = entry.line_content_8
             entry.line_content_8   = line_content_temp
             db.session.commit()
-
         if line == 9:
             line_content_temp      = entry.line_content_8
             entry.line_content_8   = entry.line_content_9
             entry.line_content_9   = line_content_temp
             db.session.commit()
-
         if line == 10:
             line_content_temp       = entry.line_content_9
             entry.line_content_9    = entry.line_content_10
             entry.line_content_10   = line_content_temp
             db.session.commit()
-
+        if line == 11:
+            line_content_temp       = entry.line_content_10
+            entry.line_content_10   = entry.line_content_11
+            entry.line_content_11   = line_content_temp
+            db.session.commit()
+        if line == 12:
+            line_content_temp       = entry.line_content_11
+            entry.line_content_11   = entry.line_content_12
+            entry.line_content_12   = line_content_temp
+            db.session.commit()
+        if line == 13:
+            line_content_temp       = entry.line_content_12
+            entry.line_content_12   = entry.line_content_13
+            entry.line_content_13   = line_content_temp
+            db.session.commit()
+        if line == 14:
+            line_content_temp       = entry.line_content_13
+            entry.line_content_13   = entry.line_content_14
+            entry.line_content_14   = line_content_temp
+            db.session.commit()
+        if line == 15:
+            line_content_temp       = entry.line_content_14
+            entry.line_content_14   = entry.line_content_15
+            entry.line_content_15   = line_content_temp
+            db.session.commit()
+        if line == 16:
+            line_content_temp       = entry.line_content_15
+            entry.line_content_15   = entry.line_content_16
+            entry.line_content_16   = line_content_temp
+            db.session.commit()
+        if line == 17:
+            line_content_temp       = entry.line_content_16
+            entry.line_content_16   = entry.line_content_17
+            entry.line_content_17   = line_content_temp
+            db.session.commit()
+        if line == 18:
+            line_content_temp       = entry.line_content_17
+            entry.line_content_17   = entry.line_content_18
+            entry.line_content_18   = line_content_temp
+            db.session.commit()
+        if line == 19:
+            line_content_temp       = entry.line_content_18
+            entry.line_content_18   = entry.line_content_19
+            entry.line_content_19   = line_content_temp
+            db.session.commit()
+        if line == 20:
+            line_content_temp       = entry.line_content_19
+            entry.line_content_19   = entry.line_content_20
+            entry.line_content_20   = line_content_temp
+            db.session.commit()
 
     if direction == "down":
 
         if line == 1 and entry.line_active_2 == "True":
-
             line_content_temp      = entry.line_content_2
             entry.line_content_2   = entry.line_content_1
             entry.line_content_1   = line_content_temp 
             db.session.commit()
-
         if line == 2 and entry.line_active_3 == "True":
             line_content_temp      = entry.line_content_3
             entry.line_content_3   = entry.line_content_2
             entry.line_content_2   = line_content_temp 
             db.session.commit()
-
         if line == 3 and entry.line_active_4 == "True":
             line_content_temp      = entry.line_content_4
             entry.line_content_4   = entry.line_content_3
             entry.line_content_3   = line_content_temp 
             db.session.commit()
-
         if line == 4 and entry.line_active_5 == "True":
             line_content_temp      = entry.line_content_5
             entry.line_content_5   = entry.line_content_4
             entry.line_content_4   = line_content_temp 
             db.session.commit()
-
         if line == 5 and entry.line_active_6 == "True":
             line_content_temp      = entry.line_content_6
             entry.line_content_6   = entry.line_content_5
             entry.line_content_5   = line_content_temp 
             db.session.commit()
-
         if line == 6 and entry.line_active_7 == "True":
             line_content_temp      = entry.line_content_7
             entry.line_content_7   = entry.line_content_6
             entry.line_content_6   = line_content_temp 
             db.session.commit()
-
         if line == 7 and entry.line_active_8 == "True":
             line_content_temp      = entry.line_content_8
             entry.line_content_8   = entry.line_content_7
             entry.line_content_7   = line_content_temp 
             db.session.commit()
-
         if line == 8 and entry.line_active_9 == "True":
             line_content_temp      = entry.line_content_9
             entry.line_content_9   = entry.line_content_8
             entry.line_content_8   = line_content_temp 
             db.session.commit()
-
         if line == 9 and entry.line_active_10 == "True":
             line_content_temp      = entry.line_content_10
             entry.line_content_10  = entry.line_content_9
             entry.line_content_9   = line_content_temp 
+            db.session.commit()
+        if line == 10 and entry.line_active_11 == "True":
+            line_content_temp      = entry.line_content_11
+            entry.line_content_11  = entry.line_content_10
+            entry.line_content_10   = line_content_temp 
+            db.session.commit()
+        if line == 11 and entry.line_active_12 == "True":
+            line_content_temp      = entry.line_content_12
+            entry.line_content_12  = entry.line_content_11
+            entry.line_content_11   = line_content_temp 
+            db.session.commit()
+        if line == 12 and entry.line_active_13 == "True":
+            line_content_temp      = entry.line_content_13
+            entry.line_content_13  = entry.line_content_12
+            entry.line_content_12   = line_content_temp 
+            db.session.commit()
+        if line == 13 and entry.line_active_14 == "True":
+            line_content_temp      = entry.line_content_14
+            entry.line_content_14  = entry.line_content_13
+            entry.line_content_13   = line_content_temp 
+            db.session.commit()
+        if line == 14 and entry.line_active_15 == "True":
+            line_content_temp      = entry.line_content_15
+            entry.line_content_15  = entry.line_content_14
+            entry.line_content_14   = line_content_temp 
+            db.session.commit()
+        if line == 15 and entry.line_active_16 == "True":
+            line_content_temp      = entry.line_content_16
+            entry.line_content_16  = entry.line_content_15
+            entry.line_content_15   = line_content_temp 
+            db.session.commit()
+        if line == 16 and entry.line_active_17 == "True":
+            line_content_temp      = entry.line_content_17
+            entry.line_content_17  = entry.line_content_16
+            entry.line_content_16   = line_content_temp 
+            db.session.commit()
+        if line == 17 and entry.line_active_18 == "True":
+            line_content_temp      = entry.line_content_18
+            entry.line_content_18  = entry.line_content_17
+            entry.line_content_17   = line_content_temp 
+            db.session.commit()
+        if line == 18 and entry.line_active_19 == "True":
+            line_content_temp      = entry.line_content_19
+            entry.line_content_19  = entry.line_content_18
+            entry.line_content_18   = line_content_temp 
+            db.session.commit()
+        if line == 19 and entry.line_active_20 == "True":
+            line_content_temp      = entry.line_content_20
+            entry.line_content_20  = entry.line_content_19
+            entry.line_content_19   = line_content_temp 
             db.session.commit()
 
 
