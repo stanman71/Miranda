@@ -108,7 +108,7 @@ if GET_HOST_PORT() == 5000:
 """ loading components """
 """ ################## """
 
-from app.sites import index, signup, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
+from app.sites import index, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, GET_MQTT_INCOMING_MESSAGES, CHECK_ZIGBEE2MQTT_SETTING_PROCESS
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD
@@ -165,6 +165,16 @@ except Exception as e:
     SEND_EMAIL("ERROR", "Thread | Refresh MQTT Messages | " + str(e))  
 
 
+# check admin password changed
+try:
+    if GET_USER_BY_NAME("admin").password == "sha256$OeDkVenT$bc8d974603b713097e69fc3efa1132991bfb425c59ec00f207e4b009b91f4339":
+        print("WARNING: User - admin | Password must be changed")
+        WRITE_LOGFILE_SYSTEM("WARNING", "User - admin | Password must be changed")
+        SEND_EMAIL("WARNING", "User - admin | Password must be changed")
+except:
+    pass
+
+
 """ #### """
 """ mqtt """
 """ #### """
@@ -193,7 +203,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
     
     for message in GET_MQTT_INCOMING_MESSAGES(5):
         
-        if message[1] == "SmartHome/zigbee2mqtt/bridge/state" and message[2] == "online":     
+        if message[1] == "miranda/zigbee2mqtt/bridge/state" and message[2] == "online":     
             zigbee_connected = True 
             break    
         
@@ -203,69 +213,40 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
         
         WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Connected")
 
-        pairing_setting = GET_ZIGBEE2MQTT_PAIRING()             
+        # deactivate pairing at startup
+        if GET_ZIGBEE2MQTT_PAIRING() == "True":
+            SET_ZIGBEE2MQTT_PAIRING("False")
             
-        if pairing_setting == "True":
+        MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/permit_join", "false")
+        time.sleep(3)
+          
+          
+        # check current pairing setting
+        zigbee_check = False
+        
+        # first check    
+        for message in GET_MQTT_INCOMING_MESSAGES(5):
             
-            # check current pairing setting
-            zigbee_check = False
-            
-            for message in GET_MQTT_INCOMING_MESSAGES(5):
+            if message[1] == "miranda/zigbee2mqtt/bridge/config" and '"permit_join":false' in message[2]:
+                zigbee_check = True
                 
-                if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
-                    zigbee_check = True
-                     
-            # current setting wrong
-            if zigbee_check == False:  
-                
-                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")  
-                time.sleep(3)
-
-                # check current pairing setting
-                zigbee_check = False
-                
-                for message in GET_MQTT_INCOMING_MESSAGES(5):
-                    
-                    if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
-                        zigbee_check = True
-                        
-                if zigbee_check == True:             
-                    WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing enabled") 
-                else:             
-                    WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing enabled | Setting not confirmed")                             
-                     
-        else:
-            
-            # check current pairing setting
-            zigbee_check = False
+        # second check
+        if zigbee_check == True:             
             
             for message in GET_MQTT_INCOMING_MESSAGES(5):
                 
-                if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":false}':
+                if message[1] == "miranda/zigbee2mqtt/bridge/config" and '"permit_join":false' in message[2]:
                     zigbee_check = True
-                    
-            # current setting wrong
-            if zigbee_check == True:              
+               
+        # result
+        if zigbee_check == True:             
+            WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Pairing disabled") 
+        else:             
+            WRITE_LOGFILE_SYSTEM("WARNING", "ZigBee2MQTT | Pairing disabled | Setting not confirmed")    
             
-                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
-                time.sleep(3)
-
-                # check current pairing setting
-                zigbee_check = False
-                
-                for message in GET_MQTT_INCOMING_MESSAGES(5):
-                    
-                    if message[1] == "SmartHome/zigbee2mqtt/bridge/config" and message[2] == '{"log_level":"info","permit_join":true}':
-                        zigbee_check = True
-                        
-                if zigbee_check == True:             
-                    WRITE_LOGFILE_SYSTEM("EVENT", "ZigBee2MQTT | Pairing disabled") 
-                else:             
-                    WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing disabled | Setting not confirmed")    
-                
                 
     else:
-        print("ERROR: ZigBee2MQTT | No connection | " + str(zigbee_connection)) 
+        print("ERROR: ZigBee2MQTT | No connection") 
         
         WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | No Connection")        
         SEND_EMAIL("ERROR", "ZigBee2MQTT | No Connection")          
@@ -275,7 +256,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") == "True":
 if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
     
     try:
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false") 
+        MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/permit_join", "false") 
     except:
         pass
 
@@ -284,7 +265,7 @@ if GET_GLOBAL_SETTING_VALUE("zigbee2mqtt") != "True":
 """ speechcontrol """
 """ ############# """
 
-# snowboy operates in main only
+# snowboy operates in main thread only
 # start snowboy
 
 if GET_GLOBAL_SETTING_VALUE("speechcontrol") == "True":

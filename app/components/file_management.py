@@ -126,7 +126,7 @@ def WRITE_LOGFILE_SYSTEM(log_type, description):
         return ("ERROR: " + str(e))
         
     
-def GET_LOGFILE_SYSTEM(selected_log_types, rows):   
+def GET_LOGFILE_SYSTEM(selected_log_types, rows, search):   
     
     try:
         # open csv file
@@ -142,14 +142,19 @@ def GET_LOGFILE_SYSTEM(selected_log_types, rows):
 
             # get the selected log entries
             data_reversed_filtered = []
-
+            
             for element in data_reversed:
                 if element[1] in selected_log_types:
-                    data_reversed_filtered.append(element)
+                    
+                    if search != "" and search in element[2]:
+                        data_reversed_filtered.append(element)
+                        
+                    if search == "":
+                        data_reversed_filtered.append(element)
                 
             return data_reversed_filtered[0:rows]
             
-            
+    
     except Exception as e:
         print(e)
         WRITE_LOGFILE_SYSTEM("ERROR", "File | /logs/log_system.csv | " + str(e)) 

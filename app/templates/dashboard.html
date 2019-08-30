@@ -372,7 +372,7 @@
                         <tr>
                           <td> {{entry.name}} </td>
                           <td> {{entry.mqtt_device.last_values_formated}} </td>
-                          <td> {{entry.group}} </td>                         
+                          <td> <button type="button" style="background-color:transparent" class="btn btn-secondary">{{entry.group}}</button> </td>                         
                           <td>  
                             <select class="selectpicker" data-width="100%" name="set_watering_control_setting_{{ entry.id }}">
                               <option value= "None" > None </option>                      
@@ -529,9 +529,9 @@
                     <div class="col-sm-3">  
                       <div class="text-right">
                         {% if spotify_user == "" %}
-                          <a href="/dashboard/spotify/login/url/dashboard#" class="btn btn-default" role="button">Login</a> 
+                          <a href="/spotify/login/url_target/dashboard#" class="btn btn-default" role="button">Login</a> 
                         {% else %}    
-                          <a href="/dashboard/spotify/logout/url/dashboard#" class="btn btn-danger" role="button">Logout</a>  
+                          <a href="/spotify/logout/url_target/dashboard#" class="btn btn-danger" role="button">Logout</a>  
                         {% endif %}  
                       </div>                                                 
                     </div>
@@ -545,14 +545,12 @@
               <div class="well well-sm">     
                 <table class="table">
                   <thead>
-                    <th scope="col" style="width:11%">Gerät Name</th>   
-                    <th scope="col" style="width:11%">Gerät Typ</th> 
-                    <th scope="col" style="width:11%">Aktiv</th>                    
-                    <th scope="col" style="width:11%">Lautstärke</th>                                     
-                    <th scope="col" style="width:11%">Track</th>                                     
-                    <th scope="col" style="width:11%">Interpreten</th>                    
-                    <th scope="col" style="width:11%">Zeitpunkt</th>  
-                    <th scope="col" style="width:11%">Playlist</th> 
+                    <th scope="col" style="width:14%">Gerät Name</th>   
+                    <th scope="col" style="width:13%">Gerät Typ</th> 
+                    <th scope="col" style="width:11%">Playing</th>                                                      
+                    <th scope="col" style="width:17%">Track</th>                                     
+                    <th scope="col" style="width:17%">Interpreten</th>                     
+                    <th scope="col" style="width:17%">Playlist</th> 
                     <th scope="col" style="width:11%">Shuffle</th> 
                   </thead>                                             
                   <tbody> 
@@ -565,9 +563,6 @@
                       </td>  
                       <td>
                         {{ tupel_current_playback[2] }}
-                      </td>  
-                      <td>
-                        {{ tupel_current_playback[3] }}
                       </td>   
                       <td>
                         {{ tupel_current_playback[4] }} 
@@ -576,10 +571,7 @@
                         {% for artist in tupel_current_playback[5] %}
                            {{ artist }}
                         {% endfor %} 
-                      </td>                      
-                      <td>
-                        {{ tupel_current_playback[6] }}  
-                      </td>      
+                      </td>                         
                       <td>
                         {{ tupel_current_playback[7] }}
                       </td>   
@@ -773,8 +765,8 @@
               <div class="well well-sm">    
                 <form method="POST">   
                   <div class="row justify-content-md-center">
-                    <div class="col-sm-8">                    
-                      <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
+                    <div class="col-sm-7">                    
+                      <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="set_log_types[]">
                         <option {{ selected_type_event }}> EVENT </option>
                         <option {{ selected_type_status }}> STATUS </option>
                         <option {{ selected_type_database }}> DATABASE </option>                        
@@ -784,7 +776,10 @@
                       </select>   
                     </div>
                     <div class="col-sm-3">    
-                       <input type="submit" onclick="window.location.href='/dashboard#system_log'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
+                       <input type="text" class="form-control" name="set_log_search" placeholder="Suchbegriff" value="" />                           
+                    </div>                                         
+                    <div class="col-sm-2">    
+                       <input type="submit" onclick="window.location.href='/dashboard#system_log'" class="btn btn-default" name="get_log_output" value="Auswählen" />                                         
                     </div>            
                   </div>   
                 </form>

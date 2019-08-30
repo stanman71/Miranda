@@ -239,7 +239,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                     # mqtt
                     if device.gateway == "mqtt":
                         
-                        channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                        channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
                         msg      = controller_setting
 
                         MQTT_PUBLISH(channel, msg)  
@@ -250,7 +250,7 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                     # zigbee2mqtt
                     if device.gateway == "zigbee2mqtt":
                         
-                        channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                        channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
                         msg      = controller_setting
 
                         MQTT_PUBLISH(channel, msg)  
@@ -591,7 +591,7 @@ def START_SCHEDULER_TASK(task_object):
                         # mqtt
                         if device.gateway == "mqtt":
                             
-                            channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                            channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
                             msg      = scheduler_setting
 
                             MQTT_PUBLISH(channel, msg)  
@@ -602,7 +602,7 @@ def START_SCHEDULER_TASK(task_object):
                         # zigbee2mqtt
                         if device.gateway == "zigbee2mqtt":
                             
-                            channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                            channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
                             msg      = scheduler_setting
 
                             MQTT_PUBLISH(channel, msg)  
@@ -1253,7 +1253,7 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
                             # mqtt
                             if device.gateway == "mqtt":
                                 
-                                channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                                channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
                                 msg      = speechcontrol_setting
 
                                 MQTT_PUBLISH(channel, msg)  
@@ -1264,7 +1264,7 @@ def SPEECHCONTROL_DEVICE_TASK(answer):
                             # zigbee2mqtt
                             if device.gateway == "zigbee2mqtt":
                                 
-                                channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                                channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
                                 msg      = speechcontrol_setting
 
                                 MQTT_PUBLISH(channel, msg)  

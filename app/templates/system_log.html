@@ -131,8 +131,8 @@
             <div class="well well-sm"> 
               <form method="POST">
                 <div class="row justify-content-md-center">
-                  <div class="col-sm-8">                    
-                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="get_log_settings[]">
+                  <div class="col-sm-7">                    
+                    <select class="selectpicker" multiple data-actions-box="true" data-width="100%" name="set_log_types[]">
                       <option {{ selected_type_event }}> EVENT </option>
                       <option {{ selected_type_status }}> STATUS </option>
                       <option {{ selected_type_database }}> DATABASE </option>                        
@@ -142,7 +142,10 @@
                     </select>   
                   </div>
                   <div class="col-sm-3">    
-                     <input type="submit" onclick="window.location.href='/system/log#'" class="btn btn-default" name="select_log_types" value="Auswählen" />                                         
+                     <input type="text" class="form-control" name="set_log_search" placeholder="Suchbegriff" value="" />                           
+                  </div>                     
+                  <div class="col-sm-2">    
+                     <input type="submit" onclick="window.location.href='/system/log#'" class="btn btn-default" name="get_log_output" value="Auswählen" />                                         
                   </div>                                      
                 </div>   
               </form>

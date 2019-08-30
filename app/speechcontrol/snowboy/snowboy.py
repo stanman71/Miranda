@@ -25,47 +25,48 @@ def interrupt_callback():
 
 def SNOWBOY_THREAD():
 
-	signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGINT, signal_handler)
 
-	hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
+    hotword_file = GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword
 
-	# check hotword files exist
-	if hotword_file in GET_ALL_HOTWORD_FILES():
+    # check hotword files exist
+    if hotword_file in GET_ALL_HOTWORD_FILES():
    
-		# voice models here:
-		models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
+        # voice models here:
+        models = GET_SPEECH_RECOGNITION_PROVIDER_HOTWORD(GET_SPEECH_RECOGNITION_PROVIDER_SETTINGS().snowboy_hotword)
       
-		sensitivity_value = GET_SNOWBOY_SETTINGS().snowboy_sensitivity / 100
+        sensitivity_value = GET_SNOWBOY_SETTINGS().snowboy_sensitivity / 100
 
-		# modify sensitivity for better detection / accuracy
-		detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
+        # modify sensitivity for better detection / accuracy
+        detector = snowboydecoder.HotwordDetector(models, sensitivity=sensitivity_value)  
       
-		def detect_callback():
-			detector.terminate()
-			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "on")
-	 
-			speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().snowboy_timeout)
-	 
-			if speech_recognition_answer != None:
-				
-				if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:	 
-					WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | " + speech_recognition_answer) 
-				
-				else:	 
-					heapq.heappush(process_management_queue, (1, ("speechcontrol", speech_recognition_answer)))
+        def detect_callback():
+            detector.terminate()
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "on")
+     
+            speech_recognition_answer = SPEECH_RECOGNITION_PROVIDER(GET_SNOWBOY_SETTINGS().snowboy_timeout)
+     
+            if speech_recognition_answer != None and speech_recognition_answer != "":
+                
+                if "could not" in speech_recognition_answer or "Could not" in speech_recognition_answer:     
+                    pass
+                    #WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | " + speech_recognition_answer) 
+                
+                else:    
+                    heapq.heappush(process_management_queue, (1, ("speechcontrol", speech_recognition_answer)))
 
-			MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")
 
-			detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
+            detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
-		WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | Started") 
+        WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | Started") 
 
-		# main loop
-		detector.start(detected_callback=detect_callback,
-						interrupt_check=interrupt_callback,
-						sleep_time=0.03)
+        # main loop
+        detector.start(detected_callback=detect_callback,
+                        interrupt_check=interrupt_callback,
+                        sleep_time=0.03)
 
-		detector.terminate()
+        detector.terminate()
 
-	else:
-		WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Snowboy Hotword - " + hotword_file + " | Not founded")
+    else:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Speechcontrol | Snowboy Hotword - " + hotword_file + " | Not founded")

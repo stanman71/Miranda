@@ -48,7 +48,7 @@ def SET_LED_BULB_RGB(led_name, red, green, blue, brightness):
     
     xy = RGBtoXY(int(red), int(green), int(blue))
     
-    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state":"ON","brightness":' + str(brightness) + ',"color": { "x":' + str(xy[0]) + ',"y":' + str(xy[1]) + '}}'
     
     MQTT_PUBLISH(channel, msg)
@@ -56,14 +56,14 @@ def SET_LED_BULB_RGB(led_name, red, green, blue, brightness):
 
 def SET_LED_BULB_WHITE(led_name, color_temp, brightness):
 
-    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '"}'
     
     MQTT_PUBLISH(channel, msg)
 
 
 def SET_LED_BULB_SIMPLE(led_name, brightness):
-    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
     MQTT_PUBLISH(channel, msg)
@@ -71,7 +71,7 @@ def SET_LED_BULB_SIMPLE(led_name, brightness):
 
 def SET_LED_BULB_BRIGHTNESS(led_name, brightness):
     
-    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
     MQTT_PUBLISH(channel, msg)   
@@ -79,7 +79,7 @@ def SET_LED_BULB_BRIGHTNESS(led_name, brightness):
 
 def SET_LED_BULB_TURN_OFF(led_name):
 
-    channel = "SmartHome/zigbee2mqtt/" + led_name + "/set"
+    channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg = '{"state": "OFF"}'
     
     MQTT_PUBLISH(channel, msg)

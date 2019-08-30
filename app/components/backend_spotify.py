@@ -52,13 +52,13 @@ SCOPE         = "playlist-read-private user-read-recently-played user-read-curre
 
 SPOTIFY_URL_AUTH  = 'https://accounts.spotify.com/authorize/?'
 SPOTIFY_URL_TOKEN = 'https://accounts.spotify.com/api/token/'
-REDIRECT_URI      = "http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard/spotify/token"
+REDIRECT_URI      = "http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/spotify/token"
 
 RESPONSE_TYPE = 'code'   
 HEADER        = 'application/x-www-form-urlencoded'
 
-SPOTIFY_TOKEN      = ''
-REFRESH_TOKEN_TEMP = GET_SPOTIFY_REFRESH_TOKEN()
+SPOTIFY_TOKEN         = ''
+SPOTIFY_REFRESH_TOKEN = GET_SPOTIFY_REFRESH_TOKEN()
     
     
 def GET_SPOTIFY_USER():
@@ -73,7 +73,7 @@ def GET_SPOTIFY_AUTH(client_id, redirect_uri, scope):
 def GENERATE_SPOTIFY_TOKEN(code):
     
     global SPOTIFY_TOKEN    
-    global REFRESH_TOKEN_TEMP       
+    global SPOTIFY_REFRESH_TOKEN       
     
     body = {
         "grant_type": 'authorization_code',
@@ -93,11 +93,12 @@ def GENERATE_SPOTIFY_TOKEN(code):
         
     except Exception as e:
         WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not received | " + str(e)) 
-        SEND_EMAIL("ERROR", "Spotify | Token not received | " + str(e)) 
+        SEND_EMAIL("ERROR", "Spotify | Token not received | " + str(e))
+        DELETE_SPOTIFY_TOKEN()
 
     try:
         SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
-        REFRESH_TOKEN_TEMP = answer["refresh_token"]        
+        SPOTIFY_REFRESH_TOKEN = answer["refresh_token"]        
         WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New refresh Token received") 
         
     except Exception as e:
@@ -115,10 +116,10 @@ def GET_SPOTIFY_TOKEN():
 
 def DELETE_SPOTIFY_TOKEN():
     global SPOTIFY_TOKEN
-    global REFRESH_TOKEN_TEMP   
+    global SPOTIFY_REFRESH_TOKEN   
 
-    SPOTIFY_TOKEN      = ""
-    REFRESH_TOKEN_TEMP = ""
+    SPOTIFY_TOKEN         = ""
+    SPOTIFY_REFRESH_TOKEN = ""
     SET_SPOTIFY_REFRESH_TOKEN("")
 
 
@@ -141,12 +142,11 @@ def REFRESH_SPOTIFY_TOKEN_THREAD(first_delay):
 def REFRESH_SPOTIFY_TOKEN(first_delay):   
     
     current_timer = first_delay
-    delay         = 3000
     
     global SPOTIFY_TOKEN        
-    global REFRESH_TOKEN_TEMP   
+    global SPOTIFY_REFRESH_TOKEN
     
-    while REFRESH_TOKEN_TEMP != "":
+    while SPOTIFY_REFRESH_TOKEN != "":
         
         if current_timer == 3000:
         
@@ -176,7 +176,7 @@ def REFRESH_SPOTIFY_TOKEN(first_delay):
 
             try:
                 SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
-                REFRESH_TOKEN_TEMP = answer["refresh_token"]        
+                SPOTIFY_REFRESH_TOKEN = answer["refresh_token"]        
                 WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Refresh Token updated")  
                 
             except:

@@ -2,8 +2,8 @@ config:
   backup_location: /home/pi/miranda/backup/
   database: sqlite:///database/smarthome.sqlite3
   mqtt_broker: localhost
-  version: 0.8
+  version: 1.0
 spotify:
   client_id: 11a33d121d194cfebbc08d1ee6dbd0f6
   client_secret: af1b5460be774d8db58313bbf1a056b8
-  refresh_token: AQDsuqcoLe1OFHUvpdjud4huICoW0s1o-UHeDRQuLWgg_u6WuYt5EafqMjJSpOPfJPIQE_TmqZ9kfyn9rikdRYGVcC-HLsB70l-47Wrv44MIcsF7wWQtMtDZ3Gml69XiowDsww
+  refresh_token: AQBZLpiGgWosyCpKHuRIR8CCt0lAckCbRiDSnLOk8QW9ctLDix8dxDpq_vi-r8Hinagj3j0cHUDSUjZRpDttwkMvrgDWuGnu3qXOZlSgEG_GZPheC04MYhQyJ60r9rmXuK_wvg

@@ -188,6 +188,12 @@ class LED_Scenes(db.Model):
     error_change_settings = db.Column(db.String(100), server_default=(""))
     error_led_control     = db.Column(db.String(100), server_default=(""))
 
+class MQTT(db.Model):
+    __tablename__ = 'mqtt'
+    id       = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    user     = db.Column(db.String(50))
+    password = db.Column(db.String(50))
+
 class MQTT_Devices(db.Model):
     __tablename__ = 'mqtt_devices'
     id                            = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -455,6 +461,16 @@ if Host.query.filter_by().first() is None:
     db.session.commit()
 
 
+# create default mqtt settings
+if MQTT.query.filter_by().first() is None:
+    mqtt = MQTT(
+        user     = "",
+        password = "",
+    )
+    db.session.add(mqtt)
+    db.session.commit()
+
+
 # create default snowboy settings
 if Snowboy_Settings.query.filter_by().first() is None:
     snowboy = Snowboy_Settings(
@@ -475,11 +491,11 @@ if Speech_Recognition_Provider_Settings.query.filter_by().first() is None:
 
 
 # create default user
-if User.query.filter_by(username='default').first() is None:
+if User.query.filter_by(username='admin').first() is None:
     user = User(
-        username                   ='default',
-        email                      = 'member@example.com',
-        password                   = generate_password_hash('qwer1234', method='sha256'), 
+        username                   = "admin",
+        email                      = "member@example.com",
+        password                   = "sha256$OeDkVenT$bc8d974603b713097e69fc3efa1132991bfb425c59ec00f207e4b009b91f4339", 
         permission_dashboard       = "checked",   
         permission_scheduler       = "checked",        
         permission_programs        = "checked",   
@@ -496,7 +512,7 @@ if User.query.filter_by(username='default').first() is None:
     db.session.commit()
 
 
-# create default zigbee2mqtt
+# create default zigbee2mqtt settings
 if ZigBee2MQTT.query.filter_by().first() is None:
     zigbee2mqtt = ZigBee2MQTT(
         pairing = "False",
@@ -1760,7 +1776,30 @@ def DELETE_LED_SCENE(id):
 
 """ ################### """
 """ ################### """
-"""        mqtt         """
+"""          mqtt       """
+""" ################### """
+""" ################### """
+
+
+def GET_MQTT_AUTHENTIFICATION():
+    return MQTT.query.filter_by().first()
+
+
+def SET_MQTT_AUTHENTIFICATION(user, password):
+    entry = MQTT.query.filter_by().first()
+
+    if (entry.user != user or entry.password != password):
+
+        entry.user     = user
+        entry.password = password
+        db.session.commit()
+	
+        WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Authentification changed")
+
+
+""" ################### """
+""" ################### """
+"""     mqtt devices    """
 """ ################### """
 """ ################### """
 
@@ -1848,18 +1887,18 @@ def ADD_MQTT_DEVICE(name, gateway, ieeeAddr, model = "", device_type = "", descr
             else:
                 # add the new device            
                 device = MQTT_Devices(
-                        id                     = i,
-                        name                   = name,
-                        gateway                = gateway,                    
-                        ieeeAddr               = ieeeAddr,
-                        model                  = model,
-                        device_type            = device_type,
-                        description            = description,
-                        input_values           = str(input_values),
-                        input_events           = str(input_events),
-                        commands               = str(commands),                    
-                        last_contact           = last_contact,
-                        dashboard_exception_option = "None"
+                        id               = i,
+                        name             = name,
+                        gateway          = gateway,                    
+                        ieeeAddr         = ieeeAddr,
+                        model            = model,
+                        device_type      = device_type,
+                        description      = description,
+                        input_values     = str(input_values),
+                        input_events     = str(input_events),
+                        commands         = str(commands),                    
+                        last_contact     = last_contact,
+                        exception_option = "None"
                         )
                         
                 db.session.add(device)
@@ -2817,7 +2856,7 @@ def ADD_SCHEDULER_TASK(name, task_type):
 
 def SET_SCHEDULER_TASK(id, name, task,
                        option_time, option_sun, option_sensors, option_position, option_repeat, 
-                       day, hour, minute,
+                       day, hour, minute, 
                        option_sunrise, option_sunset, location,
                        mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1,  
                        sensor_key_1, operator_1, value_1, operator_main_1,
@@ -2832,8 +2871,8 @@ def SET_SCHEDULER_TASK(id, name, task,
     old_name = entry.name
 
     # values changed ?
-    if (entry.name != name or entry.task != task or 
-        entry.option_time != option_time or entry.option_sun != option_sun or entry.option_sensors != option_sensors or 
+    if (entry.name != name or entry.task != task or entry.option_time != option_time or
+        entry.option_sun != option_sun or entry.option_sensors != option_sensors or 
         entry.option_position != option_position or entry.option_repeat != option_repeat or
         entry.day != day or entry.hour != hour or entry.minute != minute or
         entry.option_sunrise != option_sunrise or entry.option_sunset != option_sunset or entry.location != location or
@@ -3642,10 +3681,10 @@ def GET_USER_BY_ID(id):
     return User.query.get(int(id))
 
 
-def GET_USER_BY_NAME(name):
+def GET_USER_BY_NAME(username):
     for user in User.query.all():
         
-        if user.username.lower() == name.lower():
+        if user.username.lower() == username.lower():
             return user       
  
   
@@ -3657,20 +3696,20 @@ def GET_EMAIL(email):
     return User.query.filter_by(email=email).first()
 
 
-def ADD_USER(name, email, password):
-    # name exist ?
-    if not GET_USER_BY_NAME(name):
+def ADD_USER(username, email, password):
+    # username exist ?
+    if not GET_USER_BY_NAME(username):
         
         # add the new user
         new_user = User(
-                username = name,
+                username = username,
                 email    = email,
                 password = password,
             )
         db.session.add(new_user)
         db.session.commit()
 
-        WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + name + " | added") 
+        WRITE_LOGFILE_SYSTEM("DATABASE", "User - " + username + " | added") 
 
         return ""
 

@@ -164,6 +164,10 @@ def spotify():
             spotify_playlists      = sp.current_user_playlists(limit=20)["items"]                                 
             tupel_current_playback = GET_SPOTIFY_CURRENT_PLAYBACK(spotify_token) 
             
+            
+            print("#############################")
+            print(spotify_devices)
+            
 
             # get volume
             try:
@@ -223,21 +227,7 @@ def spotify():
                             permission_system=current_user.permission_system,                     
                             )
                             
-                                                  
-@app.route("/spotify/login/url/<string:forwarding_site>")
-@login_required
-@permission_required
-def spotify_login(forwarding_site):
-    global forwarding_site_global
-    
-    forwarding_site_global = forwarding_site
-    
-    response = GET_SPOTIFY_USER()
-    WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Login") 
-
-    return redirect(response)
-    
-    
+ 
 @app.route("/spotify/token")
 @login_required
 @permission_required
@@ -250,10 +240,24 @@ def spotify_token():
         return redirect("http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/dashboard#spotify")
         
     if forwarding_site_global == "spotify":
-        return redirect(url_for('spotify'))     
+        return redirect(url_for('spotify'))
+    
+ 
+@app.route("/spotify/login/url_target/<string:forwarding_site>")
+@login_required
+@permission_required
+def spotify_login(forwarding_site):
+    global forwarding_site_global
+    
+    forwarding_site_global = forwarding_site
+    
+    response = GET_SPOTIFY_USER()
+    WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Login") 
 
+    return redirect(response)
+    
 
-@app.route("/spotify/logout/url/<string:forwarding_site>")
+@app.route("/spotify/logout/url_target/<string:forwarding_site>")
 @login_required
 @permission_required
 def spotify_logout(forwarding_site):

@@ -211,8 +211,11 @@
             <br>
             <div class="row justify-content-md-center">
               <div class="col-sm-3">      
-                <input type="submit" onclick="window.location.href='/system/mqtt#mqtt_table'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
-              </form> 
+                <input type="submit" onclick="window.location.href='/system/mqtt#mqtt_table'" class="btn btn-default" name="change_table_settings" value="Änderungen speichern"/>
+              </form>
+              
+<section id="mqtt_general_settings"></section>              
+              
               </div>
               <div class="col-sm-3"> 
                 <form method="POST">
@@ -224,10 +227,7 @@
         </div>  
 
 
-<section id="logfile"></section>
-
-
-<!-- mqtt update setting -->
+<!-- mqtt general setting -->
 
 
         <div class="panel-group">
@@ -240,6 +240,29 @@
             <div id="collapse_mqtt_settings" class="panel-collapse collapse {{collapse_mqtt_settings}} ">      
               <div class="panel-body">  
                 <form method="POST">    
+                <div class="well well-sm">
+                  Authentifizierung
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">  
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Benutzername:</button>  
+                      </div>                  
+                      <div class="col-sm-9">  
+                        <input type="text" class="form-control" name="set_user" value="{% if user != None %}{{ user }}{% endif %}" />             
+                      </div>  
+                    </div>
+                  </div>
+                  <div class="well well-sm"> 
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">  
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Passwort:</button>  
+                      </div>                  
+                      <div class="col-sm-9">  
+                        <input type="password" class="form-control" name="set_password" value="{% if password != None %}{{ password }}{% endif %}" />             
+                      </div>  
+                    </div>
+                  </div> 
+                </div>
                 <div class="well well-sm">     
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">  
@@ -256,12 +279,14 @@
                         <optgroup> 
                           <option value= "None" > None </option>  
                         </optgroup>                                                                                 
-                      </select>                                        
+                      </select>
+                      
+<section id="logfile"></section>                      
+                      
                     </div>  
-                    <div class="col-sm-2">                   
-                    <input type="submit" onclick="window.location.href='/system/mqtt#mqtt_settings'" class="btn btn-default" name="save_mqtt_update_setting" value="Einstellung speichern" />                                 
-                  </div>     
-                </div>   
+                  </div>
+                </div>                
+                <input type="submit" onclick="window.location.href='/system/mqtt#mqtt_general_settings'" class="btn btn-default" name="save_general_settings" value="Einstellung speichern" />                                 
               </div>              
             </form>
           </div>     
@@ -337,7 +362,7 @@
               <br>
               >>> Wenn die Daten korrekt eingetragen wurden und sich das MQTT-Gerät mit dem MQTT-Server verbunden hat, leuchtet die blaue LED des MQTT-Geräts
               <br>
-              >>> Wenn die blaue LED nicht leuchtet, nochmal mit dem Handy im Netzwerk "APConnect" einloggen und Daten eingetragen
+              >>> Wenn die blaue LED nicht leuchtet, nochmal mit dem Handy im Netzwerk "AutoConnectAP" einloggen und Daten eingetragen
               <br>
               <br>
               2. MQTT-Gerät in SmartHome einbinden

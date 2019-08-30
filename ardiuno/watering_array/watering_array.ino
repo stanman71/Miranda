@@ -8,6 +8,8 @@
 
 // MQTT
 char mqtt_server[40];
+char mqtt_username[40];
+char mqtt_password[40];
 char ieeeAddr[40];
 char path[100];
 
@@ -93,7 +95,9 @@ void wifi_manager(boolean reset_setting) {
                 DeserializationError error = deserializeJson(config_json, buf.get());
                 
                 if (!error) {
-                    strcpy(mqtt_server, config_json["mqtt_server"]);
+                    strcpy(mqtt_server,   config_json["mqtt_server"]);
+                    strcpy(mqtt_username, config_json["mqtt_username"]);
+                    strcpy(mqtt_password, config_json["mqtt_password"]);                                       
                     Serial.println("successful");
           
                 } else {
@@ -107,10 +111,14 @@ void wifi_manager(boolean reset_setting) {
         Serial.println("failed");
     }
 
-    WiFiManagerParameter custom_mqtt_server("server", "mqtt server", mqtt_server, 40);
-
+    WiFiManagerParameter custom_mqtt_server  ("server",   "mqtt server",   mqtt_server, 40);
+    WiFiManagerParameter custom_mqtt_username("username", "mqtt username", mqtt_username, 40);
+    WiFiManagerParameter custom_mqtt_password("password", "mqtt password", mqtt_password, 40);
+        
     wifiManager.setSaveConfigCallback(saveConfigCallback);
     wifiManager.addParameter(&custom_mqtt_server);
+    wifiManager.addParameter(&custom_mqtt_username);
+    wifiManager.addParameter(&custom_mqtt_password);
 
     if (!wifiManager.autoConnect("AutoConnectAP", "password")) {
         Serial.println("failed to connect and hit timeout");
@@ -119,14 +127,18 @@ void wifi_manager(boolean reset_setting) {
         delay(5000);
     }
   
-    strcpy(mqtt_server, custom_mqtt_server.getValue());
-
+    strcpy(mqtt_server,   custom_mqtt_server.getValue());
+    strcpy(mqtt_username, custom_mqtt_username.getValue());
+    strcpy(mqtt_password, custom_mqtt_password.getValue());
+    
     // save new config
 
     if (shouldSaveConfig) {
         
-        DynamicJsonDocument json_data(128);
-        json_data["mqtt_server"] = mqtt_server;
+        DynamicJsonDocument json_data(256);
+        json_data["mqtt_server"]   = mqtt_server;
+        json_data["mqtt_username"] = mqtt_username;
+        json_data["mqtt_password"] = mqtt_password;
     
         File configFile = SPIFFS.open("/config.json", "w");
         
@@ -226,11 +238,11 @@ void reconnect() {
 
         digitalWrite(BUILTIN_LED, HIGH);
 
-        if (client.connect(clientId.c_str())) { 
+        if (client.connect(clientId.c_str(), mqtt_username, mqtt_password)) { 
   
             send_default_mqtt_message(0);
 
-            client.subscribe("SmartHome/mqtt/#");
+            client.subscribe("miranda/mqtt/#");
             Serial.println("MQTT Connected...");
 
             digitalWrite(BUILTIN_LED, LOW);       
@@ -260,7 +272,7 @@ void callback (char* topic, byte* payload, unsigned int length) {
     if (check_ieeeAddr == "devices"){
 
         // create path   
-        String payload_path = "SmartHome/mqtt/log";
+        String payload_path = "miranda/mqtt/log";
         char attributes_path[100];
         payload_path.toCharArray( path, 100 );    
 
@@ -388,7 +400,7 @@ void callback (char* topic, byte* payload, unsigned int length) {
 void send_default_mqtt_message(int pumptime_value) {
 
     // create channel  
-    String payload_path = "SmartHome/mqtt/" + String(ieeeAddr);      
+    String payload_path = "miranda/mqtt/" + String(ieeeAddr);      
     char attributes[100];
     payload_path.toCharArray( path, 100 );    
  

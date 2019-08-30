@@ -55,7 +55,7 @@ This project creates a smarthome environment.
 
 - change folder permissions
 
-       >>> sudo chmod -v -R 777 /home/pi/miranda
+       >>> sudo chmod -v -R 770 /home/pi/miranda
 
 - install BLAS and LAPACK
 
@@ -79,6 +79,11 @@ This project creates a smarthome environment.
  
        >>> sudo cp /home/pi/miranda/support/spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
 
+- default_login
+
+       >>> admin
+       >>> qwer1234
+
 </br>
 
 #### 2. Autostart
@@ -87,18 +92,17 @@ This project creates a smarthome environment.
 
        >>> sudo nano /etc/systemd/system/miranda.service
 
-       [Unit]
-       Description=Miranda
-       After=network.target
+           [Unit]
+           Description=Miranda
+           After=network.target
 
-       [Service]
-       ExecStart=/home/pi/miranda/run.py
-       WorkingDirectory=/home/pi
-       Restart=always
-       user=pi
+           [Service]
+           ExecStart=/home/pi/miranda/run.py
+           WorkingDirectory=/home/pi
+           Restart=always
 
-       [Install]
-       WantedBy=multi-user.target
+           [Install]
+           WantedBy=multi-user.target
 
 - enable autostart
 
@@ -143,6 +147,8 @@ https://forum-raspberrypi.de/forum/thread/31959-mosquitto-autostart/
 </br>
 https://github.com/eclipse/mosquitto
 </br>
+https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de5df2e29afc
+</br>
 
 #### 1. Installation
 
@@ -168,16 +174,16 @@ https://github.com/eclipse/mosquitto
 
        >>> sudo nano /etc/systemd/system/mosquitto.service
 
-       [Unit]
-       Description=MQTT Broker
-       After=network.target
+           [Unit]
+           Description=MQTT Broker
+           After=network.target
 
-       [Service]
-       ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
-       Restart=always
+           [Service]
+           ExecStart=/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf
+           Restart=always
 
-       [Install]
-       WantedBy=multi-user.target
+           [Install]
+           WantedBy=multi-user.target
 
 - enable autostart
 
@@ -192,6 +198,33 @@ https://github.com/eclipse/mosquitto
 
        >>> systemctl status mosquitto.service
        >>> journalctl -u mosquitto
+
+</br>
+
+#### 4. Authentification
+
+- stop mosquitto
+
+       >>> sudo systemctl stop mosquitto
+
+- create a new user
+
+       >>> sudo mosquitto_passwd -c /etc/mosquitto/passwd <user_name>
+
+- edit mosquitto config and add these two lines
+
+       >>> sudo nano /etc/mosquitto/mosquitto.conf
+
+           password_file /etc/mosquitto/passwd
+           allow_anonymous false
+
+- restart mosquitto
+
+       >>> sudo systemctl start mosquitto
+
+- verify the authentication
+
+       >>> mosquitto_sub -h localhost -p 1883 -t "test" -u <user_name> -P <password>
 
 
 </br>
@@ -229,7 +262,7 @@ https://github.com/Koenkk/zigbee2mqtt
        >>> cd /opt/zigbee2mqtt
        >>> npm install
 	   
-	   >>> Note that the npm install produces some warning which can be ignored
+	   Note that the npm install produces some warning which can be ignored
 
 
 ##### ERROR: npm not founded
@@ -242,19 +275,23 @@ https://github.com/Koenkk/zigbee2mqtt
 
 #### 2. Configuration
 
-- edit configuration.yaml
+- change file permissions
 
-       >>> nano /opt/zigbee2mqtt/data/configuration.yaml
+       >>> sudo chmod -v -R 070 /opt/zigbee2mqtt/data/configuration.yaml
 
-       # MQTT settings
-       mqtt:
-       # MQTT base topic for zigbee2mqtt MQTT messages
-       base_topic: SmartHome/zigbee2mqtt
-       # MQTT server URL
-       server: 'mqtt://localhost'
-       # MQTT server authentication, uncomment if required:
-       # user: my_user
-       # password: my_password
+- edit zigbee2mqtt config
+
+       >>> sudo nano /opt/zigbee2mqtt/data/configuration.yaml
+
+           # MQTT settings
+           mqtt:
+           # MQTT base topic for zigbee2mqtt MQTT messages
+           base_topic: miranda/zigbee2mqtt
+           # MQTT server URL
+           server: 'mqtt://localhost'
+           # MQTT server authentication, uncomment if required:
+           user: <my_user>
+           password: <my_password>
 
 </br>
 
@@ -292,20 +329,19 @@ https://github.com/Koenkk/zigbee2mqtt
 
        >>> sudo nano /etc/systemd/system/zigbee2mqtt.service
 
-       [Unit]
-       Description=zigbee2mqtt
-       After=network.target
+           [Unit]
+           Description=zigbee2mqtt
+           After=network.target
 
-       [Service]
-       ExecStart=/usr/bin/npm start
-       WorkingDirectory=/opt/zigbee2mqtt
-       StandardOutput=inherit
-       StandardError=inherit
-       Restart=always
-       User=pi
+           [Service]
+           ExecStart=/usr/bin/npm start
+           WorkingDirectory=/opt/zigbee2mqtt
+           StandardOutput=inherit
+           StandardError=inherit
+           Restart=always
 
-       [Install]
-       WantedBy=multi-user.target
+           [Install]
+           WantedBy=multi-user.target
 
 - enable autostart
 
@@ -359,18 +395,18 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 
 - Connect the CC2530 to the Raspberry
 
-       CC2530 -> Raspberry
+       >>> CC2530 -> Raspberry
 	   
-       >>> VCC -> 3,3V (Pin1)
-       >>> GND -> GND  (Pin6)
-       >>> P02 -> TXD  (Pin8 / BCM 14)
-       >>> P03 -> RXD  (Pin10 / BCM 15)
+           VCC -> 3,3V (Pin1)
+           GND -> GND  (Pin6)
+           P02 -> TXD  (Pin8 / BCM 14)
+           P03 -> RXD  (Pin10 / BCM 15)
 
 </br>
 
 - add following at the end of the config file
 
-	   >>> sudo nano /boot/config.txt 
+       >>> sudo nano /boot/config.txt 
 	   
 	   enable_uart=1
 	   dtoverlay=pi3-disable-bt
@@ -383,9 +419,9 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 
        >>> sudo nano /boot/cmdline.txt
 
-       console=serial0,115200 console=ttyAMA0,11520
+           console=serial0,115200 console=ttyAMA0,11520
 
-- change the zigbee2mqtt configuration
+- add the lines in zigbee2mqtt config
 
        >>> sudo nano data/configuration.yaml
 	   
@@ -436,19 +472,19 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 - create ".asoundrc" in your home folder with correct hw settings (see example file in https://github.com/wanleg/snowboyPi or /support/Snowboy)
 
-       sudo nano /home/pi/.asoundrc
+       >>> sudo nano /home/pi/.asoundrc
 
-       pcm.!default {
-         type asym
-          playback.pcm {
-            type plug
-            slave.pcm "hw:0,0"
-          }
-          capture.pcm {
-            type plug
-            slave.pcm "hw:1,0"
-          }
-       }
+           pcm.!default {
+             type asym
+              playback.pcm {
+                type plug
+                slave.pcm "hw:0,0"
+              }
+              capture.pcm {
+                type plug
+                slave.pcm "hw:1,0"
+              }
+           }
 
 - find out hw cards (e.g "card 0, device 0" is "hw:0,0")
 
@@ -475,9 +511,9 @@ https://pimylifeup.com/raspberry-pi-snowboy/
 
 #### 4. Replace alsa.conf
 
-       https://www.raspberrypi.org/forums/viewtopic.php?t=136974
-
        >>> sudo cp /home/pi/miranda/support/snowboy/alsa.conf /usr/share/alsa/alsa.conf
+
+           https://www.raspberrypi.org/forums/viewtopic.php?t=136974
 
 </br>
 
@@ -557,14 +593,15 @@ https://www.basecube.de/2018/03/17/download/
 
 </br>
 
-- main page
-
-       >>> expand filesystem to 200mb
-       >>> set a static ip-address
-
 - wifi settings
 
        >>> activate wlan
+       >>> insert wlan connetion data (ssid + password)
+
+- main page
+
+       >>> resize filesystem to 200mb
+       >>> set a static ip-address
 
 </br>
 
@@ -609,6 +646,7 @@ https://www.basecube.de/2018/03/17/download/
 
        >>> add premium account 
        >>> activate player at spotify connect
+       >>> activate option "Überwache die Verbindung der Spotty Connect Helferanwendung"
        >>> the new player is now selectable in spotify
 
 - synchronize player
@@ -622,9 +660,82 @@ https://www.basecube.de/2018/03/17/download/
 
 #### 5. Squeezelite - Client
 
-- Windows 10
+##### Raspian
+
+https://forums.slimdevices.com/showthread.php?110523-squeezelite-shows-up-in-lms-settings-but-not-in-players
+</br>
+http://www.winko-erades.nl/installing-squeezelite-player-on-a-raspberry-pi-running-jessie/
+</br>
+</br>
+
+- installation
+
+       >>> sudo apt-get install squeezelite
+       
+- change Hostname
+
+       >>> sudo nano /etc/hostname
+
+- get sound device informations
+
+       >>> aplay -L
+
+- squeezelite config
+
+       >>> sudo nano /etc/default/squeezelite
+
+	   SL_SOUNDCARD="hw:CARD=sndrpihifiberry,DEV=0"
+	   SB_EXTRA_ARGS="-a 180"
+
+- volume setting
+
+       >>> alsamixer
+
+           press "F6" and setect sound-device
+           use arrow keys and change "Digital" to 30%     
+
+    
+##### Windows 10
+
+- installation
 
        >>> microsoft store >>> Squeezelite-X
 
+</br>
+------------
+</br>
 
+### Optional: Raspotify (Spotify Connect for Python)
+
+https://github.com/dtcooper/raspotify
+</br>
+</br>
+
+- installation
+
+       >>> curl -sL https://dtcooper.github.io/raspotify/install.sh | sh
+       
+- get audio device informations
+
+       >>> aplay -l
+
+- raspotify config
+
+       >>> sudo nano /etc/default/raspotify
+
+	   DEVICE_NAME="raspotify" 
+	   BITRATE="320"
+	   OPTIONS="--username <USERNAME> --password <PASSWORD> --device hw:0,1"
+
+- restart raspotify 
+
+       >>> sudo systemctl restart raspotify
+
+- volume setting
+
+       >>> alsamixer
+
+           press "F6" and setect sound-device
+           use arrow keys and change "Digital" to 30%  
+     
 

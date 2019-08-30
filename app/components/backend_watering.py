@@ -22,7 +22,7 @@ def START_PUMP(plant_id):
     plant    = GET_PLANT_BY_ID(plant_id)
     ieeeAddr = plant.mqtt_device.ieeeAddr 
     
-    channel  = "SmartHome/mqtt/" + ieeeAddr + "/set"
+    channel  = "miranda/mqtt/" + ieeeAddr + "/set"
     
     if plant.pumptime != "auto":    
         msg = '{"pump":"ON","pump_time":' + str(plant.pumptime) + '}'
@@ -124,11 +124,11 @@ def WATERING_THREAD(group_number):
                 # 300 moisture low
                 # 700 moisture high
                 
-                if moisture_level == "much" and current_moisture < 550:
+                if moisture_level == "much" and current_moisture < 350:
                     watering = True
-                if moisture_level == "normal" and current_moisture < 450:
+                if moisture_level == "normal" and current_moisture < 250:
                     watering = True                
-                if moisture_level == "less" and current_moisture < 300:
+                if moisture_level == "less" and current_moisture < 150:
                     watering = True     
                         
             else:
@@ -199,53 +199,53 @@ def PUMPTIME_AUTO_UPDATE_TREAD(plant_id):
     
     # wait 30 minutes
     time.sleep(1800)
-    
-    
+     
     # get current sensor values
     UPDATE_MQTT_DEVICES("mqtt")
     time.sleep(30)
-    
-    
+     
     # get moisture target and moisture current
     plant = GET_PLANT_BY_ID(plant_id)
     
     if plant.moisture_level == "much":
-        moisture_target = 550
+        moisture_target = 350
     if plant.moisture_level == "normal":
-        moisture_target = 450               
+        moisture_target = 250               
     if plant.moisture_level == "less":
-        moisture_target = 350   
+        moisture_target = 150   
         
     sensor_values      = plant.mqtt_device.last_values
     sensor_values_json = json.loads(sensor_values) 
     moisture_current   = sensor_values_json["sensor_moisture"]
     
-    
-    # compare moisture values and set new pumptime_auto value
-    pumptime_auto_current = plant.pumptime_auto
+    WRITE_LOGFILE_SYSTEM("SUCCESS", "Plant - " + plant.name + " | Moisture checked") 
 
     # more than 30 % lower
     if moisture_current < int(moisture_target * 0.7):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 1.3))    
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 1.3))
+        return
     
     # 20 % - 30 % lower
     if moisture_current < int(moisture_target * 0.8):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 1.2))
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 1.2))
+        return
         
     # 10 % - 20 % lower    
     if moisture_current < int(moisture_target * 0.9):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 1.1))        
-        
-        
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 1.1))
+        return
+              
     # 10 % - 20% higher
     if moisture_current > int(moisture_target * 1.1):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 0.9))    
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 0.9))
+        return
     
     # 20 % - 30 % higher
     if moisture_current > int(moisture_target * 1.2):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 0.8))
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 0.8))
+        return
         
     # more than 30 % higher    
     if moisture_current > int(moisture_target * 1.3):
-        SET_PLANT_PUMPTIME_AUTO(plant_id, int(pumptime_auto_current * 0.7))            
-        
+        SET_PLANT_PUMPTIME_AUTO(plant_id, int(plant.pumptime_auto * 0.7))
+        return

@@ -57,6 +57,7 @@ def dashboard(template):
     selected_type_success  = "selected"   
     selected_type_warning  = "selected"                                                      
     selected_type_error    = "selected"
+    log_search             = ""
     
     collapse_dashboard_led      = ""
     collapse_dashboard_devices  = ""         
@@ -221,7 +222,7 @@ def dashboard(template):
                                 # mqtt
                                 if device.gateway == "mqtt":
                                     
-                                    channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                                    channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
                                     msg      = dashboard_setting
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
@@ -232,7 +233,7 @@ def dashboard(template):
                                 # zigbee2mqtt
                                 if device.gateway == "zigbee2mqtt":
                                     
-                                    channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                                    channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
                                     msg      = dashboard_setting
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
@@ -311,7 +312,7 @@ def dashboard(template):
                         
                         if new_setting == True:                             
        
-                            channel  = "SmartHome/" + plant.mqtt_device.gateway + "/" + plant.mqtt_device.ieeeAddr + "/set"                        
+                            channel  = "miranda/" + plant.mqtt_device.gateway + "/" + plant.mqtt_device.ieeeAddr + "/set"                        
                             msg      = watering_control_setting
 
                             heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
@@ -481,7 +482,7 @@ def dashboard(template):
     selected_log_types = ["EVENT", "STATUS", "DATABASE", "SUCCESS", "WARNING", "ERROR"]     
    
     # change log selection 
-    if request.form.get("select_log_types") != None:   
+    if request.form.get("get_log_output") != None:   
         
         collapse_dashboard_log = "in" 
         
@@ -494,7 +495,7 @@ def dashboard(template):
         
         selected_log_types = [] 
    
-        list_selection = request.form.getlist('get_log_settings[]')
+        list_selection = request.form.getlist('set_log_types[]')
         
         for element in list_selection:
             
@@ -515,21 +516,23 @@ def dashboard(template):
                 selected_log_types.append("WARNING")                
             if element == "ERROR":
                 selected_type_error = "selected"
-                selected_log_types.append("ERROR")     
+                selected_log_types.append("ERROR")
+                
+        log_search = request.form.get('set_log_search')
 
 
     # get log entries
-    if GET_LOGFILE_SYSTEM(selected_log_types, 15) is not None:
-        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 15)
+    if GET_LOGFILE_SYSTEM(selected_log_types, 15, log_search) is not None:
+        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 15, log_search)
         
     else:
         data_log_system = ""
         error_message_log = "Keine Einträge gefunden"    
     
     
-    """ ############### """
-    """ general control """
-    """ ############### """       
+    """ ####### """
+    """ general """
+    """ ####### """       
     
 
     data_led = GET_ALL_ACTIVE_LED_GROUPS()

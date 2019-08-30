@@ -659,6 +659,9 @@ def system_mqtt():
     error_message_mqtt = ""
     error_message_change_settings = ""
     
+    user     = GET_MQTT_AUTHENTIFICATION().user
+    password = GET_MQTT_AUTHENTIFICATION().password
+    
     mqtt_device_name       = ""   
     check_value_mqtt       = ["", ""]
     collapse_mqtt_settings = ""
@@ -698,11 +701,40 @@ def system_mqtt():
             SEND_EMAIL("ERROR", "MQTT | " + str(e)) 
 
 
-        # save mqtt update setting
-        if request.form.get("save_mqtt_update_setting") is not None:
+        # change table settings
+        if request.form.get("change_table_settings") != None:  
+
+            for i in range (1,26):
+                if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
+                                
+                    # rename devices                   
+                    new_name = request.form.get("set_name_" + str(i))
+                    old_name = GET_MQTT_DEVICE_BY_ID(i).name
+
+                    if new_name != old_name:          
+                        if not GET_MQTT_DEVICE_BY_NAME(new_name):  
+                            ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
+                            SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)                         
+                        else: 
+                            error_message_change_settings = "Name bereits vergeben >>> " + new_name
+
+
+        # update device list
+        if request.form.get("update_mqtt_devices") != None:
+            error_message_change_settings = UPDATE_MQTT_DEVICES("mqtt")
+            
+
+        # save mqtt setting
+        if request.form.get("save_general_settings") is not None:
                           
             collapse_mqtt_settings = "in"
+
+            user     = request.form.get("set_user")
+            password = request.form.get("set_password")
             
+            SET_MQTT_AUTHENTIFICATION(user, password)
+
+
             mqtt_update_minute = request.form.get("get_mqtt_update_minute")
 
             mqtt_update_task = GET_SCHEDULER_TASK_BY_NAME("mqtt_update")
@@ -725,30 +757,7 @@ def system_mqtt():
                                   "None", "None", "None",
                                   "None", "None", "None")                    
                  
-    
-        # change settings
-        if request.form.get("change_settings") != None:  
 
-            for i in range (1,26):
-                if request.form.get("set_name_" + str(i)) != "" and request.form.get("set_name_" + str(i)) != None:
-                                
-                    # rename devices                   
-                    new_name = request.form.get("set_name_" + str(i))
-                    old_name = GET_MQTT_DEVICE_BY_ID(i).name
-
-                    if new_name != old_name:          
-                        if not GET_MQTT_DEVICE_BY_NAME(new_name):  
-                            ieeeAddr = GET_MQTT_DEVICE_BY_ID(i).ieeeAddr                  
-                            SET_MQTT_DEVICE_NAME(ieeeAddr, new_name)                         
-                        else: 
-                            error_message_change_settings = "Name bereits vergeben >>> " + new_name
-
-
-        # update device list
-        if request.form.get("update_mqtt_devices") != None:
-            error_message_change_settings = UPDATE_MQTT_DEVICES("mqtt")
-            
-            
         # reset logfile
         if request.form.get("reset_logfile") != None: 
             RESET_LOGFILE("log_mqtt")   
@@ -779,6 +788,8 @@ def system_mqtt():
                             mqtt_device_list=mqtt_device_list,
                             collapse_mqtt_settings=collapse_mqtt_settings,
                             collapse_mqtt_log=collapse_mqtt_log,
+                            user=user,
+                            password=password,
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -874,7 +885,7 @@ def system_zigbee2mqtt():
 
     if zigbee2mqtt_setting == "True":
         
-        error_message_zigbee2mqtt = MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/", "")
+        error_message_zigbee2mqtt = MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/", "")
         
         if request.method == 'POST':
 
@@ -894,7 +905,7 @@ def system_zigbee2mqtt():
                             if not GET_MQTT_DEVICE_BY_NAME(new_name):
 
                                 # no connection to mqtt
-                                if MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/rename", 
+                                if MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/rename", 
                                                 '{"old": "' + old_name + '", "new": "' + new_name + '"}') != "Keine Verbindung zu MQTT":
 
                                     time.sleep(3)
@@ -919,6 +930,23 @@ def system_zigbee2mqtt():
                 error_message_change_settings = UPDATE_MQTT_DEVICES("zigbee2mqtt")
 
 
+            def DISABLE_ZIGBEE_PAIRING():
+                
+                time.sleep(1800)
+                
+                SET_ZIGBEE2MQTT_PAIRING("false")
+                
+                MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/permit_join", "false")
+                time.sleep(1)
+
+                zigbee_check = CHECK_ZIGBEE2MQTT_SETTING_PROCESS("bridge/config", '"permit_join":false', 1, 5)
+                
+                if zigbee_check == "":                
+                    WRITE_LOGFILE_SYSTEM("SUCCESS", "ZigBee2MQTT | Pairing disabled") 
+                else:             
+                    WRITE_LOGFILE_SYSTEM("ERROR", "ZigBee2MQTT | Pairing disabled | Setting not confirmed")  
+
+
             # change pairing setting
             if request.form.get("set_pairing") != None: 
                 
@@ -929,7 +957,9 @@ def system_zigbee2mqtt():
 
                 if setting_pairing == "True":
                         
-                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "true")                   
+                    MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/permit_join", "true")
+                    Thread = threading.Thread(target=DISABLE_ZIGBEE_PAIRING)
+                    Thread.start()                      
                     time.sleep(1)
 
                     zigbee_check = CHECK_ZIGBEE2MQTT_SETTING_PROCESS("bridge/config", '"permit_join":true', 1, 5)
@@ -943,7 +973,7 @@ def system_zigbee2mqtt():
                                                 
                 else:
                     
-                    MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/permit_join", "false")
+                    MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/permit_join", "false")
                     time.sleep(1)
 
                     zigbee_check = CHECK_ZIGBEE2MQTT_SETTING_PROCESS("bridge/config", '"permit_join":false', 1, 5)
@@ -960,7 +990,7 @@ def system_zigbee2mqtt():
                 
                 collapse_zigbee2mqtt_topology = "in"
                 
-                MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/networkmap", "graphviz")
+                MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/networkmap", "graphviz")
                 zigbee_topology_show = True
                 time.sleep(1)
 
@@ -1033,7 +1063,7 @@ def remove_zigbee2mqtt_device(ieeeAddr):
     if result != True:
         SET_ERROR_DELETE_MQTT_DEVICE(result)
     else:
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/remove", device_name) 
+        MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/remove", device_name) 
     
     return redirect(url_for('system_zigbee2mqtt'))
 
@@ -1605,13 +1635,59 @@ def delete_snowboy_hotword(filename):
 @login_required
 @permission_required
 def system_user():
+    error_message_add_user = []
     error_change_settings = ""
+    message_admin_password_not_changed = ""
+    
+    username        = ""
+    email           = ""
+    password        = ""
+    hashed_password = ""
     
     RESET_USER_TASK_ERRORS()        
     RESET_USER_COLLAPSE()
 
 
-    if request.method == "POST":     
+    if request.method == "POST":
+        
+        # add user
+        if request.form.get("add_user") != None: 
+            
+            if request.form.get("set_username") != None:
+                # missing name
+                if request.form.get("set_username") == "":
+                    error_message_add_user.append("Keinen Benutzernamen angegeben")                                    
+                else:         
+                    username = request.form.get("set_username")
+                    
+            if request.form.get("set_email") != None:
+                # missing email address
+                if request.form.get("set_email") == "":
+                    error_message_add_user.append("Keine eMail-Adresse angegeben")                                    
+                else:         
+                    email = request.form.get("set_email")  
+        
+            if request.form.get("set_password") != None:
+                # missing password
+                if request.form.get("set_password") == "":
+                    error_message_add_user.append("Kein Passwort angegeben")                                    
+                else:         
+                    password = request.form.get("set_password")
+
+                    if 8 <= len(password) <= 20:                
+                        hashed_password = generate_password_hash(password, method='sha256')
+                    else:
+                        error_message_add_user.append("Passwort muss zwischen 8 und 20 Zeichen haben")
+
+
+            if username != "" and email != "" and hashed_password != "":
+                ADD_USER(username, email, hashed_password)
+                
+                username = ""
+                email    = ""
+                password = ""
+                    
+  
         # change user settings
         if request.form.get("change_user_settings") != None:
             
@@ -1651,11 +1727,11 @@ def system_user():
                             username = request.form.get("set_username_" + str(i)) 
                             
                         elif request.form.get("set_username_" + str(i)) == GET_USER_BY_ID(i).username:
-                            username = GET_USER_BY_ID(i).username                        
+                            username = GET_USER_BY_ID(i).username
                             
                         else:
                             username = GET_USER_BY_ID(i).username 
-                            error_change_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"                          
+                            error_change_settings = error_change_settings + "|" + "Ungültige Eingabe >>> Keinen Name angegeben"                         
                         
                         
                         # check email
@@ -1664,11 +1740,11 @@ def system_user():
                             email = request.form.get("set_email_" + str(i)) 
                         
                         elif request.form.get("set_email_" + str(i)) == GET_USER_BY_ID(i).email:
-                            email = GET_USER_BY_ID(i).email                        
+                            email = GET_USER_BY_ID(i).email
                         
                         else:
                             email = GET_USER_BY_ID(i).email 
-                            error_change_settings = "Ungültige Eingabe (leeres Feld / Name schon vergeben"   
+                            error_change_settings = error_change_settings + "|" + "Ungültige Eingabe >>> Keine eMail-Adresse angegeben"
 
 
                         # change user permissions
@@ -1741,7 +1817,7 @@ def system_user():
                             
                             try:
                                 
-                                if 8 <= len(password) <= 80:
+                                if 8 <= len(password) <= 20:
                                     
                                     if str(password) == str(request.form.get("set_password_check_" + str(i))):
                                         
@@ -1750,27 +1826,38 @@ def system_user():
                                         RESET_USER_PASSWORD(i, hashed_password)
                                          
                                     else:
-                                        error_change_settings = "Eingebene Passwörter sind nicht identisch"
+                                        error_change_settings = error_change_settings + "|" + "Eingegebene Passwörter sind nicht identisch"
                                     
                                 else:    
-                                    error_change_settings = "Passwort muss zwischen 8 und 80 Zeichen haben"
+                                    error_change_settings = error_change_settings + "|" + "Passwort muss zwischen 8 und 20 Zeichen haben"
                                     
                             except:
-                                error_change_settings = "Passwort muss zwischen 8 und 80 Zeichen haben"
+                                error_change_settings = error_change_settings + "|" + "Passwort muss zwischen 8 und 20 Zeichen haben"
                                 
              
                     # no user has permission system
                     else:    
-                        error_change_settings = "Mindestens ein Nutzer muss Zugriffsrechte für 'System' haben"   
-                        
-                    SET_USER_CHANGE_ERRORS(i, error_change_settings)
+                        error_change_settings = error_change_settings + "|" + "Mindestens ein Benutzer muss Zugriffsrechte für 'System' haben"  
+                            
+                    SET_USER_CHANGE_ERRORS(i, error_change_settings[1:])
                             
                        
     user_list = GET_ALL_USERS()
 
+    try:                                        
+        if GET_USER_BY_NAME("admin").password == "sha256$OeDkVenT$bc8d974603b713097e69fc3efa1132991bfb425c59ec00f207e4b009b91f4339":
+            message_admin_password_not_changed = "Passwort von Benutzer >admin< muss geändert werden"
+    except:
+        pass
+
+
     return render_template('system_user.html',
-                            user_list=user_list,            
-                            active05="active",
+                            error_message_add_user=error_message_add_user,
+                            message_admin_password_not_changed=message_admin_password_not_changed,
+                            username=username,
+                            email=email,
+                            password=password,
+                            user_list=user_list,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
@@ -1980,23 +2067,24 @@ def system_log():
     selected_type_success  = "selected"   
     selected_type_warning  = "selected"                                                      
     selected_type_error    = "selected"
+    log_search             = ""    
 
     # create log types list
     selected_log_types = ["EVENT", "STATUS", "DATABASE", "SUCCESS", "WARNING", "ERROR"]     
    
     # change log selection 
-    if request.form.get("select_log_types") != None:   
+    if request.form.get("get_log_output") != None:   
    
         selected_type_event    = ""
         selected_type_status   = ""
         selected_type_database = ""        
         selected_type_success  = ""   
         selected_type_warning  = ""                                                     
-        selected_type_error    = ""      
+        selected_type_error    = ""
         
         selected_log_types = [] 
    
-        list_selection = request.form.getlist('get_log_settings[]')
+        list_selection = request.form.getlist('set_log_types[]')
         
         for element in list_selection:
             
@@ -2019,10 +2107,12 @@ def system_log():
                 selected_type_error = "selected"
                 selected_log_types.append("ERROR")     
 
+        log_search = request.form.get('set_log_search')
+       
 
     # get log entries
-    if GET_LOGFILE_SYSTEM(selected_log_types, 50) is not None:
-        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 50)
+    if GET_LOGFILE_SYSTEM(selected_log_types, 50, log_search) is not None:
+        data_log_system = GET_LOGFILE_SYSTEM(selected_log_types, 50, log_search)
         
     else:
         data_log_system = ""

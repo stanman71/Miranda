@@ -149,24 +149,30 @@ def MQTT_RECEIVE():
                      WRITE_LOGFILE_SYSTEM("ERROR", "Thread | MQTT Message | " + str(e)) 
                      SEND_EMAIL("ERROR", "Thread | MQTT Message | " + str(e))                    
                      print(e)
-            
-    
-    def on_connect(client, userdata, flags, rc):
-        client.subscribe("SmartHome/#")
 
+
+    def on_connect(client, userdata, flags, rc):   
+        if rc != 0:
+            print("ERROR: MQTT | Broker - " + BROKER_ADDRESS + " | Bad Connection | Returned Code = " + str(rc)) 
+        
+            WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | Bad Connection | Returned Code = " + str(rc))         
+        
+        else:
+            client.subscribe("miranda/#")
+  
+            print("MQTT | Broker - " + BROKER_ADDRESS + " | Connected") 
+            WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | Connected")
+                
+ 
     client = mqtt.Client()
+    client.username_pw_set(username=GET_MQTT_AUTHENTIFICATION().user,password=GET_MQTT_AUTHENTIFICATION().password)
     client.on_connect = on_connect
     client.on_message = on_message
      
     try:
         client.connect(BROKER_ADDRESS)
-         
-        print("Connected to MQTT Broker: " + BROKER_ADDRESS)
-        
-        WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | Connected") 
-     
         client.loop_forever()
-        
+
     except Exception as e:
         print("ERROR: MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
         
@@ -226,7 +232,19 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
         if ieeeAddr != "":  
             
             # save last values and last contact 
-            SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg) 
+            SET_MQTT_DEVICE_LAST_VALUES(ieeeAddr, msg)
+            
+            # check battery
+            if GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).gateway == "zigbee2mqtt":
+                
+                try:
+                    data = json.loads(msg)
+                    
+                    if int(data["battery"]) < 20:
+                        WRITE_LOGFILE_SYSTEM("WARNING", "Zigbee2MQTT | Device - " + GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name + " | Battery low")
+                        SEND_EMAIL("WARNING", "Zigbee2MQTT | Device - " + GET_MQTT_DEVICE_BY_IEEEADDR(ieeeAddr).name + " | Battery low")                         
+                except:
+                    pass                
 
 
         if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_control":
@@ -250,8 +268,8 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
         if device_type == "controller":
             
             # start controller job          
-            heapq.heappush(process_management_queue, (1, ("controller", ieeeAddr, msg)))        
-    
+            heapq.heappush(process_management_queue, (1, ("controller", ieeeAddr, msg)))
+
 
 """ #################### """
 """ mqtt publish message """
@@ -264,15 +282,17 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
             print ('Message Published...')
 
         client = mqtt.Client()
+        client.username_pw_set(username=GET_MQTT_AUTHENTIFICATION().user,password=GET_MQTT_AUTHENTIFICATION().password)          
         client.on_publish = on_publish
-        client.connect(BROKER_ADDRESS) 
+        client.connect(BROKER_ADDRESS)      
         client.publish(MQTT_TOPIC,MQTT_MSG)
+        
         client.disconnect()
 
         return ""
 
     except Exception as e:
-        print("ERROR MQTT: " + str(e))
+        print("ERROR: MQTT Publish | " + str(e))
         return ("Fehler MQTT >>> " + str(e))
 
 
@@ -281,87 +301,6 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 """           mqtt functions         """
 """ ################################ """
 """ ################################ """
-
-
-""" ######################## """
-"""  check device exceptions """
-""" ######################## """
-
-
-def CHECK_DEVICE_EXCEPTIONS(id, setting):
-    
-    device = GET_MQTT_DEVICE_BY_ID(id)
-                        
-    # ####################
-    # exception ip_address 
-    # ####################
-    
-    setting           = setting.replace(" ", "")
-    exception_setting = device.exception_setting.replace(" ", "")
-    
-    if device.exception_option == "IP-Address" and exception_setting == setting:
-
-        if ping(device.exception_value_1, timeout=1) != None:    
-            return (device.name + " | Device running")
-        
-        else:
-            return True
-
-
-    # ################
-    # exception sensor
-    # ################
-    
-    if device.exception_sensor_ieeeAddr != "None" and exception_setting == setting:
-        
-        sensor_ieeeAddr = device.exception_sensor_ieeeAddr
-        sensor_key      = device.exception_value_1
-        
-        operator = device.exception_value_2
-        value    = device.exception_value_3
-
-        try:
-             value = str(value).lower()
-        except:
-             pass
-                 
-        
-        # get sensordata 
-        data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.exception_sensor_ieeeAddr).last_values)
-        sensor_value = data[sensor_key]
-        
-        try:
-             sensor_value = str(sensor_value).lower()
-        except:
-             pass
-        
-              
-        # compare conditions
-        if operator == "=" and value.isdigit():
-            if int(sensor_value) == int(value):
-                return (device.name + " | Sensor passing failed")   
-            else:
-                return True
-                
-        if operator == "=" and not value.isdigit():
-            if str(sensor_value) == str(value):
-                return (device.name + " | Sensor passing failed")  
-            else:
-                return True
-                
-        if operator == "<" and value.isdigit():
-            if int(sensor_value) < int(value):
-                return (device.name + " | Sensor passing failed")  
-            else:
-                return True
-                
-        if operator == ">" and value.isdigit():
-            if int(sensor_value) > int(value):
-                return (device.name + " | Sensor passing failed")  
-            else:
-                return True
-            
-    return True
 
 
 """ ################### """
@@ -375,14 +314,14 @@ def UPDATE_MQTT_DEVICES(gateway):
         
         message_founded = False
 
-        MQTT_PUBLISH("SmartHome/mqtt/devices", "")  
+        MQTT_PUBLISH("miranda/mqtt/devices", "")  
         time.sleep(3)
 
         try:
             for message in GET_MQTT_INCOMING_MESSAGES(5):
                 
-                if message[1] == "SmartHome/mqtt/log": 
-                    
+                if message[1] == "miranda/mqtt/log":
+
                     message_founded = True   
 
                     message = str(message[2])
@@ -393,7 +332,6 @@ def UPDATE_MQTT_DEVICES(gateway):
                     gateway         = "mqtt"
                     ieeeAddr        = data['ieeeAddr']
                     model           = data['model']
-
 
                     try:
                         device_type = data['device_type']
@@ -442,7 +380,7 @@ def UPDATE_MQTT_DEVICES(gateway):
                         SET_MQTT_DEVICE_LAST_CONTACT(ieeeAddr)
                       
                     # update input values
-                    MQTT_PUBLISH("SmartHome/mqtt/" + ieeeAddr + "/get", "")  
+                    MQTT_PUBLISH("miranda/mqtt/" + ieeeAddr + "/get", "")  
 
 
             if message_founded == True:
@@ -454,27 +392,27 @@ def UPDATE_MQTT_DEVICES(gateway):
                 SEND_EMAIL("WARNING", "MQTT | Update Devices | No Message founded")             
                 return "MQTT >>> Update Devices >>> Kein Message gefunden"
             
-            
+       
         except Exception as e:
             if str(e) == "string index out of range":
                 WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | No connection") 
                 SEND_EMAIL("ERROR", "MQTT | No connection")                 
                 return ("MQTT >>> Update Devices >>> " + str(error))     
-    
+
 
     if gateway == "zigbee2mqtt":
         
         message_founded = False
         error = ""
     
-        MQTT_PUBLISH("SmartHome/zigbee2mqtt/bridge/config/devices", "")  
+        MQTT_PUBLISH("miranda/zigbee2mqtt/bridge/config/devices", "")  
         time.sleep(2)
       
         try:
 
             for message in GET_MQTT_INCOMING_MESSAGES(5):
                     
-                if message[1] == "SmartHome/zigbee2mqtt/bridge/log":
+                if message[1] == "miranda/zigbee2mqtt/bridge/log":
 
                     message_founded = True
 
@@ -585,14 +523,14 @@ def REQUEST_MQTT_SENSORDATA(job_name):
     sensor_key = sensordata_job.sensor_key
     sensor_key = sensor_key.replace(" ", "")
  
-    channel = "SmartHome/" + device_gateway + "/" + device_ieeeAddr + "/get"
+    channel = "miranda/" + device_gateway + "/" + device_ieeeAddr + "/get"
     MQTT_PUBLISH(channel, "")  
 
     time.sleep(2)
     
     for message in GET_MQTT_INCOMING_MESSAGES(5):
         
-        if message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr:
+        if message[1] == "miranda/" + device_gateway + "/" + device_ieeeAddr:
                 
             try:
 
@@ -630,7 +568,7 @@ def SAVE_MQTT_SENSORDATA(job_id):
     
     for message in GET_MQTT_INCOMING_MESSAGES(10):
         
-        if (message[1] == "SmartHome/" + device_gateway + "/" + device_ieeeAddr):
+        if (message[1] == "miranda/" + device_gateway + "/" + device_ieeeAddr):
                                 
             try:
                 data     = json.loads(message[2])
@@ -706,7 +644,7 @@ def CHECK_MQTT_SETTING(ieeeAddr, setting, limit):
     for message in GET_MQTT_INCOMING_MESSAGES(limit):
         
         # search for fitting message in incoming_messages_list
-        if message[1] == "SmartHome/mqtt/" + ieeeAddr:  
+        if message[1] == "miranda/mqtt/" + ieeeAddr:  
             
             setting = setting[1:-1]
             
@@ -795,7 +733,7 @@ def CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit):
     for message in GET_MQTT_INCOMING_MESSAGES(limit):
 
         # search for fitting message in incoming_messages_list
-        if message[1] == "SmartHome/zigbee2mqtt/" + device_name:   
+        if message[1] == "miranda/zigbee2mqtt/" + device_name:   
     
             setting = setting[1:-1] 
             
@@ -827,14 +765,14 @@ def CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit):
  
  
 def CHECK_MQTT():
-    MQTT_PUBLISH("SmartHome/mqtt/test", "") 
+    MQTT_PUBLISH("miranda/mqtt/test", "") 
 
 
 def CHECK_MQTT_NAME_CHANGED():
                       
     for message in GET_MQTT_INCOMING_MESSAGES(10):
         
-        if message[1] == "SmartHome/zigbee2mqtt/bridge/log":
+        if message[1] == "miranda/zigbee2mqtt/bridge/log":
         
             try:
                 data = json.loads(message[2])
@@ -847,3 +785,84 @@ def CHECK_MQTT_NAME_CHANGED():
                     
     else:
         return False
+
+
+""" ######################## """
+"""  check device exceptions """
+""" ######################## """
+
+
+def CHECK_DEVICE_EXCEPTIONS(id, setting):
+    
+    device = GET_MQTT_DEVICE_BY_ID(id)
+                        
+    # ####################
+    # exception ip_address 
+    # ####################
+    
+    setting           = setting.replace(" ", "")
+    exception_setting = device.exception_setting.replace(" ", "")
+    
+    if device.exception_option == "IP-Address" and exception_setting == setting:
+
+        if ping(device.exception_value_1, timeout=1) != None:    
+            return (device.name + " | Device running")
+        
+        else:
+            return True
+
+
+    # ################
+    # exception sensor
+    # ################
+    
+    if device.exception_sensor_ieeeAddr != "None" and exception_setting == setting:
+        
+        sensor_ieeeAddr = device.exception_sensor_ieeeAddr
+        sensor_key      = device.exception_value_1
+        
+        operator = device.exception_value_2
+        value    = device.exception_value_3
+
+        try:
+             value = str(value).lower()
+        except:
+             pass
+                 
+        
+        # get sensordata 
+        data         = json.loads(GET_MQTT_DEVICE_BY_IEEEADDR(device.exception_sensor_ieeeAddr).last_values)
+        sensor_value = data[sensor_key]
+        
+        try:
+             sensor_value = str(sensor_value).lower()
+        except:
+             pass
+        
+              
+        # compare conditions
+        if operator == "=" and value.isdigit():
+            if int(sensor_value) == int(value):
+                return (device.name + " | Sensor passing failed")   
+            else:
+                return True
+                
+        if operator == "=" and not value.isdigit():
+            if str(sensor_value) == str(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+                
+        if operator == "<" and value.isdigit():
+            if int(sensor_value) < int(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+                
+        if operator == ">" and value.isdigit():
+            if int(sensor_value) > int(value):
+                return (device.name + " | Sensor passing failed")  
+            else:
+                return True
+            
+    return True

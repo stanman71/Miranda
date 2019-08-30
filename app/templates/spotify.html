@@ -139,9 +139,9 @@
               <div class="col-sm-3">  
                 <div class="text-right">
                   {% if spotify_user == "" %}
-                    <a href="/spotify/login/url/spotify#" class="btn btn-default" role="button">Login</a> 
+                    <a href="/spotify/login/url_target/spotify#" class="btn btn-default" role="button">Login</a> 
                   {% else %}    
-                    <a href="/spotify/logout/url/spotify#" class="btn btn-danger" role="button">Logout</a>  
+                    <a href="/spotify/logout/url_target/spotify#" class="btn btn-danger" role="button">Logout</a>  
                   {% endif %}  
                 </div>                                                  
               </div>
@@ -154,14 +154,12 @@
               <div class="well well-sm">     
                 <table class="table">
                   <thead>
-                    <th scope="col" style="width:11%">Gerät Name</th>   
-                    <th scope="col" style="width:11%">Gerät Typ</th> 
-                    <th scope="col" style="width:11%">Aktiv</th>                    
-                    <th scope="col" style="width:11%">Lautstärke</th>                                     
-                    <th scope="col" style="width:11%">Track</th>                                     
-                    <th scope="col" style="width:11%">Interpreten</th>                    
-                    <th scope="col" style="width:11%">Zeitpunkt</th>  
-                    <th scope="col" style="width:11%">Playlist</th> 
+                    <th scope="col" style="width:14%">Gerät Name</th>   
+                    <th scope="col" style="width:13%">Gerät Typ</th> 
+                    <th scope="col" style="width:11%">Playing</th>                                                      
+                    <th scope="col" style="width:17%">Track</th>                                     
+                    <th scope="col" style="width:17%">Interpreten</th>                     
+                    <th scope="col" style="width:17%">Playlist</th> 
                     <th scope="col" style="width:11%">Shuffle</th> 
                   </thead>                                             
                   <tbody> 
@@ -174,9 +172,6 @@
                       </td>  
                       <td>
                         {{ tupel_current_playback[2] }}
-                      </td>  
-                      <td>
-                        {{ tupel_current_playback[3] }}
                       </td>   
                       <td>
                         {{ tupel_current_playback[4] }} 
@@ -185,10 +180,7 @@
                         {% for artist in tupel_current_playback[5] %}
                            {{ artist }}
                         {% endfor %} 
-                      </td>                      
-                      <td>
-                        {{ tupel_current_playback[6] }}  
-                      </td>      
+                      </td>                         
                       <td>
                         {{ tupel_current_playback[7] }}
                       </td>   
@@ -197,7 +189,7 @@
                       </td>                                                                                                                           
                     </tr>             
                   </tbody>
-                </table>                                 
+                </table>                                    
               </div>
               <div class="well well-sm"> 
                 <form method="POST">          

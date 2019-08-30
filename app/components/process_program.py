@@ -162,7 +162,7 @@ def PROGRAM_THREAD(program_id):
                                         # mqtt
                                         if device.gateway == "mqtt":
 
-                                            channel  = "SmartHome/mqtt/" + device.ieeeAddr + "/set"                  
+                                            channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
                                             msg      = program_setting
 
                                             heapq.heappush(process_management_queue, (30,  ("program", "device", channel, msg))) 
@@ -173,7 +173,7 @@ def PROGRAM_THREAD(program_id):
                                         # zigbee2mqtt
                                         if device.gateway == "zigbee2mqtt":
 
-                                            channel  = "SmartHome/zigbee2mqtt/" + device.name + "/set"                  
+                                            channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
                                             msg      = program_setting
 
                                             heapq.heappush(process_management_queue, (30,  ("program", "device", channel, msg)))

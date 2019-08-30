@@ -103,7 +103,54 @@
       </div>   
 
 
+<!-- message admin password not changed -->
+
+{% if message_admin_password_not_changed != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ message_admin_password_not_changed }}
+  </div>      
+{% endif %}   
+
+
+<!-------------->
+<!-- add user -->   
+<!-------------->   
+
+
+<!-- error message add user -->
+
+{% if error_message_add_user != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for error in error_message_add_user %}
+      {{ error }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}    
+
+
+      <div class="well well-sm">               
+        <form method="POST"> 
+          <div class="row justify-content-md-center">
+            <div class="col-sm-3"> 
+              <input type="text" class="form-control" name="set_username" placeholder="Benutzername" value="{{ username }}" />                         
+            </div>
+            <div class="col-sm-3"> 
+              <input type="email" class="form-control" name="set_email" placeholder="eMail-Adresse " value="{{ email }}" />                         
+            </div>              
+            <div class="col-sm-3"> 
+              <input type="password" class="form-control" name="set_password" placeholder="Passwort" value="{{ password }}" />                         
+            </div>              
+            <div class="col-sm-1">                                      
+              <input type="submit" onclick="window.location.href='/system/user#'" class="btn btn-default" name="add_user" value="Benutzer erstellen" />
+            </div>
+          </div>
+        </form>
+      </div> 
+
+
+<!---------------->  
 <!-- user table -->
+<!---------------->  
 
 <div class="panel-group">
 
@@ -124,13 +171,15 @@
             
 <!-- error change settings -->
 
-{% if entry.error_change_settings != "" %}
+{% if entry.error_change_settings != "" and entry.error_change_settings != None %}
   <div class="alert alert-danger" role="alert">
-      {{ entry.error_change_settings }}
+    {% for error in entry.error_change_settings.split("|") %}
+      {{ error }} <br>
+    {% endfor %}
   </div>      
-{% endif %}               
-            
-              
+{% endif %}
+
+
               <table class="table">
                 <thead>
                   <th scope="col" style="width:3%"></th>
@@ -152,7 +201,7 @@
                       <input type="text" class="form-control" name="set_username_{{ entry.id }}" value="{{ entry.username }}" />                    
                     </td> 
                     <td>
-                      <input type="text" class="form-control" name="set_email_{{ entry.id }}" value="{{ entry.email }}" />                    
+                      <input type="email" class="form-control" name="set_email_{{ entry.id }}" value="{{ entry.email }}" />                    
                     </td> 
                     <td>
                       <input type="password" class="form-control" name="set_password_{{ entry.id }}" value="" /> 

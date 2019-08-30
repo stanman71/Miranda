@@ -212,5 +212,5 @@ def PROCESS_MANAGEMENT():
                 pass
                 
               
-        time.sleep(0.2)
+        time.sleep(0.5)
    
