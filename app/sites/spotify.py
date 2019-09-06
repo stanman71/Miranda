@@ -226,7 +226,21 @@ def spotify():
                             permission_spotify=current_user.permission_spotify, 
                             permission_system=current_user.permission_system,                     
                             )
-                            
+  
+  
+  
+@app.route("/spotify/login/url_target/<string:forwarding_site>")
+@login_required
+@permission_required
+def spotify_login(forwarding_site):
+    global forwarding_site_global
+    
+    forwarding_site_global = forwarding_site
+    
+    auth_url = GET_SPOTIFY_AUTHORIZATION()
+    
+    return redirect(auth_url)  
+ 
  
 @app.route("/spotify/token")
 @login_required
@@ -241,21 +255,7 @@ def spotify_token():
         
     if forwarding_site_global == "spotify":
         return redirect(url_for('spotify'))
-    
- 
-@app.route("/spotify/login/url_target/<string:forwarding_site>")
-@login_required
-@permission_required
-def spotify_login(forwarding_site):
-    global forwarding_site_global
-    
-    forwarding_site_global = forwarding_site
-    
-    response = GET_SPOTIFY_USER()
-    WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Login") 
-
-    return redirect(response)
-    
+      
 
 @app.route("/spotify/logout/url_target/<string:forwarding_site>")
 @login_required

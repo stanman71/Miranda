@@ -315,7 +315,7 @@
                     </select>                                    
                   </td> 
                   <td>
-                    <input type="text" class="form-control" name="set_speechcontrol_device_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                    <input type="text" class="form-control" name="set_speechcontrol_device_task_keyword_{{ entry.id }}" value= {% if entry.keywords != None %}"{{ entry.keywords }}"{% else %}""{% endif %}  />                    
                   </td>  
                   <td><td><a href="/system/speechcontrol/device_task/delete/{{ entry.id }}#device_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
                 </tr>
@@ -422,7 +422,7 @@
                     </select>                                 
                   </td> 
                   <td>
-                    <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                    <input type="text" class="form-control" name="set_speechcontrol_program_task_keyword_{{ entry.id }}" value= {% if entry.keywords != None %}"{{ entry.keywords }}"{% else %}""{% endif %} />                    
                   </td>  
                   <td><td><a href="/system/speechcontrol/program_task/delete/{{ entry.id }}#program_task_table"><font color="salmon" size="5"><b>X</b></font></a></td></td>
                 </tr>

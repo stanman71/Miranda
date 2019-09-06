@@ -21,15 +21,15 @@ bool shouldSaveConfig = false;
 
 // INPUT
 int PIN_ANALOG  = A0;
-int PIN_DIGITAL = 13;
+int PIN_DIGITAL = 16;
 
 // OUTPUT 
-int PIN_PUMP      = 15;
+int PIN_PUMP      = 5;
 int PIN_LED_GREEN = 14;
 int PIN_LED_RED   = 12;
 
 // RESET 
-int PIN_RESET_SETTING = 16;
+int PIN_RESET_SETTING = 13;
 
 // ############
 // split string
@@ -280,9 +280,9 @@ void callback (char* topic, byte* payload, unsigned int length) {
         DynamicJsonDocument msg(512);
         
         msg["ieeeAddr"]    = ieeeAddr;
-        msg["model"]       = "watering_array_v1";
-        msg["device_type"] = "watering_control";
-        msg["description"] = "MQTT Watering_Array";
+        msg["model"]       = "watering_controller_v1";
+        msg["device_type"] = "watering_controller";
+        msg["description"] = "MQTT Watering_Controller v1";
     
         JsonArray data_inputs = msg.createNestedArray("input_values");
         data_inputs.add("pump");

@@ -259,7 +259,7 @@
                               {% if entry.exception_option != "None" %}
                                 <option value = "{{ entry.exception_option }}" > {{ entry.exception_option }} </option>
                               {% else %}   
-                                <option value = "None" > None </option> 
+                                <option value = "None" > Option </option> 
                               {% endif %}                               
                               <optgroup>
                                 {% for each in dropdown_list_exception_options %}
@@ -283,7 +283,8 @@
                         
                             {% if entry.exception_option == "IP-Address" %}         
                               <div class="col-sm-6"> 
-                                <input type="text" class="form-control" name="set_exception_value_1_{{ entry.id }}" value="{{ entry.exception_value_1 }}" />
+                                <input type="text" class="form-control" name="set_exception_value_1_{{ entry.id }}"
+                                  value = {% if entry.exception_value_1 != None and entry.exception_value_1 != "None" %}"{{ entry.exception_value_1 }}"{% else %}""{% endif %} />
                               </div> 
                             {% endif %}      
                         
@@ -296,7 +297,7 @@
                                   {% if entry.exception_value_1 != "None" %}
                                     <option value = "{{ entry.exception_value_1 }}" > {{ entry.exception_value_1 }} </option>
                                   {% else %}   
-                                    <option value = "None" > None </option>   
+                                    <option value = "None" > Sensor </option>   
                                   {% endif %}                          
                                   <optgroup>
                                     {% if entry.exception_sensor_input_values != None %}
@@ -317,10 +318,8 @@
                           
                     {% endif %}    
                                     
-                    </td>
-                    
-                    <td>                  </td>
-                    
+                    </td>  
+                    <td></td>
                   </tr>
                   
                   <!-- second row --> 
@@ -336,7 +335,7 @@
                               {% if entry.exception_setting != "None" %}
                                 <option value = "{{ entry.exception_setting }}" > {{ entry.exception_setting }} </option>
                               {% else %}   
-                                <option value = "None" > None </option> 
+                                <option value = "None" > Befehl </option> 
                               {% endif %}                             
                               <optgroup>
                                 {% if entry.commands != None %}  
@@ -360,7 +359,7 @@
                             {% if entry.exception_value_2 != "None" %}
                               <option value = "{{ entry.exception_value_2 }}" > {{ entry.exception_value_2 }} </option>
                             {% else %}   
-                              <option value = "None" > None </option>   
+                              <option value = "None" > Operator </option>   
                             {% endif %}                            
                             <optgroup>
                               {% for each in dropdown_list_operators %}
@@ -370,7 +369,8 @@
                           </select> 
                         </div>                   
                         <div class="col-sm-3"> 
-                          <input type="text" class="form-control" name="set_exception_value_3_{{ entry.id }}" value="{{ entry.exception_value_3 }}" />
+                          <input type="text" class="form-control" name="set_exception_value_3_{{ entry.id }}"
+                           value = {% if entry.exception_value_3 != None and entry.exception_value_3 != "None" %}"{{ entry.exception_value_3 }}"{% else %}""{% endif %} />
                         </div>                          
                       
                       {% endif %}

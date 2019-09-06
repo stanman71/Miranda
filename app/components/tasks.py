@@ -3,7 +3,7 @@ from app.components.backend_led import *
 from app.database.database import *
 from app.components.backend_watering import START_WATERING_THREAD
 from app.components.mqtt import *
-from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_CONFIG_MQTT_BROKER, GET_LOCATION_COORDINATES
+from app.components.file_management import SAVE_DATABASE, WRITE_LOGFILE_SYSTEM, GET_LOCATION_COORDINATES
 from app.components.process_program import START_PROGRAM_THREAD, STOP_PROGRAM_THREAD, GET_PROGRAM_RUNNING
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.backend_spotify import *
@@ -934,7 +934,9 @@ def SPEECHCONTROL_LED_TASK(answer):
                      'zwanzig'        : 20,
                      'fünfundzwanzig' : 25,
                      'dreizig'        : 30,
+                     'dreissig'       : 30,                     
                      'fünfunddreizig' : 35,
+                     'fünfunddreissig': 35,                     
                      'vierzig'        : 40,
                      'fünfundvierzig' : 45,
                      'fünfzig'        : 50,
@@ -1354,7 +1356,9 @@ def SPEECHCONTROL_SPOTIFY_TASK(answer):
                      'zwanzig'        : 20,
                      'fünfundzwanzig' : 25,
                      'dreizig'        : 30,
+                     'dreissig'       : 30,                     
                      'fünfunddreizig' : 35,
+                     'fünfunddreissig': 35,     
                      'vierzig'        : 40,
                      'fünfundvierzig' : 45,
                      'fünfzig'        : 50,

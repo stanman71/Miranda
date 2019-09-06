@@ -184,21 +184,13 @@ def GET_CONFIG_VERSION():
         return str(config['config']['version'])
     except:
         return "DEFAULT SETTINGS"
-        
 
-def GET_CONFIG_MQTT_BROKER():
-    try:
-        return str(config['config']['mqtt_broker'])
-    except:
-        
-        return "localhost"
-        
         
 def GET_CONFIG_DATABASE():
     try:
         return str(config['config']['database'])
     except:
-        return "sqlite:///database/smarthome.sqlite3"
+        return "sqlite:///database/db_miranda.sqlite3"
         
         
 def GET_CONFIG_BACKUP_LOCATION():
@@ -209,7 +201,7 @@ def GET_CONFIG_BACKUP_LOCATION():
         try:
             return str(config['config']['backup_location'])
         except:
-            return ("/home/pi/SmartHome/backup/", False)        
+            return ("/home/pi/miranda/backup/", False)        
     
     else:
         return (backup_location_temp_path, True)
@@ -406,8 +398,8 @@ def SAVE_DATABASE():
 
     try:
         # save database
-        shutil.copyfile(PATH + '/app/database/smarthome.sqlite3', 
-                        backup_location_path + str(datetime.datetime.now().date()) + '_smarthome.sqlite3')
+        shutil.copyfile(PATH + '/app/database/db_miranda.sqlite3', 
+                        backup_location_path + str(datetime.datetime.now().date()) + '_db_miranda.sqlite3')
                 
         # if more then 10 backups saved, delete oldest backup file
         list_of_files = os.listdir(PATH + '/backup/')    
@@ -429,7 +421,7 @@ def RESTORE_DATABASE(filename):
     # check file
     try:
         if filename.split("_")[1] == "smarthome.sqlite3":
-            shutil.copyfile(backup_location_path + filename, PATH + '/app/database/smarthome.sqlite3')
+            shutil.copyfile(backup_location_path + filename, PATH + '/app/database/db_miranda.sqlite3')
             WRITE_LOGFILE_SYSTEM("SUCCESS", "Database_Backup | " + filename + " | restored")
             
     except Exception as e:

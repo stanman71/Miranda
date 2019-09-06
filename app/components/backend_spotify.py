@@ -26,7 +26,6 @@ https://stackoverflow.com/questions/47028093/attributeerror-spotify-object-has-n
 
 """
 
-
 from app import app
 from app.database.database import *
 from app.components.file_management import *
@@ -40,71 +39,86 @@ import time
 import base64
 import threading
 
+from urllib.parse import quote
 
 """ ######################## """
 """ spotify authentification """
 """ ######################## """
 
+#  Client Keys
+CLIENT_ID             = GET_SPOTIFY_CLIENT_ID()
+CLIENT_SECRET         = GET_SPOTIFY_CLIENT_SECRET()
 
-CLIENT_ID     = GET_SPOTIFY_CLIENT_ID()
-CLIENT_SECRET = GET_SPOTIFY_CLIENT_SECRET()
-SCOPE         = "playlist-read-private user-read-recently-played user-read-currently-playing user-read-playback-state streaming"
+# Spotify URLS
+SPOTIFY_AUTH_URL      = "https://accounts.spotify.com/authorize"
+SPOTIFY_TOKEN_URL     = "https://accounts.spotify.com/api/token"
+SPOTIFY_API_BASE_URL  = "https://api.spotify.com"
+API_VERSION           = "v1"
+SPOTIFY_API_URL       = "{}/{}".format(SPOTIFY_API_BASE_URL, API_VERSION)
 
-SPOTIFY_URL_AUTH  = 'https://accounts.spotify.com/authorize/?'
-SPOTIFY_URL_TOKEN = 'https://accounts.spotify.com/api/token/'
-REDIRECT_URI      = "http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/spotify/token"
+# Server-side Parameters
+REDIRECT_URI          = "http://" + GET_HOST_DEFAULT_NETWORK() + ":" + str(GET_HOST_PORT()) + "/spotify/token"
+SCOPE                 = "playlist-read-private user-read-recently-played user-read-currently-playing user-read-playback-state streaming"
+STATE                 = ""
+SHOW_DIALOG_bool      = True
+SHOW_DIALOG_str       = str(SHOW_DIALOG_bool).lower()
 
-RESPONSE_TYPE = 'code'   
-HEADER        = 'application/x-www-form-urlencoded'
-
+#  Client Tokens
 SPOTIFY_TOKEN         = ''
 SPOTIFY_REFRESH_TOKEN = GET_SPOTIFY_REFRESH_TOKEN()
     
     
-def GET_SPOTIFY_USER():
-    return GET_SPOTIFY_AUTH(CLIENT_ID, REDIRECT_URI, SCOPE)
-        
+def GET_SPOTIFY_AUTHORIZATION():
     
-def GET_SPOTIFY_AUTH(client_id, redirect_uri, scope):
-    data = "{}client_id={}&response_type=code&redirect_uri={}&scope={}".format(SPOTIFY_URL_AUTH, client_id, redirect_uri, scope) 
-    return data
+    auth_query_parameters = {
+        "response_type": "code",
+        "redirect_uri": REDIRECT_URI,
+        "scope": SCOPE,
+        "client_id": CLIENT_ID
+    }    
+    
+    url_args = "&".join(["{}={}".format(key, quote(val)) for key, val in auth_query_parameters.items()])
+    auth_url = "{}/?{}".format(SPOTIFY_AUTH_URL, url_args)
+    
+    return auth_url
 
 
-def GENERATE_SPOTIFY_TOKEN(code):
+def GENERATE_SPOTIFY_TOKEN(auth_token):
     
     global SPOTIFY_TOKEN    
     global SPOTIFY_REFRESH_TOKEN       
     
     body = {
         "grant_type": 'authorization_code',
-        "code" : code,
+        "code" : str(auth_token),
         "redirect_uri": REDIRECT_URI,
         "client_id": CLIENT_ID,
         "client_secret": CLIENT_SECRET
     }
 
-    post = requests.post(SPOTIFY_URL_TOKEN, data=body)
+    post_request = requests.post(SPOTIFY_TOKEN_URL, data=body)
 
-    answer = json.loads(post.text)
+    answer = json.loads(post_request.text)
     
     try:
         SPOTIFY_TOKEN = answer["access_token"]
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New Token received") 
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Login")
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Token received")
         
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not received | " + str(e)) 
-        SEND_EMAIL("ERROR", "Spotify | Token not received | " + str(e))
-        DELETE_SPOTIFY_TOKEN()
+    except:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Login failed")
+        WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Token not received | " + str(answer))
+        SEND_EMAIL("ERROR", "Spotify | Token not received | " + str(answer))
 
     try:
         SET_SPOTIFY_REFRESH_TOKEN(answer["refresh_token"])
         SPOTIFY_REFRESH_TOKEN = answer["refresh_token"]        
-        WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | New refresh Token received") 
+        WRITE_LOGFILE_SYSTEM("SUCCESS", "Spotify | Refresh Token received") 
         
-    except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Refresh Token not received | " + str(e))   
-        SEND_EMAIL("ERROR", "Spotify | Refresh Token not received | " + str(e))             
-        
+    except:
+        WRITE_LOGFILE_SYSTEM("ERROR", "Spotify | Refresh Token not received | " + str(answer))
+        SEND_EMAIL("ERROR", "Spotify | Refresh Token not received | " + str(answer))           
+ 
     REFRESH_SPOTIFY_TOKEN_THREAD(0)
 
 
@@ -155,7 +169,7 @@ def REFRESH_SPOTIFY_TOKEN(first_delay):
                 "refresh_token" : GET_SPOTIFY_REFRESH_TOKEN()
             }
 
-            auth_str = '{}:{}'.format("11a33d121d194cfebbc08d1ee6dbd0f6", "af1b5460be774d8db58313bbf1a056b8")
+            auth_str = '{}:{}'.format(CLIENT_ID, CLIENT_SECRET)
             b64_auth_str = base64.b64encode(auth_str.encode()).decode()
 
             headers = {
@@ -163,7 +177,7 @@ def REFRESH_SPOTIFY_TOKEN(first_delay):
                 'Authorization': 'Basic {}'.format(b64_auth_str)
             }
 
-            post_refresh = requests.post(SPOTIFY_URL_TOKEN, data=body, headers=headers) 
+            post_refresh = requests.post(SPOTIFY_TOKEN_URL, data=body, headers=headers) 
             answer       = json.loads(post_refresh.text)
 
             try:

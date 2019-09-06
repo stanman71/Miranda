@@ -34,34 +34,34 @@ scheduler.start()
 @scheduler.task('cron', id='update_sunrise_sunset', hour='*')
 def update_sunrise_sunset():
 
-	for task in GET_ALL_SCHEDULER_TASKS():
+    for task in GET_ALL_SCHEDULER_TASKS():
 
-		if task.option_sunrise == "checked" or task.option_sunset == "checked":
+        if task.option_sunrise == "checked" or task.option_sunset == "checked":
 
-			# get coordinates
-			coordinates = GET_LOCATION_COORDINATES(task.location)
+            # get coordinates
+            coordinates = GET_LOCATION_COORDINATES(task.location)
 
-			if coordinates != "None" and coordinates != None: 
+            if coordinates != "None" and coordinates != None: 
 
-				# update sunrise / sunset
-				SET_SCHEDULER_TASK_SUNRISE(task.id, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
-				SET_SCHEDULER_TASK_SUNSET(task.id, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
-							
+                # update sunrise / sunset
+                SET_SCHEDULER_TASK_SUNRISE(task.id, GET_SUNRISE_TIME(float(coordinates[0]), float(coordinates[1])))
+                SET_SCHEDULER_TASK_SUNSET(task.id, GET_SUNSET_TIME(float(coordinates[0]), float(coordinates[1])))
+                            
 
 @scheduler.task('cron', id='scheduler_time', minute='*')
 def scheduler_time():
    
-	for task in GET_ALL_SCHEDULER_TASKS():
-		if task.option_time == "checked" or task.option_sun == "checked":
-			heapq.heappush(process_management_queue, (20, ("scheduler", "time", task.id)))         
+    for task in GET_ALL_SCHEDULER_TASKS():
+        if task.option_time == "checked" or task.option_sun == "checked":
+            heapq.heappush(process_management_queue, (20, ("scheduler", "time", task.id)))         
 
 
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
 def scheduler_ping():
    
-	for task in GET_ALL_SCHEDULER_TASKS():
-		if task.option_position == "checked":
-			heapq.heappush(process_management_queue, (20, ("scheduler", "ping", task.id)))
+    for task in GET_ALL_SCHEDULER_TASKS():
+        if task.option_position == "checked":
+            heapq.heappush(process_management_queue, (20, ("scheduler", "ping", task.id)))
 
 
 
@@ -314,22 +314,6 @@ def CHECK_SCHEDULER_TIME(task):
    current_hour   = now.strftime('%H')
    current_minute = now.strftime('%M')
 
-   # format data
-   if current_day == "Mon":
-      current_day = "Mo"
-   if current_day == "Tue":
-      current_day = "Tu"
-   if current_day == "Wed":
-      current_day = "We"
-   if current_day == "Thu":
-      current_day = "Th"
-   if current_day == "Fri":
-      current_day = "Fr"
-   if current_day == "Sat":
-      current_day = "Sa"
-   if current_day == "Sun":
-      current_day = "Su"    
-
    if current_hour[0] == "0":
       current_hour = current_hour[1:]   
 
@@ -340,20 +324,22 @@ def CHECK_SCHEDULER_TIME(task):
 
    # check day
    if "," in task.day:
-      days = task.day.split(",")
+      days = task.day.replace(" ", "")       
+      days = days.split(",")
       for element in days:
-         if element == current_day:
+         if element.lower() == current_day.lower():
             passing = True
             break
    else:
-      if task.day == current_day or task.day == "*":
+      if task.day.lower() == current_day.lower() or task.day == "*":
          passing = True
 
    # check minute
    if passing == True:
 
       if "," in task.hour:
-         hours = task.hour.split(",")
+         hours = task.hour.replace(" ", "")         
+         hours = hours.split(",")
          for element in hours:
             if element == current_hour:
                passing = True
@@ -370,7 +356,8 @@ def CHECK_SCHEDULER_TIME(task):
    if passing == True:
 
       if "," in task.minute:
-         minutes = task.minute.split(",")
+         minutes = task.minute.replace(" ", "")          
+         minutes = minutes.split(",")
          for element in minutes:
             if element == current_minute:
                passing = True

@@ -191,6 +191,7 @@ class LED_Scenes(db.Model):
 class MQTT(db.Model):
     __tablename__ = 'mqtt'
     id       = db.Column(db.Integer, primary_key=True, autoincrement = True)
+    broker   = db.Column(db.String(50))
     user     = db.Column(db.String(50))
     password = db.Column(db.String(50))
 
@@ -281,43 +282,43 @@ class Scheduler_Tasks(db.Model):
     name                       = db.Column(db.String(50), unique=True)
     task                       = db.Column(db.String(50), server_default=(""))
     task_type                  = db.Column(db.String(50), server_default=(""))   
-    option_time                = db.Column(db.String(50), server_default=("")) 
-    option_sun                 = db.Column(db.String(50), server_default=("")) 
-    option_sensors             = db.Column(db.String(50), server_default=("")) 
-    option_position            = db.Column(db.String(50), server_default=(""))  
-    option_repeat              = db.Column(db.String(50), server_default=(""))
-    day                        = db.Column(db.String(50), server_default=(""))
-    hour                       = db.Column(db.String(50), server_default=("")) 
-    minute                     = db.Column(db.String(50), server_default=(""))
-    option_sunrise             = db.Column(db.String(50), server_default=(""))
-    option_sunset              = db.Column(db.String(50), server_default=(""))
-    location                   = db.Column(db.String(50), server_default=(""))
-    sunrise                    = db.Column(db.String(50), server_default=(""))
-    sunset                     = db.Column(db.String(50), server_default=(""))        
-    mqtt_device_ieeeAddr_1     = db.Column(db.String(50), server_default=(""))
-    mqtt_device_name_1         = db.Column(db.String(50), server_default=(""))
-    mqtt_device_input_values_1 = db.Column(db.String(50), server_default=("")) 
-    sensor_key_1               = db.Column(db.String(50), server_default=(""))
-    value_1                    = db.Column(db.String(50), server_default=("")) 
-    operator_1                 = db.Column(db.String(50), server_default=(""))
-    operator_main_1            = db.Column(db.String(50), server_default=(""))
-    mqtt_device_ieeeAddr_2     = db.Column(db.String(50), server_default=(""))
-    mqtt_device_name_2         = db.Column(db.String(50), server_default=(""))    
-    mqtt_device_input_values_2 = db.Column(db.String(50), server_default=(""))
-    sensor_key_2               = db.Column(db.String(50), server_default=(""))
-    value_2                    = db.Column(db.String(50), server_default=(""))
-    operator_2                 = db.Column(db.String(50), server_default=(""))
-    operator_main_2            = db.Column(db.String(50), server_default=(""))
-    mqtt_device_ieeeAddr_3     = db.Column(db.String(50), server_default=(""))
-    mqtt_device_name_3         = db.Column(db.String(50), server_default=(""))
-    mqtt_device_input_values_3 = db.Column(db.String(50), server_default=(""))
-    sensor_key_3               = db.Column(db.String(50), server_default=(""))
-    value_3                    = db.Column(db.String(50), server_default=(""))
-    operator_3                 = db.Column(db.String(50), server_default=(""))
-    option_home                = db.Column(db.String(50), server_default=(""))
-    option_away                = db.Column(db.String(50), server_default=(""))
-    ip_addresses               = db.Column(db.String(50), server_default=(""))
-    last_ping_result           = db.Column(db.String(50), server_default=(""))
+    option_time                = db.Column(db.String(50), server_default=("None")) 
+    option_sun                 = db.Column(db.String(50), server_default=("None")) 
+    option_sensors             = db.Column(db.String(50), server_default=("None")) 
+    option_position            = db.Column(db.String(50), server_default=("None"))  
+    option_repeat              = db.Column(db.String(50), server_default=("None"))
+    day                        = db.Column(db.String(50), server_default=("None"))
+    hour                       = db.Column(db.String(50), server_default=("None")) 
+    minute                     = db.Column(db.String(50), server_default=("None"))
+    option_sunrise             = db.Column(db.String(50), server_default=("None"))
+    option_sunset              = db.Column(db.String(50), server_default=("None"))
+    location                   = db.Column(db.String(50), server_default=("None"))
+    sunrise                    = db.Column(db.String(50), server_default=("None"))
+    sunset                     = db.Column(db.String(50), server_default=("None"))        
+    mqtt_device_ieeeAddr_1     = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_name_1         = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_input_values_1 = db.Column(db.String(50), server_default=("None")) 
+    sensor_key_1               = db.Column(db.String(50), server_default=("None"))
+    value_1                    = db.Column(db.String(50), server_default=("None")) 
+    operator_1                 = db.Column(db.String(50), server_default=("None"))
+    operator_main_1            = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_ieeeAddr_2     = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_name_2         = db.Column(db.String(50), server_default=("None"))    
+    mqtt_device_input_values_2 = db.Column(db.String(50), server_default=("None"))
+    sensor_key_2               = db.Column(db.String(50), server_default=("None"))
+    value_2                    = db.Column(db.String(50), server_default=("None"))
+    operator_2                 = db.Column(db.String(50), server_default=("None"))
+    operator_main_2            = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_ieeeAddr_3     = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_name_3         = db.Column(db.String(50), server_default=("None"))
+    mqtt_device_input_values_3 = db.Column(db.String(50), server_default=("None"))
+    sensor_key_3               = db.Column(db.String(50), server_default=("None"))
+    value_3                    = db.Column(db.String(50), server_default=("None"))
+    operator_3                 = db.Column(db.String(50), server_default=("None"))
+    option_home                = db.Column(db.String(50), server_default=("None"))
+    option_away                = db.Column(db.String(50), server_default=("None"))
+    ip_addresses               = db.Column(db.String(50), server_default=("None"))
+    last_ping_result           = db.Column(db.String(50), server_default=("None"))
     collapse                   = db.Column(db.String(50), server_default=(""))
     error_change_settings      = db.Column(db.String(500), server_default=("")) 
 
@@ -1780,21 +1781,21 @@ def DELETE_LED_SCENE(id):
 """ ################### """
 """ ################### """
 
-
-def GET_MQTT_AUTHENTIFICATION():
+def GET_MQTT_BROKER_SETTINGS():
     return MQTT.query.filter_by().first()
 
 
-def SET_MQTT_AUTHENTIFICATION(user, password):
+def SET_MQTT_BROKER_SETTINGS(broker, user, password):
     entry = MQTT.query.filter_by().first()
 
-    if (entry.user != user or entry.password != password):
-
+    if (entry.broker != broker or entry.user != user or entry.password != password):
+ 
+        entry.broker   = broker
         entry.user     = user
         entry.password = password
         db.session.commit()
 	
-        WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Authentification changed")
+        WRITE_LOGFILE_SYSTEM("DATABASE", "MQTT | Broker Settings changed")
 
 
 """ ################### """

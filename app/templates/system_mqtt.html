@@ -241,7 +241,16 @@
               <div class="panel-body">  
                 <form method="POST">    
                 <div class="well well-sm">
-                  Authentifizierung
+                  <div class="well well-sm">
+                    <div class="row justify-content-md-center">
+                      <div class="col-sm-3">  
+                        <button type="button" style="background-color:transparent" class="btn btn-secondary">Broker:</button>  
+                      </div>                  
+                      <div class="col-sm-9">  
+                        <input type="text" class="form-control" name="set_broker" value="{% if broker != None %}{{ broker }}{% endif %}" />             
+                      </div>  
+                    </div>
+                  </div>                
                   <div class="well well-sm">
                     <div class="row justify-content-md-center">
                       <div class="col-sm-3">  
@@ -266,10 +275,23 @@
                 <div class="well well-sm">     
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">  
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">MQTT aktuallisieren (Minute):</button>  
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">MQTT aktuallisieren:</button>  
                     </div>                  
-                    <div class="col-sm-3">  
-                       <select class="selectpicker" data-width="75%" name="get_mqtt_update_minute">
+                    <div class="col-sm-2">  
+                       <select class="selectpicker" data-width="100%" name="get_mqtt_update_hour">
+                        <option value= "{{ mqtt_update_hour }}" > {{ mqtt_update_hour }} </option>   
+                        <optgroup>
+                          {% for each in dropdown_list_hours %}
+                            <option value="{{ each }}"> {{ each }} </option>
+                          {% endfor %}                 
+                        </optgroup>
+                        <optgroup> 
+                          <option value= "None" > None </option>  
+                        </optgroup>                                                                                 
+                      </select>
+                    </div>
+                    <div class="col-sm-2">  
+                       <select class="selectpicker" data-width="100%" name="get_mqtt_update_minute">
                         <option value= "{{ mqtt_update_minute }}" > {{ mqtt_update_minute }} </option>   
                         <optgroup>
                           {% for each in dropdown_list_minutes %}
@@ -280,10 +302,10 @@
                           <option value= "None" > None </option>  
                         </optgroup>                                                                                 
                       </select>
-                      
+                    </div> 
+ 
 <section id="logfile"></section>                      
-                      
-                    </div>  
+                    
                   </div>
                 </div>                
                 <input type="submit" onclick="window.location.href='/system/mqtt#mqtt_general_settings'" class="btn btn-default" name="save_general_settings" value="Einstellung speichern" />                                 
@@ -292,8 +314,7 @@
           </div>     
         </div>  
       </div>  
-      <br> 
-      
+
       
 <!-- mqtt logs -->
 

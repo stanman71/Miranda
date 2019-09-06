@@ -14,9 +14,6 @@ from app.components.email import SEND_EMAIL
 from ping3 import ping
 
 
-BROKER_ADDRESS = GET_CONFIG_MQTT_BROKER()
-
-
 """ ################################ """
 """ ################################ """
 """              mqtt main           """
@@ -153,31 +150,31 @@ def MQTT_RECEIVE():
 
     def on_connect(client, userdata, flags, rc):   
         if rc != 0:
-            print("ERROR: MQTT | Broker - " + BROKER_ADDRESS + " | Bad Connection | Returned Code = " + str(rc)) 
+            print("ERROR: MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | Bad Connection | Returned Code = " + str(rc)) 
         
-            WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | Bad Connection | Returned Code = " + str(rc))         
+            WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | Bad Connection | Returned Code = " + str(rc))         
         
         else:
             client.subscribe("miranda/#")
   
-            print("MQTT | Broker - " + BROKER_ADDRESS + " | Connected") 
-            WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + BROKER_ADDRESS + " | Connected")
+            print("MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | Connected") 
+            WRITE_LOGFILE_SYSTEM("EVENT", "MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | Connected")
                 
  
     client = mqtt.Client()
-    client.username_pw_set(username=GET_MQTT_AUTHENTIFICATION().user,password=GET_MQTT_AUTHENTIFICATION().password)
+    client.username_pw_set(username=GET_MQTT_BROKER_SETTINGS().user,password=GET_MQTT_BROKER_SETTINGS().password)
     client.on_connect = on_connect
     client.on_message = on_message
      
     try:
-        client.connect(BROKER_ADDRESS)
+        client.connect(GET_MQTT_BROKER_SETTINGS().broker)
         client.loop_forever()
 
     except Exception as e:
-        print("ERROR: MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
+        print("ERROR: MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | " + str(e))
         
-        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
-        SEND_EMAIL("ERROR", "MQTT | Broker - " + BROKER_ADDRESS + " | " + str(e))
+        WRITE_LOGFILE_SYSTEM("ERROR", "MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | " + str(e))
+        SEND_EMAIL("ERROR", "MQTT | Broker - " + str(GET_MQTT_BROKER_SETTINGS().broker) + " | " + str(e))
 
 
 """ ############# """
@@ -282,9 +279,9 @@ def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
             print ('Message Published...')
 
         client = mqtt.Client()
-        client.username_pw_set(username=GET_MQTT_AUTHENTIFICATION().user,password=GET_MQTT_AUTHENTIFICATION().password)          
+        client.username_pw_set(username=GET_MQTT_BROKER_SETTINGS().user,password=GET_MQTT_BROKER_SETTINGS().password)          
         client.on_publish = on_publish
-        client.connect(BROKER_ADDRESS)      
+        client.connect(GET_MQTT_BROKER_SETTINGS().broker)      
         client.publish(MQTT_TOPIC,MQTT_MSG)
         
         client.disconnect()

@@ -482,27 +482,20 @@
                       <td colspan="11"></td>
                     </tr>
                     <tr>
-                      <td colspan="1"></td>
-                      <td colspan="1"></td>
+                      <td colspan="2">Tag (Mon, Tue, Wed, Thu, Fri, Sat, Sun) /// Stunde (0-23) /// Minute (0-59) /// Alles (*)</td>
                       <td colspan="9">
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Tag:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
-                            <input type="text" class="form-control" name="set_day_{{ entry.id }}" value="{{ entry.day }}" /> 
-                          </div>
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Stunde:</button>
-                          </div>                      
-                          <div class="col-sm-3">                                       
-                            <input type="text" class="form-control" name="set_hour_{{ entry.id }}" value="{{ entry.hour }}" /> 
-                          </div>
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Minute:</button>
-                          </div>   
-                          <div class="col-sm-3">   
-                            <input type="text" class="form-control" name="set_minute_{{ entry.id }}" value="{{ entry.minute }}" /> 
+                        <div class="row justify-content-md-center">                                                
+                          <div class="col-sm-4"> 
+                            <input type="text" class="form-control" placeholder="Tage" name="set_day_{{ entry.id }}"
+                             value = {% if entry.day != None and entry.day != "None" %}"{{ entry.day }}"{% else %}""{% endif %} /> 
+                          </div>                     
+                          <div class="col-sm-4">                                       
+                            <input type="text" class="form-control" placeholder="Stunden" name="set_hour_{{ entry.id }}"
+                             value = {% if entry.hour != None and entry.hour != "None" %}"{{ entry.hour }}"{% else %}""{% endif %} /> 
+                          </div> 
+                          <div class="col-sm-4">   
+                            <input type="text" class="form-control" placeholder="Minuten" name="set_minute_{{ entry.id }}"
+                             value = {% if entry.minute != None and entry.minute != "None" %}"{{ entry.minute }}"{% else %}""{% endif %} /> 
                           </div>
                         </div>
                       </td>                           
@@ -549,13 +542,12 @@
                             </font>                           
                           </div>
 
-                          <div class="col-sm-1">
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Ort:</button>
-                          </div>
-                          <div class="col-sm-1">
-                            <select class="selectpicker" data-width="auto" data-live-search="true" name="set_location_{{ entry.id }}">
-                              {% if entry.location != None %}
+                          <div class="col-sm-4">
+                            <select class="selectpicker" data-width="100%" data-live-search="true" name="set_location_{{ entry.id }}">
+                              {% if entry.location != None and entry.location != "None" %}
                                 <option value= "{{ entry.location }}" > {{ entry.location }} </option>
+                              {% else %}
+                                <option value= "" > Ort </option>
                               {% endif %}
                               <optgroup>
                               {% if error_message_locations_import == "" %}
@@ -563,10 +555,7 @@
                                   <option value= "{{ each }}" > {{ each }} </option>
                                 {% endfor %}   
                               {% endif %}                    
-                              </optgroup>
-                              <optgroup> 
-                                <option value= "" > None </option>   
-                              </optgroup>                                                                                 
+                              </optgroup>                                                                             
                             </select>                              
                           </div>
                         </div>
@@ -602,13 +591,14 @@
                       </td>
                       
                       <td colspan="9">    
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
+                        <div class="row justify-content-md-center">                                                 
+                          <div class="col-sm-4"> 
                             <select id="device_1_{{ entry.id }}" onchange="Choose_Sensor_1('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_1_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>      
+                              {% if entry.mqtt_device_ieeeAddr_1 != None and entry.mqtt_device_ieeeAddr_1 != "None" %}
+                                <option value= "{{ entry.mqtt_device_ieeeAddr_1 }}" > {{ entry.mqtt_device_name_1 }} </option>
+                              {% else %}
+                                <option value= "" > Gerät </option>
+                              {% endif %}                                
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
@@ -616,18 +606,16 @@
                               </optgroup>                                                                            
                             </select>                              
                           </div>
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
-                            <select id="selected_sensor_1_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_1_{{ entry.id }}">  
-                              {% if entry.mqtt_device_id_1 != None %}
+                          
+                          <div class="col-sm-4"> 
+                            <select id="selected_sensor_1_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_1_{{ entry.id }}">    
+                              {% if mqtt_device_id_1 != None and mqtt_device_id_1 != "None" and entry.mqtt_device_ieeeAddr_1 != None and entry.mqtt_device_ieeeAddr_1 != "None" %}
                                 <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_1 }} </option>
                                   {% for each in entry.mqtt_device_input_values_1.split(',') %}
                                     <option value= "{{ each }}" > {{ each }} </option>
                                   {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>                         
+                                <option value= "" > Sensor </option>                         
                               {% endif %}                                                                                      
                             </select>                                
 
@@ -635,8 +623,12 @@
                             
                             </div>                                                 
                             <div class="col-sm-2">     
-                              <select class="selectpicker" data-width="75%" name="set_operator_1_{{ entry.id }}">  
-                                <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
+                              <select class="selectpicker" data-width="100%" name="set_operator_1_{{ entry.id }}">  
+                                {% if entry.operator_1 != None and entry.operator_1 != "None" and entry.operator_1 != "" %}
+                                  <option value= "{{ entry.operator_1 }}" > {{ entry.operator_1 }} </option>
+                                {% else %}
+                                  <option value= "" > Operator </option>
+                                {% endif %}                                   
                                 <optgroup>                                    
                                   {% for each in dropdown_list_operators %}
                                   <option value="{{each}}"> {{ each }} </option>
@@ -645,7 +637,8 @@
                               </select>        
                             </div>                                           
                             <div class="col-sm-2"> 
-                            <input type="text" class="form-control" name="set_value_1_{{ entry.id }}" value="{{ entry.value_1 }}" /> 
+                            <input type="text" class="form-control" name="set_value_1_{{ entry.id }}"
+                             value = {% if entry.value_1 != None and entry.value_1 != "None" %}"{{ entry.value_1 }}"{% else %}""{% endif %} /> 
                           {% else %}                 
                         {% endif %}
 
@@ -658,10 +651,9 @@
 
                     {% if entry.operator_main_1 != "None" and entry.operator_main_1 != None %}            
                     <tr>
-                      <td colspan="1"></td>
-                      <td colspan="1">
+                      <td colspan="2">
                         <div class="dropdown text-right">     
-                          <select class="selectpicker" data-width="60%" name="set_operator_main_1_{{ entry.id }}">
+                          <select class="selectpicker" data-width="100%" name="set_operator_main_1_{{ entry.id }}">
                             <option value= "{{ entry.operator_main_1 }}" > {{ entry.operator_main_1 }} </option>
                             <optgroup>                                    
                               {% for each in dropdown_list_operator_main %}
@@ -673,41 +665,43 @@
                       </td>
                       
                       <td colspan="9">    
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
+                        <div class="row justify-content-md-center">                                                 
+                          <div class="col-sm-4"> 
                             <select id="device_2_{{ entry.id }}" onchange="Choose_Sensor_2('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_2_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>      
+                              {% if entry.mqtt_device_ieeeAddr_2 != None and entry.mqtt_device_ieeeAddr_2 != "None" %}
+                                <option value= "{{ entry.mqtt_device_ieeeAddr_2 }}" > {{ entry.mqtt_device_name_2 }} </option>
+                              {% else %}
+                                <option value= "" > Gerät </option>
+                              {% endif %}           
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}                  
                               </optgroup>                                                                            
                             </select>    
-                          </div>
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
+                          </div>                                                  
+                          <div class="col-sm-4"> 
                             <select id="selected_sensor_2_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_2_{{ entry.id }}">  
-                              {% if entry.mqtt_device_id_2 != None %}
-                                <option value= "{{ entry.sensor_key_1 }}" > {{ entry.sensor_key_2 }} </option>
+                              {% if mqtt_device_id_2 != None and mqtt_device_id_2 != "None" and entry.mqtt_device_ieeeAddr_2 != None and entry.mqtt_device_ieeeAddr_2 != "None" %}
+                                <option value= "{{ entry.sensor_key_2 }}" > {{ entry.sensor_key_2 }} </option>
                                   {% for each in entry.mqtt_device_input_values_2.split(',') %}
                                     <option value= "{{ each }}" > {{ each }} </option>
                                   {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>                         
-                              {% endif %}                                                                                      
+                                <option value= "" > Sensor </option>                         
+                              {% endif %}                                                                                         
                             </select>    
 
                           {% if entry.operator_main_1 == "and" or entry.operator_main_1 == "or" %}
 
                             </div>                                               
                             <div class="col-sm-2">  
-                              <select class="selectpicker" data-width="75%" name="set_operator_2_{{ entry.id }}">  
-                                <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
+                              <select class="selectpicker" data-width="100%" name="set_operator_2_{{ entry.id }}">  
+                                {% if entry.operator_2 != None and entry.operator_2 != "None" and entry.operator_2 != "" %}
+                                  <option value= "{{ entry.operator_2 }}" > {{ entry.operator_2 }} </option>
+                                {% else %}
+                                  <option value= "" > Operator </option>
+                                {% endif %}  
                                 <optgroup>                                    
                                   {% for each in dropdown_list_operators %}
                                   <option value="{{each}}"> {{ each }} </option>
@@ -716,7 +710,8 @@
                               </select>  
                             </div>                                           
                             <div class="col-sm-2">     
-                              <input type="text" class="form-control" name="set_value_2_{{ entry.id }}" value="{{ entry.value_2 }}" /> 
+                              <input type="text" class="form-control" name="set_value_2_{{ entry.id }}"
+                               value = {% if entry.value_2 != None and entry.value_2 != "None" %}"{{ entry.value_2 }}"{% else %}""{% endif %} />
                           {% endif %} 
 
                           </div>
@@ -730,10 +725,9 @@
 
                     {% if entry.operator_main_2 != "None" and entry.operator_main_2 != None %}                    
                     <tr>
-                      <td colspan="1"></td>
-                      <td colspan="1">
+                      <td colspan="2">
                         <div class="dropdown text-right">
-                          <select class="selectpicker" data-width="60%" name="set_operator_main_2_{{ entry.id }}">
+                          <select class="selectpicker" data-width="100%" name="set_operator_main_2_{{ entry.id }}">
                             <option value= "{{ entry.operator_main_2 }}" > {{ entry.operator_main_2 }} </option>
                             <optgroup>                                    
                               {% for each in dropdown_list_operator_main %}
@@ -745,50 +739,53 @@
                       </td>
                       
                       <td colspan="9">    
-                        <div class="row justify-content-md-center">
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Gerät:</button>
-                          </div>                                                   
-                          <div class="col-sm-3"> 
+                        <div class="row justify-content-md-center">                                                 
+                          <div class="col-sm-4"> 
                             <select id="device_3_{{ entry.id }}" onchange="Choose_Sensor_3('{{ entry.id }}')" class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_3_{{ entry.id }}">
-                              <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>      
+                              {% if entry.mqtt_device_ieeeAddr_3 != None and entry.mqtt_device_ieeeAddr_3 != "None" %}
+                                <option value= "{{ entry.mqtt_device_ieeeAddr_3 }}" > {{ entry.mqtt_device_name_3 }} </option>
+                              {% else %}
+                                <option value= "" > Gerät </option>
+                              {% endif %}           
                               <optgroup>
                               {% for each in dropdown_list_mqtt_devices %}
                                 <option value="{{ each.id }}"> {{ each.name }} </option>
                               {% endfor %}                  
                               </optgroup>                                                                            
                             </select>    
-                          </div>  
-                          <div class="col-sm-1">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sensor:</button>
                           </div>                                                   
-                          <div class="col-sm-3"> 
+                          <div class="col-sm-4"> 
                             <select id="selected_sensor_3_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_3_{{ entry.id }}">  
-                              {% if entry.mqtt_device_id_3 != None %}
+                              {% if mqtt_device_id_3 != None and mqtt_device_id_3 != "None" and entry.mqtt_device_ieeeAddr_3 != None and entry.mqtt_device_ieeeAddr_3 != "None" %}
                                 <option value= "{{ entry.sensor_key_3 }}" > {{ entry.sensor_key_3 }} </option>
                                   {% for each in entry.mqtt_device_input_values_3.split(',') %}
                                     <option value= "{{ each }}" > {{ each }} </option>
                                   {% endfor %}                             
                                 {% else %}
-                                <option value= "" > None </option>                         
-                              {% endif %}                                                                                      
+                                <option value= "" > Sensor </option>                         
+                              {% endif %}                                                                                       
                             </select>    
 
                           {% if entry.operator_main_2 == "and" or entry.operator_main_2 == "or" %}
 
                             </div>                                                
                             <div class="col-sm-2">  
-                              <select class="selectpicker" data-width="75%" name="set_operator_3_{{ entry.id }}">  
-                                <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
+                              <select class="selectpicker" data-width="100%" name="set_operator_3_{{ entry.id }}">  
+                                {% if entry.operator_3 != None and entry.operator_3 != "None" and entry.operator_3 != "" %}
+                                  <option value= "{{ entry.operator_3 }}" > {{ entry.operator_3 }} </option>
+                                {% else %}
+                                  <option value= "" > Operator </option>
+                                {% endif %}  
                                 <optgroup>                                    
                                   {% for each in dropdown_list_operators %}
-                                  <option value="{{each}}"> {{ each }} </option>
+                                    <option value="{{each}}"> {{ each }} </option>
                                   {% endfor %}
                                 </optgroup>                                                                                                                    
                               </select>  
                             </div>                                           
                             <div class="col-sm-2">        
-                              <input type="text" class="form-control" name="set_value_3_{{ entry.id }}" value="{{ entry.value_3 }}" /> 
+                              <input type="text" class="form-control" name="set_value_3_{{ entry.id }}"
+                               value = {% if entry.value_3 != None and entry.value_3 != "None" %}"{{ entry.value_3 }}"{% else %}""{% endif %} />
 
                           {% endif %}
 
@@ -844,7 +841,8 @@
                             <button type="button" style="background-color:transparent" class="btn btn-secondary">IP-Adressen:</button>
                           </div>
                           <div class="col-sm-6">
-                            <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}" value="{{ entry.ip_addresses }}" /> 
+                            <input type="text" class="form-control" name="set_ip_addresses_{{ entry.id }}"
+                             value = {% if entry.ip_addresses != None and entry.ip_addresses != "None" %}"{{ entry.ip_addresses }}"{% else %}""{% endif %} />
                           </div>
                         </div>
                       </td>

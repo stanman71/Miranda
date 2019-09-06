@@ -9,9 +9,9 @@ from flask_mobility import Mobility
 from app.components.colorpicker import colorpicker
 
 app = Flask(__name__)
+app.config['SECRET_KEY']                     = os.urandom(20).hex()
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'Thisissupposedtobesecret!'
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['SEND_FILE_MAX_AGE_DEFAULT']      = 0
 Bootstrap(app)
 Mobility(app)
 

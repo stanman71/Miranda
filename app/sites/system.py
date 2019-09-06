@@ -659,8 +659,9 @@ def system_mqtt():
     error_message_mqtt = ""
     error_message_change_settings = ""
     
-    user     = GET_MQTT_AUTHENTIFICATION().user
-    password = GET_MQTT_AUTHENTIFICATION().password
+    broker   = GET_MQTT_BROKER_SETTINGS().broker    
+    user     = GET_MQTT_BROKER_SETTINGS().user
+    password = GET_MQTT_BROKER_SETTINGS().password
     
     mqtt_device_name       = ""   
     check_value_mqtt       = ["", ""]
@@ -724,17 +725,18 @@ def system_mqtt():
             error_message_change_settings = UPDATE_MQTT_DEVICES("mqtt")
             
 
-        # save mqtt setting
+        # save mqtt broker setting
         if request.form.get("save_general_settings") is not None:
                           
             collapse_mqtt_settings = "in"
 
+            broker   = request.form.get("set_broker")
             user     = request.form.get("set_user")
             password = request.form.get("set_password")
             
-            SET_MQTT_AUTHENTIFICATION(user, password)
+            SET_MQTT_BROKER_SETTINGS(broker, user, password)
 
-
+            mqtt_update_hour   = request.form.get("get_mqtt_update_hour")
             mqtt_update_minute = request.form.get("get_mqtt_update_minute")
 
             mqtt_update_task = GET_SCHEDULER_TASK_BY_NAME("mqtt_update")
@@ -747,7 +749,7 @@ def system_mqtt():
                 
             SET_SCHEDULER_TASK(i, "mqtt_update", "mqtt_update_devices", 
                                   "checked", "None", "None", "None", "checked", 
-                                  "*", "*", mqtt_update_minute,
+                                  "*", mqtt_update_hour, mqtt_update_minute,
                                   "None", "None", "None",
                                   "None", "None", "None", 
                                   "None", "None", "None", "None",
@@ -766,10 +768,14 @@ def system_mqtt():
     mqtt_device_list = GET_ALL_MQTT_DEVICES("mqtt")
     
     if GET_SCHEDULER_TASK_BY_NAME("mqtt_update") != None:
+        mqtt_update_hour   = GET_SCHEDULER_TASK_BY_NAME("mqtt_update").hour
         mqtt_update_minute = GET_SCHEDULER_TASK_BY_NAME("mqtt_update").minute
-    else: 
-        mqtt_update_minute = None
-        
+    else:
+        mqtt_update_hour   = "Stunde"        
+        mqtt_update_minute = "Minute"
+   
+    dropdown_list_hours   = [ "*", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] 
+                                 
     dropdown_list_minutes = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
                              21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 
                              41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]    
@@ -780,7 +786,12 @@ def system_mqtt():
                             error_message=error_message,
                             error_message_mqtt=error_message_mqtt,
                             error_message_change_settings=error_message_change_settings,
+                            broker=broker,
+                            user=user,
+                            password=password,                           
+                            mqtt_update_hour=mqtt_update_hour,
                             mqtt_update_minute=mqtt_update_minute,
+                            dropdown_list_hours=dropdown_list_hours,
                             dropdown_list_minutes=dropdown_list_minutes,
                             mqtt_device_name=mqtt_device_name,
                             mqtt_setting=mqtt_setting,
@@ -788,8 +799,6 @@ def system_mqtt():
                             mqtt_device_list=mqtt_device_list,
                             collapse_mqtt_settings=collapse_mqtt_settings,
                             collapse_mqtt_log=collapse_mqtt_log,
-                            user=user,
-                            password=password,
                             timestamp=timestamp,
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
@@ -2003,7 +2012,7 @@ def system_backup():
     if GET_SCHEDULER_TASK_BY_NAME("backup_database") != None:
         backup_hour = GET_SCHEDULER_TASK_BY_NAME("backup_database").hour
     else: 
-        backup_hour = None
+        backup_hour = "Stunde"
    
     backup_location_path = GET_CONFIG_BACKUP_LOCATION() 
         

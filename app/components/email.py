@@ -64,5 +64,5 @@ def SEND_EMAIL(subject, message):
         return "success"   
         
     except Exception as e:
-        WRITE_LOGFILE_SYSTEM("ERROR", "eMail | " + str(recipients) + " | " + subject + " | " + body + " | " + str(e))  
-        return ("Fehler in eMail: " + str(e))  
+        WRITE_LOGFILE_SYSTEM("ERROR", "eMail | " + str(recipients) + " | " + subject + " | " + message + " | " + str(e))  
+        return ("Fehler eMail-Versand: " + str(e))  

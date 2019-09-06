@@ -40,6 +40,11 @@ This project creates a smarthome environment.
 
        >>> pip install --upgrade pip
 
+- open hostname file and insert new name
+
+       >>> sudo nano /etc/hostname
+           miranda
+          
 - create the new folder "/home/pi/miranda" and copy all Miranda files into it
 
        >>> mkdir miranda
@@ -52,10 +57,6 @@ This project creates a smarthome environment.
        Connection: normal
        user:       pi
        password:   raspberry
-
-- change folder permissions
-
-       >>> sudo chmod -v -R 770 /home/pi/miranda
 
 - install BLAS and LAPACK
 
@@ -78,6 +79,10 @@ This project creates a smarthome environment.
 - replace wrong spotipy file
  
        >>> sudo cp /home/pi/miranda/support/spotipy/client.py /usr/local/lib/python3.7/dist-packages/spotipy/client.py
+
+- change folder permissions
+
+       >>> sudo chmod -v -R 070 /home/pi/miranda
 
 - default_login
 
@@ -149,6 +154,8 @@ https://github.com/eclipse/mosquitto
 </br>
 https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de5df2e29afc
 </br>
+https://www.auxnet.de/verschluesseltes-mqtt-vom-und-zum-mosquitto-server/
+</br>
 
 #### 1. Installation
 
@@ -160,11 +167,11 @@ https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de
 
 - subscribe a channel
 
-       >>> mosquitto_sub -d -h localhost -p 1883 -t "test"
+       >>> mosquitto_sub -d -h localhost -p 1883 -t "test_channel"
 
 - send a message
 
-       >>> mosquitto_pub -d -h localhost -p 1883 -t "test" -m "Hello World"
+       >>> mosquitto_pub -d -h localhost -p 1883 -t "test_channel" -m "Hello World"
 
 </br>
 
@@ -198,6 +205,7 @@ https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de
 
        >>> systemctl status mosquitto.service
        >>> journalctl -u mosquitto
+       >>> sudo cat /var/log/mosquitto/mosquitto.log
 
 </br>
 
@@ -207,9 +215,13 @@ https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de
 
        >>> sudo systemctl stop mosquitto
 
-- create a new user
+- create a new user and password
 
        >>> sudo mosquitto_passwd -c /etc/mosquitto/passwd <user_name>
+
+- change file permissions
+
+       >>> sudo chmod -v -R 060 /etc/mosquitto/passwd
 
 - edit mosquitto config and add these two lines
 
@@ -220,12 +232,12 @@ https://medium.com/@eranda/setting-up-authentication-on-mosquitto-mqtt-broker-de
 
 - restart mosquitto
 
-       >>> sudo systemctl start mosquitto
+       >>> sudo systemctl restart mosquitto
 
 - verify the authentication
 
-       >>> mosquitto_sub -h localhost -p 1883 -t "test" -u <user_name> -P <password>
-
+       >>> mosquitto_sub -h localhost -p 1883 -t "test_channel" -u <user_name> -P <password>
+       >>> mosquitto_pub -h localhost -p 1883 -t "test_channel" -u <user_name> -P <password> -m "Hello World"
 
 </br>
 ------------
@@ -279,6 +291,10 @@ https://github.com/Koenkk/zigbee2mqtt
 
        >>> sudo chmod -v -R 070 /opt/zigbee2mqtt/data/configuration.yaml
 
+- generate a network key
+
+       >>> dd if=/dev/urandom bs=1 count=16 2>/dev/null | od -A n -t x1 | awk '{printf "["} {for(i = 1; i< NF; i++) {printf "0x%s, ", $i}} {printf "0x%s]\n", $NF}'
+
 - edit zigbee2mqtt config
 
        >>> sudo nano /opt/zigbee2mqtt/data/configuration.yaml
@@ -292,6 +308,9 @@ https://github.com/Koenkk/zigbee2mqtt
            # MQTT server authentication, uncomment if required:
            user: <my_user>
            password: <my_password>
+           
+           advanced:
+             network_key: <network_key>
 
 </br>
 

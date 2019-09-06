@@ -496,64 +496,67 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
 
          try:
             if "," in task.day:
-                  day = task.day.split(",")
-                  for element in day:
-                     if element.lower() not in ["mo", "tu", "we", "th", "fr", "sa", "su"]:
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag")  
+                  days = task.day.replace(" ", "")
+                  days = days.split(",")
+                  for element in days:
+                     if element.lower() not in ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]:
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag >>> Gültig: Mon, Tue, Wed, Thu, Fri, Sat, Sun, *")
                         break                                 
             else:
-                  if task.day.lower() not in ["mo", "tu", "we", "th", "fr", "sa", "su", "*"] and task.day != "*":
-                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag") 
+                  if task.day.lower() not in ["mon", "tue", "wed", "thu", "fri", "sat", "sun", "*"] and task.day != "*":
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag >>> Gültig: Mon, Tue, Wed, Thu, Fri, Sat, Sun, *") 
          except:
-            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag")
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag >>> Gültig: Mon, Tue, Wed, Thu, Fri, Sat, Sun, *")
 
          ### check hour
 
          try:
             if "," in task.hour:
-                  hour = task.hour.split(",")
-                  for element in hour:
+                  hours = task.hour.replace(" ", "")                
+                  hours = hours.split(",")
+                  for element in hours:
                      try:                                   
                         if not (0 <= int(element) <= 24):
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
                               break   
                      except:
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
                         break   
             else:
                   try:
                      if not (0 <= int(task.hour) <= 24) and task.hour != "*":
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde") 
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *") 
                   except:
                      if task.hour != "*":
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")    
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")    
 
          except:
-            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde")
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
 
          ### check minute
 
          try:
             if "," in task.minute:
-                  minute = task.minute.split(",")
-                  for element in minute:
+                  minutes = task.minute.replace(" ", "")                 
+                  minutes = minutes.split(",")
+                  for element in minutes:
                      try:                                   
                         if not (0 <= int(element) <= 60):
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
                               break   
                      except:
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
                         break   
             else:
                   try:
                      if not (0 <= int(task.minute) <= 60) and task.minute != "*":
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
                   except:
                      if task.minute != "*":
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
       
          except:
-            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute") 
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
 
    return list_time_errors
 

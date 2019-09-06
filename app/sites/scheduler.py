@@ -442,127 +442,127 @@ def scheduler():
 
     # get sensor list
     try:
-        mqtt_device_1_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(1).input_values
+        mqtt_device_1_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(1).input_values
         mqtt_device_1_input_values = mqtt_device_1_input_values.replace(" ", "")
     except:
         mqtt_device_1_input_values = ""
     try:
-        mqtt_device_2_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(2).input_values
+        mqtt_device_2_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(2).input_values
         mqtt_device_2_input_values = mqtt_device_2_input_values.replace(" ", "")
     except:
         mqtt_device_2_input_values = ""
     try:        
-        mqtt_device_3_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(3).input_values
+        mqtt_device_3_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(3).input_values
         mqtt_device_3_input_values = mqtt_device_3_input_values.replace(" ", "")
     except:
         mqtt_device_3_input_values = ""
     try:        
-        mqtt_device_4_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(4).input_values
+        mqtt_device_4_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(4).input_values
         mqtt_device_4_input_values = mqtt_device_4_input_values.replace(" ", "")
     except:
         mqtt_device_4_input_values = ""
     try:        
-        mqtt_device_5_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(5).input_values
+        mqtt_device_5_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(5).input_values
         mqtt_device_5_input_values = mqtt_device_5_input_values.replace(" ", "")
     except:
         mqtt_device_5_input_values = ""
     try:        
-        mqtt_device_6_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(6).input_values
+        mqtt_device_6_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(6).input_values
         mqtt_device_6_input_values = mqtt_device_6_input_values.replace(" ", "")
     except:
         mqtt_device_6_input_values = ""
     try:        
-        mqtt_device_7_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(7).input_values
+        mqtt_device_7_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(7).input_values
         mqtt_device_7_input_values = mqtt_device_7_input_values.replace(" ", "")
     except:
         mqtt_device_7_input_values = ""
     try:        
-        mqtt_device_8_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(8).input_values
+        mqtt_device_8_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(8).input_values
         mqtt_device_8_input_values = mqtt_device_8_input_values.replace(" ", "")
     except:
         mqtt_device_8_input_values = ""
     try:        
-        mqtt_device_9_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(9).input_values
+        mqtt_device_9_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(9).input_values
         mqtt_device_9_input_values = mqtt_device_9_input_values.replace(" ", "")
     except:
         mqtt_device_9_input_values = ""
     try:        
-        mqtt_device_10_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(10).input_values
+        mqtt_device_10_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(10).input_values
         mqtt_device_10_input_values = mqtt_device_10_input_values.replace(" ", "")
     except:
         mqtt_device_10_input_values = ""
     try:        
-        mqtt_device_11_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(11).input_values
+        mqtt_device_11_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(11).input_values
         mqtt_device_11_input_values = mqtt_device_11_input_values.replace(" ", "")
     except:
         mqtt_device_11_input_values = ""
     try:        
-        mqtt_device_12_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(12).input_values
+        mqtt_device_12_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(12).input_values
         mqtt_device_12_input_values = mqtt_device_12_input_values.replace(" ", "")
     except:
         mqtt_device_12_input_values = ""
     try:        
-        mqtt_device_13_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(13).input_values
+        mqtt_device_13_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(13).input_values
         mqtt_device_13_input_values = mqtt_device_13_input_values.replace(" ", "")
     except:
         mqtt_device_13_input_values = ""
     try:        
-        mqtt_device_14_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(14).input_values
+        mqtt_device_14_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(14).input_values
         mqtt_device_14_input_values = mqtt_device_14_input_values.replace(" ", "")
     except:
         mqtt_device_14_input_values = ""
     try:        
-        mqtt_device_15_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(15).input_values
+        mqtt_device_15_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(15).input_values
         mqtt_device_15_input_values = mqtt_device_15_input_values.replace(" ", "")
     except:
         mqtt_device_15_input_values = ""    
     try:        
-        mqtt_device_16_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(16).input_values
+        mqtt_device_16_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(16).input_values
         mqtt_device_16_input_values = mqtt_device_16_input_values.replace(" ", "")
     except:
         mqtt_device_16_input_values = ""
     try:        
-        mqtt_device_17_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(17).input_values
+        mqtt_device_17_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(17).input_values
         mqtt_device_17_input_values = mqtt_device_17_input_values.replace(" ", "")
     except:
         mqtt_device_17_input_values = ""
     try:        
-        mqtt_device_18_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(18).input_values
+        mqtt_device_18_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(18).input_values
         mqtt_device_18_input_values = mqtt_device_18_input_values.replace(" ", "")
     except:
         mqtt_device_18_input_values = ""
     try:        
-        mqtt_device_19_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(19).input_values
+        mqtt_device_19_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(19).input_values
         mqtt_device_19_input_values = mqtt_device_19_input_values.replace(" ", "")
     except:
         mqtt_device_19_input_values = ""
     try:        
-        mqtt_device_20_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(20).input_values
+        mqtt_device_20_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(20).input_values
         mqtt_device_20_input_values = mqtt_device_20_input_values.replace(" ", "")
     except:
         mqtt_device_20_input_values = ""   
     try:        
-        mqtt_device_21_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(21).input_values
+        mqtt_device_21_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(21).input_values
         mqtt_device_21_input_values = mqtt_device_21_input_values.replace(" ", "")
     except:
         mqtt_device_21_input_values = ""   
     try:        
-        mqtt_device_22_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(22).input_values
+        mqtt_device_22_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(22).input_values
         mqtt_device_22_input_values = mqtt_device_22_input_values.replace(" ", "")
     except:
         mqtt_device_22_input_values = ""   
     try:        
-        mqtt_device_23_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(23).input_values
+        mqtt_device_23_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(23).input_values
         mqtt_device_23_input_values = mqtt_device_23_input_values.replace(" ", "")
     except:
         mqtt_device_23_input_values = ""   
     try:        
-        mqtt_device_24_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(24).input_values
+        mqtt_device_24_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(24).input_values
         mqtt_device_24_input_values = mqtt_device_24_input_values.replace(" ", "")
     except:
         mqtt_device_24_input_values = ""   
     try:        
-        mqtt_device_25_input_values = "None,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(25).input_values
+        mqtt_device_25_input_values = "Sensor,-----------------------------------," + GET_MQTT_DEVICE_BY_ID(25).input_values
         mqtt_device_25_input_values = mqtt_device_25_input_values.replace(" ", "")
     except:
         mqtt_device_25_input_values = ""      
