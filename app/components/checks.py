@@ -460,8 +460,10 @@ def CHECK_SENSORDATA_JOBS_SETTINGS():
 
    # sensor missing ?
    for entry in entries:
+        if entry.mqtt_device_ieeeAddr == "None" or entry.mqtt_device_ieeeAddr == None or entry.mqtt_device_ieeeAddr == "":
+            list_errors.append(entry.name + " >>> kein Gerät zugeordnet")       
         if entry.sensor_key == "None" or entry.sensor_key == None or entry.sensor_key == "":
-            list_errors.append(entry.name + " >>> keinen Sensor zugeordnet")
+            list_errors.append(entry.name + " >>> kein Sensor zugeordnet")
 
    return list_errors
 

@@ -17,11 +17,15 @@ from app.components.build_graph import BUILD_GRAPH
 # access rights
 def permission_required(f):
     @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.permission_sensordata == "checked":
-            return f(*args, **kwargs)
-        else:
+    def wrap(*args, **kwargs): 
+        try:
+            if current_user.permission_dashboard == "checked":
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('logout'))
+        except:
             return redirect(url_for('logout'))
+        
     return wrap
 
 
@@ -33,38 +37,43 @@ def permission_required(f):
 @login_required
 @permission_required
 def sensordata_jobs():
-    error_message_add_sensordata_job = ""
+    error_message_add_sensordata_job = []
     error_message_settings = ""
     error_message_change_settings = []
     error_message_file = ""
-    job_name = ""
-    job_filename = ""
+    name = ""
+    filename = ""
     mqtt_device_id = ""
     mqtt_device_name = ""
     checkbox = ""
 
     if request.method == 'POST':
-        if request.form.get("add_job") is not None: 
+        if request.form.get("add_job") != None: 
 
-            if request.form.get("set_job_name") is "":
+            if request.form.get("set_name") == "":
                 # missing name
-                error_message_add_sensordata_job = "Kein Name angegeben"   
-                job_filename = request.form.get("set_job_filename")  
-                  
-            elif request.form.get("set_job_filename") is "":
-                # missing file name
-                error_message_add_sensordata_job = "Kein Deteiname angegeben"    
-                job_name = request.form.get("set_job_name") 
-                
+                error_message_add_sensordata_job.append("Keinen Namen angegeben")   
+                filename = request.form.get("set_filename")
             else:
-                # add sensordata job
-                job_name = request.form.get("set_job_name") 
-                job_filename = request.form.get("set_job_filename") 
-
-                error_message_add_sensordata_job = ADD_SENSORDATA_JOB(job_name, job_filename)
-                error_message_file = CREATE_SENSORDATA_FILE(job_filename)
-                job_name = ""
-                job_filename = ""   
+                name = request.form.get("set_name") 
+                  
+            if request.form.get("set_filename") == "":
+                # missing file name
+                error_message_add_sensordata_job.append("Keinen Deteinamen angegeben")    
+                name = request.form.get("set_name")
+            else:
+                filename = request.form.get("set_filename") 
+                
+            if name != "" and filename != "":
+                
+                error = ADD_SENSORDATA_JOB(name, filename)   
+                if error != None: 
+                    error_message_add_sensordata_job.append(error)
+                    
+                error_message_file = CREATE_SENSORDATA_FILE(filename)
+                
+                name     = ""
+                filename = ""   
 
 
         # change settings
@@ -281,8 +290,8 @@ def sensordata_jobs():
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
     return render_template('sensordata_jobs.html',
-                            job_name=job_name,
-                            job_filename=job_filename,
+                            name=name,
+                            filename=filename,
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             error_message_add_sensordata_job=error_message_add_sensordata_job,
                             error_message_settings=error_message_settings,
@@ -319,7 +328,8 @@ def sensordata_jobs():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -567,7 +577,8 @@ def sensordata_statistics():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,

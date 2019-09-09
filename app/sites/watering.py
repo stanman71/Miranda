@@ -10,11 +10,15 @@ from app.components.checks import CHECK_WATERING_SETTINGS
 # access rights
 def permission_required(f):
     @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.permission_watering == "checked":
-            return f(*args, **kwargs)
-        else:
+    def wrap(*args, **kwargs): 
+        try:
+            if current_user.permission_dashboard == "checked":
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('logout'))
+        except:
             return redirect(url_for('logout'))
+        
     return wrap
 
 
@@ -26,12 +30,13 @@ def permission_required(f):
 @login_required
 @permission_required
 def watering():
-    error_message_add_plant = ""
+    error_message_add_plant = []
+    name = ""
     error_message_change_settings = ""
     pumptime = ""
     moisture_level = ""
     mqtt_device_ieeeAddr = ""
-    mqtt_device_name = ""
+    mqtt_device_name     = ""
     control_sensor_moisture = ""
     control_sensor_watertank = ""
 
@@ -39,17 +44,29 @@ def watering():
         
         # add plant
         if request.form.get("add_plant") != None: 
-            
-            if request.form.get("set_name") != None:
-                # missing name
-                if request.form.get("set_name") == "":
-                    error_message_add_plant = "Keinen Namen angegeben"  
-                                        
-                else:         
-                    name                    = request.form.get("set_name")
-                    mqtt_device_ieeeAddr    = request.form.get("set_mqtt_device_ieeeAddr") 
-                    error_message_add_plant = ADD_PLANT(name, mqtt_device_ieeeAddr)
-        
+
+            # check name
+            if request.form.get("set_name") == "":
+                error_message_add_plant.append("Keinen Namen angegeben")
+            else:
+                name = request.form.get("set_name")
+
+            # check device
+            if request.form.get("set_mqtt_device_ieeeAddr") == "None":
+                error_message_add_plant.append("Kein Gerät angegeben")
+            else:
+                mqtt_device_ieeeAddr = request.form.get("set_mqtt_device_ieeeAddr")
+                mqtt_device_name     = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name
+               
+            if name != "" and mqtt_device_ieeeAddr != "":
+                          
+                error = ADD_PLANT(name, mqtt_device_ieeeAddr)   
+                if error != None: 
+                    error_message_add_plant.append(error)                
+
+                name                 = ""
+                mqtt_device_ieeeAddr = ""
+                mqtt_device_name     = ""
         
         # change settings
         if request.form.get("change_settings") != None: 
@@ -128,32 +145,30 @@ def watering():
                     
     error_message_settings = CHECK_WATERING_SETTINGS()
 
-    if mqtt_device_ieeeAddr != "":
-        mqtt_device_name = GET_MQTT_DEVICE_BY_IEEEADDR(mqtt_device_ieeeAddr).name  
-
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("watering_control")  
-    dropdown_list_groups         = [1, 2, 3, 4, 5]
-    dropdown_list_pumptime       = ["15", "30", "60", "90", "120"]
-    dropdown_list_moisture_level = ["less", "normal", "much"]
+    dropdown_list_watering_controller = GET_ALL_MQTT_DEVICES("watering_control")  
+    dropdown_list_groups              = [1, 2, 3, 4, 5]
+    dropdown_list_pumptime            = ["15", "30", "60", "90", "120"]
+    dropdown_list_moisture_level      = ["less", "normal", "much"]
     
-    plants_list = GET_ALL_PLANTS()
+    list_plants = GET_ALL_PLANTS()
 
     return render_template('watering.html',
-                            dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
+                            dropdown_list_watering_controller=dropdown_list_watering_controller,
                             dropdown_list_groups=dropdown_list_groups,
                             dropdown_list_pumptime=dropdown_list_pumptime,
                             dropdown_list_moisture_level=dropdown_list_moisture_level,
-                            plants_list=plants_list,
-                            moisture_level=moisture_level,
+                            name=name,
                             mqtt_device_ieeeAddr=mqtt_device_ieeeAddr,
                             mqtt_device_name=mqtt_device_name,
+                            list_plants=list_plants,
                             error_message_add_plant=error_message_add_plant,   
                             error_message_change_settings=error_message_change_settings,   
                             error_message_settings=error_message_settings,                                                                                                                                                                                    
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,

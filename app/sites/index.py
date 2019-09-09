@@ -32,6 +32,16 @@ class LoginForm(FlaskForm):
 
 
 """ ##### """
+""" login """
+""" ##### """
+
+@app.route('/login')
+def login():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+""" ##### """
 """ index """
 """ ##### """
 
@@ -55,28 +65,31 @@ def index(template):
                     return redirect(url_for('dashboard'))
                     
                 elif user.permission_scheduler == "checked":
-                    return redirect(url_for('dashboard_scheduler')) 
+                    return redirect(url_for('scheduler')) 
                                        
                 elif user.permission_programs == "checked":
-                    return redirect(url_for('dashboard_programs')) 
+                    return redirect(url_for('programs')) 
                            
                 elif user.permission_watering == "checked":
-                    return redirect(url_for('dashboard_watering')) 
-                           
+                    return redirect(url_for('watering')) 
+ 
+                elif user.permission_heating == "checked":
+                    return redirect(url_for('heating')) 
+ 
                 elif user.permission_camera == "checked":
-                    return redirect(url_for('dashboard_camera'))
+                    return redirect(url_for('camera'))
                     
                 elif user.permission_led == "checked":
-                    return redirect(url_for('dashboard_led_scenes'))   
+                    return redirect(url_for('led_scenes'))   
                                      
                 elif user.permission_sensordata == "checked":
-                    return redirect(url_for('dashboard_sensordata_jobs'))  
+                    return redirect(url_for('sensordata_jobs'))  
                           
                 elif user.permission_spotify == "checked":
-                    return redirect(url_for('dashboard_spotify'))  
+                    return redirect(url_for('spotify'))  
                     
                 elif user.permission_system == "checked":
-                    return redirect(url_for('dashboard_system_mqtt'))
+                    return redirect(url_for('system_host'))
                     
                 else:
                     error_message = "Keine Zugriffberechtigungen erteilt"

@@ -108,7 +108,7 @@ if GET_HOST_PORT() == 5000:
 """ loading components """
 """ ################## """
 
-from app.sites import index, dashboard, camera, led, scheduler, programs, sensordata, spotify, system, watering
+from app.sites import index, dashboard, camera, heating, led, scheduler, programs, sensordata, spotify, system, watering
 from app.speechcontrol.microphone_led_control import MICROPHONE_LED_CONTROL
 from app.components.mqtt import MQTT_RECEIVE_THREAD, MQTT_PUBLISH, GET_MQTT_INCOMING_MESSAGES, CHECK_ZIGBEE2MQTT_SETTING_PROCESS
 from app.components.process_management import PROCESS_MANAGEMENT_THREAD

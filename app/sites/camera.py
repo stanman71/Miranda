@@ -12,11 +12,15 @@ import cv2
 # access rights
 def permission_required(f):
     @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.permission_camera == "checked":
-            return f(*args, **kwargs)
-        else:
+    def wrap(*args, **kwargs): 
+        try:
+            if current_user.permission_dashboard == "checked":
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('logout'))
+        except:
             return redirect(url_for('logout'))
+        
     return wrap
 
 
@@ -224,7 +228,8 @@ def camera():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,

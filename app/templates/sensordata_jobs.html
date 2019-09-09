@@ -151,6 +151,9 @@
         {% if permission_watering == "checked" %}            
           <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
+        {% if permission_heating == "checked" %}               
+          <li><a href="{{ url_for('heating') }}"><font color="white">Heizung</font></a></li>
+        {% endif %}           
         {% if permission_camera == "checked" %}               
           <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
@@ -217,9 +220,11 @@
 
 <!-- error message add job -->
 
-{% if error_message_add_sensordata_job != "" %}
+{% if error_message_add_sensordata_job != [] %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_add_sensordata_job }}
+    {% for entry in error_message_add_sensordata_job %}
+      {{ entry }} <br>
+    {% endfor %}
   </div>      
 {% endif %}     
 
@@ -230,10 +235,10 @@
       <form method="POST"> 
         <div class="row justify-content-md-center">
           <div class="col-sm-3"> 
-            <input type="text" class="form-control" name="set_job_name" placeholder="Neuer Job" value="{% if job_name != None %}{{ job_name }}{% endif %}" />                         
+            <input type="text" class="form-control" name="set_name" placeholder="Neuer Job" value="{% if name != None %}{{ name }}{% endif %}" />                         
           </div>  
           <div class="col-sm-3"> 
-            <input type="text" class="form-control" name="set_job_filename" placeholder="Dateiname" value="{% if job_filename != None %}{{ job_filename }}{% endif %}" />                         
+            <input type="text" class="form-control" name="set_filename" placeholder="Dateiname" value="{% if filename != None %}{{ filename }}{% endif %}" />                         
           </div>           
           <div class="col-sm-1">                                      
             <input type="submit" onclick="window.location.href='/sensordata#'" class="btn btn-default" name="add_job" value="Job erstellen" />
@@ -299,7 +304,7 @@
                       <select id="device_{{ entry.id }}" onchange="Choose_Sensor('{{ entry.id }}')" class="selectpicker" data-live-search="true" data-width="100%" name="set_mqtt_device_{{ entry.id }}">                                   
                         <optgroup>
                           {% if entry.mqtt_device_ieeeAddr == "None" or entry.mqtt_device_ieeeAddr == None %} 
-                           <option value= "" > Sensor wählen </option>                        
+                            <option value= "" > Gerät </option>                        
                           {% else %}
                             <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
                           {% endif %}
@@ -313,7 +318,11 @@
                     </td>
                     <td>                   
                       <select id="selected_sensor_{{ entry.id }}" class="selectpicker" data-width="100%" name="set_sensor_{{ entry.id }}">               
-                        <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>                  
+                        {% if entry.sensor_key == "None" or entry.sensor_key == None %}
+                           <option value= "" > Sensor </option>                        
+                        {% else %}                         
+                          <option value= "{{ entry.sensor_key }}" > {{ entry.sensor_key }} </option>
+                        {% endif %}                                                 
                         <optgroup>
                           {% if entry.sensor_key != "None" and  entry.sensor_key != None %}   
                             {% for each in entry.mqtt_device.input_values.split(',') %}

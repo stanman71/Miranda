@@ -644,3 +644,566 @@ Timestamp,Type,Description
 2019-09-06 11:52:27,EVENT,|ZigBee2MQTT || Connected|
 2019-09-06 11:52:30,EVENT,|ZigBee2MQTT || Pairing disabled|
 2019-09-06 12:12:45,EVENT,|Speechcontrol || Started|
+2019-09-06 12:15:38,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-06 12:15:39,SUCCESS,|Spotify || Token updated|
+2019-09-06 12:15:41,EVENT,|ZigBee2MQTT || Connected|
+2019-09-06 12:15:44,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-06 12:15:44,EVENT,|Speechcontrol || Started|
+2019-09-06 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 13:05:42,SUCCESS,|Spotify || Token updated|
+2019-09-06 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-06 13:47:09,EVENT,|Speechcontrol || Detection || tragen werden sollen auch die weniger also beispielsweise konflikte|
+2019-09-06 13:48:35,EVENT,|Speechcontrol || Detection || na ja welche beziehung hast du mehr als wirklich mannschaft|
+2019-09-06 13:54:01,EVENT,|Speechcontrol || Detection || diese probleme irgendwo|
+2019-09-06 13:55:46,SUCCESS,|Spotify || Token updated|
+2019-09-06 14:00:29,EVENT,|Speechcontrol || Detection || unter den eigenen|
+2019-09-06 14:02:20,EVENT,|Speechcontrol || Detection || vom einen ich sag mal jetzt nicht extrem als viele andere kinder die nicht ganz ohne fahren wie ich ja ich war ja jetzt keine|
+2019-09-06 14:04:11,EVENT,|Speechcontrol || Detection || dass man heute person in einem film gesehen hat und die findet davon ausgeht dass die person aus|
+2019-09-06 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-06 14:39:52,EVENT,|Speechcontrol || Detection || ja ich hab's gerade technologie|
+2019-09-06 14:45:50,SUCCESS,|Spotify || Token updated|
+2019-09-06 14:52:50,EVENT,|Speechcontrol || Detection || als back-up in meiner stuttgart|
+2019-09-06 14:55:06,EVENT,|Speechcontrol || Detection || likes ist halt so steht bei das|
+2019-09-06 15:01:19,EVENT,|Speechcontrol || Detection || mit dieser frage|
+2019-09-06 15:12:24,EVENT,|Speechcontrol || Detection || ich hätte absolut nicht damit gerechnet deswegen tatsächlich hierfür sechshundertneunundneunzig euro neunundneunzig haben|
+2019-09-06 15:15:12,EVENT,|Speechcontrol || Detection || und ein weg muss ich sagen das modell sie absolut atemberaubend aus|
+2019-09-06 15:15:23,EVENT,|Speechcontrol || Detection || von diesem leben haben wir leider bis jetzt noch keine bilder oder keine weitere informationen bekommen|
+2019-09-06 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 15:35:54,SUCCESS,|Spotify || Token updated|
+2019-09-06 16:25:57,SUCCESS,|Spotify || Token updated|
+2019-09-06 16:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-06 17:16:01,SUCCESS,|Spotify || Token updated|
+2019-09-06 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 18:06:04,SUCCESS,|Spotify || Token updated|
+2019-09-06 18:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-06 18:56:08,SUCCESS,|Spotify || Token updated|
+2019-09-06 19:26:37,EVENT,|Speechcontrol || Detection || völlig|
+2019-09-06 19:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 19:46:12,SUCCESS,|Spotify || Token updated|
+2019-09-06 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 20:00:33,WARNING,|Watering || Plant - Fenster || Watertank Low|
+2019-09-06 20:00:33,EVENT,|Watering || Plant - Fenster || Starting|
+2019-09-06 20:00:43,SUCCESS,|Watering || Plant - Fenster || Pump started|
+2019-09-06 20:01:43,SUCCESS,|Watering || Plant - Fenster || Pump stopped|
+2019-09-06 20:01:43,WARNING,|Watering || Plant - Fenster || Finished with Warning || ['Watertank Low']|
+2019-09-06 20:18:07,EVENT,|Speechcontrol || Detection || was geht genauso ist genau das ist vielleicht genau das was wir machen|
+2019-09-06 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 20:30:46,SUCCESS,|MQTT || Update Devices|
+2019-09-06 20:31:16,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-06 20:36:15,SUCCESS,|Spotify || Token updated|
+2019-09-06 21:26:19,SUCCESS,|Spotify || Token updated|
+2019-09-06 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 21:41:00,EVENT,|Speechcontrol || Detection || datum kaputt|
+2019-09-06 22:16:23,SUCCESS,|Spotify || Token updated|
+2019-09-06 22:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-06 23:06:27,SUCCESS,|Spotify || Token updated|
+2019-09-06 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-06 23:56:31,SUCCESS,|Spotify || Token updated|
+2019-09-07 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-07 00:16:40,EVENT,|Speechcontrol || Detection || ja irgendwie sowas ja|
+2019-09-07 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 00:43:01,EVENT,|Speechcontrol || Detection || ich hoffe dass das weit genug weg|
+2019-09-07 00:46:35,SUCCESS,|Spotify || Token updated|
+2019-09-07 01:25:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 47 %|
+2019-09-07 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 01:36:39,SUCCESS,|Spotify || Token updated|
+2019-09-07 01:57:53,EVENT,|Speechcontrol || Detection || vielen dank an euch und alle anderen natürlich auch eine neue geschichte bekommen im tunnel können wir machen das alles ein bisschen schwierig|
+2019-09-07 01:59:17,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-07 02:26:42,SUCCESS,|Spotify || Token updated|
+2019-09-07 02:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-07 03:16:45,SUCCESS,|Spotify || Token updated|
+2019-09-07 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 04:06:49,SUCCESS,|Spotify || Token updated|
+2019-09-07 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 04:56:52,SUCCESS,|Spotify || Token updated|
+2019-09-07 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 05:46:56,SUCCESS,|Spotify || Token updated|
+2019-09-07 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 06:36:59,SUCCESS,|Spotify || Token updated|
+2019-09-07 07:27:02,SUCCESS,|Spotify || Token updated|
+2019-09-07 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 08:17:06,SUCCESS,|Spotify || Token updated|
+2019-09-07 08:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 09:07:09,SUCCESS,|Spotify || Token updated|
+2019-09-07 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 09:51:00,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-07 09:51:03,STATUS,|LED || Group - bad || OFF : 0 %|
+2019-09-07 09:51:05,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-07 09:57:06,EVENT,|Speechcontrol || Detection || für eine vereinigung und|
+2019-09-07 09:57:12,SUCCESS,|Spotify || Token updated|
+2019-09-07 10:00:25,EVENT,|Speechcontrol || Detection || nicht ganz so als aber auch genauso aus|
+2019-09-07 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 10:47:16,SUCCESS,|Spotify || Token updated|
+2019-09-07 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 11:37:20,SUCCESS,|Spotify || Token updated|
+2019-09-07 11:57:44,EVENT,|Speechcontrol || Detection || das ist ein sack dabei einfach grossartig|
+2019-09-07 12:27:24,SUCCESS,|Spotify || Token updated|
+2019-09-07 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 13:17:28,SUCCESS,|Spotify || Token updated|
+2019-09-07 13:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 14:07:31,SUCCESS,|Spotify || Token updated|
+2019-09-07 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-07 14:57:34,SUCCESS,|Spotify || Token updated|
+2019-09-07 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 15:47:39,SUCCESS,|Spotify || Token updated|
+2019-09-07 16:14:07,EVENT,|Speechcontrol || Detection || ein mann am mädels verbrauch|
+2019-09-07 16:14:51,EVENT,|Speechcontrol || Detection || rauszukommen|
+2019-09-07 16:20:07,EVENT,|Speechcontrol || Detection || doppelt so viele die die zweiten drücke aufklärungsquote unter sich auch zu der hole dich|
+2019-09-07 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 16:37:43,SUCCESS,|Spotify || Token updated|
+2019-09-07 16:42:41,EVENT,|Speechcontrol || Detection || gestalten|
+2019-09-07 16:55:08,EVENT,|Speechcontrol || Detection || frauen das heisst also wenn ich das interesse geweckt ist|
+2019-09-07 17:10:32,EVENT,|Speechcontrol || Detection || untergekommen|
+2019-09-07 17:22:53,EVENT,|Speechcontrol || Detection || ja auch den verdacht dass noch mehr als iphone genommen hat|
+2019-09-07 17:27:47,SUCCESS,|Spotify || Token updated|
+2019-09-07 17:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-07 17:33:43,EVENT,|Speechcontrol || Detection || los|
+2019-09-07 18:03:47,EVENT,|Speechcontrol || Detection || in der region|
+2019-09-07 18:08:14,SUCCESS,|MQTT || Update Devices|
+2019-09-07 18:17:51,SUCCESS,|Spotify || Token updated|
+2019-09-07 18:19:29,EVENT,|Speechcontrol || Detection || sieben jahre|
+2019-09-07 18:28:01,EVENT,|Speechcontrol || Detection || zwei der mann bitte reissen schützenhilfe und rote in einer|
+2019-09-07 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 19:07:55,SUCCESS,|Spotify || Token updated|
+2019-09-07 19:23:23,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 51 %|
+2019-09-07 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-07 19:57:58,SUCCESS,|Spotify || Token updated|
+2019-09-07 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-07 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 20:30:36,SUCCESS,|MQTT || Update Devices|
+2019-09-07 20:31:06,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-07 20:48:02,SUCCESS,|Spotify || Token updated|
+2019-09-07 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 21:34:50,EVENT,|Speechcontrol || Detection || schon wieder freuen|
+2019-09-07 21:38:05,SUCCESS,|Spotify || Token updated|
+2019-09-07 21:42:39,EVENT,|Speechcontrol || Detection || und was hat man sich|
+2019-09-07 21:42:46,EVENT,|Speechcontrol || Detection || ich hab genug vorrecht und da brauche ich nicht|
+2019-09-07 21:54:06,EVENT,|Speechcontrol || Detection || ihr habt doch gar nichts|
+2019-09-07 22:28:09,SUCCESS,|Spotify || Token updated|
+2019-09-07 22:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 23:18:13,SUCCESS,|Spotify || Token updated|
+2019-09-07 23:25:29,EVENT,|Speechcontrol || Detection || ist erstmal einfach|
+2019-09-07 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-07 23:33:47,EVENT,|Speechcontrol || Detection || es heisst jürgen mauer muss alles nochmal mit einem kurven ideal nachzahlen|
+2019-09-07 23:42:35,EVENT,|Speechcontrol || Detection || nach aussen nicht kann die sonne ist besonders kleinigkeit sie besteht aus siebzehn einzelne|
+2019-09-08 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-08 00:08:17,SUCCESS,|Spotify || Token updated|
+2019-09-08 00:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 00:30:04,EVENT,|Scheduler || Task - schlafen || started|
+2019-09-08 00:30:10,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-08 00:58:20,SUCCESS,|Spotify || Token updated|
+2019-09-08 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 01:48:24,SUCCESS,|Spotify || Token updated|
+2019-09-08 02:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 02:38:27,SUCCESS,|Spotify || Token updated|
+2019-09-08 03:28:31,SUCCESS,|Spotify || Token updated|
+2019-09-08 03:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-08 04:18:34,SUCCESS,|Spotify || Token updated|
+2019-09-08 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 05:08:37,SUCCESS,|Spotify || Token updated|
+2019-09-08 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 05:58:41,SUCCESS,|Spotify || Token updated|
+2019-09-08 06:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 06:48:44,SUCCESS,|Spotify || Token updated|
+2019-09-08 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 07:38:48,SUCCESS,|Spotify || Token updated|
+2019-09-08 08:28:51,SUCCESS,|Spotify || Token updated|
+2019-09-08 08:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-08 09:18:54,SUCCESS,|Spotify || Token updated|
+2019-09-08 09:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 10:08:58,SUCCESS,|Spotify || Token updated|
+2019-09-08 10:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 10:59:01,SUCCESS,|Spotify || Token updated|
+2019-09-08 11:12:03,EVENT,|Speechcontrol || Detection || nur eine reduzieren|
+2019-09-08 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 11:49:05,SUCCESS,|Spotify || Token updated|
+2019-09-08 12:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 12:39:09,SUCCESS,|Spotify || Token updated|
+2019-09-08 12:49:06,EVENT,|Speechcontrol || Detection || da kommen sie schon mal den stellvertretenden ministerpräsident natürlich vielen dank|
+2019-09-08 13:07:56,EVENT,|Speechcontrol || Detection || das foto sitzposition meter ist eingetroffen wir können einen lastwagen mit leib und bringen das positioniert davon|
+2019-09-08 13:11:51,EVENT,|Speechcontrol || Detection || wir setzen hubschrauber verstehen das nicht das ist kein feuer das ist ein aktiver von herzen über zweitausend grad brennt die bienen zur partei zu tragen danke für ihre dienste gehen und wir haben nochmal verantwortlich|
+2019-09-08 13:18:19,EVENT,|Speechcontrol || Detection || na komm|
+2019-09-08 13:29:13,SUCCESS,|Spotify || Token updated|
+2019-09-08 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-08 13:30:22,EVENT,|Speechcontrol || Detection || ist zurück läufig aber es wird noch mindestens zwei wochen dauern bis das feuer ganz bestimmt|
+2019-09-08 13:55:32,EVENT,|Speechcontrol || Detection || jahre|
+2019-09-08 13:59:10,EVENT,|Speechcontrol || Detection || wir haben uns auch schaffen|
+2019-09-08 14:19:17,SUCCESS,|Spotify || Token updated|
+2019-09-08 14:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 14:43:22,EVENT,|Speechcontrol || Detection || wer soll das mehr hunger mehr toten|
+2019-09-08 15:09:21,SUCCESS,|Spotify || Token updated|
+2019-09-08 15:19:30,EVENT,|Speechcontrol || Detection || ich weiss|
+2019-09-08 15:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 15:51:41,EVENT,|Speechcontrol || Detection || max von widerstand gegen den staat ja|
+2019-09-08 15:59:25,SUCCESS,|Spotify || Token updated|
+2019-09-08 16:01:36,EVENT,|Speechcontrol || Detection || so schnell wie möglich und kontrolle waren es früher gekommen um ein test|
+2019-09-08 16:14:12,EVENT,|Speechcontrol || Detection || falsch war hätte ich nicht ausgeführt hätte man nicht gefeuert leonie top|
+2019-09-08 16:24:26,EVENT,|Speechcontrol || Detection || handeln sie vorbei war wie ein scheint die noch nie zuvor soweit gespannt hab jetzt beginnt der fest|
+2019-09-08 16:28:48,EVENT,|Speechcontrol || Detection || kommt weshalb unser kern brennstoff nicht sauber angereichertes aus demselben grund weshalb wir weltweit die einzige hersteller von wasser gekündigten grafik moderiert reaktoren mit positiven effizienten sind|
+2019-09-08 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 16:49:29,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:13:48,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed || state: ON|
+2019-09-08 17:21:13,DATABASE,|Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off /// ALL || Day - Mon, Tue, Wed, Thu, Fri || Hour - 7 || Minute - 50 || Sunrise - None || Sunset - None || Location - None || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-09-08 17:21:20,DATABASE,|Scheduler || Task - zur Arbeit || changed |||| Name - zur Arbeit || Task - led_off /// ALL || Day - Mon, Tue, Wed, Thu, Fri || Hour - 7 || Minute - 50 || Repeat - checked|
+2019-09-08 17:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-08 17:39:33,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:39:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:39:50,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:39:53,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:39:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:39:56,EVENT,|Speechcontrol || Started|
+2019-09-08 17:40:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:40:45,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:40:48,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:40:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:40:51,EVENT,|Speechcontrol || Started|
+2019-09-08 17:42:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:42:34,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:42:37,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:42:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:42:40,EVENT,|Speechcontrol || Started|
+2019-09-08 17:47:40,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:47:41,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:47:43,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:47:46,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:47:46,EVENT,|Speechcontrol || Started|
+2019-09-08 17:48:06,DATABASE,|Speechcontrol || LED Task - alle LEDs ausschalten || changed |||| Keywords - No|
+2019-09-08 17:48:08,DATABASE,|Speechcontrol || LED Task - alle LEDs ausschalten || changed |||| Keywords - N|
+2019-09-08 17:48:09,DATABASE,|Speechcontrol || LED Task - alle LEDs ausschalten || changed |||| Keywords - None|
+2019-09-08 17:49:52,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:49:52,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:49:55,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:49:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:49:58,EVENT,|Speechcontrol || Started|
+2019-09-08 17:50:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-08 17:50:59,SUCCESS,|Spotify || Token updated|
+2019-09-08 17:51:01,EVENT,|ZigBee2MQTT || Connected|
+2019-09-08 17:51:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-08 17:51:05,EVENT,|Speechcontrol || Started|
+2019-09-08 17:51:35,DATABASE,|Speechcontrol || Program Task - uzt || added|
+2019-09-08 17:51:38,DATABASE,|Speechcontrol || Program Task - uzt || changed |||| Setting Value - START || Keywords - None|
+2019-09-08 17:51:42,DATABASE,|Speechcontrol || Program Task - uzt || deleted|
+2019-09-08 17:51:54,EVENT,|Speechcontrol || Detection || startet szene standard im wohnzimmer auf sechzig prozent|
+2019-09-08 17:51:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 60 %|
+2019-09-08 17:55:13,SUCCESS,|ZigBee2MQTT || Device - Steckdose_Server || Setting changed || state: OFF|
+2019-09-08 18:19:55,EVENT,|Speechcontrol || Detection || gemeldet haben wir gesagt haben das kann ja nicht wahr sein der dienstag|
+2019-09-08 18:21:55,EVENT,|Speechcontrol || Detection || als dreihundert ps ausgestattet genug um den rasern zu folgen doch wieder kommt ein besonderes auto in die quere|
+2019-09-08 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 18:34:49,EVENT,|Speechcontrol || Detection || natürlich auch die schleuse wobei man sagen muss dass die zahl der ist|
+2019-09-08 18:41:03,SUCCESS,|Spotify || Token updated|
+2019-09-08 18:42:56,EVENT,|Speechcontrol || Detection || es gibt glaube ich immer noch einen grossen sprung|
+2019-09-08 18:44:06,EVENT,|Speechcontrol || Detection || sicherheit und auch bei den wohnungseinbrüche praktisch statistik das rückläufig sind ein guter vögel sind speziale sonderkommission die so in hamburg|
+2019-09-08 18:45:41,EVENT,|Speechcontrol || Detection || gleichzeitig hat sich die aufklärungsquote auf zwölf prozent fast doppelt|
+2019-09-08 18:45:41,ERROR,|Speechcontrol || LED Task || gleichzeitig hat sich die aufklärungsquote auf zwölf prozent fast doppelt || Group not founded|
+2019-09-08 19:04:25,EVENT,|Speechcontrol || Detection || ja wer sich verteidigen würde würde er mich gezielt treffen aber ich weiss dass er einfach mittlerweile soweit ist am samstag akzeptieren|
+2019-09-08 19:15:32,EVENT,|Speechcontrol || Detection || werden aber in einigen bundesländern scheitert das an deren kasten auch bessere schutzwesten fehlanzeige bei der ausbildung die g neun jetzt helfen|
+2019-09-08 19:16:20,EVENT,|Speechcontrol || Detection || zweiundzwanzigster juli zweitausendsechszehn mit dem schlüssel von münchen beginnt für die polizei ein wettlauf gegen die zeit es ist auch ein wettlauf die deutungshoheit was ist wirklich passiert wie viele täter wie viele tatorte bei der stadt entspannt|
+2019-09-08 19:23:09,EVENT,|Speechcontrol || Detection || das wird vieles was tatsächlich polizeiarbeit im jahr zweitausendneunzehn|
+2019-09-08 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-08 19:31:07,SUCCESS,|Spotify || Token updated|
+2019-09-08 19:32:16,EVENT,|Speechcontrol || Detection || das marihuana hatten die themen nämlich die socken versteckt|
+2019-09-08 19:34:22,EVENT,|Speechcontrol || Detection || system martin|
+2019-09-08 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 20:00:33,WARNING,|Watering || Plant - Fenster || Watertank Low|
+2019-09-08 20:00:33,EVENT,|Watering || Plant - Fenster || Starting|
+2019-09-08 20:00:43,SUCCESS,|Watering || Plant - Fenster || Pump started|
+2019-09-08 20:01:53,SUCCESS,|Watering || Plant - Fenster || Pump stopped|
+2019-09-08 20:01:53,WARNING,|Watering || Plant - Fenster || Finished with Warning || ['Watertank Low']|
+2019-09-08 20:21:11,SUCCESS,|Spotify || Token updated|
+2019-09-08 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 20:30:46,SUCCESS,|MQTT || Update Devices|
+2019-09-08 20:31:16,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-08 21:11:14,SUCCESS,|Spotify || Token updated|
+2019-09-08 21:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 22:01:18,SUCCESS,|Spotify || Token updated|
+2019-09-08 22:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-08 22:51:22,SUCCESS,|Spotify || Token updated|
+2019-09-08 23:22:32,EVENT,|Speechcontrol || Detection || richtig krass|
+2019-09-08 23:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-08 23:41:25,SUCCESS,|Spotify || Token updated|
+2019-09-09 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-09 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 00:30:05,EVENT,|Scheduler || Task - schlafen || started|
+2019-09-09 00:30:10,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-09 00:31:29,SUCCESS,|Spotify || Token updated|
+2019-09-09 01:21:32,SUCCESS,|Spotify || Token updated|
+2019-09-09 01:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 02:11:36,SUCCESS,|Spotify || Token updated|
+2019-09-09 02:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 03:01:39,SUCCESS,|Spotify || Token updated|
+2019-09-09 03:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 03:51:43,SUCCESS,|Spotify || Token updated|
+2019-09-09 04:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 04:41:46,SUCCESS,|Spotify || Token updated|
+2019-09-09 05:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 05:31:49,SUCCESS,|Spotify || Token updated|
+2019-09-09 06:21:53,SUCCESS,|Spotify || Token updated|
+2019-09-09 06:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 07:11:56,SUCCESS,|Spotify || Token updated|
+2019-09-09 07:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 08:02:00,SUCCESS,|Spotify || Token updated|
+2019-09-09 08:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 08:52:03,SUCCESS,|Spotify || Token updated|
+2019-09-09 09:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 09:42:06,SUCCESS,|Spotify || Token updated|
+2019-09-09 10:17:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 10:17:49,SUCCESS,|Spotify || Token updated|
+2019-09-09 10:17:51,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 10:17:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 10:17:55,EVENT,|Speechcontrol || Started|
+2019-09-09 10:26:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 10:26:49,SUCCESS,|Spotify || Token updated|
+2019-09-09 10:26:52,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 10:26:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 10:26:55,EVENT,|Speechcontrol || Started|
+2019-09-09 10:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 10:44:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 10:44:50,SUCCESS,|Spotify || Token updated|
+2019-09-09 10:44:53,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 10:44:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 10:44:56,EVENT,|Speechcontrol || Started|
+2019-09-09 10:45:10,DATABASE,|User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Heating - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Warning -  || eMail-Error - |
+2019-09-09 10:45:14,DATABASE,|User - admin || changed |||| Username - admin || eMail - member@example.com || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Heating - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Warning - checked || eMail-Error - checked|
+2019-09-09 10:53:02,DATABASE,|Plant - ghf || added|
+2019-09-09 11:04:55,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:04:55,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:04:58,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:05:01,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:05:01,EVENT,|Speechcontrol || Started|
+2019-09-09 11:07:09,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:07:09,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:07:12,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:07:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:07:15,EVENT,|Speechcontrol || Started|
+2019-09-09 11:09:02,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:09:02,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:09:05,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:09:08,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:09:08,EVENT,|Speechcontrol || Started|
+2019-09-09 11:13:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:13:34,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:13:37,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:13:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:13:40,EVENT,|Speechcontrol || Started|
+2019-09-09 11:13:56,DATABASE,|Plant - dsa || added|
+2019-09-09 11:15:15,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:15:15,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:15:18,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:15:21,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:15:21,EVENT,|Speechcontrol || Started|
+2019-09-09 11:16:07,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:16:07,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:16:10,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:16:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:16:13,EVENT,|Speechcontrol || Started|
+2019-09-09 11:16:27,DATABASE,|Plant - fds || added|
+2019-09-09 11:19:32,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:19:32,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:19:35,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:19:38,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:19:38,EVENT,|Speechcontrol || Started|
+2019-09-09 11:19:57,DATABASE,|Plant - gfd || added|
+2019-09-09 11:22:10,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:22:11,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:22:13,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:22:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:22:17,EVENT,|Speechcontrol || Started|
+2019-09-09 11:22:24,DATABASE,|Plant - gfd || deleted|
+2019-09-09 11:22:30,DATABASE,|Plant - gds || added|
+2019-09-09 11:22:38,DATABASE,|Plant - gds || deleted|
+2019-09-09 11:27:07,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:27:07,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:27:10,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:27:13,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:27:13,EVENT,|Speechcontrol || Started|
+2019-09-09 11:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 11:32:45,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:32:45,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:32:48,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:32:51,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:32:51,EVENT,|Speechcontrol || Started|
+2019-09-09 11:33:22,DATABASE,|Sensordata Job - gfd || added|
+2019-09-09 11:33:22,EVENT,|File || /csv/hf.csv || created|
+2019-09-09 11:34:29,EVENT,|File || /csv/gfd.csv || created|
+2019-09-09 11:34:34,DATABASE,|Sensordata Job - kjh || added|
+2019-09-09 11:34:34,EVENT,|File || /csv/kjh.csv || created|
+2019-09-09 11:34:37,DATABASE,|Sensordata Job - gfd || deleted|
+2019-09-09 11:34:38,DATABASE,|Sensordata Job - kjh || deleted|
+2019-09-09 11:34:45,DATABASE,|Sensordata Job - gfdj || added|
+2019-09-09 11:34:45,EVENT,|File || /csv/jhg.csv || created|
+2019-09-09 11:35:05,DATABASE,|Plant - gfd || added|
+2019-09-09 11:35:07,DATABASE,|Plant - gfd || deleted|
+2019-09-09 11:39:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:39:08,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:39:11,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:39:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:39:14,EVENT,|Speechcontrol || Started|
+2019-09-09 11:39:20,DATABASE,|Sensordata Job - gfdj || deleted|
+2019-09-09 11:39:25,DATABASE,|Sensordata Job - fds || added|
+2019-09-09 11:39:25,EVENT,|File || /csv/gd.csv || created|
+2019-09-09 11:43:10,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:43:10,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:43:13,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:43:16,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:43:16,EVENT,|Speechcontrol || Started|
+2019-09-09 11:46:33,DATABASE,|Sensordata Job - fds || changed |||| Name - fds || Filename - gd || MQTT-Device - 0x882869 || Sensor - None || Always_Active - |
+2019-09-09 11:47:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 11:47:12,SUCCESS,|Spotify || Token updated|
+2019-09-09 11:47:15,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 11:47:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 11:47:18,EVENT,|Speechcontrol || Started|
+2019-09-09 11:47:25,DATABASE,|Sensordata Job - fds || deleted|
+2019-09-09 11:47:28,DATABASE,|Sensordata Job - fds || added|
+2019-09-09 11:47:28,EVENT,|File || /csv/fds.csv || created|
+2019-09-09 11:47:35,DATABASE,|Sensordata Job - fds || changed |||| Name - fds || Filename - fds || MQTT-Device - 0x882869 || Sensor - pump_time || Always_Active - |
+2019-09-09 11:47:37,DATABASE,|Sensordata Job - fds || deleted|
+2019-09-09 12:04:00,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:04:01,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:04:03,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:04:06,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:04:07,EVENT,|Speechcontrol || Started|
+2019-09-09 12:05:19,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:05:19,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:05:22,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:05:25,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:05:25,EVENT,|Speechcontrol || Started|
+2019-09-09 12:06:35,DATABASE,|Speechcontrol || Device Task - ztr || added|
+2019-09-09 12:06:39,DATABASE,|Speechcontrol || Device Task - ztr || deleted|
+2019-09-09 12:06:54,DATABASE,|Speechcontrol || Device Task - gfd || added|
+2019-09-09 12:07:09,DATABASE,|Speechcontrol || Device Task - gfd || deleted|
+2019-09-09 12:13:58,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:13:58,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:14:01,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:14:04,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:14:04,EVENT,|Speechcontrol || Started|
+2019-09-09 12:15:00,DATABASE,|Speechcontrol || Device Task - hgf || added|
+2019-09-09 12:15:04,DATABASE,|Speechcontrol || Device Task - hgf || deleted|
+2019-09-09 12:17:52,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:17:52,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:17:55,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:17:58,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:17:58,EVENT,|Speechcontrol || Started|
+2019-09-09 12:18:08,DATABASE,|Plant - hgf || added|
+2019-09-09 12:18:12,DATABASE,|Plant - hgf || deleted|
+2019-09-09 12:19:43,DATABASE,|Speechcontrol || Device Task - ghf || added|
+2019-09-09 12:19:45,DATABASE,|Speechcontrol || Device Task - ghf || deleted|
+2019-09-09 12:28:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:28:36,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:28:39,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:28:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:28:42,EVENT,|Speechcontrol || Started|
+2019-09-09 12:29:49,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:29:49,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:29:52,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:29:55,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:29:55,EVENT,|Speechcontrol || Started|
+2019-09-09 12:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 12:30:09,DATABASE,|Speechcontrol || Program Task - fs || added|
+2019-09-09 12:30:27,DATABASE,|Speechcontrol || Program Task - fs || deleted|
+2019-09-09 12:37:12,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 12:37:13,SUCCESS,|Spotify || Token updated|
+2019-09-09 12:37:15,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 12:37:18,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 12:37:19,EVENT,|Speechcontrol || Started|
+2019-09-09 13:18:51,EVENT,|Speechcontrol || Detection || zwei gigabyte|
+2019-09-09 13:27:16,SUCCESS,|Spotify || Token updated|
+2019-09-09 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 13:30:47,DATABASE,|Speechcontrol || Device Task - zut || added|
+2019-09-09 13:31:04,DATABASE,|Speechcontrol || Device Task - zut || deleted|
+2019-09-09 13:31:51,DATABASE,|Camera - test || added|
+2019-09-09 13:32:00,DATABASE,|Camera - test || deleted|
+2019-09-09 13:34:18,DATABASE,|User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Heating -  || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Warning -  || eMail-Error - |
+2019-09-09 14:08:14,EVENT,|Speechcontrol || Detection || kaputt|
+2019-09-09 14:14:36,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 14:14:37,SUCCESS,|Spotify || Token updated|
+2019-09-09 14:14:39,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 14:14:42,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 14:14:42,EVENT,|Speechcontrol || Started|
+2019-09-09 14:16:35,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 14:16:35,SUCCESS,|Spotify || Token updated|
+2019-09-09 14:16:38,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 14:16:41,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 14:16:41,EVENT,|Speechcontrol || Started|
+2019-09-09 14:19:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 14:19:48,SUCCESS,|Spotify || Token updated|
+2019-09-09 14:19:51,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 14:19:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 14:19:54,EVENT,|Speechcontrol || Started|
+2019-09-09 14:22:50,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 14:22:50,SUCCESS,|Spotify || Token updated|
+2019-09-09 14:22:53,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 14:22:56,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 14:22:56,EVENT,|Speechcontrol || Started|
+2019-09-09 14:23:32,DATABASE,|User - martin || changed |||| Username - martin || eMail - stanlay@gmx.net || Permission-Dashboard - checked || Permission-Scheduler - checked || Permission-Programs - checked || Permission-Watering - checked || Permission-Heating - checked || Permission-Camera - checked || Permission-LED - checked || Permission-Sensordata - checked || Permission-Spotify - checked || Permission-System - checked || eMail-Warning -  || eMail-Error - |
+2019-09-09 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 15:02:38,EVENT,|File || /csv/jhg.csv || deleted|
+2019-09-09 15:02:41,EVENT,|File || /csv/fds.csv || deleted|
+2019-09-09 15:02:45,EVENT,|File || /csv/gd.csv || deleted|
+2019-09-09 15:02:48,EVENT,|File || /csv/kjh.csv || deleted|
+2019-09-09 15:02:50,EVENT,|File || /csv/hf.csv || deleted|
+2019-09-09 15:02:52,EVENT,|File || /csv/gfd.csv || deleted|
+2019-09-09 15:12:54,SUCCESS,|Spotify || Token updated|
+2019-09-09 15:30:03,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-09 15:49:08,EVENT,|Speechcontrol || Detection || platz|
+2019-09-09 16:02:57,SUCCESS,|Spotify || Token updated|
+2019-09-09 16:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 16:53:01,SUCCESS,|Spotify || Token updated|
+2019-09-09 17:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 17:43:04,SUCCESS,|Spotify || Token updated|
+2019-09-09 18:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 18:33:08,SUCCESS,|Spotify || Token updated|
+2019-09-09 18:42:48,EVENT,|Speechcontrol || Detection || weil die sind schon ganz schön aber sie denkt man sich gegenseitig|
+2019-09-09 18:46:13,EVENT,|Speechcontrol || Detection || wie kann ich dann nochmal die aufpassen|
+2019-09-09 18:48:19,EVENT,|Speechcontrol || Detection || angekommen|
+2019-09-09 19:01:24,EVENT,|Speechcontrol || Detection || ohne keine angst haben von denen es wird das eine geschätzt dass die temperatur|
+2019-09-09 19:02:13,EVENT,|Speechcontrol || Detection || abgebrochen also sowohl interessant wir haben das wir alleine hingekriegt oder doch alles cool|
+2019-09-09 19:14:23,EVENT,|Speechcontrol || Detection || so eins|
+2019-09-09 19:23:12,SUCCESS,|Spotify || Token updated|
+2019-09-09 19:26:46,EVENT,|Speechcontrol || Detection || komm her|
+2019-09-09 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-09 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-09 20:02:11,EVENT,|Speechcontrol || Detection || startest szene standard im wohnzimmer auf sechzig prozent|
+2019-09-09 20:02:15,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 60 %|
+2019-09-09 20:13:25,SUCCESS,|Spotify || Token updated|
+2019-09-09 20:30:03,SUCCESS,|MQTT || Update Devices|
+2019-09-09 20:30:36,SUCCESS,|MQTT || Update Devices|
+2019-09-09 20:31:06,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-09 20:33:26,EVENT,|Speechcontrol || Detection || und das passt überhaupt|
+2019-09-09 20:34:49,EVENT,|Speechcontrol || Detection || oder was|
+2019-09-09 20:37:40,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN -  : |
+2019-09-09 20:37:40,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:37:53,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:05,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:18,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:31,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:43,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:56,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:39:08,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:39:21,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:39:34,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:39:46,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:39:59,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:40:11,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:40:24,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:40:36,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:40:49,ERROR,|WLAN || Wrong Credentials|
+                                                       2019-09-09 20:37:40,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:37:52,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:05,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:18,ERROR,|WLAN || Wrong Credentials|
+2019-09-09 20:38:30,DATABASE,|Host || Network settings changed || LAN -  :  || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-09-09 20:49:09,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 20:49:10,SUCCESS,|Spotify || Token updated|
+2019-09-09 20:49:12,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 20:49:15,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 20:49:15,EVENT,|Speechcontrol || Started|
+2019-09-09 20:56:27,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-09-09 20:56:34,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-09 20:56:34,SUCCESS,|Spotify || Token updated|
+2019-09-09 20:56:37,EVENT,|ZigBee2MQTT || Connected|
+2019-09-09 20:56:40,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-09 20:56:40,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-09 20:56:40,EVENT,|Speechcontrol || Started|
+2019-09-09 20:56:40,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|

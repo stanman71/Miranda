@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from functools import wraps
 import os
 import re
+import heapq
 
 from app import app
 from app.components.backend_led import *
@@ -11,16 +12,18 @@ from app.components.checks import CHECK_LED_GROUP_SETTINGS
 from app.components.shared_resources import process_management_queue
 
 
-import heapq
-
 # access rights
 def permission_required(f):
     @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.permission_led == "checked":
-            return f(*args, **kwargs)
-        else:
+    def wrap(*args, **kwargs): 
+        try:
+            if current_user.permission_dashboard == "checked":
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('logout'))
+        except:
             return redirect(url_for('logout'))
+        
     return wrap
 
 
@@ -308,7 +311,8 @@ def led_groups():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -743,7 +747,8 @@ def led_scenes():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,

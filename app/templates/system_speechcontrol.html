@@ -69,6 +69,9 @@
         {% if permission_watering == "checked" %}            
           <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
+        {% if permission_heating == "checked" %}               
+          <li><a href="{{ url_for('heating') }}"><font color="white">Heizung</font></a></li>
+        {% endif %}           
         {% if permission_camera == "checked" %}               
           <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
@@ -207,7 +210,8 @@
                   <td>{{ entry.task }}</td> 
                   <td>{{ entry.parameters }}</td> 
                   <td>
-                    <input type="text" class="form-control" name="set_speechcontrol_led_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                    <input type="text" class="form-control" name="set_speechcontrol_led_task_keyword_{{ entry.id }}"
+                     value= {% if entry.keywords != None and entry.keywords != "None" %}"{{ entry.keywords }}"{% else %}""{% endif %} />                    
                   </td>  
                 </tr>
                 {% endfor %} 
@@ -240,9 +244,11 @@
 
 <!-- error message add speechcontrol device task -->
 
-{% if error_message_add_speechcontrol_device_task != "" %}
+{% if error_message_add_speechcontrol_device_task != [] %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_add_speechcontrol_device_task }}
+    {% for entry in error_message_add_speechcontrol_device_task %}
+      {{ entry }} <br>
+    {% endfor %}  
   </div>      
 {% endif %}              
 
@@ -254,7 +260,11 @@
                 </div>            
                 <div class="col-sm-3"> 
                   <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_device_task_mqtt_device_ieeeAddr">
-                    <option value= "None" > Gerät </option> 
+                    {% if device_task_mqtt_device_ieeeAddr != "" %}
+                      <option value= "{{ device_task_mqtt_device_ieeeAddr }}" > {{ device_task_mqtt_device_name }} </option>
+                    {% else %}
+                      <option value= "None" > Gerät </option>
+                    {% endif %}                      
                     <optgroup>
                       {% for each in dropdown_list_mqtt_devices %}
                         <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
@@ -350,11 +360,13 @@
 
 <!-- error message add speechcontrol program task -->
 
-{% if error_message_add_speechcontrol_program_task != "" %}
+{% if error_message_add_speechcontrol_program_task != [] %}
   <div class="alert alert-danger" role="alert">
-    {{ error_message_add_speechcontrol_program_task }}
+    {% for entry in error_message_add_speechcontrol_program_task %}
+      {{ entry }} <br>
+    {% endfor %}  
   </div>      
-{% endif %}              
+{% endif %}  
 
               <div class="row justify-content-md-center">
                 <div class="col-sm-3"> 
@@ -362,7 +374,11 @@
                 </div>            
                 <div class="col-sm-3"> 
                   <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speechcontrol_program_task_program_id">
-                    <option value= "None" > Programm </option> 
+                    {% if program_id != "" %}
+                      <option value= "{{ program_id }}" > {{ program_name }} </option>
+                    {% else %}
+                      <option value= "None" > Programm </option>
+                    {% endif %}                      
                     <optgroup>
                       {% for each in dropdown_list_programs %}
                         <option value="{{each.id}}"> {{ each.name }} </option>
@@ -397,7 +413,7 @@
               <thead>   
                 <th scope="col" style="width:3%"></th>                    
                 <th scope="col" style="width:17%">Aufgabe</th> 
-                <th scope="col" style="width:20%">Gerät</th> 
+                <th scope="col" style="width:20%">Program</th> 
                 <th scope="col" style="width:20%">Befehl</th> 
                 <th scope="col" style="width:37%">Schlüsselwörter</th>
                 <th scope="col"></th>  
@@ -478,7 +494,8 @@
                   <td>{{ entry.task }}</td> 
                   <td>{{ entry.parameters }}</td> 
                   <td>
-                    <input type="text" class="form-control" name="set_speechcontrol_spotify_task_keyword_{{ entry.id }}" value="{{ entry.keywords }}" />                    
+                    <input type="text" class="form-control" name="set_speechcontrol_spotify_task_keyword_{{ entry.id }}"
+                     value= {% if entry.keywords != None and entry.keywords != "None" %}"{{ entry.keywords }}"{% else %}""{% endif %} />                    
                   </td>  
                 </tr>
                 {% endfor %} 

@@ -39,6 +39,9 @@
         {% if permission_watering == "checked" %}            
           <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
+        {% if permission_heating == "checked" %}               
+          <li><a href="{{ url_for('heating') }}"><font color="white">Heizung</font></a></li>
+        {% endif %}           
         {% if permission_camera == "checked" %}               
           <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
@@ -271,6 +274,21 @@
                             </font>                 
                           </div>
                         </div>
+                        <div class="row justify-content-md-center">
+                          <div class="col-sm-8">                       
+                            Heizung
+                          </div>
+                          <div class="col-sm-1">    
+                            <font size="-2">
+                              <div class="pretty p-default p-curve p-bigger">
+                                  <input type="checkbox" class="form-check-input" {{ entry.permission_heating }} name="checkbox_permission_heating_{{ entry.id }}">
+                                <div class="state p-success">
+                                  <label></label>
+                                </div>
+                              </div>
+                            </font>              
+                          </div>
+                        </div>                        
                         <div class="row justify-content-md-center">
                           <div class="col-sm-8">                       
                             Kameras

@@ -338,6 +338,7 @@ class Snowboy_Settings(db.Model):
     snowboy_sensitivity = db.Column(db.Integer)
     snowboy_timeout     = db.Column(db.Integer)
     snowboy_microphone  = db.Column(db.String(50))
+    snowboy_pause       = db.Column(db.String(50))
 
 class Speech_Recognition_Provider_Settings(db.Model):
     __tablename__ = 'speech_recognition_provider_settings'
@@ -390,7 +391,8 @@ class User(UserMixin, db.Model):
     permission_dashboard                = db.Column(db.String(20), server_default=(""))   
     permission_scheduler                = db.Column(db.String(20), server_default=(""))     
     permission_programs                 = db.Column(db.String(20), server_default=(""))    
-    permission_watering                 = db.Column(db.String(20), server_default=(""))   
+    permission_watering                 = db.Column(db.String(20), server_default=("")) 
+    permission_heating                  = db.Column(db.String(20), server_default=(""))     
     permission_camera                   = db.Column(db.String(20), server_default=(""))   
     permission_led                      = db.Column(db.String(20), server_default=(""))    
     permission_sensordata               = db.Column(db.String(20), server_default=(""))  
@@ -500,7 +502,8 @@ if User.query.filter_by(username='admin').first() is None:
         permission_dashboard       = "checked",   
         permission_scheduler       = "checked",        
         permission_programs        = "checked",   
-        permission_watering        = "checked",     
+        permission_watering        = "checked",  
+        permission_heating         = "checked",    
         permission_camera          = "checked",      
         permission_led             = "checked",      
         permission_sensordata      = "checked",    
@@ -1841,6 +1844,12 @@ def GET_ALL_MQTT_DEVICES(selector):
                 
                 device_list.append(device)      
   
+    if selector == "heater":
+        for device in devices:
+            if device.device_type == "heater":
+                
+                device_list.append(device)          
+
     if selector == "led":
         for device in devices:
             if (device.device_type == "led_rgb" or 
@@ -2200,10 +2209,10 @@ def ADD_PLANT(name, mqtt_device_ieeeAddr):
                 db.session.add(plant)
                 db.session.commit()
 
-                WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + name + " | added")    
-                           
-                return ""
-                
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + name + " | added")  
+                return
+  
+                          
         return "Pflanzenlimit erreicht (25)"
 
     else:
@@ -3247,7 +3256,7 @@ def ADD_SENSORDATA_JOB(name, filename):
                 db.session.commit()
 
                 WRITE_LOGFILE_SYSTEM("DATABASE", "Sensordata Job - " + name + " | added")                    
-                return ""
+                return 
 
         return "Job-Limit erreicht (25)"
 
@@ -3434,25 +3443,32 @@ def GET_ALL_SPEECHCONTROL_DEVICE_TASKS():
     
 
 def ADD_SPEECHCONTROL_DEVICE_TASK(task, mqtt_device_ieeeAddr):
-    # find a unused id
-    for i in range(1,26):
-        if Speechcontrol_Device_Tasks.query.filter_by(id=i).first():
-            pass
-        else:
-            # add the new task
-            speechcontrol_device_task = Speechcontrol_Device_Tasks(
+
+    # task exist ?
+    if not GET_SPEECHCONTROL_DEVICE_TASK_BY_TASK(task):   
+
+        # find a unused id
+        for i in range(1,26):
+            if Speechcontrol_Device_Tasks.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                speechcontrol_device_task = Speechcontrol_Device_Tasks(
                     id                   = i,
                     task                 = task,
                     mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,         
-                )
+                    ) 
                 
-            db.session.add(speechcontrol_device_task)
-            db.session.commit()
+                db.session.add(speechcontrol_device_task)
+                db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Device Task - " + task + " | added")                    
-            return ""
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Device Task - " + task + " | added")                    
+                return 
 
-    return "Task-Limit erreicht (25)"
+        return "Task-Limit erreicht (25)"
+
+    else:
+        return "Name bereits vergeben"
 
 
 def UPDATE_SPEECHCONTROL_DEVICE_TASK(id, setting, keywords):
@@ -3547,25 +3563,32 @@ def GET_ALL_SPEECHCONTROL_PROGRAM_TASKS():
     
 
 def ADD_SPEECHCONTROL_PROGRAM_TASK(task, program_id):
-    # find a unused id
-    for i in range(1,26):
-        if Speechcontrol_Program_Tasks.query.filter_by(id=i).first():
-            pass
-        else:
-            # add the new task
-            speechcontrol_program_task = Speechcontrol_Program_Tasks(
+
+    # task exist ?
+    if not GET_SPEECHCONTROL_DEVICE_TASK_BY_TASK(task):   
+
+        # find a unused id
+        for i in range(1,26):
+            if Speechcontrol_Program_Tasks.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new task
+                speechcontrol_program_task = Speechcontrol_Program_Tasks(
                                     id = i,
                                   task = task,
                             program_id = program_id,         
                 )
                 
-            db.session.add(speechcontrol_program_task)
-            db.session.commit()
+                db.session.add(speechcontrol_program_task)
+                db.session.commit()
 
-            WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Program Task - " + task + " | added")                    
-            return ""
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Speechcontrol | Program Task - " + task + " | added")                    
+                return 
 
-    return "Task-Limit erreicht (25)"
+        return "Task-Limit erreicht (25)"
+
+    else:
+        return "Name bereits vergeben"
 
 
 def UPDATE_SPEECHCONTROL_PROGRAM_TASK(id, command, keywords):
@@ -3719,7 +3742,7 @@ def ADD_USER(username, email, password):
 
 
 def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_scheduler, permission_programs, 
-                      permission_watering, permission_camera, permission_led, permission_sensordata,   
+                      permission_watering, permission_heating, permission_camera, permission_led, permission_sensordata,   
                       permission_spotify, permission_system, email_notification_warning, email_notification_error):    
     
     entry = User.query.filter_by(id=id).first()
@@ -3731,6 +3754,7 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
         entry.permission_scheduler       != permission_scheduler or   
         entry.permission_programs        != permission_programs or
         entry.permission_watering        != permission_watering or
+        entry.permission_heating         != permission_heating or
         entry.permission_camera          != permission_camera or
         entry.permission_led             != permission_led or
         entry.permission_sensordata      != permission_sensordata or
@@ -3744,7 +3768,8 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
         entry.permission_dashboard       = permission_dashboard 
         entry.permission_scheduler       = permission_scheduler   
         entry.permission_programs        = permission_programs 
-        entry.permission_watering        = permission_watering 
+        entry.permission_watering        = permission_watering
+        entry.permission_heating         = permission_heating
         entry.permission_camera          = permission_camera 
         entry.permission_led             = permission_led 
         entry.permission_sensordata      = permission_sensordata 
@@ -3759,7 +3784,8 @@ def SET_USER_SETTINGS(id, username, email, permission_dashboard, permission_sche
                              " | Permission-Dashboard - " + entry.permission_dashboard +
                              " | Permission-Scheduler - " + entry.permission_scheduler +     
                              " | Permission-Programs - " + entry.permission_programs +    
-                             " | Permission-Watering - " + entry.permission_watering +    
+                             " | Permission-Watering - " + entry.permission_watering +  
+                             " | Permission-Heating - " + entry.permission_heating +   
                              " | Permission-Camera - " + entry.permission_camera +      
                              " | Permission-LED - " + entry.permission_led +       
                              " | Permission-Sensordata - " + entry.permission_sensordata +

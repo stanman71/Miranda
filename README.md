@@ -266,7 +266,7 @@ https://github.com/Koenkk/zigbee2mqtt
 
 - clone zigbee2mqtt repository
 
-       >>> sudo unzip /home/pi/miranda/support/files/zigbee2mqtt_1.5.1.zip -d /opt/zigbee2mqtt
+       >>> sudo unzip /home/pi/miranda/support/files/zigbee2mqtt_1.6.0.zip -d /opt/zigbee2mqtt
        >>> sudo chown -R pi:pi /opt/zigbee2mqtt
 
 - install zigbee2mqtt 
@@ -399,8 +399,8 @@ https://github.com/Koenkk/zigbee2mqtt/issues/489
 - uploading the new coordinator firmware
 - instructions and files
 
-       >>> /home/pi/miranda/support/files/z-stack_firmware.zip
-       >>> /home/pi/miranda/support/files/zigbee_firmware.zip
+       >>> /home/pi/miranda/devices/MS1PA1/z-stack_firmware.zip
+       >>> /home/pi/miranda/devices/MS1PA1/zigbee_firmware.zip
 
 </br>
 

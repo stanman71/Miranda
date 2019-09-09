@@ -195,6 +195,9 @@
         {% if permission_watering == "checked" %}            
           <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
+        {% if permission_heating == "checked" %}               
+          <li><a href="{{ url_for('heating') }}"><font color="white">Heizung</font></a></li>
+        {% endif %}           
         {% if permission_camera == "checked" %}               
           <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}

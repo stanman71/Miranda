@@ -25,11 +25,15 @@ from app.components.backend_spotify import GET_SPOTIFY_TOKEN
 # access rights
 def permission_required(f):
     @wraps(f)
-    def wrap(*args, **kwargs):
-        if current_user.permission_system == "checked":
-            return f(*args, **kwargs)
-        else:
+    def wrap(*args, **kwargs): 
+        try:
+            if current_user.permission_dashboard == "checked":
+                return f(*args, **kwargs)
+            else:
+                return redirect(url_for('logout'))
+        except:
             return redirect(url_for('logout'))
+        
     return wrap
     
 
@@ -310,7 +314,8 @@ def system_host():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -638,7 +643,8 @@ def system_device_administration():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -803,7 +809,8 @@ def system_mqtt():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -1042,7 +1049,8 @@ def system_zigbee2mqtt():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -1109,12 +1117,12 @@ def system_controller():
 
         if request.form.get("add_controller") != None: 
             
-            if request.form.get("set_mqtt_device_ieeeAddr") != None:
+            if request.form.get("set_mqtt_device_ieeeAddr") != "None":
                 mqtt_device_ieeeAddr         = request.form.get("set_mqtt_device_ieeeAddr")
                 error_message_add_controller = ADD_CONTROLLER(mqtt_device_ieeeAddr)
 
             else:
-                error_message_add_controller = "Keinen Controller angegeben"  
+                error_message_add_controller = "Keinen Controller ausgewählt"  
    
         if request.form.get("save_task_settings") != None: 
 
@@ -1204,7 +1212,8 @@ def system_controller():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -1245,13 +1254,17 @@ def system_speechcontrol():
     error_message_fileupload = ""
     error_message_hotword = ""
     error_message_speech_recognition_provider_keywords = ""
-    error_message_add_speechcontrol_device_task = ""
-    error_message_add_speechcontrol_program_task = ""  
+    error_message_add_speechcontrol_device_task = []
+    error_message_add_speechcontrol_program_task = []  
     check_value_speechcontrol = ["", ""]
     snowboy_name = ""
     snowboy_task = ""   
     device_task  = ""
-    program_task = ""    
+    device_task_mqtt_device_ieeeAddr = ""
+    device_task_mqtt_device_name     = ""
+    program_task = ""
+    program_id   = ""
+    program_name = ""
     collapse_tasks_led              = ""
     collapse_tasks_devices          = ""
     collapse_tasks_programs         = ""
@@ -1262,7 +1275,7 @@ def system_speechcontrol():
 
     if request.method == "POST":     
         # change speechcontrol global setting   
-        if request.form.get("radio_speechcontrol") is not None:
+        if request.form.get("radio_speechcontrol") != None:
             global_setting_speechcontrol = str(request.form.get("radio_speechcontrol"))
             SET_GLOBAL_SETTING_VALUE("speechcontrol", global_setting_speechcontrol) 
 
@@ -1289,7 +1302,7 @@ def system_speechcontrol():
         try:
             START_SNOWBOY()
         except Exception as e:  
-            if "signal only works in main thread" not in str(e):      
+            if "signal only works in main thread" != str(e):      
                 error_message_snowboy = "Fehler in SnowBoy: " + str(e)
                 WRITE_LOGFILE_SYSTEM("ERROR", "Snowboy | " + str(e)) 
                 
@@ -1327,19 +1340,27 @@ def system_speechcontrol():
                 collapse_tasks_devices = "in"
 
                 # check name
-                if (request.form.get("set_speechcontrol_device_task") != "" and 
-                    GET_SPEECHCONTROL_DEVICE_TASK_BY_TASK(request.form.get("set_speechcontrol_device_task")) == None):
-                    device_task = request.form.get("set_speechcontrol_device_task") 
-                            
-                    mqtt_device_ieeeAddr = request.form.get("set_speechcontrol_device_task_mqtt_device_ieeeAddr") 
-                    
-                    if mqtt_device_ieeeAddr != "None":
-                        error_message_add_speechcontrol_device_task = ADD_SPEECHCONTROL_DEVICE_TASK(device_task, mqtt_device_ieeeAddr)  
-                    else:
-                        error_message_add_speechcontrol_device_task = "Kein Gerät ausgewählt"                                                   
-                    
+                if request.form.get("set_speechcontrol_device_task") == "":
+                    error_message_add_speechcontrol_device_task.append("Keinen Namen angegeben")
                 else:
-                    error_message_add_speechcontrol_device_task = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"             
+                    device_task = request.form.get("set_speechcontrol_device_task")
+                    
+                # check device
+                if request.form.get("set_speechcontrol_device_task_mqtt_device_ieeeAddr") == "None":
+                    error_message_add_speechcontrol_device_task.append("Kein Gerät ausgewählt")
+                else:
+                    device_task_mqtt_device_ieeeAddr = request.form.get("set_speechcontrol_device_task_mqtt_device_ieeeAddr")
+                    device_task_mqtt_device_name     = GET_MQTT_DEVICE_BY_IEEEADDR(device_task_mqtt_device_ieeeAddr).name
+                    
+                if device_task != "" and device_task_mqtt_device_ieeeAddr != "":
+                    
+                    error = ADD_SPEECHCONTROL_DEVICE_TASK(device_task, device_task_mqtt_device_ieeeAddr) 
+                    if error != None: 
+                        error_message_add_speechcontrol_device_task.append(error)
+                        
+                    device_task = ""
+                    device_task_mqtt_device_ieeeAddr = ""
+                    device_task_mqtt_device_name     = ""
 
 
             # change speechcontrol device tasks
@@ -1373,20 +1394,28 @@ def system_speechcontrol():
                 collapse_tasks_programs = "in"
 
                 # check name
-                if (request.form.get("set_speechcontrol_program_task") != "" and 
-                    GET_SPEECHCONTROL_PROGRAM_TASK_BY_TASK(request.form.get("set_speechcontrol_program_task")) == None):
-                    program_task = request.form.get("set_speechcontrol_program_task") 
-                            
-                    program_id = request.form.get("set_speechcontrol_program_task_program_id") 
-                    
-                    if program_id != "None":
-                        error_message_add_speechcontrol_program_task = ADD_SPEECHCONTROL_PROGRAM_TASK(program_task, program_id) 
-                    else:
-                        error_message_add_speechcontrol_program_task = "Kein Programm ausgewählt"                      
-                    
+                if request.form.get("set_speechcontrol_program_task") == "":
+                    error_message_add_speechcontrol_program_task.append("Keinen Namen angegeben")
                 else:
-                    error_message_add_speechcontrol_program_task = "Ungültige Eingabe (leeres Feld / Name schon vergeben)"             
-
+                    program_task = request.form.get("set_speechcontrol_program_task")
+                    
+                # check program
+                if request.form.get("set_speechcontrol_program_task_program_id") == "None":
+                    error_message_add_speechcontrol_program_task.append("Kein Programm ausgewählt")
+                else:
+                    program_id   = request.form.get("set_speechcontrol_program_task_program_id")
+                    program_name = GET_PROGRAM_BY_ID(program_id).name
+                    
+                if program_task != "" and program_id != "":
+                    
+                    error = ADD_SPEECHCONTROL_PROGRAM_TASK(program_task, program_id) 
+                    if error != None: 
+                        error_message_add_speechcontrol_program_task.append(error)
+                        
+                    program_task = ""
+                    program_id   = ""
+                    program_name = ""
+                    
 
             # change speechcontrol program tasks
             if request.form.get("change_speechcontrol_program_tasks") != None: 
@@ -1471,7 +1500,7 @@ def system_speechcontrol():
             # file upload
             #############
                     
-            if request.form.get("file_upload") is not None:
+            if request.form.get("file_upload") != None:
                 
                 collapse_fileupload = "in"
                 
@@ -1545,7 +1574,11 @@ def system_speechcontrol():
                             dropdown_list_mqtt_devices=dropdown_list_mqtt_devices,
                             dropdown_list_programs=dropdown_list_programs,     
                             device_task=device_task,
+                            device_task_mqtt_device_ieeeAddr=device_task_mqtt_device_ieeeAddr,
+                            device_task_mqtt_device_name=device_task_mqtt_device_name,
                             program_task=program_task,
+                            program_id=program_id,                           
+                            program_name=program_name,
                             
                             collapse_tasks_led=collapse_tasks_led,
                             collapse_tasks_devices=collapse_tasks_devices,
@@ -1565,7 +1598,8 @@ def system_speechcontrol():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -1773,6 +1807,10 @@ def system_user():
                             permission_watering = "checked"
                         else:
                             permission_watering = ""
+                        if request.form.get("checkbox_permission_heating_" + str(i)):
+                            permission_heating = "checked"
+                        else:
+                            permission_heating = ""                            
                         if request.form.get("checkbox_permission_camera_" + str(i)):
                             permission_camera = "checked"
                         else:
@@ -1810,7 +1848,8 @@ def system_user():
                                           permission_dashboard,   
                                           permission_scheduler,        
                                           permission_programs,   
-                                          permission_watering,     
+                                          permission_watering,
+                                          permission_heating,                                           
                                           permission_camera,      
                                           permission_led,      
                                           permission_sensordata,   
@@ -1870,7 +1909,8 @@ def system_user():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -1944,7 +1984,8 @@ def system_email():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -2033,7 +2074,8 @@ def system_backup():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,
@@ -2142,7 +2184,8 @@ def system_log():
                             permission_dashboard=current_user.permission_dashboard,
                             permission_scheduler=current_user.permission_scheduler,   
                             permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,  
+                            permission_watering=current_user.permission_watering,
+                            permission_heating=current_user.permission_heating,                           
                             permission_camera=current_user.permission_camera,  
                             permission_led=current_user.permission_led,
                             permission_sensordata=current_user.permission_sensordata,

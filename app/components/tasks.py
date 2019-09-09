@@ -878,48 +878,54 @@ def START_SPEECHCONTROL_TASK(answer):
 
 
 def CHECK_SPEECHCONTROL_ANSWER(answer, keywords):
-    answer_words = answer.split()
+    
+    if keywords != "":
+    
+        answer_words = answer.split()
 
-    if "," in keywords:
-        list_keywords = keywords.split(",")
-    else:
-        list_keywords = [keywords]
+        if "," in keywords:
+            list_keywords = keywords.split(",")
+        else:
+            list_keywords = [keywords]
 
 
-    for keyword in list_keywords:
-        keyword_lengh = len(re.findall(r'\w+', keyword))
+        for keyword in list_keywords:
+            keyword_lengh = len(re.findall(r'\w+', keyword))
 
-        # keyword group
-        if keyword_lengh > 1:
-            keyword_group = keyword.split()
+            # keyword group
+            if keyword_lengh > 1:
+                keyword_group = keyword.split()
 
-            for keyword in keyword_group:
-                keyword = keyword.strip()
+                for keyword in keyword_group:
+                    keyword = keyword.strip()
 
-                keyword_founded = False
+                    keyword_founded = False
 
+                    for word in answer_words:
+                        word = word.strip()
+
+                        # keyword founded ?
+                        if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
+                            keyword_founded = True
+
+                    if keyword_founded == False:
+                        return False
+                    
+                return True
+
+            # only one keyword
+            else:
                 for word in answer_words:
-                    word = word.strip()
-
+                    
                     # keyword founded ?
                     if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
-                        keyword_founded = True
-
-                if keyword_founded == False:
-                    return False
-                
-            return True
-
-        # only one keyword
-        else:
-            for word in answer_words:
-                
-                # keyword founded ?
-                if SequenceMatcher(None, keyword.lower(), word.lower()).ratio() > 0.75:
-                    return True
+                        return True
 
 
-    return False
+        return False
+    
+    else:
+        return False 
 
 
 # #########

@@ -40,6 +40,9 @@
         {% if permission_watering == "checked" %}            
           <li><a href="{{ url_for('watering') }}"><font color="white">Bewässerung</font></a></li> 
         {% endif %}
+        {% if permission_heating == "checked" %}               
+          <li><a href="{{ url_for('heating') }}"><font color="white">Heizung</font></a></li>
+        {% endif %}        
         {% if permission_camera == "checked" %}               
           <li><a href="{{ url_for('camera') }}"><font color="white">Kameras</font></a></li>
         {% endif %}
@@ -253,22 +256,23 @@
             <div class="well well-sm">              
               <form method="POST"> 
                 <div class="row justify-content-md-center">
-                  <div class="col-sm-3"> 
+                  <div class="col-sm-2"> 
                     <input type="text" class="form-control" name="set_name" placeholder="Kamera Name" value="{{ name }}" />
                   </div>                
                   <div class="col-sm-3"> 
                     <input type="text" class="form-control" name="set_url" placeholder="Kamera URL" value="{{ url }}" />
                   </div>  
-                  <div class="col-sm-3"> 
+                  <div class="col-sm-2"> 
                     <input type="text" class="form-control" name="set_user" placeholder="Benutzername" value="{{ user }}" />
                   </div>  
-                  <div class="col-sm-3"> 
+                  <div class="col-sm-2"> 
                     <input type="text" class="form-control" name="set_password" placeholder="Passwort" value="{{ password }}" />
                   </div>  
-                </div>    
-                <br>                                    
-                <div class="text-right">
-                  <input type="submit" onclick="window.location.href='/camera#camera_table'" class="btn btn-default" name="add_camera" value="Kamera hinzufügen" />
+                  <div class="col-sm-3">
+                    <div class="text-right">  
+                      <input type="submit" onclick="window.location.href='/camera#camera_table'" class="btn btn-default" name="add_camera" value="Kamera hinzufügen" />
+                    </div>
+                  </div>
                 </div>
               </form>       
             </div>    
