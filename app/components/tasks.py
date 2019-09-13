@@ -157,16 +157,16 @@ def START_CONTROLLER_TASK(task, controller_name, controller_command):
                 if input_group_name == group.name.lower():
                     group_founded = True
 
-                # new led setting ?
-                if group.current_setting != "OFF":
-                    scene_name = group.current_setting
-                    scene = GET_LED_SCENE_BY_NAME(scene_name)
+                    # new led setting ?
+                    if group.current_setting != "OFF":
+                        scene_name = group.current_setting
+                        scene = GET_LED_SCENE_BY_NAME(scene_name)
 
-                    SET_LED_GROUP_TURN_OFF(group.id)
-                    CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
+                        SET_LED_GROUP_TURN_OFF(group.id)
+                        CHECK_LED_GROUP_SETTING_THREAD(group.id, scene.id, "OFF", 0, 2, 10)
 
-                else:
-                    WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")
+                    else:
+                        WRITE_LOGFILE_SYSTEM("STATUS", "LED | Group - " + group.name + " | OFF : 0 %")
 
             # group not founded
             if group_founded == False:

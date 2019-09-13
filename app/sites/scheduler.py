@@ -18,11 +18,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_scheduler == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -147,6 +148,13 @@ def scheduler():
                     option_repeat = "checked"
                 else:
                     option_repeat = "None"  
+
+
+                # set checkbox pause
+                if request.form.get("checkbox_option_pause_" + str(i)):
+                    option_pause = "checked"
+                else:
+                    option_pause = "None"  
 
 
                 # #############
@@ -379,7 +387,7 @@ def scheduler():
                 SET_SCHEDULER_TASK_CHANGE_ERRORS(i, error_change_settings)
                 
                 SET_SCHEDULER_TASK(i, name, task, 
-                                      option_time, option_sun, option_sensors, option_position, option_repeat, 
+                                      option_time, option_sun, option_sensors, option_position, option_repeat, option_pause,
                                       day, hour, minute,
                                       option_sunrise, option_sunset, location,
                                       mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1, 
@@ -409,7 +417,7 @@ def scheduler():
     
     scheduler_task_list = GET_ALL_SCHEDULER_TASKS()
 
-    dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensor")
+    dropdown_list_mqtt_devices  = GET_ALL_MQTT_DEVICES("sensors")
     dropdown_list_operators     = ["=", ">", "<"]
     dropdown_list_operator_main = ["and", "or", "=", ">", "<"]
 
@@ -425,7 +433,7 @@ def scheduler():
     # list device command option
     list_device_command_options = []
     
-    for device in GET_ALL_MQTT_DEVICES("device"):
+    for device in GET_ALL_MQTT_DEVICES("devices"):
         list_device_command_options.append((device.name, device.commands))
         
     

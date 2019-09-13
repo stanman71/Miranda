@@ -8,6 +8,14 @@
 				"commands"        : []
 			},
 			{
+				"model"           : "915005106701",
+				"device_type"     : "led_rgb",
+				"description"     : "PHILIPS HUE LightStrip",
+				"input_values"    : [],
+				"input_events"    : [],
+				"commands"        : []
+			},
+			{
 				"model"           : "324131092621",
 				"device_type"     : "controller",
 				"description"     : "PHILIPS HUE Dimmer Switch",
@@ -25,7 +33,7 @@
 			},
 			{
 				"model"           : "AB3257001NJ",
-				"device_type"     : "device_switch",
+				"device_type"     : "power_switch",
 				"description"     : "OSRAM Smart+ Plug",
 				"input_values"    : [],
 				"input_events"    : [],
@@ -65,7 +73,7 @@
 			},
 			{
 				"model"           : "MCCGQ11LM",
-				"device_type"     : "sensor_active",
+				"device_type"     : "sensor_contact",
 				"description"     : "AQARA Contact Sensor",
 				"input_values"    : ["contact"],
 				"input_events"    : [],
@@ -79,6 +87,17 @@
 				"input_events"    : [],
 				"commands"        : []
 			},	
+			{
+				"model"           : "SPZB0001",
+				"device_type"     : "heater",
+				"description"     : "Eurotronic Heater Thermostat",
+				"input_values"    : ["current_heating_setpoint", "eurotronic_system_mode", "eurotronic_error_status"],
+				"input_events"    : [],
+				"commands"        : ["{'current_heating_setpoint':16}", "{'current_heating_setpoint':17}", "{'current_heating_setpoint':18}",
+                                                     "{'current_heating_setpoint':19}", "{'current_heating_setpoint':20}", "{'current_heating_setpoint':21}",
+                                                     "{'current_heating_setpoint':22}", "{'current_heating_setpoint':23}", "{'current_heating_setpoint':24}",
+                                                     "{'current_heating_setpoint':25}"]
+			},
 			{
 				"model"           : "CC2530.ROUTER",
 				"device_type"     : "router",

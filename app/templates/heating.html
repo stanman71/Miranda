@@ -133,9 +133,13 @@
             </div>             
             <div class="col-sm-3">
               <select class="selectpicker" data-width="100%" data-live-search="true" name="set_mqtt_device_ieeeAddr">
-                <option value= "None" > Gerät </option>
+                {% if mqtt_device_ieeeAddr != "" %}
+                  <option value= "{{ mqtt_device_ieeeAddr }}" > {{ mqtt_device_name }} </option>
+                {% else %}
+                  <option value= "None" > Gerät </option>
+                {% endif %}                 
                 <optgroup>
-                  {% for each in dropdown_list_heater %}
+                  {% for each in dropdown_list_heaters %}
                     <option value="{{each.ieeeAddr}}"> {{ each.name }} </option>
                   {% endfor %}
                 </optgroup>
@@ -152,18 +156,942 @@
       </div>    
 
 
+<!-- error message change settings -->
 
-      <div class="panel panel-default">    
-        <div class="panel-body">                       
-          <div class="well well-sm">  
+{% if error_message_change_settings != "" %}
+  <div class="alert alert-danger" role="alert">
+    {{ error_message_change_settings }}
+  </div>      
+{% endif %}  
+
+<!-- error message settings -->
+
+{% if error_message_settings != [] %}
+  <div class="alert alert-danger" role="alert">
+    {% for entry in error_message_settings %}
+      {{ entry }} <br>
+    {% endfor %}
+  </div>      
+{% endif %}  
 
 
+<!-- heaters table -->
+        
+    {% for entry in list_heaters %}
+    
+    <section id="table_{{ entry.id }}"></section> 
+        
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} {% if entry.heater_pause == "checked" %}(pausiert){% endif %} </b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
+            <div class="panel-body">      
+              <div class="well well-sm">       
+
+                <form method="POST" class="verticalform"> 
+                  <table class="table">
+                    <thead>
+                      <th scope="col" style="width:3%"></th> 
+                      <th scope="col" style="width:20%">Heizung</th>   
+                      <th scope="col" style="width:22%">Gerät</th>
+                      <th scope="col" style="width:22%">Fenster / Tür</th>
+                      <th scope="col" style="width:22%">Fenster / Tür</th>
+                      <th scope="col" style="width:7%">Pause</th>                  
+                      <th scope="col" style="width:4%"></th>                                                    
+                    </thead>
+                    <tbody> 
+                      <tr>
+                        <td>
+                          <a href="/heating/position/up/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-up" style="color:white"></span></a>
+                          <a href="/heating/position/down/{{ entry.id }}#table"><span class="glyphicon glyphicon-arrow-down" style="color:white"></span></a>
+                        </td>                   
+                        <td>
+                          <input type="text" class="form-control" name="set_name_{{ entry.id }}" value="{{ entry.name }}" />                    
+                        </td> 
+                        <td>
+                          <select class="selectpicker" data-live-search="true" data-width="90%" name="set_mqtt_device_{{ entry.id }}">                                   
+                            <optgroup>
+                            <option value= "{{ entry.mqtt_device_ieeeAddr }}" > {{ entry.mqtt_device.name }} </option>
+                            </optgroup>   
+                            <optgroup>                          
+                              {% for each in dropdown_list_heaters %}
+                                <option value="{{ each.id }}"> {{ each.name }} </option>
+                              {% endfor %}
+                            </optgroup>                                                                           
+                          </select>                           
+                        </td>
+                        <td>
+                          <select class="selectpicker" data-live-search="true" data-width="90%" name="set_window_1_ieeeAddr_{{ entry.id }}">                                   
+                            <optgroup>
+                              {% if entry.window_1_ieeeAddr == "None" or entry.window_1_ieeeAddr == None %} 
+                                <option value= "None" > Sensor </option>                        
+                              {% else %}
+                                <option value= "{{ entry.window_1_ieeeAddr }}" > {{ entry.window_1_name }} </option>
+                              {% endif %}
+                            </optgroup>   
+                            <optgroup>                          
+                              {% for each in dropdown_list_contact_sensors %}
+                                <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
+                              {% endfor %}
+                            </optgroup>
+                            <optgroup>
+                              <option value= "None" > None </option>
+                            </optgroup>                            
+                          </select>                           
+                        </td>
+                        <td>
+                          <select class="selectpicker" data-live-search="true" data-width="90%" name="set_window_2_ieeeAddr_{{ entry.id }}">                                   
+                            <optgroup>
+                              {% if entry.window_2_ieeeAddr == "None" or entry.window_2_ieeeAddr == None %} 
+                                <option value= "None" > Sensor </option>                        
+                              {% else %}
+                                <option value= "{{ entry.window_2_ieeeAddr }}" > {{ entry.window_2_name }} </option>
+                              {% endif %}
+                            </optgroup>   
+                            <optgroup>                          
+                              {% for each in dropdown_list_contact_sensors %}
+                                <option value="{{ each.ieeeAddr }}"> {{ each.name }} </option>
+                              {% endfor %}
+                            </optgroup>
+                            <optgroup>
+                              <option value= "None" > None </option>
+                            </optgroup>
+                          </select>                           
+                        </td>
+                        <td>
+                          <font size="+2">
+                            <div class="pretty p-default p-curve p-bigger">
+                              <input type="checkbox" {{ entry.heater_pause }} name="checkbox_heater_pause_{{ entry.id }}" >
+                              <div class="state p-success">
+                                <label></label>
+                              </div>
+                            </div>
+                          </font>
+                        </td>                      
+                        <td>
+                          <a href="/heating/delete/{{ entry.id }}#table"><font color="salmon" size="5"><b>X</b></font></a>
+                        </td>   
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>                        
+                      </tr>
+                      
+<!-- time table -->                      
+                      
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Montag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_monday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_monday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.monday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_monday_time_1_{{ entry.id }}"
+                                         value = {% if entry.monday_time_1 != None and entry.monday_time_1 != "None" %}"{{ entry.monday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_monday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.monday_temperature_1 != None and entry.monday_temperature_1 != "None" %}"{{ entry.monday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.monday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_monday_time_2_{{ entry.id }}"
+                                           value = {% if entry.monday_time_2 != None and entry.monday_time_2 != "None" %}"{{ entry.monday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_monday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.monday_temperature_2 != None and entry.monday_temperature_2 != "None" %}"{{ entry.monday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.monday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_monday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.monday_time_3 != None and entry.monday_time_3 != "None" %}"{{ entry.monday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_monday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.monday_temperature_3 != None and entry.monday_temperature_3 != "None" %}"{{ entry.monday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.monday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_monday_time_4_{{ entry.id }}"
+                                               value = {% if entry.monday_time_4 != None and entry.monday_time_4 != "None" %}"{{ entry.monday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_monday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.monday_temperature_4 != None and entry.monday_temperature_4 != "None" %}"{{ entry.monday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Dienstag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_tuesday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_tuesday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.tuesday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_tuesday_time_1_{{ entry.id }}"
+                                         value = {% if entry.tuesday_time_1 != None and entry.tuesday_time_1 != "None" %}"{{ entry.tuesday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_tuesday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.tuesday_temperature_1 != None and entry.tuesday_temperature_1 != "None" %}"{{ entry.tuesday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.tuesday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_tuesday_time_2_{{ entry.id }}"
+                                           value = {% if entry.tuesday_time_2 != None and entry.tuesday_time_2 != "None" %}"{{ entry.tuesday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_tuesday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.tuesday_temperature_2 != None and entry.tuesday_temperature_2 != "None" %}"{{ entry.tuesday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.tuesday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_tuesday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.tuesday_time_3 != None and entry.tuesday_time_3 != "None" %}"{{ entry.tuesday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_tuesday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.tuesday_temperature_3 != None and entry.tuesday_temperature_3 != "None" %}"{{ entry.tuesday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.tuesday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_tuesday_time_4_{{ entry.id }}"
+                                               value = {% if entry.tuesday_time_4 != None and entry.tuesday_time_4 != "None" %}"{{ entry.tuesday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_tuesday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.tuesday_temperature_4 != None and entry.tuesday_temperature_4 != "None" %}"{{ entry.tuesday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Mittwoch</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_wednesday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_wednesday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.wednesday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_wednesday_time_1_{{ entry.id }}"
+                                         value = {% if entry.wednesday_time_1 != None and entry.wednesday_time_1 != "None" %}"{{ entry.wednesday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_wednesday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.wednesday_temperature_1 != None and entry.wednesday_temperature_1 != "None" %}"{{ entry.wednesday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.wednesday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_wednesday_time_2_{{ entry.id }}"
+                                           value = {% if entry.wednesday_time_2 != None and entry.wednesday_time_2 != "None" %}"{{ entry.wednesday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_wednesday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.wednesday_temperature_2 != None and entry.wednesday_temperature_2 != "None" %}"{{ entry.wednesday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.wednesday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_wednesday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.wednesday_time_3 != None and entry.wednesday_time_3 != "None" %}"{{ entry.wednesday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_wednesday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.wednesday_temperature_3 != None and entry.wednesday_temperature_3 != "None" %}"{{ entry.wednesday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.wednesday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_wednesday_time_4_{{ entry.id }}"
+                                               value = {% if entry.wednesday_time_4 != None and entry.wednesday_time_4 != "None" %}"{{ entry.wednesday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_wednesday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.wednesday_temperature_4 != None and entry.wednesday_temperature_4 != "None" %}"{{ entry.wednesday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Donnerstag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_thursday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_thursday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.thursday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_thursday_time_1_{{ entry.id }}"
+                                         value = {% if entry.thursday_time_1 != None and entry.thursday_time_1 != "None" %}"{{ entry.thursday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_thursday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.thursday_temperature_1 != None and entry.thursday_temperature_1 != "None" %}"{{ entry.thursday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.thursday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_thursday_time_2_{{ entry.id }}"
+                                           value = {% if entry.thursday_time_2 != None and entry.thursday_time_2 != "None" %}"{{ entry.thursday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_thursday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.thursday_temperature_2 != None and entry.thursday_temperature_2 != "None" %}"{{ entry.thursday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.thursday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_thursday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.thursday_time_3 != None and entry.thursday_time_3 != "None" %}"{{ entry.thursday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_thursday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.thursday_temperature_3 != None and entry.thursday_temperature_3 != "None" %}"{{ entry.thursday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.thursday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_thursday_time_4_{{ entry.id }}"
+                                               value = {% if entry.thursday_time_4 != None and entry.thursday_time_4 != "None" %}"{{ entry.thursday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_thursday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.thursday_temperature_4 != None and entry.thursday_temperature_4 != "None" %}"{{ entry.thursday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>                      
+
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Freitag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_friday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_friday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.friday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_friday_time_1_{{ entry.id }}"
+                                         value = {% if entry.friday_time_1 != None and entry.friday_time_1 != "None" %}"{{ entry.friday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_friday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.friday_temperature_1 != None and entry.friday_temperature_1 != "None" %}"{{ entry.friday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.friday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_friday_time_2_{{ entry.id }}"
+                                           value = {% if entry.friday_time_2 != None and entry.friday_time_2 != "None" %}"{{ entry.friday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_friday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.friday_temperature_2 != None and entry.friday_temperature_2 != "None" %}"{{ entry.friday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.friday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_friday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.friday_time_3 != None and entry.friday_time_3 != "None" %}"{{ entry.friday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_friday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.friday_temperature_3 != None and entry.friday_temperature_3 != "None" %}"{{ entry.friday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.friday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_friday_time_4_{{ entry.id }}"
+                                               value = {% if entry.friday_time_4 != None and entry.friday_time_4 != "None" %}"{{ entry.friday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_friday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.friday_temperature_4 != None and entry.friday_temperature_4 != "None" %}"{{ entry.friday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Samstag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_saturday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_saturday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.saturday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_saturday_time_1_{{ entry.id }}"
+                                         value = {% if entry.saturday_time_1 != None and entry.saturday_time_1 != "None" %}"{{ entry.saturday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_saturday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.saturday_temperature_1 != None and entry.saturday_temperature_1 != "None" %}"{{ entry.saturday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.saturday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_saturday_time_2_{{ entry.id }}"
+                                           value = {% if entry.saturday_time_2 != None and entry.saturday_time_2 != "None" %}"{{ entry.saturday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_saturday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.saturday_temperature_2 != None and entry.saturday_temperature_2 != "None" %}"{{ entry.saturday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.saturday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_saturday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.saturday_time_3 != None and entry.saturday_time_3 != "None" %}"{{ entry.saturday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_saturday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.saturday_temperature_3 != None and entry.saturday_temperature_3 != "None" %}"{{ entry.saturday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.saturday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_saturday_time_4_{{ entry.id }}"
+                                               value = {% if entry.saturday_time_4 != None and entry.saturday_time_4 != "None" %}"{{ entry.saturday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_saturday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.saturday_temperature_4 != None and entry.saturday_temperature_4 != "None" %}"{{ entry.saturday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <td colspan="7">
+                          <div class="row justify-content-md-center">
+                            <div class="col-sm-3">
+                              <div class="row justify-content-md-center">
+                                <div class="col-sm-6">
+                                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonntag</button>
+                                </div>
+                                <div class="col-sm-6">
+                                  <div class="row justify-content-md-center">
+                                    <div class="col-sm-5">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="add_option_sunday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-plus"></span>
+                                      </button>   
+                                    </div>
+                                    <div class="col-sm-7">  
+                                      <button type="submit" class="btn btn-default" onclick="window.location.href='/heating#table_{{ entry.id }}'" name="remove_option_sunday_{{ entry.id }}">
+                                        <span class="glyphicon glyphicon-minus"></span>
+                                      </button>   
+                                    </div>                                    
+                                  </div> 
+                                </div>
+                              </div> 
+                            </div> 
+                            <div class="col-sm-9">
+                              <div class="row justify-content-md-center">
+                              
+                                {% if entry.sunday_active_1 == "True" %}
+                              
+                                  <div class="col-sm-3">
+                                    <div class="row justify-content-md-center">
+                                      <div class="col-sm-6">
+                                        <input type="text" class="form-control" placeholder="Zeit" name="set_sunday_time_1_{{ entry.id }}"
+                                         value = {% if entry.sunday_time_1 != None and entry.sunday_time_1 != "None" %}"{{ entry.sunday_time_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-5">
+                                        <input type="text" class="form-control" placeholder="C°" name="set_sunday_temperature_1_{{ entry.id }}"
+                                         value = {% if entry.sunday_temperature_1 != None and entry.sunday_temperature_1 != "None" %}"{{ entry.sunday_temperature_1 }}"{% else %}""{% endif %} />
+                                      </div>
+                                      <div class="col-sm-1"></div>
+                                    </div>
+                                  </div>
+                                
+                                  {% if entry.sunday_active_2 == "True" %}
+                                
+                                    <div class="col-sm-3">
+                                      <div class="row justify-content-md-center">
+                                        <div class="col-sm-6">
+                                          <input type="text" class="form-control" placeholder="Zeit" name="set_sunday_time_2_{{ entry.id }}"
+                                           value = {% if entry.sunday_time_2 != None and entry.sunday_time_2 != "None" %}"{{ entry.sunday_time_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-5">
+                                          <input type="text" class="form-control" placeholder="C°" name="set_sunday_temperature_2_{{ entry.id }}"
+                                           value = {% if entry.sunday_temperature_2 != None and entry.sunday_temperature_2 != "None" %}"{{ entry.sunday_temperature_2 }}"{% else %}""{% endif %} />
+                                        </div>
+                                        <div class="col-sm-1"></div>
+                                      </div>
+                                    </div>
+                                
+                                    {% if entry.sunday_active_3 == "True" %} 
+                                    
+                                      <div class="col-sm-3">
+                                        <div class="row justify-content-md-center">
+                                          <div class="col-sm-6">
+                                            <input type="text" class="form-control" placeholder="Zeit" name="set_sunday_time_3_{{ entry.id }}" 
+                                             value = {% if entry.sunday_time_3 != None and entry.sunday_time_3 != "None" %}"{{ entry.sunday_time_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-5">
+                                            <input type="text" class="form-control" placeholder="C°" name="set_sunday_temperature_3_{{ entry.id }}"
+                                             value = {% if entry.sunday_temperature_3 != None and entry.sunday_temperature_3 != "None" %}"{{ entry.sunday_temperature_3 }}"{% else %}""{% endif %} />
+                                          </div>
+                                          <div class="col-sm-1"></div>
+                                        </div>
+                                      </div>
+                                    
+                                      {% if entry.sunday_active_4 == "True" %}
+                                    
+                                        <div class="col-sm-3">
+                                          <div class="row justify-content-md-center">
+                                            <div class="col-sm-6">
+                                              <input type="text" class="form-control" placeholder="Zeit" name="set_sunday_time_4_{{ entry.id }}"
+                                               value = {% if entry.sunday_time_4 != None and entry.sunday_time_4 != "None" %}"{{ entry.sunday_time_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-5">
+                                              <input type="text" class="form-control" placeholder="C°" name="set_sunday_temperature_4_{{ entry.id }}"
+                                               value = {% if entry.sunday_temperature_4 != None and entry.sunday_temperature_4 != "None" %}"{{ entry.sunday_temperature_4 }}"{% else %}""{% endif %} />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                          </div>
+                                        </div>
+                                      
+                                      {% else %}   
+                                        <div class="col-sm-3"></div>  
+                                      {% endif %}
+                                    
+                                    {% else %}
+                                      <div class="col-sm-6"></div>
+                                    {% endif %}
+                                  
+                                  {% else %} 
+                                    <div class="col-sm-9"></div> 
+                                  {% endif %}
+                                
+                                {% else %} 
+                                  <div class="col-sm-12"></div> 
+                                {% endif %}                                
+                                     
+                              </div>
+                            </div>                    
+                          </div>                             
+                        </td>
+                      </tr>                      
+
+                    </tbody>
+                  </table>  
+                </div>
+                  <input type="submit" onclick="window.location.href='/heating#table_{{ entry.id }}'" class="btn btn-default" name="change_settings" value="Änderungen speichern"/>
+                </form>
+              </div>   
+            </div> 
           </div>
-        </div>  
-      </div>  
-    </div> 
-    <br>
-    <br>      
+          
+{% endfor %}            
+            
+          <br>
+          <br>
+    
 
 <!-- informations -->
 

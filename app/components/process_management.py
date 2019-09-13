@@ -8,10 +8,12 @@ from app.components.process_scheduler import SCHEDULER_TIME_PROCESS, SCHEDULER_S
 from app.components.process_controller import CONTROLLER_PROCESS
 from app.components.mqtt import *
 from app.components.backend_led import *
+from app.components.process_heater import HEATER_PROCESS
 from app.components.shared_resources import process_management_queue
 from app.components.tasks import START_SPEECHCONTROL_TASK
 from app.components.backend_watering import START_WATERING_THREAD
 from app.components.email import SEND_EMAIL
+
 
 """ ################ """
 """ management queue """
@@ -83,7 +85,23 @@ def PROCESS_MANAGEMENT():
                     
                     MQTT_PUBLISH(channel, msg)                  
     
-    
+
+            # ###########
+            #  heating
+            # ###########
+                                    
+            if process[0] == "heating" and process[1] == "process":
+                
+                HEATER_PROCESS(process[2])
+
+                
+            if process[0] == "heating" and process[1] == "change_setting":
+                channel = process[2]
+                msg     = process[3]
+                
+                MQTT_PUBLISH(channel, msg)  
+                
+
             # #########
             #  program
             # #########
@@ -192,7 +210,7 @@ def PROCESS_MANAGEMENT():
             #  watering
             # ##########
                 
-            if process[0] == "watering" and process[1] != "start":
+            if process[0] == "watering":
                 channel = process[1]
                 msg     = process[2]
                 

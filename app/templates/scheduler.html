@@ -388,7 +388,7 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} </b></font></a>
+              <a data-toggle="collapse" href="#collapse{{entry.id}}"><font color="white"><b> {{ entry.name }} {% if entry.option_pause == "checked" %}(pausiert){% endif %} </b></font></a>
             </h4>
           </div>   
           <div id="collapse{{entry.id}}" class="panel-collapse collapse {{entry.collapse}} ">      
@@ -403,12 +403,13 @@
                     <th scope="col" style="width:3%"></th>              
                     <th scope="col" style="width:17%">Name</th> 
                     <th scope="col" style="width:35%">Aufgabe</th>  
-                    <th scope="col" style="width:8%"></th>            
-                    <th scope="col" style="width:8%">Zeit</th>                
-                    <th scope="col" style="width:8%">Sonne</th>              
-                    <th scope="col" style="width:8%">Sensoren</th>
-                    <th scope="col" style="width:8%">Position</th>
-                    <th scope="col" style="width:8%">Wiederholen</th>
+                    <th scope="col" style="width:5%"></th>            
+                    <th scope="col" style="width:7%">Zeit</th>                
+                    <th scope="col" style="width:7%">Sonne</th>              
+                    <th scope="col" style="width:7%">Sensoren</th>
+                    <th scope="col" style="width:7%">Position</th>
+                    <th scope="col" style="width:7%">Wiederholen</th>
+                    <th scope="col" style="width:7%">Pause</th>                    
                     <th scope="col"></th>
                   </thead>
                   <tbody> 
@@ -474,6 +475,16 @@
                           </div>
                         </font>
                       </td>
+                      <td>
+                        <font size="+2">
+                          <div class="pretty p-default p-curve p-bigger">
+                            <input type="checkbox" {{ entry.option_pause }} name="checkbox_option_pause_{{ entry.id }}" >
+                            <div class="state p-success">
+                              <label></label>
+                            </div>
+                          </div>
+                        </font>
+                      </td>                      
                       <td><a href="/scheduler/delete/{{ entry.id }}#"><font color="salmon" size="5"><b>X</b></font></a></td>  
                     </tr>
 
@@ -485,7 +496,7 @@
                       <td colspan="11"></td>
                     </tr>
                     <tr>
-                      <td colspan="2">Tag (Mon, Tue, Wed, Thu, Fri, Sat, Sun) /// Stunde (0-23) /// Minute (0-59) /// Alles (*)</td>
+                      <td colspan="2">Tag (Mon, Tue, Wed, Thu, Fri, Sat, Sun) /// Stunde (00-23) /// Minute (00-59) /// Alles (*) /// Trenner (,)</td>
                       <td colspan="9">
                         <div class="row justify-content-md-center">                                                
                           <div class="col-sm-4"> 
@@ -519,7 +530,7 @@
                       <td colspan="9">
                         <div class="row justify-content-md-center">
                           <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.sunrise }}):</button>
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenaufgang ({{ entry.sunrise }})</button>
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">
@@ -532,7 +543,7 @@
                             </font>
                           </div>  
                           <div class="col-sm-3">  
-                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.sunset }}):</button>
+                            <button type="button" style="background-color:transparent" class="btn btn-secondary">Sonnenuntergang ({{ entry.sunset }})</button>
                           </div>   
                           <div class="col-sm-1">   
                             <font size="+2">

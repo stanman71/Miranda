@@ -11,6 +11,7 @@ from app.components.shared_resources import process_management_queue
 import sys
 import signal
 import heapq
+import time
 
 interrupted = False
 
@@ -56,10 +57,33 @@ def SNOWBOY_THREAD():
                     heapq.heappush(process_management_queue, (1, ("speechcontrol", speech_recognition_answer)))
 
             MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off")
+            
+            # pause snowboy
+            set_led = True
+            while GET_SNOWBOY_SETTINGS().snowboy_pause == "checked":
+
+                if set_led:
+                    MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "pause")
+                    set_led = False
+                time.sleep(1)
+                
+            MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off") 
 
             detector.start(detected_callback=detect_callback, interrupt_check=interrupt_callback, sleep_time=0.03)
 
+
         WRITE_LOGFILE_SYSTEM("EVENT", "Speechcontrol | Started") 
+
+        # pause snowboy
+        set_led = True
+        while GET_SNOWBOY_SETTINGS().snowboy_pause == "checked":
+
+            if set_led:
+                MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "pause")
+                set_led = False
+            time.sleep(1)
+            
+        MICROPHONE_LED_CONTROL(GET_SNOWBOY_SETTINGS().snowboy_microphone, "off") 
 
         # main loop
         detector.start(detected_callback=detect_callback,

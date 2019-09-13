@@ -19,11 +19,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_spotify == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap

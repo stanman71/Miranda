@@ -23,8 +23,7 @@ def MICROPHONE_LED_CONTROL(microphone, led_setting):
 
     if microphone == "ReSpeaker 2-Mics Pi HAT":
         pass
-
-
+            
 
     """ ####################################### """
     """ ReSpeaker Mic 4 Array v2.0 - Pixel Ring """
@@ -135,6 +134,8 @@ def MICROPHONE_LED_CONTROL(microphone, led_setting):
                 pixel_ring.wakeup()
             if led_setting == "off":
                 pixel_ring.off()
+            if led_setting == "pause":
+                pixel_ring.spin()          
 
         except Exception as e:
             WRITE_LOGFILE_SYSTEM("ERROR", "Microphone LED Control | " + str(e)) 

@@ -35,7 +35,8 @@ def permission_required(f):
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -47,8 +48,9 @@ def permission_required(f):
 @permission_required
 def dashboard(template):
     error_message_led = []
-    error_message_devices = ""
-    error_message_watering_control = ""
+    error_message_devices_control  = ""
+    error_message_watering_control = ""    
+    error_message_heating_control  = ""    
     error_message_log = ""
     error_message_start_program = ""
     error_message_spotify = ""
@@ -64,16 +66,19 @@ def dashboard(template):
     log_search             = ""
     
     collapse_dashboard_led      = ""
-    collapse_dashboard_devices  = ""         
-    collapse_dashboard_watering = ""
+    collapse_dashboard_devices  = ""
+    collapse_dashboard_watering = ""    
+    collapse_dashboard_heating  = ""
     collapse_dashboard_programs = "" 
     collapse_dashboard_spotify  = ""
-    collapse_dashboard_log      = ""        
-
+    collapse_dashboard_log      = ""
+    
    
     """ ########### """
     """ led control """
-    """ ########### """   
+    """ ########### """
+    
+    UPDATE_LED_GROUP_LED_NAMES()
     
     if request.method == "POST":
         
@@ -166,7 +171,7 @@ def dashboard(template):
     
     if request.method == "POST":
     
-        if request.form.get("change_device_settings") != None:
+        if request.form.get("change_device_control_settings") != None:
             
             collapse_dashboard_devices = "in"
      
@@ -182,19 +187,19 @@ def dashboard(template):
             for i in range (1,21):
                                 
                 try:
-                    device            = GET_MQTT_DEVICE_BY_ID(i)  
-                    dashboard_setting = request.form.get("set_dashboard_setting_" + str(i))  
+                    device                 = GET_MQTT_DEVICE_BY_ID(i)  
+                    device_control_setting = request.form.get("set_device_control_setting_" + str(i))  
 
-                    if dashboard_setting != "None" and dashboard_setting != None:
+                    if device_control_setting != "None" and device_control_setting != None:
                                 
                         change_state = True
                         
                         # convert json-format to string
-                        dashboard_setting_formated = dashboard_setting.replace('"', '')
-                        dashboard_setting_formated = dashboard_setting_formated.replace('{', '')
-                        dashboard_setting_formated = dashboard_setting_formated.replace('}', '')
+                        device_control_setting_formated = device_control_setting.replace('"', '')
+                        device_control_setting_formated = device_control_setting_formated.replace('{', '')
+                        device_control_setting_formated = device_control_setting_formated.replace('}', '')
                         
-                        check_result = CHECK_DEVICE_EXCEPTIONS(i, dashboard_setting_formated)
+                        check_result = CHECK_DEVICE_EXCEPTIONS(i, device_control_setting_formated)
                         
 
                         # ##############    
@@ -204,19 +209,19 @@ def dashboard(template):
                         if check_result == True: 
                             
                             # new device setting ?  
-                            new_setting       = False
-                            dashboard_setting = dashboard_setting.replace(' ', '')
+                            new_setting            = False
+                            device_control_setting = device_control_setting.replace(' ', '')
                             
-                            if not "," in dashboard_setting:
-                                if not dashboard_setting[1:-1] in device.last_values:
+                            if not "," in device_control_setting:
+                                if not device_control_setting[1:-1] in device.last_values:
                                     new_setting = True
                                                                             
                             # more then one setting value:
                             else:   
-                                dashboard_setting_temp = dashboard_setting[1:-1]
-                                list_dashboard_setting = dashboard_setting_temp.split(",")
+                                device_control_setting_temp = device_control_setting[1:-1]
+                                list_device_control_setting = device_control_setting_temp.split(",")
                                 
-                                for setting in list_dashboard_setting:
+                                for setting in list_device_control_setting:
                                     
                                     if not setting in device.last_values:
                                         new_setting = True   
@@ -227,35 +232,35 @@ def dashboard(template):
                                 if device.gateway == "mqtt":
                                     
                                     channel  = "miranda/mqtt/" + device.ieeeAddr + "/set"                  
-                                    msg      = dashboard_setting
+                                    msg      = device_control_setting
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_devices = CHECK_MQTT_SETTING_PROCESS(device.ieeeAddr, dashboard_setting, 1, 5)                                     
+                                    error_message_devices_control = CHECK_MQTT_SETTING_PROCESS(device.ieeeAddr, device_control_setting, 1, 5)                                     
                                   
 
                                 # zigbee2mqtt
                                 if device.gateway == "zigbee2mqtt":
                                     
                                     channel  = "miranda/zigbee2mqtt/" + device.name + "/set"                  
-                                    msg      = dashboard_setting
+                                    msg      = device_control_setting
 
                                     heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
-                                    error_message_devices = CHECK_ZIGBEE2MQTT_SETTING_PROCESS(device.name, dashboard_setting, 1, 5)      
+                                    error_message_devices_control = CHECK_ZIGBEE2MQTT_SETTING_PROCESS(device.name, device_control_setting, 1, 5)      
                               
                                     
                             else:
 
                                 if device.gateway == "mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + dashboard_setting_formated) 
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "MQTT | Device - " + device.name + " | " + device_control_setting_formated) 
 
                                 if device.gateway == "zigbee2mqtt":
-                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + dashboard_setting_formated)
+                                    WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + device.name + " | " + device_control_setting_formated)
               
                         
                         else:
-                            error_message_devices = check_result
+                            error_message_devices_control = check_result
                             
                                
                 except Exception as e:
@@ -263,6 +268,7 @@ def dashboard(template):
                         print(e)
            
            
+    
     """ ################ """
     """ watering control """
     """ ################ """       
@@ -332,7 +338,62 @@ def dashboard(template):
                     if "NoneType" not in str(e):
                         print(e)           
        
+ 
+    """ ############### """
+    """ heating control """
+    """ ############### """       
+    
+    if request.method == "POST":
+    
+        if request.form.get("change_heating_control_settings") != None:
+            
+            collapse_dashboard_heating = "in"
+            
+            # set collapse settings
+            if request.form.get("checkbox_collapse_heating"): 
+                collapse_dashboard_heating_setting = "checked"
+            else:
+                collapse_dashboard_heating_setting = ""
+   
+            SET_USER_DASHBOARD_COLLAPSE_SETTING(current_user.id, "heating", collapse_dashboard_heating_setting)
+                 
+
+            for i in range (1,21):
+                
+                try:      
+                    heater = GET_HEATER_BY_ID(i)
+                    
+                    heating_control_setting = request.form.get("set_heating_control_setting_" + str(i))                         
+                                                  
+                    if heating_control_setting != "None" and heating_control_setting != None:
+                        
+                        # convert json-format to string
+                        heating_control_setting_formated = heating_control_setting.replace('"', '')
+                        heating_control_setting_formated = heating_control_setting_formated.replace('{', '')
+                        heating_control_setting_formated = heating_control_setting_formated.replace('}', '')   
+                        
+                        # new watering setting ?    
+                        heating_control_setting = heating_control_setting.replace(' ', '')
+ 
+                        if not heating_control_setting[1:-1] in heater.mqtt_device.last_values:                          
+       
+                            channel  = "miranda/" + heater.mqtt_device.gateway + "/" + heater.mqtt_device.ieeeAddr + "/set"                        
+                            msg      = heating_control_setting
+
+                            heapq.heappush(process_management_queue, (1, ("dashboard", "device", channel, msg)))   
                        
+                            error_message_heating_control = CHECK_ZIGBEE2MQTT_SETTING_PROCESS(heater.mqtt_device.name, heating_control_setting, 2, 15) 
+
+                        else:
+                                
+                            WRITE_LOGFILE_SYSTEM("STATUS", "Zigbee2MQTT | Device - " + heater.mqtt_device.name + " | " + heating_control_setting_formated) 
+
+
+                except Exception as e:
+                    if "NoneType" not in str(e):
+                        print(e) 
+ 
+ 
     """ ############### """
     """ program control """
     """ ############### """              
@@ -539,70 +600,71 @@ def dashboard(template):
     """ ####### """       
     
 
-    data_led = GET_ALL_ACTIVE_LED_GROUPS()
+    list_led                 = GET_ALL_ACTIVE_LED_GROUPS()
     dropdown_list_led_scenes = GET_ALL_LED_SCENES()
 
-    data_device           = GET_ALL_MQTT_DEVICES("device")
-    data_watering_control = GET_ALL_PLANTS()   
-    data_sensor           = GET_ALL_MQTT_DEVICES("sensor")
+    list_devices             = GET_ALL_MQTT_DEVICES("devices")
+    list_plants              = GET_ALL_PLANTS()
+    list_heaters             = GET_ALL_HEATERS()
+    list_sensors             = []
     
     # remove watering_control sensors from list
-    list_data_sensor = []
-    
-    for sensor in data_sensor:
-        if sensor.device_type != "watering_control":
-            list_data_sensor.append(sensor)
+    for sensor in GET_ALL_MQTT_DEVICES("sensors"):
+        if sensor.device_type != "watering_controller":
+            list_sensors.append(sensor)
             
-    data_sensor = list_data_sensor
-
-    version = GET_CONFIG_VERSION()       
-
-
+    version = GET_CONFIG_VERSION()
+    
+    
     return render_template(template,
-                            data_led=data_led,
-                            dropdown_list_led_scenes=dropdown_list_led_scenes,
-                            data_device=data_device,
-                            data_watering_control=data_watering_control,
-                            data_log_system=data_log_system, 
-                            data_sensor=data_sensor,
-                            program_running=program_running,      
-                            dropdown_list_programs=dropdown_list_programs,
-                            checkbox_repeat_program=checkbox_repeat_program,
-                            spotify_user=spotify_user,  
-                            tupel_current_playback=tupel_current_playback,
-                            spotify_playlists=spotify_playlists,
-                            spotify_devices=spotify_devices,  
-                            volume=volume,                              
-                            selected_type_event=selected_type_event,
-                            selected_type_status=selected_type_status,
-                            selected_type_database=selected_type_database,                            
-                            selected_type_success=selected_type_success,    
-                            selected_type_warning=selected_type_warning,                                                      
-                            selected_type_error=selected_type_error,
-                            version=version,  
-                            error_message_led=error_message_led,
-                            error_message_log=error_message_log,  
-                            error_message_devices=error_message_devices,   
-                            error_message_watering_control=error_message_watering_control,  
-                            error_message_start_program=error_message_start_program,
-                            error_message_spotify=error_message_spotify,
-                            permission_dashboard=current_user.permission_dashboard,
-                            permission_scheduler=current_user.permission_scheduler,   
-                            permission_programs=current_user.permission_programs,
-                            permission_watering=current_user.permission_watering,
-                            permission_heating=current_user.permission_heating,                           
-                            permission_camera=current_user.permission_camera,  
-                            permission_led=current_user.permission_led,
-                            permission_sensordata=current_user.permission_sensordata,
-                            permission_spotify=current_user.permission_spotify, 
-                            permission_system=current_user.permission_system, 
-                            collapse_dashboard_led_setting=current_user.collapse_dashboard_led_setting,
-                            collapse_dashboard_devices_setting=current_user.collapse_dashboard_devices_setting,          
-                            collapse_dashboard_watering_setting=current_user.collapse_dashboard_watering_setting,
-                            collapse_dashboard_led=collapse_dashboard_led,
-                            collapse_dashboard_devices=collapse_dashboard_devices,          
-                            collapse_dashboard_watering=collapse_dashboard_watering,                      
-                            collapse_dashboard_programs=collapse_dashboard_programs, 
-                            collapse_dashboard_spotify=collapse_dashboard_spotify,
-                            collapse_dashboard_log=collapse_dashboard_log,                                                
-                            )
+                           error_message_led=error_message_led,
+                           error_message_log=error_message_log,  
+                           error_message_devices_control=error_message_devices_control,   
+                           error_message_watering_control=error_message_watering_control,
+                           error_message_heating_control=error_message_heating_control,                             
+                           error_message_start_program=error_message_start_program,
+                           error_message_spotify=error_message_spotify,                           
+                           list_led=list_led,
+                           dropdown_list_led_scenes=dropdown_list_led_scenes,
+                           list_devices=list_devices,
+                           list_plants=list_plants,
+                           list_heaters=list_heaters,
+                           list_sensors=list_sensors,
+                           data_log_system=data_log_system, 
+                           program_running=program_running,      
+                           dropdown_list_programs=dropdown_list_programs,
+                           checkbox_repeat_program=checkbox_repeat_program,
+                           spotify_user=spotify_user,  
+                           tupel_current_playback=tupel_current_playback,
+                           spotify_playlists=spotify_playlists,
+                           spotify_devices=spotify_devices,  
+                           volume=volume,                              
+                           selected_type_event=selected_type_event,
+                           selected_type_status=selected_type_status,
+                           selected_type_database=selected_type_database,                            
+                           selected_type_success=selected_type_success,    
+                           selected_type_warning=selected_type_warning,                                                      
+                           selected_type_error=selected_type_error,
+                           version=version,  
+                           collapse_dashboard_led_setting=current_user.collapse_dashboard_led_setting,
+                           collapse_dashboard_devices_setting=current_user.collapse_dashboard_devices_setting,          
+                           collapse_dashboard_watering_setting=current_user.collapse_dashboard_watering_setting,
+                           collapse_dashboard_heating_setting=current_user.collapse_dashboard_heating_setting,                           
+                           collapse_dashboard_led=collapse_dashboard_led,
+                           collapse_dashboard_devices=collapse_dashboard_devices,          
+                           collapse_dashboard_watering=collapse_dashboard_watering,
+                           collapse_dashboard_heating=collapse_dashboard_heating,                            
+                           collapse_dashboard_programs=collapse_dashboard_programs, 
+                           collapse_dashboard_spotify=collapse_dashboard_spotify,
+                           collapse_dashboard_log=collapse_dashboard_log,                              
+                           permission_dashboard=current_user.permission_dashboard,
+                           permission_scheduler=current_user.permission_scheduler,   
+                           permission_programs=current_user.permission_programs,
+                           permission_watering=current_user.permission_watering,
+                           permission_heating=current_user.permission_heating,                           
+                           permission_camera=current_user.permission_camera,  
+                           permission_led=current_user.permission_led,
+                           permission_sensordata=current_user.permission_sensordata,
+                           permission_spotify=current_user.permission_spotify, 
+                           permission_system=current_user.permission_system,                                              
+                           )

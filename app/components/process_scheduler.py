@@ -52,17 +52,24 @@ def update_sunrise_sunset():
 def scheduler_time():
    
     for task in GET_ALL_SCHEDULER_TASKS():
-        if task.option_time == "checked" or task.option_sun == "checked":
+        if (task.option_time == "checked" or task.option_sun == "checked") and task.option_pause != "checked":
             heapq.heappush(process_management_queue, (20, ("scheduler", "time", task.id)))         
-
+    
 
 @scheduler.task('cron', id='scheduler_ping', second='0, 10, 20, 30, 40, 50')
 def scheduler_ping():
    
     for task in GET_ALL_SCHEDULER_TASKS():
-        if task.option_position == "checked":
+        if task.option_position == "checked" and task.option_pause != "checked":
             heapq.heappush(process_management_queue, (20, ("scheduler", "ping", task.id)))
 
+
+@scheduler.task('cron', id='heating', minute='*')
+def heating():
+   
+    for heater in GET_ALL_HEATERS():
+        if heater.heater_pause != "checked":
+            heapq.heappush(process_management_queue, (20, ("heating", "process", heater.id)))    
 
 
 """ ################################ """
@@ -130,7 +137,6 @@ def GET_SUNSET_TIME(lat, long):
    except Exception as e:    
       WRITE_LOGFILE_SYSTEM("ERROR", "Update Sunrise / Sunset | " + str(e))
       SEND_EMAIL("ERROR", "Update Sunrise / Sunset | " + str(e))
-
 
 
 """ ################################ """
@@ -314,23 +320,21 @@ def CHECK_SCHEDULER_TIME(task):
    current_hour   = now.strftime('%H')
    current_minute = now.strftime('%M')
 
-   if current_hour[0] == "0":
-      current_hour = current_hour[1:]   
-
-   if current_minute[0] == "0":
-      current_minute = current_minute[1:]                        
-
    passing = False
 
    # check day
    if "," in task.day:
+       
       days = task.day.replace(" ", "")       
       days = days.split(",")
+      
       for element in days:
+          
          if element.lower() == current_day.lower():
             passing = True
             break
    else:
+       
       if task.day.lower() == current_day.lower() or task.day == "*":
          passing = True
 
@@ -338,17 +342,23 @@ def CHECK_SCHEDULER_TIME(task):
    if passing == True:
 
       if "," in task.hour:
+          
          hours = task.hour.replace(" ", "")         
          hours = hours.split(",")
+         
          for element in hours:
+             
             if element == current_hour:
                passing = True
                break
+            
             else:
                passing = False
       else:
+          
          if task.hour == current_hour or task.hour == "*":
-            passing = True 
+            passing = True
+            
          else:
             passing = False              
 
@@ -356,17 +366,24 @@ def CHECK_SCHEDULER_TIME(task):
    if passing == True:
 
       if "," in task.minute:
+          
          minutes = task.minute.replace(" ", "")          
          minutes = minutes.split(",")
+         
          for element in minutes:
+             
             if element == current_minute:
                passing = True
                break
+            
             else:
                passing = False
+               
       else:
+          
          if task.minute == current_minute or task.minute == "*":
-            passing = True 
+            passing = True
+            
          else:
             passing = False  
 
@@ -377,9 +394,7 @@ def CHECK_SCHEDULER_TIME(task):
 def CHECK_SCHEDULER_SENSORS(task):
    
    passing = False   
-   
-   print("!!!!!!!")
-   print(task.name)
+
    
    # #######
    # one row

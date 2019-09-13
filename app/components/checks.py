@@ -2,6 +2,8 @@ from app import app
 from app.database.database import *
 from app.components.file_management import GET_ALL_HOTWORD_FILES
 
+import datetime
+
 
 """ ################### """
 """     check camera    """
@@ -56,6 +58,971 @@ def CHECK_DEVICE_EXCEPTION_SETTINGS(devices):
                error_message_settings.append(device.name + " >>> Keinen Vergleichswert eingetragen")
                   
    return error_message_settings
+
+
+""" ################## """
+"""   check heating    """
+""" ################## """
+
+def CHECK_HEATING_SETTINGS(heaters):
+   list_errors = []
+   
+   for heater in heaters:
+       
+      # check mqtt_device multiple times ?
+      list_heaters = GET_ALL_HEATERS()
+
+      for control_heater in list_heaters:
+           
+         if control_heater.id != heater.id:
+            if control_heater.mqtt_device_ieeeAddr == heater.mqtt_device_ieeeAddr:
+               list_errors.append(heater.name + " >>> Gerät mehrmals zugeordnet >>> " + heater.mqtt_device.name)
+      
+      
+      # ######################  
+      # search for wrong chars
+      # ######################
+      
+      # ######
+      # monday
+      # ######
+      
+      if heater.monday_time_1 != "None" and heater.monday_time_1 != None and heater.monday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.monday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.monday_time_1)
+            
+         if heater.monday_temperature_1 == "None" or heater.monday_temperature_1 == None or heater.monday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.monday_temperature_1 != "None" and heater.monday_temperature_1 != None and heater.monday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.monday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.monday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.monday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.monday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.monday_temperature_1)
+
+         if heater.monday_time_1 == "None" or heater.monday_time_1 == None or heater.monday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.monday_time_2 != "None" and heater.monday_time_2 != None and heater.monday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.monday_time_1, "%H:%M") > datetime.datetime.strptime(heater.monday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.monday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.monday_time_2)
+            
+         if heater.monday_temperature_2 == "None" or heater.monday_temperature_2 == None or heater.monday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.monday_temperature_2 != "None" and heater.monday_temperature_2 != None and heater.monday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.monday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.monday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.monday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.monday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.monday_temperature_2)
+
+         if heater.monday_time_2 == "None" or heater.monday_time_2 == None or heater.monday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.monday_time_3 != "None" and heater.monday_time_3 != None and heater.monday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.monday_time_2, "%H:%M") > datetime.datetime.strptime(heater.monday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.monday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.monday_time_3)
+            
+         if heater.monday_temperature_3 == "None" or heater.monday_temperature_3 == None or heater.monday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.monday_temperature_3 != "None" and heater.monday_temperature_3 != None and heater.monday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.monday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.monday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.monday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.monday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.monday_temperature_3)
+
+         if heater.monday_time_3 == "None" or heater.monday_time_3 == None or heater.monday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.monday_time_4 != "None" and heater.monday_time_4 != None and heater.monday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.monday_time_3, "%H:%M") > datetime.datetime.strptime(heater.monday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.monday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.monday_time_4)
+            
+         if heater.monday_temperature_4 == "None" or heater.monday_temperature_4 == None or heater.monday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.monday_temperature_4 != "None" and heater.monday_temperature_4 != None and heater.monday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.monday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.monday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.monday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Montag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.monday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Montag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.monday_temperature_4)
+
+         if heater.monday_time_4 == "None" or heater.monday_time_4 == None or heater.monday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Montag >>> Keine Uhrzeit angegeben >>> Eintrag 4")     
+ 
+      # #######
+      # tuesday
+      # #######
+      
+      if heater.tuesday_time_1 != "None" and heater.tuesday_time_1 != None and heater.tuesday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.tuesday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.tuesday_time_1)
+            
+         if heater.tuesday_temperature_1 == "None" or heater.tuesday_temperature_1 == None or heater.tuesday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.tuesday_temperature_1 != "None" and heater.tuesday_temperature_1 != None and heater.tuesday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.tuesday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.tuesday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.tuesday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.tuesday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.tuesday_temperature_1)
+
+         if heater.tuesday_time_1 == "None" or heater.tuesday_time_1 == None or heater.tuesday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.tuesday_time_2 != "None" and heater.tuesday_time_2 != None and heater.tuesday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.tuesday_time_1, "%H:%M") > datetime.datetime.strptime(heater.tuesday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.tuesday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.tuesday_time_2)
+            
+         if heater.tuesday_temperature_2 == "None" or heater.tuesday_temperature_2 == None or heater.tuesday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.tuesday_temperature_2 != "None" and heater.tuesday_temperature_2 != None and heater.tuesday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.tuesday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.tuesday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.tuesday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.tuesday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.tuesday_temperature_2)
+
+         if heater.tuesday_time_2 == "None" or heater.tuesday_time_2 == None or heater.tuesday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.tuesday_time_3 != "None" and heater.tuesday_time_3 != None and heater.tuesday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.tuesday_time_2, "%H:%M") > datetime.datetime.strptime(heater.tuesday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.tuesday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.tuesday_time_3)
+            
+         if heater.tuesday_temperature_3 == "None" or heater.tuesday_temperature_3 == None or heater.tuesday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.tuesday_temperature_3 != "None" and heater.tuesday_temperature_3 != None and heater.tuesday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.tuesday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.tuesday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.tuesday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.tuesday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.tuesday_temperature_3)
+
+         if heater.tuesday_time_3 == "None" or heater.tuesday_time_3 == None or heater.tuesday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.tuesday_time_4 != "None" and heater.tuesday_time_4 != None and heater.tuesday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.tuesday_time_3, "%H:%M") > datetime.datetime.strptime(heater.tuesday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.tuesday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.tuesday_time_4)
+            
+         if heater.tuesday_temperature_4 == "None" or heater.tuesday_temperature_4 == None or heater.tuesday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.tuesday_temperature_4 != "None" and heater.tuesday_temperature_4 != None and heater.tuesday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.tuesday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.tuesday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.tuesday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Dienstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.tuesday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Dienstag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.tuesday_temperature_4)
+
+         if heater.tuesday_time_4 == "None" or heater.tuesday_time_4 == None or heater.tuesday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Dienstag >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+ 
+      # #########
+      # wednesday
+      # #########
+      
+      if heater.wednesday_time_1 != "None" and heater.wednesday_time_1 != None and heater.wednesday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.wednesday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.wednesday_time_1)
+            
+         if heater.wednesday_temperature_1 == "None" or heater.wednesday_temperature_1 == None or heater.wednesday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.wednesday_temperature_1 != "None" and heater.wednesday_temperature_1 != None and heater.wednesday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.wednesday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.wednesday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.wednesday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.wednesday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.wednesday_temperature_1)
+
+         if heater.wednesday_time_1 == "None" or heater.wednesday_time_1 == None or heater.wednesday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.wednesday_time_2 != "None" and heater.wednesday_time_2 != None and heater.wednesday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.wednesday_time_1, "%H:%M") > datetime.datetime.strptime(heater.wednesday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.wednesday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.wednesday_time_2)
+            
+         if heater.wednesday_temperature_2 == "None" or heater.wednesday_temperature_2 == None or heater.wednesday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.wednesday_temperature_2 != "None" and heater.wednesday_temperature_2 != None and heater.wednesday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.wednesday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.wednesday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.wednesday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.wednesday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.wednesday_temperature_2)
+
+         if heater.wednesday_time_2 == "None" or heater.wednesday_time_2 == None or heater.wednesday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.wednesday_time_3 != "None" and heater.wednesday_time_3 != None and heater.wednesday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.wednesday_time_2, "%H:%M") > datetime.datetime.strptime(heater.wednesday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.wednesday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.wednesday_time_3)
+            
+         if heater.wednesday_temperature_3 == "None" or heater.wednesday_temperature_3 == None or heater.wednesday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.wednesday_temperature_3 != "None" and heater.wednesday_temperature_3 != None and heater.wednesday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.wednesday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.wednesday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.wednesday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.wednesday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.wednesday_temperature_3)
+
+         if heater.wednesday_time_3 == "None" or heater.wednesday_time_3 == None or heater.wednesday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.wednesday_time_4 != "None" and heater.wednesday_time_4 != None and heater.wednesday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.wednesday_time_3, "%H:%M") > datetime.datetime.strptime(heater.wednesday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.wednesday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.wednesday_time_4)
+            
+         if heater.wednesday_temperature_4 == "None" or heater.wednesday_temperature_4 == None or heater.wednesday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.wednesday_temperature_4 != "None" and heater.wednesday_temperature_4 != None and heater.wednesday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.wednesday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.wednesday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.wednesday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Mittwoch >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.wednesday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Mittwoch >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.wednesday_temperature_4)
+
+         if heater.wednesday_time_4 == "None" or heater.wednesday_time_4 == None or heater.wednesday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Mittwoch >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+ 
+      # ########
+      # thursday
+      # ########
+      
+      if heater.thursday_time_1 != "None" and heater.thursday_time_1 != None and heater.thursday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.thursday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.thursday_time_1)
+            
+         if heater.thursday_temperature_1 == "None" or heater.thursday_temperature_1 == None or heater.thursday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.thursday_temperature_1 != "None" and heater.thursday_temperature_1 != None and heater.thursday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.thursday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.thursday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.thursday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.thursday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.thursday_temperature_1)
+
+         if heater.thursday_time_1 == "None" or heater.thursday_time_1 == None or heater.thursday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.thursday_time_2 != "None" and heater.thursday_time_2 != None and heater.thursday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.thursday_time_1, "%H:%M") > datetime.datetime.strptime(heater.thursday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.thursday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.thursday_time_2)
+            
+         if heater.thursday_temperature_2 == "None" or heater.thursday_temperature_2 == None or heater.thursday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.thursday_temperature_2 != "None" and heater.thursday_temperature_2 != None and heater.thursday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.thursday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.thursday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.thursday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.thursday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.thursday_temperature_2)
+
+         if heater.thursday_time_2 == "None" or heater.thursday_time_2 == None or heater.thursday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.thursday_time_3 != "None" and heater.thursday_time_3 != None and heater.thursday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.thursday_time_2, "%H:%M") > datetime.datetime.strptime(heater.thursday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.thursday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.thursday_time_3)
+            
+         if heater.thursday_temperature_3 == "None" or heater.thursday_temperature_3 == None or heater.thursday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.thursday_temperature_3 != "None" and heater.thursday_temperature_3 != None and heater.thursday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.thursday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.thursday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.thursday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.thursday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.thursday_temperature_3)
+
+         if heater.thursday_time_3 == "None" or heater.thursday_time_3 == None or heater.thursday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.thursday_time_4 != "None" and heater.thursday_time_4 != None and heater.thursday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.thursday_time_3, "%H:%M") > datetime.datetime.strptime(heater.thursday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.thursday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.thursday_time_4)
+            
+         if heater.thursday_temperature_4 == "None" or heater.thursday_temperature_4 == None or heater.thursday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.thursday_temperature_4 != "None" and heater.thursday_temperature_4 != None and heater.thursday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.thursday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.thursday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.thursday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Donnerstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.thursday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Donnerstag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.thursday_temperature_4)
+
+         if heater.thursday_time_4 == "None" or heater.thursday_time_4 == None or heater.thursday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Donnerstag >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+ 
+      # ######
+      # friday
+      # ######
+      
+      if heater.friday_time_1 != "None" and heater.friday_time_1 != None and heater.friday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.friday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.friday_time_1)
+            
+         if heater.friday_temperature_1 == "None" or heater.friday_temperature_1 == None or heater.friday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.friday_temperature_1 != "None" and heater.friday_temperature_1 != None and heater.friday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.friday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.friday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.friday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.friday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.friday_temperature_1)
+
+         if heater.friday_time_1 == "None" or heater.friday_time_1 == None or heater.friday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.friday_time_2 != "None" and heater.friday_time_2 != None and heater.friday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.friday_time_1, "%H:%M") > datetime.datetime.strptime(heater.friday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.friday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.friday_time_2)
+            
+         if heater.friday_temperature_2 == "None" or heater.friday_temperature_2 == None or heater.friday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.friday_temperature_2 != "None" and heater.friday_temperature_2 != None and heater.friday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.friday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.friday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.friday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.friday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.friday_temperature_2)
+
+         if heater.friday_time_2 == "None" or heater.friday_time_2 == None or heater.friday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.friday_time_3 != "None" and heater.friday_time_3 != None and heater.friday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.friday_time_2, "%H:%M") > datetime.datetime.strptime(heater.friday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.friday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.friday_time_3)
+            
+         if heater.friday_temperature_3 == "None" or heater.friday_temperature_3 == None or heater.friday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.friday_temperature_3 != "None" and heater.friday_temperature_3 != None and heater.friday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.friday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.friday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.friday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.friday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.friday_temperature_3)
+
+         if heater.friday_time_3 == "None" or heater.friday_time_3 == None or heater.friday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.friday_time_4 != "None" and heater.friday_time_4 != None and heater.friday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.friday_time_3, "%H:%M") > datetime.datetime.strptime(heater.friday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.friday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.friday_time_4)
+            
+         if heater.friday_temperature_4 == "None" or heater.friday_temperature_4 == None or heater.friday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.friday_temperature_4 != "None" and heater.friday_temperature_4 != None and heater.friday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.friday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.friday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.friday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Freitag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.friday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Freitag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.friday_temperature_4)
+
+         if heater.friday_time_4 == "None" or heater.friday_time_4 == None or heater.friday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Freitag >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+ 
+      # ########
+      # saturday
+      # ########
+      
+      if heater.saturday_time_1 != "None" and heater.saturday_time_1 != None and heater.saturday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.saturday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.saturday_time_1)
+            
+         if heater.saturday_temperature_1 == "None" or heater.saturday_temperature_1 == None or heater.saturday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.saturday_temperature_1 != "None" and heater.saturday_temperature_1 != None and heater.saturday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.saturday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.saturday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.saturday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.saturday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.saturday_temperature_1)
+
+         if heater.saturday_time_1 == "None" or heater.saturday_time_1 == None or heater.saturday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.saturday_time_2 != "None" and heater.saturday_time_2 != None and heater.saturday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.saturday_time_1, "%H:%M") > datetime.datetime.strptime(heater.saturday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.saturday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.saturday_time_2)
+            
+         if heater.saturday_temperature_2 == "None" or heater.saturday_temperature_2 == None or heater.saturday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.saturday_temperature_2 != "None" and heater.saturday_temperature_2 != None and heater.saturday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.saturday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.saturday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.saturday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.saturday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.saturday_temperature_2)
+
+         if heater.saturday_time_2 == "None" or heater.saturday_time_2 == None or heater.saturday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.saturday_time_3 != "None" and heater.saturday_time_3 != None and heater.saturday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.saturday_time_2, "%H:%M") > datetime.datetime.strptime(heater.saturday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.saturday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.saturday_time_3)
+            
+         if heater.saturday_temperature_3 == "None" or heater.saturday_temperature_3 == None or heater.saturday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.saturday_temperature_3 != "None" and heater.saturday_temperature_3 != None and heater.saturday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.saturday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.saturday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.saturday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.saturday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.saturday_temperature_3)
+
+         if heater.saturday_time_3 == "None" or heater.saturday_time_3 == None or heater.saturday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.saturday_time_4 != "None" and heater.saturday_time_4 != None and heater.saturday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.saturday_time_3, "%H:%M") > datetime.datetime.strptime(heater.saturday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.saturday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.saturday_time_4)
+            
+         if heater.saturday_temperature_4 == "None" or heater.saturday_temperature_4 == None or heater.saturday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.saturday_temperature_4 != "None" and heater.saturday_temperature_4 != None and heater.saturday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.saturday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.saturday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.saturday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Samstag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.saturday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Samstag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.saturday_temperature_4)
+
+         if heater.saturday_time_4 == "None" or heater.saturday_time_4 == None or heater.saturday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Samstag >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+ 
+      # ######
+      # sunday
+      # ######
+      
+      if heater.sunday_time_1 != "None" and heater.sunday_time_1 != None and heater.sunday_time_1 != "":
+          
+         try:
+            datetime.datetime.strptime(heater.sunday_time_1, "%H:%M")
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 1 >>> " + heater.sunday_time_1)
+            
+         if heater.sunday_temperature_1 == "None" or heater.sunday_temperature_1 == None or heater.sunday_temperature_1 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Temperatur angegeben >>> Eintrag 1")
+            
+      if heater.sunday_temperature_1 != "None" and heater.sunday_temperature_1 != None and heater.sunday_temperature_1 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.sunday_temperature_1:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 1 >>> " + heater.sunday_temperature_1)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.sunday_temperature_1) <= 25:
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 1 >>> " + heater.sunday_temperature_1)
+         
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur >>> Eintrag 1 >>> " + heater.sunday_temperature_1)
+
+         if heater.sunday_time_1 == "None" or heater.sunday_time_1 == None or heater.sunday_time_1 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Uhrzeit angegeben >>> Eintrag 1")         
+      
+      
+      if heater.sunday_time_2 != "None" and heater.sunday_time_2 != None and heater.sunday_time_2 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.sunday_time_1, "%H:%M") > datetime.datetime.strptime(heater.sunday_time_2, "%H:%M"):
+               list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit >>> Eintrag 2 >>> muss nach Uhrzeit Eintrag 1 sein >>> " + heater.sunday_time_2)
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 2 >>> " + heater.sunday_time_2)
+            
+         if heater.sunday_temperature_2 == "None" or heater.sunday_temperature_2 == None or heater.sunday_temperature_2 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Temperatur angegeben >>> Eintrag 2")
+          
+      if heater.sunday_temperature_2 != "None" and heater.sunday_temperature_2 != None and heater.sunday_temperature_2 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.sunday_temperature_2:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 2 >>> " + heater.sunday_temperature_2)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.sunday_temperature_2) <= 25:
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 2 >>> " + heater.sunday_temperature_2)
+         
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur >>> Eintrag 2 >>> " + heater.sunday_temperature_2)
+
+         if heater.sunday_time_2 == "None" or heater.sunday_time_2 == None or heater.sunday_time_2 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Uhrzeit angegeben >>> Eintrag 2")     
+ 
+ 
+      if heater.sunday_time_3 != "None" and heater.sunday_time_3 != None and heater.sunday_time_3 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.sunday_time_2, "%H:%M") > datetime.datetime.strptime(heater.sunday_time_3, "%H:%M"):
+               list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit >>> Eintrag 3 >>> muss nach Uhrzeit Eintrag 2 sein >>> " + heater.sunday_time_3)
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 3 >>> " + heater.sunday_time_3)
+            
+         if heater.sunday_temperature_3 == "None" or heater.sunday_temperature_3 == None or heater.sunday_temperature_3 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Temperatur angegeben >>> Eintrag 3")
+            
+      if heater.sunday_temperature_3 != "None" and heater.sunday_temperature_3 != None and heater.sunday_temperature_3 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.sunday_temperature_3:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 3 >>> " + heater.sunday_temperature_3)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.sunday_temperature_3) <= 25:
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 3 >>> " + heater.sunday_temperature_3)
+         
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur >>> Eintrag 3 >>> " + heater.sunday_temperature_3)
+
+         if heater.sunday_time_3 == "None" or heater.sunday_time_3 == None or heater.sunday_time_3 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Uhrzeit angegeben >>> Eintrag 3")       
+
+
+      if heater.sunday_time_4 != "None" and heater.sunday_time_4 != None and heater.sunday_time_4 != "":
+          
+         try:
+            if datetime.datetime.strptime(heater.sunday_time_3, "%H:%M") > datetime.datetime.strptime(heater.sunday_time_4, "%H:%M"):
+               list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit >>> Eintrag 4 >>> muss nach Uhrzeit Eintrag 3 sein >>> " + heater.sunday_time_4)
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Uhrzeit (Stunden : Minuten) >>> Eintrag 4 >>> " + heater.sunday_time_4)
+            
+         if heater.sunday_temperature_4 == "None" or heater.sunday_temperature_4 == None or heater.sunday_temperature_4 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Temperatur angegeben >>> Eintrag 4")
+               
+      if heater.sunday_temperature_4 != "None" and heater.sunday_temperature_4 != None and heater.sunday_temperature_4 != "":
+          
+         try:
+            error_founded = False
+            
+            for element in heater.sunday_temperature_4:
+               if not element.isdigit():
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur (nur ganze Zahlen) >>> Eintrag 4 >>> " + heater.sunday_temperature_4)
+                  error_founded = True
+                  break
+                
+            if error_founded == False:
+               if not 16 <= int(heater.sunday_temperature_4) <= 25:
+                  list_errors.append(heater.name + " >>> Sonntag >>> Ungültiger Temperaturbereich (16 - 25 C°) >>> Eintrag 4 >>> " + heater.sunday_temperature_4)
+         
+         except:
+            list_errors.append(heater.name + " >>> Sonntag >>> Ungültige Temperatur >>> Eintrag 4 >>> " + heater.sunday_temperature_4)
+
+         if heater.sunday_time_4 == "None" or heater.sunday_time_4 == None or heater.sunday_time_4 == "":       
+            list_errors.append(heater.name + " >>> Sonntag >>> Keine Uhrzeit angegeben >>> Eintrag 4")      
+  
+ 
+   return list_errors
 
 
 """ ################## """
@@ -124,13 +1091,13 @@ def CHECK_PROGRAM(program_id):
    try:
    
       for line in lines:
-          
+             
          line_number = line_number + 1
 
          # line active ?
          if line[0] == "True":
              
-
+             
              # ##################
              #  content function
              # ##################
@@ -511,29 +1478,41 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
             list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Tag >>> Gültig: Mon, Tue, Wed, Thu, Fri, Sat, Sun, *")
 
          ### check hour
-
+            
          try:
             if "," in task.hour:
                   hours = task.hour.replace(" ", "")                
                   hours = hours.split(",")
+                  
                   for element in hours:
-                     try:                                   
+ 
+                     if len(element) == 1 and element != "*":
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")
+                        break
+                    
+                     try:
                         if not (0 <= int(element) <= 24):
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
-                              break   
+                           list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")
+                           break
+                        
                      except:
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")
                         break   
             else:
-                  try:
-                     if not (0 <= int(task.hour) <= 24) and task.hour != "*":
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *") 
-                  except:
-                     if task.hour != "*":
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")    
+                  
+               if len(task.hour) == 1 and task.hour != "*":
+                  list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")
+                  break
+                
+               try:
+                  if not (0 <= int(task.hour) <= 24) and task.hour != "*":
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *") 
+               except:
+                  if task.hour != "*":
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")    
 
          except:
-            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 0 - 23, *")
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Stunde >>> Gültig: 00 - 23, *")
 
          ### check minute
 
@@ -541,24 +1520,36 @@ def CHECK_SCHEDULER_TIME_SETTINGS(scheduler_tasks):
             if "," in task.minute:
                   minutes = task.minute.replace(" ", "")                 
                   minutes = minutes.split(",")
+                  
                   for element in minutes:
-                     try:                                   
+                      
+                     if len(element) == 1 and element != "*":
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *")
+                        break                      
+                      
+                     try:
                         if not (0 <= int(element) <= 60):
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
-                              break   
+                           list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *") 
+                           break
+                        
                      except:
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
+                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *") 
                         break   
             else:
-                  try:
-                     if not (0 <= int(task.minute) <= 60) and task.minute != "*":
-                              list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
-                  except:
-                     if task.minute != "*":
-                        list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
+                
+               if len(task.minute) == 1 and task.minute != "*":
+                  list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *")
+                  break
+                
+               try:
+                  if not (0 <= int(task.minute) <= 60) and task.minute != "*":
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *") 
+               except:
+                  if task.minute != "*":
+                     list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *") 
       
          except:
-            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 0 - 59, *") 
+            list_time_errors.append(task.name + " >>> falsche Zeitangabe >>> Minute >>> Gültig: 00 - 59, *") 
 
    return list_time_errors
 

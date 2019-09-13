@@ -160,7 +160,7 @@
                   <th scope="col" style="width:20%">Helligkeit</th>
                 </thead>
                 <tbody> 
-                  {% for entry in data_led %}
+                  {% for entry in list_led %}
                   <tr>
                     <td> {{entry.name}} </td> 
                     <td> 
@@ -212,9 +212,6 @@
                   {% endfor %} 
                 </tbody>
               </table> 
-              
-<section id="device_table"></section>             
-              
             </div> 
             <div class="row justify-content-md-center">
               <div class="col-sm-3">     
@@ -246,12 +243,13 @@
 <!--    devices   -->
 <!------------------>
 
+<section id="device_table"></section>   
  
-<!-- error message devices -->                    
+<!-- error message devices control -->                    
 
-{% if error_message_devices != "" %}
+{% if error_message_devices_control != "" %}
   <div class="alert alert-warning" role="alert">
-    {{ error_message_devices }}
+    {{ error_message_devices_control }}
   </div>      
 {% endif %}
 
@@ -280,13 +278,13 @@
                 </thead>
                 <tbody> 
                           
-                  {% for entry in data_device %}
+                  {% for entry in list_devices %}
                   
                     <tr>
                       <td> {{entry.name}} </td>
                       <td> {{entry.last_values_formated}} </td> 
                       <td>   
-                        <select class="selectpicker" data-width="100%" name="set_dashboard_setting_{{ entry.id }}">
+                        <select class="selectpicker" data-width="100%" name="set_device_control_setting_{{ entry.id }}">
                           <option value = "None" > None </option>                          
                           <optgroup>
                             {% if entry.commands != None %}  
@@ -303,14 +301,11 @@
                   {% endfor %}   
                   
                 </tbody>
-              </table> 
-              
-<section id="watering_table"></section>         
-                    
+              </table>       
             </div> 
             <div class="row justify-content-md-center">
               <div class="col-sm-3">     
-                <input type="submit" onclick="window.location.href='/dashboard#device_table'" class="btn btn-default" name="change_device_settings" value="Einstellungen ändern" />           
+                <input type="submit" onclick="window.location.href='/dashboard#device_table'" class="btn btn-default" name="change_device_control_settings" value="Einstellungen ändern" />           
               </div>  
               <div class="col-sm-7"></div>            
               <div class="col-sm-1">  
@@ -338,6 +333,7 @@
 <!--   watering   -->
 <!------------------>
 
+<section id="watering_table"></section>  
 
 <!-- error message watering -->      
 
@@ -371,7 +367,7 @@
                       <th scope="col" style="width:20%">Letzter Kontakt</th>  
                     </thead>
                     <tbody> 
-                      {% for entry in data_watering_control %}
+                      {% for entry in list_plants %}
                         <tr>
                           <td> {{entry.name}} </td>
                           <td> {{entry.mqtt_device.last_values_formated}} </td>
@@ -382,7 +378,8 @@
                               <optgroup>
                               {% if entry.commands != None %}
                                 {% for each in entry.mqtt_device.commands.split(' ') %}
-                                  <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
+                                  <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" >
+                                   {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }}</option>
                                 {% endfor %}  
                               {% endif %}   
                               </optgroup>                            
@@ -393,9 +390,6 @@
                       {% endfor %}  
                     </tbody>
                   </table> 
-                  
-<section id="programs"></section>         
-
                 </div> 
                 <div class="row justify-content-md-center">
                   <div class="col-sm-3">     
@@ -424,9 +418,95 @@
 
 
 <!------------------>
+<!--    heating   -->
+<!------------------>
+
+<section id="heating_table"></section>  
+
+<!-- error message heating -->      
+
+{% if error_message_heating_control != "" %}
+  <div class="alert alert-warning" role="alert">
+    {{ error_message_heating_control }}
+  </div>      
+{% endif %}
+
+
+<!-- table heating control -->      
+      
+      
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse_heating"><font color="white"><b>Heizung</b></font></a>
+            </h4>
+          </div>   
+          <div id="collapse_heating" class="panel-collapse collapse {% if collapse_dashboard_heating_setting == 'checked' %} in {% else %} {{ collapse_dashboard_heating }} {% endif %}" >     
+            <div class="panel-body">    
+              <form method="POST">             
+                <div class="well well-sm">    
+                  <table class="table">
+                    <thead>                      
+                      <th scope="col" style="width:17%">Heizung</th> 
+                      <th scope="col" style="width:43%">Letzte Werte</th>                     
+                      <th scope="col" style="width:20%">Befehl</th>                   
+                      <th scope="col" style="width:20%">Letzter Kontakt</th>  
+                    </thead>
+                    <tbody> 
+                      {% for entry in list_heaters %}
+                        <tr>
+                          <td> {{entry.name}} </td>
+                          <td> {{entry.mqtt_device.last_values_formated}} </td>                       
+                          <td>  
+                            <select class="selectpicker" data-width="100%" name="set_heating_control_setting_{{ entry.id }}">
+                              <option value= "None" > None </option>                      
+                              <optgroup>
+                              {% if entry.mqtt_device.commands != None %}
+                                {% for each in entry.mqtt_device.commands.split(' ') %}
+                                  <option value= "{{ each | replace(':', ': ') | replace(',', ', ') }}" > {{ each | replace('"', '') | replace('{', '') | replace('}', '') | replace(':', ': ') | replace(',', ', ') }} </option>
+                                {% endfor %}  
+                              {% endif %}   
+                              </optgroup>                            
+                            </select>                        
+                          </td>                       
+                          <td> {{entry.mqtt_device.last_contact}} </td>
+                        </tr>
+                      {% endfor %}  
+                    </tbody>
+                  </table> 
+                </div> 
+                <div class="row justify-content-md-center">
+                  <div class="col-sm-3">     
+                    <input type="submit" onclick="window.location.href='/dashboard#heating_table'" class="btn btn-default" name="change_heating_control_settings" value="Einstellungen ändern" />                 
+                  </div>  
+                  <div class="col-sm-7"></div>               
+                  <div class="col-sm-1">  
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">anzeigen</button>                   
+                  </div>                
+                  <div class="col-sm-1">   
+                    <font size="+2">               
+                      <div class="pretty p-default p-curve p-bigger">
+                        <input type="checkbox" {{ collapse_dashboard_heating_setting }} class="form-check-input " name="checkbox_collapse_heating">
+                      <div class="state p-success">
+                        <label></label>
+                      </div>
+                    </font>
+                  </div>         
+                </div>
+                </form>         
+              </div>    
+            </div>  
+          </div>
+        </div>  
+        <br>
+
+
+<!------------------>
 <!--   programs   -->
 <!------------------>
 
+<section id="programs"></section>  
 
 <!-- error message programs -->      
               
@@ -498,6 +578,7 @@
 <!--    spotify   -->
 <!------------------>
 
+<section id="spotify"></section>  
 
 <!-- error message spotify -->   
 
@@ -509,8 +590,6 @@
 
 
 <!-- table spotify -->    
-
-<section id="spotify"></section>  
 
       <div class="panel-group">
         <div class="panel panel-default">
@@ -728,7 +807,7 @@
                     <th scope="col" style="width:20%">Letzter Kontakt</th>
                   </thead>
                   <tbody> 
-                    {% for entry in data_sensor %}
+                    {% for entry in list_sensors %}
                     <tr>
                       <td> {{entry.name}} </td>
                       <td> {{entry.description}} </td> 

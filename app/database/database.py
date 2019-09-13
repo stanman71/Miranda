@@ -69,6 +69,103 @@ class Global_Settings(db.Model):
     setting_name  = db.Column(db.String(50), unique=True)
     setting_value = db.Column(db.String(50))   
 
+class Heaters(db.Model):
+    __tablename__  = 'heaters'
+    id                       = db.Column(db.Integer, primary_key=True, autoincrement = True)   
+    name                     = db.Column(db.String(50), unique=True)
+    mqtt_device_ieeeAddr     = db.Column(db.String(50), db.ForeignKey('mqtt_devices.ieeeAddr'))   
+    mqtt_device              = db.relationship('MQTT_Devices')  
+    window_1_ieeeAddr        = db.Column(db.String(50))
+    window_1_name            = db.Column(db.String(50))
+    window_2_ieeeAddr        = db.Column(db.String(50))
+    window_2_name            = db.Column(db.String(50))
+    heater_pause             = db.Column(db.String(50))
+    monday_active_1          = db.Column(db.String(50), server_default=(""))
+    monday_time_1            = db.Column(db.String(50), server_default=("None")) 
+    monday_temperature_1     = db.Column(db.String(50), server_default=("None"))
+    monday_active_2          = db.Column(db.String(50), server_default=(""))
+    monday_time_2            = db.Column(db.String(50), server_default=("None"))
+    monday_temperature_2     = db.Column(db.String(50), server_default=("None"))
+    monday_active_3          = db.Column(db.String(50), server_default=(""))
+    monday_time_3            = db.Column(db.String(50), server_default=("None"))
+    monday_temperature_3     = db.Column(db.String(50), server_default=("None"))
+    monday_active_4          = db.Column(db.String(50), server_default=(""))
+    monday_time_4            = db.Column(db.String(50), server_default=("None"))
+    monday_temperature_4     = db.Column(db.String(50), server_default=("None"))
+    tuesday_active_1         = db.Column(db.String(50), server_default=(""))
+    tuesday_time_1           = db.Column(db.String(50), server_default=("None")) 
+    tuesday_temperature_1    = db.Column(db.String(50), server_default=("None"))
+    tuesday_active_2         = db.Column(db.String(50), server_default=(""))
+    tuesday_time_2           = db.Column(db.String(50), server_default=("None"))
+    tuesday_temperature_2    = db.Column(db.String(50), server_default=("None"))
+    tuesday_active_3         = db.Column(db.String(50), server_default=(""))
+    tuesday_time_3           = db.Column(db.String(50), server_default=("None"))
+    tuesday_temperature_3    = db.Column(db.String(50), server_default=("None"))
+    tuesday_active_4         = db.Column(db.String(50), server_default=(""))
+    tuesday_time_4           = db.Column(db.String(50), server_default=("None"))
+    tuesday_temperature_4    = db.Column(db.String(50), server_default=("None"))
+    wednesday_active_1       = db.Column(db.String(50), server_default=(""))
+    wednesday_time_1         = db.Column(db.String(50), server_default=("None")) 
+    wednesday_temperature_1  = db.Column(db.String(50), server_default=("None"))
+    wednesday_active_2       = db.Column(db.String(50), server_default=(""))
+    wednesday_time_2         = db.Column(db.String(50), server_default=("None"))
+    wednesday_temperature_2  = db.Column(db.String(50), server_default=("None"))
+    wednesday_active_3       = db.Column(db.String(50), server_default=(""))
+    wednesday_time_3         = db.Column(db.String(50), server_default=("None"))
+    wednesday_temperature_3  = db.Column(db.String(50), server_default=("None"))
+    wednesday_active_4       = db.Column(db.String(50), server_default=(""))
+    wednesday_time_4         = db.Column(db.String(50), server_default=("None"))
+    wednesday_temperature_4  = db.Column(db.String(50), server_default=("None"))
+    thursday_active_1        = db.Column(db.String(50), server_default=(""))
+    thursday_time_1          = db.Column(db.String(50), server_default=("None")) 
+    thursday_temperature_1   = db.Column(db.String(50), server_default=("None"))
+    thursday_active_2        = db.Column(db.String(50), server_default=(""))
+    thursday_time_2          = db.Column(db.String(50), server_default=("None"))
+    thursday_temperature_2   = db.Column(db.String(50), server_default=("None"))
+    thursday_active_3        = db.Column(db.String(50), server_default=(""))
+    thursday_time_3          = db.Column(db.String(50), server_default=("None"))
+    thursday_temperature_3   = db.Column(db.String(50), server_default=("None"))
+    thursday_active_4        = db.Column(db.String(50), server_default=(""))
+    thursday_time_4          = db.Column(db.String(50), server_default=("None"))
+    thursday_temperature_4   = db.Column(db.String(50), server_default=("None"))
+    friday_active_1          = db.Column(db.String(50), server_default=(""))
+    friday_time_1            = db.Column(db.String(50), server_default=("None")) 
+    friday_temperature_1     = db.Column(db.String(50), server_default=("None"))
+    friday_active_2          = db.Column(db.String(50), server_default=(""))
+    friday_time_2            = db.Column(db.String(50), server_default=("None"))
+    friday_temperature_2     = db.Column(db.String(50), server_default=("None"))
+    friday_active_3          = db.Column(db.String(50), server_default=(""))
+    friday_time_3            = db.Column(db.String(50), server_default=("None"))
+    friday_temperature_3     = db.Column(db.String(50), server_default=("None"))
+    friday_active_4          = db.Column(db.String(50), server_default=(""))
+    friday_time_4            = db.Column(db.String(50), server_default=("None"))
+    friday_temperature_4     = db.Column(db.String(50), server_default=("None"))
+    saturday_active_1        = db.Column(db.String(50), server_default=(""))
+    saturday_time_1          = db.Column(db.String(50), server_default=("None")) 
+    saturday_temperature_1   = db.Column(db.String(50), server_default=("None"))
+    saturday_active_2        = db.Column(db.String(50), server_default=(""))
+    saturday_time_2          = db.Column(db.String(50), server_default=("None"))
+    saturday_temperature_2   = db.Column(db.String(50), server_default=("None"))
+    saturday_active_3        = db.Column(db.String(50), server_default=(""))
+    saturday_time_3          = db.Column(db.String(50), server_default=("None"))
+    saturday_temperature_3   = db.Column(db.String(50), server_default=("None"))
+    saturday_active_4        = db.Column(db.String(50), server_default=(""))
+    saturday_time_4          = db.Column(db.String(50), server_default=("None"))
+    saturday_temperature_4   = db.Column(db.String(50), server_default=("None"))
+    sunday_active_1          = db.Column(db.String(50), server_default=(""))
+    sunday_time_1            = db.Column(db.String(50), server_default=("None")) 
+    sunday_temperature_1     = db.Column(db.String(50), server_default=("None"))
+    sunday_active_2          = db.Column(db.String(50), server_default=(""))
+    sunday_time_2            = db.Column(db.String(50), server_default=("None"))
+    sunday_temperature_2     = db.Column(db.String(50), server_default=("None"))
+    sunday_active_3          = db.Column(db.String(50), server_default=(""))
+    sunday_time_3            = db.Column(db.String(50), server_default=("None"))
+    sunday_temperature_3     = db.Column(db.String(50), server_default=("None"))
+    sunday_active_4          = db.Column(db.String(50), server_default=(""))
+    sunday_time_4            = db.Column(db.String(50), server_default=("None"))
+    sunday_temperature_4     = db.Column(db.String(50), server_default=("None"))
+    collapse                 = db.Column(db.String(50), server_default=(""))
+
 class Host(db.Model):
     __tablename__ = 'host'
     id                = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -287,6 +384,7 @@ class Scheduler_Tasks(db.Model):
     option_sensors             = db.Column(db.String(50), server_default=("None")) 
     option_position            = db.Column(db.String(50), server_default=("None"))  
     option_repeat              = db.Column(db.String(50), server_default=("None"))
+    option_pause               = db.Column(db.String(50), server_default=("None"))
     day                        = db.Column(db.String(50), server_default=("None"))
     hour                       = db.Column(db.String(50), server_default=("None")) 
     minute                     = db.Column(db.String(50), server_default=("None"))
@@ -402,7 +500,8 @@ class User(UserMixin, db.Model):
     email_notification_error            = db.Column(db.String(20), server_default=(""))
     collapse                            = db.Column(db.String(50))
     collapse_dashboard_led_setting      = db.Column(db.String(50))
-    collapse_dashboard_devices_setting  = db.Column(db.String(50))     
+    collapse_dashboard_heating_setting  = db.Column(db.String(50))  
+    collapse_dashboard_devices_setting  = db.Column(db.String(50))    
     collapse_dashboard_watering_setting = db.Column(db.String(50))            
     error_change_settings               = db.Column(db.String(250))
         
@@ -942,6 +1041,583 @@ def SET_GLOBAL_SETTING_VALUE(name, value):
     entry.setting_value = value
     db.session.commit()    
     
+
+""" ################### """
+""" ################### """
+"""       heating       """
+""" ################### """
+""" ################### """
+
+
+def GET_HEATER_BY_ID(id):
+    return Heaters.query.filter_by(id=id).first()
+
+
+def GET_HEATER_BY_NAME(name):
+    for heater in Heaters.query.all():
+        
+        if heater.name.lower() == name.lower():
+            return heater    
+    
+
+def GET_ALL_HEATERS():
+    return Heaters.query.all()
+
+
+def ADD_HEATER(name, mqtt_device_ieeeAddr):
+    # name exist ?
+    if not GET_HEATER_BY_NAME(name):
+        
+        # find a unused id
+        for i in range(1,26):
+            if Heaters.query.filter_by(id=i).first():
+                pass
+            else:
+                # add the new heater
+                heater = Heaters(
+                        id                   = i,
+                        name                 = name, 
+                        mqtt_device_ieeeAddr = mqtt_device_ieeeAddr,            
+                    )
+                db.session.add(heater)
+                db.session.commit()
+
+                WRITE_LOGFILE_SYSTEM("DATABASE", "Heater - " + name + " | added")  
+                return
+  
+                          
+        return "Heizungslimit erreicht (25)"
+
+    else:
+        return "Name bereits vergeben"
+
+
+def SET_HEATER_SETTINGS(id, name, mqtt_device_ieeeAddr, window_1_ieeeAddr, window_1_name, 
+                        window_2_ieeeAddr, window_2_name, heater_pause,
+                        monday_time_1,    monday_temperature_1,    monday_time_2, monday_temperature_2,
+                        monday_time_3,    monday_temperature_3,    monday_time_4, monday_temperature_4,
+                        tuesday_time_1,   tuesday_temperature_1,   tuesday_time_2, tuesday_temperature_2,
+                        tuesday_time_3,   tuesday_temperature_3,   tuesday_time_4, tuesday_temperature_4,                                    
+                        wednesday_time_1, wednesday_temperature_1, wednesday_time_2, wednesday_temperature_2,
+                        wednesday_time_3, wednesday_temperature_3, wednesday_time_4, wednesday_temperature_4,                                    
+                        thursday_time_1,  thursday_temperature_1,  thursday_time_2, thursday_temperature_2,
+                        thursday_time_3,  thursday_temperature_3,  thursday_time_4, thursday_temperature_4,                                    
+                        friday_time_1,    friday_temperature_1,    friday_time_2, friday_temperature_2,
+                        friday_time_3,    friday_temperature_3,    friday_time_4, friday_temperature_4,
+                        saturday_time_1,  saturday_temperature_1,  saturday_time_2, saturday_temperature_2,
+                        saturday_time_3,  saturday_temperature_3,  saturday_time_4, saturday_temperature_4,                                    
+                        sunday_time_1,    sunday_temperature_1,    sunday_time_2, sunday_temperature_2,
+                        sunday_time_3,    sunday_temperature_3,    sunday_time_4, sunday_temperature_4):
+
+    entry = Heaters.query.filter_by(id=id).first()
+
+    # values changed ?
+    if (entry.name != name or entry.mqtt_device_ieeeAddr != mqtt_device_ieeeAddr or 
+        entry.window_1_ieeeAddr != window_1_ieeeAddr or entry.window_1_name != window_1_name or 
+        entry.window_2_ieeeAddr != window_2_ieeeAddr or entry.window_2_name != window_2_name or entry.heater_pause != heater_pause or
+        entry.monday_time_1 != monday_time_1 or entry.monday_temperature_1 != monday_temperature_1 or 
+        entry.monday_time_2 != monday_time_2 or entry.monday_temperature_2 != monday_temperature_2 or 
+        entry.monday_time_3 != monday_time_3 or entry.monday_temperature_3 != monday_temperature_3 or 
+        entry.monday_time_4 != monday_time_4 or entry.monday_temperature_4 != monday_temperature_4 or 
+        entry.tuesday_time_1 != tuesday_time_1 or entry.tuesday_temperature_1 != tuesday_temperature_1 or 
+        entry.tuesday_time_2 != tuesday_time_2 or entry.tuesday_temperature_2 != tuesday_temperature_2 or 
+        entry.tuesday_time_3 != tuesday_time_3 or entry.tuesday_temperature_3 != tuesday_temperature_3 or 
+        entry.tuesday_time_4 != tuesday_time_4 or entry.tuesday_temperature_4 != tuesday_temperature_4 or 
+        entry.wednesday_time_1 != wednesday_time_1 or entry.wednesday_temperature_1 != wednesday_temperature_1 or 
+        entry.wednesday_time_2 != wednesday_time_2 or entry.wednesday_temperature_2 != wednesday_temperature_2 or 
+        entry.wednesday_time_3 != wednesday_time_3 or entry.wednesday_temperature_3 != wednesday_temperature_3 or 
+        entry.wednesday_time_4 != wednesday_time_4 or entry.wednesday_temperature_4 != wednesday_temperature_4 or 
+        entry.thursday_time_1 != thursday_time_1 or entry.thursday_temperature_1 != thursday_temperature_1 or 
+        entry.thursday_time_2 != thursday_time_2 or entry.thursday_temperature_2 != thursday_temperature_2 or 
+        entry.thursday_time_3 != thursday_time_3 or entry.thursday_temperature_3 != thursday_temperature_3 or 
+        entry.thursday_time_4 != thursday_time_4 or entry.thursday_temperature_4 != thursday_temperature_4 or 
+        entry.friday_time_1 != friday_time_1 or entry.friday_temperature_1 != friday_temperature_1 or 
+        entry.friday_time_2 != friday_time_2 or entry.friday_temperature_2 != friday_temperature_2 or 
+        entry.friday_time_3 != friday_time_3 or entry.friday_temperature_3 != friday_temperature_3 or 
+        entry.friday_time_4 != friday_time_4 or entry.friday_temperature_4 != friday_temperature_4 or 
+        entry.saturday_time_1 != saturday_time_1 or entry.saturday_temperature_1 != saturday_temperature_1 or 
+        entry.saturday_time_2 != saturday_time_2 or entry.saturday_temperature_2 != saturday_temperature_2 or 
+        entry.saturday_time_3 != saturday_time_3 or entry.saturday_temperature_3 != saturday_temperature_3 or 
+        entry.saturday_time_4 != saturday_time_4 or entry.saturday_temperature_4 != saturday_temperature_4 or 
+        entry.sunday_time_1 != sunday_time_1 or entry.sunday_temperature_1 != sunday_temperature_1 or 
+        entry.sunday_time_2 != sunday_time_2 or entry.sunday_temperature_2 != sunday_temperature_2 or 
+        entry.sunday_time_3 != sunday_time_3 or entry.sunday_temperature_3 != sunday_temperature_3 or 
+        entry.sunday_time_4 != sunday_time_4 or entry.sunday_temperature_4 != sunday_temperature_4): 
+
+
+        entry.name                    = name 
+        entry.mqtt_device_ieeeAddr    = mqtt_device_ieeeAddr
+        entry.window_1_ieeeAddr       = window_1_ieeeAddr
+        entry.window_1_name           = window_1_name 
+        entry.window_2_ieeeAddr       = window_2_ieeeAddr 
+        entry.window_2_name           = window_2_name 
+        entry.heater_pause            = heater_pause 
+        entry.monday_time_1           = monday_time_1 
+        entry.monday_temperature_1    = monday_temperature_1  
+        entry.monday_time_2           = monday_time_2 
+        entry.monday_temperature_2    = monday_temperature_2
+        entry.monday_time_3           = monday_time_3 
+        entry.monday_temperature_3    = monday_temperature_3 
+        entry.monday_time_4           = monday_time_4 
+        entry.monday_temperature_4    = monday_temperature_4  
+        entry.tuesday_time_1          = tuesday_time_1 
+        entry.tuesday_temperature_1   = tuesday_temperature_1  
+        entry.tuesday_time_2          = tuesday_time_2 
+        entry.tuesday_temperature_2   = tuesday_temperature_2 
+        entry.tuesday_time_3          = tuesday_time_3 
+        entry.tuesday_temperature_3   = tuesday_temperature_3  
+        entry.tuesday_time_4          = tuesday_time_4 
+        entry.tuesday_temperature_4   = tuesday_temperature_4  
+        entry.wednesday_time_1        = wednesday_time_1 
+        entry.wednesday_temperature_1 = wednesday_temperature_1 
+        entry.wednesday_time_2        = wednesday_time_2 
+        entry.wednesday_temperature_2 = wednesday_temperature_2  
+        entry.wednesday_time_3        = wednesday_time_3 
+        entry.wednesday_temperature_3 = wednesday_temperature_3 
+        entry.wednesday_time_4        = wednesday_time_4 
+        entry.wednesday_temperature_4 = wednesday_temperature_4 
+        entry.thursday_time_1         = thursday_time_1 
+        entry.thursday_temperature_1  = thursday_temperature_1  
+        entry.thursday_time_2         = thursday_time_2 
+        entry.thursday_temperature_2  = thursday_temperature_2 
+        entry.thursday_time_3         = thursday_time_3 
+        entry.thursday_temperature_3  = thursday_temperature_3 
+        entry.thursday_time_4         = thursday_time_4 
+        entry.thursday_temperature_4  = thursday_temperature_4 
+        entry.friday_time_1           = friday_time_1 
+        entry.friday_temperature_1    = friday_temperature_1 
+        entry.friday_time_2           = friday_time_2 
+        entry.friday_temperature_2    = friday_temperature_2 
+        entry.friday_time_3           = friday_time_3 
+        entry.friday_temperature_3    = friday_temperature_3  
+        entry.friday_time_4           = friday_time_4 
+        entry.friday_temperature_4    = friday_temperature_4  
+        entry.saturday_time_1         = saturday_time_1 
+        entry.saturday_temperature_1  = saturday_temperature_1  
+        entry.saturday_time_2         = saturday_time_2
+        entry.saturday_temperature_2  = saturday_temperature_2  
+        entry.saturday_time_3         = saturday_time_3 
+        entry.saturday_temperature_3  = saturday_temperature_3  
+        entry.saturday_time_4         = saturday_time_4 
+        entry.saturday_temperature_4  = saturday_temperature_4  
+        entry.sunday_time_1           = sunday_time_1 
+        entry.sunday_temperature_1    = sunday_temperature_1  
+        entry.sunday_time_2           = sunday_time_2 
+        entry.sunday_temperature_2    = sunday_temperature_2  
+        entry.sunday_time_3           = sunday_time_3 
+        entry.sunday_temperature_3    = sunday_temperature_3  
+        entry.sunday_time_4           = sunday_time_4 
+        entry.sunday_temperature_4    = sunday_temperature_4
+ 
+        db.session.commit()   
+
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Heater - " + entry.name + " | Settings changed")    
+
+
+def CHANGE_HEATERS_POSITION(id, direction):
+
+    if direction == "up":
+        heaters_list = GET_ALL_HEATERS()
+        heaters_list = heaters_list[::-1]
+        
+        for heater in heaters_list:
+            
+            if heater.id < id:     
+                new_id = heater.id
+                
+                # change ids
+                heater_1 = GET_HEATER_BY_ID(id)
+                heater_2 = GET_HEATER_BY_ID(new_id)
+                
+                heater_1.id = 99
+                db.session.commit()
+                
+                heater_2.id = id
+                heater_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+    if direction == "down":
+        for heater in GET_ALL_HEATERS():
+            if heater.id > id:       
+                new_id = heater.id
+                
+                # change ids
+                heater_1 = GET_HEATER_BY_ID(id)
+                heater_2 = GET_HEATER_BY_ID(new_id)
+                
+                heater_1.id = 99
+                db.session.commit()
+                
+                heater_2.id = id
+                heater_1.id = new_id
+                db.session.commit()
+                
+                return 
+
+
+def SET_HEATER_COLLAPSE(id):
+    list_heaters = Heaters.query.all()
+    
+    for heater in list_heaters:
+        heater.collapse = ""
+        db.session.commit()   
+  
+    entry = Heaters.query.filter_by(id=id).first()
+    
+    entry.collapse = "in"
+    db.session.commit()       
+ 
+ 
+def RESET_HEATERS_COLLAPSE():
+    list_heaters = Heaters.query.all()
+    
+    for heater in list_heaters:
+        heater.collapse = ""
+        db.session.commit()   
+
+
+def ADD_HEATER_OPTION(id, day):
+    entry = Heaters.query.filter_by(id=id).first()
+
+    if day == "monday":
+
+        if entry.monday_active_1 != "True":
+            entry.monday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.monday_active_2 != "True":
+            entry.monday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.monday_active_3 != "True":
+            entry.monday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.monday_active_4 != "True":
+            entry.monday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "tuesday":
+
+        if entry.tuesday_active_1 != "True":
+            entry.tuesday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.tuesday_active_2 != "True":
+            entry.tuesday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.tuesday_active_3 != "True":
+            entry.tuesday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.tuesday_active_4 != "True":
+            entry.tuesday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "wednesday":
+
+        if entry.wednesday_active_1 != "True":
+            entry.wednesday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.wednesday_active_2 != "True":
+            entry.wednesday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.wednesday_active_3 != "True":
+            entry.wednesday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.wednesday_active_4 != "True":
+            entry.wednesday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "thursday":
+
+        if entry.thursday_active_1 != "True":
+            entry.thursday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.thursday_active_2 != "True":
+            entry.thursday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.thursday_active_3 != "True":
+            entry.thursday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.thursday_active_4 != "True":
+            entry.thursday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "friday":
+
+        if entry.friday_active_1 != "True":
+            entry.friday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.friday_active_2 != "True":
+            entry.friday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.friday_active_3 != "True":
+            entry.friday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.friday_active_4 != "True":
+            entry.friday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "saturday":
+
+        if entry.saturday_active_1 != "True":
+            entry.saturday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.saturday_active_2 != "True":
+            entry.saturday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.saturday_active_3 != "True":
+            entry.saturday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.saturday_active_4 != "True":
+            entry.saturday_active_4 = "True"
+            db.session.commit()
+            return
+
+    if day == "sunday":
+
+        if entry.sunday_active_1 != "True":
+            entry.sunday_active_1 = "True"
+            db.session.commit()
+            return
+        if entry.sunday_active_2 != "True":
+            entry.sunday_active_2 = "True"
+            db.session.commit()
+            return
+        if entry.sunday_active_3 != "True":
+            entry.sunday_active_3 = "True"
+            db.session.commit()
+            return
+        if entry.sunday_active_4 != "True":
+            entry.sunday_active_4 = "True"
+            db.session.commit()
+            return
+
+
+def REMOVE_HEATER_OPTION(id, day):
+    entry = Heaters.query.filter_by(id=id).first()
+
+    if day == "monday":
+
+        if entry.monday_active_4 == "True":
+            entry.monday_active_4      = ""
+            entry.monday_time_4        = "None"
+            entry.monday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.monday_active_3 == "True":
+            entry.monday_active_3      = ""
+            entry.monday_time_3        = "None"
+            entry.monday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.monday_active_2 == "True":
+            entry.monday_active_2      = ""
+            entry.monday_time_2        = "None"
+            entry.monday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.monday_active_1 == "True":
+            entry.monday_active_1      = ""
+            entry.monday_time_1        = "None"
+            entry.monday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "tuesday":
+
+        if entry.tuesday_active_4 == "True":
+            entry.tuesday_active_4      = ""
+            entry.tuesday_time_4        = "None"
+            entry.tuesday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.tuesday_active_3 == "True":
+            entry.tuesday_active_3      = ""
+            entry.tuesday_time_3        = "None"
+            entry.tuesday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.tuesday_active_2 == "True":
+            entry.tuesday_active_2      = ""
+            entry.tuesday_time_2        = "None"
+            entry.tuesday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.tuesday_active_1 == "True":
+            entry.tuesday_active_1      = ""
+            entry.tuesday_time_1        = "None"
+            entry.tuesday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "wednesday":
+
+        if entry.wednesday_active_4 == "True":
+            entry.wednesday_active_4      = ""
+            entry.wednesday_time_4        = "None"
+            entry.wednesday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.wednesday_active_3 == "True":
+            entry.wednesday_active_3      = ""
+            entry.wednesday_time_3        = "None"
+            entry.wednesday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.wednesday_active_2 == "True":
+            entry.wednesday_active_2      = ""
+            entry.wednesday_time_2        = "None"
+            entry.wednesday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.wednesday_active_1 == "True":
+            entry.wednesday_active_1      = ""
+            entry.wednesday_time_1        = "None"
+            entry.wednesday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "thursday":
+
+        if entry.thursday_active_4 == "True":
+            entry.thursday_active_4      = ""
+            entry.thursday_time_4        = "None"
+            entry.thursday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.thursday_active_3 == "True":
+            entry.thursday_active_3      = ""
+            entry.thursday_time_3        = "None"
+            entry.thursday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.thursday_active_2 == "True":
+            entry.thursday_active_2      = ""
+            entry.thursday_time_2        = "None"
+            entry.thursday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.thursday_active_1 == "True":
+            entry.thursday_active_1      = ""
+            entry.thursday_time_1        = "None"
+            entry.thursday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "friday":
+
+        if entry.friday_active_4 == "True":
+            entry.friday_active_4      = ""
+            entry.friday_time_4        = "None"
+            entry.friday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.friday_active_3 == "True":
+            entry.friday_active_3      = ""
+            entry.friday_time_3        = "None"
+            entry.friday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.friday_active_2 == "True":
+            entry.friday_active_2      = ""
+            entry.friday_time_2        = "None"
+            entry.friday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.friday_active_1 == "True":
+            entry.friday_active_1      = ""
+            entry.friday_time_1        = "None"
+            entry.friday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "saturday":
+
+        if entry.saturday_active_4 == "True":
+            entry.saturday_active_4      = ""
+            entry.saturday_time_4        = "None"
+            entry.saturday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.saturday_active_3 == "True":
+            entry.saturday_active_3      = ""
+            entry.saturday_time_3        = "None"
+            entry.saturday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.saturday_active_2 == "True":
+            entry.saturday_active_2      = ""
+            entry.saturday_time_2        = "None"
+            entry.saturday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.saturday_active_1 == "True":
+            entry.saturday_active_1      = ""
+            entry.saturday_time_1        = "None"
+            entry.saturday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+    if day == "sunday":
+
+        if entry.sunday_active_4 == "True":
+            entry.sunday_active_4      = ""
+            entry.sunday_time_4        = "None"
+            entry.sunday_temperature_4 = "None"
+            db.session.commit()
+            return 
+        if entry.sunday_active_3 == "True":
+            entry.sunday_active_3      = ""
+            entry.sunday_time_3        = "None"
+            entry.sunday_temperature_3 = "None"
+            db.session.commit()
+            return 
+        if entry.sunday_active_2 == "True":
+            entry.sunday_active_2      = ""
+            entry.sunday_time_2        = "None"
+            entry.sunday_temperature_2 = "None"
+            db.session.commit()
+            return 
+        if entry.sunday_active_1 == "True":
+            entry.sunday_active_1      = ""
+            entry.sunday_time_1        = "None"
+            entry.sunday_temperature_1 = "None"
+            db.session.commit()
+            return 
+
+
+def DELETE_HEATER(id):
+    entry = GET_HEATER_BY_ID(id)
+    
+    try:
+        WRITE_LOGFILE_SYSTEM("DATABASE", "Heater - " + entry.name + " | deleted")   
+    except:
+        pass 
+    
+    Heaters.query.filter_by(id=id).delete()
+    db.session.commit()
 
 
 """ ################### """
@@ -1832,19 +2508,25 @@ def GET_ALL_MQTT_DEVICES(selector):
             
             device_list.append(device)     
   
+    if selector == "mqtt" or selector == "zigbee2mqtt":
+        for device in devices:
+            if device.gateway == selector:
+                
+                device_list.append(device)
+
     if selector == "controller":
         for device in devices:
             if device.device_type == "controller":
                 
                 device_list.append(device)      
  
-    if selector == "device":
+    if selector == "devices":
         for device in devices:
-            if (device.device_type == "device_switch"):
+            if (device.device_type == "power_switch"):
                 
                 device_list.append(device)      
   
-    if selector == "heater":
+    if selector == "heaters":
         for device in devices:
             if device.device_type == "heater":
                 
@@ -1857,28 +2539,24 @@ def GET_ALL_MQTT_DEVICES(selector):
                 device.device_type == "led_simple"):
                     
                 device_list.append(device)    
-    
-    if selector == "mqtt" or selector == "zigbee2mqtt":
-        for device in devices:
-            if device.gateway == selector:
                 
-                device_list.append(device)
-                
-    if selector == "sensor":
+    if selector == "sensors":
         for device in devices:
             
             if (device.device_type == "sensor_passiv" or 
                 device.device_type == "sensor_active" or 
-                device.device_type == "watering_control"):
+                device.device_type == "sensor_contact" or
+                device.device_type == "watering_controller"):
                 
                 device_list.append(device)   
    
-    if selector == "watering_control":
+    if selector == "watering_controller":
         for device in devices:
-            if device.device_type == "watering_control":
+            if device.device_type == "watering_controller":
                 
-                device_list.append(device)                                                
-                
+                device_list.append(device)       
+
+               
     return device_list
         
 
@@ -2176,8 +2854,8 @@ def DELETE_MQTT_DEVICE(ieeeAddr):
 """ ################### """
 
 
-def GET_PLANT_BY_ID(plant_id):
-    return Plants.query.filter_by(id=plant_id).first()
+def GET_PLANT_BY_ID(id):
+    return Plants.query.filter_by(id=id).first()
 
 
 def GET_PLANT_BY_NAME(name):
@@ -2304,15 +2982,15 @@ def CHANGE_PLANTS_POSITION(id, direction):
                 return 
 
 
-def DELETE_PLANT(plant_id):
-    entry = GET_PLANT_BY_ID(plant_id)
+def DELETE_PLANT(id):
+    entry = GET_PLANT_BY_ID(id)
     
     try:
         WRITE_LOGFILE_SYSTEM("DATABASE", "Plant - " + entry.name + " | deleted")   
     except:
         pass 
     
-    Plants.query.filter_by(id=plant_id).delete()
+    Plants.query.filter_by(id=id).delete()
     db.session.commit()
 
 
@@ -2865,7 +3543,7 @@ def ADD_SCHEDULER_TASK(name, task_type):
 
 
 def SET_SCHEDULER_TASK(id, name, task,
-                       option_time, option_sun, option_sensors, option_position, option_repeat, 
+                       option_time, option_sun, option_sensors, option_position, option_repeat, option_pause, 
                        day, hour, minute, 
                        option_sunrise, option_sunset, location,
                        mqtt_device_ieeeAddr_1, mqtt_device_name_1, mqtt_device_input_values_1,  
@@ -2883,7 +3561,7 @@ def SET_SCHEDULER_TASK(id, name, task,
     # values changed ?
     if (entry.name != name or entry.task != task or entry.option_time != option_time or
         entry.option_sun != option_sun or entry.option_sensors != option_sensors or 
-        entry.option_position != option_position or entry.option_repeat != option_repeat or
+        entry.option_position != option_position or entry.option_repeat != option_repeat or entry.option_pause != option_pause or 
         entry.day != day or entry.hour != hour or entry.minute != minute or
         entry.option_sunrise != option_sunrise or entry.option_sunset != option_sunset or entry.location != location or
         entry.mqtt_device_ieeeAddr_1 != mqtt_device_ieeeAddr_1 or entry.sensor_key_1 != sensor_key_1 or 
@@ -2901,6 +3579,7 @@ def SET_SCHEDULER_TASK(id, name, task,
         entry.option_sensors             = option_sensors
         entry.option_position            = option_position        
         entry.option_repeat              = option_repeat
+        entry.option_pause               = option_pause
         entry.day                        = day
         entry.hour                       = hour
         entry.minute                     = minute
@@ -3009,6 +3688,12 @@ def SET_SCHEDULER_TASK(id, name, task,
         if entry.option_repeat == "checked":
 
             log_message = log_message + (" | Repeat - " + entry.option_repeat)
+
+
+        # option pause
+        if entry.option_pause == "checked":
+
+            log_message = log_message + (" | Pause - " + entry.option_pause)
 
         WRITE_LOGFILE_SYSTEM("DATABASE", log_message) 
 
@@ -3358,6 +4043,13 @@ def SET_SNOWBOY_SETTINGS(snowboy_sensitivity, snowboy_timeout, snowboy_microphon
     entry.snowboy_sensitivity = snowboy_sensitivity
     entry.snowboy_timeout     = snowboy_timeout
     entry.snowboy_microphone  = snowboy_microphone
+    db.session.commit() 
+
+
+def UPDATE_SNOWBOY_PAUSE_SETTING(snowboy_pause):
+    entry = Snowboy_Settings.query.filter_by().first()
+    
+    entry.snowboy_pause = snowboy_pause   
     db.session.commit() 
 
 
@@ -3805,6 +4497,8 @@ def SET_USER_DASHBOARD_COLLAPSE_SETTING(id, panel, setting):
         entry.collapse_dashboard_devices_setting = setting 
     if panel == "watering":                  
         entry.collapse_dashboard_watering_setting = setting
+    if panel == "heating":        
+        entry.collapse_dashboard_heating_setting = setting 
     
     db.session.commit()    
 

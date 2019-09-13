@@ -17,11 +17,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_led == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -711,7 +712,7 @@ def led_scenes():
                     scene = GET_LED_SCENE_BY_ID(i)
 
                     heapq.heappush(process_management_queue, (1,  ("dashboard", "led_scene", int(group), scene.id, 100)))
-                    error_start_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group), scene.id, scene.name, 100, 2, 10)    
+                    error_start_scene = CHECK_LED_GROUP_SETTING_PROCESS(int(group), scene.id, scene.name, 100, 2, 10)    
                        
                 else:
                     error_led_control = "Keine LED Gruppe ausgewählt" 
@@ -730,7 +731,7 @@ def led_scenes():
                     scene_id = 0
 
                     heapq.heappush(process_management_queue, (1,  ("dashboard", "led_off_group", int(group_id)))) 
-                    error_turn_off_scene = LED_GROUP_CHECK_SETTING_PROCESS(int(group_id), scene_id, "OFF", 0, 2, 10)                     
+                    error_turn_off_scene = CHECK_LED_GROUP_SETTING_PROCESS(int(group_id), scene_id, "OFF", 0, 2, 10)                     
 
                 else:
                     error_led_control = "Keine LED Gruppe ausgewählt"  

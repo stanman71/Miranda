@@ -135,7 +135,7 @@
         </div>     
       </div>           
 
-<!-- settings snowboy -->
+<!-- global settings speechcontrol -->
 
       <div class="panel panel-default">
         <div class="panel-body">   
@@ -165,6 +165,45 @@
 
 
 {% if speechcontrol_global_setting != "False" %}
+
+<!-- -------------------- -->
+<!-- SPEECH CONTROL PAUSE -->
+<!-- -------------------- -->
+
+      <div class="panel panel-default">
+        <div class="panel-body">   
+          <form method="POST">
+            <div class="well well-sm">             
+              <div class="row justify-content-md-center">
+                <div class="col-sm-3">
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">Pausieren</button>
+                </div> 
+                <div class="col-sm-1">
+                  <font size="+2">
+                    <div class="pretty p-default p-curve p-bigger">
+                      <input type="checkbox" {{ snowboy_pause }} name="set_snowboy_pause" >
+                      <div class="state p-success">
+                        <label></label>
+                      </div>
+                    </div>
+                  </font>
+                </div>
+                <div class="col-sm-6">
+                  <button type="button" style="background-color:transparent" class="btn btn-secondary">
+                    Im laufenden Betrieb nach einer erfolgreichen Hotword-Erkennung wirksam
+                  </button>
+                </div>
+                <div class="col-sm-2">
+                  <div class="text-right">
+                    <input type="submit" onclick="window.location.href='/system/speechcontrol#'" class="btn btn-danger" name="change_snowboy_pause_setting" value="Speichern"/>
+                  </div>
+                </div> 
+              </div> 
+            </div>    
+          </form>       
+        </div>  
+      </div>    
+
 
 <!-- -------------------- -->
 <!-- SPEECH CONTROL TASKS -->
@@ -567,7 +606,7 @@
               <div class="well well-sm">
                 <div class="row justify-content-md-center">
                   <div class="col-sm-3">
-                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Mikrofon:</button>
+                    <button type="button" style="background-color:transparent" class="btn btn-secondary">Mikrofon</button>
                   </div>
                   <div class="col-sm-4">   
                     <select class="selectpicker" data-width="100%" name="set_snowboy_microphone">
@@ -608,7 +647,7 @@
                 <div class="well well-sm">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Snowboy Hotword:</button>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Snowboy Hotword</button>
                     </div>
                     <div class="col-sm-4">   
                       <select class="selectpicker" data-width="100%" name="set_snowboy_hotword">
@@ -628,7 +667,7 @@
                 <div class="well well-sm">
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Onlinedienst:</button>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Onlinedienst</button>
                     </div>
                     <div class="col-sm-4">      
                       <select class="selectpicker" data-width="100%" data-live-search="true" name="set_speech_recognition_provider">
@@ -648,7 +687,7 @@
                 <div class="well well-sm"> 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Username / Client ID (Optional): </button>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Username / Client ID (Optional)</button>
                     </div> 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_speech_recognition_provider_username" value="{% if speech_recognition_provider_username != None %}{{ speech_recognition_provider_username }}{% endif %}" /> 
@@ -658,7 +697,7 @@
                 <div class="well well-sm"> 
                   <div class="row justify-content-md-center">
                     <div class="col-sm-3">
-                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Key / Credentials: </button>
+                      <button type="button" style="background-color:transparent" class="btn btn-secondary">Key / Credentials</button>
                     </div> 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" name="set_speech_recognition_provider_key" value="{% if speech_recognition_provider_key != None %}{{ speech_recognition_provider_key }}{% endif %}" /> 

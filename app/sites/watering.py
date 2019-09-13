@@ -12,11 +12,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_watering == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -145,7 +146,7 @@ def watering():
                     
     error_message_settings = CHECK_WATERING_SETTINGS()
 
-    dropdown_list_watering_controller = GET_ALL_MQTT_DEVICES("watering_control")  
+    dropdown_list_watering_controller = GET_ALL_MQTT_DEVICES("watering_controller")  
     dropdown_list_groups              = [1, 2, 3, 4, 5]
     dropdown_list_pumptime            = ["15", "30", "60", "90", "120"]
     dropdown_list_moisture_level      = ["less", "normal", "much"]

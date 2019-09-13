@@ -52,6 +52,8 @@ def SET_LED_BULB_RGB(led_name, red, green, blue, brightness):
     msg     = '{"state":"ON","brightness":' + str(brightness) + ',"color": { "x":' + str(xy[0]) + ',"y":' + str(xy[1]) + '}}'
     
     MQTT_PUBLISH(channel, msg)
+    
+    time.sleep(1)
 
 
 def SET_LED_BULB_WHITE(led_name, color_temp, brightness):
@@ -60,6 +62,8 @@ def SET_LED_BULB_WHITE(led_name, color_temp, brightness):
     msg     = '{"state": "ON","brightness":' + str(brightness) + ',"color_temp":"' + str(color_temp) + '"}'
     
     MQTT_PUBLISH(channel, msg)
+    
+    time.sleep(1)
 
 
 def SET_LED_BULB_SIMPLE(led_name, brightness):
@@ -67,6 +71,8 @@ def SET_LED_BULB_SIMPLE(led_name, brightness):
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
     MQTT_PUBLISH(channel, msg)
+    
+    time.sleep(1)
 
 
 def SET_LED_BULB_BRIGHTNESS(led_name, brightness):
@@ -74,7 +80,9 @@ def SET_LED_BULB_BRIGHTNESS(led_name, brightness):
     channel = "miranda/zigbee2mqtt/" + led_name + "/set"
     msg     = '{"state": "ON","brightness":"' + str(brightness) + '"}'
     
-    MQTT_PUBLISH(channel, msg)   
+    MQTT_PUBLISH(channel, msg)
+    
+    time.sleep(1)
     
 
 def SET_LED_BULB_TURN_OFF(led_name):
@@ -83,6 +91,8 @@ def SET_LED_BULB_TURN_OFF(led_name):
     msg = '{"state": "OFF"}'
     
     MQTT_PUBLISH(channel, msg)
+    
+    time.sleep(1)
     
     
     

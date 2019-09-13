@@ -27,11 +27,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_system == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -350,7 +351,7 @@ def system_device_administration():
                         
                     device = GET_MQTT_DEVICE_BY_ID(i)
                     
-                    if device in GET_ALL_MQTT_DEVICES("device"):
+                    if device in GET_ALL_MQTT_DEVICES("devices"):
                         
                         
                         # ####################
@@ -473,8 +474,8 @@ def system_device_administration():
     dropdown_list_exception_options = ["IP-Address"] 
     dropdown_list_operators         = ["=", ">", "<"]
     
-    list_devices = GET_ALL_MQTT_DEVICES("device")
-    list_sensors = GET_ALL_MQTT_DEVICES("sensor")    
+    list_devices = GET_ALL_MQTT_DEVICES("devices")
+    list_sensors = GET_ALL_MQTT_DEVICES("sensors")    
 
     error_message_exceptions = CHECK_DEVICE_EXCEPTION_SETTINGS(GET_ALL_MQTT_DEVICES("device")) 
  
@@ -754,7 +755,7 @@ def system_mqtt():
             i = mqtt_update_task.id
                 
             SET_SCHEDULER_TASK(i, "mqtt_update", "mqtt_update_devices", 
-                                  "checked", "None", "None", "None", "checked", 
+                                  "checked", "None", "None", "None", "checked", "None", 
                                   "*", mqtt_update_hour, mqtt_update_minute,
                                   "None", "None", "None",
                                   "None", "None", "None", 
@@ -780,11 +781,14 @@ def system_mqtt():
         mqtt_update_hour   = "Stunde"        
         mqtt_update_minute = "Minute"
    
-    dropdown_list_hours   = [ "*", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] 
+    dropdown_list_hours   = [ "*", "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+                                   "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"] 
                                  
-    dropdown_list_minutes = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 
-                             21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 
-                             41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59]    
+    dropdown_list_minutes = [ "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12",
+                              "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
+                              "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38",
+                              "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51",
+                              "52", "53", "54", "55", "56", "57", "58", "59", "60"]  
     
     timestamp = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) 
 
@@ -1309,6 +1313,19 @@ def system_speechcontrol():
         if request.method == 'POST':
 
 
+            ###############
+            # snowboy pause
+            ###############
+
+            if request.form.get("change_snowboy_pause_setting") != None:
+                
+                if request.form.get("set_snowboy_pause"):
+                    snowboy_pause = "checked"
+                else:
+                    snowboy_pause = ""
+                    
+                UPDATE_SNOWBOY_PAUSE_SETTING(snowboy_pause)
+            
             #########################
             # speechcontrol led tasks
             #########################
@@ -1514,6 +1531,7 @@ def system_speechcontrol():
     # snowboy settings
     speechcontrol_global_setting = GET_GLOBAL_SETTING_VALUE("speechcontrol")
     
+    snowboy_pause       = GET_SNOWBOY_SETTINGS().snowboy_pause
     snowboy_sensitivity = GET_SNOWBOY_SETTINGS().snowboy_sensitivity
     snowboy_timeout     = GET_SNOWBOY_SETTINGS().snowboy_timeout
     snowboy_microphone  = GET_SNOWBOY_SETTINGS().snowboy_microphone
@@ -1563,6 +1581,7 @@ def system_speechcontrol():
                            
                             speechcontrol_global_setting=speechcontrol_global_setting,
                             check_value_speechcontrol=check_value_speechcontrol,
+                            snowboy_pause=snowboy_pause,                           
                             snowboy_sensitivity=snowboy_sensitivity,
                             snowboy_timeout=snowboy_timeout,
                             snowboy_microphone=snowboy_microphone,
@@ -2026,8 +2045,8 @@ def system_backup():
             i = backup_task.id
                 
             SET_SCHEDULER_TASK(i, "backup_database", "save_database", 
-                                  "checked", "None", "None", "None", "checked", 
-                                  "*", backup_hour, "0",
+                                  "checked", "None", "None", "None", "checked", "None",
+                                  "*", backup_hour, "00",
                                   "None", "None", "None",
                                   "None", "None", "None", 
                                   "None", "None", "None", "None",
@@ -2061,8 +2080,9 @@ def system_backup():
         new_backup_location_path = True
         backup_location_path     = GET_CONFIG_BACKUP_LOCATION()[0]
         
-    dropdown_list_hours = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-
+    dropdown_list_hours = [ "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11",
+                            "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"] 
+                                 
     return render_template('system_backup.html',
                             error_message=error_message,
                             file_list=file_list,
@@ -2160,6 +2180,11 @@ def system_log():
 
         log_search = request.form.get('set_log_search')
        
+   
+    # reset logfile
+    if request.form.get("reset_logfile") != None: 
+        RESET_LOGFILE("log_system")   
+
 
     # get log entries
     if GET_LOGFILE_SYSTEM(selected_log_types, 50, log_search) is not None:

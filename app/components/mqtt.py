@@ -45,6 +45,7 @@ def GET_MQTT_INCOMING_MESSAGES(limit):
 """ mqtt receive message """
 """ #################### """
     
+    
 def MQTT_RECEIVE_THREAD():
 
     try:
@@ -96,7 +97,8 @@ def MQTT_RECEIVE():
         if (device_type == "led_rgb" or
             device_type == "led_white" or
             device_type == "led_simple" or
-            device_type == "device_switch"):
+            device_type == "power_switch" or
+            device_type == "heater"):
     
             for existing_message in GET_MQTT_INCOMING_MESSAGES(3):              
                 
@@ -181,6 +183,7 @@ def MQTT_RECEIVE():
 """  mqtt message """
 """ ############# """
 
+
 def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
     
     channel = channel.split("/")
@@ -244,7 +247,7 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
                     pass                
 
 
-        if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "watering_control":
+        if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "sensor_contact" or device_type == "watering_controller":
             
             # save sensor data of passive devices
             if FIND_SENSORDATA_JOB_INPUT(ieeeAddr) != "":
@@ -254,11 +257,11 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
                     SAVE_MQTT_SENSORDATA(job) 
 
                     
-        if device_type == "sensor_passiv" or device_type == "sensor_active":
+        if device_type == "sensor_passiv" or device_type == "sensor_active" or device_type == "sensor_contact":
             
             # start schedular job 
             for task in GET_ALL_SCHEDULER_TASKS():
-                if task.option_sensors == "checked":
+                if task.option_sensors == "checked" and task.option_pause != "checked":
                     heapq.heappush(process_management_queue, (10, ("scheduler", "sensor", task.id, ieeeAddr)))
 
 
@@ -271,6 +274,7 @@ def MQTT_MESSAGE(channel, msg, ieeeAddr, device_type):
 """ #################### """
 """ mqtt publish message """
 """ #################### """
+
 
 def MQTT_PUBLISH(MQTT_TOPIC, MQTT_MSG):
 
@@ -726,14 +730,14 @@ def CHECK_ZIGBEE2MQTT_SETTING_PROCESS(device_name, setting, delay, limit):
         
  
 def CHECK_ZIGBEE2MQTT_SETTING(device_name, setting, limit):
-
+    
     for message in GET_MQTT_INCOMING_MESSAGES(limit):
 
         # search for fitting message in incoming_messages_list
         if message[1] == "miranda/zigbee2mqtt/" + device_name:   
     
-            setting = setting[1:-1] 
-            
+            setting = setting[1:-1]
+
             # only one setting value
             if not "," in setting:
             

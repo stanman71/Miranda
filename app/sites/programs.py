@@ -18,11 +18,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_programs == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -294,7 +295,7 @@ def programs():
     # list device command options   
     list_device_command_options = []
     
-    for device in GET_ALL_MQTT_DEVICES("device"):
+    for device in GET_ALL_MQTT_DEVICES("devices"):
         list_device_command_options.append((device.name, device.commands))
         
 

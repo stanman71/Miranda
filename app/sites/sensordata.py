@@ -19,11 +19,12 @@ def permission_required(f):
     @wraps(f)
     def wrap(*args, **kwargs): 
         try:
-            if current_user.permission_dashboard == "checked":
+            if current_user.permission_sensordata == "checked":
                 return f(*args, **kwargs)
             else:
                 return redirect(url_for('logout'))
-        except:
+        except Exception as e:
+            print(e)
             return redirect(url_for('logout'))
         
     return wrap
@@ -282,7 +283,7 @@ def sensordata_jobs():
 
     error_message_settings = CHECK_SENSORDATA_JOBS_SETTINGS()
 
-    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensor")
+    dropdown_list_mqtt_devices = GET_ALL_MQTT_DEVICES("sensors")
     
     list_sensordata = GET_ALL_SENSORDATA_JOBS()
     list_files      = GET_SENSORDATA_FILES()
