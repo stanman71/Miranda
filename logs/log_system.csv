@@ -1778,3 +1778,513 @@ Timestamp,Type,Description
 2019-09-13 15:17:10,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 60 %|
 2019-09-13 15:17:47,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
 2019-09-13 15:18:08,SUCCESS,|ZigBee2MQTT || Update Devices|
+2019-09-13 15:21:47,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-13 15:21:47,SUCCESS,|Spotify || Token updated|
+2019-09-13 15:21:50,EVENT,|ZigBee2MQTT || Connected|
+2019-09-13 15:21:53,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-13 15:21:53,EVENT,|Speechcontrol || Started|
+2019-09-13 15:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 15:32:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-13 15:32:20,WARNING,|LED || Group - wohnzimmer || standard : 80 || ['led_wohnzimmer_01 >>> Setting not confirmed']|
+2019-09-13 15:32:34,WARNING,|LED || Group - wohnzimmer || standard : 60 || ['led_wohnzimmer_01 >>> Setting not confirmed']|
+2019-09-13 15:32:46,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-13 15:35:57,EVENT,|Speechcontrol || Detection || sei es durch die probleme gehabt durch die probleme gehabt sei es jetzt|
+2019-09-13 16:10:21,EVENT,|Speechcontrol || Detection || die ware geliefert|
+2019-09-13 16:10:59,EVENT,|Speechcontrol || Detection || werden immer länger und die autobahn spass sind zwei strom dabei hat uns die politik mehr güter abgeschrieben|
+2019-09-13 16:11:50,SUCCESS,|Spotify || Token updated|
+2019-09-13 16:14:00,EVENT,|Speechcontrol || Detection || die bahnsteige lieferung frei ein|
+2019-09-13 16:15:35,EVENT,|Speechcontrol || Detection || die bananen ihren letzten erstmals in einem lkw es geht vom lagern zum supermarkt vor|
+2019-09-13 16:27:26,EVENT,|Speechcontrol || Detection || deutschen bahn gezielt geheim|
+2019-09-13 16:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 17:01:54,SUCCESS,|Spotify || Token updated|
+2019-09-13 17:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 17:51:58,SUCCESS,|Spotify || Token updated|
+2019-09-13 18:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 18:38:52,EVENT,|Speechcontrol || Detection || starte szene standard im wohnzimmer auf sechzig prozent|
+2019-09-13 18:38:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 60 %|
+2019-09-13 18:42:01,SUCCESS,|Spotify || Token updated|
+2019-09-13 18:44:35,EVENT,|Speechcontrol || Detection || auf der zwanzig fünfzehn sollen geschlossen werden|
+2019-09-13 18:47:13,EVENT,|Speechcontrol || Detection || siebzehn prozent auf verschiedene transportiert werden sind es in österreich in der schweiz einundvierzig prozent|
+2019-09-13 18:47:13,ERROR,|Speechcontrol || LED Task || siebzehn prozent auf verschiedene transportiert werden sind es in österreich in der schweiz einundvierzig prozent || Group not founded|
+2019-09-13 18:50:16,EVENT,|Speechcontrol || Detection || wir sind im büro von ohne|
+2019-09-13 19:26:37,EVENT,|Speechcontrol || Detection || rollen|
+2019-09-13 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 19:32:05,SUCCESS,|Spotify || Token updated|
+2019-09-13 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-13 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-13 20:22:09,SUCCESS,|Spotify || Token updated|
+2019-09-13 20:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 20:30:37,SUCCESS,|MQTT || Update Devices|
+2019-09-13 20:31:07,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-13 21:12:13,SUCCESS,|Spotify || Token updated|
+2019-09-13 21:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 22:02:17,SUCCESS,|Spotify || Token updated|
+2019-09-13 22:23:24,ERROR,|ZigBee2MQTT || Device - 0x00158d0001923614 || Setting not confirmed || current_heating_setpoint: 22|
+2019-09-13 22:23:39,SUCCESS,|ZigBee2MQTT || Device - 0x00158d0001923614 || Setting changed || current_heating_setpoint: 19|
+2019-09-13 22:23:53,SUCCESS,|ZigBee2MQTT || Device - 0x00158d0001923614 || Setting changed || current_heating_setpoint: 20|
+2019-09-13 22:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 22:52:21,SUCCESS,|Spotify || Token updated|
+2019-09-13 23:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-13 23:42:25,SUCCESS,|Spotify || Token updated|
+2019-09-14 00:00:02,SUCCESS,|Database_Backup || saved|
+2019-09-14 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 00:32:29,SUCCESS,|Spotify || Token updated|
+2019-09-14 01:22:33,SUCCESS,|Spotify || Token updated|
+2019-09-14 01:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 02:12:36,SUCCESS,|Spotify || Token updated|
+2019-09-14 02:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 02:46:52,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-14 02:53:58,EVENT,|Speechcontrol || Detection || das macht das ganze passiert eigentlich auch so|
+2019-09-14 03:02:40,SUCCESS,|Spotify || Token updated|
+2019-09-14 03:05:57,EVENT,|Speechcontrol || Detection || an|
+2019-09-14 03:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 03:52:43,SUCCESS,|Spotify || Token updated|
+2019-09-14 04:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 04:42:47,SUCCESS,|Spotify || Token updated|
+2019-09-14 05:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 05:32:50,SUCCESS,|Spotify || Token updated|
+2019-09-14 06:22:54,SUCCESS,|Spotify || Token updated|
+2019-09-14 06:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 07:12:57,SUCCESS,|Spotify || Token updated|
+2019-09-14 07:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 08:03:00,SUCCESS,|Spotify || Token updated|
+2019-09-14 08:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 08:53:04,SUCCESS,|Spotify || Token updated|
+2019-09-14 09:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 09:43:07,SUCCESS,|Spotify || Token updated|
+2019-09-14 10:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 10:33:11,SUCCESS,|Spotify || Token updated|
+2019-09-14 11:23:14,SUCCESS,|Spotify || Token updated|
+2019-09-14 11:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 12:13:18,SUCCESS,|Spotify || Token updated|
+2019-09-14 12:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 13:03:22,SUCCESS,|Spotify || Token updated|
+2019-09-14 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 13:47:02,EVENT,|Speechcontrol || Detection || die meisten menschen verstört einfach die zeit zurück er hat jetzt alle sechs acht von vorne die durch den kopf was besser gewesen und schon ist das auch aus|
+2019-09-14 13:53:26,SUCCESS,|Spotify || Token updated|
+2019-09-14 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 14:43:30,SUCCESS,|Spotify || Token updated|
+2019-09-14 15:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 15:33:33,SUCCESS,|Spotify || Token updated|
+2019-09-14 16:06:14,EVENT,|Speechcontrol || Detection || also|
+2019-09-14 16:23:37,SUCCESS,|Spotify || Token updated|
+2019-09-14 16:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 17:13:41,SUCCESS,|Spotify || Token updated|
+2019-09-14 17:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 18:03:45,SUCCESS,|Spotify || Token updated|
+2019-09-14 18:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 18:53:49,SUCCESS,|Spotify || Token updated|
+2019-09-14 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 19:43:53,SUCCESS,|Spotify || Token updated|
+2019-09-14 20:00:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 20:00:34,EVENT,|Watering || Plant - Fenster || Starting|
+2019-09-14 20:00:44,SUCCESS,|Watering || Plant - Fenster || Pump started|
+2019-09-14 20:01:44,SUCCESS,|Watering || Plant - Fenster || Pump stopped|
+2019-09-14 20:01:44,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-14 20:15:13,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-14 20:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 20:30:47,SUCCESS,|MQTT || Update Devices|
+2019-09-14 20:31:17,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-14 20:33:57,SUCCESS,|Spotify || Token updated|
+2019-09-14 21:24:01,SUCCESS,|Spotify || Token updated|
+2019-09-14 21:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 21:33:33,EVENT,|Speechcontrol || Detection || irgendwie ist aktuelle und so gefasst feierte älter der halb punkte sich über die jahrzehnte hinweg allerdings zu einem komplexen charakter entwickelt|
+2019-09-14 21:35:30,EVENT,|Speechcontrol || Detection || wissenschaftler aber trotzdem|
+2019-09-14 21:36:27,EVENT,|Speechcontrol || Detection || zuerst reden dort war ihm allerdings schon zu vollkommen zum glück gemeinsam eine liquids|
+2019-09-14 21:56:36,EVENT,|Speechcontrol || Detection || new york antworten das letzte mal gemacht habe und|
+2019-09-14 22:03:56,EVENT,|Speechcontrol || Detection || ähnlichkeit entropy und tod und weiss die comics falls ihr fragen auf das bedeutet dass das gibt es in einem see ist aller voraussicht nach nicht mit gleichzusetzen|
+2019-09-14 22:14:05,SUCCESS,|Spotify || Token updated|
+2019-09-14 22:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 22:32:32,EVENT,|Speechcontrol || Detection || zeitreisen zu verhindern dafür spricht dass der teich bei uns geht euch das hat alles übergab die bei uns leuchten aber nur wenn sie besucht werden doktor also man heimlich ein zauber gesicht fallen lassen|
+2019-09-14 22:54:19,EVENT,|Speechcontrol || Detection || jetzt sind wir nochmal|
+2019-09-14 23:04:09,SUCCESS,|Spotify || Token updated|
+2019-09-14 23:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-14 23:54:13,SUCCESS,|Spotify || Token updated|
+2019-09-15 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-15 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 00:30:09,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-15 00:31:01,EVENT,|Speechcontrol || Detection || verpasst erste mal schon zu spät und dann sind wir den nächsten bestimmt weiter also|
+2019-09-15 00:36:41,EVENT,|Speechcontrol || Detection || unter der aussicht von geld damit alles rein|
+2019-09-15 00:44:17,SUCCESS,|Spotify || Token updated|
+2019-09-15 01:03:52,EVENT,|Speechcontrol || Detection || die lose im shop ist lediglich organisatorisch stabilisiert nicht holz|
+2019-09-15 01:07:17,EVENT,|Speechcontrol || Detection || jetzt zum glück hat das alte mann bundesamt die geschwindigkeit herabgesetzt damit ist der bremsweg mehr als halbiert wurde leider ist der kann einzelfall langsam vorstellen an bahnübergänge gibt es mal wieder auch wegen der anlage und technischer menge|
+2019-09-15 01:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 01:34:21,SUCCESS,|Spotify || Token updated|
+2019-09-15 02:20:24,EVENT,|Speechcontrol || Detection || pünktlich unter sechs minuten bei meiner umfrage war die hälfte aller über sechs minuten später|
+2019-09-15 02:24:01,EVENT,|Speechcontrol || Detection || noch die ministerin inzwischen sind wir vor von paris reinkommen nach immer auch wenn man mal interview mit den verkehrsminister|
+2019-09-15 02:24:25,SUCCESS,|Spotify || Token updated|
+2019-09-15 02:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 03:14:28,SUCCESS,|Spotify || Token updated|
+2019-09-15 03:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 04:04:32,SUCCESS,|Spotify || Token updated|
+2019-09-15 04:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 04:54:35,SUCCESS,|Spotify || Token updated|
+2019-09-15 05:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 05:44:38,SUCCESS,|Spotify || Token updated|
+2019-09-15 06:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 06:34:42,SUCCESS,|Spotify || Token updated|
+2019-09-15 07:24:45,SUCCESS,|Spotify || Token updated|
+2019-09-15 07:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 08:14:48,SUCCESS,|Spotify || Token updated|
+2019-09-15 08:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 09:04:52,SUCCESS,|Spotify || Token updated|
+2019-09-15 09:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 09:54:55,SUCCESS,|Spotify || Token updated|
+2019-09-15 10:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 10:44:59,SUCCESS,|Spotify || Token updated|
+2019-09-15 10:59:33,EVENT,|Speechcontrol || Detection || grosse teil und ihr seht das immer nur der letzte baustelle finden das macht es natürlich einfach innenraum gebaut wird was man da unterschiede|
+2019-09-15 11:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 11:35:03,SUCCESS,|Spotify || Token updated|
+2019-09-15 12:20:48,EVENT,|Speechcontrol || Detection || gefragt damit zufrieden mit sechs uhr tausend kilometer noch einwandfrei funktioniert dieses auto|
+2019-09-15 12:25:06,SUCCESS,|Spotify || Token updated|
+2019-09-15 12:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 13:15:10,SUCCESS,|Spotify || Token updated|
+2019-09-15 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 14:05:14,SUCCESS,|Spotify || Token updated|
+2019-09-15 14:18:25,EVENT,|Speechcontrol || Detection || steinofen haben wir auch was bringt|
+2019-09-15 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 14:55:18,SUCCESS,|Spotify || Token updated|
+2019-09-15 15:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 15:45:22,SUCCESS,|Spotify || Token updated|
+2019-09-15 16:05:19,EVENT,|Speechcontrol || Detection || washington teheran untersuchen wir wandelt sich der iran mehr denn sie im zentrum tätigen politische spannungen befindet militärische nutzung der kernkraftwerk zelten saudi-arabien bewältigung der syrien unsere bildung erdgas wie es so weit kommen konnte wird auf den karten deutlich|
+2019-09-15 16:09:36,EVENT,|Speechcontrol || Detection || beendet werden sollte|
+2019-09-15 16:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 16:35:26,SUCCESS,|Spotify || Token updated|
+2019-09-15 17:25:30,SUCCESS,|Spotify || Token updated|
+2019-09-15 17:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 17:47:46,EVENT,|Speechcontrol || Detection || ausgebildet|
+2019-09-15 17:51:55,EVENT,|Speechcontrol || Detection || wir sind ja eine andere zeit als damals nicht nein du hast ja auch erlebt dass du einfach mal geschichten zu erzählen dass sonja zum beispiel|
+2019-09-15 18:08:56,EVENT,|Speechcontrol || Detection || schlecht verlaufen soll ich mal|
+2019-09-15 18:15:34,SUCCESS,|Spotify || Token updated|
+2019-09-15 18:21:03,EVENT,|Speechcontrol || Detection || das ist doch keine ahnung|
+2019-09-15 18:28:46,EVENT,|Speechcontrol || Detection || nein wenn die konzepte schützt dann passiert das was apple versucht das sind basis konzepte schützen möchtest aller males smartphone mit dem grossen display apple schützen dass du dein display darauf hast und dann dürften andere kleine display vorne drauf|
+2019-09-15 18:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 18:42:59,EVENT,|Speechcontrol || Detection || investieren ungefähr zehn bis zwanzig milliarden dollar hier ist ja ein fortentwicklung so genau was man aus|
+2019-09-15 19:02:39,EVENT,|Speechcontrol || Detection || die passiert sind nun index abgeben zu schlagen|
+2019-09-15 19:05:38,SUCCESS,|Spotify || Token updated|
+2019-09-15 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 19:55:41,SUCCESS,|Spotify || Token updated|
+2019-09-15 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-15 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-15 20:16:07,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-09-15 20:16:18,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-15 20:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-15 20:30:37,SUCCESS,|MQTT || Update Devices|
+2019-09-15 20:31:07,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-15 20:45:45,SUCCESS,|Spotify || Token updated|
+2019-09-15 20:53:28,EVENT,|Speechcontrol || Detection || und bringt zu kost für den weg|
+2019-09-15 20:57:50,EVENT,|Speechcontrol || Detection || und zwei|
+2019-09-15 21:02:06,EVENT,|Speechcontrol || Detection || in deutschland mit dem deutschland münchen zu verbinden was im alten verkehrswertes der fall macht|
+2019-09-15 21:24:46,EVENT,|Speechcontrol || Detection || ja absolut die konzerne wie du willst|
+2019-09-15 21:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 21:33:13,EVENT,|Speechcontrol || Detection || schnell anmeldung abheben|
+2019-09-15 21:35:49,SUCCESS,|Spotify || Token updated|
+2019-09-15 21:41:10,EVENT,|Speechcontrol || Detection || mit sicherheit ändert nervös herr funkmelder gerade den nächsten tonnenschweren unterzug|
+2019-09-15 22:02:51,EVENT,|Speechcontrol || Detection || vollsperrung|
+2019-09-15 22:25:53,SUCCESS,|Spotify || Token updated|
+2019-09-15 22:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 23:15:57,SUCCESS,|Spotify || Token updated|
+2019-09-15 23:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-15 23:34:45,EVENT,|Speechcontrol || Detection || diese einzelnen reingeschaut|
+2019-09-16 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-16 00:06:01,SUCCESS,|Spotify || Token updated|
+2019-09-16 00:22:48,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-16 00:22:48,SUCCESS,|Spotify || Token updated|
+2019-09-16 00:22:51,EVENT,|ZigBee2MQTT || Connected|
+2019-09-16 00:22:54,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-16 00:22:54,EVENT,|Speechcontrol || Started|
+2019-09-16 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 01:13:03,SUCCESS,|Spotify || Token updated|
+2019-09-16 01:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 02:03:07,SUCCESS,|Spotify || Token updated|
+2019-09-16 02:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 02:52:58,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-16 02:53:12,SUCCESS,|Spotify || Token updated|
+2019-09-16 03:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 03:43:15,SUCCESS,|Spotify || Token updated|
+2019-09-16 04:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 04:33:18,SUCCESS,|Spotify || Token updated|
+2019-09-16 05:23:22,SUCCESS,|Spotify || Token updated|
+2019-09-16 05:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 06:13:25,SUCCESS,|Spotify || Token updated|
+2019-09-16 06:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 07:03:29,SUCCESS,|Spotify || Token updated|
+2019-09-16 07:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 07:53:32,SUCCESS,|Spotify || Token updated|
+2019-09-16 08:06:41,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-16 08:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-16 08:43:35,SUCCESS,|Spotify || Token updated|
+2019-09-16 09:06:54,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-16 09:06:55,SUCCESS,|Spotify || Token updated|
+2019-09-16 09:06:57,EVENT,|ZigBee2MQTT || Connected|
+2019-09-16 09:07:00,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-16 09:07:01,EVENT,|Speechcontrol || Started|
+2019-09-16 09:07:41,DATABASE,|MQTT || Broker Settings changed|
+2019-09-16 09:14:44,DATABASE,|MQTT || Broker Settings changed|
+2019-09-16 09:17:43,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-16 09:17:43,SUCCESS,|Spotify || Token updated|
+2019-09-16 09:17:46,EVENT,|ZigBee2MQTT || Connected|
+2019-09-16 09:17:49,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-16 09:17:49,EVENT,|Speechcontrol || Started|
+2019-09-16 19:07:40,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 80 %|
+2019-09-16 19:09:28,EVENT,|Speechcontrol || Detection || baut hat ich habe mich mega gefreut dass ich das entdeckt habe dass es überhaupt seine spülung|
+2019-09-16 19:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-16 19:48:02,SUCCESS,|Spotify || Token updated|
+2019-09-16 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-16 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-16 20:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 20:30:37,SUCCESS,|MQTT || Update Devices|
+2019-09-16 20:31:07,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-16 20:38:06,SUCCESS,|Spotify || Token updated|
+2019-09-16 20:43:12,EVENT,|Speechcontrol || Detection || kein sinn das werden wir beide wahnsinnig werden|
+2019-09-16 20:50:18,EVENT,|Speechcontrol || Detection || bestellen bekommen|
+2019-09-16 21:26:13,EVENT,|Speechcontrol || Detection || sommerfest ist das auf der website auch so oder wie webseite|
+2019-09-16 21:26:45,EVENT,|Speechcontrol || Detection || wenn das irgendwie so läuft|
+2019-09-16 21:28:10,SUCCESS,|Spotify || Token updated|
+2019-09-16 21:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 22:18:14,SUCCESS,|Spotify || Token updated|
+2019-09-16 22:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 23:08:18,SUCCESS,|Spotify || Token updated|
+2019-09-16 23:21:30,EVENT,|Speechcontrol || Detection || wie soll sie die erfolgs genug davon leisten können um den mix die stirn zu bieten|
+2019-09-16 23:22:03,EVENT,|Speechcontrol || Detection || die fünfzehn aber trotzdem besser und leistungsfähiger als viele andere kampf|
+2019-09-16 23:24:30,EVENT,|Speechcontrol || Detection || automatisch eine stabile flug klage ein sechzehn nicht|
+2019-09-16 23:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-16 23:38:43,EVENT,|Speechcontrol || Detection || nicht dass ich nicht weiterspielen|
+2019-09-16 23:41:51,EVENT,|Speechcontrol || Detection || erholen sie ausserhalb des kampfes geringfügig|
+2019-09-16 23:44:21,EVENT,|Speechcontrol || Detection || also|
+2019-09-16 23:58:23,SUCCESS,|Spotify || Token updated|
+2019-09-17 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-17 00:10:22,EVENT,|Speechcontrol || Detection || also|
+2019-09-17 00:22:31,EVENT,|Speechcontrol || Detection || jetzt bestimmt sicher|
+2019-09-17 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 00:44:36,EVENT,|Speechcontrol || Detection || wisst ihr was ich gerade die regierung ach ach schade ich habe jetzt ehrlich gesagt ein bisschen gehofft|
+2019-09-17 00:48:27,SUCCESS,|Spotify || Token updated|
+2019-09-17 00:49:36,EVENT,|Speechcontrol || Detection || na gut|
+2019-09-17 00:49:46,EVENT,|Speechcontrol || Detection || kann man alles gebrauchen solange sinnvoll sind|
+2019-09-17 00:55:18,EVENT,|Speechcontrol || Detection || und die mutter die wir ihr kind natürlich auch bei sich haben finde ich ziemlich kacke dass sie sowas haben|
+2019-09-17 01:05:18,EVENT,|Speechcontrol || Detection || alles klar|
+2019-09-17 01:12:20,EVENT,|Speechcontrol || Detection || gegenstand|
+2019-09-17 01:13:33,EVENT,|Speechcontrol || Detection || weiter angesichts|
+2019-09-17 01:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 01:30:14,EVENT,|Speechcontrol || Detection || auf|
+2019-09-17 01:32:15,EVENT,|Speechcontrol || Detection || ganz am anfang schon mal|
+2019-09-17 01:38:31,SUCCESS,|Spotify || Token updated|
+2019-09-17 01:38:32,EVENT,|Speechcontrol || Detection || okay das ist richtig gut|
+2019-09-17 01:39:30,EVENT,|Speechcontrol || Detection || man muss immer wieder sage es ist so ein bisschen vielleicht auch den produktions- geschuldet dass man tatsächlich auch ans herz auch alles machen kann deswegen ja wird alles so ein bisschen weniger oh|
+2019-09-17 01:49:17,EVENT,|Speechcontrol || Detection || bis dann tschüss|
+2019-09-17 02:10:14,EVENT,|Speechcontrol || Detection || was ein kampf auslöst|
+2019-09-17 02:28:34,SUCCESS,|Spotify || Token updated|
+2019-09-17 02:30:01,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-17 02:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 03:18:38,SUCCESS,|Spotify || Token updated|
+2019-09-17 03:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 04:08:41,SUCCESS,|Spotify || Token updated|
+2019-09-17 04:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 04:58:45,SUCCESS,|Spotify || Token updated|
+2019-09-17 05:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 05:48:48,SUCCESS,|Spotify || Token updated|
+2019-09-17 06:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 06:38:51,SUCCESS,|Spotify || Token updated|
+2019-09-17 07:28:55,SUCCESS,|Spotify || Token updated|
+2019-09-17 07:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 08:18:58,SUCCESS,|Spotify || Token updated|
+2019-09-17 08:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 09:09:01,SUCCESS,|Spotify || Token updated|
+2019-09-17 09:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 09:33:13,EVENT,|Speechcontrol || Detection || gegen getauscht ein experiment sie vor jeden tag übernachten freunden und schreibt jetzt ein|
+2019-09-17 09:38:16,EVENT,|Speechcontrol || Detection || unsere sprache|
+2019-09-17 09:59:05,SUCCESS,|Spotify || Token updated|
+2019-09-17 10:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 10:49:09,SUCCESS,|Spotify || Token updated|
+2019-09-17 11:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 11:39:12,SUCCESS,|Spotify || Token updated|
+2019-09-17 12:29:16,SUCCESS,|Spotify || Token updated|
+2019-09-17 12:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 12:35:50,EVENT,|Speechcontrol || Detection || der laser sprechen muss das wäre fünf komma zwei messen soll stock und meister nur noch|
+2019-09-17 13:19:20,SUCCESS,|Spotify || Token updated|
+2019-09-17 13:28:08,EVENT,|Speechcontrol || Detection || unsere einfach dürfen sondern dass wir hier in europa|
+2019-09-17 13:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 14:09:24,SUCCESS,|Spotify || Token updated|
+2019-09-17 14:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 14:59:28,SUCCESS,|Spotify || Token updated|
+2019-09-17 15:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 15:49:31,SUCCESS,|Spotify || Token updated|
+2019-09-17 16:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 16:39:34,SUCCESS,|Spotify || Token updated|
+2019-09-17 17:03:03,EVENT,|Speechcontrol || Detection || material|
+2019-09-17 17:22:59,EVENT,|Speechcontrol || Detection || also wir empfehlen|
+2019-09-17 17:29:38,SUCCESS,|Spotify || Token updated|
+2019-09-17 17:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 18:19:42,SUCCESS,|Spotify || Token updated|
+2019-09-17 18:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 18:39:03,EVENT,|Speechcontrol || Detection || okay|
+2019-09-17 19:09:46,SUCCESS,|Spotify || Token updated|
+2019-09-17 19:10:53,EVENT,|Speechcontrol || Detection || rausgehen|
+2019-09-17 19:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 19:34:04,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-17 19:59:50,SUCCESS,|Spotify || Token updated|
+2019-09-17 20:00:03,SUCCESS,|MQTT || Update Devices|
+2019-09-17 20:00:33,SUCCESS,|Watering || Plant - Fenster || Finished|
+2019-09-17 20:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 20:30:37,SUCCESS,|MQTT || Update Devices|
+2019-09-17 20:31:07,SUCCESS,|Plant - Fenster || Moisture checked|
+2019-09-17 20:49:53,SUCCESS,|Spotify || Token updated|
+2019-09-17 21:12:07,EVENT,|Speechcontrol || Detection || trainingszeiten|
+2019-09-17 21:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-17 21:39:57,SUCCESS,|Spotify || Token updated|
+2019-09-17 22:30:01,SUCCESS,|Spotify || Token updated|
+2019-09-17 22:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-17 23:20:04,SUCCESS,|Spotify || Token updated|
+2019-09-17 23:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 00:00:01,SUCCESS,|Database_Backup || saved|
+2019-09-18 00:10:08,SUCCESS,|Spotify || Token updated|
+2019-09-18 00:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 00:33:52,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-18 00:40:14,EVENT,|Speechcontrol || Detection || wir nächstes jahr werden wir die ausstrahlung die vorteile|
+2019-09-18 00:43:39,EVENT,|Speechcontrol || Detection || aber auf diesem schiff|
+2019-09-18 00:48:39,EVENT,|Speechcontrol || Detection || verbessern|
+2019-09-18 00:56:03,EVENT,|Speechcontrol || Detection || an sich sind|
+2019-09-18 01:00:12,SUCCESS,|Spotify || Token updated|
+2019-09-18 01:12:39,EVENT,|Speechcontrol || Detection || was trinken|
+2019-09-18 01:26:50,EVENT,|Speechcontrol || Detection || bereich zwo zweiundfünfzig fahrt das ist auch sie übernimmt das kommando über diese abteilung ich sah die klappe steht auch immer offen wir brauchen|
+2019-09-18 01:29:52,EVENT,|Speechcontrol || Detection || fünfundvierzig diese lady hier bitte zu mir ja natürlich|
+2019-09-18 01:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 01:35:03,EVENT,|Speechcontrol || Detection || als ich das amt des präsidenten der zwölf|
+2019-09-18 01:38:52,EVENT,|Speechcontrol || Detection || die computer wir machen einen sprung hätten wir über eine leistung|
+2019-09-18 01:50:16,SUCCESS,|Spotify || Token updated|
+2019-09-18 02:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 02:40:20,SUCCESS,|Spotify || Token updated|
+2019-09-18 03:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 03:30:23,SUCCESS,|Spotify || Token updated|
+2019-09-18 03:48:44,EVENT,|Speechcontrol || Detection || wir sehen schlecht aus und ich kann nicht verstanden|
+2019-09-18 04:00:18,EVENT,|Speechcontrol || Detection || augenblick|
+2019-09-18 04:20:27,SUCCESS,|Spotify || Token updated|
+2019-09-18 04:20:53,EVENT,|Speechcontrol || Detection || ich konnte ich fühl mich fallen lassen|
+2019-09-18 04:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 04:38:16,EVENT,|Speechcontrol || Detection || los|
+2019-09-18 05:10:31,SUCCESS,|Spotify || Token updated|
+2019-09-18 05:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 06:00:34,SUCCESS,|Spotify || Token updated|
+2019-09-18 06:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 06:50:38,SUCCESS,|Spotify || Token updated|
+2019-09-18 07:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 07:40:41,SUCCESS,|Spotify || Token updated|
+2019-09-18 08:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 08:30:44,SUCCESS,|Spotify || Token updated|
+2019-09-18 09:20:48,SUCCESS,|Spotify || Token updated|
+2019-09-18 09:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-18 10:10:51,SUCCESS,|Spotify || Token updated|
+2019-09-18 10:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-18 11:00:54,SUCCESS,|Spotify || Token updated|
+2019-09-18 11:11:23,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-18 11:11:23,SUCCESS,|Spotify || Token updated|
+2019-09-18 11:11:26,EVENT,|ZigBee2MQTT || Connected|
+2019-09-18 11:11:29,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-18 11:11:29,EVENT,|Speechcontrol || Started|
+2019-09-19 12:08:28,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-19 12:08:28,SUCCESS,|Spotify || Token updated|
+2019-09-19 12:08:31,EVENT,|ZigBee2MQTT || Connected|
+2019-09-19 12:08:34,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-19 12:08:34,EVENT,|Speechcontrol || Started|
+2019-09-19 12:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-19 12:37:55,EVENT,|Speechcontrol || Detection || hier ohnehin notwendig achtzig|
+2019-09-19 12:40:57,EVENT,|Speechcontrol || Detection || an den hier vorne eine private all diese normalen bereich bei fc|
+2019-09-19 12:44:52,EVENT,|Speechcontrol || Detection || peace|
+2019-09-19 12:52:01,EVENT,|Speechcontrol || Detection || elf und fünfzig fünfundfünfzig und jetzt sagt sie eine einheit schon mal hin als passieren lasse dir überlegen ändern das war hier|
+2019-09-19 12:58:32,SUCCESS,|Spotify || Token updated|
+2019-09-19 13:20:07,EVENT,|Speechcontrol || Detection || liebe wege anzeigen lassen der klassische beziehen die zahlen zeigen produzieren informationen|
+2019-09-19 13:21:21,EVENT,|Speechcontrol || Detection || stattdessen sehen wir hier ein weil wir einfach selbst erzeugt haben und zwar in video als ihr die datei aus angewandt haben|
+2019-09-19 13:24:21,EVENT,|Speechcontrol || Detection || die eigene|
+2019-09-19 13:26:03,EVENT,|Speechcontrol || Detection || zeigt uns jetzt ein rausnehmen und allen ausnehmen dabei handelt es sich um eine arbeiter des baumes wenn wir die sonst eigentlich nicht darauf zeigt verwendet werden|
+2019-09-19 13:29:06,EVENT,|Speechcontrol || Detection || benötigen wir die karate roten eine beziehungsweise eine rute beginnt mit einem also den wir erreichen wollen und der adresse des futters also bis bald|
+2019-09-19 13:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-19 13:48:37,SUCCESS,|Spotify || Token updated|
+2019-09-19 13:58:31,EVENT,|Speechcontrol || Detection || den ersten alltag in unserem netzwerk programm aus zwei eins|
+2019-09-19 14:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-19 14:38:40,SUCCESS,|Spotify || Token updated|
+2019-09-19 15:28:44,SUCCESS,|Spotify || Token updated|
+2019-09-19 15:30:04,SUCCESS,|MQTT || Update Devices|
+2019-09-20 19:17:21,DATABASE,|Host || Network settings changed || LAN - 192.168.1.222 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-09-20 19:17:27,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-20 19:17:27,SUCCESS,|Spotify || Token updated|
+2019-09-20 19:17:30,EVENT,|ZigBee2MQTT || Connected|
+2019-09-20 19:17:33,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-20 19:17:33,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:17:33,EVENT,|Speechcontrol || Started|
+2019-09-20 19:17:33,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:17:33,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-20 19:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-20 19:40:39,DATABASE,|Host || Network settings changed || LAN - 192.168.1.55 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-09-20 19:40:44,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-20 19:40:44,SUCCESS,|Spotify || Token updated|
+2019-09-20 19:40:47,EVENT,|ZigBee2MQTT || Connected|
+2019-09-20 19:40:50,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-20 19:40:50,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:40:51,EVENT,|Speechcontrol || Started|
+2019-09-20 19:40:51,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:40:51,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-20 19:44:53,DATABASE,|Host || Network settings changed || LAN - 192.168.1.40 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-09-20 19:44:59,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-20 19:44:59,SUCCESS,|Spotify || Token updated|
+2019-09-20 19:45:02,EVENT,|ZigBee2MQTT || Connected|
+2019-09-20 19:45:05,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-20 19:45:05,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:45:05,EVENT,|Speechcontrol || Started|
+2019-09-20 19:45:05,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-20 19:45:05,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-27 12:17:26,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-27 12:17:26,SUCCESS,|Spotify || Token updated|
+2019-09-27 12:17:29,EVENT,|ZigBee2MQTT || Connected|
+2019-09-27 12:17:32,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-27 12:17:32,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:17:32,EVENT,|Speechcontrol || Started|
+2019-09-27 12:17:33,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:17:33,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-27 12:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-27 12:40:15,ERROR,|ZigBee2MQTT || Device - 0x00158d0001923614 || Setting not confirmed || current_heating_setpoint: 23|
+2019-09-27 12:43:24,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-27 12:43:24,SUCCESS,|Spotify || Token updated|
+2019-09-27 12:43:27,EVENT,|ZigBee2MQTT || Connected|
+2019-09-27 12:43:30,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-27 12:43:30,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:43:30,EVENT,|Speechcontrol || Started|
+2019-09-27 12:43:30,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:43:31,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-27 12:44:17,DATABASE,|Host || Default Interface - LAN || changed|
+2019-09-27 12:44:24,DATABASE,|Host || Port - 80 || changed|
+2019-09-27 12:45:02,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.109 : 192.168.1.1|
+2019-09-27 12:45:08,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-27 12:45:08,SUCCESS,|Spotify || Token updated|
+2019-09-27 12:45:11,EVENT,|ZigBee2MQTT || Connected|
+2019-09-27 12:45:14,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-27 12:45:14,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:45:14,EVENT,|Speechcontrol || Started|
+2019-09-27 12:45:14,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:45:14,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-27 12:49:42,DATABASE,|Host || Network settings changed || LAN - 192.168.1.111 : 192.168.1.1 || WLAN - 192.168.1.40 : 192.168.1.1|
+2019-09-27 12:49:42,DATABASE,|Host || Default Interface - WLAN || changed|
+2019-09-27 12:49:54,DATABASE,|Host || Network settings changed || DHCP LAN -  || DHCP WLAN - |
+2019-09-27 12:49:59,DATABASE,|Host || Network settings changed || DHCP LAN - checked || DHCP WLAN - |
+2019-09-27 12:50:42,EVENT,|MQTT || Broker - localhost || Connected|
+2019-09-27 12:50:42,SUCCESS,|Spotify || Token updated|
+2019-09-27 12:50:45,EVENT,|ZigBee2MQTT || Connected|
+2019-09-27 12:50:48,EVENT,|ZigBee2MQTT || Pairing disabled|
+2019-09-27 12:50:48,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:50:48,EVENT,|Speechcontrol || Started|
+2019-09-27 12:50:48,ERROR,|Microphone LED Control || 'str' object has no attribute 'off'|
+2019-09-27 12:50:48,ERROR,|Snowboy || [Errno -9996] Invalid input device (no default output device)|
+2019-09-27 12:51:36,DATABASE,|Scheduler || Task - Pflanzen gießen || changed |||| Name - Pflanzen gießen || Task - watering_plants /// 1 || Day - * || Hour - 20 || Minute - 00 || MQTT-Device_1 - None || Sensor_1 - None || Operator_1 - None || Value_1 - None || Repeat - checked|
+2019-09-27 12:51:43,DATABASE,|Scheduler || Task - Pflanzen gießen || changed |||| Name - Pflanzen gießen || Task - watering_plants /// 1 || Day - * || Hour - 20 || Minute - 00 || Repeat - checked|
+2019-09-27 12:54:35,WARNING,|LED || Group - wohnzimmer || standard : 100 || ['led_wohnzimmer_01 >>> Setting not confirmed', 'led_wohnzimmer_02 >>> Setting not confirmed']|
+2019-09-27 12:54:42,WARNING,|LED || Group - wohnzimmer || standard : 100 || ['led_wohnzimmer_01 >>> Setting not confirmed', 'led_wohnzimmer_02 >>> Setting not confirmed']|
+2019-09-27 12:57:45,STATUS,|LED || Group - wohnzimmer || standard : 100|
+2019-09-27 12:57:59,WARNING,|LED || Group - wohnzimmer || OFF : 0 || ['led_wohnzimmer_02 >>> Setting not confirmed']|
+2019-09-27 12:58:15,STATUS,|LED || Group - wohnzimmer || OFF : 0 %|
+2019-09-27 12:58:27,SUCCESS,|LED || Group - wohnzimmer || Setting changed || standard : 100 %|
+2019-09-27 12:58:40,SUCCESS,|LED || Group - wohnzimmer || Setting changed || OFF : 0 %|
+2019-09-27 13:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-27 13:40:57,SUCCESS,|Spotify || Token updated|
+2019-09-27 14:30:04,WARNING,|MQTT || Update Devices || No Message founded|
+2019-09-27 14:31:00,SUCCESS,|Spotify || Token updated|
+2019-09-27 15:21:03,SUCCESS,|Spotify || Token updated|
+2019-09-27 15:30:04,WARNING,|MQTT || Update Devices || No Message founded|
