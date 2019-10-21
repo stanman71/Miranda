@@ -84,4 +84,84 @@ Terraform is an open-source infrastructure as code software tool created by Hash
 https://en.wikipedia.org/wiki/Terraform_(software)
 
 
+#### Rancher
+Rancher is an open source project that provides a <a href="#Container">container</a> management platform built for organizations that deploy containers in production. 
+
+https://github.com/rancher/rancher
+
+
+#### Ironic
+An <a href="#OpenStack">OpenStack</a> Bare Metal Provisioning Program
+
+https://wiki.openstack.org/wiki/Ironic
+
+#### Glance
+Glance provides a service in an <a href="#OpenStack">openStack</a> environment where users can upload and discover data assets that are meant to be used with other services. 
+
+https://docs.openstack.org/glance/latest/
+
+#### Kubernetes
+Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management
+
+https://en.wikipedia.org/wiki/Kubernetes
+
+<a name="Kubernetes"></a>
+
+#### Helm
+Helm is a tool for managing <a href="#Kubernetes">Kubernetes</a> charts.
+
+https://github.com/helm/helm
+
+<a name="Container"></a>
+
+#### Container
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. 
+
+https://en.wikipedia.org/wiki/OS-level_virtualization
+
+<a name="Docker"></a>
+
+#### Docker
+Docker is a set of platform-as-a-service (PaaS) products that use OS-level virtualization to deliver software in packages called <a href="#Container">containers</a>.
+
+https://en.wikipedia.org/wiki/Docker_(software)
+
+#### Docker Swarm
+Docker Swarm is a clustering and scheduling tool for <a href="#Docker">Docker</a> containers.
+
+https://docs.docker.com/engine/swarm/
+
+#### LXC / LXD
+LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for virtualizing software at the operating system level within the Linux kernel. 
+LXD is an extension of LXC
+
+https://www.sumologic.com/blog/lxc-lxd-linux-containers/
+
+#### IOPS
+Input/output operations per second (IOPS) is an input/output performance measurement used to characterize computer storage devices 
+
+https://en.wikipedia.org/wiki/IOPS
+
+#### Microservice
+Microservices are a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services.
+
+https://en.wikipedia.org/wiki/Microservices
+
+#### Consul
+Consul is a tool for service discovery and configuration. 
+
+https://github.com/hashicorp/consul
+
+#### Linux Namespaces
+#### RabbitMQ
+#### Openflow
+#### Contrail
+#### Galera
+#### Zookeeper
+#### CassandraDB
+#### Cumulus
+#### Ceph
+Verteilte Storage Plattform mit RADOS
+#### Quobyte
+#### MariaDB
 
