@@ -40,12 +40,11 @@ https://wiki.openstack.org/wiki/Kolla
 #### Infrastructure as code
 Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
 
-   * Tools
-      * <a href="#Ansible">Ansible</a>
-      * <a href="#Chef">Chef</a>
-      * <a href="#Puppet">Puppet</a>
-      * <a href="#Salt">Salt</a>
-      * <a href="#Terraform">Terraform</a>
+   * <a href="#Ansible">Ansible</a>
+   * <a href="#Chef">Chef</a>
+   * <a href="#Puppet">Puppet</a>
+   * <a href="#Salt">Salt</a>
+   * <a href="#Terraform">Terraform</a>
 
 https://en.wikipedia.org/wiki/Infrastructure_as_code
 
