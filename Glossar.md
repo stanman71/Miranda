@@ -1,6 +1,6 @@
 <a name="OpenStack"></a>
 
-## Openstack
+#### Openstack
 OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed and provisioned through APIs with common authentication mechanisms.
 A dashboard is also available, giving administrators control while empowering their users to provision resources through a web interface.
 Beyond standard infrastructure-as-a-service functionality, additional components provide orchestration, fault management and service management amongst other services to ensure high availability of user applications.
@@ -40,11 +40,12 @@ https://wiki.openstack.org/wiki/Kolla
 #### Infrastructure as code
 Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
 
-   * <a href="#Ansible">Ansible</a>
-   * <a href="#Chef">Chef</a>
-   * <a href="#Puppet">Puppet</a>
-   * <a href="#Salt">Salt</a>
-   * <a href="#Terraform">Terraform</a>
+   * Tools
+      * <a href="#Ansible">Ansible</a>
+      * <a href="#Chef">Chef</a>
+      * <a href="#Puppet">Puppet</a>
+      * <a href="#Salt">Salt</a>
+      * <a href="#Terraform">Terraform</a>
 
 https://en.wikipedia.org/wiki/Infrastructure_as_code
 
@@ -153,15 +154,58 @@ Consul is a tool for service discovery and configuration.
 https://github.com/hashicorp/consul
 
 #### Linux Namespaces
-#### RabbitMQ
-#### Openflow
-#### Contrail
-#### Galera
-#### Zookeeper
-#### CassandraDB
-#### Cumulus
-#### Ceph
-Verteilte Storage Plattform mit RADOS
-#### Quobyte
-#### MariaDB
+Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources. 
 
+https://en.wikipedia.org/wiki/Linux_namespaces
+
+#### RabbitMQ
+RabbitMQ is an open-source message-broker software
+
+https://en.wikipedia.org/wiki/RabbitMQ
+
+#### Openflow
+OpenFlow is a communications protocol that gives access to the forwarding plane of a network switch or router over the network.
+
+https://en.wikipedia.org/wiki/OpenFlow
+
+#### Contrail
+Juniper’s Contrail is an open, and agile software defined networking solution that automates and orchestrates the creation of highly scalable virtual networks. 
+
+https://www.juniper.net/us/en/products-services/sdn/contrail/
+
+#### Galera
+MariaDB Galera Cluster is a synchronous multi-master cluster for <a href="#MariaDB">MariaDB</a>.
+
+https://mariadb.com/kb/en/library/what-is-mariadb-galera-cluster/
+
+#### Zookeeper
+ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 
+
+https://en.wikipedia.org/wiki/Apache_ZooKeeper
+
+#### CassandraDB
+Apache Cassandra is a free and open-source, distributed, wide column store, NoSQL database management system designed to handle large amounts of data
+
+https://en.wikipedia.org/wiki/Apache_Cassandra
+
+#### Cumulus
+Cumulus is a digital asset management software designed as a client/server system developed by Canto Software. 
+
+https://en.wikipedia.org/wiki/Cumulus_(software)
+
+#### Ceph
+Ceph is a free-software storage platform, implements object storage on a single distributed computer cluster, and provides interfaces for object-, block- and file-level storage.
+
+https://en.wikipedia.org/wiki/Ceph_(software)
+
+#### Quobyte
+Quobyte`s smart storage software offers a single storage system for block (Cinder), object (S3) and shared file system (Manila)
+
+https://wiki.openstack.org/wiki/Quobyte
+
+<a name="MariaDB"></a>
+
+#### MariaDB
+MariaDB is an open source database
+
+https://en.wikipedia.org/wiki/MariaDB
