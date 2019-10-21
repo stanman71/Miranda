@@ -40,11 +40,12 @@ https://wiki.openstack.org/wiki/Kolla
 #### Infrastructure as code
 Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
 
-<a href="#Ansible">Ansible</a>
-<a href="#Chef">Chef</a>
-<a href="#Puppet">Puppet</a>
-<a href="#Salt">Salt</a>
-<a href="#Terraform">Terraform</a>
+   * Tools
+      * <a href="#Ansible">Ansible</a>
+      * <a href="#Chef">Chef</a>
+      * <a href="#Puppet">Puppet</a>
+      * <a href="#Salt">Salt</a>
+      * <a href="#Terraform">Terraform</a>
 
 https://en.wikipedia.org/wiki/Infrastructure_as_code
 
@@ -85,36 +86,72 @@ https://en.wikipedia.org/wiki/Terraform_(software)
 
 
 #### Rancher
+Rancher is an open source project that provides a <a href="#Container">container</a> management platform built for organizations that deploy containers in production. 
 
+https://github.com/rancher/rancher
 
 
 #### Ironic
+An <a href="#OpenStack">OpenStack</a> Bare Metal Provisioning Program
+
+https://wiki.openstack.org/wiki/Ironic
+
 #### Glance
+Glance provides a service in an <a href="#OpenStack">openStack</a> environment where users can upload and discover data assets that are meant to be used with other services. 
+
+https://docs.openstack.org/glance/latest/
+
 #### Kubernetes
+Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management
+
+https://en.wikipedia.org/wiki/Kubernetes
+
+<a name="Kubernetes"></a>
+
 #### Helm
+Helm is a tool for managing <a href="#Kubernetes">Kubernetes</a> charts.
+
+https://github.com/helm/helm
+
+<a name="Container"></a>
+
 #### Container
+A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. 
+
+https://en.wikipedia.org/wiki/OS-level_virtualization
+
+<a name="Docker"></a>
+
 #### Docker
+Docker is a set of platform-as-a-service (PaaS) products that use OS-level virtualization to deliver software in packages called <a href="#Container">containers</a>.
+
+https://en.wikipedia.org/wiki/Docker_(software)
+
 #### Docker Swarm
-#### LXC/LXD
+Docker Swarm is a clustering and scheduling tool for <a href="#Docker">Docker</a> containers.
+
+https://docs.docker.com/engine/swarm/
+
+#### LXC / LXD
+LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for virtualizing software at the operating system level within the Linux kernel. 
+LXD is an extension of LXC
+
+https://www.sumologic.com/blog/lxc-lxd-linux-containers/
+
 #### IOPS
+Input/output operations per second (IOPS) is an input/output performance measurement used to characterize computer storage devices 
+
+https://en.wikipedia.org/wiki/IOPS
+
 #### Microservice
+Microservices are a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services.
 
-
+https://en.wikipedia.org/wiki/Microservices
 
 #### Consul
-Consul is a service mesh solution providing a full featured control plane with service discovery, configuration, and segmentation functionality. Each of these features can be used individually as needed, or they can be used together to build a full service mesh. Consul requires a data plane and supports both a proxy and native integration model. Consul ships with a simple built-in proxy so that everything works out of the box, but also supports 3rd party proxy integrations such as Envoy.
+Consul is a tool for service discovery and configuration. 
 
-The key features of Consul are:
-
-Service Discovery: Clients of Consul can register a service, such as api or mysql, and other clients can use Consul to discover providers of a given service. Using either DNS or HTTP, applications can easily find the services they depend upon.
-
-Health Checking: Consul clients can provide any number of health checks, either associated with a given service ("is the webserver returning 200 OK"), or with the local node ("is memory utilization below 90%"). This information can be used by an operator to monitor cluster health, and it is used by the service discovery components to route traffic away from unhealthy hosts.
-
-KV Store: Applications can make use of Consul's hierarchical key/value store for any number of purposes, including dynamic configuration, feature flagging, coordination, leader election, and more. The simple HTTP API makes it easy to use.
-
-Secure Service Communication: Consul can generate and distribute TLS certificates for services to establish mutual TLS connections. Intentions can be used to define which services are allowed to communicate. Service segmentation can be easily managed with intentions that can be changed in real time instead of using complex network topologies and static firewall rules.
-
-Multi Datacenter: Consul supports multiple datacenters out of the box. This means users of Consul do not have to worry about building additional layers of abstraction to grow to multiple regions.
+https://github.com/hashicorp/consul
 
 #### Linux Namespaces
 #### RabbitMQ
