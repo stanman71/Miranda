@@ -111,12 +111,12 @@ Kolla provides production-ready containers and deployment tools for operating <a
 
 https://wiki.openstack.org/wiki/Kolla
 
+<a name="Kubernetes"></a>
+
 #### Kubernetes
-Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management
+Kubernetes is an open-source <a href="#Container">container</a>-orchestration system for automating application deployment, scaling, and management
 
 https://en.wikipedia.org/wiki/Kubernetes
-
-<a name="Kubernetes"></a>
 
 #### Linux Namespaces
 Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources. 
@@ -128,6 +128,8 @@ LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for 
 LXD is an extension of LXC
 
 https://www.sumologic.com/blog/lxc-lxd-linux-containers/
+
+<a name="MariaDB"></a>
 
 #### MariaDB
 MariaDB is an open source database
@@ -172,8 +174,6 @@ https://en.wikipedia.org/wiki/Puppet_(company)#Puppet
 Quobyte`s smart storage software offers a single storage system for block (Cinder), object (S3) and shared file system (Manila)
 
 https://wiki.openstack.org/wiki/Quobyte
-
-<a name="MariaDB"></a>
 
 #### RabbitMQ
 RabbitMQ is an open-source message-broker software
