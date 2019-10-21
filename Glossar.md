@@ -1,53 +1,5 @@
-<a name="OpenStack"></a>
 
-#### Openstack
-OpenStack is a cloud operating system that controls large pools of compute, storage, and networking resources throughout a datacenter, all managed and provisioned through APIs with common authentication mechanisms.
-A dashboard is also available, giving administrators control while empowering their users to provision resources through a web interface.
-Beyond standard infrastructure-as-a-service functionality, additional components provide orchestration, fault management and service management amongst other services to ensure high availability of user applications.
-
-#### OOO / TripleO
-"Openstack on Openstack" nutzt Openstack selber als „undercloud“ um Openstack zu installieren.
-TripleO is a project aimed at installing, upgrading and operating OpenStack clouds using OpenStack’s own cloud facilities as the foundation - building on Nova, Ironic, Neutron and Heat to automate cloud management at datacenter scale
-#### Nova
-Nova is the OpenStack project that provides a way to provision compute instances (aka virtual servers). Nova supports creating virtual machines, baremetal servers (through the use of ironic), and has limited support for system containers. Nova runs as a set of daemons on top of existing Linux servers to provide that service.
-It requires the following additional OpenStack services for basic function:
-Keystone: This provides identity and authentication for all OpenStack services.
-Glance: This provides the compute image repository. All compute instances launch from glance images.
-Neutron: This is responsible for provisioning the virtual or physical networks that compute instances connect to on boot.
-It can also integrate with other services to include: persistent block storage, encrypted disks, and baremetal compute instances.
-#### Swift
-Swift ist ein hoch verfügbarer, dezentralisierter, eventually consistent object/blob store. Organizations can use Swift to store lots of data efficiently, safely, and cheaply. It's built for scale and optimized for durability, availability, and concurrency across the entire data set. Swift is ideal for storing unstructured data that can grow without bound.
-#### Cinder
-Cinder is a Block Storage service for OpenStack. It virtualizes the management of block storage devices and provides end users with a self service API to request and consume those resources without requiring any knowledge of where their storage is actually deployed or on what type of device. This is done through the use of either a reference implementation (LVM) or plugin drivers for other storage.
-#### Neutron
-ist ein SDN networking Projekt um networking-as-a-service (NaaS) in virtuellen compute environments zur Verfügung zu stellen. Wird von uns mit Contrail ersetzt.
-#### Keystone
-Keystone ist der Identity Service von OpenStack. Er stellt API client authentication, service discovery,
-und distributed multi-tenant authorization durch Implementierung der OpenStack Identity API. 
-Unterstützt LDAP, OAuth, OpenID Connect, SAML and SQL.
-#### Heat
-Heat is the main project in the OpenStack Orchestration program. It implements an orchestration engine to launch multiple composite cloud applications based on templates in the form of text files that can be treated like code. A native Heat template format is evolving, but Heat also endeavours to provide compatibility with the AWS CloudFormation template format, so that many existing CloudFormation templates can be launched on OpenStack. Heat provides both an OpenStack-native ReST API and a CloudFormation-compatible Query API.
-#### Horizon
-Horizon ist die canonical Implementation von OpenStack's dashboard, bietet eine web based GUI zu OpenStack services.
-
-
-#### Kolla
-Kolla provides production-ready containers and deployment tools for operating <a href="#OpenStack">OpenStack</a> clouds that are scalable, fast, reliable, and upgradable using community best practices. 
-
-https://wiki.openstack.org/wiki/Kolla
-
-
-#### Infrastructure as code
-Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
-
-   * Tools
-      * <a href="#Ansible">Ansible</a>
-      * <a href="#Chef">Chef</a>
-      * <a href="#Puppet">Puppet</a>
-      * <a href="#Salt">Salt</a>
-      * <a href="#Terraform">Terraform</a>
-
-https://en.wikipedia.org/wiki/Infrastructure_as_code
+### Glossar
 
 <a name="Ansible"></a>
 
@@ -56,6 +8,11 @@ Ansible is an open-source software provisioning, configuration management, and a
 
 https://en.wikipedia.org/wiki/Ansible_(software)
 
+#### CassandraDB
+Apache Cassandra is a free and open-source, distributed, wide column store, NoSQL database management system designed to handle large amounts of data
+
+https://en.wikipedia.org/wiki/Apache_Cassandra
+
 <a name="Chef"></a>
 
 #### Chef
@@ -63,55 +20,20 @@ Chef is a company and the name of a configuration management tool written in Rub
 
 https://en.wikipedia.org/wiki/Chef_(software)
 
-<a name="Puppet"></a>
+#### Ceph
+Ceph is a free-software storage platform, implements object storage on a single distributed computer cluster, and provides interfaces for object-, block- and file-level storage.
 
-#### Puppet
-Puppet is an open-core software configuration management tool.
+https://en.wikipedia.org/wiki/Ceph_(software)
 
-https://en.wikipedia.org/wiki/Puppet_(company)#Puppet
+#### Cinder
+Cinder is a Block Storage service for <a href="#OpenStack">OpenStack</a>.
 
-<a name="Salt"></a>
+https://wiki.openstack.org/wiki/Cinder
 
-#### Salt
-Salt (sometimes referred to as SaltStack) is Python-based, open-source software for event-driven IT automation, remote task execution, and configuration management. 
+#### Consul
+Consul is a tool for service discovery and configuration. 
 
-https://en.wikipedia.org/wiki/Salt_(software)
-
-<a name="Terraform"></a>
-
-#### Terraform
-Terraform is an open-source infrastructure as code software tool created by HashiCorp.
-
-https://en.wikipedia.org/wiki/Terraform_(software)
-
-
-#### Rancher
-Rancher is an open source project that provides a <a href="#Container">container</a> management platform built for organizations that deploy containers in production. 
-
-https://github.com/rancher/rancher
-
-
-#### Ironic
-An <a href="#OpenStack">OpenStack</a> Bare Metal Provisioning Program
-
-https://wiki.openstack.org/wiki/Ironic
-
-#### Glance
-Glance provides a service in an <a href="#OpenStack">openStack</a> environment where users can upload and discover data assets that are meant to be used with other services. 
-
-https://docs.openstack.org/glance/latest/
-
-#### Kubernetes
-Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management
-
-https://en.wikipedia.org/wiki/Kubernetes
-
-<a name="Kubernetes"></a>
-
-#### Helm
-Helm is a tool for managing <a href="#Kubernetes">Kubernetes</a> charts.
-
-https://github.com/helm/helm
+https://github.com/hashicorp/consul
 
 <a name="Container"></a>
 
@@ -119,6 +41,16 @@ https://github.com/helm/helm
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. 
 
 https://en.wikipedia.org/wiki/OS-level_virtualization
+
+#### Contrail
+Juniper’s Contrail is an open, and agile software defined networking solution that automates and orchestrates the creation of highly scalable virtual networks. 
+
+https://www.juniper.net/us/en/products-services/sdn/contrail/
+
+#### Cumulus
+Cumulus is a digital asset management software designed as a client/server system developed by Canto Software. 
+
+https://en.wikipedia.org/wiki/Cumulus_(software)
 
 <a name="Docker"></a>
 
@@ -132,71 +64,109 @@ Docker Swarm is a clustering and scheduling tool for <a href="#Docker">Docker</a
 
 https://docs.docker.com/engine/swarm/
 
-#### LXC / LXD
-LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for virtualizing software at the operating system level within the Linux kernel. 
-LXD is an extension of LXC
+#### Glance
+Glance provides a service in an <a href="#OpenStack">openStack</a> environment where users can upload and discover data assets that are meant to be used with other services. 
 
-https://www.sumologic.com/blog/lxc-lxd-linux-containers/
+https://docs.openstack.org/glance/latest/
+
+#### Heat
+Heat is the main project in the <a href="#OpenStack">OpenStack</a> Orchestration program.
+
+https://wiki.openstack.org/wiki/Heat
+
+#### Helm
+Helm is a tool for managing <a href="#Kubernetes">Kubernetes</a> charts.
+
+https://github.com/helm/helm
+
+#### Horizon
+Horizon is the canonical implementation of  <a href="#OpenStack">OpenStack</a>’s Dashboard
+
+https://wiki.openstack.org/wiki/Horizon
+
+#### Infrastructure as code
+Infrastructure as code (IaC) is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
+
+   * Tools
+      * <a href="#Ansible">Ansible</a>
+      * <a href="#Chef">Chef</a>
+      * <a href="#Puppet">Puppet</a>
+      * <a href="#Salt">Salt</a>
+      * <a href="#Terraform">Terraform</a>
+
+https://en.wikipedia.org/wiki/Infrastructure_as_code
 
 #### IOPS
 Input/output operations per second (IOPS) is an input/output performance measurement used to characterize computer storage devices 
 
 https://en.wikipedia.org/wiki/IOPS
 
-#### Microservice
-Microservices are a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services.
+#### Ironic
+An <a href="#OpenStack">OpenStack</a> Bare Metal Provisioning Program
 
-https://en.wikipedia.org/wiki/Microservices
+https://wiki.openstack.org/wiki/Ironic
 
-#### Consul
-Consul is a tool for service discovery and configuration. 
+#### Kolla
+Kolla provides production-ready containers and deployment tools for operating <a href="#OpenStack">OpenStack</a> clouds that are scalable, fast, reliable, and upgradable using community best practices. 
 
-https://github.com/hashicorp/consul
+https://wiki.openstack.org/wiki/Kolla
+
+#### Kubernetes
+Kubernetes is an open-source container-orchestration system for automating application deployment, scaling, and management
+
+https://en.wikipedia.org/wiki/Kubernetes
+
+<a name="Kubernetes"></a>
 
 #### Linux Namespaces
 Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources. 
 
 https://en.wikipedia.org/wiki/Linux_namespaces
 
-#### RabbitMQ
-RabbitMQ is an open-source message-broker software
+#### LXC / LXD
+LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for virtualizing software at the operating system level within the Linux kernel. 
+LXD is an extension of LXC
 
-https://en.wikipedia.org/wiki/RabbitMQ
+https://www.sumologic.com/blog/lxc-lxd-linux-containers/
+
+#### MariaDB
+MariaDB is an open source database
+
+https://en.wikipedia.org/wiki/MariaDB
+
+#### Microservice
+Microservices are a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services.
+
+https://en.wikipedia.org/wiki/Microservices
+
+#### Neutron
+Neutron is an <a href="#OpenStack">OpenStack</a> project to provide "networking as a service" between interface devices
+
+https://wiki.openstack.org/wiki/Neutron
+
+#### Nova
+Nova is the <a href="#OpenStack">OpenStack</a> project that provides a way to provision compute instances
+
+https://docs.openstack.org/nova/latest/
 
 #### Openflow
 OpenFlow is a communications protocol that gives access to the forwarding plane of a network switch or router over the network.
 
 https://en.wikipedia.org/wiki/OpenFlow
 
-#### Contrail
-Juniper’s Contrail is an open, and agile software defined networking solution that automates and orchestrates the creation of highly scalable virtual networks. 
+<a name="OpenStack"></a>
 
-https://www.juniper.net/us/en/products-services/sdn/contrail/
+#### Openstack
+OpenStack is a free and open-source software platform for cloud computing
 
-#### Galera
-MariaDB Galera Cluster is a synchronous multi-master cluster for <a href="#MariaDB">MariaDB</a>.
+https://en.wikipedia.org/wiki/OpenStack
 
-https://mariadb.com/kb/en/library/what-is-mariadb-galera-cluster/
+<a name="Puppet"></a>
 
-#### Zookeeper
-ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 
+#### Puppet
+Puppet is an open-core software configuration management tool.
 
-https://en.wikipedia.org/wiki/Apache_ZooKeeper
-
-#### CassandraDB
-Apache Cassandra is a free and open-source, distributed, wide column store, NoSQL database management system designed to handle large amounts of data
-
-https://en.wikipedia.org/wiki/Apache_Cassandra
-
-#### Cumulus
-Cumulus is a digital asset management software designed as a client/server system developed by Canto Software. 
-
-https://en.wikipedia.org/wiki/Cumulus_(software)
-
-#### Ceph
-Ceph is a free-software storage platform, implements object storage on a single distributed computer cluster, and provides interfaces for object-, block- and file-level storage.
-
-https://en.wikipedia.org/wiki/Ceph_(software)
+https://en.wikipedia.org/wiki/Puppet_(company)#Puppet
 
 #### Quobyte
 Quobyte`s smart storage software offers a single storage system for block (Cinder), object (S3) and shared file system (Manila)
@@ -205,7 +175,41 @@ https://wiki.openstack.org/wiki/Quobyte
 
 <a name="MariaDB"></a>
 
-#### MariaDB
-MariaDB is an open source database
+#### RabbitMQ
+RabbitMQ is an open-source message-broker software
 
-https://en.wikipedia.org/wiki/MariaDB
+https://en.wikipedia.org/wiki/RabbitMQ
+
+#### Rancher
+Rancher is an open source project that provides a <a href="#Container">container</a> management platform built for organizations that deploy containers in production. 
+
+https://github.com/rancher/rancher
+
+<a name="Salt"></a>
+
+#### Salt
+Salt (sometimes referred to as SaltStack) is Python-based, open-source software for event-driven IT automation, remote task execution, and configuration management. 
+
+https://en.wikipedia.org/wiki/Salt_(software)
+
+#### Swift
+Swift is a highly available, distributed, eventually consistent object/blob store for <a href="#OpenStack">OpenStack</a>
+
+https://docs.openstack.org/swift/latest/
+
+<a name="Terraform"></a>
+
+#### Terraform
+Terraform is an open-source infrastructure as code software tool created by HashiCorp.
+
+https://en.wikipedia.org/wiki/Terraform_(software)
+
+#### TripleO (OOO)
+TripleO (OpenStack On OpenStack) is a program aimed at installing, upgrading and operating <a href="#OpenStack">OpenStack</a> clouds
+
+https://wiki.openstack.org/wiki/TripleO
+
+#### Zookeeper
+ZooKeeper is a centralized service for maintaining configuration information, naming, providing distributed synchronization, and providing group services. 
+
+https://en.wikipedia.org/wiki/Apache_ZooKeeper
