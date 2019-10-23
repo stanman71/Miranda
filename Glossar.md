@@ -25,6 +25,8 @@ Ceph is a free-software storage platform, implements object storage on a single 
 
 https://en.wikipedia.org/wiki/Ceph_(software)
 
+<a name="Cinder"></a>
+
 #### Cinder
 Cinder is a Block Storage service for <a href="#OpenStack">OpenStack</a>.
 
@@ -39,6 +41,13 @@ https://github.com/hashicorp/consul
 
 #### Container
 A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing environment to another. 
+
+   * Tools
+      * <a href="#Docker">Docker</a>
+      * <a href="#Docker Swarm">Docker Swarm</a>
+      * <a href="#Kubernetes">Kubernetes</a>
+      * <a href="#LXC / LXD">LXC / LXD</a>
+      * <a href="#Rancher">Rancher</a>
 
 https://en.wikipedia.org/wiki/OS-level_virtualization
 
@@ -59,25 +68,35 @@ Docker is a set of platform-as-a-service (PaaS) products that use OS-level virtu
 
 https://en.wikipedia.org/wiki/Docker_(software)
 
+<a name="Docker Swarm"></a>
+
 #### Docker Swarm
 Docker Swarm is a clustering and scheduling tool for <a href="#Docker">Docker</a> containers.
 
 https://docs.docker.com/engine/swarm/
+
+<a name="Glance"></a>
 
 #### Glance
 Glance provides a service in an <a href="#OpenStack">openStack</a> environment where users can upload and discover data assets that are meant to be used with other services. 
 
 https://docs.openstack.org/glance/latest/
 
+<a name="Heat"></a>
+
 #### Heat
 Heat is the main project in the <a href="#OpenStack">OpenStack</a> Orchestration program.
 
 https://wiki.openstack.org/wiki/Heat
 
+<a name="Helm"></a>
+
 #### Helm
 Helm is a tool for managing <a href="#Kubernetes">Kubernetes</a> charts.
 
 https://github.com/helm/helm
+
+<a name="Horizon"></a>
 
 #### Horizon
 Horizon is the canonical implementation of  <a href="#OpenStack">OpenStack</a>’s Dashboard
@@ -101,10 +120,14 @@ Input/output operations per second (IOPS) is an input/output performance measure
 
 https://en.wikipedia.org/wiki/IOPS
 
+<a name="Ironic"></a>
+
 #### Ironic
 An <a href="#OpenStack">OpenStack</a> Bare Metal Provisioning Program
 
 https://wiki.openstack.org/wiki/Ironic
+
+<a name="Kolla"></a>
 
 #### Kolla
 Kolla provides production-ready containers and deployment tools for operating <a href="#OpenStack">OpenStack</a> clouds that are scalable, fast, reliable, and upgradable using community best practices. 
@@ -116,12 +139,17 @@ https://wiki.openstack.org/wiki/Kolla
 #### Kubernetes
 Kubernetes is an open-source <a href="#Container">container</a>-orchestration system for automating application deployment, scaling, and management
 
+   * Tools
+      * <a href="#Helm">Helm</a>   
+
 https://en.wikipedia.org/wiki/Kubernetes
 
 #### Linux Namespaces
 Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources. 
 
 https://en.wikipedia.org/wiki/Linux_namespaces
+
+<a name="LXC / LXD"></a>
 
 #### LXC / LXD
 LXC—short for “Linux <a href="#Container">Containers</a>, is a solution for virtualizing software at the operating system level within the Linux kernel. 
@@ -141,10 +169,14 @@ Microservices are a software development technique—a variant of the service-or
 
 https://en.wikipedia.org/wiki/Microservices
 
+<a name="Neutron"></a>
+
 #### Neutron
 Neutron is an <a href="#OpenStack">OpenStack</a> project to provide "networking as a service" between interface devices
 
 https://wiki.openstack.org/wiki/Neutron
+
+<a name="Nova"></a>
 
 #### Nova
 Nova is the <a href="#OpenStack">OpenStack</a> project that provides a way to provision compute instances
@@ -160,6 +192,17 @@ https://en.wikipedia.org/wiki/OpenFlow
 
 #### Openstack
 OpenStack is a free and open-source software platform for cloud computing
+
+   * Tools    
+      * <a href="#Cinder">Cinder</a>    
+      * <a href="#Glance">Glance</a>      
+      * <a href="#Heat">Heat</a>   
+      * <a href="#Horizon">Horizon</a>
+      * <a href="#Ironic">Ironic</a>
+      * <a href="#Neutron">Neutron</a>   
+      * <a href="#Nova">Nova</a>
+      * <a href="#Swift">Swift</a>  
+      * <a href="#TripleO">TripleO</a>  
 
 https://en.wikipedia.org/wiki/OpenStack
 
@@ -180,6 +223,8 @@ RabbitMQ is an open-source message-broker software
 
 https://en.wikipedia.org/wiki/RabbitMQ
 
+<a name="Rancher"></a>
+
 #### Rancher
 Rancher is an open source project that provides a <a href="#Container">container</a> management platform built for organizations that deploy containers in production. 
 
@@ -192,6 +237,8 @@ Salt (sometimes referred to as SaltStack) is Python-based, open-source software 
 
 https://en.wikipedia.org/wiki/Salt_(software)
 
+<a name="Swift"></a>
+
 #### Swift
 Swift is a highly available, distributed, eventually consistent object/blob store for <a href="#OpenStack">OpenStack</a>
 
@@ -203,6 +250,8 @@ https://docs.openstack.org/swift/latest/
 Terraform is an open-source infrastructure as code software tool created by HashiCorp.
 
 https://en.wikipedia.org/wiki/Terraform_(software)
+
+<a name="TripleO"></a>
 
 #### TripleO (OOO)
 TripleO (OpenStack On OpenStack) is a program aimed at installing, upgrading and operating <a href="#OpenStack">OpenStack</a> clouds
