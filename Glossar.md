@@ -164,6 +164,12 @@ MariaDB is an open source database
 
 https://en.wikipedia.org/wiki/MariaDB
 
+#### MariaDB Galera Cluster
+
+MariaDB Galera Cluster is a synchronous multi-master cluster for <a href="#MariaDB">MariaDB</a>. 
+
+https://mariadb.com/kb/en/library/what-is-mariadb-galera-cluster/
+
 #### Microservice
 Microservices are a software development technique—a variant of the service-oriented architecture (SOA) architectural style that structures an application as a collection of loosely coupled services.
 
