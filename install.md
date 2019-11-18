@@ -15,6 +15,7 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
    * <a href="#4 Proxy Settings">4 Proxy Settings</a>
       * <a href="#4.1 SecureCRT">4.1 SecureCRT</a>
       * <a href="#4.2 Firefox">4.2 Firefox</a>
+   * <a href="#5 Deploy a nested environment">5 Deploy a nested environment</a>
 
 </br>
 ------------
@@ -28,12 +29,14 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
 
 #### 1.1 OpenStack 
 
-- Access the OpenStack hardware deployment via web browser (http://172.25.1.100/)
+- Access the OpenStack hardware deployment via web browser (http://172.25.10.100/)
+
+       >>> VPN to XT3-Lab is nessesary
 
        >>> User:     admin
            Password: contrail123
 
-- If you get a "Something went wrong!" message, please replace URL "http://172.25.1.100/project/" with "http://172.25.1.100/admin/" in the web browser.
+- If you get a "Something went wrong!" message, please replace URL "http://172.25.10.100/project/" with "http://172.25.10.100/admin/" in the web browser.
 
 <p align="center">
   <img src="https://git.xantaro.net/Contrail-Factory/documentation/images/error_login.png">
@@ -67,9 +70,9 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
   <img src="https://git.xantaro.net/Contrail-Factory/documentation/images/project_association.png">
 </p>
 
-- Generate a ssh-key, if necessary, and send the ssh-key (structure: ssh-rsa / [key] / [commend]) to an admin user of s1 deploy environment
+- Generate a ssh-key, if necessary, and send the ssh-key (structure: ssh-rsa / [key] / [commend]) to an admin user of s1 deploy environment (for the main deployment server and GOGS)
 
-- Import your public SSH key, generated on your local laptop, via OpenStack web GUI under "Compute" > "Key Pairs" > "Import Public Key" and copy/paste the string into the mask.
+- Import your public SSH key, generated on your local laptop, via OpenStack web GUI under "Compute" > "Key Pairs" > "Import Public Key" and copy/paste the string into the mask (for your own deploy server)
 
 <p align="center">
   <img src="https://git.xantaro.net/Contrail-Factory/documentation/images/import_ssh_key.png">
@@ -81,7 +84,7 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
 
 #### 1.2 Terraform 
 
-- To create a project for Terraform, login to the deployment server (172.25.1.71) with user "root" after your public SSH key, created on your laptop, was added.
+- To create a project for Terraform, login to the main deployment server (172.25.1.71) with user "root" after your public SSH key, created on your laptop, was added.
 
        >>> Putty
 
@@ -126,7 +129,7 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
 
 ### 2 Create new virtual Instances
 
-- To create a project via Terraform, login with your user to the main deploy server (172.25.1.71) and enter the terraform folder
+- To create a project via Terraform, login with your user to the main deployment server (172.25.1.71) and enter the terraform folder
 
        >>> cd [project_folder]/terraform  
 
@@ -134,37 +137,37 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
 
        >>> cp auth_variables.tf_sample auth_variables.tf
 
-- Adapt the variables in "auth_variables.tf", using vi/vim. Replace <USERNAME>/<OS-PROJECT>/<USER-PW> with your specific user name/project/password in insert mode and save and quit the file in command mode (“:wq”).
+- Adapt the variables in "auth_variables.tf", using vi/vim. Replace <USERNAME>/<OS-PROJECT>/<USER-PW> with your specific OpenStack username/project/password in insert mode and save and quit the file in command mode (“:wq”).
 
        >>> vim auth_variables.tf
 	
            variable os_user {
-              default = "<USERNAME>"
+              default = "<OpenStack-USERNAME>"
            }
            variable os_tenant {
-              default = "<OS-PROJECT/TENANT-NAME>"
+              default = "<OpenStack-PROJECT>"
            }
            variable os_password {
-              default = "<USER-PW>"
+              default = "<OpenStack-USER-PW>"
            }
 
 - Generate a SSH keypair in "setup_project" directory (for terraform only)
 
        >>> ssh-keygen -t rsa
            Generating public/private rsa key pair.
-           Enter file in which to save the key (/root/.ssh/id_rsa): id_rsa
+           Enter file name to save to keys in the current dictionary (/root/.ssh/id_rsa): id_rsa
 
-           Enter name, no password needed
+           No password needed
 
 - Check if the keys (id_rsa/id_rsa.pub) are present in "setup_project"
 
        >>> ls -l
 
-- Perform "terraform init"
+- Initialize a working directory containing Terraform configuration files
 
        >>> terraform init
 
-- Perform "terraform plan"
+- Create an execution plan
 
        >>> terraform plan -out plan
 
@@ -194,11 +197,16 @@ The goal of the following steps is to simulate the existing hardware OpenStack/C
 
 ### 3 Install OpenStack and Contrail 
 
-The following steps are performed on the newly created virtual deploy server (172.25.63.X), not on the main deploy server (172.25.1.71). It takes some minutes until the virtual deploy server is ready for use.
+The following steps are performed on your newly created own virtual deploy server (172.25.63.X), not on the main deployment server (172.25.1.71). It takes some minutes until your virtual deploy server is ready for use.
 
-- Check via OpenStack GUI if your personal public SSH key and the public key of the main deploy server, created under "/root/sstey/sstey-m4/terraform/setup_project", is present on the virtual deploy server. 
+- Check via OpenStack GUI if your personal public SSH key and the public key of the main deployment server, created under "/root/sstey/sstey-m4/terraform/setup_project", is present on the virtual deploy server. 
 
-       >>> Go in “Project > Compute > Instances > choose instance ‘deploy’ > go to tab ‘Log’ > click ‘Full Log’ on the right side of the window”.
+       >>> Go in Project > 
+                 Compute > 
+                 Instances > 
+                 choose instance ‘deploy’ > 
+                 go to tab ‘Log’ > 
+                 click ‘Full Log’ on the right side of the window
 
 <p align="center">
   <img src="https://git.xantaro.net/Contrail-Factory/documentation/images/deploy_log.png">
@@ -233,8 +241,15 @@ The following steps are performed on the newly created virtual deploy server (17
  
        >>> vim instances.yaml
 
-           Under 'provider_config > bms > domainsuffix’, replace ‘sstey-m4’ with your project name
-           Under ‘kolla_config > kolla_globals > keepalived_virtual_router_id’, change the parameter to a random value.
+           Under provider_config > 
+                 bms > 
+                 domainsuffix 
+           replace ‘sstey-m4’ with your project name
+
+           Under kolla_config > 
+                 kolla_globals > 
+                 keepalived_virtual_router_id 
+           change the parameter to a random value
 
 - Change directory to “contrail-ansible-deployer”
 
@@ -244,7 +259,7 @@ The following steps are performed on the newly created virtual deploy server (17
 
        >>> https://github.com/Juniper/contrail-ansible-deployer/wiki/Contrail-with-Openstack-Kolla
 
-- The following playbook installs packages on the deployer host as well as the target host required to bring up the kolla and contrail containers.
+- The following playbook installs packages on the deployer and prepare the installation
 
        >>> sudo ansible-playbook -i inventory/ -e orchestrator=openstack playbooks/configure_instances.yml
 
@@ -256,9 +271,9 @@ The following steps are performed on the newly created virtual deploy server (17
            192.168.2.31               : ok=48   changed=27   unreachable=0    failed=0   
            localhost                  : ok=54   changed=9    unreachable=0    failed=0
 
-           If some nodes are failing, please run the script again.
+           !!! If some nodes are failing, please run the script again !!!
 
-- Deploy Contrail and Kolla containers.
+- Install OpenStack and Contrail containers
 
        >>> sudo ansible-playbook -i inventory/ playbooks/install_openstack.yml
 
@@ -270,7 +285,7 @@ The following steps are performed on the newly created virtual deploy server (17
            192.168.2.31               : ok=68    changed=35    unreachable=0    failed=0   
            localhost                  : ok=54    changed=2     unreachable=0    failed=0
 
-           If some nodes are failing, please run the script again.
+           !!! If some nodes are failing, please run the script again !!!
 
        >>> sudo ansible-playbook -i inventory/ -e orchestrator=openstack playbooks/install_contrail.yml
 
@@ -282,7 +297,15 @@ The following steps are performed on the newly created virtual deploy server (17
            192.168.2.31               : ok=20    changed=12   unreachable=0    failed=0   
            localhost                  : ok=53    changed=1    unreachable=0    failed=0
 
-           If some nodes are failing, please run the script again.
+           !!! If some nodes are failing, please run the script again !!!
+
+</br>
+------------
+</br>
+
+<a name="4 Proxy Settings"></a>
+
+### 4 Proxy Settings
 
 - Now you should be able to access your OpenStack and Contrail installation via web GUI with the external VIP IP 192.168.1.100. As this is a private IP and not reachable from “outside”, we have to create a SOCKS proxy on your SSH client and use the virtual deploy server as a “gateway” to reach the private IPs. Afterwards you should be able to connect to the Control/Compute hosts via SSH client (e.g. SecureCRT) and the OpenStack/Contrail installation via web browser (e.g. Firefox).
 
@@ -298,12 +321,6 @@ The following steps are performed on the newly created virtual deploy server (17
            Contrail 	https://192.168.2.100:8143
 
 </br>
-------------
-</br>
-
-<a name="4 Proxy Settings"></a>
-
-### 4 Proxy Settings
 
 <a name="4.1 SecureCRT"></a>
 
@@ -311,7 +328,10 @@ The following steps are performed on the newly created virtual deploy server (17
 
 - Create a SOCKS proxy using SecureCRT. First, create a new folder and configure a “master” session (in this case “1 – vDeploy”). 
 
-       >>> “Session Options > Port Forwarding”, add a new forwarding connection. You need a random name, the port number and you need to enable “Dynamic forwarding using SOCKS 4 or 5”.
+       >>> Session Options > Port Forwarding
+           add a new forwarding connection. 
+           
+           You need a random name, the port number and you need to enable “Dynamic forwarding using SOCKS 4 or 5”.
 
 <p align="center">
   <img src="https://git.xantaro.net/Contrail-Factory/documentation/images/port_forwarding.png">
@@ -376,3 +396,56 @@ Comment: This action will only succeed if your previously configured “master�
        >>> Password: contrail123
 
 Comment: This action will only succeed if your previously configured “master” SSH session (SOCKS5 proxy) to the virtual deploy server is established!
+
+</br>
+------------
+</br>
+
+<a name="5 Deploy a nested environment"></a>
+
+The following steps are performed on the virtual deploy server (172.25.63.X), not on the main deployment server (172.25.10.71).
+
+- To start the deployment of the nested environment via Terraform we first have to install Terraform on the virtual deploy node. We need the packages ‘wget’ and ‘unzip’ to get the Terraform file.
+
+       >>> sudo yum install wget unzip
+
+- Get the Terraform file via wget
+
+       >>> wget https://releases.hashicorp.com/terraform/0.12.10/terraform_0.12.10_linux_amd64.zip
+
+- Unzip Terraform
+
+       >>> sudo unzip ./terraform_0.12.10_linux_amd64.zip -d /usr/local/bin/  
+
+- Check if Terraform is ready
+
+       >>> terraform -v
+
+- Clone git repository
+
+       >>> git clone git@git.xantaro.net:Contrail-Factory/terraform.git
+
+- Change directory to „terraform/nested/“ and list all files
+
+       >>> cd terraform/nested/
+       >>> ls -l
+
+- Edit the variables inside the “variables.tf” file
+
+       >>> sudo vi variables.tf
+           Replace the variable “os_auth_url” with your external VIP IP
+           Replace the variable “ssh_public_key” with your personal public SSH key
+
+- Initialize a working directory containing Terraform configuration files
+
+       >>> terraform init
+
+- Create an execution plan
+
+       >>> terraform plan -out plan
+
+- Apply the previously created plan
+
+       >>> terraform apply plan
+
+- Now you can check connectivity between the newly deployed Cirros servers via OpenStack and check the status via Contrail/Tungsten
